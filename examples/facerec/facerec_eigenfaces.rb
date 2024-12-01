@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- mode: ruby; coding: utf-8 -*-
 
-# Eigenfaces sample in ruby-opencv, equivalent to http://docs.opencv.org/trunk/_downloads/facerec_eigenfaces.cpp
+# Eigenfaces sample in opencv-ruby, equivalent to http://docs.opencv.org/trunk/_downloads/facerec_eigenfaces.cpp
 # See http://docs.opencv.org/trunk/modules/contrib/doc/facerec/facerec_tutorial.html
 require 'opencv'
 include OpenCV

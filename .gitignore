@@ -14,7 +14,8 @@ GSYMS
 GTAGS
 OpenCV-*
 ruby-*.*.*
-ext/opencv/test.txt
+ext/msvc
+ext/mingw
 pkg/
 doc/
 log.txt
@@ -26,3 +27,4 @@ Gemfile.lock
 .RUBYARCHDIR.*
 .bundle
 
+/ext/build

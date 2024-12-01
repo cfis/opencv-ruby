@@ -1,0 +1,13 @@
+module Cv::DetectionBasedTracker
+  class IDetector
+    def detect: (image: Cv::Mat, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> void
+    def get_max_object_size: () -> Cv::Size_≺int≻
+    def get_min_neighbours: () -> Integer
+    def get_min_object_size: () -> Cv::Size_≺int≻
+    def get_scale_factor: () -> Float
+    def set_max_object_size: (max: Cv::Size_≺int≻) -> void
+    def set_min_neighbours: (value: Integer) -> void
+    def set_min_object_size: (min: Cv::Size_≺int≻) -> void
+    def set_scale_factor: (value: Float) -> void
+  end
+end

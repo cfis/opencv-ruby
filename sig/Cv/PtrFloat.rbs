@@ -1,0 +1,15 @@
+module Cv
+  class PtrFloat
+    def initialize: () -> void
+               | (ptr: Rice::Buffer≺float∗≻) -> void
+               | (o: Std::SharedPtr≺float≻) -> void
+               | (o: Std::SharedPtr≺float≻) -> void
+    def ->: () -> Rice::Buffer≺float∗≻
+    def assign: (o: Cv::Ptr≺float≻) -> Cv::Ptr≺float≻
+    def dereference: () -> Float
+    def empty?: () -> bool
+    def initialize_copy: (o: Cv::Ptr≺float≻) -> void
+    def release: () -> void
+    def reset: () -> void
+  end
+end

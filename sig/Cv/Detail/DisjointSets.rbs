@@ -1,0 +1,11 @@
+module Cv::Detail
+  class DisjointSets
+    attr_accessor parent: Std::Vector≺int≻
+    attr_accessor size: Std::Vector≺int≻
+
+    def create_one_elem_sets: (elem_count: Integer) -> void
+    def find_set_by_elem: (elem: Integer) -> Integer
+    def initialize: (elem_count: Integer) -> void
+    def merge_sets: (set1: Integer, set2: Integer) -> Integer
+  end
+end

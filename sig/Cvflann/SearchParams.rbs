@@ -1,0 +1,7 @@
+module Cvflann
+  class SearchParams
+    def init: (checks: Integer, eps: Float, sorted: bool, explore_all_trees: bool) -> void
+    def initialize: (checks: Integer, eps: Float, sorted: bool) -> void
+               | (checks: Integer, eps: Float, sorted: bool, explore_all_trees: bool) -> void
+  end
+end

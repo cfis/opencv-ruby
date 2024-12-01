@@ -1,0 +1,13 @@
+module Cv
+  class DMatch
+    attr_accessor distance: Float
+    attr_accessor img_idx: Integer
+    attr_accessor query_idx: Integer
+    attr_accessor train_idx: Integer
+
+    def initialize: () -> void
+               | (_query_idx: Integer, _train_idx: Integer, _distance: Float) -> void
+               | (_query_idx: Integer, _train_idx: Integer, _img_idx: Integer, _distance: Float) -> void
+    def <: (m: Cv::DMatch) -> bool
+  end
+end

@@ -1,0 +1,21 @@
+module Cv
+  class Vec4s
+    def []: (i: Integer) -> Short
+       | (i: Integer) -> Short
+    def initialize: () -> void
+               | (values: Rice::Buffer≺short const∗≻) -> void
+               | (a: Cv::Matx≺short‚ 4‚ 1≻, b: Cv::Matx≺short‚ 4‚ 1≻, : Cv::MatxSubOp) -> void
+               | (a: Cv::Matx≺short‚ 4‚ 1≻, b: Cv::Matx≺short‚ 4‚ 1≻, : Cv::MatxAddOp) -> void
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> void
+    def []=: (arg_0: Integer, arg_1: Short) -> void
+    def assign: (rhs: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
+    def call: (i: Integer) -> Short
+         | (i: Integer) -> Short
+    def count: () -> Integer
+    def initialize_copy: (v: Cv::Vec≺short‚ 4≻) -> void
+    def inspect: () -> Std::String
+    def mul: (v: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
+    def to_a: () -> Integer
+    def to_s: () -> Std::String
+  end
+end

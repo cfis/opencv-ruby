@@ -1,0 +1,10 @@
+module Cvflann
+  class StartStopTimer
+    attr_accessor value: Float
+
+    def initialize: () -> void
+    def reset: () -> void
+    def start: () -> void
+    def stop: () -> void
+  end
+end

@@ -1,0 +1,10 @@
+module Cv::Detail
+  class CompressedRectilinearProjector
+    attr_accessor a: Float
+    attr_accessor b: Float
+
+    def initialize: () -> void
+    def map_backward: (u: Float, v: Float, x: Float, y: Float) -> void
+    def map_forward: (x: Float, y: Float, u: Float, v: Float) -> void
+  end
+end

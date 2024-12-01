@@ -1,0 +1,5 @@
+module Cv
+  class ParallelLoopBody
+    def call: (range: Cv::Range) -> void
+  end
+end

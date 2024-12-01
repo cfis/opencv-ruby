@@ -1,0 +1,6 @@
+module Cv
+  class MatxMulOp
+    def initialize: () -> void
+    def initialize_copy: (: Cv::MatxMulOp) -> void
+  end
+end

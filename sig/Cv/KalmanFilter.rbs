@@ -1,0 +1,25 @@
+module Cv
+  class KalmanFilter
+    attr_accessor control_matrix: Cv::Mat
+    attr_accessor error_cov_post: Cv::Mat
+    attr_accessor error_cov_pre: Cv::Mat
+    attr_accessor gain: Cv::Mat
+    attr_accessor measurement_matrix: Cv::Mat
+    attr_accessor measurement_noise_cov: Cv::Mat
+    attr_accessor process_noise_cov: Cv::Mat
+    attr_accessor state_post: Cv::Mat
+    attr_accessor state_pre: Cv::Mat
+    attr_accessor temp1: Cv::Mat
+    attr_accessor temp2: Cv::Mat
+    attr_accessor temp3: Cv::Mat
+    attr_accessor temp4: Cv::Mat
+    attr_accessor temp5: Cv::Mat
+    attr_accessor transition_matrix: Cv::Mat
+
+    def correct: (measurement: Cv::Mat) -> Cv::Mat
+    def init: (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> void
+    def initialize: () -> void
+               | (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> void
+    def predict: (control: Cv::Mat) -> Cv::Mat
+  end
+end

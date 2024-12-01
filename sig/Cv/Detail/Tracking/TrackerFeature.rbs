@@ -1,0 +1,5 @@
+module Cv::Detail::Tracking
+  class TrackerFeature
+    def compute: (images: Std::Vector≺cv꞉꞉Mat≻, response: Cv::Mat) -> void
+  end
+end

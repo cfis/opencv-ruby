@@ -1,0 +1,8 @@
+module Cv
+  class GeneralizedHoughBallard
+    def get_levels: () -> Integer
+    def get_votes_threshold: () -> Integer
+    def set_levels: (levels: Integer) -> void
+    def set_votes_threshold: (votes_threshold: Integer) -> void
+  end
+end

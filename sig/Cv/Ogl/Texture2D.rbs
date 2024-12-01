@@ -1,0 +1,23 @@
+module Cv::Ogl
+  class Texture2D
+    def initialize: () -> void
+               | (arr: Cv::debug_build_guard::InputArray, auto_release: bool) -> void
+               | (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
+               | (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, atex_id: Integer, auto_release: bool) -> void
+               | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
+               | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, atex_id: Integer, auto_release: bool) -> void
+    def bind: () -> void
+    def cols: () -> Integer
+    def copy_from: (arr: Cv::debug_build_guard::InputArray, auto_release: bool) -> void
+    def create: (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
+           | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
+    def empty?: () -> bool
+    def copy_to: (arr: Cv::debug_build_guard::OutputArray, ddepth: Integer, auto_release: bool) -> void
+    def format: () -> Enum cv::ogl::Texture2D::Format
+    def release: () -> void
+    def rows: () -> Integer
+    def set_auto_release: (flag: bool) -> void
+    def size: () -> Cv::Size_≺int≻
+    def tex_id: () -> Integer
+  end
+end

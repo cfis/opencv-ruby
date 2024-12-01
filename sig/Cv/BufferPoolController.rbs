@@ -1,0 +1,8 @@
+module Cv
+  class BufferPoolController
+    def free_all_reserved_buffers: () -> void
+    def get_max_reserved_size: () -> Integer
+    def get_reserved_size: () -> Integer
+    def set_max_reserved_size: (size: Integer) -> void
+  end
+end

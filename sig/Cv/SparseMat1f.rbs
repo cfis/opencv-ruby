@@ -1,0 +1,24 @@
+module Cv
+  class SparseMat1f
+    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Float
+       | (arg_0: Integer) -> Float
+       | (arg_0: Integer, arg_1: Integer) -> Float
+       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Float
+    def []=: (arg_0: Integer, arg_1: Float) -> Float
+        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Float) -> Float
+        | (arg_0: Integer, arg_1: Integer, arg_2: Float) -> Float
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Float) -> Float
+    def initialize: () -> void
+               | (m: Cv::SparseMat) -> void
+               | (m: Cv::Mat) -> void
+               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def begin: () -> Cv::SparseMatIterator_≺float≻
+    def clone: () -> Cv::SparseMat_≺float≻
+    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def depth: () -> Integer
+    def end: () -> Cv::SparseMatIterator_≺float≻
+    def channels: () -> Integer
+    def initialize_copy: (m: Cv::SparseMat_≺float≻) -> void
+    def type: () -> Integer
+  end
+end

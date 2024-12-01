@@ -1,0 +1,8 @@
+module Cv::Detail
+  class Timelapser
+    def get_dst: () -> Cv::UMat
+    def initialize: () -> void
+               | (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, sizes: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> void
+    def process: (img: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray, tl: Cv::Point_≺int≻) -> void
+  end
+end

@@ -1,0 +1,11 @@
+module Cv
+  class TermCriteria
+    attr_accessor epsilon: Float
+    attr_accessor max_count: Integer
+    attr_accessor type: Integer
+
+    def initialize: () -> void
+               | (type: Integer, max_count: Integer, epsilon: Float) -> void
+    def valid?: () -> bool
+  end
+end

@@ -1,0 +1,9 @@
+module Cv::SparseMat
+  class Node
+    attr_accessor hashval: Integer
+    attr_reader idx: Int [32]
+    attr_accessor next: Integer
+
+    def initialize: () -> void
+  end
+end

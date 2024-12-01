@@ -1,0 +1,7 @@
+module Cv
+  class LineSegmentDetector
+    def compare_segments: (size: Cv::Size_≺int≻, lines1: Cv::debug_build_guard::InputArray, lines2: Cv::debug_build_guard::InputArray, image: Cv::debug_build_guard::InputOutputArray) -> Integer
+    def detect: (image: Cv::debug_build_guard::InputArray, lines: Cv::debug_build_guard::OutputArray, width: Cv::debug_build_guard::OutputArray, prec: Cv::debug_build_guard::OutputArray, nfa: Cv::debug_build_guard::OutputArray) -> void
+    def draw_segments: (image: Cv::debug_build_guard::InputOutputArray, lines: Cv::debug_build_guard::InputArray) -> void
+  end
+end

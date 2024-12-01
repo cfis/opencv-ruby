@@ -1,0 +1,14 @@
+module Cv
+  class StereoSGBM
+    def get_mode: () -> Integer
+    def get_p1: () -> Integer
+    def get_p2: () -> Integer
+    def get_pre_filter_cap: () -> Integer
+    def get_uniqueness_ratio: () -> Integer
+    def set_mode: (mode: Integer) -> void
+    def set_p1: (p1: Integer) -> void
+    def set_p2: (p2: Integer) -> void
+    def set_pre_filter_cap: (pre_filter_cap: Integer) -> void
+    def set_uniqueness_ratio: (uniqueness_ratio: Integer) -> void
+  end
+end

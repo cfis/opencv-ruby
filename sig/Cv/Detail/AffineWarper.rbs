@@ -1,0 +1,10 @@
+module Cv::Detail
+  class AffineWarper
+    def build_maps: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, h: Cv::debug_build_guard::InputArray, xmap: Cv::debug_build_guard::OutputArray, ymap: Cv::debug_build_guard::OutputArray) -> Cv::Rect_≺int≻
+    def initialize: (scale: Float) -> void
+    def warp: (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, h: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::debug_build_guard::OutputArray) -> Cv::Point_≺int≻
+    def warp_point: (pt: Cv::Point_≺float≻, k: Cv::debug_build_guard::InputArray, h: Cv::debug_build_guard::InputArray) -> Cv::Point_≺float≻
+    def warp_point_backward: (pt: Cv::Point_≺float≻, k: Cv::debug_build_guard::InputArray, h: Cv::debug_build_guard::InputArray) -> Cv::Point_≺float≻
+    def warp_roi: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, h: Cv::debug_build_guard::InputArray) -> Cv::Rect_≺int≻
+  end
+end

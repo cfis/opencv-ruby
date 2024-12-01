@@ -1,0 +1,9 @@
+module Cvflann
+  class PooledAllocator
+    attr_accessor used_memory: Integer
+    attr_accessor wasted_memory: Integer
+
+    def allocate_memory: (size: Integer) -> Rice::Buffer≺void∗≻
+    def initialize: (block_size: Integer) -> void
+  end
+end

@@ -1,0 +1,20 @@
+module Cv
+  class CascadeClassifier
+    attr_accessor cc: Cv::Ptr≺cv꞉꞉BaseCascadeClassifier≻
+
+    def initialize: () -> void
+               | (filename: Std::String) -> void
+    def detect_multi_scale: (image: Cv::debug_build_guard::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size_≺int≻, max_size: Cv::Size_≺int≻) -> void
+                       | (image: Cv::debug_build_guard::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, num_detections: Std::Vector≺int≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size_≺int≻, max_size: Cv::Size_≺int≻) -> void
+                       | (image: Cv::debug_build_guard::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, reject_levels: Std::Vector≺int≻, level_weights: Std::Vector≺double≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size_≺int≻, max_size: Cv::Size_≺int≻, output_reject_levels: bool) -> void
+    def empty?: () -> bool
+    def get_feature_type: () -> Integer
+    def get_mask_generator: () -> Cv::Ptr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻
+    def get_old_cascade: () -> Rice::Buffer≺void∗≻
+    def get_original_window_size: () -> Cv::Size_≺int≻
+    def load: (filename: Std::String) -> bool
+    def old_format_cascade?: () -> bool
+    def read: (node: Cv::FileNode) -> bool
+    def set_mask_generator: (mask_generator: Cv::Ptr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻) -> void
+  end
+end

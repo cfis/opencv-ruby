@@ -1,0 +1,6 @@
+module Cv
+  class BackgroundSubtractor
+    def apply: (image: Cv::debug_build_guard::InputArray, fgmask: Cv::debug_build_guard::OutputArray, learning_rate: Float) -> void
+    def get_background_image: (background_image: Cv::debug_build_guard::OutputArray) -> void
+  end
+end

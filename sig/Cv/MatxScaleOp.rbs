@@ -1,0 +1,6 @@
+module Cv
+  class MatxScaleOp
+    def initialize: () -> void
+    def initialize_copy: (: Cv::MatxScaleOp) -> void
+  end
+end

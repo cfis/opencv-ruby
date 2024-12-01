@@ -1,0 +1,7 @@
+module Cvflann
+  class UniqueRandom
+    def init: (n: Integer) -> void
+    def initialize: (n: Integer) -> void
+    def next: () -> Integer
+  end
+end

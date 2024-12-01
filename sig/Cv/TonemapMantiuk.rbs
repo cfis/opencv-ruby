@@ -1,0 +1,8 @@
+module Cv
+  class TonemapMantiuk
+    def get_saturation: () -> Float
+    def get_scale: () -> Float
+    def set_saturation: (saturation: Float) -> void
+    def set_scale: (scale: Float) -> void
+  end
+end

@@ -1,0 +1,87 @@
+module Cv::Ocl
+  class Device
+    def initialize: () -> void
+               | (d: Rice::Buffer≺void∗≻) -> void
+    def address_bits: () -> Integer
+    def amd?: () -> bool
+    def assign: (d: Cv::ocl::Device) -> Cv::ocl::Device
+           | (d: Cv::ocl::Device) -> Cv::ocl::Device
+    def available?: () -> bool
+    def compiler_available?: () -> bool
+    def device_version_major: () -> Integer
+    def device_version_minor: () -> Integer
+    def double_fp_config: () -> Integer
+    def driver_version: () -> Std::String
+    def empty?: () -> bool
+    def endian_little?: () -> bool
+    def error_correction_support?: () -> bool
+    def execution_capabilities: () -> Integer
+    def extension_supported?: (extension_name: Std::String) -> bool
+    def extensions: () -> Std::String
+    def global_mem_cache_line_size: () -> Integer
+    def global_mem_cache_size: () -> Integer
+    def global_mem_cache_type: () -> Integer
+    def global_mem_size: () -> Integer
+    def half_fp_config: () -> Integer
+    def has_fp16?: () -> bool
+    def has_fp64?: () -> bool
+    def host_unified_memory?: () -> bool
+    def image2_d_max_height: () -> Integer
+    def image2_d_max_width: () -> Integer
+    def image3_d_max_depth: () -> Integer
+    def image3_d_max_height: () -> Integer
+    def image3_d_max_width: () -> Integer
+    def image_base_address_alignment: () -> Integer
+    def image_from_buffer_support?: () -> bool
+    def image_max_array_size: () -> Integer
+    def image_max_buffer_size: () -> Integer
+    def image_pitch_alignment: () -> Integer
+    def image_support?: () -> bool
+    def initialize_copy: (d: Cv::ocl::Device) -> void
+    def intel?: () -> bool
+    def intel_subgroups_support?: () -> bool
+    def linker_available?: () -> bool
+    def local_mem_size: () -> Integer
+    def local_mem_type: () -> Integer
+    def max_clock_frequency: () -> Integer
+    def max_compute_units: () -> Integer
+    def max_constant_args: () -> Integer
+    def max_constant_buffer_size: () -> Integer
+    def max_mem_alloc_size: () -> Integer
+    def max_parameter_size: () -> Integer
+    def max_read_image_args: () -> Integer
+    def max_samplers: () -> Integer
+    def max_work_group_size: () -> Integer
+    def max_work_item_dims: () -> Integer
+    def max_work_item_sizes: (: Rice::Buffer≺unsigned Int64∗≻) -> void
+    def max_write_image_args: () -> Integer
+    def mem_base_addr_align: () -> Integer
+    def n_vidia?: () -> bool
+    def name: () -> Std::String
+    def native_vector_width_char: () -> Integer
+    def native_vector_width_double: () -> Integer
+    def native_vector_width_float: () -> Integer
+    def native_vector_width_half: () -> Integer
+    def native_vector_width_int: () -> Integer
+    def native_vector_width_long: () -> Integer
+    def native_vector_width_short: () -> Integer
+    def open_cl_c_version: () -> Std::String
+    def open_cl_version: () -> Std::String
+    def preferred_vector_width_char: () -> Integer
+    def preferred_vector_width_double: () -> Integer
+    def preferred_vector_width_float: () -> Integer
+    def preferred_vector_width_half: () -> Integer
+    def preferred_vector_width_int: () -> Integer
+    def preferred_vector_width_long: () -> Integer
+    def preferred_vector_width_short: () -> Integer
+    def printf_buffer_size: () -> Integer
+    def profiling_timer_resolution: () -> Integer
+    def ptr: () -> Rice::Buffer≺void∗≻
+    def set: (d: Rice::Buffer≺void∗≻) -> void
+    def single_fp_config: () -> Integer
+    def type: () -> Integer
+    def vendor_id: () -> Integer
+    def vendor_name: () -> Std::String
+    def version: () -> Std::String
+  end
+end

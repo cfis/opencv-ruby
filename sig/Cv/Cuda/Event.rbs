@@ -1,0 +1,7 @@
+module Cv::Cuda
+  class Event
+    def initialize: (flags: Enum cv::cuda::Event::CreateFlags) -> void
+    def query_if_complete?: () -> bool
+    def wait_for_completion: () -> void
+  end
+end

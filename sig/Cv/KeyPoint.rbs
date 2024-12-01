@@ -1,0 +1,15 @@
+module Cv
+  class KeyPoint
+    attr_accessor angle: Float
+    attr_accessor class_id: Integer
+    attr_accessor octave: Integer
+    attr_accessor pt: Cv::Point_≺float≻
+    attr_accessor response: Float
+    attr_accessor size: Float
+
+    def initialize: () -> void
+               | (pt: Cv::Point_≺float≻, size: Float, angle: Float, response: Float, octave: Integer, class_id: Integer) -> void
+               | (x: Float, y: Float, size: Float, angle: Float, response: Float, octave: Integer, class_id: Integer) -> void
+    def hash: () -> Integer
+  end
+end

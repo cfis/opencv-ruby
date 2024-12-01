@@ -1,0 +1,5 @@
+module Cvflann
+  class CreatorNotFound
+    def initialize: () -> void
+  end
+end

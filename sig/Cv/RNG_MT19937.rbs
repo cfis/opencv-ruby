@@ -1,0 +1,13 @@
+module Cv
+  class RNG_MT19937
+    def call: () -> Integer
+         | (n: Integer) -> Integer
+    def initialize: () -> void
+               | (s: Integer) -> void
+    def next: () -> Integer
+    def seed: (s: Integer) -> void
+    def uniform: (a: Float, b: Float) -> Float
+            | (a: Float, b: Float) -> Float
+            | (a: Integer, b: Integer) -> Integer
+  end
+end

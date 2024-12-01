@@ -1,0 +1,13 @@
+module Cv
+  class GraphicalCodeDetector
+    def assign: (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
+           | (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
+    def decode: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, straight_code: Cv::debug_build_guard::OutputArray) -> Std::String
+    def decode_multi?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, straight_code: Cv::debug_build_guard::OutputArray) -> bool
+    def detect?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray) -> bool
+    def detect_and_decode: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray, straight_code: Cv::debug_build_guard::OutputArray) -> Std::String
+    def detect_and_decode_multi?: (img: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, points: Cv::debug_build_guard::OutputArray, straight_code: Cv::debug_build_guard::OutputArray) -> bool
+    def detect_multi?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray) -> bool
+    def initialize_copy: (: Cv::GraphicalCodeDetector) -> void
+  end
+end

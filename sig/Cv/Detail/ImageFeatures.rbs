@@ -1,0 +1,11 @@
+module Cv::Detail
+  class ImageFeatures
+    attr_accessor descriptors: Cv::UMat
+    attr_accessor img_idx: Integer
+    attr_accessor img_size: Cv::Size_≺int≻
+    attr_accessor keypoints: Std::Vector≺cv꞉꞉KeyPoint≻
+
+    def get_keypoints: () -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def initialize: () -> void
+  end
+end

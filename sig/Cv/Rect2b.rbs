@@ -1,0 +1,33 @@
+module Cv
+  class Rect2b
+    attr_accessor height: String
+    attr_accessor width: String
+    attr_accessor x: String
+    attr_accessor y: String
+
+    def !=: (arg_0: Cv::Rect_≺unsigned char≻) -> bool
+    def +: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+      | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+    def initialize: (org: Cv::Point_≺unsigned char≻, sz: Cv::Size_≺unsigned char≻) -> void
+               | (pt1: Cv::Point_≺unsigned char≻, pt2: Cv::Point_≺unsigned char≻) -> void
+               | () -> void
+               | (_x: String, _y: String, _width: String, _height: String) -> void
+    def -: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+      | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+    def ==: (arg_0: Cv::Rect_≺unsigned char≻) -> bool
+    def area: () -> String
+    def assign_minus: (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+                 | (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+    def assign_plus: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+                | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+    def br: () -> Cv::Point_≺unsigned char≻
+    def contains?: (pt: Cv::Point_≺unsigned char≻) -> bool
+    def empty?: () -> bool
+    def initialize_copy: (r: Cv::Rect_≺unsigned char≻) -> void
+    def inspect: () -> Std::String
+    def size: () -> Cv::Size_≺unsigned char≻
+    def tl: () -> Cv::Point_≺unsigned char≻
+    def |: (arg_0: Cv::Rect_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+    def |=: (arg_0: Cv::Rect_≺unsigned char≻) -> Cv::Rect_≺unsigned char≻
+  end
+end

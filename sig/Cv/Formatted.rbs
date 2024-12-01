@@ -1,0 +1,7 @@
+module Cv
+  class Formatted
+    def next: () -> Rice::Buffer≺char const∗≻
+    def reset: () -> void
+    def to_s: () -> Std::String
+  end
+end

@@ -1,0 +1,18 @@
+module Cv
+  class AccessFlag
+    def initialize: () -> void
+    def &: (arg_0: Enum cv::AccessFlag) -> Integer
+    def <<: (arg_0: Integer) -> Integer
+    def <=>: (arg_0: Enum cv::AccessFlag) -> Integer
+    def >>: (arg_0: Integer) -> Integer
+    def ^: (arg_0: Enum cv::AccessFlag) -> Integer
+    def coerce: (arg_0: Int) -> Rice::Array
+    def eql?: (arg_0: Enum cv::AccessFlag) -> bool
+    def hash: () -> Integer
+    def inspect: () -> Rice::String
+    def to_int: () -> Integer
+    def to_s: () -> Rice::String
+    def |: (arg_0: Enum cv::AccessFlag) -> Integer
+    def ~: () -> Integer
+  end
+end

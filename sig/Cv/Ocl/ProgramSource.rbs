@@ -1,0 +1,14 @@
+module Cv::Ocl
+  class ProgramSource
+    def assign: (prog: Cv::ocl::ProgramSource) -> Cv::ocl::ProgramSource
+           | (prog: Cv::ocl::ProgramSource) -> Cv::ocl::ProgramSource
+    def initialize: () -> void
+               | (prog: Std::String) -> void
+               | (prog: Rice::Buffer≺char const∗≻) -> void
+               | (module: Std::String, name: Std::String, code_str: Std::String, code_hash: Std::String) -> void
+    def hash: () -> Integer
+    def empty?: () -> bool
+    def initialize_copy: (prog: Cv::ocl::ProgramSource) -> void
+    def source: () -> Std::String
+  end
+end

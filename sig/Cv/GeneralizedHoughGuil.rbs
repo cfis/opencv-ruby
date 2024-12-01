@@ -1,0 +1,28 @@
+module Cv
+  class GeneralizedHoughGuil
+    def get_angle_epsilon: () -> Float
+    def get_angle_step: () -> Float
+    def get_angle_thresh: () -> Integer
+    def get_levels: () -> Integer
+    def get_max_angle: () -> Float
+    def get_max_scale: () -> Float
+    def get_min_angle: () -> Float
+    def get_min_scale: () -> Float
+    def get_pos_thresh: () -> Integer
+    def get_scale_step: () -> Float
+    def get_scale_thresh: () -> Integer
+    def get_xi: () -> Float
+    def set_angle_epsilon: (angle_epsilon: Float) -> void
+    def set_angle_step: (angle_step: Float) -> void
+    def set_angle_thresh: (angle_thresh: Integer) -> void
+    def set_levels: (levels: Integer) -> void
+    def set_max_angle: (max_angle: Float) -> void
+    def set_max_scale: (max_scale: Float) -> void
+    def set_min_angle: (min_angle: Float) -> void
+    def set_min_scale: (min_scale: Float) -> void
+    def set_pos_thresh: (pos_thresh: Integer) -> void
+    def set_scale_step: (scale_step: Float) -> void
+    def set_scale_thresh: (scale_thresh: Integer) -> void
+    def set_xi: (xi: Float) -> void
+  end
+end

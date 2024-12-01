@@ -1,0 +1,5 @@
+module Cvflann
+  class KDTreeIndexParams
+    def initialize: (trees: Integer) -> void
+  end
+end

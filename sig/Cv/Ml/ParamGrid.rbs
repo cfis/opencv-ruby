@@ -1,0 +1,10 @@
+module Cv::Ml
+  class ParamGrid
+    attr_accessor log_step: Float
+    attr_accessor max_val: Float
+    attr_accessor min_val: Float
+
+    def initialize: () -> void
+               | (_min_val: Float, _max_val: Float, _log_step: Float) -> void
+  end
+end

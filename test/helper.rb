@@ -1,70 +1,49 @@
 #!/usr/bin/env ruby
-# -*- mode: ruby; coding: utf-8 -*-
-require 'test/unit'
-require 'digest/md5'
-require 'opencv'
-include OpenCV
+# To make testing/debugging easier test within this source tree versus an installed gem
+require 'bundler/setup'
 
-class OpenCVTestCase < Test::Unit::TestCase
-  SAMPLE_DIR = File.expand_path(File.dirname(__FILE__)) + '/samples/'
-  FILENAME_CAT = SAMPLE_DIR + 'cat.jpg'
-  FILENAME_LENA256x256 = SAMPLE_DIR + 'lena-256x256.jpg'
-  FILENAME_LENA32x32 = SAMPLE_DIR + 'lena-32x32.jpg'
-  FILENAME_LENA_EYES = File.expand_path(File.dirname(__FILE__)) + '/samples/lena-eyes.jpg'
-  FILENAME_FRUITS = SAMPLE_DIR + 'fruits.jpg'
-  FILENAME_CONTOURS = File.expand_path(File.dirname(__FILE__)) + '/samples/contours.jpg'
-  FILENAME_CHESSBOARD = SAMPLE_DIR + 'chessboard.jpg'
-  FILENAME_LINES = SAMPLE_DIR + 'lines.jpg'
-  HAARCASCADE_FRONTALFACE_ALT = SAMPLE_DIR + 'haarcascade_frontalface_alt.xml.gz'
-  AVI_SAMPLE = SAMPLE_DIR + 'movie_sample.avi'
+# Add ext directory to load path to make it easier to test locally built extensions
+lib_path = File.expand_path(File.join(__dir__, '..', 'lib'))
+$LOAD_PATH.unshift(lib_path)
 
-  DUMMY_OBJ = Digest::MD5.new # dummy object for argument type check test
+ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'build', 'msvc-debug'))
+#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'build', 'clang-windows-debug'))
+#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'cmake-build-debug-mingw'))
+#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'cmake-build-debug-visual-studio'))
+puts ext_path
+$LOAD_PATH.unshift(ext_path)
 
-  def snap(*images)
-    n = -1
-    images.map! { |val|
-      n += 1
-      if val.is_a? Hash
-        val
-      elsif val.is_a? Array
-        {:title => val[0], :image => val[1] }
-      else
-        {:title => "snap-#{n}", :image => val }
-      end
-    }
+# Now load code
+require 'digest'
+require 'opencv-ruby'
+require 'minitest/autorun'
 
-    pos = CvPoint.new(0, 0)
-    images.each { |img|
-      w = GUI::Window.new(img[:title])
-      w.show(img[:image])
-      w.move(pos)
-      pos.x += img[:image].width
-      if pos.x > 800
-        pos.y += img[:image].height
-        pos.x = 0
-      end
-    }
-    
-    GUI::wait_key
-    GUI::Window::destroy_all
+class OpenCVTestCase < Minitest::Test
+  #FILENAME_CAT = self.sample_path('cat.jpg')
+  #FILENAME_FRUITS = self.sample_path('fruits.jpg')
+  #FILENAME_CONTOURS = File.join(__dir__, 'samples', 'contours.jpg')
+  #FILENAME_CHESSBOARD = self.sample_path('chessboard.jpg')
+  #FILENAME_LINES = self.sample_path('lines.jpg')
+  #HAARCASCADE_FRONTALFACE_ALT = self.sample_path('haarcascade_frontalface_alt.xml.gz')
+  #AVI_SAMPLE = self.sample_path('movie_sample.avi')
+
+  def self.sample_path(file_name)
+    File.join(__dir__, 'samples', file_name)
+  end
+
+  def sample_path(file_name)
+    File.join(__dir__, 'samples', file_name)
   end
 
   def hash_img(img)
-    # Compute a hash for an image, useful for image comparisons
-    Digest::MD5.hexdigest(img.data)
+    # This is assuming a 2d array
+    size = img.step[0] * img.rows
+    Digest::MD5.hexdigest(img.data.bytes(size))
   end
-
-  unless Test::Unit::TestCase.instance_methods.map {|m| m.to_sym }.include? :assert_false
-    def assert_false(actual, message = nil)
-      assert_equal(false, actual, message)
-    end
-  end
-
-  alias original_assert_in_delta assert_in_delta
 
   def assert_cvscalar_equal(expected, actual, message = nil)
-    assert_equal(CvScalar, actual.class, message)
-    assert_array_equal(expected.to_ary, actual.to_ary, message)
+    assert_equal(Cv::Vec4b, actual.class, message)
+    assert_array_equal(expected.to_a, actual.to_a, message)
   end
 
   def assert_array_equal(expected, actual, message = nil)
@@ -73,38 +52,54 @@ class OpenCVTestCase < Test::Unit::TestCase
       assert_equal(e, a, message)
     }
   end
-  
-  def assert_in_delta(expected, actual, delta)
-    if expected.is_a? CvScalar or actual.is_a? CvScalar
-      expected = expected.to_ary if expected.is_a? CvScalar
-      actual = actual.to_ary if actual.is_a? CvScalar
-      assert_in_delta(expected, actual ,delta)
-    elsif expected.is_a? Array and actual.is_a? Array
-      assert_equal(expected.size, actual.size)
-      expected.zip(actual) { |e, a|
-        original_assert_in_delta(e, a, delta)
-      }
-    else
-      original_assert_in_delta(expected, actual, delta)
+
+  def assert_in_delta_array(expected, actual, delta = 0.001)
+    assert_equal(expected.count, actual.count)
+    expected.count.times do |i|
+      assert_in_delta(expected[i], actual[i], delta)
     end
   end
 
-  def create_cvmat(height, width, depth = :cv8u, channel = 4, &block)
-    m = CvMat.new(height, width, depth, channel)
-    block = lambda { |j, i, c| CvScalar.new(*([c + 1] * channel)) } unless block_given?
+  def populate_mat(mat, height, width, &block)
     count = 0
-    height.times { |j|
-      width.times { |i|
-        m[j, i] = block.call(j, i, count)
+    height.times do |row|
+      width.times do |column|
+        mat[row, column] = block.call(row, column, count)
         count += 1
-      }
-    }
-    m
+      end
+    end
   end
 
-  def create_iplimage(width, height, depth = :cv8u, channel = 4, &block)
+  def create_mat(height, width, type = CV_8UC4, &block)
+    mat = Cv::Mat.new(height, width, type)
+
+    block = lambda do |j, i, count|
+      if mat.channels > 1
+        mat.vec_klass.new(*([count + 1] * mat.channels))
+      else
+        count + 1
+      end
+    end unless block_given?
+
+    populate_mat(mat, height, width, &block)
+    mat
+  end
+
+  def create_mat_(height, width, klass = Cv::Mat4b, &block)
+    mat = klass.new(height, width, type)
+
+    block = lambda do |j, i, count|
+      vec_klass = Cv.const_get(klass.name.sub("Mat", "Vec").to_sym)
+      vec_klass.new(*([count + 1] * mat.channels))
+    end unless block_given?
+
+    populate_mat(mat, height, width, &block)
+    mat
+  end
+
+  def create_iplimage(width, height, depth = CV_8U, channel = 4, &block)
     m = IplImage.new(width, height, depth, channel)
-    block = lambda { |j, i, c| CvScalar.new(*([c + 1] * channel)) } unless block_given?
+    block = lambda { |j, i, c| Cv::Scalar.new(*([c + 1] * channel)) } unless block_given?
     count = 0
     height.times { |j|
       width.times { |i|
@@ -115,21 +110,21 @@ class OpenCVTestCase < Test::Unit::TestCase
     m
   end
 
-  def assert_each_cvscalar(actual, delta = 0, &block)
+  def assert_each_element(mat, delta = 0, &block)
     raise unless block_given?
     count = 0
-    actual.height.times { |j|
-      actual.width.times { |i|
-        expected = block.call(j, i, count)
+    mat.rows.times do |row|
+      mat.cols.times do |col|
+        expected = block.call(row, col, count)
+        actual = mat[row, col]
         if delta == 0
-          expected = expected.to_ary if expected.is_a? CvScalar
-          assert_array_equal(expected, actual[j, i].to_ary)
+          assert_equal(expected, actual)
         else
-          assert_in_delta(expected, actual[j, i], delta)
+          assert_in_delta_array(Array(expected), Array(actual), delta)
         end
         count += 1
-      }
-    }
+      end
+    end
   end
 
   def print_cvmat(mat)
@@ -148,20 +143,63 @@ class OpenCVTestCase < Test::Unit::TestCase
   def count_threshold(mat, threshold, &block)
     n = 0
     block = lambda { |a, b| a > b } unless block_given?
-    (mat.rows * mat.cols).times { |i|
-      n += 1 if block.call(mat[i][0], threshold)
-    }
+
+    mat.rows.times do |row|
+      mat.cols.times do |col|
+        n += 1 if block.call(mat[row, col], threshold)
+      end
+    end
     n
   end
 
   def color_hists(mat)
-    hists = [0] * mat.channel
-    (mat.rows * mat.cols).times { |i|
-      hists.size.times { |c|
-        hists[c] += mat[i][c]
-      }
-    }
+    hists = [0] * mat.channels
+    mat.rows.times do |row|
+      mat.cols.times do |col|
+        value = mat[row, col]
+        hists.size.times do |c|
+          hists[c] += value[c]
+        end
+      end
+    end
     hists
   end
-end
 
+  def show_images(images, wait = 2500)
+    images = images.is_a?(Array) ? images : [images]
+    images.each.with_index do |image, i|
+      window_name = "Image_#{i}"
+      Cv::named_window(window_name, Cv::WindowFlags::WINDOW_AUTOSIZE)
+      Cv::imshow(window_name, image.input_array)
+    end
+    Cv::wait_key(wait)
+  end
+
+  def snap(*images)
+    n = -1
+    images.map! { |val|
+      n += 1
+      if val.is_a? Hash
+        val
+      elsif val.is_a? Array
+        {:title => val[0], :image => val[1] }
+      else
+        {:title => "snap-#{n}", :image => val }
+      end
+    }
+    pos = Cv::Point.new(0, 0)
+    images.each { |img|
+      w = GUI::Window.new(img[:title])
+      w.show(img[:image])
+      w.move(pos)
+      pos.x += img[:image].width
+      if pos.x > 800
+        pos.y += img[:image].height
+        pos.x = 0
+      end
+    }
+
+    GUI::wait_key
+    GUI::Window::destroy_all
+  end
+end

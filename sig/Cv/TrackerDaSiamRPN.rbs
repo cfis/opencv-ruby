@@ -1,0 +1,5 @@
+module Cv
+  class TrackerDaSiamRPN
+    def get_tracking_score: () -> Float
+  end
+end

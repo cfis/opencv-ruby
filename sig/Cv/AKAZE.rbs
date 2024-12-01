@@ -1,0 +1,21 @@
+module Cv
+  class AKAZE
+    def get_default_name: () -> Std::String
+    def get_descriptor_channels: () -> Integer
+    def get_descriptor_size: () -> Integer
+    def get_descriptor_type: () -> Enum cv::AKAZE::DescriptorType
+    def get_diffusivity: () -> Enum cv::KAZE::DiffusivityType
+    def get_max_points: () -> Integer
+    def get_n_octave_layers: () -> Integer
+    def get_n_octaves: () -> Integer
+    def get_threshold: () -> Float
+    def set_descriptor_channels: (dch: Integer) -> void
+    def set_descriptor_size: (dsize: Integer) -> void
+    def set_descriptor_type: (dtype: Enum cv::AKAZE::DescriptorType) -> void
+    def set_diffusivity: (diff: Enum cv::KAZE::DiffusivityType) -> void
+    def set_max_points: (max_points: Integer) -> void
+    def set_n_octave_layers: (octave_layers: Integer) -> void
+    def set_n_octaves: (octaves: Integer) -> void
+    def set_threshold: (threshold: Float) -> void
+  end
+end

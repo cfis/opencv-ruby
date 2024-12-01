@@ -1,0 +1,26 @@
+module Cv::Ml
+  class DTrees
+    def get_cv_folds: () -> Integer
+    def get_max_categories: () -> Integer
+    def get_max_depth: () -> Integer
+    def get_min_sample_count: () -> Integer
+    def get_nodes: () -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def get_priors: () -> Cv::Mat
+    def get_regression_accuracy: () -> Float
+    def get_roots: () -> Std::Vector≺int≻
+    def get_splits: () -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
+    def get_subsets: () -> Std::Vector≺int≻
+    def get_truncate_pruned_tree?: () -> bool
+    def get_use1_se_rule?: () -> bool
+    def get_use_surrogates?: () -> bool
+    def set_cv_folds: (val: Integer) -> void
+    def set_max_categories: (val: Integer) -> void
+    def set_max_depth: (val: Integer) -> void
+    def set_min_sample_count: (val: Integer) -> void
+    def set_priors: (val: Cv::Mat) -> void
+    def set_regression_accuracy: (val: Float) -> void
+    def set_truncate_pruned_tree: (val: bool) -> void
+    def set_use1_se_rule: (val: bool) -> void
+    def set_use_surrogates: (val: bool) -> void
+  end
+end

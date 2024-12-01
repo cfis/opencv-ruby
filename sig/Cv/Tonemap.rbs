@@ -1,0 +1,7 @@
+module Cv
+  class Tonemap
+    def get_gamma: () -> Float
+    def process: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray) -> void
+    def set_gamma: (gamma: Float) -> void
+  end
+end

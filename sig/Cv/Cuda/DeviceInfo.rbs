@@ -1,0 +1,64 @@
+module Cv::Cuda
+  class DeviceInfo
+    def async_engine_count: () -> Integer
+    def can_map_host_memory?: () -> bool
+    def clock_rate: () -> Integer
+    def compatible?: () -> bool
+    def compute_mode: () -> Enum cv::cuda::DeviceInfo::ComputeMode
+    def concurrent_kernels?: () -> bool
+    def initialize: () -> void
+               | (device_id: Integer) -> void
+    def device_id: () -> Integer
+    def ecc_enabled?: () -> bool
+    def free_memory: () -> Integer
+    def integrated?: () -> bool
+    def kernel_exec_timeout_enabled?: () -> bool
+    def l2_cache_size: () -> Integer
+    def major_version: () -> Integer
+    def max_grid_size: () -> Cv::Vec≺int‚ 3≻
+    def max_surface1_d: () -> Integer
+    def max_surface1_d_layered: () -> Cv::Vec≺int‚ 2≻
+    def max_surface2_d_layered: () -> Cv::Vec≺int‚ 3≻
+    def max_surface3_d: () -> Cv::Vec≺int‚ 3≻
+    def max_surface_2d: () -> Cv::Vec≺int‚ 2≻
+    def max_surface_cubemap: () -> Integer
+    def max_surface_cubemap_layered: () -> Cv::Vec≺int‚ 2≻
+    def max_texture1_d: () -> Integer
+    def max_texture1_d_layered: () -> Cv::Vec≺int‚ 2≻
+    def max_texture1_d_linear: () -> Integer
+    def max_texture1_d_mipmap: () -> Integer
+    def max_texture2_d_gather: () -> Cv::Vec≺int‚ 2≻
+    def max_texture2_d_layered: () -> Cv::Vec≺int‚ 3≻
+    def max_texture2_d_linear: () -> Cv::Vec≺int‚ 3≻
+    def max_texture2_d_mipmap: () -> Cv::Vec≺int‚ 2≻
+    def max_texture3_d: () -> Cv::Vec≺int‚ 3≻
+    def max_texture_2d: () -> Cv::Vec≺int‚ 2≻
+    def max_texture_cubemap: () -> Integer
+    def max_texture_cubemap_layered: () -> Cv::Vec≺int‚ 2≻
+    def max_threads_dim: () -> Cv::Vec≺int‚ 3≻
+    def max_threads_per_block: () -> Integer
+    def max_threads_per_multi_processor: () -> Integer
+    def mem_pitch: () -> Integer
+    def memory_bus_width: () -> Integer
+    def memory_clock_rate: () -> Integer
+    def minor_version: () -> Integer
+    def multi_processor_count: () -> Integer
+    def name: () -> Rice::Buffer≺char const∗≻
+    def pci_bus_id: () -> Integer
+    def pci_device_id: () -> Integer
+    def pci_domain_id: () -> Integer
+    def query_memory: (total_memory: Unsigned Int64, free_memory: Unsigned Int64) -> void
+    def regs_per_block: () -> Integer
+    def shared_mem_per_block: () -> Integer
+    def supports?: (feature_set: Enum cv::cuda::FeatureSet) -> bool
+    def surface_alignment: () -> Integer
+    def tcc_driver?: () -> bool
+    def texture_alignment: () -> Integer
+    def texture_pitch_alignment: () -> Integer
+    def total_const_mem: () -> Integer
+    def total_global_mem: () -> Integer
+    def total_memory: () -> Integer
+    def unified_addressing?: () -> bool
+    def warp_size: () -> Integer
+  end
+end

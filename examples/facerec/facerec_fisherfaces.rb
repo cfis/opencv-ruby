@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- mode: ruby; coding: utf-8 -*-
 
-# Fisherfaces sample in ruby-opencv, equivalent to http://docs.opencv.org/trunk/_downloads/facerec_fisherfaces.cpp
+# Fisherfaces sample in opencv-ruby, equivalent to http://docs.opencv.org/trunk/_downloads/facerec_fisherfaces.cpp
 # See http://docs.opencv.org/trunk/modules/contrib/doc/facerec/facerec_tutorial.html
 require 'opencv'
 include OpenCV

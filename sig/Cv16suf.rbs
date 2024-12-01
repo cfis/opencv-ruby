@@ -1,0 +1,7 @@
+module 
+  class Cv16suf
+    attr_accessor i: Integer
+    attr_accessor u: Integer
+
+  end
+end

@@ -1,0 +1,11 @@
+module Cv::Detail
+  class ExposureCompensator
+    def apply: (index: Integer, corner: Cv::Point_≺int≻, image: Cv::debug_build_guard::InputOutputArray, mask: Cv::debug_build_guard::InputArray) -> void
+    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> void
+         | (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> void
+    def get_mat_gains: (: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def get_update_gain?: () -> bool
+    def set_mat_gains: (: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def set_update_gain: (b: bool) -> void
+  end
+end

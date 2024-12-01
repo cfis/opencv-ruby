@@ -1,0 +1,10 @@
+module Cv::ImageCollection
+  class Iterator
+    def ->: () -> Cv::Mat
+    def dereference: () -> Cv::Mat
+    def increment: () -> Cv::ImageCollection::Iterator
+              | (: Integer) -> Cv::ImageCollection::Iterator
+    def initialize: (col: Cv::ImageCollection) -> void
+               | (col: Cv::ImageCollection, end: Integer) -> void
+  end
+end

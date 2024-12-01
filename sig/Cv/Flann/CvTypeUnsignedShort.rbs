@@ -1,0 +1,5 @@
+module Cv::Flann
+  class CvTypeUnsignedShort
+    def initialize: () -> void
+  end
+end

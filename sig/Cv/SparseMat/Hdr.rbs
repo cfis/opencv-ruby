@@ -1,0 +1,15 @@
+module Cv::SparseMat
+  class Hdr
+    attr_accessor dims: Integer
+    attr_accessor free_list: Integer
+    attr_accessor hashtab: Std::Vector≺unsigned Int64≻
+    attr_accessor node_count: Integer
+    attr_accessor node_size: Integer
+    attr_accessor pool: Std::Vector≺unsigned char≻
+    attr_accessor refcount: Integer
+    attr_accessor value_offset: Integer
+
+    def clear: () -> void
+    def initialize: (_dims: Integer, _sizes: Rice::Buffer≺int const∗≻, _type: Integer) -> void
+  end
+end

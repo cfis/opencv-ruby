@@ -1,0 +1,5 @@
+module Cv::Detail
+  class CompressedRectilinearWarper
+    def initialize: (scale: Float, a: Float, b: Float) -> void
+  end
+end

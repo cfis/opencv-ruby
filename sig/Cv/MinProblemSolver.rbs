@@ -1,0 +1,9 @@
+module Cv
+  class MinProblemSolver
+    def get_function: () -> Cv::Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻
+    def get_term_criteria: () -> Cv::TermCriteria
+    def minimize: (x: Cv::debug_build_guard::InputOutputArray) -> Float
+    def set_function: (f: Cv::Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> void
+    def set_term_criteria: (termcrit: Cv::TermCriteria) -> void
+  end
+end

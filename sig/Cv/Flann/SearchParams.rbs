@@ -1,0 +1,6 @@
+module Cv::Flann
+  class SearchParams
+    def initialize: (checks: Integer, eps: Float, sorted: bool) -> void
+               | (checks: Integer, eps: Float, sorted: bool, explore_all_trees: bool) -> void
+  end
+end

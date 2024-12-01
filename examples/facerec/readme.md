@@ -1,6 +1,6 @@
-# Face recognition with ruby-opencv
+# Face recognition with opencv-ruby
 
-This is a face recognition sample with ruby-opencv, which equivalent to the following OpenCV's tutorial.
+This is a face recognition sample with opencv-ruby, which equivalent to the following OpenCV's tutorial.
 
 [Face Recognition with OpenCV](http://docs.opencv.org/trunk/modules/contrib/doc/facerec/facerec_tutorial.html)
 

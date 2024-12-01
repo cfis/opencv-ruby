@@ -1,0 +1,15 @@
+module Cv::Detail
+  class CameraParams
+    attr_accessor aspect: Float
+    attr_accessor focal: Float
+    attr_accessor ppx: Float
+    attr_accessor ppy: Float
+    attr_accessor r: Cv::Mat
+    attr_accessor t: Cv::Mat
+
+    def assign: (other: Cv::detail::CameraParams) -> Cv::detail::CameraParams
+    def initialize: () -> void
+    def initialize_copy: (other: Cv::detail::CameraParams) -> void
+    def k: () -> Cv::Mat
+  end
+end

@@ -1,0 +1,21 @@
+module Cv::Ocl
+  class Context
+    def initialize: () -> void
+               | (dtype: Integer) -> void
+    def assign: (c: Cv::ocl::Context) -> Cv::ocl::Context
+           | (c: Cv::ocl::Context) -> Cv::ocl::Context
+    def create?: () -> bool
+            | (dtype: Integer) -> bool
+    def device: (idx: Integer) -> Cv::ocl::Device
+    def empty?: () -> bool
+    def get_open_cl_context_property: (property_id: Integer) -> Rice::Buffer≺void∗≻
+    def get_prog: (prog: Cv::ocl::ProgramSource, buildopt: Std::String, errmsg: Std::String) -> Cv::ocl::Program
+    def initialize_copy: (c: Cv::ocl::Context) -> void
+    def ndevices: () -> Integer
+    def ptr: () -> Rice::Buffer≺void∗≻
+    def release: () -> void
+    def set_use_svm: (enabled: bool) -> void
+    def unload_prog: (prog: Cv::ocl::Program) -> void
+    def use_svm?: () -> bool
+  end
+end

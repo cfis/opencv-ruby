@@ -1,0 +1,21 @@
+module Cv
+  class Vec1b
+    def []: (i: Integer) -> Unsigned char
+       | (i: Integer) -> Unsigned char
+    def initialize: () -> void
+               | (v0: String) -> void
+               | (values: Rice::Buffer≺unsigned char const∗≻) -> void
+               | (a: Cv::Matx≺unsigned char‚ 1‚ 1≻, b: Cv::Matx≺unsigned char‚ 1‚ 1≻, : Cv::MatxAddOp) -> void
+               | (a: Cv::Matx≺unsigned char‚ 1‚ 1≻, b: Cv::Matx≺unsigned char‚ 1‚ 1≻, : Cv::MatxSubOp) -> void
+    def []=: (arg_0: Integer, arg_1: Unsigned char) -> void
+    def assign: (rhs: Cv::Vec≺unsigned char‚ 1≻) -> Cv::Vec≺unsigned char‚ 1≻
+    def call: (i: Integer) -> Unsigned char
+         | (i: Integer) -> Unsigned char
+    def count: () -> Integer
+    def initialize_copy: (v: Cv::Vec≺unsigned char‚ 1≻) -> void
+    def inspect: () -> Std::String
+    def mul: (v: Cv::Vec≺unsigned char‚ 1≻) -> Cv::Vec≺unsigned char‚ 1≻
+    def to_a: () -> Integer
+    def to_s: () -> Std::String
+  end
+end

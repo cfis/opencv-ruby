@@ -1,0 +1,6 @@
+module Cv::Ml::SVM
+  class Kernel
+    def calc: (vcount: Integer, n: Integer, vecs: Rice::Buffer≺float const∗≻, another: Rice::Buffer≺float const∗≻, results: Rice::Buffer≺float∗≻) -> void
+    def get_type: () -> Integer
+  end
+end

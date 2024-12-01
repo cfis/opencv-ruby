@@ -1,0 +1,76 @@
+module Cv
+  class UMat
+    attr_accessor allocator: Cv::MatAllocator
+    attr_accessor cols: Integer
+    attr_accessor dims: Integer
+    attr_accessor flags: Integer
+    attr_accessor offset: Integer
+    attr_accessor rows: Integer
+    attr_accessor size: Cv::MatSize
+    attr_reader step: Cv::MatStep
+    attr_accessor u: Cv::UMatData
+    attr_accessor usage_flags: Enum cv::UMatUsageFlags
+
+    def []: (roi: Cv::Rect_≺int≻) -> Cv::UMat
+       | (ranges: Cv::Range) -> Cv::UMat
+       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::UMat
+       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::UMat
+    def initialize: (usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (m: Cv::UMat, ranges: Cv::Range) -> void
+               | (m: Cv::UMat, ranges: Std::Vector≺cv꞉꞉Range≻) -> void
+               | (m: Cv::UMat, roi: Cv::Rect_≺int≻) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (m: Cv::UMat, row_range: Cv::Range, col_range: Cv::Range) -> void
+               | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (rows: Integer, cols: Integer, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, s: Cv::Scalar_≺double≻, usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar_≺double≻, usage_flags: Enum cv::UMatUsageFlags) -> void
+               | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, s: Cv::Scalar_≺double≻, usage_flags: Enum cv::UMatUsageFlags) -> void
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::UMat
+    def assign_to: (m: Cv::UMat, type: Integer) -> void
+    def addref: () -> void
+    def channels: () -> Integer
+    def check_vector: (elem_channels: Integer, depth: Integer, require_continuous: bool) -> Integer
+    def clone: () -> Cv::UMat
+    def col: (x: Integer) -> Cv::UMat
+    def col_range: (r: Cv::Range) -> Cv::UMat
+              | (startcol: Integer, endcol: Integer) -> Cv::UMat
+    def continuous?: () -> bool
+    def convert_to: (m: Cv::debug_build_guard::OutputArray, rtype: Integer, alpha: Float, beta: Float) -> void
+    def copy_size: (m: Cv::UMat) -> void
+    def copy_to: (m: Cv::debug_build_guard::OutputArray) -> void
+            | (m: Cv::debug_build_guard::OutputArray, mask: Cv::debug_build_guard::InputArray) -> void
+    def create: (size: Cv::Size_≺int≻, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+           | (sizes: Std::Vector≺int≻, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+           | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+           | (rows: Integer, cols: Integer, type: Integer, usage_flags: Enum cv::UMatUsageFlags) -> void
+    def deallocate: () -> void
+    def depth: () -> Integer
+    def diag: (d: Integer) -> Cv::UMat
+    def dot: (m: Cv::debug_build_guard::InputArray) -> Float
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def empty?: () -> bool
+    def get_mat: (flags: Enum cv::AccessFlag) -> Cv::Mat
+    def handle: (access_flags: Enum cv::AccessFlag) -> Rice::Buffer≺void∗≻
+    def initialize_copy: (m: Cv::UMat) -> void
+    def inspect: () -> Std::String
+    def inv: (method: Integer) -> Cv::UMat
+    def locate_roi: (whole_size: Cv::Size_≺int≻, ofs: Cv::Point_≺int≻) -> void
+    def mul: (m: Cv::debug_build_guard::InputArray, scale: Float) -> Cv::UMat
+    def ndoffset: (ofs: Rice::Buffer≺unsigned Int64∗≻) -> void
+    def release: () -> void
+    def reshape: (cn: Integer, rows: Integer) -> Cv::UMat
+            | (cn: Integer, newndims: Integer, newsz: Rice::Buffer≺int const∗≻) -> Cv::UMat
+    def row: (y: Integer) -> Cv::UMat
+    def row_range: (r: Cv::Range) -> Cv::UMat
+              | (startrow: Integer, endrow: Integer) -> Cv::UMat
+    def set_to: (value: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray) -> Cv::UMat
+    def step1: (i: Integer) -> Integer
+    def submatrix?: () -> bool
+    def t: () -> Cv::UMat
+    def total: () -> Integer
+    def type: () -> Integer
+    def update_continuity_flag: () -> void
+  end
+end

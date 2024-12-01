@@ -1,0 +1,5 @@
+module Cvflann
+  class KMeansIndexParams
+    def initialize: (branching: Integer, iterations: Integer, centers_init: Enum cvflann::FlannCentersInitT, cb_index: Float, trees: Integer) -> void
+  end
+end

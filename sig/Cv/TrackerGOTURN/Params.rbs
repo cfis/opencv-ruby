@@ -1,0 +1,8 @@
+module Cv::TrackerGOTURN
+  class Params
+    attr_accessor model_bin: Std::String
+    attr_accessor model_txt: Std::String
+
+    def initialize: () -> void
+  end
+end

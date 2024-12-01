@@ -1,0 +1,5 @@
+module Cv::Traits
+  class TypeRange
+    def initialize: () -> void
+  end
+end

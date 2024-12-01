@@ -1,0 +1,17 @@
+module Cv::Detail
+  class MatchesInfo
+    attr_accessor confidence: Float
+    attr_accessor dst_img_idx: Integer
+    attr_accessor h: Cv::Mat
+    attr_accessor inliers_mask: Std::Vector≺unsigned char≻
+    attr_accessor matches: Std::Vector≺cv꞉꞉DMatch≻
+    attr_accessor num_inliers: Integer
+    attr_accessor src_img_idx: Integer
+
+    def assign: (other: Cv::detail::MatchesInfo) -> Cv::detail::MatchesInfo
+    def get_inliers: () -> Std::Vector≺unsigned char≻
+    def get_matches: () -> Std::Vector≺cv꞉꞉DMatch≻
+    def initialize: () -> void
+    def initialize_copy: (other: Cv::detail::MatchesInfo) -> void
+  end
+end

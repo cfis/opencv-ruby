@@ -1,0 +1,45 @@
+module Cv
+  class Point2l
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+
+    def initialize: () -> void
+               | (sz: Cv::Size_≺Int64≻) -> void
+               | (v: Cv::Vec≺Int64‚ 2≻) -> void
+               | (_x: Integer, _y: Integer) -> void
+    def !=: (arg_0: Cv::Point_≺Int64≻) -> bool
+       | (arg_0: Cv::Point_≺Int64≻) -> bool
+    def *: (arg_0: Float) -> Cv::Point_≺Int64≻
+      | (arg_0: Integer) -> Cv::Point_≺Int64≻
+      | (arg_0: Integer) -> Cv::Point_≺Int64≻
+    def +: (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+      | (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+    def -: (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+      | (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+    def /: (arg_0: Float) -> Cv::Point_≺Int64≻
+      | (arg_0: Integer) -> Cv::Point_≺Int64≻
+      | (arg_0: Integer) -> Cv::Point_≺Int64≻
+      | (arg_0: Float) -> Cv::Point_≺Int64≻
+    def ==: (arg_0: Cv::Point_≺Int64≻) -> bool
+       | (arg_0: Cv::Point_≺Int64≻) -> bool
+    def assign_divide: (arg_0: Integer) -> Cv::Point_≺Int64≻
+                  | (arg_0: Float) -> Cv::Point_≺Int64≻
+                  | (arg_0: Float) -> Cv::Point_≺Int64≻
+                  | (arg_0: Integer) -> Cv::Point_≺Int64≻
+    def assign_minus: (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+                 | (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point_≺Int64≻
+                    | (arg_0: Float) -> Cv::Point_≺Int64≻
+    def assign_plus: (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+                | (arg_0: Cv::Point_≺Int64≻) -> Cv::Point_≺Int64≻
+    def cross: (pt: Cv::Point_≺Int64≻) -> Float
+    def ddot: (pt: Cv::Point_≺Int64≻) -> Float
+    def dot: (pt: Cv::Point_≺Int64≻) -> Integer
+    def initialize_copy: (pt: Cv::Point_≺Int64≻) -> void
+    def inside?: (r: Cv::Rect_≺Int64≻) -> bool
+    def inspect: () -> Std::String
+    def norm: () -> Float
+    def to_s: () -> Std::String
+    def to_vec: () -> Cv::Vec≺Int64‚ 2≻
+  end
+end

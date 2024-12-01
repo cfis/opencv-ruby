@@ -1,0 +1,12 @@
+module Cv::Ocl::Internal
+  class ProgramEntry
+    attr_accessor module: Rice::Buffer≺char const∗≻
+    attr_accessor name: Rice::Buffer≺char const∗≻
+    attr_accessor p_program_source: Cv::ocl::ProgramSource
+    attr_accessor program_code: Rice::Buffer≺char const∗≻
+    attr_accessor program_hash: Rice::Buffer≺char const∗≻
+
+    def initialize: () -> void
+    def to_cv/ocl/program_source &: () -> Cv::ocl::ProgramSource
+  end
+end

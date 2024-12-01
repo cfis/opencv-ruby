@@ -1,0 +1,19 @@
+module Cv
+  class FileNodeIterator
+    def !=: (arg_0: Cv::FileNodeIterator) -> bool
+    def initialize: () -> void
+               | (node: Cv::FileNode, seek_end: bool) -> void
+    def -: (arg_0: Cv::FileNodeIterator) -> Integer
+    def <: (arg_0: Cv::FileNodeIterator) -> bool
+    def ==: (arg_0: Cv::FileNodeIterator) -> bool
+    def assign_plus: (ofs: Integer) -> Cv::FileNodeIterator
+    def dereference: () -> Cv::FileNode
+    def assign: (it: Cv::FileNodeIterator) -> Cv::FileNodeIterator
+    def equal_to?: (it: Cv::FileNodeIterator) -> bool
+    def increment: () -> Cv::FileNodeIterator
+              | (: Integer) -> Cv::FileNodeIterator
+    def initialize_copy: (it: Cv::FileNodeIterator) -> void
+    def read_raw: (fmt: Std::String, vec: Rice::Buffer≺void∗≻, len: Integer) -> Cv::FileNodeIterator
+    def remaining: () -> Integer
+  end
+end

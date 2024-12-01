@@ -1,0 +1,14 @@
+module Cvflann
+  class Any
+    def initialize: () -> void
+               | (x: Rice::Buffer≺char const∗≻) -> void
+    def assign: (x: Cvflann::Any) -> Cvflann::Any
+    def compatible?: (x: Cvflann::Any) -> bool
+    def empty?: () -> bool
+    def initialize_copy: (x: Cvflann::Any) -> void
+    def inspect: () -> Std::String
+    def reset: () -> void
+    def swap: (x: Cvflann::Any) -> Cvflann::Any
+    def type: () -> TypeInfo
+  end
+end

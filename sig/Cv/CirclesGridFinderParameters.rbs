@@ -1,0 +1,22 @@
+module Cv
+  class CirclesGridFinderParameters
+    attr_accessor convex_hull_factor: Float
+    attr_accessor density_neighborhood_size: Cv::Size_≺float≻
+    attr_accessor edge_gain: Float
+    attr_accessor edge_penalty: Float
+    attr_accessor existing_vertex_gain: Float
+    attr_accessor grid_type: Enum cv::CirclesGridFinderParameters::GridType
+    attr_accessor keypoint_scale: Integer
+    attr_accessor kmeans_attempts: Integer
+    attr_accessor max_rectified_distance: Float
+    attr_accessor min_density: Float
+    attr_accessor min_distance_to_add_keypoint: Integer
+    attr_accessor min_graph_confidence: Float
+    attr_accessor min_rng_edge_switch_dist: Float
+    attr_accessor square_size: Float
+    attr_accessor vertex_gain: Float
+    attr_accessor vertex_penalty: Float
+
+    def initialize: () -> void
+  end
+end

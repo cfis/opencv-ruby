@@ -1,0 +1,5 @@
+module Cvflann
+  class AccumulatorShort
+    def initialize: () -> void
+  end
+end

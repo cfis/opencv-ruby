@@ -1,0 +1,33 @@
+module Cv
+  class Rect2d
+    attr_accessor height: Float
+    attr_accessor width: Float
+    attr_accessor x: Float
+    attr_accessor y: Float
+
+    def !=: (arg_0: Cv::Rect_≺double≻) -> bool
+    def +: (arg_0: Cv::Size_≺double≻) -> Cv::Rect_≺double≻
+      | (arg_0: Cv::Point_≺double≻) -> Cv::Rect_≺double≻
+    def initialize: (org: Cv::Point_≺double≻, sz: Cv::Size_≺double≻) -> void
+               | (pt1: Cv::Point_≺double≻, pt2: Cv::Point_≺double≻) -> void
+               | () -> void
+               | (_x: Float, _y: Float, _width: Float, _height: Float) -> void
+    def -: (arg_0: Cv::Size_≺double≻) -> Cv::Rect_≺double≻
+      | (arg_0: Cv::Point_≺double≻) -> Cv::Rect_≺double≻
+    def ==: (arg_0: Cv::Rect_≺double≻) -> bool
+    def area: () -> Float
+    def assign_minus: (arg_0: Cv::Point_≺double≻) -> Cv::Rect_≺double≻
+                 | (arg_0: Cv::Size_≺double≻) -> Cv::Rect_≺double≻
+    def assign_plus: (arg_0: Cv::Size_≺double≻) -> Cv::Rect_≺double≻
+                | (arg_0: Cv::Point_≺double≻) -> Cv::Rect_≺double≻
+    def br: () -> Cv::Point_≺double≻
+    def contains?: (pt: Cv::Point_≺double≻) -> bool
+    def empty?: () -> bool
+    def initialize_copy: (r: Cv::Rect_≺double≻) -> void
+    def inspect: () -> Std::String
+    def size: () -> Cv::Size_≺double≻
+    def tl: () -> Cv::Point_≺double≻
+    def |: (arg_0: Cv::Rect_≺double≻) -> Cv::Rect_≺double≻
+    def |=: (arg_0: Cv::Rect_≺double≻) -> Cv::Rect_≺double≻
+  end
+end

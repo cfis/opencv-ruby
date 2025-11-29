@@ -1,0 +1,5 @@
+module Cv
+  class WarperCreator
+    def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+  end
+end

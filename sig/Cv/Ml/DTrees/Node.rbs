@@ -1,0 +1,13 @@
+module Cv::Ml::DTrees
+  class Node
+    attr_accessor class_idx: Integer
+    attr_accessor default_dir: Integer
+    attr_accessor left: Integer
+    attr_accessor parent: Integer
+    attr_accessor right: Integer
+    attr_accessor split: Integer
+    attr_accessor value: Float
+
+    def initialize: () -> void
+  end
+end

@@ -1,0 +1,28 @@
+module Cv::SimpleBlobDetector
+  class Params
+    attr_accessor blob_color: String
+    attr_accessor collect_contours: bool
+    attr_accessor filter_by_area: bool
+    attr_accessor filter_by_circularity: bool
+    attr_accessor filter_by_color: bool
+    attr_accessor filter_by_convexity: bool
+    attr_accessor filter_by_inertia: bool
+    attr_accessor max_area: Float
+    attr_accessor max_circularity: Float
+    attr_accessor max_convexity: Float
+    attr_accessor max_inertia_ratio: Float
+    attr_accessor max_threshold: Float
+    attr_accessor min_area: Float
+    attr_accessor min_circularity: Float
+    attr_accessor min_convexity: Float
+    attr_accessor min_dist_between_blobs: Float
+    attr_accessor min_inertia_ratio: Float
+    attr_accessor min_repeatability: Integer
+    attr_accessor min_threshold: Float
+    attr_accessor threshold_step: Float
+
+    def initialize: () -> void
+    def read: (fn: Cv::FileNode) -> void
+    def write: (fs: Cv::FileStorage) -> void
+  end
+end

@@ -1,0 +1,9 @@
+module Cv
+  class DetectionROI
+    attr_accessor confidences: Std::Vector≺double≻
+    attr_accessor locations: Std::Vector≺cv꞉꞉Point_≺int≻≻
+    attr_accessor scale: Float
+
+    def initialize: () -> void
+  end
+end

@@ -1,0 +1,5 @@
+module Cvflann
+  class KDTreeSingleIndexParams
+    def initialize: (leaf_max_size: Integer, reorder: bool, dim: Integer) -> void
+  end
+end

@@ -1,0 +1,33 @@
+module Cv::Cuda
+  class HostMem
+    attr_accessor alloc_type: Enum cv::cuda::HostMem::AllocType
+    attr_accessor cols: Integer
+    attr_accessor flags: Integer
+    attr_accessor rows: Integer
+    attr_accessor step: Integer
+
+    def initialize: (alloc_type: Enum cv::cuda::HostMem::AllocType) -> void
+               | (arr: Cv::debug_build_guard::InputArray, alloc_type: Enum cv::cuda::HostMem::AllocType) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, alloc_type: Enum cv::cuda::HostMem::AllocType) -> void
+               | (rows: Integer, cols: Integer, type: Integer, alloc_type: Enum cv::cuda::HostMem::AllocType) -> void
+    def assign: (m: Cv::cuda::HostMem) -> Cv::cuda::HostMem
+    def channels: () -> Integer
+    def clone: () -> Cv::cuda::HostMem
+    def continuous?: () -> bool
+    def create: (size: Cv::Size_≺int≻, type: Integer) -> void
+           | (rows: Integer, cols: Integer, type: Integer) -> void
+    def create_gpu_mat_header: () -> Cv::cuda::GpuMat
+    def create_mat_header: () -> Cv::Mat
+    def depth: () -> Integer
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def empty?: () -> bool
+    def initialize_copy: (m: Cv::cuda::HostMem) -> void
+    def release: () -> void
+    def reshape: (cn: Integer, rows: Integer) -> Cv::cuda::HostMem
+    def size: () -> Cv::Size_≺int≻
+    def step1: () -> Integer
+    def swap: (b: Cv::cuda::HostMem) -> void
+    def type: () -> Integer
+  end
+end

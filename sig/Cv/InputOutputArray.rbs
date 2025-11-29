@@ -1,0 +1,21 @@
+module Cv
+  class InputOutputArray
+    def initialize: () -> void
+               | (m: Cv::UMat) -> void
+               | (m: Cv::Mat) -> void
+               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> void
+               | (d_mat: Cv::cuda::GpuMat) -> void
+               | (buf: Cv::ogl::Buffer) -> void
+               | (cuda_mem: Cv::cuda::HostMem) -> void
+               | (m: Cv::UMat) -> void
+               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> void
+               | (m: Cv::Mat) -> void
+               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> void
+               | (d_mat: Cv::cuda::GpuMat) -> void
+               | (d_mat: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> void
+               | (buf: Cv::ogl::Buffer) -> void
+               | (cuda_mem: Cv::cuda::HostMem) -> void
+               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> void
+               | (_flags: Integer, _obj: Rice::Buffer≺void∗≻) -> void
+  end
+end

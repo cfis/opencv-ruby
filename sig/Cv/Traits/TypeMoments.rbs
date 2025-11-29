@@ -1,0 +1,5 @@
+module Cv::Traits
+  class TypeMoments
+    def initialize: () -> void
+  end
+end

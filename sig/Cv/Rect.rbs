@@ -1,0 +1,57 @@
+module Cv
+  class Rect
+    attr_reader height: Integer
+    attr_reader width: Integer
+    attr_reader x: Integer
+    attr_reader y: Integer
+
+    def initialize: () -> void
+               | () -> void
+               | (pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻) -> void
+               | (pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻) -> void
+               | (org: Cv::Point_≺int≻, sz: Cv::Size_≺int≻) -> void
+               | (org: Cv::Point_≺int≻, sz: Cv::Size_≺int≻) -> void
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> void
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> void
+    def !=: (arg_0: Cv::Rect_≺int≻) -> bool
+       | (arg_0: Cv::Rect_≺int≻) -> bool
+    def +: (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+    def -: (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+    def ==: (arg_0: Cv::Rect_≺int≻) -> bool
+       | (arg_0: Cv::Rect_≺int≻) -> bool
+    def area: () -> Integer
+         | () -> Integer
+    def assign_minus: (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+                 | (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+                 | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+                 | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+    def assign_plus: (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+                | (arg_0: Cv::Point_≺int≻) -> Cv::Rect_≺int≻
+                | (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+                | (arg_0: Cv::Size_≺int≻) -> Cv::Rect_≺int≻
+    def br: () -> Cv::Point_≺int≻
+       | () -> Cv::Point_≺int≻
+    def contains?: (pt: Cv::Point_≺int≻) -> bool
+              | (pt: Cv::Point_≺int≻) -> bool
+    def empty?: () -> bool
+           | () -> bool
+    def initialize_copy: (r: Cv::Rect_≺int≻) -> void
+                    | (r: Cv::Rect_≺int≻) -> void
+    def inspect: () -> Std::String
+            | () -> Std::String
+    def size: () -> Cv::Size_≺int≻
+         | () -> Cv::Size_≺int≻
+    def tl: () -> Cv::Point_≺int≻
+       | () -> Cv::Point_≺int≻
+    def |: (arg_0: Cv::Rect_≺int≻) -> Cv::Rect_≺int≻
+      | (arg_0: Cv::Rect_≺int≻) -> Cv::Rect_≺int≻
+    def |=: (arg_0: Cv::Rect_≺int≻) -> Cv::Rect_≺int≻
+       | (arg_0: Cv::Rect_≺int≻) -> Cv::Rect_≺int≻
+  end
+end

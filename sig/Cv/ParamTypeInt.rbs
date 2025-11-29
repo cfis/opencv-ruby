@@ -1,0 +1,5 @@
+module Cv
+  class ParamTypeInt
+    def initialize: () -> void
+  end
+end

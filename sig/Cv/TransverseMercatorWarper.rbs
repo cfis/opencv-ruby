@@ -1,0 +1,6 @@
+module Cv
+  class TransverseMercatorWarper
+    def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+    def initialize: () -> void
+  end
+end

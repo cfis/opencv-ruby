@@ -1,0 +1,4 @@
+module Cv
+  class TrackerMIL
+  end
+end

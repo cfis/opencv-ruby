@@ -1,0 +1,36 @@
+module Cv::Ogl
+  class Buffer
+    def initialize: () -> void
+               | (arr: Cv::debug_build_guard::InputArray, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+               | (asize: Cv::Size_≺int≻, atype: Integer, abuf_id: Integer, auto_release: bool) -> void
+               | (asize: Cv::Size_≺int≻, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+               | (arows: Integer, acols: Integer, atype: Integer, abuf_id: Integer, auto_release: bool) -> void
+               | (arows: Integer, acols: Integer, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+    def bind: (target: Enum cv::ogl::Buffer::Target) -> void
+    def buf_id: () -> Integer
+    def channels: () -> Integer
+    def clone: (target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> Cv::ogl::Buffer
+    def cols: () -> Integer
+    def copy_from: (arr: Cv::debug_build_guard::InputArray, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+              | (arr: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+    def copy_to: (arr: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
+            | (arr: Cv::debug_build_guard::OutputArray) -> void
+    def create: (asize: Cv::Size_≺int≻, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+           | (arows: Integer, acols: Integer, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+    def depth: () -> Integer
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def empty?: () -> bool
+    def map_device: () -> Cv::cuda::GpuMat
+               | (stream: Cv::cuda::Stream) -> Cv::cuda::GpuMat
+    def map_host: (access: Enum cv::ogl::Buffer::Access) -> Cv::Mat
+    def release: () -> void
+    def rows: () -> Integer
+    def set_auto_release: (flag: bool) -> void
+    def size: () -> Cv::Size_≺int≻
+    def type: () -> Integer
+    def unmap_device: () -> void
+                 | (stream: Cv::cuda::Stream) -> void
+    def unmap_host: () -> void
+  end
+end

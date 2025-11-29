@@ -1,0 +1,10 @@
+module Cv
+  class BOWTrainer
+    def add: (descriptors: Cv::Mat) -> void
+    def clear: () -> void
+    def cluster: () -> Cv::Mat
+            | (descriptors: Cv::Mat) -> Cv::Mat
+    def descriptors_count: () -> Integer
+    def get_descriptors: () -> Std::Vector≺cv꞉꞉Mat≻
+  end
+end

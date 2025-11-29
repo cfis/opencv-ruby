@@ -1,0 +1,41 @@
+module Cv::Ml
+  class TrainData
+    def get_cat_count: (vi: Integer) -> Integer
+    def get_cat_map: () -> Cv::Mat
+    def get_cat_ofs: () -> Cv::Mat
+    def get_class_labels: () -> Cv::Mat
+    def get_default_subst_values: () -> Cv::Mat
+    def get_layout: () -> Integer
+    def get_missing: () -> Cv::Mat
+    def get_n_all_vars: () -> Integer
+    def get_n_samples: () -> Integer
+    def get_n_test_samples: () -> Integer
+    def get_n_train_samples: () -> Integer
+    def get_n_vars: () -> Integer
+    def get_names: (names: Std::Vector≺string≻) -> void
+    def get_norm_cat_responses: () -> Cv::Mat
+    def get_norm_cat_values: (vi: Integer, sidx: Cv::debug_build_guard::InputArray, values: Rice::Buffer≺int∗≻) -> void
+    def get_response_type: () -> Integer
+    def get_responses: () -> Cv::Mat
+    def get_sample: (var_idx: Cv::debug_build_guard::InputArray, sidx: Integer, buf: Rice::Buffer≺float∗≻) -> void
+    def get_sample_weights: () -> Cv::Mat
+    def get_samples: () -> Cv::Mat
+    def get_test_norm_cat_responses: () -> Cv::Mat
+    def get_test_responses: () -> Cv::Mat
+    def get_test_sample_idx: () -> Cv::Mat
+    def get_test_sample_weights: () -> Cv::Mat
+    def get_test_samples: () -> Cv::Mat
+    def get_train_norm_cat_responses: () -> Cv::Mat
+    def get_train_responses: () -> Cv::Mat
+    def get_train_sample_idx: () -> Cv::Mat
+    def get_train_sample_weights: () -> Cv::Mat
+    def get_train_samples: (layout: Integer, compress_samples: bool, compress_vars: bool) -> Cv::Mat
+    def get_values: (vi: Integer, sidx: Cv::debug_build_guard::InputArray, values: Rice::Buffer≺float∗≻) -> void
+    def get_var_idx: () -> Cv::Mat
+    def get_var_symbol_flags: () -> Cv::Mat
+    def get_var_type: () -> Cv::Mat
+    def set_train_test_split: (count: Integer, shuffle: bool) -> void
+    def set_train_test_split_ratio: (ratio: Float, shuffle: bool) -> void
+    def shuffle_train_test: () -> void
+  end
+end

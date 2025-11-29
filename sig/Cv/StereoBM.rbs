@@ -1,0 +1,20 @@
+module Cv
+  class StereoBM
+    def get_pre_filter_cap: () -> Integer
+    def get_pre_filter_size: () -> Integer
+    def get_pre_filter_type: () -> Integer
+    def get_roi1: () -> Cv::Rect_≺int≻
+    def get_roi2: () -> Cv::Rect_≺int≻
+    def get_smaller_block_size: () -> Integer
+    def get_texture_threshold: () -> Integer
+    def get_uniqueness_ratio: () -> Integer
+    def set_pre_filter_cap: (pre_filter_cap: Integer) -> void
+    def set_pre_filter_size: (pre_filter_size: Integer) -> void
+    def set_pre_filter_type: (pre_filter_type: Integer) -> void
+    def set_roi1: (roi1: Cv::Rect_≺int≻) -> void
+    def set_roi2: (roi2: Cv::Rect_≺int≻) -> void
+    def set_smaller_block_size: (block_size: Integer) -> void
+    def set_texture_threshold: (texture_threshold: Integer) -> void
+    def set_uniqueness_ratio: (uniqueness_ratio: Integer) -> void
+  end
+end

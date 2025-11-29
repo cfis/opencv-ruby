@@ -1,0 +1,10 @@
+module Cv::Detail
+  class MultiBandBlender
+    def blend: (dst: Cv::debug_build_guard::InputOutputArray, dst_mask: Cv::debug_build_guard::InputOutputArray) -> void
+    def feed: (img: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray, tl: Cv::Point_≺int≻) -> void
+    def initialize: (try_gpu: Integer, num_bands: Integer, weight_type: Integer) -> void
+    def num_bands: () -> Integer
+    def prepare: (dst_roi: Cv::Rect_≺int≻) -> void
+    def set_num_bands: (val: Integer) -> void
+  end
+end

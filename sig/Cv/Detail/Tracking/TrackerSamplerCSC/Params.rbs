@@ -1,0 +1,12 @@
+module Cv::Detail::Tracking::TrackerSamplerCSC
+  class Params
+    attr_accessor init_in_rad: Float
+    attr_accessor init_max_neg_num: Integer
+    attr_accessor search_win_size: Float
+    attr_accessor track_in_pos_rad: Float
+    attr_accessor track_max_neg_num: Integer
+    attr_accessor track_max_pos_num: Integer
+
+    def initialize: () -> void
+  end
+end

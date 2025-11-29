@@ -1,0 +1,45 @@
+module Cv
+  class Point2d
+    attr_accessor x: Float
+    attr_accessor y: Float
+
+    def initialize: () -> void
+               | (sz: Cv::Size_≺double≻) -> void
+               | (v: Cv::Vec≺double‚ 2≻) -> void
+               | (_x: Float, _y: Float) -> void
+    def !=: (arg_0: Cv::Point_≺double≻) -> bool
+       | (arg_0: Cv::Point_≺double≻) -> bool
+    def *: (arg_0: Float) -> Cv::Point_≺double≻
+      | (arg_0: Integer) -> Cv::Point_≺double≻
+      | (arg_0: Integer) -> Cv::Point_≺double≻
+    def +: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+      | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+    def -: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+      | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+    def /: (arg_0: Float) -> Cv::Point_≺double≻
+      | (arg_0: Integer) -> Cv::Point_≺double≻
+      | (arg_0: Integer) -> Cv::Point_≺double≻
+      | (arg_0: Float) -> Cv::Point_≺double≻
+    def ==: (arg_0: Cv::Point_≺double≻) -> bool
+       | (arg_0: Cv::Point_≺double≻) -> bool
+    def assign_divide: (arg_0: Integer) -> Cv::Point_≺double≻
+                  | (arg_0: Float) -> Cv::Point_≺double≻
+                  | (arg_0: Float) -> Cv::Point_≺double≻
+                  | (arg_0: Integer) -> Cv::Point_≺double≻
+    def assign_minus: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+                 | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point_≺double≻
+                    | (arg_0: Float) -> Cv::Point_≺double≻
+    def assign_plus: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+                | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
+    def cross: (pt: Cv::Point_≺double≻) -> Float
+    def ddot: (pt: Cv::Point_≺double≻) -> Float
+    def dot: (pt: Cv::Point_≺double≻) -> Float
+    def initialize_copy: (pt: Cv::Point_≺double≻) -> void
+    def inside?: (r: Cv::Rect_≺double≻) -> bool
+    def inspect: () -> Std::String
+    def norm: () -> Float
+    def to_s: () -> Std::String
+    def to_vec: () -> Cv::Vec≺double‚ 2≻
+  end
+end

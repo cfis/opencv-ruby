@@ -1,0 +1,15 @@
+module Cv::Aruco
+  class Dictionary
+    attr_accessor bytes_list: Cv::Mat
+    attr_accessor marker_size: Integer
+    attr_accessor max_correction_bits: Integer
+
+    def generate_image_marker: (id: Integer, side_pixels: Integer, _img: Cv::debug_build_guard::OutputArray, border_bits: Integer) -> void
+    def get_distance_to_id: (bits: Cv::debug_build_guard::InputArray, id: Integer, all_rotations: bool) -> Integer
+    def identify?: (only_bits: Cv::Mat, idx: Int, rotation: Int, max_correction_rate: Float) -> bool
+    def initialize: () -> void
+               | (bytes_list: Cv::Mat, _marker_size: Integer, maxcorr: Integer) -> void
+    def read_dictionary?: (fn: Cv::FileNode) -> bool
+    def write_dictionary: (fs: Cv::FileStorage, name: Std::String) -> void
+  end
+end

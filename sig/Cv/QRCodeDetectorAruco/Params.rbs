@@ -1,0 +1,13 @@
+module Cv::QRCodeDetectorAruco
+  class Params
+    attr_accessor max_colors_mismatch: Float
+    attr_accessor max_module_size_mismatch: Float
+    attr_accessor max_penalties: Float
+    attr_accessor max_rotation: Float
+    attr_accessor max_timing_pattern_mismatch: Float
+    attr_accessor min_module_size_in_pyramid: Float
+    attr_accessor scale_timing_pattern_score: Float
+
+    def initialize: () -> void
+  end
+end

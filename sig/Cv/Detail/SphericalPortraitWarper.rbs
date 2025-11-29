@@ -1,0 +1,5 @@
+module Cv::Detail
+  class SphericalPortraitWarper
+    def initialize: (scale: Float) -> void
+  end
+end

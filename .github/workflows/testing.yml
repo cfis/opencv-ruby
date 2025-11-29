@@ -1,0 +1,39 @@
+name: Rice CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        ruby: ['3.2', '3.3', '3.4']
+    #runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install system dependencies Linux
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt update
+        sudo apt-get update
+        sudo apt-get -y install cmake ninja-build libopencv-dev
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: CMake Configure
+      run: cmake -G Ninja -S ${{github.workspace}}/ext -B ${{github.workspace}}/ext/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=${{github.workspace}}/lib
+    - name: CMake Build
+      run: cmake --build ${{github.workspace}}/ext/build
+    - name: Test
+      run: rake test

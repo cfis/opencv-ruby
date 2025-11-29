@@ -1,0 +1,8 @@
+module Cv
+  class TonemapDrago
+    def get_bias: () -> Float
+    def get_saturation: () -> Float
+    def set_bias: (bias: Float) -> void
+    def set_saturation: (saturation: Float) -> void
+  end
+end

@@ -1,0 +1,5 @@
+module Cvflann
+  class FILEScopeGuard
+    def initialize: (file: Iobuf) -> void
+  end
+end

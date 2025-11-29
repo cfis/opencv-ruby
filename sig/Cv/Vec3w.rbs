@@ -1,0 +1,22 @@
+module Cv
+  class Vec3w
+    def []: (i: Integer) -> Unsigned short
+       | (i: Integer) -> Unsigned short
+    def initialize: () -> void
+               | (values: Rice::Buffer≺unsigned short const∗≻) -> void
+               | (a: Cv::Matx≺unsigned short‚ 3‚ 1≻, b: Cv::Matx≺unsigned short‚ 3‚ 1≻, : Cv::MatxAddOp) -> void
+               | (v0: Integer, v1: Integer, v2: Integer) -> void
+               | (a: Cv::Matx≺unsigned short‚ 3‚ 1≻, b: Cv::Matx≺unsigned short‚ 3‚ 1≻, : Cv::MatxSubOp) -> void
+    def []=: (arg_0: Integer, arg_1: Unsigned short) -> void
+    def assign: (rhs: Cv::Vec≺unsigned short‚ 3≻) -> Cv::Vec≺unsigned short‚ 3≻
+    def call: (i: Integer) -> Unsigned short
+         | (i: Integer) -> Unsigned short
+    def count: () -> Integer
+    def cross: (v: Cv::Vec≺unsigned short‚ 3≻) -> Cv::Vec≺unsigned short‚ 3≻
+    def initialize_copy: (v: Cv::Vec≺unsigned short‚ 3≻) -> void
+    def inspect: () -> Std::String
+    def mul: (v: Cv::Vec≺unsigned short‚ 3≻) -> Cv::Vec≺unsigned short‚ 3≻
+    def to_a: () -> Integer
+    def to_s: () -> Std::String
+  end
+end

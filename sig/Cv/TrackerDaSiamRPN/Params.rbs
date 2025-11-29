@@ -1,0 +1,11 @@
+module Cv::TrackerDaSiamRPN
+  class Params
+    attr_accessor backend: Integer
+    attr_accessor kernel_cls1: Std::String
+    attr_accessor kernel_r1: Std::String
+    attr_accessor model: Std::String
+    attr_accessor target: Integer
+
+    def initialize: () -> void
+  end
+end

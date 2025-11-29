@@ -1,0 +1,10 @@
+module Cv::TrackerNano
+  class Params
+    attr_accessor backbone: Std::String
+    attr_accessor backend: Integer
+    attr_accessor neckhead: Std::String
+    attr_accessor target: Integer
+
+    def initialize: () -> void
+  end
+end

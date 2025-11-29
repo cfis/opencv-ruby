@@ -1,0 +1,5 @@
+module Cv::Detail
+  class CylindricalPortraitWarper
+    def initialize: (scale: Float) -> void
+  end
+end

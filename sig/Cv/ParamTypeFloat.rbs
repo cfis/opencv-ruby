@@ -1,0 +1,5 @@
+module Cv
+  class ParamTypeFloat
+    def initialize: () -> void
+  end
+end

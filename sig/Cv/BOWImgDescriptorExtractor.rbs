@@ -1,0 +1,13 @@
+module Cv
+  class BOWImgDescriptorExtractor
+    def initialize: (dmatcher: Cv::Ptr≺cv꞉꞉DescriptorMatcher≻) -> void
+               | (dextractor: Cv::Ptr≺cv꞉꞉Feature2D≻, dmatcher: Cv::Ptr≺cv꞉꞉DescriptorMatcher≻) -> void
+    def compute: (keypoint_descriptors: Cv::debug_build_guard::InputArray, img_descriptor: Cv::debug_build_guard::OutputArray, point_idxs_of_clusters: Std::Vector≺vector≺int≻≻) -> void
+            | (image: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, img_descriptor: Cv::debug_build_guard::OutputArray, point_idxs_of_clusters: Std::Vector≺vector≺int≻≻, descriptors: Cv::Mat) -> void
+    def compute2: (image: Cv::Mat, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, img_descriptor: Cv::Mat) -> void
+    def descriptor_size: () -> Integer
+    def descriptor_type: () -> Integer
+    def get_vocabulary: () -> Cv::Mat
+    def set_vocabulary: (vocabulary: Cv::Mat) -> void
+  end
+end

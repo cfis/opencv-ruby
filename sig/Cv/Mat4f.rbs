@@ -1,0 +1,56 @@
+module Cv
+  class Mat4f
+    def []: (roi: Cv::Rect_≺int≻) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+       | (ranges: Cv::Range) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+       | (idx0: Integer) -> Cv::Vec≺float‚ 4≻
+       | (pt: Cv::Point_≺int≻) -> Cv::Vec≺float‚ 4≻
+       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+       | (row: Integer, col: Integer) -> Cv::Vec≺float‚ 4≻
+       | (idx0: Integer, idx1: Integer, idx2: Integer) -> Cv::Vec≺float‚ 4≻
+    def initialize: (e: Cv::MatExpr) -> void
+               | () -> void
+               | (_size: Cv::Size_≺int≻) -> void
+               | (m: Cv::Mat) -> void
+               | (e: Cv::MatExpr) -> void
+               | (m: Cv::Mat) -> void
+               | (pt: Cv::Point3_≺float≻, copy_data: bool) -> void
+               | (_size: Cv::Size_≺int≻, value: Cv::Vec≺float‚ 4≻) -> void
+               | (pt: Cv::Point_≺float≻, copy_data: bool) -> void
+               | (vec: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻, copy_data: bool) -> void
+               | (_rows: Integer, _cols: Integer) -> void
+               | (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻, ranges: Std::Vector≺cv꞉꞉Range≻) -> void
+               | (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻, ranges: Cv::Range) -> void
+               | (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻, roi: Cv::Rect_≺int≻) -> void
+               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+               | (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻, row_range: Cv::Range, col_range: Cv::Range) -> void
+               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, value: Cv::Vec≺float‚ 4≻) -> void
+               | (_rows: Integer, _cols: Integer, value: Cv::Vec≺float‚ 4≻) -> void
+               | (_rows: Integer, _cols: Integer, _data: Cv::Vec≺float‚ 4≻, _step: Integer) -> void
+               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, _data: Cv::Vec≺float‚ 4≻, _steps: Rice::Buffer≺unsigned Int64 const∗≻) -> void
+    def []=: (arg_0: Integer, arg_1: Cv::Vec≺float‚ 4≻) -> void
+        | (arg_0: Cv::Point_≺int≻, arg_1: Cv::Vec≺float‚ 4≻) -> void
+        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec≺float‚ 4≻) -> void
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec≺float‚ 4≻) -> void
+    def _dump_data: () -> Rice::Hash
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def channels: () -> Integer
+    def clone: () -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def col: (x: Integer) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def create: (_size: Cv::Size_≺int≻) -> void
+           | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+           | (_rows: Integer, _cols: Integer) -> void
+    def cross: (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def depth: () -> Integer
+    def diag: (d: Integer) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def initialize_copy: (m: Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻) -> void
+    def release: () -> void
+    def row: (y: Integer) -> Cv::Mat_≺cv꞉꞉Vec≺float‚ 4≻≻
+    def step1: (i: Integer) -> Integer
+    def step_t: (i: Integer) -> Integer
+    def to_vector: () -> Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻
+    def type: () -> Integer
+  end
+end

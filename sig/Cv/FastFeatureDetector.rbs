@@ -1,0 +1,11 @@
+module Cv
+  class FastFeatureDetector
+    def get_default_name: () -> Std::String
+    def get_nonmax_suppression?: () -> bool
+    def get_threshold: () -> Integer
+    def get_type: () -> Enum cv::FastFeatureDetector::DetectorType
+    def set_nonmax_suppression: (f: bool) -> void
+    def set_threshold: (threshold: Integer) -> void
+    def set_type: (type: Enum cv::FastFeatureDetector::DetectorType) -> void
+  end
+end

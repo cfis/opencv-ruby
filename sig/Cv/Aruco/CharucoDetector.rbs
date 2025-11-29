@@ -1,0 +1,15 @@
+module Cv::Aruco
+  class CharucoDetector
+    def detect_board: (image: Cv::debug_build_guard::InputArray, charuco_corners: Cv::debug_build_guard::OutputArray, charuco_ids: Cv::debug_build_guard::OutputArray, marker_corners: Cv::debug_build_guard::InputOutputArray, marker_ids: Cv::debug_build_guard::InputOutputArray) -> void
+    def initialize: (board: Cv::aruco::CharucoBoard, charuco_params: Cv::aruco::CharucoParameters, detector_params: Cv::aruco::DetectorParameters, refine_params: Cv::aruco::RefineParameters) -> void
+    def detect_diamonds: (image: Cv::debug_build_guard::InputArray, diamond_corners: Cv::debug_build_guard::OutputArray, diamond_ids: Cv::debug_build_guard::OutputArray, marker_corners: Cv::debug_build_guard::InputOutputArray, marker_ids: Cv::debug_build_guard::InputOutputArray) -> void
+    def get_board: () -> Cv::aruco::CharucoBoard
+    def get_charuco_parameters: () -> Cv::aruco::CharucoParameters
+    def get_detector_parameters: () -> Cv::aruco::DetectorParameters
+    def get_refine_parameters: () -> Cv::aruco::RefineParameters
+    def set_board: (board: Cv::aruco::CharucoBoard) -> void
+    def set_charuco_parameters: (charuco_parameters: Cv::aruco::CharucoParameters) -> void
+    def set_detector_parameters: (detector_parameters: Cv::aruco::DetectorParameters) -> void
+    def set_refine_parameters: (refine_parameters: Cv::aruco::RefineParameters) -> void
+  end
+end

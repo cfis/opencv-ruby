@@ -1,0 +1,31 @@
+module Cv
+  class Moments
+    attr_accessor m00: Float
+    attr_accessor m01: Float
+    attr_accessor m02: Float
+    attr_accessor m03: Float
+    attr_accessor m10: Float
+    attr_accessor m11: Float
+    attr_accessor m12: Float
+    attr_accessor m20: Float
+    attr_accessor m21: Float
+    attr_accessor m30: Float
+    attr_accessor mu02: Float
+    attr_accessor mu03: Float
+    attr_accessor mu11: Float
+    attr_accessor mu12: Float
+    attr_accessor mu20: Float
+    attr_accessor mu21: Float
+    attr_accessor mu30: Float
+    attr_accessor nu02: Float
+    attr_accessor nu03: Float
+    attr_accessor nu11: Float
+    attr_accessor nu12: Float
+    attr_accessor nu20: Float
+    attr_accessor nu21: Float
+    attr_accessor nu30: Float
+
+    def initialize: () -> void
+               | (m00: Float, m10: Float, m01: Float, m20: Float, m11: Float, m02: Float, m30: Float, m21: Float, m12: Float, m03: Float) -> void
+  end
+end

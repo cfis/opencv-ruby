@@ -1,0 +1,18 @@
+module Cv::Ml
+  class EM
+    def get_clusters_number: () -> Integer
+    def get_covariance_matrix_type: () -> Integer
+    def get_covs: (covs: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def get_means: () -> Cv::Mat
+    def get_term_criteria: () -> Cv::TermCriteria
+    def get_weights: () -> Cv::Mat
+    def predict: (samples: Cv::debug_build_guard::InputArray, results: Cv::debug_build_guard::OutputArray, flags: Integer) -> Float
+    def predict2: (sample: Cv::debug_build_guard::InputArray, probs: Cv::debug_build_guard::OutputArray) -> Cv::Vec≺double‚ 2≻
+    def set_clusters_number: (val: Integer) -> void
+    def set_covariance_matrix_type: (val: Integer) -> void
+    def set_term_criteria: (val: Cv::TermCriteria) -> void
+    def train_e?: (samples: Cv::debug_build_guard::InputArray, means0: Cv::debug_build_guard::InputArray, covs0: Cv::debug_build_guard::InputArray, weights0: Cv::debug_build_guard::InputArray, log_likelihoods: Cv::debug_build_guard::OutputArray, labels: Cv::debug_build_guard::OutputArray, probs: Cv::debug_build_guard::OutputArray) -> bool
+    def train_em?: (samples: Cv::debug_build_guard::InputArray, log_likelihoods: Cv::debug_build_guard::OutputArray, labels: Cv::debug_build_guard::OutputArray, probs: Cv::debug_build_guard::OutputArray) -> bool
+    def train_m?: (samples: Cv::debug_build_guard::InputArray, probs0: Cv::debug_build_guard::InputArray, log_likelihoods: Cv::debug_build_guard::OutputArray, labels: Cv::debug_build_guard::OutputArray, probs: Cv::debug_build_guard::OutputArray) -> bool
+  end
+end

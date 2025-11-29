@@ -1,0 +1,10 @@
+module Cv
+  class Complexf
+    attr_accessor im: Float
+    attr_accessor re: Float
+
+    def conj: () -> Cv::Complex≺float≻
+    def initialize: () -> void
+               | (_re: Float, _im: Float) -> void
+  end
+end

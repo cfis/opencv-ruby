@@ -1,0 +1,5 @@
+module Cvflann
+  class DatatypeUnsignedChar
+    def initialize: () -> void
+  end
+end

@@ -1,0 +1,6 @@
+module Cv
+  class CompressedRectilinearPortraitWarper
+    def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+    def initialize: (a: Float, b: Float) -> void
+  end
+end

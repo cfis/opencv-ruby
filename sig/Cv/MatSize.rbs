@@ -1,0 +1,14 @@
+module Cv
+  class MatSize
+    attr_accessor p: Rice::Buffer≺int∗≻
+
+    def !=: (sz: Cv::MatSize) -> bool
+    def initialize: (_p: Rice::Buffer≺int∗≻) -> void
+    def ==: (sz: Cv::MatSize) -> bool
+    def []: (i: Integer) -> Int
+    def []=: (arg_0: Integer, arg_1: Int) -> void
+    def dims: () -> Integer
+    def inspect: () -> Std::String
+    def to_size: () -> Cv::Size_≺int≻
+  end
+end

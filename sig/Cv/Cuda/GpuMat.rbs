@@ -1,0 +1,80 @@
+module Cv::Cuda
+  class GpuMat
+    attr_accessor allocator: Cv::cuda::GpuMat::Allocator
+    attr_accessor cols: Integer
+    attr_accessor data: Rice::Buffer≺unsigned char∗≻
+    attr_accessor dataend: Rice::Buffer≺unsigned char const∗≻
+    attr_accessor datastart: Rice::Buffer≺unsigned char∗≻
+    attr_accessor flags: Integer
+    attr_accessor refcount: Rice::Buffer≺int∗≻
+    attr_accessor rows: Integer
+    attr_accessor step: Integer
+
+    def initialize: (allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (m: Cv::cuda::GpuMat, roi: Cv::Rect_≺int≻) -> void
+               | (m: Cv::cuda::GpuMat, row_range: Cv::Range, col_range: Cv::Range) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (arr: Cv::debug_build_guard::InputArray, allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, s: Cv::Scalar_≺double≻, allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (rows: Integer, cols: Integer, type: Integer, allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (size: Cv::Size_≺int≻, type: Integer, data: Rice::Buffer≺void∗≻, step: Integer) -> void
+               | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar_≺double≻, allocator: Cv::cuda::GpuMat::Allocator) -> void
+               | (rows: Integer, cols: Integer, type: Integer, data: Rice::Buffer≺void∗≻, step: Integer) -> void
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::cuda::GpuMat
+    def assign: (m: Cv::cuda::GpuMat) -> Cv::cuda::GpuMat
+    def assign_to: (m: Cv::cuda::GpuMat, type: Integer) -> void
+    def call: (roi: Cv::Rect_≺int≻) -> Cv::cuda::GpuMat
+         | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::cuda::GpuMat
+    def channels: () -> Integer
+    def col: (x: Integer) -> Cv::cuda::GpuMat
+    def clone: () -> Cv::cuda::GpuMat
+    def col_range: (r: Cv::Range) -> Cv::cuda::GpuMat
+              | (startcol: Integer, endcol: Integer) -> Cv::cuda::GpuMat
+    def continuous?: () -> bool
+    def convert_to: (dst: Cv::debug_build_guard::OutputArray, rtype: Integer) -> void
+               | (dst: Cv::cuda::GpuMat, rtype: Integer, stream: Cv::cuda::Stream) -> void
+               | (dst: Cv::debug_build_guard::OutputArray, rtype: Integer, stream: Cv::cuda::Stream) -> void
+               | (dst: Cv::cuda::GpuMat, rtype: Integer, alpha: Float, beta: Float) -> void
+               | (dst: Cv::debug_build_guard::OutputArray, rtype: Integer, alpha: Float, beta: Float) -> void
+               | (dst: Cv::debug_build_guard::OutputArray, rtype: Integer, alpha: Float, stream: Cv::cuda::Stream) -> void
+               | (dst: Cv::cuda::GpuMat, rtype: Integer, alpha: Float, beta: Float, stream: Cv::cuda::Stream) -> void
+               | (dst: Cv::debug_build_guard::OutputArray, rtype: Integer, alpha: Float, beta: Float, stream: Cv::cuda::Stream) -> void
+    def copy_to: (dst: Cv::debug_build_guard::OutputArray) -> void
+            | (dst: Cv::cuda::GpuMat) -> void
+            | (dst: Cv::debug_build_guard::OutputArray, mask: Cv::debug_build_guard::InputArray) -> void
+            | (dst: Cv::cuda::GpuMat, mask: Cv::cuda::GpuMat) -> void
+            | (dst: Cv::cuda::GpuMat, stream: Cv::cuda::Stream) -> void
+            | (dst: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
+            | (dst: Cv::cuda::GpuMat, mask: Cv::cuda::GpuMat, stream: Cv::cuda::Stream) -> void
+            | (dst: Cv::debug_build_guard::OutputArray, mask: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream) -> void
+    def create: (size: Cv::Size_≺int≻, type: Integer) -> void
+           | (rows: Integer, cols: Integer, type: Integer) -> void
+    def cuda_ptr: () -> Rice::Buffer≺void∗≻
+    def depth: () -> Integer
+    def download: (dst: Cv::debug_build_guard::OutputArray) -> void
+             | (dst: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def empty?: () -> bool
+    def initialize_copy: (m: Cv::cuda::GpuMat) -> void
+    def locate_roi: (whole_size: Cv::Size_≺int≻, ofs: Cv::Point_≺int≻) -> void
+    def ptr: (y: Integer) -> Rice::Buffer≺unsigned char const∗≻
+        | (y: Integer) -> Rice::Buffer≺unsigned char∗≻
+    def release: () -> void
+    def reshape: (cn: Integer, rows: Integer) -> Cv::cuda::GpuMat
+    def row: (y: Integer) -> Cv::cuda::GpuMat
+    def row_range: (r: Cv::Range) -> Cv::cuda::GpuMat
+              | (startrow: Integer, endrow: Integer) -> Cv::cuda::GpuMat
+    def set_to: (s: Cv::Scalar_≺double≻) -> Cv::cuda::GpuMat
+           | (s: Cv::Scalar_≺double≻, mask: Cv::debug_build_guard::InputArray) -> Cv::cuda::GpuMat
+           | (s: Cv::Scalar_≺double≻, stream: Cv::cuda::Stream) -> Cv::cuda::GpuMat
+           | (s: Cv::Scalar_≺double≻, mask: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream) -> Cv::cuda::GpuMat
+    def size: () -> Cv::Size_≺int≻
+    def step1: () -> Integer
+    def swap: (mat: Cv::cuda::GpuMat) -> void
+    def type: () -> Integer
+    def update_continuity_flag: () -> void
+    def upload: (arr: Cv::debug_build_guard::InputArray) -> void
+           | (arr: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream) -> void
+  end
+end

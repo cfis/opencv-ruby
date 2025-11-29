@@ -1,0 +1,30 @@
+module Cv::Ml
+  class SVM
+    def get_c: () -> Float
+    def get_class_weights: () -> Cv::Mat
+    def get_coef0: () -> Float
+    def get_decision_function: (i: Integer, alpha: Cv::debug_build_guard::OutputArray, svidx: Cv::debug_build_guard::OutputArray) -> Float
+    def get_degree: () -> Float
+    def get_gamma: () -> Float
+    def get_kernel_type: () -> Integer
+    def get_nu: () -> Float
+    def get_p: () -> Float
+    def get_support_vectors: () -> Cv::Mat
+    def get_term_criteria: () -> Cv::TermCriteria
+    def get_type: () -> Integer
+    def get_uncompressed_support_vectors: () -> Cv::Mat
+    def set_c: (val: Float) -> void
+    def set_class_weights: (val: Cv::Mat) -> void
+    def set_coef0: (val: Float) -> void
+    def set_custom_kernel: (_kernel: Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> void
+    def set_degree: (val: Float) -> void
+    def set_gamma: (val: Float) -> void
+    def set_kernel: (kernel_type: Integer) -> void
+    def set_nu: (val: Float) -> void
+    def set_p: (val: Float) -> void
+    def set_term_criteria: (val: Cv::TermCriteria) -> void
+    def set_type: (val: Integer) -> void
+    def train_auto?: (data: Cv::Ptr≺cv꞉꞉ml꞉꞉TrainData≻, k_fold: Integer, cgrid: Cv::ml::ParamGrid, gamma_grid: Cv::ml::ParamGrid, p_grid: Cv::ml::ParamGrid, nu_grid: Cv::ml::ParamGrid, coeff_grid: Cv::ml::ParamGrid, degree_grid: Cv::ml::ParamGrid, balanced: bool) -> bool
+                | (samples: Cv::debug_build_guard::InputArray, layout: Integer, responses: Cv::debug_build_guard::InputArray, k_fold: Integer, cgrid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, gamma_grid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, p_grid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, nu_grid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, coeff_grid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, degree_grid: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻, balanced: bool) -> bool
+  end
+end

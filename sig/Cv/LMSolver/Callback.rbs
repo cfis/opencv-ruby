@@ -1,0 +1,5 @@
+module Cv::LMSolver
+  class Callback
+    def compute?: (param: Cv::debug_build_guard::InputArray, err: Cv::debug_build_guard::OutputArray, j: Cv::debug_build_guard::OutputArray) -> bool
+  end
+end

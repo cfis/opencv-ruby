@@ -1,0 +1,25 @@
+module Cv
+  class VideoCapture
+    def >>: (image: Cv::UMat) -> Cv::VideoCapture
+       | (image: Cv::Mat) -> Cv::VideoCapture
+    def initialize: () -> void
+               | (filename: Std::String, api_preference: Integer) -> void
+               | (index: Integer, api_preference: Integer) -> void
+               | (filename: Std::String, api_preference: Integer, params: Std::Vector≺int≻) -> void
+               | (index: Integer, api_preference: Integer, params: Std::Vector≺int≻) -> void
+    def get_backend_name: () -> Std::String
+    def get: (prop_id: Integer) -> Float
+    def get_exception_mode: () -> bool
+    def grab: () -> bool
+    def open: (filename: Std::String, api_preference: Integer) -> bool
+         | (index: Integer, api_preference: Integer) -> bool
+         | (index: Integer, api_preference: Integer, params: Std::Vector≺int≻) -> bool
+         | (filename: Std::String, api_preference: Integer, params: Std::Vector≺int≻) -> bool
+    def opened?: () -> bool
+    def read: (image: Cv::debug_build_guard::OutputArray) -> bool
+    def release: () -> void
+    def retrieve: (image: Cv::debug_build_guard::OutputArray, flag: Integer) -> bool
+    def set: (prop_id: Integer, value: Float) -> bool
+    def set_exception_mode: (enable: bool) -> void
+  end
+end

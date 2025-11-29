@@ -1,0 +1,4 @@
+module Cv
+  class ConjGradSolver
+  end
+end

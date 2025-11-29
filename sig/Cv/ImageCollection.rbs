@@ -1,0 +1,11 @@
+module Cv
+  class ImageCollection
+    def initialize: () -> void
+               | (filename: Std::String, flags: Integer) -> void
+    def []: (index: Integer) -> Cv::Mat
+    def at: (index: Integer) -> Cv::Mat
+    def init: (img: Std::String, flags: Integer) -> void
+    def release_cache: (index: Integer) -> void
+    def size: () -> Integer
+  end
+end

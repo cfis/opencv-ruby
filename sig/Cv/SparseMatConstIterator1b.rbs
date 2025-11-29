@@ -1,0 +1,13 @@
+module Cv
+  class SparseMatConstIterator1b
+    def !=: (arg_0: Cv::SparseMatConstIterator_≺unsigned char≻) -> bool
+    def initialize: () -> void
+               | (_m: Cv::SparseMat_≺unsigned char≻) -> void
+               | (_m: Cv::SparseMat) -> void
+    def ==: (arg_0: Cv::SparseMatConstIterator_≺unsigned char≻) -> bool
+    def dereference: () -> Unsigned char
+    def increment: () -> Cv::SparseMatConstIterator_≺unsigned char≻
+              | (: Integer) -> Cv::SparseMatConstIterator_≺unsigned char≻
+    def initialize_copy: (it: Cv::SparseMatConstIterator_≺unsigned char≻) -> void
+  end
+end

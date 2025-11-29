@@ -1,0 +1,17 @@
+module Cv
+  class KAZE
+    def get_default_name: () -> Std::String
+    def get_diffusivity: () -> Enum cv::KAZE::DiffusivityType
+    def get_extended?: () -> bool
+    def get_n_octave_layers: () -> Integer
+    def get_n_octaves: () -> Integer
+    def get_threshold: () -> Float
+    def get_upright?: () -> bool
+    def set_diffusivity: (diff: Enum cv::KAZE::DiffusivityType) -> void
+    def set_extended: (extended: bool) -> void
+    def set_n_octave_layers: (octave_layers: Integer) -> void
+    def set_n_octaves: (octaves: Integer) -> void
+    def set_threshold: (threshold: Float) -> void
+    def set_upright: (upright: bool) -> void
+  end
+end

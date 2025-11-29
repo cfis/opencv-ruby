@@ -1,0 +1,13 @@
+module Cv
+  class CommandLineParser
+    def about: (message: Std::String) -> void
+    def assign: (parser: Cv::CommandLineParser) -> Cv::CommandLineParser
+    def check?: () -> bool
+    def initialize: (argc: Integer, argv: Rice::Buffer≺char const∗const∗≻, keys: Std::String) -> void
+    def get_path_to_application: () -> Std::String
+    def has?: (name: Std::String) -> bool
+    def initialize_copy: (parser: Cv::CommandLineParser) -> void
+    def print_errors: () -> void
+    def print_message: () -> void
+  end
+end

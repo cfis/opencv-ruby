@@ -1,0 +1,16 @@
+module Cv
+  class AsyncArray
+    def initialize: () -> void
+    def _get_impl: () -> Rice::Buffer≺void∗≻
+    def assign: (o: Cv::AsyncArray) -> Cv::AsyncArray
+           | (o: Cv::AsyncArray) -> Cv::AsyncArray
+    def get: (dst: Cv::debug_build_guard::OutputArray) -> void
+    def get?: (dst: Cv::debug_build_guard::OutputArray, timeout_ns: Float) -> bool
+         | (dst: Cv::debug_build_guard::OutputArray, timeout_ns: Integer) -> bool
+    def initialize_copy: (o: Cv::AsyncArray) -> void
+    def release: () -> void
+    def valid?: () -> bool
+    def wait_for?: (timeout_ns: Float) -> bool
+              | (timeout_ns: Integer) -> bool
+  end
+end

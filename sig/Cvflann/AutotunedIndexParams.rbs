@@ -1,0 +1,5 @@
+module Cvflann
+  class AutotunedIndexParams
+    def initialize: (target_precision: Float, build_weight: Float, memory_weight: Float, sample_fraction: Float) -> void
+  end
+end

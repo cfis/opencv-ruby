@@ -1,0 +1,15 @@
+site_name: OpenCV Ruby
+site_url: https://github.com/cfis/opencv-ruby
+docs_dir: reference/
+theme:
+  name: material
+
+validation:
+  links:
+    absolute_links: relative_to_docs
+    anchors: warn
+    unrecognized_links: warn
+
+plugins:
+  - search
+

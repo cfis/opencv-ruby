@@ -1,0 +1,5 @@
+module Cv::Detail
+  class MercatorWarper
+    def initialize: (scale: Float) -> void
+  end
+end

@@ -1,0 +1,5 @@
+module Cv::Detail
+  class BundleAdjusterAffine
+    def initialize: () -> void
+  end
+end

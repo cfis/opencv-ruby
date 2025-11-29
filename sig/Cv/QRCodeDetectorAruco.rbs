@@ -1,0 +1,10 @@
+module Cv
+  class QRCodeDetectorAruco
+    def get_aruco_parameters: () -> Cv::aruco::DetectorParameters
+    def get_detector_parameters: () -> Cv::QRCodeDetectorAruco::Params
+    def initialize: () -> void
+               | (params: Cv::QRCodeDetectorAruco::Params) -> void
+    def set_aruco_parameters: (params: Cv::aruco::DetectorParameters) -> void
+    def set_detector_parameters: (params: Cv::QRCodeDetectorAruco::Params) -> Cv::QRCodeDetectorAruco
+  end
+end

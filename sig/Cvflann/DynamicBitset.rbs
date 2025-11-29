@@ -1,0 +1,15 @@
+module Cvflann
+  class DynamicBitset
+    def clear: () -> void
+    def initialize: () -> void
+               | (sz: Integer) -> void
+    def empty?: () -> bool
+    def reset: () -> void
+          | (index: Integer) -> void
+    def reset_block: (index: Integer) -> void
+    def resize: (sz: Integer) -> void
+    def set: (index: Integer) -> void
+    def size: () -> Integer
+    def test?: (index: Integer) -> bool
+  end
+end

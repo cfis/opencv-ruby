@@ -1,0 +1,7 @@
+module Cv
+  class AffineFeature
+    def get_default_name: () -> Std::String
+    def get_view_params: (tilts: Std::Vector≺float≻, rolls: Std::Vector≺float≻) -> void
+    def set_view_params: (tilts: Std::Vector≺float≻, rolls: Std::Vector≺float≻) -> void
+  end
+end

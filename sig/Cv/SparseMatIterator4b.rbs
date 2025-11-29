@@ -1,0 +1,11 @@
+module Cv
+  class SparseMatIterator4b
+    def dereference: () -> Cv::Vec≺unsigned char‚ 4≻
+    def increment: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺unsigned char‚ 4≻≻
+              | (: Integer) -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺unsigned char‚ 4≻≻
+    def initialize: () -> void
+               | (_m: Cv::SparseMat) -> void
+               | (_m: Cv::SparseMat_≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> void
+    def initialize_copy: (it: Cv::SparseMatIterator_≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> void
+  end
+end

@@ -1,0 +1,19 @@
+module Cv
+  class VariationalRefinement
+    def calc_uv: (i0: Cv::debug_build_guard::InputArray, i1: Cv::debug_build_guard::InputArray, flow_u: Cv::debug_build_guard::InputOutputArray, flow_v: Cv::debug_build_guard::InputOutputArray) -> void
+    def get_alpha: () -> Float
+    def get_delta: () -> Float
+    def get_epsilon: () -> Float
+    def get_fixed_point_iterations: () -> Integer
+    def get_gamma: () -> Float
+    def get_omega: () -> Float
+    def get_sor_iterations: () -> Integer
+    def set_alpha: (val: Float) -> void
+    def set_delta: (val: Float) -> void
+    def set_epsilon: (val: Float) -> void
+    def set_fixed_point_iterations: (val: Integer) -> void
+    def set_gamma: (val: Float) -> void
+    def set_omega: (val: Float) -> void
+    def set_sor_iterations: (val: Integer) -> void
+  end
+end

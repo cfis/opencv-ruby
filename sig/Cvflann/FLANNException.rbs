@@ -1,0 +1,6 @@
+module Cvflann
+  class FLANNException
+    def initialize: (message: Std::String) -> void
+               | (message: Rice::Buffer≺char const∗≻) -> void
+  end
+end

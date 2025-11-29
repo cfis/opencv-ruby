@@ -1,0 +1,13 @@
+module Cv::Ocl
+  class KernelArg
+    attr_accessor flags: Integer
+    attr_accessor iwscale: Integer
+    attr_accessor m: Cv::UMat
+    attr_accessor obj: Rice::Buffer≺void const∗≻
+    attr_accessor sz: Integer
+    attr_accessor wscale: Integer
+
+    def initialize: () -> void
+               | (_flags: Integer, _m: Cv::UMat, wscale: Integer, iwscale: Integer, _obj: Rice::Buffer≺void const∗≻, _sz: Integer) -> void
+  end
+end

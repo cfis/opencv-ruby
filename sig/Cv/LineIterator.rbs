@@ -1,0 +1,28 @@
+module Cv
+  class LineIterator
+    attr_accessor count: Integer
+    attr_accessor elem_size: Integer
+    attr_accessor err: Integer
+    attr_accessor minus_delta: Integer
+    attr_accessor minus_shift: Integer
+    attr_accessor minus_step: Integer
+    attr_accessor p: Cv::Point_≺int≻
+    attr_accessor plus_delta: Integer
+    attr_accessor plus_shift: Integer
+    attr_accessor plus_step: Integer
+    attr_accessor ptmode: bool
+    attr_accessor ptr: Rice::Buffer≺unsigned char∗≻
+    attr_accessor ptr0: Rice::Buffer≺unsigned char const∗≻
+    attr_accessor step: Integer
+
+    def initialize: (pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻, connectivity: Integer, left_to_right: bool) -> void
+               | (bounding_area_size: Cv::Size_≺int≻, pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻, connectivity: Integer, left_to_right: bool) -> void
+               | (bounding_area_rect: Cv::Rect_≺int≻, pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻, connectivity: Integer, left_to_right: bool) -> void
+               | (img: Cv::Mat, pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻, connectivity: Integer, left_to_right: bool) -> void
+    def dereference: () -> Rice::Buffer≺unsigned char∗≻
+    def increment: () -> Cv::LineIterator
+              | (: Integer) -> Cv::LineIterator
+    def init: (img: Cv::Mat, bounding_area_rect: Cv::Rect_≺int≻, pt1: Cv::Point_≺int≻, pt2: Cv::Point_≺int≻, connectivity: Integer, left_to_right: bool) -> void
+    def pos: () -> Cv::Point_≺int≻
+  end
+end

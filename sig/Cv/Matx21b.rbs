@@ -1,0 +1,54 @@
+module Cv
+  class Matx21b
+    def !=: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> bool
+    def *: (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+      | (arg_0: Cv::Vec≺unsigned char‚ 1≻) -> Cv::Vec≺unsigned char‚ 2≻
+      | (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+      | (arg_0: Integer) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def initialize: () -> void
+               | (vals: Rice::Buffer≺unsigned char const∗≻) -> void
+               | (v0: String, v1: String) -> void
+               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxSubOp) -> void
+               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxAddOp) -> void
+               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxMulOp) -> void
+               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxDivOp) -> void
+               | (a: Cv::Matx≺unsigned char‚ 1‚ 2≻, : Cv::MatxTOp) -> void
+    def +: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def -: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def /: (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+      | (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def ==: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> bool
+    def _dump_data: () -> Rice::Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+                  | (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def assign_minus: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def assign_multiply: (arg_0: Integer) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+                    | (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+                    | (arg_0: Float) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def assign_plus: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def call: (i: Integer) -> Unsigned char
+         | (i: Integer) -> Unsigned char
+         | (row: Integer, col: Integer) -> Unsigned char
+         | (row: Integer, col: Integer) -> Unsigned char
+    def channels: () -> Integer
+    def col: (i: Integer) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def cols: () -> Integer
+    def ddot: (v: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Float
+    def determinant: () -> Float
+    def diag: () -> Cv::Matx≺unsigned char‚ 1‚ 1≻
+    def div: (a: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def dot: (v: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> String
+    def each: () -> Integer
+    def eql?: (arg_0: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> bool
+    def input_array: () -> Cv::debug_build_guard::InputArray
+    def inspect: () -> Std::String
+    def mul: (a: Cv::Matx≺unsigned char‚ 2‚ 1≻) -> Cv::Matx≺unsigned char‚ 2‚ 1≻
+    def norm: () -> Float
+         | (arg_0: Integer) -> Float
+    def row: (i: Integer) -> Cv::Matx≺unsigned char‚ 1‚ 1≻
+    def rows: () -> Integer
+    def shortdim: () -> Integer
+    def t: () -> Cv::Matx≺unsigned char‚ 1‚ 2≻
+    def trace: () -> Float
+  end
+end

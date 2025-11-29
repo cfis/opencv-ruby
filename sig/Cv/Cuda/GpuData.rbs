@@ -1,0 +1,7 @@
+module Cv::Cuda
+  class GpuData
+    attr_accessor size: Integer
+
+    def initialize: (_size: Integer) -> void
+  end
+end

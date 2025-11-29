@@ -1,0 +1,12 @@
+module Cv::Ml
+  class StatModel
+    def calc_error: (data: Cv::Ptr≺cv꞉꞉ml꞉꞉TrainData≻, test: bool, resp: Cv::debug_build_guard::OutputArray) -> Float
+    def classifier?: () -> bool
+    def empty?: () -> bool
+    def get_var_count: () -> Integer
+    def predict: (samples: Cv::debug_build_guard::InputArray, results: Cv::debug_build_guard::OutputArray, flags: Integer) -> Float
+    def train?: (train_data: Cv::Ptr≺cv꞉꞉ml꞉꞉TrainData≻, flags: Integer) -> bool
+           | (samples: Cv::debug_build_guard::InputArray, layout: Integer, responses: Cv::debug_build_guard::InputArray) -> bool
+    def trained?: () -> bool
+  end
+end

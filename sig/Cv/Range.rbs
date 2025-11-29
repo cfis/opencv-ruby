@@ -1,0 +1,17 @@
+module Cv
+  class Range
+    attr_accessor end: Integer
+    attr_accessor start: Integer
+
+    def initialize: () -> void
+               | (_start: Integer, _end: Integer) -> void
+    def !=: (arg_0: Cv::Range) -> bool
+    def &: (arg_0: Cv::Range) -> Cv::Range
+    def &=: (arg_0: Cv::Range) -> Cv::Range
+    def +: (arg_0: Integer) -> Cv::Range
+    def -: (arg_0: Integer) -> Cv::Range
+    def ==: (arg_0: Cv::Range) -> bool
+    def empty?: () -> bool
+    def size: () -> Integer
+  end
+end

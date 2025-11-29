@@ -1,0 +1,11 @@
+module Cv::Detail
+  class GraphEdge
+    attr_accessor from: Integer
+    attr_accessor to: Integer
+    attr_accessor weight: Float
+
+    def initialize: (from: Integer, to: Integer, weight: Float) -> void
+    def <: (other: Cv::detail::GraphEdge) -> bool
+    def >: (other: Cv::detail::GraphEdge) -> bool
+  end
+end

@@ -1,0 +1,15 @@
+module Cv
+  class RotatedRect
+    attr_accessor angle: Float
+    attr_accessor center: Cv::Point_≺float≻
+    attr_accessor size: Cv::Size_≺float≻
+
+    def bounding_rect: () -> Cv::Rect_≺int≻
+    def bounding_rect2f: () -> Cv::Rect_≺float≻
+    def initialize: () -> void
+               | (point1: Cv::Point_≺float≻, point2: Cv::Point_≺float≻, point3: Cv::Point_≺float≻) -> void
+               | (center: Cv::Point_≺float≻, size: Cv::Size_≺float≻, angle: Float) -> void
+    def points: (pts: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> void
+           | (pts: Cv::Point_≺float≻) -> void
+  end
+end

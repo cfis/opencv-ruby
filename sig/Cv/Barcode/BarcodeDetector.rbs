@@ -1,0 +1,14 @@
+module Cv::Barcode
+  class BarcodeDetector
+    def decode_with_type?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻) -> bool
+    def detect_and_decode_with_type?: (img: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻, points: Cv::debug_build_guard::OutputArray) -> bool
+    def get_detector_scales: (sizes: Std::Vector≺float≻) -> void
+    def get_downsampling_threshold: () -> Float
+    def initialize: () -> void
+               | (prototxt_path: Std::String, model_path: Std::String) -> void
+    def get_gradient_threshold: () -> Float
+    def set_detector_scales: (sizes: Std::Vector≺float≻) -> Cv::barcode::BarcodeDetector
+    def set_downsampling_threshold: (thresh: Float) -> Cv::barcode::BarcodeDetector
+    def set_gradient_threshold: (thresh: Float) -> Cv::barcode::BarcodeDetector
+  end
+end

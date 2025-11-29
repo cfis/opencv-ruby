@@ -1,0 +1,28 @@
+module Cv
+  class Affine3d
+    attr_accessor matrix: Cv::Matx≺double‚ 4‚ 4≻
+
+    def *: (arg_0: Cv::Vec≺double‚ 3≻) -> Cv::Vec≺double‚ 3≻
+      | (arg_0: Cv::Vec≺double‚ 3≻) -> Cv::Vec≺double‚ 3≻
+    def initialize: () -> void
+               | (affine: Cv::Matx≺double‚ 4‚ 4≻) -> void
+               | (vals: Rice::Buffer≺double const∗≻) -> void
+               | (rvec: Cv::Vec≺double‚ 3≻, t: Cv::Vec≺double‚ 3≻) -> void
+               | (data: Cv::Mat, t: Cv::Vec≺double‚ 3≻) -> void
+               | (r: Cv::Matx≺double‚ 3‚ 3≻, t: Cv::Vec≺double‚ 3≻) -> void
+    def concatenate: (affine: Cv::Affine3≺double≻) -> Cv::Affine3≺double≻
+    def inv: (method: Integer) -> Cv::Affine3≺double≻
+    def linear: () -> Cv::Matx≺double‚ 3‚ 3≻
+           | (l: Cv::Matx≺double‚ 3‚ 3≻) -> void
+    def rotate: (r: Cv::Matx≺double‚ 3‚ 3≻) -> Cv::Affine3≺double≻
+           | (rvec: Cv::Vec≺double‚ 3≻) -> Cv::Affine3≺double≻
+    def rotation: () -> Cv::Matx≺double‚ 3‚ 3≻
+             | (rvec: Cv::Vec≺double‚ 3≻) -> void
+             | (r: Cv::Matx≺double‚ 3‚ 3≻) -> void
+             | (data: Cv::Mat) -> void
+    def rvec: () -> Cv::Vec≺double‚ 3≻
+    def translate: (t: Cv::Vec≺double‚ 3≻) -> Cv::Affine3≺double≻
+    def translation: () -> Cv::Vec≺double‚ 3≻
+                | (t: Cv::Vec≺double‚ 3≻) -> void
+  end
+end

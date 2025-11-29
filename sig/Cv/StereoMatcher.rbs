@@ -1,0 +1,17 @@
+module Cv
+  class StereoMatcher
+    def compute: (left: Cv::debug_build_guard::InputArray, right: Cv::debug_build_guard::InputArray, disparity: Cv::debug_build_guard::OutputArray) -> void
+    def get_block_size: () -> Integer
+    def get_disp12_max_diff: () -> Integer
+    def get_min_disparity: () -> Integer
+    def get_num_disparities: () -> Integer
+    def get_speckle_range: () -> Integer
+    def get_speckle_window_size: () -> Integer
+    def set_block_size: (block_size: Integer) -> void
+    def set_disp12_max_diff: (disp12_max_diff: Integer) -> void
+    def set_min_disparity: (min_disparity: Integer) -> void
+    def set_num_disparities: (num_disparities: Integer) -> void
+    def set_speckle_range: (speckle_range: Integer) -> void
+    def set_speckle_window_size: (speckle_window_size: Integer) -> void
+  end
+end

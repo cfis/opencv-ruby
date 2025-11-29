@@ -1,0 +1,5 @@
+module Cv::Detail
+  class HomographyBasedEstimator
+    def initialize: (is_focals_estimated: bool) -> void
+  end
+end

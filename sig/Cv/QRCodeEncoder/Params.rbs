@@ -1,0 +1,10 @@
+module Cv::QRCodeEncoder
+  class Params
+    attr_accessor correction_level: Enum cv::QRCodeEncoder::CorrectionLevel
+    attr_accessor mode: Enum cv::QRCodeEncoder::EncodeMode
+    attr_accessor structure_number: Integer
+    attr_accessor version: Integer
+
+    def initialize: () -> void
+  end
+end

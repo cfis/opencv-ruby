@@ -1,0 +1,10 @@
+module Cv::Ocl
+  class Platform
+    def initialize: () -> void
+    def assign: (p: Cv::ocl::Platform) -> Cv::ocl::Platform
+           | (p: Cv::ocl::Platform) -> Cv::ocl::Platform
+    def empty?: () -> bool
+    def initialize_copy: (p: Cv::ocl::Platform) -> void
+    def ptr: () -> Rice::Buffer≺void∗≻
+  end
+end

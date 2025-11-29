@@ -1,0 +1,10 @@
+module Cv::Utils
+  class FunctionParams
+    attr_accessor lambda: Integer
+    attr_accessor sigma: Float
+
+    def initialize: () -> void
+    def set_lambda: (value: Integer) -> Cv::utils::FunctionParams
+    def set_sigma: (value: Float) -> Cv::utils::FunctionParams
+  end
+end

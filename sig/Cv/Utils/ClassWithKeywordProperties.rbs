@@ -1,0 +1,8 @@
+module Cv::Utils
+  class ClassWithKeywordProperties
+    attr_accessor except: Integer
+    attr_accessor lambda: Integer
+
+    def initialize: (lambda_arg: Integer, except_arg: Integer) -> void
+  end
+end

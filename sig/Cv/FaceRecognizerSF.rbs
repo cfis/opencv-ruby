@@ -1,0 +1,7 @@
+module Cv
+  class FaceRecognizerSF
+    def align_crop: (src_img: Cv::debug_build_guard::InputArray, face_box: Cv::debug_build_guard::InputArray, aligned_img: Cv::debug_build_guard::OutputArray) -> void
+    def feature: (aligned_img: Cv::debug_build_guard::InputArray, face_feature: Cv::debug_build_guard::OutputArray) -> void
+    def match: (face_feature1: Cv::debug_build_guard::InputArray, face_feature2: Cv::debug_build_guard::InputArray, dis_type: Integer) -> Float
+  end
+end

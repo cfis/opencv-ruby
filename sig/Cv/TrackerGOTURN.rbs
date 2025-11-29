@@ -1,0 +1,4 @@
+module Cv
+  class TrackerGOTURN
+  end
+end

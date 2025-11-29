@@ -1,0 +1,43 @@
+module Cv
+  class MatExpr
+    attr_accessor a: Cv::Mat
+    attr_accessor alpha: Float
+    attr_accessor b: Cv::Mat
+    attr_accessor beta: Float
+    attr_accessor c: Cv::Mat
+    attr_accessor flags: Integer
+    attr_accessor op: Cv::MatOp
+    attr_accessor s: Cv::Scalar_≺double≻
+
+    def *: (arg_0: Float) -> Cv::MatExpr
+      | (arg_0: Cv::MatExpr) -> Cv::MatExpr
+      | (arg_0: Cv::Mat) -> Cv::MatExpr
+    def +: (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+      | (arg_0: Cv::MatExpr) -> Cv::MatExpr
+      | (arg_0: Cv::Mat) -> Cv::MatExpr
+    def -: (arg_0: Cv::Mat) -> Cv::MatExpr
+      | (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+      | (arg_0: Cv::MatExpr) -> Cv::MatExpr
+    def /: (arg_0: Float) -> Cv::MatExpr
+      | (arg_0: Cv::MatExpr) -> Cv::MatExpr
+      | (arg_0: Cv::Mat) -> Cv::MatExpr
+    def initialize: () -> void
+               | (m: Cv::Mat) -> void
+               | (_op: Cv::MatOp, _flags: Integer, _a: Cv::Mat, _b: Cv::Mat, _c: Cv::Mat, _alpha: Float, _beta: Float, _s: Cv::Scalar_≺double≻) -> void
+    def []: (roi: Cv::Rect_≺int≻) -> Cv::MatExpr
+       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::MatExpr
+    def col: (x: Integer) -> Cv::MatExpr
+    def cross: (m: Cv::Mat) -> Cv::Mat
+    def diag: (d: Integer) -> Cv::MatExpr
+    def dot: (m: Cv::Mat) -> Float
+    def inv: (method: Integer) -> Cv::MatExpr
+    def mul: (e: Cv::MatExpr, scale: Float) -> Cv::MatExpr
+        | (m: Cv::Mat, scale: Float) -> Cv::MatExpr
+    def row: (y: Integer) -> Cv::MatExpr
+    def size: () -> Cv::Size_≺int≻
+    def swap: (b: Cv::MatExpr) -> void
+    def t: () -> Cv::MatExpr
+    def to_mat: () -> Cv::Mat
+    def type: () -> Integer
+  end
+end

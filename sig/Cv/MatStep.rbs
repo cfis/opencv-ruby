@@ -1,0 +1,13 @@
+module Cv
+  class MatStep
+    attr_reader buf: Unsigned Int64 [2]
+    attr_accessor p: Rice::Buffer≺unsigned Int64∗≻
+
+    def []: (i: Integer) -> Unsigned Int64
+       | (i: Integer) -> Unsigned Int64
+    def initialize: () -> void
+               | (s: Integer) -> void
+    def []=: (arg_0: Integer, arg_1: Unsigned Int64) -> void
+    def to_size_t: () -> Integer
+  end
+end

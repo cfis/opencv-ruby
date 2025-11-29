@@ -1,0 +1,15 @@
+module Cv
+  class QtFont
+    attr_accessor color: Cv::Scalar_≺double≻
+    attr_accessor dx: Float
+    attr_accessor font_face: Integer
+    attr_accessor hscale: Float
+    attr_accessor line_type: Integer
+    attr_accessor name_font: Rice::Buffer≺char const∗≻
+    attr_accessor shear: Float
+    attr_accessor thickness: Integer
+    attr_accessor vscale: Float
+
+    def initialize: () -> void
+  end
+end

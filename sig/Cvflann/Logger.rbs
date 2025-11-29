@@ -1,0 +1,4 @@
+module Cvflann
+  class Logger
+  end
+end

@@ -1,0 +1,5 @@
+module Cv::Detail
+  class Estimator
+    def call: (features: Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻, pairwise_matches: Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻, cameras: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻) -> bool
+  end
+end

@@ -1,0 +1,9 @@
+module Cv::Detail
+  class NoExposureCompensator
+    def apply: (: Integer, : Cv::Point_≺int≻, : Cv::debug_build_guard::InputOutputArray, : Cv::debug_build_guard::InputArray) -> void
+    def feed: (: Std::Vector≺cv꞉꞉Point_≺int≻≻, : Std::Vector≺cv꞉꞉UMat≻, : Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> void
+    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def initialize: () -> void
+    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+  end
+end

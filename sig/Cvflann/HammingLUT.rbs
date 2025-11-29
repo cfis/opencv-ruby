@@ -1,0 +1,6 @@
+module Cvflann
+  class HammingLUT
+    def call: (a: Rice::Buffer≺unsigned char const∗≻, b: Cvflann::ZeroIterator≺unsigned char≻, size: Integer) -> Integer
+    def initialize: () -> void
+  end
+end

@@ -1,0 +1,33 @@
+module Cv
+  class Rect2s
+    attr_accessor height: Integer
+    attr_accessor width: Integer
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+
+    def !=: (arg_0: Cv::Rect_≺short≻) -> bool
+    def +: (arg_0: Cv::Size_≺short≻) -> Cv::Rect_≺short≻
+      | (arg_0: Cv::Point_≺short≻) -> Cv::Rect_≺short≻
+    def initialize: (org: Cv::Point_≺short≻, sz: Cv::Size_≺short≻) -> void
+               | (pt1: Cv::Point_≺short≻, pt2: Cv::Point_≺short≻) -> void
+               | () -> void
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> void
+    def -: (arg_0: Cv::Size_≺short≻) -> Cv::Rect_≺short≻
+      | (arg_0: Cv::Point_≺short≻) -> Cv::Rect_≺short≻
+    def ==: (arg_0: Cv::Rect_≺short≻) -> bool
+    def area: () -> Integer
+    def assign_minus: (arg_0: Cv::Point_≺short≻) -> Cv::Rect_≺short≻
+                 | (arg_0: Cv::Size_≺short≻) -> Cv::Rect_≺short≻
+    def assign_plus: (arg_0: Cv::Size_≺short≻) -> Cv::Rect_≺short≻
+                | (arg_0: Cv::Point_≺short≻) -> Cv::Rect_≺short≻
+    def br: () -> Cv::Point_≺short≻
+    def contains?: (pt: Cv::Point_≺short≻) -> bool
+    def empty?: () -> bool
+    def initialize_copy: (r: Cv::Rect_≺short≻) -> void
+    def inspect: () -> Std::String
+    def size: () -> Cv::Size_≺short≻
+    def tl: () -> Cv::Point_≺short≻
+    def |: (arg_0: Cv::Rect_≺short≻) -> Cv::Rect_≺short≻
+    def |=: (arg_0: Cv::Rect_≺short≻) -> Cv::Rect_≺short≻
+  end
+end

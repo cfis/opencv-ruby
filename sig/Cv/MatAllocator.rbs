@@ -1,0 +1,13 @@
+module Cv
+  class MatAllocator
+    def allocate: (dims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, data: Rice::Buffer≺void∗≻, step: Rice::Buffer≺unsigned Int64∗≻, flags: Enum cv::AccessFlag, usage_flags: Enum cv::UMatUsageFlags) -> Cv::UMatData
+    def allocate?: (data: Cv::UMatData, accessflags: Enum cv::AccessFlag, usage_flags: Enum cv::UMatUsageFlags) -> bool
+    def copy: (srcdata: Cv::UMatData, dstdata: Cv::UMatData, dims: Integer, sz: Rice::Buffer≺unsigned Int64 const∗≻, srcofs: Rice::Buffer≺unsigned Int64 const∗≻, srcstep: Rice::Buffer≺unsigned Int64 const∗≻, dstofs: Rice::Buffer≺unsigned Int64 const∗≻, dststep: Rice::Buffer≺unsigned Int64 const∗≻, sync: bool) -> void
+    def deallocate: (data: Cv::UMatData) -> void
+    def download: (data: Cv::UMatData, dst: Rice::Buffer≺void∗≻, dims: Integer, sz: Rice::Buffer≺unsigned Int64 const∗≻, srcofs: Rice::Buffer≺unsigned Int64 const∗≻, srcstep: Rice::Buffer≺unsigned Int64 const∗≻, dststep: Rice::Buffer≺unsigned Int64 const∗≻) -> void
+    def get_buffer_pool_controller: (id: Rice::Buffer≺char const∗≻) -> Cv::BufferPoolController
+    def map: (data: Cv::UMatData, accessflags: Enum cv::AccessFlag) -> void
+    def unmap: (data: Cv::UMatData) -> void
+    def upload: (data: Cv::UMatData, src: Rice::Buffer≺void const∗≻, dims: Integer, sz: Rice::Buffer≺unsigned Int64 const∗≻, dstofs: Rice::Buffer≺unsigned Int64 const∗≻, dststep: Rice::Buffer≺unsigned Int64 const∗≻, srcstep: Rice::Buffer≺unsigned Int64 const∗≻) -> void
+  end
+end

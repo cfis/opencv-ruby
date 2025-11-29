@@ -1,0 +1,12 @@
+module Cv
+  class MergeMertens
+    def get_contrast_weight: () -> Float
+    def get_exposure_weight: () -> Float
+    def get_saturation_weight: () -> Float
+    def process: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray) -> void
+            | (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, times: Cv::debug_build_guard::InputArray, response: Cv::debug_build_guard::InputArray) -> void
+    def set_contrast_weight: (contrast_weiht: Float) -> void
+    def set_exposure_weight: (exposure_weight: Float) -> void
+    def set_saturation_weight: (saturation_weight: Float) -> void
+  end
+end

@@ -1,0 +1,43 @@
+module Cv
+  class Point3d
+    attr_accessor x: Float
+    attr_accessor y: Float
+    attr_accessor z: Float
+
+    def !=: (arg_0: Cv::Point3_≺double≻) -> bool
+       | (arg_0: Cv::Point3_≺double≻) -> bool
+    def initialize: () -> void
+               | (pt: Cv::Point_≺double≻) -> void
+               | (v: Cv::Vec≺double‚ 3≻) -> void
+               | (_x: Float, _y: Float, _z: Float) -> void
+    def *: (arg_0: Integer) -> Cv::Point3_≺double≻
+      | (arg_0: Float) -> Cv::Point3_≺double≻
+      | (arg_0: Integer) -> Cv::Point3_≺double≻
+    def +: (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+      | (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+    def -: (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+      | (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+    def /: (arg_0: Integer) -> Cv::Point3_≺double≻
+      | (arg_0: Integer) -> Cv::Point3_≺double≻
+      | (arg_0: Float) -> Cv::Point3_≺double≻
+      | (arg_0: Float) -> Cv::Point3_≺double≻
+    def ==: (arg_0: Cv::Point3_≺double≻) -> bool
+       | (arg_0: Cv::Point3_≺double≻) -> bool
+    def assign_divide: (arg_0: Float) -> Cv::Point3_≺double≻
+                  | (arg_0: Integer) -> Cv::Point3_≺double≻
+                  | (arg_0: Integer) -> Cv::Point3_≺double≻
+                  | (arg_0: Float) -> Cv::Point3_≺double≻
+    def assign_minus: (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+                 | (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point3_≺double≻
+                    | (arg_0: Float) -> Cv::Point3_≺double≻
+    def assign_plus: (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+                | (arg_0: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+    def cross: (pt: Cv::Point3_≺double≻) -> Cv::Point3_≺double≻
+    def ddot: (pt: Cv::Point3_≺double≻) -> Float
+    def dot: (pt: Cv::Point3_≺double≻) -> Float
+    def initialize_copy: (pt: Cv::Point3_≺double≻) -> void
+    def inspect: () -> Std::String
+    def to_vec: () -> Cv::Vec≺double‚ 3≻
+  end
+end

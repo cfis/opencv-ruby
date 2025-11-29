@@ -1,0 +1,26 @@
+module Cv
+  class Size2b
+    attr_accessor height: String
+    attr_accessor width: String
+
+    def initialize: () -> void
+               | (pt: Cv::Point_≺unsigned char≻) -> void
+               | (_width: String, _height: String) -> void
+    def !=: (arg_0: Cv::Size_≺unsigned char≻) -> bool
+    def *: (arg_0: String) -> Cv::Size_≺unsigned char≻
+    def +: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Size_≺unsigned char≻
+    def -: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Size_≺unsigned char≻
+    def /: (arg_0: String) -> Cv::Size_≺unsigned char≻
+    def ==: (arg_0: Cv::Size_≺unsigned char≻) -> bool
+    def area: () -> String
+    def assign_divide: (arg_0: String) -> Cv::Size_≺unsigned char≻
+    def assign_minus: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Size_≺unsigned char≻
+    def assign_multiply: (arg_0: String) -> Cv::Size_≺unsigned char≻
+    def assign_plus: (arg_0: Cv::Size_≺unsigned char≻) -> Cv::Size_≺unsigned char≻
+    def empty?: () -> bool
+    def aspect_ratio: () -> Float
+    def initialize_copy: (sz: Cv::Size_≺unsigned char≻) -> void
+    def inspect: () -> Std::String
+    def to_s: () -> Std::String
+  end
+end

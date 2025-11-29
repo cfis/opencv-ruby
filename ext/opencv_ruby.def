@@ -1,0 +1,4 @@
+LIBRARY opencv_ruby
+
+EXPORTS
+  Init_opencv_ruby

@@ -1,0 +1,22 @@
+module Cv
+  class Vec2f
+    def []: (i: Integer) -> Float
+       | (i: Integer) -> Float
+    def initialize: () -> void
+               | (values: Rice::Buffer≺float const∗≻) -> void
+               | (v0: Float, v1: Float) -> void
+               | (a: Cv::Matx≺float‚ 2‚ 1≻, b: Cv::Matx≺float‚ 2‚ 1≻, : Cv::MatxAddOp) -> void
+               | (a: Cv::Matx≺float‚ 2‚ 1≻, b: Cv::Matx≺float‚ 2‚ 1≻, : Cv::MatxSubOp) -> void
+    def []=: (arg_0: Integer, arg_1: Float) -> void
+    def assign: (rhs: Cv::Vec≺float‚ 2≻) -> Cv::Vec≺float‚ 2≻
+    def call: (i: Integer) -> Float
+         | (i: Integer) -> Float
+    def conj: () -> Cv::Vec≺float‚ 2≻
+    def count: () -> Integer
+    def initialize_copy: (v: Cv::Vec≺float‚ 2≻) -> void
+    def inspect: () -> Std::String
+    def mul: (v: Cv::Vec≺float‚ 2≻) -> Cv::Vec≺float‚ 2≻
+    def to_a: () -> Integer
+    def to_s: () -> Std::String
+  end
+end

@@ -1,0 +1,5 @@
+module Cv
+  class CalibrateCRF
+    def process: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, times: Cv::debug_build_guard::InputArray) -> void
+  end
+end

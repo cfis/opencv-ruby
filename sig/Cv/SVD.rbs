@@ -1,0 +1,12 @@
+module Cv
+  class SVD
+    attr_accessor u: Cv::Mat
+    attr_accessor vt: Cv::Mat
+    attr_accessor w: Cv::Mat
+
+    def back_subst: (rhs: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray) -> void
+    def call: (src: Cv::debug_build_guard::InputArray, flags: Integer) -> Cv::SVD
+    def initialize: () -> void
+               | (src: Cv::debug_build_guard::InputArray, flags: Integer) -> void
+  end
+end

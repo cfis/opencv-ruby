@@ -1,0 +1,23 @@
+module Cv
+  class ORB
+    def get_default_name: () -> Std::String
+    def get_edge_threshold: () -> Integer
+    def get_fast_threshold: () -> Integer
+    def get_first_level: () -> Integer
+    def get_max_features: () -> Integer
+    def get_n_levels: () -> Integer
+    def get_patch_size: () -> Integer
+    def get_scale_factor: () -> Float
+    def get_score_type: () -> Enum cv::ORB::ScoreType
+    def get_wta_k: () -> Integer
+    def set_edge_threshold: (edge_threshold: Integer) -> void
+    def set_fast_threshold: (fast_threshold: Integer) -> void
+    def set_first_level: (first_level: Integer) -> void
+    def set_max_features: (max_features: Integer) -> void
+    def set_n_levels: (nlevels: Integer) -> void
+    def set_patch_size: (patch_size: Integer) -> void
+    def set_scale_factor: (scale_factor: Float) -> void
+    def set_score_type: (score_type: Enum cv::ORB::ScoreType) -> void
+    def set_wta_k: (wta_k: Integer) -> void
+  end
+end

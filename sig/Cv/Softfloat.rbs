@@ -1,0 +1,42 @@
+module Cv
+  class Softfloat
+    attr_accessor v: Integer
+
+    def !=: (: Cv::Softfloat) -> bool
+    def %: (: Cv::Softfloat) -> Cv::Softfloat
+    def +: (: Cv::Softfloat) -> Cv::Softfloat
+    def -: () -> Cv::Softfloat
+      | (: Cv::Softfloat) -> Cv::Softfloat
+    def /: (: Cv::Softfloat) -> Cv::Softfloat
+    def <: (: Cv::Softfloat) -> bool
+    def <=: (: Cv::Softfloat) -> bool
+    def ==: (: Cv::Softfloat) -> bool
+    def >: (: Cv::Softfloat) -> bool
+    def initialize: () -> void
+               | (: Integer) -> void
+               | (: Integer) -> void
+               | (: Integer) -> void
+               | (: Integer) -> void
+               | (a: Float) -> void
+    def >=: (: Cv::Softfloat) -> bool
+    def assign: (c: Cv::Softfloat) -> Cv::Softfloat
+    def assign_divide: (a: Cv::Softfloat) -> Cv::Softfloat
+    def assign_modulus: (a: Cv::Softfloat) -> Cv::Softfloat
+    def assign_plus: (a: Cv::Softfloat) -> Cv::Softfloat
+    def dereference: (: Cv::Softfloat) -> Cv::Softfloat
+    def assign_minus: (a: Cv::Softfloat) -> Cv::Softfloat
+    def assign_multiply: (a: Cv::Softfloat) -> Cv::Softfloat
+    def get_exp: () -> Integer
+    def get_frac: () -> Cv::Softfloat
+    def get_sign?: () -> bool
+    def inf?: () -> bool
+    def initialize_copy: (c: Cv::Softfloat) -> void
+    def na_n?: () -> bool
+    def set_exp: (e: Integer) -> Cv::Softfloat
+    def set_frac: (s: Cv::Softfloat) -> Cv::Softfloat
+    def set_sign: (sign: bool) -> Cv::Softfloat
+    def subnormal?: () -> bool
+    def to_float: () -> Float
+    def to_softdouble: () -> Cv::Softdouble
+  end
+end

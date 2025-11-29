@@ -1,0 +1,6 @@
+module Cv
+  class MergeDebevec
+    def process: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, times: Cv::debug_build_guard::InputArray) -> void
+            | (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, times: Cv::debug_build_guard::InputArray, response: Cv::debug_build_guard::InputArray) -> void
+  end
+end

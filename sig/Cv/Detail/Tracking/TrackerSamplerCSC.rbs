@@ -1,0 +1,7 @@
+module Cv::Detail::Tracking
+  class TrackerSamplerCSC
+    def initialize: (parameters: Cv::detail::tracking::TrackerSamplerCSC::Params) -> void
+    def sampling?: (image: Cv::Mat, bounding_box: Cv::Rect_≺int≻, sample: Std::Vector≺cv꞉꞉Mat≻) -> bool
+    def set_mode: (sampling_mode: Integer) -> void
+  end
+end

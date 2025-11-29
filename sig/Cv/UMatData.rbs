@@ -1,0 +1,31 @@
+module Cv
+  class UMatData
+    attr_accessor allocator_context: Std::SharedPtr≺void≻
+    attr_accessor allocator_flags_: Integer
+    attr_accessor curr_allocator: Cv::MatAllocator
+    attr_accessor data: Rice::Buffer≺unsigned char∗≻
+    attr_accessor flags: Enum cv::UMatData::MemoryFlag
+    attr_accessor handle: Rice::Buffer≺void∗≻
+    attr_accessor mapcount: Integer
+    attr_accessor origdata: Rice::Buffer≺unsigned char∗≻
+    attr_accessor original_u_mat_data: Cv::UMatData
+    attr_accessor prev_allocator: Cv::MatAllocator
+    attr_accessor refcount: Integer
+    attr_accessor size: Integer
+    attr_accessor urefcount: Integer
+    attr_accessor userdata: Rice::Buffer≺void∗≻
+
+    def initialize: (allocator: Cv::MatAllocator) -> void
+    def copy_on_map?: () -> bool
+    def device_copy_obsolete?: () -> bool
+    def device_mem_mapped?: () -> bool
+    def host_copy_obsolete?: () -> bool
+    def lock: () -> void
+    def mark_device_copy_obsolete: (flag: bool) -> void
+    def mark_device_mem_mapped: (flag: bool) -> void
+    def mark_host_copy_obsolete: (flag: bool) -> void
+    def temp_copied_u_mat?: () -> bool
+    def temp_u_mat?: () -> bool
+    def unlock: () -> void
+  end
+end

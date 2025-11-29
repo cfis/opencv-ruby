@@ -1,0 +1,13 @@
+module Cv
+  class FaceDetectorYN
+    def detect: (image: Cv::debug_build_guard::InputArray, faces: Cv::debug_build_guard::OutputArray) -> Integer
+    def get_input_size: () -> Cv::Size_≺int≻
+    def get_nms_threshold: () -> Float
+    def get_score_threshold: () -> Float
+    def get_top_k: () -> Integer
+    def set_input_size: (input_size: Cv::Size_≺int≻) -> void
+    def set_nms_threshold: (nms_threshold: Float) -> void
+    def set_score_threshold: (score_threshold: Float) -> void
+    def set_top_k: (top_k: Integer) -> void
+  end
+end

@@ -1,0 +1,17 @@
+module Cv
+  class RNG
+    attr_accessor state: Integer
+
+    def initialize: () -> void
+               | (state: Integer) -> void
+    def ==: (other: Cv::RNG) -> bool
+    def call: () -> Integer
+         | (n: Integer) -> Integer
+    def fill: (mat: Cv::debug_build_guard::InputOutputArray, dist_type: Integer, a: Cv::debug_build_guard::InputArray, b: Cv::debug_build_guard::InputArray, saturate_range: bool) -> void
+    def gaussian: (sigma: Float) -> Float
+    def next: () -> Integer
+    def uniform: (a: Float, b: Float) -> Float
+            | (a: Float, b: Float) -> Float
+            | (a: Integer, b: Integer) -> Integer
+  end
+end

@@ -1,0 +1,29 @@
+module Cv
+  class MatOp
+    def abs: (expr: Cv::MatExpr, res: Cv::MatExpr) -> void
+    def add: (expr1: Cv::MatExpr, s: Cv::Scalar_≺double≻, res: Cv::MatExpr) -> void
+        | (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr) -> void
+    def assign: (expr: Cv::MatExpr, m: Cv::Mat, type: Integer) -> void
+    def aug_assign_add: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_and: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_divide: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_multiply: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_or: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_subtract: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def aug_assign_xor: (expr: Cv::MatExpr, m: Cv::Mat) -> void
+    def diag: (expr: Cv::MatExpr, d: Integer, res: Cv::MatExpr) -> void
+    def divide: (s: Float, expr: Cv::MatExpr, res: Cv::MatExpr) -> void
+           | (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr, scale: Float) -> void
+    def element_wise?: (expr: Cv::MatExpr) -> bool
+    def invert: (expr: Cv::MatExpr, method: Integer, res: Cv::MatExpr) -> void
+    def matmul: (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr) -> void
+    def multiply: (expr1: Cv::MatExpr, s: Float, res: Cv::MatExpr) -> void
+             | (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr, scale: Float) -> void
+    def roi: (expr: Cv::MatExpr, row_range: Cv::Range, col_range: Cv::Range, res: Cv::MatExpr) -> void
+    def size: (expr: Cv::MatExpr) -> Cv::Size_≺int≻
+    def subtract: (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr) -> void
+             | (s: Cv::Scalar_≺double≻, expr: Cv::MatExpr, res: Cv::MatExpr) -> void
+    def transpose: (expr: Cv::MatExpr, res: Cv::MatExpr) -> void
+    def type: (expr: Cv::MatExpr) -> Integer
+  end
+end

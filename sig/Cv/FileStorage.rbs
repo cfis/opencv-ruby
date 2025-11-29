@@ -1,0 +1,37 @@
+module Cv
+  class FileStorage
+    attr_accessor elname: Std::String
+    attr_accessor state: Integer
+
+    def <<: (arg_0: Std::String) -> Cv::FileStorage
+       | (arg_0: Rice::Buffer≺char const∗≻) -> Cv::FileStorage
+       | (arg_0: String) -> Cv::FileStorage
+       | (arg_0: Bool) -> Cv::FileStorage
+       | (arg_0: Double) -> Cv::FileStorage
+       | (arg_0: Float) -> Cv::FileStorage
+       | (arg_0: Short) -> Cv::FileStorage
+       | (arg_0: Int) -> Cv::FileStorage
+       | (arg_0: Cv::Mat) -> Cv::FileStorage
+       | (arg_0: Std::Vector≺string≻) -> Cv::FileStorage
+    def initialize: (filename: Std::String, flags: Integer, encoding: Std::String) -> void
+               | () -> void
+    def []: (nodename: Std::String) -> Cv::FileNode
+       | (nodename: Rice::Buffer≺char const∗≻) -> Cv::FileNode
+    def end_write_struct: () -> void
+    def get_first_top_level_node: () -> Cv::FileNode
+    def get_format: () -> Integer
+    def open?: (filename: Std::String, flags: Integer, encoding: Std::String) -> bool
+    def opened?: () -> bool
+    def release: () -> void
+    def release_and_get_string: () -> Std::String
+    def root: (streamidx: Integer) -> Cv::FileNode
+    def start_write_struct: (name: Std::String, flags: Integer, type_name: Std::String) -> void
+    def write: (name: Std::String, val: Std::String) -> void
+          | (name: Std::String, val: Integer) -> void
+          | (name: Std::String, val: Cv::Mat) -> void
+          | (name: Std::String, val: Std::Vector≺string≻) -> void
+          | (name: Std::String, val: Float) -> void
+    def write_comment: (comment: Std::String, append: bool) -> void
+    def write_raw: (fmt: Std::String, vec: Rice::Buffer≺void const∗≻, len: Integer) -> void
+  end
+end

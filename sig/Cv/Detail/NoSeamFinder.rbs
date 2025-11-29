@@ -1,0 +1,6 @@
+module Cv::Detail
+  class NoSeamFinder
+    def find: (: Std::Vector≺cv꞉꞉UMat≻, : Std::Vector≺cv꞉꞉Point_≺int≻≻, : Std::Vector≺cv꞉꞉UMat≻) -> void
+    def initialize: () -> void
+  end
+end

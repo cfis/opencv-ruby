@@ -1,0 +1,43 @@
+module Cv
+  class Point3i
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+    attr_accessor z: Integer
+
+    def !=: (arg_0: Cv::Point3_≺int≻) -> bool
+       | (arg_0: Cv::Point3_≺int≻) -> bool
+    def initialize: () -> void
+               | (pt: Cv::Point_≺int≻) -> void
+               | (v: Cv::Vec≺int‚ 3≻) -> void
+               | (_x: Integer, _y: Integer, _z: Integer) -> void
+    def *: (arg_0: Integer) -> Cv::Point3_≺int≻
+      | (arg_0: Float) -> Cv::Point3_≺int≻
+      | (arg_0: Integer) -> Cv::Point3_≺int≻
+    def +: (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+      | (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+    def -: (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+      | (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+    def /: (arg_0: Integer) -> Cv::Point3_≺int≻
+      | (arg_0: Integer) -> Cv::Point3_≺int≻
+      | (arg_0: Float) -> Cv::Point3_≺int≻
+      | (arg_0: Float) -> Cv::Point3_≺int≻
+    def ==: (arg_0: Cv::Point3_≺int≻) -> bool
+       | (arg_0: Cv::Point3_≺int≻) -> bool
+    def assign_divide: (arg_0: Float) -> Cv::Point3_≺int≻
+                  | (arg_0: Integer) -> Cv::Point3_≺int≻
+                  | (arg_0: Integer) -> Cv::Point3_≺int≻
+                  | (arg_0: Float) -> Cv::Point3_≺int≻
+    def assign_minus: (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+                 | (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point3_≺int≻
+                    | (arg_0: Float) -> Cv::Point3_≺int≻
+    def assign_plus: (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+                | (arg_0: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+    def cross: (pt: Cv::Point3_≺int≻) -> Cv::Point3_≺int≻
+    def ddot: (pt: Cv::Point3_≺int≻) -> Float
+    def dot: (pt: Cv::Point3_≺int≻) -> Integer
+    def initialize_copy: (pt: Cv::Point3_≺int≻) -> void
+    def inspect: () -> Std::String
+    def to_vec: () -> Cv::Vec≺int‚ 3≻
+  end
+end

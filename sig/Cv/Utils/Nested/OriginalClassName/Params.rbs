@@ -1,0 +1,8 @@
+module Cv::Utils::Nested::OriginalClassName
+  class Params
+    attr_accessor float_value: Float
+    attr_accessor int_value: Integer
+
+    def initialize: (int_param: Integer, float_param: Float) -> void
+  end
+end

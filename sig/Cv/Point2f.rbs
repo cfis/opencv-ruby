@@ -1,0 +1,45 @@
+module Cv
+  class Point2f
+    attr_accessor x: Float
+    attr_accessor y: Float
+
+    def initialize: () -> void
+               | (sz: Cv::Size_≺float≻) -> void
+               | (v: Cv::Vec≺float‚ 2≻) -> void
+               | (_x: Float, _y: Float) -> void
+    def !=: (arg_0: Cv::Point_≺float≻) -> bool
+       | (arg_0: Cv::Point_≺float≻) -> bool
+    def *: (arg_0: Float) -> Cv::Point_≺float≻
+      | (arg_0: Integer) -> Cv::Point_≺float≻
+      | (arg_0: Integer) -> Cv::Point_≺float≻
+    def +: (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+      | (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+    def -: (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+      | (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+    def /: (arg_0: Float) -> Cv::Point_≺float≻
+      | (arg_0: Integer) -> Cv::Point_≺float≻
+      | (arg_0: Integer) -> Cv::Point_≺float≻
+      | (arg_0: Float) -> Cv::Point_≺float≻
+    def ==: (arg_0: Cv::Point_≺float≻) -> bool
+       | (arg_0: Cv::Point_≺float≻) -> bool
+    def assign_divide: (arg_0: Integer) -> Cv::Point_≺float≻
+                  | (arg_0: Float) -> Cv::Point_≺float≻
+                  | (arg_0: Float) -> Cv::Point_≺float≻
+                  | (arg_0: Integer) -> Cv::Point_≺float≻
+    def assign_minus: (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+                 | (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point_≺float≻
+                    | (arg_0: Float) -> Cv::Point_≺float≻
+    def assign_plus: (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+                | (arg_0: Cv::Point_≺float≻) -> Cv::Point_≺float≻
+    def cross: (pt: Cv::Point_≺float≻) -> Float
+    def ddot: (pt: Cv::Point_≺float≻) -> Float
+    def dot: (pt: Cv::Point_≺float≻) -> Float
+    def initialize_copy: (pt: Cv::Point_≺float≻) -> void
+    def inside?: (r: Cv::Rect_≺float≻) -> bool
+    def inspect: () -> Std::String
+    def norm: () -> Float
+    def to_s: () -> Std::String
+    def to_vec: () -> Cv::Vec≺float‚ 2≻
+  end
+end

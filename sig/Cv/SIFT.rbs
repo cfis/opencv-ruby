@@ -1,0 +1,15 @@
+module Cv
+  class SIFT
+    def get_contrast_threshold: () -> Float
+    def get_default_name: () -> Std::String
+    def get_edge_threshold: () -> Float
+    def get_n_features: () -> Integer
+    def get_n_octave_layers: () -> Integer
+    def get_sigma: () -> Float
+    def set_contrast_threshold: (contrast_threshold: Float) -> void
+    def set_edge_threshold: (edge_threshold: Float) -> void
+    def set_n_features: (max_features: Integer) -> void
+    def set_n_octave_layers: (n_octave_layers: Integer) -> void
+    def set_sigma: (sigma: Float) -> void
+  end
+end

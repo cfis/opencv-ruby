@@ -1,0 +1,5 @@
+module Cvflann
+  class SavedIndexParams
+    def initialize: (filename: Std::String) -> void
+  end
+end

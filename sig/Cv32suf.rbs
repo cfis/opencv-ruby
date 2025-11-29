@@ -1,0 +1,8 @@
+module 
+  class Cv32suf
+    attr_accessor f: Float
+    attr_accessor i: Integer
+    attr_accessor u: Integer
+
+  end
+end

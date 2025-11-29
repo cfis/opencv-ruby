@@ -1,0 +1,42 @@
+module Cv::Aruco
+  class DetectorParameters
+    attr_accessor adaptive_thresh_constant: Float
+    attr_accessor adaptive_thresh_win_size_max: Integer
+    attr_accessor adaptive_thresh_win_size_min: Integer
+    attr_accessor adaptive_thresh_win_size_step: Integer
+    attr_accessor april_tag_critical_rad: Float
+    attr_accessor april_tag_deglitch: Integer
+    attr_accessor april_tag_max_line_fit_mse: Float
+    attr_accessor april_tag_max_nmaxima: Integer
+    attr_accessor april_tag_min_cluster_pixels: Integer
+    attr_accessor april_tag_min_white_black_diff: Integer
+    attr_accessor april_tag_quad_decimate: Float
+    attr_accessor april_tag_quad_sigma: Float
+    attr_accessor corner_refinement_max_iterations: Integer
+    attr_accessor corner_refinement_method: Integer
+    attr_accessor corner_refinement_min_accuracy: Float
+    attr_accessor corner_refinement_win_size: Integer
+    attr_accessor detect_inverted_marker: bool
+    attr_accessor error_correction_rate: Float
+    attr_accessor marker_border_bits: Integer
+    attr_accessor max_erroneous_bits_in_border_rate: Float
+    attr_accessor max_marker_perimeter_rate: Float
+    attr_accessor min_corner_distance_rate: Float
+    attr_accessor min_distance_to_border: Integer
+    attr_accessor min_group_distance: Float
+    attr_accessor min_marker_distance_rate: Float
+    attr_accessor min_marker_length_ratio_original_img: Float
+    attr_accessor min_marker_perimeter_rate: Float
+    attr_accessor min_otsu_std_dev: Float
+    attr_accessor min_side_length_canonical_img: Integer
+    attr_accessor perspective_remove_ignored_margin_per_cell: Float
+    attr_accessor perspective_remove_pixel_per_cell: Integer
+    attr_accessor polygonal_approx_accuracy_rate: Float
+    attr_accessor relative_corner_refinment_win_size: Float
+    attr_accessor use_aruco3_detection: bool
+
+    def initialize: () -> void
+    def read_detector_parameters?: (fn: Cv::FileNode) -> bool
+    def write_detector_parameters?: (fs: Cv::FileStorage, name: Std::String) -> bool
+  end
+end

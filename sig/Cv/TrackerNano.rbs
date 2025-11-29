@@ -1,0 +1,5 @@
+module Cv
+  class TrackerNano
+    def get_tracking_score: () -> Float
+  end
+end

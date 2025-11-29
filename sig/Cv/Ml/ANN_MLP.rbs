@@ -1,0 +1,35 @@
+module Cv::Ml
+  class ANN_MLP
+    def get_anneal_cooling_ratio: () -> Float
+    def get_anneal_final_t: () -> Float
+    def get_anneal_initial_t: () -> Float
+    def get_anneal_ite_per_step: () -> Integer
+    def get_backprop_momentum_scale: () -> Float
+    def get_backprop_weight_scale: () -> Float
+    def get_layer_sizes: () -> Cv::Mat
+    def get_rprop_dw0: () -> Float
+    def get_rprop_dw_max: () -> Float
+    def get_rprop_dw_min: () -> Float
+    def get_rprop_dw_minus: () -> Float
+    def get_rprop_dw_plus: () -> Float
+    def get_term_criteria: () -> Cv::TermCriteria
+    def get_train_method: () -> Integer
+    def get_weights: (layer_idx: Integer) -> Cv::Mat
+    def set_activation_function: (type: Integer, param1: Float, param2: Float) -> void
+    def set_anneal_cooling_ratio: (val: Float) -> void
+    def set_anneal_energy_rng: (rng: Cv::RNG) -> void
+    def set_anneal_final_t: (val: Float) -> void
+    def set_anneal_initial_t: (val: Float) -> void
+    def set_anneal_ite_per_step: (val: Integer) -> void
+    def set_backprop_momentum_scale: (val: Float) -> void
+    def set_backprop_weight_scale: (val: Float) -> void
+    def set_layer_sizes: (_layer_sizes: Cv::debug_build_guard::InputArray) -> void
+    def set_rprop_dw0: (val: Float) -> void
+    def set_rprop_dw_max: (val: Float) -> void
+    def set_rprop_dw_min: (val: Float) -> void
+    def set_rprop_dw_minus: (val: Float) -> void
+    def set_rprop_dw_plus: (val: Float) -> void
+    def set_term_criteria: (val: Cv::TermCriteria) -> void
+    def set_train_method: (method: Integer, param1: Float, param2: Float) -> void
+  end
+end

@@ -1,0 +1,5 @@
+module Cv::Ocl
+  class OpenCLExecutionContextScope
+    def initialize: (ctx: Cv::ocl::OpenCLExecutionContext) -> void
+  end
+end

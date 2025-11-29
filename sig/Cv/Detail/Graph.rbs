@@ -1,0 +1,8 @@
+module Cv::Detail
+  class Graph
+    def add_edge: (from: Integer, to: Integer, weight: Float) -> void
+    def create: (num_vertices: Integer) -> void
+    def initialize: (num_vertices: Integer) -> void
+    def num_vertices: () -> Integer
+  end
+end

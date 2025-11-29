@@ -1,0 +1,6 @@
+module Cv::Detail
+  class TimelapserCrop
+    def initialize: () -> void
+               | (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, sizes: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> void
+  end
+end

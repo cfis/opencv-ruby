@@ -1,0 +1,45 @@
+module Cv
+  class Point2s
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+
+    def initialize: () -> void
+               | (sz: Cv::Size_≺short≻) -> void
+               | (v: Cv::Vec≺short‚ 2≻) -> void
+               | (_x: Integer, _y: Integer) -> void
+    def !=: (arg_0: Cv::Point_≺short≻) -> bool
+       | (arg_0: Cv::Point_≺short≻) -> bool
+    def *: (arg_0: Float) -> Cv::Point_≺short≻
+      | (arg_0: Integer) -> Cv::Point_≺short≻
+      | (arg_0: Integer) -> Cv::Point_≺short≻
+    def +: (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+      | (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+    def -: (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+      | (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+    def /: (arg_0: Float) -> Cv::Point_≺short≻
+      | (arg_0: Integer) -> Cv::Point_≺short≻
+      | (arg_0: Integer) -> Cv::Point_≺short≻
+      | (arg_0: Float) -> Cv::Point_≺short≻
+    def ==: (arg_0: Cv::Point_≺short≻) -> bool
+       | (arg_0: Cv::Point_≺short≻) -> bool
+    def assign_divide: (arg_0: Integer) -> Cv::Point_≺short≻
+                  | (arg_0: Float) -> Cv::Point_≺short≻
+                  | (arg_0: Float) -> Cv::Point_≺short≻
+                  | (arg_0: Integer) -> Cv::Point_≺short≻
+    def assign_minus: (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+                 | (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+    def assign_multiply: (arg_0: Float) -> Cv::Point_≺short≻
+                    | (arg_0: Float) -> Cv::Point_≺short≻
+    def assign_plus: (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+                | (arg_0: Cv::Point_≺short≻) -> Cv::Point_≺short≻
+    def cross: (pt: Cv::Point_≺short≻) -> Float
+    def ddot: (pt: Cv::Point_≺short≻) -> Float
+    def dot: (pt: Cv::Point_≺short≻) -> Integer
+    def initialize_copy: (pt: Cv::Point_≺short≻) -> void
+    def inside?: (r: Cv::Rect_≺short≻) -> bool
+    def inspect: () -> Std::String
+    def norm: () -> Float
+    def to_s: () -> Std::String
+    def to_vec: () -> Cv::Vec≺short‚ 2≻
+  end
+end

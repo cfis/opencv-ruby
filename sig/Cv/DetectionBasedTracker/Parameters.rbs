@@ -1,0 +1,8 @@
+module Cv::DetectionBasedTracker
+  class Parameters
+    attr_accessor max_track_lifetime: Integer
+    attr_accessor min_detection_period: Integer
+
+    def initialize: () -> void
+  end
+end

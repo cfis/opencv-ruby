@@ -1,0 +1,10 @@
+module Cv::Ocl
+  class Image2D
+    def assign: (i: Cv::ocl::Image2D) -> Cv::ocl::Image2D
+           | (: Cv::ocl::Image2D) -> Cv::ocl::Image2D
+    def initialize: () -> void
+               | (src: Cv::UMat, norm: bool, alias: bool) -> void
+    def initialize_copy: (i: Cv::ocl::Image2D) -> void
+    def ptr: () -> Rice::Buffer≺void∗≻
+  end
+end

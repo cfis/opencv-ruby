@@ -1,0 +1,24 @@
+module Cv::Ocl
+  class Kernel
+    def initialize: () -> void
+               | (kname: Rice::Buffer≺char const∗≻, prog: Cv::ocl::Program) -> void
+               | (kname: Rice::Buffer≺char const∗≻, prog: Cv::ocl::ProgramSource, buildopts: Std::String, errmsg: Std::String) -> void
+    def assign: (k: Cv::ocl::Kernel) -> Cv::ocl::Kernel
+           | (k: Cv::ocl::Kernel) -> Cv::ocl::Kernel
+    def compile_work_group_size?: (wsz: Rice::Buffer≺unsigned Int64∗≻) -> bool
+    def create?: (kname: Rice::Buffer≺char const∗≻, prog: Cv::ocl::Program) -> bool
+            | (kname: Rice::Buffer≺char const∗≻, prog: Cv::ocl::ProgramSource, buildopts: Std::String, errmsg: Std::String) -> bool
+    def empty?: () -> bool
+    def initialize_copy: (k: Cv::ocl::Kernel) -> void
+    def local_mem_size: () -> Integer
+    def prefered_work_group_size_multiple: () -> Integer
+    def ptr: () -> Rice::Buffer≺void∗≻
+    def run_profiling: (dims: Integer, globalsize: Rice::Buffer≺unsigned Int64∗≻, localsize: Rice::Buffer≺unsigned Int64∗≻, q: Cv::ocl::Queue) -> Integer
+    def run_task?: (sync: bool, q: Cv::ocl::Queue) -> bool
+    def set: (i: Integer, image_2d: Cv::ocl::Image2D) -> Integer
+        | (i: Integer, arg: Cv::ocl::KernelArg) -> Integer
+        | (i: Integer, m: Cv::UMat) -> Integer
+        | (i: Integer, value: Rice::Buffer≺void const∗≻, sz: Integer) -> Integer
+    def work_group_size: () -> Integer
+  end
+end

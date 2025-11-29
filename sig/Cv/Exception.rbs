@@ -1,0 +1,16 @@
+module Cv
+  class Exception
+    attr_accessor code: Integer
+    attr_accessor err: Std::String
+    attr_accessor file: Std::String
+    attr_accessor func: Std::String
+    attr_accessor line: Integer
+    attr_accessor msg: Std::String
+
+    def _dump_data: () -> Rice::Hash
+    def format_message: () -> void
+    def initialize: () -> void
+               | (_code: Integer, _err: Std::String, _func: Std::String, _file: Std::String, _line: Integer) -> void
+    def message: () -> Rice::Buffer≺char const∗≻
+  end
+end

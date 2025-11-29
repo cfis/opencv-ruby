@@ -1,0 +1,5 @@
+module Cv::Ocl::Context
+  class UserContext
+    def initialize: () -> void
+  end
+end

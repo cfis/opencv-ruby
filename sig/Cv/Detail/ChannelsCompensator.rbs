@@ -1,0 +1,14 @@
+module Cv::Detail
+  class ChannelsCompensator
+    def apply: (index: Integer, corner: Cv::Point_≺int≻, image: Cv::debug_build_guard::InputOutputArray, mask: Cv::debug_build_guard::InputArray) -> void
+    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> void
+    def initialize: (nr_feeds: Integer) -> void
+    def gains: () -> Std::Vector≺cv꞉꞉Scalar_≺double≻≻
+    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def get_nr_feeds: () -> Integer
+    def get_similarity_threshold: () -> Float
+    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def set_nr_feeds: (nr_feeds: Integer) -> void
+    def set_similarity_threshold: (similarity_threshold: Float) -> void
+  end
+end

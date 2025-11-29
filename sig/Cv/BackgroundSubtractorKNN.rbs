@@ -1,0 +1,18 @@
+module Cv
+  class BackgroundSubtractorKNN
+    def get_detect_shadows?: () -> bool
+    def get_dist2_threshold: () -> Float
+    def get_history: () -> Integer
+    def get_n_samples: () -> Integer
+    def get_shadow_threshold: () -> Float
+    def get_shadow_value: () -> Integer
+    def getk_nn_samples: () -> Integer
+    def set_detect_shadows: (detect_shadows: bool) -> void
+    def set_dist2_threshold: (_dist2_threshold: Float) -> void
+    def set_history: (history: Integer) -> void
+    def set_n_samples: (_n_n: Integer) -> void
+    def set_shadow_threshold: (threshold: Float) -> void
+    def set_shadow_value: (value: Integer) -> void
+    def setk_nn_samples: (_nk_nn: Integer) -> void
+  end
+end

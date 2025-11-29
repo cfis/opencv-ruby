@@ -1,0 +1,31 @@
+{
+  "builtin-baseline": "74e6536215718009aae747d86d84b78376bf9e09",
+  "dependencies": [
+    {
+      "name": "opencv4",
+      "features": [
+        "calib3d",
+        "directml",
+        "dnn",
+        "dshow",
+        "ffmpeg",
+        "fs",
+        "gapi",
+        "highgui",
+        "intrinsics",
+        "jpeg",
+        "msmf",
+        "openmp",
+        "png",
+        "python",
+        "quirc",
+        "thread",
+        "tiff",
+        "webp",
+        "win32ui"]
+    },
+    {
+      "name": "libffi"
+    }
+  ]
+}

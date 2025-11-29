@@ -1,0 +1,38 @@
+module Cv::Cuda
+  class GpuMatND
+    attr_accessor dims: Integer
+    attr_accessor flags: Integer
+    attr_accessor size: Std::Vector≺int≻
+    attr_accessor step: Std::Vector≺unsigned Int64≻
+
+    def initialize: () -> void
+               | (size: Std::Vector≺int≻, type: Integer) -> void
+               | (size: Std::Vector≺int≻, type: Integer, data: Rice::Buffer≺void∗≻, step: Std::Vector≺unsigned Int64≻) -> void
+    def assign: (: Cv::cuda::GpuMatND) -> Cv::cuda::GpuMatND
+           | (: Cv::cuda::GpuMatND) -> Cv::cuda::GpuMatND
+    def call: (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::cuda::GpuMatND
+         | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::cuda::GpuMat
+    def clone: () -> Cv::cuda::GpuMatND
+          | (stream: Cv::cuda::Stream) -> Cv::cuda::GpuMatND
+    def continuous?: () -> bool
+    def create: (size: Std::Vector≺int≻, type: Integer) -> void
+    def create_gpu_mat_header: () -> Cv::cuda::GpuMat
+                          | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::cuda::GpuMat
+    def download: (dst: Cv::debug_build_guard::OutputArray) -> void
+             | (dst: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
+    def elem_size: () -> Integer
+    def elem_size1: () -> Integer
+    def empty?: () -> bool
+    def external?: () -> bool
+    def initialize_copy: (: Cv::cuda::GpuMatND) -> void
+    def release: () -> void
+    def submatrix?: () -> bool
+    def swap: (m: Cv::cuda::GpuMatND) -> void
+    def to_gpu_mat: () -> Cv::cuda::GpuMat
+    def total: () -> Integer
+    def total_mem_size: () -> Integer
+    def type: () -> Integer
+    def upload: (src: Cv::debug_build_guard::InputArray) -> void
+           | (src: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream) -> void
+  end
+end

@@ -1,0 +1,5 @@
+module Cv::Detail
+  class SeamFinder
+    def find: (src: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> void
+  end
+end

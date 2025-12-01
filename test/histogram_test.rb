@@ -14,11 +14,11 @@ class HistogramTest < OpenCVTestCase
     image_path = self.sample_path("sky.jpg")
     image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_COLOR)
 
-		channels_buffer = Rice::Buffer≺int≻.new(channels)
-		hist_sizes_buffer = Rice::Buffer≺int≻.new(hist_sizes)
-		hist_ranges_buffer = Rice::Buffer≺float∗≻.new(hist_ranges)
+    channels_buffer = Rice::Buffer≺int≻.new(channels)
+    hist_sizes_buffer = Rice::Buffer≺int≻.new(hist_sizes)
+    hist_ranges_buffer = Rice::Buffer≺float∗≻.new(hist_ranges)
 
-		histogram = Cv::SparseMat1f.new
+    histogram = Cv::SparseMat1f.new
     Cv::calc_hist(image, 1, channels_buffer.data, mask,
                   histogram,
                   hist_ranges_buffer.size, hist_sizes_buffer.data, hist_ranges_buffer.data)
@@ -73,8 +73,8 @@ class HistogramTest < OpenCVTestCase
     histogram = create_histogram(image, channels, hist_sizes, hist_ranges)
 
     expected = [0.0, 60741.0, 65602.0, 81889.0, 119619.0, 65918.0, 0.0, 0.0]
-		filtered, threshold = histogram.threshold(35_000, 0, Cv::ThresholdTypes::THRESH_TOZERO)
-		assert_equal(35_000, threshold)
+    filtered, threshold = histogram.threshold(35_000, 0, Cv::ThresholdTypes::THRESH_TOZERO)
+    assert_equal(35_000, threshold)
     assert_in_delta_array(expected, filtered.to_a, 0.01)
   end
 
@@ -98,7 +98,7 @@ class HistogramTest < OpenCVTestCase
     hist_ranges = [0, 255, 0, 255]
     image = Cv::imread(self.sample_path("starry_night.jpg"), Cv::ImreadModes::IMREAD_COLOR)
     histogram = create_histogram(image, channels, hist_sizes, hist_ranges)
-    normalized = histogram.normalize(alpha: 0, beta: 255, norm_type: Cv::NormTypes::NORM_MINMAX)
+    histogram.normalize(alpha: 0, beta: 255, norm_type: Cv::NormTypes::NORM_MINMAX)
 
     scale = 20
     image = Cv::Mat.new(hist_sizes[0] * scale, hist_sizes[1] * scale, CV_8UC3)
@@ -114,9 +114,9 @@ class HistogramTest < OpenCVTestCase
   end
 
   def test_calc_histogram_sparse
-		channels = [0]
-		hist_sizes = [8]
-		hist_ranges = [[0, 255]]
+    channels = [0]
+    hist_sizes = [8]
+    hist_ranges = [[0, 255]]
     histogram = create_sparse_histogram(channels, hist_sizes, hist_ranges)
     assert_equal(CV_32FC1, histogram.type)
     expected = [133266.0, 114832.0, 13168.0, 878.0]
@@ -127,7 +127,6 @@ class HistogramTest < OpenCVTestCase
     channels = [0]
     hist_sizes = [8]
     hist_ranges = [[0, 255]]
-    mask = Cv::Mat.new
     histogram = create_sparse_histogram(channels, hist_sizes, hist_ranges)
 
     min_val, max_val, min_idx, max_idx = histogram.min_max_loc
@@ -186,7 +185,7 @@ class HistogramTest < OpenCVTestCase
     end
 
     cost = Cv.no_array
-		lower_bound = Rice::Buffer≺float≻.new(0.0)
+    lower_bound = Rice::Buffer≺float≻.new(0.0)
     flow = Cv.no_array
     result, lower_bound = Cv.emd(signatures[0].input_array, signatures[1].input_array,
                                  Cv::DistanceTypes::DIST_L1,
@@ -195,7 +194,7 @@ class HistogramTest < OpenCVTestCase
     assert_in_delta(3.5648324489593506, result)
     assert_equal(0, lower_bound)
 
-		buffer = Rice::Buffer≺float≻.new(0)
+    buffer = Rice::Buffer≺float≻.new(0)
     lower_bound_ptr = Cv::PtrFloat.new(buffer.release)
     result = Cv.wrapper_emd(signatures[0].input_array, signatures[1].input_array,
                             Cv::DistanceTypes::DIST_L1,
@@ -206,68 +205,68 @@ class HistogramTest < OpenCVTestCase
     assert_equal(0, lower_bound)
   end
 
-	def test_calc_back_project
-		channels = [0, 1]
-		hbins = 32
-		sbins = 32
-		hist_sizes = [hbins, sbins]
-		hist_ranges = [0, 255, 0, 255] # The upper boundary is exclusive
+  def test_calc_back_project
+    channels = [0, 1]
+    hbins = 32
+    sbins = 32
+    hist_sizes = [hbins, sbins]
+    hist_ranges = [0, 255, 0, 255] # The upper boundary is exclusive
 
-		image = Cv::imread(self.sample_path("starry_night.jpg"), Cv::ImreadModes::IMREAD_COLOR)
-		hsv_image = image.cvt_color(Cv::ColorConversionCodes::COLOR_BGR2HSV)
-		histogram = create_histogram(hsv_image, channels, hist_sizes, hist_ranges)
+    image = Cv::imread(self.sample_path("starry_night.jpg"), Cv::ImreadModes::IMREAD_COLOR)
+    hsv_image = image.cvt_color(Cv::ColorConversionCodes::COLOR_BGR2HSV)
+    histogram = create_histogram(hsv_image, channels, hist_sizes, hist_ranges)
 
-		#input = Cv::InputArray.new([hsv_image])
-		result = Cv::Mat.new(hsv_image.rows, hsv_image.cols, hsv_image.type)
-		Cv::calc_back_project(hsv_image.input_array, [0, 1], histogram.input_array, result.output_array, hist_ranges, 1.0)
-		assert_equal('1ff8101fe8a07c88a14718a1d8237879', hash_img(result))
-	end
+    #input = Cv::InputArray.new([hsv_image])
+    result = Cv::Mat.new(hsv_image.rows, hsv_image.cols, hsv_image.type)
+    Cv::calc_back_project(hsv_image.input_array, [0, 1], histogram.input_array, result.output_array, hist_ranges, 1.0)
+    assert_equal('1ff8101fe8a07c88a14718a1d8237879', hash_img(result))
+  end
 
-	def test_compare_hist
-		channels = [0]
-		hist_sizes = [8]
-		hist_ranges = [0, 255] # The upper boundary is exclusive
+  def test_compare_hist
+    channels = [0]
+    hist_sizes = [8]
+    hist_ranges = [0, 255] # The upper boundary is exclusive
 
-		histogram1, histogram2 = ["cat.jpg", "happy_fish.jpg"].map do |image_name|
-			image = Cv::imread(self.sample_path(image_name), Cv::ImreadModes::IMREAD_COLOR)
-			create_histogram(image, channels, hist_sizes, hist_ranges)
-		end
+    histogram1, histogram2 = ["cat.jpg", "happy_fish.jpg"].map do |image_name|
+      image = Cv::imread(self.sample_path(image_name), Cv::ImreadModes::IMREAD_COLOR)
+      create_histogram(image, channels, hist_sizes, hist_ranges)
+    end
 
-		result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_CORREL)
-		assert_in_delta(0.594180, result)
+    result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_CORREL)
+    assert_in_delta(0.594180, result)
 
-		result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_CHISQR)
-		assert_in_delta(102046, result, 1)
+    result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_CHISQR)
+    assert_in_delta(102046, result, 1)
 
-		result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_INTERSECT)
-		assert_in_delta(64918.0, result)
+    result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_INTERSECT)
+    assert_in_delta(64918.0, result)
 
-		result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_BHATTACHARYYA)
-		assert_in_delta(0.2416, result)
-	end
+    result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_BHATTACHARYYA)
+    assert_in_delta(0.2416, result)
+  end
 
-	def test_calc_prob_density
-		img = IplImage.load(FILENAME_CAT, 0)
-		dim, sizes = @hist1.dims
-		ranges = [[0, 255]]
-		hist = Cv::Histogram.new(dim, sizes, CV_HIST_ARRAY, ranges).calc_hist!([img])
-		dst = Cv::Histogram.calc_prob_density(hist, @hist1)
-		assert_equal(Cv::Histogram, dst.class)
-		dim, sizes = dst.dims
-		expected_dim, expected_sizes = @hist1.dims
-		assert_equal(expected_dim, dim)
-		expected_sizes.each_with_index { |x, i|
-			assert_equal(x, sizes[i])
-		}
-		expected = [0.0, 1.437, 1.135, 1.092, 2.323, 3.712, 3.103, 0.0]
-		expected.each_with_index { |x, i|
-			assert_in_delta(x, dst[i], 0.001)
-		}
-		assert_raise(TypeError) {
-			Cv::Histogram.calc_prob_density(DUMMY_OBJ, @hist1)
-		}
-		assert_raise(TypeError) {
-			Cv::Histogram.calc_prob_density(hist, DUMMY_OBJ)
-		}
-	end
+  def test_calc_prob_density
+    img = IplImage.load(FILENAME_CAT, 0)
+    dim, sizes = @hist1.dims
+    ranges = [[0, 255]]
+    hist = Cv::Histogram.new(dim, sizes, CV_HIST_ARRAY, ranges).calc_hist!([img])
+    dst = Cv::Histogram.calc_prob_density(hist, @hist1)
+    assert_equal(Cv::Histogram, dst.class)
+    dim, sizes = dst.dims
+    expected_dim, expected_sizes = @hist1.dims
+    assert_equal(expected_dim, dim)
+    expected_sizes.each_with_index { |x, i|
+      assert_equal(x, sizes[i])
+    }
+    expected = [0.0, 1.437, 1.135, 1.092, 2.323, 3.712, 3.103, 0.0]
+    expected.each_with_index { |x, i|
+      assert_in_delta(x, dst[i], 0.001)
+    }
+    assert_raise(TypeError) {
+      Cv::Histogram.calc_prob_density(DUMMY_OBJ, @hist1)
+    }
+    assert_raise(TypeError) {
+      Cv::Histogram.calc_prob_density(hist, DUMMY_OBJ)
+    }
+  end
 end

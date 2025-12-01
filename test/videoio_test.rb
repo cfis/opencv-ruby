@@ -69,7 +69,7 @@ class VideoIoTest < OpenCVTestCase
     camera >> frame
     refute(frame.empty?)
 
-		show_images([frame])
+    show_images([frame])
   end
 
   def test_open
@@ -81,7 +81,7 @@ class VideoIoTest < OpenCVTestCase
     camera >> frame
     refute(frame.empty?)
 
-		show_images(frame)
+    show_images(frame)
   end
 
   def test_wait_any

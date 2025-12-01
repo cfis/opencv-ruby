@@ -1,4 +1,3 @@
-# -*- mode: ruby; coding: utf-8 -*-
 require "rubygems/package_task"
 require "rake/testtask"
 
@@ -30,6 +29,13 @@ if RUBY_PLATFORM.match(/mswin|mingw/)
     pkg.package_dir = "pkg"
     pkg.need_tar = false
   end
+end
+
+desc "Run test suite"
+Rake::TestTask.new(:test) do |task|
+	task.libs << "test"
+	task.pattern = "test/**/*_test.rb"
+	task.verbose = false
 end
 
 desc "Build the documentation"

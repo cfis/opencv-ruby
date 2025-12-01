@@ -247,7 +247,6 @@ module Cv
 			result = expr.to_mat.sum
 			result == Cv::Scalar.new(0, 0, 0, 0) ? true : false
 		end
-		alias :== :eql?
 
 		def eq(other)
 			compare(other, Cv::CmpTypes::CMP_EQ)
@@ -375,7 +374,7 @@ module Cv
 
 		def cvt_color(color_conversion_code, dst_cn: 0, hint: Cv::AlgorithmHint::ALGO_HINT_DEFAULT)
 			dest = self.class.new(self.rows, self.cols, self.type)
-			computed = Cv::cvt_color(self.input_array, dest.output_array, color_conversion_code, dst_cn, hint)
+			Cv::cvt_color(self.input_array, dest.output_array, color_conversion_code, dst_cn, hint)
 			dest
 		end
 
@@ -537,7 +536,7 @@ module Cv
 
 		def match_template(template, method, mask: Cv::no_array)
 			dest = Cv::Mat.new
-			computed = Cv::match_template(self.input_array, template.input_array, dest.output_array, method, mask = Cv::no_array)
+			Cv::match_template(self.input_array, template.input_array, dest.output_array, method, mask = Cv::no_array)
 			dest
 		end
 
@@ -551,7 +550,7 @@ module Cv
 			Cv.min_max_loc(self.input_array, mask ? mask.input_array : Cv::no_array)
 		end
 
-  	def morphology_ex(op, kernel, anchor: Cv::Point.new(-1,-1), iterations: 1,
+		def morphology_ex(op, kernel, anchor: Cv::Point.new(-1,-1), iterations: 1,
 							        border_type: Cv::BorderTypes::BORDER_CONSTANT, border_value: Cv::morphology_default_border_value)
 			dest = self.class.new(self.rows, self.cols, self.type)
 			Cv::morphology_ex(self.input_array, dest.output_array, op, kernel.input_array, anchor, iterations, border_type, border_value)
@@ -611,12 +610,6 @@ module Cv
 								map1.input_array, map2.input_array,
 								interpolation, border_mode, border_value)
 			dest
-		end
-
-		def resize(dsize, fx: 0, fy: 0, interpolation: Cv::InterpolationFlags::INTER_LINEAR)
-			result = Cv::Mat.new
-			Cv::resize(self.input_array, result.output_array, dsize, fx, fx,  interpolation)
-			result
 		end
 
 		def split
@@ -694,7 +687,7 @@ module Cv
 			self
 		end
 
-  	def fill_poly(pts, color, line_type: Cv::LineTypes::LINE_8, shift: 0, offset: Cv::Point.new)
+		def fill_poly(pts, color, line_type: Cv::LineTypes::LINE_8, shift: 0, offset: Cv::Point.new)
 			Cv::fill_poly(self.input_output_array, pts, color, line_type, shift, offset)
 			self
 		end

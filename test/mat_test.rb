@@ -480,7 +480,6 @@ class MatTest < OpenCVTestCase
     assert_equal(mat1.cols, mat2.cols)
 
     assert_each_element(mat2, 0.01) do |row, col, count|
-      n = count + 1
       Cv::Vec4f.new(count * 0.1 + 1, count * 0.2 + 2, count * 0.3 + 3, count * 0.4 + 4)
     end
   end
@@ -554,7 +553,6 @@ class MatTest < OpenCVTestCase
   def test_multiply_value
     mat1 = Cv::Mat.new(3, 3, CV_32FC1, Cv::Scalar.new(2))
     expr = mat1 * 3
-    mat2 = expr.to_mat
 
     expected = <<~EOS.chomp
       [6, 6, 6;

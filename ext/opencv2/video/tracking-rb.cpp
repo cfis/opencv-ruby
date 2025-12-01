@@ -250,14 +250,11 @@ void Init_Tracking()
     define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::TrackerGOTURN::Params&)>("create", &cv::TrackerGOTURN::create,
       Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params &>(cv::TrackerGOTURN::Params()));
 
-#ifdef HAVE_OPENCV_DNN
+#if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerGOTURN.
     define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::dnn::Net&)>("create", &cv::TrackerGOTURN::create,
       Arg("model"));
 #endif
-
-
-
 
   rb_cCvTrackerGOTURNParams = define_class_under<cv::TrackerGOTURN::Params>(rb_cCvTrackerGOTURN, "Params").
     define_constructor(Constructor<cv::TrackerGOTURN::Params>()).
@@ -269,7 +266,7 @@ void Init_Tracking()
       Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params &>(cv::TrackerDaSiamRPN::Params())).
     define_method("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore);
 
-  #ifdef HAVE_OPENCV_DNN
+#if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerDaSiamRPN.
     define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::dnn::Net&, const cv::dnn::Net&, const cv::dnn::Net&)>("create", &cv::TrackerDaSiamRPN::create,
       Arg("siam_rpn"), Arg("kernel_cls1"), Arg("kernel_r1"));
@@ -289,7 +286,7 @@ void Init_Tracking()
       Arg("parameters") = static_cast<const cv::TrackerNano::Params &>(cv::TrackerNano::Params())).
     define_method("get_tracking_score", &cv::TrackerNano::getTrackingScore);
 
-  #ifdef HAVE_OPENCV_DNN
+#if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerNano.
     define_singleton_function<cv::Ptr<cv::TrackerNano>(*)(const cv::dnn::Net&, const cv::dnn::Net&)>("create", &cv::TrackerNano::create,
       Arg("backbone"), Arg("neckhead"));
@@ -309,7 +306,7 @@ void Init_Tracking()
       Arg("parameters") = static_cast<const cv::TrackerVit::Params &>(cv::TrackerVit::Params())).
     define_method("get_tracking_score", &cv::TrackerVit::getTrackingScore);
 
-  #ifdef HAVE_OPENCV_DNN
+#if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerVit.
     define_singleton_function<cv::Ptr<cv::TrackerVit>(*)(const cv::dnn::Net&, cv::Scalar, cv::Scalar, float)>("create", &cv::TrackerVit::create,
       Arg("model"), Arg("meanvalue") = cv::Scalar(0.485, 0.456, 0.406),

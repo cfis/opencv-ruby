@@ -162,7 +162,6 @@ class VecTest < OpenCVTestCase
 
   def test_destructure
     vector = Cv::Vec4f.new(7.7, 8.8, 9.9, 10.10)
-    a, b, c, d = vector
     assert_in_delta(7.7, vector[0])
     assert_in_delta(8.8, vector[1])
     assert_in_delta(9.9, vector[2])

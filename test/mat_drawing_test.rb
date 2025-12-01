@@ -13,7 +13,7 @@ class Mat_drawingTest < OpenCVTestCase
   def test_rectangle
     mat = create_mat(240, 320, CV_8UC3) { Cv::Vec3b.new(255, 255, 255) }
     mat.rectangle(pt1: Cv::Point.new(20, 20), pt2: Cv::Point.new(mat.cols - 20, mat.rows - 20),
-									color: Cv::Scalar.new(255, 0, 0), thickness: 3, line_type: Cv::LineTypes::LINE_AA)
+                  color: Cv::Scalar.new(255, 0, 0), thickness: 3, line_type: Cv::LineTypes::LINE_AA)
     assert_equal("9388c1f1baeae8b32dfbf29307d1e6fa", hash_img(mat))
     #show_images([mat])
   end

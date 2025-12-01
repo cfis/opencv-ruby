@@ -52,18 +52,18 @@ class Mat_Test < OpenCVTestCase
                  mat1.inspect)
   end
 
-	def test_initialize_buffer_objects
-		data1 = [Cv::Vec3f.new(1, 2, 3), Cv::Vec3f.new(4, 5, 6)]
-	  buffer = Rice::Buffer≺Cv꞉꞉Vec3f≻.new(data1)
-	  mat1 = Cv::Mat3f.new(2, 1, buffer.data)
-	  assert_equal(2, mat1.rows)
-	  assert_equal(1, mat1.cols)
-	  assert_equal(CV_32F, mat1.depth)
-	  assert_equal(CV_32FC3, mat1.type)
-	  assert_equal(3, mat1.channels)
-	  assert_equal("[1, 2, 3;\n 4, 5, 6]",
-	               mat1.inspect)
-	end
+  def test_initialize_buffer_objects
+    data1 = [Cv::Vec3f.new(1, 2, 3), Cv::Vec3f.new(4, 5, 6)]
+    buffer = Rice::Buffer≺Cv꞉꞉Vec3f≻.new(data1)
+    mat1 = Cv::Mat3f.new(2, 1, buffer.data)
+    assert_equal(2, mat1.rows)
+    assert_equal(1, mat1.cols)
+    assert_equal(CV_32F, mat1.depth)
+    assert_equal(CV_32FC3, mat1.type)
+    assert_equal(3, mat1.channels)
+    assert_equal("[1, 2, 3;\n 4, 5, 6]",
+                 mat1.inspect)
+  end
 
   def test_initialize_array
     data1 = [Cv::Vec2f.new(0, 0),

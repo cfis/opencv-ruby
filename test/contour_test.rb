@@ -14,7 +14,7 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_contours_circle
-    mat, contours, hierarchy = circle_contours
+    _, contours, hierarchy = circle_contours
 
     assert_equal(1, contours.size)
     assert_equal(180, contours.first.size)
@@ -24,13 +24,13 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_countour_area
-    mat, contours, hierarchy = circle_contours
+    _, contours, _ = circle_contours
     area = Cv::contour_area(Cv::InputArray.new(contours.first))
     assert_in_delta(3118.0, area)
   end
 
   def test_approx_poly_dp
-    mat, contours, hierarchy = circle_contours
+    _, contours, _ = circle_contours
     contour = contours.first
     puts contour.class
     approximate = Cv::Mat.new
@@ -41,7 +41,7 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_draw_contours
-    mat, contours, hierarchy = circle_contours
+    _, contours, hierarchy = circle_contours
     assert_equal(1, contours.size)
     assert_equal(180, contours.first.size)
 
@@ -59,7 +59,7 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_bounding_rect
-    mat, contours, hierarchy = circle_contours
+    _, contours, _ = circle_contours
 
     rect = Cv::bounding_rect(Cv::InputArray.new(contours.first))
     assert_equal(Cv::Rect, rect.class)
@@ -70,7 +70,7 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_point_polyon
-    mat, contours, hierarchy = circle_contours
+    _, contours, _ = circle_contours
     contour = contours.first
     dist = Cv::point_polygon_test(Cv::InputArray.new(contour), Cv::Point2f.new(0, 0), true)
     assert_in_delta(-58.69, dist)
@@ -114,36 +114,36 @@ class ContourTest < OpenCVTestCase
     hierarchy.each.with_index do |vec4, i|
       assert_equal(expected[i], vec4.to_a)
     end
-	end
+  end
 
-	def test_star_contours
-		image_path = self.sample_path("star.jpg")
-		image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
-		image, computed = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
+  def test_star_contours
+    image_path = self.sample_path("star.jpg")
+    image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
+    image, _ = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
 
-		contours, hierarchy = image.find_contours(Cv::RetrievalModes::RETR_LIST, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
-		assert_equal(1, contours.size)
+    contours, hierarchy = image.find_contours(Cv::RetrievalModes::RETR_LIST, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
+    assert_equal(1, contours.size)
 
-		expected = Std::Vector≺Cv꞉꞉Vec4i≻.new
-		expected << Cv::Vec4i.new(-1, -1, -1, -1)
-		assert_equal(expected, hierarchy)
-	end
+    expected = Std::Vector≺Cv꞉꞉Vec4i≻.new
+    expected << Cv::Vec4i.new(-1, -1, -1, -1)
+    assert_equal(expected, hierarchy)
+  end
 
-	def test_draw_contour
-		image_path = self.sample_path("star.jpg")
-		image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
-		image, computed = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
+  def test_draw_contour
+    image_path = self.sample_path("star.jpg")
+    image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
+    image, _ = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
 
-		contours, hierarchy = image.find_contours(Cv::RetrievalModes::RETR_LIST, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
-		assert_equal(1, contours.size)
+    contours, _ = image.find_contours(Cv::RetrievalModes::RETR_LIST, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
+    assert_equal(1, contours.size)
 
-		# Draw all contours on the original image in green with a thickness of 2
-		color = Cv::Scalar.new(150, 150, 150)
-		input = Cv::InputArray.new(contours)
-		index = -1
-		thickness = 2
-		Cv::draw_contours(image.input_output_array, input, index, color, thickness)
+    # Draw all contours on the original image in green with a thickness of 2
+    color = Cv::Scalar.new(150, 150, 150)
+    input = Cv::InputArray.new(contours)
+    index = -1
+    thickness = 2
+    Cv::draw_contours(image.input_output_array, input, index, color, thickness)
 
-		show_images(image)
-	end
+    show_images(image)
+  end
 end

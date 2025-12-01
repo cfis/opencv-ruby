@@ -3,7 +3,7 @@ if RUBY_PLATFORM =~ /mingw|mswin/
 	$LOAD_PATH.unshift(ext_path)
 	ENV["PATH"] = "#{ext_path};#{ENV["PATH"]}"
 
-  major, minor, subminor = RUBY_VERSION.split(".")
+  major, minor, _ = RUBY_VERSION.split(".")
   begin
     require "#{major}.#{minor}/opencv_ruby.so"
   rescue LoadError

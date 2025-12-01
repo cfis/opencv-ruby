@@ -6,7 +6,7 @@ class ImgProcTest < OpenCVTestCase
     mat = create_mat(128, 128, CV_8UC1) do |j, i|
       (j - 64) ** 2 + (i - 64) ** 2 <= (32 ** 2) ? 255 : 0
     end
-    contours, hierarchy = mat.find_contours(Cv::RetrievalModes::RETR_EXTERNAL, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
+    contours, _ = mat.find_contours(Cv::RetrievalModes::RETR_EXTERNAL, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
     contours.first
   end
 
@@ -41,15 +41,21 @@ class ImgProcTest < OpenCVTestCase
   end
 
   def test_bilateral_filter
-    mat = create_mat(64, 64, CV_8UC1) do |j, i, c|
-      if i > 32
-        (i + j) % 15 != 0 ? 32 : 224
+    mat = create_mat(8, 8, CV_8UC1) do |j, i, c|
+      if i > 8
+        (i + j) % 3 != 0 ? 4 : 28
       else
-        (i + j) % 15 != 0 ? 224 : 32
+        (i + j) % 3 != 0 ? 28 : 4
       end
-    end
+		end
+
     mat2 = mat.bilateral_filter(10,3, 3)
-  end
+		expected = [4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28,
+								4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28,
+								28, 4, 28, 28, 4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28,
+								28, 4, 28, 28]
+		assert_equal(expected, mat2.to_a)
+	end
 
   def test_blur
     image_path = self.sample_path("starry_night.jpg")
@@ -107,10 +113,10 @@ class ImgProcTest < OpenCVTestCase
   def test_convexity_defects
     image_path = self.sample_path("star.jpg")
     image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
-		image, computed = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
+    image, computed = image.threshold(127, 255, Cv::ThresholdTypes::THRESH_BINARY)
     contours, hierarchy = image.find_contours(Cv::RetrievalModes::RETR_EXTERNAL, Cv::ContourApproximationModes::CHAIN_APPROX_NONE)
 
-		contour = contours.first
+    contour = contours.first
 
     indices = Cv::Mat.new
     Cv::convex_hull(Cv::InputArray.new(contour), indices.output_array, return_points: false)
@@ -119,21 +125,21 @@ class ImgProcTest < OpenCVTestCase
     Cv::convexity_defects(Cv::InputArray.new(contour), indices.input_array, defects.output_array)
     assert_equal(4, defects.rows)
 
-		expected = Cv::Vec4i.new(1, 96, 51, 5774)
-		defect = defects[0, 0]
-		assert_equal(expected, defect)
+    expected = Cv::Vec4i.new(1, 96, 51, 5774)
+    defect = defects[0, 0]
+    assert_equal(expected, defect)
 
-		expected = Cv::Vec4i.new(98, 193, 143, 5774)
-		defect = defects[1, 0]
-		assert_equal(expected, defect)
+    expected = Cv::Vec4i.new(98, 193, 143, 5774)
+    defect = defects[1, 0]
+    assert_equal(expected, defect)
 
-		expected = Cv::Vec4i.new(197, 292, 247, 5868)
-		defect = defects[2, 0]
-		assert_equal(expected, defect)
+    expected = Cv::Vec4i.new(197, 292, 247, 5868)
+    defect = defects[2, 0]
+    assert_equal(expected, defect)
 
-		expected = Cv::Vec4i.new(294, 389, 339, 5868)
-		defect = defects[3, 0]
-		assert_equal(expected, defect)
+    expected = Cv::Vec4i.new(294, 389, 339, 5868)
+    defect = defects[3, 0]
+    assert_equal(expected, defect)
   end
 
   def test_copy_make_border

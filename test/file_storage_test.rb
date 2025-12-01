@@ -21,7 +21,6 @@ class FileStorageTest < OpenCVTestCase
     3.times do |i|
       x = i
       y = i
-      lbp = i
 
       fs << "{:" << "x" << x << "y" << y << "lbp" << "[:"
       8.times do |j|

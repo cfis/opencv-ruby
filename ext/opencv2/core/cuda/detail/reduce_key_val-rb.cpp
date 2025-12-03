@@ -15,9 +15,9 @@ inline void Generic_builder(Data_Type_T& klass)
 template<typename Data_Type_T, unsigned int I, typename KP, typename KR, typename VP, typename VR, typename Cmp>
 inline void Unroll_builder(Data_Type_T& klass)
 {
-  klass.template define_singleton_function("loop_shfl", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loopShfl,
+  klass.template define_singleton_function<>("loop_shfl", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loopShfl,
       Arg("key"), Arg("val"), Arg("cmp"), Arg("n")).
-    template define_singleton_function("loop", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loop,
+    template define_singleton_function<>("loop", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loop,
       Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("tid"), Arg("cmp"));
 };
 

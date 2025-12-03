@@ -14,26 +14,26 @@ inline void Index_builder(Data_Type_T& klass)
 {
   klass.define_constructor(Constructor<cvflann::Index<Distance>, const cvflann::Matrix<typename cvflann::Index<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("features"), Arg("params"), Arg("distance") = static_cast<Distance>(Distance())).
-    template define_method("build_index", &cvflann::Index<Distance>::buildIndex).
-    template define_method("save", &cvflann::Index<Distance>::save,
+    template define_method<>("build_index", &cvflann::Index<Distance>::buildIndex).
+    template define_method<>("save", &cvflann::Index<Distance>::save,
       Arg("filename")).
-    template define_method("save_index", &cvflann::Index<Distance>::saveIndex,
+    template define_method<>("save_index", &cvflann::Index<Distance>::saveIndex,
       Arg("stream")).
-    template define_method("load_index", &cvflann::Index<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::Index<Distance>::loadIndex,
       Arg("stream")).
-    template define_method("veclen", &cvflann::Index<Distance>::veclen).
-    template define_method("size", &cvflann::Index<Distance>::size).
-    template define_method("get_type", &cvflann::Index<Distance>::getType).
-    template define_method("used_memory", &cvflann::Index<Distance>::usedMemory).
-    template define_method("get_parameters", &cvflann::Index<Distance>::getParameters).
-    template define_method("knn_search", &cvflann::Index<Distance>::knnSearch,
+    template define_method<>("veclen", &cvflann::Index<Distance>::veclen).
+    template define_method<>("size", &cvflann::Index<Distance>::size).
+    template define_method<>("get_type", &cvflann::Index<Distance>::getType).
+    template define_method<>("used_memory", &cvflann::Index<Distance>::usedMemory).
+    template define_method<>("get_parameters", &cvflann::Index<Distance>::getParameters).
+    template define_method<>("knn_search", &cvflann::Index<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    template define_method("radius_search", &cvflann::Index<Distance>::radiusSearch,
+    template define_method<>("radius_search", &cvflann::Index<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
-    template define_method("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
+    template define_method<>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
-    template define_method("get_index", &cvflann::Index<Distance>::getIndex).
-    template define_method("get_index_parameters", &cvflann::Index<Distance>::getIndexParameters);
+    template define_method<>("get_index", &cvflann::Index<Distance>::getIndex).
+    template define_method<>("get_index_parameters", &cvflann::Index<Distance>::getIndexParameters);
 };
 
 void Init_FlannBase()

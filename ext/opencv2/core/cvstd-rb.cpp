@@ -13,15 +13,15 @@ inline void Allocator_builder(Data_Type_T& klass)
       Arg("r")).
     template define_method<typename cv::Allocator<_Tp>::const_pointer(cv::Allocator<_Tp>::*)(typename cv::Allocator<_Tp>::const_reference)>("address", &cv::Allocator<_Tp>::address,
       Arg("r")).
-    template define_method("allocate", &cv::Allocator<_Tp>::allocate,
+    template define_method<>("allocate", &cv::Allocator<_Tp>::allocate,
       Arg("count"), Arg("") = static_cast<const void *>(0)).
-    template define_method("deallocate", &cv::Allocator<_Tp>::deallocate,
+    template define_method<>("deallocate", &cv::Allocator<_Tp>::deallocate,
       Arg("p")).
-    template define_method("construct", &cv::Allocator<_Tp>::construct,
+    template define_method<>("construct", &cv::Allocator<_Tp>::construct,
       Arg("p"), Arg("v")).
-    template define_method("destroy", &cv::Allocator<_Tp>::destroy,
+    template define_method<>("destroy", &cv::Allocator<_Tp>::destroy,
       Arg("p")).
-    template define_method("max_size", &cv::Allocator<_Tp>::max_size);
+    template define_method<>("max_size", &cv::Allocator<_Tp>::max_size);
 };
 
 template<typename Data_Type_T, typename U>

@@ -250,8 +250,8 @@ inline void IsUnaryFunction_builder(Data_Type_T& klass)
 {
   klass.rb_cCvCudaDeviceIsUnaryFunctionNo = define_class<cv::cuda::device::IsUnaryFunction::No>("No").
       define_constructor(Constructor<cv::cuda::device::IsUnaryFunction::No>());.
-    template define_singleton_function("check", &cv::cuda::device::IsUnaryFunction<F>::check).
-    template define_singleton_function("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF).
+    template define_singleton_function<>("check", &cv::cuda::device::IsUnaryFunction<F>::check).
+    template define_singleton_function<>("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF).
     define_constant("Value", (int)cv::cuda::device::IsUnaryFunction<F>::value);
 };
 
@@ -260,8 +260,8 @@ inline void IsBinaryFunction_builder(Data_Type_T& klass)
 {
   klass.rb_cCvCudaDeviceIsBinaryFunctionNo = define_class<cv::cuda::device::IsBinaryFunction::No>("No").
       define_constructor(Constructor<cv::cuda::device::IsBinaryFunction::No>());.
-    template define_singleton_function("check", &cv::cuda::device::IsBinaryFunction<F>::check).
-    template define_singleton_function("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF).
+    template define_singleton_function<>("check", &cv::cuda::device::IsBinaryFunction<F>::check).
+    template define_singleton_function<>("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF).
     define_constant("Value", (int)cv::cuda::device::IsBinaryFunction<F>::value);
 };
 

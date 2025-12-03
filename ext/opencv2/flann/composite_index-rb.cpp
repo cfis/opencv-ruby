@@ -14,19 +14,19 @@ inline void CompositeIndex_builder(Data_Type_T& klass)
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::CompositeIndexParams()), Arg("d") = static_cast<Distance>(Distance())).
     define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::CompositeIndex<Distance>&>(),
       Arg("")).
-    template define_method("assign", &cvflann::CompositeIndex<Distance>::operator=,
+    template define_method<>("assign", &cvflann::CompositeIndex<Distance>::operator=,
       Arg("")).
-    template define_method("get_type", &cvflann::CompositeIndex<Distance>::getType).
-    template define_method("size", &cvflann::CompositeIndex<Distance>::size).
-    template define_method("veclen", &cvflann::CompositeIndex<Distance>::veclen).
-    template define_method("used_memory", &cvflann::CompositeIndex<Distance>::usedMemory).
-    template define_method("build_index", &cvflann::CompositeIndex<Distance>::buildIndex).
-    template define_method("save_index", &cvflann::CompositeIndex<Distance>::saveIndex,
+    template define_method<>("get_type", &cvflann::CompositeIndex<Distance>::getType).
+    template define_method<>("size", &cvflann::CompositeIndex<Distance>::size).
+    template define_method<>("veclen", &cvflann::CompositeIndex<Distance>::veclen).
+    template define_method<>("used_memory", &cvflann::CompositeIndex<Distance>::usedMemory).
+    template define_method<>("build_index", &cvflann::CompositeIndex<Distance>::buildIndex).
+    template define_method<>("save_index", &cvflann::CompositeIndex<Distance>::saveIndex,
       Arg("stream")).
-    template define_method("load_index", &cvflann::CompositeIndex<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::CompositeIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method("get_parameters", &cvflann::CompositeIndex<Distance>::getParameters).
-    template define_method("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
+    template define_method<>("get_parameters", &cvflann::CompositeIndex<Distance>::getParameters).
+    template define_method<>("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
 void Init_CompositeIndex()

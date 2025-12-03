@@ -11,34 +11,34 @@ template<typename Data_Type_T, typename Distance>
 inline void KMeansIndex_builder(Data_Type_T& klass)
 {
   klass.define_attr("choose_centers", &cvflann::KMeansIndex<Distance>::chooseCenters).
-    template define_method("choose_centers_random", &cvflann::KMeansIndex<Distance>::chooseCentersRandom,
+    template define_method<>("choose_centers_random", &cvflann::KMeansIndex<Distance>::chooseCentersRandom,
       Arg("k"), Arg("indices"), Arg("indices_length"), Arg("centers"), Arg("centers_length")).
-    template define_method("choose_centers_gonzales", &cvflann::KMeansIndex<Distance>::chooseCentersGonzales,
+    template define_method<>("choose_centers_gonzales", &cvflann::KMeansIndex<Distance>::chooseCentersGonzales,
       Arg("k"), Arg("indices"), Arg("indices_length"), Arg("centers"), Arg("centers_length")).
-    template define_method("choose_centers_k_meanspp", &cvflann::KMeansIndex<Distance>::chooseCentersKMeanspp,
+    template define_method<>("choose_centers_k_meanspp", &cvflann::KMeansIndex<Distance>::chooseCentersKMeanspp,
       Arg("k"), Arg("indices"), Arg("indices_length"), Arg("centers"), Arg("centers_length")).
-    template define_method("get_type", &cvflann::KMeansIndex<Distance>::getType).
+    template define_method<>("get_type", &cvflann::KMeansIndex<Distance>::getType).
     define_constructor(Constructor<cvflann::KMeansIndex<Distance>, const typename cvflann::Matrix<typename cvflann::KMeansIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams &>(cvflann::KMeansIndexParams()), Arg("d") = static_cast<Distance>(Distance())).
     define_constructor(Constructor<cvflann::KMeansIndex<Distance>, const cvflann::KMeansIndex<Distance>&>(),
       Arg("")).
-    template define_method("assign", &cvflann::KMeansIndex<Distance>::operator=,
+    template define_method<>("assign", &cvflann::KMeansIndex<Distance>::operator=,
       Arg("")).
-    template define_method("size", &cvflann::KMeansIndex<Distance>::size).
-    template define_method("veclen", &cvflann::KMeansIndex<Distance>::veclen).
-    template define_method("set_cb_index", &cvflann::KMeansIndex<Distance>::set_cb_index,
+    template define_method<>("size", &cvflann::KMeansIndex<Distance>::size).
+    template define_method<>("veclen", &cvflann::KMeansIndex<Distance>::veclen).
+    template define_method<>("set_cb_index", &cvflann::KMeansIndex<Distance>::set_cb_index,
       Arg("index")).
-    template define_method("used_memory", &cvflann::KMeansIndex<Distance>::usedMemory).
-    template define_method("build_index", &cvflann::KMeansIndex<Distance>::buildIndex).
-    template define_method("save_index", &cvflann::KMeansIndex<Distance>::saveIndex,
+    template define_method<>("used_memory", &cvflann::KMeansIndex<Distance>::usedMemory).
+    template define_method<>("build_index", &cvflann::KMeansIndex<Distance>::buildIndex).
+    template define_method<>("save_index", &cvflann::KMeansIndex<Distance>::saveIndex,
       Arg("stream")).
-    template define_method("load_index", &cvflann::KMeansIndex<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::KMeansIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method("find_neighbors", &cvflann::KMeansIndex<Distance>::findNeighbors,
+    template define_method<>("find_neighbors", &cvflann::KMeansIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
-    template define_method("get_cluster_centers", &cvflann::KMeansIndex<Distance>::getClusterCenters,
+    template define_method<>("get_cluster_centers", &cvflann::KMeansIndex<Distance>::getClusterCenters,
       Arg("centers")).
-    template define_method("get_parameters", &cvflann::KMeansIndex<Distance>::getParameters);
+    template define_method<>("get_parameters", &cvflann::KMeansIndex<Distance>::getParameters);
 };
 
 template<typename Data_Type_T, typename CentersContainerType>
@@ -46,7 +46,7 @@ inline void KMeansDistanceComputer_builder(Data_Type_T& klass)
 {
   //klass.define_constructor(Constructor<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>, Distance, const cvflann::Matrix<typename cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>::ElementType>&, const int, const int*, const CentersContainerType&, const ::size_t, std::vector<int>&, std::vector<cvflann::KMeansIndex::DistanceType>&>(),
 //      Arg("_distance"), Arg("_dataset"), Arg("_branching"), Arg("_indices"), Arg("_dcenters"), Arg("_veclen"), Arg("_new_centroids"), Arg("_sq_dists")).
-//    template define_method("call", &cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::operator(),
+//    template define_method<>("call", &cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::operator(),
 //      Arg("range"));
 };
 void Init_KmeansIndex()

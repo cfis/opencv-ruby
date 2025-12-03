@@ -72,18 +72,18 @@ inline void Hamming_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename T>
 inline void Hamming2_builder(Data_Type_T& klass)
 {
-  klass.template define_method("popcnt32", &cvflann::Hamming2<T>::popcnt32,
+  klass.template define_method<>("popcnt32", &cvflann::Hamming2<T>::popcnt32,
       Arg("n")).
-    template define_method("popcnt64", &cvflann::Hamming2<T>::popcnt64,
+    template define_method<>("popcnt64", &cvflann::Hamming2<T>::popcnt64,
       Arg("n"));
 };
 
 template<typename Data_Type_T, typename T>
 inline void DNAmming2_builder(Data_Type_T& klass)
 {
-  klass.template define_method("popcnt32", &cvflann::DNAmming2<T>::popcnt32,
+  klass.template define_method<>("popcnt32", &cvflann::DNAmming2<T>::popcnt32,
       Arg("n")).
-    template define_method("popcnt64", &cvflann::DNAmming2<T>::popcnt64,
+    template define_method<>("popcnt64", &cvflann::DNAmming2<T>::popcnt64,
       Arg("n"));
 };
 
@@ -110,20 +110,20 @@ inline void KL_Divergence_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename Distance, typename ElementType>
 inline void squareDistance_builder(Data_Type_T& klass)
 {
-  klass.template define_method("call", &cvflann::squareDistance<Distance, ElementType>::operator(),
+  klass.template define_method<>("call", &cvflann::squareDistance<Distance, ElementType>::operator(),
       Arg("dist"));
 };
 
 template<typename Data_Type_T, typename Distance, typename ElementType>
 inline void isSquareDist_builder(Data_Type_T& klass)
 {
-  klass.template define_method("call", &cvflann::isSquareDist<Distance, ElementType>::operator());
+  klass.template define_method<>("call", &cvflann::isSquareDist<Distance, ElementType>::operator());
 };
 
 template<typename Data_Type_T, typename Distance, typename ElementType>
 inline void simpleDistance_builder(Data_Type_T& klass)
 {
-  klass.template define_method("call", &cvflann::simpleDistance<Distance, ElementType>::operator(),
+  klass.template define_method<>("call", &cvflann::simpleDistance<Distance, ElementType>::operator(),
       Arg("dist"));
 };
 

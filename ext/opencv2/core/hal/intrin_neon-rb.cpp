@@ -16,7 +16,7 @@ Rice::Class rb_cCvVUint8x16;
 template<typename Data_Type_T, typename T>
 inline void VTraits_builder(Data_Type_T& klass)
 {
-  klass.template define_singleton_function("vlanes", &cv::VTraits<T>::vlanes).
+  klass.template define_singleton_function<>("vlanes", &cv::VTraits<T>::vlanes).
     define_constant("Max_nlanes", (int)cv::VTraits<T>::max_nlanes).
     define_constant("Nlanes", (int)cv::VTraits<T>::nlanes);
 };

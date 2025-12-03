@@ -29,12 +29,12 @@ inline void GenericIndex_builder(Data_Type_T& klass)
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
     template define_method<int(cv::flann::GenericIndex<Distance>::*)(const cv::Mat&, cv::Mat&, cv::Mat&, typename cv::flann::GenericIndex<Distance>::DistanceType, const cvflann::SearchParams&)>("radius_search", &cv::flann::GenericIndex<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
-    template define_method("save", &cv::flann::GenericIndex<Distance>::save,
+    template define_method<>("save", &cv::flann::GenericIndex<Distance>::save,
       Arg("filename")).
-    template define_method("veclen", &cv::flann::GenericIndex<Distance>::veclen).
-    template define_method("size", &cv::flann::GenericIndex<Distance>::size).
-    template define_method("get_parameters", &cv::flann::GenericIndex<Distance>::getParameters).
-    template define_method("get_index_parameters", &cv::flann::GenericIndex<Distance>::getIndexParameters);
+    template define_method<>("veclen", &cv::flann::GenericIndex<Distance>::veclen).
+    template define_method<>("size", &cv::flann::GenericIndex<Distance>::size).
+    template define_method<>("get_parameters", &cv::flann::GenericIndex<Distance>::getParameters).
+    template define_method<>("get_index_parameters", &cv::flann::GenericIndex<Distance>::getIndexParameters);
 };
 
 template<typename Data_Type_T, typename T>
@@ -50,12 +50,12 @@ inline void Index__builder(Data_Type_T& klass)
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("search_params")).
     template define_method<int(cv::flann::Index_<T>::*)(const cv::Mat&, cv::Mat&, cv::Mat&, typename cv::flann::Index_<T>::DistanceType, const cvflann::SearchParams&)>("radius_search", &cv::flann::Index_<T>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("search_params")).
-    template define_method("save", &cv::flann::Index_<T>::save,
+    template define_method<>("save", &cv::flann::Index_<T>::save,
       Arg("filename")).
-    template define_method("veclen", &cv::flann::Index_<T>::veclen).
-    template define_method("size", &cv::flann::Index_<T>::size).
-    template define_method("get_parameters", &cv::flann::Index_<T>::getParameters).
-    template define_method("get_index_parameters", &cv::flann::Index_<T>::getIndexParameters);
+    template define_method<>("veclen", &cv::flann::Index_<T>::veclen).
+    template define_method<>("size", &cv::flann::Index_<T>::size).
+    template define_method<>("get_parameters", &cv::flann::Index_<T>::getParameters).
+    template define_method<>("get_index_parameters", &cv::flann::Index_<T>::getIndexParameters);
 };
 
 void Init_Flann()

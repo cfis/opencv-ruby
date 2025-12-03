@@ -14,21 +14,21 @@ inline void LshIndex_builder(Data_Type_T& klass)
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams &>(cvflann::LshIndexParams()), Arg("d") = static_cast<Distance>(Distance())).
     define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::LshIndex<Distance>&>(),
       Arg("")).
-    template define_method("assign", &cvflann::LshIndex<Distance>::operator=,
+    template define_method<>("assign", &cvflann::LshIndex<Distance>::operator=,
       Arg("")).
-    template define_method("build_index", &cvflann::LshIndex<Distance>::buildIndex).
-    template define_method("get_type", &cvflann::LshIndex<Distance>::getType).
-    template define_method("save_index", &cvflann::LshIndex<Distance>::saveIndex,
+    template define_method<>("build_index", &cvflann::LshIndex<Distance>::buildIndex).
+    template define_method<>("get_type", &cvflann::LshIndex<Distance>::getType).
+    template define_method<>("save_index", &cvflann::LshIndex<Distance>::saveIndex,
       Arg("stream")).
-    template define_method("load_index", &cvflann::LshIndex<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::LshIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method("size", &cvflann::LshIndex<Distance>::size).
-    template define_method("veclen", &cvflann::LshIndex<Distance>::veclen).
-    template define_method("used_memory", &cvflann::LshIndex<Distance>::usedMemory).
-    template define_method("get_parameters", &cvflann::LshIndex<Distance>::getParameters).
-    template define_method("knn_search", &cvflann::LshIndex<Distance>::knnSearch,
+    template define_method<>("size", &cvflann::LshIndex<Distance>::size).
+    template define_method<>("veclen", &cvflann::LshIndex<Distance>::veclen).
+    template define_method<>("used_memory", &cvflann::LshIndex<Distance>::usedMemory).
+    template define_method<>("get_parameters", &cvflann::LshIndex<Distance>::getParameters).
+    template define_method<>("knn_search", &cvflann::LshIndex<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    template define_method("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
+    template define_method<>("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"));
 };
 void Init_LshIndex()

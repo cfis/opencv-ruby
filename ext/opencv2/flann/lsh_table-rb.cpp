@@ -15,11 +15,11 @@ inline void LshTable_builder(Data_Type_T& klass)
       Arg("value"), Arg("feature")).
     template define_method<void(cvflann::lsh::LshTable<ElementType>::*)(cvflann::Matrix<ElementType>)>("add", &cvflann::lsh::LshTable<ElementType>::add,
       Arg("dataset")).
-    template define_method("get_bucket_from_key", &cvflann::lsh::LshTable<ElementType>::getBucketFromKey,
+    template define_method<>("get_bucket_from_key", &cvflann::lsh::LshTable<ElementType>::getBucketFromKey,
       Arg("key")).
-    template define_method("get_key", &cvflann::lsh::LshTable<ElementType>::getKey,
+    template define_method<>("get_key", &cvflann::lsh::LshTable<ElementType>::getKey,
       Arg("")).
-    template define_method("get_stats", &cvflann::lsh::LshTable<ElementType>::getStats);
+    template define_method<>("get_stats", &cvflann::lsh::LshTable<ElementType>::getStats);
 };
 void Init_LshTable()
 {

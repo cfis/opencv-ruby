@@ -14,7 +14,7 @@ inline void VecWriterProxy_builder(Data_Type_T& klass)
 {
   klass.define_constructor(Constructor<cv::internal::VecWriterProxy<_Tp, numflag>, cv::FileStorage*>(),
       Arg("_fs")).
-    template define_method("call", &cv::internal::VecWriterProxy<_Tp, numflag>::operator(),
+    template define_method<>("call", &cv::internal::VecWriterProxy<_Tp, numflag>::operator(),
       Arg("vec"));
 };
 
@@ -23,7 +23,7 @@ inline void VecReaderProxy_builder(Data_Type_T& klass)
 {
   klass.define_constructor(Constructor<cv::internal::VecReaderProxy<_Tp, numflag>, cv::FileNodeIterator*>(),
       Arg("_it")).
-    template define_method("call", &cv::internal::VecReaderProxy<_Tp, numflag>::operator(),
+    template define_method<>("call", &cv::internal::VecReaderProxy<_Tp, numflag>::operator(),
       Arg("vec"), Arg("count"));
 };
 

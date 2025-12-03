@@ -39,7 +39,7 @@ template<typename Data_Type_T, typename T>
 inline void SL2_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::SL2<T>::normType).
-    template define_method("call", &cv::SL2<T>::operator(),
+    template define_method<>("call", &cv::SL2<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 
@@ -47,7 +47,7 @@ template<typename Data_Type_T, typename T>
 inline void L2_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::L2<T>::normType).
-    template define_method("call", &cv::L2<T>::operator(),
+    template define_method<>("call", &cv::L2<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 
@@ -55,7 +55,7 @@ template<typename Data_Type_T, typename T>
 inline void L1_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::L1<T>::normType).
-    template define_method("call", &cv::L1<T>::operator(),
+    template define_method<>("call", &cv::L1<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 

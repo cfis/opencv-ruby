@@ -18,14 +18,14 @@ inline void AutoBuffer_builder(Data_Type_T& klass)
       Arg("_size")).
     define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, const cv::AutoBuffer<_Tp, fixed_size>&>(),
       Arg("buf")).
-    template define_method("assign", &cv::AutoBuffer<_Tp, fixed_size>::operator=,
+    template define_method<>("assign", &cv::AutoBuffer<_Tp, fixed_size>::operator=,
       Arg("buf")).
-    template define_method("allocate", &cv::AutoBuffer<_Tp, fixed_size>::allocate,
+    template define_method<>("allocate", &cv::AutoBuffer<_Tp, fixed_size>::allocate,
       Arg("_size")).
-    template define_method("deallocate", &cv::AutoBuffer<_Tp, fixed_size>::deallocate).
-    template define_method("resize", &cv::AutoBuffer<_Tp, fixed_size>::resize,
+    template define_method<>("deallocate", &cv::AutoBuffer<_Tp, fixed_size>::deallocate).
+    template define_method<>("resize", &cv::AutoBuffer<_Tp, fixed_size>::resize,
       Arg("_size")).
-    template define_method("size", &cv::AutoBuffer<_Tp, fixed_size>::size).
+    template define_method<>("size", &cv::AutoBuffer<_Tp, fixed_size>::size).
     template define_method<_Tp*(cv::AutoBuffer<_Tp, fixed_size>::*)()>("data", &cv::AutoBuffer<_Tp, fixed_size>::data).
     template define_method<const _Tp*(cv::AutoBuffer<_Tp, fixed_size>::*)() const>("data", &cv::AutoBuffer<_Tp, fixed_size>::data).
     define_method("to_type_parameter_0_0 *", [](const cv::AutoBuffer<_Tp, fixed_size>& self) -> _Tp*
@@ -48,10 +48,10 @@ inline void Node_builder(Data_Type_T& klass)
       Arg("payload")).
     template define_method<int(cv::Node<OBJECT>::*)(cv::Node<OBJECT>*) const>("find_child", &cv::Node<OBJECT>::findChild,
       Arg("p_node")).
-    template define_method("add_child", &cv::Node<OBJECT>::addChild,
+    template define_method<>("add_child", &cv::Node<OBJECT>::addChild,
       Arg("p_node")).
-    template define_method("remove_childs", &cv::Node<OBJECT>::removeChilds).
-    template define_method("get_depth", &cv::Node<OBJECT>::getDepth).
+    template define_method<>("remove_childs", &cv::Node<OBJECT>::removeChilds).
+    template define_method<>("get_depth", &cv::Node<OBJECT>::getDepth).
     define_attr("m_payload", &cv::Node<OBJECT>::m_payload).
     define_attr("m_p_parent", &cv::Node<OBJECT>::m_pParent).
     define_attr("m_childs", &cv::Node<OBJECT>::m_childs);

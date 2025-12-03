@@ -15,7 +15,7 @@ inline void V_RegTraits_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename T>
 inline void VTraits_builder(Data_Type_T& klass)
 {
-  klass.template define_singleton_function("vlanes", &cv::hal_baseline::simd128_cpp::VTraits<T>::vlanes).
+  klass.template define_singleton_function<>("vlanes", &cv::hal_baseline::simd128_cpp::VTraits<T>::vlanes).
     define_constant("Nlanes", (int)cv::hal_baseline::simd128_cpp::VTraits<T>::nlanes).
     define_constant("Max_nlanes", (int)cv::hal_baseline::simd128_cpp::VTraits<T>::max_nlanes);
 };

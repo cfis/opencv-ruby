@@ -21,7 +21,7 @@ inline void DevPtr_builder(Data_Type_T& klass)
     define_constructor(Constructor<cv::cuda::DevPtr<T>>()).
     define_constructor(Constructor<cv::cuda::DevPtr<T>, T*>(),
       Arg("data_")).
-    template define_method("elem_size", &cv::cuda::DevPtr<T>::elemSize).
+    template define_method<>("elem_size", &cv::cuda::DevPtr<T>::elemSize).
     define_method("to_type_parameter_0_0 *", [](const cv::cuda::DevPtr<T>& self) -> T*
     {
       return self;

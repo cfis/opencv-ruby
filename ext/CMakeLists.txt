@@ -17,18 +17,22 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
 if (MSVC) # This will include Clang on Windows
     find_package(unofficial-libffi CONFIG REQUIRED)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE unofficial::libffi::libffi)
-    target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE HAVE_LIBFFI)
+elseif (APPLE)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(FFI REQUIRED IMPORTED_TARGET libffi)
+    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE PkgConfig::FFI)
 else()
     find_library(FFI_LIBRARY NAMES ffi REQUIRED)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${FFI_LIBRARY})
-    target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE HAVE_LIBFFI)
 endif()
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE HAVE_LIBFFI)
 
 # Rice headers
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ".")
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE "../../rice")
 
 # Find Ruby
-find_package(Ruby REQUIRED)
+#find_package(Ruby REQUIRED)
+include("../../rice/FindRuby.cmake")
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${Ruby_INCLUDE_DIR} ${Ruby_CONFIG_INCLUDE_DIR})
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${Ruby_LIBRARY})
 
@@ -60,8 +64,11 @@ add_subdirectory ("opencv2")
 target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC
                            CVAPI_EXPORTS)
 
-# Clang built into Visual Studio
-if (CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    # Fixes error  error G5FE2FDFE:  __attribute__((noreturn))' cannot be used prior to '::' because it has no members
+# Fixes error G5FE2FDFE:  __attribute__((noreturn))' cannot be used prior to '::' because it has no members
+if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC CV_NORETURN=)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
     target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC CV_NORETURN="__declspec(noreturn)")
-endif ()
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_definitions(${CMAKE_PROJECT_NAME} PUBLIC CV_NORETURN=)
+endif()

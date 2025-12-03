@@ -20,7 +20,7 @@ Rice::Class rb_cCvVUint8x64;
 template<typename Data_Type_T, bool prec, int imm4, bool part, int imm32>
 inline void _v_rotate_right_builder(Data_Type_T& klass)
 {
-  klass.template define_singleton_function("eval", &cv::::_v_rotate_right<prec, imm4, part, imm32>::eval,
+  klass.template define_singleton_function<>("eval", &cv::::_v_rotate_right<prec, imm4, part, imm32>::eval,
       Arg(""));
 };
 void Init_IntrinAvx512()

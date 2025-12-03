@@ -14,20 +14,20 @@ inline void LinearIndex_builder(Data_Type_T& klass)
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams &>(cvflann::LinearIndexParams()), Arg("d") = static_cast<Distance>(Distance())).
     define_constructor(Constructor<cvflann::LinearIndex<Distance>, const cvflann::LinearIndex<Distance>&>(),
       Arg("")).
-    template define_method("assign", &cvflann::LinearIndex<Distance>::operator=,
+    template define_method<>("assign", &cvflann::LinearIndex<Distance>::operator=,
       Arg("")).
-    template define_method("get_type", &cvflann::LinearIndex<Distance>::getType).
-    template define_method("size", &cvflann::LinearIndex<Distance>::size).
-    template define_method("veclen", &cvflann::LinearIndex<Distance>::veclen).
-    template define_method("used_memory", &cvflann::LinearIndex<Distance>::usedMemory).
-    template define_method("build_index", &cvflann::LinearIndex<Distance>::buildIndex).
-    template define_method("save_index", &cvflann::LinearIndex<Distance>::saveIndex,
+    template define_method<>("get_type", &cvflann::LinearIndex<Distance>::getType).
+    template define_method<>("size", &cvflann::LinearIndex<Distance>::size).
+    template define_method<>("veclen", &cvflann::LinearIndex<Distance>::veclen).
+    template define_method<>("used_memory", &cvflann::LinearIndex<Distance>::usedMemory).
+    template define_method<>("build_index", &cvflann::LinearIndex<Distance>::buildIndex).
+    template define_method<>("save_index", &cvflann::LinearIndex<Distance>::saveIndex,
       Arg("")).
-    template define_method("load_index", &cvflann::LinearIndex<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::LinearIndex<Distance>::loadIndex,
       Arg("")).
-    template define_method("find_neighbors", &cvflann::LinearIndex<Distance>::findNeighbors,
+    template define_method<>("find_neighbors", &cvflann::LinearIndex<Distance>::findNeighbors,
       Arg("result_set"), Arg("vec")).
-    template define_method("get_parameters", &cvflann::LinearIndex<Distance>::getParameters);
+    template define_method<>("get_parameters", &cvflann::LinearIndex<Distance>::getParameters);
 };
 void Init_LinearIndex()
 {

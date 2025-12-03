@@ -19,7 +19,7 @@ inline void ColorChannel_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2RGB_builder(Data_Type_T& klass)
 {
-  klass.template define_method("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
+  klass.template define_method<>("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
       Arg("src")).
     define_attr("__device__", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::__device__);
 };

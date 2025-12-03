@@ -14,21 +14,21 @@ inline void KDTreeSingleIndex_builder(Data_Type_T& klass)
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams &>(cvflann::KDTreeSingleIndexParams()), Arg("d") = static_cast<Distance>(Distance())).
     define_constructor(Constructor<cvflann::KDTreeSingleIndex<Distance>, const cvflann::KDTreeSingleIndex<Distance>&>(),
       Arg("")).
-    template define_method("assign", &cvflann::KDTreeSingleIndex<Distance>::operator=,
+    template define_method<>("assign", &cvflann::KDTreeSingleIndex<Distance>::operator=,
       Arg("")).
-    template define_method("build_index", &cvflann::KDTreeSingleIndex<Distance>::buildIndex).
-    template define_method("get_type", &cvflann::KDTreeSingleIndex<Distance>::getType).
-    template define_method("save_index", &cvflann::KDTreeSingleIndex<Distance>::saveIndex,
+    template define_method<>("build_index", &cvflann::KDTreeSingleIndex<Distance>::buildIndex).
+    template define_method<>("get_type", &cvflann::KDTreeSingleIndex<Distance>::getType).
+    template define_method<>("save_index", &cvflann::KDTreeSingleIndex<Distance>::saveIndex,
       Arg("stream")).
-    template define_method("load_index", &cvflann::KDTreeSingleIndex<Distance>::loadIndex,
+    template define_method<>("load_index", &cvflann::KDTreeSingleIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method("size", &cvflann::KDTreeSingleIndex<Distance>::size).
-    template define_method("veclen", &cvflann::KDTreeSingleIndex<Distance>::veclen).
-    template define_method("used_memory", &cvflann::KDTreeSingleIndex<Distance>::usedMemory).
-    template define_method("knn_search", &cvflann::KDTreeSingleIndex<Distance>::knnSearch,
+    template define_method<>("size", &cvflann::KDTreeSingleIndex<Distance>::size).
+    template define_method<>("veclen", &cvflann::KDTreeSingleIndex<Distance>::veclen).
+    template define_method<>("used_memory", &cvflann::KDTreeSingleIndex<Distance>::usedMemory).
+    template define_method<>("knn_search", &cvflann::KDTreeSingleIndex<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    template define_method("get_parameters", &cvflann::KDTreeSingleIndex<Distance>::getParameters).
-    template define_method("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
+    template define_method<>("get_parameters", &cvflann::KDTreeSingleIndex<Distance>::getParameters).
+    template define_method<>("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
 void Init_KdtreeSingleIndex()

@@ -138,6 +138,11 @@
 #include "opencv2/videoio-rb.hpp"
 
 extern "C"
+#if defined(_WIN32)
+__declspec(dllexport)
+#else
+__attribute__((visibility("default")))
+#endif
 void Init_opencv_ruby()
 {
   return Rice::detail::cpp_protect([]

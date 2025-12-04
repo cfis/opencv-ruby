@@ -48,13 +48,14 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
   PREFIX ""
   SUFFIX ".${RUBY_DLEXT}"
   OUTPUT_NAME "opencv_ruby"
+  CXX_VISIBILITY_PRESET hidden
+  VISIBILITY_INLINES_HIDDEN ON
 #        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/../lib/${Ruby_VERSION_MAJOR}.${Ruby_VERSION_MINOR}" # Windows
  #       LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/../lib") # Not Windows
  )
 
 # Add source files
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-    "opencv_ruby.def"
     "opencv_ruby-rb.cpp")
 
 # Add subdirectories

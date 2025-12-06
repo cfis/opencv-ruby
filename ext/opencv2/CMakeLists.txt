@@ -13,7 +13,6 @@ endif()
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "calib3d-rb.cpp"
     "core-rb.cpp"
-    "dnn-rb.cpp"
     "features2d-rb.cpp"
     "flann-rb.cpp"
     "highgui-rb.cpp"

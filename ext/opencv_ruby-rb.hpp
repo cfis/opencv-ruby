@@ -1,5 +1,5 @@
 #include <rice/rice.hpp>
-//#include <rice/api.hpp>
+#include <rice/api.hpp>
 
 extern "C"
 #if defined(_WIN32)

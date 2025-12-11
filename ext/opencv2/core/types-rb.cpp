@@ -588,7 +588,8 @@ void Init_Types()
 
   //rb_cSize2i = define_class_under<cv::Size_<int>>(rb_mCv, "Size2i").
   //  define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
-  rb_mCv.const_set(rb_intern("Size2i"), rb_cPoint);
+  // Size2i should alias Size, not Point (both are cv::Size_<int>)
+  rb_mCv.const_set(rb_intern("Size2i"), rb_cSize);
 
   rb_cSize2l = define_class_under<cv::Size_<long long>>(rb_mCv, "Size2l").
     define(&Size__builder<Data_Type<cv::Size_<long long>>, long long>);

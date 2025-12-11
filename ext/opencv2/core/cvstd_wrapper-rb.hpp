@@ -5,240 +5,314 @@
 
 void Init_CvstdWrapper();
 
-// --------- Wrapper ---------
-namespace Rice::detail
+
+namespace Rice
 {
   template<typename T>
-  class Wrapper<cv::Ptr<T>> : public WrapperBase
+  inline Data_Type<cv::Ptr<T>> define_cv_ptr()
   {
-  public:
-    Wrapper(cv::Ptr<T>& data) : data_(data)
-    {
-    }
+    using Ptr_T = cv::Ptr<T>;
+    using Data_Type_T = Data_Type<Ptr_T>;
 
-    ~Wrapper()
-    {
-      Registries::instance.instances.remove(this->get());
-    }
-
-    void* get() override
-    {
-      return (void*)this->data_.get();
-    }
-
-    cv::Ptr<T>& data()
-    {
-      return data_;
-    }
-
-  private:
-    cv::Ptr<T> data_;
+    detail::TypeMapper<Ptr_T> typeMapper;
+    std::string klassName = typeMapper.rubyName();
+    
+    Module rb_mCv = define_module("Cv");
+    return define_class_under<cv::Ptr<T>>(rb_mCv, klassName).
+      define_constructor(Constructor<cv::Ptr<T>>()).
+      // define_constructor(Constructor<cv::Ptr<T>, nullptr_t>(),
+       //  Arg("")).
+      define_constructor(Constructor<cv::Ptr<T>, T*>(),
+        Arg("ptr").takeOwnership()).
+      define_constructor(Constructor<cv::Ptr<T>, const cv::Ptr<T>&>(),
+        Arg("o")).
+      define_constructor(Constructor<cv::Ptr<T>, const std::shared_ptr<T>&>(),
+        Arg("o")).
+      define_constructor(Constructor<cv::Ptr<T>, std::shared_ptr<T>&&>(),
+        Arg("o")).
+      template define_method<void(cv::Ptr<T>::*)()>("reset", &cv::Ptr<T>::reset).
+      template define_method<cv::Ptr<T>&(cv::Ptr<T>::*)(const cv::Ptr<T>&)>("assign", &cv::Ptr<T>::operator=,
+        Arg("o")).
+      define_method("->", &cv::Ptr<T>::operator->).
+      define_method("dereference", &cv::Ptr<T>::operator*).
+      define_method("release", &cv::Ptr<T>::release).
+      define_method("empty?", &cv::Ptr<T>::empty);
   };
 
-
-  // --------- Type/To_Ruby/From_Ruby ---------
-  template<typename T>
-  struct Type<cv::Ptr<T>>
+  namespace detail
   {
-    static bool verify()
+    // --------- Wrapper ---------
+    template<typename T>
+    class Wrapper<cv::Ptr<T>> : public WrapperBase
     {
-      return Type<T>::verify();
-    }
-
-    static VALUE rubyKlass()
-    {
-      TypeMapper<T> typeMapper;
-      return typeMapper.rubyKlass();
-    }
-  };
-
-  template<typename T>
-  struct Type<cv::Ptr<T>*>
-  {
-    static bool verify()
-    {
-      return Type<T>::verify();
-    }
-
-    static VALUE rubyKlass()
-    {
-      TypeMapper<T> typeMapper;
-      return typeMapper.rubyKlass();
-    }
-  };
-
-  template <typename T>
-  class To_Ruby<cv::Ptr<T>>
-  {
-  public:
-    To_Ruby() = default;
-
-    explicit To_Ruby(Arg* arg) : arg_(arg)
-    {
-    }
-
-    VALUE convert(cv::Ptr<T>& data)
-    {
-      if constexpr (std::is_fundamental_v<T>)
+    public:
+      Wrapper(cv::Ptr<T>& data) : data_(data)
       {
-        return detail::wrap(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
-      }
-      else
-      {
-        return detail::wrap<cv::Ptr<T>>(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
-      }
-    }
-
-    VALUE convert(const cv::Ptr<T>& data)
-    {
-      return this->convert((cv::Ptr<T>&)data);
-    }
-
-  private:
-    Arg* arg_ = nullptr;
-  };
-
-  template <typename T>
-  class From_Ruby<cv::Ptr<T>>
-  {
-  public:
-    From_Ruby() = default;
-
-    explicit From_Ruby(Arg* arg) : arg_(arg)
-    {
-    }
-
-    Convertible is_convertible(VALUE value)
-    {
-      switch (rb_type(value))
-      {
-        case RUBY_T_DATA:
-          return Convertible::Exact;
-          break;
-        default:
-          return Convertible::None;
-      }
-    }
-
-    cv::Ptr<T> convert(VALUE value)
-    {
-      if (value == Qnil && this->arg_ && this->arg_->hasDefaultValue())
-      {
-        return this->arg_->template defaultValue<cv::Ptr<T>>();
       }
 
-      // Get the wrapper
-      WrapperBase* wrapperBase = detail::getWrapper(value);
-
-      // Was this Cv::Ptr created by the user from Ruby? If so it will
-      // be wrapped as a pointer, cv::Ptr<T>*. In the case just
-      // return the shared pointer
-      if (dynamic_cast<Wrapper<cv::Ptr<T>*>*>(wrapperBase))
+      ~Wrapper()
       {
-        // Use unwrap to validate the underlying wrapper is the correct type
-        cv::Ptr<T>* ptr = unwrap<cv::Ptr<T>>(value, Data_Type<cv::Ptr<T>>::ruby_data_type(), false);
-        return *ptr;
+        Registries::instance.instances.remove(this->get());
       }
-      else if constexpr (std::is_fundamental_v<T>)
+
+      void* get() override
       {
-        // Get the wrapper again to validate T's type
-        Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
-        return wrapper->data();
+        return (void*)this->data_.get();
       }
-      else
+
+      cv::Ptr<T>& data()
       {
-        // Get the wrapper again to validate T's type
-        Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
-        return wrapper->data();
+        return data_;
       }
-    }
 
-  private:
-    Arg* arg_ = nullptr;
-  };
+    private:
+      cv::Ptr<T> data_;
+    };
 
-  template <typename T>
-  class To_Ruby<cv::Ptr<T>&>
-  {
-  public:
-    To_Ruby() = default;
 
-    explicit To_Ruby(Arg* arg) : arg_(arg)
+    // -------- Type ---------
+    template<typename T>
+    struct Type<cv::Ptr<T>>
     {
-    }
+      static bool verify()
+      {
+        if constexpr (std::is_fundamental_v<T>)
+        {
+          Type<Pointer<T>>::verify();
+          Type<Buffer<T>>::verify();
+        }
+        else
+        {
+          if (!Type<intrinsic_type<T>>::verify())
+          {
+            return false;
+          }
+        }
 
-    VALUE convert(cv::Ptr<T>& data)
+        if constexpr (!std::is_void_v<T>)
+        {
+          if (!Data_Type<cv::Ptr<T>>::is_defined())
+          {
+            Rice::define_cv_ptr<T>();
+          }
+        }
+        return true;
+
+      }
+
+      static VALUE rubyKlass()
+      {
+        if (Data_Type<cv::Ptr<T>>::is_defined())
+        {
+          std::pair<VALUE, rb_data_type_t*> pair = Registries::instance.types.getType<cv::Ptr<T>>();
+          return pair.first;
+        }
+        else
+        {
+          TypeMapper<T> typeMapper;
+          return typeMapper.rubyKlass();
+        }
+      }
+    };
+
+    template<typename T>
+    struct Type<cv::Ptr<T>*>
     {
-      if constexpr (std::is_fundamental_v<T>)
+      static bool verify()
       {
-        return detail::wrap(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
+        return Type<T>::verify();
       }
-      else
-      {
-        return detail::wrap<cv::Ptr<T>>(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
-      }
-    }
 
-    VALUE convert(const cv::Ptr<T>& data)
+      static VALUE rubyKlass()
+      {
+        if (Data_Type<cv::Ptr<T>>::is_defined())
+        {
+          std::pair<VALUE, rb_data_type_t*> pair = Registries::instance.types.getType<cv::Ptr<T>>();
+          return pair.first;
+        }
+        else
+        {
+          TypeMapper<T> typeMapper;
+          return typeMapper.rubyKlass();
+        }
+      }
+    };
+
+    // --------- To_Ruby ---------
+    template <typename T>
+    class To_Ruby<cv::Ptr<T>>
     {
-      return this->convert((cv::Ptr<T>&)data);
-    }
+    public:
+      To_Ruby() = default;
 
-  private:
-    Arg* arg_ = nullptr;
-  };
+      explicit To_Ruby(Arg* arg) : arg_(arg)
+      {
+      }
 
-  template <typename T>
-  class From_Ruby<cv::Ptr<T>&>
-  {
-  public:
-    From_Ruby() = default;
+      VALUE convert(cv::Ptr<T>& data)
+      {
+        if constexpr (std::is_fundamental_v<T>)
+        {
+          return detail::wrap(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
+        }
+        else
+        {
+          return detail::wrap<cv::Ptr<T>>(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
+        }
+      }
 
-    explicit From_Ruby(Arg* arg) : arg_(arg)
+      VALUE convert(const cv::Ptr<T>& data)
+      {
+        return this->convert((cv::Ptr<T>&)data);
+      }
+
+    private:
+      Arg* arg_ = nullptr;
+    };
+
+    // --------- From_Ruby ---------
+    template <typename T>
+    class From_Ruby<cv::Ptr<T>>
     {
-    }
+    public:
+      From_Ruby() = default;
 
-    Convertible is_convertible(VALUE value)
+      explicit From_Ruby(Arg* arg) : arg_(arg)
+      {
+      }
+
+      Convertible is_convertible(VALUE value)
+      {
+        switch (rb_type(value))
+        {
+          case RUBY_T_DATA:
+            return Convertible::Exact;
+            break;
+          default:
+            return Convertible::None;
+        }
+      }
+
+      cv::Ptr<T> convert(VALUE value)
+      {
+        if (value == Qnil && this->arg_ && this->arg_->hasDefaultValue())
+        {
+          return this->arg_->template defaultValue<cv::Ptr<T>>();
+        }
+
+        // Get the wrapper
+        WrapperBase* wrapperBase = detail::getWrapper(value);
+
+        // Was this Cv::Ptr created by the user from Ruby? If so it will
+        // be wrapped as a pointer, cv::Ptr<T>*. In the case just
+        // return the shared pointer
+        if (dynamic_cast<Wrapper<cv::Ptr<T>*>*>(wrapperBase))
+        {
+          // Use unwrap to validate the underlying wrapper is the correct type
+          cv::Ptr<T>* ptr = unwrap<cv::Ptr<T>>(value, Data_Type<cv::Ptr<T>>::ruby_data_type(), false);
+          return *ptr;
+        }
+        else if constexpr (std::is_fundamental_v<T>)
+        {
+          // Get the wrapper again to validate T's type
+          Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
+          return wrapper->data();
+        }
+        else
+        {
+          // Get the wrapper again to validate T's type
+          Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
+          return wrapper->data();
+        }
+      }
+
+    private:
+      Arg* arg_ = nullptr;
+    };
+
+    template <typename T>
+    class To_Ruby<cv::Ptr<T>&>
     {
-      switch (rb_type(value))
-      {
-        case RUBY_T_DATA:
-          return Convertible::Exact;
-          break;
-        default:
-          return Convertible::None;
-      }
-    }
+    public:
+      To_Ruby() = default;
 
-    cv::Ptr<T>& convert(VALUE value)
+      explicit To_Ruby(Arg* arg) : arg_(arg)
+      {
+      }
+
+      VALUE convert(cv::Ptr<T>& data)
+      {
+        if constexpr (std::is_fundamental_v<T>)
+        {
+          return detail::wrap(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
+        }
+        else
+        {
+          return detail::wrap<cv::Ptr<T>>(Data_Type<T>::klass(), Data_Type<T>::ruby_data_type(), data, true);
+        }
+      }
+
+      VALUE convert(const cv::Ptr<T>& data)
+      {
+        return this->convert((cv::Ptr<T>&)data);
+      }
+
+    private:
+      Arg* arg_ = nullptr;
+    };
+
+    template <typename T>
+    class From_Ruby<cv::Ptr<T>&>
     {
-      // Get the wrapper
-      WrapperBase* wrapperBase = detail::getWrapper(value);
+    public:
+      From_Ruby() = default;
 
-      // Was this shared_ptr created by the user from Ruby? If so it will
-      // be wrapped as a pointer, cv::Ptr<T>*. In the case just
-      // return the shared pointer
-      if (dynamic_cast<Wrapper<cv::Ptr<T>*>*>(wrapperBase))
+      explicit From_Ruby(Arg* arg) : arg_(arg)
       {
-        // Use unwrap to validate the underlying wrapper is the correct type
-        cv::Ptr<T>* ptr = unwrap<cv::Ptr<T>>(value, Data_Type<cv::Ptr<T>>::ruby_data_type(), false);
-        return *ptr;
       }
-      else if constexpr (std::is_fundamental_v<T>)
-      {
-        // Get the wrapper again to validate T's type
-        Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
-        return wrapper->data();
-      }
-      else
-      {
-        // Get the wrapper again to validate T's type
-        Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
-        return wrapper->data();
-      }
-    }
 
-  private:
-    Arg* arg_ = nullptr;
-  };
+      Convertible is_convertible(VALUE value)
+      {
+        switch (rb_type(value))
+        {
+          case RUBY_T_DATA:
+            return Convertible::Exact;
+            break;
+          default:
+            return Convertible::None;
+        }
+      }
+
+      cv::Ptr<T>& convert(VALUE value)
+      {
+        // Get the wrapper
+        WrapperBase* wrapperBase = detail::getWrapper(value);
+
+        // Was this shared_ptr created by the user from Ruby? If so it will
+        // be wrapped as a pointer, cv::Ptr<T>*. In the case just
+        // return the shared pointer
+        if (dynamic_cast<Wrapper<cv::Ptr<T>*>*>(wrapperBase))
+        {
+          // Use unwrap to validate the underlying wrapper is the correct type
+          cv::Ptr<T>* ptr = unwrap<cv::Ptr<T>>(value, Data_Type<cv::Ptr<T>>::ruby_data_type(), false);
+          return *ptr;
+        }
+        else if constexpr (std::is_fundamental_v<T>)
+        {
+          // Get the wrapper again to validate T's type
+          Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
+          return wrapper->data();
+        }
+        else
+        {
+          // Get the wrapper again to validate T's type
+          Wrapper<cv::Ptr<T>>* wrapper = getWrapper<Wrapper<cv::Ptr<T>>>(value, Data_Type<T>::ruby_data_type());
+          return wrapper->data();
+        }
+      }
+
+    private:
+      Arg* arg_ = nullptr;
+    };
+  }
 }

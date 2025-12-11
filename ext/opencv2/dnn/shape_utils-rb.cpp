@@ -66,6 +66,6 @@ void Init_ShapeUtils()
   rb_mCvDnn.define_module_function("normalize_axis_range", &cv::dnn::dnn4_v20241223::normalize_axis_range,
     Arg("r"), Arg("axis_size"));
   
-  rb_mCvDnn.define_module_function("", &cv::dnn::dnn4_v20241223::isAllOnes,
+  rb_mCvDnn.define_module_function("all_ones?", &cv::dnn::dnn4_v20241223::isAllOnes,
     Arg("input_shape"), Arg("start_pos"), Arg("end_pos"));
 }

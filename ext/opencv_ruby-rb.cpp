@@ -124,7 +124,6 @@
 // Top Level
 #include "opencv2/calib3d-rb.hpp"
 #include "opencv2/core-rb.hpp"
-#include "opencv2/dnn-rb.hpp"
 #include "opencv2/features2d-rb.hpp"
 #include "opencv2/flann-rb.hpp"
 #include "opencv2/highgui-rb.hpp"
@@ -191,13 +190,13 @@ void Init_opencv_ruby()
     Init_VsxUtils();
 
     // DNN
-    Init_AllLayers();
+    Init_DnnVersion();
     Init_Dict();
     Init_Dnn();
     Init_Layer();
     Init_LayerDetails();
+    Init_AllLayers();
     Init_ShapeUtils();
-    Init_DnnVersion();
 
     // Flann
     Init_Allocator();
@@ -267,7 +266,6 @@ void Init_opencv_ruby()
 
     // Top level
     Init_Calib3d();
-    Init_Dnn();
     Init_Features2d();
     Init_Flann();
     Init_Highgui();
@@ -284,6 +282,6 @@ void Init_opencv_ruby()
     Rice::detail::Registries::instance.types.validateTypes();
 
     // Setup Ruby API
-   // Init_Rice_Api();
+    Init_Rice_Api();
   });
 }

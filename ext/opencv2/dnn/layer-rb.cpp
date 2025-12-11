@@ -15,7 +15,7 @@ void Init_Layer()
       Arg("type"), Arg("constructor")).
     define_singleton_function("unregister_layer", &cv::dnn::dnn4_v20241223::LayerFactory::unregisterLayer,
       Arg("type")).
-    define_singleton_function("", &cv::dnn::dnn4_v20241223::LayerFactory::isLayerRegistered,
+    define_singleton_function("is_layer_registered", &cv::dnn::dnn4_v20241223::LayerFactory::isLayerRegistered,
       Arg("type")).
     define_singleton_function("create_layer_instance", &cv::dnn::dnn4_v20241223::LayerFactory::createLayerInstance,
       Arg("type"), Arg("params"));

@@ -1,9 +1,9 @@
 #include <opencv2/dnn/dnn.hpp>
+#include "../core/cvstd_wrapper-rb.hpp"
 #include "dnn-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnBackendNode;
 Rice::Class rb_cCvDnnBackendWrapper;
 Rice::Class rb_cCvDnnClassificationModel;
 Rice::Class rb_cCvDnnDetectionModel;
@@ -72,11 +72,6 @@ void Init_Dnn()
     define_attr("name", &cv::dnn::dnn4_v20241223::LayerParams::name).
     define_attr("type", &cv::dnn::dnn4_v20241223::LayerParams::type);
   
-  rb_cCvDnnBackendNode = define_class_under<cv::dnn::dnn4_v20241223::BackendNode>(rb_mCvDnn, "BackendNode").
-   // define_constructor(Constructor<cv::dnn::dnn4_v20241223::BackendNode, int>(),
-   //   Arg("backend_id")).
-    define_attr("backend_id", &cv::dnn::dnn4_v20241223::BackendNode::backendId);
-  
   rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::dnn4_v20241223::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
     define_method("copy_to_host", &cv::dnn::dnn4_v20241223::BackendWrapper::copyToHost).
     define_method("set_host_dirty", &cv::dnn::dnn4_v20241223::BackendWrapper::setHostDirty).
@@ -89,7 +84,7 @@ void Init_Dnn()
       Arg("inputs"), Arg("outputs")).
     define_method<void(cv::dnn::dnn4_v20241223::Layer::*)(cv::InputArrayOfArrays, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays)>("forward", &cv::dnn::dnn4_v20241223::Layer::forward,
       Arg("inputs"), Arg("outputs"), Arg("internals")).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::tryQuantize,
+    define_method("try_quantize", &cv::dnn::dnn4_v20241223::Layer::tryQuantize,
       Arg("scales"), Arg("zeropoints"), Arg("params")).
     define_method("forward_fallback", &cv::dnn::dnn4_v20241223::Layer::forward_fallback,
       Arg("inputs"), Arg("outputs"), Arg("internals")).
@@ -97,8 +92,10 @@ void Init_Dnn()
       Arg("input_name")).
     define_method("output_name_to_index", &cv::dnn::dnn4_v20241223::Layer::outputNameToIndex,
       Arg("output_name")).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::supportBackend,
+    define_method("support_backend", &cv::dnn::dnn4_v20241223::Layer::supportBackend,
       Arg("backend_id")).
+
+  /* These all return BackendNode which is not a public api 
     define_method("init_halide", &cv::dnn::dnn4_v20241223::Layer::initHalide,
       Arg("inputs")).
     define_method("init_ngraph", &cv::dnn::dnn4_v20241223::Layer::initNgraph,
@@ -116,21 +113,21 @@ void Init_Dnn()
     define_method("apply_halide_scheduler", &cv::dnn::dnn4_v20241223::Layer::applyHalideScheduler,
       Arg("node"), Arg("inputs"), Arg("outputs"), Arg("target_id")).
     define_method("try_attach", &cv::dnn::dnn4_v20241223::Layer::tryAttach,
-      Arg("node")).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::setActivation,
-      Arg("layer")).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::tryFuse,
+      Arg("node")).*/
+//    define_method("set_activation", &cv::dnn::dnn4_v20241223::Layer::setActivation,
+//      Arg("layer")).
+    define_method("try_fuse", &cv::dnn::dnn4_v20241223::Layer::tryFuse,
       Arg("top")).
     define_method("get_scale_shift", &cv::dnn::dnn4_v20241223::Layer::getScaleShift,
       Arg("scale"), Arg("shift")).
     define_method("get_scale_zeropoint", &cv::dnn::dnn4_v20241223::Layer::getScaleZeropoint,
       Arg("scale"), Arg("zeropoint")).
     define_method("unset_attached", &cv::dnn::dnn4_v20241223::Layer::unsetAttached).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::getMemoryShapes,
+    define_method("get_memory_shapes", &cv::dnn::dnn4_v20241223::Layer::getMemoryShapes,
       Arg("inputs"), Arg("required_outputs"), Arg("outputs"), Arg("internals")).
     define_method("get_flops", &cv::dnn::dnn4_v20241223::Layer::getFLOPS,
       Arg("inputs"), Arg("outputs")).
-    define_method("", &cv::dnn::dnn4_v20241223::Layer::updateMemoryShapes,
+    define_method("update_memory_shapes", &cv::dnn::dnn4_v20241223::Layer::updateMemoryShapes,
       Arg("inputs")).
     define_attr("name", &cv::dnn::dnn4_v20241223::Layer::name).
     define_attr("type", &cv::dnn::dnn4_v20241223::Layer::type).
@@ -149,7 +146,7 @@ void Init_Dnn()
       Arg("buffer_model_config"), Arg("buffer_weights")).
     define_singleton_function<cv::dnn::dnn4_v20241223::Net(*)(const uchar*, size_t, const uchar*, size_t)>("read_from_model_optimizer", &cv::dnn::dnn4_v20241223::Net::readFromModelOptimizer,
       Arg("buffer_model_config_ptr"), Arg("buffer_model_config_size"), Arg("buffer_weights_ptr"), Arg("buffer_weights_size")).
-    define_method("", &cv::dnn::dnn4_v20241223::Net::empty).
+    define_method("empty?", &cv::dnn::dnn4_v20241223::Net::empty).
     define_method("dump", &cv::dnn::dnn4_v20241223::Net::dump).
     define_method("dump_to_file", &cv::dnn::dnn4_v20241223::Net::dumpToFile,
       Arg("path")).
@@ -406,7 +403,6 @@ void Init_Dnn()
     Arg("bboxes"), Arg("scores"), Arg("updated_scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("top_k") = static_cast<size_t>(0), Arg("sigma") = static_cast<const float>(0.5), Arg("method") = static_cast<cv::dnn::dnn4_v20241223::SoftNMSMethod>(cv::dnn::dnn4_v20241223::SoftNMSMethod::SOFTNMS_GAUSSIAN));
   
   rb_cCvDnnModel = define_class_under<cv::dnn::dnn4_v20241223::Model>(rb_mCvDnn, "Model").
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::Model>()).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::Model, const cv::dnn::dnn4_v20241223::Model&>(),
       Arg("")).
     define_method<cv::dnn::dnn4_v20241223::Model&(cv::dnn::dnn4_v20241223::Model::*)(const cv::dnn::dnn4_v20241223::Model&)>("assign", &cv::dnn::dnn4_v20241223::Model::operator=,
@@ -457,7 +453,7 @@ void Init_Dnn()
       Arg("network")).
     define_method("set_enable_softmax_post_processing", &cv::dnn::dnn4_v20241223::ClassificationModel::setEnableSoftmaxPostProcessing,
       Arg("enable")).
-    define_method("", &cv::dnn::dnn4_v20241223::ClassificationModel::getEnableSoftmaxPostProcessing).
+    define_method("get_enable_softmax_post_processing", &cv::dnn::dnn4_v20241223::ClassificationModel::getEnableSoftmaxPostProcessing).
     define_method<std::pair<int, float>(cv::dnn::dnn4_v20241223::ClassificationModel::*)(cv::InputArray)>("classify", &cv::dnn::dnn4_v20241223::ClassificationModel::classify,
       Arg("frame")).
     define_method<void(cv::dnn::dnn4_v20241223::ClassificationModel::*)(cv::InputArray, int&, float&)>("classify", &cv::dnn::dnn4_v20241223::ClassificationModel::classify,
@@ -486,7 +482,7 @@ void Init_Dnn()
       Arg("network")).
     define_method("set_nms_across_classes", &cv::dnn::dnn4_v20241223::DetectionModel::setNmsAcrossClasses,
       Arg("value")).
-    define_method("", &cv::dnn::dnn4_v20241223::DetectionModel::getNmsAcrossClasses).
+    define_method("get_nms_across_classes", &cv::dnn::dnn4_v20241223::DetectionModel::getNmsAcrossClasses).
     define_method("detect", &cv::dnn::dnn4_v20241223::DetectionModel::detect,
       Arg("frame"), Arg("class_ids"), Arg("confidences"), Arg("boxes"), Arg("conf_threshold") = static_cast<float>(0.5f), Arg("nms_threshold") = static_cast<float>(0.0f));
   

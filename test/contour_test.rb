@@ -41,7 +41,7 @@ class ContourTest < OpenCVTestCase
   end
 
   def test_draw_contours
-    _, contours, hierarchy = circle_contours
+    mat, contours, hierarchy = circle_contours
     assert_equal(1, contours.size)
     assert_equal(180, contours.first.size)
 

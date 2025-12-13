@@ -61,7 +61,8 @@ class ImgProcTest < OpenCVTestCase
     image_path = self.sample_path("starry_night.jpg")
     image = Cv.imread(image_path)
     blurred = image.blur(Cv::Size.new(5, 5))
-    refute_equal(image, blurred)
+    # Compare hashes instead of Mat objects directly to avoid huge output
+    refute_equal(hash_img(image), hash_img(blurred))
     assert_equal(3, blurred.channels)
     assert_equal(CV_8UC1, blurred.depth)
     assert_equal('f7db5edda1f86bb8f6a62e011a60063a', hash_img(blurred))
@@ -329,7 +330,8 @@ class ImgProcTest < OpenCVTestCase
     image_path = self.sample_path("starry_night.jpg")
     image = Cv.imread(image_path)
     blurred = image.gaussian_blur(Cv::Size.new(5, 5), 0)
-    refute_equal(image, blurred)
+    # Compare hashes instead of Mat objects directly to avoid huge output
+    refute_equal(hash_img(image), hash_img(blurred))
     assert_equal('6d9daaa4fc11e1f656075da713dcaf92', hash_img(blurred))
   end
 
@@ -680,14 +682,26 @@ class ImgProcTest < OpenCVTestCase
   def test_resize
     mat = Cv::imread(self.sample_path('lena-256x256.jpg'), Cv::ImreadModes::IMREAD_ANYCOLOR | Cv::ImreadModes::IMREAD_ANYDEPTH)
     size = Cv::Size.new(384, 384)
-    mat1 = mat.resize(size)
-    mat2 = mat.resize(size, interpolation: Cv::InterpolationFlags::INTER_LINEAR)
-    mat3 = mat.resize(size, interpolation: Cv::InterpolationFlags::INTER_NEAREST)
-    mat4 = mat.resize(size, interpolation: Cv::InterpolationFlags::INTER_AREA)
-    mat5 = mat.resize(size, interpolation: Cv::InterpolationFlags::INTER_CUBIC)
-    mat6 = mat.resize(size, interpolation: Cv::InterpolationFlags::INTER_LANCZOS4)
 
-    [mat1, mat2, mat3, mat4, mat5, mat6].each do |m|
+    # Use module-level Cv.resize function (cv::resize) instead of Mat#resize
+    # Mat#resize is the STL container resize, not the image resize function
+    results = []
+    [nil,
+     Cv::InterpolationFlags::INTER_LINEAR,
+     Cv::InterpolationFlags::INTER_NEAREST,
+     Cv::InterpolationFlags::INTER_AREA,
+     Cv::InterpolationFlags::INTER_CUBIC,
+     Cv::InterpolationFlags::INTER_LANCZOS4].each do |interpolation|
+      result = Cv::Mat.new
+      if interpolation
+        Cv.resize(mat.input_array, result.output_array, size, interpolation: interpolation)
+      else
+        Cv.resize(mat.input_array, result.output_array, size)
+      end
+      results << result
+    end
+
+    results.each do |m|
       assert_equal(size.width, m.cols)
       assert_equal(size.height, m.rows)
       assert_equal(mat.depth, m.depth)

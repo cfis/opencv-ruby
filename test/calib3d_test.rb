@@ -230,4 +230,238 @@ class Calib3dTest < OpenCVTestCase
       assert_in_delta_array(expected, mat.to_a, 0.0001)
     end
   end
+
+  # ============ Rodrigues Transform ============
+  def test_rodrigues
+    # Test rotation vector to rotation matrix
+    rvec = Cv::Mat.new(3, 1, CV_64FC1)
+    rvec[0, 0] = 0.1
+    rvec[1, 0] = 0.2
+    rvec[2, 0] = 0.3
+
+    dst = Cv::Mat.new
+    Cv::rodrigues(rvec.input_array, dst.output_array)
+
+    # Should produce a 3x3 rotation matrix
+    assert_equal(3, dst.rows)
+    assert_equal(3, dst.cols)
+
+    # Test rotation matrix back to rotation vector
+    rvec2 = Cv::Mat.new
+    Cv::rodrigues(dst.input_array, rvec2.output_array)
+
+    assert_equal(3, rvec2.rows)
+    assert_equal(1, rvec2.cols)
+
+    # Should be close to original
+    assert_in_delta(rvec[0, 0], rvec2[0, 0], 0.001)
+    assert_in_delta(rvec[1, 0], rvec2[1, 0], 0.001)
+    assert_in_delta(rvec[2, 0], rvec2[2, 0], 0.001)
+  end
+
+  # ============ UsacParams ============
+  def test_usac_params
+    params = Cv::UsacParams.new
+    refute_nil(params)
+
+    # Test setting various parameters
+    params.confidence = 0.99
+    assert_in_delta(0.99, params.confidence, 0.001)
+
+    params.max_iterations = 1000
+    assert_equal(1000, params.max_iterations)
+
+    params.threshold = 2.0
+    assert_in_delta(2.0, params.threshold, 0.001)
+
+    params.is_parallel = true
+    assert(params.is_parallel)
+  end
+
+  # ============ CirclesGridFinderParameters ============
+  def test_circles_grid_finder_parameters
+    params = Cv::CirclesGridFinderParameters.new
+    refute_nil(params)
+
+    # Test some parameters
+    params.min_density = 5.0
+    assert_in_delta(5.0, params.min_density, 0.001)
+
+    params.kmeans_attempts = 3
+    assert_equal(3, params.kmeans_attempts)
+  end
+
+  # ============ Check Chessboard ============
+  def test_check_chessboard
+    mat = Cv::imread(FILENAME_CHESSBOARD, Cv::ImreadModes::IMREAD_GRAYSCALE)
+    result = Cv::check_chessboard?(mat.input_array, Cv::Size.new(4, 4))
+    assert(result)
+  end
+
+  # ============ Convert Points ============
+  def test_convert_points_to_homogeneous
+    # Create 2D points
+    src = Cv::Mat.new(4, 2, CV_32FC1)
+    src[0, 0] = 0.0; src[0, 1] = 0.0
+    src[1, 0] = 1.0; src[1, 1] = 0.0
+    src[2, 0] = 1.0; src[2, 1] = 1.0
+    src[3, 0] = 0.0; src[3, 1] = 1.0
+
+    dst = Cv::Mat.new
+    Cv::convert_points_to_homogeneous(src.input_array, dst.output_array)
+
+    # Result should have 4 rows and either 3 cols or 3 channels
+    assert_equal(4, dst.rows)
+    # Output can be multi-channel or multi-column, check total elements per point
+    assert(dst.cols * dst.channels == 3)
+  end
+
+  def test_convert_points_from_homogeneous
+    # Create 3D homogeneous points
+    src = Cv::Mat.new(4, 3, CV_32FC1)
+    src[0, 0] = 0.0; src[0, 1] = 0.0; src[0, 2] = 1.0
+    src[1, 0] = 2.0; src[1, 1] = 0.0; src[1, 2] = 2.0  # (1, 0) in 2D
+    src[2, 0] = 3.0; src[2, 1] = 3.0; src[2, 2] = 3.0  # (1, 1) in 2D
+    src[3, 0] = 0.0; src[3, 1] = 4.0; src[3, 2] = 4.0  # (0, 1) in 2D
+
+    dst = Cv::Mat.new
+    Cv::convert_points_from_homogeneous(src.input_array, dst.output_array)
+
+    # Result should have 4 rows and either 2 cols or 2 channels
+    assert_equal(4, dst.rows)
+    # Output can be multi-channel or multi-column, check total elements per point
+    assert(dst.cols * dst.channels == 2)
+  end
+
+  # ============ Stereo Matching ============
+  def test_stereo_bm_create
+    stereo_bm = Cv::StereoBM.create
+    refute_nil(stereo_bm)
+
+    # Test parameters
+    stereo_bm.set_num_disparities(64)
+    assert_equal(64, stereo_bm.get_num_disparities)
+
+    stereo_bm.set_block_size(21)
+    assert_equal(21, stereo_bm.get_block_size)
+  end
+
+  def test_stereo_sgbm_create
+    stereo_sgbm = Cv::StereoSGBM.create(0, 16, 3)
+    refute_nil(stereo_sgbm)
+
+    # Test parameters
+    stereo_sgbm.set_num_disparities(64)
+    assert_equal(64, stereo_sgbm.get_num_disparities)
+  end
+
+  # ============ Triangulate Points ============
+  def test_triangulate_points
+    # Create projection matrices for two cameras
+    proj1 = Cv::Mat.new(3, 4, CV_64FC1, Cv::Scalar.new(0))
+    proj1[0, 0] = 1.0; proj1[1, 1] = 1.0; proj1[2, 2] = 1.0
+
+    proj2 = Cv::Mat.new(3, 4, CV_64FC1, Cv::Scalar.new(0))
+    proj2[0, 0] = 1.0; proj2[1, 1] = 1.0; proj2[2, 2] = 1.0
+    proj2[0, 3] = -1.0  # Camera 2 is translated 1 unit in X
+
+    # Create 2D point correspondences
+    points1 = Cv::Mat.new(2, 1, CV_64FC1)
+    points2 = Cv::Mat.new(2, 1, CV_64FC1)
+
+    # Point at (0.5, 0.5) in both images (different depth)
+    points1[0, 0] = 0.5
+    points1[1, 0] = 0.5
+    points2[0, 0] = 0.6
+    points2[1, 0] = 0.5
+
+    points4d = Cv::Mat.new
+    Cv::triangulate_points(proj1.input_array, proj2.input_array,
+                           points1.input_array, points2.input_array,
+                           points4d.output_array)
+
+    # Result should be 4xN homogeneous coordinates
+    assert_equal(4, points4d.rows)
+    assert_equal(1, points4d.cols)
+  end
+
+  # ============ RQ Decomposition ============
+  def test_rq_decomp3x3
+    # Create a 3x3 matrix to decompose
+    src = Cv::Mat.new(3, 3, CV_64FC1, Cv::Scalar.new(0))
+    src[0, 0] = 2.0
+    src[1, 1] = 3.0
+    src[2, 2] = 1.0
+
+    mtx_r = Cv::Mat.new
+    mtx_q = Cv::Mat.new
+
+    result = Cv::rq_decomp3x3(src.input_array, mtx_r.output_array, mtx_q.output_array)
+
+    assert_equal(3, mtx_r.rows)
+    assert_equal(3, mtx_r.cols)
+    assert_equal(3, mtx_q.rows)
+    assert_equal(3, mtx_q.cols)
+  end
+
+  # ============ Sampson Distance ============
+  def test_sampson_distance
+    # Create a fundamental matrix
+    f_mat = Cv::Mat.new(3, 3, CV_64FC1, Cv::Scalar.new(0))
+    f_mat[0, 0] = 1.0; f_mat[1, 1] = 1.0; f_mat[2, 2] = 1.0
+    f_mat[0, 2] = 0.01
+    f_mat[2, 0] = 0.01
+
+    # Create two corresponding points in homogeneous coordinates (3 rows x 1 col)
+    pt1 = Cv::Mat.new(3, 1, CV_64FC1)
+    pt1[0, 0] = 100.0
+    pt1[1, 0] = 100.0
+    pt1[2, 0] = 1.0
+
+    pt2 = Cv::Mat.new(3, 1, CV_64FC1)
+    pt2[0, 0] = 105.0
+    pt2[1, 0] = 100.0
+    pt2[2, 0] = 1.0
+
+    distance = Cv::sampson_distance(pt1.input_array, pt2.input_array, f_mat.input_array)
+    assert(distance >= 0)
+  end
+
+  # ============ Get Valid Disparity ROI ============
+  def test_get_valid_disparity_roi
+    roi1 = Cv::Rect.new(0, 0, 640, 480)
+    roi2 = Cv::Rect.new(0, 0, 640, 480)
+
+    result = Cv::get_valid_disparity_roi(roi1, roi2, 0, 64, 21)
+    refute_nil(result)
+    assert(result.width > 0)
+    assert(result.height > 0)
+  end
+
+  # ============ Estimate Affine 3D ============
+  def test_estimate_affine_3d
+    # Create source and destination 3D points
+    src_points = Cv::Mat.new(4, 3, CV_64FC1)
+    dst_points = Cv::Mat.new(4, 3, CV_64FC1)
+
+    # Set up a simple transformation (translation by 1, 2, 3)
+    [[0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]].each_with_index do |pt, i|
+      src_points[i, 0] = pt[0].to_f
+      src_points[i, 1] = pt[1].to_f
+      src_points[i, 2] = pt[2].to_f
+      dst_points[i, 0] = pt[0] + 1.0
+      dst_points[i, 1] = pt[1] + 2.0
+      dst_points[i, 2] = pt[2] + 3.0
+    end
+
+    out = Cv::Mat.new
+    inliers = Cv::Mat.new
+
+    retval = Cv::estimate_affine3_d(src_points.input_array, dst_points.input_array,
+                                     out.output_array, inliers.output_array)
+
+    assert(retval > 0)
+    assert_equal(3, out.rows)
+    assert_equal(4, out.cols)
+  end
 end

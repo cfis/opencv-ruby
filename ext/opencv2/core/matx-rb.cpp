@@ -542,9 +542,9 @@ inline void Vec_builder(Data_Type_T& klass)
     template define_method<cv::Vec<_Tp, cn>&(cv::Vec<_Tp, cn>::*)(const cv::Vec<_Tp, cn>&)>("assign", &cv::Vec<_Tp, cn>::operator=,
       Arg("rhs")).
     define_constructor(Constructor<cv::Vec<_Tp, cn>, const cv::Matx<_Tp, cn, 1>&, const cv::Matx<_Tp, cn, 1>&, cv::Matx_AddOp>(),
-      Arg("a"), Arg("b")).
+      Arg("a"), Arg("b"), Arg("op")).
     define_constructor(Constructor<cv::Vec<_Tp, cn>, const cv::Matx<_Tp, cn, 1>&, const cv::Matx<_Tp, cn, 1>&, cv::Matx_SubOp>(),
-      Arg("a") = 1, Arg("b") = 1).
+      Arg("a"), Arg("b"), Arg("op")).
     define_method("count", [](const cv::Vec<_Tp, cn>&) -> int
     {
        return cn;

@@ -410,7 +410,7 @@ void Init_Dnn()
     define_method<cv::dnn::dnn4_v20241223::Model&(cv::dnn::dnn4_v20241223::Model::*)(cv::dnn::dnn4_v20241223::Model&&)>("assign", &cv::dnn::dnn4_v20241223::Model::operator=,
       Arg("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::Model, const cv::String&, const cv::String&>(),
-      Arg("model"), Arg("config") = static_cast<const String &>("")).
+      Arg("model"), Arg("config") = static_cast<const cv::String &>("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::Model, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network")).
     define_method<cv::dnn::dnn4_v20241223::Model&(cv::dnn::dnn4_v20241223::Model::*)(const cv::Size&)>("set_input_size", &cv::dnn::dnn4_v20241223::Model::setInputSize,
@@ -448,7 +448,7 @@ void Init_Dnn()
 
   rb_cCvDnnClassificationModel = define_class_under<cv::dnn::dnn4_v20241223::ClassificationModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnn, "ClassificationModel").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::ClassificationModel, const cv::String&, const cv::String&>(),
-      Arg("model"), Arg("config") = static_cast<const String &>("")).
+      Arg("model"), Arg("config") = static_cast<const cv::String &>("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::ClassificationModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network")).
     define_method("set_enable_softmax_post_processing", &cv::dnn::dnn4_v20241223::ClassificationModel::setEnableSoftmaxPostProcessing,
@@ -461,7 +461,7 @@ void Init_Dnn()
   
   rb_cCvDnnKeypointsModel = define_class_under<cv::dnn::dnn4_v20241223::KeypointsModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnn, "KeypointsModel").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::KeypointsModel, const cv::String&, const cv::String&>(),
-      Arg("model"), Arg("config") = static_cast<const String &>("")).
+      Arg("model"), Arg("config") = static_cast<const cv::String &>("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::KeypointsModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network")).
     define_method("estimate", &cv::dnn::dnn4_v20241223::KeypointsModel::estimate,
@@ -469,7 +469,7 @@ void Init_Dnn()
   
   rb_cCvDnnSegmentationModel = define_class_under<cv::dnn::dnn4_v20241223::SegmentationModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnn, "SegmentationModel").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::SegmentationModel, const cv::String&, const cv::String&>(),
-      Arg("model"), Arg("config") = static_cast<const String &>("")).
+      Arg("model"), Arg("config") = static_cast<const cv::String &>("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::SegmentationModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network")).
     define_method("segment", &cv::dnn::dnn4_v20241223::SegmentationModel::segment,
@@ -477,7 +477,7 @@ void Init_Dnn()
   
   rb_cCvDnnDetectionModel = define_class_under<cv::dnn::dnn4_v20241223::DetectionModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnn, "DetectionModel").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::DetectionModel, const cv::String&, const cv::String&>(),
-      Arg("model"), Arg("config") = static_cast<const String &>("")).
+      Arg("model"), Arg("config") = static_cast<const cv::String &>("")).
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::DetectionModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network")).
     define_method("set_nms_across_classes", &cv::dnn::dnn4_v20241223::DetectionModel::setNmsAcrossClasses,

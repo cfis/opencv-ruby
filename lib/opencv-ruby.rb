@@ -1,7 +1,7 @@
 if RUBY_PLATFORM =~ /mingw|mswin/
-	ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'build', 'clang-windows-debug'))
-	$LOAD_PATH.unshift(ext_path)
-	ENV["PATH"] = "#{ext_path};#{ENV["PATH"]}"
+	lib_path = File.join(__dir__)
+	#$LOAD_PATH.unshift(ext_path)
+	ENV["PATH"] = "#{lib_path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
 
   major, minor, _ = RUBY_VERSION.split(".")
   begin

@@ -4,3 +4,4 @@ ext/build
 pkg/
 Gemfile.lock
 
+/lib/3.4

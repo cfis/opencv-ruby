@@ -45,3 +45,25 @@ task :doc do
   cmd = ["sphinx-build", "--builder", "html", "doc", build_dir]
   sh *cmd
 end
+
+desc "Generate API documentation using rice-doc"
+task :api do
+  config_file = File.expand_path("docs/rice-doc.yaml")
+
+  cmd = ["rice-doc", config_file]
+	puts cmd.join(" ")
+	system *cmd
+end
+
+desc "Generate RBS signature files using rice-rbs"
+task :rbs do
+	require 'rbconfig'
+
+	output = File.expand_path(File.join("sig"))
+	extension = RbConfig::CONFIG["DLEXT"]
+	library = File.expand_path(File.join("lib", "opencv_ruby", "3.4"))
+	path = "#{library}.#{extension}"
+	cmd = ["rice-rbs", "--output", output, path]
+	puts cmd.join(" ")
+	system *cmd
+end

@@ -34,8 +34,7 @@ Gem::Specification.new do |spec|
                          "ext/rice/*.hpp",
                          "test/*.rb"])
 
-	#spec.add_runtime_dependency('rice', '>= 4.6.2')
 	spec.add_development_dependency('minitest')
 	spec.add_development_dependency('rake')
-	spec.add_development_dependency('yard')
+	spec.add_development_dependency('rice')
 end

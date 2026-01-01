@@ -1,0 +1,5 @@
+nav:
+  - CorrectionLevel.md
+  - ECIEncodings.md
+  - EncodeMode.md
+  - Params.md

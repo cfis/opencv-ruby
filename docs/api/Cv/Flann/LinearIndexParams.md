@@ -1,0 +1,5 @@
+#LinearIndexParams
+## Constructors
+initialize()
+
+

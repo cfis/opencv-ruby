@@ -1,0 +1,9 @@
+#[ConnectedComponentsAlgorithmsTypes Enum](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#ga5ed7784614678adccb699c70fb841075)
+## Values
+* [CCL_DEFAULT](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075abd210ad49e33f19f2cb8c090c11f7a4c)
+* [CCL_WU](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075a612680db0d08d338109a6cd758417b66)
+* [CCL_GRANA](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075a49eccb403b410391d5ff9048d30596f5)
+* [CCL_BOLELLI](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075ad7f2cbf90aa4f28f8f422f61e9337afc)
+* [CCL_SAUF](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075a30a41341a1fd1f699dc02f923a8e2eb9)
+* [CCL_BBDT](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075afec1d2613b0c15b6a685a28bcf52e261)
+* [CCL_SPAGHETTI](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html#gga5ed7784614678adccb699c70fb841075a9a714bb626c2706d0971089fb771d439)

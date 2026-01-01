@@ -1,0 +1,10 @@
+#[DistanceTypes Enum](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gaa2bfbebbc5c320526897996aafa1d8eb)
+## Values
+* [DIST_USER](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebaa0bb8d897ba16dbf5a3ca96c71219a32)
+* [DIST_L1](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebae5b2dfaf2ba5024d7ce47885001fad86)
+* [DIST_L2](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebaff0d1f5be0fc152a56a9b9716d158b96)
+* [DIST_C](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8eba507b16eb5ef95ea784ca1b3cb7b0d7ee)
+* [DIST_L12](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8eba8f3c18d37e99f7cc58d3605f5c6f9ce9)
+* [DIST_FAIR](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebaea158f5abd2b5e2b4e79b79f55297079)
+* [DIST_WELSCH](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebaba5e4b3600852b7a59e78e3041be840e)
+* [DIST_HUBER](https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ggaa2bfbebbc5c320526897996aafa1d8ebad701f5622a12450d3b8c85c052e7c520)

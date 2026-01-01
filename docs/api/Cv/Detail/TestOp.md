@@ -1,0 +1,10 @@
+#TestOp Enum
+## Values
+* TEST_CUSTOM
+* TEST_EQ
+* TEST_NE
+* TEST_LE
+* TEST_LT
+* TEST_GE
+* TEST_GT
+* CV__LAST_TEST_OP

@@ -1,0 +1,4 @@
+nav:
+  - ActivationFunctions.md
+  - TrainFlags.md
+  - TrainingMethods.md

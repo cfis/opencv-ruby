@@ -1,0 +1,215 @@
+nav:
+  - index.md
+  - Arg.md
+  - Buffer≺Int64≻.md
+  - Buffer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻.md
+  - Buffer≺bool≻.md
+  - Buffer≺char∗≻.md
+  - Buffer≺char≻.md
+  - Buffer≺cvflann꞉꞉any≻.md
+  - Buffer≺cv꞉꞉DMatch≻.md
+  - Buffer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻.md
+  - Buffer≺cv꞉꞉DetectionROI≻.md
+  - Buffer≺cv꞉꞉KeyPoint≻.md
+  - Buffer≺cv꞉꞉Mat∗≻.md
+  - Buffer≺cv꞉꞉Mat≻.md
+  - Buffer≺cv꞉꞉Point3_≺double≻≻.md
+  - Buffer≺cv꞉꞉Point3_≺float≻≻.md
+  - Buffer≺cv꞉꞉Point3_≺int≻≻.md
+  - Buffer≺cv꞉꞉Point_≺Int64≻≻.md
+  - Buffer≺cv꞉꞉Point_≺double≻≻.md
+  - Buffer≺cv꞉꞉Point_≺float≻≻.md
+  - Buffer≺cv꞉꞉Point_≺int≻∗≻.md
+  - Buffer≺cv꞉꞉Point_≺int≻≻.md
+  - Buffer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻.md
+  - Buffer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻.md
+  - Buffer≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻.md
+  - Buffer≺cv꞉꞉Range≻.md
+  - Buffer≺cv꞉꞉Rect_≺double≻≻.md
+  - Buffer≺cv꞉꞉Rect_≺int≻≻.md
+  - Buffer≺cv꞉꞉RotatedRect≻.md
+  - Buffer≺cv꞉꞉Scalar_≺double≻≻.md
+  - Buffer≺cv꞉꞉Size_≺int≻≻.md
+  - Buffer≺cv꞉꞉UMat≻.md
+  - Buffer≺cv꞉꞉Vec≺Int64‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺double‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺double‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺double‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺double‚ 4≻≻.md
+  - Buffer≺cv꞉꞉Vec≺float‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺float‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺float‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺float‚ 4≻≻.md
+  - Buffer≺cv꞉꞉Vec≺float‚ 6≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 4≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 6≻≻.md
+  - Buffer≺cv꞉꞉Vec≺int‚ 8≻≻.md
+  - Buffer≺cv꞉꞉Vec≺short‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺short‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺short‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺short‚ 4≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned char‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned char‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned char‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned char‚ 4≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned short‚ 1≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned short‚ 2≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned short‚ 3≻≻.md
+  - Buffer≺cv꞉꞉Vec≺unsigned short‚ 4≻≻.md
+  - Buffer≺cv꞉꞉VideoCapture≻.md
+  - Buffer≺cv꞉꞉cuda꞉꞉GpuMat≻.md
+  - Buffer≺cv꞉꞉detail꞉꞉CameraParams≻.md
+  - Buffer≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
+  - Buffer≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Buffer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
+  - Buffer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
+  - Buffer≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Buffer≺double≻.md
+  - Buffer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
+  - Buffer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
+  - Buffer≺float∗≻.md
+  - Buffer≺float≻.md
+  - Buffer≺int≻.md
+  - Buffer≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻.md
+  - Buffer≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
+  - Buffer≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
+  - Buffer≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Buffer≺short≻.md
+  - Buffer≺signed char≻.md
+  - Buffer≺string≻.md
+  - Buffer≺unsigned Int64≻.md
+  - Buffer≺unsigned char∗≻.md
+  - Buffer≺unsigned char≻.md
+  - Buffer≺unsigned short≻.md
+  - Buffer≺vector≺char≻≻.md
+  - Buffer≺vector≺cv꞉꞉DMatch≻≻.md
+  - Buffer≺vector≺cv꞉꞉KeyPoint≻≻.md
+  - Buffer≺vector≺cv꞉꞉Mat≻≻.md
+  - Buffer≺vector≺cv꞉꞉Point3_≺float≻≻≻.md
+  - Buffer≺vector≺cv꞉꞉Point_≺float≻≻≻.md
+  - Buffer≺vector≺cv꞉꞉Point_≺int≻≻≻.md
+  - Buffer≺vector≺cv꞉꞉Range≻≻.md
+  - Buffer≺vector≺float≻≻.md
+  - Buffer≺vector≺int≻≻.md
+  - Buffer≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻.md
+  - Buffer≺vector≺unsigned char≻≻.md
+  - Buffer≺vector≺vector≺int≻≻≻.md
+  - Buffer≺void≻.md
+  - ModuleRegistry.md
+  - Native.md
+  - NativeKind.md
+  - NativeRegistry.md
+  - Parameter.md
+  - Pointer≺Int64≻.md
+  - Pointer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻.md
+  - Pointer≺bool≻.md
+  - Pointer≺char∗≻.md
+  - Pointer≺char≻.md
+  - Pointer≺cvflann꞉꞉any≻.md
+  - Pointer≺cv꞉꞉DMatch≻.md
+  - Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻.md
+  - Pointer≺cv꞉꞉DetectionROI≻.md
+  - Pointer≺cv꞉꞉KeyPoint≻.md
+  - Pointer≺cv꞉꞉Mat∗≻.md
+  - Pointer≺cv꞉꞉Mat≻.md
+  - Pointer≺cv꞉꞉Point3_≺double≻≻.md
+  - Pointer≺cv꞉꞉Point3_≺float≻≻.md
+  - Pointer≺cv꞉꞉Point3_≺int≻≻.md
+  - Pointer≺cv꞉꞉Point_≺Int64≻≻.md
+  - Pointer≺cv꞉꞉Point_≺double≻≻.md
+  - Pointer≺cv꞉꞉Point_≺float≻≻.md
+  - Pointer≺cv꞉꞉Point_≺int≻∗≻.md
+  - Pointer≺cv꞉꞉Point_≺int≻≻.md
+  - Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻.md
+  - Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻.md
+  - Pointer≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻.md
+  - Pointer≺cv꞉꞉Range≻.md
+  - Pointer≺cv꞉꞉Rect_≺double≻≻.md
+  - Pointer≺cv꞉꞉Rect_≺int≻≻.md
+  - Pointer≺cv꞉꞉RotatedRect≻.md
+  - Pointer≺cv꞉꞉Scalar_≺double≻≻.md
+  - Pointer≺cv꞉꞉Size_≺int≻≻.md
+  - Pointer≺cv꞉꞉UMat≻.md
+  - Pointer≺cv꞉꞉Vec≺Int64‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺double‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺double‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺double‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺double‚ 4≻≻.md
+  - Pointer≺cv꞉꞉Vec≺float‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺float‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺float‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺float‚ 4≻≻.md
+  - Pointer≺cv꞉꞉Vec≺float‚ 6≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 4≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 6≻≻.md
+  - Pointer≺cv꞉꞉Vec≺int‚ 8≻≻.md
+  - Pointer≺cv꞉꞉Vec≺short‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺short‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺short‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺short‚ 4≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned char‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned char‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned char‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned char‚ 4≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned short‚ 1≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned short‚ 2≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned short‚ 3≻≻.md
+  - Pointer≺cv꞉꞉Vec≺unsigned short‚ 4≻≻.md
+  - Pointer≺cv꞉꞉VideoCapture≻.md
+  - Pointer≺cv꞉꞉cuda꞉꞉GpuMat≻.md
+  - Pointer≺cv꞉꞉detail꞉꞉CameraParams≻.md
+  - Pointer≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
+  - Pointer≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
+  - Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
+  - Pointer≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Pointer≺double≻.md
+  - Pointer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
+  - Pointer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
+  - Pointer≺float∗≻.md
+  - Pointer≺float≻.md
+  - Pointer≺int≻.md
+  - Pointer≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻.md
+  - Pointer≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
+  - Pointer≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
+  - Pointer≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Pointer≺short≻.md
+  - Pointer≺signed char≻.md
+  - Pointer≺string≻.md
+  - Pointer≺unsigned Int64≻.md
+  - Pointer≺unsigned char∗≻.md
+  - Pointer≺unsigned char≻.md
+  - Pointer≺unsigned short≻.md
+  - Pointer≺vector≺char≻≻.md
+  - Pointer≺vector≺cv꞉꞉DMatch≻≻.md
+  - Pointer≺vector≺cv꞉꞉KeyPoint≻≻.md
+  - Pointer≺vector≺cv꞉꞉Mat≻≻.md
+  - Pointer≺vector≺cv꞉꞉Point3_≺float≻≻≻.md
+  - Pointer≺vector≺cv꞉꞉Point_≺float≻≻≻.md
+  - Pointer≺vector≺cv꞉꞉Point_≺int≻≻≻.md
+  - Pointer≺vector≺cv꞉꞉Range≻≻.md
+  - Pointer≺vector≺float≻≻.md
+  - Pointer≺vector≺int≻≻.md
+  - Pointer≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻.md
+  - Pointer≺vector≺unsigned char≻≻.md
+  - Pointer≺vector≺vector≺int≻≻≻.md
+  - Pointer≺void≻.md
+  - Reference≺Int64≻.md
+  - Reference≺bool≻.md
+  - Reference≺char≻.md
+  - Reference≺double≻.md
+  - Reference≺float≻.md
+  - Reference≺int≻.md
+  - Reference≺short≻.md
+  - Reference≺signed char≻.md
+  - Reference≺unsigned Int64≻.md
+  - Reference≺unsigned char≻.md
+  - Reference≺unsigned short≻.md
+  - Registries.md
+  - TypeRegistry.md

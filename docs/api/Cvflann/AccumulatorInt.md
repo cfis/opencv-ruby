@@ -1,0 +1,5 @@
+#AccumulatorInt
+## Constructors
+initialize()
+
+

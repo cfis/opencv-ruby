@@ -1,0 +1,5 @@
+#AccumulatorUnsignedShort
+## Constructors
+initialize()
+
+

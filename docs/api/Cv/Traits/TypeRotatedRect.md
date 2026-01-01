@@ -1,0 +1,5 @@
+#TypeRotatedRect
+## Constructors
+initialize()
+
+

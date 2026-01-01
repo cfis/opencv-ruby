@@ -1,0 +1,9 @@
+#KernelTypes Enum
+## Values
+* CUSTOM
+* LINEAR
+* POLY
+* RBF
+* SIGMOID
+* CHI2
+* INTER

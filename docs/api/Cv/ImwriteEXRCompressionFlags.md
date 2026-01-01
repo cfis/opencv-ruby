@@ -1,0 +1,12 @@
+#[ImwriteEXRCompressionFlags Enum](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#ga7682010f3485d86cd963504aa7ad6146)
+## Values
+* [IMWRITE_EXR_COMPRESSION_NO](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a0c31f206cd9469a9a12a131a14dd8066)
+* [IMWRITE_EXR_COMPRESSION_RLE](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a9df4442565f77b586bd2f4aea45ec2ed)
+* [IMWRITE_EXR_COMPRESSION_ZIPS](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a1a01f8cab2f18a2570727bfeb9e59521)
+* [IMWRITE_EXR_COMPRESSION_ZIP](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a2e27bf64b5d149d3df4ce952b2666da9)
+* [IMWRITE_EXR_COMPRESSION_PIZ](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a201bd49e4dbcf36181e7bbf1adf6189b)
+* [IMWRITE_EXR_COMPRESSION_PXR24](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a1c58571086123c174bf8a7a2566c205a)
+* [IMWRITE_EXR_COMPRESSION_B44](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a490d7b948c06bb9da7d8d5b9f4090866)
+* [IMWRITE_EXR_COMPRESSION_B44A](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a9433a1a51d231d9ab11757e5be524036)
+* [IMWRITE_EXR_COMPRESSION_DWAA](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146af065a15ca34c4efecd841f5f8257910a)
+* [IMWRITE_EXR_COMPRESSION_DWAB](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7682010f3485d86cd963504aa7ad6146a6abb8796c9d82f7fe8b052444b492a2e)

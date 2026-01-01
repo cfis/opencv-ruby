@@ -1,0 +1,9 @@
+#[WindowPropertyFlags Enum](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#gaeedf4023e777f896ba6b9ffb156f57b8)
+## Values
+* [WND_PROP_FULLSCREEN](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a3b6a89b0daf2149dab93f9c6ab99fcc8)
+* [WND_PROP_AUTOSIZE](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a40b8385d11a44871776eed13da7808a2)
+* [WND_PROP_ASPECT_RATIO](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a635a6ff3b81e4019be4a43b64e7b2bbb)
+* [WND_PROP_OPENGL](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a360f30201f153e192919289d7c002e04)
+* [WND_PROP_VISIBLE](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a07598b61a8b3047cb93634130beddf81)
+* [WND_PROP_TOPMOST](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8a2a1ae9effa9adebfde8c7d853f0182c0)
+* [WND_PROP_VSYNC](https://docs.opencv.org/4.x/d0/d90/group__highgui__window__flags.html#ggaeedf4023e777f896ba6b9ffb156f57b8abb88a2f155c805fad87b9ab65e4b82f8)

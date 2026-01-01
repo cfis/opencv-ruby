@@ -1,0 +1,14 @@
+#[VideoWriterProperties Enum](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ga41c5cfa7859ae542b71b1d33bbd4d2b4)
+## Values
+* [VIDEOWRITER_PROP_QUALITY](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a1cc2ab47f60a115ff9624ff71715b93b)
+* [VIDEOWRITER_PROP_FRAMEBYTES](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4ace3320e146f4f95f3d58b32b0e1237b1)
+* [VIDEOWRITER_PROP_NSTRIPES](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4ae8e8348e4b6b8c78d9921c65c91a8e10)
+* [VIDEOWRITER_PROP_IS_COLOR](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4aad8fd6a513706288dfcaa491269851d8)
+* [VIDEOWRITER_PROP_DEPTH](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a3e575f46a9637c4af3a63b70760c6957)
+* [VIDEOWRITER_PROP_HW_ACCELERATION](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a23eeb124c684e2a479029694fd6bd490)
+* [VIDEOWRITER_PROP_HW_DEVICE](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a4d3a048746086dc523c9d4d754466dcb)
+* [VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a1f0a5e0ef4b9ed766d814314dfd9d3a2)
+* [VIDEOWRITER_PROP_RAW_VIDEO](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a82ec0ab4a5f354764ba4ff8ba698fb4b)
+* [VIDEOWRITER_PROP_KEY_INTERVAL](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a011eba37921e51af9bbc840fb9f191cd)
+* [VIDEOWRITER_PROP_KEY_FLAG](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a516fdb82d3585f4c89d3cce9b7de2221)
+* CV__VIDEOWRITER_PROP_LATEST

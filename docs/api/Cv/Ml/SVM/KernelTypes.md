@@ -1,0 +1,9 @@
+#[KernelTypes Enum](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56)
+## Values
+* [CUSTOM](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56adc68154e13627786e405117dd64012a5)
+* [LINEAR](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56ab92a19ab0c193735c3fd71f938dd87e7)
+* [POLY](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56a5fa32d793cd5f5d0bf64f55bb94a3f2e)
+* [RBF](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56a8e1f51ebeabd14cbd622f0f945831d4c)
+* [SIGMOID](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56ac40981025a9b8f3c1cd35cb015aac5cc)
+* [CHI2](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56a66a909b8add6114fde309d24483bcf82)
+* [INTER](https://docs.opencv.org/4.x/d1/d2d/classcv_1_1ml_1_1SVM.html#aad7f1aaccced3c33bb256640910a0e56a9dec0ceda288deaa617c4c65c88852ae)

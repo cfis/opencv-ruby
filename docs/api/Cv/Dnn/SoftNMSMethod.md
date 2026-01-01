@@ -1,0 +1,4 @@
+#SoftNMSMethod Enum
+## Values
+* SOFTNMS_LINEAR
+* SOFTNMS_GAUSSIAN

@@ -1,0 +1,8 @@
+nav:
+  - index.md
+  - DepthMoments.md
+  - DepthRange.md
+  - DepthRotatedRect.md
+  - TypeMoments.md
+  - TypeRange.md
+  - TypeRotatedRect.md

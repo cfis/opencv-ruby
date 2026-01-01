@@ -1,0 +1,5 @@
+#AccumulatorChar
+## Constructors
+initialize()
+
+

@@ -1,0 +1,11 @@
+#[HersheyFonts Enum](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#ga0f9314ea6e35f99bb23f29567fc16e11)
+## Values
+* [FONT_HERSHEY_SIMPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11afff8b973668df2e4028dddc5274310c9)
+* [FONT_HERSHEY_PLAIN](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11a08cf3b0a37729fbb62a3007d499cbd8b)
+* [FONT_HERSHEY_DUPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11ab307bdc73fdd06074acad940115bda7a)
+* [FONT_HERSHEY_COMPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11af7b1b25521fc9b5731a97cfd13460c2a)
+* [FONT_HERSHEY_TRIPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11a2880034c653349b7f9fcc2bb60342fc6)
+* [FONT_HERSHEY_COMPLEX_SMALL](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11adfd28fc57520df956e00c7a26fb718ed)
+* [FONT_HERSHEY_SCRIPT_SIMPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11a58de14ee43572b502c8cb71f788e9fdc)
+* [FONT_HERSHEY_SCRIPT_COMPLEX](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11a8e7f6a22d4aec98c59375649eee1c696)
+* [FONT_ITALIC](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0f9314ea6e35f99bb23f29567fc16e11af0f7c8824fe42205076771a7b67661c2)

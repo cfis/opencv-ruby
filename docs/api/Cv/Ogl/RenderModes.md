@@ -1,0 +1,12 @@
+#[RenderModes Enum](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#gaf53526c205a92260f356fe6589460aab)
+## Values
+* [POINTS](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba8b467f66c33c13df37f24aa3f1196f14)
+* [LINES](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba8ea1de81114c3db43c9dfa96870367a0)
+* [LINE_LOOP](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aabaf4d36edb6cf9011af8cf4015b5a61952)
+* [LINE_STRIP](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba7aa95cc95670cd6bb875d0092e3bf457)
+* [TRIANGLES](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aabab2fc9178ebe34e531f1451751e673c7d)
+* [TRIANGLE_STRIP](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aabae656afaa0987fa2f044e3fdc260aa140)
+* [TRIANGLE_FAN](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba1778386fd1796017cf36965339b27cf7)
+* [QUADS](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba6fe3c72a87b56e3f16bc1cf13fa9fc53)
+* [QUAD_STRIP](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aabaa746cc01f0f606c16249ef41beb14eaa)
+* [POLYGON](https://docs.opencv.org/4.x/d2/d3c/group__core__opengl.html#ggaf53526c205a92260f356fe6589460aaba8c8c07e1f038e9fe452b06fb80d15c10)

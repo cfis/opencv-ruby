@@ -1,0 +1,14 @@
+#[Param Enum](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga8af2ae1e077644d1dd232d29d988b79a)
+## Values
+* INT
+* BOOLEAN
+* REAL
+* STRING
+* MAT
+* MAT_VECTOR
+* ALGORITHM
+* FLOAT
+* UNSIGNED_INT
+* UINT64
+* UCHAR
+* SCALAR

@@ -1,0 +1,12 @@
+#[SolvePnPMethod Enum](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga357634492a94efe8858d0ce1509da869)
+## Values
+* [SOLVEPNP_ITERATIVE](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869a9f589872a7f7d687dc58294e01ea33a5)
+* [SOLVEPNP_EPNP](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869ae25763f5155defc67ef0f68b74d6c074)
+* [SOLVEPNP_P3P](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869af33a85ca698777ff9bd1de916bf5959a)
+* [SOLVEPNP_DLS](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869aa51f13248282b8778003b9a4cf8ac07e)
+* [SOLVEPNP_UPNP](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869a2859c9ce1430662096d3cc3b5462847f)
+* [SOLVEPNP_AP3P](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869a8d48dece2da6492d91fa2de0a04679f9)
+* [SOLVEPNP_IPPE](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869acbd7d9f9513a22a59412661a9d31ca3d)
+* [SOLVEPNP_IPPE_SQUARE](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869ac5d28b2805d3ac32fd477eee4479406f)
+* [SOLVEPNP_SQPNP](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gga357634492a94efe8858d0ce1509da869a9229a3332f6c4969251c31d2931b0729)
+* SOLVEPNP_MAX_COUNT

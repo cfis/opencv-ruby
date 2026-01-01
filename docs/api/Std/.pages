@@ -1,0 +1,294 @@
+nav:
+  - index.md
+  - Exception.md
+  - Map≺string‚ cvflann꞉꞉any≻.md
+  - Pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻.md
+  - Pair≺cv꞉꞉Rect_≺int≻‚ int≻.md
+  - Pair≺cv꞉꞉UMat‚ unsigned char≻.md
+  - Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
+  - Pair≺int‚ float≻.md
+  - Pair≺string const ‚ cvflann꞉꞉any≻.md
+  - RuntimeError.md
+  - SharedPtr≺cv꞉꞉AKAZE≻.md
+  - SharedPtr≺cv꞉꞉AffineFeature≻.md
+  - SharedPtr≺cv꞉꞉AgastFeatureDetector≻.md
+  - SharedPtr≺cv꞉꞉AlignMTB≻.md
+  - SharedPtr≺cv꞉꞉BFMatcher≻.md
+  - SharedPtr≺cv꞉꞉BRISK≻.md
+  - SharedPtr≺cv꞉꞉BackgroundSubtractorKNN≻.md
+  - SharedPtr≺cv꞉꞉BackgroundSubtractorMOG2≻.md
+  - SharedPtr≺cv꞉꞉BaseCascadeClassifier≻.md
+  - SharedPtr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻.md
+  - SharedPtr≺cv꞉꞉CLAHE≻.md
+  - SharedPtr≺cv꞉꞉CalibrateDebevec≻.md
+  - SharedPtr≺cv꞉꞉CalibrateRobertson≻.md
+  - SharedPtr≺cv꞉꞉ConjGradSolver≻.md
+  - SharedPtr≺cv꞉꞉DISOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉DescriptorMatcher≻.md
+  - SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻.md
+  - SharedPtr≺cv꞉꞉DownhillSolver≻.md
+  - SharedPtr≺cv꞉꞉FaceDetectorYN≻.md
+  - SharedPtr≺cv꞉꞉FaceRecognizerSF≻.md
+  - SharedPtr≺cv꞉꞉FarnebackOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉FastFeatureDetector≻.md
+  - SharedPtr≺cv꞉꞉Feature2D≻.md
+  - SharedPtr≺cv꞉꞉FileStorage≻.md
+  - SharedPtr≺cv꞉꞉FlannBasedMatcher≻.md
+  - SharedPtr≺cv꞉꞉Formatted≻.md
+  - SharedPtr≺cv꞉꞉Formatter≻.md
+  - SharedPtr≺cv꞉꞉GFTTDetector≻.md
+  - SharedPtr≺cv꞉꞉GeneralizedHoughBallard≻.md
+  - SharedPtr≺cv꞉꞉GeneralizedHoughGuil≻.md
+  - SharedPtr≺cv꞉꞉KAZE≻.md
+  - SharedPtr≺cv꞉꞉LMSolver≻.md
+  - SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻.md
+  - SharedPtr≺cv꞉꞉LineSegmentDetector≻.md
+  - SharedPtr≺cv꞉꞉MSER≻.md
+  - SharedPtr≺cv꞉꞉MergeDebevec≻.md
+  - SharedPtr≺cv꞉꞉MergeMertens≻.md
+  - SharedPtr≺cv꞉꞉MergeRobertson≻.md
+  - SharedPtr≺cv꞉꞉MinProblemSolver꞉꞉Function≻.md
+  - SharedPtr≺cv꞉꞉ORB≻.md
+  - SharedPtr≺cv꞉꞉QRCodeEncoder≻.md
+  - SharedPtr≺cv꞉꞉SIFT≻.md
+  - SharedPtr≺cv꞉꞉SimpleBlobDetector≻.md
+  - SharedPtr≺cv꞉꞉SparsePyrLKOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉StereoBM≻.md
+  - SharedPtr≺cv꞉꞉StereoSGBM≻.md
+  - SharedPtr≺cv꞉꞉Stitcher≻.md
+  - SharedPtr≺cv꞉꞉TonemapDrago≻.md
+  - SharedPtr≺cv꞉꞉TonemapMantiuk≻.md
+  - SharedPtr≺cv꞉꞉TonemapReinhard≻.md
+  - SharedPtr≺cv꞉꞉Tonemap≻.md
+  - SharedPtr≺cv꞉꞉TrackerDaSiamRPN≻.md
+  - SharedPtr≺cv꞉꞉TrackerGOTURN≻.md
+  - SharedPtr≺cv꞉꞉TrackerMIL≻.md
+  - SharedPtr≺cv꞉꞉TrackerNano≻.md
+  - SharedPtr≺cv꞉꞉TrackerVit≻.md
+  - SharedPtr≺cv꞉꞉VariationalRefinement≻.md
+  - SharedPtr≺cv꞉꞉WarperCreator≻.md
+  - SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉Blender≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉Estimator≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉ExposureCompensator≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉RotationWarper≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉SeamFinder≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉Timelapser≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻.md
+  - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AbsLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AccumLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcosLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcoshLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ArgLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinhLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AtanLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AtanhLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AttentionLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉BNLLLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉BaseConvolutionLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉BatchNormLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉BatchNormLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CeilLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CeluLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ConcatLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CorrelationLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CosLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CoshLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CumSumLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DataAugmentationLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DepthToSpaceLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DequantizeLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DetectionOutputLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ELULayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉EinsumLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉EltwiseLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉EltwiseLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ErfLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ExpLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ExpandLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉FlattenLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉FloorLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉FlowWarpLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GRULayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GatherElementsLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GatherLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GeluApproximationLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GeluLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GemmLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GroupNormLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉HardSigmoidLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉HardSwishLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉InnerProductLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉InnerProductLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉InstanceNormLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉LRNLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉LSTMLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉LayerNormLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉LogLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉MVNLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉MatMulLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉MaxUnpoolLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉MishLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉NaryEltwiseLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉NormalizeBBoxLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉NotLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PaddingLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PermuteLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PowerLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PriorBoxLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ProposalLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉QuantizeLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉RNNLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReLU6Layer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReLULayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReciprocalLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReduceLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉RegionLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReorgLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉RequantizeLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ReshapeLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ResizeLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉RoundLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScatterLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScatterNDLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SeluLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ShrinkLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SigmoidLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SignLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SinLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SinhLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SliceLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftmaxLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftmaxLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftplusLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftsignLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SpaceToDepthLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SplitLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SqrtLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SwishLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TanHLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TanLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ThresholdedReluLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TileLayer≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TopKLayer≻.md
+  - SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻.md
+  - SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉ANNMLP≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉Boost≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉EM≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉KNearest≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉ParamGrid≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉RTrees≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉SVMSGD≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉SVM≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻.md
+  - SharedPtr≺cv꞉꞉ml꞉꞉TrainData≻.md
+  - SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻.md
+  - SharedPtr≺float≻.md
+  - SharedPtr≺void≻.md
+  - TypeInfo.md
+  - Vector≺Cv꞉꞉Point2l≻.md
+  - Vector≺Cv꞉꞉Point3d≻.md
+  - Vector≺Cv꞉꞉Point3f≻.md
+  - Vector≺Cv꞉꞉Point3i≻.md
+  - Vector≺Cv꞉꞉Vec2l≻.md
+  - Vector≺Cv꞉꞉Vec6i≻.md
+  - Vector≺Cv꞉꞉Vec8i≻.md
+  - Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻.md
+  - Vector≺bool≻.md
+  - Vector≺char≻.md
+  - Vector≺cvflann꞉꞉any≻.md
+  - Vector≺cv꞉꞉DMatch≻.md
+  - Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻.md
+  - Vector≺cv꞉꞉DetectionROI≻.md
+  - Vector≺cv꞉꞉KeyPoint≻.md
+  - Vector≺cv꞉꞉Mat≻.md
+  - Vector≺cv꞉꞉Point_≺double≻≻.md
+  - Vector≺cv꞉꞉Point_≺float≻≻.md
+  - Vector≺cv꞉꞉Point_≺int≻≻.md
+  - Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻.md
+  - Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻.md
+  - Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻.md
+  - Vector≺cv꞉꞉Range≻.md
+  - Vector≺cv꞉꞉Rect_≺double≻≻.md
+  - Vector≺cv꞉꞉Rect_≺int≻≻.md
+  - Vector≺cv꞉꞉RotatedRect≻.md
+  - Vector≺cv꞉꞉Scalar_≺double≻≻.md
+  - Vector≺cv꞉꞉Size_≺int≻≻.md
+  - Vector≺cv꞉꞉UMat≻.md
+  - Vector≺cv꞉꞉Vec≺double‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺double‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺double‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺double‚ 4≻≻.md
+  - Vector≺cv꞉꞉Vec≺float‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺float‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺float‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺float‚ 4≻≻.md
+  - Vector≺cv꞉꞉Vec≺float‚ 6≻≻.md
+  - Vector≺cv꞉꞉Vec≺int‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺int‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺int‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺int‚ 4≻≻.md
+  - Vector≺cv꞉꞉Vec≺short‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺short‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺short‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺short‚ 4≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned char‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned char‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned char‚ 4≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned short‚ 1≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned short‚ 2≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻.md
+  - Vector≺cv꞉꞉Vec≺unsigned short‚ 4≻≻.md
+  - Vector≺cv꞉꞉VideoCapture≻.md
+  - Vector≺cv꞉꞉cuda꞉꞉GpuMat≻.md
+  - Vector≺cv꞉꞉detail꞉꞉CameraParams≻.md
+  - Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
+  - Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
+  - Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
+  - Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Vector≺double≻.md
+  - Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
+  - Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
+  - Vector≺float≻.md
+  - Vector≺int≻.md
+  - Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻.md
+  - Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
+  - Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
+  - Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Vector≺short≻.md
+  - Vector≺string≻.md
+  - Vector≺unsigned Int64≻.md
+  - Vector≺unsigned char≻.md
+  - Vector≺unsigned short≻.md
+  - Vector≺vector≺char≻≻.md
+  - Vector≺vector≺cv꞉꞉DMatch≻≻.md
+  - Vector≺vector≺cv꞉꞉KeyPoint≻≻.md
+  - Vector≺vector≺cv꞉꞉Mat≻≻.md
+  - Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻.md
+  - Vector≺vector≺cv꞉꞉Point_≺float≻≻≻.md
+  - Vector≺vector≺cv꞉꞉Point_≺int≻≻≻.md
+  - Vector≺vector≺cv꞉꞉Range≻≻.md
+  - Vector≺vector≺float≻≻.md
+  - Vector≺vector≺int≻≻.md
+  - Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻.md
+  - Vector≺vector≺unsigned char≻≻.md
+  - Vector≺vector≺vector≺int≻≻≻.md

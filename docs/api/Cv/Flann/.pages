@@ -1,0 +1,20 @@
+nav:
+  - index.md
+  - AutotunedIndexParams.md
+  - CompositeIndexParams.md
+  - CvTypeChar.md
+  - CvTypeDouble.md
+  - CvTypeFloat.md
+  - CvTypeInt.md
+  - CvTypeShort.md
+  - CvTypeUnsignedChar.md
+  - CvTypeUnsignedShort.md
+  - FlannIndexType.md
+  - HierarchicalClusteringIndexParams.md
+  - IndexParams.md
+  - KDTreeIndexParams.md
+  - KMeansIndexParams.md
+  - LinearIndexParams.md
+  - LshIndexParams.md
+  - SavedIndexParams.md
+  - SearchParams.md

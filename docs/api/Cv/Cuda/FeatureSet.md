@@ -1,0 +1,12 @@
+#[FeatureSet Enum](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#ga776cf8e0301b18e19be4782754274fe0)
+## Values
+* [FEATURE_SET_COMPUTE_10](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0ab34c101b8be1bfbf64fe53db6277639d)
+* [GLOBAL_ATOMICS](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a9b148c4a092e640c4e1f5bf54e166c68)
+* [SHARED_ATOMICS](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a63dd888f7ac8c7e6716af80bb9580ad5)
+* [NATIVE_DOUBLE](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a86553a98540f6a0fb2656730af504693)
+* [FEATURE_SET_COMPUTE_20](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0ac3b86a55893548ec28d6360b38ef78cd)
+* [FEATURE_SET_COMPUTE_21](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0ac46cbea580480b80f48f9a843b1fca98)
+* [WARP_SHUFFLE_FUNCTIONS](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a22dd302fe5c91cbb63078b4676f58cae)
+* [FEATURE_SET_COMPUTE_32](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a965876faa336b34a95b781129915766d)
+* [DYNAMIC_PARALLELISM](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a2d8ef1fc50ce9e89ea1e058b6ba9df47)
+* [FEATURE_SET_COMPUTE_50](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#gga776cf8e0301b18e19be4782754274fe0a4e7aa099ce8d9f1b4c26cb9755a17d11)

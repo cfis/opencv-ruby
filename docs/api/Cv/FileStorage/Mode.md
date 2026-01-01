@@ -1,0 +1,12 @@
+#[Mode Enum](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482d)
+## Values
+* [FORMAT_AUTO](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da5c1854b1f439d35644c7475791f3c47e)
+* [WRITE](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da747a241cefee7b8af34c3d804c864ad6)
+* [APPEND](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da049591e6d1749b29bb206909c70b2470)
+* [MEMORY](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482dabdde7670c9c7e472f8445932ea7cbbf7)
+* [FORMAT_XML](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da753a7b441d2876fa8a77009472108356)
+* [FORMAT_YAML](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da63e7a7dcb2d68359210dc5fc8c83e92d)
+* [FORMAT_JSON](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da65cebec1331fd20338511b2f5f31efe4)
+* [FORMAT_MASK](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482dafa2bc69eece7e0210b59a0c7113d5b3e)
+* [BASE64](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482daef5eb4ad351f31273667949b65e4e6c2)
+* [WRITE_BASE64](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html#a973e41cb75ef6230412a567723b7482da74cdcbdb96c29f19e3ccc2ba4ab81614)

@@ -1,0 +1,16 @@
+nav:
+  - index.md
+  - BufferPool.md
+  - DeviceInfo
+  - DeviceInfo.md
+  - Event
+  - Event.md
+  - FeatureSet.md
+  - GpuData.md
+  - GpuMat
+  - GpuMat.md
+  - GpuMatND.md
+  - HostMem
+  - HostMem.md
+  - Stream.md
+  - TargetArchs.md

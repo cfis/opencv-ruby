@@ -1,0 +1,15 @@
+#[SphericalWarperGpu](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html)
+## Constructors
+[initialize](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html#ad89e6054bd99e985c92a602c4e0c44ea)(scale: [Float](https://docs.ruby-lang.org/en/master/Float.html))
+
+
+## Methods
+[build_maps](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html#a72756b62d0ff3befaec32b2166733b39)(src_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), k: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), r: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), xmap: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), ymap: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html)) -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+
+[build_maps](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html#a72756b62d0ff3befaec32b2166733b39)(src_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), k: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), r: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), xmap: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), ymap: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+
+[warp](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html#adf99893bfbdeb4380c0b75a09573f25a)(src: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), k: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), r: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), interp_mode: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), border_mode: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+[warp](https://docs.opencv.org/4.x/db/d09/classcv_1_1detail_1_1SphericalWarperGpu.html#adf99893bfbdeb4380c0b75a09573f25a)(src: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), k: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), r: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), interp_mode: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), border_mode: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html)) -> [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+

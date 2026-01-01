@@ -1,0 +1,9 @@
+#[MarkerTypes Enum](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#ga0ad87faebef1039ec957737ecc633b7b)
+## Values
+* [MARKER_CROSS](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7baf28ad04b7620b2f232ab3c3faef142d5)
+* [MARKER_TILTED_CROSS](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7ba433d7189d8fe53873c929b917c903752)
+* [MARKER_STAR](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7bad5b611078a497ff7278b27e7a85b059b)
+* [MARKER_DIAMOND](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7ba432cfe9d9aa8ff347afd5d11b6580a10)
+* [MARKER_SQUARE](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7ba17aaefd352d309fc4a17d06f64f7f56e)
+* [MARKER_TRIANGLE_UP](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7badc5b55da577d22ace3844809bc9a1049)
+* [MARKER_TRIANGLE_DOWN](https://docs.opencv.org/4.x/d6/d6e/group__imgproc__draw.html#gga0ad87faebef1039ec957737ecc633b7ba8c45774007ca5883196614763b974577)

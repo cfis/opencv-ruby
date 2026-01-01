@@ -1,0 +1,10 @@
+#[NormTypes Enum](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gad12cefbcb5291cf958a85b4b67b6149f)
+## Values
+* [NORM_INF](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fad33872d928c74f8a49d1ba06d72aefc3)
+* [NORM_L1](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fab55c78ff204a979026c026ea19de65c9)
+* [NORM_L2](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fa7bacbe84d400336a8f26297d8e80e3a2)
+* [NORM_L2SQR](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fabe948af03c9289b0dd7e663d5c035f5a)
+* [NORM_HAMMING](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fa4b063afd04aebb8dd07085a1207da727)
+* [NORM_TYPE_MASK](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149faaabf1ea549554e2cbdfde2acfcfc5374)
+* [NORM_RELATIVE](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fa0a85f9203dcdf3fbc1cca589b6f5df39)
+* [NORM_MINMAX](https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ggad12cefbcb5291cf958a85b4b67b6149fa9f0c1c342a18114d47b516a88e29822e)

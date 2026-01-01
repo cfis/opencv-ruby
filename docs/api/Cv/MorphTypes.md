@@ -1,0 +1,10 @@
+#[MorphTypes Enum](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32)
+## Values
+* [MORPH_ERODE](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32aa3783a21b429f4c31c178264a0403fcd)
+* [MORPH_DILATE](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32a2b9f6b6fb168b4d1d5277caebfe7b73d)
+* [MORPH_OPEN](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32a08d3cc3a2ace00cec488966d31fa29ea)
+* [MORPH_CLOSE](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32a68c4b9c6144a30bcd52d1cdf39bb30e1)
+* [MORPH_GRADIENT](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32a887efd64e82cee95a62f851c7f3b617b)
+* [MORPH_TOPHAT](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32ada67be24f4dce6d7e6c57527f8724f3b)
+* [MORPH_BLACKHAT](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32a24d27f56df6b98b1cb92ae8108d4638f)
+* [MORPH_HITMISS](https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gga7be549266bad7b2e6a04db49827f9f32acf55ff766595ec0174ba42852f0ac264)

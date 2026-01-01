@@ -1,0 +1,9 @@
+#[EncodeMode Enum](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367)
+## Values
+* [MODE_AUTO](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367ad9a23a539f0771f552601a6a163b2dfc)
+* [MODE_NUMERIC](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367afd3ca810c2ac291506bd451697b35c60)
+* [MODE_ALPHANUMERIC](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367a8340b2ae811d406d54de9622a99fda55)
+* [MODE_STRUCTURED_APPEND](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367a522d4e9a4bd65851c22145f427b80ee2)
+* [MODE_BYTE](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367a966c738128d642f1ea476d1a909bd20b)
+* [MODE_ECI](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367a69673d93a005e88d67a197ca512932eb)
+* [MODE_KANJI](https://docs.opencv.org/4.x/d2/dbb/classcv_1_1QRCodeEncoder.html#a70c6346fd672860b81f8dbb4f8c53367a5b0f92c9560910f820cf63ae59709d91)

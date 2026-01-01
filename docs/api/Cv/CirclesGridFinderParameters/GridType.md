@@ -1,0 +1,4 @@
+#GridType Enum
+## Values
+* SYMMETRIC_GRID
+* ASYMMETRIC_GRID

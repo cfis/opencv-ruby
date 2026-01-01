@@ -1,0 +1,5 @@
+#ImagePaddingMode Enum
+## Values
+* DNN_PMODE_NULL
+* DNN_PMODE_CROP_CENTER
+* DNN_PMODE_LETTERBOX

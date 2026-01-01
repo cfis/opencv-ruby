@@ -1,5 +1,5 @@
 module Cvflann
   class KDTreeIndexParams
-    def initialize: (trees: Integer) -> void
+    def initialize: (trees: Integer) -> NilClass
   end
 end

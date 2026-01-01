@@ -4,8 +4,8 @@ module Cv
     attr_accessor max_count: Integer
     attr_accessor type: Integer
 
-    def initialize: () -> void
-               | (type: Integer, max_count: Integer, epsilon: Float) -> void
-    def valid?: () -> bool
+    def initialize: () -> NilClass
+               | (type: Integer, max_count: Integer, epsilon: Float) -> NilClass
+    def valid?: () -> TrueClass
   end
 end

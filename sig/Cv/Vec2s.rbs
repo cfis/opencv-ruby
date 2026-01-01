@@ -1,21 +1,21 @@
 module Cv
   class Vec2s
-    def []: (i: Integer) -> Short
-       | (i: Integer) -> Short
-    def initialize: () -> void
-               | (values: Rice::Buffer≺short const∗≻) -> void
-               | (v0: Integer, v1: Integer) -> void
-               | (a: Cv::Matx≺short‚ 2‚ 1≻, b: Cv::Matx≺short‚ 2‚ 1≻, : Cv::MatxAddOp) -> void
-               | (a: Cv::Matx≺short‚ 2‚ 1≻, b: Cv::Matx≺short‚ 2‚ 1≻, : Cv::MatxSubOp) -> void
-    def []=: (arg_0: Integer, arg_1: Short) -> void
-    def assign: (rhs: Cv::Vec≺short‚ 2≻) -> Cv::Vec≺short‚ 2≻
-    def call: (i: Integer) -> Short
-         | (i: Integer) -> Short
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+    def initialize: () -> NilClass
+               | (values: Rice::Pointer≺short≻) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (a: Cv::Matx21s, b: Cv::Matx21s, op: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx21s, b: Cv::Matx21s, op: Cv::MatxSubOp) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
+    def assign: (rhs: Cv::Vec2s) -> Cv::Vec2s
+    def call: (i: Integer) -> Integer
+         | (i: Integer) -> Integer
     def count: () -> Integer
-    def initialize_copy: (v: Cv::Vec≺short‚ 2≻) -> void
-    def inspect: () -> Std::String
-    def mul: (v: Cv::Vec≺short‚ 2≻) -> Cv::Vec≺short‚ 2≻
+    def initialize_copy: (v: Cv::Vec2s) -> NilClass
+    def inspect: () -> String
+    def mul: (v: Cv::Vec2s) -> Cv::Vec2s
     def to_a: () -> Integer
-    def to_s: () -> Std::String
+    def to_s: () -> String
   end
 end

@@ -1,6 +1,6 @@
 module Cv
   class DownhillSolver
-    def get_init_step: (step: Cv::debug_build_guard::OutputArray) -> void
-    def set_init_step: (step: Cv::debug_build_guard::InputArray) -> void
+    def get_init_step: (step: Cv::OutputArray) -> NilClass
+    def set_init_step: (step: Cv::InputArray) -> NilClass
   end
 end

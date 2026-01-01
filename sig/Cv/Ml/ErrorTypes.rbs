@@ -1,18 +1,20 @@
 module Cv::Ml
   class ErrorTypes
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::ml::ErrorTypes) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Ml::ErrorTypes) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::ml::ErrorTypes) -> Integer
+    def <=>: (arg_0: Cv::Ml::ErrorTypes) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::ml::ErrorTypes) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::ml::ErrorTypes) -> bool
+    def ^: (arg_0: Cv::Ml::ErrorTypes) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Ml::ErrorTypes) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::ml::ErrorTypes) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Ml::ErrorTypes) -> Integer
     def ~: () -> Integer
   end
 end

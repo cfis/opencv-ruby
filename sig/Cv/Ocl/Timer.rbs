@@ -1,8 +1,8 @@
 module Cv::Ocl
   class Timer
     def duration_ns: () -> Integer
-    def initialize: (q: Cv::ocl::Queue) -> void
-    def start: () -> void
-    def stop: () -> void
+    def initialize: (q: Cv::Ocl::Queue) -> NilClass
+    def start: () -> NilClass
+    def stop: () -> NilClass
   end
 end

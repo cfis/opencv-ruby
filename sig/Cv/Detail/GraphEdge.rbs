@@ -4,8 +4,8 @@ module Cv::Detail
     attr_accessor to: Integer
     attr_accessor weight: Float
 
-    def initialize: (from: Integer, to: Integer, weight: Float) -> void
-    def <: (other: Cv::detail::GraphEdge) -> bool
-    def >: (other: Cv::detail::GraphEdge) -> bool
+    def initialize: (from: Integer, to: Integer, weight: Float) -> NilClass
+    def <: (other: Cv::Detail::GraphEdge) -> TrueClass
+    def >: (other: Cv::Detail::GraphEdge) -> TrueClass
   end
 end

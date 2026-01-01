@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉BackgroundSubtractorKNN≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉BackgroundSubtractorKNN≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉BackgroundSubtractorKNN≻) -> NilClass
+               | (ptr: Cv::BackgroundSubtractorKNN) -> NilClass
+               | (value: Cv::BackgroundSubtractorKNN) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉BackgroundSubtractorKNN≻) -> Cv::Ptr≺cv꞉꞉BackgroundSubtractorKNN≻
+    def get: () -> Cv::BackgroundSubtractorKNN
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉BackgroundSubtractorKNN≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

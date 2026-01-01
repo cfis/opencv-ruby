@@ -1,23 +1,23 @@
 module Cv::Ogl
   class Texture2D
-    def initialize: () -> void
-               | (arr: Cv::debug_build_guard::InputArray, auto_release: bool) -> void
-               | (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
-               | (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, atex_id: Integer, auto_release: bool) -> void
-               | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
-               | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, atex_id: Integer, auto_release: bool) -> void
-    def bind: () -> void
+    def initialize: () -> NilClass
+               | (arr: Cv::InputArray, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, atex_id: Integer, auto_release: TrueClass) -> NilClass
+               | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+               | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, atex_id: Integer, auto_release: TrueClass) -> NilClass
+    def bind: () -> NilClass
     def cols: () -> Integer
-    def copy_from: (arr: Cv::debug_build_guard::InputArray, auto_release: bool) -> void
-    def create: (asize: Cv::Size_≺int≻, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
-           | (arows: Integer, acols: Integer, aformat: Enum cv::ogl::Texture2D::Format, auto_release: bool) -> void
-    def empty?: () -> bool
-    def copy_to: (arr: Cv::debug_build_guard::OutputArray, ddepth: Integer, auto_release: bool) -> void
-    def format: () -> Enum cv::ogl::Texture2D::Format
-    def release: () -> void
+    def copy_from: (arr: Cv::InputArray, auto_release: TrueClass) -> NilClass
+    def create: (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+           | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+    def empty?: () -> TrueClass
+    def copy_to: (arr: Cv::OutputArray, ddepth: Integer, auto_release: TrueClass) -> NilClass
+    def format: () -> Cv::Ogl::Texture2D::Format
+    def release: () -> NilClass
     def rows: () -> Integer
-    def set_auto_release: (flag: bool) -> void
-    def size: () -> Cv::Size_≺int≻
+    def set_auto_release: (flag: TrueClass) -> NilClass
+    def size: () -> Cv::Size
     def tex_id: () -> Integer
   end
 end

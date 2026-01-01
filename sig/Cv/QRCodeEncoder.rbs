@@ -1,6 +1,6 @@
 module Cv
   class QRCodeEncoder
-    def encode: (encoded_info: Std::String, qrcode: Cv::debug_build_guard::OutputArray) -> void
-    def encode_structured_append: (encoded_info: Std::String, qrcodes: Cv::debug_build_guard::OutputArray) -> void
+    def encode: (encoded_info: String, qrcode: Cv::OutputArray) -> NilClass
+    def encode_structured_append: (encoded_info: String, qrcodes: Cv::OutputArray) -> NilClass
   end
 end

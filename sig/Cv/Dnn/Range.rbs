@@ -1,0 +1,6 @@
+module Cv::Dnn
+  class Range
+    def initialize: (r: Cv::Range) -> NilClass
+               | (start_: Integer, size_: Integer) -> NilClass
+  end
+end

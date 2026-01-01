@@ -1,18 +1,20 @@
 module Cv::Ml::ANN_MLP
   class ActivationFunctions
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::ml::ANN_MLP::ActivationFunctions) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Ml::ANN_MLP::ActivationFunctions) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::ml::ANN_MLP::ActivationFunctions) -> Integer
+    def <=>: (arg_0: Cv::Ml::ANN_MLP::ActivationFunctions) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::ml::ANN_MLP::ActivationFunctions) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::ml::ANN_MLP::ActivationFunctions) -> bool
+    def ^: (arg_0: Cv::Ml::ANN_MLP::ActivationFunctions) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Ml::ANN_MLP::ActivationFunctions) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::ml::ANN_MLP::ActivationFunctions) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Ml::ANN_MLP::ActivationFunctions) -> Integer
     def ~: () -> Integer
   end
 end

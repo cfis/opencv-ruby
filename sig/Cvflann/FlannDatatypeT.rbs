@@ -1,18 +1,20 @@
 module Cvflann
   class FlannDatatypeT
-    def initialize: () -> void
-    def &: (arg_0: Enum cvflann::FlannDatatypeT) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cvflann::FlannDatatypeT) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cvflann::FlannDatatypeT) -> Integer
+    def <=>: (arg_0: Cvflann::FlannDatatypeT) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cvflann::FlannDatatypeT) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cvflann::FlannDatatypeT) -> bool
+    def ^: (arg_0: Cvflann::FlannDatatypeT) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cvflann::FlannDatatypeT) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cvflann::FlannDatatypeT) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cvflann::FlannDatatypeT) -> Integer
     def ~: () -> Integer
   end
 end

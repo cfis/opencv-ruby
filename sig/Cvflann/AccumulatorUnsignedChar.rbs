@@ -1,5 +1,5 @@
 module Cvflann
   class AccumulatorUnsignedChar
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

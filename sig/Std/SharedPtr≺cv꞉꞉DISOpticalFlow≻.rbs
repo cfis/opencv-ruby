@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉DISOpticalFlow≻
+    def initialize: (value: Cv::DISOpticalFlow) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::DISOpticalFlow
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉DISOpticalFlow≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

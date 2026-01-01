@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
+               | (ptr: Callback) -> NilClass
+               | (value: Callback) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻
+    def get: () -> Callback
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

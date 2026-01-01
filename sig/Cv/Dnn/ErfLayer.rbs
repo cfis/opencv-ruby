@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class ErfLayer
+    def initialize: () -> NilClass
+  end
+end

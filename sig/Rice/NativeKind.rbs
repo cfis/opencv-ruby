@@ -1,0 +1,20 @@
+module Rice
+  class NativeKind
+    def initialize: () -> NilClass
+    def &: (arg_0: Rice::NativeKind) -> Integer
+    def <<: (arg_0: Integer) -> Integer
+    def <=>: (arg_0: Rice::NativeKind) -> Integer
+        | (arg_0: Integer) -> Integer
+    def >>: (arg_0: Integer) -> Integer
+    def ^: (arg_0: Rice::NativeKind) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Rice::NativeKind) -> TrueClass
+    def hash: () -> Integer
+    def inspect: () -> String
+    def to_int: () -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Rice::NativeKind) -> Integer
+    def ~: () -> Integer
+  end
+end

@@ -1,0 +1,9 @@
+module Rice
+  class Native
+    def kind: () -> Rice::NativeKind
+    def name: () -> String
+    def parameters: () -> Std::Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻
+    def return_klass: () -> Integer
+    def to_s: () -> String
+  end
+end

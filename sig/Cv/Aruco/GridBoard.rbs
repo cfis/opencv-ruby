@@ -1,8 +1,8 @@
 module Cv::Aruco
   class GridBoard
-    def get_grid_size: () -> Cv::Size_≺int≻
+    def get_grid_size: () -> Cv::Size
     def get_marker_length: () -> Float
     def get_marker_separation: () -> Float
-    def initialize: (size: Cv::Size_≺int≻, marker_length: Float, marker_separation: Float, dictionary: Cv::aruco::Dictionary, ids: Cv::debug_build_guard::InputArray) -> void
+    def initialize: (size: Cv::Size, marker_length: Float, marker_separation: Float, dictionary: Cv::Aruco::Dictionary, ids: Cv::InputArray) -> NilClass
   end
 end

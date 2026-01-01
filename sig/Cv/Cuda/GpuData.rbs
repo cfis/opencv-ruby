@@ -2,6 +2,6 @@ module Cv::Cuda
   class GpuData
     attr_accessor size: Integer
 
-    def initialize: (_size: Integer) -> void
+    def initialize: (_size: Integer) -> NilClass
   end
 end

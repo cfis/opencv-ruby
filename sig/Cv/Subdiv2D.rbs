@@ -1,20 +1,20 @@
 module Cv
   class Subdiv2D
-    def initialize: () -> void
-               | (rect: Cv::Rect_≺int≻) -> void
-    def edge_dst: (edge: Integer, dstpt: Cv::Point_≺float≻) -> Integer
-    def edge_org: (edge: Integer, orgpt: Cv::Point_≺float≻) -> Integer
-    def find_nearest: (pt: Cv::Point_≺float≻, nearest_pt: Cv::Point_≺float≻) -> Integer
+    def initialize: () -> NilClass
+               | (rect: Cv::Rect) -> NilClass
+    def edge_dst: (edge: Integer, dstpt: Cv::Point2f) -> Integer
+    def edge_org: (edge: Integer, orgpt: Cv::Point2f) -> Integer
+    def find_nearest: (pt: Cv::Point2f, nearest_pt: Cv::Point2f) -> Integer
     def get_edge: (edge: Integer, next_edge_type: Integer) -> Integer
-    def get_edge_list: (edge_list: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> void
-    def get_leading_edge_list: (leading_edge_list: Std::Vector≺int≻) -> void
-    def get_triangle_list: (triangle_list: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> void
-    def get_vertex: (vertex: Integer, first_edge: Rice::Buffer≺int∗≻) -> Cv::Point_≺float≻
-    def get_voronoi_facet_list: (idx: Std::Vector≺int≻, facet_list: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻, facet_centers: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> void
-    def init_delaunay: (rect: Cv::Rect_≺int≻) -> void
-    def insert: (ptvec: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> void
-           | (pt: Cv::Point_≺float≻) -> Integer
-    def locate: (pt: Cv::Point_≺float≻, edge: Int, vertex: Int) -> Integer
+    def get_edge_list: (edge_list: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> NilClass
+    def get_leading_edge_list: (leading_edge_list: Std::Vector≺int≻) -> NilClass
+    def get_triangle_list: (triangle_list: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> NilClass
+    def get_vertex: (vertex: Integer, first_edge: Rice::Pointer≺int≻) -> Cv::Point2f
+    def get_voronoi_facet_list: (idx: Std::Vector≺int≻, facet_list: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻, facet_centers: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+    def init_delaunay: (rect: Cv::Rect) -> NilClass
+    def insert: (ptvec: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+           | (pt: Cv::Point2f) -> Integer
+    def locate: (pt: Cv::Point2f, edge: Integer, vertex: Integer) -> Integer
     def next_edge: (edge: Integer) -> Integer
     def rotate_edge: (edge: Integer, rotate: Integer) -> Integer
     def sym_edge: (edge: Integer) -> Integer

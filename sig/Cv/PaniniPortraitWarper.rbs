@@ -1,6 +1,6 @@
 module Cv
   class PaniniPortraitWarper
     def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
-    def initialize: (a: Float, b: Float) -> void
+    def initialize: (a: Float, b: Float) -> NilClass
   end
 end

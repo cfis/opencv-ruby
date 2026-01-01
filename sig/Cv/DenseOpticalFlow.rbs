@@ -1,6 +1,6 @@
 module Cv
   class DenseOpticalFlow
-    def calc: (i0: Cv::debug_build_guard::InputArray, i1: Cv::debug_build_guard::InputArray, flow: Cv::debug_build_guard::InputOutputArray) -> void
-    def collect_garbage: () -> void
+    def calc: (i0: Cv::InputArray, i1: Cv::InputArray, flow: Cv::InputOutputArray) -> NilClass
+    def collect_garbage: () -> NilClass
   end
 end

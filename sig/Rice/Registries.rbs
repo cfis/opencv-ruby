@@ -1,0 +1,8 @@
+module Rice
+  class Registries
+    attr_reader modules: Rice::ModuleRegistry
+    attr_reader natives: Rice::NativeRegistry
+    attr_reader types: Rice::TypeRegistry
+
+  end
+end

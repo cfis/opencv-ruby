@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> NilClass
+               | (ptr: Cv::Detail::SeamFinder) -> NilClass
+               | (value: Cv::Detail::SeamFinder) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻
+    def get: () -> Cv::Detail::SeamFinder
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

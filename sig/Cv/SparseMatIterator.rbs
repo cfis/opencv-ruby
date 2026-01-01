@@ -2,9 +2,9 @@ module Cv
   class SparseMatIterator
     def increment: () -> Cv::SparseMatIterator
               | (: Integer) -> Cv::SparseMatIterator
-    def initialize: () -> void
-               | (_m: Cv::SparseMat) -> void
-    def initialize_copy: (it: Cv::SparseMatIterator) -> void
+    def initialize: () -> NilClass
+               | (_m: Cv::SparseMat) -> NilClass
+    def initialize_copy: (it: Cv::SparseMatIterator) -> NilClass
     def node: () -> Cv::SparseMat::Node
   end
 end

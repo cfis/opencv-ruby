@@ -3,6 +3,6 @@ module Cv::Utils
     attr_accessor except: Integer
     attr_accessor lambda: Integer
 
-    def initialize: (lambda_arg: Integer, except_arg: Integer) -> void
+    def initialize: (lambda_arg: Integer, except_arg: Integer) -> NilClass
   end
 end

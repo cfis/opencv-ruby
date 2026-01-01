@@ -1,18 +1,20 @@
 module Cv::Ogl::Buffer
   class Target
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::ogl::Buffer::Target) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Ogl::Buffer::Target) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::ogl::Buffer::Target) -> Integer
+    def <=>: (arg_0: Cv::Ogl::Buffer::Target) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::ogl::Buffer::Target) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::ogl::Buffer::Target) -> bool
+    def ^: (arg_0: Cv::Ogl::Buffer::Target) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Ogl::Buffer::Target) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::ogl::Buffer::Target) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Ogl::Buffer::Target) -> Integer
     def ~: () -> Integer
   end
 end

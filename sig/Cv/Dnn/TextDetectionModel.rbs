@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class TextDetectionModel
+    def detect: (frame: Cv::InputArray, detections: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻) -> NilClass
+           | (frame: Cv::InputArray, detections: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻, confidences: Std::Vector≺float≻) -> NilClass
+    def detect_text_rectangles: (frame: Cv::InputArray, detections: Std::Vector≺cv꞉꞉RotatedRect≻) -> NilClass
+                           | (frame: Cv::InputArray, detections: Std::Vector≺cv꞉꞉RotatedRect≻, confidences: Std::Vector≺float≻) -> NilClass
+  end
+end

@@ -1,0 +1,33 @@
+module Std
+  class Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻
+    def delete: (arg_0: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    def delete_at: (arg_0: Integer) -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    def include?: (arg_0: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> TrueClass
+    def index: (arg_0: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> Std::Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻
+    def last: () -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    def push: (arg_0: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> Std::Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

@@ -1,10 +1,10 @@
 module Cv::Detail
   class BlocksGainCompensator
-    def apply: (index: Integer, corner: Cv::Point_≺int≻, image: Cv::debug_build_guard::InputOutputArray, mask: Cv::debug_build_guard::InputArray) -> void
-    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> void
-    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
-    def initialize: (bl_width: Integer, bl_height: Integer) -> void
-               | (bl_width: Integer, bl_height: Integer, nr_feeds: Integer) -> void
-    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def apply: (index: Integer, corner: Cv::Point, image: Cv::InputOutputArray, mask: Cv::InputArray) -> NilClass
+    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
+    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def initialize: (bl_width: Integer, bl_height: Integer) -> NilClass
+               | (bl_width: Integer, bl_height: Integer, nr_feeds: Integer) -> NilClass
+    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
   end
 end

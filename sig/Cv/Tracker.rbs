@@ -1,6 +1,6 @@
 module Cv
   class Tracker
-    def init: (image: Cv::debug_build_guard::InputArray, bounding_box: Cv::Rect_≺int≻) -> void
-    def update?: (image: Cv::debug_build_guard::InputArray, bounding_box: Cv::Rect_≺int≻) -> bool
+    def init: (image: Cv::InputArray, bounding_box: Cv::Rect) -> NilClass
+    def update?: (image: Cv::InputArray, bounding_box: Cv::Rect) -> TrueClass
   end
 end

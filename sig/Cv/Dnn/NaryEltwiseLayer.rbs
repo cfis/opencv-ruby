@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class NaryEltwiseLayer
+    def initialize: () -> NilClass
+  end
+end

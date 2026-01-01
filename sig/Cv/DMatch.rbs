@@ -5,9 +5,9 @@ module Cv
     attr_accessor query_idx: Integer
     attr_accessor train_idx: Integer
 
-    def initialize: () -> void
-               | (_query_idx: Integer, _train_idx: Integer, _distance: Float) -> void
-               | (_query_idx: Integer, _train_idx: Integer, _img_idx: Integer, _distance: Float) -> void
-    def <: (m: Cv::DMatch) -> bool
+    def initialize: () -> NilClass
+               | (_query_idx: Integer, _train_idx: Integer, _distance: Float) -> NilClass
+               | (_query_idx: Integer, _train_idx: Integer, _img_idx: Integer, _distance: Float) -> NilClass
+    def <: (m: Cv::DMatch) -> TrueClass
   end
 end

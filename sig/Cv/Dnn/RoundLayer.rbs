@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class RoundLayer
+    def initialize: () -> NilClass
+  end
+end

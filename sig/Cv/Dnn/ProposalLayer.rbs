@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class ProposalLayer
+    def initialize: () -> NilClass
+  end
+end

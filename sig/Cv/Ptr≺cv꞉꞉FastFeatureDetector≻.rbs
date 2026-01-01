@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉FastFeatureDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FastFeatureDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FastFeatureDetector≻) -> NilClass
+               | (ptr: Cv::FastFeatureDetector) -> NilClass
+               | (value: Cv::FastFeatureDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉FastFeatureDetector≻) -> Cv::Ptr≺cv꞉꞉FastFeatureDetector≻
+    def get: () -> Cv::FastFeatureDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉FastFeatureDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

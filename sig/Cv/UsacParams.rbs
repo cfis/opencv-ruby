@@ -1,19 +1,19 @@
 module Cv
   class UsacParams
     attr_accessor confidence: Float
-    attr_accessor final_polisher: Enum cv::PolishingMethod
+    attr_accessor final_polisher: Cv::PolishingMethod
     attr_accessor final_polisher_iterations: Integer
-    attr_accessor is_parallel: bool
+    attr_accessor is_parallel: TrueClass
     attr_accessor lo_iterations: Integer
-    attr_accessor lo_method: Enum cv::LocalOptimMethod
+    attr_accessor lo_method: Cv::LocalOptimMethod
     attr_accessor lo_sample_size: Integer
     attr_accessor max_iterations: Integer
-    attr_accessor neighbors_search: Enum cv::NeighborSearchMethod
+    attr_accessor neighbors_search: Cv::NeighborSearchMethod
     attr_accessor random_generator_state: Integer
-    attr_accessor sampler: Enum cv::SamplingMethod
-    attr_accessor score: Enum cv::ScoreMethod
+    attr_accessor sampler: Cv::SamplingMethod
+    attr_accessor score: Cv::ScoreMethod
     attr_accessor threshold: Float
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉AgastFeatureDetector≻
+    def initialize: (value: Cv::AgastFeatureDetector) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::AgastFeatureDetector
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉AgastFeatureDetector≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

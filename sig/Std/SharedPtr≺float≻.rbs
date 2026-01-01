@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺float≻
+    def initialize: (value: Rice::Pointer≺float≻) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Rice::Pointer≺float≻
+    def swap: (arg_0: Std::SharedPtr≺float≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

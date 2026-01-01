@@ -1,0 +1,33 @@
+module Std
+  class Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+    def delete: (arg_0: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+    def delete_at: (arg_0: Integer) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+    def include?: (arg_0: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> TrueClass
+    def index: (arg_0: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+    def last: () -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+    def max_size: () -> Integer
+    def pop: () -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+    def push: (arg_0: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

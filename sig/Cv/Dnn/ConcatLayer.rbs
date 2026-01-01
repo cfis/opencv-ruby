@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class ConcatLayer
+    attr_accessor axis: Integer
+    attr_accessor padding: TrueClass
+    attr_accessor padding_value: Integer
+
+    def initialize: () -> NilClass
+  end
+end

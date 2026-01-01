@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class LSTMLayer
+    def input_name_to_index: (input_name: String) -> Integer
+    def output_name_to_index: (output_name: String) -> Integer
+    def set_out_shape: (out_tail_shape: Std::Vector≺int≻) -> NilClass
+  end
+end

@@ -1,5 +1,5 @@
 module Cv::Detail
   class BundleAdjusterReproj
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

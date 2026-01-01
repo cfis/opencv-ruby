@@ -1,0 +1,16 @@
+module Rice
+  class Buffer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻
+    def initialize: (value: Integer) -> NilClass
+               | (value: Integer, size: Integer) -> NilClass
+    def []: (index: Integer) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻
+    def []=: (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻) -> NilClass
+    def bytes: () -> Integer
+          | (arg_0: Integer) -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻
+    def release: () -> Rice::Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻
+    def size: () -> Integer
+    def to_ary: () -> Array
+           | (arg_0: Integer) -> Array
+    def to_s: () -> Integer
+  end
+end

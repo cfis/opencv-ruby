@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ConjGradSolver≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ConjGradSolver≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ConjGradSolver≻) -> NilClass
+               | (ptr: Cv::ConjGradSolver) -> NilClass
+               | (value: Cv::ConjGradSolver) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ConjGradSolver≻) -> Cv::Ptr≺cv꞉꞉ConjGradSolver≻
+    def get: () -> Cv::ConjGradSolver
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ConjGradSolver≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

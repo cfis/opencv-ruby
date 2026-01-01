@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉UMat≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::UMat) -> NilClass
+    def []: (arg_0: Integer) -> Cv::UMat
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::UMat) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉UMat≻
+    def delete_at: (arg_0: Integer) -> Cv::UMat
+    def empty?: () -> TrueClass
+    def first: () -> Cv::UMat
+    def include?: (arg_0: Cv::UMat) -> TrueClass
+    def index: (arg_0: Cv::UMat) -> Integer
+    def delete: (arg_0: Cv::UMat) -> Cv::UMat
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::UMat) -> Std::Vector≺cv꞉꞉UMat≻
+    def last: () -> Cv::UMat
+    def max_size: () -> Integer
+    def pop: () -> Cv::UMat
+    def push: (arg_0: Cv::UMat) -> Std::Vector≺cv꞉꞉UMat≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

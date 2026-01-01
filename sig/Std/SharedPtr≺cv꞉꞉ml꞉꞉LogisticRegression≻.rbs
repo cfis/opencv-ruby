@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻
+    def initialize: (value: Cv::Ml::LogisticRegression) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Ml::LogisticRegression
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

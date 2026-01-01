@@ -1,0 +1,33 @@
+module Std
+  class Vector≺Cv꞉꞉Point2l≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Point2l) -> NilClass
+    def ==: (arg_0: Std::Vector≺Cv꞉꞉Point2l≻) -> TrueClass
+    def []: (arg_0: Integer) -> Cv::Point2l
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Point2l) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Point_≺Int64≻≻
+    def delete: (arg_0: Cv::Point2l) -> Cv::Point2l
+    def delete_at: (arg_0: Integer) -> Cv::Point2l
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Point2l
+    def include?: (arg_0: Cv::Point2l) -> TrueClass
+    def index: (arg_0: Cv::Point2l) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺Cv꞉꞉Point2l≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Point2l) -> Std::Vector≺Cv꞉꞉Point2l≻
+    def last: () -> Cv::Point2l
+    def max_size: () -> Integer
+    def pop: () -> Cv::Point2l
+    def push: (arg_0: Cv::Point2l) -> Std::Vector≺Cv꞉꞉Point2l≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

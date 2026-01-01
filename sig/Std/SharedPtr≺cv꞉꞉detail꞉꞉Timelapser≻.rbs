@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉detail꞉꞉Timelapser≻
+    def initialize: (value: Cv::Detail::Timelapser) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Detail::Timelapser
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉Timelapser≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

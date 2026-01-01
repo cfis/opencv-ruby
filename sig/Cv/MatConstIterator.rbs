@@ -2,25 +2,25 @@ module Cv
   class MatConstIterator
     attr_accessor elem_size: Integer
     attr_accessor m: Cv::Mat
-    attr_accessor ptr: Rice::Buffer≺unsigned char const∗≻
-    attr_accessor slice_end: Rice::Buffer≺unsigned char const∗≻
-    attr_accessor slice_start: Rice::Buffer≺unsigned char const∗≻
+    attr_accessor ptr: Rice::Pointer≺unsigned char≻
+    attr_accessor slice_end: Rice::Pointer≺unsigned char≻
+    attr_accessor slice_start: Rice::Pointer≺unsigned char≻
 
     def assign_minus: (ofs: Integer) -> Cv::MatConstIterator
     def assign_plus: (ofs: Integer) -> Cv::MatConstIterator
-    def initialize: () -> void
-               | (_m: Cv::Mat) -> void
-               | (_m: Cv::Mat, _pt: Cv::Point_≺int≻) -> void
-               | (_m: Cv::Mat, _row: Integer, _col: Integer) -> void
+    def initialize: () -> NilClass
+               | (_m: Cv::Mat) -> NilClass
+               | (_m: Cv::Mat, _pt: Cv::Point) -> NilClass
+               | (_m: Cv::Mat, _row: Integer, _col: Integer) -> NilClass
     def decrement: () -> Cv::MatConstIterator
               | (: Integer) -> Cv::MatConstIterator
     def increment: () -> Cv::MatConstIterator
               | (: Integer) -> Cv::MatConstIterator
-    def initialize_copy: (it: Cv::MatConstIterator) -> void
+    def initialize_copy: (it: Cv::MatConstIterator) -> NilClass
     def lpos: () -> Integer
-    def pos: () -> Cv::Point_≺int≻
-        | (_idx: Rice::Buffer≺int∗≻) -> void
-    def seek: (ofs: Integer, relative: bool) -> void
-         | (_idx: Rice::Buffer≺int const∗≻, relative: bool) -> void
+    def pos: () -> Cv::Point
+        | (_idx: Rice::Pointer≺int≻) -> NilClass
+    def seek: (ofs: Integer, relative: TrueClass) -> NilClass
+         | (_idx: Rice::Pointer≺int≻, relative: TrueClass) -> NilClass
   end
 end

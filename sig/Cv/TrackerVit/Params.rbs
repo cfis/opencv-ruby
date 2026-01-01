@@ -1,11 +1,11 @@
 module Cv::TrackerVit
   class Params
     attr_accessor backend: Integer
-    attr_accessor meanvalue: Cv::Scalar_≺double≻
-    attr_accessor net: Std::String
-    attr_accessor stdvalue: Cv::Scalar_≺double≻
+    attr_accessor meanvalue: Cv::Scalar
+    attr_accessor net: String
+    attr_accessor stdvalue: Cv::Scalar
     attr_accessor target: Integer
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

@@ -1,0 +1,8 @@
+module Std
+  class SharedPtr≺void≻
+    def empty?: () -> TrueClass
+    def get: () -> Rice::Pointer≺void≻
+    def swap: (arg_0: Std::SharedPtr≺void≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

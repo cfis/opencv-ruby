@@ -1,0 +1,4 @@
+module Libc
+  class File
+  end
+end

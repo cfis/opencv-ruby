@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class HardSwishLayer
+    def initialize: () -> NilClass
+  end
+end

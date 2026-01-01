@@ -4,12 +4,12 @@ module Cv::Aruco
     attr_accessor marker_size: Integer
     attr_accessor max_correction_bits: Integer
 
-    def generate_image_marker: (id: Integer, side_pixels: Integer, _img: Cv::debug_build_guard::OutputArray, border_bits: Integer) -> void
-    def get_distance_to_id: (bits: Cv::debug_build_guard::InputArray, id: Integer, all_rotations: bool) -> Integer
-    def identify?: (only_bits: Cv::Mat, idx: Int, rotation: Int, max_correction_rate: Float) -> bool
-    def initialize: () -> void
-               | (bytes_list: Cv::Mat, _marker_size: Integer, maxcorr: Integer) -> void
-    def read_dictionary?: (fn: Cv::FileNode) -> bool
-    def write_dictionary: (fs: Cv::FileStorage, name: Std::String) -> void
+    def generate_image_marker: (id: Integer, side_pixels: Integer, _img: Cv::OutputArray, border_bits: Integer) -> NilClass
+    def get_distance_to_id: (bits: Cv::InputArray, id: Integer, all_rotations: TrueClass) -> Integer
+    def identify?: (only_bits: Cv::Mat, idx: Integer, rotation: Integer, max_correction_rate: Float) -> TrueClass
+    def initialize: () -> NilClass
+               | (bytes_list: Cv::Mat, _marker_size: Integer, maxcorr: Integer) -> NilClass
+    def read_dictionary?: (fn: Cv::FileNode) -> TrueClass
+    def write_dictionary: (fs: Cv::FileStorage, name: String) -> NilClass
   end
 end

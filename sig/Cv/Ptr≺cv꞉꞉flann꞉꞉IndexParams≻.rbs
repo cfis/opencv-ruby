@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉flann꞉꞉IndexParams≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻) -> NilClass
+               | (ptr: Cv::Flann::IndexParams) -> NilClass
+               | (value: Cv::Flann::IndexParams) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉flann꞉꞉IndexParams≻) -> Cv::Ptr≺cv꞉꞉flann꞉꞉IndexParams≻
+    def get: () -> Cv::Flann::IndexParams
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉flann꞉꞉IndexParams≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

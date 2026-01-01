@@ -1,13 +1,13 @@
 module Cv::Detail
   class PlaneWarperGpu
-    def build_maps: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, xmap: Cv::debug_build_guard::OutputArray, ymap: Cv::debug_build_guard::OutputArray) -> Cv::Rect_≺int≻
-               | (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, xmap: Cv::cuda::GpuMat, ymap: Cv::cuda::GpuMat) -> Cv::Rect_≺int≻
-               | (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, t: Cv::debug_build_guard::InputArray, xmap: Cv::debug_build_guard::OutputArray, ymap: Cv::debug_build_guard::OutputArray) -> Cv::Rect_≺int≻
-               | (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, t: Cv::debug_build_guard::InputArray, xmap: Cv::cuda::GpuMat, ymap: Cv::cuda::GpuMat) -> Cv::Rect_≺int≻
-    def initialize: (scale: Float) -> void
-    def warp: (src: Cv::cuda::GpuMat, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::cuda::GpuMat) -> Cv::Point_≺int≻
-         | (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::debug_build_guard::OutputArray) -> Cv::Point_≺int≻
-         | (src: Cv::cuda::GpuMat, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, t: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::cuda::GpuMat) -> Cv::Point_≺int≻
-         | (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, t: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::debug_build_guard::OutputArray) -> Cv::Point_≺int≻
+    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
+               | (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::Cuda::GpuMat, ymap: Cv::Cuda::GpuMat) -> Cv::Rect
+               | (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
+               | (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray, xmap: Cv::Cuda::GpuMat, ymap: Cv::Cuda::GpuMat) -> Cv::Rect
+    def initialize: (scale: Float) -> NilClass
+    def warp: (src: Cv::Cuda::GpuMat, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::Cuda::GpuMat) -> Cv::Point
+         | (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
+         | (src: Cv::Cuda::GpuMat, k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::Cuda::GpuMat) -> Cv::Point
+         | (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
   end
 end

@@ -1,11 +1,11 @@
 module Cv::Aruco
   class Board
-    def generate_image: (out_size: Cv::Size_≺int≻, img: Cv::debug_build_guard::OutputArray, margin_size: Integer, border_bits: Integer) -> void
-    def get_dictionary: () -> Cv::aruco::Dictionary
+    def generate_image: (out_size: Cv::Size, img: Cv::OutputArray, margin_size: Integer, border_bits: Integer) -> NilClass
+    def get_dictionary: () -> Cv::Aruco::Dictionary
     def get_ids: () -> Std::Vector≺int≻
     def get_obj_points: () -> Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻
-    def get_right_bottom_corner: () -> Cv::Point3_≺float≻
-    def initialize: (obj_points: Cv::debug_build_guard::InputArray, dictionary: Cv::aruco::Dictionary, ids: Cv::debug_build_guard::InputArray) -> void
-    def match_image_points: (detected_corners: Cv::debug_build_guard::InputArray, detected_ids: Cv::debug_build_guard::InputArray, obj_points: Cv::debug_build_guard::OutputArray, img_points: Cv::debug_build_guard::OutputArray) -> void
+    def get_right_bottom_corner: () -> Cv::Point3f
+    def initialize: (obj_points: Cv::InputArray, dictionary: Cv::Aruco::Dictionary, ids: Cv::InputArray) -> NilClass
+    def match_image_points: (detected_corners: Cv::InputArray, detected_ids: Cv::InputArray, obj_points: Cv::OutputArray, img_points: Cv::OutputArray) -> NilClass
   end
 end

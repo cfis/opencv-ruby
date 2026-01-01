@@ -1,0 +1,16 @@
+module Rice
+  class Buffer≺cv꞉꞉Vec≺unsigned char‚ 4≻≻
+    def initialize: (value: Integer) -> NilClass
+               | (value: Integer, size: Integer) -> NilClass
+    def []: (index: Integer) -> Cv::Vec4b
+    def []=: (arg_0: Integer, arg_1: Cv::Vec4b) -> NilClass
+    def bytes: () -> Integer
+          | (arg_0: Integer) -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Vec≺unsigned char‚ 4≻≻
+    def release: () -> Rice::Pointer≺cv꞉꞉Vec≺unsigned char‚ 4≻≻
+    def size: () -> Integer
+    def to_ary: () -> Array
+           | (arg_0: Integer) -> Array
+    def to_s: () -> Integer
+  end
+end

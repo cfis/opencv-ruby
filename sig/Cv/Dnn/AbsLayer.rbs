@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class AbsLayer
+    def initialize: () -> NilClass
+  end
+end

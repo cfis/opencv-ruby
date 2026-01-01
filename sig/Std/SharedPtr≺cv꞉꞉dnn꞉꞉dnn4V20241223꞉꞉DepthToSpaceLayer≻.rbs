@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DepthToSpaceLayer≻
+    def initialize: (value: Cv::Dnn::DepthToSpaceLayer) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Dnn::DepthToSpaceLayer
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DepthToSpaceLayer≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

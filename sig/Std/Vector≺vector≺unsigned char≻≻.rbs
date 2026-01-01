@@ -1,0 +1,33 @@
+module Std
+  class Vector≺vector≺unsigned char≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Vector≺unsigned char≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺vector≺unsigned char≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Std::Vector≺unsigned char≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Vector≺unsigned char≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺vector≺unsigned char≻≻
+    def delete: (arg_0: Std::Vector≺unsigned char≻) -> Std::Vector≺unsigned char≻
+    def delete_at: (arg_0: Integer) -> Std::Vector≺unsigned char≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Vector≺unsigned char≻
+    def include?: (arg_0: Std::Vector≺unsigned char≻) -> TrueClass
+    def index: (arg_0: Std::Vector≺unsigned char≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺vector≺unsigned char≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Vector≺unsigned char≻) -> Std::Vector≺vector≺unsigned char≻≻
+    def last: () -> Std::Vector≺unsigned char≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Vector≺unsigned char≻
+    def push: (arg_0: Std::Vector≺unsigned char≻) -> Std::Vector≺vector≺unsigned char≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

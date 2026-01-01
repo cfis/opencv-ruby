@@ -1,10 +1,10 @@
 module Cv
   class QRCodeDetector
-    def decode_curved: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, straight_qrcode: Cv::debug_build_guard::OutputArray) -> Std::String
-    def detect_and_decode_curved: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray, straight_qrcode: Cv::debug_build_guard::OutputArray) -> Std::String
-    def initialize: () -> void
+    def decode_curved: (img: Cv::InputArray, points: Cv::InputArray, straight_qrcode: Cv::OutputArray) -> String
+    def detect_and_decode_curved: (img: Cv::InputArray, points: Cv::OutputArray, straight_qrcode: Cv::OutputArray) -> String
+    def initialize: () -> NilClass
     def set_eps_x: (eps_x: Float) -> Cv::QRCodeDetector
     def set_eps_y: (eps_y: Float) -> Cv::QRCodeDetector
-    def set_use_alignment_markers: (use_alignment_markers: bool) -> Cv::QRCodeDetector
+    def set_use_alignment_markers: (use_alignment_markers: TrueClass) -> Cv::QRCodeDetector
   end
 end

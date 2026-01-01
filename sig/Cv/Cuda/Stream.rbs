@@ -1,12 +1,12 @@
 module Cv::Cuda
   class Stream
-    def cuda_ptr: () -> Rice::Buffer≺void∗≻
-    def enqueue_host_callback: (callback: Void Cdecl(int‚ void∗), user_data: Rice::Buffer≺void∗≻) -> void
-    def initialize: () -> void
-               | (cuda_flags: Integer) -> void
-               | (allocator: Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> void
-    def query_if_complete?: () -> bool
-    def wait_event: (event: Cv::cuda::Event) -> void
-    def wait_for_completion: () -> void
+    def cuda_ptr: () -> Rice::Pointer≺void≻
+    def enqueue_host_callback: (callback: Proc, user_data: Rice::Pointer≺void≻) -> NilClass
+    def initialize: () -> NilClass
+               | (cuda_flags: Integer) -> NilClass
+               | (allocator: Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
+    def query_if_complete?: () -> TrueClass
+    def wait_event: (event: Cv::Cuda::Event) -> NilClass
+    def wait_for_completion: () -> NilClass
   end
 end

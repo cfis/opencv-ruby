@@ -1,28 +1,28 @@
 module Cv
   class Affine3d
-    attr_accessor matrix: Cv::Matx≺double‚ 4‚ 4≻
+    attr_accessor matrix: Cv::Matx44d
 
-    def *: (arg_0: Cv::Vec≺double‚ 3≻) -> Cv::Vec≺double‚ 3≻
-      | (arg_0: Cv::Vec≺double‚ 3≻) -> Cv::Vec≺double‚ 3≻
-    def initialize: () -> void
-               | (affine: Cv::Matx≺double‚ 4‚ 4≻) -> void
-               | (vals: Rice::Buffer≺double const∗≻) -> void
-               | (rvec: Cv::Vec≺double‚ 3≻, t: Cv::Vec≺double‚ 3≻) -> void
-               | (data: Cv::Mat, t: Cv::Vec≺double‚ 3≻) -> void
-               | (r: Cv::Matx≺double‚ 3‚ 3≻, t: Cv::Vec≺double‚ 3≻) -> void
-    def concatenate: (affine: Cv::Affine3≺double≻) -> Cv::Affine3≺double≻
-    def inv: (method: Integer) -> Cv::Affine3≺double≻
-    def linear: () -> Cv::Matx≺double‚ 3‚ 3≻
-           | (l: Cv::Matx≺double‚ 3‚ 3≻) -> void
-    def rotate: (r: Cv::Matx≺double‚ 3‚ 3≻) -> Cv::Affine3≺double≻
-           | (rvec: Cv::Vec≺double‚ 3≻) -> Cv::Affine3≺double≻
-    def rotation: () -> Cv::Matx≺double‚ 3‚ 3≻
-             | (rvec: Cv::Vec≺double‚ 3≻) -> void
-             | (r: Cv::Matx≺double‚ 3‚ 3≻) -> void
-             | (data: Cv::Mat) -> void
-    def rvec: () -> Cv::Vec≺double‚ 3≻
-    def translate: (t: Cv::Vec≺double‚ 3≻) -> Cv::Affine3≺double≻
-    def translation: () -> Cv::Vec≺double‚ 3≻
-                | (t: Cv::Vec≺double‚ 3≻) -> void
+    def *: (arg_0: Cv::Vec3d) -> Cv::Vec3d
+      | (arg_0: Cv::Vec3d) -> Cv::Vec3d
+    def initialize: () -> NilClass
+               | (affine: Cv::Matx44d) -> NilClass
+               | (vals: Rice::Pointer≺double≻) -> NilClass
+               | (rvec: Cv::Vec3d, t: Cv::Vec3d) -> NilClass
+               | (data: Cv::Mat, t: Cv::Vec3d) -> NilClass
+               | (r: Cv::Matx33d, t: Cv::Vec3d) -> NilClass
+    def concatenate: (affine: Cv::Affine3d) -> Cv::Affine3d
+    def inv: (method: Integer) -> Cv::Affine3d
+    def linear: () -> Cv::Matx33d
+           | (l: Cv::Matx33d) -> NilClass
+    def rotate: (r: Cv::Matx33d) -> Cv::Affine3d
+           | (rvec: Cv::Vec3d) -> Cv::Affine3d
+    def rotation: () -> Cv::Matx33d
+             | (rvec: Cv::Vec3d) -> NilClass
+             | (r: Cv::Matx33d) -> NilClass
+             | (data: Cv::Mat) -> NilClass
+    def rvec: () -> Cv::Vec3d
+    def translate: (t: Cv::Vec3d) -> Cv::Affine3d
+    def translation: () -> Cv::Vec3d
+                | (t: Cv::Vec3d) -> NilClass
   end
 end

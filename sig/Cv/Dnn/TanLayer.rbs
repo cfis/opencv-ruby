@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class TanLayer
+    def initialize: () -> NilClass
+  end
+end

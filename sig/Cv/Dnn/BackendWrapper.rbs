@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class BackendWrapper
+    attr_accessor backend_id: Integer
+    attr_accessor target_id: Integer
+
+    def copy_to_host: () -> NilClass
+    def set_host_dirty: () -> NilClass
+  end
+end

@@ -1,7 +1,7 @@
 module Cv
   class BFMatcher
-    def clone: (empty_train_data: bool) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
-    def initialize: (norm_type: Integer, cross_check: bool) -> void
-    def mask_supported?: () -> bool
+    def clone: (empty_train_data: TrueClass) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
+    def initialize: (norm_type: Integer, cross_check: TrueClass) -> NilClass
+    def mask_supported?: () -> TrueClass
   end
 end

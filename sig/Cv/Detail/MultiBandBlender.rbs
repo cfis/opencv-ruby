@@ -1,10 +1,10 @@
 module Cv::Detail
   class MultiBandBlender
-    def blend: (dst: Cv::debug_build_guard::InputOutputArray, dst_mask: Cv::debug_build_guard::InputOutputArray) -> void
-    def feed: (img: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray, tl: Cv::Point_≺int≻) -> void
-    def initialize: (try_gpu: Integer, num_bands: Integer, weight_type: Integer) -> void
+    def blend: (dst: Cv::InputOutputArray, dst_mask: Cv::InputOutputArray) -> NilClass
+    def feed: (img: Cv::InputArray, mask: Cv::InputArray, tl: Cv::Point) -> NilClass
+    def initialize: (try_gpu: Integer, num_bands: Integer, weight_type: Integer) -> NilClass
     def num_bands: () -> Integer
-    def prepare: (dst_roi: Cv::Rect_≺int≻) -> void
-    def set_num_bands: (val: Integer) -> void
+    def prepare: (dst_roi: Cv::Rect) -> NilClass
+    def set_num_bands: (val: Integer) -> NilClass
   end
 end

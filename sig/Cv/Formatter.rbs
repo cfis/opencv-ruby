@@ -1,9 +1,9 @@
 module Cv
   class Formatter
     def format: (mtx: Cv::Mat) -> Cv::Ptr≺cv꞉꞉Formatted≻
-    def set16f_precision: (p: Integer) -> void
-    def set32f_precision: (p: Integer) -> void
-    def set64f_precision: (p: Integer) -> void
-    def set_multiline: (ml: bool) -> void
+    def set16f_precision: (p: Integer) -> NilClass
+    def set32f_precision: (p: Integer) -> NilClass
+    def set64f_precision: (p: Integer) -> NilClass
+    def set_multiline: (ml: TrueClass) -> NilClass
   end
 end

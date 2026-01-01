@@ -1,7 +1,7 @@
 module Cv::Detail
   class VoronoiSeamFinder
-    def find: (src: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> void
-         | (size: Std::Vector≺cv꞉꞉Size_≺int≻≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> void
-    def initialize: () -> void
+    def find: (src: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+         | (size: Std::Vector≺cv꞉꞉Size_≺int≻≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+    def initialize: () -> NilClass
   end
 end

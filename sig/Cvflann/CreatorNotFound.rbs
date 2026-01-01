@@ -1,5 +1,5 @@
 module Cvflann
   class CreatorNotFound
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

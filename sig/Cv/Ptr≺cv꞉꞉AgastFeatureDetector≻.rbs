@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉AgastFeatureDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AgastFeatureDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AgastFeatureDetector≻) -> NilClass
+               | (ptr: Cv::AgastFeatureDetector) -> NilClass
+               | (value: Cv::AgastFeatureDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉AgastFeatureDetector≻) -> Cv::Ptr≺cv꞉꞉AgastFeatureDetector≻
+    def get: () -> Cv::AgastFeatureDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉AgastFeatureDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

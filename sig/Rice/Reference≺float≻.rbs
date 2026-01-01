@@ -1,0 +1,6 @@
+module Rice
+  class Reference≺float≻
+    def initialize: (arg_0: Float) -> NilClass
+    def value: () -> Float
+  end
+end

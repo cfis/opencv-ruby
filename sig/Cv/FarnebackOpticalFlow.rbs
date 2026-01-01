@@ -1,6 +1,6 @@
 module Cv
   class FarnebackOpticalFlow
-    def get_fast_pyramids?: () -> bool
+    def get_fast_pyramids?: () -> TrueClass
     def get_flags: () -> Integer
     def get_num_iters: () -> Integer
     def get_num_levels: () -> Integer
@@ -8,13 +8,13 @@ module Cv
     def get_poly_sigma: () -> Float
     def get_pyr_scale: () -> Float
     def get_win_size: () -> Integer
-    def set_fast_pyramids: (fast_pyramids: bool) -> void
-    def set_flags: (flags: Integer) -> void
-    def set_num_iters: (num_iters: Integer) -> void
-    def set_num_levels: (num_levels: Integer) -> void
-    def set_poly_n: (poly_n: Integer) -> void
-    def set_poly_sigma: (poly_sigma: Float) -> void
-    def set_pyr_scale: (pyr_scale: Float) -> void
-    def set_win_size: (win_size: Integer) -> void
+    def set_fast_pyramids: (fast_pyramids: TrueClass) -> NilClass
+    def set_flags: (flags: Integer) -> NilClass
+    def set_num_iters: (num_iters: Integer) -> NilClass
+    def set_num_levels: (num_levels: Integer) -> NilClass
+    def set_poly_n: (poly_n: Integer) -> NilClass
+    def set_poly_sigma: (poly_sigma: Float) -> NilClass
+    def set_pyr_scale: (pyr_scale: Float) -> NilClass
+    def set_win_size: (win_size: Integer) -> NilClass
   end
 end

@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class ThresholdedReluLayer
+    attr_accessor alpha: Float
+
+    def initialize: () -> NilClass
+  end
+end

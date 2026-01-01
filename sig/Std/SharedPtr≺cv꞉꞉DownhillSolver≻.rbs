@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉DownhillSolver≻
+    def initialize: (value: Cv::DownhillSolver) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::DownhillSolver
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉DownhillSolver≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

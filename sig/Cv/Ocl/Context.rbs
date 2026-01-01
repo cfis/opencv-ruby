@@ -1,21 +1,21 @@
 module Cv::Ocl
   class Context
-    def initialize: () -> void
-               | (dtype: Integer) -> void
-    def assign: (c: Cv::ocl::Context) -> Cv::ocl::Context
-           | (c: Cv::ocl::Context) -> Cv::ocl::Context
-    def create?: () -> bool
-            | (dtype: Integer) -> bool
-    def device: (idx: Integer) -> Cv::ocl::Device
-    def empty?: () -> bool
-    def get_open_cl_context_property: (property_id: Integer) -> Rice::Buffer≺void∗≻
-    def get_prog: (prog: Cv::ocl::ProgramSource, buildopt: Std::String, errmsg: Std::String) -> Cv::ocl::Program
-    def initialize_copy: (c: Cv::ocl::Context) -> void
+    def initialize: () -> NilClass
+               | (dtype: Integer) -> NilClass
+    def assign: (c: Cv::Ocl::Context) -> Cv::Ocl::Context
+           | (c: Cv::Ocl::Context) -> Cv::Ocl::Context
+    def create?: () -> TrueClass
+            | (dtype: Integer) -> TrueClass
+    def device: (idx: Integer) -> Cv::Ocl::Device
+    def empty?: () -> TrueClass
+    def get_open_cl_context_property: (property_id: Integer) -> Rice::Pointer≺void≻
+    def get_prog: (prog: Cv::Ocl::ProgramSource, buildopt: String, errmsg: String) -> Cv::Ocl::Program
+    def initialize_copy: (c: Cv::Ocl::Context) -> NilClass
     def ndevices: () -> Integer
-    def ptr: () -> Rice::Buffer≺void∗≻
-    def release: () -> void
-    def set_use_svm: (enabled: bool) -> void
-    def unload_prog: (prog: Cv::ocl::Program) -> void
-    def use_svm?: () -> bool
+    def ptr: () -> Rice::Pointer≺void≻
+    def release: () -> NilClass
+    def set_use_svm: (enabled: TrueClass) -> NilClass
+    def unload_prog: (prog: Cv::Ocl::Program) -> NilClass
+    def use_svm?: () -> TrueClass
   end
 end

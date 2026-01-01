@@ -1,0 +1,11 @@
+module Rice
+  class Buffer≺void≻
+    def initialize: (value: Integer) -> NilClass
+               | (value: Integer, size: Integer) -> NilClass
+    def bytes: () -> Integer
+          | (arg_0: Integer) -> Integer
+    def data: () -> Rice::Pointer≺void≻
+    def release: () -> Rice::Pointer≺void≻
+    def size: () -> Integer
+  end
+end

@@ -16,7 +16,7 @@ module Cv::Aruco
     attr_accessor corner_refinement_method: Integer
     attr_accessor corner_refinement_min_accuracy: Float
     attr_accessor corner_refinement_win_size: Integer
-    attr_accessor detect_inverted_marker: bool
+    attr_accessor detect_inverted_marker: TrueClass
     attr_accessor error_correction_rate: Float
     attr_accessor marker_border_bits: Integer
     attr_accessor max_erroneous_bits_in_border_rate: Float
@@ -33,10 +33,10 @@ module Cv::Aruco
     attr_accessor perspective_remove_pixel_per_cell: Integer
     attr_accessor polygonal_approx_accuracy_rate: Float
     attr_accessor relative_corner_refinment_win_size: Float
-    attr_accessor use_aruco3_detection: bool
+    attr_accessor use_aruco3_detection: TrueClass
 
-    def initialize: () -> void
-    def read_detector_parameters?: (fn: Cv::FileNode) -> bool
-    def write_detector_parameters?: (fs: Cv::FileStorage, name: Std::String) -> bool
+    def initialize: () -> NilClass
+    def read_detector_parameters?: (fn: Cv::FileNode) -> TrueClass
+    def write_detector_parameters?: (fs: Cv::FileStorage, name: String) -> TrueClass
   end
 end

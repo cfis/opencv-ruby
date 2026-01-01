@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉detail꞉꞉SeamFinder≻
+    def initialize: (value: Cv::Detail::SeamFinder) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Detail::SeamFinder
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

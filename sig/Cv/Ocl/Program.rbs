@@ -1,11 +1,11 @@
 module Cv::Ocl
   class Program
-    def initialize: () -> void
-               | (src: Cv::ocl::ProgramSource, buildflags: Std::String, errmsg: Std::String) -> void
-    def create?: (src: Cv::ocl::ProgramSource, buildflags: Std::String, errmsg: Std::String) -> bool
-    def empty?: () -> bool
-    def get_binary: (binary: Std::Vector≺char≻) -> void
-    def initialize_copy: (prog: Cv::ocl::Program) -> void
-    def ptr: () -> Rice::Buffer≺void∗≻
+    def initialize: () -> NilClass
+               | (src: Cv::Ocl::ProgramSource, buildflags: String, errmsg: String) -> NilClass
+    def create?: (src: Cv::Ocl::ProgramSource, buildflags: String, errmsg: String) -> TrueClass
+    def empty?: () -> TrueClass
+    def get_binary: (binary: Std::Vector≺char≻) -> NilClass
+    def initialize_copy: (prog: Cv::Ocl::Program) -> NilClass
+    def ptr: () -> Rice::Pointer≺void≻
   end
 end

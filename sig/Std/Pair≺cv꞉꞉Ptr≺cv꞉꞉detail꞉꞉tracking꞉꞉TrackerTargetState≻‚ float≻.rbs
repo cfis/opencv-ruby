@@ -1,0 +1,11 @@
+module Std
+  class Pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻
+    attr_accessor first: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻
+    attr_accessor second: Float
+
+    def initialize: () -> NilClass
+               | (arg_0: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻, arg_1: Float) -> NilClass
+    def initialize_copy: (arg_0: Std::Pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻) -> NilClass
+    def to_s: () -> String
+  end
+end

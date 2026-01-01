@@ -1,0 +1,33 @@
+module Std
+  class Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Dnn::Target) -> NilClass
+    def ==: (arg_0: Std::Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> TrueClass
+    def []: (arg_0: Integer) -> Cv::Dnn::Target
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Dnn::Target) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def delete: (arg_0: Cv::Dnn::Target) -> Cv::Dnn::Target
+    def delete_at: (arg_0: Integer) -> Cv::Dnn::Target
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Dnn::Target
+    def include?: (arg_0: Cv::Dnn::Target) -> TrueClass
+    def index: (arg_0: Cv::Dnn::Target) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Dnn::Target) -> Std::Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def last: () -> Cv::Dnn::Target
+    def max_size: () -> Integer
+    def pop: () -> Cv::Dnn::Target
+    def push: (arg_0: Cv::Dnn::Target) -> Std::Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

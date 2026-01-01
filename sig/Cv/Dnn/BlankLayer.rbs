@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class BlankLayer
+    def initialize: () -> NilClass
+  end
+end

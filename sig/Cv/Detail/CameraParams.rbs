@@ -7,9 +7,9 @@ module Cv::Detail
     attr_accessor r: Cv::Mat
     attr_accessor t: Cv::Mat
 
-    def assign: (other: Cv::detail::CameraParams) -> Cv::detail::CameraParams
-    def initialize: () -> void
-    def initialize_copy: (other: Cv::detail::CameraParams) -> void
+    def assign: (other: Cv::Detail::CameraParams) -> Cv::Detail::CameraParams
+    def initialize: () -> NilClass
+    def initialize_copy: (other: Cv::Detail::CameraParams) -> NilClass
     def k: () -> Cv::Mat
   end
 end

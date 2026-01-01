@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉BaseCascadeClassifier≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉BaseCascadeClassifier≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉BaseCascadeClassifier≻) -> NilClass
+               | (ptr: Cv::BaseCascadeClassifier) -> NilClass
+               | (value: Cv::BaseCascadeClassifier) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉BaseCascadeClassifier≻) -> Cv::Ptr≺cv꞉꞉BaseCascadeClassifier≻
+    def get: () -> Cv::BaseCascadeClassifier
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉BaseCascadeClassifier≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

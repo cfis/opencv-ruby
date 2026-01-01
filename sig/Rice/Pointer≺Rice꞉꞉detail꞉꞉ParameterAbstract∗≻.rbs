@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+    def buffer: () -> Rice::Buffer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+  end
+end

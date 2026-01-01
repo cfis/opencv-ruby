@@ -1,19 +1,19 @@
 module Cv
   class GFTTDetector
     def get_block_size: () -> Integer
-    def get_default_name: () -> Std::String
+    def get_default_name: () -> String
     def get_gradient_size: () -> Integer
-    def get_harris_detector?: () -> bool
+    def get_harris_detector?: () -> TrueClass
     def get_k: () -> Float
     def get_max_features: () -> Integer
     def get_min_distance: () -> Float
     def get_quality_level: () -> Float
-    def set_block_size: (block_size: Integer) -> void
-    def set_gradient_size: (gradient_size_: Integer) -> void
-    def set_harris_detector: (val: bool) -> void
-    def set_k: (k: Float) -> void
-    def set_max_features: (max_features: Integer) -> void
-    def set_min_distance: (min_distance: Float) -> void
-    def set_quality_level: (qlevel: Float) -> void
+    def set_block_size: (block_size: Integer) -> NilClass
+    def set_gradient_size: (gradient_size_: Integer) -> NilClass
+    def set_harris_detector: (val: TrueClass) -> NilClass
+    def set_k: (k: Float) -> NilClass
+    def set_max_features: (max_features: Integer) -> NilClass
+    def set_min_distance: (min_distance: Float) -> NilClass
+    def set_quality_level: (qlevel: Float) -> NilClass
   end
 end

@@ -1,18 +1,20 @@
 module Cv
   class Param
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::Param) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Param) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::Param) -> Integer
+    def <=>: (arg_0: Cv::Param) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::Param) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::Param) -> bool
+    def ^: (arg_0: Cv::Param) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Param) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::Param) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Param) -> Integer
     def ~: () -> Integer
   end
 end

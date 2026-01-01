@@ -1,46 +1,46 @@
 module Cv::Ocl
   class Device
-    def initialize: () -> void
-               | (d: Rice::Buffer≺void∗≻) -> void
+    def initialize: () -> NilClass
+               | (d: Rice::Pointer≺void≻) -> NilClass
     def address_bits: () -> Integer
-    def amd?: () -> bool
-    def assign: (d: Cv::ocl::Device) -> Cv::ocl::Device
-           | (d: Cv::ocl::Device) -> Cv::ocl::Device
-    def available?: () -> bool
-    def compiler_available?: () -> bool
+    def amd?: () -> TrueClass
+    def assign: (d: Cv::Ocl::Device) -> Cv::Ocl::Device
+           | (d: Cv::Ocl::Device) -> Cv::Ocl::Device
+    def available?: () -> TrueClass
+    def compiler_available?: () -> TrueClass
     def device_version_major: () -> Integer
     def device_version_minor: () -> Integer
     def double_fp_config: () -> Integer
-    def driver_version: () -> Std::String
-    def empty?: () -> bool
-    def endian_little?: () -> bool
-    def error_correction_support?: () -> bool
+    def driver_version: () -> String
+    def empty?: () -> TrueClass
+    def endian_little?: () -> TrueClass
+    def error_correction_support?: () -> TrueClass
     def execution_capabilities: () -> Integer
-    def extension_supported?: (extension_name: Std::String) -> bool
-    def extensions: () -> Std::String
+    def extension_supported?: (extension_name: String) -> TrueClass
+    def extensions: () -> String
     def global_mem_cache_line_size: () -> Integer
     def global_mem_cache_size: () -> Integer
     def global_mem_cache_type: () -> Integer
     def global_mem_size: () -> Integer
     def half_fp_config: () -> Integer
-    def has_fp16?: () -> bool
-    def has_fp64?: () -> bool
-    def host_unified_memory?: () -> bool
+    def has_fp16?: () -> TrueClass
+    def has_fp64?: () -> TrueClass
+    def host_unified_memory?: () -> TrueClass
     def image2_d_max_height: () -> Integer
     def image2_d_max_width: () -> Integer
     def image3_d_max_depth: () -> Integer
     def image3_d_max_height: () -> Integer
     def image3_d_max_width: () -> Integer
     def image_base_address_alignment: () -> Integer
-    def image_from_buffer_support?: () -> bool
+    def image_from_buffer_support?: () -> TrueClass
     def image_max_array_size: () -> Integer
     def image_max_buffer_size: () -> Integer
     def image_pitch_alignment: () -> Integer
-    def image_support?: () -> bool
-    def initialize_copy: (d: Cv::ocl::Device) -> void
-    def intel?: () -> bool
-    def intel_subgroups_support?: () -> bool
-    def linker_available?: () -> bool
+    def image_support?: () -> TrueClass
+    def initialize_copy: (d: Cv::Ocl::Device) -> NilClass
+    def intel?: () -> TrueClass
+    def intel_subgroups_support?: () -> TrueClass
+    def linker_available?: () -> TrueClass
     def local_mem_size: () -> Integer
     def local_mem_type: () -> Integer
     def max_clock_frequency: () -> Integer
@@ -53,11 +53,11 @@ module Cv::Ocl
     def max_samplers: () -> Integer
     def max_work_group_size: () -> Integer
     def max_work_item_dims: () -> Integer
-    def max_work_item_sizes: (: Rice::Buffer≺unsigned Int64∗≻) -> void
+    def max_work_item_sizes: (: Rice::Pointer≺unsigned Int64≻) -> NilClass
     def max_write_image_args: () -> Integer
     def mem_base_addr_align: () -> Integer
-    def n_vidia?: () -> bool
-    def name: () -> Std::String
+    def n_vidia?: () -> TrueClass
+    def name: () -> String
     def native_vector_width_char: () -> Integer
     def native_vector_width_double: () -> Integer
     def native_vector_width_float: () -> Integer
@@ -65,8 +65,8 @@ module Cv::Ocl
     def native_vector_width_int: () -> Integer
     def native_vector_width_long: () -> Integer
     def native_vector_width_short: () -> Integer
-    def open_cl_c_version: () -> Std::String
-    def open_cl_version: () -> Std::String
+    def open_cl_c_version: () -> String
+    def open_cl_version: () -> String
     def preferred_vector_width_char: () -> Integer
     def preferred_vector_width_double: () -> Integer
     def preferred_vector_width_float: () -> Integer
@@ -76,12 +76,12 @@ module Cv::Ocl
     def preferred_vector_width_short: () -> Integer
     def printf_buffer_size: () -> Integer
     def profiling_timer_resolution: () -> Integer
-    def ptr: () -> Rice::Buffer≺void∗≻
-    def set: (d: Rice::Buffer≺void∗≻) -> void
+    def ptr: () -> Rice::Pointer≺void≻
+    def set: (d: Rice::Pointer≺void≻) -> NilClass
     def single_fp_config: () -> Integer
     def type: () -> Integer
     def vendor_id: () -> Integer
-    def vendor_name: () -> Std::String
-    def version: () -> Std::String
+    def vendor_name: () -> String
+    def version: () -> String
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉ParamGrid≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉ParamGrid≻) -> NilClass
+               | (ptr: Cv::Ml::ParamGrid) -> NilClass
+               | (value: Cv::Ml::ParamGrid) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻
+    def get: () -> Cv::Ml::ParamGrid
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉ParamGrid≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

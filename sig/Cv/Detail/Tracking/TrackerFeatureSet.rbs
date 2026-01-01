@@ -1,9 +1,9 @@
 module Cv::Detail::Tracking
   class TrackerFeatureSet
-    def add_tracker_feature?: (feature: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> bool
-    def extraction: (images: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def add_tracker_feature?: (feature: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> TrueClass
+    def extraction: (images: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def get_responses: () -> Std::Vector≺cv꞉꞉Mat≻
     def get_tracker_features: () -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

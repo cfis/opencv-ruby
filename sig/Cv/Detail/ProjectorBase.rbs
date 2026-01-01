@@ -2,7 +2,7 @@ module Cv::Detail
   class ProjectorBase
     attr_accessor scale: Float
 
-    def initialize: () -> void
-    def set_camera_params: (k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, t: Cv::debug_build_guard::InputArray) -> void
+    def initialize: () -> NilClass
+    def set_camera_params: (k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray) -> NilClass
   end
 end

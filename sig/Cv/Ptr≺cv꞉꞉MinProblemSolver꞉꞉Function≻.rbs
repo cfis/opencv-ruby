@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> NilClass
+               | (ptr: Cv::MinProblemSolver::Function) -> NilClass
+               | (value: Cv::MinProblemSolver::Function) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> Cv::Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻
+    def get: () -> Cv::MinProblemSolver::Function
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

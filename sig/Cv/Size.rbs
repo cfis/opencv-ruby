@@ -1,45 +1,26 @@
 module Cv
   class Size
-    attr_writer height: Integer
-    attr_writer width: Integer
+    attr_accessor height: Integer
+    attr_accessor width: Integer
 
-    def !=: (arg_0: Cv::Size_≺int≻) -> bool
-       | (arg_0: Cv::Size_≺int≻) -> bool
-    def initialize: () -> void
-               | () -> void
-               | (pt: Cv::Point_≺int≻) -> void
-               | (pt: Cv::Point_≺int≻) -> void
-               | (_width: Integer, _height: Integer) -> void
-               | (_width: Integer, _height: Integer) -> void
-    def *: (arg_0: Integer) -> Cv::Size_≺int≻
-      | (arg_0: Integer) -> Cv::Size_≺int≻
-    def +: (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-      | (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-    def -: (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-      | (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-    def /: (arg_0: Integer) -> Cv::Size_≺int≻
-      | (arg_0: Integer) -> Cv::Size_≺int≻
-    def ==: (arg_0: Cv::Size_≺int≻) -> bool
-       | (arg_0: Cv::Size_≺int≻) -> bool
+    def initialize: () -> NilClass
+               | (pt: Cv::Point) -> NilClass
+               | (_width: Integer, _height: Integer) -> NilClass
+    def !=: (arg_0: Cv::Size) -> TrueClass
+    def *: (arg_0: Integer) -> Cv::Size
+    def +: (arg_0: Cv::Size) -> Cv::Size
+    def -: (arg_0: Cv::Size) -> Cv::Size
+    def /: (arg_0: Integer) -> Cv::Size
+    def ==: (arg_0: Cv::Size) -> TrueClass
     def area: () -> Integer
-         | () -> Integer
+    def assign_divide: (arg_0: Integer) -> Cv::Size
+    def assign_minus: (arg_0: Cv::Size) -> Cv::Size
+    def assign_multiply: (arg_0: Integer) -> Cv::Size
+    def assign_plus: (arg_0: Cv::Size) -> Cv::Size
+    def empty?: () -> TrueClass
     def aspect_ratio: () -> Float
-                 | () -> Float
-    def assign_divide: (arg_0: Integer) -> Cv::Size_≺int≻
-                  | (arg_0: Integer) -> Cv::Size_≺int≻
-    def assign_minus: (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-                 | (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-    def assign_multiply: (arg_0: Integer) -> Cv::Size_≺int≻
-                    | (arg_0: Integer) -> Cv::Size_≺int≻
-    def assign_plus: (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-                | (arg_0: Cv::Size_≺int≻) -> Cv::Size_≺int≻
-    def empty?: () -> bool
-           | () -> bool
-    def initialize_copy: (sz: Cv::Size_≺int≻) -> void
-                    | (sz: Cv::Size_≺int≻) -> void
-    def inspect: () -> Std::String
-            | () -> Std::String
-    def to_s: () -> Std::String
-         | () -> Std::String
+    def initialize_copy: (sz: Cv::Size) -> NilClass
+    def inspect: () -> String
+    def to_s: () -> String
   end
 end

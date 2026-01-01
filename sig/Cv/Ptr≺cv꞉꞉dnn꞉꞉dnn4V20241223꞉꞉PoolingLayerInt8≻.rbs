@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻) -> NilClass
+               | (ptr: Cv::Dnn::PoolingLayerInt8) -> NilClass
+               | (value: Cv::Dnn::PoolingLayerInt8) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻
+    def get: () -> Cv::Dnn::PoolingLayerInt8
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PoolingLayerInt8≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

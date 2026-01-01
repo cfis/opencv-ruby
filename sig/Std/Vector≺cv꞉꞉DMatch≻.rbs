@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉DMatch≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::DMatch) -> NilClass
+    def []: (arg_0: Integer) -> Cv::DMatch
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::DMatch) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉DMatch≻
+    def delete_at: (arg_0: Integer) -> Cv::DMatch
+    def empty?: () -> TrueClass
+    def first: () -> Cv::DMatch
+    def include?: (arg_0: Cv::DMatch) -> TrueClass
+    def index: (arg_0: Cv::DMatch) -> Integer
+    def delete: (arg_0: Cv::DMatch) -> Cv::DMatch
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
+    def last: () -> Cv::DMatch
+    def max_size: () -> Integer
+    def pop: () -> Cv::DMatch
+    def push: (arg_0: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

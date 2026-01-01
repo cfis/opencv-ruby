@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉ConjGradSolver≻
+    def initialize: (value: Cv::ConjGradSolver) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::ConjGradSolver
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ConjGradSolver≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

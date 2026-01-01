@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉DTrees≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻) -> NilClass
+               | (ptr: Cv::Ml::DTrees) -> NilClass
+               | (value: Cv::Ml::DTrees) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉DTrees≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉DTrees≻
+    def get: () -> Cv::Ml::DTrees
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉DTrees≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

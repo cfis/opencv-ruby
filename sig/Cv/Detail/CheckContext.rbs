@@ -1,13 +1,13 @@
 module Cv::Detail
   class CheckContext
-    attr_accessor file: Rice::Buffer≺char const∗≻
-    attr_accessor func: Rice::Buffer≺char const∗≻
+    attr_accessor file: String
+    attr_accessor func: String
     attr_accessor line: Integer
-    attr_accessor message: Rice::Buffer≺char const∗≻
-    attr_accessor p1_str: Rice::Buffer≺char const∗≻
-    attr_accessor p2_str: Rice::Buffer≺char const∗≻
-    attr_accessor test_op: Enum cv::detail::TestOp
+    attr_accessor message: String
+    attr_accessor p1_str: String
+    attr_accessor p2_str: String
+    attr_accessor test_op: Cv::Detail::TestOp
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

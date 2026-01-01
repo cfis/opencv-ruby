@@ -1,0 +1,23 @@
+module Cv::Dnn
+  class Model
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def assign: (: Cv::Dnn::Model) -> Cv::Dnn::Model
+           | (: Cv::Dnn::Model) -> Cv::Dnn::Model
+    def enable_winograd: (use_winograd: TrueClass) -> Cv::Dnn::Model
+    def get_network_: () -> Cv::Dnn::Net
+                 | () -> Cv::Dnn::Net
+    def initialize_copy: (: Cv::Dnn::Model) -> NilClass
+    def predict: (frame: Cv::InputArray, outs: Cv::OutputArray) -> NilClass
+    def set_input_crop: (crop: TrueClass) -> Cv::Dnn::Model
+    def set_input_mean: (mean: Cv::Scalar) -> Cv::Dnn::Model
+    def set_input_params: (scale: Float, size: Cv::Size, mean: Cv::Scalar, swap_rb: TrueClass, crop: TrueClass) -> NilClass
+    def set_input_scale: (scale: Cv::Scalar) -> Cv::Dnn::Model
+    def set_input_size: (size: Cv::Size) -> Cv::Dnn::Model
+                   | (width: Integer, height: Integer) -> Cv::Dnn::Model
+    def set_input_swap_rb: (swap_rb: TrueClass) -> Cv::Dnn::Model
+    def set_output_names: (out_names: Std::Vector≺string≻) -> Cv::Dnn::Model
+    def set_preferable_backend: (backend_id: Cv::Dnn::Backend) -> Cv::Dnn::Model
+    def set_preferable_target: (target_id: Cv::Dnn::Target) -> Cv::Dnn::Model
+  end
+end

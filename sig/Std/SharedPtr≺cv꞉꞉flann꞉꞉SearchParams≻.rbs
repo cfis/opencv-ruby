@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻
+    def initialize: (value: Cv::Flann::SearchParams) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Flann::SearchParams
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

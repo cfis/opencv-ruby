@@ -1,11 +1,11 @@
 module Cv
   class SparseMatIterator4s
-    def dereference: () -> Cv::Vec≺short‚ 4≻
-    def increment: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺short‚ 4≻≻
-              | (: Integer) -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺short‚ 4≻≻
-    def initialize: () -> void
-               | (_m: Cv::SparseMat) -> void
-               | (_m: Cv::SparseMat_≺cv꞉꞉Vec≺short‚ 4≻≻) -> void
-    def initialize_copy: (it: Cv::SparseMatIterator_≺cv꞉꞉Vec≺short‚ 4≻≻) -> void
+    def dereference: () -> Cv::Vec4s
+    def increment: () -> Cv::SparseMatIterator4s
+              | (: Integer) -> Cv::SparseMatIterator4s
+    def initialize: () -> NilClass
+               | (_m: Cv::SparseMat) -> NilClass
+               | (_m: Cv::SparseMat4s) -> NilClass
+    def initialize_copy: (it: Cv::SparseMatIterator4s) -> NilClass
   end
 end

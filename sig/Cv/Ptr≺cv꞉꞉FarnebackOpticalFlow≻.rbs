@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉FarnebackOpticalFlow≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FarnebackOpticalFlow≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FarnebackOpticalFlow≻) -> NilClass
+               | (ptr: Cv::FarnebackOpticalFlow) -> NilClass
+               | (value: Cv::FarnebackOpticalFlow) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉FarnebackOpticalFlow≻) -> Cv::Ptr≺cv꞉꞉FarnebackOpticalFlow≻
+    def get: () -> Cv::FarnebackOpticalFlow
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉FarnebackOpticalFlow≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

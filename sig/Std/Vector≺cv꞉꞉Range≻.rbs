@@ -1,0 +1,33 @@
+module Std
+  class Vector≺cv꞉꞉Range≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Range) -> NilClass
+    def ==: (arg_0: Std::Vector≺cv꞉꞉Range≻) -> TrueClass
+    def []: (arg_0: Integer) -> Cv::Range
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Range) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Range≻
+    def delete: (arg_0: Cv::Range) -> Cv::Range
+    def delete_at: (arg_0: Integer) -> Cv::Range
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Range
+    def include?: (arg_0: Cv::Range) -> TrueClass
+    def index: (arg_0: Cv::Range) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Range≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Range) -> Std::Vector≺cv꞉꞉Range≻
+    def last: () -> Cv::Range
+    def max_size: () -> Integer
+    def pop: () -> Cv::Range
+    def push: (arg_0: Cv::Range) -> Std::Vector≺cv꞉꞉Range≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

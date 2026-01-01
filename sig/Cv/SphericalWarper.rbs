@@ -1,6 +1,6 @@
 module Cv
   class SphericalWarper
     def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

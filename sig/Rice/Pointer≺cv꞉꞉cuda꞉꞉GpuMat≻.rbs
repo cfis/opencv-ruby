@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉cuda꞉꞉GpuMat≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉cuda꞉꞉GpuMat≻
+  end
+end

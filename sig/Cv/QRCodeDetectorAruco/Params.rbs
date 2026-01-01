@@ -8,6 +8,6 @@ module Cv::QRCodeDetectorAruco
     attr_accessor min_module_size_in_pyramid: Float
     attr_accessor scale_timing_pattern_score: Float
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

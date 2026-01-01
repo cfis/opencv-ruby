@@ -1,5 +1,5 @@
 module Cv::Ml
   class NormalBayesClassifier
-    def predict_prob: (inputs: Cv::debug_build_guard::InputArray, outputs: Cv::debug_build_guard::OutputArray, output_probs: Cv::debug_build_guard::OutputArray, flags: Integer) -> Float
+    def predict_prob: (inputs: Cv::InputArray, outputs: Cv::OutputArray, output_probs: Cv::OutputArray, flags: Integer) -> Float
   end
 end

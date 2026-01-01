@@ -8,10 +8,10 @@ module Cv::Detail
     attr_accessor num_inliers: Integer
     attr_accessor src_img_idx: Integer
 
-    def assign: (other: Cv::detail::MatchesInfo) -> Cv::detail::MatchesInfo
+    def assign: (other: Cv::Detail::MatchesInfo) -> Cv::Detail::MatchesInfo
     def get_inliers: () -> Std::Vector≺unsigned char≻
     def get_matches: () -> Std::Vector≺cv꞉꞉DMatch≻
-    def initialize: () -> void
-    def initialize_copy: (other: Cv::detail::MatchesInfo) -> void
+    def initialize: () -> NilClass
+    def initialize_copy: (other: Cv::Detail::MatchesInfo) -> NilClass
   end
 end

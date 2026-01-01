@@ -8,12 +8,12 @@ module Cv::Ml
     def get_svmsgd_type: () -> Integer
     def get_term_criteria: () -> Cv::TermCriteria
     def get_weights: () -> Cv::Mat
-    def set_initial_step_size: (initial_step_size: Float) -> void
-    def set_margin_regularization: (margin_regularization: Float) -> void
-    def set_margin_type: (margin_type: Integer) -> void
-    def set_optimal_parameters: (svmsgd_type: Integer, margin_type: Integer) -> void
-    def set_step_decreasing_power: (step_decreasing_power: Float) -> void
-    def set_svmsgd_type: (svmsgd_type: Integer) -> void
-    def set_term_criteria: (val: Cv::TermCriteria) -> void
+    def set_initial_step_size: (initial_step_size: Float) -> NilClass
+    def set_margin_regularization: (margin_regularization: Float) -> NilClass
+    def set_margin_type: (margin_type: Integer) -> NilClass
+    def set_optimal_parameters: (svmsgd_type: Integer, margin_type: Integer) -> NilClass
+    def set_step_decreasing_power: (step_decreasing_power: Float) -> NilClass
+    def set_svmsgd_type: (svmsgd_type: Integer) -> NilClass
+    def set_term_criteria: (val: Cv::TermCriteria) -> NilClass
   end
 end

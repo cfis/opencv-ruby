@@ -4,9 +4,9 @@ module Cv
     attr_accessor vt: Cv::Mat
     attr_accessor w: Cv::Mat
 
-    def back_subst: (rhs: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray) -> void
-    def call: (src: Cv::debug_build_guard::InputArray, flags: Integer) -> Cv::SVD
-    def initialize: () -> void
-               | (src: Cv::debug_build_guard::InputArray, flags: Integer) -> void
+    def back_subst: (rhs: Cv::InputArray, dst: Cv::OutputArray) -> NilClass
+    def call: (src: Cv::InputArray, flags: Integer) -> Cv::SVD
+    def initialize: () -> NilClass
+               | (src: Cv::InputArray, flags: Integer) -> NilClass
   end
 end

@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class GRULayer
+    def initialize: () -> NilClass
+  end
+end

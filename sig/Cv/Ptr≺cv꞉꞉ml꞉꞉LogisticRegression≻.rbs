@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉LogisticRegression≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
+               | (ptr: Cv::Ml::LogisticRegression) -> NilClass
+               | (value: Cv::Ml::LogisticRegression) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉LogisticRegression≻
+    def get: () -> Cv::Ml::LogisticRegression
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

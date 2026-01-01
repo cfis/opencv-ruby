@@ -1,21 +1,21 @@
 module Cv
   class Vec1d
-    def []: (i: Integer) -> Double
-       | (i: Integer) -> Double
-    def initialize: () -> void
-               | (v0: Float) -> void
-               | (values: Rice::Buffer≺double const∗≻) -> void
-               | (a: Cv::Matx≺double‚ 1‚ 1≻, b: Cv::Matx≺double‚ 1‚ 1≻, : Cv::MatxAddOp) -> void
-               | (a: Cv::Matx≺double‚ 1‚ 1≻, b: Cv::Matx≺double‚ 1‚ 1≻, : Cv::MatxSubOp) -> void
-    def []=: (arg_0: Integer, arg_1: Double) -> void
-    def assign: (rhs: Cv::Vec≺double‚ 1≻) -> Cv::Vec≺double‚ 1≻
-    def call: (i: Integer) -> Double
-         | (i: Integer) -> Double
+    def []: (i: Integer) -> Float
+       | (i: Integer) -> Float
+    def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
+               | (values: Rice::Pointer≺double≻) -> NilClass
+               | (a: Cv::Matx11d, b: Cv::Matx11d, op: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx11d, b: Cv::Matx11d, op: Cv::MatxSubOp) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Float) -> NilClass
+    def assign: (rhs: Cv::Vec1d) -> Cv::Vec1d
+    def call: (i: Integer) -> Float
+         | (i: Integer) -> Float
     def count: () -> Integer
-    def initialize_copy: (v: Cv::Vec≺double‚ 1≻) -> void
-    def inspect: () -> Std::String
-    def mul: (v: Cv::Vec≺double‚ 1≻) -> Cv::Vec≺double‚ 1≻
+    def initialize_copy: (v: Cv::Vec1d) -> NilClass
+    def inspect: () -> String
+    def mul: (v: Cv::Vec1d) -> Cv::Vec1d
     def to_a: () -> Integer
-    def to_s: () -> Std::String
+    def to_s: () -> String
   end
 end

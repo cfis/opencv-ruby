@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+  end
+end

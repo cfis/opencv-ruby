@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉WarperCreator≻
+    def initialize: (value: Cv::WarperCreator) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::WarperCreator
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉WarperCreator≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

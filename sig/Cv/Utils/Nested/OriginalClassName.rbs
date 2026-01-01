@@ -2,6 +2,6 @@ module Cv::Utils::Nested
   class OriginalClassName
     def get_float_param: () -> Float
     def get_int_param: () -> Integer
-    def initialize: (params: Cv::utils::nested::OriginalClassName::Params) -> void
+    def initialize: (params: Cv::Utils::Nested::OriginalClassName::Params) -> NilClass
   end
 end

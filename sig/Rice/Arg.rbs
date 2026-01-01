@@ -1,0 +1,6 @@
+module Rice
+  class Arg
+    attr_reader name: String
+
+  end
+end

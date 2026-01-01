@@ -1,36 +1,36 @@
 module Cv::Ogl
   class Buffer
-    def initialize: () -> void
-               | (arr: Cv::debug_build_guard::InputArray, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-               | (asize: Cv::Size_≺int≻, atype: Integer, abuf_id: Integer, auto_release: bool) -> void
-               | (asize: Cv::Size_≺int≻, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-               | (arows: Integer, acols: Integer, atype: Integer, abuf_id: Integer, auto_release: bool) -> void
-               | (arows: Integer, acols: Integer, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-    def bind: (target: Enum cv::ogl::Buffer::Target) -> void
+    def initialize: () -> NilClass
+               | (arr: Cv::InputArray, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size, atype: Integer, abuf_id: Integer, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+               | (arows: Integer, acols: Integer, atype: Integer, abuf_id: Integer, auto_release: TrueClass) -> NilClass
+               | (arows: Integer, acols: Integer, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+    def bind: (target: Cv::Ogl::Buffer::Target) -> NilClass
     def buf_id: () -> Integer
     def channels: () -> Integer
-    def clone: (target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> Cv::ogl::Buffer
+    def clone: (target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> Cv::Ogl::Buffer
     def cols: () -> Integer
-    def copy_from: (arr: Cv::debug_build_guard::InputArray, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-              | (arr: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-    def copy_to: (arr: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
-            | (arr: Cv::debug_build_guard::OutputArray) -> void
-    def create: (asize: Cv::Size_≺int≻, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
-           | (arows: Integer, acols: Integer, atype: Integer, target: Enum cv::ogl::Buffer::Target, auto_release: bool) -> void
+    def copy_from: (arr: Cv::InputArray, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+              | (arr: Cv::InputArray, stream: Cv::Cuda::Stream, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+    def copy_to: (arr: Cv::OutputArray, stream: Cv::Cuda::Stream) -> NilClass
+            | (arr: Cv::OutputArray) -> NilClass
+    def create: (asize: Cv::Size, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+           | (arows: Integer, acols: Integer, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
     def depth: () -> Integer
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def empty?: () -> bool
-    def map_device: () -> Cv::cuda::GpuMat
-               | (stream: Cv::cuda::Stream) -> Cv::cuda::GpuMat
-    def map_host: (access: Enum cv::ogl::Buffer::Access) -> Cv::Mat
-    def release: () -> void
+    def empty?: () -> TrueClass
+    def map_device: () -> Cv::Cuda::GpuMat
+               | (stream: Cv::Cuda::Stream) -> Cv::Cuda::GpuMat
+    def map_host: (access: Cv::Ogl::Buffer::Access) -> Cv::Mat
+    def release: () -> NilClass
     def rows: () -> Integer
-    def set_auto_release: (flag: bool) -> void
-    def size: () -> Cv::Size_≺int≻
+    def set_auto_release: (flag: TrueClass) -> NilClass
+    def size: () -> Cv::Size
     def type: () -> Integer
-    def unmap_device: () -> void
-                 | (stream: Cv::cuda::Stream) -> void
-    def unmap_host: () -> void
+    def unmap_device: () -> NilClass
+                 | (stream: Cv::Cuda::Stream) -> NilClass
+    def unmap_host: () -> NilClass
   end
 end

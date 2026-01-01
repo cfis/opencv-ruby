@@ -1,5 +1,5 @@
 module Cv::Flann
   class SavedIndexParams
-    def initialize: (filename: Std::String) -> void
+    def initialize: (filename: String) -> NilClass
   end
 end

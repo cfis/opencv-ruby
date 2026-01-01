@@ -1,5 +1,5 @@
 module Cv::Detail
   class StereographicWarper
-    def initialize: (scale: Float) -> void
+    def initialize: (scale: Float) -> NilClass
   end
 end

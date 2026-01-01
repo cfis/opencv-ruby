@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉StereoBM≻
+    def initialize: (value: Cv::StereoBM) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::StereoBM
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉StereoBM≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

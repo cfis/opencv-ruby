@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+  end
+end

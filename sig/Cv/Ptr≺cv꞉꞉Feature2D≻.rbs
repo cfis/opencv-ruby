@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉Feature2D≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉Feature2D≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉Feature2D≻) -> NilClass
+               | (ptr: Cv::Feature2D) -> NilClass
+               | (value: Cv::Feature2D) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉Feature2D≻) -> Cv::Ptr≺cv꞉꞉Feature2D≻
+    def get: () -> Cv::Feature2D
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉Feature2D≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

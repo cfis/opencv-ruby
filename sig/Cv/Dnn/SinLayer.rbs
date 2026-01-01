@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class SinLayer
+    def initialize: () -> NilClass
+  end
+end

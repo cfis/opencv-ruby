@@ -1,0 +1,6 @@
+module Cv::Dnn
+  class RNNLayer
+    def set_produce_hidden_output: (produce: TrueClass) -> NilClass
+    def set_weights: (wxh: Cv::Mat, bh: Cv::Mat, whh: Cv::Mat, who: Cv::Mat, bo: Cv::Mat) -> NilClass
+  end
+end

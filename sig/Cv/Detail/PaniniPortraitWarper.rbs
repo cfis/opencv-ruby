@@ -1,5 +1,5 @@
 module Cv::Detail
   class PaniniPortraitWarper
-    def initialize: (scale: Float, a: Float, b: Float) -> void
+    def initialize: (scale: Float, a: Float, b: Float) -> NilClass
   end
 end

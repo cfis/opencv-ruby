@@ -1,5 +1,5 @@
 module Cv
   class ParamTypeInt
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

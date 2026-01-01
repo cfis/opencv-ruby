@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
+               | (ptr: Cv::Cuda::GpuMat::Allocator) -> NilClass
+               | (value: Cv::Cuda::GpuMat::Allocator) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻
+    def get: () -> Cv::Cuda::GpuMat::Allocator
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

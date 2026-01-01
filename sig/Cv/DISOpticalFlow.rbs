@@ -4,23 +4,23 @@ module Cv
     def get_gradient_descent_iterations: () -> Integer
     def get_patch_size: () -> Integer
     def get_patch_stride: () -> Integer
-    def get_use_mean_normalization?: () -> bool
-    def get_use_spatial_propagation?: () -> bool
+    def get_use_mean_normalization?: () -> TrueClass
+    def get_use_spatial_propagation?: () -> TrueClass
     def get_variational_refinement_alpha: () -> Float
     def get_variational_refinement_delta: () -> Float
     def get_variational_refinement_epsilon: () -> Float
     def get_variational_refinement_gamma: () -> Float
     def get_variational_refinement_iterations: () -> Integer
-    def set_finest_scale: (val: Integer) -> void
-    def set_gradient_descent_iterations: (val: Integer) -> void
-    def set_patch_size: (val: Integer) -> void
-    def set_patch_stride: (val: Integer) -> void
-    def set_use_mean_normalization: (val: bool) -> void
-    def set_use_spatial_propagation: (val: bool) -> void
-    def set_variational_refinement_alpha: (val: Float) -> void
-    def set_variational_refinement_delta: (val: Float) -> void
-    def set_variational_refinement_epsilon: (val: Float) -> void
-    def set_variational_refinement_gamma: (val: Float) -> void
-    def set_variational_refinement_iterations: (val: Integer) -> void
+    def set_finest_scale: (val: Integer) -> NilClass
+    def set_gradient_descent_iterations: (val: Integer) -> NilClass
+    def set_patch_size: (val: Integer) -> NilClass
+    def set_patch_stride: (val: Integer) -> NilClass
+    def set_use_mean_normalization: (val: TrueClass) -> NilClass
+    def set_use_spatial_propagation: (val: TrueClass) -> NilClass
+    def set_variational_refinement_alpha: (val: Float) -> NilClass
+    def set_variational_refinement_delta: (val: Float) -> NilClass
+    def set_variational_refinement_epsilon: (val: Float) -> NilClass
+    def set_variational_refinement_gamma: (val: Float) -> NilClass
+    def set_variational_refinement_iterations: (val: Integer) -> NilClass
   end
 end

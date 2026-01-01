@@ -1,68 +1,68 @@
 module Cv
   class OutputArray
-    def get_host_mem_ref: () -> Cv::cuda::HostMem
-    def initialize: () -> void
-               | (m: Cv::Mat) -> void
-               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> void
-               | (d_mat: Cv::cuda::GpuMat) -> void
-               | (buf: Cv::ogl::Buffer) -> void
-               | (cuda_mem: Cv::cuda::HostMem) -> void
-               | (m: Cv::UMat) -> void
-               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> void
-               | (m: Cv::Mat) -> void
-               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> void
-               | (d_mat: Cv::cuda::GpuMat) -> void
-               | (buf: Cv::ogl::Buffer) -> void
-               | (cuda_mem: Cv::cuda::HostMem) -> void
-               | (m: Cv::UMat) -> void
-               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> void
-               | (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 4≻≻) -> void
-               | (_flags: Integer, _obj: Rice::Buffer≺void∗≻) -> void
-    def clear: () -> void
-    def get_o_gl_buffer_ref: () -> Cv::ogl::Buffer
+    def get_host_mem_ref: () -> Cv::Cuda::HostMem
+    def initialize: () -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+               | (d_mat: Cv::Cuda::GpuMat) -> NilClass
+               | (buf: Cv::Ogl::Buffer) -> NilClass
+               | (cuda_mem: Cv::Cuda::HostMem) -> NilClass
+               | (m: Cv::UMat) -> NilClass
+               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+               | (d_mat: Cv::Cuda::GpuMat) -> NilClass
+               | (buf: Cv::Ogl::Buffer) -> NilClass
+               | (cuda_mem: Cv::Cuda::HostMem) -> NilClass
+               | (m: Cv::UMat) -> NilClass
+               | (vec: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+               | (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 4≻≻) -> NilClass
+               | (_flags: Integer, _obj: Rice::Pointer≺void≻) -> NilClass
+    def clear: () -> NilClass
+    def get_o_gl_buffer_ref: () -> Cv::Ogl::Buffer
     def get_gpu_mat_vec_ref: () -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
-    def create: (sz: Cv::Size_≺int≻, type: Integer, i: Integer, allow_transposed: bool, fixed_depth_mask: Enum cv::debug_build_guard::_OutputArray::DepthMask) -> void
-           | (rows: Integer, cols: Integer, type: Integer, i: Integer, allow_transposed: bool, fixed_depth_mask: Enum cv::debug_build_guard::_OutputArray::DepthMask) -> void
-           | (dims: Integer, size: Rice::Buffer≺int const∗≻, type: Integer, i: Integer, allow_transposed: bool, fixed_depth_mask: Enum cv::debug_build_guard::_OutputArray::DepthMask) -> void
-    def get_gpu_mat_ref: () -> Cv::cuda::GpuMat
+    def create: (sz: Cv::Size, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
+           | (rows: Integer, cols: Integer, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
+           | (dims: Integer, size: Rice::Pointer≺int≻, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
+    def get_gpu_mat_ref: () -> Cv::Cuda::GpuMat
     def get_u_mat_ref: (i: Integer) -> Cv::UMat
-    def assign: (u: Cv::UMat) -> void
-           | (m: Cv::Mat) -> void
-           | (v: Std::Vector≺cv꞉꞉UMat≻) -> void
-           | (v: Std::Vector≺cv꞉꞉Mat≻) -> void
-    def fixed_size?: () -> bool
-    def fixed_type?: () -> bool
+    def assign: (u: Cv::UMat) -> NilClass
+           | (m: Cv::Mat) -> NilClass
+           | (v: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+           | (v: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def fixed_size?: () -> TrueClass
+    def fixed_type?: () -> TrueClass
     def get_mat_ref: (i: Integer) -> Cv::Mat
-    def create_same_size: (arr: Cv::debug_build_guard::InputArray, mtype: Integer) -> void
-    def move: (m: Cv::Mat) -> void
-         | (u: Cv::UMat) -> void
-    def needed?: () -> bool
-    def release: () -> void
-    def set_to: (value: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray) -> void
+    def create_same_size: (arr: Cv::InputArray, mtype: Integer) -> NilClass
+    def move: (m: Cv::Mat) -> NilClass
+         | (u: Cv::UMat) -> NilClass
+    def needed?: () -> TrueClass
+    def release: () -> NilClass
+    def set_to: (value: Cv::InputArray, mask: Cv::InputArray) -> NilClass
   end
 end

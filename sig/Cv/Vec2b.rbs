@@ -1,21 +1,21 @@
 module Cv
   class Vec2b
-    def []: (i: Integer) -> Unsigned char
-       | (i: Integer) -> Unsigned char
-    def initialize: () -> void
-               | (values: Rice::Buffer≺unsigned char const∗≻) -> void
-               | (v0: String, v1: String) -> void
-               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxAddOp) -> void
-               | (a: Cv::Matx≺unsigned char‚ 2‚ 1≻, b: Cv::Matx≺unsigned char‚ 2‚ 1≻, : Cv::MatxSubOp) -> void
-    def []=: (arg_0: Integer, arg_1: Unsigned char) -> void
-    def assign: (rhs: Cv::Vec≺unsigned char‚ 2≻) -> Cv::Vec≺unsigned char‚ 2≻
-    def call: (i: Integer) -> Unsigned char
-         | (i: Integer) -> Unsigned char
+    def []: (i: Integer) -> String
+       | (i: Integer) -> String
+    def initialize: () -> NilClass
+               | (values: Rice::Pointer≺unsigned char≻) -> NilClass
+               | (v0: String, v1: String) -> NilClass
+               | (a: Cv::Matx21b, b: Cv::Matx21b, op: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx21b, b: Cv::Matx21b, op: Cv::MatxSubOp) -> NilClass
+    def []=: (arg_0: Integer, arg_1: String) -> NilClass
+    def assign: (rhs: Cv::Vec2b) -> Cv::Vec2b
+    def call: (i: Integer) -> String
+         | (i: Integer) -> String
     def count: () -> Integer
-    def initialize_copy: (v: Cv::Vec≺unsigned char‚ 2≻) -> void
-    def inspect: () -> Std::String
-    def mul: (v: Cv::Vec≺unsigned char‚ 2≻) -> Cv::Vec≺unsigned char‚ 2≻
+    def initialize_copy: (v: Cv::Vec2b) -> NilClass
+    def inspect: () -> String
+    def mul: (v: Cv::Vec2b) -> Cv::Vec2b
     def to_a: () -> Integer
-    def to_s: () -> Std::String
+    def to_s: () -> String
   end
 end

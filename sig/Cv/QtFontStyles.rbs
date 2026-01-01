@@ -1,18 +1,20 @@
 module Cv
   class QtFontStyles
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::QtFontStyles) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::QtFontStyles) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::QtFontStyles) -> Integer
+    def <=>: (arg_0: Cv::QtFontStyles) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::QtFontStyles) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::QtFontStyles) -> bool
+    def ^: (arg_0: Cv::QtFontStyles) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::QtFontStyles) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::QtFontStyles) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::QtFontStyles) -> Integer
     def ~: () -> Integer
   end
 end

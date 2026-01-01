@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉FlannBasedMatcher≻
+    def initialize: (value: Cv::FlannBasedMatcher) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::FlannBasedMatcher
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉FlannBasedMatcher≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

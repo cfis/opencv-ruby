@@ -1,6 +1,6 @@
 module Cv::Cuda::GpuMat
   class Allocator
-    def allocate?: (mat: Cv::cuda::GpuMat, rows: Integer, cols: Integer, elem_size: Integer) -> bool
-    def free: (mat: Cv::cuda::GpuMat) -> void
+    def allocate?: (mat: Cv::Cuda::GpuMat, rows: Integer, cols: Integer, elem_size: Integer) -> TrueClass
+    def free: (mat: Cv::Cuda::GpuMat) -> NilClass
   end
 end

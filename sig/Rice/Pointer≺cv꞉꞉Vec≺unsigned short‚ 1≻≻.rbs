@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉Vec≺unsigned short‚ 1≻≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉Vec≺unsigned short‚ 1≻≻
+  end
+end

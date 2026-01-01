@@ -1,5 +1,5 @@
 module Cv::Detail::Tracking
   class TrackerSamplerAlgorithm
-    def sampling?: (image: Cv::Mat, bounding_box: Cv::Rect_≺int≻, sample: Std::Vector≺cv꞉꞉Mat≻) -> bool
+    def sampling?: (image: Cv::Mat, bounding_box: Cv::Rect, sample: Std::Vector≺cv꞉꞉Mat≻) -> TrueClass
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉AffineFeature≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AffineFeature≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AffineFeature≻) -> NilClass
+               | (ptr: Cv::AffineFeature) -> NilClass
+               | (value: Cv::AffineFeature) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉AffineFeature≻) -> Cv::Ptr≺cv꞉꞉AffineFeature≻
+    def get: () -> Cv::AffineFeature
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉AffineFeature≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

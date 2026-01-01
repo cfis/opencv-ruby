@@ -1,8 +1,8 @@
 module Cv
   class MSER
-    def detect_regions: (image: Cv::debug_build_guard::InputArray, msers: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻, bboxes: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> void
+    def detect_regions: (image: Cv::InputArray, msers: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻, bboxes: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
     def get_area_threshold: () -> Float
-    def get_default_name: () -> Std::String
+    def get_default_name: () -> String
     def get_delta: () -> Integer
     def get_edge_blur_size: () -> Integer
     def get_max_area: () -> Integer
@@ -11,16 +11,16 @@ module Cv
     def get_min_area: () -> Integer
     def get_min_diversity: () -> Float
     def get_min_margin: () -> Float
-    def get_pass2_only?: () -> bool
-    def set_area_threshold: (area_threshold: Float) -> void
-    def set_delta: (delta: Integer) -> void
-    def set_edge_blur_size: (edge_blur_size: Integer) -> void
-    def set_max_area: (max_area: Integer) -> void
-    def set_max_evolution: (max_evolution: Integer) -> void
-    def set_max_variation: (max_variation: Float) -> void
-    def set_min_area: (min_area: Integer) -> void
-    def set_min_diversity: (min_diversity: Float) -> void
-    def set_min_margin: (min_margin: Float) -> void
-    def set_pass2_only: (f: bool) -> void
+    def get_pass2_only?: () -> TrueClass
+    def set_area_threshold: (area_threshold: Float) -> NilClass
+    def set_delta: (delta: Integer) -> NilClass
+    def set_edge_blur_size: (edge_blur_size: Integer) -> NilClass
+    def set_max_area: (max_area: Integer) -> NilClass
+    def set_max_evolution: (max_evolution: Integer) -> NilClass
+    def set_max_variation: (max_variation: Float) -> NilClass
+    def set_min_area: (min_area: Integer) -> NilClass
+    def set_min_diversity: (min_diversity: Float) -> NilClass
+    def set_min_margin: (min_margin: Float) -> NilClass
+    def set_pass2_only: (f: TrueClass) -> NilClass
   end
 end

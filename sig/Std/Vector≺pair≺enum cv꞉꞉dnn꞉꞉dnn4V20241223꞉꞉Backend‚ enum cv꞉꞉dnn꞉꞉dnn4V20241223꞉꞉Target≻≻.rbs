@@ -1,0 +1,33 @@
+module Std
+  class Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻
+    def delete: (arg_0: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def delete_at: (arg_0: Integer) -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def include?: (arg_0: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> TrueClass
+    def index: (arg_0: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> Std::Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻
+    def last: () -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def push: (arg_0: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> Std::Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

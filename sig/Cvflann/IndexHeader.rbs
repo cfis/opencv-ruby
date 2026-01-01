@@ -1,10 +1,10 @@
 module Cvflann
   class IndexHeader
     attr_accessor cols: Integer
-    attr_accessor data_type: Enum cvflann::FlannDatatypeT
-    attr_accessor index_type: Enum cvflann::FlannAlgorithmT
+    attr_accessor data_type: Cvflann::FlannDatatypeT
+    attr_accessor index_type: Cvflann::FlannAlgorithmT
     attr_accessor rows: Integer
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

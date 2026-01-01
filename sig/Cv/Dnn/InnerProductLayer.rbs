@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class InnerProductLayer
+    attr_accessor axis: Integer
+
+    def initialize: () -> NilClass
+  end
+end

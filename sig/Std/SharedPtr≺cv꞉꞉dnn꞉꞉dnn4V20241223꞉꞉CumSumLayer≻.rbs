@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CumSumLayer≻
+    def initialize: (value: Cv::Dnn::CumSumLayer) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Dnn::CumSumLayer
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉CumSumLayer≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

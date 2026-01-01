@@ -1,0 +1,10 @@
+module Cv::Dnn
+  class ClassificationModel
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def classify: (frame: Cv::InputArray) -> Std::Pair≺int‚ float≻
+             | (frame: Cv::InputArray, class_id: Integer, conf: Float) -> NilClass
+    def get_enable_softmax_post_processing: () -> TrueClass
+    def set_enable_softmax_post_processing: (enable: TrueClass) -> Cv::Dnn::ClassificationModel
+  end
+end

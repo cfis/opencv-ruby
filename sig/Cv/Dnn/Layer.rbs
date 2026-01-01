@@ -1,0 +1,26 @@
+module Cv::Dnn
+  class Layer
+    attr_accessor blobs: Std::Vector≺cv꞉꞉Mat≻
+    attr_accessor name: String
+    attr_accessor preferable_target: Integer
+    attr_accessor type: String
+
+    def finalize: (inputs: Cv::InputArray, outputs: Cv::OutputArray) -> NilClass
+    def forward: (inputs: Cv::InputArray, outputs: Cv::OutputArray, internals: Cv::OutputArray) -> NilClass
+    def forward_fallback: (inputs: Cv::InputArray, outputs: Cv::OutputArray, internals: Cv::OutputArray) -> NilClass
+    def get_flops: (inputs: Std::Vector≺vector≺int≻≻, outputs: Std::Vector≺vector≺int≻≻) -> Integer
+    def initialize: () -> NilClass
+               | (params: Cv::Dnn::LayerParams) -> NilClass
+    def get_memory_shapes: (inputs: Std::Vector≺vector≺int≻≻, required_outputs: Integer, outputs: Std::Vector≺vector≺int≻≻, internals: Std::Vector≺vector≺int≻≻) -> TrueClass
+    def get_scale_shift: (scale: Cv::Mat, shift: Cv::Mat) -> NilClass
+    def get_scale_zeropoint: (scale: Float, zeropoint: Integer) -> NilClass
+    def input_name_to_index: (input_name: String) -> Integer
+    def output_name_to_index: (output_name: String) -> Integer
+    def set_params_from: (params: Cv::Dnn::LayerParams) -> NilClass
+    def support_backend: (backend_id: Integer) -> TrueClass
+    def try_fuse: (top: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻) -> TrueClass
+    def try_quantize: (scales: Std::Vector≺vector≺float≻≻, zeropoints: Std::Vector≺vector≺int≻≻, params: Cv::Dnn::LayerParams) -> TrueClass
+    def unset_attached: () -> NilClass
+    def update_memory_shapes: (inputs: Std::Vector≺vector≺int≻≻) -> TrueClass
+  end
+end

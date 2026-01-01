@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉StereoSGBM≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉StereoSGBM≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉StereoSGBM≻) -> NilClass
+               | (ptr: Cv::StereoSGBM) -> NilClass
+               | (value: Cv::StereoSGBM) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉StereoSGBM≻) -> Cv::Ptr≺cv꞉꞉StereoSGBM≻
+    def get: () -> Cv::StereoSGBM
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉StereoSGBM≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

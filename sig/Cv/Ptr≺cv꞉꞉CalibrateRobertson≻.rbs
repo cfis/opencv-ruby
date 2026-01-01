@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉CalibrateRobertson≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉CalibrateRobertson≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉CalibrateRobertson≻) -> NilClass
+               | (ptr: Cv::CalibrateRobertson) -> NilClass
+               | (value: Cv::CalibrateRobertson) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉CalibrateRobertson≻) -> Cv::Ptr≺cv꞉꞉CalibrateRobertson≻
+    def get: () -> Cv::CalibrateRobertson
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉CalibrateRobertson≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

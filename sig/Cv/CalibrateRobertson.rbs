@@ -3,7 +3,7 @@ module Cv
     def get_max_iter: () -> Integer
     def get_radiance: () -> Cv::Mat
     def get_threshold: () -> Float
-    def set_max_iter: (max_iter: Integer) -> void
-    def set_threshold: (threshold: Float) -> void
+    def set_max_iter: (max_iter: Integer) -> NilClass
+    def set_threshold: (threshold: Float) -> NilClass
   end
 end

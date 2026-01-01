@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class ActivationLayer
+    def forward_slice: (src: Rice::Pointer≺float≻, dst: Rice::Pointer≺float≻, len: Integer, out_plane_size: Integer, cn0: Integer, cn1: Integer) -> NilClass
+                  | (src: Rice::Pointer≺int≻, lut: Rice::Pointer≺int≻, dst: Rice::Pointer≺int≻, len: Integer, out_plane_size: Integer, cn0: Integer, cn1: Integer) -> NilClass
+                  | (src: Rice::Pointer≺signed char≻, lut: Rice::Pointer≺signed char≻, dst: Rice::Pointer≺signed char≻, len: Integer, out_plane_size: Integer, cn0: Integer, cn1: Integer) -> NilClass
+    def initialize: () -> NilClass
+  end
+end

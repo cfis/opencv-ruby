@@ -1,56 +1,56 @@
 module Cv
   class Matx61d
-    def initialize: () -> void
-               | (vals: Rice::Buffer≺double const∗≻) -> void
-               | (a: Cv::Matx≺double‚ 1‚ 6≻, : Cv::MatxTOp) -> void
-               | (a: Cv::Matx≺double‚ 6‚ 1≻, b: Cv::Matx≺double‚ 6‚ 1≻, : Cv::MatxSubOp) -> void
-               | (a: Cv::Matx≺double‚ 6‚ 1≻, b: Cv::Matx≺double‚ 6‚ 1≻, : Cv::MatxDivOp) -> void
-               | (a: Cv::Matx≺double‚ 6‚ 1≻, b: Cv::Matx≺double‚ 6‚ 1≻, : Cv::MatxAddOp) -> void
-               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float) -> void
-               | (a: Cv::Matx≺double‚ 6‚ 1≻, b: Cv::Matx≺double‚ 6‚ 1≻, : Cv::MatxMulOp) -> void
-    def !=: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> bool
-    def *: (arg_0: Cv::Vec≺double‚ 1≻) -> Cv::Vec≺double‚ 6≻
-      | (arg_0: Integer) -> Cv::Matx≺double‚ 6‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-    def +: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
-    def -: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
-    def /: (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-    def ==: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> bool
-    def _dump_data: () -> Rice::Hash
-    def assign_divide: (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-                  | (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-    def assign_minus: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
-    def assign_multiply: (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-                    | (arg_0: Float) -> Cv::Matx≺double‚ 6‚ 1≻
-                    | (arg_0: Integer) -> Cv::Matx≺double‚ 6‚ 1≻
-    def assign_plus: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
-    def call: (i: Integer) -> Double
-         | (i: Integer) -> Double
-         | (row: Integer, col: Integer) -> Double
-         | (row: Integer, col: Integer) -> Double
+    def initialize: () -> NilClass
+               | (vals: Rice::Pointer≺double≻) -> NilClass
+               | (a: Cv::Matx16d, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx61d, b: Cv::Matx61d, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx61d, b: Cv::Matx61d, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx61d, b: Cv::Matx61d, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float) -> NilClass
+               | (a: Cv::Matx61d, b: Cv::Matx61d, arg_2: Cv::MatxMulOp) -> NilClass
+    def !=: (arg_0: Cv::Matx61d) -> TrueClass
+    def *: (arg_0: Cv::Vec1d) -> Cv::Vec6d
+      | (arg_0: Integer) -> Cv::Matx61d
+      | (arg_0: Float) -> Cv::Matx61d
+      | (arg_0: Float) -> Cv::Matx61d
+    def +: (arg_0: Cv::Matx61d) -> Cv::Matx61d
+    def -: (arg_0: Cv::Matx61d) -> Cv::Matx61d
+    def /: (arg_0: Float) -> Cv::Matx61d
+      | (arg_0: Float) -> Cv::Matx61d
+    def ==: (arg_0: Cv::Matx61d) -> TrueClass
+    def _dump_data: () -> Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx61d
+                  | (arg_0: Float) -> Cv::Matx61d
+    def assign_minus: (arg_0: Cv::Matx61d) -> Cv::Matx61d
+    def assign_multiply: (arg_0: Float) -> Cv::Matx61d
+                    | (arg_0: Float) -> Cv::Matx61d
+                    | (arg_0: Integer) -> Cv::Matx61d
+    def assign_plus: (arg_0: Cv::Matx61d) -> Cv::Matx61d
+    def call: (i: Integer) -> Float
+         | (i: Integer) -> Float
+         | (row: Integer, col: Integer) -> Float
+         | (row: Integer, col: Integer) -> Float
     def channels: () -> Integer
-    def col: (i: Integer) -> Cv::Matx≺double‚ 6‚ 1≻
+    def col: (i: Integer) -> Cv::Matx61d
     def cols: () -> Integer
-    def ddot: (v: Cv::Matx≺double‚ 6‚ 1≻) -> Float
+    def ddot: (v: Cv::Matx61d) -> Float
     def determinant: () -> Float
-    def diag: () -> Cv::Matx≺double‚ 1‚ 1≻
-    def div: (a: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
-    def dot: (v: Cv::Matx≺double‚ 6‚ 1≻) -> Float
+    def diag: () -> Cv::Matx11d
+    def div: (a: Cv::Matx61d) -> Cv::Matx61d
+    def dot: (v: Cv::Matx61d) -> Float
     def each: () -> Integer
-    def eql?: (arg_0: Cv::Matx≺double‚ 6‚ 1≻) -> bool
-    def input_array: () -> Cv::debug_build_guard::InputArray
-    def inspect: () -> Std::String
-    def inv: (method: Integer, p_is_ok: Rice::Buffer≺bool∗≻) -> Cv::Matx≺double‚ 1‚ 6≻
-    def mul: (a: Cv::Matx≺double‚ 6‚ 1≻) -> Cv::Matx≺double‚ 6‚ 1≻
+    def eql?: (arg_0: Cv::Matx61d) -> TrueClass
+    def input_array: () -> Cv::InputArray
+    def inspect: () -> String
+    def inv: (method: Integer, p_is_ok: Rice::Pointer≺bool≻) -> Cv::Matx16d
+    def mul: (a: Cv::Matx61d) -> Cv::Matx61d
     def norm: () -> Float
          | (arg_0: Integer) -> Float
-    def row: (i: Integer) -> Cv::Matx≺double‚ 1‚ 1≻
+    def row: (i: Integer) -> Cv::Matx11d
     def rows: () -> Integer
     def shortdim: () -> Integer
-    def solve: (rhs: Cv::Vec≺double‚ 6≻, method: Integer) -> Cv::Vec≺double‚ 1≻
-    def t: () -> Cv::Matx≺double‚ 1‚ 6≻
+    def solve: (rhs: Cv::Vec6d, method: Integer) -> Cv::Vec1d
+    def t: () -> Cv::Matx16d
     def trace: () -> Float
   end
 end

@@ -1,6 +1,6 @@
 module Cv
   class TickMeter
-    def initialize: () -> void
+    def initialize: () -> NilClass
     def get_avg_time_milli: () -> Float
     def get_avg_time_sec: () -> Float
     def get_counter: () -> Integer
@@ -9,9 +9,9 @@ module Cv
     def get_time_milli: () -> Float
     def get_time_sec: () -> Float
     def get_time_ticks: () -> Integer
-    def inspect: () -> Std::String
-    def reset: () -> void
-    def start: () -> void
-    def stop: () -> void
+    def inspect: () -> String
+    def reset: () -> NilClass
+    def start: () -> NilClass
+    def stop: () -> NilClass
   end
 end

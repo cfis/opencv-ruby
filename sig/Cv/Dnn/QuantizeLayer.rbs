@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class QuantizeLayer
+    attr_accessor scales: Std::Vector≺float≻
+    attr_accessor zeropoints: Std::Vector≺int≻
+
+    def initialize: () -> NilClass
+  end
+end

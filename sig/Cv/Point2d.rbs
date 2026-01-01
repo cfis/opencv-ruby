@@ -3,43 +3,43 @@ module Cv
     attr_accessor x: Float
     attr_accessor y: Float
 
-    def initialize: () -> void
-               | (sz: Cv::Size_≺double≻) -> void
-               | (v: Cv::Vec≺double‚ 2≻) -> void
-               | (_x: Float, _y: Float) -> void
-    def !=: (arg_0: Cv::Point_≺double≻) -> bool
-       | (arg_0: Cv::Point_≺double≻) -> bool
-    def *: (arg_0: Float) -> Cv::Point_≺double≻
-      | (arg_0: Integer) -> Cv::Point_≺double≻
-      | (arg_0: Integer) -> Cv::Point_≺double≻
-    def +: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-      | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-    def -: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-      | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-    def /: (arg_0: Float) -> Cv::Point_≺double≻
-      | (arg_0: Integer) -> Cv::Point_≺double≻
-      | (arg_0: Integer) -> Cv::Point_≺double≻
-      | (arg_0: Float) -> Cv::Point_≺double≻
-    def ==: (arg_0: Cv::Point_≺double≻) -> bool
-       | (arg_0: Cv::Point_≺double≻) -> bool
-    def assign_divide: (arg_0: Integer) -> Cv::Point_≺double≻
-                  | (arg_0: Float) -> Cv::Point_≺double≻
-                  | (arg_0: Float) -> Cv::Point_≺double≻
-                  | (arg_0: Integer) -> Cv::Point_≺double≻
-    def assign_minus: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-                 | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-    def assign_multiply: (arg_0: Float) -> Cv::Point_≺double≻
-                    | (arg_0: Float) -> Cv::Point_≺double≻
-    def assign_plus: (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-                | (arg_0: Cv::Point_≺double≻) -> Cv::Point_≺double≻
-    def cross: (pt: Cv::Point_≺double≻) -> Float
-    def ddot: (pt: Cv::Point_≺double≻) -> Float
-    def dot: (pt: Cv::Point_≺double≻) -> Float
-    def initialize_copy: (pt: Cv::Point_≺double≻) -> void
-    def inside?: (r: Cv::Rect_≺double≻) -> bool
-    def inspect: () -> Std::String
+    def initialize: () -> NilClass
+               | (sz: Cv::Size2d) -> NilClass
+               | (v: Cv::Vec2d) -> NilClass
+               | (_x: Float, _y: Float) -> NilClass
+    def !=: (arg_0: Cv::Point2d) -> TrueClass
+       | (arg_0: Cv::Point2d) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Point2d
+      | (arg_0: Integer) -> Cv::Point2d
+      | (arg_0: Integer) -> Cv::Point2d
+    def +: (arg_0: Cv::Point2d) -> Cv::Point2d
+      | (arg_0: Cv::Point2d) -> Cv::Point2d
+    def -: (arg_0: Cv::Point2d) -> Cv::Point2d
+      | (arg_0: Cv::Point2d) -> Cv::Point2d
+    def /: (arg_0: Float) -> Cv::Point2d
+      | (arg_0: Integer) -> Cv::Point2d
+      | (arg_0: Integer) -> Cv::Point2d
+      | (arg_0: Float) -> Cv::Point2d
+    def ==: (arg_0: Cv::Point2d) -> TrueClass
+       | (arg_0: Cv::Point2d) -> TrueClass
+    def assign_divide: (arg_0: Integer) -> Cv::Point2d
+                  | (arg_0: Float) -> Cv::Point2d
+                  | (arg_0: Float) -> Cv::Point2d
+                  | (arg_0: Integer) -> Cv::Point2d
+    def assign_minus: (arg_0: Cv::Point2d) -> Cv::Point2d
+                 | (arg_0: Cv::Point2d) -> Cv::Point2d
+    def assign_multiply: (arg_0: Float) -> Cv::Point2d
+                    | (arg_0: Float) -> Cv::Point2d
+    def assign_plus: (arg_0: Cv::Point2d) -> Cv::Point2d
+                | (arg_0: Cv::Point2d) -> Cv::Point2d
+    def cross: (pt: Cv::Point2d) -> Float
+    def ddot: (pt: Cv::Point2d) -> Float
+    def dot: (pt: Cv::Point2d) -> Float
+    def initialize_copy: (pt: Cv::Point2d) -> NilClass
+    def inside?: (r: Cv::Rect2d) -> TrueClass
+    def inspect: () -> String
     def norm: () -> Float
-    def to_s: () -> Std::String
-    def to_vec: () -> Cv::Vec≺double‚ 2≻
+    def to_s: () -> String
+    def to_vec: () -> Cv::Vec2d
   end
 end

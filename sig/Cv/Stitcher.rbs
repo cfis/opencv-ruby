@@ -4,13 +4,13 @@ module Cv
             | () -> Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻
     def bundle_adjuster: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻
                     | () -> Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻
-    def initialize: () -> void
+    def initialize: () -> NilClass
     def cameras: () -> Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻
     def component: () -> Std::Vector≺int≻
-    def compose_panorama: (pano: Cv::debug_build_guard::OutputArray) -> Enum cv::Stitcher::Status
-                     | (images: Cv::debug_build_guard::InputArray, pano: Cv::debug_build_guard::OutputArray) -> Enum cv::Stitcher::Status
+    def compose_panorama: (pano: Cv::OutputArray) -> Cv::Stitcher::Status
+                     | (images: Cv::InputArray, pano: Cv::OutputArray) -> Cv::Stitcher::Status
     def compositing_resol: () -> Float
-    def estimate_transform: (images: Cv::debug_build_guard::InputArray, masks: Cv::debug_build_guard::InputArray) -> Enum cv::Stitcher::Status
+    def estimate_transform: (images: Cv::InputArray, masks: Cv::InputArray) -> Cv::Stitcher::Status
     def estimator: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻
               | () -> Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻
     def exposure_compensator: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻
@@ -19,7 +19,7 @@ module Cv
                     | () -> Cv::Ptr≺cv꞉꞉Feature2D≻
     def features_matcher: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻
                      | () -> Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻
-    def interpolation_flags: () -> Enum cv::InterpolationFlags
+    def interpolation_flags: () -> Cv::InterpolationFlags
     def matching_mask: () -> Cv::UMat
     def pano_confidence_thresh: () -> Float
     def registration_resol: () -> Float
@@ -27,30 +27,30 @@ module Cv
     def seam_estimation_resol: () -> Float
     def seam_finder: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻
                 | () -> Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻
-    def set_blender: (b: Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻) -> void
-    def set_bundle_adjuster: (bundle_adjuster: Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> void
-    def set_compositing_resol: (resol_mpx: Float) -> void
-    def set_estimator: (estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻) -> void
-    def set_exposure_compensator: (exposure_comp: Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> void
-    def set_features_finder: (features_finder: Cv::Ptr≺cv꞉꞉Feature2D≻) -> void
-    def set_features_matcher: (features_matcher: Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> void
-    def set_interpolation_flags: (interp_flags: Enum cv::InterpolationFlags) -> void
-    def set_matching_mask: (mask: Cv::UMat) -> void
-    def set_pano_confidence_thresh: (conf_thresh: Float) -> void
-    def set_registration_resol: (resol_mpx: Float) -> void
-    def set_seam_estimation_resol: (resol_mpx: Float) -> void
-    def set_seam_finder: (seam_finder: Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> void
-    def set_transform: (images: Cv::debug_build_guard::InputArray, cameras: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻) -> Enum cv::Stitcher::Status
-                  | (images: Cv::debug_build_guard::InputArray, cameras: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻, component: Std::Vector≺int≻) -> Enum cv::Stitcher::Status
-    def set_warper: (creator: Cv::Ptr≺cv꞉꞉WarperCreator≻) -> void
-    def set_wave_correct_kind: (kind: Enum cv::detail::WaveCorrectKind) -> void
-    def set_wave_correction: (flag: bool) -> void
-    def stitch: (images: Cv::debug_build_guard::InputArray, pano: Cv::debug_build_guard::OutputArray) -> Enum cv::Stitcher::Status
-           | (images: Cv::debug_build_guard::InputArray, masks: Cv::debug_build_guard::InputArray, pano: Cv::debug_build_guard::OutputArray) -> Enum cv::Stitcher::Status
+    def set_blender: (b: Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻) -> NilClass
+    def set_bundle_adjuster: (bundle_adjuster: Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+    def set_compositing_resol: (resol_mpx: Float) -> NilClass
+    def set_estimator: (estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
+    def set_exposure_compensator: (exposure_comp: Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
+    def set_features_finder: (features_finder: Cv::Ptr≺cv꞉꞉Feature2D≻) -> NilClass
+    def set_features_matcher: (features_matcher: Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
+    def set_interpolation_flags: (interp_flags: Cv::InterpolationFlags) -> NilClass
+    def set_matching_mask: (mask: Cv::UMat) -> NilClass
+    def set_pano_confidence_thresh: (conf_thresh: Float) -> NilClass
+    def set_registration_resol: (resol_mpx: Float) -> NilClass
+    def set_seam_estimation_resol: (resol_mpx: Float) -> NilClass
+    def set_seam_finder: (seam_finder: Cv::Ptr≺cv꞉꞉detail꞉꞉SeamFinder≻) -> NilClass
+    def set_transform: (images: Cv::InputArray, cameras: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻) -> Cv::Stitcher::Status
+                  | (images: Cv::InputArray, cameras: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻, component: Std::Vector≺int≻) -> Cv::Stitcher::Status
+    def set_warper: (creator: Cv::Ptr≺cv꞉꞉WarperCreator≻) -> NilClass
+    def set_wave_correct_kind: (kind: Cv::Detail::WaveCorrectKind) -> NilClass
+    def set_wave_correction: (flag: TrueClass) -> NilClass
+    def stitch: (images: Cv::InputArray, pano: Cv::OutputArray) -> Cv::Stitcher::Status
+           | (images: Cv::InputArray, masks: Cv::InputArray, pano: Cv::OutputArray) -> Cv::Stitcher::Status
     def warper: () -> Cv::Ptr≺cv꞉꞉WarperCreator≻
            | () -> Cv::Ptr≺cv꞉꞉WarperCreator≻
-    def wave_correct_kind: () -> Enum cv::detail::WaveCorrectKind
-    def wave_correction?: () -> bool
+    def wave_correct_kind: () -> Cv::Detail::WaveCorrectKind
+    def wave_correction?: () -> TrueClass
     def work_scale: () -> Float
   end
 end

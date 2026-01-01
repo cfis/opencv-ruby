@@ -1,16 +1,16 @@
 module Cv::Aruco
   class ArucoDetector
-    def detect_markers: (image: Cv::debug_build_guard::InputArray, corners: Cv::debug_build_guard::OutputArray, ids: Cv::debug_build_guard::OutputArray, rejected_img_points: Cv::debug_build_guard::OutputArray) -> void
-    def get_detector_parameters: () -> Cv::aruco::DetectorParameters
-    def get_dictionary: () -> Cv::aruco::Dictionary
-    def get_refine_parameters: () -> Cv::aruco::RefineParameters
-    def initialize: (dictionary: Cv::aruco::Dictionary, detector_params: Cv::aruco::DetectorParameters, refine_params: Cv::aruco::RefineParameters) -> void
-    def read: (fn: Cv::FileNode) -> void
-    def refine_detected_markers: (image: Cv::debug_build_guard::InputArray, board: Cv::aruco::Board, detected_corners: Cv::debug_build_guard::InputOutputArray, detected_ids: Cv::debug_build_guard::InputOutputArray, rejected_corners: Cv::debug_build_guard::InputOutputArray, camera_matrix: Cv::debug_build_guard::InputArray, dist_coeffs: Cv::debug_build_guard::InputArray, recovered_idxs: Cv::debug_build_guard::OutputArray) -> void
-    def set_detector_parameters: (detector_parameters: Cv::aruco::DetectorParameters) -> void
-    def set_dictionary: (dictionary: Cv::aruco::Dictionary) -> void
-    def set_refine_parameters: (refine_parameters: Cv::aruco::RefineParameters) -> void
-    def write: (fs: Cv::FileStorage) -> void
-          | (fs: Cv::FileStorage, name: Std::String) -> void
+    def detect_markers: (image: Cv::InputArray, corners: Cv::OutputArray, ids: Cv::OutputArray, rejected_img_points: Cv::OutputArray) -> NilClass
+    def get_detector_parameters: () -> Cv::Aruco::DetectorParameters
+    def get_dictionary: () -> Cv::Aruco::Dictionary
+    def get_refine_parameters: () -> Cv::Aruco::RefineParameters
+    def initialize: (dictionary: Cv::Aruco::Dictionary, detector_params: Cv::Aruco::DetectorParameters, refine_params: Cv::Aruco::RefineParameters) -> NilClass
+    def read: (fn: Cv::FileNode) -> NilClass
+    def refine_detected_markers: (image: Cv::InputArray, board: Cv::Aruco::Board, detected_corners: Cv::InputOutputArray, detected_ids: Cv::InputOutputArray, rejected_corners: Cv::InputOutputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, recovered_idxs: Cv::OutputArray) -> NilClass
+    def set_detector_parameters: (detector_parameters: Cv::Aruco::DetectorParameters) -> NilClass
+    def set_dictionary: (dictionary: Cv::Aruco::Dictionary) -> NilClass
+    def set_refine_parameters: (refine_parameters: Cv::Aruco::RefineParameters) -> NilClass
+    def write: (fs: Cv::FileStorage) -> NilClass
+          | (fs: Cv::FileStorage, name: String) -> NilClass
   end
 end

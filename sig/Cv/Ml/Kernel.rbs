@@ -1,0 +1,6 @@
+module Cv::Ml
+  class Kernel
+    def calc: (vcount: Integer, n: Integer, vecs: Rice::Pointer≺float≻, another: Rice::Pointer≺float≻, results: Rice::Pointer≺float≻) -> NilClass
+    def get_type: () -> Integer
+  end
+end

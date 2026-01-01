@@ -1,0 +1,32 @@
+module Std
+  class Vector≺vector≺cv꞉꞉KeyPoint≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
+    def []: (arg_0: Integer) -> Std::Vector≺cv꞉꞉KeyPoint≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺vector≺cv꞉꞉KeyPoint≻≻
+    def delete_at: (arg_0: Integer) -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def empty?: () -> TrueClass
+    def first: () -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def include?: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> TrueClass
+    def index: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> Integer
+    def delete: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def initialize_copy: (arg_0: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉KeyPoint≻) -> Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻
+    def last: () -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def push: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

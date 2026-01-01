@@ -1,7 +1,7 @@
 module Cv
   class Hfloat
-    def initialize: () -> void
-               | (x: Float) -> void
+    def initialize: () -> NilClass
+               | (x: Float) -> NilClass
     def to_float: () -> Float
   end
 end

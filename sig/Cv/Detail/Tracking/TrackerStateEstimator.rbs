@@ -1,7 +1,7 @@
 module Cv::Detail::Tracking
   class TrackerStateEstimator
     def estimate: (confidence_maps: Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻
-    def get_class_name: () -> Std::String
-    def update: (confidence_maps: Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻) -> void
+    def get_class_name: () -> String
+    def update: (confidence_maps: Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻) -> NilClass
   end
 end

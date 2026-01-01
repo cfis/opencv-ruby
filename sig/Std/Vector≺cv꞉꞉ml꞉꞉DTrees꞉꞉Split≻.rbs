@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Ml::DTrees::Split) -> NilClass
+    def []: (arg_0: Integer) -> Cv::Ml::DTrees::Split
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Ml::DTrees::Split) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
+    def delete_at: (arg_0: Integer) -> Cv::Ml::DTrees::Split
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Ml::DTrees::Split
+    def include?: (arg_0: Cv::Ml::DTrees::Split) -> TrueClass
+    def index: (arg_0: Cv::Ml::DTrees::Split) -> Integer
+    def delete: (arg_0: Cv::Ml::DTrees::Split) -> Cv::Ml::DTrees::Split
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Ml::DTrees::Split) -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
+    def last: () -> Cv::Ml::DTrees::Split
+    def max_size: () -> Integer
+    def pop: () -> Cv::Ml::DTrees::Split
+    def push: (arg_0: Cv::Ml::DTrees::Split) -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

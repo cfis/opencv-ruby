@@ -1,24 +1,24 @@
 module Cv
   class SparseMat3b
-    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Cv::Vec≺unsigned char‚ 3≻
-       | (arg_0: Integer) -> Cv::Vec≺unsigned char‚ 3≻
-       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec≺unsigned char‚ 3≻
-       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec≺unsigned char‚ 3≻
-    def []=: (arg_0: Integer, arg_1: Cv::Vec≺unsigned char‚ 3≻) -> Cv::Vec≺unsigned char‚ 3≻
-        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Cv::Vec≺unsigned char‚ 3≻) -> Cv::Vec≺unsigned char‚ 3≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec≺unsigned char‚ 3≻) -> Cv::Vec≺unsigned char‚ 3≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec≺unsigned char‚ 3≻) -> Cv::Vec≺unsigned char‚ 3≻
-    def initialize: () -> void
-               | (m: Cv::SparseMat) -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-    def begin: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺unsigned char‚ 3≻≻
-    def clone: () -> Cv::SparseMat_≺cv꞉꞉Vec≺unsigned char‚ 3≻≻
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def []: (arg_0: Rice::Pointer≺int≻) -> Cv::Vec3b
+       | (arg_0: Integer) -> Cv::Vec3b
+       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec3b
+       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec3b
+    def []=: (arg_0: Integer, arg_1: Cv::Vec3b) -> Cv::Vec3b
+        | (arg_0: Rice::Pointer≺int≻, arg_1: Cv::Vec3b) -> Cv::Vec3b
+        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec3b) -> Cv::Vec3b
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec3b) -> Cv::Vec3b
+    def initialize: () -> NilClass
+               | (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def begin: () -> Cv::SparseMatIterator3b
+    def clone: () -> Cv::SparseMat3b
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
     def depth: () -> Integer
-    def end: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺unsigned char‚ 3≻≻
+    def end: () -> Cv::SparseMatIterator3b
     def channels: () -> Integer
-    def initialize_copy: (m: Cv::SparseMat_≺cv꞉꞉Vec≺unsigned char‚ 3≻≻) -> void
+    def initialize_copy: (m: Cv::SparseMat3b) -> NilClass
     def type: () -> Integer
   end
 end

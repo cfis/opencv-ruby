@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class SoftmaxLayerInt8
+    attr_accessor output_sc: Float
+    attr_accessor output_zp: Integer
+
+    def initialize: () -> NilClass
+  end
+end

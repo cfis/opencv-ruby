@@ -1,16 +1,16 @@
 module Cv::Detail
   class BlocksCompensator
-    def apply: (index: Integer, corner: Cv::Point_≺int≻, image: Cv::debug_build_guard::InputOutputArray, mask: Cv::debug_build_guard::InputArray) -> void
-    def get_block_size: () -> Cv::Size_≺int≻
-    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
+    def apply: (index: Integer, corner: Cv::Point, image: Cv::InputOutputArray, mask: Cv::InputArray) -> NilClass
+    def get_block_size: () -> Cv::Size
+    def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def get_nr_feeds: () -> Integer
     def get_nr_gains_filtering_iterations: () -> Integer
     def get_similarity_threshold: () -> Float
-    def set_block_size: (size: Cv::Size_≺int≻) -> void
-                   | (width: Integer, height: Integer) -> void
-    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> void
-    def set_nr_feeds: (nr_feeds: Integer) -> void
-    def set_nr_gains_filtering_iterations: (nr_iterations: Integer) -> void
-    def set_similarity_threshold: (similarity_threshold: Float) -> void
+    def set_block_size: (size: Cv::Size) -> NilClass
+                   | (width: Integer, height: Integer) -> NilClass
+    def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def set_nr_feeds: (nr_feeds: Integer) -> NilClass
+    def set_nr_gains_filtering_iterations: (nr_iterations: Integer) -> NilClass
+    def set_similarity_threshold: (similarity_threshold: Float) -> NilClass
   end
 end

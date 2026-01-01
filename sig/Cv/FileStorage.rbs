@@ -1,37 +1,37 @@
 module Cv
   class FileStorage
-    attr_accessor elname: Std::String
+    attr_accessor elname: String
     attr_accessor state: Integer
 
-    def <<: (arg_0: Std::String) -> Cv::FileStorage
-       | (arg_0: Rice::Buffer≺char const∗≻) -> Cv::FileStorage
+    def <<: (arg_0: String) -> Cv::FileStorage
        | (arg_0: String) -> Cv::FileStorage
-       | (arg_0: Bool) -> Cv::FileStorage
-       | (arg_0: Double) -> Cv::FileStorage
+       | (arg_0: String) -> Cv::FileStorage
+       | (arg_0: TrueClass) -> Cv::FileStorage
        | (arg_0: Float) -> Cv::FileStorage
-       | (arg_0: Short) -> Cv::FileStorage
-       | (arg_0: Int) -> Cv::FileStorage
+       | (arg_0: Float) -> Cv::FileStorage
+       | (arg_0: Integer) -> Cv::FileStorage
+       | (arg_0: Integer) -> Cv::FileStorage
        | (arg_0: Cv::Mat) -> Cv::FileStorage
        | (arg_0: Std::Vector≺string≻) -> Cv::FileStorage
-    def initialize: (filename: Std::String, flags: Integer, encoding: Std::String) -> void
-               | () -> void
-    def []: (nodename: Std::String) -> Cv::FileNode
-       | (nodename: Rice::Buffer≺char const∗≻) -> Cv::FileNode
-    def end_write_struct: () -> void
+    def initialize: (filename: String, flags: Integer, encoding: String) -> NilClass
+               | () -> NilClass
+    def []: (nodename: String) -> Cv::FileNode
+       | (nodename: String) -> Cv::FileNode
+    def end_write_struct: () -> NilClass
     def get_first_top_level_node: () -> Cv::FileNode
     def get_format: () -> Integer
-    def open?: (filename: Std::String, flags: Integer, encoding: Std::String) -> bool
-    def opened?: () -> bool
-    def release: () -> void
-    def release_and_get_string: () -> Std::String
+    def open?: (filename: String, flags: Integer, encoding: String) -> TrueClass
+    def opened?: () -> TrueClass
+    def release: () -> NilClass
+    def release_and_get_string: () -> String
     def root: (streamidx: Integer) -> Cv::FileNode
-    def start_write_struct: (name: Std::String, flags: Integer, type_name: Std::String) -> void
-    def write: (name: Std::String, val: Std::String) -> void
-          | (name: Std::String, val: Integer) -> void
-          | (name: Std::String, val: Cv::Mat) -> void
-          | (name: Std::String, val: Std::Vector≺string≻) -> void
-          | (name: Std::String, val: Float) -> void
-    def write_comment: (comment: Std::String, append: bool) -> void
-    def write_raw: (fmt: Std::String, vec: Rice::Buffer≺void const∗≻, len: Integer) -> void
+    def start_write_struct: (name: String, flags: Integer, type_name: String) -> NilClass
+    def write: (name: String, val: String) -> NilClass
+          | (name: String, val: Integer) -> NilClass
+          | (name: String, val: Cv::Mat) -> NilClass
+          | (name: String, val: Std::Vector≺string≻) -> NilClass
+          | (name: String, val: Float) -> NilClass
+    def write_comment: (comment: String, append: TrueClass) -> NilClass
+    def write_raw: (fmt: String, vec: Rice::Pointer≺void≻, len: Integer) -> NilClass
   end
 end

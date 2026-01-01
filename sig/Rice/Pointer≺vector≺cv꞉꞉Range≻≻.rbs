@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺vector≺cv꞉꞉Range≻≻
+    def buffer: () -> Rice::Buffer≺vector≺cv꞉꞉Range≻≻
+  end
+end

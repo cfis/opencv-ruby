@@ -8,6 +8,6 @@ module Cv::Ml::DTrees
     attr_accessor split: Integer
     attr_accessor value: Float
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

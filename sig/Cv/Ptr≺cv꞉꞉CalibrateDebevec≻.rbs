@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉CalibrateDebevec≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉CalibrateDebevec≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉CalibrateDebevec≻) -> NilClass
+               | (ptr: Cv::CalibrateDebevec) -> NilClass
+               | (value: Cv::CalibrateDebevec) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉CalibrateDebevec≻) -> Cv::Ptr≺cv꞉꞉CalibrateDebevec≻
+    def get: () -> Cv::CalibrateDebevec
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉CalibrateDebevec≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

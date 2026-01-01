@@ -1,0 +1,11 @@
+module Std
+  class Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    attr_accessor first: Cv::Dnn::Backend
+    attr_accessor second: Cv::Dnn::Target
+
+    def initialize: () -> NilClass
+               | (arg_0: Cv::Dnn::Backend, arg_1: Cv::Dnn::Target) -> NilClass
+    def initialize_copy: (arg_0: Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻) -> NilClass
+    def to_s: () -> String
+  end
+end

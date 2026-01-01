@@ -2,10 +2,10 @@ module Cv
   class RNG_MT19937
     def call: () -> Integer
          | (n: Integer) -> Integer
-    def initialize: () -> void
-               | (s: Integer) -> void
+    def initialize: () -> NilClass
+               | (s: Integer) -> NilClass
     def next: () -> Integer
-    def seed: (s: Integer) -> void
+    def seed: (s: Integer) -> NilClass
     def uniform: (a: Float, b: Float) -> Float
             | (a: Float, b: Float) -> Float
             | (a: Integer, b: Integer) -> Integer

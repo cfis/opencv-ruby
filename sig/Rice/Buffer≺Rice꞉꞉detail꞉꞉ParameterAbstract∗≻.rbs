@@ -1,0 +1,15 @@
+module Rice
+  class Buffer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+    def initialize: (value: Integer) -> NilClass
+               | (value: Integer, size: Integer) -> NilClass
+    def []: (index: Integer) -> Rice::Parameter
+    def bytes: () -> Integer
+          | (arg_0: Integer) -> Integer
+    def data: () -> Rice::Pointer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+    def release: () -> Rice::Pointer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+    def size: () -> Integer
+    def to_ary: () -> Array
+           | (arg_0: Integer) -> Array
+    def to_s: () -> Integer
+  end
+end

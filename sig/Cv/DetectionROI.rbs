@@ -4,6 +4,6 @@ module Cv
     attr_accessor locations: Std::Vector≺cv꞉꞉Point_≺int≻≻
     attr_accessor scale: Float
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

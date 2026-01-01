@@ -1,0 +1,6 @@
+module Rice
+  class Reference≺unsigned char≻
+    def initialize: (arg_0: String) -> NilClass
+    def value: () -> String
+  end
+end

@@ -2,10 +2,10 @@ module Cv
   class Mat
     attr_accessor allocator: Cv::MatAllocator
     attr_accessor cols: Integer
-    attr_accessor data: Rice::Buffer≺unsigned char∗≻
-    attr_accessor dataend: Rice::Buffer≺unsigned char const∗≻
-    attr_accessor datalimit: Rice::Buffer≺unsigned char const∗≻
-    attr_accessor datastart: Rice::Buffer≺unsigned char const∗≻
+    attr_accessor data: Rice::Pointer≺unsigned char≻
+    attr_accessor dataend: Rice::Pointer≺unsigned char≻
+    attr_accessor datalimit: Rice::Pointer≺unsigned char≻
+    attr_accessor datastart: Rice::Pointer≺unsigned char≻
     attr_accessor dims: Integer
     attr_accessor flags: Integer
     attr_accessor rows: Integer
@@ -13,35 +13,35 @@ module Cv
     attr_reader step: Cv::MatStep
     attr_accessor u: Cv::UMatData
 
-    def initialize: (m: Cv::cuda::GpuMat) -> void
-               | (size: Cv::Size_≺int≻, type: Integer) -> void
-               | (m: Cv::Mat, roi: Cv::Rect_≺int≻) -> void
-               | (m: Cv::Mat, ranges: Cv::Range) -> void
-               | (m: Cv::Mat, ranges: Std::Vector≺cv꞉꞉Range≻) -> void
-               | () -> void
-               | (sizes: Std::Vector≺int≻, type: Integer) -> void
-               | (size: Cv::Size_≺int≻, type: Integer, s: Cv::Scalar_≺double≻) -> void
-               | (m: Cv::Mat, row_range: Cv::Range, col_range: Cv::Range) -> void
-               | (rows: Integer, cols: Integer, type: Integer) -> void
-               | (sizes: Std::Vector≺int≻, type: Integer, s: Cv::Scalar_≺double≻) -> void
-               | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer) -> void
-               | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, s: Cv::Scalar_≺double≻) -> void
-               | (size: Cv::Size_≺int≻, type: Integer, data: Rice::Buffer≺void∗≻, step: Integer) -> void
-               | (sizes: Std::Vector≺int≻, type: Integer, data: Rice::Buffer≺void∗≻, steps: Rice::Buffer≺unsigned Int64 const∗≻) -> void
-               | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar_≺double≻) -> void
-               | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer, data: Rice::Buffer≺void∗≻, steps: Rice::Buffer≺unsigned Int64 const∗≻) -> void
-               | (rows: Integer, cols: Integer, type: Integer, data: Rice::Buffer≺void∗≻, step: Integer) -> void
+    def initialize: (m: Cv::Cuda::GpuMat) -> NilClass
+               | (size: Cv::Size, type: Integer) -> NilClass
+               | (m: Cv::Mat, roi: Cv::Rect) -> NilClass
+               | (m: Cv::Mat, ranges: Cv::Range) -> NilClass
+               | (m: Cv::Mat, ranges: Std::Vector≺cv꞉꞉Range≻) -> NilClass
+               | () -> NilClass
+               | (sizes: Std::Vector≺int≻, type: Integer) -> NilClass
+               | (size: Cv::Size, type: Integer, s: Cv::Scalar) -> NilClass
+               | (m: Cv::Mat, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
+               | (rows: Integer, cols: Integer, type: Integer) -> NilClass
+               | (sizes: Std::Vector≺int≻, type: Integer, s: Cv::Scalar) -> NilClass
+               | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer) -> NilClass
+               | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, s: Cv::Scalar) -> NilClass
+               | (size: Cv::Size, type: Integer, data: Rice::Pointer≺void≻, step: Integer) -> NilClass
+               | (sizes: Std::Vector≺int≻, type: Integer, data: Rice::Pointer≺void≻, steps: Rice::Pointer≺unsigned Int64≻) -> NilClass
+               | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar) -> NilClass
+               | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, data: Rice::Pointer≺void≻, steps: Rice::Pointer≺unsigned Int64≻) -> NilClass
+               | (rows: Integer, cols: Integer, type: Integer, data: Rice::Pointer≺void≻, step: Integer) -> NilClass
     def !=: (arg_0: Float) -> Cv::MatExpr
        | (arg_0: Cv::Mat) -> Cv::MatExpr
-    def &: (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+    def &: (arg_0: Cv::Scalar) -> Cv::MatExpr
       | (arg_0: Cv::Mat) -> Cv::MatExpr
     def *: (arg_0: Float) -> Cv::MatExpr
       | (arg_0: Cv::Mat) -> Cv::MatExpr
       | (arg_0: Cv::MatExpr) -> Cv::MatExpr
     def +: (arg_0: Cv::Mat) -> Cv::MatExpr
-      | (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+      | (arg_0: Cv::Scalar) -> Cv::MatExpr
       | (arg_0: Cv::MatExpr) -> Cv::MatExpr
-    def -: (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+    def -: (arg_0: Cv::Scalar) -> Cv::MatExpr
       | (arg_0: Cv::MatExpr) -> Cv::MatExpr
       | (arg_0: Cv::Mat) -> Cv::MatExpr
     def /: (arg_0: Cv::Mat) -> Cv::MatExpr
@@ -59,76 +59,76 @@ module Cv
        | (arg_0: Float) -> Cv::MatExpr
     def []: (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat
        | (ranges: Cv::Range) -> Cv::Mat
-       | (roi: Cv::Rect_≺int≻) -> Cv::Mat
+       | (roi: Cv::Rect) -> Cv::Mat
        | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat
-       | (arg_0: Integer, arg_1: Integer) -> Std::Variant≺unsigned char‚ cv꞉꞉Vec≺unsigned char‚ 2≻‚ cv꞉꞉Vec≺unsigned char‚ 3≻‚ cv꞉꞉Vec≺unsigned char‚ 4≻‚ short‚ cv꞉꞉Vec≺short‚ 2≻‚ cv꞉꞉Vec≺short‚ 3≻‚ cv꞉꞉Vec≺short‚ 4≻‚ unsigned short‚ cv꞉꞉Vec≺unsigned short‚ 2≻‚ cv꞉꞉Vec≺unsigned short‚ 3≻‚ cv꞉꞉Vec≺unsigned short‚ 4≻‚ int‚ cv꞉꞉Vec≺int‚ 2≻‚ cv꞉꞉Vec≺int‚ 3≻‚ cv꞉꞉Vec≺int‚ 4≻‚ float‚ cv꞉꞉Vec≺float‚ 2≻‚ cv꞉꞉Vec≺float‚ 3≻‚ cv꞉꞉Vec≺float‚ 4≻‚ double‚ cv꞉꞉Vec≺double‚ 2≻‚ cv꞉꞉Vec≺double‚ 3≻‚ cv꞉꞉Vec≺double‚ 4≻≻
-    def []=: (arg_0: Integer, arg_1: Integer, arg_2: Std::Variant≺unsigned char‚ cv꞉꞉Vec≺unsigned char‚ 2≻‚ cv꞉꞉Vec≺unsigned char‚ 3≻‚ cv꞉꞉Vec≺unsigned char‚ 4≻‚ short‚ cv꞉꞉Vec≺short‚ 2≻‚ cv꞉꞉Vec≺short‚ 3≻‚ cv꞉꞉Vec≺short‚ 4≻‚ unsigned short‚ cv꞉꞉Vec≺unsigned short‚ 2≻‚ cv꞉꞉Vec≺unsigned short‚ 3≻‚ cv꞉꞉Vec≺unsigned short‚ 4≻‚ int‚ cv꞉꞉Vec≺int‚ 2≻‚ cv꞉꞉Vec≺int‚ 3≻‚ cv꞉꞉Vec≺int‚ 4≻‚ float‚ cv꞉꞉Vec≺float‚ 2≻‚ cv꞉꞉Vec≺float‚ 3≻‚ cv꞉꞉Vec≺float‚ 4≻‚ double‚ cv꞉꞉Vec≺double‚ 2≻‚ cv꞉꞉Vec≺double‚ 3≻‚ cv꞉꞉Vec≺double‚ 4≻≻) -> Cv::Mat
+       | (arg_0: Integer, arg_1: Integer) -> Object
+    def []=: (arg_0: Integer, arg_1: Integer, arg_2: Object) -> Cv::Mat
     def ^: (arg_0: Cv::Mat) -> Cv::MatExpr
-      | (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
-    def addref: () -> void
+      | (arg_0: Cv::Scalar) -> Cv::MatExpr
+    def addref: () -> NilClass
     def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat
     def assign: (m: Cv::Mat) -> Cv::Mat
-           | (s: Cv::Scalar_≺double≻) -> Cv::Mat
+           | (s: Cv::Scalar) -> Cv::Mat
            | (expr: Cv::MatExpr) -> Cv::Mat
-    def assign_to: (m: Cv::Mat, type: Integer) -> void
+    def assign_to: (m: Cv::Mat, type: Integer) -> NilClass
     def channels: () -> Integer
-    def check_vector: (elem_channels: Integer, depth: Integer, require_continuous: bool) -> Integer
+    def check_vector: (elem_channels: Integer, depth: Integer, require_continuous: TrueClass) -> Integer
     def clone: () -> Cv::Mat
     def col: (x: Integer) -> Cv::Mat
     def col_range: (r: Cv::Range) -> Cv::Mat
               | (startcol: Integer, endcol: Integer) -> Cv::Mat
-    def continuous?: () -> bool
-    def convert_to: (m: Cv::debug_build_guard::OutputArray, rtype: Integer, alpha: Float, beta: Float) -> void
-    def copy_size: (m: Cv::Mat) -> void
-    def copy_to: (m: Cv::debug_build_guard::OutputArray) -> void
-            | (m: Cv::debug_build_guard::OutputArray, mask: Cv::debug_build_guard::InputArray) -> void
-    def create: (size: Cv::Size_≺int≻, type: Integer) -> void
-           | (sizes: Std::Vector≺int≻, type: Integer) -> void
-           | (ndims: Integer, sizes: Rice::Buffer≺int const∗≻, type: Integer) -> void
-           | (rows: Integer, cols: Integer, type: Integer) -> void
-    def cross: (m: Cv::debug_build_guard::InputArray) -> Cv::Mat
+    def continuous?: () -> TrueClass
+    def convert_to: (m: Cv::OutputArray, rtype: Integer, alpha: Float, beta: Float) -> NilClass
+    def copy_size: (m: Cv::Mat) -> NilClass
+    def copy_to: (m: Cv::OutputArray) -> NilClass
+            | (m: Cv::OutputArray, mask: Cv::InputArray) -> NilClass
+    def create: (size: Cv::Size, type: Integer) -> NilClass
+           | (sizes: Std::Vector≺int≻, type: Integer) -> NilClass
+           | (rows: Integer, cols: Integer, type: Integer) -> NilClass
+           | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer) -> NilClass
+    def cross: (m: Cv::InputArray) -> Cv::Mat
     def data: () -> Integer
-    def deallocate: () -> void
+    def deallocate: () -> NilClass
     def depth: () -> Integer
     def diag: (d: Integer) -> Cv::Mat
-    def dot: (m: Cv::debug_build_guard::InputArray) -> Float
+    def dot: (m: Cv::InputArray) -> Float
     def each: () -> Integer
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def empty?: () -> bool
-    def get_u_mat: (access_flags: Enum cv::AccessFlag, usage_flags: Enum cv::UMatUsageFlags) -> Cv::UMat
-    def initialize_copy: (m: Cv::Mat) -> void
-    def input_array: () -> Cv::debug_build_guard::InputArray
-    def input_output_array: () -> Cv::debug_build_guard::InputOutputArray
-    def inspect: () -> Std::String
+    def empty?: () -> TrueClass
+    def get_u_mat: (access_flags: Cv::AccessFlag, usage_flags: Cv::UMatUsageFlags) -> Cv::UMat
+    def initialize_copy: (m: Cv::Mat) -> NilClass
+    def input_array: () -> Cv::InputArray
+    def input_output_array: () -> Cv::InputOutputArray
+    def inspect: () -> String
     def inv: (method: Integer) -> Cv::MatExpr
-    def locate_roi: (whole_size: Cv::Size_≺int≻, ofs: Cv::Point_≺int≻) -> void
-    def mul: (m: Cv::debug_build_guard::InputArray, scale: Float) -> Cv::MatExpr
-    def output_array: () -> Cv::debug_build_guard::OutputArray
-    def pop_back: (nelems: Integer) -> void
-    def ptr: (arg_0: Integer) -> Std::Variant≺Rice꞉꞉Buffer≺unsigned char≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned char‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned char‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned char‚ 4≻‚ void≻‚ Rice꞉꞉Buffer≺short≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺short‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺short‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺short‚ 4≻‚ void≻‚ Rice꞉꞉Buffer≺unsigned short≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned short‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned short‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺unsigned short‚ 4≻‚ void≻‚ Rice꞉꞉Buffer≺int≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺int‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺int‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺int‚ 4≻‚ void≻‚ Rice꞉꞉Buffer≺float≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺float‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺float‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺float‚ 4≻‚ void≻‚ Rice꞉꞉Buffer≺double≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺double‚ 2≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺double‚ 3≻‚ void≻‚ Rice꞉꞉Buffer≺cv꞉꞉Vec≺double‚ 4≻‚ void≻≻
-    def push_back: (m: Cv::Mat) -> void
-    def push_back_: (elem: Rice::Buffer≺void const∗≻) -> void
-    def release: () -> void
-    def reserve: (sz: Integer) -> void
-    def reserve_buffer: (sz: Integer) -> void
+    def locate_roi: (whole_size: Cv::Size, ofs: Cv::Point) -> NilClass
+    def mul: (m: Cv::InputArray, scale: Float) -> Cv::MatExpr
+    def output_array: () -> Cv::OutputArray
+    def pop_back: (nelems: Integer) -> NilClass
+    def ptr: (arg_0: Integer) -> Object
+    def push_back: (m: Cv::Mat) -> NilClass
+    def push_back_: (elem: Rice::Pointer≺void≻) -> NilClass
+    def release: () -> NilClass
+    def reserve: (sz: Integer) -> NilClass
+    def reserve_buffer: (sz: Integer) -> NilClass
     def reshape: (cn: Integer, newshape: Std::Vector≺int≻) -> Cv::Mat
             | (cn: Integer, rows: Integer) -> Cv::Mat
-            | (cn: Integer, newndims: Integer, newsz: Rice::Buffer≺int const∗≻) -> Cv::Mat
-    def resize: (sz: Integer) -> void
-           | (sz: Integer, s: Cv::Scalar_≺double≻) -> void
+            | (cn: Integer, newndims: Integer, newsz: Rice::Pointer≺int≻) -> Cv::Mat
+    def resize: (sz: Integer) -> NilClass
+           | (sz: Integer, s: Cv::Scalar) -> NilClass
     def row: (y: Integer) -> Cv::Mat
     def row_range: (r: Cv::Range) -> Cv::Mat
               | (startrow: Integer, endrow: Integer) -> Cv::Mat
-    def set_to: (value: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray) -> Cv::Mat
+    def set_to: (value: Cv::InputArray, mask: Cv::InputArray) -> Cv::Mat
     def step1: (i: Integer) -> Integer
-    def submatrix?: () -> bool
+    def submatrix?: () -> TrueClass
     def t: () -> Cv::MatExpr
     def total: () -> Integer
           | (start_dim: Integer, end_dim: Integer) -> Integer
     def type: () -> Integer
-    def update_continuity_flag: () -> void
-    def |: (arg_0: Cv::Scalar_≺double≻) -> Cv::MatExpr
+    def update_continuity_flag: () -> NilClass
+    def |: (arg_0: Cv::Scalar) -> Cv::MatExpr
       | (arg_0: Cv::Mat) -> Cv::MatExpr
   end
 end

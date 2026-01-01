@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
+  end
+end

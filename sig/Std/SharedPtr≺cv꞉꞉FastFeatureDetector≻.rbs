@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉FastFeatureDetector≻
+    def initialize: (value: Cv::FastFeatureDetector) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::FastFeatureDetector
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉FastFeatureDetector≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

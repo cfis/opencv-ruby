@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
+               | (ptr: Cv::Detail::FeaturesMatcher) -> NilClass
+               | (value: Cv::Detail::FeaturesMatcher) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻
+    def get: () -> Cv::Detail::FeaturesMatcher
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

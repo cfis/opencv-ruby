@@ -1,21 +1,21 @@
 module Cv
   class Feature2D
-    def initialize: () -> void
-    def compute: (images: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻, descriptors: Cv::debug_build_guard::OutputArray) -> void
-            | (image: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, descriptors: Cv::debug_build_guard::OutputArray) -> void
+    def initialize: () -> NilClass
+    def compute: (images: Cv::InputArray, keypoints: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻, descriptors: Cv::OutputArray) -> NilClass
+            | (image: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, descriptors: Cv::OutputArray) -> NilClass
     def default_norm: () -> Integer
     def descriptor_size: () -> Integer
     def descriptor_type: () -> Integer
-    def detect: (image: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, mask: Cv::debug_build_guard::InputArray) -> void
-           | (images: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻, masks: Cv::debug_build_guard::InputArray) -> void
-    def detect_and_compute: (image: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, descriptors: Cv::debug_build_guard::OutputArray, use_provided_keypoints: bool) -> void
-    def empty?: () -> bool
-    def get_default_name: () -> Std::String
-    def read: (file_name: Std::String) -> void
-         | (: Cv::FileNode) -> void
-    def write: (: Cv::FileStorage) -> void
-          | (file_name: Std::String) -> void
-          | (fs: Cv::FileStorage, name: Std::String) -> void
-          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: Std::String) -> void
+    def detect: (image: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, mask: Cv::InputArray) -> NilClass
+           | (images: Cv::InputArray, keypoints: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻, masks: Cv::InputArray) -> NilClass
+    def detect_and_compute: (image: Cv::InputArray, mask: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, descriptors: Cv::OutputArray, use_provided_keypoints: TrueClass) -> NilClass
+    def empty?: () -> TrueClass
+    def get_default_name: () -> String
+    def read: (file_name: String) -> NilClass
+         | (: Cv::FileNode) -> NilClass
+    def write: (: Cv::FileStorage) -> NilClass
+          | (file_name: String) -> NilClass
+          | (fs: Cv::FileStorage, name: String) -> NilClass
+          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
   end
 end

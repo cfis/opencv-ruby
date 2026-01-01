@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉MergeRobertson≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉MergeRobertson≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉MergeRobertson≻) -> NilClass
+               | (ptr: Cv::MergeRobertson) -> NilClass
+               | (value: Cv::MergeRobertson) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉MergeRobertson≻) -> Cv::Ptr≺cv꞉꞉MergeRobertson≻
+    def get: () -> Cv::MergeRobertson
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉MergeRobertson≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

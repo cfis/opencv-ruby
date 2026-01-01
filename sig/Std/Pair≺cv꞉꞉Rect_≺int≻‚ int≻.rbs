@@ -1,0 +1,11 @@
+module Std
+  class Pair≺cv꞉꞉Rect_≺int≻‚ int≻
+    attr_accessor first: Cv::Rect
+    attr_accessor second: Integer
+
+    def initialize: () -> NilClass
+               | (arg_0: Cv::Rect, arg_1: Integer) -> NilClass
+    def initialize_copy: (arg_0: Std::Pair≺cv꞉꞉Rect_≺int≻‚ int≻) -> NilClass
+    def to_s: () -> String
+  end
+end

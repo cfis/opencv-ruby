@@ -3,8 +3,8 @@ module Cv
     attr_accessor im: Float
     attr_accessor re: Float
 
-    def conj: () -> Cv::Complex≺float≻
-    def initialize: () -> void
-               | (_re: Float, _im: Float) -> void
+    def conj: () -> Cv::Complexf
+    def initialize: () -> NilClass
+               | (_re: Float, _im: Float) -> NilClass
   end
 end

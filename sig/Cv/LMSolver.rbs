@@ -1,7 +1,7 @@
 module Cv
   class LMSolver
     def get_max_iters: () -> Integer
-    def run: (param: Cv::debug_build_guard::InputOutputArray) -> Integer
-    def set_max_iters: (max_iters: Integer) -> void
+    def run: (param: Cv::InputOutputArray) -> Integer
+    def set_max_iters: (max_iters: Integer) -> NilClass
   end
 end

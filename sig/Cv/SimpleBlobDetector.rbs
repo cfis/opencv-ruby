@@ -1,8 +1,8 @@
 module Cv
   class SimpleBlobDetector
     def get_blob_contours: () -> Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻
-    def get_default_name: () -> Std::String
+    def get_default_name: () -> String
     def get_params: () -> Cv::SimpleBlobDetector::Params
-    def set_params: (params: Cv::SimpleBlobDetector::Params) -> void
+    def set_params: (params: Cv::SimpleBlobDetector::Params) -> NilClass
   end
 end

@@ -5,29 +5,29 @@ module Cv
     attr_accessor x: Integer
     attr_accessor y: Integer
 
-    def !=: (arg_0: Cv::Rect_≺unsigned short≻) -> bool
-    def +: (arg_0: Cv::Size_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-      | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-    def initialize: (org: Cv::Point_≺unsigned short≻, sz: Cv::Size_≺unsigned short≻) -> void
-               | (pt1: Cv::Point_≺unsigned short≻, pt2: Cv::Point_≺unsigned short≻) -> void
-               | () -> void
-               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> void
-    def -: (arg_0: Cv::Size_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-      | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-    def ==: (arg_0: Cv::Rect_≺unsigned short≻) -> bool
+    def !=: (arg_0: Cv::Rect2w) -> TrueClass
+    def +: (arg_0: Cv::Size2w) -> Cv::Rect2w
+      | (arg_0: Cv::Point2w) -> Cv::Rect2w
+    def initialize: (org: Cv::Point2w, sz: Cv::Size2w) -> NilClass
+               | (pt1: Cv::Point2w, pt2: Cv::Point2w) -> NilClass
+               | () -> NilClass
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> NilClass
+    def -: (arg_0: Cv::Size2w) -> Cv::Rect2w
+      | (arg_0: Cv::Point2w) -> Cv::Rect2w
+    def ==: (arg_0: Cv::Rect2w) -> TrueClass
     def area: () -> Integer
-    def assign_minus: (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-                 | (arg_0: Cv::Size_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-    def assign_plus: (arg_0: Cv::Size_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-                | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-    def br: () -> Cv::Point_≺unsigned short≻
-    def contains?: (pt: Cv::Point_≺unsigned short≻) -> bool
-    def empty?: () -> bool
-    def initialize_copy: (r: Cv::Rect_≺unsigned short≻) -> void
-    def inspect: () -> Std::String
-    def size: () -> Cv::Size_≺unsigned short≻
-    def tl: () -> Cv::Point_≺unsigned short≻
-    def |: (arg_0: Cv::Rect_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
-    def |=: (arg_0: Cv::Rect_≺unsigned short≻) -> Cv::Rect_≺unsigned short≻
+    def assign_minus: (arg_0: Cv::Point2w) -> Cv::Rect2w
+                 | (arg_0: Cv::Size2w) -> Cv::Rect2w
+    def assign_plus: (arg_0: Cv::Size2w) -> Cv::Rect2w
+                | (arg_0: Cv::Point2w) -> Cv::Rect2w
+    def br: () -> Cv::Point2w
+    def contains?: (pt: Cv::Point2w) -> TrueClass
+    def empty?: () -> TrueClass
+    def initialize_copy: (r: Cv::Rect2w) -> NilClass
+    def inspect: () -> String
+    def size: () -> Cv::Size2w
+    def tl: () -> Cv::Point2w
+    def |: (arg_0: Cv::Rect2w) -> Cv::Rect2w
+    def |=: (arg_0: Cv::Rect2w) -> Cv::Rect2w
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉SimpleBlobDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉SimpleBlobDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉SimpleBlobDetector≻) -> NilClass
+               | (ptr: Cv::SimpleBlobDetector) -> NilClass
+               | (value: Cv::SimpleBlobDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉SimpleBlobDetector≻) -> Cv::Ptr≺cv꞉꞉SimpleBlobDetector≻
+    def get: () -> Cv::SimpleBlobDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉SimpleBlobDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

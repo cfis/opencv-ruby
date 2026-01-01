@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> NilClass
+               | (ptr: Cv::Detail::Tracking::TrackerStateEstimator) -> NilClass
+               | (value: Cv::Detail::Tracking::TrackerStateEstimator) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻
+    def get: () -> Cv::Detail::Tracking::TrackerStateEstimator
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

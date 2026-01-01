@@ -1,5 +1,5 @@
 module Cv::Traits
   class DepthRange
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

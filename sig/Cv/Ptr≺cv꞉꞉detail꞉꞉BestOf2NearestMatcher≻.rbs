@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> NilClass
+               | (ptr: Cv::Detail::BestOf2NearestMatcher) -> NilClass
+               | (value: Cv::Detail::BestOf2NearestMatcher) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻
+    def get: () -> Cv::Detail::BestOf2NearestMatcher
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -1,11 +1,11 @@
 module Cv::Detail::Tracking
   class TrackerTargetState
     def get_target_height: () -> Integer
-    def get_target_position: () -> Cv::Point_≺float≻
+    def get_target_position: () -> Cv::Point2f
     def get_target_width: () -> Integer
-    def initialize: () -> void
-    def set_target_height: (height: Integer) -> void
-    def set_target_position: (position: Cv::Point_≺float≻) -> void
-    def set_target_width: (width: Integer) -> void
+    def initialize: () -> NilClass
+    def set_target_height: (height: Integer) -> NilClass
+    def set_target_position: (position: Cv::Point2f) -> NilClass
+    def set_target_width: (width: Integer) -> NilClass
   end
 end

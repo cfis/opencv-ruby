@@ -1,11 +1,11 @@
 module Cv
   class CirclesGridFinderParameters
     attr_accessor convex_hull_factor: Float
-    attr_accessor density_neighborhood_size: Cv::Size_≺float≻
+    attr_accessor density_neighborhood_size: Cv::Size2f
     attr_accessor edge_gain: Float
     attr_accessor edge_penalty: Float
     attr_accessor existing_vertex_gain: Float
-    attr_accessor grid_type: Enum cv::CirclesGridFinderParameters::GridType
+    attr_accessor grid_type: Cv::CirclesGridFinderParameters::GridType
     attr_accessor keypoint_scale: Integer
     attr_accessor kmeans_attempts: Integer
     attr_accessor max_rectified_distance: Float
@@ -17,6 +17,6 @@ module Cv
     attr_accessor vertex_gain: Float
     attr_accessor vertex_penalty: Float
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

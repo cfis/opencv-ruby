@@ -1,0 +1,5 @@
+module Rice
+  class NativeRegistry
+    def lookup: (klass: Integer) -> Array
+  end
+end

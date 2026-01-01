@@ -1,7 +1,7 @@
 module Cv::Detail
   class CylindricalWarper
-    def build_maps: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, xmap: Cv::debug_build_guard::OutputArray, ymap: Cv::debug_build_guard::OutputArray) -> Cv::Rect_≺int≻
-    def initialize: (scale: Float) -> void
-    def warp: (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::debug_build_guard::OutputArray) -> Cv::Point_≺int≻
+    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
+    def initialize: (scale: Float) -> NilClass
+    def warp: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉GFTTDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉GFTTDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉GFTTDetector≻) -> NilClass
+               | (ptr: Cv::GFTTDetector) -> NilClass
+               | (value: Cv::GFTTDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉GFTTDetector≻) -> Cv::Ptr≺cv꞉꞉GFTTDetector≻
+    def get: () -> Cv::GFTTDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉GFTTDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

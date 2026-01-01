@@ -1,18 +1,20 @@
 module Cv
   class NormTypes
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::NormTypes) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::NormTypes) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::NormTypes) -> Integer
+    def <=>: (arg_0: Cv::NormTypes) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::NormTypes) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::NormTypes) -> bool
+    def ^: (arg_0: Cv::NormTypes) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::NormTypes) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::NormTypes) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::NormTypes) -> Integer
     def ~: () -> Integer
   end
 end

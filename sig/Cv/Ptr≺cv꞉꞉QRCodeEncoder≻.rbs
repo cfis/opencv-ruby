@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉QRCodeEncoder≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉QRCodeEncoder≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉QRCodeEncoder≻) -> NilClass
+               | (ptr: Cv::QRCodeEncoder) -> NilClass
+               | (value: Cv::QRCodeEncoder) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉QRCodeEncoder≻) -> Cv::Ptr≺cv꞉꞉QRCodeEncoder≻
+    def get: () -> Cv::QRCodeEncoder
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉QRCodeEncoder≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

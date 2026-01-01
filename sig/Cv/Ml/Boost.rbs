@@ -3,8 +3,8 @@ module Cv::Ml
     def get_boost_type: () -> Integer
     def get_weak_count: () -> Integer
     def get_weight_trim_rate: () -> Float
-    def set_boost_type: (val: Integer) -> void
-    def set_weak_count: (val: Integer) -> void
-    def set_weight_trim_rate: (val: Float) -> void
+    def set_boost_type: (val: Integer) -> NilClass
+    def set_weak_count: (val: Integer) -> NilClass
+    def set_weight_trim_rate: (val: Float) -> NilClass
   end
 end

@@ -2,14 +2,14 @@ module Cv
   class SparseMatConstIterator
     attr_accessor hashidx: Integer
     attr_accessor m: Cv::SparseMat
-    attr_accessor ptr: Rice::Buffer≺unsigned char∗≻
+    attr_accessor ptr: Rice::Pointer≺unsigned char≻
 
     def increment: () -> Cv::SparseMatConstIterator
               | (: Integer) -> Cv::SparseMatConstIterator
-    def initialize: () -> void
-               | (_m: Cv::SparseMat) -> void
-    def initialize_copy: (it: Cv::SparseMatConstIterator) -> void
+    def initialize: () -> NilClass
+               | (_m: Cv::SparseMat) -> NilClass
+    def initialize_copy: (it: Cv::SparseMatConstIterator) -> NilClass
     def node: () -> Cv::SparseMat::Node
-    def seek_end: () -> void
+    def seek_end: () -> NilClass
   end
 end

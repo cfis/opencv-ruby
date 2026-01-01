@@ -1,0 +1,10 @@
+module Cv::Dnn
+  class GemmLayer
+    attr_accessor alpha: Float
+    attr_accessor beta: Float
+    attr_accessor trans_a: TrueClass
+    attr_accessor trans_b: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

@@ -1,42 +1,42 @@
 module Cv
   class HOGDescriptor
-    attr_accessor block_size: Cv::Size_≺int≻
-    attr_accessor block_stride: Cv::Size_≺int≻
-    attr_accessor cell_size: Cv::Size_≺int≻
+    attr_accessor block_size: Cv::Size
+    attr_accessor block_stride: Cv::Size
+    attr_accessor cell_size: Cv::Size
     attr_accessor deriv_aperture: Integer
     attr_accessor free_coef: Float
-    attr_accessor gamma_correction: bool
-    attr_accessor histogram_norm_type: Enum cv::HOGDescriptor::HistogramNormType
+    attr_accessor gamma_correction: TrueClass
+    attr_accessor histogram_norm_type: Cv::HOGDescriptor::HistogramNormType
     attr_accessor l2_hys_threshold: Float
     attr_accessor nbins: Integer
     attr_accessor nlevels: Integer
     attr_accessor ocl_svm_detector: Cv::UMat
-    attr_accessor signed_gradient: bool
+    attr_accessor signed_gradient: TrueClass
     attr_accessor svm_detector: Std::Vector≺float≻
     attr_accessor win_sigma: Float
-    attr_accessor win_size: Cv::Size_≺int≻
+    attr_accessor win_size: Cv::Size
 
-    def check_detector_size?: () -> bool
-    def compute: (img: Cv::debug_build_guard::InputArray, descriptors: Std::Vector≺float≻, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻, locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> void
-    def compute_gradient: (img: Cv::debug_build_guard::InputArray, grad: Cv::debug_build_guard::InputOutputArray, angle_ofs: Cv::debug_build_guard::InputOutputArray, padding_tl: Cv::Size_≺int≻, padding_br: Cv::Size_≺int≻) -> void
-    def copy_to: (c: Cv::HOGDescriptor) -> void
-    def detect: (img: Cv::debug_build_guard::InputArray, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, hit_threshold: Float, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻, search_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> void
-           | (img: Cv::debug_build_guard::InputArray, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, weights: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻, search_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> void
-    def initialize: () -> void
-               | (filename: Std::String) -> void
-               | (_win_size: Cv::Size_≺int≻, _block_size: Cv::Size_≺int≻, _block_stride: Cv::Size_≺int≻, _cell_size: Cv::Size_≺int≻, _nbins: Integer, _deriv_aperture: Integer, _win_sigma: Float, _histogram_norm_type: Enum cv::HOGDescriptor::HistogramNormType, _l2_hys_threshold: Float, _gamma_correction: bool, _nlevels: Integer, _signed_gradient: bool) -> void
-    def detect_multi_scale: (img: Cv::debug_build_guard::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, hit_threshold: Float, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻, scale: Float, group_threshold: Float, use_meanshift_grouping: bool) -> void
-                       | (img: Cv::debug_build_guard::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, found_weights: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻, scale: Float, group_threshold: Float, use_meanshift_grouping: bool) -> void
-    def detect_multi_scale_roi: (img: Cv::debug_build_guard::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, locations: Std::Vector≺cv꞉꞉DetectionROI≻, hit_threshold: Float, group_threshold: Integer) -> void
-    def detect_roi: (img: Cv::debug_build_guard::InputArray, locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, confidences: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size_≺int≻, padding: Cv::Size_≺int≻) -> void
+    def check_detector_size?: () -> TrueClass
+    def compute: (img: Cv::InputArray, descriptors: Std::Vector≺float≻, win_stride: Cv::Size, padding: Cv::Size, locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> NilClass
+    def compute_gradient: (img: Cv::InputArray, grad: Cv::InputOutputArray, angle_ofs: Cv::InputOutputArray, padding_tl: Cv::Size, padding_br: Cv::Size) -> NilClass
+    def copy_to: (c: Cv::HOGDescriptor) -> NilClass
+    def detect: (img: Cv::InputArray, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, hit_threshold: Float, win_stride: Cv::Size, padding: Cv::Size, search_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> NilClass
+           | (img: Cv::InputArray, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, weights: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size, padding: Cv::Size, search_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> NilClass
+    def initialize: () -> NilClass
+               | (filename: String) -> NilClass
+               | (_win_size: Cv::Size, _block_size: Cv::Size, _block_stride: Cv::Size, _cell_size: Cv::Size, _nbins: Integer, _deriv_aperture: Integer, _win_sigma: Float, _histogram_norm_type: Cv::HOGDescriptor::HistogramNormType, _l2_hys_threshold: Float, _gamma_correction: TrueClass, _nlevels: Integer, _signed_gradient: TrueClass) -> NilClass
+    def detect_multi_scale: (img: Cv::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, hit_threshold: Float, win_stride: Cv::Size, padding: Cv::Size, scale: Float, group_threshold: Float, use_meanshift_grouping: TrueClass) -> NilClass
+                       | (img: Cv::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, found_weights: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size, padding: Cv::Size, scale: Float, group_threshold: Float, use_meanshift_grouping: TrueClass) -> NilClass
+    def detect_multi_scale_roi: (img: Cv::InputArray, found_locations: Std::Vector≺cv꞉꞉Rect_≺int≻≻, locations: Std::Vector≺cv꞉꞉DetectionROI≻, hit_threshold: Float, group_threshold: Integer) -> NilClass
+    def detect_roi: (img: Cv::InputArray, locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, found_locations: Std::Vector≺cv꞉꞉Point_≺int≻≻, confidences: Std::Vector≺double≻, hit_threshold: Float, win_stride: Cv::Size, padding: Cv::Size) -> NilClass
     def get_descriptor_size: () -> Integer
     def get_win_sigma: () -> Float
-    def group_rectangles: (rect_list: Std::Vector≺cv꞉꞉Rect_≺int≻≻, weights: Std::Vector≺double≻, group_threshold: Integer, eps: Float) -> void
-    def initialize_copy: (d: Cv::HOGDescriptor) -> void
-    def load?: (filename: Std::String, objname: Std::String) -> bool
-    def read?: (fn: Cv::FileNode) -> bool
-    def save: (filename: Std::String, objname: Std::String) -> void
-    def set_svm_detector: (svmdetector: Cv::debug_build_guard::InputArray) -> void
-    def write: (fs: Cv::FileStorage, objname: Std::String) -> void
+    def group_rectangles: (rect_list: Std::Vector≺cv꞉꞉Rect_≺int≻≻, weights: Std::Vector≺double≻, group_threshold: Integer, eps: Float) -> NilClass
+    def initialize_copy: (d: Cv::HOGDescriptor) -> NilClass
+    def load?: (filename: String, objname: String) -> TrueClass
+    def read?: (fn: Cv::FileNode) -> TrueClass
+    def save: (filename: String, objname: String) -> NilClass
+    def set_svm_detector: (svmdetector: Cv::InputArray) -> NilClass
+    def write: (fs: Cv::FileStorage, objname: String) -> NilClass
   end
 end

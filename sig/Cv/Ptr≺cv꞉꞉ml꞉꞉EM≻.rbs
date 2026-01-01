@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉EM≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉EM≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉EM≻) -> NilClass
+               | (ptr: Cv::Ml::EM) -> NilClass
+               | (value: Cv::Ml::EM) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉EM≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉EM≻
+    def get: () -> Cv::Ml::EM
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉EM≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

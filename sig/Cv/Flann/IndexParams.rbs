@@ -1,17 +1,17 @@
 module Cv::Flann
   class IndexParams
-    attr_accessor params: Rice::Buffer≺void∗≻
+    attr_accessor params: Rice::Pointer≺void≻
 
-    def initialize: () -> void
-    def get_all: (names: Std::Vector≺string≻, types: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻, str_values: Std::Vector≺string≻, num_values: Std::Vector≺double≻) -> void
-    def get_double: (key: Std::String, default_val: Float) -> Float
-    def get_int: (key: Std::String, default_val: Integer) -> Integer
-    def get_string: (key: Std::String, default_val: Std::String) -> Std::String
-    def set_algorithm: (value: Integer) -> void
-    def set_bool: (key: Std::String, value: bool) -> void
-    def set_double: (key: Std::String, value: Float) -> void
-    def set_float: (key: Std::String, value: Float) -> void
-    def set_int: (key: Std::String, value: Integer) -> void
-    def set_string: (key: Std::String, value: Std::String) -> void
+    def initialize: () -> NilClass
+    def get_all: (names: Std::Vector≺string≻, types: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻, str_values: Std::Vector≺string≻, num_values: Std::Vector≺double≻) -> NilClass
+    def get_double: (key: String, default_val: Float) -> Float
+    def get_int: (key: String, default_val: Integer) -> Integer
+    def get_string: (key: String, default_val: String) -> String
+    def set_algorithm: (value: Integer) -> NilClass
+    def set_bool: (key: String, value: TrueClass) -> NilClass
+    def set_double: (key: String, value: Float) -> NilClass
+    def set_float: (key: String, value: Float) -> NilClass
+    def set_int: (key: String, value: Integer) -> NilClass
+    def set_string: (key: String, value: String) -> NilClass
   end
 end

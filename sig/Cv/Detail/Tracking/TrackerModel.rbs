@@ -4,10 +4,10 @@ module Cv::Detail::Tracking
     def get_last_confidence_map: () -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
     def get_last_target_state: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻
     def get_tracker_state_estimator: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻
-    def model_estimation: (responses: Std::Vector≺cv꞉꞉Mat≻) -> void
-    def model_update: () -> void
-    def run_state_estimator?: () -> bool
-    def set_last_target_state: (last_target_state: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> void
-    def set_tracker_state_estimator?: (tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> bool
+    def model_estimation: (responses: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def model_update: () -> NilClass
+    def run_state_estimator?: () -> TrueClass
+    def set_last_target_state: (last_target_state: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> NilClass
+    def set_tracker_state_estimator?: (tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> TrueClass
   end
 end

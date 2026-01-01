@@ -1,54 +1,54 @@
 module Cv
   class Matx11s
-    def !=: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> bool
-    def *: (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-      | (arg_0: Cv::Vec≺short‚ 1≻) -> Cv::Vec≺short‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-      | (arg_0: Integer) -> Cv::Matx≺short‚ 1‚ 1≻
-    def initialize: () -> void
-               | (vals: Rice::Buffer≺short const∗≻) -> void
-               | (v0: Integer) -> void
-               | (a: Cv::Matx≺short‚ 1‚ 1≻, b: Cv::Matx≺short‚ 1‚ 1≻, : Cv::MatxSubOp) -> void
-               | (a: Cv::Matx≺short‚ 1‚ 1≻, b: Cv::Matx≺short‚ 1‚ 1≻, : Cv::MatxAddOp) -> void
-               | (a: Cv::Matx≺short‚ 1‚ 1≻, b: Cv::Matx≺short‚ 1‚ 1≻, : Cv::MatxMulOp) -> void
-               | (a: Cv::Matx≺short‚ 1‚ 1≻, b: Cv::Matx≺short‚ 1‚ 1≻, : Cv::MatxDivOp) -> void
-               | (a: Cv::Matx≺short‚ 1‚ 1≻, : Cv::MatxTOp) -> void
-    def +: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
-    def -: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
-    def /: (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-    def ==: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> bool
-    def _dump_data: () -> Rice::Hash
-    def assign_divide: (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-                  | (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-    def assign_minus: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
-    def assign_multiply: (arg_0: Integer) -> Cv::Matx≺short‚ 1‚ 1≻
-                    | (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-                    | (arg_0: Float) -> Cv::Matx≺short‚ 1‚ 1≻
-    def assign_plus: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
-    def call: (i: Integer) -> Short
-         | (i: Integer) -> Short
-         | (row: Integer, col: Integer) -> Short
-         | (row: Integer, col: Integer) -> Short
+    def !=: (arg_0: Cv::Matx11s) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Matx11s
+      | (arg_0: Cv::Vec1s) -> Cv::Vec1s
+      | (arg_0: Float) -> Cv::Matx11s
+      | (arg_0: Integer) -> Cv::Matx11s
+    def initialize: () -> NilClass
+               | (vals: Rice::Pointer≺short≻) -> NilClass
+               | (v0: Integer) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx11s, arg_1: Cv::MatxTOp) -> NilClass
+    def +: (arg_0: Cv::Matx11s) -> Cv::Matx11s
+    def -: (arg_0: Cv::Matx11s) -> Cv::Matx11s
+    def /: (arg_0: Float) -> Cv::Matx11s
+      | (arg_0: Float) -> Cv::Matx11s
+    def ==: (arg_0: Cv::Matx11s) -> TrueClass
+    def _dump_data: () -> Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx11s
+                  | (arg_0: Float) -> Cv::Matx11s
+    def assign_minus: (arg_0: Cv::Matx11s) -> Cv::Matx11s
+    def assign_multiply: (arg_0: Integer) -> Cv::Matx11s
+                    | (arg_0: Float) -> Cv::Matx11s
+                    | (arg_0: Float) -> Cv::Matx11s
+    def assign_plus: (arg_0: Cv::Matx11s) -> Cv::Matx11s
+    def call: (i: Integer) -> Integer
+         | (i: Integer) -> Integer
+         | (row: Integer, col: Integer) -> Integer
+         | (row: Integer, col: Integer) -> Integer
     def channels: () -> Integer
-    def col: (i: Integer) -> Cv::Matx≺short‚ 1‚ 1≻
+    def col: (i: Integer) -> Cv::Matx11s
     def cols: () -> Integer
-    def ddot: (v: Cv::Matx≺short‚ 1‚ 1≻) -> Float
+    def ddot: (v: Cv::Matx11s) -> Float
     def determinant: () -> Float
-    def diag: () -> Cv::Matx≺short‚ 1‚ 1≻
-    def div: (a: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
-    def dot: (v: Cv::Matx≺short‚ 1‚ 1≻) -> Integer
+    def diag: () -> Cv::Matx11s
+    def div: (a: Cv::Matx11s) -> Cv::Matx11s
+    def dot: (v: Cv::Matx11s) -> Integer
     def each: () -> Integer
-    def eql?: (arg_0: Cv::Matx≺short‚ 1‚ 1≻) -> bool
-    def input_array: () -> Cv::debug_build_guard::InputArray
-    def inspect: () -> Std::String
-    def mul: (a: Cv::Matx≺short‚ 1‚ 1≻) -> Cv::Matx≺short‚ 1‚ 1≻
+    def eql?: (arg_0: Cv::Matx11s) -> TrueClass
+    def input_array: () -> Cv::InputArray
+    def inspect: () -> String
+    def mul: (a: Cv::Matx11s) -> Cv::Matx11s
     def norm: () -> Float
          | (arg_0: Integer) -> Float
-    def row: (i: Integer) -> Cv::Matx≺short‚ 1‚ 1≻
+    def row: (i: Integer) -> Cv::Matx11s
     def rows: () -> Integer
     def shortdim: () -> Integer
-    def t: () -> Cv::Matx≺short‚ 1‚ 1≻
+    def t: () -> Cv::Matx11s
     def trace: () -> Float
   end
 end

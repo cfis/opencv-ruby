@@ -1,0 +1,6 @@
+module Rice
+  class Reference≺bool≻
+    def initialize: (arg_0: TrueClass) -> NilClass
+    def value: () -> TrueClass
+  end
+end

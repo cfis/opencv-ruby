@@ -1,0 +1,6 @@
+module Std
+  class Exception
+    def initialize: () -> NilClass
+    def message: () -> String
+  end
+end

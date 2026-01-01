@@ -1,13 +1,13 @@
 module Cv
   class SparseMatConstIterator3s
-    def !=: (arg_0: Cv::SparseMatConstIterator_≺cv꞉꞉Vec≺short‚ 3≻≻) -> bool
-    def initialize: () -> void
-               | (_m: Cv::SparseMat_≺cv꞉꞉Vec≺short‚ 3≻≻) -> void
-               | (_m: Cv::SparseMat) -> void
-    def ==: (arg_0: Cv::SparseMatConstIterator_≺cv꞉꞉Vec≺short‚ 3≻≻) -> bool
-    def dereference: () -> Cv::Vec≺short‚ 3≻
-    def increment: () -> Cv::SparseMatConstIterator_≺cv꞉꞉Vec≺short‚ 3≻≻
-              | (: Integer) -> Cv::SparseMatConstIterator_≺cv꞉꞉Vec≺short‚ 3≻≻
-    def initialize_copy: (it: Cv::SparseMatConstIterator_≺cv꞉꞉Vec≺short‚ 3≻≻) -> void
+    def !=: (arg_0: Cv::SparseMatConstIterator3s) -> TrueClass
+    def initialize: () -> NilClass
+               | (_m: Cv::SparseMat3s) -> NilClass
+               | (_m: Cv::SparseMat) -> NilClass
+    def ==: (arg_0: Cv::SparseMatConstIterator3s) -> TrueClass
+    def dereference: () -> Cv::Vec3s
+    def increment: () -> Cv::SparseMatConstIterator3s
+              | (: Integer) -> Cv::SparseMatConstIterator3s
+    def initialize_copy: (it: Cv::SparseMatConstIterator3s) -> NilClass
   end
 end

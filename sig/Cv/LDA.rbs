@@ -1,15 +1,15 @@
 module Cv
   class LDA
-    def compute: (src: Cv::debug_build_guard::InputArray, labels: Cv::debug_build_guard::InputArray) -> void
+    def compute: (src: Cv::InputArray, labels: Cv::InputArray) -> NilClass
     def eigenvalues: () -> Cv::Mat
-    def initialize: (num_components: Integer) -> void
-               | (src: Cv::debug_build_guard::InputArray, labels: Cv::debug_build_guard::InputArray, num_components: Integer) -> void
+    def initialize: (num_components: Integer) -> NilClass
+               | (src: Cv::InputArray, labels: Cv::InputArray, num_components: Integer) -> NilClass
     def eigenvectors: () -> Cv::Mat
-    def load: (node: Cv::FileStorage) -> void
-         | (filename: Std::String) -> void
-    def project: (src: Cv::debug_build_guard::InputArray) -> Cv::Mat
-    def reconstruct: (src: Cv::debug_build_guard::InputArray) -> Cv::Mat
-    def save: (fs: Cv::FileStorage) -> void
-         | (filename: Std::String) -> void
+    def load: (node: Cv::FileStorage) -> NilClass
+         | (filename: String) -> NilClass
+    def project: (src: Cv::InputArray) -> Cv::Mat
+    def reconstruct: (src: Cv::InputArray) -> Cv::Mat
+    def save: (fs: Cv::FileStorage) -> NilClass
+         | (filename: String) -> NilClass
   end
 end

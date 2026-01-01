@@ -1,18 +1,20 @@
 module 
   class CpuFeatures
-    def initialize: () -> void
-    def &: (arg_0: Enum CpuFeatures) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: CpuFeatures) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum CpuFeatures) -> Integer
+    def <=>: (arg_0: CpuFeatures) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum CpuFeatures) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum CpuFeatures) -> bool
+    def ^: (arg_0: CpuFeatures) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: CpuFeatures) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum CpuFeatures) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: CpuFeatures) -> Integer
     def ~: () -> Integer
   end
 end

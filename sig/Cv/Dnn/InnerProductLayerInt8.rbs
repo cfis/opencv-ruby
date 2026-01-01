@@ -1,0 +1,11 @@
+module Cv::Dnn
+  class InnerProductLayerInt8
+    attr_accessor input_sc: Float
+    attr_accessor input_zp: Integer
+    attr_accessor output_sc: Float
+    attr_accessor output_zp: Integer
+    attr_accessor per_channel: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

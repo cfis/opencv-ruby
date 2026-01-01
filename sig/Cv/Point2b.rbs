@@ -3,43 +3,43 @@ module Cv
     attr_accessor x: String
     attr_accessor y: String
 
-    def initialize: () -> void
-               | (sz: Cv::Size_≺unsigned char≻) -> void
-               | (v: Cv::Vec≺unsigned char‚ 2≻) -> void
-               | (_x: String, _y: String) -> void
-    def !=: (arg_0: Cv::Point_≺unsigned char≻) -> bool
-       | (arg_0: Cv::Point_≺unsigned char≻) -> bool
-    def *: (arg_0: Float) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-    def +: (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-    def -: (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-    def /: (arg_0: Float) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-      | (arg_0: Float) -> Cv::Point_≺unsigned char≻
-    def ==: (arg_0: Cv::Point_≺unsigned char≻) -> bool
-       | (arg_0: Cv::Point_≺unsigned char≻) -> bool
-    def assign_divide: (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-                  | (arg_0: Float) -> Cv::Point_≺unsigned char≻
-                  | (arg_0: Float) -> Cv::Point_≺unsigned char≻
-                  | (arg_0: Integer) -> Cv::Point_≺unsigned char≻
-    def assign_minus: (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-                 | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-    def assign_multiply: (arg_0: Float) -> Cv::Point_≺unsigned char≻
-                    | (arg_0: Float) -> Cv::Point_≺unsigned char≻
-    def assign_plus: (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-                | (arg_0: Cv::Point_≺unsigned char≻) -> Cv::Point_≺unsigned char≻
-    def cross: (pt: Cv::Point_≺unsigned char≻) -> Float
-    def ddot: (pt: Cv::Point_≺unsigned char≻) -> Float
-    def dot: (pt: Cv::Point_≺unsigned char≻) -> String
-    def initialize_copy: (pt: Cv::Point_≺unsigned char≻) -> void
-    def inside?: (r: Cv::Rect_≺unsigned char≻) -> bool
-    def inspect: () -> Std::String
+    def initialize: () -> NilClass
+               | (sz: Cv::Size2b) -> NilClass
+               | (v: Cv::Vec2b) -> NilClass
+               | (_x: String, _y: String) -> NilClass
+    def !=: (arg_0: Cv::Point2b) -> TrueClass
+       | (arg_0: Cv::Point2b) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Point2b
+      | (arg_0: Integer) -> Cv::Point2b
+      | (arg_0: Integer) -> Cv::Point2b
+    def +: (arg_0: Cv::Point2b) -> Cv::Point2b
+      | (arg_0: Cv::Point2b) -> Cv::Point2b
+    def -: (arg_0: Cv::Point2b) -> Cv::Point2b
+      | (arg_0: Cv::Point2b) -> Cv::Point2b
+    def /: (arg_0: Float) -> Cv::Point2b
+      | (arg_0: Integer) -> Cv::Point2b
+      | (arg_0: Integer) -> Cv::Point2b
+      | (arg_0: Float) -> Cv::Point2b
+    def ==: (arg_0: Cv::Point2b) -> TrueClass
+       | (arg_0: Cv::Point2b) -> TrueClass
+    def assign_divide: (arg_0: Integer) -> Cv::Point2b
+                  | (arg_0: Float) -> Cv::Point2b
+                  | (arg_0: Float) -> Cv::Point2b
+                  | (arg_0: Integer) -> Cv::Point2b
+    def assign_minus: (arg_0: Cv::Point2b) -> Cv::Point2b
+                 | (arg_0: Cv::Point2b) -> Cv::Point2b
+    def assign_multiply: (arg_0: Float) -> Cv::Point2b
+                    | (arg_0: Float) -> Cv::Point2b
+    def assign_plus: (arg_0: Cv::Point2b) -> Cv::Point2b
+                | (arg_0: Cv::Point2b) -> Cv::Point2b
+    def cross: (pt: Cv::Point2b) -> Float
+    def ddot: (pt: Cv::Point2b) -> Float
+    def dot: (pt: Cv::Point2b) -> String
+    def initialize_copy: (pt: Cv::Point2b) -> NilClass
+    def inside?: (r: Cv::Rect2b) -> TrueClass
+    def inspect: () -> String
     def norm: () -> Float
-    def to_s: () -> Std::String
-    def to_vec: () -> Cv::Vec≺unsigned char‚ 2≻
+    def to_s: () -> String
+    def to_vec: () -> Cv::Vec2b
   end
 end

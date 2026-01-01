@@ -1,12 +1,12 @@
 module Cv::Detail
   class RotationWarperBasePlaneProjector
-    def build_maps: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, xmap: Cv::debug_build_guard::OutputArray, ymap: Cv::debug_build_guard::OutputArray) -> Cv::Rect_≺int≻
+    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
     def get_scale: () -> Float
-    def set_scale: (val: Float) -> void
-    def warp: (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::debug_build_guard::OutputArray) -> Cv::Point_≺int≻
-    def warp_backward: (src: Cv::debug_build_guard::InputArray, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray, interp_mode: Integer, border_mode: Integer, dst_size: Cv::Size_≺int≻, dst: Cv::debug_build_guard::OutputArray) -> void
-    def warp_point: (pt: Cv::Point_≺float≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray) -> Cv::Point_≺float≻
-    def warp_point_backward: (pt: Cv::Point_≺float≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray) -> Cv::Point_≺float≻
-    def warp_roi: (src_size: Cv::Size_≺int≻, k: Cv::debug_build_guard::InputArray, r: Cv::debug_build_guard::InputArray) -> Cv::Rect_≺int≻
+    def set_scale: (val: Float) -> NilClass
+    def warp: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
+    def warp_backward: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst_size: Cv::Size, dst: Cv::OutputArray) -> NilClass
+    def warp_point: (pt: Cv::Point2f, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Point2f
+    def warp_point_backward: (pt: Cv::Point2f, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Point2f
+    def warp_roi: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Rect
   end
 end

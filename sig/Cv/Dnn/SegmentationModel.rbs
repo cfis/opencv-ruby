@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class SegmentationModel
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def segment: (frame: Cv::InputArray, mask: Cv::OutputArray) -> NilClass
+  end
+end

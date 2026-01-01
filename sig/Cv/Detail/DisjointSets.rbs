@@ -3,9 +3,9 @@ module Cv::Detail
     attr_accessor parent: Std::Vector≺int≻
     attr_accessor size: Std::Vector≺int≻
 
-    def create_one_elem_sets: (elem_count: Integer) -> void
+    def create_one_elem_sets: (elem_count: Integer) -> NilClass
     def find_set_by_elem: (elem: Integer) -> Integer
-    def initialize: (elem_count: Integer) -> void
+    def initialize: (elem_count: Integer) -> NilClass
     def merge_sets: (set1: Integer, set2: Integer) -> Integer
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉TonemapReinhard≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TonemapReinhard≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TonemapReinhard≻) -> NilClass
+               | (ptr: Cv::TonemapReinhard) -> NilClass
+               | (value: Cv::TonemapReinhard) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉TonemapReinhard≻) -> Cv::Ptr≺cv꞉꞉TonemapReinhard≻
+    def get: () -> Cv::TonemapReinhard
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉TonemapReinhard≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

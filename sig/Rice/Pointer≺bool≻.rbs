@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺bool≻
+    def buffer: () -> Rice::Buffer≺bool≻
+  end
+end

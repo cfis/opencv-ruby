@@ -17,9 +17,9 @@ module Cv
     attr_accessor transition_matrix: Cv::Mat
 
     def correct: (measurement: Cv::Mat) -> Cv::Mat
-    def init: (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> void
-    def initialize: () -> void
-               | (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> void
+    def init: (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> NilClass
+    def initialize: () -> NilClass
+               | (dynam_params: Integer, measure_params: Integer, control_params: Integer, type: Integer) -> NilClass
     def predict: (control: Cv::Mat) -> Cv::Mat
   end
 end

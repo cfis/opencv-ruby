@@ -1,0 +1,10 @@
+module Cv::Dnn
+  class SliceLayer
+    attr_accessor axis: Integer
+    attr_accessor num_split: Integer
+    attr_accessor slice_ranges: Std::Vector≺vector≺cv꞉꞉Range≻≻
+    attr_accessor slice_steps: Std::Vector≺vector≺int≻≻
+
+    def initialize: () -> NilClass
+  end
+end

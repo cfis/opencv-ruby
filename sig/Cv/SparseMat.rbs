@@ -3,43 +3,43 @@ module Cv
     attr_accessor flags: Integer
     attr_accessor hdr: Cv::SparseMat::Hdr
 
-    def initialize: () -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻, _type: Integer) -> void
-    def addref: () -> void
-    def assign_to: (m: Cv::SparseMat, type: Integer) -> void
+    def initialize: () -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻, _type: Integer) -> NilClass
+    def addref: () -> NilClass
+    def assign_to: (m: Cv::SparseMat, type: Integer) -> NilClass
     def channels: () -> Integer
-    def clear: () -> void
+    def clear: () -> NilClass
     def clone: () -> Cv::SparseMat
-    def convert_to: (m: Cv::SparseMat, rtype: Integer, alpha: Float) -> void
-               | (m: Cv::Mat, rtype: Integer, alpha: Float, beta: Float) -> void
-    def copy_to: (m: Cv::SparseMat) -> void
-            | (m: Cv::Mat) -> void
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻, _type: Integer) -> void
+    def convert_to: (m: Cv::SparseMat, rtype: Integer, alpha: Float) -> NilClass
+               | (m: Cv::Mat, rtype: Integer, alpha: Float, beta: Float) -> NilClass
+    def copy_to: (m: Cv::SparseMat) -> NilClass
+            | (m: Cv::Mat) -> NilClass
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻, _type: Integer) -> NilClass
     def depth: () -> Integer
     def dims: () -> Integer
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def erase: (idx: Rice::Buffer≺int const∗≻, hashval: Rice::Buffer≺unsigned Int64∗≻) -> void
-          | (i0: Integer, i1: Integer, hashval: Rice::Buffer≺unsigned Int64∗≻) -> void
-          | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Buffer≺unsigned Int64∗≻) -> void
+    def erase: (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
+          | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
+          | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
     def hash: (i0: Integer) -> Integer
-         | (idx: Rice::Buffer≺int const∗≻) -> Integer
+         | (idx: Rice::Pointer≺int≻) -> Integer
          | (i0: Integer, i1: Integer) -> Integer
          | (i0: Integer, i1: Integer, i2: Integer) -> Integer
-    def initialize_copy: (m: Cv::SparseMat) -> void
-    def new_node: (idx: Rice::Buffer≺int const∗≻, hashval: Integer) -> Rice::Buffer≺unsigned char∗≻
+    def initialize_copy: (m: Cv::SparseMat) -> NilClass
+    def new_node: (idx: Rice::Pointer≺int≻, hashval: Integer) -> Rice::Pointer≺unsigned char≻
     def node: (nidx: Integer) -> Cv::SparseMat::Node
          | (nidx: Integer) -> Cv::SparseMat::Node
     def nzcount: () -> Integer
-    def ptr: (idx: Rice::Buffer≺int const∗≻, create_missing: bool, hashval: Rice::Buffer≺unsigned Int64∗≻) -> Rice::Buffer≺unsigned char∗≻
-        | (i0: Integer, create_missing: bool, hashval: Rice::Buffer≺unsigned Int64∗≻) -> Rice::Buffer≺unsigned char∗≻
-        | (i0: Integer, i1: Integer, create_missing: bool, hashval: Rice::Buffer≺unsigned Int64∗≻) -> Rice::Buffer≺unsigned char∗≻
-        | (i0: Integer, i1: Integer, i2: Integer, create_missing: bool, hashval: Rice::Buffer≺unsigned Int64∗≻) -> Rice::Buffer≺unsigned char∗≻
-    def release: () -> void
-    def remove_node: (hidx: Integer, nidx: Integer, previdx: Integer) -> void
-    def resize_hash_tab: (newsize: Integer) -> void
-    def size: () -> Rice::Buffer≺int const∗≻
+    def ptr: (idx: Rice::Pointer≺int≻, create_missing: TrueClass, hashval: Rice::Pointer≺unsigned Int64≻) -> Rice::Pointer≺unsigned char≻
+        | (i0: Integer, create_missing: TrueClass, hashval: Rice::Pointer≺unsigned Int64≻) -> Rice::Pointer≺unsigned char≻
+        | (i0: Integer, i1: Integer, create_missing: TrueClass, hashval: Rice::Pointer≺unsigned Int64≻) -> Rice::Pointer≺unsigned char≻
+        | (i0: Integer, i1: Integer, i2: Integer, create_missing: TrueClass, hashval: Rice::Pointer≺unsigned Int64≻) -> Rice::Pointer≺unsigned char≻
+    def release: () -> NilClass
+    def remove_node: (hidx: Integer, nidx: Integer, previdx: Integer) -> NilClass
+    def resize_hash_tab: (newsize: Integer) -> NilClass
+    def size: () -> Rice::Pointer≺int≻
          | (i: Integer) -> Integer
     def type: () -> Integer
   end

@@ -1,0 +1,19 @@
+module Std
+  class Map≺string‚ cvflann꞉꞉any≻
+    def []: (arg_0: String) -> Cvflann::Any
+    def []=: (arg_0: String, arg_1: Cvflann::Any) -> Cvflann::Any
+    def delete: (arg_0: String) -> Cvflann::Any
+    def empty?: () -> TrueClass
+    def include?: (arg_0: String) -> TrueClass
+    def initialize: () -> NilClass
+    def clear: () -> NilClass
+    def initialize_copy: (arg_0: Std::Map≺string‚ cvflann꞉꞉any≻) -> NilClass
+    def keys: () -> Std::Vector≺string≻
+    def max_size: () -> Integer
+    def size: () -> Integer
+    def to_h: () -> Integer
+    def to_s: () -> String
+    def value?: (arg_0: Cvflann::Any) -> TrueClass
+    def values: () -> Std::Vector≺cvflann꞉꞉any≻
+  end
+end

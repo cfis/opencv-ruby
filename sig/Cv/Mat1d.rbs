@@ -1,53 +1,53 @@
 module Cv
   class Mat1d
-    def []: (roi: Cv::Rect_≺int≻) -> Cv::Mat_≺double≻
-       | (ranges: Cv::Range) -> Cv::Mat_≺double≻
-       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat_≺double≻
-       | (idx0: Integer) -> Double
-       | (pt: Cv::Point_≺int≻) -> Double
-       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat_≺double≻
-       | (row: Integer, col: Integer) -> Double
-       | (idx0: Integer, idx1: Integer, idx2: Integer) -> Double
-    def initialize: (e: Cv::MatExpr) -> void
-               | () -> void
-               | (_size: Cv::Size_≺int≻) -> void
-               | (m: Cv::Mat) -> void
-               | (e: Cv::MatExpr) -> void
-               | (m: Cv::Mat) -> void
-               | (pt: Cv::Point3_≺double≻, copy_data: bool) -> void
-               | (_size: Cv::Size_≺int≻, value: Double) -> void
-               | (pt: Cv::Point_≺double≻, copy_data: bool) -> void
-               | (vec: Std::Vector≺double≻, copy_data: bool) -> void
-               | (_rows: Integer, _cols: Integer) -> void
-               | (m: Cv::Mat_≺double≻, ranges: Std::Vector≺cv꞉꞉Range≻) -> void
-               | (m: Cv::Mat_≺double≻, ranges: Cv::Range) -> void
-               | (m: Cv::Mat_≺double≻, roi: Cv::Rect_≺int≻) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-               | (m: Cv::Mat_≺double≻, row_range: Cv::Range, col_range: Cv::Range) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, value: Double) -> void
-               | (_rows: Integer, _cols: Integer, value: Double) -> void
-               | (_rows: Integer, _cols: Integer, _data: Rice::Buffer≺double∗≻, _step: Integer) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, _data: Rice::Buffer≺double∗≻, _steps: Rice::Buffer≺unsigned Int64 const∗≻) -> void
-    def []=: (arg_0: Integer, arg_1: Double) -> void
-        | (arg_0: Cv::Point_≺int≻, arg_1: Double) -> void
-        | (arg_0: Integer, arg_1: Integer, arg_2: Double) -> void
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Double) -> void
-    def _dump_data: () -> Rice::Hash
-    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat_≺double≻
+    def []: (roi: Cv::Rect) -> Cv::Mat1d
+       | (ranges: Cv::Range) -> Cv::Mat1d
+       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat1d
+       | (idx0: Integer) -> Float
+       | (pt: Cv::Point) -> Float
+       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat1d
+       | (row: Integer, col: Integer) -> Float
+       | (idx0: Integer, idx1: Integer, idx2: Integer) -> Float
+    def initialize: (e: Cv::MatExpr) -> NilClass
+               | () -> NilClass
+               | (_size: Cv::Size) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (e: Cv::MatExpr) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (pt: Cv::Point3d, copy_data: TrueClass) -> NilClass
+               | (_size: Cv::Size, value: Float) -> NilClass
+               | (pt: Cv::Point2d, copy_data: TrueClass) -> NilClass
+               | (vec: Std::Vector≺double≻, copy_data: TrueClass) -> NilClass
+               | (_rows: Integer, _cols: Integer) -> NilClass
+               | (m: Cv::Mat1d, ranges: Std::Vector≺cv꞉꞉Range≻) -> NilClass
+               | (m: Cv::Mat1d, ranges: Cv::Range) -> NilClass
+               | (m: Cv::Mat1d, roi: Cv::Rect) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+               | (m: Cv::Mat1d, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, value: Float) -> NilClass
+               | (_rows: Integer, _cols: Integer, value: Float) -> NilClass
+               | (_rows: Integer, _cols: Integer, _data: Rice::Pointer≺double≻, _step: Integer) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, _data: Rice::Pointer≺double≻, _steps: Rice::Pointer≺unsigned Int64≻) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Float) -> NilClass
+        | (arg_0: Cv::Point, arg_1: Float) -> NilClass
+        | (arg_0: Integer, arg_1: Integer, arg_2: Float) -> NilClass
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Float) -> NilClass
+    def _dump_data: () -> Hash
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat1d
     def channels: () -> Integer
-    def clone: () -> Cv::Mat_≺double≻
-    def col: (x: Integer) -> Cv::Mat_≺double≻
-    def create: (_size: Cv::Size_≺int≻) -> void
-           | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-           | (_rows: Integer, _cols: Integer) -> void
-    def cross: (m: Cv::Mat_≺double≻) -> Cv::Mat_≺double≻
+    def clone: () -> Cv::Mat1d
+    def col: (x: Integer) -> Cv::Mat1d
+    def create: (_size: Cv::Size) -> NilClass
+           | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+           | (_rows: Integer, _cols: Integer) -> NilClass
+    def cross: (m: Cv::Mat1d) -> Cv::Mat1d
     def depth: () -> Integer
-    def diag: (d: Integer) -> Cv::Mat_≺double≻
+    def diag: (d: Integer) -> Cv::Mat1d
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def initialize_copy: (m: Cv::Mat_≺double≻) -> void
-    def release: () -> void
-    def row: (y: Integer) -> Cv::Mat_≺double≻
+    def initialize_copy: (m: Cv::Mat1d) -> NilClass
+    def release: () -> NilClass
+    def row: (y: Integer) -> Cv::Mat1d
     def step1: (i: Integer) -> Integer
     def step_t: (i: Integer) -> Integer
     def to_vector: () -> Std::Vector≺double≻

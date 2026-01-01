@@ -1,0 +1,13 @@
+module Cv::Dnn
+  class TextRecognitionModel
+    def get_decode_type: () -> String
+    def get_vocabulary: () -> Std::Vector≺string≻
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def recognize: (frame: Cv::InputArray) -> String
+              | (frame: Cv::InputArray, roi_rects: Cv::InputArray, results: Std::Vector≺string≻) -> NilClass
+    def set_decode_opts_ctc_prefix_beam_search: (beam_size: Integer, voc_prune_size: Integer) -> Cv::Dnn::TextRecognitionModel
+    def set_decode_type: (decode_type: String) -> Cv::Dnn::TextRecognitionModel
+    def set_vocabulary: (vocabulary: Std::Vector≺string≻) -> Cv::Dnn::TextRecognitionModel
+  end
+end

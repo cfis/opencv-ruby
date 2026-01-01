@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉LineSegmentDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉LineSegmentDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉LineSegmentDetector≻) -> NilClass
+               | (ptr: Cv::LineSegmentDetector) -> NilClass
+               | (value: Cv::LineSegmentDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉LineSegmentDetector≻) -> Cv::Ptr≺cv꞉꞉LineSegmentDetector≻
+    def get: () -> Cv::LineSegmentDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉LineSegmentDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

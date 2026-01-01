@@ -1,0 +1,12 @@
+module Cv::Dnn
+  class LRNLayer
+    attr_accessor alpha: Float
+    attr_accessor beta: Float
+    attr_accessor bias: Float
+    attr_accessor norm_by_size: TrueClass
+    attr_accessor size: Integer
+    attr_accessor type: Integer
+
+    def initialize: () -> NilClass
+  end
+end

@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class ELULayer
+    attr_accessor alpha: Float
+
+    def initialize: () -> NilClass
+  end
+end

@@ -1,21 +1,21 @@
 module Cv
   class Vec1i
-    def []: (i: Integer) -> Int
-       | (i: Integer) -> Int
-    def initialize: () -> void
-               | (v0: Integer) -> void
-               | (values: Rice::Buffer≺int const∗≻) -> void
-               | (a: Cv::Matx≺int‚ 1‚ 1≻, b: Cv::Matx≺int‚ 1‚ 1≻, : Cv::MatxAddOp) -> void
-               | (a: Cv::Matx≺int‚ 1‚ 1≻, b: Cv::Matx≺int‚ 1‚ 1≻, : Cv::MatxSubOp) -> void
-    def []=: (arg_0: Integer, arg_1: Int) -> void
-    def assign: (rhs: Cv::Vec≺int‚ 1≻) -> Cv::Vec≺int‚ 1≻
-    def call: (i: Integer) -> Int
-         | (i: Integer) -> Int
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+    def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
+               | (values: Rice::Pointer≺int≻) -> NilClass
+               | (a: Cv::Matx11i, b: Cv::Matx11i, op: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx11i, b: Cv::Matx11i, op: Cv::MatxSubOp) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
+    def assign: (rhs: Cv::Vec1i) -> Cv::Vec1i
+    def call: (i: Integer) -> Integer
+         | (i: Integer) -> Integer
     def count: () -> Integer
-    def initialize_copy: (v: Cv::Vec≺int‚ 1≻) -> void
-    def inspect: () -> Std::String
-    def mul: (v: Cv::Vec≺int‚ 1≻) -> Cv::Vec≺int‚ 1≻
+    def initialize_copy: (v: Cv::Vec1i) -> NilClass
+    def inspect: () -> String
+    def mul: (v: Cv::Vec1i) -> Cv::Vec1i
     def to_a: () -> Integer
-    def to_s: () -> Std::String
+    def to_s: () -> String
   end
 end

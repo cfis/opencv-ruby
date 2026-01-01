@@ -1,54 +1,54 @@
 module Cv
   class Matx43d
-    def !=: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> bool
-    def *: (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-      | (arg_0: Cv::Vec≺double‚ 3≻) -> Cv::Vec≺double‚ 4≻
-      | (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-      | (arg_0: Integer) -> Cv::Matx≺double‚ 4‚ 3≻
-    def initialize: () -> void
-               | (vals: Rice::Buffer≺double const∗≻) -> void
-               | (a: Cv::Matx≺double‚ 4‚ 3≻, b: Cv::Matx≺double‚ 4‚ 3≻, : Cv::MatxSubOp) -> void
-               | (a: Cv::Matx≺double‚ 4‚ 3≻, b: Cv::Matx≺double‚ 4‚ 3≻, : Cv::MatxAddOp) -> void
-               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float, v6: Float, v7: Float, v8: Float, v9: Float, v10: Float, v11: Float) -> void
-               | (a: Cv::Matx≺double‚ 4‚ 3≻, b: Cv::Matx≺double‚ 4‚ 3≻, : Cv::MatxMulOp) -> void
-               | (a: Cv::Matx≺double‚ 4‚ 3≻, b: Cv::Matx≺double‚ 4‚ 3≻, : Cv::MatxDivOp) -> void
-               | (a: Cv::Matx≺double‚ 3‚ 4≻, : Cv::MatxTOp) -> void
-    def +: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
-    def -: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
-    def /: (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-      | (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-    def ==: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> bool
-    def _dump_data: () -> Rice::Hash
-    def assign_divide: (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-                  | (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-    def assign_minus: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
-    def assign_multiply: (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-                    | (arg_0: Float) -> Cv::Matx≺double‚ 4‚ 3≻
-                    | (arg_0: Integer) -> Cv::Matx≺double‚ 4‚ 3≻
-    def assign_plus: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
-    def call: (row: Integer, col: Integer) -> Double
-         | (row: Integer, col: Integer) -> Double
+    def !=: (arg_0: Cv::Matx43d) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Matx43d
+      | (arg_0: Cv::Vec3d) -> Cv::Vec4d
+      | (arg_0: Float) -> Cv::Matx43d
+      | (arg_0: Integer) -> Cv::Matx43d
+    def initialize: () -> NilClass
+               | (vals: Rice::Pointer≺double≻) -> NilClass
+               | (a: Cv::Matx43d, b: Cv::Matx43d, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx43d, b: Cv::Matx43d, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float, v6: Float, v7: Float, v8: Float, v9: Float, v10: Float, v11: Float) -> NilClass
+               | (a: Cv::Matx43d, b: Cv::Matx43d, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx43d, b: Cv::Matx43d, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx34d, arg_1: Cv::MatxTOp) -> NilClass
+    def +: (arg_0: Cv::Matx43d) -> Cv::Matx43d
+    def -: (arg_0: Cv::Matx43d) -> Cv::Matx43d
+    def /: (arg_0: Float) -> Cv::Matx43d
+      | (arg_0: Float) -> Cv::Matx43d
+    def ==: (arg_0: Cv::Matx43d) -> TrueClass
+    def _dump_data: () -> Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx43d
+                  | (arg_0: Float) -> Cv::Matx43d
+    def assign_minus: (arg_0: Cv::Matx43d) -> Cv::Matx43d
+    def assign_multiply: (arg_0: Float) -> Cv::Matx43d
+                    | (arg_0: Float) -> Cv::Matx43d
+                    | (arg_0: Integer) -> Cv::Matx43d
+    def assign_plus: (arg_0: Cv::Matx43d) -> Cv::Matx43d
+    def call: (row: Integer, col: Integer) -> Float
+         | (row: Integer, col: Integer) -> Float
     def channels: () -> Integer
-    def col: (i: Integer) -> Cv::Matx≺double‚ 4‚ 1≻
+    def col: (i: Integer) -> Cv::Matx41d
     def cols: () -> Integer
-    def ddot: (v: Cv::Matx≺double‚ 4‚ 3≻) -> Float
+    def ddot: (v: Cv::Matx43d) -> Float
     def determinant: () -> Float
-    def diag: () -> Cv::Matx≺double‚ 3‚ 1≻
-    def div: (a: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
-    def dot: (v: Cv::Matx≺double‚ 4‚ 3≻) -> Float
+    def diag: () -> Cv::Matx31d
+    def div: (a: Cv::Matx43d) -> Cv::Matx43d
+    def dot: (v: Cv::Matx43d) -> Float
     def each: () -> Integer
-    def eql?: (arg_0: Cv::Matx≺double‚ 4‚ 3≻) -> bool
-    def input_array: () -> Cv::debug_build_guard::InputArray
-    def inspect: () -> Std::String
-    def inv: (method: Integer, p_is_ok: Rice::Buffer≺bool∗≻) -> Cv::Matx≺double‚ 3‚ 4≻
-    def mul: (a: Cv::Matx≺double‚ 4‚ 3≻) -> Cv::Matx≺double‚ 4‚ 3≻
+    def eql?: (arg_0: Cv::Matx43d) -> TrueClass
+    def input_array: () -> Cv::InputArray
+    def inspect: () -> String
+    def inv: (method: Integer, p_is_ok: Rice::Pointer≺bool≻) -> Cv::Matx34d
+    def mul: (a: Cv::Matx43d) -> Cv::Matx43d
     def norm: () -> Float
          | (arg_0: Integer) -> Float
-    def row: (i: Integer) -> Cv::Matx≺double‚ 1‚ 3≻
+    def row: (i: Integer) -> Cv::Matx13d
     def rows: () -> Integer
     def shortdim: () -> Integer
-    def solve: (rhs: Cv::Vec≺double‚ 4≻, method: Integer) -> Cv::Vec≺double‚ 3≻
-    def t: () -> Cv::Matx≺double‚ 3‚ 4≻
+    def solve: (rhs: Cv::Vec4d, method: Integer) -> Cv::Vec3d
+    def t: () -> Cv::Matx34d
     def trace: () -> Float
   end
 end

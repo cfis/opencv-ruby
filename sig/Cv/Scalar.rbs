@@ -1,11 +1,11 @@
 module Cv
   class Scalar
-    def conj: () -> Cv::Scalar_≺double≻
-    def initialize: () -> void
-               | (v0: Float) -> void
-               | (v0: Float, v1: Float, v2: Float, v3: Float) -> void
-    def initialize_copy: (s: Cv::Scalar_≺double≻) -> void
-    def is_real?: () -> bool
-    def mul: (a: Cv::Scalar_≺double≻, scale: Float) -> Cv::Scalar_≺double≻
+    def conj: () -> Cv::Scalar
+    def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float) -> NilClass
+    def initialize_copy: (s: Cv::Scalar) -> NilClass
+    def is_real?: () -> TrueClass
+    def mul: (a: Cv::Scalar, scale: Float) -> Cv::Scalar
   end
 end

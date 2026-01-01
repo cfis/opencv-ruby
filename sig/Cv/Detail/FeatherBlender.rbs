@@ -1,11 +1,11 @@
 module Cv::Detail
   class FeatherBlender
-    def blend: (dst: Cv::debug_build_guard::InputOutputArray, dst_mask: Cv::debug_build_guard::InputOutputArray) -> void
-    def create_weight_maps: (masks: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, weight_maps: Std::Vector≺cv꞉꞉UMat≻) -> Cv::Rect_≺int≻
-    def feed: (img: Cv::debug_build_guard::InputArray, mask: Cv::debug_build_guard::InputArray, tl: Cv::Point_≺int≻) -> void
-    def initialize: (sharpness: Float) -> void
-    def prepare: (dst_roi: Cv::Rect_≺int≻) -> void
-    def set_sharpness: (val: Float) -> void
+    def blend: (dst: Cv::InputOutputArray, dst_mask: Cv::InputOutputArray) -> NilClass
+    def create_weight_maps: (masks: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, weight_maps: Std::Vector≺cv꞉꞉UMat≻) -> Cv::Rect
+    def feed: (img: Cv::InputArray, mask: Cv::InputArray, tl: Cv::Point) -> NilClass
+    def initialize: (sharpness: Float) -> NilClass
+    def prepare: (dst_roi: Cv::Rect) -> NilClass
+    def set_sharpness: (val: Float) -> NilClass
     def sharpness: () -> Float
   end
 end

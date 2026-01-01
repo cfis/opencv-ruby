@@ -1,5 +1,5 @@
 module Cv
   class MergeExposures
-    def process: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, times: Cv::debug_build_guard::InputArray, response: Cv::debug_build_guard::InputArray) -> void
+    def process: (src: Cv::InputArray, dst: Cv::OutputArray, times: Cv::InputArray, response: Cv::InputArray) -> NilClass
   end
 end

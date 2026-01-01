@@ -7,12 +7,12 @@ module Cv::Ml
     def get_regularization: () -> Integer
     def get_term_criteria: () -> Cv::TermCriteria
     def get_train_method: () -> Integer
-    def predict: (samples: Cv::debug_build_guard::InputArray, results: Cv::debug_build_guard::OutputArray, flags: Integer) -> Float
-    def set_iterations: (val: Integer) -> void
-    def set_learning_rate: (val: Float) -> void
-    def set_mini_batch_size: (val: Integer) -> void
-    def set_regularization: (val: Integer) -> void
-    def set_term_criteria: (val: Cv::TermCriteria) -> void
-    def set_train_method: (val: Integer) -> void
+    def predict: (samples: Cv::InputArray, results: Cv::OutputArray, flags: Integer) -> Float
+    def set_iterations: (val: Integer) -> NilClass
+    def set_learning_rate: (val: Float) -> NilClass
+    def set_mini_batch_size: (val: Integer) -> NilClass
+    def set_regularization: (val: Integer) -> NilClass
+    def set_term_criteria: (val: Cv::TermCriteria) -> NilClass
+    def set_train_method: (val: Integer) -> NilClass
   end
 end

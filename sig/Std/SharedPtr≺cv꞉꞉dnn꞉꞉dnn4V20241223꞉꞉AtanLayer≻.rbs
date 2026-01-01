@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AtanLayer≻
+    def initialize: (value: Cv::Dnn::AtanLayer) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Dnn::AtanLayer
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AtanLayer≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

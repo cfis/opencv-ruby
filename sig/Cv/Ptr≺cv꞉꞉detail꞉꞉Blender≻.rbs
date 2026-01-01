@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉Blender≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Blender≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Blender≻) -> NilClass
+               | (ptr: Cv::Detail::Blender) -> NilClass
+               | (value: Cv::Detail::Blender) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻
+    def get: () -> Cv::Detail::Blender
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Blender≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

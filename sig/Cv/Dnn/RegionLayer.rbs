@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class RegionLayer
+    attr_accessor nms_threshold: Float
+
+    def initialize: () -> NilClass
+  end
+end

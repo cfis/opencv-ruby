@@ -1,6 +1,6 @@
 module Cvflann
   class FLANNException
-    def initialize: (message: Std::String) -> void
-               | (message: Rice::Buffer≺char const∗≻) -> void
+    def initialize: (message: String) -> NilClass
+               | (message: String) -> NilClass
   end
 end

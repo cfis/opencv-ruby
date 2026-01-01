@@ -2,20 +2,20 @@ module Cv
   class VideoWriter
     def <<: (image: Cv::UMat) -> Cv::VideoWriter
        | (image: Cv::Mat) -> Cv::VideoWriter
-    def initialize: () -> void
-               | (filename: Std::String, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, is_color: bool) -> void
-               | (filename: Std::String, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, params: Std::Vector≺int≻) -> void
-               | (filename: Std::String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, is_color: bool) -> void
-               | (filename: Std::String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, params: Std::Vector≺int≻) -> void
+    def initialize: () -> NilClass
+               | (filename: String, fourcc: Integer, fps: Float, frame_size: Cv::Size, is_color: TrueClass) -> NilClass
+               | (filename: String, fourcc: Integer, fps: Float, frame_size: Cv::Size, params: Std::Vector≺int≻) -> NilClass
+               | (filename: String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size, is_color: TrueClass) -> NilClass
+               | (filename: String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size, params: Std::Vector≺int≻) -> NilClass
     def get: (prop_id: Integer) -> Float
-    def get_backend_name: () -> Std::String
-    def open: (filename: Std::String, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, params: Std::Vector≺int≻) -> bool
-         | (filename: Std::String, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, is_color: bool) -> bool
-         | (filename: Std::String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, params: Std::Vector≺int≻) -> bool
-         | (filename: Std::String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size_≺int≻, is_color: bool) -> bool
-    def opened?: () -> bool
-    def release: () -> void
-    def set: (prop_id: Integer, value: Float) -> bool
-    def write: (image: Cv::debug_build_guard::InputArray) -> void
+    def get_backend_name: () -> String
+    def open: (filename: String, fourcc: Integer, fps: Float, frame_size: Cv::Size, params: Std::Vector≺int≻) -> TrueClass
+         | (filename: String, fourcc: Integer, fps: Float, frame_size: Cv::Size, is_color: TrueClass) -> TrueClass
+         | (filename: String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size, params: Std::Vector≺int≻) -> TrueClass
+         | (filename: String, api_preference: Integer, fourcc: Integer, fps: Float, frame_size: Cv::Size, is_color: TrueClass) -> TrueClass
+    def opened?: () -> TrueClass
+    def release: () -> NilClass
+    def set: (prop_id: Integer, value: Float) -> TrueClass
+    def write: (image: Cv::InputArray) -> NilClass
   end
 end

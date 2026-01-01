@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class SoftmaxLayer
+    attr_accessor log_soft_max: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

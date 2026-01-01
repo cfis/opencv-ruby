@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻
+    def initialize: (value: Cv::Ml::NormalBayesClassifier) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Ml::NormalBayesClassifier
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

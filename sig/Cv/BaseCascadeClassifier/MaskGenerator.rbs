@@ -1,6 +1,6 @@
 module Cv::BaseCascadeClassifier
   class MaskGenerator
     def generate_mask: (src: Cv::Mat) -> Cv::Mat
-    def initialize_mask: (: Cv::Mat) -> void
+    def initialize_mask: (: Cv::Mat) -> NilClass
   end
 end

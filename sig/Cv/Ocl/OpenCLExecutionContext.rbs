@@ -1,18 +1,18 @@
 module Cv::Ocl
   class OpenCLExecutionContext
-    def initialize: () -> void
-    def assign: (: Cv::ocl::OpenCLExecutionContext) -> Cv::ocl::OpenCLExecutionContext
-           | (: Cv::ocl::OpenCLExecutionContext) -> Cv::ocl::OpenCLExecutionContext
-    def bind: () -> void
-    def clone_with_new_queue: () -> Cv::ocl::OpenCLExecutionContext
-                         | (q: Cv::ocl::Queue) -> Cv::ocl::OpenCLExecutionContext
-    def empty?: () -> bool
-    def get_context: () -> Cv::ocl::Context
-    def get_device: () -> Cv::ocl::Device
-    def get_queue: () -> Cv::ocl::Queue
-    def initialize_copy: (: Cv::ocl::OpenCLExecutionContext) -> void
-    def release: () -> void
-    def set_use_open_cl: (flag: bool) -> void
-    def use_open_cl?: () -> bool
+    def initialize: () -> NilClass
+    def assign: (: Cv::Ocl::OpenCLExecutionContext) -> Cv::Ocl::OpenCLExecutionContext
+           | (: Cv::Ocl::OpenCLExecutionContext) -> Cv::Ocl::OpenCLExecutionContext
+    def bind: () -> NilClass
+    def clone_with_new_queue: () -> Cv::Ocl::OpenCLExecutionContext
+                         | (q: Cv::Ocl::Queue) -> Cv::Ocl::OpenCLExecutionContext
+    def empty?: () -> TrueClass
+    def get_context: () -> Cv::Ocl::Context
+    def get_device: () -> Cv::Ocl::Device
+    def get_queue: () -> Cv::Ocl::Queue
+    def initialize_copy: (: Cv::Ocl::OpenCLExecutionContext) -> NilClass
+    def release: () -> NilClass
+    def set_use_open_cl: (flag: TrueClass) -> NilClass
+    def use_open_cl?: () -> TrueClass
   end
 end

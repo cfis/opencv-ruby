@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉Estimator≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
+               | (ptr: Cv::Detail::Estimator) -> NilClass
+               | (value: Cv::Detail::Estimator) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻
+    def get: () -> Cv::Detail::Estimator
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

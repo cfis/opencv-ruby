@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉MergeDebevec≻
+    def initialize: (value: Cv::MergeDebevec) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::MergeDebevec
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉MergeDebevec≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

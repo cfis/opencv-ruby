@@ -1,0 +1,17 @@
+module Cv::Dnn
+  class Image2BlobParams
+    attr_accessor border_value: Cv::Scalar
+    attr_accessor datalayout: Cv::Dnn::DataLayout
+    attr_accessor ddepth: Integer
+    attr_accessor mean: Cv::Scalar
+    attr_accessor paddingmode: Cv::Dnn::ImagePaddingMode
+    attr_accessor scalefactor: Cv::Scalar
+    attr_accessor size: Cv::Size
+    attr_accessor swap_rb: TrueClass
+
+    def blob_rect_to_image_rect: (r_blob: Cv::Rect, size: Cv::Size) -> Cv::Rect
+    def blob_rects_to_image_rects: (r_blob: Std::Vector≺cv꞉꞉Rect_≺int≻≻, r_img: Std::Vector≺cv꞉꞉Rect_≺int≻≻, size: Cv::Size) -> NilClass
+    def initialize: () -> NilClass
+               | (scalefactor: Cv::Scalar, size: Cv::Size, mean: Cv::Scalar, swap_rb: TrueClass, ddepth: Integer, datalayout: Cv::Dnn::DataLayout, mode: Cv::Dnn::ImagePaddingMode, border_value: Cv::Scalar) -> NilClass
+  end
+end

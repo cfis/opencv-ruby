@@ -2,9 +2,9 @@ module Cv::Detail
   class BundleAdjusterBase
     def conf_thresh: () -> Float
     def refinement_mask: () -> Cv::Mat
-    def set_conf_thresh: (conf_thresh: Float) -> void
-    def set_refinement_mask: (mask: Cv::Mat) -> void
-    def set_term_criteria: (term_criteria: Cv::TermCriteria) -> void
+    def set_conf_thresh: (conf_thresh: Float) -> NilClass
+    def set_refinement_mask: (mask: Cv::Mat) -> NilClass
+    def set_term_criteria: (term_criteria: Cv::TermCriteria) -> NilClass
     def term_criteria: () -> Cv::TermCriteria
   end
 end

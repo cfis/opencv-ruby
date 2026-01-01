@@ -2,12 +2,12 @@ module Cv
   class RNG
     attr_accessor state: Integer
 
-    def initialize: () -> void
-               | (state: Integer) -> void
-    def ==: (other: Cv::RNG) -> bool
+    def initialize: () -> NilClass
+               | (state: Integer) -> NilClass
+    def ==: (other: Cv::RNG) -> TrueClass
     def call: () -> Integer
          | (n: Integer) -> Integer
-    def fill: (mat: Cv::debug_build_guard::InputOutputArray, dist_type: Integer, a: Cv::debug_build_guard::InputArray, b: Cv::debug_build_guard::InputArray, saturate_range: bool) -> void
+    def fill: (mat: Cv::InputOutputArray, dist_type: Integer, a: Cv::InputArray, b: Cv::InputArray, saturate_range: TrueClass) -> NilClass
     def gaussian: (sigma: Float) -> Float
     def next: () -> Integer
     def uniform: (a: Float, b: Float) -> Float

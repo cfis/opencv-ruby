@@ -1,5 +1,5 @@
 module Cv::Flann
   class HierarchicalClusteringIndexParams
-    def initialize: (branching: Integer, centers_init: Enum cvflann::FlannCentersInitT, trees: Integer, leaf_size: Integer) -> void
+    def initialize: (branching: Integer, centers_init: Cvflann::FlannCentersInitT, trees: Integer, leaf_size: Integer) -> NilClass
   end
 end

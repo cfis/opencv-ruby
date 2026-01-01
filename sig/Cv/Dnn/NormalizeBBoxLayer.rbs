@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class NormalizeBBoxLayer
+    attr_accessor across_spatial: TrueClass
+    attr_accessor epsilon: Float
+    attr_accessor pnorm: Float
+
+    def initialize: () -> NilClass
+  end
+end

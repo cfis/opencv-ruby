@@ -1,0 +1,5 @@
+module Cv::Dnn::Dnn4V20241223::Details
+  class LayerStaticRegisterer
+    def initialize: (layer_type: String, layer_constructor: Proc) -> NilClass
+  end
+end

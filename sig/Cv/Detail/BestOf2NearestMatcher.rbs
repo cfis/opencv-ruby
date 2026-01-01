@@ -1,6 +1,6 @@
 module Cv::Detail
   class BestOf2NearestMatcher
-    def collect_garbage: () -> void
-    def initialize: (try_use_gpu: bool, match_conf: Float, num_matches_thresh1: Integer, num_matches_thresh2: Integer, matches_confindece_thresh: Float) -> void
+    def collect_garbage: () -> NilClass
+    def initialize: (try_use_gpu: TrueClass, match_conf: Float, num_matches_thresh1: Integer, num_matches_thresh2: Integer, matches_confindece_thresh: Float) -> NilClass
   end
 end

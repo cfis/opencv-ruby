@@ -3,24 +3,24 @@ module Cv
     attr_accessor height: Float
     attr_accessor width: Float
 
-    def initialize: () -> void
-               | (pt: Cv::Point_≺double≻) -> void
-               | (_width: Float, _height: Float) -> void
-    def !=: (arg_0: Cv::Size_≺double≻) -> bool
-    def *: (arg_0: Float) -> Cv::Size_≺double≻
-    def +: (arg_0: Cv::Size_≺double≻) -> Cv::Size_≺double≻
-    def -: (arg_0: Cv::Size_≺double≻) -> Cv::Size_≺double≻
-    def /: (arg_0: Float) -> Cv::Size_≺double≻
-    def ==: (arg_0: Cv::Size_≺double≻) -> bool
+    def initialize: () -> NilClass
+               | (pt: Cv::Point2d) -> NilClass
+               | (_width: Float, _height: Float) -> NilClass
+    def !=: (arg_0: Cv::Size2d) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Size2d
+    def +: (arg_0: Cv::Size2d) -> Cv::Size2d
+    def -: (arg_0: Cv::Size2d) -> Cv::Size2d
+    def /: (arg_0: Float) -> Cv::Size2d
+    def ==: (arg_0: Cv::Size2d) -> TrueClass
     def area: () -> Float
-    def assign_divide: (arg_0: Float) -> Cv::Size_≺double≻
-    def assign_minus: (arg_0: Cv::Size_≺double≻) -> Cv::Size_≺double≻
-    def assign_multiply: (arg_0: Float) -> Cv::Size_≺double≻
-    def assign_plus: (arg_0: Cv::Size_≺double≻) -> Cv::Size_≺double≻
-    def empty?: () -> bool
+    def assign_divide: (arg_0: Float) -> Cv::Size2d
+    def assign_minus: (arg_0: Cv::Size2d) -> Cv::Size2d
+    def assign_multiply: (arg_0: Float) -> Cv::Size2d
+    def assign_plus: (arg_0: Cv::Size2d) -> Cv::Size2d
+    def empty?: () -> TrueClass
     def aspect_ratio: () -> Float
-    def initialize_copy: (sz: Cv::Size_≺double≻) -> void
-    def inspect: () -> Std::String
-    def to_s: () -> Std::String
+    def initialize_copy: (sz: Cv::Size2d) -> NilClass
+    def inspect: () -> String
+    def to_s: () -> String
   end
 end

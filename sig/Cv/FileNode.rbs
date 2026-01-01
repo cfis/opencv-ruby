@@ -3,38 +3,38 @@ module Cv
     attr_accessor block_idx: Integer
     attr_accessor ofs: Integer
 
-    def >>: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> void
-       | (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> void
-       | (arg_0: Cv::DMatch) -> void
-       | (arg_0: Cv::KeyPoint) -> void
-    def initialize: (fs: Cv::FileStorage, block_idx: Integer, ofs: Integer) -> void
-               | () -> void
+    def >>: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
+       | (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
+       | (arg_0: Cv::DMatch) -> NilClass
+       | (arg_0: Cv::KeyPoint) -> NilClass
+    def initialize: (fs: Cv::FileStorage, block_idx: Integer, ofs: Integer) -> NilClass
+               | () -> NilClass
     def []: (i: Integer) -> Cv::FileNode
-       | (nodename: Rice::Buffer≺char const∗≻) -> Cv::FileNode
-       | (nodename: Std::String) -> Cv::FileNode
+       | (nodename: String) -> Cv::FileNode
+       | (nodename: String) -> Cv::FileNode
     def assign: (node: Cv::FileNode) -> Cv::FileNode
-    def empty?: () -> bool
-    def initialize_copy: (node: Cv::FileNode) -> void
-    def int?: () -> bool
+    def empty?: () -> TrueClass
+    def initialize_copy: (node: Cv::FileNode) -> NilClass
+    def int?: () -> TrueClass
     def keys: () -> Std::Vector≺string≻
-    def map?: () -> bool
+    def map?: () -> TrueClass
     def mat: () -> Cv::Mat
-    def name: () -> Std::String
-    def named?: () -> bool
-    def none?: () -> bool
+    def name: () -> String
+    def named?: () -> TrueClass
+    def none?: () -> TrueClass
     def raw_size: () -> Integer
-    def read_raw: (fmt: Std::String, vec: Rice::Buffer≺void∗≻, len: Integer) -> void
+    def read_raw: (fmt: String, vec: Rice::Pointer≺void≻, len: Integer) -> NilClass
     def real: () -> Float
-    def real?: () -> bool
-    def seq?: () -> bool
-    def set_value: (type: Integer, value: Rice::Buffer≺void const∗≻, len: Integer) -> void
+    def real?: () -> TrueClass
+    def seq?: () -> TrueClass
+    def set_value: (type: Integer, value: Rice::Pointer≺void≻, len: Integer) -> NilClass
     def size: () -> Integer
-    def string: () -> Std::String
-    def string?: () -> bool
+    def string: () -> String
+    def string?: () -> TrueClass
     def to_double: () -> Float
     def to_float: () -> Float
     def to_int: () -> Integer
-    def to_string: () -> Std::String
+    def to_string: () -> String
     def type: () -> Integer
   end
 end

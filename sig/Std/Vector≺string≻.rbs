@@ -1,0 +1,33 @@
+module Std
+  class Vector≺string≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: String) -> NilClass
+    def ==: (arg_0: Std::Vector≺string≻) -> TrueClass
+    def []: (arg_0: Integer) -> String
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: String) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺string≻
+    def delete: (arg_0: String) -> String
+    def delete_at: (arg_0: Integer) -> String
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> String
+    def include?: (arg_0: String) -> TrueClass
+    def index: (arg_0: String) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺string≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: String) -> Std::Vector≺string≻
+    def last: () -> String
+    def max_size: () -> Integer
+    def pop: () -> String
+    def push: (arg_0: String) -> Std::Vector≺string≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

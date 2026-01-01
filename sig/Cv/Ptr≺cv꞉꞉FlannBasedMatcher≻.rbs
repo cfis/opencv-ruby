@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉FlannBasedMatcher≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FlannBasedMatcher≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FlannBasedMatcher≻) -> NilClass
+               | (ptr: Cv::FlannBasedMatcher) -> NilClass
+               | (value: Cv::FlannBasedMatcher) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉FlannBasedMatcher≻) -> Cv::Ptr≺cv꞉꞉FlannBasedMatcher≻
+    def get: () -> Cv::FlannBasedMatcher
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉FlannBasedMatcher≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

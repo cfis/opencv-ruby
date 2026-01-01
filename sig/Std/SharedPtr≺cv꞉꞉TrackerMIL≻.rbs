@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉TrackerMIL≻
+    def initialize: (value: Cv::TrackerMIL) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::TrackerMIL
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉TrackerMIL≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> NilClass
+               | (ptr: Cv::Detail::RotationWarper) -> NilClass
+               | (value: Cv::Detail::RotationWarper) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+    def get: () -> Cv::Detail::RotationWarper
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

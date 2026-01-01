@@ -1,14 +1,14 @@
 module Cv::Barcode
   class BarcodeDetector
-    def decode_with_type?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻) -> bool
-    def detect_and_decode_with_type?: (img: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻, points: Cv::debug_build_guard::OutputArray) -> bool
-    def get_detector_scales: (sizes: Std::Vector≺float≻) -> void
+    def decode_with_type?: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻) -> TrueClass
+    def detect_and_decode_with_type?: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻, points: Cv::OutputArray) -> TrueClass
+    def get_detector_scales: (sizes: Std::Vector≺float≻) -> NilClass
     def get_downsampling_threshold: () -> Float
-    def initialize: () -> void
-               | (prototxt_path: Std::String, model_path: Std::String) -> void
+    def initialize: () -> NilClass
+               | (prototxt_path: String, model_path: String) -> NilClass
     def get_gradient_threshold: () -> Float
-    def set_detector_scales: (sizes: Std::Vector≺float≻) -> Cv::barcode::BarcodeDetector
-    def set_downsampling_threshold: (thresh: Float) -> Cv::barcode::BarcodeDetector
-    def set_gradient_threshold: (thresh: Float) -> Cv::barcode::BarcodeDetector
+    def set_detector_scales: (sizes: Std::Vector≺float≻) -> Cv::Barcode::BarcodeDetector
+    def set_downsampling_threshold: (thresh: Float) -> Cv::Barcode::BarcodeDetector
+    def set_gradient_threshold: (thresh: Float) -> Cv::Barcode::BarcodeDetector
   end
 end

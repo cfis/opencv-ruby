@@ -1,0 +1,5 @@
+module 
+  class Callback
+    def compute?: (param: Cv::InputArray, err: Cv::OutputArray, j: Cv::OutputArray) -> TrueClass
+  end
+end

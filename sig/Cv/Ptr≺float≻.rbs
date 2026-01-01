@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺float≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺float≻) -> NilClass
+               | (o: Std::SharedPtr≺float≻) -> NilClass
+               | (ptr: Rice::Pointer≺float≻) -> NilClass
+               | (value: Rice::Pointer≺float≻) -> NilClass
+    def assign: (o: Cv::Ptr≺float≻) -> Cv::Ptr≺float≻
+    def get: () -> Float
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺float≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

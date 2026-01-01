@@ -2,12 +2,12 @@ module Cv
   class GraphicalCodeDetector
     def assign: (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
            | (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
-    def decode: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, straight_code: Cv::debug_build_guard::OutputArray) -> Std::String
-    def decode_multi?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, straight_code: Cv::debug_build_guard::OutputArray) -> bool
-    def detect?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray) -> bool
-    def detect_and_decode: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray, straight_code: Cv::debug_build_guard::OutputArray) -> Std::String
-    def detect_and_decode_multi?: (img: Cv::debug_build_guard::InputArray, decoded_info: Std::Vector≺string≻, points: Cv::debug_build_guard::OutputArray, straight_code: Cv::debug_build_guard::OutputArray) -> bool
-    def detect_multi?: (img: Cv::debug_build_guard::InputArray, points: Cv::debug_build_guard::OutputArray) -> bool
-    def initialize_copy: (: Cv::GraphicalCodeDetector) -> void
+    def decode: (img: Cv::InputArray, points: Cv::InputArray, straight_code: Cv::OutputArray) -> String
+    def decode_multi?: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, straight_code: Cv::OutputArray) -> TrueClass
+    def detect?: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
+    def detect_and_decode: (img: Cv::InputArray, points: Cv::OutputArray, straight_code: Cv::OutputArray) -> String
+    def detect_and_decode_multi?: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, points: Cv::OutputArray, straight_code: Cv::OutputArray) -> TrueClass
+    def detect_multi?: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
+    def initialize_copy: (: Cv::GraphicalCodeDetector) -> NilClass
   end
 end

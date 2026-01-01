@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻
+    def initialize: (value: Cv::Detail::BundleAdjusterBase) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Detail::BundleAdjusterBase
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

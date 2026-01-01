@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class ReorgLayer
+    def initialize: () -> NilClass
+  end
+end

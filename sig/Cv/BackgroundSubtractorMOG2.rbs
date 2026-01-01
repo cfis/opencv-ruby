@@ -1,9 +1,9 @@
 module Cv
   class BackgroundSubtractorMOG2
-    def apply: (image: Cv::debug_build_guard::InputArray, fgmask: Cv::debug_build_guard::OutputArray, learning_rate: Float) -> void
+    def apply: (image: Cv::InputArray, fgmask: Cv::OutputArray, learning_rate: Float) -> NilClass
     def get_background_ratio: () -> Float
     def get_complexity_reduction_threshold: () -> Float
-    def get_detect_shadows?: () -> bool
+    def get_detect_shadows?: () -> TrueClass
     def get_history: () -> Integer
     def get_n_mixtures: () -> Integer
     def get_shadow_threshold: () -> Float
@@ -13,17 +13,17 @@ module Cv
     def get_var_min: () -> Float
     def get_var_threshold: () -> Float
     def get_var_threshold_gen: () -> Float
-    def set_background_ratio: (ratio: Float) -> void
-    def set_complexity_reduction_threshold: (ct: Float) -> void
-    def set_detect_shadows: (detect_shadows: bool) -> void
-    def set_history: (history: Integer) -> void
-    def set_n_mixtures: (nmixtures: Integer) -> void
-    def set_shadow_threshold: (threshold: Float) -> void
-    def set_shadow_value: (value: Integer) -> void
-    def set_var_init: (var_init: Float) -> void
-    def set_var_max: (var_max: Float) -> void
-    def set_var_min: (var_min: Float) -> void
-    def set_var_threshold: (var_threshold: Float) -> void
-    def set_var_threshold_gen: (var_threshold_gen: Float) -> void
+    def set_background_ratio: (ratio: Float) -> NilClass
+    def set_complexity_reduction_threshold: (ct: Float) -> NilClass
+    def set_detect_shadows: (detect_shadows: TrueClass) -> NilClass
+    def set_history: (history: Integer) -> NilClass
+    def set_n_mixtures: (nmixtures: Integer) -> NilClass
+    def set_shadow_threshold: (threshold: Float) -> NilClass
+    def set_shadow_value: (value: Integer) -> NilClass
+    def set_var_init: (var_init: Float) -> NilClass
+    def set_var_max: (var_max: Float) -> NilClass
+    def set_var_min: (var_min: Float) -> NilClass
+    def set_var_threshold: (var_threshold: Float) -> NilClass
+    def set_var_threshold_gen: (var_threshold_gen: Float) -> NilClass
   end
 end

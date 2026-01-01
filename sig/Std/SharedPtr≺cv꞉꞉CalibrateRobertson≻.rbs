@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉CalibrateRobertson≻
+    def initialize: (value: Cv::CalibrateRobertson) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::CalibrateRobertson
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉CalibrateRobertson≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

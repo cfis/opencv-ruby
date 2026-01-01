@@ -1,8 +1,8 @@
 module Cv::MinProblemSolver
   class Function
-    def calc: (x: Rice::Buffer≺double const∗≻) -> Float
+    def calc: (x: Rice::Pointer≺double≻) -> Float
     def get_dims: () -> Integer
-    def get_gradient: (x: Rice::Buffer≺double const∗≻, grad: Rice::Buffer≺double∗≻) -> void
+    def get_gradient: (x: Rice::Pointer≺double≻, grad: Rice::Pointer≺double≻) -> NilClass
     def get_gradient_eps: () -> Float
   end
 end

@@ -5,34 +5,34 @@ module Cv::Cuda
     attr_accessor size: Std::Vector≺int≻
     attr_accessor step: Std::Vector≺unsigned Int64≻
 
-    def initialize: () -> void
-               | (size: Std::Vector≺int≻, type: Integer) -> void
-               | (size: Std::Vector≺int≻, type: Integer, data: Rice::Buffer≺void∗≻, step: Std::Vector≺unsigned Int64≻) -> void
-    def assign: (: Cv::cuda::GpuMatND) -> Cv::cuda::GpuMatND
-           | (: Cv::cuda::GpuMatND) -> Cv::cuda::GpuMatND
-    def call: (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::cuda::GpuMatND
-         | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::cuda::GpuMat
-    def clone: () -> Cv::cuda::GpuMatND
-          | (stream: Cv::cuda::Stream) -> Cv::cuda::GpuMatND
-    def continuous?: () -> bool
-    def create: (size: Std::Vector≺int≻, type: Integer) -> void
-    def create_gpu_mat_header: () -> Cv::cuda::GpuMat
-                          | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::cuda::GpuMat
-    def download: (dst: Cv::debug_build_guard::OutputArray) -> void
-             | (dst: Cv::debug_build_guard::OutputArray, stream: Cv::cuda::Stream) -> void
+    def initialize: () -> NilClass
+               | (size: Std::Vector≺int≻, type: Integer) -> NilClass
+               | (size: Std::Vector≺int≻, type: Integer, data: Rice::Pointer≺void≻, step: Std::Vector≺unsigned Int64≻) -> NilClass
+    def assign: (: Cv::Cuda::GpuMatND) -> Cv::Cuda::GpuMatND
+           | (: Cv::Cuda::GpuMatND) -> Cv::Cuda::GpuMatND
+    def call: (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Cuda::GpuMatND
+         | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::Cuda::GpuMat
+    def clone: () -> Cv::Cuda::GpuMatND
+          | (stream: Cv::Cuda::Stream) -> Cv::Cuda::GpuMatND
+    def continuous?: () -> TrueClass
+    def create: (size: Std::Vector≺int≻, type: Integer) -> NilClass
+    def create_gpu_mat_header: () -> Cv::Cuda::GpuMat
+                          | (idx: Std::Vector≺int≻, row_range: Cv::Range, col_range: Cv::Range) -> Cv::Cuda::GpuMat
+    def download: (dst: Cv::OutputArray) -> NilClass
+             | (dst: Cv::OutputArray, stream: Cv::Cuda::Stream) -> NilClass
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def empty?: () -> bool
-    def external?: () -> bool
-    def initialize_copy: (: Cv::cuda::GpuMatND) -> void
-    def release: () -> void
-    def submatrix?: () -> bool
-    def swap: (m: Cv::cuda::GpuMatND) -> void
-    def to_gpu_mat: () -> Cv::cuda::GpuMat
+    def empty?: () -> TrueClass
+    def external?: () -> TrueClass
+    def initialize_copy: (: Cv::Cuda::GpuMatND) -> NilClass
+    def release: () -> NilClass
+    def submatrix?: () -> TrueClass
+    def swap: (m: Cv::Cuda::GpuMatND) -> NilClass
+    def to_gpu_mat: () -> Cv::Cuda::GpuMat
     def total: () -> Integer
     def total_mem_size: () -> Integer
     def type: () -> Integer
-    def upload: (src: Cv::debug_build_guard::InputArray) -> void
-           | (src: Cv::debug_build_guard::InputArray, stream: Cv::cuda::Stream) -> void
+    def upload: (src: Cv::InputArray) -> NilClass
+           | (src: Cv::InputArray, stream: Cv::Cuda::Stream) -> NilClass
   end
 end

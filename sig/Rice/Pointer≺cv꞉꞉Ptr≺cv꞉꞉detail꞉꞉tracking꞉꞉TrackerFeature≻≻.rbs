@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
+  end
+end

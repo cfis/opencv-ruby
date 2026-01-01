@@ -1,0 +1,31 @@
+module Std
+  class Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def initialize: () -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: ExtObject) -> NilClass
+    def []: (arg_0: Integer) -> ExtObject
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: ExtObject) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def delete_at: (arg_0: Integer) -> ExtObject
+    def empty?: () -> TrueClass
+    def include?: (arg_0: ExtObject) -> TrueClass
+    def index: (arg_0: ExtObject) -> Integer
+    def first: () -> ExtObject
+    def delete: (arg_0: ExtObject) -> ExtObject
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def last: () -> ExtObject
+    def max_size: () -> Integer
+    def pop: () -> ExtObject
+    def push: (arg_0: ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

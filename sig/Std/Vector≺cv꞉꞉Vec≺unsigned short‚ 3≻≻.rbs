@@ -1,0 +1,33 @@
+module Std
+  class Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Vec3w) -> NilClass
+    def ==: (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Cv::Vec3w
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Vec3w) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Vec≺unsigned short‚ 3≻≻
+    def delete: (arg_0: Cv::Vec3w) -> Cv::Vec3w
+    def delete_at: (arg_0: Integer) -> Cv::Vec3w
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Vec3w
+    def include?: (arg_0: Cv::Vec3w) -> TrueClass
+    def index: (arg_0: Cv::Vec3w) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Vec3w) -> Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻
+    def last: () -> Cv::Vec3w
+    def max_size: () -> Integer
+    def pop: () -> Cv::Vec3w
+    def push: (arg_0: Cv::Vec3w) -> Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

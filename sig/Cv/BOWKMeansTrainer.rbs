@@ -2,6 +2,6 @@ module Cv
   class BOWKMeansTrainer
     def cluster: () -> Cv::Mat
             | (descriptors: Cv::Mat) -> Cv::Mat
-    def initialize: (cluster_count: Integer, termcrit: Cv::TermCriteria, attempts: Integer, flags: Integer) -> void
+    def initialize: (cluster_count: Integer, termcrit: Cv::TermCriteria, attempts: Integer, flags: Integer) -> NilClass
   end
 end

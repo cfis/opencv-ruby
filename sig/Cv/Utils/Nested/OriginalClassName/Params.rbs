@@ -3,6 +3,6 @@ module Cv::Utils::Nested::OriginalClassName
     attr_accessor float_value: Float
     attr_accessor int_value: Integer
 
-    def initialize: (int_param: Integer, float_param: Float) -> void
+    def initialize: (int_param: Integer, float_param: Float) -> NilClass
   end
 end

@@ -1,11 +1,11 @@
 module Cv
   class ImageCollection
-    def initialize: () -> void
-               | (filename: Std::String, flags: Integer) -> void
+    def initialize: () -> NilClass
+               | (filename: String, flags: Integer) -> NilClass
     def []: (index: Integer) -> Cv::Mat
     def at: (index: Integer) -> Cv::Mat
-    def init: (img: Std::String, flags: Integer) -> void
-    def release_cache: (index: Integer) -> void
+    def init: (img: String, flags: Integer) -> NilClass
+    def release_cache: (index: Integer) -> NilClass
     def size: () -> Integer
   end
 end

@@ -2,23 +2,23 @@ module Cv
   class Softdouble
     attr_accessor v: Integer
 
-    def !=: (: Cv::Softdouble) -> bool
+    def !=: (: Cv::Softdouble) -> TrueClass
     def %: (: Cv::Softdouble) -> Cv::Softdouble
     def +: (: Cv::Softdouble) -> Cv::Softdouble
     def -: () -> Cv::Softdouble
       | (: Cv::Softdouble) -> Cv::Softdouble
     def /: (: Cv::Softdouble) -> Cv::Softdouble
-    def <: (: Cv::Softdouble) -> bool
-    def <=: (: Cv::Softdouble) -> bool
-    def ==: (: Cv::Softdouble) -> bool
-    def >: (: Cv::Softdouble) -> bool
-    def initialize: () -> void
-               | (: Integer) -> void
-               | (: Integer) -> void
-               | (: Integer) -> void
-               | (: Integer) -> void
-               | (a: Float) -> void
-    def >=: (: Cv::Softdouble) -> bool
+    def <: (: Cv::Softdouble) -> TrueClass
+    def <=: (: Cv::Softdouble) -> TrueClass
+    def ==: (: Cv::Softdouble) -> TrueClass
+    def >: (: Cv::Softdouble) -> TrueClass
+    def initialize: () -> NilClass
+               | (: Integer) -> NilClass
+               | (: Integer) -> NilClass
+               | (: Integer) -> NilClass
+               | (: Integer) -> NilClass
+               | (a: Float) -> NilClass
+    def >=: (: Cv::Softdouble) -> TrueClass
     def assign: (c: Cv::Softdouble) -> Cv::Softdouble
     def assign_minus: (a: Cv::Softdouble) -> Cv::Softdouble
     def assign_modulus: (a: Cv::Softdouble) -> Cv::Softdouble
@@ -28,14 +28,14 @@ module Cv
     def assign_divide: (a: Cv::Softdouble) -> Cv::Softdouble
     def get_exp: () -> Integer
     def get_frac: () -> Cv::Softdouble
-    def get_sign?: () -> bool
-    def inf?: () -> bool
-    def initialize_copy: (c: Cv::Softdouble) -> void
-    def na_n?: () -> bool
+    def get_sign?: () -> TrueClass
+    def inf?: () -> TrueClass
+    def initialize_copy: (c: Cv::Softdouble) -> NilClass
+    def na_n?: () -> TrueClass
     def set_exp: (e: Integer) -> Cv::Softdouble
     def set_frac: (s: Cv::Softdouble) -> Cv::Softdouble
-    def set_sign: (sign: bool) -> Cv::Softdouble
-    def subnormal?: () -> bool
+    def set_sign: (sign: TrueClass) -> Cv::Softdouble
+    def subnormal?: () -> TrueClass
     def to_double: () -> Float
     def to_softfloat: () -> Cv::Softfloat
   end

@@ -1,0 +1,11 @@
+module Std
+  class Pair≺string const ‚ cvflann꞉꞉any≻
+    attr_reader first: String
+    attr_accessor second: Cvflann::Any
+
+    def initialize: () -> NilClass
+               | (arg_0: String, arg_1: Cvflann::Any) -> NilClass
+    def initialize_copy: (arg_0: Std::Pair≺string const ‚ cvflann꞉꞉any≻) -> NilClass
+    def to_s: () -> String
+  end
+end

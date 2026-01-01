@@ -1,23 +1,23 @@
 module Cv
   class DescriptorMatcher
-    def add: (descriptors: Cv::debug_build_guard::InputArray) -> void
-    def clear: () -> void
-    def clone: (empty_train_data: bool) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
-    def empty?: () -> bool
+    def add: (descriptors: Cv::InputArray) -> NilClass
+    def clear: () -> NilClass
+    def clone: (empty_train_data: TrueClass) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
+    def empty?: () -> TrueClass
     def get_train_descriptors: () -> Std::Vector≺cv꞉꞉Mat≻
-    def knn_match: (query_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, k: Integer, masks: Cv::debug_build_guard::InputArray, compact_result: bool) -> void
-              | (query_descriptors: Cv::debug_build_guard::InputArray, train_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, k: Integer, mask: Cv::debug_build_guard::InputArray, compact_result: bool) -> void
-    def mask_supported?: () -> bool
-    def match: (query_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺cv꞉꞉DMatch≻, masks: Cv::debug_build_guard::InputArray) -> void
-          | (query_descriptors: Cv::debug_build_guard::InputArray, train_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺cv꞉꞉DMatch≻, mask: Cv::debug_build_guard::InputArray) -> void
-    def radius_match: (query_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, masks: Cv::debug_build_guard::InputArray, compact_result: bool) -> void
-                 | (query_descriptors: Cv::debug_build_guard::InputArray, train_descriptors: Cv::debug_build_guard::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, mask: Cv::debug_build_guard::InputArray, compact_result: bool) -> void
-    def read: (file_name: Std::String) -> void
-         | (: Cv::FileNode) -> void
-    def train: () -> void
-    def write: (file_name: Std::String) -> void
-          | (: Cv::FileStorage) -> void
-          | (fs: Cv::FileStorage, name: Std::String) -> void
-          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: Std::String) -> void
+    def knn_match: (query_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, k: Integer, masks: Cv::InputArray, compact_result: TrueClass) -> NilClass
+              | (query_descriptors: Cv::InputArray, train_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, k: Integer, mask: Cv::InputArray, compact_result: TrueClass) -> NilClass
+    def mask_supported?: () -> TrueClass
+    def match: (query_descriptors: Cv::InputArray, matches: Std::Vector≺cv꞉꞉DMatch≻, masks: Cv::InputArray) -> NilClass
+          | (query_descriptors: Cv::InputArray, train_descriptors: Cv::InputArray, matches: Std::Vector≺cv꞉꞉DMatch≻, mask: Cv::InputArray) -> NilClass
+    def radius_match: (query_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, masks: Cv::InputArray, compact_result: TrueClass) -> NilClass
+                 | (query_descriptors: Cv::InputArray, train_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, mask: Cv::InputArray, compact_result: TrueClass) -> NilClass
+    def read: (file_name: String) -> NilClass
+         | (: Cv::FileNode) -> NilClass
+    def train: () -> NilClass
+    def write: (file_name: String) -> NilClass
+          | (: Cv::FileStorage) -> NilClass
+          | (fs: Cv::FileStorage, name: String) -> NilClass
+          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
   end
 end

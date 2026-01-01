@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉AlignMTB≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AlignMTB≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉AlignMTB≻) -> NilClass
+               | (ptr: Cv::AlignMTB) -> NilClass
+               | (value: Cv::AlignMTB) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉AlignMTB≻) -> Cv::Ptr≺cv꞉꞉AlignMTB≻
+    def get: () -> Cv::AlignMTB
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉AlignMTB≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

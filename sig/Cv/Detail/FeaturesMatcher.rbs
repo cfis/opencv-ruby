@@ -1,8 +1,8 @@
 module Cv::Detail
   class FeaturesMatcher
-    def call: (features: Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻, pairwise_matches: Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻, mask: Cv::UMat) -> void
-         | (features1: Cv::detail::ImageFeatures, features2: Cv::detail::ImageFeatures, matches_info: Cv::detail::MatchesInfo) -> void
-    def collect_garbage: () -> void
-    def thread_safe?: () -> bool
+    def call: (features: Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻, pairwise_matches: Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻, mask: Cv::UMat) -> NilClass
+         | (features1: Cv::Detail::ImageFeatures, features2: Cv::Detail::ImageFeatures, matches_info: Cv::Detail::MatchesInfo) -> NilClass
+    def collect_garbage: () -> NilClass
+    def thread_safe?: () -> TrueClass
   end
 end

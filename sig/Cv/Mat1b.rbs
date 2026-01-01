@@ -1,53 +1,53 @@
 module Cv
   class Mat1b
-    def []: (roi: Cv::Rect_≺int≻) -> Cv::Mat_≺unsigned char≻
-       | (ranges: Cv::Range) -> Cv::Mat_≺unsigned char≻
-       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat_≺unsigned char≻
-       | (idx0: Integer) -> Unsigned char
-       | (pt: Cv::Point_≺int≻) -> Unsigned char
-       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat_≺unsigned char≻
-       | (row: Integer, col: Integer) -> Unsigned char
-       | (idx0: Integer, idx1: Integer, idx2: Integer) -> Unsigned char
-    def initialize: (e: Cv::MatExpr) -> void
-               | () -> void
-               | (_size: Cv::Size_≺int≻) -> void
-               | (m: Cv::Mat) -> void
-               | (e: Cv::MatExpr) -> void
-               | (m: Cv::Mat) -> void
-               | (pt: Cv::Point3_≺unsigned char≻, copy_data: bool) -> void
-               | (_size: Cv::Size_≺int≻, value: Unsigned char) -> void
-               | (pt: Cv::Point_≺unsigned char≻, copy_data: bool) -> void
-               | (vec: Std::Vector≺unsigned char≻, copy_data: bool) -> void
-               | (_rows: Integer, _cols: Integer) -> void
-               | (m: Cv::Mat_≺unsigned char≻, ranges: Std::Vector≺cv꞉꞉Range≻) -> void
-               | (m: Cv::Mat_≺unsigned char≻, ranges: Cv::Range) -> void
-               | (m: Cv::Mat_≺unsigned char≻, roi: Cv::Rect_≺int≻) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-               | (m: Cv::Mat_≺unsigned char≻, row_range: Cv::Range, col_range: Cv::Range) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, value: Unsigned char) -> void
-               | (_rows: Integer, _cols: Integer, value: Unsigned char) -> void
-               | (_rows: Integer, _cols: Integer, _data: Rice::Buffer≺unsigned char∗≻, _step: Integer) -> void
-               | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻, _data: Rice::Buffer≺unsigned char∗≻, _steps: Rice::Buffer≺unsigned Int64 const∗≻) -> void
-    def []=: (arg_0: Integer, arg_1: Unsigned char) -> void
-        | (arg_0: Cv::Point_≺int≻, arg_1: Unsigned char) -> void
-        | (arg_0: Integer, arg_1: Integer, arg_2: Unsigned char) -> void
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Unsigned char) -> void
-    def _dump_data: () -> Rice::Hash
-    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat_≺unsigned char≻
+    def []: (roi: Cv::Rect) -> Cv::Mat1b
+       | (ranges: Cv::Range) -> Cv::Mat1b
+       | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat1b
+       | (idx0: Integer) -> String
+       | (pt: Cv::Point) -> String
+       | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat1b
+       | (row: Integer, col: Integer) -> String
+       | (idx0: Integer, idx1: Integer, idx2: Integer) -> String
+    def initialize: (e: Cv::MatExpr) -> NilClass
+               | () -> NilClass
+               | (_size: Cv::Size) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (e: Cv::MatExpr) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (pt: Cv::Point3b, copy_data: TrueClass) -> NilClass
+               | (_size: Cv::Size, value: String) -> NilClass
+               | (pt: Cv::Point2b, copy_data: TrueClass) -> NilClass
+               | (vec: Std::Vector≺unsigned char≻, copy_data: TrueClass) -> NilClass
+               | (_rows: Integer, _cols: Integer) -> NilClass
+               | (m: Cv::Mat1b, ranges: Std::Vector≺cv꞉꞉Range≻) -> NilClass
+               | (m: Cv::Mat1b, ranges: Cv::Range) -> NilClass
+               | (m: Cv::Mat1b, roi: Cv::Rect) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+               | (m: Cv::Mat1b, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, value: String) -> NilClass
+               | (_rows: Integer, _cols: Integer, value: String) -> NilClass
+               | (_rows: Integer, _cols: Integer, _data: Rice::Pointer≺unsigned char≻, _step: Integer) -> NilClass
+               | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, _data: Rice::Pointer≺unsigned char≻, _steps: Rice::Pointer≺unsigned Int64≻) -> NilClass
+    def []=: (arg_0: Integer, arg_1: String) -> NilClass
+        | (arg_0: Cv::Point, arg_1: String) -> NilClass
+        | (arg_0: Integer, arg_1: Integer, arg_2: String) -> NilClass
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: String) -> NilClass
+    def _dump_data: () -> Hash
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat1b
     def channels: () -> Integer
-    def clone: () -> Cv::Mat_≺unsigned char≻
-    def col: (x: Integer) -> Cv::Mat_≺unsigned char≻
-    def create: (_size: Cv::Size_≺int≻) -> void
-           | (_ndims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-           | (_rows: Integer, _cols: Integer) -> void
-    def cross: (m: Cv::Mat_≺unsigned char≻) -> Cv::Mat_≺unsigned char≻
+    def clone: () -> Cv::Mat1b
+    def col: (x: Integer) -> Cv::Mat1b
+    def create: (_size: Cv::Size) -> NilClass
+           | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+           | (_rows: Integer, _cols: Integer) -> NilClass
+    def cross: (m: Cv::Mat1b) -> Cv::Mat1b
     def depth: () -> Integer
-    def diag: (d: Integer) -> Cv::Mat_≺unsigned char≻
+    def diag: (d: Integer) -> Cv::Mat1b
     def elem_size: () -> Integer
     def elem_size1: () -> Integer
-    def initialize_copy: (m: Cv::Mat_≺unsigned char≻) -> void
-    def release: () -> void
-    def row: (y: Integer) -> Cv::Mat_≺unsigned char≻
+    def initialize_copy: (m: Cv::Mat1b) -> NilClass
+    def release: () -> NilClass
+    def row: (y: Integer) -> Cv::Mat1b
     def step1: (i: Integer) -> Integer
     def step_t: (i: Integer) -> Integer
     def to_vector: () -> Std::Vector≺unsigned char≻

@@ -1,5 +1,5 @@
 module Cv::Internal
   class WriteStructContext
-    def initialize: (_fs: Cv::FileStorage, name: Std::String, flags: Integer, type_name: Std::String) -> void
+    def initialize: (_fs: Cv::FileStorage, name: String, flags: Integer, type_name: String) -> NilClass
   end
 end

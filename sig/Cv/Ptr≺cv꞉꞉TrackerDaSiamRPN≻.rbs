@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉TrackerDaSiamRPN≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TrackerDaSiamRPN≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TrackerDaSiamRPN≻) -> NilClass
+               | (ptr: Cv::TrackerDaSiamRPN) -> NilClass
+               | (value: Cv::TrackerDaSiamRPN) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉TrackerDaSiamRPN≻) -> Cv::Ptr≺cv꞉꞉TrackerDaSiamRPN≻
+    def get: () -> Cv::TrackerDaSiamRPN
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉TrackerDaSiamRPN≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉KNearest≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉KNearest≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉KNearest≻) -> NilClass
+               | (ptr: Cv::Ml::KNearest) -> NilClass
+               | (value: Cv::Ml::KNearest) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉KNearest≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉KNearest≻
+    def get: () -> Cv::Ml::KNearest
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉KNearest≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

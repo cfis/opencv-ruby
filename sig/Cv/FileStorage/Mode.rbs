@@ -1,18 +1,20 @@
 module Cv::FileStorage
   class Mode
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::FileStorage::Mode) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::FileStorage::Mode) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::FileStorage::Mode) -> Integer
+    def <=>: (arg_0: Cv::FileStorage::Mode) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::FileStorage::Mode) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::FileStorage::Mode) -> bool
+    def ^: (arg_0: Cv::FileStorage::Mode) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::FileStorage::Mode) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::FileStorage::Mode) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::FileStorage::Mode) -> Integer
     def ~: () -> Integer
   end
 end

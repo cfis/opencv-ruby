@@ -1,0 +1,10 @@
+module Cv::Dnn
+  class TextDetectionModelEAST
+    def get_confidence_threshold: () -> Float
+    def get_nms_threshold: () -> Float
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def set_confidence_threshold: (conf_threshold: Float) -> Cv::Dnn::TextDetectionModelEAST
+    def set_nms_threshold: (nms_threshold: Float) -> Cv::Dnn::TextDetectionModelEAST
+  end
+end

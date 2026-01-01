@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉flann꞉꞉SearchParams≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻) -> NilClass
+               | (ptr: Cv::Flann::SearchParams) -> NilClass
+               | (value: Cv::Flann::SearchParams) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉flann꞉꞉SearchParams≻) -> Cv::Ptr≺cv꞉꞉flann꞉꞉SearchParams≻
+    def get: () -> Cv::Flann::SearchParams
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉flann꞉꞉SearchParams≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

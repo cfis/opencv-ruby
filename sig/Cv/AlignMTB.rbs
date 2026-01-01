@@ -1,15 +1,15 @@
 module Cv
   class AlignMTB
-    def calculate_shift: (img0: Cv::debug_build_guard::InputArray, img1: Cv::debug_build_guard::InputArray) -> Cv::Point_≺int≻
-    def compute_bitmaps: (img: Cv::debug_build_guard::InputArray, tb: Cv::debug_build_guard::OutputArray, eb: Cv::debug_build_guard::OutputArray) -> void
-    def get_cut?: () -> bool
+    def calculate_shift: (img0: Cv::InputArray, img1: Cv::InputArray) -> Cv::Point
+    def compute_bitmaps: (img: Cv::InputArray, tb: Cv::OutputArray, eb: Cv::OutputArray) -> NilClass
+    def get_cut?: () -> TrueClass
     def get_exclude_range: () -> Integer
     def get_max_bits: () -> Integer
-    def process: (src: Cv::debug_build_guard::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻) -> void
-            | (src: Cv::debug_build_guard::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻, times: Cv::debug_build_guard::InputArray, response: Cv::debug_build_guard::InputArray) -> void
-    def set_cut: (value: bool) -> void
-    def set_exclude_range: (exclude_range: Integer) -> void
-    def set_max_bits: (max_bits: Integer) -> void
-    def shift_mat: (src: Cv::debug_build_guard::InputArray, dst: Cv::debug_build_guard::OutputArray, shift: Cv::Point_≺int≻) -> void
+    def process: (src: Cv::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+            | (src: Cv::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻, times: Cv::InputArray, response: Cv::InputArray) -> NilClass
+    def set_cut: (value: TrueClass) -> NilClass
+    def set_exclude_range: (exclude_range: Integer) -> NilClass
+    def set_max_bits: (max_bits: Integer) -> NilClass
+    def shift_mat: (src: Cv::InputArray, dst: Cv::OutputArray, shift: Cv::Point) -> NilClass
   end
 end

@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉ml꞉꞉TrainData≻
+    def initialize: (value: Cv::Ml::TrainData) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Ml::TrainData
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉TrainData≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

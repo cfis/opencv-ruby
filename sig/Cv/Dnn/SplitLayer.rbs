@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class SplitLayer
+    attr_accessor outputs_count: Integer
+
+    def initialize: () -> NilClass
+  end
+end

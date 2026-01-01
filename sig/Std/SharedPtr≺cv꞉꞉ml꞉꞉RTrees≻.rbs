@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉ml꞉꞉RTrees≻
+    def initialize: (value: Cv::Ml::RTrees) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Ml::RTrees
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉RTrees≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

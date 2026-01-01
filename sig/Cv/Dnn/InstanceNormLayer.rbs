@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class InstanceNormLayer
+    attr_accessor epsilon: Float
+
+    def initialize: () -> NilClass
+  end
+end

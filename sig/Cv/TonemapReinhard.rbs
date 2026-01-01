@@ -3,8 +3,8 @@ module Cv
     def get_color_adaptation: () -> Float
     def get_intensity: () -> Float
     def get_light_adaptation: () -> Float
-    def set_color_adaptation: (color_adapt: Float) -> void
-    def set_intensity: (intensity: Float) -> void
-    def set_light_adaptation: (light_adapt: Float) -> void
+    def set_color_adaptation: (color_adapt: Float) -> NilClass
+    def set_intensity: (intensity: Float) -> NilClass
+    def set_light_adaptation: (light_adapt: Float) -> NilClass
   end
 end

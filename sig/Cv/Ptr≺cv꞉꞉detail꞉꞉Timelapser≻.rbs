@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉Timelapser≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Timelapser≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉Timelapser≻) -> NilClass
+               | (ptr: Cv::Detail::Timelapser) -> NilClass
+               | (value: Cv::Detail::Timelapser) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Timelapser≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉Timelapser≻
+    def get: () -> Cv::Detail::Timelapser
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉Timelapser≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

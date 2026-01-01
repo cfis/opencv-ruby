@@ -1,54 +1,54 @@
 module Cv
   class Matx41w
-    def !=: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> bool
-    def *: (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-      | (arg_0: Cv::Vec≺unsigned short‚ 1≻) -> Cv::Vec≺unsigned short‚ 4≻
-      | (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-      | (arg_0: Integer) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def initialize: () -> void
-               | (vals: Rice::Buffer≺unsigned short const∗≻) -> void
-               | (a: Cv::Matx≺unsigned short‚ 4‚ 1≻, b: Cv::Matx≺unsigned short‚ 4‚ 1≻, : Cv::MatxSubOp) -> void
-               | (a: Cv::Matx≺unsigned short‚ 4‚ 1≻, b: Cv::Matx≺unsigned short‚ 4‚ 1≻, : Cv::MatxAddOp) -> void
-               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> void
-               | (a: Cv::Matx≺unsigned short‚ 4‚ 1≻, b: Cv::Matx≺unsigned short‚ 4‚ 1≻, : Cv::MatxMulOp) -> void
-               | (a: Cv::Matx≺unsigned short‚ 4‚ 1≻, b: Cv::Matx≺unsigned short‚ 4‚ 1≻, : Cv::MatxDivOp) -> void
-               | (a: Cv::Matx≺unsigned short‚ 1‚ 4≻, : Cv::MatxTOp) -> void
-    def +: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def -: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def /: (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-      | (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def ==: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> bool
-    def _dump_data: () -> Rice::Hash
-    def assign_divide: (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-                  | (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def assign_minus: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def assign_multiply: (arg_0: Integer) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-                    | (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-                    | (arg_0: Float) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def assign_plus: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def call: (i: Integer) -> Unsigned short
-         | (i: Integer) -> Unsigned short
-         | (row: Integer, col: Integer) -> Unsigned short
-         | (row: Integer, col: Integer) -> Unsigned short
+    def !=: (arg_0: Cv::Matx41w) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Matx41w
+      | (arg_0: Cv::Vec1w) -> Cv::Vec4w
+      | (arg_0: Float) -> Cv::Matx41w
+      | (arg_0: Integer) -> Cv::Matx41w
+    def initialize: () -> NilClass
+               | (vals: Rice::Pointer≺unsigned short≻) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx14w, arg_1: Cv::MatxTOp) -> NilClass
+    def +: (arg_0: Cv::Matx41w) -> Cv::Matx41w
+    def -: (arg_0: Cv::Matx41w) -> Cv::Matx41w
+    def /: (arg_0: Float) -> Cv::Matx41w
+      | (arg_0: Float) -> Cv::Matx41w
+    def ==: (arg_0: Cv::Matx41w) -> TrueClass
+    def _dump_data: () -> Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx41w
+                  | (arg_0: Float) -> Cv::Matx41w
+    def assign_minus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
+    def assign_multiply: (arg_0: Integer) -> Cv::Matx41w
+                    | (arg_0: Float) -> Cv::Matx41w
+                    | (arg_0: Float) -> Cv::Matx41w
+    def assign_plus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
+    def call: (i: Integer) -> Integer
+         | (i: Integer) -> Integer
+         | (row: Integer, col: Integer) -> Integer
+         | (row: Integer, col: Integer) -> Integer
     def channels: () -> Integer
-    def col: (i: Integer) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
+    def col: (i: Integer) -> Cv::Matx41w
     def cols: () -> Integer
-    def ddot: (v: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Float
+    def ddot: (v: Cv::Matx41w) -> Float
     def determinant: () -> Float
-    def diag: () -> Cv::Matx≺unsigned short‚ 1‚ 1≻
-    def div: (a: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
-    def dot: (v: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Integer
+    def diag: () -> Cv::Matx11w
+    def div: (a: Cv::Matx41w) -> Cv::Matx41w
+    def dot: (v: Cv::Matx41w) -> Integer
     def each: () -> Integer
-    def eql?: (arg_0: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> bool
-    def input_array: () -> Cv::debug_build_guard::InputArray
-    def inspect: () -> Std::String
-    def mul: (a: Cv::Matx≺unsigned short‚ 4‚ 1≻) -> Cv::Matx≺unsigned short‚ 4‚ 1≻
+    def eql?: (arg_0: Cv::Matx41w) -> TrueClass
+    def input_array: () -> Cv::InputArray
+    def inspect: () -> String
+    def mul: (a: Cv::Matx41w) -> Cv::Matx41w
     def norm: () -> Float
          | (arg_0: Integer) -> Float
-    def row: (i: Integer) -> Cv::Matx≺unsigned short‚ 1‚ 1≻
+    def row: (i: Integer) -> Cv::Matx11w
     def rows: () -> Integer
     def shortdim: () -> Integer
-    def t: () -> Cv::Matx≺unsigned short‚ 1‚ 4≻
+    def t: () -> Cv::Matx14w
     def trace: () -> Float
   end
 end

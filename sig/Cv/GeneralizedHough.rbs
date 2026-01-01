@@ -1,18 +1,18 @@
 module Cv
   class GeneralizedHough
-    def detect: (image: Cv::debug_build_guard::InputArray, positions: Cv::debug_build_guard::OutputArray, votes: Cv::debug_build_guard::OutputArray) -> void
-           | (edges: Cv::debug_build_guard::InputArray, dx: Cv::debug_build_guard::InputArray, dy: Cv::debug_build_guard::InputArray, positions: Cv::debug_build_guard::OutputArray, votes: Cv::debug_build_guard::OutputArray) -> void
+    def detect: (image: Cv::InputArray, positions: Cv::OutputArray, votes: Cv::OutputArray) -> NilClass
+           | (edges: Cv::InputArray, dx: Cv::InputArray, dy: Cv::InputArray, positions: Cv::OutputArray, votes: Cv::OutputArray) -> NilClass
     def get_canny_high_thresh: () -> Integer
     def get_canny_low_thresh: () -> Integer
     def get_dp: () -> Float
     def get_max_buffer_size: () -> Integer
     def get_min_dist: () -> Float
-    def set_canny_high_thresh: (canny_high_thresh: Integer) -> void
-    def set_canny_low_thresh: (canny_low_thresh: Integer) -> void
-    def set_dp: (dp: Float) -> void
-    def set_max_buffer_size: (max_buffer_size: Integer) -> void
-    def set_min_dist: (min_dist: Float) -> void
-    def set_template: (templ: Cv::debug_build_guard::InputArray, templ_center: Cv::Point_≺int≻) -> void
-                 | (edges: Cv::debug_build_guard::InputArray, dx: Cv::debug_build_guard::InputArray, dy: Cv::debug_build_guard::InputArray, templ_center: Cv::Point_≺int≻) -> void
+    def set_canny_high_thresh: (canny_high_thresh: Integer) -> NilClass
+    def set_canny_low_thresh: (canny_low_thresh: Integer) -> NilClass
+    def set_dp: (dp: Float) -> NilClass
+    def set_max_buffer_size: (max_buffer_size: Integer) -> NilClass
+    def set_min_dist: (min_dist: Float) -> NilClass
+    def set_template: (templ: Cv::InputArray, templ_center: Cv::Point) -> NilClass
+                 | (edges: Cv::InputArray, dx: Cv::InputArray, dy: Cv::InputArray, templ_center: Cv::Point) -> NilClass
   end
 end

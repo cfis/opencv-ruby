@@ -1,13 +1,13 @@
 module Cv::Ml
   class RTrees
     def get_active_var_count: () -> Integer
-    def get_calculate_var_importance?: () -> bool
+    def get_calculate_var_importance?: () -> TrueClass
     def get_oob_error: () -> Float
     def get_term_criteria: () -> Cv::TermCriteria
     def get_var_importance: () -> Cv::Mat
-    def get_votes: (samples: Cv::debug_build_guard::InputArray, results: Cv::debug_build_guard::OutputArray, flags: Integer) -> void
-    def set_active_var_count: (val: Integer) -> void
-    def set_calculate_var_importance: (val: bool) -> void
-    def set_term_criteria: (val: Cv::TermCriteria) -> void
+    def get_votes: (samples: Cv::InputArray, results: Cv::OutputArray, flags: Integer) -> NilClass
+    def set_active_var_count: (val: Integer) -> NilClass
+    def set_calculate_var_importance: (val: TrueClass) -> NilClass
+    def set_term_criteria: (val: Cv::TermCriteria) -> NilClass
   end
 end

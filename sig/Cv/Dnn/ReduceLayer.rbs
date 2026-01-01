@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class ReduceLayer
+    def initialize: () -> NilClass
+  end
+end

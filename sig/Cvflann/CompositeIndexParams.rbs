@@ -1,5 +1,5 @@
 module Cvflann
   class CompositeIndexParams
-    def initialize: (trees: Integer, branching: Integer, iterations: Integer, centers_init: Enum cvflann::FlannCentersInitT, cb_index: Float) -> void
+    def initialize: (trees: Integer, branching: Integer, iterations: Integer, centers_init: Cvflann::FlannCentersInitT, cb_index: Float) -> NilClass
   end
 end

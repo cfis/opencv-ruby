@@ -1,10 +1,10 @@
 module Cv
   class CalibrateDebevec
     def get_lambda: () -> Float
-    def get_random?: () -> bool
+    def get_random?: () -> TrueClass
     def get_samples: () -> Integer
-    def set_lambda: (lambda: Float) -> void
-    def set_random: (random: bool) -> void
-    def set_samples: (samples: Integer) -> void
+    def set_lambda: (lambda: Float) -> NilClass
+    def set_random: (random: TrueClass) -> NilClass
+    def set_samples: (samples: Integer) -> NilClass
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉GeneralizedHoughGuil≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉GeneralizedHoughGuil≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉GeneralizedHoughGuil≻) -> NilClass
+               | (ptr: Cv::GeneralizedHoughGuil) -> NilClass
+               | (value: Cv::GeneralizedHoughGuil) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉GeneralizedHoughGuil≻) -> Cv::Ptr≺cv꞉꞉GeneralizedHoughGuil≻
+    def get: () -> Cv::GeneralizedHoughGuil
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉GeneralizedHoughGuil≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

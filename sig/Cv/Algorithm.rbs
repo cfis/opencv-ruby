@@ -1,13 +1,13 @@
 module Cv
   class Algorithm
-    def initialize: () -> void
-    def clear: () -> void
-    def empty?: () -> bool
-    def get_default_name: () -> Std::String
-    def read: (fn: Cv::FileNode) -> void
-    def save: (filename: Std::String) -> void
-    def write: (fs: Cv::FileStorage) -> void
-          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: Std::String) -> void
-          | (fs: Cv::FileStorage, name: Std::String) -> void
+    def initialize: () -> NilClass
+    def clear: () -> NilClass
+    def empty?: () -> TrueClass
+    def get_default_name: () -> String
+    def read: (fn: Cv::FileNode) -> NilClass
+    def save: (filename: String) -> NilClass
+    def write: (fs: Cv::FileStorage) -> NilClass
+          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
+          | (fs: Cv::FileStorage, name: String) -> NilClass
   end
 end

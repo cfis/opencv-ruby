@@ -1,24 +1,24 @@
 module Cv
   class SparseMat1b
-    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Unsigned char
-       | (arg_0: Integer) -> Unsigned char
-       | (arg_0: Integer, arg_1: Integer) -> Unsigned char
-       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Unsigned char
-    def []=: (arg_0: Integer, arg_1: Unsigned char) -> Unsigned char
-        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Unsigned char) -> Unsigned char
-        | (arg_0: Integer, arg_1: Integer, arg_2: Unsigned char) -> Unsigned char
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Unsigned char) -> Unsigned char
-    def initialize: () -> void
-               | (m: Cv::SparseMat) -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-    def begin: () -> Cv::SparseMatIterator_≺unsigned char≻
-    def clone: () -> Cv::SparseMat_≺unsigned char≻
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def []: (arg_0: Rice::Pointer≺int≻) -> String
+       | (arg_0: Integer) -> String
+       | (arg_0: Integer, arg_1: Integer) -> String
+       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> String
+    def []=: (arg_0: Integer, arg_1: String) -> String
+        | (arg_0: Rice::Pointer≺int≻, arg_1: String) -> String
+        | (arg_0: Integer, arg_1: Integer, arg_2: String) -> String
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: String) -> String
+    def initialize: () -> NilClass
+               | (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def begin: () -> Cv::SparseMatIterator1b
+    def clone: () -> Cv::SparseMat1b
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
     def depth: () -> Integer
-    def end: () -> Cv::SparseMatIterator_≺unsigned char≻
+    def end: () -> Cv::SparseMatIterator1b
     def channels: () -> Integer
-    def initialize_copy: (m: Cv::SparseMat_≺unsigned char≻) -> void
+    def initialize_copy: (m: Cv::SparseMat1b) -> NilClass
     def type: () -> Integer
   end
 end

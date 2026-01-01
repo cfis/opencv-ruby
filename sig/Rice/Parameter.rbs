@@ -1,0 +1,7 @@
+module Rice
+  class Parameter
+    def arg: () -> Rice::Arg
+    def cpp_klass: () -> String
+    def klass: () -> Integer
+  end
+end

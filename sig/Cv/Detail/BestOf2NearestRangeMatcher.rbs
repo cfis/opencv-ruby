@@ -1,5 +1,5 @@
 module Cv::Detail
   class BestOf2NearestRangeMatcher
-    def initialize: (range_width: Integer, try_use_gpu: bool, match_conf: Float, num_matches_thresh1: Integer, num_matches_thresh2: Integer) -> void
+    def initialize: (range_width: Integer, try_use_gpu: TrueClass, match_conf: Float, num_matches_thresh1: Integer, num_matches_thresh2: Integer) -> NilClass
   end
 end

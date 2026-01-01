@@ -1,0 +1,14 @@
+module Cv::Dnn
+  class TextDetectionModelDB
+    def get_binary_threshold: () -> Float
+    def get_max_candidates: () -> Integer
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def get_polygon_threshold: () -> Float
+    def get_unclip_ratio: () -> Float
+    def set_binary_threshold: (binary_threshold: Float) -> Cv::Dnn::TextDetectionModelDB
+    def set_max_candidates: (max_candidates: Integer) -> Cv::Dnn::TextDetectionModelDB
+    def set_polygon_threshold: (polygon_threshold: Float) -> Cv::Dnn::TextDetectionModelDB
+    def set_unclip_ratio: (unclip_ratio: Float) -> Cv::Dnn::TextDetectionModelDB
+  end
+end

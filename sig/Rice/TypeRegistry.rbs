@@ -1,0 +1,5 @@
+module Rice
+  class TypeRegistry
+    def klasses: () -> Integer
+  end
+end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉DescriptorMatcher≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DescriptorMatcher≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DescriptorMatcher≻) -> NilClass
+               | (ptr: Cv::DescriptorMatcher) -> NilClass
+               | (value: Cv::DescriptorMatcher) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉DescriptorMatcher≻) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
+    def get: () -> Cv::DescriptorMatcher
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉DescriptorMatcher≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉DownhillSolver≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DownhillSolver≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DownhillSolver≻) -> NilClass
+               | (ptr: Cv::DownhillSolver) -> NilClass
+               | (value: Cv::DownhillSolver) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉DownhillSolver≻) -> Cv::Ptr≺cv꞉꞉DownhillSolver≻
+    def get: () -> Cv::DownhillSolver
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉DownhillSolver≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

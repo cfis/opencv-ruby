@@ -1,24 +1,24 @@
 module Cv
   class SparseMat6f
-    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Cv::Vec≺float‚ 6≻
-       | (arg_0: Integer) -> Cv::Vec≺float‚ 6≻
-       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec≺float‚ 6≻
-       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec≺float‚ 6≻
-    def []=: (arg_0: Integer, arg_1: Cv::Vec≺float‚ 6≻) -> Cv::Vec≺float‚ 6≻
-        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Cv::Vec≺float‚ 6≻) -> Cv::Vec≺float‚ 6≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec≺float‚ 6≻) -> Cv::Vec≺float‚ 6≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec≺float‚ 6≻) -> Cv::Vec≺float‚ 6≻
-    def initialize: () -> void
-               | (m: Cv::SparseMat) -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-    def begin: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺float‚ 6≻≻
-    def clone: () -> Cv::SparseMat_≺cv꞉꞉Vec≺float‚ 6≻≻
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def []: (arg_0: Rice::Pointer≺int≻) -> Cv::Vec6f
+       | (arg_0: Integer) -> Cv::Vec6f
+       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec6f
+       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec6f
+    def []=: (arg_0: Integer, arg_1: Cv::Vec6f) -> Cv::Vec6f
+        | (arg_0: Rice::Pointer≺int≻, arg_1: Cv::Vec6f) -> Cv::Vec6f
+        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec6f) -> Cv::Vec6f
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec6f) -> Cv::Vec6f
+    def initialize: () -> NilClass
+               | (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def begin: () -> Cv::SparseMatIterator6f
+    def clone: () -> Cv::SparseMat6f
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
     def depth: () -> Integer
-    def end: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺float‚ 6≻≻
+    def end: () -> Cv::SparseMatIterator6f
     def channels: () -> Integer
-    def initialize_copy: (m: Cv::SparseMat_≺cv꞉꞉Vec≺float‚ 6≻≻) -> void
+    def initialize_copy: (m: Cv::SparseMat6f) -> NilClass
     def type: () -> Integer
   end
 end

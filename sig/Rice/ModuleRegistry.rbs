@@ -1,0 +1,5 @@
+module Rice
+  class ModuleRegistry
+    def modules: () -> Integer
+  end
+end

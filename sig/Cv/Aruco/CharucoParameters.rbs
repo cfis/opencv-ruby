@@ -3,8 +3,8 @@ module Cv::Aruco
     attr_accessor camera_matrix: Cv::Mat
     attr_accessor dist_coeffs: Cv::Mat
     attr_accessor min_markers: Integer
-    attr_accessor try_refine_markers: bool
+    attr_accessor try_refine_markers: TrueClass
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

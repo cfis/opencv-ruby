@@ -1,5 +1,5 @@
 module Cv
   class AlignExposures
-    def process: (src: Cv::debug_build_guard::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻, times: Cv::debug_build_guard::InputArray, response: Cv::debug_build_guard::InputArray) -> void
+    def process: (src: Cv::InputArray, dst: Std::Vector≺cv꞉꞉Mat≻, times: Cv::InputArray, response: Cv::InputArray) -> NilClass
   end
 end

@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> NilClass
+               | (ptr: IDetector) -> NilClass
+               | (value: IDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻
+    def get: () -> IDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

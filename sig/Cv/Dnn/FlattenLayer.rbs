@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class FlattenLayer
+    def initialize: () -> NilClass
+  end
+end

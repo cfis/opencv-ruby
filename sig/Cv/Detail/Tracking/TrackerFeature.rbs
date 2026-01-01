@@ -1,5 +1,5 @@
 module Cv::Detail::Tracking
   class TrackerFeature
-    def compute: (images: Std::Vector≺cv꞉꞉Mat≻, response: Cv::Mat) -> void
+    def compute: (images: Std::Vector≺cv꞉꞉Mat≻, response: Cv::Mat) -> NilClass
   end
 end

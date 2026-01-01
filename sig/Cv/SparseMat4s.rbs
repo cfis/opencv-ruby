@@ -1,24 +1,24 @@
 module Cv
   class SparseMat4s
-    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Cv::Vec≺short‚ 4≻
-       | (arg_0: Integer) -> Cv::Vec≺short‚ 4≻
-       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec≺short‚ 4≻
-       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec≺short‚ 4≻
-    def []=: (arg_0: Integer, arg_1: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
-        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
-        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec≺short‚ 4≻) -> Cv::Vec≺short‚ 4≻
-    def initialize: () -> void
-               | (m: Cv::SparseMat) -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-    def begin: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺short‚ 4≻≻
-    def clone: () -> Cv::SparseMat_≺cv꞉꞉Vec≺short‚ 4≻≻
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def []: (arg_0: Rice::Pointer≺int≻) -> Cv::Vec4s
+       | (arg_0: Integer) -> Cv::Vec4s
+       | (arg_0: Integer, arg_1: Integer) -> Cv::Vec4s
+       | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec4s
+    def []=: (arg_0: Integer, arg_1: Cv::Vec4s) -> Cv::Vec4s
+        | (arg_0: Rice::Pointer≺int≻, arg_1: Cv::Vec4s) -> Cv::Vec4s
+        | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec4s) -> Cv::Vec4s
+        | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec4s) -> Cv::Vec4s
+    def initialize: () -> NilClass
+               | (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def begin: () -> Cv::SparseMatIterator4s
+    def clone: () -> Cv::SparseMat4s
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
     def depth: () -> Integer
-    def end: () -> Cv::SparseMatIterator_≺cv꞉꞉Vec≺short‚ 4≻≻
+    def end: () -> Cv::SparseMatIterator4s
     def channels: () -> Integer
-    def initialize_copy: (m: Cv::SparseMat_≺cv꞉꞉Vec≺short‚ 4≻≻) -> void
+    def initialize_copy: (m: Cv::SparseMat4s) -> NilClass
     def type: () -> Integer
   end
 end

@@ -1,5 +1,5 @@
 module Cvflann
   class LshIndexParams
-    def initialize: (table_number: Integer, key_size: Integer, multi_probe_level: Integer) -> void
+    def initialize: (table_number: Integer, key_size: Integer, multi_probe_level: Integer) -> NilClass
   end
 end

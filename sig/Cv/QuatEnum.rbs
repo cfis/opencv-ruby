@@ -1,5 +1,5 @@
 module Cv
   class QuatEnum
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

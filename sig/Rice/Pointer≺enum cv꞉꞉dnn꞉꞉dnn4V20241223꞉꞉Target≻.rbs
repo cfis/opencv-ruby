@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+    def buffer: () -> Rice::Buffer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻
+  end
+end

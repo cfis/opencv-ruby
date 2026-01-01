@@ -1,0 +1,13 @@
+module 
+  class IDetector
+    def detect: (image: Cv::Mat, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
+    def get_max_object_size: () -> Cv::Size
+    def get_min_neighbours: () -> Integer
+    def get_min_object_size: () -> Cv::Size
+    def get_scale_factor: () -> Float
+    def set_max_object_size: (max: Cv::Size) -> NilClass
+    def set_min_neighbours: (value: Integer) -> NilClass
+    def set_min_object_size: (min: Cv::Size) -> NilClass
+    def set_scale_factor: (value: Float) -> NilClass
+  end
+end

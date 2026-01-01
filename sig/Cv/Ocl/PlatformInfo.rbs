@@ -1,15 +1,15 @@
 module Cv::Ocl
   class PlatformInfo
-    def initialize: () -> void
-               | (id: Rice::Buffer≺void∗≻) -> void
-    def assign: (i: Cv::ocl::PlatformInfo) -> Cv::ocl::PlatformInfo
-           | (i: Cv::ocl::PlatformInfo) -> Cv::ocl::PlatformInfo
+    def initialize: () -> NilClass
+               | (id: Rice::Pointer≺void≻) -> NilClass
+    def assign: (i: Cv::Ocl::PlatformInfo) -> Cv::Ocl::PlatformInfo
+           | (i: Cv::Ocl::PlatformInfo) -> Cv::Ocl::PlatformInfo
     def device_number: () -> Integer
-    def empty?: () -> bool
-    def get_device: (device: Cv::ocl::Device, d: Integer) -> void
-    def initialize_copy: (i: Cv::ocl::PlatformInfo) -> void
-    def name: () -> Std::String
-    def vendor: () -> Std::String
-    def version: () -> Std::String
+    def empty?: () -> TrueClass
+    def get_device: (device: Cv::Ocl::Device, d: Integer) -> NilClass
+    def initialize_copy: (i: Cv::Ocl::PlatformInfo) -> NilClass
+    def name: () -> String
+    def vendor: () -> String
+    def version: () -> String
   end
 end

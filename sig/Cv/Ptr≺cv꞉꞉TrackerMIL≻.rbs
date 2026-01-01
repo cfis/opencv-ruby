@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉TrackerMIL≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TrackerMIL≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉TrackerMIL≻) -> NilClass
+               | (ptr: Cv::TrackerMIL) -> NilClass
+               | (value: Cv::TrackerMIL) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉TrackerMIL≻) -> Cv::Ptr≺cv꞉꞉TrackerMIL≻
+    def get: () -> Cv::TrackerMIL
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉TrackerMIL≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -1,5 +1,5 @@
 module Cv
   class SparseOpticalFlow
-    def calc: (prev_img: Cv::debug_build_guard::InputArray, next_img: Cv::debug_build_guard::InputArray, prev_pts: Cv::debug_build_guard::InputArray, next_pts: Cv::debug_build_guard::InputOutputArray, status: Cv::debug_build_guard::OutputArray, err: Cv::debug_build_guard::OutputArray) -> void
+    def calc: (prev_img: Cv::InputArray, next_img: Cv::InputArray, prev_pts: Cv::InputArray, next_pts: Cv::InputOutputArray, status: Cv::OutputArray, err: Cv::OutputArray) -> NilClass
   end
 end

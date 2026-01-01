@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class MVNLayer
+    attr_accessor across_channels: TrueClass
+    attr_accessor eps: Float
+    attr_accessor norm_variance: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

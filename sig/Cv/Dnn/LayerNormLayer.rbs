@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class LayerNormLayer
+    attr_accessor axis: Integer
+    attr_accessor epsilon: Float
+    attr_accessor has_bias: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

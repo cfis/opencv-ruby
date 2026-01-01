@@ -1,14 +1,14 @@
 module Cv::Ocl
   class Queue
-    def initialize: () -> void
-               | (c: Cv::ocl::Context, d: Cv::ocl::Device) -> void
-    def assign: (q: Cv::ocl::Queue) -> Cv::ocl::Queue
-           | (q: Cv::ocl::Queue) -> Cv::ocl::Queue
-    def create?: (c: Cv::ocl::Context, d: Cv::ocl::Device) -> bool
-    def empty?: () -> bool
-    def finish: () -> void
-    def get_profiling_queue: () -> Cv::ocl::Queue
-    def initialize_copy: (q: Cv::ocl::Queue) -> void
-    def ptr: () -> Rice::Buffer≺void∗≻
+    def initialize: () -> NilClass
+               | (c: Cv::Ocl::Context, d: Cv::Ocl::Device) -> NilClass
+    def assign: (q: Cv::Ocl::Queue) -> Cv::Ocl::Queue
+           | (q: Cv::Ocl::Queue) -> Cv::Ocl::Queue
+    def create?: (c: Cv::Ocl::Context, d: Cv::Ocl::Device) -> TrueClass
+    def empty?: () -> TrueClass
+    def finish: () -> NilClass
+    def get_profiling_queue: () -> Cv::Ocl::Queue
+    def initialize_copy: (q: Cv::Ocl::Queue) -> NilClass
+    def ptr: () -> Rice::Pointer≺void≻
   end
 end

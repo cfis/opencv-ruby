@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉ocl꞉꞉PlatformInfo≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉ocl꞉꞉PlatformInfo≻
+  end
+end

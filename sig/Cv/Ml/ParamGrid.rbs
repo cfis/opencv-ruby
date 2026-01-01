@@ -4,7 +4,7 @@ module Cv::Ml
     attr_accessor max_val: Float
     attr_accessor min_val: Float
 
-    def initialize: () -> void
-               | (_min_val: Float, _max_val: Float, _log_step: Float) -> void
+    def initialize: () -> NilClass
+               | (_min_val: Float, _max_val: Float, _log_step: Float) -> NilClass
   end
 end

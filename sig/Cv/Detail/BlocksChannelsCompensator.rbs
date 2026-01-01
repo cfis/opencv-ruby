@@ -1,6 +1,6 @@
 module Cv::Detail
   class BlocksChannelsCompensator
-    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> void
-    def initialize: (bl_width: Integer, bl_height: Integer, nr_feeds: Integer) -> void
+    def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
+    def initialize: (bl_width: Integer, bl_height: Integer, nr_feeds: Integer) -> NilClass
   end
 end

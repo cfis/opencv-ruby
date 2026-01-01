@@ -1,0 +1,33 @@
+module Std
+  class Vector≺vector≺cv꞉꞉Point_≺float≻≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺vector≺cv꞉꞉Point_≺float≻≻≻
+    def delete: (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def delete_at: (arg_0: Integer) -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def include?: (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> TrueClass
+    def index: (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻
+    def last: () -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def push: (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

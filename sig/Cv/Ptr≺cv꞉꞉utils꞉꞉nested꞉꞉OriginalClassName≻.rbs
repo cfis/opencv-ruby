@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> NilClass
+               | (ptr: Cv::Utils::Nested::OriginalClassName) -> NilClass
+               | (value: Cv::Utils::Nested::OriginalClassName) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> Cv::Ptr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻
+    def get: () -> Cv::Utils::Nested::OriginalClassName
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

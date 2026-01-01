@@ -1,24 +1,24 @@
 module Cv
   class SparseMat1f
-    def []: (arg_0: Rice::Buffer≺int const∗≻) -> Float
+    def []: (arg_0: Rice::Pointer≺int≻) -> Float
        | (arg_0: Integer) -> Float
        | (arg_0: Integer, arg_1: Integer) -> Float
        | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Float
     def []=: (arg_0: Integer, arg_1: Float) -> Float
-        | (arg_0: Rice::Buffer≺int const∗≻, arg_1: Float) -> Float
+        | (arg_0: Rice::Pointer≺int≻, arg_1: Float) -> Float
         | (arg_0: Integer, arg_1: Integer, arg_2: Float) -> Float
         | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Float) -> Float
-    def initialize: () -> void
-               | (m: Cv::SparseMat) -> void
-               | (m: Cv::Mat) -> void
-               | (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
-    def begin: () -> Cv::SparseMatIterator_≺float≻
-    def clone: () -> Cv::SparseMat_≺float≻
-    def create: (dims: Integer, _sizes: Rice::Buffer≺int const∗≻) -> void
+    def initialize: () -> NilClass
+               | (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def begin: () -> Cv::SparseMatIterator1f
+    def clone: () -> Cv::SparseMat1f
+    def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
     def depth: () -> Integer
-    def end: () -> Cv::SparseMatIterator_≺float≻
+    def end: () -> Cv::SparseMatIterator1f
     def channels: () -> Integer
-    def initialize_copy: (m: Cv::SparseMat_≺float≻) -> void
+    def initialize_copy: (m: Cv::SparseMat1f) -> NilClass
     def type: () -> Integer
   end
 end

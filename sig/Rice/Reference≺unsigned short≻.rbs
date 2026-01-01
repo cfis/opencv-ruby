@@ -1,0 +1,6 @@
+module Rice
+  class Reference≺unsigned short≻
+    def initialize: (arg_0: Integer) -> NilClass
+    def value: () -> Integer
+  end
+end

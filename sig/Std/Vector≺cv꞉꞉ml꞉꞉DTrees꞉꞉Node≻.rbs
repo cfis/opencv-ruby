@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Cv::Ml::DTrees::Node) -> NilClass
+    def []: (arg_0: Integer) -> Cv::Ml::DTrees::Node
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Cv::Ml::DTrees::Node) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def delete_at: (arg_0: Integer) -> Cv::Ml::DTrees::Node
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Ml::DTrees::Node
+    def include?: (arg_0: Cv::Ml::DTrees::Node) -> TrueClass
+    def index: (arg_0: Cv::Ml::DTrees::Node) -> Integer
+    def delete: (arg_0: Cv::Ml::DTrees::Node) -> Cv::Ml::DTrees::Node
+    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Cv::Ml::DTrees::Node) -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def last: () -> Cv::Ml::DTrees::Node
+    def max_size: () -> Integer
+    def pop: () -> Cv::Ml::DTrees::Node
+    def push: (arg_0: Cv::Ml::DTrees::Node) -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

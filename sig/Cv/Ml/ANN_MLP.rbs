@@ -15,21 +15,21 @@ module Cv::Ml
     def get_term_criteria: () -> Cv::TermCriteria
     def get_train_method: () -> Integer
     def get_weights: (layer_idx: Integer) -> Cv::Mat
-    def set_activation_function: (type: Integer, param1: Float, param2: Float) -> void
-    def set_anneal_cooling_ratio: (val: Float) -> void
-    def set_anneal_energy_rng: (rng: Cv::RNG) -> void
-    def set_anneal_final_t: (val: Float) -> void
-    def set_anneal_initial_t: (val: Float) -> void
-    def set_anneal_ite_per_step: (val: Integer) -> void
-    def set_backprop_momentum_scale: (val: Float) -> void
-    def set_backprop_weight_scale: (val: Float) -> void
-    def set_layer_sizes: (_layer_sizes: Cv::debug_build_guard::InputArray) -> void
-    def set_rprop_dw0: (val: Float) -> void
-    def set_rprop_dw_max: (val: Float) -> void
-    def set_rprop_dw_min: (val: Float) -> void
-    def set_rprop_dw_minus: (val: Float) -> void
-    def set_rprop_dw_plus: (val: Float) -> void
-    def set_term_criteria: (val: Cv::TermCriteria) -> void
-    def set_train_method: (method: Integer, param1: Float, param2: Float) -> void
+    def set_activation_function: (type: Integer, param1: Float, param2: Float) -> NilClass
+    def set_anneal_cooling_ratio: (val: Float) -> NilClass
+    def set_anneal_energy_rng: (rng: Cv::RNG) -> NilClass
+    def set_anneal_final_t: (val: Float) -> NilClass
+    def set_anneal_initial_t: (val: Float) -> NilClass
+    def set_anneal_ite_per_step: (val: Integer) -> NilClass
+    def set_backprop_momentum_scale: (val: Float) -> NilClass
+    def set_backprop_weight_scale: (val: Float) -> NilClass
+    def set_layer_sizes: (_layer_sizes: Cv::InputArray) -> NilClass
+    def set_rprop_dw0: (val: Float) -> NilClass
+    def set_rprop_dw_max: (val: Float) -> NilClass
+    def set_rprop_dw_min: (val: Float) -> NilClass
+    def set_rprop_dw_minus: (val: Float) -> NilClass
+    def set_rprop_dw_plus: (val: Float) -> NilClass
+    def set_term_criteria: (val: Cv::TermCriteria) -> NilClass
+    def set_train_method: (method: Integer, param1: Float, param2: Float) -> NilClass
   end
 end

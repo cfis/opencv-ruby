@@ -1,83 +1,83 @@
 module Cv
   class InputArray
-    def initialize: () -> void
-               | (m: Cv::Mat) -> void
-               | (expr: Cv::MatExpr) -> void
-               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> void
-               | (vec: Std::Vector≺bool≻) -> void
-               | (val: Double) -> void
-               | (d_mat: Cv::cuda::GpuMat) -> void
-               | (buf: Cv::ogl::Buffer) -> void
-               | (cuda_mem: Cv::cuda::HostMem) -> void
-               | (um: Cv::UMat) -> void
-               | (umv: Std::Vector≺cv꞉꞉UMat≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> void
-               | (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 1≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 2≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 3≻≻) -> void
-               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 4≻≻) -> void
-               | (_flags: Integer, _obj: Rice::Buffer≺void∗≻) -> void
+    def initialize: () -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | (expr: Cv::MatExpr) -> NilClass
+               | (vec: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+               | (vec: Std::Vector≺bool≻) -> NilClass
+               | (val: Float) -> NilClass
+               | (d_mat: Cv::Cuda::GpuMat) -> NilClass
+               | (buf: Cv::Ogl::Buffer) -> NilClass
+               | (cuda_mem: Cv::Cuda::HostMem) -> NilClass
+               | (um: Cv::UMat) -> NilClass
+               | (umv: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Point_≺int≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> NilClass
+               | (arg_0: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned short‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺int‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 4≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 1≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 2≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 3≻≻) -> NilClass
+               | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 4≻≻) -> NilClass
+               | (_flags: Integer, _obj: Rice::Pointer≺void≻) -> NilClass
     def channels: (i: Integer) -> Integer
-    def get_sz: () -> Cv::Size_≺int≻
-    def gpu_mat?: () -> bool
-    def get_obj: () -> Rice::Buffer≺void∗≻
+    def get_sz: () -> Cv::Size
+    def gpu_mat?: () -> TrueClass
+    def get_obj: () -> Rice::Pointer≺void≻
     def get_flags: () -> Integer
-    def get_o_gl_buffer: () -> Cv::ogl::Buffer
+    def get_o_gl_buffer: () -> Cv::Ogl::Buffer
     def depth: (i: Integer) -> Integer
-    def get_gpu_mat: () -> Cv::cuda::GpuMat
-    def copy_to: (arr: Cv::debug_build_guard::OutputArray) -> void
-            | (arr: Cv::debug_build_guard::OutputArray, mask: Cv::debug_build_guard::InputArray) -> void
-    def get_gpu_mat_vector: (gpumv: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> void
-    def continuous?: (i: Integer) -> bool
+    def get_gpu_mat: () -> Cv::Cuda::GpuMat
+    def copy_to: (arr: Cv::OutputArray) -> NilClass
+            | (arr: Cv::OutputArray, mask: Cv::InputArray) -> NilClass
+    def get_gpu_mat_vector: (gpumv: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> NilClass
+    def continuous?: (i: Integer) -> TrueClass
     def cols: (i: Integer) -> Integer
-    def get_u_mat_vector: (umv: Std::Vector≺cv꞉꞉UMat≻) -> void
+    def get_u_mat_vector: (umv: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
     def dims: (i: Integer) -> Integer
-    def get_mat_vector: (mv: Std::Vector≺cv꞉꞉Mat≻) -> void
-    def empty?: () -> bool
+    def get_mat_vector: (mv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def empty?: () -> TrueClass
     def get_mat: (idx: Integer) -> Cv::Mat
     def get_mat_: (idx: Integer) -> Cv::Mat
     def get_u_mat: (idx: Integer) -> Cv::UMat
-    def gpu_mat_vector?: () -> bool
-    def kind: () -> Enum cv::debug_build_guard::_InputArray::KindFlag
-    def mat?: () -> bool
-    def mat_vector?: () -> bool
-    def matx?: () -> bool
+    def gpu_mat_vector?: () -> TrueClass
+    def kind: () -> Cv::InputArray::KindFlag
+    def mat?: () -> TrueClass
+    def mat_vector?: () -> TrueClass
+    def matx?: () -> TrueClass
     def offset: (i: Integer) -> Integer
     def rows: (i: Integer) -> Integer
-    def same_size?: (arr: Cv::debug_build_guard::InputArray) -> bool
-    def size: (i: Integer) -> Cv::Size_≺int≻
-    def sizend: (sz: Rice::Buffer≺int∗≻, i: Integer) -> Integer
+    def same_size?: (arr: Cv::InputArray) -> TrueClass
+    def size: (i: Integer) -> Cv::Size
+    def sizend: (sz: Rice::Pointer≺int≻, i: Integer) -> Integer
     def step: (i: Integer) -> Integer
-    def submatrix?: (i: Integer) -> bool
+    def submatrix?: (i: Integer) -> TrueClass
     def total: (i: Integer) -> Integer
     def type: (i: Integer) -> Integer
-    def u_mat?: () -> bool
-    def u_mat_vector?: () -> bool
-    def vector?: () -> bool
+    def u_mat?: () -> TrueClass
+    def u_mat_vector?: () -> TrueClass
+    def vector?: () -> TrueClass
   end
 end

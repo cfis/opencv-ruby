@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
+               | (ptr: Cv::Detail::ExposureCompensator) -> NilClass
+               | (value: Cv::Detail::ExposureCompensator) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻
+    def get: () -> Cv::Detail::ExposureCompensator
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

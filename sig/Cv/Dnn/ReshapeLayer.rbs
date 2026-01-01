@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class ReshapeLayer
+    attr_accessor new_shape_desc: Std::Vector≺int≻
+    attr_accessor new_shape_range: Cv::Range
+
+    def initialize: () -> NilClass
+  end
+end

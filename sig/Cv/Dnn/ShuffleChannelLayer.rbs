@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class ShuffleChannelLayer
+    attr_accessor group: Integer
+
+    def initialize: () -> NilClass
+  end
+end

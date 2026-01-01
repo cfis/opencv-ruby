@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class LogLayer
+    def initialize: () -> NilClass
+  end
+end

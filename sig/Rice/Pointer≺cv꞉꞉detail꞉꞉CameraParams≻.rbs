@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉detail꞉꞉CameraParams≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉detail꞉꞉CameraParams≻
+  end
+end

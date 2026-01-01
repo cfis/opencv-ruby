@@ -1,0 +1,5 @@
+module Cv::Dnn
+  class DataAugmentationLayer
+    def initialize: () -> NilClass
+  end
+end

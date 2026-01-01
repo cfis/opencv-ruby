@@ -1,5 +1,5 @@
 module Cv::Cuda
   class TargetArchs
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

@@ -1,6 +1,6 @@
 module Cv
   class VariationalRefinement
-    def calc_uv: (i0: Cv::debug_build_guard::InputArray, i1: Cv::debug_build_guard::InputArray, flow_u: Cv::debug_build_guard::InputOutputArray, flow_v: Cv::debug_build_guard::InputOutputArray) -> void
+    def calc_uv: (i0: Cv::InputArray, i1: Cv::InputArray, flow_u: Cv::InputOutputArray, flow_v: Cv::InputOutputArray) -> NilClass
     def get_alpha: () -> Float
     def get_delta: () -> Float
     def get_epsilon: () -> Float
@@ -8,12 +8,12 @@ module Cv
     def get_gamma: () -> Float
     def get_omega: () -> Float
     def get_sor_iterations: () -> Integer
-    def set_alpha: (val: Float) -> void
-    def set_delta: (val: Float) -> void
-    def set_epsilon: (val: Float) -> void
-    def set_fixed_point_iterations: (val: Integer) -> void
-    def set_gamma: (val: Float) -> void
-    def set_omega: (val: Float) -> void
-    def set_sor_iterations: (val: Integer) -> void
+    def set_alpha: (val: Float) -> NilClass
+    def set_delta: (val: Float) -> NilClass
+    def set_epsilon: (val: Float) -> NilClass
+    def set_fixed_point_iterations: (val: Integer) -> NilClass
+    def set_gamma: (val: Float) -> NilClass
+    def set_omega: (val: Float) -> NilClass
+    def set_sor_iterations: (val: Integer) -> NilClass
   end
 end

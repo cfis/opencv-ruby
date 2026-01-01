@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class ExpLayer
+    attr_accessor base: Float
+    attr_accessor scale: Float
+    attr_accessor shift: Float
+
+    def initialize: () -> NilClass
+  end
+end

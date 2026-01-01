@@ -4,14 +4,14 @@ module Cv
     attr_accessor narrays: Integer
     attr_accessor nplanes: Integer
     attr_accessor planes: Cv::Mat
-    attr_accessor ptrs: Rice::Buffer≺unsigned char∗∗≻
+    attr_accessor ptrs: Rice::Pointer≺unsigned char∗≻
     attr_accessor size: Integer
 
     def increment: () -> Cv::NAryMatIterator
               | (: Integer) -> Cv::NAryMatIterator
-    def init: (arrays: Cv::Mat, planes: Cv::Mat, ptrs: Rice::Buffer≺unsigned char∗∗≻, narrays: Integer) -> void
-    def initialize: () -> void
-               | (arrays: Cv::Mat, planes: Cv::Mat, narrays: Integer) -> void
-               | (arrays: Cv::Mat, ptrs: Rice::Buffer≺unsigned char∗∗≻, narrays: Integer) -> void
+    def init: (arrays: Cv::Mat, planes: Cv::Mat, ptrs: Rice::Pointer≺unsigned char∗≻, narrays: Integer) -> NilClass
+    def initialize: () -> NilClass
+               | (arrays: Cv::Mat, planes: Cv::Mat, narrays: Integer) -> NilClass
+               | (arrays: Cv::Mat, ptrs: Rice::Pointer≺unsigned char∗≻, narrays: Integer) -> NilClass
   end
 end

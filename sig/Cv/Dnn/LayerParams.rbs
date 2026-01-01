@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class LayerParams
+    attr_accessor blobs: Std::Vector≺cv꞉꞉Mat≻
+    attr_accessor name: String
+    attr_accessor type: String
+
+    def initialize: () -> NilClass
+  end
+end

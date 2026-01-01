@@ -1,5 +1,5 @@
 module Cvflann
   class FILEScopeGuard
-    def initialize: (file: Iobuf) -> void
+    def initialize: (file: Libc::File) -> NilClass
   end
 end

@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
+    def buffer: () -> Rice::Buffer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
+  end
+end

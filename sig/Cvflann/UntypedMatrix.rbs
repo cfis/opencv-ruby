@@ -1,10 +1,10 @@
 module Cvflann
   class UntypedMatrix
     attr_accessor cols: Integer
-    attr_accessor data: Rice::Buffer≺void∗≻
+    attr_accessor data: Rice::Pointer≺void≻
     attr_accessor rows: Integer
-    attr_accessor type: Enum cvflann::FlannDatatypeT
+    attr_accessor type: Cvflann::FlannDatatypeT
 
-    def initialize: (data_: Rice::Buffer≺void∗≻, rows_: Integer, cols_: Integer) -> void
+    def initialize: (data_: Rice::Pointer≺void≻, rows_: Integer, cols_: Integer) -> NilClass
   end
 end

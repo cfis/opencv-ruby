@@ -1,6 +1,6 @@
 module Cv
   class Hamming
-    def call: (a: Rice::Buffer≺unsigned char const∗≻, b: Rice::Buffer≺unsigned char const∗≻, size: Integer) -> Integer
-    def initialize: () -> void
+    def call: (a: Rice::Pointer≺unsigned char≻, b: Rice::Pointer≺unsigned char≻, size: Integer) -> Integer
+    def initialize: () -> NilClass
   end
 end

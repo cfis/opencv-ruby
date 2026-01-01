@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉Feature2D≻
+    def initialize: (value: Cv::Feature2D) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Feature2D
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉Feature2D≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

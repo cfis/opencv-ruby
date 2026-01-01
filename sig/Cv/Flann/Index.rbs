@@ -1,12 +1,12 @@
 module Cv::Flann
   class Index
-    def build: (features: Cv::debug_build_guard::InputArray, params: Cv::flann::IndexParams, dist_type: Enum cvflann::FlannDistanceT) -> void
-    def get_algorithm: () -> Enum cvflann::FlannAlgorithmT
-    def get_distance: () -> Enum cvflann::FlannDistanceT
-    def initialize: () -> void
-               | (features: Cv::debug_build_guard::InputArray, params: Cv::flann::IndexParams, dist_type: Enum cvflann::FlannDistanceT) -> void
-    def load?: (features: Cv::debug_build_guard::InputArray, filename: Std::String) -> bool
-    def release: () -> void
-    def save: (filename: Std::String) -> void
+    def build: (features: Cv::InputArray, params: Cv::Flann::IndexParams, dist_type: Cvflann::FlannDistanceT) -> NilClass
+    def get_algorithm: () -> Cvflann::FlannAlgorithmT
+    def get_distance: () -> Cvflann::FlannDistanceT
+    def initialize: () -> NilClass
+               | (features: Cv::InputArray, params: Cv::Flann::IndexParams, dist_type: Cvflann::FlannDistanceT) -> NilClass
+    def load?: (features: Cv::InputArray, filename: String) -> TrueClass
+    def release: () -> NilClass
+    def save: (filename: String) -> NilClass
   end
 end

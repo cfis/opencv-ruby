@@ -1,12 +1,12 @@
 module Cv
   class FlannBasedMatcher
-    def add: (descriptors: Cv::debug_build_guard::InputArray) -> void
-    def clear: () -> void
-    def clone: (empty_train_data: bool) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
-    def initialize: (index_params: Cv::Ptr≺cv꞉꞉flann꞉꞉IndexParams≻, search_params: Cv::Ptr≺cv꞉꞉flann꞉꞉SearchParams≻) -> void
-    def mask_supported?: () -> bool
-    def read: (: Cv::FileNode) -> void
-    def train: () -> void
-    def write: (: Cv::FileStorage) -> void
+    def add: (descriptors: Cv::InputArray) -> NilClass
+    def clear: () -> NilClass
+    def clone: (empty_train_data: TrueClass) -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
+    def initialize: (index_params: Cv::Ptr≺cv꞉꞉flann꞉꞉IndexParams≻, search_params: Cv::Ptr≺cv꞉꞉flann꞉꞉SearchParams≻) -> NilClass
+    def mask_supported?: () -> TrueClass
+    def read: (: Cv::FileNode) -> NilClass
+    def train: () -> NilClass
+    def write: (: Cv::FileStorage) -> NilClass
   end
 end

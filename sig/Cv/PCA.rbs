@@ -4,16 +4,16 @@ module Cv
     attr_accessor eigenvectors: Cv::Mat
     attr_accessor mean: Cv::Mat
 
-    def back_project: (vec: Cv::debug_build_guard::InputArray) -> Cv::Mat
-                 | (vec: Cv::debug_build_guard::InputArray, result: Cv::debug_build_guard::OutputArray) -> void
-    def initialize: () -> void
-               | (data: Cv::debug_build_guard::InputArray, mean: Cv::debug_build_guard::InputArray, flags: Integer, retained_variance: Float) -> void
-               | (data: Cv::debug_build_guard::InputArray, mean: Cv::debug_build_guard::InputArray, flags: Integer, max_components: Integer) -> void
-    def call: (data: Cv::debug_build_guard::InputArray, mean: Cv::debug_build_guard::InputArray, flags: Integer, max_components: Integer) -> Cv::PCA
-         | (data: Cv::debug_build_guard::InputArray, mean: Cv::debug_build_guard::InputArray, flags: Integer, retained_variance: Float) -> Cv::PCA
-    def project: (vec: Cv::debug_build_guard::InputArray) -> Cv::Mat
-            | (vec: Cv::debug_build_guard::InputArray, result: Cv::debug_build_guard::OutputArray) -> void
-    def read: (fn: Cv::FileNode) -> void
-    def write: (fs: Cv::FileStorage) -> void
+    def back_project: (vec: Cv::InputArray) -> Cv::Mat
+                 | (vec: Cv::InputArray, result: Cv::OutputArray) -> NilClass
+    def initialize: () -> NilClass
+               | (data: Cv::InputArray, mean: Cv::InputArray, flags: Integer, retained_variance: Float) -> NilClass
+               | (data: Cv::InputArray, mean: Cv::InputArray, flags: Integer, max_components: Integer) -> NilClass
+    def call: (data: Cv::InputArray, mean: Cv::InputArray, flags: Integer, max_components: Integer) -> Cv::PCA
+         | (data: Cv::InputArray, mean: Cv::InputArray, flags: Integer, retained_variance: Float) -> Cv::PCA
+    def project: (vec: Cv::InputArray) -> Cv::Mat
+            | (vec: Cv::InputArray, result: Cv::OutputArray) -> NilClass
+    def read: (fn: Cv::FileNode) -> NilClass
+    def write: (fs: Cv::FileStorage) -> NilClass
   end
 end

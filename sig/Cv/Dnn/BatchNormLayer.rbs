@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class BatchNormLayer
+    attr_accessor epsilon: Float
+    attr_accessor has_bias: TrueClass
+    attr_accessor has_weights: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

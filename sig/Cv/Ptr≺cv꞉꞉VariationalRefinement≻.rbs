@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉VariationalRefinement≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉VariationalRefinement≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉VariationalRefinement≻) -> NilClass
+               | (ptr: Cv::VariationalRefinement) -> NilClass
+               | (value: Cv::VariationalRefinement) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉VariationalRefinement≻) -> Cv::Ptr≺cv꞉꞉VariationalRefinement≻
+    def get: () -> Cv::VariationalRefinement
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉VariationalRefinement≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

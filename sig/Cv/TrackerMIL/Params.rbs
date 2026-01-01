@@ -8,6 +8,6 @@ module Cv::TrackerMIL
     attr_accessor sampler_track_max_neg_num: Integer
     attr_accessor sampler_track_max_pos_num: Integer
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

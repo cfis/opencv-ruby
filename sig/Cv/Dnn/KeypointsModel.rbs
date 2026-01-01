@@ -1,0 +1,7 @@
+module Cv::Dnn
+  class KeypointsModel
+    def initialize: (network: Cv::Dnn::Net) -> NilClass
+               | (model: String, config: String) -> NilClass
+    def estimate: (frame: Cv::InputArray, thresh: Float) -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+  end
+end

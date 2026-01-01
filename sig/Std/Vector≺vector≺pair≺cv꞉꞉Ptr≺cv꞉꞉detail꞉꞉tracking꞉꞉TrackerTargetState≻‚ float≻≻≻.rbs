@@ -1,0 +1,33 @@
+module Std
+  class Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> NilClass
+    def ==: (arg_0: Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻) -> TrueClass
+    def []: (arg_0: Integer) -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻
+    def delete: (arg_0: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+    def delete_at: (arg_0: Integer) -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+    def include?: (arg_0: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> TrueClass
+    def index: (arg_0: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻
+    def last: () -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻
+    def push: (arg_0: Std::Vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻) -> Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

@@ -1,0 +1,9 @@
+module Cv::Dnn
+  class ConvolutionLayer
+    attr_accessor fused_activation: TrueClass
+    attr_accessor fused_add: TrueClass
+    attr_accessor use_winograd: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

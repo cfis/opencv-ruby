@@ -1,0 +1,4 @@
+module Cv::Dnn
+  class LayerFactory
+  end
+end

@@ -1,12 +1,12 @@
 module Cv::Ml::DTrees
   class Split
     attr_accessor c: Float
-    attr_accessor inversed: bool
+    attr_accessor inversed: TrueClass
     attr_accessor next: Integer
     attr_accessor quality: Float
     attr_accessor subset_ofs: Integer
     attr_accessor var_idx: Integer
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

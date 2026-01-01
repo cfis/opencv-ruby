@@ -1,7 +1,7 @@
 module Cv::Detail
   class SphericalPortraitProjector
-    def initialize: () -> void
-    def map_backward: (u: Float, v: Float, x: Float, y: Float) -> void
-    def map_forward: (x: Float, y: Float, u: Float, v: Float) -> void
+    def initialize: () -> NilClass
+    def map_backward: (u: Float, v: Float, x: Float, y: Float) -> NilClass
+    def map_forward: (x: Float, y: Float, u: Float, v: Float) -> NilClass
   end
 end

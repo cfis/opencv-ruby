@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉TonemapReinhard≻
+    def initialize: (value: Cv::TonemapReinhard) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::TonemapReinhard
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉TonemapReinhard≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

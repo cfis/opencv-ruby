@@ -1,0 +1,33 @@
+module Std
+  class Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻
+    def initialize: () -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (arg_0: Integer, arg_1: Rice::Parameter) -> NilClass
+    def ==: (arg_0: Std::Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻) -> TrueClass
+    def []: (arg_0: Integer) -> Rice::Parameter
+       | (arg_0: Integer, arg_1: Integer) -> Integer
+    def []=: (arg_0: Integer, arg_1: Rice::Parameter) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺Rice꞉꞉detail꞉꞉ParameterAbstract∗≻
+    def delete: (arg_0: Rice::Parameter) -> Rice::Parameter
+    def delete_at: (arg_0: Integer) -> Rice::Parameter
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Rice::Parameter
+    def include?: (arg_0: Rice::Parameter) -> TrueClass
+    def index: (arg_0: Rice::Parameter) -> Integer
+    def initialize_copy: (arg_0: Std::Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻) -> NilClass
+    def insert: (arg_0: Integer, arg_1: Rice::Parameter) -> Std::Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻
+    def last: () -> Rice::Parameter
+    def max_size: () -> Integer
+    def pop: () -> Rice::Parameter
+    def push: (arg_0: Rice::Parameter) -> Std::Vector≺Rice꞉꞉detail꞉꞉ParameterAbstract const∗≻
+    def reserve: (arg_0: Integer) -> NilClass
+    def resize: (arg_0: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

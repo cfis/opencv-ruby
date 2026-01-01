@@ -1,7 +1,7 @@
 module Cv
   class Formatted
-    def next: () -> Rice::Buffer≺char const∗≻
-    def reset: () -> void
-    def to_s: () -> Std::String
+    def next: () -> String
+    def reset: () -> NilClass
+    def to_s: () -> String
   end
 end

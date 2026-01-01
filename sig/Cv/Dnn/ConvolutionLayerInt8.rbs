@@ -1,0 +1,12 @@
+module Cv::Dnn
+  class ConvolutionLayerInt8
+    attr_accessor input_sc: Float
+    attr_accessor input_zp: Integer
+    attr_accessor output_sc: Float
+    attr_accessor output_zp: Integer
+    attr_accessor per_channel: TrueClass
+    attr_accessor use_winograd: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

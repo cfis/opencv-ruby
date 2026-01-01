@@ -3,43 +3,43 @@ module Cv
     attr_accessor x: Integer
     attr_accessor y: Integer
 
-    def initialize: () -> void
-               | (sz: Cv::Size_≺unsigned short≻) -> void
-               | (v: Cv::Vec≺unsigned short‚ 2≻) -> void
-               | (_x: Integer, _y: Integer) -> void
-    def !=: (arg_0: Cv::Point_≺unsigned short≻) -> bool
-       | (arg_0: Cv::Point_≺unsigned short≻) -> bool
-    def *: (arg_0: Float) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-    def +: (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-    def -: (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-    def /: (arg_0: Float) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-      | (arg_0: Float) -> Cv::Point_≺unsigned short≻
-    def ==: (arg_0: Cv::Point_≺unsigned short≻) -> bool
-       | (arg_0: Cv::Point_≺unsigned short≻) -> bool
-    def assign_divide: (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-                  | (arg_0: Float) -> Cv::Point_≺unsigned short≻
-                  | (arg_0: Float) -> Cv::Point_≺unsigned short≻
-                  | (arg_0: Integer) -> Cv::Point_≺unsigned short≻
-    def assign_minus: (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-                 | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-    def assign_multiply: (arg_0: Float) -> Cv::Point_≺unsigned short≻
-                    | (arg_0: Float) -> Cv::Point_≺unsigned short≻
-    def assign_plus: (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-                | (arg_0: Cv::Point_≺unsigned short≻) -> Cv::Point_≺unsigned short≻
-    def cross: (pt: Cv::Point_≺unsigned short≻) -> Float
-    def ddot: (pt: Cv::Point_≺unsigned short≻) -> Float
-    def dot: (pt: Cv::Point_≺unsigned short≻) -> Integer
-    def initialize_copy: (pt: Cv::Point_≺unsigned short≻) -> void
-    def inside?: (r: Cv::Rect_≺unsigned short≻) -> bool
-    def inspect: () -> Std::String
+    def initialize: () -> NilClass
+               | (sz: Cv::Size2w) -> NilClass
+               | (v: Cv::Vec2w) -> NilClass
+               | (_x: Integer, _y: Integer) -> NilClass
+    def !=: (arg_0: Cv::Point2w) -> TrueClass
+       | (arg_0: Cv::Point2w) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Point2w
+      | (arg_0: Integer) -> Cv::Point2w
+      | (arg_0: Integer) -> Cv::Point2w
+    def +: (arg_0: Cv::Point2w) -> Cv::Point2w
+      | (arg_0: Cv::Point2w) -> Cv::Point2w
+    def -: (arg_0: Cv::Point2w) -> Cv::Point2w
+      | (arg_0: Cv::Point2w) -> Cv::Point2w
+    def /: (arg_0: Float) -> Cv::Point2w
+      | (arg_0: Integer) -> Cv::Point2w
+      | (arg_0: Integer) -> Cv::Point2w
+      | (arg_0: Float) -> Cv::Point2w
+    def ==: (arg_0: Cv::Point2w) -> TrueClass
+       | (arg_0: Cv::Point2w) -> TrueClass
+    def assign_divide: (arg_0: Integer) -> Cv::Point2w
+                  | (arg_0: Float) -> Cv::Point2w
+                  | (arg_0: Float) -> Cv::Point2w
+                  | (arg_0: Integer) -> Cv::Point2w
+    def assign_minus: (arg_0: Cv::Point2w) -> Cv::Point2w
+                 | (arg_0: Cv::Point2w) -> Cv::Point2w
+    def assign_multiply: (arg_0: Float) -> Cv::Point2w
+                    | (arg_0: Float) -> Cv::Point2w
+    def assign_plus: (arg_0: Cv::Point2w) -> Cv::Point2w
+                | (arg_0: Cv::Point2w) -> Cv::Point2w
+    def cross: (pt: Cv::Point2w) -> Float
+    def ddot: (pt: Cv::Point2w) -> Float
+    def dot: (pt: Cv::Point2w) -> Integer
+    def initialize_copy: (pt: Cv::Point2w) -> NilClass
+    def inside?: (r: Cv::Rect2w) -> TrueClass
+    def inspect: () -> String
     def norm: () -> Float
-    def to_s: () -> Std::String
-    def to_vec: () -> Cv::Vec≺unsigned short‚ 2≻
+    def to_s: () -> String
+    def to_vec: () -> Cv::Vec2w
   end
 end

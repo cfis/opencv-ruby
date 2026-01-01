@@ -1,0 +1,8 @@
+module Cv::Dnn
+  class SeluLayer
+    attr_accessor alpha: Float
+    attr_accessor gamma: Float
+
+    def initialize: () -> NilClass
+  end
+end

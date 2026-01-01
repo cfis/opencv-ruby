@@ -1,10 +1,10 @@
 module Cv::Detail
   class DpSeamFinder
-    def initialize: (cost_func: Std::String) -> void
-               | (cost_func: Enum cv::detail::DpSeamFinder::CostFunction) -> void
-    def cost_function: () -> Enum cv::detail::DpSeamFinder::CostFunction
-    def find: (src: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> void
-    def set_cost_function: (val: Std::String) -> void
-                      | (val: Enum cv::detail::DpSeamFinder::CostFunction) -> void
+    def initialize: (cost_func: String) -> NilClass
+               | (cost_func: Cv::Detail::DpSeamFinder::CostFunction) -> NilClass
+    def cost_function: () -> Cv::Detail::DpSeamFinder::CostFunction
+    def find: (src: Std::Vector≺cv꞉꞉UMat≻, corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+    def set_cost_function: (val: String) -> NilClass
+                      | (val: Cv::Detail::DpSeamFinder::CostFunction) -> NilClass
   end
 end

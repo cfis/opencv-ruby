@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉BackgroundSubtractorKNN≻
+    def initialize: (value: Cv::BackgroundSubtractorKNN) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::BackgroundSubtractorKNN
+    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉BackgroundSubtractorKNN≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

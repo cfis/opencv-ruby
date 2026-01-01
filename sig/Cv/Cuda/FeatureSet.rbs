@@ -1,18 +1,20 @@
 module Cv::Cuda
   class FeatureSet
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::cuda::FeatureSet) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Cuda::FeatureSet) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::cuda::FeatureSet) -> Integer
+    def <=>: (arg_0: Cv::Cuda::FeatureSet) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::cuda::FeatureSet) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::cuda::FeatureSet) -> bool
+    def ^: (arg_0: Cv::Cuda::FeatureSet) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Cuda::FeatureSet) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::cuda::FeatureSet) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Cuda::FeatureSet) -> Integer
     def ~: () -> Integer
   end
 end

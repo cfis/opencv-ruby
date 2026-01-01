@@ -3,11 +3,11 @@ module Cv::Ocl
     attr_accessor flags: Integer
     attr_accessor iwscale: Integer
     attr_accessor m: Cv::UMat
-    attr_accessor obj: Rice::Buffer≺void const∗≻
+    attr_accessor obj: Rice::Pointer≺void≻
     attr_accessor sz: Integer
     attr_accessor wscale: Integer
 
-    def initialize: () -> void
-               | (_flags: Integer, _m: Cv::UMat, wscale: Integer, iwscale: Integer, _obj: Rice::Buffer≺void const∗≻, _sz: Integer) -> void
+    def initialize: () -> NilClass
+               | (_flags: Integer, _m: Cv::UMat, wscale: Integer, iwscale: Integer, _obj: Rice::Pointer≺void≻, _sz: Integer) -> NilClass
   end
 end

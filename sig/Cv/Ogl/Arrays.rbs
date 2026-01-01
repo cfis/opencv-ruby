@@ -1,18 +1,18 @@
 module Cv::Ogl
   class Arrays
-    def bind: () -> void
-    def initialize: () -> void
-    def empty?: () -> bool
-    def release: () -> void
-    def reset_color_array: () -> void
-    def reset_normal_array: () -> void
-    def reset_tex_coord_array: () -> void
-    def reset_vertex_array: () -> void
-    def set_auto_release: (flag: bool) -> void
-    def set_color_array: (color: Cv::debug_build_guard::InputArray) -> void
-    def set_normal_array: (normal: Cv::debug_build_guard::InputArray) -> void
-    def set_tex_coord_array: (tex_coord: Cv::debug_build_guard::InputArray) -> void
-    def set_vertex_array: (vertex: Cv::debug_build_guard::InputArray) -> void
+    def bind: () -> NilClass
+    def initialize: () -> NilClass
+    def empty?: () -> TrueClass
+    def release: () -> NilClass
+    def reset_color_array: () -> NilClass
+    def reset_normal_array: () -> NilClass
+    def reset_tex_coord_array: () -> NilClass
+    def reset_vertex_array: () -> NilClass
+    def set_auto_release: (flag: TrueClass) -> NilClass
+    def set_color_array: (color: Cv::InputArray) -> NilClass
+    def set_normal_array: (normal: Cv::InputArray) -> NilClass
+    def set_tex_coord_array: (tex_coord: Cv::InputArray) -> NilClass
+    def set_vertex_array: (vertex: Cv::InputArray) -> NilClass
     def size: () -> Integer
   end
 end

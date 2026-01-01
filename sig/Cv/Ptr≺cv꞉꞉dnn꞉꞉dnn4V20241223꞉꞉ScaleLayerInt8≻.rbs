@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻) -> NilClass
+               | (ptr: Cv::Dnn::ScaleLayerInt8) -> NilClass
+               | (value: Cv::Dnn::ScaleLayerInt8) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻
+    def get: () -> Cv::Dnn::ScaleLayerInt8
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ScaleLayerInt8≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

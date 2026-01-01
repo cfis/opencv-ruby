@@ -1,13 +1,13 @@
 module Cv::Ml
   class KNearest
-    def find_nearest: (samples: Cv::debug_build_guard::InputArray, k: Integer, results: Cv::debug_build_guard::OutputArray, neighbor_responses: Cv::debug_build_guard::OutputArray, dist: Cv::debug_build_guard::OutputArray) -> Float
+    def find_nearest: (samples: Cv::InputArray, k: Integer, results: Cv::OutputArray, neighbor_responses: Cv::OutputArray, dist: Cv::OutputArray) -> Float
     def get_algorithm_type: () -> Integer
     def get_default_k: () -> Integer
     def get_emax: () -> Integer
-    def get_is_classifier?: () -> bool
-    def set_algorithm_type: (val: Integer) -> void
-    def set_default_k: (val: Integer) -> void
-    def set_emax: (val: Integer) -> void
-    def set_is_classifier: (val: bool) -> void
+    def get_is_classifier?: () -> TrueClass
+    def set_algorithm_type: (val: Integer) -> NilClass
+    def set_default_k: (val: Integer) -> NilClass
+    def set_emax: (val: Integer) -> NilClass
+    def set_is_classifier: (val: TrueClass) -> NilClass
   end
 end

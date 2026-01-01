@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻) -> NilClass
+               | (ptr: Cv::Ml::NormalBayesClassifier) -> NilClass
+               | (value: Cv::Ml::NormalBayesClassifier) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻
+    def get: () -> Cv::Ml::NormalBayesClassifier
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉NormalBayesClassifier≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

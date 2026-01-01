@@ -1,7 +1,7 @@
 module Cv
   class BOWTrainer
-    def add: (descriptors: Cv::Mat) -> void
-    def clear: () -> void
+    def add: (descriptors: Cv::Mat) -> NilClass
+    def clear: () -> NilClass
     def cluster: () -> Cv::Mat
             | (descriptors: Cv::Mat) -> Cv::Mat
     def descriptors_count: () -> Integer

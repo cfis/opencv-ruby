@@ -1,5 +1,5 @@
 module Cv::Detail
   class TransverseMercatorWarper
-    def initialize: (scale: Float) -> void
+    def initialize: (scale: Float) -> NilClass
   end
 end

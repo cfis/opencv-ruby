@@ -1,0 +1,9 @@
+module Cv::Dnn::Dnn4V20241223
+  class Dict
+    def erase: (key: String) -> NilClass
+    def has?: (key: String) -> TrueClass
+    def initialize: () -> NilClass
+    def ptr: (key: String) -> Cv::Dnn::Dnn4V20241223::DictValue
+        | (key: String) -> Cv::Dnn::Dnn4V20241223::DictValue
+  end
+end

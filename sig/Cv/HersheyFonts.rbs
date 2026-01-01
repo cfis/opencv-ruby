@@ -1,18 +1,20 @@
 module Cv
   class HersheyFonts
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::HersheyFonts) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::HersheyFonts) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::HersheyFonts) -> Integer
+    def <=>: (arg_0: Cv::HersheyFonts) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::HersheyFonts) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::HersheyFonts) -> bool
+    def ^: (arg_0: Cv::HersheyFonts) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::HersheyFonts) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::HersheyFonts) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::HersheyFonts) -> Integer
     def ~: () -> Integer
   end
 end

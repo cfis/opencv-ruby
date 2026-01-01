@@ -1,5 +1,5 @@
 module Cv::Detail
   class AffineBestOf2NearestMatcher
-    def initialize: (full_affine: bool, try_use_gpu: bool, match_conf: Float, num_matches_thresh1: Integer) -> void
+    def initialize: (full_affine: TrueClass, try_use_gpu: TrueClass, match_conf: Float, num_matches_thresh1: Integer) -> NilClass
   end
 end

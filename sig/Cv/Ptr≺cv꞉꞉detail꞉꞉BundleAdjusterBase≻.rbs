@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+               | (ptr: Cv::Detail::BundleAdjusterBase) -> NilClass
+               | (value: Cv::Detail::BundleAdjusterBase) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻
+    def get: () -> Cv::Detail::BundleAdjusterBase
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

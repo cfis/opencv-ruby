@@ -1,0 +1,13 @@
+nav:
+  - Guide:
+    - Home: index.md
+    - Installation: installation.md
+    - Getting Started: getting-started.md
+    - C++ to Ruby: cpp-to-ruby.md
+    - Python to Ruby: python-to-ruby.md
+    - Type Mappings: type-mappings.md
+    - API Coverage: api-coverage.md
+  - Development:
+    - Binding Generation: binding-generation.md
+    - Building with CMake: cmake-build.md
+  - API Reference: api

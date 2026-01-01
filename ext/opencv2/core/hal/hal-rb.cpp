@@ -377,22 +377,22 @@ void Init_Hal()
     Arg("arr"), Arg("scale_bias_pairs"), Arg("len"));
   
   rb_cCvHalDFT1D = define_class_under<cv::hal::DFT1D>(rb_mCvHal, "DFT1D").
-    define_singleton_function("create", &cv::hal::DFT1D::create,
-      Arg("len"), Arg("count"), Arg("depth"), Arg("flags"), Arg("use_buffer") = static_cast<bool *>(0)).
     define_method("apply", &cv::hal::DFT1D::apply,
-      Arg("src"), Arg("dst"));
+      Arg("src"), Arg("dst")).
+    define_singleton_function("create", &cv::hal::DFT1D::create,
+      Arg("len"), Arg("count"), Arg("depth"), Arg("flags"), Arg("use_buffer") = static_cast<bool*>(0));
   
   rb_cCvHalDFT2D = define_class_under<cv::hal::DFT2D>(rb_mCvHal, "DFT2D").
-    define_singleton_function("create", &cv::hal::DFT2D::create,
-      Arg("width"), Arg("height"), Arg("depth"), Arg("src_channels"), Arg("dst_channels"), Arg("flags"), Arg("nonzero_rows") = static_cast<int>(0)).
     define_method("apply", &cv::hal::DFT2D::apply,
-      Arg("src_data"), Arg("src_step"), Arg("dst_data"), Arg("dst_step"));
+      Arg("src_data"), Arg("src_step"), Arg("dst_data"), Arg("dst_step")).
+    define_singleton_function("create", &cv::hal::DFT2D::create,
+      Arg("width"), Arg("height"), Arg("depth"), Arg("src_channels"), Arg("dst_channels"), Arg("flags"), Arg("nonzero_rows") = static_cast<int>(0));
   
   rb_cCvHalDCT2D = define_class_under<cv::hal::DCT2D>(rb_mCvHal, "DCT2D").
-    define_singleton_function("create", &cv::hal::DCT2D::create,
-      Arg("width"), Arg("height"), Arg("depth"), Arg("flags")).
     define_method("apply", &cv::hal::DCT2D::apply,
-      Arg("src_data"), Arg("src_step"), Arg("dst_data"), Arg("dst_step"));
+      Arg("src_data"), Arg("src_step"), Arg("dst_data"), Arg("dst_step")).
+    define_singleton_function("create", &cv::hal::DCT2D::create,
+      Arg("width"), Arg("height"), Arg("depth"), Arg("flags"));
   
   rb_mCvHal.define_module_function<int(*)(float*, ::size_t, int, float*, ::size_t, int)>("lu", &cv::hal::LU,
     Arg("a"), Arg("astep"), Arg("m"), Arg("b"), Arg("bstep"), Arg("n"));

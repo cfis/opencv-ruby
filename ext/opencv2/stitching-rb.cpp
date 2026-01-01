@@ -13,8 +13,6 @@ void Init_Stitching()
   rb_cCvStitcher = define_class_under<cv::Stitcher>(rb_mCv, "Stitcher").
     define_constructor(Constructor<cv::Stitcher>()).
     define_constant("ORIG_RESOL", cv::Stitcher::ORIG_RESOL).
-    define_singleton_function("create", &cv::Stitcher::create,
-      Arg("mode") = static_cast<cv::Stitcher::Mode>(cv::Stitcher::PANORAMA)).
     define_method("registration_resol", &cv::Stitcher::registrationResol).
     define_method("set_registration_resol", &cv::Stitcher::setRegistrationResol,
       Arg("resol_mpx")).
@@ -88,8 +86,10 @@ void Init_Stitching()
     define_method("component", &cv::Stitcher::component).
     define_method("cameras", &cv::Stitcher::cameras).
     define_method("work_scale", &cv::Stitcher::workScale).
-    define_method("result_mask", &cv::Stitcher::resultMask);
-  
+    define_method("result_mask", &cv::Stitcher::resultMask).
+    define_singleton_function("create", &cv::Stitcher::create,
+      Arg("mode") = static_cast<cv::Stitcher::Mode>(cv::Stitcher::PANORAMA));
+
   Enum<cv::Stitcher::Status> rb_cCvStitcherStatus = define_enum_under<cv::Stitcher::Status>("Status", rb_cCvStitcher).
     define_value("OK", cv::Stitcher::Status::OK).
     define_value("ERR_NEED_MORE_IMGS", cv::Stitcher::Status::ERR_NEED_MORE_IMGS).

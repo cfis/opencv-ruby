@@ -137,14 +137,14 @@ void Init_AllLayers()
       Arg("params"));
   
   rb_cCvDnnLSTMLayer = define_class_under<cv::dnn::dnn4_v20241223::LSTMLayer, cv::dnn::dnn4_v20241223::Layer>(rb_mCvDnn, "LSTMLayer").
-    define_singleton_function("create", &cv::dnn::dnn4_v20241223::LSTMLayer::create,
-      Arg("params")).
     define_method("set_out_shape", &cv::dnn::dnn4_v20241223::LSTMLayer::setOutShape,
-      Arg("out_tail_shape") = static_cast<const cv::dnn::dnn4_v20241223::MatShape &>(cv::dnn::dnn4_v20241223::MatShape())).
+      Arg("out_tail_shape") = static_cast<const cv::dnn::dnn4_v20241223::MatShape&>(cv::dnn::dnn4_v20241223::MatShape())).
     define_method("input_name_to_index", &cv::dnn::dnn4_v20241223::LSTMLayer::inputNameToIndex,
       Arg("input_name")).
     define_method("output_name_to_index", &cv::dnn::dnn4_v20241223::LSTMLayer::outputNameToIndex,
-      Arg("output_name"));
+      Arg("output_name")).
+    define_singleton_function("create", &cv::dnn::dnn4_v20241223::LSTMLayer::create,
+      Arg("params"));
   
   rb_cCvDnnGRULayer = define_class_under<cv::dnn::dnn4_v20241223::GRULayer, cv::dnn::dnn4_v20241223::Layer>(rb_mCvDnn, "GRULayer").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::GRULayer>()).
@@ -152,13 +152,13 @@ void Init_AllLayers()
       Arg("params"));
   
   rb_cCvDnnRNNLayer = define_class_under<cv::dnn::dnn4_v20241223::RNNLayer, cv::dnn::dnn4_v20241223::Layer>(rb_mCvDnn, "RNNLayer").
-    define_singleton_function("create", &cv::dnn::dnn4_v20241223::RNNLayer::create,
-      Arg("params")).
     define_method("set_weights", &cv::dnn::dnn4_v20241223::RNNLayer::setWeights,
       Arg("wxh"), Arg("bh"), Arg("whh"), Arg("who"), Arg("bo")).
     define_method("set_produce_hidden_output", &cv::dnn::dnn4_v20241223::RNNLayer::setProduceHiddenOutput,
-      Arg("produce") = static_cast<bool>(false));
-  
+      Arg("produce") = static_cast<bool>(false)).
+    define_singleton_function("create", &cv::dnn::dnn4_v20241223::RNNLayer::create,
+      Arg("params"));
+
   rb_cCvDnnEinsumLayer = define_class_under<cv::dnn::dnn4_v20241223::EinsumLayer, cv::dnn::dnn4_v20241223::Layer>(rb_mCvDnn, "EinsumLayer").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::EinsumLayer>()).
     define_singleton_function("create", &cv::dnn::dnn4_v20241223::EinsumLayer::create,
@@ -182,11 +182,11 @@ void Init_AllLayers()
   
   rb_cCvDnnConvolutionLayer = define_class_under<cv::dnn::dnn4_v20241223::ConvolutionLayer, cv::dnn::dnn4_v20241223::BaseConvolutionLayer>(rb_mCvDnn, "ConvolutionLayer").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::ConvolutionLayer>()).
-    define_singleton_function("create", &cv::dnn::dnn4_v20241223::ConvolutionLayer::create,
-      Arg("params")).
     define_attr("fused_activation", &cv::dnn::dnn4_v20241223::ConvolutionLayer::fusedActivation).
     define_attr("fused_add", &cv::dnn::dnn4_v20241223::ConvolutionLayer::fusedAdd).
-    define_attr("use_winograd", &cv::dnn::dnn4_v20241223::ConvolutionLayer::useWinograd);
+    define_attr("use_winograd", &cv::dnn::dnn4_v20241223::ConvolutionLayer::useWinograd).
+    define_singleton_function("create", &cv::dnn::dnn4_v20241223::ConvolutionLayer::create,
+      Arg("params"));
   
   rb_cCvDnnConvolutionLayerInt8 = define_class_under<cv::dnn::dnn4_v20241223::ConvolutionLayerInt8, cv::dnn::dnn4_v20241223::BaseConvolutionLayer>(rb_mCvDnn, "ConvolutionLayerInt8").
     define_constructor(Constructor<cv::dnn::dnn4_v20241223::ConvolutionLayerInt8>()).

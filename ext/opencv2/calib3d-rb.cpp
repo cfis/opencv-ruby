@@ -153,6 +153,10 @@ void Init_Calib3d()
   rb_mCv.define_module_function("rodrigues", &cv::Rodrigues,
     Arg("src"), Arg("dst"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
   
+  rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback").
+    define_method("compute?", &cv::LMSolver::Callback::compute,
+      Arg("param"), Arg("err"), Arg("j"));
+
   rb_cCvLMSolver = define_class_under<cv::LMSolver, cv::Algorithm>(rb_mCv, "LMSolver").
     define_method("run", &cv::LMSolver::run,
       Arg("param")).
@@ -163,10 +167,6 @@ void Init_Calib3d()
       Arg("cb"), Arg("max_iters")).
     define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int, double)>("create", &cv::LMSolver::create,
       Arg("cb"), Arg("max_iters"), Arg("eps"));
-  
-  rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback").
-    define_method("compute?", &cv::LMSolver::Callback::compute,
-      Arg("param"), Arg("err"), Arg("j"));
   
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, int, double, cv::OutputArray, const int, const double)>("find_homography", &cv::findHomography,
     Arg("src_points"), Arg("dst_points"), Arg("method") = static_cast<int>(0), Arg("ransac_reproj_threshold") = static_cast<double>(3), Arg("mask") = static_cast<cv::OutputArray>(cv::noArray()), Arg("max_iters") = static_cast<const int>(2000), Arg("confidence") = static_cast<const double>(0.995));

@@ -156,6 +156,20 @@ void Init_Ml()
     define_value("BRUTE_FORCE", cv::ml::KNearest::Types::BRUTE_FORCE).
     define_value("KDTREE", cv::ml::KNearest::Types::KDTREE);
   
+  Enum<cv::ml::SVM::KernelTypes> rb_cCvMlSVMKernelTypes = define_enum_under<cv::ml::SVM::KernelTypes>("KernelTypes", rb_cCvMlSVM).
+    define_value("CUSTOM", cv::ml::SVM::KernelTypes::CUSTOM).
+    define_value("LINEAR", cv::ml::SVM::KernelTypes::LINEAR).
+    define_value("POLY", cv::ml::SVM::KernelTypes::POLY).
+    define_value("RBF", cv::ml::SVM::KernelTypes::RBF).
+    define_value("SIGMOID", cv::ml::SVM::KernelTypes::SIGMOID).
+    define_value("CHI2", cv::ml::SVM::KernelTypes::CHI2).
+    define_value("INTER", cv::ml::SVM::KernelTypes::INTER);
+
+  rb_cCvMlSVMKernel = define_class_under<cv::ml::SVM::Kernel, cv::Algorithm>(rb_mCvMl, "Kernel").
+    define_method("get_type", &cv::ml::SVM::Kernel::getType).
+    define_method("calc", &cv::ml::SVM::Kernel::calc,
+      Arg("vcount"), Arg("n"), Arg("vecs"), Arg("another"), Arg("results"));
+
   rb_cCvMlSVM = define_class_under<cv::ml::SVM, cv::ml::StatModel>(rb_mCvMl, "SVM").
     define_method("get_type", &cv::ml::SVM::getType).
     define_method("set_type", &cv::ml::SVM::setType,
@@ -205,26 +219,12 @@ void Init_Ml()
     define_singleton_function("load", &cv::ml::SVM::load,
       Arg("filepath"));
   
-  rb_cCvMlSVMKernel = define_class_under<cv::ml::SVM::Kernel, cv::Algorithm>(rb_cCvMlSVM, "Kernel").
-    define_method("get_type", &cv::ml::SVM::Kernel::getType).
-    define_method("calc", &cv::ml::SVM::Kernel::calc,
-      Arg("vcount"), Arg("n"), Arg("vecs"), Arg("another"), Arg("results"));
-  
   Enum<cv::ml::SVM::Types> rb_cCvMlSVMTypes = define_enum_under<cv::ml::SVM::Types>("Types", rb_cCvMlSVM).
     define_value("C_SVC", cv::ml::SVM::Types::C_SVC).
     define_value("NU_SVC", cv::ml::SVM::Types::NU_SVC).
     define_value("ONE_CLASS", cv::ml::SVM::Types::ONE_CLASS).
     define_value("EPS_SVR", cv::ml::SVM::Types::EPS_SVR).
     define_value("NU_SVR", cv::ml::SVM::Types::NU_SVR);
-  
-  Enum<cv::ml::SVM::KernelTypes> rb_cCvMlSVMKernelTypes = define_enum_under<cv::ml::SVM::KernelTypes>("KernelTypes", rb_cCvMlSVM).
-    define_value("CUSTOM", cv::ml::SVM::KernelTypes::CUSTOM).
-    define_value("LINEAR", cv::ml::SVM::KernelTypes::LINEAR).
-    define_value("POLY", cv::ml::SVM::KernelTypes::POLY).
-    define_value("RBF", cv::ml::SVM::KernelTypes::RBF).
-    define_value("SIGMOID", cv::ml::SVM::KernelTypes::SIGMOID).
-    define_value("CHI2", cv::ml::SVM::KernelTypes::CHI2).
-    define_value("INTER", cv::ml::SVM::KernelTypes::INTER);
   
   Enum<cv::ml::SVM::ParamTypes> rb_cCvMlSVMParamTypes = define_enum_under<cv::ml::SVM::ParamTypes>("ParamTypes", rb_cCvMlSVM).
     define_value("C", cv::ml::SVM::ParamTypes::C).
@@ -482,9 +482,6 @@ void Init_Ml()
   rb_cCvMlSVMSGD = define_class_under<cv::ml::SVMSGD, cv::ml::StatModel>(rb_mCvMl, "SVMSGD").
     define_method("get_weights", &cv::ml::SVMSGD::getWeights).
     define_method("get_shift", &cv::ml::SVMSGD::getShift).
-    define_singleton_function("create", &cv::ml::SVMSGD::create).
-    define_singleton_function("load", &cv::ml::SVMSGD::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const String &>(String())).
     define_method("set_optimal_parameters", &cv::ml::SVMSGD::setOptimalParameters,
       Arg("svmsgd_type") = static_cast<int>(cv::ml::SVMSGD::ASGD), Arg("margin_type") = static_cast<int>(cv::ml::SVMSGD::SOFT_MARGIN)).
     define_method("get_svmsgd_type", &cv::ml::SVMSGD::getSvmsgdType).
@@ -504,7 +501,10 @@ void Init_Ml()
       Arg("step_decreasing_power")).
     define_method("get_term_criteria", &cv::ml::SVMSGD::getTermCriteria).
     define_method("set_term_criteria", &cv::ml::SVMSGD::setTermCriteria,
-      Arg("val"));
+      Arg("val")).
+    define_singleton_function("create", &cv::ml::SVMSGD::create).
+    define_singleton_function("load", &cv::ml::SVMSGD::load,
+      Arg("filepath"), Arg("node_name") = static_cast<const String&>(String()));
   
   Enum<cv::ml::SVMSGD::SvmsgdType> rb_cCvMlSVMSGDSvmsgdType = define_enum_under<cv::ml::SVMSGD::SvmsgdType>("SvmsgdType", rb_cCvMlSVMSGD).
     define_value("SGD", cv::ml::SVMSGD::SvmsgdType::SGD).

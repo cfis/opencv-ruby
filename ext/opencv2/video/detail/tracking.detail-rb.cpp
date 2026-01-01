@@ -70,9 +70,9 @@ void Init_TrackingDetail()
       Arg("confidence_maps")).
     define_method("update", &cv::detail::tracking::TrackerStateEstimator::update,
       Arg("confidence_maps")).
-    //define_singleton_function("create", &cv::detail::tracking::TrackerStateEstimator::create,
-    //  Arg("tracke_state_estimator_type")).
     define_method("get_class_name", &cv::detail::tracking::TrackerStateEstimator::getClassName);
+    //define_singleton_function("create", &cv::detail::tracking::TrackerStateEstimator::create,
+     // Arg("tracke_state_estimator_type"));
   
   rb_cCvDetailTrackerModel = define_class_under<cv::detail::TrackerModel>(rb_mCvDetailTracking, "TrackerModel").
     define_method("set_tracker_state_estimator?", &cv::detail::tracking::TrackerModel::setTrackerStateEstimator,

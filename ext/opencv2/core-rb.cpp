@@ -897,7 +897,7 @@ void Init_Core()
     define_method("to_int", [](const cv::RNG& self) -> int
     {
       return self;
-    }).
+    }). 
     define_method("to_float", [](const cv::RNG& self) -> float
     {
       return self;

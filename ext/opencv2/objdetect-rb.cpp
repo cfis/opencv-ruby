@@ -181,13 +181,13 @@ void Init_Objdetect()
     define_value("DESCR_FORMAT_ROW_BY_ROW", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_ROW_BY_ROW);
   
   rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder").
-    define_singleton_function("create", &cv::QRCodeEncoder::create,
-      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params &>(cv::QRCodeEncoder::Params())).
     define_method("encode", &cv::QRCodeEncoder::encode,
       Arg("encoded_info"), Arg("qrcode")).
     define_method("encode_structured_append", &cv::QRCodeEncoder::encodeStructuredAppend,
-      Arg("encoded_info"), Arg("qrcodes"));
-  
+      Arg("encoded_info"), Arg("qrcodes")).
+    define_singleton_function("create", &cv::QRCodeEncoder::create,
+      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params&>(cv::QRCodeEncoder::Params()));
+
   rb_cCvQRCodeEncoderParams = define_class_under<cv::QRCodeEncoder::Params>(rb_cCvQRCodeEncoder, "Params").
     define_constructor(Constructor<cv::QRCodeEncoder::Params>()).
     define_attr("version", &cv::QRCodeEncoder::Params::version).

@@ -1,8 +1,26 @@
 site_name: OpenCV Ruby
 site_url: https://github.com/cfis/opencv-ruby
-docs_dir: reference/
+site_description: Modern Ruby bindings for OpenCV 4.x
+repo_url: https://github.com/cfis/opencv-ruby
+repo_name: cfis/opencv-ruby
+
+docs_dir: docs
+
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
 
 validation:
   links:
@@ -12,4 +30,16 @@ validation:
 
 plugins:
   - search
+  - awesome-pages
 
+markdown_extensions:
+  - tables
+  - fenced_code
+  - codehilite
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/cfis/opencv-ruby

@@ -37,7 +37,7 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "saturate-rb.cpp"
     "simd_intrinsics-rb.cpp"
     "softfloat-rb.cpp"
-    "sse_utils-rb.cpp"
+    #"sse_utils-rb.cpp"
     "traits-rb.cpp"
     "types-rb.cpp"
     "utility-rb.cpp"

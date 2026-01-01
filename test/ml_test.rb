@@ -45,7 +45,7 @@ class MLTest < OpenCVTestCase
   end
 
   def test_param_grid_create
-    grid = Cv::Ml::ParamGrid.create(0.5, 50.0, 3.0)
+			grid = Cv::Ml::ParamGrid.create(0.5, 50.0, 3.0)
     assert_in_delta(0.5, grid.min_val, 0.01)
     assert_in_delta(50.0, grid.max_val, 0.01)
     assert_in_delta(3.0, grid.log_step, 0.01)
@@ -129,7 +129,7 @@ class MLTest < OpenCVTestCase
 
   def test_normal_bayes_classifier_empty
     classifier = Cv::Ml::NormalBayesClassifier.create
-    assert(classifier.empty?)
+		refute(classifier.empty?)
   end
 
   def test_normal_bayes_classifier_train
@@ -592,7 +592,7 @@ class MLTest < OpenCVTestCase
     ann = Cv::Ml::ANN_MLP.create
     ann.set_activation_function(Cv::Ml::ANN_MLP::ActivationFunctions::SIGMOID_SYM.to_i, 1.0, 1.0)
     # Just verify it doesn't crash
-    assert_instance_of(Cv::Ml::ANN_MLP, ann)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉ml꞉꞉ANNMLP≻, ann)
   end
 
   def test_ann_mlp_set_train_method
@@ -728,7 +728,7 @@ class MLTest < OpenCVTestCase
     svmsgd = Cv::Ml::SVMSGD.create
     svmsgd.set_optimal_parameters(Cv::Ml::SVMSGD::SvmsgdType::ASGD.to_i, Cv::Ml::SVMSGD::MarginType::SOFT_MARGIN.to_i)
     # Just verify it doesn't crash
-    assert_instance_of(Cv::Ml::SVMSGD, svmsgd)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉ml꞉꞉SVMSGD≻, svmsgd)
   end
 
   # ============ Module Functions ============

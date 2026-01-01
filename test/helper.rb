@@ -2,16 +2,6 @@
 # To make testing/debugging easier test within this source tree versus an installed gem
 require 'bundler/setup'
 
-# Add ext directory to load path to make it easier to test locally built extensions
-lib_path = File.expand_path(File.join(__dir__, '..', 'lib'))
-$LOAD_PATH.unshift(lib_path)
-
-ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'build', 'msvc-debug'))
-#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'build', 'clang-windows-debug'))
-#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'cmake-build-debug-mingw'))
-#ext_path = File.expand_path(File.join(__dir__, '..', 'ext', 'cmake-build-debug-visual-studio'))
-$LOAD_PATH.unshift(ext_path)
-
 # Now load code
 require 'digest'
 require 'opencv-ruby'

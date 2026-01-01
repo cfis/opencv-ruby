@@ -79,7 +79,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_tonemap
     tonemap = Cv.create_tonemap
     refute_nil(tonemap)
-    assert_instance_of(Cv::Tonemap, tonemap)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉Tonemap≻, tonemap)
   end
 
   def test_create_tonemap_with_gamma
@@ -109,7 +109,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_tonemap_drago
     tonemap = Cv.create_tonemap_drago
     refute_nil(tonemap)
-    assert_instance_of(Cv::TonemapDrago, tonemap)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉TonemapDrago≻, tonemap)
   end
 
   def test_create_tonemap_drago_with_params
@@ -135,7 +135,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_tonemap_reinhard
     tonemap = Cv.create_tonemap_reinhard
     refute_nil(tonemap)
-    assert_instance_of(Cv::TonemapReinhard, tonemap)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉TonemapReinhard≻, tonemap)
   end
 
   def test_create_tonemap_reinhard_with_params
@@ -168,7 +168,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_tonemap_mantiuk
     tonemap = Cv.create_tonemap_mantiuk
     refute_nil(tonemap)
-    assert_instance_of(Cv::TonemapMantiuk, tonemap)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉TonemapMantiuk≻, tonemap)
   end
 
   def test_create_tonemap_mantiuk_with_params
@@ -194,7 +194,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_align_mtb
     align = Cv.create_align_mtb
     refute_nil(align)
-    assert_instance_of(Cv::AlignMTB, align)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉AlignMTB≻, align)
   end
 
   def test_create_align_mtb_with_params
@@ -236,7 +236,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_calibrate_debevec
     calibrate = Cv.create_calibrate_debevec
     refute_nil(calibrate)
-    assert_instance_of(Cv::CalibrateDebevec, calibrate)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉CalibrateDebevec≻, calibrate)
   end
 
   def test_create_calibrate_debevec_with_params
@@ -268,7 +268,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_calibrate_robertson
     calibrate = Cv.create_calibrate_robertson
     refute_nil(calibrate)
-    assert_instance_of(Cv::CalibrateRobertson, calibrate)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉CalibrateRobertson≻, calibrate)
   end
 
   def test_create_calibrate_robertson_with_params
@@ -293,14 +293,14 @@ class PhotoTest < OpenCVTestCase
   def test_create_merge_debevec
     merge = Cv.create_merge_debevec
     refute_nil(merge)
-    assert_instance_of(Cv::MergeDebevec, merge)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉MergeDebevec≻, merge)
   end
 
   # ============ MergeMertens ============
   def test_create_merge_mertens
     merge = Cv.create_merge_mertens
     refute_nil(merge)
-    assert_instance_of(Cv::MergeMertens, merge)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉MergeMertens≻, merge)
   end
 
   def test_create_merge_mertens_with_params
@@ -332,7 +332,7 @@ class PhotoTest < OpenCVTestCase
   def test_create_merge_robertson
     merge = Cv.create_merge_robertson
     refute_nil(merge)
-    assert_instance_of(Cv::MergeRobertson, merge)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉MergeRobertson≻, merge)
   end
 
   # ============ Edge-preserving filtering ============

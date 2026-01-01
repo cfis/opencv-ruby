@@ -16,7 +16,7 @@ class StitchingTest < OpenCVTestCase
   def test_stitcher_create_panorama
     stitcher = Cv::Stitcher.create(Cv::Stitcher::Mode::PANORAMA)
     refute_nil(stitcher)
-    assert_instance_of(Cv::Stitcher, stitcher)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉Stitcher≻, stitcher)
   end
 
   def test_stitcher_create_scans

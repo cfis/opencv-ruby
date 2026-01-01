@@ -579,11 +579,11 @@ class ImgProcTest < OpenCVTestCase
     contour = circle_contour
 
     center = Cv::Point2f.new(0, 0)
-    radius = Rice::Buffer≺float≻.new(0.0)
-    Cv::min_enclosing_circle(Cv::InputArray.new(contour), center, radius.data)
+    radius = Rice::Reference≺float≻.new(0.0)
+    Cv::min_enclosing_circle(Cv::InputArray.new(contour), center, radius)
     assert_equal(64, center.x)
     assert_equal(64, center.y)
-    assert_in_delta(32.0, radius[0], 0.001)
+    assert_in_delta(32.0, radius.value, 0.001)
   end
 
   def test_morphology

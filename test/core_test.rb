@@ -1000,7 +1000,7 @@ class CoreTest < OpenCVTestCase
   # ============ Formatter Tests ============
   def test_formatter_get
     formatter = Cv::Formatter.get
-    assert_instance_of(Cv::Formatter, formatter)
+    assert_instance_of(Cv::Ptr≺cv꞉꞉Formatter≻, formatter)
   end
 
   def test_formatter_format_types

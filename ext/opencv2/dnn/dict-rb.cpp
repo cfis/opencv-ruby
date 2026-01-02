@@ -3,57 +3,57 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnDnn4V20241223Dict;
-Rice::Class rb_cCvDnnDnn4V20241223DictValue;
+Rice::Class rb_cCvDnnDict;
+Rice::Class rb_cCvDnnDictValue;
 
 void Init_Dict()
 {
   Module rb_mCv = define_module("Cv");
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
   
-  Module rb_mCvDnnDnn4V20241223 = define_module_under(rb_mCvDnn, "Dnn4V20241223");
+  Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");
   
-  rb_cCvDnnDnn4V20241223DictValue = define_class_under<cv::dnn::dnn4_v20241223::DictValue>(rb_mCvDnnDnn4V20241223, "DictValue").
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, const cv::dnn::dnn4_v20241223::DictValue&>(),
+  rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue").
+    define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue&>(),
       Arg("r")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, bool>(),
+    define_constructor(Constructor<cv::dnn::DictValue, bool>(),
       Arg("i")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, int64>(),
+    define_constructor(Constructor<cv::dnn::DictValue, int64>(),
       Arg("i") = static_cast<int64>(0)).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, int>(),
+    define_constructor(Constructor<cv::dnn::DictValue, int>(),
       Arg("i")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, unsigned int>(),
+    define_constructor(Constructor<cv::dnn::DictValue, unsigned int>(),
       Arg("p")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, double>(),
+    define_constructor(Constructor<cv::dnn::DictValue, double>(),
       Arg("p")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, const cv::String&>(),
+    define_constructor(Constructor<cv::dnn::DictValue, const cv::String&>(),
       Arg("s")).
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::DictValue, const char*>(),
+    define_constructor(Constructor<cv::dnn::DictValue, const char*>(),
       Arg("s")).
-    define_method("size", &cv::dnn::dnn4_v20241223::DictValue::size).
-    define_method("int?", &cv::dnn::dnn4_v20241223::DictValue::isInt).
-    define_method("string?", &cv::dnn::dnn4_v20241223::DictValue::isString).
-    define_method("real?", &cv::dnn::dnn4_v20241223::DictValue::isReal).
-    define_method("get_int_value", &cv::dnn::dnn4_v20241223::DictValue::getIntValue,
+    define_method("size", &cv::dnn::DictValue::size).
+    define_method("int?", &cv::dnn::DictValue::isInt).
+    define_method("string?", &cv::dnn::DictValue::isString).
+    define_method("real?", &cv::dnn::DictValue::isReal).
+    define_method("get_int_value", &cv::dnn::DictValue::getIntValue,
       Arg("idx") = static_cast<int>(-1)).
-    define_method("get_real_value", &cv::dnn::dnn4_v20241223::DictValue::getRealValue,
+    define_method("get_real_value", &cv::dnn::DictValue::getRealValue,
       Arg("idx") = static_cast<int>(-1)).
-    define_method("get_string_value", &cv::dnn::dnn4_v20241223::DictValue::getStringValue,
+    define_method("get_string_value", &cv::dnn::DictValue::getStringValue,
       Arg("idx") = static_cast<int>(-1)).
-    define_method("assign", &cv::dnn::dnn4_v20241223::DictValue::operator=,
+    define_method("assign", &cv::dnn::DictValue::operator=,
       Arg("r"));
   
-  rb_cCvDnnDnn4V20241223Dict = define_class_under<cv::dnn::dnn4_v20241223::Dict>(rb_mCvDnnDnn4V20241223, "Dict").
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::Dict>()).
-    define_method("has?", &cv::dnn::dnn4_v20241223::Dict::has,
+  rb_cCvDnnDict = define_class_under<cv::dnn::Dict>(rb_mCvDnn, "Dict").
+    define_constructor(Constructor<cv::dnn::Dict>()).
+    define_method("has?", &cv::dnn::Dict::has,
       Arg("key")).
-    define_method<cv::dnn::dnn4_v20241223::DictValue*(cv::dnn::dnn4_v20241223::Dict::*)(const cv::String&)>("ptr", &cv::dnn::dnn4_v20241223::Dict::ptr,
+    define_method<cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&)>("ptr", &cv::dnn::Dict::ptr,
       Arg("key")).
-    define_method<const cv::dnn::dnn4_v20241223::DictValue*(cv::dnn::dnn4_v20241223::Dict::*)(const cv::String&) const>("ptr", &cv::dnn::dnn4_v20241223::Dict::ptr,
+    define_method<const cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&) const>("ptr", &cv::dnn::Dict::ptr,
       Arg("key")).
-  //  define_method("get", &cv::dnn::dnn4_v20241223::Dict::get,
+  //  define_method("get", &cv::dnn::Dict::get,
    //   Arg("key")).
-    define_method("erase", &cv::dnn::dnn4_v20241223::Dict::erase,
+    define_method("erase", &cv::dnn::Dict::erase,
       Arg("key"));
-  //  define_iterator<std::map::const_iterator(cv::dnn::dnn4_v20241223::Dict::*)() const>(&cv::dnn::dnn4_v20241223::Dict::begin, &cv::dnn::dnn4_v20241223::Dict::end, "each_const");
+  //  define_iterator<std::map::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
 }

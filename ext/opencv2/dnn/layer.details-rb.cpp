@@ -3,7 +3,7 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnDnn4V20241223DetailsLayerStaticRegisterer;
+Rice::Class rb_cCvDnnDetailsLayerStaticRegisterer;
 
 void Init_LayerDetails()
 {
@@ -11,12 +11,12 @@ void Init_LayerDetails()
   
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
   
-  Module rb_mCvDnnDnn4V20241223 = define_module_under(rb_mCvDnn, "Dnn4V20241223");
+  Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");
   
-  Module rb_mCvDnnDnn4V20241223Details = define_module_under(rb_mCvDnnDnn4V20241223, "Details");
+  Module rb_mCvDnnDetails = define_module_under(rb_mCvDnn, "Details");
   
-  rb_cCvDnnDnn4V20241223DetailsLayerStaticRegisterer = define_class_under<cv::dnn::dnn4_v20241223::details::_LayerStaticRegisterer>(rb_mCvDnnDnn4V20241223Details, "LayerStaticRegisterer").
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::details::_LayerStaticRegisterer, const cv::String&, cv::dnn::dnn4_v20241223::LayerFactory::Constructor>(),
+  rb_cCvDnnDetailsLayerStaticRegisterer = define_class_under<cv::dnn::details::_LayerStaticRegisterer>(rb_mCvDnnDetails, "LayerStaticRegisterer").
+    define_constructor(Constructor<cv::dnn::details::_LayerStaticRegisterer, const cv::String&, cv::dnn::LayerFactory::Constructor>(),
       Arg("layer_type"), Arg("layer_constructor"));
 
 }

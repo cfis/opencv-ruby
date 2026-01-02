@@ -4,7 +4,7 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnBackendWrapper;
+//Rice::Class rb_cCvDnnBackendWrapper;
 Rice::Class rb_cCvDnnClassificationModel;
 Rice::Class rb_cCvDnnDetectionModel;
 Rice::Class rb_cCvDnnImage2BlobParams;
@@ -72,12 +72,13 @@ void Init_Dnn()
     define_attr("name", &cv::dnn::LayerParams::name).
     define_attr("type", &cv::dnn::LayerParams::type);
   
-  rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
+  //usr/share/ruby/bundled_gems.rb:82:in 'Kernel.require': /usr/local/src/opencv-ruby/lib/opencv_ruby.so: undefined symbol: _ZTIN2cv3dnn14dnn4_v2024122314BackendWrapperE - /usr/local/src/opencv-ruby/lib/opencv_ruby.so (LoadError)
+  /*rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
     define_method("copy_to_host", &cv::dnn::BackendWrapper::copyToHost).
     define_method("set_host_dirty", &cv::dnn::BackendWrapper::setHostDirty).
     define_attr("backend_id", &cv::dnn::BackendWrapper::backendId).
     define_attr("target_id", &cv::dnn::BackendWrapper::targetId);
-  
+  */
   rb_cCvDnnLayer = define_class_under<cv::dnn::Layer, cv::Algorithm>(rb_mCvDnn, "Layer").
     define_attr("blobs", &cv::dnn::Layer::blobs).
     define_method<void(cv::dnn::Layer::*)(cv::InputArrayOfArrays, cv::OutputArrayOfArrays)>("finalize", &cv::dnn::Layer::finalize,
@@ -243,10 +244,11 @@ void Init_Dnn()
       Arg("layer_id"), Arg("net_input_shapes"), Arg("weights"), Arg("blobs")).
     define_method<void(cv::dnn::Net::*)(const int, const cv::dnn::MatShape&, size_t&, size_t&) const>("get_memory_consumption", &cv::dnn::Net::getMemoryConsumption,
       Arg("layer_id"), Arg("net_input_shape"), Arg("weights"), Arg("blobs")).
-    define_method<void(cv::dnn::Net::*)(const std::vector<std::vector<int>>&, std::vector<int>&, std::vector<unsigned long long>&, std::vector<unsigned long long>&) const>("get_memory_consumption", &cv::dnn::Net::getMemoryConsumption,
-      Arg("net_input_shapes"), Arg("layer_ids"), Arg("weights"), Arg("blobs")).
-    define_method<void(cv::dnn::Net::*)(const cv::dnn::MatShape&, std::vector<int>&, std::vector<unsigned long long>&, std::vector<unsigned long long>&) const>("get_memory_consumption", &cv::dnn::Net::getMemoryConsumption,
-      Arg("net_input_shape"), Arg("layer_ids"), Arg("weights"), Arg("blobs")).
+    // Doesn't compile on Fedora with OpenCV 4.11.0 but code hasn't changed in 2 years. Confused.
+    //define_method<void(cv::dnn::Net::*)(const std::vector<std::vector<int>>&, std::vector<int>&, std::vector<unsigned long long>&, std::vector<unsigned long long>&) const>("get_memory_consumption", &cv::dnn::Net::getMemoryConsumption,
+    //  Arg("net_input_shapes"), Arg("layer_ids"), Arg("weights"), Arg("blobs")).
+    //define_method<void(cv::dnn::Net::*)(const cv::dnn::MatShape&, std::vector<int>&, std::vector<unsigned long long>&, std::vector<unsigned long long>&) const>("get_memory_consumption", &cv::dnn::Net::getMemoryConsumption,
+    // Arg("net_input_shape"), Arg("layer_ids"), Arg("weights"), Arg("blobs")).
     define_method("enable_fusion", &cv::dnn::Net::enableFusion,
       Arg("fusion")).
     define_method("enable_winograd", &cv::dnn::Net::enableWinograd,

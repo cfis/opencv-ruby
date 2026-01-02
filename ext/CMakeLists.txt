@@ -56,7 +56,7 @@ include(FetchContent)
 FetchContent_Declare(
   rice
   GIT_REPOSITORY https://github.com/ruby-rice/rice.git
-  GIT_TAG 4.8.0
+  GIT_TAG 4.9.0
 )
 FetchContent_MakeAvailable(rice)
 
@@ -168,7 +168,7 @@ get_target_property(RUBY_EXT_SUFFIX Ruby::Ruby INTERFACE_RUBY_EXTENSION_SUFFIX)
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
   PREFIX ""
-  SUFFIX ".dll" #"${RUBY_EXT_SUFFIX}"
+  SUFFIX "${RUBY_EXT_SUFFIX}"
   OUTPUT_NAME "opencv_ruby"
   CXX_VISIBILITY_PRESET hidden
   VISIBILITY_INLINES_HIDDEN ON

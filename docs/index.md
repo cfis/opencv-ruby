@@ -11,6 +11,18 @@ Modern Ruby bindings for [OpenCV](https://opencv.org/) 4.x based on its C++ API.
 - Requires Ruby 3.2+ and OpenCV 4.x
 - Provides 1,600+ classes, enums, and modules
 
+To give you an overview of the completness of the bindings, opencv-ruby includes:
+
+| Type             | Count   |
+|------------------|---------|
+| Classes          | 1,058   |
+| Methods          | 3,145   |
+| Module functions | 4,006   |
+| Constructors     | 1,359   |
+| Attributes       | 913     |
+| Enums            | 160     |
+
+
 ## Key Features
 
 - **Core Operations**: Matrix operations, arithmetic, linear algebra

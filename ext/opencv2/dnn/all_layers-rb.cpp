@@ -166,11 +166,6 @@ void Init_AllLayers()
   
   rb_cCvDnnBaseConvolutionLayer = define_class_under<cv::dnn::BaseConvolutionLayer, cv::dnn::Layer>(rb_mCvDnn, "BaseConvolutionLayer").
     define_constructor(Constructor<cv::dnn::BaseConvolutionLayer>()).
-    define_attr("kernel", &cv::dnn::BaseConvolutionLayer::kernel).
-    define_attr("stride", &cv::dnn::BaseConvolutionLayer::stride).
-    define_attr("pad", &cv::dnn::BaseConvolutionLayer::pad).
-    define_attr("dilation", &cv::dnn::BaseConvolutionLayer::dilation).
-    define_attr("adjust_pad", &cv::dnn::BaseConvolutionLayer::adjustPad).
     define_attr("adjust_pads", &cv::dnn::BaseConvolutionLayer::adjust_pads).
     define_attr("kernel_size", &cv::dnn::BaseConvolutionLayer::kernel_size).
     define_attr("strides", &cv::dnn::BaseConvolutionLayer::strides).
@@ -734,7 +729,6 @@ void Init_AllLayers()
     define_constructor(Constructor<cv::dnn::NormalizeBBoxLayer>()).
     define_attr("pnorm", &cv::dnn::NormalizeBBoxLayer::pnorm).
     define_attr("epsilon", &cv::dnn::NormalizeBBoxLayer::epsilon).
-    define_attr("across_spatial", &cv::dnn::NormalizeBBoxLayer::acrossSpatial).
     define_singleton_function("create", &cv::dnn::NormalizeBBoxLayer::create,
       Arg("params"));
   
@@ -782,7 +776,6 @@ void Init_AllLayers()
   
   rb_cCvDnnLayerNormLayer = define_class_under<cv::dnn::LayerNormLayer, cv::dnn::Layer>(rb_mCvDnn, "LayerNormLayer").
     define_constructor(Constructor<cv::dnn::LayerNormLayer>()).
-    define_attr("has_bias", &cv::dnn::LayerNormLayer::hasBias).
     define_attr("axis", &cv::dnn::LayerNormLayer::axis).
     define_attr("epsilon", &cv::dnn::LayerNormLayer::epsilon).
     define_singleton_function("create", &cv::dnn::LayerNormLayer::create,

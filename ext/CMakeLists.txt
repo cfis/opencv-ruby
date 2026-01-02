@@ -13,6 +13,7 @@ cmake_minimum_required(VERSION 3.26)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 
 # -----------------------------------------------------------------------------
 # Project Definition
@@ -122,9 +123,10 @@ elseif (APPLE)
     pkg_check_modules(FFI REQUIRED IMPORTED_TARGET libffi)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE PkgConfig::FFI)
 else()
-    find_library(FFI_LIBRARY NAMES ffi REQUIRED)
+    find_library(FFI_LIBRARY NAMES libffi REQUIRED)
     target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${FFI_LIBRARY})
 endif()
+MESSAGE(DEBUG ${FFI_LIBRARY})
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE HAVE_LIBFFI)
 
 # -----------------------------------------------------------------------------

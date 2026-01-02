@@ -547,8 +547,8 @@ void Init_Types()
   //  define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
   rb_mCv.const_set(rb_intern("Point2i"), rb_cPoint);
   
-  rb_cPoint2l = define_class_under<cv::Point_<long long>>(rb_mCv, "Point2l").
-    define(&Point__builder<Data_Type<cv::Point_<long long>>, int64>);
+  rb_cPoint2l = define_class_under<cv::Point_<int64>>(rb_mCv, "Point2l").
+    define(&Point__builder<Data_Type<cv::Point_<int64>>, int64>);
   
   rb_cPoint2f = define_class_under<cv::Point_<float>>(rb_mCv, "Point2f").
     define(&Point__builder<Data_Type<cv::Point_<float>>, float>);
@@ -591,8 +591,8 @@ void Init_Types()
   // Size2i should alias Size, not Point (both are cv::Size_<int>)
   rb_mCv.const_set(rb_intern("Size2i"), rb_cSize);
 
-  rb_cSize2l = define_class_under<cv::Size_<long long>>(rb_mCv, "Size2l").
-    define(&Size__builder<Data_Type<cv::Size_<long long>>, long long>);
+  rb_cSize2l = define_class_under<cv::Size_<int64>>(rb_mCv, "Size2l").
+    define(&Size__builder<Data_Type<cv::Size_<int64>>, int64>);
   
   rb_cSize2f = define_class_under<cv::Size_<float>>(rb_mCv, "Size2f").
     define(&Size__builder<Data_Type<cv::Size_<float>>, float>);
@@ -841,8 +841,8 @@ void Init_Types()
   });
 
   // Manually added
-  rb_cRect2l = define_class_under<cv::Rect_<long long>>(rb_mCv, "Rect2l").
-    define(&Rect__builder<Data_Type<cv::Rect_<long long>>, long long>);
+  rb_cRect2l = define_class_under<cv::Rect_<int64>>(rb_mCv, "Rect2l").
+    define(&Rect__builder<Data_Type<cv::Rect_<int64>>, int64>);
 
   // Define point vectors
   define_vector<cv::Point>(u8"Vector≺Cv꞉꞉Point≻");

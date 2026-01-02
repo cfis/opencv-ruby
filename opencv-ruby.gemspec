@@ -34,7 +34,8 @@ Gem::Specification.new do |spec|
                          "ext/rice/*.hpp",
                          "test/*.rb"])
 
-	spec.add_development_dependency('minitest')
+  # 6.0 breaks RubyMine
+	spec.add_development_dependency('minitest', '~>5.0')
 	spec.add_development_dependency('rake')
 	spec.add_development_dependency('rice')
 end

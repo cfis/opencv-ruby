@@ -244,6 +244,7 @@ class DnnUtilsTest < OpenCVTestCase
   end
 
   def test_get_available_targets_opencv
+    # Note this fails if you don't have Vulcan installed and a GPU
     targets = Cv::Dnn.get_available_targets(Cv::Dnn::Backend::DNN_BACKEND_OPENCV)
     assert(targets.size > 0)
   end

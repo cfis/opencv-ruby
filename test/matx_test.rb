@@ -43,8 +43,11 @@ class MatxTest < OpenCVTestCase
   end
 
   def test_out_of_bounds
-    buffer = Rice::Buffer≺float≻.new([10, 20, 30, 40])
+    skip("CV_DbgAssert disabled in release builds") unless Cv::DBG_ASSERT_ENABLED
+
+    buffer = Rice::Buffer≺float≻.new([10, 20])
     matx = Cv::Matx12f.new(buffer.data)
+
     assert_raises(Cv::StsAssert) do
       matx.row(1)
     end

@@ -45,7 +45,11 @@ class SparseMatTest < OpenCVTestCase
     assert_equal(256, pool.size)
 
     hashtab = header.hashtab
-    assert_kind_of(Std::Vector≺unsigned Int64≻, hashtab)
+    if Gem.win_platform?
+      assert_kind_of(Std::Vector≺unsigned Int64≻, hashtab)
+    else
+      assert_kind_of(Std::Vector≺unsigned long≻, hashtab)
+    end
     assert_equal(8, hashtab.size)
   end
 end

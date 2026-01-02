@@ -170,12 +170,14 @@ class Mat_Test < OpenCVTestCase
     assert_cvscalar_equal(Cv::Vec4b.new(2, 2, 2, 2), mat[0, 1])
     assert_cvscalar_equal(Cv::Vec4b.new(4, 4, 4, 4), mat[1, 0])
 
-    assert_raises(Cv::StsAssert) do
-      mat[-1, -1]
-    end
+    if Cv::DBG_ASSERT_ENABLED
+      assert_raises(Cv::StsAssert) do
+        mat[-1, -1]
+      end
 
-    assert_raises(Cv::StsAssert) do
-      mat[6, 6]
+      assert_raises(Cv::StsAssert) do
+        mat[6, 6]
+      end
     end
   end
 

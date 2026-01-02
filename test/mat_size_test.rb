@@ -9,8 +9,11 @@ class MatSizeTest < OpenCVTestCase
     assert_kind_of(Cv::MatSize, mat_size)
     assert_equal(2, mat_size[0])
     assert_equal(3, mat_size[1])
-    assert_raises(Cv::StsAssert) do
-      mat_size[2]
+
+    if Cv::DBG_ASSERT_ENABLED
+      assert_raises(Cv::StsAssert) do
+        mat_size[2]
+      end
     end
   end
 

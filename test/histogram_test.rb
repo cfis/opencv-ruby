@@ -241,7 +241,4 @@ class HistogramTest < OpenCVTestCase
     result = Cv::compare_hist(histogram1.input_array, histogram2.input_array, Cv::HistCompMethods::HISTCMP_BHATTACHARYYA)
     assert_in_delta(0.2416, result)
   end
-
-  # Note: test_calc_prob_density was removed because it used deprecated
-  # OpenCV 1.x API (IplImage, Cv::Histogram) that is not available in OpenCV 4.x
 end

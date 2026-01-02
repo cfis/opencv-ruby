@@ -15,7 +15,11 @@ class HighguiTest < OpenCVTestCase
   end
 
   def test_ui_framework
-    assert_equal("WIN32", Cv::current_ui_framework)
+    if Gem.win_platform?
+      assert_equal("WIN32", Cv::current_ui_framework)
+    else
+      assert_equal("QT", Cv::current_ui_framework)
+    end
   end
 
   def test_show_image

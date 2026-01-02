@@ -396,9 +396,11 @@ class MatTest < OpenCVTestCase
     assert_equal("[6;\n 12;\n 18;\n 24]",
                  mat4.inspect)
 
-    [mat1.rows, mat1.cols, -mat1.rows, -mat1.cols].each do |index|
-      assert_raises(Cv::StsAssert) do
-        mat1.diag(index)
+    if Cv::DBG_ASSERT_ENABLED
+      [mat1.rows, mat1.cols, -mat1.rows, -mat1.cols].each do |index|
+        assert_raises(Cv::StsAssert) do
+          mat1.diag(index)
+        end
       end
     end
   end
@@ -1238,14 +1240,10 @@ class MatTest < OpenCVTestCase
       end
     end
 
-    mat6 = mat1.invert(flags: Cv::DecompTypes::DECOMP_EIG)
-
-    expected = [3, -1, 0, -1.0, 0.15, 0.23, 0, 0.23, -0.15]
-    [mat6].each do |mat|
-      assert_each_element(mat, 0.005) do |row, col, count|
-        expected[count]
-      end
-    end
+    # Using DECOMP_EIG on a non-symmetric matrix is undefined behavior.
+    # OpenCV doesn't guarantee any particular result, so different platforms/versions
+    # give different (all incorrect) answers.
+    #mat6 = mat1.invert(flags: Cv::DecompTypes::DECOMP_EIG)
   end
 
   def test_format

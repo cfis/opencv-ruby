@@ -34,13 +34,13 @@ class CoreTest < OpenCVTestCase
   end
 
   def test_eigen
-    elems = [6.0, -2.0, -3.0, 7.0]
+    elems = [6.0, -2.0, -2.0, 7.0]
     mat1 = create_mat(2, 2, CV_32FC1) do |j, i, c|
       elems[c]
     end
     values, vectors = mat1.eigen
     assert_equal([8.561553001403809, 4.438446998596191], values.to_a)
-    assert_equal([-0.615412175655365, 0.7882053852081299, 0.7882053852081299, 0.615412175655365], vectors.to_a)
+    assert_equal([0.6154122352600098, -0.7882053852081299, -0.7882053852081299, -0.6154122352600098], vectors.to_a)
   end
 
   def test_flip

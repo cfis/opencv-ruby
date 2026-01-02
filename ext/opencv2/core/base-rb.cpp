@@ -8,7 +8,13 @@ Rice::Class rb_cCvHamming;
 void Init_Base()
 {
   Module rb_mCv = define_module("Cv");
-  
+
+#if defined _DEBUG || defined CV_STATIC_ANALYSIS
+  rb_mCv.const_set("DBG_ASSERT_ENABLED", true);
+#else
+  rb_mCv.const_set("DBG_ASSERT_ENABLED", false);
+#endif
+
   Module rb_mCvError = define_module_under(rb_mCv, "Error");
   
   Enum<cv::Error::Code> rb_cCvErrorCode = define_enum_under<cv::Error::Code>("Code", rb_mCvError).

@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'rice', :path => "c:/source/rice"
+gem 'rice', :path => "/usr/local/src/rice"

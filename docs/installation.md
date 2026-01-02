@@ -24,8 +24,9 @@ Most Ruby developers on Windows use [RubyInstaller](https://rubyinstaller.org/) 
 
 3. **Install OpenCV and dependencies**:
    ```bash
-   pacman -S mingw-w64-ucrt-x86_64-opencv mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-libffi
+   pacman -S mingw-w64-ucrt-x86_64-opencv mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-libffi
    ```
+Notice you MUST install qt6-base because the highgui module is built with Qt6 support by default for mingw64 but its not a depdency of opencv.
 
 4. **Verify installation**:
    ```bash

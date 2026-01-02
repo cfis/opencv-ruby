@@ -11,8 +11,6 @@ void Init_Dict()
   Module rb_mCv = define_module("Cv");
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
   
-  Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");
-  
   rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue").
     define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue&>(),
       Arg("r")).

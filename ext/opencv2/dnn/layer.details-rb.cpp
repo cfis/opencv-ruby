@@ -11,8 +11,6 @@ void Init_LayerDetails()
   
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
   
-  Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");
-  
   Module rb_mCvDnnDetails = define_module_under(rb_mCvDnn, "Details");
   
   rb_cCvDnnDetailsLayerStaticRegisterer = define_class_under<cv::dnn::details::_LayerStaticRegisterer>(rb_mCvDnnDetails, "LayerStaticRegisterer").

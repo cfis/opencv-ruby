@@ -179,7 +179,7 @@
       "name": "linux-release",
       "displayName": "Build Linux Release",
       "configurePreset": "linux-release",
-      "jobs": 8
+      "jobs": 6
     },
     {
       "name": "macos-debug",

@@ -4,6 +4,12 @@ require File.join(__dir__, 'helper')
 class VideoWriterTest < OpenCVTestCase
   OUTPUT_FILENAME = 'videowriter_result.avi'
 
+  def teardown
+    super
+    # We need to give time for the OS to release the camera/video
+    sleep 2
+  end
+
   def test_initialize
     frame_size = Cv::Size.new(640, 480)
     frames_per_second = 10
@@ -19,13 +25,13 @@ class VideoWriterTest < OpenCVTestCase
   end
 
   def test_capture
-    camera = Cv::VideoCapture.new(0, Cv::VideoCaptureAPIs::CAP_MSMF)
+    camera = Cv::VideoCapture.new(0, Cv::VideoCaptureAPIs::CAP_ANY)
     assert(camera.opened?)
     camera.release
   end
 
   def test_write
-    camera = Cv::VideoCapture.new(0, Cv::VideoCaptureAPIs::CAP_MSMF)
+    camera = Cv::VideoCapture.new(0, Cv::VideoCaptureAPIs::CAP_ANY)
     frame_width = camera.get(Cv::VideoCaptureProperties::CAP_PROP_FRAME_WIDTH)
     frame_height = camera.get(Cv::VideoCaptureProperties::CAP_PROP_FRAME_HEIGHT)
     frame_size = Cv::Size.new(frame_width.to_i, frame_height.to_i)

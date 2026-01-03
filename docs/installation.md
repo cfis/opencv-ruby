@@ -2,74 +2,67 @@
 
 ## Prerequisites
 
-Before installing opencv-ruby, you need:
-
-- **Ruby 3.2** or later
-- **OpenCV 4.x** installed on your system
-- A C++17 compatible compiler:
-  - GCC 13 or 14
-  - Clang 17 or 18
-  - MSVC 2022 (Visual Studio 17)
-  - Apple Clang (Xcode 15 or 16)
+OpenCV is a large, complex C++ code base that makes heavy use of templates. Therefore, to build the Ruby bindings you will need a machine that has at least 32GB of memory, a decent amount of disk space and an up-to-date-date C++ compiler (C++17 or higher). Expect compile times to range from 5 minutes on the latest Macs to 30 minutes for relativey new x86 laptops. Older hardware will of course be slower and compile times vary greatly by compiler (MSVC and Clang are much faster than gcc).
 
 ## Installing OpenCV
 
-### Windows (RubyInstaller + DevKit)
-
-Most Ruby developers on Windows use [RubyInstaller](https://rubyinstaller.org/) with the MSYS2 DevKit. This is the recommended approach.
-
-1. **Install Ruby with DevKit** from [rubyinstaller.org](https://rubyinstaller.org/downloads/). Choose the version with DevKit (e.g., "Ruby+Devkit 3.3.x (x64)").
-
-2. **Open the MSYS2 UCRT64 terminal** (run "MSYS2 UCRT64" from the Start menu or run `ridk enable` then use your terminal).
-
-3. **Install OpenCV and dependencies**:
-   ```bash
-   pacman -S mingw-w64-ucrt-x86_64-opencv mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-libffi
-   ```
-Notice you MUST install qt6-base because the highgui module is built with Qt6 support by default for mingw64 but its not a depdency of opencv.
-
-4. **Verify installation**:
-   ```bash
-   pkg-config --modversion opencv4
-   ```
-
 ### macOS
 
-Using Homebrew:
+On a MacBook Pro M4, it will take about 5 minutes to build the extension. It will be approximately 140MB.
+
+You will first need to install [HomeBrew](https://brew.sh/)
+
+Then:
 
 ```bash
-brew install opencv
+brew install libffi opencv
+gem install opencv-ruby --preset macos-release
+```
+
+### Fedora
+
+On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take about 30 minutes to build the extension with g++. The extension will be roughly 200MB. Note that g++ uses *a lot* of memory, with some processes taking up to 17GB of memory. At most 6 concurrent g++ instances can at once with 64GB. If you have a machine with 32GB of memory you will need to reduce the number of concurrent jobs. Do this by overriding the setting in the CMakePresets.json file.
+
+```bash
+sudo apt-get install libffi-devel opencv
+gem install opencv-ruby --preset linux-release
 ```
 
 ### Ubuntu/Debian
 
 ```bash
-sudo apt-get install libopencv-dev
+sudo apt-get install libffi-dev libopencv-dev
+gem install opencv-ruby --preset linux-release
 ```
 
-### Windows (Alternative: vcpkg)
+### Windows (RubyInstaller + DevKit)
 
-If you prefer vcpkg over MSYS2/MinGW64:
+Most Ruby developers on Windows use the [RubyInstaller](https://rubyinstaller.org/) which installs a MSYS2/Mingw64 environment. On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take about 30 minutes to build the extension with g++. The size will be about 200MB.
 
 ```bash
-vcpkg install opencv4 libffi
+  pacman -S mingw-w64-ucrt-x86_64-opencv mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-libffi
+  gem install opencv-ruby --preset mingw-release
 ```
 
-You'll need Visual Studio 2022 for this approach.
+You MUST install qt6-base because the OpenCV highgui module is built with it. However, it is not listed as dependency so you have to install it manually.
 
-## Installing the Gem
+### Windows Visual Studio (MSVC)
 
-Once OpenCV is installed, install the gem:
+You can also use Visual Studio on Windows in combination with vcpkg. On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take about 10 minutes to build the extension. It will rougly GB.
+
+After installing Visual Studio and vcpkg, install the gem like this:
 
 ```bash
-gem install opencv-ruby
+gem install opencv-ruby --preset msvc-release
 ```
 
-The gem includes a native extension that will be compiled during installation using CMake.
+Notice you don't have to install any dependencies first. This is because the build system uses vcpkg in manifest mode, which will download and build all dependencies like libffi and OpenCV. The first time you do this, it can take quite a while, up to an hour (it is a one time cost).
+
+This has been tested with Visual Studio 2022 and 2026, with Visual Studio 2026 being strongly preferred (it is quite a bit faster). 
 
 ## Verifying Installation
 
-Test that the installation was successful:
+To test that the installation was successful:
 
 ```ruby
 require 'opencv-ruby'
@@ -81,37 +74,4 @@ puts Cv.get_version_string
 # Create a simple matrix
 mat = Cv::Mat.new(3, 3, CV_8UC1, Cv::Scalar.new(255))
 puts "Created #{mat.rows}x#{mat.cols} matrix"
-```
-
-## Troubleshooting
-
-### OpenCV Not Found
-
-If CMake cannot find OpenCV, ensure:
-
-1. OpenCV is properly installed
-2. The `OpenCV_DIR` environment variable points to your OpenCV installation
-3. On Linux/macOS, pkg-config can find OpenCV: `pkg-config --modversion opencv4`
-
-### Compiler Issues
-
-The extension requires C++17 support. Ensure your compiler is recent enough:
-
-- GCC 7+
-- Clang 5+
-- MSVC 2017+
-
-### Missing libffi
-
-The extension uses libffi for some functionality. Install it if missing:
-
-```bash
-# macOS
-brew install libffi
-
-# Ubuntu/Debian
-sudo apt-get install libffi-dev
-
-# Windows (via vcpkg)
-vcpkg install libffi
 ```

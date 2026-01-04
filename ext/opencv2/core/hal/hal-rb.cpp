@@ -1,4 +1,5 @@
 #include <opencv2/core/hal/hal.hpp>
+#include "../cvstd_wrapper-rb.hpp"
 #include "hal-rb.hpp"
 
 using namespace Rice;

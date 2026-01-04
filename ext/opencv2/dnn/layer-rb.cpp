@@ -1,4 +1,5 @@
 #include <opencv2/dnn/layer.hpp>
+#include "../core/cvstd_wrapper-rb.hpp"
 #include "layer-rb.hpp"
 
 using namespace Rice;

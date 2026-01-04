@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-OpenCV is a large, complex C++ code base that makes heavy use of templates. Therefore, to build the Ruby bindings you will need a machine that has at least 32GB of memory, a decent amount of disk space and an up-to-date-date C++ compiler (C++17 or higher). Expect compile times to range from 5 minutes on the latest Macs to 30 minutes for relativey new x86 laptops. Older hardware will of course be slower and compile times vary greatly by compiler (MSVC and Clang are much faster than gcc).
+OpenCV is a large, complex C++ code base that makes heavy use of templates. Therefore, to build the Ruby bindings you will need a machine that has at least 32GB of memory, a decent amount of disk space and an up-to-date-date C++ compiler (C++17 or higher). Expect compile times to range from 5 minutes on the latest Macs to 30 minutes for relatively new x86 laptops. Older hardware will of course be slower and compile times vary greatly by compiler (MSVC and Clang are much faster than gcc).
 
 ## Installing OpenCV
 
@@ -48,7 +48,7 @@ You MUST install qt6-base because the OpenCV highgui module is built with it. Ho
 
 ### Windows Visual Studio (MSVC)
 
-You can also use Visual Studio on Windows in combination with vcpkg. On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take about 10 minutes to build the extension. It will rougly GB.
+You can also use Visual Studio on Windows in combination with vcpkg. On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take about 30 minutes to build the extension. It will be 70MB.
 
 After installing Visual Studio and vcpkg, install the gem like this:
 

@@ -128,8 +128,8 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_CXX_COMPILER": "cl.exe",
-        "CMAKE_CXX_FLAGS_DEBUG": "/Od /Zi",
-        "CMAKE_MSVC_DEBUG_INFORMATION_FORMAT": "EditAndContinue"
+        "CMAKE_CXX_FLAGS_DEBUG": "/Od",
+        "CMAKE_MSVC_DEBUG_INFORMATION_FORMAT": "ProgramDatabase"
       }
     },
     {

@@ -7,10 +7,10 @@ if RUBY_PLATFORM =~ /mingw|mswin/
   begin
     require "#{major}.#{minor}/opencv_ruby.so"
   rescue LoadError
-    require "opencv_ruby.so"
+    require "opencv_ruby"
   end
 else
-  require "opencv_ruby.so"
+  require "opencv_ruby"
 end
 
 require "opencv-ruby/version"

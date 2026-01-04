@@ -8,7 +8,7 @@ OpenCV is a large, complex C++ code base that makes heavy use of templates. Ther
 
 ### macOS
 
-On a MacBook Pro M4, it will take about 5 minutes to build the extension. It will be approximately 140MB.
+On a MacBook Pro M4, it will take about 10 minutes to build the extension. It will be approximately 170MB.
 
 You will first need to install [HomeBrew](https://brew.sh/)
 

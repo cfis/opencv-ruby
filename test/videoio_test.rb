@@ -14,6 +14,8 @@ class VideoIoTest < OpenCVTestCase
 
     if Gem.win_platform?
       assert_equal("MSMF", capture.get_backend_name)
+		elsif RUBY_PLATFORM =~ /darwin/
+			assert_equal("AVFOUNDATION", Cv::current_ui_framework)
     else
       assert_equal("GSTREAMER", capture.get_backend_name)
     end

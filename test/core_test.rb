@@ -40,7 +40,7 @@ class CoreTest < OpenCVTestCase
     end
     values, vectors = mat1.eigen
     assert_equal([8.561553001403809, 4.438446998596191], values.to_a)
-    if Gem.win_platform?
+    if RUBY_PLATFORM =~ /mswin/
       assert_equal([-0.615412175655365, 0.7882053852081299, 0.7882053852081299, 0.615412175655365], vectors.to_a)
     else
       assert_equal([0.6154122352600098, -0.7882053852081299, -0.7882053852081299, -0.6154122352600098], vectors.to_a)

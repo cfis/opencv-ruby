@@ -45,8 +45,10 @@ class SparseMatTest < OpenCVTestCase
     assert_equal(256, pool.size)
 
     hashtab = header.hashtab
-    if Gem.win_platform?
+    if RUBY_PLATFORM =~ /mswin/
       assert_kind_of(Std::Vector≺unsigned Int64≻, hashtab)
+    elsif RUBY_PLATFORM =~ /mingw/
+      Std::Vector≺unsigned long long≻
     else
       assert_kind_of(Std::Vector≺unsigned long≻, hashtab)
     end

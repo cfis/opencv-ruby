@@ -12,10 +12,12 @@ class VideoIoTest < OpenCVTestCase
   def test_backend_name
     capture = Cv::VideoCapture.new(0, Cv::VideoCaptureAPIs::CAP_ANY)
 
-    if Gem.win_platform?
+    if RUBY_PLATFORM =~ /mswin/
       assert_equal("MSMF", capture.get_backend_name)
+    elsif RUBY_PLATFORM =~ /mingw/
+      assert_equal("DSHOW", capture::get_backend_name)
 		elsif RUBY_PLATFORM =~ /darwin/
-			assert_equal("AVFOUNDATION", Cv::current_ui_framework)
+			assert_equal("AVFOUNDATION", capture::get_backend_name)
     else
       assert_equal("GSTREAMER", capture.get_backend_name)
     end

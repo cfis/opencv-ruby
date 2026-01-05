@@ -1,226 +1,226 @@
 module Cv
-	class Mat
-		def type_to_string
-			case self.type
-				when CV_8UC1
-				  "CV_8UC1"
-				when CV_8UC2
-				  "CV_8UC2"
-				when CV_8UC3
-				  "CV_8UC3"
-				when CV_8UC4
-				  "CV_8UC4"
-				when CV_8SC1
-				  "CV_8SC1"
-				when CV_8SC2
-				  "CV_8SC2"
-				when CV_8SC3
-				  "CV_8SC3"
-				when CV_8SC4
-				  "CV_8SC4"
-				when CV_16UC1
-				  "CV_16UC1"
-				when CV_16UC2
-				  "CV_16UC2"
-				when CV_16UC3
-				  "CV_16UC3"
-				when CV_16UC4
-				  "CV_16UC4"
-				when CV_16SC1
-				  "CV_16SC1"
-				when CV_16SC2
-				  "CV_16SC2"
-				when CV_16SC3
-				  "CV_16SC3"
-				when CV_16SC4
-				  "CV_16SC4"
-				when CV_32SC1
-				  "CV_32SC1"
-				when CV_32SC2
-				  "CV_32SC2"
-				when CV_32SC3
-				  "CV_32SC3"
-				when CV_32SC4
-				  "CV_32SC4"
-				when CV_32FC1
-				  "CV_32FC1"
-				when CV_32FC2
-				  "CV_32FC2"
-				when CV_32FC3
-				  "CV_32FC3"
-				when CV_32FC4
-				  "CV_32FC4"
-				when CV_64FC1
-				  "CV_64FC1"
-				when CV_64FC2
-				  "CV_64FC2"
-				when CV_64FC3
-				  "CV_64FC3"
-				when CV_64FC4
-				  "CV_64FC4"
-				when CV_16FC1
-				  "CV_16FC1"
-				when CV_16FC2
-				  "CV_16FC2"
-				when CV_16FC3
-				  "CV_16FC3"
-				when CV_16FC4
-				  "CV_16FC4"
-				else
-					raise("Uknown type: #{self.type}")
-			end
-		end
+  class Mat
+    def type_to_string
+      case self.type
+        when CV_8UC1
+          "CV_8UC1"
+        when CV_8UC2
+          "CV_8UC2"
+        when CV_8UC3
+          "CV_8UC3"
+        when CV_8UC4
+          "CV_8UC4"
+        when CV_8SC1
+          "CV_8SC1"
+        when CV_8SC2
+          "CV_8SC2"
+        when CV_8SC3
+          "CV_8SC3"
+        when CV_8SC4
+          "CV_8SC4"
+        when CV_16UC1
+          "CV_16UC1"
+        when CV_16UC2
+          "CV_16UC2"
+        when CV_16UC3
+          "CV_16UC3"
+        when CV_16UC4
+          "CV_16UC4"
+        when CV_16SC1
+          "CV_16SC1"
+        when CV_16SC2
+          "CV_16SC2"
+        when CV_16SC3
+          "CV_16SC3"
+        when CV_16SC4
+          "CV_16SC4"
+        when CV_32SC1
+          "CV_32SC1"
+        when CV_32SC2
+          "CV_32SC2"
+        when CV_32SC3
+          "CV_32SC3"
+        when CV_32SC4
+          "CV_32SC4"
+        when CV_32FC1
+          "CV_32FC1"
+        when CV_32FC2
+          "CV_32FC2"
+        when CV_32FC3
+          "CV_32FC3"
+        when CV_32FC4
+          "CV_32FC4"
+        when CV_64FC1
+          "CV_64FC1"
+        when CV_64FC2
+          "CV_64FC2"
+        when CV_64FC3
+          "CV_64FC3"
+        when CV_64FC4
+          "CV_64FC4"
+        when CV_16FC1
+          "CV_16FC1"
+        when CV_16FC2
+          "CV_16FC2"
+        when CV_16FC3
+          "CV_16FC3"
+        when CV_16FC4
+          "CV_16FC4"
+        else
+          raise("Uknown type: #{self.type}")
+      end
+    end
 
-		def mat_klass
-			case self.type
-				when CV_8UC1
-					Cv::Mat1b
-				when CV_8UC2
-					Cv::Mat2b
-				when CV_8UC3
-					Cv::Mat3b
-				when CV_8UC4
-					Cv::Mat4b
-				when CV_8SC1
-					raise("CV_8SC1 has not corresponding Mat_ class")
-				when CV_8SC2
-					raise("CV_8SC2 has not corresponding Mat_ class")
-				when CV_8SC3
-					raise("CV_8SC3 has not corresponding Mat_ class")
-				when CV_8SC4
-					raise("CV_8SC4 has not corresponding Mat_ class")
-				when CV_16UC1
-					Cv::Mat1w
-				when CV_16UC2
-					Cv::Mat2w
-				when CV_16UC3
-					Cv::Mat3w
-				when CV_16UC4
-					Cv::Mat4w
-				when CV_16SC1
-					Cv::Mat1s
-				when CV_16SC2
-					Cv::Mat2s
-				when CV_16SC3
-					Cv::Mat3s
-				when CV_16SC4
-					Cv::Mat4s
-				when CV_32SC1
-					Cv::Mat1i
-				when CV_32SC2
-					Cv::Mat2i
-				when CV_32SC3
-					Cv::Mat3i
-				when CV_32SC4
-					Cv::Mat4i
-				when CV_32FC1
-					Cv::Mat1f
-				when CV_32FC2
-					Cv::Mat2f
-				when CV_32FC3
-					Cv::Mat3f
-				when CV_32FC4
-					Cv::Mat4f
-				when CV_64FC1
-					Cv::Mat1d
-				when CV_64FC2
-					Cv::Mat2d
-				when CV_64FC3
-					Cv::Mat3d
-				when CV_64FC4
-					Cv::Mat4d
-				when CV_16FC1
-					raise("CV_16FC1 has not corresponding Mat_ class")
-				when CV_16FC2
-					raise("CV_16FC2 has not corresponding Mat_ class")
-				when CV_16FC3
-					raise("CV_16FC3 has not corresponding Mat_ class")
-				when CV_16FC4
-					raise("CV_16FC4 has not corresponding Mat_ class")
-				else
-					raise("Uknown type: #{self.type}")
-			end
-		end
+    def mat_klass
+      case self.type
+        when CV_8UC1
+          Cv::Mat1b
+        when CV_8UC2
+          Cv::Mat2b
+        when CV_8UC3
+          Cv::Mat3b
+        when CV_8UC4
+          Cv::Mat4b
+        when CV_8SC1
+          raise("CV_8SC1 has not corresponding Mat_ class")
+        when CV_8SC2
+          raise("CV_8SC2 has not corresponding Mat_ class")
+        when CV_8SC3
+          raise("CV_8SC3 has not corresponding Mat_ class")
+        when CV_8SC4
+          raise("CV_8SC4 has not corresponding Mat_ class")
+        when CV_16UC1
+          Cv::Mat1w
+        when CV_16UC2
+          Cv::Mat2w
+        when CV_16UC3
+          Cv::Mat3w
+        when CV_16UC4
+          Cv::Mat4w
+        when CV_16SC1
+          Cv::Mat1s
+        when CV_16SC2
+          Cv::Mat2s
+        when CV_16SC3
+          Cv::Mat3s
+        when CV_16SC4
+          Cv::Mat4s
+        when CV_32SC1
+          Cv::Mat1i
+        when CV_32SC2
+          Cv::Mat2i
+        when CV_32SC3
+          Cv::Mat3i
+        when CV_32SC4
+          Cv::Mat4i
+        when CV_32FC1
+          Cv::Mat1f
+        when CV_32FC2
+          Cv::Mat2f
+        when CV_32FC3
+          Cv::Mat3f
+        when CV_32FC4
+          Cv::Mat4f
+        when CV_64FC1
+          Cv::Mat1d
+        when CV_64FC2
+          Cv::Mat2d
+        when CV_64FC3
+          Cv::Mat3d
+        when CV_64FC4
+          Cv::Mat4d
+        when CV_16FC1
+          raise("CV_16FC1 has not corresponding Mat_ class")
+        when CV_16FC2
+          raise("CV_16FC2 has not corresponding Mat_ class")
+        when CV_16FC3
+          raise("CV_16FC3 has not corresponding Mat_ class")
+        when CV_16FC4
+          raise("CV_16FC4 has not corresponding Mat_ class")
+        else
+          raise("Uknown type: #{self.type}")
+      end
+    end
 
-		def vec_klass
-			case self.type
-				when CV_8UC1
-					Cv::Vec1b
-				when CV_8UC2
-					Cv::Vec2b
-				when CV_8UC3
-					Cv::Vec3b
-				when CV_8UC4
-					Cv::Vec4b
-				when CV_8SC1
-					raise("CV_8SC1 has not corresponding Mat_ class")
-				when CV_8SC2
-					raise("CV_8SC2 has not corresponding Mat_ class")
-				when CV_8SC3
-					raise("CV_8SC3 has not corresponding Mat_ class")
-				when CV_8SC4
-					raise("CV_8SC4 has not corresponding Mat_ class")
-				when CV_16UC1
-					Cv::Vec1w
-				when CV_16UC2
-					Cv::Vec2w
-				when CV_16UC3
-					Cv::Vec3w
-				when CV_16UC4
-					Cv::Vec4w
-				when CV_16SC1
-					Cv::Vec1s
-				when CV_16SC2
-					Cv::Vec2s
-				when CV_16SC3
-					Cv::Vec3s
-				when CV_16SC4
-					Cv::Vec4s
-				when CV_32SC1
-					Cv::Vec1i
-				when CV_32SC2
-					Cv::Vec2i
-				when CV_32SC3
-					Cv::Vec3i
-				when CV_32SC4
-					Cv::Vec4i
-				when CV_32FC1
-					Cv::Vec1f
-				when CV_32FC2
-					Cv::Vec2f
-				when CV_32FC3
-					Cv::Vec3f
-				when CV_32FC4
-					Cv::Vec4f
-				when CV_64FC1
-					Cv::Vec1d
-				when CV_64FC2
-					Cv::Vec2d
-				when CV_64FC3
-					Cv::Vec3d
-				when CV_64FC4
-					Cv::Vec4d
-				when CV_16FC1
-					raise("CV_16FC1 has not corresponding Mat_ class")
-				when CV_16FC2
-					raise("CV_16FC2 has not corresponding Mat_ class")
-				when CV_16FC3
-					raise("CV_16FC3 has not corresponding Mat_ class")
-				when CV_16FC4
-					raise("CV_16FC4 has not corresponding Mat_ class")
-				else
-					raise("Uknown type: #{self.type}")
-			end
-		end
+    def vec_klass
+      case self.type
+        when CV_8UC1
+          Cv::Vec1b
+        when CV_8UC2
+          Cv::Vec2b
+        when CV_8UC3
+          Cv::Vec3b
+        when CV_8UC4
+          Cv::Vec4b
+        when CV_8SC1
+          raise("CV_8SC1 has not corresponding Mat_ class")
+        when CV_8SC2
+          raise("CV_8SC2 has not corresponding Mat_ class")
+        when CV_8SC3
+          raise("CV_8SC3 has not corresponding Mat_ class")
+        when CV_8SC4
+          raise("CV_8SC4 has not corresponding Mat_ class")
+        when CV_16UC1
+          Cv::Vec1w
+        when CV_16UC2
+          Cv::Vec2w
+        when CV_16UC3
+          Cv::Vec3w
+        when CV_16UC4
+          Cv::Vec4w
+        when CV_16SC1
+          Cv::Vec1s
+        when CV_16SC2
+          Cv::Vec2s
+        when CV_16SC3
+          Cv::Vec3s
+        when CV_16SC4
+          Cv::Vec4s
+        when CV_32SC1
+          Cv::Vec1i
+        when CV_32SC2
+          Cv::Vec2i
+        when CV_32SC3
+          Cv::Vec3i
+        when CV_32SC4
+          Cv::Vec4i
+        when CV_32FC1
+          Cv::Vec1f
+        when CV_32FC2
+          Cv::Vec2f
+        when CV_32FC3
+          Cv::Vec3f
+        when CV_32FC4
+          Cv::Vec4f
+        when CV_64FC1
+          Cv::Vec1d
+        when CV_64FC2
+          Cv::Vec2d
+        when CV_64FC3
+          Cv::Vec3d
+        when CV_64FC4
+          Cv::Vec4d
+        when CV_16FC1
+          raise("CV_16FC1 has not corresponding Mat_ class")
+        when CV_16FC2
+          raise("CV_16FC2 has not corresponding Mat_ class")
+        when CV_16FC3
+          raise("CV_16FC3 has not corresponding Mat_ class")
+        when CV_16FC4
+          raise("CV_16FC4 has not corresponding Mat_ class")
+        else
+          raise("Uknown type: #{self.type}")
+      end
+    end
 
-		def to_s
-			"<#{self.class.name}:#{self.rows}x#{self.cols},type=#{self.type_to_string},channel=#{self.channels}>"
-		end
+    def to_s
+      "<#{self.class.name}:#{self.rows}x#{self.cols},type=#{self.type_to_string},channel=#{self.channels}>"
+    end
 
-		# Provide more Ruby like API to OpenCV
-		def compare(other, operation)
-			dest = self.class.new(self.rows, self.cols, self.type)
-			Cv::compare(self.input_array, other.input_array, dest.output_array, operation)
+    # Provide more Ruby like API to OpenCV
+    def compare(other, operation)
+      dest = self.class.new(self.rows, self.cols, self.type)
+    	Cv::compare(self.input_array, other.input_array, dest.output_array, operation)
 			dest
 		end
 

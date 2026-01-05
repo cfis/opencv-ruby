@@ -35,17 +35,17 @@ class Mat_Test < OpenCVTestCase
     assert_equal("[10, 10, 10;\n 10, 10, 10]", mat.inspect)
   end
 
-	def test_initialize_ref_fundamental
-		ref = Rice::Reference≺int≻.new(7)
-		mat1 = Cv::Mat1i.new(2, 2, ref)
-		assert_equal(2, mat1.rows)
-		assert_equal(2, mat1.cols)
-		assert_equal(CV_32S, mat1.depth)
-		assert_equal(CV_32SC1, mat1.type)
-		assert_equal(1, mat1.channels)
-		assert_equal("[7, 7;\n 7, 7]",
-								 mat1.inspect)
-	end
+  def test_initialize_ref_fundamental
+    ref = Rice::Reference≺int≻.new(7)
+    mat1 = Cv::Mat1i.new(2, 2, ref)
+    assert_equal(2, mat1.rows)
+    assert_equal(2, mat1.cols)
+    assert_equal(CV_32S, mat1.depth)
+    assert_equal(CV_32SC1, mat1.type)
+    assert_equal(1, mat1.channels)
+    assert_equal("[7, 7;\n 7, 7]",
+                 mat1.inspect)
+  end
 
   def test_initialize_buffer_fundamental
     range = 1..4

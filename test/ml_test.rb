@@ -45,7 +45,7 @@ class MLTest < OpenCVTestCase
   end
 
   def test_param_grid_create
-			grid = Cv::Ml::ParamGrid.create(0.5, 50.0, 3.0)
+      grid = Cv::Ml::ParamGrid.create(0.5, 50.0, 3.0)
     assert_in_delta(0.5, grid.min_val, 0.01)
     assert_in_delta(50.0, grid.max_val, 0.01)
     assert_in_delta(3.0, grid.log_step, 0.01)
@@ -129,7 +129,7 @@ class MLTest < OpenCVTestCase
 
   def test_normal_bayes_classifier_empty
     classifier = Cv::Ml::NormalBayesClassifier.create
-		refute(classifier.empty?)
+    refute(classifier.empty?)
   end
 
   def test_normal_bayes_classifier_train

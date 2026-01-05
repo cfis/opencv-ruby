@@ -16,8 +16,8 @@ class VideoIoTest < OpenCVTestCase
       assert_equal("MSMF", capture.get_backend_name)
     elsif RUBY_PLATFORM =~ /mingw/
       assert_equal("DSHOW", capture::get_backend_name)
-		elsif RUBY_PLATFORM =~ /darwin/
-			assert_equal("AVFOUNDATION", capture::get_backend_name)
+    elsif RUBY_PLATFORM =~ /darwin/
+      assert_equal("AVFOUNDATION", capture::get_backend_name)
     else
       assert_equal("GSTREAMER", capture.get_backend_name)
     end

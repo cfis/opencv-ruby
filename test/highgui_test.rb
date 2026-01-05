@@ -17,8 +17,8 @@ class HighguiTest < OpenCVTestCase
   def test_ui_framework
     if RUBY_PLATFORM =~ /mswin/
       assert_equal("WIN32", Cv::current_ui_framework)
-		elsif RUBY_PLATFORM =~ /darwin/
-			assert_equal("COCOA", Cv::current_ui_framework)
+    elsif RUBY_PLATFORM =~ /darwin/
+      assert_equal("COCOA", Cv::current_ui_framework)
     else
       assert_equal("QT", Cv::current_ui_framework)
     end

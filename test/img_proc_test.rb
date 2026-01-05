@@ -47,15 +47,15 @@ class ImgProcTest < OpenCVTestCase
       else
         (i + j) % 3 != 0 ? 28 : 4
       end
-		end
+    end
 
     mat2 = mat.bilateral_filter(10,3, 3)
-		expected = [4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28,
-								4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28,
-								28, 4, 28, 28, 4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28,
-								28, 4, 28, 28]
-		assert_equal(expected, mat2.to_a)
-	end
+    expected = [4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28,
+                4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28, 28, 4, 28, 28,
+                28, 4, 28, 28, 4, 28, 28, 4, 4, 28, 28, 4, 28, 28, 4, 28, 28, 28, 4, 28,
+                28, 4, 28, 28]
+    assert_equal(expected, mat2.to_a)
+  end
 
   def test_blur
     image_path = self.sample_path("starry_night.jpg")

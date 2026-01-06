@@ -1,5 +1,5 @@
 #include <opencv2/core/cvdef.h>
-#include "../../opencv_ruby_version.hpp"
+#include "../../opencv_ruby_version.hpp" // Manual
 #include "cvdef-rb.hpp"
 
 using namespace Rice;
@@ -207,17 +207,21 @@ void Init_Cvdef()
 
   Module rb_mCv = define_module("Cv");
 
-#if RUBY_CV_VERSION >= 410
+#if RUBY_CV_VERSION >= 410  
   rb_cCvHfloat = define_class_under<cv::hfloat>(rb_mCv, "Hfloat").
     define_constructor(Constructor<cv::hfloat>()).
     define_constructor(Constructor<cv::hfloat, float>(),
       Arg("x")).
-    define_method("to_float", [](const cv::hfloat& self) -> float
-      {
-        return self;
-      });
+    define_method("to_f", [](const cv::hfloat& self) -> float
+    {
+      return self;
+    });
 
   rb_mCv.define_module_function("hfloat_from_bits", &cv::hfloatFromBits,
     Arg("w"));
 #endif
+
+  define_global_function("cv_fourcc", &CV_FOURCC,
+    Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));
+
 }

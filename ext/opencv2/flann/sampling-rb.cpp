@@ -6,7 +6,10 @@
 
 using namespace Rice;
 
+
 void Init_Sampling()
 {
   Module rb_mCvflann = define_module("Cvflann");
+  
+
 }

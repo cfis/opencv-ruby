@@ -9,12 +9,10 @@ inline void UnrollVecDiffCached_builder(Data_Type_T& klass)
 void Init_VecDistanceDetail()
 {
   Module rb_mCv = define_module("Cv");
-  
-  Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
-  
-  Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
-  
-  Module rb_mCvCudaDeviceVecDistanceDetail = define_module_under(rb_mCvCudaDevice, "VecDistanceDetail");
-  
 
+  Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
+
+  Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
+
+  Module rb_mCvCudaDeviceVecDistanceDetail = define_module_under(rb_mCvCudaDevice, "VecDistanceDetail");
 }

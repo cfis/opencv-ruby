@@ -15,6 +15,14 @@ void Init_Flann_Logger()
     define_singleton_function("set_destination", &cvflann::Logger::setDestination,
       Arg("name")).
     define_singleton_function("log", &cvflann::Logger::log,
-      Arg("level"), Arg("fmt"));
+      Arg("level"), Arg("fmt")).
+    define_singleton_function("fatal", &cvflann::Logger::fatal,
+      Arg("fmt")).
+    define_singleton_function("error", &cvflann::Logger::error,
+      Arg("fmt")).
+    define_singleton_function("warn", &cvflann::Logger::warn,
+      Arg("fmt")).
+    define_singleton_function("info", &cvflann::Logger::info,
+      Arg("fmt"));
 
 }

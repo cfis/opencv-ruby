@@ -9,8 +9,9 @@ Rice::Class rb_cCvDnnDictValue;
 void Init_Dict()
 {
   Module rb_mCv = define_module("Cv");
+
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
-  
+
   rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue").
     define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue&>(),
       Arg("r")).
@@ -40,7 +41,7 @@ void Init_Dict()
       Arg("idx") = static_cast<int>(-1)).
     define_method("assign", &cv::dnn::DictValue::operator=,
       Arg("r"));
-  
+
   rb_cCvDnnDict = define_class_under<cv::dnn::Dict>(rb_mCvDnn, "Dict").
     define_constructor(Constructor<cv::dnn::Dict>()).
     define_method("has?", &cv::dnn::Dict::has,
@@ -49,9 +50,10 @@ void Init_Dict()
       Arg("key")).
     define_method<const cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&) const>("ptr", &cv::dnn::Dict::ptr,
       Arg("key")).
-  //  define_method("get", &cv::dnn::Dict::get,
-   //   Arg("key")).
+    define_method<const cv::dnn::DictValue&(cv::dnn::Dict::*)(const cv::String&) const>("get", &cv::dnn::Dict::get,
+      Arg("key")).
     define_method("erase", &cv::dnn::Dict::erase,
-      Arg("key"));
-  //  define_iterator<std::map::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
+      Arg("key")).
+    define_iterator<std::map<cv::String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
+
 }

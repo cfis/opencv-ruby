@@ -21,42 +21,43 @@ Rice::Class rb_cCvSimilarRects;
 void Init_Objdetect()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvSimilarRects = define_class_under<cv::SimilarRects>(rb_mCv, "SimilarRects").
     define_constructor(Constructor<cv::SimilarRects, double>(),
       Arg("_eps")).
     define_method("call", &cv::SimilarRects::operator(),
       Arg("r1"), Arg("r2")).
     define_attr("eps", &cv::SimilarRects::eps);
-  
+
   rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
-  
+
   rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, std::vector<int>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
-  
+
   rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, int, double, std::vector<int>*, std::vector<double>*)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("group_threshold"), Arg("eps"), Arg("weights"), Arg("level_weights"));
-  
+
   rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, std::vector<int>&, std::vector<double>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("reject_levels"), Arg("level_weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
-  
+
   rb_mCv.define_module_function("group_rectangles_meanshift", &cv::groupRectangles_meanshift,
     Arg("rect_list"), Arg("found_weights"), Arg("found_scales"), Arg("detect_threshold") = static_cast<double>(0.0), Arg("win_det_size") = static_cast<cv::Size>(cv::Size(64, 128)));
-  
-//  rb_cCvDefaultDeleterCvHaarClassifierCascade = define_class_under<cv::DefaultDeleter<CvHaarClassifierCascade>>(rb_mCv, "DefaultDeleterCvHaarClassifierCascade").
-  //  define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>()).
+
+  rb_cCvDefaultDeleterCvHaarClassifierCascade = define_class_under<cv::DefaultDeleter<CvHaarClassifierCascade>>(rb_mCv, "DefaultDeleterCvHaarClassifierCascade").
+    define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>());
+    // Causes link errors
     //define_method("call", &cv::DefaultDeleter<CvHaarClassifierCascade>::operator(),
-      //Arg("obj"));
-  
+    //  Arg("obj"));
+
   rb_mCv.define_constant("CASCADE_DO_CANNY_PRUNING", (int)cv::CASCADE_DO_CANNY_PRUNING);
   rb_mCv.define_constant("CASCADE_SCALE_IMAGE", (int)cv::CASCADE_SCALE_IMAGE);
   rb_mCv.define_constant("CASCADE_FIND_BIGGEST_OBJECT", (int)cv::CASCADE_FIND_BIGGEST_OBJECT);
   rb_mCv.define_constant("CASCADE_DO_ROUGH_SEARCH", (int)cv::CASCADE_DO_ROUGH_SEARCH);
-  
+
   rb_cCvBaseCascadeClassifier = define_class_under<cv::BaseCascadeClassifier, cv::Algorithm>(rb_mCv, "BaseCascadeClassifier").
     define_method("empty?", &cv::BaseCascadeClassifier::empty).
-    define_method("load?", &cv::BaseCascadeClassifier::load,
+    define_method("load", &cv::BaseCascadeClassifier::load,
       Arg("filename")).
     define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("scale_factor"), Arg("min_neighbors"), Arg("flags"), Arg("min_size"), Arg("max_size")).
@@ -71,13 +72,13 @@ void Init_Objdetect()
     define_method("set_mask_generator", &cv::BaseCascadeClassifier::setMaskGenerator,
       Arg("mask_generator")).
     define_method("get_mask_generator", &cv::BaseCascadeClassifier::getMaskGenerator);
-  
+
   rb_cCvBaseCascadeClassifierMaskGenerator = define_class_under<cv::BaseCascadeClassifier::MaskGenerator>(rb_cCvBaseCascadeClassifier, "MaskGenerator").
     define_method("generate_mask", &cv::BaseCascadeClassifier::MaskGenerator::generateMask,
       Arg("src")).
     define_method("initialize_mask", &cv::BaseCascadeClassifier::MaskGenerator::initializeMask,
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvCascadeClassifier = define_class_under<cv::CascadeClassifier>(rb_mCv, "CascadeClassifier").
     define_constructor(Constructor<cv::CascadeClassifier>()).
     define_constructor(Constructor<cv::CascadeClassifier, const cv::String&>(),
@@ -97,21 +98,21 @@ void Init_Objdetect()
     define_method("get_original_window_size", &cv::CascadeClassifier::getOriginalWindowSize).
     define_method("get_feature_type", &cv::CascadeClassifier::getFeatureType).
     define_method("get_old_cascade", &cv::CascadeClassifier::getOldCascade).
-    define_singleton_function("convert", &cv::CascadeClassifier::convert,
-      Arg("oldcascade"), Arg("newcascade")).
     define_method("set_mask_generator", &cv::CascadeClassifier::setMaskGenerator,
       Arg("mask_generator")).
     define_method("get_mask_generator", &cv::CascadeClassifier::getMaskGenerator).
-    define_attr("cc", &cv::CascadeClassifier::cc);
-  
+    define_attr("cc", &cv::CascadeClassifier::cc).
+    define_singleton_function("convert", &cv::CascadeClassifier::convert,
+      Arg("oldcascade"), Arg("newcascade"));
+
   rb_mCv.define_module_function("create_face_detection_mask_generator", &cv::createFaceDetectionMaskGenerator);
-  
+
   rb_cCvDetectionROI = define_class_under<cv::DetectionROI>(rb_mCv, "DetectionROI").
     define_constructor(Constructor<cv::DetectionROI>()).
     define_attr("scale", &cv::DetectionROI::scale).
     define_attr("locations", &cv::DetectionROI::locations).
     define_attr("confidences", &cv::DetectionROI::confidences);
-  
+
   rb_cCvHOGDescriptor = define_class_under<cv::HOGDescriptor>(rb_mCv, "HOGDescriptor").
     define_constructor(Constructor<cv::HOGDescriptor>()).
     define_constructor(Constructor<cv::HOGDescriptor, cv::Size, cv::Size, cv::Size, cv::Size, int, int, double, cv::HOGDescriptor::HistogramNormType, double, bool, int, bool>(),
@@ -125,30 +126,28 @@ void Init_Objdetect()
     define_method("get_win_sigma", &cv::HOGDescriptor::getWinSigma).
     define_method("set_svm_detector", &cv::HOGDescriptor::setSVMDetector,
       Arg("svmdetector")).
-    define_method("read?", &cv::HOGDescriptor::read,
+    define_method("read", &cv::HOGDescriptor::read,
       Arg("fn")).
     define_method("write", &cv::HOGDescriptor::write,
       Arg("fs"), Arg("objname")).
-    define_method("load?", &cv::HOGDescriptor::load,
-      Arg("filename"), Arg("objname") = static_cast<const String &>(String())).
+    define_method("load", &cv::HOGDescriptor::load,
+      Arg("filename"), Arg("objname") = static_cast<const cv::String&>(cv::String())).
     define_method("save", &cv::HOGDescriptor::save,
-      Arg("filename"), Arg("objname") = static_cast<const String &>(String())).
+      Arg("filename"), Arg("objname") = static_cast<const cv::String&>(cv::String())).
     define_method("copy_to", &cv::HOGDescriptor::copyTo,
       Arg("c")).
     define_method("compute", &cv::HOGDescriptor::compute,
-      Arg("img"), Arg("descriptors"), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("locations") = static_cast<const std::vector<cv::Point> &>(std::vector<cv::Point>())).
+      Arg("img"), Arg("descriptors"), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point_<int>>&, std::vector<double>&, double, cv::Size, cv::Size, const std::vector<cv::Point_<int>>&) const>("detect", &cv::HOGDescriptor::detect,
-      Arg("img"), Arg("found_locations"), Arg("weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point> &>(std::vector<cv::Point>())).
+      Arg("img"), Arg("found_locations"), Arg("weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point_<int>>&, double, cv::Size, cv::Size, const std::vector<cv::Point_<int>>&) const>("detect", &cv::HOGDescriptor::detect,
-      Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point> &>(std::vector<cv::Point>())).
+      Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<double>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
       Arg("img"), Arg("found_locations"), Arg("found_weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("scale") = static_cast<double>(1.05), Arg("group_threshold") = static_cast<double>(2.0), Arg("use_meanshift_grouping") = static_cast<bool>(false)).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
       Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("scale") = static_cast<double>(1.05), Arg("group_threshold") = static_cast<double>(2.0), Arg("use_meanshift_grouping") = static_cast<bool>(false)).
     define_method("compute_gradient", &cv::HOGDescriptor::computeGradient,
       Arg("img"), Arg("grad"), Arg("angle_ofs"), Arg("padding_tl") = static_cast<cv::Size>(cv::Size()), Arg("padding_br") = static_cast<cv::Size>(cv::Size())).
-    define_singleton_function("get_default_people_detector", &cv::HOGDescriptor::getDefaultPeopleDetector).
-    define_singleton_function("get_daimler_people_detector", &cv::HOGDescriptor::getDaimlerPeopleDetector).
     define_attr("win_size", &cv::HOGDescriptor::winSize).
     define_attr("block_size", &cv::HOGDescriptor::blockSize).
     define_attr("block_stride", &cv::HOGDescriptor::blockStride).
@@ -169,17 +168,19 @@ void Init_Objdetect()
     define_method("detect_multi_scale_roi", &cv::HOGDescriptor::detectMultiScaleROI,
       Arg("img"), Arg("found_locations"), Arg("locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("group_threshold") = static_cast<int>(0)).
     define_method("group_rectangles", &cv::HOGDescriptor::groupRectangles,
-      Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps"));
-  
+      Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps")).
+    define_singleton_function("get_default_people_detector", &cv::HOGDescriptor::getDefaultPeopleDetector).
+    define_singleton_function("get_daimler_people_detector", &cv::HOGDescriptor::getDaimlerPeopleDetector);
+
   Enum<cv::HOGDescriptor::HistogramNormType> rb_cCvHOGDescriptorHistogramNormType = define_enum_under<cv::HOGDescriptor::HistogramNormType>("HistogramNormType", rb_cCvHOGDescriptor).
     define_value("L2Hys", cv::HOGDescriptor::HistogramNormType::L2Hys);
-  
+
   rb_cCvHOGDescriptor.define_constant("DEFAULT_NLEVELS", (int)cv::HOGDescriptor::DEFAULT_NLEVELS);
-  
+
   Enum<cv::HOGDescriptor::DescriptorStorageFormat> rb_cCvHOGDescriptorDescriptorStorageFormat = define_enum_under<cv::HOGDescriptor::DescriptorStorageFormat>("DescriptorStorageFormat", rb_cCvHOGDescriptor).
     define_value("DESCR_FORMAT_COL_BY_COL", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_COL_BY_COL).
     define_value("DESCR_FORMAT_ROW_BY_ROW", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_ROW_BY_ROW);
-  
+
   rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder").
     define_method("encode", &cv::QRCodeEncoder::encode,
       Arg("encoded_info"), Arg("qrcode")).
@@ -194,7 +195,7 @@ void Init_Objdetect()
     define_attr("correction_level", &cv::QRCodeEncoder::Params::correction_level).
     define_attr("mode", &cv::QRCodeEncoder::Params::mode).
     define_attr("structure_number", &cv::QRCodeEncoder::Params::structure_number);
-  
+
   Enum<cv::QRCodeEncoder::EncodeMode> rb_cCvQRCodeEncoderEncodeMode = define_enum_under<cv::QRCodeEncoder::EncodeMode>("EncodeMode", rb_cCvQRCodeEncoder).
     define_value("MODE_AUTO", cv::QRCodeEncoder::EncodeMode::MODE_AUTO).
     define_value("MODE_NUMERIC", cv::QRCodeEncoder::EncodeMode::MODE_NUMERIC).
@@ -203,16 +204,16 @@ void Init_Objdetect()
     define_value("MODE_ECI", cv::QRCodeEncoder::EncodeMode::MODE_ECI).
     define_value("MODE_KANJI", cv::QRCodeEncoder::EncodeMode::MODE_KANJI).
     define_value("MODE_STRUCTURED_APPEND", cv::QRCodeEncoder::EncodeMode::MODE_STRUCTURED_APPEND);
-  
+
   Enum<cv::QRCodeEncoder::CorrectionLevel> rb_cCvQRCodeEncoderCorrectionLevel = define_enum_under<cv::QRCodeEncoder::CorrectionLevel>("CorrectionLevel", rb_cCvQRCodeEncoder).
     define_value("CORRECT_LEVEL_L", cv::QRCodeEncoder::CorrectionLevel::CORRECT_LEVEL_L).
     define_value("CORRECT_LEVEL_M", cv::QRCodeEncoder::CorrectionLevel::CORRECT_LEVEL_M).
     define_value("CORRECT_LEVEL_Q", cv::QRCodeEncoder::CorrectionLevel::CORRECT_LEVEL_Q).
     define_value("CORRECT_LEVEL_H", cv::QRCodeEncoder::CorrectionLevel::CORRECT_LEVEL_H);
-  
+
   Enum<cv::QRCodeEncoder::ECIEncodings> rb_cCvQRCodeEncoderECIEncodings = define_enum_under<cv::QRCodeEncoder::ECIEncodings>("ECIEncodings", rb_cCvQRCodeEncoder).
     define_value("ECI_UTF8", cv::QRCodeEncoder::ECIEncodings::ECI_UTF8);
-  
+
 #if RUBY_CV_VERSION >= 408
   rb_cCvQRCodeDetector = define_class_under<cv::QRCodeDetector, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetector").
     define_constructor(Constructor<cv::QRCodeDetector>()).
@@ -226,7 +227,7 @@ void Init_Objdetect()
       Arg("img"), Arg("points"), Arg("straight_qrcode") = static_cast<cv::OutputArray>(cv::noArray())).
     define_method("detect_and_decode_curved", &cv::QRCodeDetector::detectAndDecodeCurved,
       Arg("img"), Arg("points") = static_cast<cv::OutputArray>(cv::noArray()), Arg("straight_qrcode") = static_cast<cv::OutputArray>(cv::noArray()));
-  
+
   rb_cCvQRCodeDetectorAruco = define_class_under<cv::QRCodeDetectorAruco, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetectorAruco").
     define_constructor(Constructor<cv::QRCodeDetectorAruco>()).
     define_constructor(Constructor<cv::QRCodeDetectorAruco, const cv::QRCodeDetectorAruco::Params&>(),
@@ -237,7 +238,7 @@ void Init_Objdetect()
     define_method("get_aruco_parameters", &cv::QRCodeDetectorAruco::getArucoParameters).
     define_method("set_aruco_parameters", &cv::QRCodeDetectorAruco::setArucoParameters,
       Arg("params"));
-  
+
   rb_cCvQRCodeDetectorArucoParams = define_class_under<cv::QRCodeDetectorAruco::Params>(rb_cCvQRCodeDetectorAruco, "Params").
     define_constructor(Constructor<cv::QRCodeDetectorAruco::Params>()).
     define_attr("min_module_size_in_pyramid", &cv::QRCodeDetectorAruco::Params::minModuleSizeInPyramid).

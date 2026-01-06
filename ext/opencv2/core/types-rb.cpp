@@ -78,6 +78,10 @@ inline void Point__builder(Data_Type_T& klass)
       Arg("sz")).
     define_constructor(Constructor<cv::Point_<_Tp>, const cv::Vec<_Tp, 2>&>(),
       Arg("v")).
+    template define_method<cv::Point_<_Tp>&(cv::Point_<_Tp>::*)(const cv::Point_<_Tp>&)>("assign", &cv::Point_<_Tp>::operator=,
+      Arg("pt")).
+    template define_method<cv::Point_<_Tp>&(cv::Point_<_Tp>::*)(cv::Point_<_Tp>&&) noexcept>("assign", &cv::Point_<_Tp>::operator=,
+      Arg("pt")).
     define_method("to_vec", [](const cv::Point_<_Tp>& self) -> cv::Vec<_Tp, 2>
     {
       return self;
@@ -222,6 +226,10 @@ inline void Point3__builder(Data_Type_T& klass)
       Arg("pt")).
     define_constructor(Constructor<cv::Point3_<_Tp>, const cv::Vec<_Tp, 3>&>(),
       Arg("v")).
+    template define_method<cv::Point3_<_Tp>&(cv::Point3_<_Tp>::*)(const cv::Point3_<_Tp>&)>("assign", &cv::Point3_<_Tp>::operator=,
+      Arg("pt")).
+    template define_method<cv::Point3_<_Tp>&(cv::Point3_<_Tp>::*)(cv::Point3_<_Tp>&&) noexcept>("assign", &cv::Point3_<_Tp>::operator=,
+      Arg("pt")).
     define_method("to_vec", [](const cv::Point3_<_Tp>& self) -> cv::Vec<_Tp, 3>
     {
       return self;
@@ -424,6 +432,10 @@ inline void Rect__builder(Data_Type_T& klass)
       Arg("org"), Arg("sz")).
     define_constructor(Constructor<cv::Rect_<_Tp>, const cv::Point_<_Tp>&, const cv::Point_<_Tp>&>(),
       Arg("pt1"), Arg("pt2")).
+    template define_method<cv::Rect_<_Tp>&(cv::Rect_<_Tp>::*)(const cv::Rect_<_Tp>&)>("assign", &cv::Rect_<_Tp>::operator=,
+      Arg("r")).
+    template define_method<cv::Rect_<_Tp>&(cv::Rect_<_Tp>::*)(cv::Rect_<_Tp>&&) noexcept>("assign", &cv::Rect_<_Tp>::operator=,
+      Arg("r")).
     define_method("tl", &cv::Rect_<_Tp>::tl).
     define_method("br", &cv::Rect_<_Tp>::br).
     define_method("size", &cv::Rect_<_Tp>::size).
@@ -510,27 +522,29 @@ inline void Scalar__builder(Data_Type_T& klass)
       Arg("v0")).
     define_constructor(Constructor<cv::Scalar_<_Tp>, const cv::Scalar_<_Tp>&>(),
       Arg("s")).
-    define_singleton_function("all", &cv::Scalar_<_Tp>::all,
-      Arg("v0")).
-     define_method("mul", &cv::Scalar_<_Tp>::mul,
+    template define_method<cv::Scalar_<_Tp>&(cv::Scalar_<_Tp>::*)(const cv::Scalar_<_Tp>&)>("assign", &cv::Scalar_<_Tp>::operator=,
+      Arg("s")).
+    template define_method<cv::Scalar_<_Tp>&(cv::Scalar_<_Tp>::*)(cv::Scalar_<_Tp>&&) noexcept>("assign", &cv::Scalar_<_Tp>::operator=,
+      Arg("s")).
+    define_method("mul", &cv::Scalar_<_Tp>::mul,
       Arg("a"), Arg("scale") = static_cast<double>(1)).
     define_method("conj", &cv::Scalar_<_Tp>::conj).
-    define_method("is_real?", &cv::Scalar_<_Tp>::isReal);
+    define_method("is_real?", &cv::Scalar_<_Tp>::isReal).
+    define_singleton_function("all", &cv::Scalar_<_Tp>::all,
+      Arg("v0"));
 };
-
-
 void Init_Types()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cComplexf = define_class_under<cv::Complex<float>>(rb_mCv, "Complexf").
     define(&Complex_builder<Data_Type<cv::Complex<float>>, float>);
-  
+
   rb_cComplexd = define_class_under<cv::Complex<double>>(rb_mCv, "Complexd").
     define(&Complex_builder<Data_Type<cv::Complex<double>>, double>);
-  
+
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
-  
+
   rb_cPoint = define_class_under<cv::Point_<int>>(rb_mCv, "Point").
     define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
 
@@ -546,16 +560,16 @@ void Init_Types()
   //rb_cPoint2i = define_class_under<cv::Point_<int>>(rb_mCv, "Point2i").
   //  define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
   rb_mCv.const_set(rb_intern("Point2i"), rb_cPoint);
-  
+
   rb_cPoint2l = define_class_under<cv::Point_<int64>>(rb_mCv, "Point2l").
     define(&Point__builder<Data_Type<cv::Point_<int64>>, int64>);
-  
+
   rb_cPoint2f = define_class_under<cv::Point_<float>>(rb_mCv, "Point2f").
     define(&Point__builder<Data_Type<cv::Point_<float>>, float>);
-  
+
   rb_cPoint2d = define_class_under<cv::Point_<double>>(rb_mCv, "Point2d").
     define(&Point__builder<Data_Type<cv::Point_<double>>, double>);
-  
+
   rb_cPoint3b = define_class_under<cv::Point3_<unsigned char>>(rb_mCv, "Point3b").
     define(&Point3__builder<Data_Type<cv::Point3_<unsigned char>>, unsigned char>);
 
@@ -567,13 +581,13 @@ void Init_Types()
 
   rb_cPoint3i = define_class_under<cv::Point3_<int>>(rb_mCv, "Point3i").
     define(&Point3__builder<Data_Type<cv::Point3_<int>>, int>);
-  
+
   rb_cPoint3f = define_class_under<cv::Point3_<float>>(rb_mCv, "Point3f").
     define(&Point3__builder<Data_Type<cv::Point3_<float>>, float>);
-  
+
   rb_cPoint3d = define_class_under<cv::Point3_<double>>(rb_mCv, "Point3d").
     define(&Point3__builder<Data_Type<cv::Point3_<double>>, double>);
-  
+
   rb_cSize = define_class_under<cv::Size_<int>>(rb_mCv, "Size").
     define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
 
@@ -593,13 +607,13 @@ void Init_Types()
 
   rb_cSize2l = define_class_under<cv::Size_<int64>>(rb_mCv, "Size2l").
     define(&Size__builder<Data_Type<cv::Size_<int64>>, int64>);
-  
+
   rb_cSize2f = define_class_under<cv::Size_<float>>(rb_mCv, "Size2f").
     define(&Size__builder<Data_Type<cv::Size_<float>>, float>);
-  
+
   rb_cSize2d = define_class_under<cv::Size_<double>>(rb_mCv, "Size2d").
     define(&Size__builder<Data_Type<cv::Size_<double>>, double>);
-  
+
   rb_cRect = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect").
     define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
 
@@ -618,10 +632,10 @@ void Init_Types()
 
   rb_cRect2f = define_class_under<cv::Rect_<float>>(rb_mCv, "Rect2f").
     define(&Rect__builder<Data_Type<cv::Rect_<float>>, float>);
-  
+
   rb_cRect2d = define_class_under<cv::Rect_<double>>(rb_mCv, "Rect2d").
     define(&Rect__builder<Data_Type<cv::Rect_<double>>, double>);
-  
+
   rb_cCvRotatedRect = define_class_under<cv::RotatedRect>(rb_mCv, "RotatedRect").
     define_constructor(Constructor<cv::RotatedRect>()).
     define_constructor(Constructor<cv::RotatedRect, const cv::Point2f&, const cv::Size2f&, float>(),
@@ -641,24 +655,24 @@ void Init_Types()
     define_method<void(cv::RotatedRect::*)(std::vector<cv::Point_<float>>&) const>("points", &cv::RotatedRect::points,
       Arg("pts"));
 #endif
-  
+
   rb_cCvDataTypeRotatedRect = define_class_under<cv::DataType<cv::RotatedRect>>(rb_mCv, "DataTypeRotatedRect").
     define_constructor(Constructor<cv::DataType<cv::RotatedRect>>());
-  
+
   rb_cCvDataTypeRotatedRect.define_constant("Generic_type", (int)cv::DataType<cv::RotatedRect>::generic_type);
   rb_cCvDataTypeRotatedRect.define_constant("Channels", (int)cv::DataType<cv::RotatedRect>::channels);
   rb_cCvDataTypeRotatedRect.define_constant("Fmt", (int)cv::DataType<cv::RotatedRect>::fmt);
-  
+
   rb_cCvTraitsDepthRotatedRect = define_class_under<cv::traits::Depth<cv::RotatedRect>>(rb_mCvTraits, "DepthRotatedRect").
     define_constructor(Constructor<cv::traits::Depth<cv::RotatedRect>>());
-  
+
   rb_cCvTraitsDepthRotatedRect.define_constant("Value", (int)cv::traits::Depth<cv::RotatedRect>::value);
-  
+
   rb_cCvTraitsTypeRotatedRect = define_class_under<cv::traits::Type<cv::RotatedRect>>(rb_mCvTraits, "TypeRotatedRect").
     define_constructor(Constructor<cv::traits::Type<cv::RotatedRect>>());
-  
+
   rb_cCvTraitsTypeRotatedRect.define_constant("Value", (int)cv::traits::Type<cv::RotatedRect>::value);
-  
+
   rb_cCvRange = define_class_under<cv::Range>(rb_mCv, "Range").
     define_constructor(Constructor<cv::Range>()).
     define_constructor(Constructor<cv::Range, int, int>(),
@@ -668,27 +682,27 @@ void Init_Types()
     define_singleton_function("all", &cv::Range::all).
     define_attr("start", &cv::Range::start).
     define_attr("end", &cv::Range::end);
-  
+
   rb_cCvDataTypeRange = define_class_under<cv::DataType<cv::Range>>(rb_mCv, "DataTypeRange").
     define_constructor(Constructor<cv::DataType<cv::Range>>());
-  
+
   rb_cCvDataTypeRange.define_constant("Generic_type", (int)cv::DataType<cv::Range>::generic_type);
   rb_cCvDataTypeRange.define_constant("Channels", (int)cv::DataType<cv::Range>::channels);
   rb_cCvDataTypeRange.define_constant("Fmt", (int)cv::DataType<cv::Range>::fmt);
-  
+
   rb_cCvTraitsDepthRange = define_class_under<cv::traits::Depth<cv::Range>>(rb_mCvTraits, "DepthRange").
     define_constructor(Constructor<cv::traits::Depth<cv::Range>>());
-  
+
   rb_cCvTraitsDepthRange.define_constant("Value", (int)cv::traits::Depth<cv::Range>::value);
-  
+
   rb_cCvTraitsTypeRange = define_class_under<cv::traits::Type<cv::Range>>(rb_mCvTraits, "TypeRange").
     define_constructor(Constructor<cv::traits::Type<cv::Range>>());
-  
+
   rb_cCvTraitsTypeRange.define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
-  
+
   rb_cScalar = define_class_under<cv::Scalar_<double>, cv::Vec<double, 4>>(rb_mCv, "Scalar").
     define(&Scalar__builder<Data_Type<cv::Scalar_<double>>, double>);
-  
+
   rb_cCvKeyPoint = define_class_under<cv::KeyPoint>(rb_mCv, "KeyPoint").
     define_constructor(Constructor<cv::KeyPoint>()).
     define_constructor(Constructor<cv::KeyPoint, cv::Point2f, float, float, float, int, int>(),
@@ -708,7 +722,7 @@ void Init_Types()
     define_attr("response", &cv::KeyPoint::response).
     define_attr("octave", &cv::KeyPoint::octave).
     define_attr("class_id", &cv::KeyPoint::class_id);
-  
+
   rb_cCvDMatch = define_class_under<cv::DMatch>(rb_mCv, "DMatch").
     define_constructor(Constructor<cv::DMatch>()).
     define_constructor(Constructor<cv::DMatch, int, int, float>(),
@@ -721,7 +735,7 @@ void Init_Types()
     define_attr("distance", &cv::DMatch::distance).
     define_method("<", &cv::DMatch::operator<,
       Arg("m"));
-  
+
   rb_cCvTermCriteria = define_class_under<cv::TermCriteria>(rb_mCv, "TermCriteria").
     define_constructor(Constructor<cv::TermCriteria>()).
     define_constructor(Constructor<cv::TermCriteria, int, int, double>(),
@@ -730,12 +744,12 @@ void Init_Types()
     define_attr("type", &cv::TermCriteria::type).
     define_attr("max_count", &cv::TermCriteria::maxCount).
     define_attr("epsilon", &cv::TermCriteria::epsilon);
-  
+
   Enum<cv::TermCriteria::Type> rb_cCvTermCriteriaType = define_enum_under<cv::TermCriteria::Type>("Type", rb_cCvTermCriteria).
     define_value("COUNT", cv::TermCriteria::Type::COUNT).
     define_value("MAX_ITER", cv::TermCriteria::Type::MAX_ITER).
     define_value("EPS", cv::TermCriteria::Type::EPS);
-  
+
   rb_cCvMoments = define_class_under<cv::Moments>(rb_mCv, "Moments").
     define_constructor(Constructor<cv::Moments>()).
     define_constructor(Constructor<cv::Moments, double, double, double, double, double, double, double, double, double, double>(),
@@ -764,42 +778,42 @@ void Init_Types()
     define_attr("nu21", &cv::Moments::nu21).
     define_attr("nu12", &cv::Moments::nu12).
     define_attr("nu03", &cv::Moments::nu03);
-  
+
   rb_cCvDataTypeMoments = define_class_under<cv::DataType<cv::Moments>>(rb_mCv, "DataTypeMoments").
     define_constructor(Constructor<cv::DataType<cv::Moments>>());
-  
+
   rb_cCvDataTypeMoments.define_constant("Generic_type", (int)cv::DataType<cv::Moments>::generic_type);
   rb_cCvDataTypeMoments.define_constant("Channels", (int)cv::DataType<cv::Moments>::channels);
   rb_cCvDataTypeMoments.define_constant("Fmt", (int)cv::DataType<cv::Moments>::fmt);
-  
+
   rb_cCvTraitsDepthMoments = define_class_under<cv::traits::Depth<cv::Moments>>(rb_mCvTraits, "DepthMoments").
     define_constructor(Constructor<cv::traits::Depth<cv::Moments>>());
-  
+
   rb_cCvTraitsDepthMoments.define_constant("Value", (int)cv::traits::Depth<cv::Moments>::value);
-  
+
   rb_cCvTraitsTypeMoments = define_class_under<cv::traits::Type<cv::Moments>>(rb_mCvTraits, "TypeMoments").
     define_constructor(Constructor<cv::traits::Type<cv::Moments>>());
-  
+
   rb_cCvTraitsTypeMoments.define_constant("Value", (int)cv::traits::Type<cv::Moments>::value);
-  
+
   rb_mCv.define_module_function<int(*)(const cv::Point_<int>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
   rb_mCv.define_module_function<int64(*)(const cv::Point_<int64>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
   rb_mCv.define_module_function<float(*)(const cv::Point_<float>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
   rb_mCv.define_module_function<double(*)(const cv::Point_<int>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
   rb_mCv.define_module_function<double(*)(const cv::Point_<float>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
   rb_mCv.define_module_function<double(*)(const cv::Point_<double>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
-  
+
 #if RUBY_CV_VERSION >= 407
   rb_mCv.define_module_function("rectangle_intersection_area", &cv::rectangleIntersectionArea,
     Arg("a"), Arg("b"));
@@ -809,32 +823,32 @@ void Init_Types()
   {
     return self == other;
   });
-  
+
   rb_cCvRange.define_method("!=", [](const cv::Range& self, const cv::Range& other) -> bool
   {
     return self != other;
   });
-  
+
   rb_cCvRange.define_method("&", [](const cv::Range& self, const cv::Range& other) -> cv::Range
   {
     return self & other;
   });
-  
+
   rb_cCvRange.define_method("&=", [](cv::Range& self, const cv::Range& other) -> cv::Range&
   {
     return self &= other;
   });
-  
+
   rb_cCvRange.define_method("+", [](const cv::Range& self, int other) -> cv::Range
   {
     return self + other;
   });
-  
+
   rb_cCvRange.define_method("-", [](const cv::Range& self, int other) -> cv::Range
   {
     return self - other;
   });
-  
+
   rb_cMatx44d.define_method("*", [](const cv::Matx<double, 4, 4>& self, const cv::Scalar& other) -> cv::Scalar
   {
     return self * other;

@@ -37,7 +37,7 @@ void Init_Miniflann()
   rb_cCvFlannIndexParams = define_class_under<cv::flann::IndexParams>(rb_mCvFlann, "IndexParams").
     define_constructor(Constructor<cv::flann::IndexParams>()).
     define_method("get_string", &cv::flann::IndexParams::getString,
-      Arg("key"), Arg("default_val") = static_cast<const String &>(String())).
+      Arg("key"), Arg("default_val") = static_cast<const cv::String&>(cv::String())).
     define_method("get_int", &cv::flann::IndexParams::getInt,
       Arg("key"), Arg("default_val") = static_cast<int>(-1)).
     define_method("get_double", &cv::flann::IndexParams::getDouble,
@@ -101,10 +101,10 @@ void Init_Miniflann()
       Arg("features"), Arg("params"), Arg("dist_type") = static_cast<cvflann::flann_distance_t>(cvflann::FLANN_DIST_L2)).
     define_method("build", &cv::flann::Index::build,
       Arg("features"), Arg("params"), Arg("dist_type") = static_cast<cvflann::flann_distance_t>(cvflann::FLANN_DIST_L2)).
-    //define_method("knn_search", &cv::flann::Index::knnSearch,
-    //  Arg("query"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params") = static_cast<const cv::flann::SearchParams &>(cv::flann::SearchParams())).
-   // define_method("radius_search", &cv::flann::Index::radiusSearch,
-   //   Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("max_results"), Arg("params") = static_cast<const cv::flann::SearchParams &>(cv::flann::SearchParams())).
+    define_method("knn_search", &cv::flann::Index::knnSearch,
+      Arg("query"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
+    define_method("radius_search", &cv::flann::Index::radiusSearch,
+      Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("max_results"), Arg("params")).
     define_method("save", &cv::flann::Index::save,
       Arg("filename")).
     define_method("load?", &cv::flann::Index::load,

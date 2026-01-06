@@ -13,14 +13,13 @@ inline void Affine3_builder(Data_Type_T& klass)
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::Mat4&>(),
       Arg("affine")).
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::Mat3&, const typename cv::Affine3<T>::Vec3&>(),
-      Arg("r"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3 &>(cv::Affine3<T>::Vec3::all(0))).
+      Arg("r"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3&>(cv::Affine3<T>::Vec3::all(0))).
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::Vec3&, const typename cv::Affine3<T>::Vec3&>(),
-      Arg("rvec"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3 &>(cv::Affine3<T>::Vec3::all(0))).
+      Arg("rvec"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3&>(cv::Affine3<T>::Vec3::all(0))).
     define_constructor(Constructor<cv::Affine3<T>, const cv::Mat&, const typename cv::Affine3<T>::Vec3&>(),
-      Arg("data"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3 &>(cv::Affine3<T>::Vec3::all(0))).
+      Arg("data"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3&>(cv::Affine3<T>::Vec3::all(0))).
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::float_type*>(),
       Arg("vals")).
-    define_singleton_function("identity", &cv::Affine3<T>::Identity).
     template define_method<void(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Mat3&)>("rotation", &cv::Affine3<T>::rotation,
       Arg("r")).
     template define_method<void(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Vec3&)>("rotation", &cv::Affine3<T>::rotation,
@@ -45,36 +44,35 @@ inline void Affine3_builder(Data_Type_T& klass)
       Arg("t")).
     define_method("concatenate", &cv::Affine3<T>::concatenate,
       Arg("affine")).
-    define_attr("matrix", &cv::Affine3<T>::matrix);
+    define_attr("matrix", &cv::Affine3<T>::matrix).
+    define_singleton_function("identity", &cv::Affine3<T>::Identity);
 };
 void Init_Affine()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3f").
     define(&Affine3_builder<Data_Type<cv::Affine3<float>>, float>);
-  
+
   rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3d").
     define(&Affine3_builder<Data_Type<cv::Affine3<double>>, double>);
-  
+
   rb_cAffine3f.define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
   {
     return self * other;
   });
-  
+
   rb_cAffine3d.define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
   {
     return self * other;
   });
-  
+
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
-  
-  
   rb_cAffine3f.define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
   {
     return self * other;
   });
-  
+
   rb_cAffine3d.define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
   {
     return self * other;

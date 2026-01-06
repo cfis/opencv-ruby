@@ -24,7 +24,7 @@ void Init_ArucoDetector()
     define_method("read_detector_parameters?", &cv::aruco::DetectorParameters::readDetectorParameters,
       Arg("fn")).
     define_method("write_detector_parameters?", &cv::aruco::DetectorParameters::writeDetectorParameters,
-      Arg("fs"), Arg("name") = static_cast<const String &>(String())).
+      Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String())).
     define_attr("adaptive_thresh_win_size_min", &cv::aruco::DetectorParameters::adaptiveThreshWinSizeMin).
     define_attr("adaptive_thresh_win_size_max", &cv::aruco::DetectorParameters::adaptiveThreshWinSizeMax).
     define_attr("adaptive_thresh_win_size_step", &cv::aruco::DetectorParameters::adaptiveThreshWinSizeStep).
@@ -66,14 +66,14 @@ void Init_ArucoDetector()
     define_method("read_refine_parameters?", &cv::aruco::RefineParameters::readRefineParameters,
       Arg("fn")).
     define_method("write_refine_parameters?", &cv::aruco::RefineParameters::writeRefineParameters,
-      Arg("fs"), Arg("name") = static_cast<const String &>(String())).
+      Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String())).
     define_attr("min_rep_distance", &cv::aruco::RefineParameters::minRepDistance).
     define_attr("error_correction_rate", &cv::aruco::RefineParameters::errorCorrectionRate).
     define_attr("check_all_orders", &cv::aruco::RefineParameters::checkAllOrders);
   
   rb_cCvArucoArucoDetector = define_class_under<cv::aruco::ArucoDetector, cv::Algorithm>(rb_mCvAruco, "ArucoDetector").
     define_constructor(Constructor<cv::aruco::ArucoDetector, const cv::aruco::Dictionary&, const cv::aruco::DetectorParameters&, const cv::aruco::RefineParameters&>(),
-      Arg("dictionary") = static_cast<const cv::aruco::Dictionary &>(getPredefinedDictionary(cv::aruco::DICT_4X4_50)), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters &>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters &>(cv::aruco::RefineParameters())).
+      Arg("dictionary") = static_cast<const cv::aruco::Dictionary&>(cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_50)), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters&>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters&>(cv::aruco::RefineParameters())).
     define_method("detect_markers", &cv::aruco::ArucoDetector::detectMarkers,
       Arg("image"), Arg("corners"), Arg("ids"), Arg("rejected_img_points") = static_cast<cv::OutputArrayOfArrays>(cv::noArray())).
     define_method("refine_detected_markers", &cv::aruco::ArucoDetector::refineDetectedMarkers,
@@ -99,4 +99,5 @@ void Init_ArucoDetector()
   
   rb_mCvAruco.define_module_function("generate_image_marker", &cv::aruco::generateImageMarker,
     Arg("dictionary"), Arg("id"), Arg("side_pixels"), Arg("img"), Arg("border_bits") = static_cast<int>(1));
+
 }

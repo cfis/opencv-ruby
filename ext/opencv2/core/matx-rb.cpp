@@ -40,6 +40,8 @@ Rice::Class rb_cMatx16d;
 Rice::Class rb_cMatx16i;
 Rice::Class rb_cMatx16f;
 Rice::Class rb_cMatx18i;
+Rice::Class rb_cMatx18f;
+Rice::Class rb_cMatx18d;
 Rice::Class rb_cMatx21b;
 Rice::Class rb_cMatx21d;
 Rice::Class rb_cMatx21f;
@@ -78,7 +80,9 @@ Rice::Class rb_cMatx61f;
 Rice::Class rb_cMatx61i;
 Rice::Class rb_cMatx66d;
 Rice::Class rb_cMatx66f;
+Rice::Class rb_cMatx81f;
 Rice::Class rb_cMatx81i;
+Rice::Class rb_cMatx81d;
 Rice::Class rb_cVec1b;
 Rice::Class rb_cVec2b;
 Rice::Class rb_cVec1d;
@@ -107,6 +111,8 @@ Rice::Class rb_cVec4w;
 Rice::Class rb_cVec6d;
 Rice::Class rb_cVec6f;
 Rice::Class rb_cVec6i;
+Rice::Class rb_cVec8d;
+Rice::Class rb_cVec8f;
 Rice::Class rb_cVec8i;
 
 namespace cv
@@ -282,7 +288,7 @@ inline void Matx_builder(Data_Type_T& klass)
 
     // Iteration
     klass.include_module(rb_mEnumerable).
-      define_method("each", [](VALUE self) -> VALUE
+      define_method("each", [](VALUE self, VALUE) -> VALUE
       {
         if (!detail::protect(rb_block_given_p))
         {
@@ -307,7 +313,7 @@ inline void Matx_builder(Data_Type_T& klass)
 
           return self;
         }
-      }, Return().setValue());
+      }, Arg("proc").setValue() = Qnil, Return().setValue());
 
     // Match cv::Mat API
     klass.define_method("rows", [](const cv::Matx<_Tp, m, n>&) -> int
@@ -573,143 +579,141 @@ inline void Vec_builder(Data_Type_T& klass)
       return stream.str();
     });
 };
-
-
 void Init_Matx()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvMatxAddOp = define_class_under<cv::Matx_AddOp>(rb_mCv, "MatxAddOp").
     define_constructor(Constructor<cv::Matx_AddOp>()).
     define_constructor(Constructor<cv::Matx_AddOp, const cv::Matx_AddOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxSubOp = define_class_under<cv::Matx_SubOp>(rb_mCv, "MatxSubOp").
     define_constructor(Constructor<cv::Matx_SubOp>()).
     define_constructor(Constructor<cv::Matx_SubOp, const cv::Matx_SubOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxScaleOp = define_class_under<cv::Matx_ScaleOp>(rb_mCv, "MatxScaleOp").
     define_constructor(Constructor<cv::Matx_ScaleOp>()).
     define_constructor(Constructor<cv::Matx_ScaleOp, const cv::Matx_ScaleOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxMulOp = define_class_under<cv::Matx_MulOp>(rb_mCv, "MatxMulOp").
     define_constructor(Constructor<cv::Matx_MulOp>()).
     define_constructor(Constructor<cv::Matx_MulOp, const cv::Matx_MulOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxDivOp = define_class_under<cv::Matx_DivOp>(rb_mCv, "MatxDivOp").
     define_constructor(Constructor<cv::Matx_DivOp>()).
     define_constructor(Constructor<cv::Matx_DivOp, const cv::Matx_DivOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxMatMulOp = define_class_under<cv::Matx_MatMulOp>(rb_mCv, "MatxMatMulOp").
     define_constructor(Constructor<cv::Matx_MatMulOp>()).
     define_constructor(Constructor<cv::Matx_MatMulOp, const cv::Matx_MatMulOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cCvMatxTOp = define_class_under<cv::Matx_TOp>(rb_mCv, "MatxTOp").
     define_constructor(Constructor<cv::Matx_TOp>()).
     define_constructor(Constructor<cv::Matx_TOp, const cv::Matx_TOp&>(),
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cMatx12f = define_class_under<cv::Matx<float, 1, 2>>(rb_mCv, "Matx12f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 1, 2>>, float, 1, 2>);
-  
+
   rb_cMatx12d = define_class_under<cv::Matx<double, 1, 2>>(rb_mCv, "Matx12d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 1, 2>>, double, 1, 2>);
-  
+
   rb_cMatx13f = define_class_under<cv::Matx<float, 1, 3>>(rb_mCv, "Matx13f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 1, 3>>, float, 1, 3>);
-  
+
   rb_cMatx13d = define_class_under<cv::Matx<double, 1, 3>>(rb_mCv, "Matx13d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 1, 3>>, double, 1, 3>);
-  
+
   rb_cMatx14f = define_class_under<cv::Matx<float, 1, 4>>(rb_mCv, "Matx14f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 1, 4>>, float, 1, 4>);
-  
+
   rb_cMatx14d = define_class_under<cv::Matx<double, 1, 4>>(rb_mCv, "Matx14d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 1, 4>>, double, 1, 4>);
-  
+
   rb_cMatx16f = define_class_under<cv::Matx<float, 1, 6>>(rb_mCv, "Matx16f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 1, 6>>, float, 1, 6>);
-  
+
   rb_cMatx16d = define_class_under<cv::Matx<double, 1, 6>>(rb_mCv, "Matx16d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 1, 6>>, double, 1, 6>);
-  
+
   rb_cMatx21f = define_class_under<cv::Matx<float, 2, 1>>(rb_mCv, "Matx21f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 2, 1>>, float, 2, 1>);
-  
+
   rb_cMatx21d = define_class_under<cv::Matx<double, 2, 1>>(rb_mCv, "Matx21d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 2, 1>>, double, 2, 1>);
-  
+
   rb_cMatx31f = define_class_under<cv::Matx<float, 3, 1>>(rb_mCv, "Matx31f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 3, 1>>, float, 3, 1>);
-  
+
   rb_cMatx31d = define_class_under<cv::Matx<double, 3, 1>>(rb_mCv, "Matx31d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 3, 1>>, double, 3, 1>);
-  
+
   rb_cMatx41f = define_class_under<cv::Matx<float, 4, 1>>(rb_mCv, "Matx41f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 4, 1>>, float, 4, 1>);
-  
+
   rb_cMatx41d = define_class_under<cv::Matx<double, 4, 1>>(rb_mCv, "Matx41d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 4, 1>>, double, 4, 1>);
-  
+
   rb_cMatx61f = define_class_under<cv::Matx<float, 6, 1>>(rb_mCv, "Matx61f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 6, 1>>, float, 6, 1>);
-  
+
   rb_cMatx61d = define_class_under<cv::Matx<double, 6, 1>>(rb_mCv, "Matx61d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 6, 1>>, double, 6, 1>);
-  
+
   rb_cMatx22f = define_class_under<cv::Matx<float, 2, 2>>(rb_mCv, "Matx22f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 2, 2>>, float, 2, 2>);
-  
+
   rb_cMatx22d = define_class_under<cv::Matx<double, 2, 2>>(rb_mCv, "Matx22d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 2, 2>>, double, 2, 2>);
-  
+
   rb_cMatx23f = define_class_under<cv::Matx<float, 2, 3>>(rb_mCv, "Matx23f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 2, 3>>, float, 2, 3>);
-  
+
   rb_cMatx23d = define_class_under<cv::Matx<double, 2, 3>>(rb_mCv, "Matx23d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 2, 3>>, double, 2, 3>);
-  
+
   rb_cMatx32f = define_class_under<cv::Matx<float, 3, 2>>(rb_mCv, "Matx32f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 3, 2>>, float, 3, 2>);
-  
+
   rb_cMatx32d = define_class_under<cv::Matx<double, 3, 2>>(rb_mCv, "Matx32d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 3, 2>>, double, 3, 2>);
-  
+
   rb_cMatx33f = define_class_under<cv::Matx<float, 3, 3>>(rb_mCv, "Matx33f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 3, 3>>, float, 3, 3>);
-  
+
   rb_cMatx33d = define_class_under<cv::Matx<double, 3, 3>>(rb_mCv, "Matx33d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 3, 3>>, double, 3, 3>);
-  
+
   rb_cMatx34f = define_class_under<cv::Matx<float, 3, 4>>(rb_mCv, "Matx34f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 3, 4>>, float, 3, 4>);
-  
+
   rb_cMatx34d = define_class_under<cv::Matx<double, 3, 4>>(rb_mCv, "Matx34d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 3, 4>>, double, 3, 4>);
-  
+
   rb_cMatx43f = define_class_under<cv::Matx<float, 4, 3>>(rb_mCv, "Matx43f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 4, 3>>, float, 4, 3>);
-  
+
   rb_cMatx43d = define_class_under<cv::Matx<double, 4, 3>>(rb_mCv, "Matx43d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 4, 3>>, double, 4, 3>);
-  
+
   rb_cMatx44f = define_class_under<cv::Matx<float, 4, 4>>(rb_mCv, "Matx44f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 4, 4>>, float, 4, 4>);
-  
+
   rb_cMatx44d = define_class_under<cv::Matx<double, 4, 4>>(rb_mCv, "Matx44d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 4, 4>>, double, 4, 4>);
-  
+
   rb_cMatx66f = define_class_under<cv::Matx<float, 6, 6>>(rb_mCv, "Matx66f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 6, 6>>, float, 6, 6>);
-  
+
   rb_cMatx66d = define_class_under<cv::Matx<double, 6, 6>>(rb_mCv, "Matx66d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 6, 6>>, double, 6, 6>);
-  
+
   rb_cMatx11b = define_class_under<cv::Matx<unsigned char, 1, 1 >>(rb_mCv, "Matx11b").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned char, 1, 1>>, unsigned char, 1, 1>);
 
@@ -727,19 +731,19 @@ void Init_Matx()
 
   rb_cVec2b = define_class_under<cv::Vec<unsigned char, 2>, cv::Matx<unsigned char, 2, 1>>(rb_mCv, "Vec2b").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned char, 2>>, unsigned char, 2>);
-  
+
   rb_cMatx31b = define_class_under<cv::Matx<unsigned char, 3, 1 >>(rb_mCv, "Matx31b").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned char, 3, 1>>, unsigned char, 3, 1>);
 
   rb_cVec3b = define_class_under<cv::Vec<unsigned char, 3>, cv::Matx<unsigned char, 3, 1>>(rb_mCv, "Vec3b").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned char, 3>>, unsigned char, 3>);
-  
+
   rb_cMatx41b = define_class_under<cv::Matx<unsigned char, 4, 1 >>(rb_mCv, "Matx41b").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned char, 4, 1>>, unsigned char, 4, 1>);
 
   rb_cVec4b = define_class_under<cv::Vec<unsigned char, 4>, cv::Matx<unsigned char, 4, 1>>(rb_mCv, "Vec4b").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned char, 4>>, unsigned char, 4>);
-  
+
   rb_cMatx11s = define_class_under<cv::Matx<short, 1, 1 >>(rb_mCv, "Matx11s").
     define(&Matx_builder<Data_Type<cv::Matx<short, 1, 1>>, short, 1, 1>);
 
@@ -757,19 +761,19 @@ void Init_Matx()
 
   rb_cVec2s = define_class_under<cv::Vec<short, 2>, cv::Matx<short, 2, 1>>(rb_mCv, "Vec2s").
     define(&Vec_builder<Data_Type<cv::Vec<short, 2>>, short, 2>);
-  
+
   rb_cMatx31s = define_class_under<cv::Matx<short, 3, 1 >>(rb_mCv, "Matx31s").
     define(&Matx_builder<Data_Type<cv::Matx<short, 3, 1>>, short, 3, 1>);
 
   rb_cVec3s = define_class_under<cv::Vec<short, 3>, cv::Matx<short, 3, 1>>(rb_mCv, "Vec3s").
     define(&Vec_builder<Data_Type<cv::Vec<short, 3>>, short, 3>);
-  
+
   rb_cMatx41s = define_class_under<cv::Matx<short, 4, 1 >>(rb_mCv, "Matx41s").
     define(&Matx_builder<Data_Type<cv::Matx<short, 4, 1>>, short, 4, 1>);
 
   rb_cVec4s = define_class_under<cv::Vec<short, 4>, cv::Matx<short, 4, 1>>(rb_mCv, "Vec4s").
     define(&Vec_builder<Data_Type<cv::Vec<short, 4>>, short, 4>);
-  
+
   rb_cMatx11w = define_class_under<cv::Matx<unsigned short, 1, 1 >>(rb_mCv, "Matx11w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 1, 1>>, unsigned short, 1, 1>);
 
@@ -787,19 +791,19 @@ void Init_Matx()
 
   rb_cVec2w = define_class_under<cv::Vec<unsigned short, 2>, cv::Matx<unsigned short, 2, 1>>(rb_mCv, "Vec2w").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 2>>, unsigned short, 2>);
-  
+
   rb_cMatx31w = define_class_under<cv::Matx<unsigned short, 3, 1 >>(rb_mCv, "Matx31w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 3, 1>>, unsigned short, 3, 1>);
 
   rb_cVec3w = define_class_under<cv::Vec<unsigned short,   3>, cv::Matx<unsigned short, 3, 1>>(rb_mCv, "Vec3w").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 3>>, unsigned short, 3>);
-  
+
   rb_cMatx41w = define_class_under<cv::Matx<unsigned short, 4, 1 >>(rb_mCv, "Matx41w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 4, 1>>, unsigned short, 4, 1>);
-  
+
   rb_cVec4w = define_class_under<cv::Vec<unsigned short, 4>, cv::Matx<unsigned short, 4, 1>>(rb_mCv, "Vec4w").
     define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 4>>, unsigned short, 4>);
-  
+
   rb_cMatx11i = define_class_under<cv::Matx<int, 1, 1 >>(rb_mCv, "Matx11i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 1, 1>>, int, 1, 1>);
 
@@ -818,57 +822,72 @@ void Init_Matx()
   rb_cMatx18i = define_class_under<cv::Matx<int, 1, 8 >>(rb_mCv, "Matx18i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 1, 8>>, int, 1, 8>);
 
+  rb_cMatx18d = define_class_under<cv::Matx<double, 1, 8 >>(rb_mCv, "Matx18d").
+    define(&Matx_builder<Data_Type<cv::Matx<double, 1, 8>>, double, 1, 8>);
+
+  rb_cMatx18f = define_class_under<cv::Matx<float, 1, 8 >>(rb_mCv, "Matx18f").
+    define(&Matx_builder<Data_Type<cv::Matx<float, 1, 8>>, float, 1, 8>);
+
   rb_cMatx21i = define_class_under<cv::Matx<int, 2, 1 >>(rb_mCv, "Matx21i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 2, 1>>, int, 2, 1>);
 
   rb_cVec2i = define_class_under<cv::Vec<int, 2>, cv::Matx<int, 2, 1>>(rb_mCv, "Vec2i").
     define(&Vec_builder<Data_Type<cv::Vec<int, 2>>, int, 2>);
-  
+
   rb_cMatx31i = define_class_under<cv::Matx<int, 3, 1 >>(rb_mCv, "Matx31i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 3, 1>>, int, 3, 1>);
 
   rb_cVec3i = define_class_under<cv::Vec<int, 3>, cv::Matx<int, 3, 1>>(rb_mCv, "Vec3i").
     define(&Vec_builder<Data_Type<cv::Vec<int, 3>>, int, 3>);
-  
+
   rb_cMatx41i = define_class_under<cv::Matx<int, 4, 1 >>(rb_mCv, "Matx41i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 4, 1>>, int, 4, 1>);
 
   rb_cVec4i = define_class_under<cv::Vec<int, 4>, cv::Matx<int, 4, 1>>(rb_mCv, "Vec4i").
     define(&Vec_builder<Data_Type<cv::Vec<int, 4>>, int, 4>);
-  
+
   rb_cMatx61i = define_class_under<cv::Matx<int, 6, 1 >>(rb_mCv, "Matx61i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 6, 1>>, int, 6, 1>);
 
   rb_cVec6i = define_class_under<cv::Vec<int, 6>, cv::Matx<int, 6, 1>>(rb_mCv, "Vec6i").
     define(&Vec_builder<Data_Type<cv::Vec<int, 6>>, int, 6>);
-  
+
+  rb_cMatx81f = define_class_under<cv::Matx<float, 8, 1 >>(rb_mCv, "Matx81f").
+    define(&Matx_builder<Data_Type<cv::Matx<float, 8, 1>>, float, 8, 1>);
+
   rb_cMatx81i = define_class_under<cv::Matx<int, 8, 1 >>(rb_mCv, "Matx81i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 8, 1>>, int, 8, 1>);
 
+  rb_cMatx81d = define_class_under<cv::Matx<double, 8, 1 >>(rb_mCv, "Matx81d").
+    define(&Matx_builder<Data_Type<cv::Matx<double, 8, 1>>, double, 8, 1>);
+
   rb_cVec8i = define_class_under<cv::Vec<int, 8>, cv::Matx<int, 8, 1>>(rb_mCv, "Vec8i").
     define(&Vec_builder<Data_Type<cv::Vec<int, 8>>, int, 8>);
-  
+
+  rb_cVec8d = define_class_under<cv::Vec<double, 8>, cv::Matx<double, 8, 1>>(rb_mCv, "Vec8d").
+    define(&Vec_builder<Data_Type<cv::Vec<double, 8>>, double, 8>);
+
   rb_cVec2f = define_class_under<cv::Vec<float, 2>, cv::Matx<float, 2, 1>>(rb_mCv, "Vec2f").
     define(&Vec_builder<Data_Type<cv::Vec<float, 2>>, float, 2>);
-  
+
   rb_cVec3f = define_class_under<cv::Vec<float, 3>, cv::Matx<float, 3, 1>>(rb_mCv, "Vec3f").
     define(&Vec_builder<Data_Type<cv::Vec<float, 3>>, float, 3>);
-  
+
   rb_cVec4f = define_class_under<cv::Vec<float, 4>, cv::Matx<float, 4, 1>>(rb_mCv, "Vec4f").
     define(&Vec_builder<Data_Type<cv::Vec<float, 4>>, float, 4>);
-  
+
   rb_cVec6f = define_class_under<cv::Vec<float, 6>, cv::Matx<float, 6, 1>>(rb_mCv, "Vec6f").
     define(&Vec_builder<Data_Type<cv::Vec<float, 6>>, float, 6>);
-  
+
   rb_cVec2d = define_class_under<cv::Vec<double, 2>, cv::Matx<double, 2, 1>>(rb_mCv, "Vec2d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 2>>, double, 2>);
-  
+
   rb_cVec3d = define_class_under<cv::Vec<double, 3>, cv::Matx<double, 3, 1>>(rb_mCv, "Vec3d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 3>>, double, 3>);
-  
+
   rb_cVec4d = define_class_under<cv::Vec<double, 4>, cv::Matx<double, 4, 1>>(rb_mCv, "Vec4d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 4>>, double, 4>);
-  
+
   rb_cVec6d = define_class_under<cv::Vec<double, 6>, cv::Matx<double, 6, 1>>(rb_mCv, "Vec6d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 6>>, double, 6>);
 
@@ -896,6 +915,10 @@ void Init_Matx()
 
   rb_cVec1d = define_class_under<cv::Vec<double, 1>, cv::Matx<double, 1, 1>>(rb_mCv, "Vec1d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 1>>, double, 1>);
+
+  // Needed by DualQuat
+  rb_cVec8f = define_class_under<cv::Vec<float, 8>, cv::Matx<float, 8, 1>>(rb_mCv, "Vec8f").
+    define(&Vec_builder<Data_Type<cv::Vec<float, 8>>, float, 8>);
 
   // Requires adding long long (int64) support from OpenCV5
   rb_cMatx21l = define_class_under<cv::Matx<int64, 2, 1 >>(rb_mCv, "Matx21l").

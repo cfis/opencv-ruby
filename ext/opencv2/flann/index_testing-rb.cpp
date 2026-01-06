@@ -1,5 +1,3 @@
-#include <opencv2/core/base.hpp>
-#include <opencv2/flann/defines.h>
 #include <opencv2/flann/index_testing.h>
 #include "index_testing-rb.hpp"
 

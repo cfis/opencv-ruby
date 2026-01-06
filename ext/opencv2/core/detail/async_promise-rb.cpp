@@ -9,7 +9,7 @@ Rice::Class rb_cCvAsyncPromise;
 void Init_AsyncPromise()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvAsyncPromise = define_class_under<cv::AsyncPromise>(rb_mCv, "AsyncPromise").
     define_constructor(Constructor<cv::AsyncPromise>()).
     define_constructor(Constructor<cv::AsyncPromise, const cv::AsyncPromise&>(),

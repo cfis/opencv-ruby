@@ -393,10 +393,10 @@ inline void MatConstIterator__builder(Data_Type_T& klass)
       Arg("ofs")).
     template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("decrement", &cv::MatConstIterator_<_Tp>::operator--).
     template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("decrement", &cv::MatConstIterator_<_Tp>::operator--,
-      Arg("")).
+      Arg("arg_0")).
     template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("increment", &cv::MatConstIterator_<_Tp>::operator++).
     template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment", &cv::MatConstIterator_<_Tp>::operator++,
-      Arg("")).
+      Arg("arg_0")).
     define_method("pos", &cv::MatConstIterator_<_Tp>::pos);
 };
 
@@ -423,10 +423,10 @@ inline void MatIterator__builder(Data_Type_T& klass)
       Arg("ofs")).
     template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("decrement", &cv::MatIterator_<_Tp>::operator--).
     template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("decrement", &cv::MatIterator_<_Tp>::operator--,
-      Arg("")).
+      Arg("arg_0")).
     template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("increment", &cv::MatIterator_<_Tp>::operator++).
     template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("increment", &cv::MatIterator_<_Tp>::operator++,
-      Arg(""));
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename _Tp>
@@ -442,7 +442,7 @@ inline void SparseMatConstIterator__builder(Data_Type_T& klass)
     define_method("dereference", &cv::SparseMatConstIterator_<_Tp>::operator*).
     template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++).
     template define_method<cv::SparseMatConstIterator_<_Tp>(cv::SparseMatConstIterator_<_Tp>::*)(int)>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++,
-      Arg(""));
+      Arg("arg_0"));
 
   klass.
     define_method("==", [](const cv::SparseMatConstIterator_<_Tp>& self, const cv::SparseMatConstIterator_<_Tp>& other) -> bool
@@ -496,7 +496,7 @@ inline void SparseMatIterator__builder(Data_Type_T& klass)
     define_method("dereference", &cv::SparseMatIterator_<_Tp>::operator*).
     template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment", &cv::SparseMatIterator_<_Tp>::operator++).
     template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment", &cv::SparseMatIterator_<_Tp>::operator++,
-      Arg(""));
+      Arg("arg_0"));
 };
 
 template<typename T>
@@ -517,14 +517,14 @@ void mat_iterate(cv::Mat* mat)
 void Init_Mat()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Enum<cv::AccessFlag> rb_cCvAccessFlag = define_enum_under<cv::AccessFlag>("AccessFlag", rb_mCv).
     define_value("ACCESS_READ", cv::AccessFlag::ACCESS_READ).
     define_value("ACCESS_WRITE", cv::AccessFlag::ACCESS_WRITE).
     define_value("ACCESS_RW", cv::AccessFlag::ACCESS_RW).
     define_value("ACCESS_MASK", cv::AccessFlag::ACCESS_MASK).
     define_value("ACCESS_FAST", cv::AccessFlag::ACCESS_FAST);
-  
+
   rb_cCvInputArray = define_class_under<cv::_InputArray>(rb_mCv, "InputArray").
     define_constructor(Constructor<cv::_InputArray>()).
     define_constructor(Constructor<cv::_InputArray, int, void*>(),
@@ -610,7 +610,7 @@ void Init_Mat()
     define_method("vector?", &cv::_InputArray::isVector).
     define_method("gpu_mat?", &cv::_InputArray::isGpuMat).
     define_method("gpu_mat_vector?", &cv::_InputArray::isGpuMatVector);
-  
+
   Enum<cv::_InputArray::KindFlag> rb_cCvInputArrayKindFlag = define_enum_under<cv::_InputArray::KindFlag>("KindFlag", rb_cCvInputArray).
     define_value("KIND_SHIFT", cv::_InputArray::KindFlag::KIND_SHIFT).
     define_value("FIXED_TYPE", cv::_InputArray::KindFlag::FIXED_TYPE).
@@ -632,7 +632,7 @@ void Init_Mat()
     define_value("STD_VECTOR_CUDA_GPU_MAT", cv::_InputArray::KindFlag::STD_VECTOR_CUDA_GPU_MAT).
     define_value("STD_ARRAY", cv::_InputArray::KindFlag::STD_ARRAY).
     define_value("STD_ARRAY_MAT", cv::_InputArray::KindFlag::STD_ARRAY_MAT);
-  
+
   rb_cCvOutputArray = define_class_under<cv::_OutputArray, cv::_InputArray>(rb_mCv, "OutputArray").
     define_constructor(Constructor<cv::_OutputArray>()).
     define_constructor(Constructor<cv::_OutputArray, int, void*>(),
@@ -718,7 +718,7 @@ void Init_Mat()
     define_value("DEPTH_MASK_ALL_BUT_8S", cv::_OutputArray::DepthMask::DEPTH_MASK_ALL_BUT_8S).
     define_value("DEPTH_MASK_ALL_16F", cv::_OutputArray::DepthMask::DEPTH_MASK_ALL_16F).
     define_value("DEPTH_MASK_FLT", cv::_OutputArray::DepthMask::DEPTH_MASK_FLT);
-  
+
   rb_cCvInputOutputArray = define_class_under<cv::_InputOutputArray, cv::_OutputArray>(rb_mCv, "InputOutputArray").
     define_constructor(Constructor<cv::_InputOutputArray>()).
     define_constructor(Constructor<cv::_InputOutputArray, int, void*>(),
@@ -753,16 +753,16 @@ void Init_Mat()
       Arg("m")).
     define_constructor(Constructor<cv::_InputOutputArray, const std::vector<cv::UMat>&>(),
       Arg("vec"));
-  
+
   rb_mCv.define_module_function<cv::InputOutputArray(*)()>("no_array", &cv::noArray);
-  
+
   Enum<cv::UMatUsageFlags> rb_cCvUMatUsageFlags = define_enum_under<cv::UMatUsageFlags>("UMatUsageFlags", rb_mCv).
     define_value("USAGE_DEFAULT", cv::UMatUsageFlags::USAGE_DEFAULT).
     define_value("USAGE_ALLOCATE_HOST_MEMORY", cv::UMatUsageFlags::USAGE_ALLOCATE_HOST_MEMORY).
     define_value("USAGE_ALLOCATE_DEVICE_MEMORY", cv::UMatUsageFlags::USAGE_ALLOCATE_DEVICE_MEMORY).
     define_value("USAGE_ALLOCATE_SHARED_MEMORY", cv::UMatUsageFlags::USAGE_ALLOCATE_SHARED_MEMORY).
     define_value("__UMAT_USAGE_FLAGS_32BIT", cv::UMatUsageFlags::__UMAT_USAGE_FLAGS_32BIT);
-  
+
   rb_cCvMatAllocator = define_class_under<cv::MatAllocator>(rb_mCv, "MatAllocator").
     define_method<cv::UMatData*(cv::MatAllocator::*)(int, const int*, int, void*, ::size_t*, cv::AccessFlag, cv::UMatUsageFlags) const>("allocate", &cv::MatAllocator::allocate,
       Arg("dims"), Arg("sizes"), Arg("type"), Arg("data"), Arg("step"), Arg("flags"), Arg("usage_flags")).
@@ -782,7 +782,7 @@ void Init_Mat()
       Arg("srcdata"), Arg("dstdata"), Arg("dims"), Arg("sz"), Arg("srcofs"), Arg("srcstep"), Arg("dstofs"), Arg("dststep"), Arg("sync")).
     define_method("get_buffer_pool_controller", &cv::MatAllocator::getBufferPoolController,
       Arg("id") = static_cast<const char *>(NULL));
-  
+
   rb_cCvUMatData = define_class_under<cv::UMatData>(rb_mCv, "UMatData").
     define_constructor(Constructor<cv::UMatData, const cv::MatAllocator*>(),
       Arg("allocator")).
@@ -814,7 +814,7 @@ void Init_Mat()
     define_attr("mapcount", &cv::UMatData::mapcount).
     define_attr("original_u_mat_data", &cv::UMatData::originalUMatData).
     define_attr("allocator_context", &cv::UMatData::allocatorContext);
-  
+
   Enum<cv::UMatData::MemoryFlag> rb_cCvUMatDataMemoryFlag = define_enum_under<cv::UMatData::MemoryFlag>("MemoryFlag", rb_cCvUMatData).
     define_value("COPY_ON_MAP", cv::UMatData::MemoryFlag::COPY_ON_MAP).
     define_value("HOST_COPY_OBSOLETE", cv::UMatData::MemoryFlag::HOST_COPY_OBSOLETE).
@@ -824,7 +824,7 @@ void Init_Mat()
     define_value("USER_ALLOCATED", cv::UMatData::MemoryFlag::USER_ALLOCATED).
     define_value("DEVICE_MEM_MAPPED", cv::UMatData::MemoryFlag::DEVICE_MEM_MAPPED).
     define_value("ASYNC_CLEANUP", cv::UMatData::MemoryFlag::ASYNC_CLEANUP);
-  
+
   rb_cCvMatSize = define_class_under<cv::MatSize>(rb_mCv, "MatSize").
     define_constructor(Constructor<cv::MatSize, int*>(),
       Arg("_p")).
@@ -1441,7 +1441,7 @@ void Init_Mat()
 
   // Setup iteration
   rb_cCvMat.include_module(rb_mEnumerable).
-    define_method("each", [](VALUE self) -> VALUE
+    define_method("each", [](VALUE self, VALUE) -> VALUE
     {
       if (!detail::protect(rb_block_given_p))
       {
@@ -1532,74 +1532,74 @@ void Init_Mat()
         }
         return self;
       }
-    }, Return().setValue());
-  
+    }, Arg("proc").setValue() = Qnil, Return().setValue());
+
   rb_cCvMat.define_constant("MAGIC_VAL", (int)cv::Mat::MAGIC_VAL);
   rb_cCvMat.define_constant("AUTO_STEP", (int)cv::Mat::AUTO_STEP);
   rb_cCvMat.define_constant("CONTINUOUS_FLAG", (int)cv::Mat::CONTINUOUS_FLAG);
   rb_cCvMat.define_constant("SUBMATRIX_FLAG", (int)cv::Mat::SUBMATRIX_FLAG);
-  
+
   rb_cCvMat.define_constant("MAGIC_MASK", (int)cv::Mat::MAGIC_MASK);
   rb_cCvMat.define_constant("TYPE_MASK", (int)cv::Mat::TYPE_MASK);
   rb_cCvMat.define_constant("DEPTH_MASK", (int)cv::Mat::DEPTH_MASK);
 
   rb_cMat1b = define_class_under<cv::Mat_<unsigned char>, cv::Mat>(rb_mCv, "Mat1b").
     define(&Mat__builder<Data_Type<cv::Mat_<unsigned char>>, unsigned char>);
-  
+
   rb_cMat2b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 2>>, cv::Mat>(rb_mCv, "Mat2b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>>, cv::Vec<unsigned char, 2>>);
-  
+
   rb_cMat3b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 3>>, cv::Mat>(rb_mCv, "Mat3b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>>, cv::Vec<unsigned char, 3>>);
-  
+
   rb_cMat4b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 4>>, cv::Mat>(rb_mCv, "Mat4b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>>, cv::Vec<unsigned char, 4>>);
-  
+
   rb_cMat1s = define_class_under<cv::Mat_<short>, cv::Mat>(rb_mCv, "Mat1s").
     define(&Mat__builder<Data_Type<cv::Mat_<short>>, short>);
-  
+
   rb_cMat2s = define_class_under<cv::Mat_<cv::Vec<short, 2>>, cv::Mat>(rb_mCv, "Mat2s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 2>>>, cv::Vec<short, 2>>);
-  
+
   rb_cMat3s = define_class_under<cv::Mat_<cv::Vec<short, 3>>, cv::Mat>(rb_mCv, "Mat3s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 3>>>, cv::Vec<short, 3>>);
-  
+
   rb_cMat4s = define_class_under<cv::Mat_<cv::Vec<short, 4>>, cv::Mat>(rb_mCv, "Mat4s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 4>>>, cv::Vec<short, 4>>);
-  
+
   rb_cMat1w = define_class_under<cv::Mat_<unsigned short>, cv::Mat>(rb_mCv, "Mat1w").
     define(&Mat__builder<Data_Type<cv::Mat_<unsigned short>>, unsigned short>);
-  
+
   rb_cMat2w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 2>>, cv::Mat>(rb_mCv, "Mat2w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>>, cv::Vec<unsigned short, 2>>);
-  
+
   rb_cMat3w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 3>>, cv::Mat>(rb_mCv, "Mat3w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>>, cv::Vec<unsigned short, 3>>);
-  
+
   rb_cMat4w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 4>>, cv::Mat>(rb_mCv, "Mat4w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>>, cv::Vec<unsigned short, 4>>);
-  
+
   rb_cMat1i = define_class_under<cv::Mat_<int>, cv::Mat>(rb_mCv, "Mat1i").
     define(&Mat__builder<Data_Type<cv::Mat_<int>>, int>);
-  
+
   rb_cMat2i = define_class_under<cv::Mat_<cv::Vec<int, 2>>, cv::Mat>(rb_mCv, "Mat2i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 2>>>, cv::Vec<int, 2>>);
-  
+
   rb_cMat3i = define_class_under<cv::Mat_<cv::Vec<int, 3>>, cv::Mat>(rb_mCv, "Mat3i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 3>>>, cv::Vec<int, 3>>);
-  
+
   rb_cMat4i = define_class_under<cv::Mat_<cv::Vec<int, 4>>, cv::Mat>(rb_mCv, "Mat4i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 4>>>, cv::Vec<int, 4>>);
-  
+
   rb_cMat1f = define_class_under<cv::Mat_<float>, cv::Mat>(rb_mCv, "Mat1f").
     define(&Mat__builder<Data_Type<cv::Mat_<float>>, float>);
-  
+
   rb_cMat2f = define_class_under<cv::Mat_<cv::Vec<float, 2>>, cv::Mat>(rb_mCv, "Mat2f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 2>>>, cv::Vec<float, 2>>);
-  
+
   rb_cMat3f = define_class_under<cv::Mat_<cv::Vec<float, 3>>, cv::Mat>(rb_mCv, "Mat3f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 3>>>, cv::Vec<float, 3>>);
-  
+
   rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>, cv::Mat>(rb_mCv, "Mat4f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 4>>>, cv::Vec<float, 4>>);
 
@@ -1609,13 +1609,13 @@ void Init_Mat()
     
   rb_cMat1d = define_class_under<cv::Mat_<double>, cv::Mat>(rb_mCv, "Mat1d").
     define(&Mat__builder<Data_Type<cv::Mat_<double>>, double>);
-  
+
   rb_cMat2d = define_class_under<cv::Mat_<cv::Vec<double, 2>>, cv::Mat>(rb_mCv, "Mat2d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 2>>>, cv::Vec<double, 2>>);
-  
+
   rb_cMat3d = define_class_under<cv::Mat_<cv::Vec<double, 3>>, cv::Mat>(rb_mCv, "Mat3d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 3>>>, cv::Vec<double, 3>>);
-  
+
   rb_cMat4d = define_class_under<cv::Mat_<cv::Vec<double, 4>>, cv::Mat>(rb_mCv, "Mat4d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 4>>>, cv::Vec<double, 4>>);
 
@@ -1825,11 +1825,11 @@ void Init_Mat()
   rb_cCvUMat.define_constant("AUTO_STEP", (int)cv::UMat::AUTO_STEP);
   rb_cCvUMat.define_constant("CONTINUOUS_FLAG", (int)cv::UMat::CONTINUOUS_FLAG);
   rb_cCvUMat.define_constant("SUBMATRIX_FLAG", (int)cv::UMat::SUBMATRIX_FLAG);
-  
+
   rb_cCvUMat.define_constant("MAGIC_MASK", (int)cv::UMat::MAGIC_MASK);
   rb_cCvUMat.define_constant("TYPE_MASK", (int)cv::UMat::TYPE_MASK);
   rb_cCvUMat.define_constant("DEPTH_MASK", (int)cv::UMat::DEPTH_MASK);
-  
+
   rb_cCvSparseMat = define_class_under<cv::SparseMat>(rb_mCv, "SparseMat").
     define_constructor(Constructor<cv::SparseMat>()).
     define_constructor(Constructor<cv::SparseMat, int, const int*, int>(),
@@ -1900,7 +1900,7 @@ void Init_Mat()
       Arg("newsize")).
     define_attr("flags", &cv::SparseMat::flags).
     define_attr("hdr", &cv::SparseMat::hdr);
-  
+
   rb_cCvSparseMatHdr = define_class_under<cv::SparseMat::Hdr>(rb_cCvSparseMat, "Hdr").
     define_constructor(Constructor<cv::SparseMat::Hdr, int, const int*, int>(),
       Arg("_dims"), Arg("_sizes"), Arg("_type")).
@@ -1913,7 +1913,7 @@ void Init_Mat()
     define_attr("free_list", &cv::SparseMat::Hdr::freeList).
     define_attr("pool", &cv::SparseMat::Hdr::pool).
     define_attr("hashtab", &cv::SparseMat::Hdr::hashtab);
-  
+
   rb_cCvSparseMatNode = define_class_under<cv::SparseMat::Node>(rb_cCvSparseMat, "Node").
     define_constructor(Constructor<cv::SparseMat::Node>()).
     define_attr("hashval", &cv::SparseMat::Node::hashval).
@@ -1924,7 +1924,7 @@ void Init_Mat()
   rb_cCvSparseMat.define_constant("MAX_DIM", (int)cv::SparseMat::MAX_DIM);
   rb_cCvSparseMat.define_constant("HASH_SCALE", (int)cv::SparseMat::HASH_SCALE);
   rb_cCvSparseMat.define_constant("HASH_BIT", (int)cv::SparseMat::HASH_BIT);
-  
+
   rb_cCvMatConstIterator = define_class_under<cv::MatConstIterator>(rb_mCv, "MatConstIterator").
     define_constructor(Constructor<cv::MatConstIterator>()).
     define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*>(),
@@ -1946,10 +1946,10 @@ void Init_Mat()
       Arg("ofs")).
     define_method<cv::MatConstIterator & (cv::MatConstIterator::*)()>("decrement", &cv::MatConstIterator::operator--).
     define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("decrement", &cv::MatConstIterator::operator--,
-      Arg("")).
+      Arg("arg_0")).
     define_method<cv::MatConstIterator & (cv::MatConstIterator::*)()>("increment", &cv::MatConstIterator::operator++).
     define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("increment", &cv::MatConstIterator::operator++,
-      Arg("")).
+      Arg("arg_0")).
     define_method<cv::Point(cv::MatConstIterator::*)() const>("pos", &cv::MatConstIterator::pos).
     define_method<void(cv::MatConstIterator::*)(int*) const>("pos", &cv::MatConstIterator::pos,
       Arg("_idx")).
@@ -1963,7 +1963,7 @@ void Init_Mat()
     define_attr("ptr", &cv::MatConstIterator::ptr).
     define_attr("slice_start", &cv::MatConstIterator::sliceStart).
     define_attr("slice_end", &cv::MatConstIterator::sliceEnd);
-  
+
   rb_cCvSparseMatConstIterator = define_class_under<cv::SparseMatConstIterator>(rb_mCv, "SparseMatConstIterator").
     define_constructor(Constructor<cv::SparseMatConstIterator>()).
     define_constructor(Constructor<cv::SparseMatConstIterator, const cv::SparseMat*>(),
@@ -1973,15 +1973,15 @@ void Init_Mat()
     define_method<const cv::SparseMat::Node*(cv::SparseMatConstIterator::*)() const>("node", &cv::SparseMatConstIterator::node).
     //define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
     //define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement", &cv::SparseMatConstIterator::operator--,
-    //  Arg("")).
+    //  Arg("arg_0")).
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment", &cv::SparseMatConstIterator::operator++).
     define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("increment", &cv::SparseMatConstIterator::operator++,
-      Arg("")).
+      Arg("arg_0")).
     define_method("seek_end", &cv::SparseMatConstIterator::seekEnd).
     define_attr("m", &cv::SparseMatConstIterator::m).
     define_attr("hashidx", &cv::SparseMatConstIterator::hashidx).
     define_attr("ptr", &cv::SparseMatConstIterator::ptr);
-  
+
   rb_cCvSparseMatIterator = define_class_under<cv::SparseMatIterator, cv::SparseMatConstIterator>(rb_mCv, "SparseMatIterator").
     define_constructor(Constructor<cv::SparseMatIterator>()).
     define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
@@ -1993,8 +1993,8 @@ void Init_Mat()
     define_method("node", &cv::SparseMatIterator::node).
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)()>("increment", &cv::SparseMatIterator::operator++).
     define_method<cv::SparseMatIterator(cv::SparseMatIterator::*)(int)>("increment", &cv::SparseMatIterator::operator++,
-      Arg(""));
-  
+      Arg("arg_0"));
+
   rb_cSparseMat1b = define_class_under<cv::SparseMat_<unsigned char>, cv::SparseMat>(rb_mCv, "SparseMat1b").
     define(&SparseMat__builder<Data_Type<cv::SparseMat_<unsigned char>>, unsigned char>);
 
@@ -2230,14 +2230,14 @@ void Init_Mat()
       Arg("arrays"), Arg("planes"), Arg("ptrs"), Arg("narrays") = static_cast<int>(-1)).
     define_method<cv::NAryMatIterator&(cv::NAryMatIterator::*)()>("increment", &cv::NAryMatIterator::operator++).
     define_method<cv::NAryMatIterator(cv::NAryMatIterator::*)(int)>("increment", &cv::NAryMatIterator::operator++,
-      Arg("")).
+      Arg("arg_0")).
     define_attr("arrays", &cv::NAryMatIterator::arrays).
     define_attr("planes", &cv::NAryMatIterator::planes).
     define_attr("ptrs", &cv::NAryMatIterator::ptrs).
     define_attr("narrays", &cv::NAryMatIterator::narrays).
     define_attr("nplanes", &cv::NAryMatIterator::nplanes).
     define_attr("size", &cv::NAryMatIterator::size);
-  
+
   rb_cCvMatOp = define_class_under<cv::MatOp>(rb_mCv, "MatOp").
     define_method("element_wise?", &cv::MatOp::elementWise,
       Arg("expr")).
@@ -2289,7 +2289,7 @@ void Init_Mat()
       Arg("expr")).
     define_method("type", &cv::MatOp::type,
       Arg("expr"));
-  
+
   rb_cCvMatExpr = define_class_under<cv::MatExpr>(rb_mCv, "MatExpr").
     define_constructor(Constructor<cv::MatExpr>()).
     define_constructor(Constructor<cv::MatExpr, const cv::Mat&>(),
@@ -2333,252 +2333,252 @@ void Init_Mat()
     define_attr("alpha", &cv::MatExpr::alpha).
     define_attr("beta", &cv::MatExpr::beta).
     define_attr("s", &cv::MatExpr::s);
-  
+
   rb_cCvMat.define_method("+", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMat.define_method("+", [](const cv::Mat& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cScalar.define_method("+", [](const cv::Scalar& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMatExpr.define_method("+", [](const cv::MatExpr& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMat.define_method("+", [](const cv::Mat& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMatExpr.define_method("+", [](const cv::MatExpr& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cScalar.define_method("+", [](const cv::Scalar& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMatExpr.define_method("+", [](const cv::MatExpr& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self + other;
   });
-  
+
   rb_cCvMat.define_method("-", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMat.define_method("-", [](const cv::Mat& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cScalar.define_method("-", [](const cv::Scalar& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMatExpr.define_method("-", [](const cv::MatExpr& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMat.define_method("-", [](const cv::Mat& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMatExpr.define_method("-", [](const cv::MatExpr& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cScalar.define_method("-", [](const cv::Scalar& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMatExpr.define_method("-", [](const cv::MatExpr& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self - other;
   });
-  
+
   rb_cCvMat.define_method("*", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMat.define_method("*", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMatExpr.define_method("*", [](const cv::MatExpr& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMat.define_method("*", [](const cv::Mat& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMatExpr.define_method("*", [](const cv::MatExpr& self, double other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMatExpr.define_method("*", [](const cv::MatExpr& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self * other;
   });
-  
+
   rb_cCvMat.define_method("/", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMat.define_method("/", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMatExpr.define_method("/", [](const cv::MatExpr& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMat.define_method("/", [](const cv::Mat& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMatExpr.define_method("/", [](const cv::MatExpr& self, double other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMatExpr.define_method("/", [](const cv::MatExpr& self, const cv::MatExpr& other) -> cv::MatExpr
   {
     return self / other;
   });
-  
+
   rb_cCvMat.define_method("<", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self < other;
   });
-  
+
   rb_cCvMat.define_method("<", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self < other;
   });
-  
+
   rb_cCvMat.define_method("<=", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self <= other;
   });
-  
+
   rb_cCvMat.define_method("<=", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self <= other;
   });
-  
+
   rb_cCvMat.define_method("==", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self == other;
   });
-  
+
   rb_cCvMat.define_method("==", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self == other;
   });
-  
+
   rb_cCvMat.define_method("!=", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self != other;
   });
-  
+
   rb_cCvMat.define_method("!=", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self != other;
   });
-  
+
   rb_cCvMat.define_method(">=", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self >= other;
   });
-  
+
   rb_cCvMat.define_method(">=", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self >= other;
   });
-  
+
   rb_cCvMat.define_method(">", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self > other;
   });
-  
+
   rb_cCvMat.define_method(">", [](const cv::Mat& self, double other) -> cv::MatExpr
   {
     return self > other;
   });
-  
+
   rb_cCvMat.define_method("&", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self & other;
   });
-  
+
   rb_cCvMat.define_method("&", [](const cv::Mat& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self & other;
   });
-  
+
   rb_cScalar.define_method("&", [](const cv::Scalar& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self & other;
   });
-  
+
   rb_cCvMat.define_method("|", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self | other;
   });
-  
+
   rb_cCvMat.define_method("|", [](const cv::Mat& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self | other;
   });
-  
+
   rb_cScalar.define_method("|", [](const cv::Scalar& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self | other;
   });
-  
+
   rb_cCvMat.define_method("^", [](const cv::Mat& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self ^ other;
   });
-  
+
   rb_cCvMat.define_method("^", [](const cv::Mat& self, const cv::Scalar& other) -> cv::MatExpr
   {
     return self ^ other;
   });
-  
+
   rb_cScalar.define_method("^", [](const cv::Scalar& self, const cv::Mat& other) -> cv::MatExpr
   {
     return self ^ other;
   });
-  
+
   rb_cScalar.define_method("~", [](const cv::Mat& self) -> cv::MatExpr
   {
     return ~self;
@@ -2586,25 +2586,25 @@ void Init_Mat()
 
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&, const cv::Mat&)>("min", &cv::min,
     Arg("a"), Arg("b"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&, double)>("min", &cv::min,
     Arg("a"), Arg("s"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(double, const cv::Mat&)>("min", &cv::min,
     Arg("s"), Arg("a"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&, const cv::Mat&)>("max", &cv::max,
     Arg("a"), Arg("b"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&, double)>("max", &cv::max,
     Arg("a"), Arg("s"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(double, const cv::Mat&)>("max", &cv::max,
     Arg("s"), Arg("a"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&)>("abs", &cv::abs,
     Arg("m"));
-  
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::MatExpr&)>("abs", &cv::abs,
     Arg("e"));
 

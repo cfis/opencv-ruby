@@ -9,11 +9,11 @@ Rice::Class rb_cCvParallelOpenmpParallelForBackend;
 void Init_ParallelForOpenmp()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Module rb_mCvParallel = define_module_under(rb_mCv, "Parallel");
-  
+
   Module rb_mCvParallelOpenmp = define_module_under(rb_mCvParallel, "Openmp");
-  
+
   rb_cCvParallelOpenmpParallelForBackend = define_class_under<cv::parallel::openmp::ParallelForBackend, cv::parallel::ParallelForAPI>(rb_mCvParallelOpenmp, "ParallelForBackend").
     define_constructor(Constructor<cv::parallel::openmp::ParallelForBackend>()).
     define_method("parallel_for", &cv::parallel::openmp::ParallelForBackend::parallel_for,

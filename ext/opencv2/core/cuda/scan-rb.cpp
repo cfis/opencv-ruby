@@ -26,21 +26,21 @@ inline void BlockScan_builder(Data_Type_T& klass)
 void Init_Scan()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
-  
+
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
-  
+
   Enum<cv::cuda::device::ScanKind> rb_cCvCudaDeviceScanKind = define_enum_under<cv::cuda::device::ScanKind>("ScanKind", rb_mCvCudaDevice).
     define_value("EXCLUSIVE", cv::cuda::device::ScanKind::EXCLUSIVE).
     define_value("INCLUSIVE", cv::cuda::device::ScanKind::INCLUSIVE);
-  
+
   rb_mCvCudaDevice.define_module_function("warp_scan_inclusive", &cv::cuda::device::warpScanInclusive,
     Arg("idata"), Arg("s_data"), Arg("tid"));
-  
+
   rb_mCvCudaDevice.define_module_function("warp_scan_exclusive", &cv::cuda::device::warpScanExclusive,
     Arg("idata"), Arg("s_data"), Arg("tid"));
-  
+
   rb_mCvCudaDevice.define_module_function("block_scan_inclusive", &cv::cuda::device::blockScanInclusive,
     Arg("idata"), Arg("s_data"), Arg("tid"));
 

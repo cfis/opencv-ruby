@@ -973,7 +973,7 @@ void Init_Imgproc()
   rb_mCv.define_module_function("convexity_defects", &cv::convexityDefects,
     Arg("contour"), Arg("convexhull"), Arg("convexity_defects"));
   
-  rb_mCv.define_module_function("contour_convex?", &cv::isContourConvex,
+  rb_mCv.define_module_function("contour_convex", &cv::isContourConvex,
     Arg("contour"));
   
   rb_mCv.define_module_function("intersect_convex_convex", &cv::intersectConvexConvex,
@@ -1076,13 +1076,13 @@ void Init_Imgproc()
   rb_mCv.define_module_function("draw_contours", &cv::drawContours,
     Arg("image"), Arg("contours"), Arg("contour_idx"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LineTypes::LINE_8), Arg("hierarchy") = static_cast<cv::InputArray>(cv::noArray()), Arg("max_level") = static_cast<int>(INT_MAX), Arg("offset") = static_cast<cv::Point>(cv::Point()));
   
-  rb_mCv.define_module_function<bool(*)(cv::Size, cv::Point&, cv::Point&)>("clip_line?", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Size, cv::Point&, cv::Point&)>("clip_line", &cv::clipLine,
     Arg("img_size"), Arg("pt1"), Arg("pt2"));
   
-  rb_mCv.define_module_function<bool(*)(cv::Size2l, cv::Point2l&, cv::Point2l&)>("clip_line?", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Size2l, cv::Point2l&, cv::Point2l&)>("clip_line", &cv::clipLine,
     Arg("img_size"), Arg("pt1"), Arg("pt2"));
   
-  rb_mCv.define_module_function<bool(*)(cv::Rect, cv::Point&, cv::Point&)>("clip_line?", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Rect, cv::Point&, cv::Point&)>("clip_line", &cv::clipLine,
     Arg("img_rect"), Arg("pt1"), Arg("pt2"));
   
   rb_mCv.define_module_function<void(*)(cv::Point, cv::Size, int, int, int, int, std::vector<cv::Point_<int>>&)>("ellipse2_poly", &cv::ellipse2Poly,
@@ -1114,7 +1114,7 @@ void Init_Imgproc()
     define_method("dereference", &cv::LineIterator::operator*).
     define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++).
     define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment", &cv::LineIterator::operator++,
-      Arg("")).
+      Arg("arg_0")).
     define_method("pos", &cv::LineIterator::pos).
     define_attr("ptr", &cv::LineIterator::ptr).
     define_attr("ptr0", &cv::LineIterator::ptr0).

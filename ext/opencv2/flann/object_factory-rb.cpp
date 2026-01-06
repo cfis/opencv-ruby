@@ -8,13 +8,13 @@ Rice::Class rb_cCvflannCreatorNotFound;
 template<typename Data_Type_T, typename BaseClass, typename UniqueIdType, typename ObjectCreator>
 inline void ObjectFactory_builder(Data_Type_T& klass)
 {
-  klass.template define_method<>("subscribe?", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::subscribe,
+  klass.define_method("subscribe?", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::subscribe,
       Arg("id"), Arg("creator")).
-    template define_method<>("unregister?", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::unregister,
+    define_method("unregister?", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::unregister,
       Arg("id")).
-    template define_method<>("create", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::create,
+    define_method("create", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::create,
       Arg("id")).
-    template define_singleton_function<>("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
+    define_singleton_function("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
 };
 void Init_ObjectFactory()
 {

@@ -21,7 +21,7 @@ void Init_ArucoDictionary()
     define_method("read_dictionary?", &cv::aruco::Dictionary::readDictionary,
       Arg("fn")).
     define_method("write_dictionary", &cv::aruco::Dictionary::writeDictionary,
-      Arg("fs"), Arg("name") = static_cast<const String &>(String())).
+      Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String())).
     define_method("identify?", &cv::aruco::Dictionary::identify,
       Arg("only_bits"), Arg("idx"), Arg("rotation"), Arg("max_correction_rate")).
     define_method("get_distance_to_id", &cv::aruco::Dictionary::getDistanceToId,
@@ -64,6 +64,6 @@ void Init_ArucoDictionary()
     Arg("dict"));
   
   rb_mCvAruco.define_module_function("extend_dictionary", &cv::aruco::extendDictionary,
-    Arg("n_markers"), Arg("marker_size"), Arg("base_dictionary") = static_cast<const cv::aruco::Dictionary &>(cv::aruco::Dictionary()), Arg("random_seed") = static_cast<int>(0));
+    Arg("n_markers"), Arg("marker_size"), Arg("base_dictionary") = static_cast<const cv::aruco::Dictionary&>(cv::aruco::Dictionary()), Arg("random_seed") = static_cast<int>(0));
 
 }

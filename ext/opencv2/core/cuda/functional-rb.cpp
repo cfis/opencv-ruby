@@ -312,48 +312,46 @@ inline void TransformFunctorTraits_builder(Data_Type_T& klass)
 void Init_Functional()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
-  
+
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
-  
+
   rb_cCvCudaDeviceAbsFuncUnsignedChar = define_class_under<cv::cuda::device::abs_func<unsigned char>>(rb_mCvCudaDevice, "AbsFuncUnsignedChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned char>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncSignedChar = define_class_under<cv::cuda::device::abs_func<signed char>>(rb_mCvCudaDevice, "AbsFuncSignedChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<signed char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<signed char>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncChar = define_class_under<cv::cuda::device::abs_func<char>>(rb_mCvCudaDevice, "AbsFuncChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<char>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncUnsignedShort = define_class_under<cv::cuda::device::abs_func<unsigned short>>(rb_mCvCudaDevice, "AbsFuncUnsignedShort").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned short>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned short>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncShort = define_class_under<cv::cuda::device::abs_func<short>>(rb_mCvCudaDevice, "AbsFuncShort").
     define_constructor(Constructor<cv::cuda::device::abs_func<short>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<short>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncUnsignedInt = define_class_under<cv::cuda::device::abs_func<unsigned int>>(rb_mCvCudaDevice, "AbsFuncUnsignedInt").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned int>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned int>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncInt = define_class_under<cv::cuda::device::abs_func<int>>(rb_mCvCudaDevice, "AbsFuncInt").
     define_constructor(Constructor<cv::cuda::device::abs_func<int>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<int>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncFloat = define_class_under<cv::cuda::device::abs_func<float>>(rb_mCvCudaDevice, "AbsFuncFloat").
     define_constructor(Constructor<cv::cuda::device::abs_func<float>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<float>::__forceinline__);
-  
+
   rb_cCvCudaDeviceAbsFuncDouble = define_class_under<cv::cuda::device::abs_func<double>>(rb_mCvCudaDevice, "AbsFuncDouble").
     define_constructor(Constructor<cv::cuda::device::abs_func<double>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<double>::__forceinline__);
-  
-  Module rb_mCvCudaDeviceFunctionalDetail = define_module_under(rb_mCvCudaDevice, "FunctionalDetail");
-  
 
+  Module rb_mCvCudaDeviceFunctionalDetail = define_module_under(rb_mCvCudaDevice, "FunctionalDetail");
 }

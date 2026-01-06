@@ -11,11 +11,11 @@ void Init_GraphicalCodeDetector()
   
   rb_cCvGraphicalCodeDetector = define_class_under<cv::GraphicalCodeDetector>(rb_mCv, "GraphicalCodeDetector").
     define_constructor(Constructor<cv::GraphicalCodeDetector, const cv::GraphicalCodeDetector&>(),
-      Arg("")).
+      Arg("arg_0")).
     define_method<cv::GraphicalCodeDetector&(cv::GraphicalCodeDetector::*)(const cv::GraphicalCodeDetector&)>("assign", &cv::GraphicalCodeDetector::operator=,
-      Arg("")).
+      Arg("arg_0")).
     define_method<cv::GraphicalCodeDetector&(cv::GraphicalCodeDetector::*)(cv::GraphicalCodeDetector&&)>("assign", &cv::GraphicalCodeDetector::operator=,
-      Arg("")).
+      Arg("arg_0")).
     define_method("detect?", &cv::GraphicalCodeDetector::detect,
       Arg("img"), Arg("points")).
     define_method("decode", &cv::GraphicalCodeDetector::decode,

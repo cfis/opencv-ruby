@@ -2,8 +2,6 @@
 #include "intrin_rvv_011_compat-rb.hpp"
 
 using namespace Rice;
-
-
 void Init_IntrinRvv011Compat()
 {
 

@@ -13,7 +13,7 @@ Rice::Class rb_cCvMinProblemSolverFunction;
 void Init_Optim()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvMinProblemSolver = define_class_under<cv::MinProblemSolver, cv::Algorithm>(rb_mCv, "MinProblemSolver").
     define_method("get_function", &cv::MinProblemSolver::getFunction).
     define_method("set_function", &cv::MinProblemSolver::setFunction,
@@ -23,7 +23,7 @@ void Init_Optim()
       Arg("termcrit")).
     define_method("minimize", &cv::MinProblemSolver::minimize,
       Arg("x"));
-  
+
   rb_cCvMinProblemSolverFunction = define_class_under<cv::MinProblemSolver::Function>(rb_cCvMinProblemSolver, "Function").
     define_method("get_dims", &cv::MinProblemSolver::Function::getDims).
     define_method("get_gradient_eps", &cv::MinProblemSolver::Function::getGradientEps).
@@ -31,19 +31,19 @@ void Init_Optim()
       Arg("x")).
     define_method("get_gradient", &cv::MinProblemSolver::Function::getGradient,
       Arg("x"), Arg("grad"));
-  
+
   rb_cCvDownhillSolver = define_class_under<cv::DownhillSolver, cv::MinProblemSolver>(rb_mCv, "DownhillSolver").
     define_method("get_init_step", &cv::DownhillSolver::getInitStep,
       Arg("step")).
     define_method("set_init_step", &cv::DownhillSolver::setInitStep,
       Arg("step")).
     define_singleton_function("create", &cv::DownhillSolver::create,
-      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::MinProblemSolver::Function>()), Arg("init_step") = static_cast<cv::InputArray>(cv::Mat_<double>(1,1,0.0)), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::MAX_ITER+ cv::TermCriteria::EPS,5000,0.000001)));
-  
+      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function>&>(cv::Ptr<cv::MinProblemSolver::Function>()), Arg("init_step") = static_cast<cv::InputArray>(cv::Mat_<double>(1,1,0.0)), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::MAX_ITER+cv::TermCriteria::EPS,5000,0.000001)));
+
   rb_cCvConjGradSolver = define_class_under<cv::ConjGradSolver, cv::MinProblemSolver>(rb_mCv, "ConjGradSolver").
     define_singleton_function("create", &cv::ConjGradSolver::create,
-      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::ConjGradSolver::Function>()), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::MAX_ITER+ cv::TermCriteria::EPS,5000,0.000001)));
-  
+      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function>&>(cv::Ptr<cv::ConjGradSolver::Function>()), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::MAX_ITER+cv::TermCriteria::EPS,5000,0.000001)));
+
   Enum<cv::SolveLPResult> rb_cCvSolveLPResult = define_enum_under<cv::SolveLPResult>("SolveLPResult", rb_mCv).
     define_value("SOLVELP_UNBOUNDED", cv::SolveLPResult::SOLVELP_UNBOUNDED).
     define_value("SOLVELP_UNFEASIBLE", cv::SolveLPResult::SOLVELP_UNFEASIBLE).

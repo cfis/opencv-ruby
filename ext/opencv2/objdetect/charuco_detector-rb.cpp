@@ -21,7 +21,7 @@ void Init_CharucoDetector()
   
   rb_cCvArucoCharucoDetector = define_class_under<cv::aruco::CharucoDetector, cv::Algorithm>(rb_mCvAruco, "CharucoDetector").
     define_constructor(Constructor<cv::aruco::CharucoDetector, const cv::aruco::CharucoBoard&, const cv::aruco::CharucoParameters&, const cv::aruco::DetectorParameters&, const cv::aruco::RefineParameters&>(),
-      Arg("board"), Arg("charuco_params") = static_cast<const cv::aruco::CharucoParameters &>(cv::aruco::CharucoParameters()), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters &>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters &>(cv::aruco::RefineParameters())).
+      Arg("board"), Arg("charuco_params") = static_cast<const cv::aruco::CharucoParameters&>(cv::aruco::CharucoParameters()), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters&>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters&>(cv::aruco::RefineParameters())).
     define_method("get_board", &cv::aruco::CharucoDetector::getBoard).
     define_method("set_board", &cv::aruco::CharucoDetector::setBoard,
       Arg("board")).

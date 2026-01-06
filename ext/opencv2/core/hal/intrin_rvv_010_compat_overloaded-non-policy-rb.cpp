@@ -2,8 +2,6 @@
 #include "intrin_rvv_010_compat_overloaded-non-policy-rb.hpp"
 
 using namespace Rice;
-
-
 void Init_IntrinRvv010CompatOverloadedNonPolicy()
 {
 

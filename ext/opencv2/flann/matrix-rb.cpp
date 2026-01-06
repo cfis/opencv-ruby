@@ -1,5 +1,3 @@
-#include <opencv2/core/base.hpp>
-#include <opencv2/flann/defines.h>
 #include <opencv2/flann/matrix.h>
 #include "matrix-rb.hpp"
 
@@ -15,10 +13,9 @@ inline void Matrix_builder(Data_Type_T& klass)
     define_attr("stride", &cvflann::Matrix<T>::stride).
     define_attr("data", &cvflann::Matrix<T>::data).
     define_constructor(Constructor<cvflann::Matrix<T>>()).
-    define_constructor(Constructor<cvflann::Matrix<T>, T*, ::size_t, ::size_t, ::size_t>(),
+    define_constructor(Constructor<cvflann::Matrix<T>, T*, size_t, size_t, size_t>(),
       Arg("data_"), Arg("rows_"), Arg("cols_"), Arg("stride_") = static_cast<size_t>(0)).
-    template define_method<>("free", &cvflann::Matrix<T>::free).
-    template define_method<>("[]", &cvflann::Matrix<T>::operator[],
+    define_method("[]", &cvflann::Matrix<T>::operator[],
       Arg("index"));
 };
 void Init_Matrix()

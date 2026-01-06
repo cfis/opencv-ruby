@@ -2,8 +2,6 @@
 #include "version-rb.hpp"
 
 using namespace Rice;
-
-
 void Init_Version()
 {
   Class(rb_cObject).define_constant("CV_VERSION", CV_VERSION);

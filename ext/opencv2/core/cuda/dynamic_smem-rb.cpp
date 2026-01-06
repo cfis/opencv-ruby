@@ -13,11 +13,11 @@ inline void DynamicSharedMem_builder(Data_Type_T& klass)
 void Init_DynamicSmem()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
-  
+
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
-  
+
   rb_cCvCudaDeviceDynamicSharedMemDouble = define_class_under<cv::cuda::device::DynamicSharedMem<double>>(rb_mCvCudaDevice, "DynamicSharedMemDouble").
     define_constructor(Constructor<cv::cuda::device::DynamicSharedMem<double>>()).
     define_attr("__forceinline__", &cv::cuda::device::DynamicSharedMem<double>::__forceinline__);

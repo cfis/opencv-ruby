@@ -1,0 +1,49 @@
+# Ruby-bindgen configuration for OpenCV Ruby bindings (Linux/WSL)
+# Usage: ruby-bindgen bindings-linux.yaml
+
+#extension: opencv_ruby
+
+libclang: /usr/lib64/libclang.so
+
+input: /mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+output: /mnt/c/Source/opencv-ruby/ext
+format: Rice
+
+# Header file patterns to process
+match:
+  - opencv2/ml.hpp
+
+# Header file patterns to skip
+skip:
+  - opencv2/core/opencl/**/*
+  - opencv2/cudalegacy/**/*.hpp
+  - opencv2/**/*.inl*
+
+# Only include functions/classes with these macros
+# This ensures we only wrap symbols that are actually exported from the library
+export_macros: []
+
+# Functions/methods to explicitly skip (even if they have export macros)
+skip_symbols:
+  - cv::ocl::PlatformInfo::versionMajor
+  - cv::ocl::PlatformInfo::versionMinor
+  - cv::ocl::initializeContextFromHandle
+  - cv::ocl::convertTypeStr
+  # OpenCV bug: these methods use double literals that break MSVC template deduction for Quat<float>
+  # asinh/acosh/atanh have the bug, and asin/acos/atan call them internally
+  - cv::Quat::asinh
+  - cv::Quat::acosh
+  - cv::Quat::atanh
+  - cv::Quat::asin
+  - cv::Quat::acos
+  - cv::Quat::atan
+
+# Clang compiler arguments
+clang_args:
+  - -I/usr/lib/clang/21/include
+  - -I/mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+  - -DCV_EXPORTS=
+  - -DCV_EXPORTS_W=
+  - -include
+  - opencv2/opencv.hpp
+  - -xc++

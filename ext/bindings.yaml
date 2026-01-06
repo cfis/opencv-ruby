@@ -1,0 +1,37 @@
+# Ruby-bindgen configuration for OpenCV Ruby bindings
+# Usage: ruby-bindgen bindings.yaml
+
+extension: opencv_ruby
+
+input: C:\Source\opencv-ruby\ext\build\msvc-debug\vcpkg_installed\x64-windows\include\opencv4
+output: C:\Source\opencv-ruby\ext
+format: Rice
+
+# Header file patterns to process
+match:
+  - opencv2/core/ocl.hpp
+
+# Header file patterns to skip
+skip:
+  - opencv2/core/opencl/**/*
+  - opencv2/cudalegacy/**/*.hpp
+  - opencv2/**/*.inl*
+
+# Only include functions/classes with these macros
+# This ensures we only wrap symbols that are actually exported from the library
+export_macros:
+  - CV_EXPORTS
+  - CV_EXPORTS_W
+
+# Functions/methods to explicitly skip (even if they have export macros)
+skip_symbols:
+  - cv::ocl::PlatformInfo::versionMajor
+  - cv::ocl::PlatformInfo::versionMinor
+
+# Clang compiler arguments
+clang_args:
+  - -IC:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.44.35207\include
+  - -IC:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\ucrt
+  - -IC:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\Llvm\lib\clang\20\include
+  - -IC:\Source\opencv-ruby\ext\build\msvc-debug\vcpkg_installed\x64-windows\include\opencv4
+  - -xc++

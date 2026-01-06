@@ -1,19 +1,37 @@
 #include <opencv2/imgcodecs.hpp>
+#include "core/cvstd_wrapper-rb.hpp"
 #include "../opencv_ruby_version.hpp"
 #include "imgcodecs-rb.hpp"
 
+// Iterator traits specializations for iterators missing std::iterator_traits
+namespace std
+{
+  template<>
+  struct iterator_traits<cv::ImageCollection::iterator>
+  {
+    using iterator_category = forward_iterator_tag;
+    using value_type = cv::Mat;
+    using difference_type = ptrdiff_t;
+    using pointer = cv::Mat*;
+    using reference = cv::Mat&;
+  };
+}
+
 using namespace Rice;
 
-Rice::Class rb_cCvImageCollection;
-Rice::Class rb_cCvImageCollectionIterator;
+Rice::Data_Type<cv::Animation> rb_cCvAnimation;
+Rice::Data_Type<cv::ImageCollection> rb_cCvImageCollection;
+Rice::Data_Type<cv::ImageCollection::Impl> rb_cCvImageCollectionImpl;
+Rice::Data_Type<cv::ImageCollection::iterator> rb_cCvImageCollectionIterator;
 
 void Init_Imgcodecs()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Enum<cv::ImreadModes> rb_cCvImreadModes = define_enum_under<cv::ImreadModes>("ImreadModes", rb_mCv).
     define_value("IMREAD_UNCHANGED", cv::ImreadModes::IMREAD_UNCHANGED).
     define_value("IMREAD_GRAYSCALE", cv::ImreadModes::IMREAD_GRAYSCALE).
+    define_value("IMREAD_COLOR_BGR", cv::ImreadModes::IMREAD_COLOR_BGR).
     define_value("IMREAD_COLOR", cv::ImreadModes::IMREAD_COLOR).
     define_value("IMREAD_ANYDEPTH", cv::ImreadModes::IMREAD_ANYDEPTH).
     define_value("IMREAD_ANYCOLOR", cv::ImreadModes::IMREAD_ANYCOLOR).
@@ -24,47 +42,64 @@ void Init_Imgcodecs()
     define_value("IMREAD_REDUCED_COLOR_4", cv::ImreadModes::IMREAD_REDUCED_COLOR_4).
     define_value("IMREAD_REDUCED_GRAYSCALE_8", cv::ImreadModes::IMREAD_REDUCED_GRAYSCALE_8).
     define_value("IMREAD_REDUCED_COLOR_8", cv::ImreadModes::IMREAD_REDUCED_COLOR_8).
-    define_value("IMREAD_IGNORE_ORIENTATION", cv::ImreadModes::IMREAD_IGNORE_ORIENTATION);
-  
+    define_value("IMREAD_IGNORE_ORIENTATION", cv::ImreadModes::IMREAD_IGNORE_ORIENTATION).
+    define_value("IMREAD_COLOR_RGB", cv::ImreadModes::IMREAD_COLOR_RGB);
+
   Enum<cv::ImwriteFlags> rb_cCvImwriteFlags = define_enum_under<cv::ImwriteFlags>("ImwriteFlags", rb_mCv).
     define_value("IMWRITE_JPEG_QUALITY", cv::ImwriteFlags::IMWRITE_JPEG_QUALITY).
     define_value("IMWRITE_JPEG_PROGRESSIVE", cv::ImwriteFlags::IMWRITE_JPEG_PROGRESSIVE).
     define_value("IMWRITE_JPEG_OPTIMIZE", cv::ImwriteFlags::IMWRITE_JPEG_OPTIMIZE).
     define_value("IMWRITE_JPEG_RST_INTERVAL", cv::ImwriteFlags::IMWRITE_JPEG_RST_INTERVAL).
     define_value("IMWRITE_JPEG_LUMA_QUALITY", cv::ImwriteFlags::IMWRITE_JPEG_LUMA_QUALITY).
-    define_value("IMWRITE_JPEG_CHROMA_QUALITY", cv::ImwriteFlags::IMWRITE_JPEG_CHROMA_QUALITY).
+    define_value("IMWRITE_JPEG_CHROMA_QUALITY", cv::ImwriteFlags::IMWRITE_JPEG_CHROMA_QUALITY);
+#if RUBY_CV_VERSION >= 407
+  rb_cCvImwriteFlags.
+    define_value("IMWRITE_JPEG_SAMPLING_FACTOR", cv::ImwriteFlags::IMWRITE_JPEG_SAMPLING_FACTOR);
+#endif
+  rb_cCvImwriteFlags.
     define_value("IMWRITE_PNG_COMPRESSION", cv::ImwriteFlags::IMWRITE_PNG_COMPRESSION).
     define_value("IMWRITE_PNG_STRATEGY", cv::ImwriteFlags::IMWRITE_PNG_STRATEGY).
     define_value("IMWRITE_PNG_BILEVEL", cv::ImwriteFlags::IMWRITE_PNG_BILEVEL).
     define_value("IMWRITE_PXM_BINARY", cv::ImwriteFlags::IMWRITE_PXM_BINARY).
     define_value("IMWRITE_EXR_TYPE", cv::ImwriteFlags::IMWRITE_EXR_TYPE).
-    define_value("IMWRITE_EXR_COMPRESSION", cv::ImwriteFlags::IMWRITE_EXR_COMPRESSION).
+    define_value("IMWRITE_EXR_COMPRESSION", cv::ImwriteFlags::IMWRITE_EXR_COMPRESSION);
+#if RUBY_CV_VERSION >= 407
+  rb_cCvImwriteFlags.
+    define_value("IMWRITE_EXR_DWA_COMPRESSION_LEVEL", cv::ImwriteFlags::IMWRITE_EXR_DWA_COMPRESSION_LEVEL);
+#endif
+  rb_cCvImwriteFlags.
     define_value("IMWRITE_WEBP_QUALITY", cv::ImwriteFlags::IMWRITE_WEBP_QUALITY).
+    define_value("IMWRITE_HDR_COMPRESSION", cv::ImwriteFlags::IMWRITE_HDR_COMPRESSION).
     define_value("IMWRITE_PAM_TUPLETYPE", cv::ImwriteFlags::IMWRITE_PAM_TUPLETYPE).
     define_value("IMWRITE_TIFF_RESUNIT", cv::ImwriteFlags::IMWRITE_TIFF_RESUNIT).
     define_value("IMWRITE_TIFF_XDPI", cv::ImwriteFlags::IMWRITE_TIFF_XDPI).
     define_value("IMWRITE_TIFF_YDPI", cv::ImwriteFlags::IMWRITE_TIFF_YDPI).
-    define_value("IMWRITE_TIFF_COMPRESSION", cv::ImwriteFlags::IMWRITE_TIFF_COMPRESSION).
-    define_value("IMWRITE_JPEG2000_COMPRESSION_X1000", cv::ImwriteFlags::IMWRITE_JPEG2000_COMPRESSION_X1000);
-
+    define_value("IMWRITE_TIFF_COMPRESSION", cv::ImwriteFlags::IMWRITE_TIFF_COMPRESSION);
 #if RUBY_CV_VERSION >= 407
-  rb_cCvImwriteFlags.
-    define_value("IMWRITE_JPEG_SAMPLING_FACTOR", cv::ImwriteFlags::IMWRITE_JPEG_SAMPLING_FACTOR).
-    define_value("IMWRITE_EXR_DWA_COMPRESSION_LEVEL", cv::ImwriteFlags::IMWRITE_EXR_DWA_COMPRESSION_LEVEL).
-    define_value("IMWRITE_HDR_COMPRESSION", cv::ImwriteFlags::IMWRITE_HDR_COMPRESSION).
+    rb_cCvImwriteFlags.
     define_value("IMWRITE_TIFF_ROWSPERSTRIP", cv::ImwriteFlags::IMWRITE_TIFF_ROWSPERSTRIP);
-#endif 
-
+#endif
 #if RUBY_CV_VERSION >= 410
   rb_cCvImwriteFlags.
     define_value("IMWRITE_TIFF_PREDICTOR", cv::ImwriteFlags::IMWRITE_TIFF_PREDICTOR).
+    define_value("IMWRITE_JPEG2000_COMPRESSION_X1000", cv::ImwriteFlags::IMWRITE_JPEG2000_COMPRESSION_X1000).
     define_value("IMWRITE_AVIF_QUALITY", cv::ImwriteFlags::IMWRITE_AVIF_QUALITY).
     define_value("IMWRITE_AVIF_DEPTH", cv::ImwriteFlags::IMWRITE_AVIF_DEPTH).
-    define_value("IMWRITE_AVIF_SPEED", cv::ImwriteFlags::IMWRITE_AVIF_SPEED);
+    define_value("IMWRITE_AVIF_SPEED", cv::ImwriteFlags::IMWRITE_AVIF_SPEED).
+    define_value("IMWRITE_JPEGXL_QUALITY", cv::ImwriteFlags::IMWRITE_JPEGXL_QUALITY).
+    define_value("IMWRITE_JPEGXL_EFFORT", cv::ImwriteFlags::IMWRITE_JPEGXL_EFFORT).
+    define_value("IMWRITE_JPEGXL_DISTANCE", cv::ImwriteFlags::IMWRITE_JPEGXL_DISTANCE).
+    define_value("IMWRITE_JPEGXL_DECODING_SPEED", cv::ImwriteFlags::IMWRITE_JPEGXL_DECODING_SPEED).
+    define_value("IMWRITE_GIF_LOOP", cv::ImwriteFlags::IMWRITE_GIF_LOOP).
+    define_value("IMWRITE_GIF_SPEED", cv::ImwriteFlags::IMWRITE_GIF_SPEED).
+    define_value("IMWRITE_GIF_QUALITY", cv::ImwriteFlags::IMWRITE_GIF_QUALITY).
+    define_value("IMWRITE_GIF_DITHER", cv::ImwriteFlags::IMWRITE_GIF_DITHER).
+    define_value("IMWRITE_GIF_TRANSPARENCY", cv::ImwriteFlags::IMWRITE_GIF_TRANSPARENCY).
+    define_value("IMWRITE_GIF_COLORTABLE", cv::ImwriteFlags::IMWRITE_GIF_COLORTABLE);
 #endif
-  
+
 #if RUBY_CV_VERSION >= 407
-  Enum<cv::ImwriteJPEGSamplingFactorParams> rb_cCvImwriteJPEGSamplingFactorParams = define_enum_under<cv::ImwriteJPEGSamplingFactorParams>("ImwriteJPEGSamplingFactorParams", rb_mCv).
+    Enum<cv::ImwriteJPEGSamplingFactorParams> rb_cCvImwriteJPEGSamplingFactorParams = define_enum_under<cv::ImwriteJPEGSamplingFactorParams>("ImwriteJPEGSamplingFactorParams", rb_mCv).
     define_value("IMWRITE_JPEG_SAMPLING_FACTOR_411", cv::ImwriteJPEGSamplingFactorParams::IMWRITE_JPEG_SAMPLING_FACTOR_411).
     define_value("IMWRITE_JPEG_SAMPLING_FACTOR_420", cv::ImwriteJPEGSamplingFactorParams::IMWRITE_JPEG_SAMPLING_FACTOR_420).
     define_value("IMWRITE_JPEG_SAMPLING_FACTOR_422", cv::ImwriteJPEGSamplingFactorParams::IMWRITE_JPEG_SAMPLING_FACTOR_422).
@@ -107,7 +142,7 @@ void Init_Imgcodecs()
     define_value("IMWRITE_TIFF_COMPRESSION_ZSTD", cv::ImwriteTiffCompressionFlags::IMWRITE_TIFF_COMPRESSION_ZSTD).
     define_value("IMWRITE_TIFF_COMPRESSION_WEBP", cv::ImwriteTiffCompressionFlags::IMWRITE_TIFF_COMPRESSION_WEBP).
     define_value("IMWRITE_TIFF_COMPRESSION_JXL", cv::ImwriteTiffCompressionFlags::IMWRITE_TIFF_COMPRESSION_JXL);
-  
+
   Enum<cv::ImwriteTiffPredictorFlags> rb_cCvImwriteTiffPredictorFlags = define_enum_under<cv::ImwriteTiffPredictorFlags>("ImwriteTiffPredictorFlags", rb_mCv).
     define_value("IMWRITE_TIFF_PREDICTOR_NONE", cv::ImwriteTiffPredictorFlags::IMWRITE_TIFF_PREDICTOR_NONE).
     define_value("IMWRITE_TIFF_PREDICTOR_HORIZONTAL", cv::ImwriteTiffPredictorFlags::IMWRITE_TIFF_PREDICTOR_HORIZONTAL).
@@ -117,7 +152,8 @@ void Init_Imgcodecs()
   Enum<cv::ImwriteEXRTypeFlags> rb_cCvImwriteEXRTypeFlags = define_enum_under<cv::ImwriteEXRTypeFlags>("ImwriteEXRTypeFlags", rb_mCv).
     define_value("IMWRITE_EXR_TYPE_HALF", cv::ImwriteEXRTypeFlags::IMWRITE_EXR_TYPE_HALF).
     define_value("IMWRITE_EXR_TYPE_FLOAT", cv::ImwriteEXRTypeFlags::IMWRITE_EXR_TYPE_FLOAT);
-  
+
+#if RUBY_CV_VERSION >= 407
   Enum<cv::ImwriteEXRCompressionFlags> rb_cCvImwriteEXRCompressionFlags = define_enum_under<cv::ImwriteEXRCompressionFlags>("ImwriteEXRCompressionFlags", rb_mCv).
     define_value("IMWRITE_EXR_COMPRESSION_NO", cv::ImwriteEXRCompressionFlags::IMWRITE_EXR_COMPRESSION_NO).
     define_value("IMWRITE_EXR_COMPRESSION_RLE", cv::ImwriteEXRCompressionFlags::IMWRITE_EXR_COMPRESSION_RLE).
@@ -129,14 +165,15 @@ void Init_Imgcodecs()
     define_value("IMWRITE_EXR_COMPRESSION_B44A", cv::ImwriteEXRCompressionFlags::IMWRITE_EXR_COMPRESSION_B44A).
     define_value("IMWRITE_EXR_COMPRESSION_DWAA", cv::ImwriteEXRCompressionFlags::IMWRITE_EXR_COMPRESSION_DWAA).
     define_value("IMWRITE_EXR_COMPRESSION_DWAB", cv::ImwriteEXRCompressionFlags::IMWRITE_EXR_COMPRESSION_DWAB);
-  
+#endif
+
   Enum<cv::ImwritePNGFlags> rb_cCvImwritePNGFlags = define_enum_under<cv::ImwritePNGFlags>("ImwritePNGFlags", rb_mCv).
     define_value("IMWRITE_PNG_STRATEGY_DEFAULT", cv::ImwritePNGFlags::IMWRITE_PNG_STRATEGY_DEFAULT).
     define_value("IMWRITE_PNG_STRATEGY_FILTERED", cv::ImwritePNGFlags::IMWRITE_PNG_STRATEGY_FILTERED).
     define_value("IMWRITE_PNG_STRATEGY_HUFFMAN_ONLY", cv::ImwritePNGFlags::IMWRITE_PNG_STRATEGY_HUFFMAN_ONLY).
     define_value("IMWRITE_PNG_STRATEGY_RLE", cv::ImwritePNGFlags::IMWRITE_PNG_STRATEGY_RLE).
     define_value("IMWRITE_PNG_STRATEGY_FIXED", cv::ImwritePNGFlags::IMWRITE_PNG_STRATEGY_FIXED);
-  
+
   Enum<cv::ImwritePAMFlags> rb_cCvImwritePAMFlags = define_enum_under<cv::ImwritePAMFlags>("ImwritePAMFlags", rb_mCv).
     define_value("IMWRITE_PAM_FORMAT_NULL", cv::ImwritePAMFlags::IMWRITE_PAM_FORMAT_NULL).
     define_value("IMWRITE_PAM_FORMAT_BLACKANDWHITE", cv::ImwritePAMFlags::IMWRITE_PAM_FORMAT_BLACKANDWHITE).
@@ -144,58 +181,87 @@ void Init_Imgcodecs()
     define_value("IMWRITE_PAM_FORMAT_GRAYSCALE_ALPHA", cv::ImwritePAMFlags::IMWRITE_PAM_FORMAT_GRAYSCALE_ALPHA).
     define_value("IMWRITE_PAM_FORMAT_RGB", cv::ImwritePAMFlags::IMWRITE_PAM_FORMAT_RGB).
     define_value("IMWRITE_PAM_FORMAT_RGB_ALPHA", cv::ImwritePAMFlags::IMWRITE_PAM_FORMAT_RGB_ALPHA);
-  
-#if RUBY_CV_VERSION >= 407
+
   Enum<cv::ImwriteHDRCompressionFlags> rb_cCvImwriteHDRCompressionFlags = define_enum_under<cv::ImwriteHDRCompressionFlags>("ImwriteHDRCompressionFlags", rb_mCv).
     define_value("IMWRITE_HDR_COMPRESSION_NONE", cv::ImwriteHDRCompressionFlags::IMWRITE_HDR_COMPRESSION_NONE).
     define_value("IMWRITE_HDR_COMPRESSION_RLE", cv::ImwriteHDRCompressionFlags::IMWRITE_HDR_COMPRESSION_RLE);
-#endif
+
+  Enum<cv::ImwriteGIFCompressionFlags> rb_cCvImwriteGIFCompressionFlags = define_enum_under<cv::ImwriteGIFCompressionFlags>("ImwriteGIFCompressionFlags", rb_mCv).
+    define_value("IMWRITE_GIF_FAST_NO_DITHER", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_FAST_NO_DITHER).
+    define_value("IMWRITE_GIF_FAST_FLOYD_DITHER", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_FAST_FLOYD_DITHER).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_8", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_8).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_16", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_16).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_32", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_32).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_64", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_64).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_128", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_128).
+    define_value("IMWRITE_GIF_COLORTABLE_SIZE_256", cv::ImwriteGIFCompressionFlags::IMWRITE_GIF_COLORTABLE_SIZE_256);
+
+  rb_cCvAnimation = define_class_under<cv::Animation>(rb_mCv, "Animation").
+    define_attr("loop_count", &cv::Animation::loop_count).
+    define_attr("bgcolor", &cv::Animation::bgcolor).
+    define_attr("durations", &cv::Animation::durations).
+    define_attr("frames", &cv::Animation::frames).
+    define_constructor(Constructor<cv::Animation, int, cv::Scalar>(),
+      Arg("loop_count") = static_cast<int>(0), Arg("bg_color") = static_cast<cv::Scalar>(cv::Scalar()));
 
   rb_mCv.define_module_function<cv::Mat(*)(const cv::String&, int)>("imread", &cv::imread,
-    Arg("filename"), Arg("flags") = static_cast<int>(cv::ImreadModes::IMREAD_COLOR));
-  
+    Arg("filename"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
+
 #if RUBY_CV_VERSION >= 410
   rb_mCv.define_module_function<void(*)(const cv::String&, cv::OutputArray, int)>("imread", &cv::imread,
-    Arg("filename"), Arg("dst"), Arg("flags") = static_cast<int>(cv::ImreadModes::IMREAD_COLOR));
+    Arg("filename"), Arg("dst"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
 #endif
 
   rb_mCv.define_module_function<bool(*)(const cv::String&, std::vector<cv::Mat>&, int)>("imreadmulti", &cv::imreadmulti,
-    Arg("filename"), Arg("mats"), Arg("flags") = static_cast<int>(cv::ImreadModes::IMREAD_ANYCOLOR));
-  
+    Arg("filename"), Arg("mats"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
+
   rb_mCv.define_module_function<bool(*)(const cv::String&, std::vector<cv::Mat>&, int, int, int)>("imreadmulti", &cv::imreadmulti,
-    Arg("filename"), Arg("mats"), Arg("start"), Arg("count"), Arg("flags") = static_cast<int>(cv::ImreadModes::IMREAD_ANYCOLOR));
-  
+    Arg("filename"), Arg("mats"), Arg("start"), Arg("count"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
+
+  rb_mCv.define_module_function("imreadanimation", &cv::imreadanimation,
+    Arg("filename"), Arg("animation"), Arg("start") = static_cast<int>(0), Arg("count"));
+
+  rb_mCv.define_module_function("imwriteanimation", &cv::imwriteanimation,
+    Arg("filename"), Arg("animation"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+
   rb_mCv.define_module_function("imcount", &cv::imcount,
-    Arg("filename"), Arg("flags") = static_cast<int>(cv::ImreadModes::IMREAD_ANYCOLOR));
-  
+    Arg("filename"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
+
   rb_mCv.define_module_function("imwrite", &cv::imwrite,
-    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
-  
+    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+
   rb_mCv.define_module_function("imwritemulti", &cv::imwritemulti,
-    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
-  
+    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int)>("imdecode", &cv::imdecode,
     Arg("buf"), Arg("flags"));
-  
+
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int, cv::Mat*)>("imdecode", &cv::imdecode,
     Arg("buf"), Arg("flags"), Arg("dst"));
-  
+
 #if RUBY_CV_VERSION >= 409
   rb_mCv.define_module_function("imdecodemulti", &cv::imdecodemulti,
-    Arg("buf"), Arg("flags"), Arg("mats"), Arg("range") = static_cast<const cv::Range &>(cv::Range::all()));
+    Arg("buf"), Arg("flags"), Arg("mats"), Arg("range") = static_cast<const cv::Range&>(cv::Range::all()));
 #endif
 
   rb_mCv.define_module_function("imencode", &cv::imencode,
-    Arg("ext"), Arg("img"), Arg("buf"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
-  
-  rb_mCv.define_module_function("have_image_reader?", &cv::haveImageReader,
+    Arg("ext"), Arg("img"), Arg("buf"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+
+  rb_mCv.define_module_function("imencodemulti", &cv::imencodemulti,
+    Arg("ext"), Arg("imgs"), Arg("buf"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+
+  rb_mCv.define_module_function("have_image_reader", &cv::haveImageReader,
     Arg("filename"));
-  
-  rb_mCv.define_module_function("have_image_writer?", &cv::haveImageWriter,
+
+  rb_mCv.define_module_function("have_image_writer", &cv::haveImageWriter,
     Arg("filename"));
-  
+
 #if RUBY_CV_VERSION >= 407
-  rb_cCvImageCollection = define_class_under<cv::ImageCollection>(rb_mCv, "ImageCollection").
+  rb_cCvImageCollection = define_class_under<cv::ImageCollection>(rb_mCv, "ImageCollection");
+
+  rb_cCvImageCollectionImpl = define_class_under<cv::ImageCollection::Impl>(rb_cCvImageCollection, "Impl");
+
+  rb_cCvImageCollection.
     define_constructor(Constructor<cv::ImageCollection>()).
     define_constructor(Constructor<cv::ImageCollection, const cv::String&, int>(),
       Arg("filename"), Arg("flags")).
@@ -207,19 +273,19 @@ void Init_Imgcodecs()
     define_method("[]", &cv::ImageCollection::operator[],
       Arg("index")).
     define_method("release_cache", &cv::ImageCollection::releaseCache,
-      Arg("index"));
-    //define_iterator<cv::ImageCollection::iterator(cv::ImageCollection::*)()>(&cv::ImageCollection::begin, &cv::ImageCollection::end, "each").
-   // define_method("get_impl", &cv::ImageCollection::getImpl);
-    
+      Arg("index")).
+    define_iterator<cv::ImageCollection::iterator(cv::ImageCollection::*)()>(&cv::ImageCollection::begin, &cv::ImageCollection::end, "each").
+    define_method("get_impl", &cv::ImageCollection::getImpl);
+
   rb_cCvImageCollectionIterator = define_class_under<cv::ImageCollection::iterator>(rb_cCvImageCollection, "Iterator").
     define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection*>(),
       Arg("col")).
     define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection*, int>(),
       Arg("col"), Arg("end")).
     define_method("dereference", &cv::ImageCollection::iterator::operator*).
-    define_method("->", &cv::ImageCollection::iterator::operator->).
-    define_method<cv::ImageCollection::iterator&(cv::ImageCollection::iterator::*)()>("increment", &cv::ImageCollection::iterator::operator++).
+    define_method("arrow", &cv::ImageCollection::iterator::operator->).
+    define_method<cv::ImageCollection::iterator&(cv::ImageCollection::iterator::*)()>("increment_pre", &cv::ImageCollection::iterator::operator++).
     define_method<cv::ImageCollection::iterator(cv::ImageCollection::iterator::*)(int)>("increment", &cv::ImageCollection::iterator::operator++,
-      Arg(""));
+      Arg("arg_0"));
 #endif
 }

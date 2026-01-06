@@ -1,18 +1,30 @@
 #include <opencv2/videoio.hpp>
+#include "core/cvstd_wrapper-rb.hpp"
 #include "../opencv_ruby_version.hpp"
 #include "videoio-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvDefaultDeleterCvCapture;
-Rice::Class rb_cCvDefaultDeleterCvVideoWriter;
-Rice::Class rb_cCvVideoCapture;
-Rice::Class rb_cCvVideoWriter;
+Rice::Data_Type<CvCapture> rb_cCvCapture;
+Rice::Data_Type<cv::DefaultDeleter<CvCapture>> rb_cCvDefaultDeleterCvCapture;
+Rice::Data_Type<cv::DefaultDeleter<CvVideoWriter>> rb_cCvDefaultDeleterCvVideoWriter;
+Rice::Data_Type<cv::IStreamReader> rb_cCvIStreamReader;
+Rice::Data_Type<cv::IVideoCapture> rb_cCvIVideoCapture;
+Rice::Data_Type<cv::IVideoWriter> rb_cCvIVideoWriter;
+Rice::Data_Type<cv::internal::VideoCapturePrivateAccessor> rb_cCvInternalVideoCapturePrivateAccessor;
+Rice::Data_Type<cv::VideoCapture> rb_cCvVideoCapture;
+Rice::Data_Type<cv::VideoWriter> rb_cCvVideoWriter;
+// Manual fix: renamed from rb_cCvVideoWriter to avoid collision with cv::VideoWriter
+Rice::Data_Type<CvVideoWriter> rb_cVideoWriter;
 
 void Init_Videoio()
 {
+  rb_cCvCapture = define_class<CvCapture>("CvCapture");
+
+  rb_cVideoWriter = define_class<CvVideoWriter>("CvVideoWriter");
+
   Module rb_mCv = define_module("Cv");
-  
+
   Enum<cv::VideoCaptureAPIs> rb_cCvVideoCaptureAPIs = define_enum_under<cv::VideoCaptureAPIs>("VideoCaptureAPIs", rb_mCv).
     define_value("CAP_ANY", cv::VideoCaptureAPIs::CAP_ANY).
     define_value("CAP_VFW", cv::VideoCaptureAPIs::CAP_VFW).
@@ -54,7 +66,7 @@ void Init_Videoio()
   rb_cCvVideoCaptureAPIs.
     define_value("CAP_OBSENSOR", cv::VideoCaptureAPIs::CAP_OBSENSOR);
 #endif
-  
+
   Enum<cv::VideoCaptureProperties> rb_cCvVideoCaptureProperties = define_enum_under<cv::VideoCaptureProperties>("VideoCaptureProperties", rb_mCv).
     define_value("CAP_PROP_POS_MSEC", cv::VideoCaptureProperties::CAP_PROP_POS_MSEC).
     define_value("CAP_PROP_POS_FRAMES", cv::VideoCaptureProperties::CAP_PROP_POS_FRAMES).
@@ -124,14 +136,12 @@ void Init_Videoio()
     define_value("CAP_PROP_AUDIO_SYNCHRONIZE", cv::VideoCaptureProperties::CAP_PROP_AUDIO_SYNCHRONIZE).
     define_value("CAP_PROP_LRF_HAS_KEY_FRAME", cv::VideoCaptureProperties::CAP_PROP_LRF_HAS_KEY_FRAME).
     define_value("CAP_PROP_CODEC_EXTRADATA_INDEX", cv::VideoCaptureProperties::CAP_PROP_CODEC_EXTRADATA_INDEX).
+    define_value("CAP_PROP_FRAME_TYPE", cv::VideoCaptureProperties::CAP_PROP_FRAME_TYPE).
+    define_value("CAP_PROP_N_THREADS", cv::VideoCaptureProperties::CAP_PROP_N_THREADS).
+    define_value("CAP_PROP_PTS", cv::VideoCaptureProperties::CAP_PROP_PTS).
+    define_value("CAP_PROP_DTS_DELAY", cv::VideoCaptureProperties::CAP_PROP_DTS_DELAY).
     define_value("CV__CAP_PROP_LATEST", cv::VideoCaptureProperties::CV__CAP_PROP_LATEST);
 
-#if RUBY_CV_VERSION >= 407
-  rb_cCvVideoCaptureProperties.
-    define_value("CAP_PROP_FRAME_TYPE", cv::VideoCaptureProperties::CAP_PROP_FRAME_TYPE).
-    define_value("CAP_PROP_N_THREADS", cv::VideoCaptureProperties::CAP_PROP_N_THREADS);
-#endif
-  
   Enum<cv::VideoWriterProperties> rb_cCvVideoWriterProperties = define_enum_under<cv::VideoWriterProperties>("VideoWriterProperties", rb_mCv).
     define_value("VIDEOWRITER_PROP_QUALITY", cv::VideoWriterProperties::VIDEOWRITER_PROP_QUALITY).
     define_value("VIDEOWRITER_PROP_FRAMEBYTES", cv::VideoWriterProperties::VIDEOWRITER_PROP_FRAMEBYTES).
@@ -140,9 +150,8 @@ void Init_Videoio()
     define_value("VIDEOWRITER_PROP_DEPTH", cv::VideoWriterProperties::VIDEOWRITER_PROP_DEPTH).
     define_value("VIDEOWRITER_PROP_HW_ACCELERATION", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_ACCELERATION).
     define_value("VIDEOWRITER_PROP_HW_DEVICE", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_DEVICE).
-    define_value("VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL).
-    define_value("CV__VIDEOWRITER_PROP_LATEST", cv::VideoWriterProperties::CV__VIDEOWRITER_PROP_LATEST);
-  
+    define_value("VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL);
+
 #if RUBY_CV_VERSION >= 409
   rb_cCvVideoWriterProperties.
     define_value("VIDEOWRITER_PROP_RAW_VIDEO", cv::VideoWriterProperties::VIDEOWRITER_PROP_RAW_VIDEO).
@@ -150,24 +159,32 @@ void Init_Videoio()
     define_value("VIDEOWRITER_PROP_KEY_FLAG", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_FLAG);
 #endif
 
+  rb_cCvVideoWriterProperties.
+    define_value("VIDEOWRITER_PROP_RAW_VIDEO", cv::VideoWriterProperties::VIDEOWRITER_PROP_RAW_VIDEO).
+    define_value("VIDEOWRITER_PROP_KEY_INTERVAL", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_INTERVAL).
+    define_value("VIDEOWRITER_PROP_KEY_FLAG", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_FLAG).
+    define_value("VIDEOWRITER_PROP_PTS", cv::VideoWriterProperties::VIDEOWRITER_PROP_PTS).
+    define_value("VIDEOWRITER_PROP_DTS_DELAY", cv::VideoWriterProperties::VIDEOWRITER_PROP_DTS_DELAY).
+    define_value("CV__VIDEOWRITER_PROP_LATEST", cv::VideoWriterProperties::CV__VIDEOWRITER_PROP_LATEST);
+
   Enum<cv::VideoAccelerationType> rb_cCvVideoAccelerationType = define_enum_under<cv::VideoAccelerationType>("VideoAccelerationType", rb_mCv).
     define_value("VIDEO_ACCELERATION_NONE", cv::VideoAccelerationType::VIDEO_ACCELERATION_NONE).
     define_value("VIDEO_ACCELERATION_ANY", cv::VideoAccelerationType::VIDEO_ACCELERATION_ANY).
     define_value("VIDEO_ACCELERATION_D3D11", cv::VideoAccelerationType::VIDEO_ACCELERATION_D3D11).
     define_value("VIDEO_ACCELERATION_VAAPI", cv::VideoAccelerationType::VIDEO_ACCELERATION_VAAPI).
     define_value("VIDEO_ACCELERATION_MFX", cv::VideoAccelerationType::VIDEO_ACCELERATION_MFX);
-  
+
   rb_mCv.define_constant("CAP_PROP_DC1394_OFF", (int)cv::CAP_PROP_DC1394_OFF);
   rb_mCv.define_constant("CAP_PROP_DC1394_MODE_MANUAL", (int)cv::CAP_PROP_DC1394_MODE_MANUAL);
   rb_mCv.define_constant("CAP_PROP_DC1394_MODE_AUTO", (int)cv::CAP_PROP_DC1394_MODE_AUTO);
   rb_mCv.define_constant("CAP_PROP_DC1394_MODE_ONE_PUSH_AUTO", (int)cv::CAP_PROP_DC1394_MODE_ONE_PUSH_AUTO);
   rb_mCv.define_constant("CAP_PROP_DC1394_MAX", (int)cv::CAP_PROP_DC1394_MAX);
-  
+
   rb_mCv.define_constant("CAP_OPENNI_DEPTH_GENERATOR", (int)cv::CAP_OPENNI_DEPTH_GENERATOR);
   rb_mCv.define_constant("CAP_OPENNI_IMAGE_GENERATOR", (int)cv::CAP_OPENNI_IMAGE_GENERATOR);
   rb_mCv.define_constant("CAP_OPENNI_IR_GENERATOR", (int)cv::CAP_OPENNI_IR_GENERATOR);
   rb_mCv.define_constant("CAP_OPENNI_GENERATORS_MASK", (int)cv::CAP_OPENNI_GENERATORS_MASK);
-  
+
   rb_mCv.define_constant("CAP_PROP_OPENNI_OUTPUT_MODE", (int)cv::CAP_PROP_OPENNI_OUTPUT_MODE);
   rb_mCv.define_constant("CAP_PROP_OPENNI_FRAME_MAX_DEPTH", (int)cv::CAP_PROP_OPENNI_FRAME_MAX_DEPTH);
   rb_mCv.define_constant("CAP_PROP_OPENNI_BASELINE", (int)cv::CAP_PROP_OPENNI_BASELINE);
@@ -181,7 +198,7 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_OPENNI_GENERATOR_PRESENT", (int)cv::CAP_PROP_OPENNI_GENERATOR_PRESENT);
   rb_mCv.define_constant("CAP_PROP_OPENNI2_SYNC", (int)cv::CAP_PROP_OPENNI2_SYNC);
   rb_mCv.define_constant("CAP_PROP_OPENNI2_MIRROR", (int)cv::CAP_PROP_OPENNI2_MIRROR);
-  
+
   rb_mCv.define_constant("CAP_OPENNI_IMAGE_GENERATOR_PRESENT", (int)cv::CAP_OPENNI_IMAGE_GENERATOR_PRESENT);
   rb_mCv.define_constant("CAP_OPENNI_IMAGE_GENERATOR_OUTPUT_MODE", (int)cv::CAP_OPENNI_IMAGE_GENERATOR_OUTPUT_MODE);
   rb_mCv.define_constant("CAP_OPENNI_DEPTH_GENERATOR_PRESENT", (int)cv::CAP_OPENNI_DEPTH_GENERATOR_PRESENT);
@@ -190,7 +207,7 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION", (int)cv::CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION);
   rb_mCv.define_constant("CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION_ON", (int)cv::CAP_OPENNI_DEPTH_GENERATOR_REGISTRATION_ON);
   rb_mCv.define_constant("CAP_OPENNI_IR_GENERATOR_PRESENT", (int)cv::CAP_OPENNI_IR_GENERATOR_PRESENT);
-  
+
   rb_mCv.define_constant("CAP_OPENNI_DEPTH_MAP", (int)cv::CAP_OPENNI_DEPTH_MAP);
   rb_mCv.define_constant("CAP_OPENNI_POINT_CLOUD_MAP", (int)cv::CAP_OPENNI_POINT_CLOUD_MAP);
   rb_mCv.define_constant("CAP_OPENNI_DISPARITY_MAP", (int)cv::CAP_OPENNI_DISPARITY_MAP);
@@ -199,15 +216,15 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_OPENNI_BGR_IMAGE", (int)cv::CAP_OPENNI_BGR_IMAGE);
   rb_mCv.define_constant("CAP_OPENNI_GRAY_IMAGE", (int)cv::CAP_OPENNI_GRAY_IMAGE);
   rb_mCv.define_constant("CAP_OPENNI_IR_IMAGE", (int)cv::CAP_OPENNI_IR_IMAGE);
-  
+
   rb_mCv.define_constant("CAP_OPENNI_VGA_30HZ", (int)cv::CAP_OPENNI_VGA_30HZ);
   rb_mCv.define_constant("CAP_OPENNI_SXGA_15HZ", (int)cv::CAP_OPENNI_SXGA_15HZ);
   rb_mCv.define_constant("CAP_OPENNI_SXGA_30HZ", (int)cv::CAP_OPENNI_SXGA_30HZ);
   rb_mCv.define_constant("CAP_OPENNI_QVGA_30HZ", (int)cv::CAP_OPENNI_QVGA_30HZ);
   rb_mCv.define_constant("CAP_OPENNI_QVGA_60HZ", (int)cv::CAP_OPENNI_QVGA_60HZ);
-  
+
   rb_mCv.define_constant("CAP_PROP_GSTREAMER_QUEUE_LENGTH", (int)cv::CAP_PROP_GSTREAMER_QUEUE_LENGTH);
-  
+
   rb_mCv.define_constant("CAP_PROP_PVAPI_MULTICASTIP", (int)cv::CAP_PROP_PVAPI_MULTICASTIP);
   rb_mCv.define_constant("CAP_PROP_PVAPI_FRAMESTARTTRIGGERMODE", (int)cv::CAP_PROP_PVAPI_FRAMESTARTTRIGGERMODE);
   rb_mCv.define_constant("CAP_PROP_PVAPI_DECIMATIONHORIZONTAL", (int)cv::CAP_PROP_PVAPI_DECIMATIONHORIZONTAL);
@@ -215,18 +232,18 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_PVAPI_BINNINGX", (int)cv::CAP_PROP_PVAPI_BINNINGX);
   rb_mCv.define_constant("CAP_PROP_PVAPI_BINNINGY", (int)cv::CAP_PROP_PVAPI_BINNINGY);
   rb_mCv.define_constant("CAP_PROP_PVAPI_PIXELFORMAT", (int)cv::CAP_PROP_PVAPI_PIXELFORMAT);
-  
+
   rb_mCv.define_constant("CAP_PVAPI_FSTRIGMODE_FREERUN", (int)cv::CAP_PVAPI_FSTRIGMODE_FREERUN);
   rb_mCv.define_constant("CAP_PVAPI_FSTRIGMODE_SYNCIN1", (int)cv::CAP_PVAPI_FSTRIGMODE_SYNCIN1);
   rb_mCv.define_constant("CAP_PVAPI_FSTRIGMODE_SYNCIN2", (int)cv::CAP_PVAPI_FSTRIGMODE_SYNCIN2);
   rb_mCv.define_constant("CAP_PVAPI_FSTRIGMODE_FIXEDRATE", (int)cv::CAP_PVAPI_FSTRIGMODE_FIXEDRATE);
   rb_mCv.define_constant("CAP_PVAPI_FSTRIGMODE_SOFTWARE", (int)cv::CAP_PVAPI_FSTRIGMODE_SOFTWARE);
-  
+
   rb_mCv.define_constant("CAP_PVAPI_DECIMATION_OFF", (int)cv::CAP_PVAPI_DECIMATION_OFF);
   rb_mCv.define_constant("CAP_PVAPI_DECIMATION_2OUTOF4", (int)cv::CAP_PVAPI_DECIMATION_2OUTOF4);
   rb_mCv.define_constant("CAP_PVAPI_DECIMATION_2OUTOF8", (int)cv::CAP_PVAPI_DECIMATION_2OUTOF8);
   rb_mCv.define_constant("CAP_PVAPI_DECIMATION_2OUTOF16", (int)cv::CAP_PVAPI_DECIMATION_2OUTOF16);
-  
+
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_MONO8", (int)cv::CAP_PVAPI_PIXELFORMAT_MONO8);
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_MONO16", (int)cv::CAP_PVAPI_PIXELFORMAT_MONO16);
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_BAYER8", (int)cv::CAP_PVAPI_PIXELFORMAT_BAYER8);
@@ -235,7 +252,7 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_BGR24", (int)cv::CAP_PVAPI_PIXELFORMAT_BGR24);
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_RGBA32", (int)cv::CAP_PVAPI_PIXELFORMAT_RGBA32);
   rb_mCv.define_constant("CAP_PVAPI_PIXELFORMAT_BGRA32", (int)cv::CAP_PVAPI_PIXELFORMAT_BGRA32);
-  
+
   rb_mCv.define_constant("CAP_PROP_XI_DOWNSAMPLING", (int)cv::CAP_PROP_XI_DOWNSAMPLING);
   rb_mCv.define_constant("CAP_PROP_XI_DATA_FORMAT", (int)cv::CAP_PROP_XI_DATA_FORMAT);
   rb_mCv.define_constant("CAP_PROP_XI_OFFSET_X", (int)cv::CAP_PROP_XI_OFFSET_X);
@@ -386,22 +403,24 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_XI_FFS_ACCESS_KEY", (int)cv::CAP_PROP_XI_FFS_ACCESS_KEY);
   rb_mCv.define_constant("CAP_PROP_XI_SENSOR_FEATURE_SELECTOR", (int)cv::CAP_PROP_XI_SENSOR_FEATURE_SELECTOR);
   rb_mCv.define_constant("CAP_PROP_XI_SENSOR_FEATURE_VALUE", (int)cv::CAP_PROP_XI_SENSOR_FEATURE_VALUE);
-  
+
   rb_mCv.define_constant("CAP_PROP_ARAVIS_AUTOTRIGGER", (int)cv::CAP_PROP_ARAVIS_AUTOTRIGGER);
-  
+
+  rb_mCv.define_constant("CAP_PROP_ANDROID_DEVICE_TORCH", (int)cv::CAP_PROP_ANDROID_DEVICE_TORCH);
+
   rb_mCv.define_constant("CAP_PROP_IOS_DEVICE_FOCUS", (int)cv::CAP_PROP_IOS_DEVICE_FOCUS);
   rb_mCv.define_constant("CAP_PROP_IOS_DEVICE_EXPOSURE", (int)cv::CAP_PROP_IOS_DEVICE_EXPOSURE);
   rb_mCv.define_constant("CAP_PROP_IOS_DEVICE_FLASH", (int)cv::CAP_PROP_IOS_DEVICE_FLASH);
   rb_mCv.define_constant("CAP_PROP_IOS_DEVICE_WHITEBALANCE", (int)cv::CAP_PROP_IOS_DEVICE_WHITEBALANCE);
   rb_mCv.define_constant("CAP_PROP_IOS_DEVICE_TORCH", (int)cv::CAP_PROP_IOS_DEVICE_TORCH);
-  
+
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_OFFSET_X", (int)cv::CAP_PROP_GIGA_FRAME_OFFSET_X);
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_OFFSET_Y", (int)cv::CAP_PROP_GIGA_FRAME_OFFSET_Y);
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_WIDTH_MAX", (int)cv::CAP_PROP_GIGA_FRAME_WIDTH_MAX);
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_HEIGH_MAX", (int)cv::CAP_PROP_GIGA_FRAME_HEIGH_MAX);
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_SENS_WIDTH", (int)cv::CAP_PROP_GIGA_FRAME_SENS_WIDTH);
   rb_mCv.define_constant("CAP_PROP_GIGA_FRAME_SENS_HEIGH", (int)cv::CAP_PROP_GIGA_FRAME_SENS_HEIGH);
-  
+
   rb_mCv.define_constant("CAP_PROP_INTELPERC_PROFILE_COUNT", (int)cv::CAP_PROP_INTELPERC_PROFILE_COUNT);
   rb_mCv.define_constant("CAP_PROP_INTELPERC_PROFILE_IDX", (int)cv::CAP_PROP_INTELPERC_PROFILE_IDX);
   rb_mCv.define_constant("CAP_PROP_INTELPERC_DEPTH_LOW_CONFIDENCE_VALUE", (int)cv::CAP_PROP_INTELPERC_DEPTH_LOW_CONFIDENCE_VALUE);
@@ -409,17 +428,17 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_INTELPERC_DEPTH_CONFIDENCE_THRESHOLD", (int)cv::CAP_PROP_INTELPERC_DEPTH_CONFIDENCE_THRESHOLD);
   rb_mCv.define_constant("CAP_PROP_INTELPERC_DEPTH_FOCAL_LENGTH_HORZ", (int)cv::CAP_PROP_INTELPERC_DEPTH_FOCAL_LENGTH_HORZ);
   rb_mCv.define_constant("CAP_PROP_INTELPERC_DEPTH_FOCAL_LENGTH_VERT", (int)cv::CAP_PROP_INTELPERC_DEPTH_FOCAL_LENGTH_VERT);
-  
+
   rb_mCv.define_constant("CAP_INTELPERC_DEPTH_GENERATOR", (int)cv::CAP_INTELPERC_DEPTH_GENERATOR);
   rb_mCv.define_constant("CAP_INTELPERC_IMAGE_GENERATOR", (int)cv::CAP_INTELPERC_IMAGE_GENERATOR);
   rb_mCv.define_constant("CAP_INTELPERC_IR_GENERATOR", (int)cv::CAP_INTELPERC_IR_GENERATOR);
   rb_mCv.define_constant("CAP_INTELPERC_GENERATORS_MASK", (int)cv::CAP_INTELPERC_GENERATORS_MASK);
-  
+
   rb_mCv.define_constant("CAP_INTELPERC_DEPTH_MAP", (int)cv::CAP_INTELPERC_DEPTH_MAP);
   rb_mCv.define_constant("CAP_INTELPERC_UVDEPTH_MAP", (int)cv::CAP_INTELPERC_UVDEPTH_MAP);
   rb_mCv.define_constant("CAP_INTELPERC_IR_MAP", (int)cv::CAP_INTELPERC_IR_MAP);
   rb_mCv.define_constant("CAP_INTELPERC_IMAGE", (int)cv::CAP_INTELPERC_IMAGE);
-  
+
   rb_mCv.define_constant("CAP_PROP_GPHOTO2_PREVIEW", (int)cv::CAP_PROP_GPHOTO2_PREVIEW);
   rb_mCv.define_constant("CAP_PROP_GPHOTO2_WIDGET_ENUMERATE", (int)cv::CAP_PROP_GPHOTO2_WIDGET_ENUMERATE);
   rb_mCv.define_constant("CAP_PROP_GPHOTO2_RELOAD_CONFIG", (int)cv::CAP_PROP_GPHOTO2_RELOAD_CONFIG);
@@ -430,50 +449,63 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_APERTURE", (int)cv::CAP_PROP_APERTURE);
   rb_mCv.define_constant("CAP_PROP_EXPOSUREPROGRAM", (int)cv::CAP_PROP_EXPOSUREPROGRAM);
   rb_mCv.define_constant("CAP_PROP_VIEWFINDER", (int)cv::CAP_PROP_VIEWFINDER);
-  
+
   rb_mCv.define_constant("CAP_PROP_IMAGES_BASE", (int)cv::CAP_PROP_IMAGES_BASE);
   rb_mCv.define_constant("CAP_PROP_IMAGES_LAST", (int)cv::CAP_PROP_IMAGES_LAST);
-  
+
 #if RUBY_CV_VERSION >= 407
- /* Enum<cv::VideoCaptureOBSensorDataType> rb_cCvVideoCaptureOBSensorDataType = define_enum_under<cv::VideoCaptureOBSensorDataType>("VideoCaptureOBSensorDataType", rb_mCv).
+  Enum<cv::VideoCaptureOBSensorDataType> rb_cCvVideoCaptureOBSensorDataType = define_enum_under<cv::VideoCaptureOBSensorDataType>("VideoCaptureOBSensorDataType", rb_mCv).
     define_value("CAP_OBSENSOR_DEPTH_MAP", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_DEPTH_MAP).
     define_value("CAP_OBSENSOR_BGR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_BGR_IMAGE).
     define_value("CAP_OBSENSOR_IR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_IR_IMAGE);
-  
+
   Enum<cv::VideoCaptureOBSensorGenerators> rb_cCvVideoCaptureOBSensorGenerators = define_enum_under<cv::VideoCaptureOBSensorGenerators>("VideoCaptureOBSensorGenerators", rb_mCv).
     define_value("CAP_OBSENSOR_DEPTH_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_DEPTH_GENERATOR).
     define_value("CAP_OBSENSOR_IMAGE_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_IMAGE_GENERATOR).
     define_value("CAP_OBSENSOR_IR_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_IR_GENERATOR).
     define_value("CAP_OBSENSOR_GENERATORS_MASK", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_GENERATORS_MASK);
-  
+
   Enum<cv::VideoCaptureOBSensorProperties> rb_cCvVideoCaptureOBSensorProperties = define_enum_under<cv::VideoCaptureOBSensorProperties>("VideoCaptureOBSensorProperties", rb_mCv).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_FX", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_FX).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_FY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_FY).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_CX", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CX).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_CY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CY);
-  */
 #endif
 
+  rb_cCvIStreamReader = define_class_under<cv::IStreamReader>(rb_mCv, "IStreamReader").
+    define_method("read", &cv::IStreamReader::read,
+      Arg("buffer"), Arg("size")).
+    define_method("seek", &cv::IStreamReader::seek,
+      Arg("offset"), Arg("origin"));
+
+  rb_cCvIVideoCapture = define_class_under<cv::IVideoCapture>(rb_mCv, "IVideoCapture");
+
   Module rb_mCvInternal = define_module_under(rb_mCv, "Internal");
-  
+
+  rb_cCvInternalVideoCapturePrivateAccessor = define_class_under<cv::internal::VideoCapturePrivateAccessor>(rb_mCvInternal, "VideoCapturePrivateAccessor");
+
   rb_cCvVideoCapture = define_class_under<cv::VideoCapture>(rb_mCv, "VideoCapture").
     define_constructor(Constructor<cv::VideoCapture>()).
     define_constructor(Constructor<cv::VideoCapture, const cv::String&, int>(),
-      Arg("filename"), Arg("api_preference") = static_cast<int>(cv::VideoCaptureAPIs::CAP_ANY)).
+      Arg("filename"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY)).
     define_constructor(Constructor<cv::VideoCapture, const cv::String&, int, const std::vector<int>&>(),
       Arg("filename"), Arg("api_preference"), Arg("params")).
     define_constructor(Constructor<cv::VideoCapture, int, int>(),
-      Arg("index"), Arg("api_preference") = static_cast<int>(cv::VideoCaptureAPIs::CAP_ANY)).
+      Arg("index"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY)).
     define_constructor(Constructor<cv::VideoCapture, int, int, const std::vector<int>&>(),
       Arg("index"), Arg("api_preference"), Arg("params")).
+    define_constructor(Constructor<cv::VideoCapture, const cv::Ptr<cv::IStreamReader>&, int, const std::vector<int>&>(),
+      Arg("source"), Arg("api_preference"), Arg("params")).
     define_method<bool(cv::VideoCapture::*)(const cv::String&, int)>("open", &cv::VideoCapture::open,
-      Arg("filename"), Arg("api_preference") = static_cast<int>(cv::VideoCaptureAPIs::CAP_ANY)).
+      Arg("filename"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY)).
     define_method<bool(cv::VideoCapture::*)(const cv::String&, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
       Arg("filename"), Arg("api_preference"), Arg("params")).
     define_method<bool(cv::VideoCapture::*)(int, int)>("open", &cv::VideoCapture::open,
-      Arg("index"), Arg("api_preference") = static_cast<int>(cv::VideoCaptureAPIs::CAP_ANY)).
+      Arg("index"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY)).
     define_method<bool(cv::VideoCapture::*)(int, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
       Arg("index"), Arg("api_preference"), Arg("params")).
+    define_method<bool(cv::VideoCapture::*)(const cv::Ptr<cv::IStreamReader>&, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
+      Arg("source"), Arg("api_preference"), Arg("params")).
     define_method("opened?", &cv::VideoCapture::isOpened).
     define_method("release", &cv::VideoCapture::release).
     define_method("grab", &cv::VideoCapture::grab).
@@ -492,10 +524,12 @@ void Init_Videoio()
     define_method("get_backend_name", &cv::VideoCapture::getBackendName).
     define_method("set_exception_mode", &cv::VideoCapture::setExceptionMode,
       Arg("enable")).
-    define_method("get_exception_mode", &cv::VideoCapture::getExceptionMode).
-    define_singleton_function("wait_any?", &cv::VideoCapture::waitAny,
+    define_method("get_exception_mode?", &cv::VideoCapture::getExceptionMode).
+    define_singleton_function("wait_any", &cv::VideoCapture::waitAny,
       Arg("streams"), Arg("ready_index"), Arg("timeout_ns") = static_cast<int64>(0));
-  
+
+  rb_cCvIVideoWriter = define_class_under<cv::IVideoWriter>(rb_mCv, "IVideoWriter");
+
   rb_cCvVideoWriter = define_class_under<cv::VideoWriter>(rb_mCv, "VideoWriter").
     define_constructor(Constructor<cv::VideoWriter>()).
     define_constructor(Constructor<cv::VideoWriter, const cv::String&, int, double, cv::Size, bool>(),
@@ -526,18 +560,17 @@ void Init_Videoio()
       Arg("prop_id"), Arg("value")).
     define_method("get", &cv::VideoWriter::get,
       Arg("prop_id")).
+    define_method("get_backend_name", &cv::VideoWriter::getBackendName).
     define_singleton_function("fourcc", &cv::VideoWriter::fourcc,
-      Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4")).
-    define_method("get_backend_name", &cv::VideoWriter::getBackendName);
-  
-//  rb_cCvDefaultDeleterCvCapture = define_class_under<cv::DefaultDeleter<CvCapture>>(rb_mCv, "DefaultDeleterCvCapture").
- //   define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>()).
-  //  define_method("call", &cv::DefaultDeleter<CvCapture>::operator(),
-   //   Arg("obj"));
-  
-  //rb_cCvDefaultDeleterCvVideoWriter = define_class_under<cv::DefaultDeleter<CvVideoWriter>>(rb_mCv, "DefaultDeleterCvVideoWriter").
-  //  define_constructor(Constructor<cv::DefaultDeleter<CvVideoWriter>>()).
-//    define_method("call", &cv::DefaultDeleter<CvVideoWriter>::operator(),
-  //    Arg("obj"));
+      Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));
 
+  rb_cCvDefaultDeleterCvCapture = define_class_under<cv::DefaultDeleter<CvCapture>>(rb_mCv, "DefaultDeleterCvCapture").
+    define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>()).
+    define_method("call", &cv::DefaultDeleter<CvCapture>::operator(),
+      Arg("obj"));
+
+  rb_cCvDefaultDeleterCvVideoWriter = define_class_under<cv::DefaultDeleter<CvVideoWriter>>(rb_mCv, "DefaultDeleterCvVideoWriter").
+    define_constructor(Constructor<cv::DefaultDeleter<CvVideoWriter>>()).
+    define_method("call", &cv::DefaultDeleter<CvVideoWriter>::operator(),
+      Arg("obj"));
 }

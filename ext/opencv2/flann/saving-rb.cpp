@@ -1,5 +1,3 @@
-#include <opencv2/core/base.hpp>
-#include <opencv2/flann/defines.h>
 #include <opencv2/flann/saving.h>
 #include "saving-rb.hpp"
 

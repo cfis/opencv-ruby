@@ -5,8 +5,6 @@
 #include "ground_truth-rb.hpp"
 
 using namespace Rice;
-
-
 void Init_GroundTruth()
 {
   Module rb_mCvflann = define_module("Cvflann");

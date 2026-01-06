@@ -2,8 +2,6 @@
 #include "simd_utils.impl-rb.hpp"
 
 using namespace Rice;
-
-
 void Init_SimdUtilsImpl()
 {
 

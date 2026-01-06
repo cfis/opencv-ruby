@@ -11,13 +11,13 @@ Rice::Class rb_cCvBackgroundSubtractorMOG2;
 void Init_BackgroundSegm()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvBackgroundSubtractor = define_class_under<cv::BackgroundSubtractor, cv::Algorithm>(rb_mCv, "BackgroundSubtractor").
     define_method("apply", &cv::BackgroundSubtractor::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1)).
     define_method("get_background_image", &cv::BackgroundSubtractor::getBackgroundImage,
       Arg("background_image"));
-  
+
   rb_cCvBackgroundSubtractorMOG2 = define_class_under<cv::BackgroundSubtractorMOG2, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorMOG2").
     define_method("get_history", &cv::BackgroundSubtractorMOG2::getHistory).
     define_method("set_history", &cv::BackgroundSubtractorMOG2::setHistory,
@@ -57,10 +57,10 @@ void Init_BackgroundSegm()
       Arg("threshold")).
     define_method("apply", &cv::BackgroundSubtractorMOG2::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1));
-  
+
   rb_mCv.define_module_function("create_background_subtractor_mog2", &cv::createBackgroundSubtractorMOG2,
     Arg("history") = static_cast<int>(500), Arg("var_threshold") = static_cast<double>(16), Arg("detect_shadows") = static_cast<bool>(true));
-  
+
   rb_cCvBackgroundSubtractorKNN = define_class_under<cv::BackgroundSubtractorKNN, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorKNN").
     define_method("get_history", &cv::BackgroundSubtractorKNN::getHistory).
     define_method("set_history", &cv::BackgroundSubtractorKNN::setHistory,
@@ -83,7 +83,7 @@ void Init_BackgroundSegm()
     define_method("get_shadow_threshold", &cv::BackgroundSubtractorKNN::getShadowThreshold).
     define_method("set_shadow_threshold", &cv::BackgroundSubtractorKNN::setShadowThreshold,
       Arg("threshold"));
-  
+
   rb_mCv.define_module_function("create_background_subtractor_knn", &cv::createBackgroundSubtractorKNN,
     Arg("history") = static_cast<int>(500), Arg("dist2_threshold") = static_cast<double>(400.0), Arg("detect_shadows") = static_cast<bool>(true));
 

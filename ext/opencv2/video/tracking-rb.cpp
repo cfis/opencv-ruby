@@ -27,40 +27,40 @@ Rice::Class rb_cCvVariationalRefinement;
 void Init_Tracking()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_mCv.define_constant("OPTFLOW_USE_INITIAL_FLOW", (int)cv::OPTFLOW_USE_INITIAL_FLOW);
   rb_mCv.define_constant("OPTFLOW_LK_GET_MIN_EIGENVALS", (int)cv::OPTFLOW_LK_GET_MIN_EIGENVALS);
   rb_mCv.define_constant("OPTFLOW_FARNEBACK_GAUSSIAN", (int)cv::OPTFLOW_FARNEBACK_GAUSSIAN);
-  
+
   rb_mCv.define_module_function("cam_shift", &cv::CamShift,
     Arg("prob_image"), Arg("window"), Arg("criteria"));
-  
+
   rb_mCv.define_module_function("mean_shift", &cv::meanShift,
     Arg("prob_image"), Arg("window"), Arg("criteria"));
-  
+
   rb_mCv.define_module_function("build_optical_flow_pyramid", &cv::buildOpticalFlowPyramid,
-    Arg("img"), Arg("pyramid"), Arg("win_size"), Arg("max_level"), Arg("with_derivatives") = static_cast<bool>(true), Arg("pyr_border") = static_cast<int>(cv::BorderTypes::BORDER_REFLECT_101), Arg("deriv_border") = static_cast<int>(cv::BorderTypes::BORDER_CONSTANT), Arg("try_reuse_input_image") = static_cast<bool>(true));
-  
+    Arg("img"), Arg("pyramid"), Arg("win_size"), Arg("max_level"), Arg("with_derivatives") = static_cast<bool>(true), Arg("pyr_border") = static_cast<int>(cv::BORDER_REFLECT_101), Arg("deriv_border") = static_cast<int>(cv::BORDER_CONSTANT), Arg("try_reuse_input_image") = static_cast<bool>(true));
+
   rb_mCv.define_module_function("calc_optical_flow_pyr_lk", &cv::calcOpticalFlowPyrLK,
     Arg("prev_img"), Arg("next_img"), Arg("prev_pts"), Arg("next_pts"), Arg("status"), Arg("err"), Arg("win_size") = static_cast<cv::Size>(cv::Size(21,21)), Arg("max_level") = static_cast<int>(3), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+cv::TermCriteria::EPS, 30, 0.01)), Arg("flags") = static_cast<int>(0), Arg("min_eig_threshold") = static_cast<double>(1e-4));
-  
+
   rb_mCv.define_module_function("calc_optical_flow_farneback", &cv::calcOpticalFlowFarneback,
     Arg("prev"), Arg("next"), Arg("flow"), Arg("pyr_scale"), Arg("levels"), Arg("winsize"), Arg("iterations"), Arg("poly_n"), Arg("poly_sigma"), Arg("flags"));
-  
+
   rb_mCv.define_constant("MOTION_TRANSLATION", (int)cv::MOTION_TRANSLATION);
   rb_mCv.define_constant("MOTION_EUCLIDEAN", (int)cv::MOTION_EUCLIDEAN);
   rb_mCv.define_constant("MOTION_AFFINE", (int)cv::MOTION_AFFINE);
   rb_mCv.define_constant("MOTION_HOMOGRAPHY", (int)cv::MOTION_HOMOGRAPHY);
-  
+
   rb_mCv.define_module_function("compute_ecc", &cv::computeECC,
     Arg("template_image"), Arg("input_image"), Arg("input_mask") = static_cast<cv::InputArray>(cv::noArray()));
-  
+
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray, int)>("find_transform_ecc", &cv::findTransformECC,
     Arg("template_image"), Arg("input_image"), Arg("warp_matrix"), Arg("motion_type"), Arg("criteria"), Arg("input_mask"), Arg("gauss_filt_size"));
-  
+
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray)>("find_transform_ecc", &cv::findTransformECC,
     Arg("template_image"), Arg("input_image"), Arg("warp_matrix"), Arg("motion_type") = static_cast<int>(cv::MOTION_AFFINE), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+cv::TermCriteria::EPS, 50, 0.001)), Arg("input_mask") = static_cast<cv::InputArray>(cv::noArray()));
-  
+
   rb_cCvKalmanFilter = define_class_under<cv::KalmanFilter>(rb_mCv, "KalmanFilter").
     define_constructor(Constructor<cv::KalmanFilter>()).
     define_constructor(Constructor<cv::KalmanFilter, int, int, int, int>(),
@@ -68,7 +68,7 @@ void Init_Tracking()
     define_method("init", &cv::KalmanFilter::init,
       Arg("dynam_params"), Arg("measure_params"), Arg("control_params") = static_cast<int>(0), Arg("type") = static_cast<int>(CV_32F)).
     define_method("predict", &cv::KalmanFilter::predict,
-      Arg("control") = static_cast<const cv::Mat &>(cv::Mat())).
+      Arg("control") = static_cast<const cv::Mat&>(cv::Mat())).
     define_method("correct", &cv::KalmanFilter::correct,
       Arg("measurement")).
     define_attr("state_pre", &cv::KalmanFilter::statePre).
@@ -86,22 +86,22 @@ void Init_Tracking()
     define_attr("temp3", &cv::KalmanFilter::temp3).
     define_attr("temp4", &cv::KalmanFilter::temp4).
     define_attr("temp5", &cv::KalmanFilter::temp5);
-  
+
   rb_mCv.define_module_function("read_optical_flow", &cv::readOpticalFlow,
     Arg("path"));
-  
+
   rb_mCv.define_module_function("write_optical_flow?", &cv::writeOpticalFlow,
     Arg("path"), Arg("flow"));
-  
+
   rb_cCvDenseOpticalFlow = define_class_under<cv::DenseOpticalFlow, cv::Algorithm>(rb_mCv, "DenseOpticalFlow").
     define_method("calc", &cv::DenseOpticalFlow::calc,
       Arg("i0"), Arg("i1"), Arg("flow")).
     define_method("collect_garbage", &cv::DenseOpticalFlow::collectGarbage);
-  
+
   rb_cCvSparseOpticalFlow = define_class_under<cv::SparseOpticalFlow, cv::Algorithm>(rb_mCv, "SparseOpticalFlow").
     define_method("calc", &cv::SparseOpticalFlow::calc,
       Arg("prev_img"), Arg("next_img"), Arg("prev_pts"), Arg("next_pts"), Arg("status"), Arg("err") = static_cast<cv::OutputArray>(cv::noArray()));
-  
+
   rb_cCvFarnebackOpticalFlow = define_class_under<cv::FarnebackOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "FarnebackOpticalFlow").
     define_method("get_num_levels", &cv::FarnebackOpticalFlow::getNumLevels).
     define_method("set_num_levels", &cv::FarnebackOpticalFlow::setNumLevels,
@@ -129,7 +129,7 @@ void Init_Tracking()
       Arg("flags")).
     define_singleton_function("create", &cv::FarnebackOpticalFlow::create,
       Arg("num_levels") = static_cast<int>(5), Arg("pyr_scale") = static_cast<double>(0.5), Arg("fast_pyramids") = static_cast<bool>(false), Arg("win_size") = static_cast<int>(13), Arg("num_iters") = static_cast<int>(10), Arg("poly_n") = static_cast<int>(5), Arg("poly_sigma") = static_cast<double>(1.1), Arg("flags") = static_cast<int>(0));
-  
+
   rb_cCvVariationalRefinement = define_class_under<cv::VariationalRefinement, cv::DenseOpticalFlow>(rb_mCv, "VariationalRefinement").
     define_method("calc_uv", &cv::VariationalRefinement::calcUV,
       Arg("i0"), Arg("i1"), Arg("flow_u"), Arg("flow_v")).
@@ -159,7 +159,7 @@ void Init_Tracking()
     define_method("set_epsilon", &cv::VariationalRefinement::setEpsilon,
       Arg("val"));
 #endif
-  
+
   rb_cCvDISOpticalFlow = define_class_under<cv::DISOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "DISOpticalFlow").
     define_method("get_finest_scale", &cv::DISOpticalFlow::getFinestScale).
     define_method("set_finest_scale", &cv::DISOpticalFlow::setFinestScale,
@@ -206,7 +206,7 @@ void Init_Tracking()
     define_method("set_variational_refinement_epsilon", &cv::DISOpticalFlow::setVariationalRefinementEpsilon,
       Arg("val"));
 #endif
-  
+
   rb_cCvSparsePyrLKOpticalFlow = define_class_under<cv::SparsePyrLKOpticalFlow, cv::SparseOpticalFlow>(rb_mCv, "SparsePyrLKOpticalFlow").
     define_method("get_win_size", &cv::SparsePyrLKOpticalFlow::getWinSize).
     define_method("set_win_size", &cv::SparsePyrLKOpticalFlow::setWinSize,
@@ -225,17 +225,17 @@ void Init_Tracking()
       Arg("min_eig_threshold")).
     define_singleton_function("create", &cv::SparsePyrLKOpticalFlow::create,
       Arg("win_size") = static_cast<cv::Size>(cv::Size(21, 21)), Arg("max_level") = static_cast<int>(3), Arg("crit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+ cv::TermCriteria::EPS, 30, 0.01)), Arg("flags") = static_cast<int>(0), Arg("min_eig_threshold") = static_cast<double>(1e-4));
-  
+
   rb_cCvTracker = define_class_under<cv::Tracker>(rb_mCv, "Tracker").
     define_method("init", &cv::Tracker::init,
       Arg("image"), Arg("bounding_box")).
     define_method("update?", &cv::Tracker::update,
       Arg("image"), Arg("bounding_box"));
-  
+
   rb_cCvTrackerMIL = define_class_under<cv::TrackerMIL, cv::Tracker>(rb_mCv, "TrackerMIL").
     define_singleton_function("create", &cv::TrackerMIL::create,
       Arg("parameters") = static_cast<const cv::TrackerMIL::Params &>(cv::TrackerMIL::Params()));
-  
+
   rb_cCvTrackerMILParams = define_class_under<cv::TrackerMIL::Params>(rb_cCvTrackerMIL, "Params").
     define_constructor(Constructor<cv::TrackerMIL::Params>()).
     define_attr("sampler_init_in_radius", &cv::TrackerMIL::Params::samplerInitInRadius).
@@ -245,7 +245,7 @@ void Init_Tracking()
     define_attr("sampler_track_max_pos_num", &cv::TrackerMIL::Params::samplerTrackMaxPosNum).
     define_attr("sampler_track_max_neg_num", &cv::TrackerMIL::Params::samplerTrackMaxNegNum).
     define_attr("feature_set_num_features", &cv::TrackerMIL::Params::featureSetNumFeatures);
-  
+
   rb_cCvTrackerGOTURN = define_class_under<cv::TrackerGOTURN, cv::Tracker>(rb_mCv, "TrackerGOTURN").
     define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::TrackerGOTURN::Params&)>("create", &cv::TrackerGOTURN::create,
       Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params &>(cv::TrackerGOTURN::Params()));
@@ -260,7 +260,7 @@ void Init_Tracking()
     define_constructor(Constructor<cv::TrackerGOTURN::Params>()).
     define_attr("model_txt", &cv::TrackerGOTURN::Params::modelTxt).
     define_attr("model_bin", &cv::TrackerGOTURN::Params::modelBin);
-  
+
   rb_cCvTrackerDaSiamRPN = define_class_under<cv::TrackerDaSiamRPN, cv::Tracker>(rb_mCv, "TrackerDaSiamRPN").
     define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::TrackerDaSiamRPN::Params&)>("create", &cv::TrackerDaSiamRPN::create,
       Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params &>(cv::TrackerDaSiamRPN::Params())).
@@ -312,7 +312,7 @@ void Init_Tracking()
       Arg("model"), Arg("meanvalue") = cv::Scalar(0.485, 0.456, 0.406),
       Arg("stdvalue") = cv::Scalar(0.229, 0.224, 0.225), Arg("tracking_score_threshold") = 0.20f);
   #endif
-  
+
   rb_cCvTrackerVitParams = define_class_under<cv::TrackerVit::Params>(rb_cCvTrackerVit, "Params").
     define_constructor(Constructor<cv::TrackerVit::Params>()).
     define_attr("net", &cv::TrackerVit::Params::net).

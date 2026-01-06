@@ -9,7 +9,7 @@ Rice::Class rb_cCvStitcher;
 void Init_Stitching()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   rb_cCvStitcher = define_class_under<cv::Stitcher>(rb_mCv, "Stitcher").
     define_constructor(Constructor<cv::Stitcher>()).
     define_constant("ORIG_RESOL", cv::Stitcher::ORIG_RESOL).
@@ -95,7 +95,7 @@ void Init_Stitching()
     define_value("ERR_NEED_MORE_IMGS", cv::Stitcher::Status::ERR_NEED_MORE_IMGS).
     define_value("ERR_HOMOGRAPHY_EST_FAIL", cv::Stitcher::Status::ERR_HOMOGRAPHY_EST_FAIL).
     define_value("ERR_CAMERA_PARAMS_ADJUST_FAIL", cv::Stitcher::Status::ERR_CAMERA_PARAMS_ADJUST_FAIL);
-  
+
   Enum<cv::Stitcher::Mode> rb_cCvStitcherMode = define_enum_under<cv::Stitcher::Mode>("Mode", rb_cCvStitcher).
     define_value("PANORAMA", cv::Stitcher::Mode::PANORAMA).
     define_value("SCANS", cv::Stitcher::Mode::SCANS);

@@ -17,8 +17,8 @@ namespace Rice
 
       if (klassName.empty())
       {
-        detail::TypeMapper<Ptr_T> typeMapper;
-        klassName = typeMapper.rubyName();
+        detail::TypeDetail<Ptr_T> typedetail;
+        klassName = typedetail.rubyName();
       }
 
       Module rb_mStd = define_module("Std");
@@ -31,10 +31,6 @@ namespace Rice
       Data_Type_T result = define_class_under<cv::Ptr<T>>(rb_mCv, klassName).
         define_constructor(Constructor<cv::Ptr<T>, const cv::Ptr<T>&>(),
           Arg("o")).
-        define_constructor(Constructor<cv::Ptr<T>, const std::shared_ptr<T>&>(),
-          Arg("o")).
-        define_constructor(Constructor<cv::Ptr<T>, std::shared_ptr<T>&&>(),
-          Arg("o")).
         template define_method<void(cv::Ptr<T>::*)()>("reset", &cv::Ptr<T>::reset).
         template define_method<cv::Ptr<T>&(cv::Ptr<T>::*)(const cv::Ptr<T>&)>("assign", &cv::Ptr<T>::operator=,
           Arg("o")).
@@ -45,7 +41,7 @@ namespace Rice
           return !self;
         });
 
-      if constexpr (!std::is_void_v<T>)
+      if constexpr (detail::is_complete_v<T> && !std::is_void_v<T>)
       {
         result.
           define_constructor(Constructor<cv::Ptr<T>>()).
@@ -57,9 +53,17 @@ namespace Rice
       }
 
       // Setup delegation to forward T's methods via get (only for non-fundamental, non-void types)
-      if constexpr (!std::is_void_v<T> && !std::is_fundamental_v<T>)
+      if constexpr (detail::is_complete_v<T> && !std::is_void_v<T> && !std::is_fundamental_v<T>)
       {
-        detail::define_forwarding(result.klass(), Data_Type<T>::klass());
+        if (Type<intrinsic_type<T>>::verify())
+        {
+          detail::define_forwarding(result.klass(), Data_Type<T>::klass());
+        }
+        else
+        {
+          detail::protect(rb_warn, "%s cannot forward messages to %s because it has not yet been registered with Rice.",
+            TypeDetail<cv::Ptr<T>>().name().c_str(), TypeDetail<T>().name().c_str());
+        }
       }
 
       return result;
@@ -127,10 +131,7 @@ namespace Rice
           result = result && Type<intrinsic_type<T>>::verify();
         }
 
-        if (result)
-        {
-          define_cv_ptr<T>();
-        }
+        define_cv_ptr<T>();
 
         return result;
       }

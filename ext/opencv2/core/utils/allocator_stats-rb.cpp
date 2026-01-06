@@ -8,9 +8,9 @@ Rice::Class rb_cCvUtilsAllocatorStatisticsInterface;
 void Init_AllocatorStats()
 {
   Module rb_mCv = define_module("Cv");
-  
+
   Module rb_mCvUtils = define_module_under(rb_mCv, "Utils");
-  
+
   rb_cCvUtilsAllocatorStatisticsInterface = define_class_under<cv::utils::AllocatorStatisticsInterface>(rb_mCvUtils, "AllocatorStatisticsInterface").
     define_method("get_current_usage", &cv::utils::AllocatorStatisticsInterface::getCurrentUsage).
     define_method("get_total_usage", &cv::utils::AllocatorStatisticsInterface::getTotalUsage).

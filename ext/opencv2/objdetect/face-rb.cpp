@@ -28,7 +28,7 @@ void Init_Face()
       Arg("image"), Arg("faces")).
     define_singleton_function<cv::Ptr<cv::FaceDetectorYN>(*)(const cv::String&, const cv::String&, const cv::Size&, float, float, int, int, int)>("create", &cv::FaceDetectorYN::create,
       Arg("model"), Arg("config"), Arg("input_size"), Arg("score_threshold") = static_cast<float>(0.9f), Arg("nms_threshold") = static_cast<float>(0.3f), Arg("top_k") = static_cast<int>(5000), Arg("backend_id") = static_cast<int>(0), Arg("target_id") = static_cast<int>(0)).
-    define_singleton_function<cv::Ptr<cv::FaceDetectorYN>(*)(const cv::String&, const std::vector<unsigned char>&, const std::vector<unsigned char>&, const cv::Size&, float, float, int, int, int)>("create", &cv::FaceDetectorYN::create,
+    define_singleton_function<cv::Ptr<cv::FaceDetectorYN>(*)(const cv::String&, const std::vector<uchar>&, const std::vector<uchar>&, const cv::Size&, float, float, int, int, int)>("create", &cv::FaceDetectorYN::create,
       Arg("framework"), Arg("buffer_model"), Arg("buffer_config"), Arg("input_size"), Arg("score_threshold") = static_cast<float>(0.9f), Arg("nms_threshold") = static_cast<float>(0.3f), Arg("top_k") = static_cast<int>(5000), Arg("backend_id") = static_cast<int>(0), Arg("target_id") = static_cast<int>(0));
   
   rb_cCvFaceRecognizerSF = define_class_under<cv::FaceRecognizerSF>(rb_mCv, "FaceRecognizerSF").
@@ -39,7 +39,9 @@ void Init_Face()
     define_method("match", &cv::FaceRecognizerSF::match,
       Arg("face_feature1"), Arg("face_feature2"), Arg("dis_type") = static_cast<int>(cv::FaceRecognizerSF::FR_COSINE)).
     define_singleton_function<cv::Ptr<cv::FaceRecognizerSF>(*)(const cv::String&, const cv::String&, int, int)>("create", &cv::FaceRecognizerSF::create,
-      Arg("model"), Arg("config"), Arg("backend_id") = static_cast<int>(0), Arg("target_id") = static_cast<int>(0));
+      Arg("model"), Arg("config"), Arg("backend_id") = static_cast<int>(0), Arg("target_id") = static_cast<int>(0)).
+    define_singleton_function<cv::Ptr<cv::FaceRecognizerSF>(*)(const cv::String&, const std::vector<uchar>&, const std::vector<uchar>&, int, int)>("create", &cv::FaceRecognizerSF::create,
+      Arg("framework"), Arg("buffer_model"), Arg("buffer_config"), Arg("backend_id") = static_cast<int>(0), Arg("target_id") = static_cast<int>(0));
   
   Enum<cv::FaceRecognizerSF::DisType> rb_cCvFaceRecognizerSFDisType = define_enum_under<cv::FaceRecognizerSF::DisType>("DisType", rb_cCvFaceRecognizerSF).
     define_value("FR_COSINE", cv::FaceRecognizerSF::DisType::FR_COSINE).

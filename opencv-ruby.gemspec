@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
                          "ext/rice/*.hpp",
                          "test/*.rb"])
 
+	spec.metadata['msys2_mingw_dependencies'] = 'opencv qt6-base cmake libffi'
   # 6.0 breaks RubyMine
 	spec.add_development_dependency('minitest', '~>5.0')
 	spec.add_development_dependency('rake')

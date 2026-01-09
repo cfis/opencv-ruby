@@ -16,7 +16,7 @@ Then:
 
 ```bash
 brew install libffi opencv
-gem install opencv-ruby --preset macos-release
+gem install opencv-ruby -- --preset macos-release
 ```
 
 ### Fedora
@@ -25,14 +25,14 @@ On a Meteor Lake (Intel Core Ultra 7 165U) laptop with 64GB memory, it will take
 
 ```bash
 sudo apt-get install libffi-devel opencv
-gem install opencv-ruby --preset linux-release
+gem install opencv-ruby -- --preset linux-release
 ```
 
 ### Ubuntu/Debian
 
 ```bash
 sudo apt-get install libffi-dev libopencv-dev
-gem install opencv-ruby --preset linux-release
+gem install opencv-ruby -- --preset linux-release
 ```
 
 ### Windows (RubyInstaller + DevKit)
@@ -41,7 +41,7 @@ Most Ruby developers on Windows use the [RubyInstaller](https://rubyinstaller.or
 
 ```bash
   pacman -S mingw-w64-ucrt-x86_64-opencv mingw-w64-ucrt-x86_64-qt6-base mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-libffi
-  gem install opencv-ruby --preset mingw-release
+  gem install opencv-ruby -- --preset mingw-release
 ```
 
 You MUST install qt6-base because the OpenCV highgui module is built with it. However, it is not listed as dependency so you have to install it manually.
@@ -53,7 +53,7 @@ You can also use Visual Studio on Windows in combination with vcpkg. On a Meteor
 After installing Visual Studio and vcpkg, install the gem like this:
 
 ```bash
-gem install opencv-ruby --preset msvc-release
+gem install opencv-ruby -- --preset msvc-release
 ```
 
 Notice you don't have to install any dependencies first. This is because the build system uses vcpkg in manifest mode, which will download and build all dependencies like libffi and OpenCV. The first time you do this, it can take quite a while, up to an hour (it is a one time cost).

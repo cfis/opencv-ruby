@@ -169,8 +169,9 @@ void Init_opencv_ruby()
     Init_Dualquaternion();
     //Init_Eigen();
     Init_FastMath();
-    Init_Mat();
     Init_Matx();
+    Init_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
+    Init_Mat();
     Init_NeonUtils();
     Init_Ocl();
     Init_OclGenbase();
@@ -183,7 +184,6 @@ void Init_opencv_ruby()
     Init_Saturate();
     Init_SimdIntrinsics();
     Init_Softfloat();
-    Init_Types();
     Init_Utility();
     Init_VaIntel();
     Init_Version();

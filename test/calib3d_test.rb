@@ -294,7 +294,7 @@ class Calib3dTest < OpenCVTestCase
   # ============ Check Chessboard ============
   def test_check_chessboard
     mat = Cv::imread(FILENAME_CHESSBOARD, Cv::ImreadModes::IMREAD_GRAYSCALE)
-    result = Cv::check_chessboard?(mat.input_array, Cv::Size.new(4, 4))
+    result = Cv::check_chessboard(mat.input_array, Cv::Size.new(4, 4))
     assert(result)
   end
 
@@ -457,7 +457,7 @@ class Calib3dTest < OpenCVTestCase
     out = Cv::Mat.new
     inliers = Cv::Mat.new
 
-    retval = Cv::estimate_affine3_d(src_points.input_array, dst_points.input_array,
+    retval = Cv::estimate_affine_3d(src_points.input_array, dst_points.input_array,
                                      out.output_array, inliers.output_array)
 
     assert(retval > 0)

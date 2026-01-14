@@ -1,14 +1,16 @@
 if RUBY_PLATFORM =~ /mingw|mswin/
-  lib_path = File.join(__dir__)
-  #$LOAD_PATH.unshift(ext_path)
-  ENV["PATH"] = "#{lib_path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
-
   major, minor, _ = RUBY_VERSION.split(".")
-  begin
+  lib_path = File.join(__dir__)
+
+  #$LOAD_PATH.unshift(ext_path)
+  path = File.join(lib_path, "#{major}.#{minor}")
+  ENV["PATH"] = "#{path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
+
+  #begin
     require "#{major}.#{minor}/opencv_ruby.so"
-  rescue LoadError
-    require "opencv_ruby"
-  end
+    #  rescue LoadError => e
+    #require "opencv_ruby"
+    #end
 else
   require "opencv_ruby"
 end

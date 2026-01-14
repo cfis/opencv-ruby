@@ -427,7 +427,7 @@ class PhotoTest < OpenCVTestCase
     center = Cv::Point.new(50, 50)
 
     blend = Cv::Mat.new
-    Cv.seamless_clone(src.input_array, dst_img.input_array, mask.input_array, center, blend.output_array, Cv::NORMAL_CLONE)
+    Cv.seamless_clone(src.input_array, dst_img.input_array, mask.input_array, center, blend.output_array, Cv::SeamlessCloneFlags::NORMAL_CLONE)
 
     assert_equal(dst_img.rows, blend.rows)
     assert_equal(dst_img.cols, blend.cols)
@@ -440,7 +440,7 @@ class PhotoTest < OpenCVTestCase
     center = Cv::Point.new(50, 50)
 
     blend = Cv::Mat.new
-    Cv.seamless_clone(src.input_array, dst_img.input_array, mask.input_array, center, blend.output_array, Cv::MIXED_CLONE)
+    Cv.seamless_clone(src.input_array, dst_img.input_array, mask.input_array, center, blend.output_array, Cv::SeamlessCloneFlags::MIXED_CLONE)
 
     refute(blend.empty?)
   end

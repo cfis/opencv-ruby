@@ -207,20 +207,20 @@ class ImageCodesTest < OpenCVTestCase
   # ============ have_image_reader? / have_image_writer? ============
   def test_have_image_reader
     image_path = self.sample_path("starry_night.jpg")
-    assert(Cv::have_image_reader?(image_path))
+    assert(Cv::have_image_reader(image_path))
   end
 
   def test_have_image_writer_jpg
     Dir.mktmpdir do |dir|
       path = File.join(dir, "test.jpg")
-      assert(Cv::have_image_writer?(path))
+      assert(Cv::have_image_writer(path))
     end
   end
 
   def test_have_image_writer_png
     Dir.mktmpdir do |dir|
       path = File.join(dir, "test.png")
-      assert(Cv::have_image_writer?(path))
+      assert(Cv::have_image_writer(path))
     end
   end
 
@@ -296,6 +296,176 @@ class ImageCodesTest < OpenCVTestCase
     grayscale_path = sample_path("starry_night_grayscale.jpg")
     mat = Cv::imread(grayscale_path, Cv::ImreadModes::IMREAD_COLOR)
     assert_equal(3, mat.channels)
+    refute(mat.empty?)
+  end
+
+  # ============ ImageCollection tests ============
+  def test_image_collection_create
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+    refute_nil(collection)
+  end
+
+  def test_image_collection_multipage
+    Dir.mktmpdir do |dir|
+      # Create 3 different colored images
+      images = Std::Vector≺cv꞉꞉Mat≻.new
+      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(255, 0, 0))    # Blue
+      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 255, 0))    # Green
+      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 0, 255))    # Red
+
+      # Write as multi-page TIFF
+      multipage_path = File.join(dir, "multipage.tiff")
+      result = Cv::imwritemulti(multipage_path, images.input_array)
+      assert(result, "Failed to write multi-page TIFF")
+
+      # Read with ImageCollection
+      collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
+      assert_equal(3, collection.size)
+
+      # Iterate and verify each page
+      colors = []
+      collection.each do |mat|
+        refute(mat.empty?)
+        assert_equal(100, mat.rows)
+        assert_equal(100, mat.cols)
+        # Get center pixel color
+        pixel = mat[50, 50]
+        colors << [pixel[0], pixel[1], pixel[2]]
+      end
+
+      assert_equal(3, colors.size)
+      # Verify colors (BGR order)
+      assert_equal([255, 0, 0], colors[0])  # Blue
+      assert_equal([0, 255, 0], colors[1])  # Green
+      assert_equal([0, 0, 255], colors[2])  # Red
+    end
+  end
+
+  def test_image_collection_multipage_enumerable
+    Dir.mktmpdir do |dir|
+      # Create 4 images of different sizes
+      images = Std::Vector≺cv꞉꞉Mat≻.new
+      images << Cv::Mat.new(50, 50, CV_8UC3, Cv::Scalar.new(100, 100, 100))
+      images << Cv::Mat.new(75, 75, CV_8UC3, Cv::Scalar.new(150, 150, 150))
+      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(200, 200, 200))
+      images << Cv::Mat.new(125, 125, CV_8UC3, Cv::Scalar.new(250, 250, 250))
+
+      multipage_path = File.join(dir, "multipage_sizes.tiff")
+      Cv::imwritemulti(multipage_path, images.input_array)
+
+      collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
+
+      # Test Enumerable methods
+      sizes = collection.map { |mat| mat.rows }
+      assert_equal([50, 75, 100, 125], sizes)
+
+      # Test count
+      assert_equal(4, collection.count)
+
+      # Test first/last via to_a
+      all_mats = collection.to_a
+      assert_equal(50, all_mats.first.rows)
+      assert_equal(125, all_mats.last.rows)
+    end
+  end
+
+  def test_image_collection_size
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+    # Single image file should have size 1
+    assert_equal(1, collection.size)
+  end
+
+  def test_image_collection_at
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    mat = collection.at(0)
+    refute_nil(mat)
+    refute(mat.empty?)
+    assert_equal(752, mat.cols)
+    assert_equal(600, mat.rows)
+    assert_equal(3, mat.channels)
+  end
+
+  def test_image_collection_bracket_operator
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    mat = collection[0]
+    refute_nil(mat)
+    refute(mat.empty?)
+    assert_equal(752, mat.cols)
+    assert_equal(600, mat.rows)
+  end
+
+  def test_image_collection_each_iterator
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    count = 0
+    images = []
+
+    collection.each do |mat|
+      count += 1
+      images << mat
+    end
+
+    assert_equal(1, count)
+    assert_equal(1, images.size)
+
+    mat = images.first
+    refute(mat.empty?)
+    assert_equal(752, mat.cols)
+    assert_equal(600, mat.rows)
+  end
+
+  def test_image_collection_enumerable
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    # Test Enumerable methods work via each
+    mats = collection.to_a
+    assert_equal(1, mats.size)
+    refute(mats.first.empty?)
+
+    # Test map
+    sizes = collection.map { |mat| [mat.rows, mat.cols] }
+    assert_equal([[600, 752]], sizes)
+  end
+
+  def test_image_collection_grayscale
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_GRAYSCALE)
+
+    collection.each do |mat|
+      assert_equal(1, mat.channels)
+      refute(mat.empty?)
+    end
+  end
+
+  def test_image_collection_release_cache
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    # Access the image first
+    mat = collection[0]
+    refute(mat.empty?)
+
+    # Release cache should not raise
+    collection.release_cache(0)
+  end
+
+  def test_image_collection_init
+    image_path = self.sample_path("starry_night.jpg")
+    collection = Cv::ImageCollection.new
+
+    # Initialize with a file
+    collection.init(image_path, Cv::ImreadModes::IMREAD_COLOR)
+
+    assert_equal(1, collection.size)
+    mat = collection[0]
     refute(mat.empty?)
   end
 end

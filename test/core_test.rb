@@ -741,7 +741,7 @@ class CoreTest < OpenCVTestCase
     b[1, 0] = 11.0
 
     x = Cv::Mat.new
-    result = Cv.solve?(a.input_array, b.input_array, x.output_array)
+    result = Cv.solve(a.input_array, b.input_array, x.output_array)
 
     assert(result)
     assert_in_delta(1.0, x[0, 0], 0.001)

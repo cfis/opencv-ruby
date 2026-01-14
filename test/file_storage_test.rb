@@ -44,12 +44,12 @@ class FileStorageTest < OpenCVTestCase
     assert_kind_of(Cv::FileNode, frame_count_node)
     assert_equal(Cv::FileNode::INT, frame_count_node.type)
     refute(frame_count_node.empty?)
-    frame_count = frame_count_node.to_int
+    frame_count = frame_count_node.to_i
     assert_equal(5, frame_count)
 
     date_node = fs["calibrationDate"]
     assert_equal(Cv::FileNode::STRING, date_node.type)
-    date = date_node.to_string
+    date = date_node.to_s
     assert_equal("2024-01-27T00:00:00+00:00", date)
 
     # Mat cameraMatrix, distCoeffs;
@@ -60,15 +60,15 @@ class FileStorageTest < OpenCVTestCase
 
     rows_node = camera_matrix_node["rows"]
     assert_equal(Cv::FileNode::INT, rows_node.type)
-    assert_equal(3, rows_node.to_int)
+    assert_equal(3, rows_node.to_i)
 
     cols_node = camera_matrix_node["cols"]
     assert_equal(Cv::FileNode::INT, cols_node.type)
-    assert_equal(3, cols_node.to_int)
+    assert_equal(3, cols_node.to_i)
 
     dt_node = camera_matrix_node["dt"]
     assert_equal(Cv::FileNode::STRING, dt_node.type)
-    assert_equal("d", dt_node.to_string)
+    assert_equal("d", dt_node.to_s)
 
     data_node = camera_matrix_node["data"]
     assert_equal(Cv::FileNode::SEQ, data_node.type)
@@ -77,7 +77,7 @@ class FileStorageTest < OpenCVTestCase
 
     element_node = data_node[0]
     assert_equal(Cv::FileNode::FLOAT, element_node.type)
-    element = element_node.to_double
+    element = element_node.to_f32
     assert_in_delta(1000, element)
 
     dist_coeffs_node = fs["distCoeffs"]
@@ -102,7 +102,7 @@ class FileStorageTest < OpenCVTestCase
 
       lbp_node = feature_node["lbp"]
       assert_equal(Cv::FileNode::SEQ, lbp_node.type)
-      values = lbp_node.map(&:to_int)
+      values = lbp_node.map(&:to_i)
       assert(values.all? {|value| value == 0 || value == 1})
     end
   end

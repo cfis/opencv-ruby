@@ -207,4 +207,36 @@ class DnnNetTest < OpenCVTestCase
     net.set_input(blob.input_array, "", 1.0 / 255.0, Cv::Scalar.new(0.5))
     # No assertion - just verify it doesn't raise
   end
+
+  # Test incomplete type support - Impl is forward-declared only (pimpl pattern)
+  def test_get_impl
+    net = Cv::Dnn::Net.new
+    impl = net.get_impl
+
+    # Impl is an opaque pointer to the internal implementation
+    refute_nil(impl)
+    assert_kind_of(Cv::Dnn::Net::Impl, impl)
+
+    # Multiple calls should return the same impl (Rice instance caching)
+    impl2 = net.get_impl
+
+    # This doesn't work without the instance manager enabled
+    # assert_same(impl, impl2)
+  end
+
+  # Test incomplete reference type support - Impl& returned
+  def test_get_impl_ref
+    net = Cv::Dnn::Net.new
+    impl_ref = net.get_impl_ref
+
+    # Impl& is a reference to the internal implementation
+    refute_nil(impl_ref)
+    assert_kind_of(Cv::Dnn::Net::Impl, impl_ref)
+
+    # Reference and pointer should refer to the same underlying impl
+    impl_ptr = net.get_impl
+    
+    # This doesn't work without the instance manager enabled
+    #assert_same(impl_ref, impl_ptr)
+  end
 end

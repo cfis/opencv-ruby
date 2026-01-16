@@ -3,10 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class quatd;
-Rice::Class quatf;
-Rice::Class rb_cCvQuatEnum;
-
 template<typename Data_Type_T, typename _Tp>
 inline void Quat_builder(Data_Type_T& klass)
 {
@@ -41,7 +37,7 @@ inline void Quat_builder(Data_Type_T& klass)
     define_method("sin", &cv::Quat<_Tp>::sin).
     define_method("cos", &cv::Quat<_Tp>::cos).
     define_method("tan", &cv::Quat<_Tp>::tan).
-    define_method("normal?", &cv::Quat<_Tp>::isNormal,
+    define_method("is_normal", &cv::Quat<_Tp>::isNormal,
       Arg("eps") = static_cast<_Tp>(cv::Quat<_Tp>::CV_QUAT_EPS)).
     define_method("assert_normal", &cv::Quat<_Tp>::assertNormal,
       Arg("eps") = static_cast<_Tp>(cv::Quat<_Tp>::CV_QUAT_EPS)).
@@ -124,7 +120,8 @@ inline void Quat_builder(Data_Type_T& klass)
     define_singleton_function("spline", &cv::Quat<_Tp>::spline,
       Arg("q0"), Arg("q1"), Arg("q2"), Arg("q3"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT));
 };
-void Init_Quaternion()
+
+void Init_Core_Quaternion()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -132,7 +129,7 @@ void Init_Quaternion()
     define_value("QUAT_ASSUME_NOT_UNIT", cv::QuatAssumeType::QUAT_ASSUME_NOT_UNIT).
     define_value("QUAT_ASSUME_UNIT", cv::QuatAssumeType::QUAT_ASSUME_UNIT);
 
-  rb_cCvQuatEnum = define_class_under<cv::QuatEnum>(rb_mCv, "QuatEnum").
+  Rice::Data_Type<cv::QuatEnum> rb_cCvQuatEnum = define_class_under<cv::QuatEnum>(rb_mCv, "QuatEnum").
     define_constructor(Constructor<cv::QuatEnum>());
 
   Enum<cv::QuatEnum::EulerAnglesType> rb_cCvQuatEnumEulerAnglesType = define_enum_under<cv::QuatEnum::EulerAnglesType>("EulerAnglesType", rb_cCvQuatEnum).
@@ -162,10 +159,9 @@ void Init_Quaternion()
     define_value("EXT_ZYZ", cv::QuatEnum::EulerAnglesType::EXT_ZYZ).
     define_value("EULER_ANGLES_MAX_VALUE", cv::QuatEnum::EulerAnglesType::EULER_ANGLES_MAX_VALUE);
 
-  quatd = define_class_under<cv::Quat<double>>(rb_mCv, "Quatd").
+  Rice::Data_Type<cv::Quat<double>> quatd = define_class_under<cv::Quat<double>>(rb_mCv, "QuatDouble").
     define(&Quat_builder<Data_Type<cv::Quat<double>>, double>);
 
-  quatf = define_class_under<cv::Quat<float>>(rb_mCv, "Quatf").
+  Rice::Data_Type<cv::Quat<float>> quatf = define_class_under<cv::Quat<float>>(rb_mCv, "QuatFloat").
     define(&Quat_builder<Data_Type<cv::Quat<float>>, float>);
-
 }

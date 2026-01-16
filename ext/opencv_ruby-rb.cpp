@@ -142,127 +142,127 @@ void Init_opencv_ruby()
   return Rice::detail::cpp_protect([]
   {
     // HAL
-    Init_Interface();
+    Init_Core_Hal_Interface();
 
     // Core
     Init_Core();
 
     // Core Detail
     //Init_AsyncPromise();
-    Init_DispatchHelperImpl();
-    Init_ExceptionPtr();
+    Init_Core_Detail_DispatchHelperImpl();
+    Init_Core_Detail_ExceptionPtr();
 
     // Core
-    Init_Affine();
-    Init_Async();
-    Init_Base();
-    Init_BindingsUtils();
-    Init_Bufferpool();
-    Init_Check();
-    Init_Cuda();
-    //Init_CudaStreamAccessor();
-    //Init_CudaTypes();
-    Init_Cvdef();
-    Init_Cvstd();
-    Init_CvstdWrapper();
-    //Init_Directx();
-    Init_Dualquaternion();
-    //Init_Eigen();
-    Init_FastMath();
-    Init_Matx();
-    Init_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
-    Init_Mat();
-    Init_NeonUtils();
-    Init_Ocl();
-    Init_OclGenbase();
-    Init_Opengl();
-    Init_Operations();
-    Init_Optim();
-    Init_Ovx();
-    Init_Persistence();
-    Init_Quaternion();
-    Init_Saturate();
-    Init_SimdIntrinsics();
-    Init_Softfloat();
-    Init_Utility();
-    Init_VaIntel();
-    Init_Version();
-    Init_VsxUtils();
+    Init_Core_Affine();
+    Init_Core_Async();
+    Init_Core_Base();
+    Init_Core_BindingsUtils();
+    Init_Core_Bufferpool();
+    Init_Core_Check();
+    Init_Core_Cuda();
+    //Init_Core_CudaStreamAccessor();
+    //Init_Core_CudaTypes();
+    Init_Core_Cvdef();
+    Init_Core_Cvstd();
+    Init_Core_CvstdWrapper();
+    //Init_Core_Directx();
+    Init_Core_Dualquaternion();
+    //Init_Core_Eigen();
+    Init_Core_FastMath();
+    Init_Core_Matx();
+    Init_Core_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
+    Init_Core_Mat();
+    Init_Core_NeonUtils();
+    Init_Core_Ocl();
+    Init_Core_OclGenbase();
+    Init_Core_Opengl();
+    Init_Core_Operations();
+    Init_Core_Optim();
+    Init_Core_Ovx();
+    Init_Core_Persistence();
+    Init_Core_Quaternion();
+    Init_Core_Saturate();
+    Init_Core_SimdIntrinsics();
+    Init_Core_Softfloat();
+    Init_Core_Utility();
+    Init_Core_VaIntel();
+    Init_Core_Version();
+    Init_Core_VsxUtils();
 
     // DNN
-    Init_DnnVersion();
-    Init_Dict();
-    Init_Dnn();
-    Init_Layer();
-    Init_LayerDetails();
-    Init_AllLayers();
-    Init_ShapeUtils();
+    Init_Dnn_Version();
+    Init_Dnn_Dict();
+    Init_Dnn_Dnn();
+    Init_Dnn_Layer();
+    Init_Dnn_LayerDetails();
+    Init_Dnn_AllLayers();
+    Init_Dnn_ShapeUtils();
 
     // Flann
-    Init_Allocator();
-    Init_AllIndices();
-    Init_Any();
-    Init_AutotunedIndex();
-    Init_CompositeIndex();
-    Init_Config();
-    Init_Defines();
-    Init_Dist();
-    Init_DynamicBitset();
-    Init_FlannBase();
+    Init_Flann_Allocator();
+    Init_Flann_AllIndices();
+    Init_Flann_Any();
+    Init_Flann_AutotunedIndex();
+    Init_Flann_CompositeIndex();
+    Init_Flann_Config();
+    Init_Flann_Defines();
+    Init_Flann_Dist();
+    Init_Flann_DynamicBitset();
+    Init_Flann_FlannBase();
     Init_Flann_Logger();
-    Init_General();
-    Init_GroundTruth();
-    // Init_Hdf5();
-    Init_Heap();
-    Init_HierarchicalClusteringIndex();
-    Init_IndexTesting();
-    Init_KdtreeIndex();
-    Init_KdtreeSingleIndex();
-    Init_KmeansIndex();
-    Init_LinearIndex();
-    Init_LshIndex();
-    Init_Matrix();
-    Init_Miniflann();
-    Init_NnIndex();
-    Init_ObjectFactory();
-    Init_Params();
-    Init_Random();
-    Init_ResultSet();
-    Init_Sampling();
-    Init_Saving();
-    Init_SimplexDownhill();
-    Init_Timer();
+    Init_Flann_General();
+    Init_Flann_GroundTruth();
+    // Init_Flann_Hdf5();
+    Init_Flann_Heap();
+    Init_Flann_HierarchicalClusteringIndex();
+    Init_Flann_IndexTesting();
+    Init_Flann_KdtreeIndex();
+    Init_Flann_KdtreeSingleIndex();
+    Init_Flann_KmeansIndex();
+    Init_Flann_LinearIndex();
+    Init_Flann_LshIndex();
+    Init_Flann_Matrix();
+    Init_Flann_Miniflann();
+    Init_Flann_NnIndex();
+    Init_Flann_ObjectFactory();
+    Init_Flann_Params();
+    Init_Flann_Random();
+    Init_Flann_ResultSet();
+    Init_Flann_Sampling();
+    Init_Flann_Saving();
+    Init_Flann_SimplexDownhill();
+    Init_Flann_Timer();
 
 #if RUBY_CV_VERSION >= 408
     // Object Detection
-    Init_ArucoBoard();
-    Init_ArucoDetector();
-    Init_ArucoDictionary();
-    Init_GraphicalCodeDetector();
-    Init_Barcode();
-    Init_CharucoDetector();
-    Init_DetectionBasedTracker();
-    Init_Face();
+    Init_Objdetect_ArucoBoard();
+    Init_Objdetect_ArucoDetector();
+    Init_Objdetect_ArucoDictionary();
+    Init_Objdetect_GraphicalCodeDetector();
+    Init_Objdetect_Barcode();
+    Init_Objdetect_CharucoDetector();
+    Init_Objdetect_DetectionBasedTracker();
+    Init_Objdetect_Face();
 #endif
 
     // Stitching
-    Init_Autocalib();
-    Init_Blenders();
-    Init_Camera();
-    Init_ExposureCompensate();
-    Init_Matchers();
-    Init_MotionEstimators();
-    Init_SeamFinders();
-    Init_Timelapsers();
-    Init_Util();
-    Init_Detail_Warpers();
-    Init_Warpers();
+    Init_Stitching_Detail_Autocalib();
+    Init_Stitching_Detail_Blenders();
+    Init_Stitching_Detail_Camera();
+    Init_Stitching_Detail_ExposureCompensate();
+    Init_Stitching_Detail_Matchers();
+    Init_Stitching_Detail_MotionEstimators();
+    Init_Stitching_Detail_SeamFinders();
+    Init_Stitching_Detail_Timelapsers();
+    Init_Stitching_Detail_Util();
+    Init_Stitching_Detail_Warpers();
+    Init_Stitching_Warpers();
 
     // Video
-    Init_TrackingDetail();
-    Init_BackgroundSegm();
-    Init_Tracking();
-    Init_Video();
+    Init_Video_Detail_TrackingDetail();
+    Init_Video_BackgroundSegm();
+    Init_Video_Tracking();
+    Init_Video_Video();
 
     // Top level
     Init_Calib3d();

@@ -1,12 +1,9 @@
 #include <opencv2/core/cvdef.h>
-#include "../../opencv_ruby_version.hpp" // Manual
 #include "cvdef-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvHfloat;
-
-void Init_Cvdef()
+void Init_Core_Cvdef()
 {
   Class(rb_cObject).define_constant("CV_ENABLE_UNROLLED", CV_ENABLE_UNROLLED);
 
@@ -164,11 +161,22 @@ void Init_Cvdef()
     define_value("CPU_AVX_5124VNNIW", CpuFeatures::CPU_AVX_5124VNNIW).
     define_value("CPU_AVX_5124FMAPS", CpuFeatures::CPU_AVX_5124FMAPS).
     define_value("CPU_NEON", CpuFeatures::CPU_NEON).
+#if RUBY_CV_VERSION >= 407
+    define_value("CPU_NEON_DOTPROD", CpuFeatures::CPU_NEON_DOTPROD).
+#endif
+#if RUBY_CV_VERSION >= 409
+    define_value("CPU_NEON_FP16", CpuFeatures::CPU_NEON_FP16).
+    define_value("CPU_NEON_BF16", CpuFeatures::CPU_NEON_BF16).
+#endif
     define_value("CPU_MSA", CpuFeatures::CPU_MSA).
     define_value("CPU_RISCVV", CpuFeatures::CPU_RISCVV).
     define_value("CPU_VSX", CpuFeatures::CPU_VSX).
     define_value("CPU_VSX3", CpuFeatures::CPU_VSX3).
     define_value("CPU_RVV", CpuFeatures::CPU_RVV).
+#if RUBY_CV_VERSION >= 409
+    define_value("CPU_LSX", CpuFeatures::CPU_LSX).
+    define_value("CPU_LASX", CpuFeatures::CPU_LASX).
+#endif  
     define_value("CPU_AVX512_SKX", CpuFeatures::CPU_AVX512_SKX).
     define_value("CPU_AVX512_COMMON", CpuFeatures::CPU_AVX512_COMMON).
     define_value("CPU_AVX512_KNL", CpuFeatures::CPU_AVX512_KNL).
@@ -177,19 +185,6 @@ void Init_Cvdef()
     define_value("CPU_AVX512_CLX", CpuFeatures::CPU_AVX512_CLX).
     define_value("CPU_AVX512_ICL", CpuFeatures::CPU_AVX512_ICL).
     define_value("CPU_MAX_FEATURE", CpuFeatures::CPU_MAX_FEATURE);
-
-#if RUBY_CV_VERSION >= 407
-  rb_cCpuFeatures.
-    define_value("CPU_NEON_DOTPROD", CpuFeatures::CPU_NEON_DOTPROD);
-#endif
-
-#if RUBY_CV_VERSION >= 409
-  rb_cCpuFeatures.
-    define_value("CPU_NEON_FP16", CpuFeatures::CPU_NEON_FP16).
-    define_value("CPU_NEON_BF16", CpuFeatures::CPU_NEON_BF16).
-    define_value("CPU_LSX", CpuFeatures::CPU_LSX).
-    define_value("CPU_LASX", CpuFeatures::CPU_LASX);
-#endif
 
   Class cv16suf = define_class<Cv16suf>("Cv16suf").
     define_attr("i", &Cv16suf::i).
@@ -207,12 +202,12 @@ void Init_Cvdef()
 
   Module rb_mCv = define_module("Cv");
 
-#if RUBY_CV_VERSION >= 410  
-  rb_cCvHfloat = define_class_under<cv::hfloat>(rb_mCv, "Hfloat").
+#if RUBY_CV_VERSION >= 410
+  Rice::Data_Type<cv::hfloat> rb_cCvHfloat = define_class_under<cv::hfloat>(rb_mCv, "Hfloat").
     define_constructor(Constructor<cv::hfloat>()).
     define_constructor(Constructor<cv::hfloat, float>(),
       Arg("x")).
-    define_method("to_f", [](const cv::hfloat& self) -> float
+    define_method("to_f32", [](const cv::hfloat& self) -> float
     {
       return self;
     });
@@ -223,5 +218,4 @@ void Init_Cvdef()
 
   define_global_function("cv_fourcc", &CV_FOURCC,
     Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));
-
 }

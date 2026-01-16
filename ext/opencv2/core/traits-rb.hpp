@@ -1,10 +1,9 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../rice_include.hpp"
 
 #include <opencv2/core/traits.hpp>
 #include "hal/interface-rb.hpp"
 
-// From OpenCV5. See https://github.com/opencv/opencv/pull/23865/. Just a hack for defining cv::Vec<int64, 2>
+// Manual. From OpenCV5. See https://github.com/opencv/opencv/pull/23865/. Just a hack for defining cv::Vec<int64, 2>
 template<>
 class cv::DataType<int64_t>
 {
@@ -22,4 +21,4 @@ public:
   };
 };
 
-void Init_Traits();
+void Init_Core_Traits();

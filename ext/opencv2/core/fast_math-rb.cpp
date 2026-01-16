@@ -2,7 +2,8 @@
 #include "fast_math-rb.hpp"
 
 using namespace Rice;
-void Init_FastMath()
+
+void Init_Core_FastMath()
 {
 #ifdef OPENCV_USE_FASTMATH_BUILTINS
   Class(rb_cObject).define_constant("OPENCV_USE_FASTMATH_BUILTINS", OPENCV_USE_FASTMATH_BUILTINS);
@@ -46,5 +47,4 @@ void Init_FastMath()
 
   define_global_function<int(*)(float)>("cv_is_inf", &cvIsInf,
     Arg("value"));
-
 }

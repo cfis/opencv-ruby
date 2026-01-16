@@ -4,16 +4,13 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvSoftdouble;
-Rice::Class rb_cCvSoftfloat;
-
-void Init_Softfloat()
+void Init_Core_Softfloat()
 {
   Class(rb_cObject).define_constant("Softfloat_h", softfloat_h);
 
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvSoftfloat = define_class_under<cv::softfloat>(rb_mCv, "Softfloat").
+  Rice::Data_Type<cv::softfloat> rb_cCvSoftfloat = define_class_under<cv::softfloat>(rb_mCv, "Softfloat").
     define_constructor(Constructor<cv::softfloat>()).
     define_constructor(Constructor<cv::softfloat, const cv::softfloat&>(),
       Arg("c")).
@@ -82,6 +79,7 @@ void Init_Softfloat()
     define_method("get_frac", &cv::softfloat::getFrac).
     define_method("set_frac", &cv::softfloat::setFrac,
       Arg("s")).
+    define_attr("v", &cv::softfloat::v).
     define_singleton_function("from_raw", &cv::softfloat::fromRaw,
       Arg("a")).
     define_singleton_function("zero", &cv::softfloat::zero).
@@ -93,7 +91,7 @@ void Init_Softfloat()
     define_singleton_function("max", &cv::softfloat::max).
     define_singleton_function("pi", &cv::softfloat::pi);
 
-  rb_cCvSoftdouble = define_class_under<cv::softdouble>(rb_mCv, "Softdouble").
+  Rice::Data_Type<cv::softdouble> rb_cCvSoftdouble = define_class_under<cv::softdouble>(rb_mCv, "Softdouble").
     define_constructor(Constructor<cv::softdouble>()).
     define_constructor(Constructor<cv::softdouble, const cv::softdouble&>(),
       Arg("c")).
@@ -162,6 +160,7 @@ void Init_Softfloat()
     define_method("get_frac", &cv::softdouble::getFrac).
     define_method("set_frac", &cv::softdouble::setFrac,
       Arg("s")).
+    define_attr("v", &cv::softdouble::v).
     define_singleton_function("from_raw", &cv::softdouble::fromRaw,
       Arg("a")).
     define_singleton_function("zero", &cv::softdouble::zero).
@@ -304,5 +303,4 @@ void Init_Softfloat()
 
   rb_mCv.define_module_function("cos", &cv::cos,
     Arg("a"));
-
 }

@@ -3,9 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cAffine3d;
-Rice::Class rb_cAffine3f;
-
 template<typename Data_Type_T, typename T>
 inline void Affine3_builder(Data_Type_T& klass)
 {
@@ -47,35 +44,36 @@ inline void Affine3_builder(Data_Type_T& klass)
     define_attr("matrix", &cv::Affine3<T>::matrix).
     define_singleton_function("identity", &cv::Affine3<T>::Identity);
 };
-void Init_Affine()
+
+void Init_Core_Affine()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3f").
+  Rice::Data_Type<cv::Affine3<float>> rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3Float").
     define(&Affine3_builder<Data_Type<cv::Affine3<float>>, float>);
 
-  rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3d").
+  Rice::Data_Type<cv::Affine3<double>> rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3Double").
     define(&Affine3_builder<Data_Type<cv::Affine3<double>>, double>);
 
-  rb_cAffine3f.define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
-  {
-    return self * other;
-  });
-
-  rb_cAffine3d.define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
-  {
-    return self * other;
-  });
-
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
-  rb_cAffine3f.define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
+
+  rb_cAffine3f.
+    define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
+  {
+    return self * other;
+  }).
+    define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
   {
     return self * other;
   });
-
-  rb_cAffine3d.define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
+  
+  rb_cAffine3d.
+    define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
+  {
+    return self * other;
+  }).
+    define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
   {
     return self * other;
   });
-
 }

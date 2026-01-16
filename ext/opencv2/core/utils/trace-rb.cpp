@@ -1,14 +1,10 @@
-#include <opencv2/core/base.hpp>
+#include <opencv2/core/base.hpp> // Manual
 #include <opencv2/core/utils/trace.hpp>
 #include "trace-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvUtilsTraceDetailsRegion;
-Rice::Class rb_cCvUtilsTraceDetailsRegionLocationStaticStorage;
-Rice::Class rb_cCvUtilsTraceDetailsTraceArg;
-
-void Init_Trace()
+void Init_Core_Utils_Trace()
 {
   Class(rb_cObject).define_constant("__OPENCV_TRACE", __OPENCV_TRACE);
 
@@ -20,15 +16,23 @@ void Init_Trace()
 
   Module rb_mCvUtilsTraceDetails = define_module_under(rb_mCvUtilsTrace, "Details");
 
-  rb_cCvUtilsTraceDetailsRegion = define_class_under<cv::utils::trace::details::Region>(rb_mCvUtilsTraceDetails, "Region").
+  Rice::Data_Type<cv::utils::trace::details::Region> rb_cCvUtilsTraceDetailsRegion = define_class_under<cv::utils::trace::details::Region>(rb_mCvUtilsTraceDetails, "Region");
+
+  Rice::Data_Type<cv::utils::trace::details::Region::LocationExtraData> rb_cCvUtilsTraceDetailsRegionLocationExtraData = define_class_under<cv::utils::trace::details::Region::LocationExtraData>(rb_cCvUtilsTraceDetailsRegion, "LocationExtraData");
+
+  Rice::Data_Type<cv::utils::trace::details::Region::Impl> rb_cCvUtilsTraceDetailsRegionImpl = define_class_under<cv::utils::trace::details::Region::Impl>(rb_cCvUtilsTraceDetailsRegion, "Impl");
+
+  rb_cCvUtilsTraceDetailsRegion.
     define_constructor(Constructor<cv::utils::trace::details::Region, const cv::utils::trace::details::Region::LocationStaticStorage&>(),
       Arg("location")).
+    define_attr("p_impl", &cv::utils::trace::details::Region::pImpl).
     define_attr("impl_flags", &cv::utils::trace::details::Region::implFlags).
     define_method("active?", &cv::utils::trace::details::Region::isActive).
     define_method("destroy", &cv::utils::trace::details::Region::destroy);
 
-  rb_cCvUtilsTraceDetailsRegionLocationStaticStorage = define_class_under<cv::utils::trace::details::Region::LocationStaticStorage>(rb_cCvUtilsTraceDetailsRegion, "LocationStaticStorage").
+  Rice::Data_Type<cv::utils::trace::details::Region::LocationStaticStorage> rb_cCvUtilsTraceDetailsRegionLocationStaticStorage = define_class_under<cv::utils::trace::details::Region::LocationStaticStorage>(rb_cCvUtilsTraceDetailsRegion, "LocationStaticStorage").
     define_constructor(Constructor<cv::utils::trace::details::Region::LocationStaticStorage>()).
+    define_attr("pp_extra", &cv::utils::trace::details::Region::LocationStaticStorage::ppExtra).
     define_attr("name", &cv::utils::trace::details::Region::LocationStaticStorage::name).
     define_attr("filename", &cv::utils::trace::details::Region::LocationStaticStorage::filename).
     define_attr("line", &cv::utils::trace::details::Region::LocationStaticStorage::line).
@@ -46,10 +50,16 @@ void Init_Trace()
     define_value("REGION_FLAG_REGION_NEXT", cv::utils::trace::details::RegionLocationFlag::REGION_FLAG_REGION_NEXT).
     define_value("ENUM_REGION_FLAG_FORCE_INT", cv::utils::trace::details::RegionLocationFlag::ENUM_REGION_FLAG_FORCE_INT);
 
-  rb_cCvUtilsTraceDetailsTraceArg = define_class_under<cv::utils::trace::details::TraceArg>(rb_mCvUtilsTraceDetails, "TraceArg").
+  Rice::Data_Type<cv::utils::trace::details::TraceArg> rb_cCvUtilsTraceDetailsTraceArg = define_class_under<cv::utils::trace::details::TraceArg>(rb_mCvUtilsTraceDetails, "TraceArg");
+
+  Rice::Data_Type<cv::utils::trace::details::TraceArg::ExtraData> rb_cCvUtilsTraceDetailsTraceArgExtraData = define_class_under<cv::utils::trace::details::TraceArg::ExtraData>(rb_cCvUtilsTraceDetailsTraceArg, "ExtraData");
+
+  rb_cCvUtilsTraceDetailsTraceArg.
     define_constructor(Constructor<cv::utils::trace::details::TraceArg>()).
+    define_attr("pp_extra", &cv::utils::trace::details::TraceArg::ppExtra).
     define_attr("name", &cv::utils::trace::details::TraceArg::name).
     define_attr("flags", &cv::utils::trace::details::TraceArg::flags);
+
   rb_mCvUtilsTraceDetails.define_module_function<void(*)(const cv::utils::trace::details::TraceArg&, const char*)>("trace_arg", &cv::utils::trace::details::traceArg,
     Arg("arg"), Arg("value"));
 
@@ -61,5 +71,4 @@ void Init_Trace()
 
   rb_mCvUtilsTraceDetails.define_module_function<void(*)(const cv::utils::trace::details::TraceArg&, double)>("trace_arg", &cv::utils::trace::details::traceArg,
     Arg("arg"), Arg("value"));
-
 }

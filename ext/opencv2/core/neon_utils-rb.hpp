@@ -1,4 +1,3 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../rice_include.hpp"
 
-void Init_NeonUtils();
+void Init_Core_NeonUtils();

@@ -1,6 +1,5 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../rice_include.hpp"
 
 extern Rice::Class rb_cCvMat;
 
-void Init_Mat();
+void Init_Core_Mat();

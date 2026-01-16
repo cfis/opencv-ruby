@@ -2,7 +2,7 @@
 #include "neon_utils-rb.hpp"
 
 using namespace Rice;
-void Init_NeonUtils()
-{
 
+void Init_Core_NeonUtils()
+{
 }

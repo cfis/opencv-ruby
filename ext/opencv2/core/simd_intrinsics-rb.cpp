@@ -2,7 +2,7 @@
 #include "simd_intrinsics-rb.hpp"
 
 using namespace Rice;
-void Init_SimdIntrinsics()
-{
 
+void Init_Core_SimdIntrinsics()
+{
 }

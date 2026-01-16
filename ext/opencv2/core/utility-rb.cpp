@@ -1,13 +1,7 @@
 #include <opencv2/core/utility.hpp>
-#include "../../opencv_ruby_version.hpp"
 #include "utility-rb.hpp"
 
 using namespace Rice;
-
-Data_Type<cv::CommandLineParser> rb_cCvCommandLineParser;
-Rice::Class rb_cCvParallelLoopBody;
-Rice::Class rb_cCvParallelLoopBodyLambdaWrapper;
-Rice::Class rb_cCvTickMeter;
 
 template<typename Data_Type_T, typename _Tp, size_t fixed_size>
 inline void AutoBuffer_builder(Data_Type_T& klass)
@@ -55,15 +49,16 @@ inline void Node_builder(Data_Type_T& klass)
     define_attr("m_p_parent", &cv::Node<OBJECT>::m_pParent).
     define_attr("m_childs", &cv::Node<OBJECT>::m_childs);
 };
-void Init_Utility()
+
+void Init_Core_Utility()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_mCv.define_module_function("set_break_on_error?", &cv::setBreakOnError,
+  rb_mCv.define_module_function("set_break_on_error", &cv::setBreakOnError,
     Arg("flag"));
 
   rb_mCv.define_module_function("redirect_error", &cv::redirectError,
-    Arg("err_callback"), Arg("userdata") = static_cast<void*>(0), Arg("prev_userdata") = static_cast<void**>(0));
+    Arg("err_callback"), ArgBuffer("userdata") = static_cast<void*>(0), ArgBuffer("prev_userdata") = static_cast<void**>(0));
 
   rb_mCv.define_module_function("tempfile", &cv::tempfile,
     Arg("suffix") = static_cast<const char*>(0));
@@ -92,7 +87,7 @@ void Init_Utility()
 
   rb_mCv.define_module_function("get_tick_frequency", &cv::getTickFrequency);
 
-  rb_cCvTickMeter = define_class_under<cv::TickMeter>(rb_mCv, "TickMeter").
+  Rice::Data_Type<cv::TickMeter> rb_cCvTickMeter = define_class_under<cv::TickMeter>(rb_mCv, "TickMeter").
     define_constructor(Constructor<cv::TickMeter>()).
     define_method("start", &cv::TickMeter::start).
     define_method("stop", &cv::TickMeter::stop).
@@ -112,7 +107,7 @@ void Init_Utility()
 
   rb_mCv.define_module_function("get_cpu_tick_count", &cv::getCPUTickCount);
 
-  rb_mCv.define_module_function("check_hardware_support?", &cv::checkHardwareSupport,
+  rb_mCv.define_module_function("check_hardware_support", &cv::checkHardwareSupport,
     Arg("feature"));
 
   rb_mCv.define_module_function("get_hardware_feature_name", &cv::getHardwareFeatureName,
@@ -154,35 +149,33 @@ void Init_Utility()
   rb_mCv.define_module_function("get_elem_size", &cv::getElemSize,
     Arg("type"));
 
-  rb_cCvParallelLoopBody = define_class_under<cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBody").
+  Rice::Data_Type<cv::ParallelLoopBody> rb_cCvParallelLoopBody = define_class_under<cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBody").
     define_method("call", &cv::ParallelLoopBody::operator(),
       Arg("range"));
 
-  rb_cCvParallelLoopBodyLambdaWrapper = define_class_under<cv::ParallelLoopBodyLambdaWrapper, cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBodyLambdaWrapper").
+  Rice::Data_Type<cv::ParallelLoopBodyLambdaWrapper> rb_cCvParallelLoopBodyLambdaWrapper = define_class_under<cv::ParallelLoopBodyLambdaWrapper, cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBodyLambdaWrapper").
     define_constructor(Constructor<cv::ParallelLoopBodyLambdaWrapper, std::function<void (const cv::Range &)>>(),
       Arg("functor")).
     define_method("call", &cv::ParallelLoopBodyLambdaWrapper::operator(),
       Arg("range"));
 
-  rb_cCvCommandLineParser = define_class_under<cv::CommandLineParser>(rb_mCv, "CommandLineParser").
+  Rice::Data_Type<cv::CommandLineParser> rb_cCvCommandLineParser = define_class_under<cv::CommandLineParser>(rb_mCv, "CommandLineParser").
+#if RUBY_CV_VERSION >= 411
+    define_constructor(Constructor<cv::CommandLineParser, int, const char *const[], const cv::String&>(),
+      Arg("argc"), Arg("argv"), Arg("keys")).
+#endif
     define_constructor(Constructor<cv::CommandLineParser, const cv::CommandLineParser&>(),
       Arg("parser")).
     define_method("assign", &cv::CommandLineParser::operator=,
       Arg("parser")).
     define_method("get_path_to_application", &cv::CommandLineParser::getPathToApplication).
-    define_method("has?", &cv::CommandLineParser::has,
+    define_method("has", &cv::CommandLineParser::has,
       Arg("name")).
     define_method("check?", &cv::CommandLineParser::check).
     define_method("about", &cv::CommandLineParser::about,
       Arg("message")).
     define_method("print_message", &cv::CommandLineParser::printMessage).
     define_method("print_errors", &cv::CommandLineParser::printErrors);
-
-#if RUBY_CV_VERSION >= 411
-  rb_cCvCommandLineParser.
-    define_constructor(Constructor<cv::CommandLineParser, int, const char *const[], const cv::String&>(),
-      Arg("argc"), Arg("argv"), Arg("keys"));
-#endif
 
   Module rb_mCvSamples = define_module_under(rb_mCv, "Samples");
 

@@ -2,7 +2,8 @@
 #include "ovx-rb.hpp"
 
 using namespace Rice;
-void Init_Ovx()
+
+void Init_Core_Ovx()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -12,5 +13,4 @@ void Init_Ovx()
 
   rb_mCv.define_module_function("set_use_open_vx", &cv::setUseOpenVX,
     Arg("flag"));
-
 }

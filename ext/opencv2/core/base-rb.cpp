@@ -3,11 +3,11 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvHamming;
-
-void Init_Base()
+void Init_Core_Base()
 {
   Module rb_mCv = define_module("Cv");
+
+  Module rb_mCvError = define_module_under(rb_mCv, "Error");
 
 // Manual
 #if defined _DEBUG || defined CV_STATIC_ANALYSIS
@@ -15,8 +15,6 @@ void Init_Base()
 #else
   rb_mCv.const_set("DBG_ASSERT_ENABLED", false);
 #endif
-
-  Module rb_mCvError = define_module_under(rb_mCv, "Error");
 
   Enum<cv::Error::Code> rb_cCvErrorCode = define_enum_under<cv::Error::Code>("Code", rb_mCvError).
     define_value("StsOk", cv::Error::Code::StsOk).
@@ -134,11 +132,11 @@ void Init_Base()
   rb_mCv.define_module_function("terminate", &cv::terminate,
     Arg("code"), Arg("err"), Arg("func"), Arg("file"), Arg("line"));
 
-  rb_cCvHamming = define_class_under<cv::Hamming>(rb_mCv, "Hamming").
+  Rice::Data_Type<cv::Hamming> rb_cCvHamming = define_class_under<cv::Hamming>(rb_mCv, "Hamming").
     define_constructor(Constructor<cv::Hamming>()).
     define_constant("NormType", cv::Hamming::normType).
     define_method("call", &cv::Hamming::operator(),
-      Arg("a"), Arg("b"), Arg("size"));
+      ArgBuffer("a"), ArgBuffer("b"), Arg("size"));
 
   rb_mCv.define_module_function<int(*)(uchar)>("cv_abs", &cv::cv_abs,
     Arg("x"));
@@ -152,11 +150,11 @@ void Init_Base()
   rb_mCv.define_module_function<int(*)(short)>("cv_abs", &cv::cv_abs,
     Arg("x"));
 
-  rb_mCv.define_module_function("norm_l2_sqr", &cv::normL2Sqr,
-    Arg("a"), Arg("b"), Arg("n"));
+  rb_mCv.define_module_function<float(*)(const float*, const float*, int)>("norm_l2_sqr", &cv::normL2Sqr,
+    ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
   rb_mCv.define_module_function<float(*)(const float*, const float*, int)>("norm_l1", &cv::normL1,
-    Arg("a"), Arg("b"), Arg("n"));
+    ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
   rb_mCv.define_module_function<int(*)(const uchar*, const uchar*, int)>("norm_l1", &cv::normL1,
     Arg("a"), Arg("b"), Arg("n"));
@@ -170,21 +168,30 @@ void Init_Base()
   rb_mCv.define_module_function("fast_atan2", &cv::fastAtan2,
     Arg("y"), Arg("x"));
 
-  rb_mCv.define_module_function<int(*)(float*, ::size_t, int, float*, ::size_t, int)>("lu", &cv::LU,
-    Arg("a"), Arg("astep"), Arg("m"), Arg("b"), Arg("bstep"), Arg("n"));
+  rb_mCv.define_module_function<int(*)(float*, size_t, int, float*, size_t, int)>("lu", &cv::LU,
+    ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<int(*)(double*, ::size_t, int, double*, ::size_t, int)>("lu", &cv::LU,
-    Arg("a"), Arg("astep"), Arg("m"), Arg("b"), Arg("bstep"), Arg("n"));
+  rb_mCv.define_module_function<int(*)(double*, size_t, int, double*, size_t, int)>("lu", &cv::LU,
+    ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<bool(*)(float*, ::size_t, int, float*, ::size_t, int)>("cholesky?", &cv::Cholesky,
-    Arg("a"), Arg("astep"), Arg("m"), Arg("b"), Arg("bstep"), Arg("n"));
+  rb_mCv.define_module_function<bool(*)(float*, size_t, int, float*, size_t, int)>("cholesky", &cv::Cholesky,
+    ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<bool(*)(double*, ::size_t, int, double*, ::size_t, int)>("cholesky?", &cv::Cholesky,
-    Arg("a"), Arg("astep"), Arg("m"), Arg("b"), Arg("bstep"), Arg("n"));
+  rb_mCv.define_module_function<bool(*)(double*, size_t, int, double*, size_t, int)>("cholesky", &cv::Cholesky,
+    ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
   Module rb_mCvOgl = define_module_under(rb_mCv, "Ogl");
+
+  Rice::Data_Type<cv::ogl::Buffer> rb_cCvOglBuffer = define_class_under<cv::ogl::Buffer>(rb_mCvOgl, "Buffer");
+
+  Rice::Data_Type<cv::ogl::Texture2D> rb_cCvOglTexture2D = define_class_under<cv::ogl::Texture2D>(rb_mCvOgl, "Texture2D");
+
+  Rice::Data_Type<cv::ogl::Arrays> rb_cCvOglArrays = define_class_under<cv::ogl::Arrays>(rb_mCvOgl, "Arrays");
+
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
+
   Module rb_mCvCudev = define_module_under(rb_mCv, "Cudev");
+
   Module rb_mCvIpp = define_module_under(rb_mCv, "Ipp");
 
   rb_mCvIpp.define_module_function("get_ipp_features", &cv::ipp::getIppFeatures);
@@ -212,5 +219,4 @@ void Init_Base()
 
   rb_mCvIpp.define_module_function("set_use_ipp_ne", &cv::ipp::setUseIPP_NE,
     Arg("flag"));
-
 }

@@ -2,6 +2,7 @@
 #include "cvstd-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename _Tp>
 inline void Allocator_builder(Data_Type_T& klass)
 {
@@ -13,7 +14,7 @@ inline void Allocator_builder(Data_Type_T& klass)
     template define_method<typename cv::Allocator<_Tp>::const_pointer(cv::Allocator<_Tp>::*)(typename cv::Allocator<_Tp>::const_reference)>("address", &cv::Allocator<_Tp>::address,
       Arg("r")).
     define_method("allocate", &cv::Allocator<_Tp>::allocate,
-      Arg("count"), Arg("arg_1") = static_cast<const void*>(0)).
+      Arg("count"), ArgBuffer("arg_1") = static_cast<const void*>(0)).
     define_method("deallocate", &cv::Allocator<_Tp>::deallocate,
       Arg("p"), Arg("arg_1")).
     define_method("construct", &cv::Allocator<_Tp>::construct,
@@ -27,7 +28,8 @@ template<typename Data_Type_T, typename U>
 inline void rebind_builder(Data_Type_T& klass)
 {
 };
-void Init_Cvstd()
+
+void Init_Core_Cvstd()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -44,10 +46,10 @@ void Init_Cvstd()
     Arg("a"));
 
   rb_mCv.define_module_function("fast_malloc", &cv::fastMalloc,
-    Arg("buf_size"));
+    Arg("buf_size"), ReturnBuffer());
 
   rb_mCv.define_module_function("fast_free", &cv::fastFree,
-    Arg("ptr"));
+    ArgBuffer("ptr"));
 
   Module rb_mCvDetails = define_module_under(rb_mCv, "Details");
 
@@ -62,5 +64,4 @@ void Init_Cvstd()
 
   rb_mCv.define_module_function("to_upper_case", &cv::toUpperCase,
     Arg("str"));
-
 }

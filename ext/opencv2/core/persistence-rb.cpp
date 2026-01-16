@@ -1,8 +1,7 @@
 #include <opencv2/core/persistence.hpp>
-#include "cvstd_wrapper-rb.hpp" // Manual
 #include "persistence-rb.hpp"
 
-// Manual - FileNodeIterator doesn't define std::iterator_traits
+// Iterator traits specializations for iterators missing std::iterator_traits
 namespace std
 {
   template<>
@@ -12,16 +11,11 @@ namespace std
     using value_type = cv::FileNode;
     using difference_type = ptrdiff_t;
     using pointer = cv::FileNode*;
-    using reference = cv::FileNode;
+    using reference = cv::FileNode&;
   };
 }
 
 using namespace Rice;
-
-Rice::Class rb_cCvFileNode;
-Rice::Class rb_cCvFileNodeIterator;
-Rice::Class rb_cCvFileStorage;
-Rice::Class rb_cCvInternalWriteStructContext;
 
 template<typename Data_Type_T, typename _Tp, int numflag>
 inline void VecWriterProxy_builder(Data_Type_T& klass)
@@ -40,15 +34,20 @@ inline void VecReaderProxy_builder(Data_Type_T& klass)
     define_method("call", &cv::internal::VecReaderProxy<_Tp, numflag>::operator(),
       Arg("vec"), Arg("count"));
 };
-void Init_Persistence()
+
+void Init_Core_Persistence()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvFileStorage = define_class_under<cv::FileStorage>(rb_mCv, "FileStorage").
+  Rice::Data_Type<cv::FileStorage> rb_cCvFileStorage = define_class_under<cv::FileStorage>(rb_mCv, "FileStorage");
+
+  Rice::Data_Type<cv::FileStorage::Impl> rb_cCvFileStorageImpl = define_class_under<cv::FileStorage::Impl>(rb_cCvFileStorage, "Impl");
+
+  rb_cCvFileStorage.
     define_constructor(Constructor<cv::FileStorage>()).
     define_constructor(Constructor<cv::FileStorage, const cv::String&, int, const cv::String&>(),
       Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String&>(cv::String())).
-    define_method("open?", &cv::FileStorage::open,
+    define_method("open", &cv::FileStorage::open,
       Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String&>(cv::String())).
     define_method("opened?", &cv::FileStorage::isOpened).
     define_method("release", &cv::FileStorage::release).
@@ -73,7 +72,7 @@ void Init_Persistence()
     define_method<void(cv::FileStorage::*)(const cv::String&, const std::vector<std::basic_string<char>>&)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val")).
     define_method("write_raw", &cv::FileStorage::writeRaw,
-      Arg("fmt"), Arg("vec"), Arg("len")).
+      Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method("write_comment", &cv::FileStorage::writeComment,
       Arg("comment"), Arg("append") = static_cast<bool>(false)).
     define_method("start_write_struct", &cv::FileStorage::startWriteStruct,
@@ -82,8 +81,10 @@ void Init_Persistence()
     define_method("get_format", &cv::FileStorage::getFormat).
     define_attr("state", &cv::FileStorage::state).
     define_attr("elname", &cv::FileStorage::elname).
+    define_attr("p", &cv::FileStorage::p).
     define_singleton_function("get_default_object_name", &cv::FileStorage::getDefaultObjectName,
       Arg("filename"));
+
   Enum<cv::FileStorage::Mode> rb_cCvFileStorageMode = define_enum_under<cv::FileStorage::Mode>("Mode", rb_cCvFileStorage).
     define_value("READ", cv::FileStorage::Mode::READ).
     define_value("WRITE", cv::FileStorage::Mode::WRITE).
@@ -103,7 +104,7 @@ void Init_Persistence()
     define_value("NAME_EXPECTED", cv::FileStorage::State::NAME_EXPECTED).
     define_value("INSIDE_MAP", cv::FileStorage::State::INSIDE_MAP);
 
-  rb_cCvFileNode = define_class_under<cv::FileNode>(rb_mCv, "FileNode").
+  Rice::Data_Type<cv::FileNode> rb_cCvFileNode = define_class_under<cv::FileNode>(rb_mCv, "FileNode").
     define_constructor(Constructor<cv::FileNode>()).
     define_constructor(Constructor<cv::FileNode, const cv::FileStorage*, size_t, size_t>(),
       Arg("fs"), Arg("block_idx"), Arg("ofs")).
@@ -152,25 +153,28 @@ void Init_Persistence()
     }).
     define_method<uchar*(cv::FileNode::*)()>("ptr", &cv::FileNode::ptr).
     define_method<const uchar*(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr).
-    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each").
+    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each_const").
     define_method("read_raw", &cv::FileNode::readRaw,
-      Arg("fmt"), Arg("vec"), Arg("len")).
+      Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method("set_value", &cv::FileNode::setValue,
-      Arg("type"), Arg("value"), Arg("len") = static_cast<int>(-1)).
+      Arg("type"), ArgBuffer("value"), Arg("len") = static_cast<int>(-1)).
     define_method("real", &cv::FileNode::real).
     define_method("string", &cv::FileNode::string).
     define_method("mat", &cv::FileNode::mat).
+    define_constructor(Constructor<cv::FileNode, cv::FileStorage::Impl*, size_t, size_t>(),
+      Arg("fs"), Arg("block_idx"), Arg("ofs")).
+    define_attr("fs", &cv::FileNode::fs).
     define_attr("block_idx", &cv::FileNode::blockIdx).
     define_attr("ofs", &cv::FileNode::ofs).
-    define_singleton_function<bool(*)(int)>("map?", &cv::FileNode::isMap,
+    define_singleton_function<bool(*)(int)>("is_map", &cv::FileNode::isMap,
       Arg("flags")).
-    define_singleton_function<bool(*)(int)>("seq?", &cv::FileNode::isSeq,
+    define_singleton_function<bool(*)(int)>("is_seq", &cv::FileNode::isSeq,
       Arg("flags")).
-    define_singleton_function("collection?", &cv::FileNode::isCollection,
+    define_singleton_function("is_collection", &cv::FileNode::isCollection,
       Arg("flags")).
-    define_singleton_function("empty_collection?", &cv::FileNode::isEmptyCollection,
+    define_singleton_function("is_empty_collection", &cv::FileNode::isEmptyCollection,
       Arg("flags")).
-    define_singleton_function("flow?", &cv::FileNode::isFlow,
+    define_singleton_function("is_flow", &cv::FileNode::isFlow,
       Arg("flags"));
 
   rb_cCvFileNode.define_constant("NONE", (int)cv::FileNode::NONE);
@@ -187,7 +191,7 @@ void Init_Persistence()
   rb_cCvFileNode.define_constant("EMPTY", (int)cv::FileNode::EMPTY);
   rb_cCvFileNode.define_constant("NAMED", (int)cv::FileNode::NAMED);
 
-  rb_cCvFileNodeIterator = define_class_under<cv::FileNodeIterator>(rb_mCv, "FileNodeIterator").
+  Rice::Data_Type<cv::FileNodeIterator> rb_cCvFileNodeIterator = define_class_under<cv::FileNodeIterator>(rb_mCv, "FileNodeIterator").
     define_constructor(Constructor<cv::FileNodeIterator>()).
     define_constructor(Constructor<cv::FileNodeIterator, const cv::FileNode&, bool>(),
       Arg("node"), Arg("seek_end")).
@@ -202,9 +206,9 @@ void Init_Persistence()
     define_method("assign_plus", &cv::FileNodeIterator::operator+=,
       Arg("ofs")).
     define_method("read_raw", &cv::FileNodeIterator::readRaw,
-      Arg("fmt"), Arg("vec"), Arg("len")).
+      Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method("remaining", &cv::FileNodeIterator::remaining).
-    define_method("equal_to?", &cv::FileNodeIterator::equalTo,
+    define_method("equal_to", &cv::FileNodeIterator::equalTo,
       Arg("it"));
 
   rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, int)>("write", &cv::write,
@@ -287,7 +291,7 @@ void Init_Persistence()
 
   Module rb_mCvInternal = define_module_under(rb_mCv, "Internal");
 
-  rb_cCvInternalWriteStructContext = define_class_under<cv::internal::WriteStructContext>(rb_mCvInternal, "WriteStructContext").
+  Rice::Data_Type<cv::internal::WriteStructContext> rb_cCvInternalWriteStructContext = define_class_under<cv::internal::WriteStructContext>(rb_mCvInternal, "WriteStructContext").
     define_constructor(Constructor<cv::internal::WriteStructContext, cv::FileStorage&, const cv::String&, int, const cv::String&>(),
       Arg("_fs"), Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String&>(cv::String()));
 
@@ -364,6 +368,42 @@ void Init_Persistence()
     self << other;
     return self;
   });
+  
+  rb_cCvFileNode.
+    define_method(">>", [](const cv::FileNode& self, cv::KeyPoint& other) -> void
+  {
+    self >> other;
+  }).
+    define_method(">>", [](const cv::FileNode& self, std::vector<cv::KeyPoint>& other) -> void
+  {
+    self >> other;
+  }).
+    define_method(">>", [](const cv::FileNode& self, std::vector<cv::DMatch>& other) -> void
+  {
+    self >> other;
+  }).
+    define_method(">>", [](const cv::FileNode& self, cv::DMatch& other) -> void
+  {
+    self >> other;
+  });
+  
+  rb_cCvFileNodeIterator.
+    define_method("==", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+  {
+    return self == other;
+  }).
+    define_method("!=", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+  {
+    return self != other;
+  }).
+    define_method("-", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> ptrdiff_t
+  {
+    return self - other;
+  }).
+    define_method("<", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+  {
+    return self < other;
+  });
 
   // Manual - template operators for fundamental types
   rb_cCvFileStorage.
@@ -401,41 +441,4 @@ void Init_Persistence()
   {
     self << value;
     return self;
-  });
-
-  rb_cCvFileNode.
-    define_method(">>", [](const cv::FileNode& self, cv::KeyPoint& other) -> void
-  {
-    self >> other;
-  }).
-    define_method(">>", [](const cv::FileNode& self, std::vector<cv::KeyPoint>& other) -> void
-  {
-    self >> other;
-  }).
-    define_method(">>", [](const cv::FileNode& self, std::vector<cv::DMatch>& other) -> void
-  {
-    self >> other;
-  }).
-    define_method(">>", [](const cv::FileNode& self, cv::DMatch& other) -> void
-  {
-    self >> other;
-  });
-
-  rb_cCvFileNodeIterator.
-    define_method("==", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self != other;
-  }).
-    define_method("-", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> ptrdiff_t
-  {
-    return self - other;
-  }).
-    define_method("<", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self < other;
-  });
-}
+  });}

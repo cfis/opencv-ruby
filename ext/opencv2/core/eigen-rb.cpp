@@ -2,7 +2,8 @@
 #include "eigen-rb.hpp"
 
 using namespace Rice;
-void Init_Eigen()
+
+void Init_Core_Eigen()
 {
   Module rb_mCv = define_module("Cv");
 }

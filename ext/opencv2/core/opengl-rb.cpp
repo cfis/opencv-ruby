@@ -1,20 +1,20 @@
-#include <opencv2/core/cuda.hpp>
+#include <opencv2/core/cuda.hpp> // Manul
 #include <opencv2/core/opengl.hpp>
 #include "opengl-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvOglArrays;
-Rice::Class rb_cCvOglBuffer;
-Rice::Class rb_cCvOglTexture2D;
-
-void Init_Opengl()
+void Init_Core_Opengl()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvOgl = define_module_under(rb_mCv, "Ogl");
 
-  rb_cCvOglBuffer = define_class_under<cv::ogl::Buffer>(rb_mCvOgl, "Buffer").
+  Rice::Data_Type<cv::ogl::Buffer> rb_cCvOglBuffer = define_class_under<cv::ogl::Buffer>(rb_mCvOgl, "Buffer");
+
+  Rice::Data_Type<cv::ogl::Buffer::Impl> rb_cCvOglBufferImpl = define_class_under<cv::ogl::Buffer::Impl>(rb_cCvOglBuffer, "Impl");
+
+  rb_cCvOglBuffer.
     define_constructor(Constructor<cv::ogl::Buffer>()).
     define_constructor(Constructor<cv::ogl::Buffer, int, int, int, unsigned int, bool>(),
       Arg("arows"), Arg("acols"), Arg("atype"), Arg("abuf_id"), Arg("auto_release") = static_cast<bool>(false)).
@@ -66,6 +66,7 @@ void Init_Opengl()
     define_method("buf_id", &cv::ogl::Buffer::bufId).
     define_singleton_function("unbind", &cv::ogl::Buffer::unbind,
       Arg("target"));
+
   Enum<cv::ogl::Buffer::Target> rb_cCvOglBufferTarget = define_enum_under<cv::ogl::Buffer::Target>("Target", rb_cCvOglBuffer).
     define_value("ARRAY_BUFFER", cv::ogl::Buffer::Target::ARRAY_BUFFER).
     define_value("ELEMENT_ARRAY_BUFFER", cv::ogl::Buffer::Target::ELEMENT_ARRAY_BUFFER).
@@ -77,7 +78,11 @@ void Init_Opengl()
     define_value("WRITE_ONLY", cv::ogl::Buffer::Access::WRITE_ONLY).
     define_value("READ_WRITE", cv::ogl::Buffer::Access::READ_WRITE);
 
-  rb_cCvOglTexture2D = define_class_under<cv::ogl::Texture2D>(rb_mCvOgl, "Texture2D").
+  Rice::Data_Type<cv::ogl::Texture2D> rb_cCvOglTexture2D = define_class_under<cv::ogl::Texture2D>(rb_mCvOgl, "Texture2D");
+
+  Rice::Data_Type<cv::ogl::Texture2D::Impl> rb_cCvOglTexture2DImpl = define_class_under<cv::ogl::Texture2D::Impl>(rb_cCvOglTexture2D, "Impl");
+
+  rb_cCvOglTexture2D.
     define_constructor(Constructor<cv::ogl::Texture2D>()).
     define_constructor(Constructor<cv::ogl::Texture2D, int, int, cv::ogl::Texture2D::Format, unsigned int, bool>(),
       Arg("arows"), Arg("acols"), Arg("aformat"), Arg("atex_id"), Arg("auto_release") = static_cast<bool>(false)).
@@ -107,13 +112,14 @@ void Init_Opengl()
     define_method("empty?", &cv::ogl::Texture2D::empty).
     define_method("format", &cv::ogl::Texture2D::format).
     define_method("tex_id", &cv::ogl::Texture2D::texId);
+
   Enum<cv::ogl::Texture2D::Format> rb_cCvOglTexture2DFormat = define_enum_under<cv::ogl::Texture2D::Format>("Format", rb_cCvOglTexture2D).
     define_value("NONE", cv::ogl::Texture2D::Format::NONE).
     define_value("DEPTH_COMPONENT", cv::ogl::Texture2D::Format::DEPTH_COMPONENT).
     define_value("RGB", cv::ogl::Texture2D::Format::RGB).
     define_value("RGBA", cv::ogl::Texture2D::Format::RGBA);
 
-  rb_cCvOglArrays = define_class_under<cv::ogl::Arrays>(rb_mCvOgl, "Arrays").
+  Rice::Data_Type<cv::ogl::Arrays> rb_cCvOglArrays = define_class_under<cv::ogl::Arrays>(rb_mCvOgl, "Arrays").
     define_constructor(Constructor<cv::ogl::Arrays>()).
     define_method("set_vertex_array", &cv::ogl::Arrays::setVertexArray,
       Arg("vertex")).
@@ -175,5 +181,4 @@ void Init_Opengl()
 
   rb_mCvCuda.define_module_function("set_gl_device", &cv::cuda::setGlDevice,
     Arg("device") = static_cast<int>(0));
-
 }

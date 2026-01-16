@@ -3,7 +3,7 @@
 
 #include <opencv2/core/cvstd_wrapper.hpp>
 
-void Init_CvstdWrapper();
+void Init_Core_CvstdWrapper();
 
 namespace Rice
 {

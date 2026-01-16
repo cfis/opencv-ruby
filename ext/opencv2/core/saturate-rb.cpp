@@ -1,12 +1,11 @@
-#include <algorithm>
-#include <limits.h>
+#include <algorithm> // Manual
+#include <climits> // Manual
 #include <opencv2/core/saturate.hpp>
-#include "../../opencv_ruby_version.hpp"
 #include "saturate-rb.hpp"
 
 using namespace Rice;
 
-void Init_Saturate()
+void Init_Core_Saturate()
 {
   Module rb_mCv = define_module("Cv");
 

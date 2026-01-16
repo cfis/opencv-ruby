@@ -1,7 +1,6 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../rice_include.hpp"
 
 extern Rice::Class rb_cCvRange;
 extern Rice::Class rb_cScalar;
 
-void Init_Types();
+void Init_Core_Types();

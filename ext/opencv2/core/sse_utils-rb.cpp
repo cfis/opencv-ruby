@@ -3,7 +3,7 @@
 
 using namespace Rice;
 
-void Init_SseUtils()
+void Init_Core_SseUtils()
 {
 #if CV_SSE2
   define_global_function<void(*)(__m128i&, __m128i&, __m128i&, __m128i&)>("_mm_deinterleave_epi8", &_mm_deinterleave_epi8,

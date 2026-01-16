@@ -2,7 +2,8 @@
 #include "va_intel-rb.hpp"
 
 using namespace Rice;
-void Init_VaIntel()
+
+void Init_Core_VaIntel()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -18,5 +19,4 @@ void Init_VaIntel()
 
   rb_mCvVaIntel.define_module_function("convert_from_va_surface", &cv::va_intel::convertFromVASurface,
     Arg("display"), Arg("surface"), Arg("size"), Arg("dst"));
-
 }

@@ -1,16 +1,15 @@
-#include <opencv2/core/core.hpp>
+#include <opencv2/core.hpp> //Manual
+#include <opencv2/core/detail/exception_ptr.hpp> // Manual
 #include <opencv2/core/detail/async_promise.hpp>
 #include "async_promise-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvAsyncPromise;
-
-void Init_AsyncPromise()
+void Init_Core_Detail_AsyncPromise()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvAsyncPromise = define_class_under<cv::AsyncPromise>(rb_mCv, "AsyncPromise").
+  Rice::Data_Type<cv::AsyncPromise> rb_cCvAsyncPromise = define_class_under<cv::AsyncPromise>(rb_mCv, "AsyncPromise").
     define_constructor(Constructor<cv::AsyncPromise>()).
     define_constructor(Constructor<cv::AsyncPromise, const cv::AsyncPromise&>(),
       Arg("o")).
@@ -27,5 +26,4 @@ void Init_AsyncPromise()
     define_method<cv::AsyncPromise&(cv::AsyncPromise::*)(cv::AsyncPromise&&) noexcept>("assign", &cv::AsyncPromise::operator=,
       Arg("o")).
     define_method("_get_impl", &cv::AsyncPromise::_getImpl);
-
 }

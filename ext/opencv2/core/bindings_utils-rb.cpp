@@ -1,17 +1,10 @@
 #include <opencv2/core.hpp> // Manual
 #include <opencv2/core/bindings_utils.hpp>
-#include "../../opencv_ruby_version.hpp" // Manual
-#include "cvstd_wrapper-rb.hpp" // Manual
 #include "bindings_utils-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvUtilsClassWithKeywordProperties;
-Rice::Class rb_cCvUtilsFunctionParams;
-Rice::Class rb_cCvUtilsNestedOriginalClassName;
-Rice::Class rb_cCvUtilsNestedOriginalClassNameParams;
-
-void Init_BindingsUtils()
+void Init_Core_BindingsUtils()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -115,15 +108,15 @@ void Init_BindingsUtils()
   rb_mCvUtils.define_module_function("dump_vec2i", &cv::utils::dumpVec2i,
     Arg("value") = static_cast<const cv::Vec2i>(cv::Vec2i(42, 24)));
 
-  rb_cCvUtilsClassWithKeywordProperties = define_class_under<cv::utils::ClassWithKeywordProperties>(rb_mCvUtils, "ClassWithKeywordProperties").
+  Rice::Data_Type<cv::utils::ClassWithKeywordProperties> rb_cCvUtilsClassWithKeywordProperties = define_class_under<cv::utils::ClassWithKeywordProperties>(rb_mCvUtils, "ClassWithKeywordProperties").
     define_attr("lambda", &cv::utils::ClassWithKeywordProperties::lambda).
     define_attr("except", &cv::utils::ClassWithKeywordProperties::except).
     define_constructor(Constructor<cv::utils::ClassWithKeywordProperties, int, int>(),
       Arg("lambda_arg") = static_cast<int>(24), Arg("except_arg") = static_cast<int>(42));
-#endif // Manual
+#endif
 
 #if RUBY_CV_VERSION >= 408 // Manual
-  rb_cCvUtilsFunctionParams = define_class_under<cv::utils::FunctionParams>(rb_mCvUtils, "FunctionParams").
+  Rice::Data_Type<cv::utils::FunctionParams> rb_cCvUtilsFunctionParams = define_class_under<cv::utils::FunctionParams>(rb_mCvUtils, "FunctionParams").
     define_constructor(Constructor<cv::utils::FunctionParams>()).
     define_attr("lambda", &cv::utils::FunctionParams::lambda).
     define_attr("sigma", &cv::utils::FunctionParams::sigma).
@@ -138,10 +131,10 @@ void Init_BindingsUtils()
 
   Module rb_mCvUtilsNested = define_module_under(rb_mCvUtils, "Nested");
 
-  rb_mCvUtilsNested.define_module_function("test_echo_boolean_function?", &cv::utils::nested::testEchoBooleanFunction,
+  rb_mCvUtilsNested.define_module_function("test_echo_boolean_function", &cv::utils::nested::testEchoBooleanFunction,
     Arg("flag"));
 
-  rb_cCvUtilsNestedOriginalClassName = define_class_under<cv::utils::nested::OriginalClassName>(rb_mCvUtilsNested, "OriginalClassName").
+  Rice::Data_Type<cv::utils::nested::OriginalClassName> rb_cCvUtilsNestedOriginalClassName = define_class_under<cv::utils::nested::OriginalClassName>(rb_mCvUtilsNested, "OriginalClassName").
     define_constructor(Constructor<cv::utils::nested::OriginalClassName, const cv::utils::nested::OriginalClassName::Params&>(),
       Arg("params") = static_cast<const cv::utils::nested::OriginalClassName::Params&>(cv::utils::nested::OriginalClassName::Params())).
     define_method("get_int_param", &cv::utils::nested::OriginalClassName::getIntParam).
@@ -150,7 +143,7 @@ void Init_BindingsUtils()
     define_singleton_function("create", &cv::utils::nested::OriginalClassName::create,
       Arg("params") = static_cast<const cv::utils::nested::OriginalClassName::Params&>(cv::utils::nested::OriginalClassName::Params()));
 
-  rb_cCvUtilsNestedOriginalClassNameParams = define_class_under<cv::utils::nested::OriginalClassName::Params>(rb_cCvUtilsNestedOriginalClassName, "Params").
+  Rice::Data_Type<cv::utils::nested::OriginalClassName::Params> rb_cCvUtilsNestedOriginalClassNameParams = define_class_under<cv::utils::nested::OriginalClassName::Params>(rb_cCvUtilsNestedOriginalClassName, "Params").
     define_attr("int_value", &cv::utils::nested::OriginalClassName::Params::int_value).
     define_attr("float_value", &cv::utils::nested::OriginalClassName::Params::float_value).
     define_constructor(Constructor<cv::utils::nested::OriginalClassName::Params, int, float>(),
@@ -164,5 +157,4 @@ void Init_BindingsUtils()
     Arg("level"));
 
   rb_mCv.define_module_function("get_log_level", &cv::getLogLevel);
-
 }

@@ -1,25 +1,9 @@
 #include <opencv2/core/ocl.hpp>
-#include "../../opencv_ruby_version.hpp"
 #include "ocl-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvOclContext;
-Rice::Class rb_cCvOclContextUserContext;
-Rice::Class rb_cCvOclDevice;
-Rice::Class rb_cCvOclImage2D;
-Rice::Class rb_cCvOclKernel;
-Rice::Class rb_cCvOclKernelArg;
-Rice::Class rb_cCvOclOpenCLExecutionContext;
-Rice::Class rb_cCvOclOpenCLExecutionContextScope;
-Rice::Class rb_cCvOclPlatform;
-Rice::Class rb_cCvOclPlatformInfo;
-Rice::Class rb_cCvOclProgram;
-Rice::Class rb_cCvOclProgramSource;
-Rice::Class rb_cCvOclQueue;
-Rice::Class rb_cCvOclTimer;
-
-void Init_Ocl()
+void Init_Core_Ocl()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -40,21 +24,25 @@ void Init_Ocl()
 
   rb_mCvOcl.define_module_function("have_svm?", &cv::ocl::haveSVM);
 
-  rb_cCvOclDevice = define_class_under<cv::ocl::Device>(rb_mCvOcl, "Device").
+  Rice::Data_Type<cv::ocl::Device> rb_cCvOclDevice = define_class_under<cv::ocl::Device>(rb_mCvOcl, "Device");
+
+  Rice::Data_Type<cv::ocl::Device::Impl> rb_cCvOclDeviceImpl = define_class_under<cv::ocl::Device::Impl>(rb_cCvOclDevice, "Impl");
+
+  rb_cCvOclDevice.
     define_constructor(Constructor<cv::ocl::Device>()).
     define_constructor(Constructor<cv::ocl::Device, void*>(),
-      Arg("d")).
+      ArgBuffer("d")).
     define_constructor(Constructor<cv::ocl::Device, const cv::ocl::Device&>(),
       Arg("d")).
-    define_method<cv::ocl::Device & (cv::ocl::Device::*)(const cv::ocl::Device&)>("assign", &cv::ocl::Device::operator=,
+    define_method<cv::ocl::Device&(cv::ocl::Device::*)(const cv::ocl::Device&)>("assign", &cv::ocl::Device::operator=,
       Arg("d")).
-    define_method<cv::ocl::Device & (cv::ocl::Device::*)(cv::ocl::Device&&) noexcept>("assign", &cv::ocl::Device::operator=,
+    define_method<cv::ocl::Device&(cv::ocl::Device::*)(cv::ocl::Device&&) noexcept>("assign", &cv::ocl::Device::operator=,
       Arg("d")).
     define_method("set", &cv::ocl::Device::set,
-      Arg("d")).
+      ArgBuffer("d")).
     define_method("name", &cv::ocl::Device::name).
     define_method("extensions", &cv::ocl::Device::extensions).
-    define_method("extension_supported?", &cv::ocl::Device::isExtensionSupported,
+    define_method("is_extension_supported", &cv::ocl::Device::isExtensionSupported,
       Arg("extension_name")).
     define_method("version", &cv::ocl::Device::version).
     define_method("vendor_name", &cv::ocl::Device::vendorName).
@@ -63,7 +51,8 @@ void Init_Ocl()
     define_method("device_version_major", &cv::ocl::Device::deviceVersionMajor).
     define_method("device_version_minor", &cv::ocl::Device::deviceVersionMinor).
     define_method("driver_version", &cv::ocl::Device::driverVersion).
-    define_method("ptr", &cv::ocl::Device::ptr).
+    define_method("ptr", &cv::ocl::Device::ptr,
+      ReturnBuffer()).
     define_method("type", &cv::ocl::Device::type).
     define_method("address_bits", &cv::ocl::Device::addressBits).
     define_method("available?", &cv::ocl::Device::available).
@@ -71,13 +60,11 @@ void Init_Ocl()
     define_method("linker_available?", &cv::ocl::Device::linkerAvailable).
     define_method("double_fp_config", &cv::ocl::Device::doubleFPConfig).
     define_method("single_fp_config", &cv::ocl::Device::singleFPConfig).
-    define_method("half_fp_config", &cv::ocl::Device::halfFPConfig);
+    define_method("half_fp_config", &cv::ocl::Device::halfFPConfig).
 #if RUBY_CV_VERSION >= 410
-  rb_cCvOclDevice.
     define_method("has_fp64?", &cv::ocl::Device::hasFP64).
-    define_method("has_fp16?", &cv::ocl::Device::hasFP16);
+    define_method("has_fp16?", &cv::ocl::Device::hasFP16).
 #endif
-  rb_cCvOclDevice.
     define_method("endian_little?", &cv::ocl::Device::endianLittle).
     define_method("error_correction_support?", &cv::ocl::Device::errorCorrectionSupport).
     define_method("execution_capabilities", &cv::ocl::Device::executionCapabilities).
@@ -134,10 +121,12 @@ void Init_Ocl()
     define_method("preferred_vector_width_half", &cv::ocl::Device::preferredVectorWidthHalf).
     define_method("printf_buffer_size", &cv::ocl::Device::printfBufferSize).
     define_method("profiling_timer_resolution", &cv::ocl::Device::profilingTimerResolution).
+    define_method("get_impl", &cv::ocl::Device::getImpl).
     define_method("empty?", &cv::ocl::Device::empty).
     define_singleton_function("get_default", &cv::ocl::Device::getDefault).
     define_singleton_function("from_handle", &cv::ocl::Device::fromHandle,
-      Arg("d"));
+      ArgBuffer("d"));
+
   rb_cCvOclDevice.define_constant("TYPE_DEFAULT", (int)cv::ocl::Device::TYPE_DEFAULT);
   rb_cCvOclDevice.define_constant("TYPE_CPU", (int)cv::ocl::Device::TYPE_CPU);
   rb_cCvOclDevice.define_constant("TYPE_GPU", (int)cv::ocl::Device::TYPE_GPU);
@@ -171,7 +160,11 @@ void Init_Ocl()
   rb_cCvOclDevice.define_constant("VENDOR_INTEL", (int)cv::ocl::Device::VENDOR_INTEL);
   rb_cCvOclDevice.define_constant("VENDOR_NVIDIA", (int)cv::ocl::Device::VENDOR_NVIDIA);
 
-  rb_cCvOclContext = define_class_under<cv::ocl::Context>(rb_mCvOcl, "Context").
+  Rice::Data_Type<cv::ocl::Context> rb_cCvOclContext = define_class_under<cv::ocl::Context>(rb_mCvOcl, "Context");
+
+  Rice::Data_Type<cv::ocl::Context::Impl> rb_cCvOclContextImpl = define_class_under<cv::ocl::Context::Impl>(rb_cCvOclContext, "Impl");
+
+  rb_cCvOclContext.
     define_constructor(Constructor<cv::ocl::Context>()).
     define_constructor(Constructor<cv::ocl::Context, int>(),
       Arg("dtype")).
@@ -182,7 +175,7 @@ void Init_Ocl()
     define_method<cv::ocl::Context&(cv::ocl::Context::*)(cv::ocl::Context&&) noexcept>("assign", &cv::ocl::Context::operator=,
       Arg("c")).
     define_method<bool(cv::ocl::Context::*)()>("create?", &cv::ocl::Context::create).
-    define_method<bool(cv::ocl::Context::*)(int)>("create?", &cv::ocl::Context::create,
+    define_method<bool(cv::ocl::Context::*)(int)>("create", &cv::ocl::Context::create,
       Arg("dtype")).
     define_method("ndevices", &cv::ocl::Context::ndevices).
     define_method("device", &cv::ocl::Context::device,
@@ -191,9 +184,10 @@ void Init_Ocl()
       Arg("prog"), Arg("buildopt"), Arg("errmsg")).
     define_method("unload_prog", &cv::ocl::Context::unloadProg,
       Arg("prog")).
-    define_method("ptr", &cv::ocl::Context::ptr).
+    define_method("ptr", &cv::ocl::Context::ptr,
+      ReturnBuffer()).
     define_method("get_open_cl_context_property", &cv::ocl::Context::getOpenCLContextProperty,
-      Arg("property_id")).
+      Arg("property_id"), ReturnBuffer()).
     define_method("use_svm?", &cv::ocl::Context::useSVM).
     define_method("set_use_svm", &cv::ocl::Context::setUseSVM,
       Arg("enabled")).
@@ -202,19 +196,26 @@ void Init_Ocl()
       Arg("type_id"), Arg("user_context")).
     define_method<std::shared_ptr<cv::ocl::Context::UserContext>(cv::ocl::Context::*)(std::type_index)>("get_user_context", &cv::ocl::Context::getUserContext,
       Arg("type_id")).
+    define_method("get_impl", &cv::ocl::Context::getImpl).
     define_method("empty?", &cv::ocl::Context::empty).
+    define_attr("p", &cv::ocl::Context::p).
     define_singleton_function("get_default", &cv::ocl::Context::getDefault,
-      Arg("initialize")).
+      Arg("initialize") = static_cast<bool>(true)).
     define_singleton_function("from_handle", &cv::ocl::Context::fromHandle,
-      Arg("context")).
+      ArgBuffer("context")).
     define_singleton_function("from_device", &cv::ocl::Context::fromDevice,
       Arg("device")).
     define_singleton_function<cv::ocl::Context(*)(const std::string&)>("create", &cv::ocl::Context::create,
       Arg("configuration"));
 
-  rb_cCvOclContextUserContext = define_class_under<cv::ocl::Context::UserContext>(rb_cCvOclContext, "UserContext").
+  Rice::Data_Type<cv::ocl::Context::UserContext> rb_cCvOclContextUserContext = define_class_under<cv::ocl::Context::UserContext>(rb_cCvOclContext, "UserContext").
     define_constructor(Constructor<cv::ocl::Context::UserContext>());
-  rb_cCvOclPlatform = define_class_under<cv::ocl::Platform>(rb_mCvOcl, "Platform").
+
+  Rice::Data_Type<cv::ocl::Platform> rb_cCvOclPlatform = define_class_under<cv::ocl::Platform>(rb_mCvOcl, "Platform");
+
+  Rice::Data_Type<cv::ocl::Platform::Impl> rb_cCvOclPlatformImpl = define_class_under<cv::ocl::Platform::Impl>(rb_cCvOclPlatform, "Impl");
+
+  rb_cCvOclPlatform.
     define_constructor(Constructor<cv::ocl::Platform>()).
     define_constructor(Constructor<cv::ocl::Platform, const cv::ocl::Platform&>(),
       Arg("p")).
@@ -222,19 +223,26 @@ void Init_Ocl()
       Arg("p")).
     define_method<cv::ocl::Platform&(cv::ocl::Platform::*)(cv::ocl::Platform&&) noexcept>("assign", &cv::ocl::Platform::operator=,
       Arg("p")).
-    define_method("ptr", &cv::ocl::Platform::ptr).
+    define_method("ptr", &cv::ocl::Platform::ptr,
+      ReturnBuffer()).
+    define_method("get_impl", &cv::ocl::Platform::getImpl).
     define_method("empty?", &cv::ocl::Platform::empty).
     define_singleton_function("get_default", &cv::ocl::Platform::getDefault);
+
   rb_mCvOcl.define_module_function("attach_context", &cv::ocl::attachContext,
-    Arg("platform_name"), Arg("platform_id"), Arg("context"), Arg("device_id"));
+    Arg("platform_name"), ArgBuffer("platform_id"), ArgBuffer("context"), ArgBuffer("device_id"));
 
   rb_mCvOcl.define_module_function("convert_from_buffer", &cv::ocl::convertFromBuffer,
-    Arg("cl_mem_buffer"), Arg("step"), Arg("rows"), Arg("cols"), Arg("type"), Arg("dst"));
+    ArgBuffer("cl_mem_buffer"), Arg("step"), Arg("rows"), Arg("cols"), Arg("type"), Arg("dst"));
 
   rb_mCvOcl.define_module_function("convert_from_image", &cv::ocl::convertFromImage,
-    Arg("cl_mem_image"), Arg("dst"));
+    ArgBuffer("cl_mem_image"), Arg("dst"));
 
-  rb_cCvOclQueue = define_class_under<cv::ocl::Queue>(rb_mCvOcl, "Queue").
+  Rice::Data_Type<cv::ocl::Queue> rb_cCvOclQueue = define_class_under<cv::ocl::Queue>(rb_mCvOcl, "Queue");
+
+  Rice::Data_Type<cv::ocl::Queue::Impl> rb_cCvOclQueueImpl = define_class_under<cv::ocl::Queue::Impl>(rb_cCvOclQueue, "Impl");
+
+  rb_cCvOclQueue.
     define_constructor(Constructor<cv::ocl::Queue>()).
     define_constructor(Constructor<cv::ocl::Queue, const cv::ocl::Context&, const cv::ocl::Device&>(),
       Arg("c"), Arg("d") = static_cast<const cv::ocl::Device&>(cv::ocl::Device())).
@@ -244,16 +252,19 @@ void Init_Ocl()
       Arg("q")).
     define_method<cv::ocl::Queue&(cv::ocl::Queue::*)(cv::ocl::Queue&&) noexcept>("assign", &cv::ocl::Queue::operator=,
       Arg("q")).
-    define_method("create?", &cv::ocl::Queue::create,
+    define_method("create", &cv::ocl::Queue::create,
       Arg("c") = static_cast<const cv::ocl::Context&>(cv::ocl::Context()), Arg("d") = static_cast<const cv::ocl::Device&>(cv::ocl::Device())).
     define_method("finish", &cv::ocl::Queue::finish).
-    define_method("ptr", &cv::ocl::Queue::ptr).
+    define_method("ptr", &cv::ocl::Queue::ptr,
+      ReturnBuffer()).
     define_method("get_profiling_queue", &cv::ocl::Queue::getProfilingQueue).
+    define_method("get_impl", &cv::ocl::Queue::getImpl).
     define_method("empty?", &cv::ocl::Queue::empty).
     define_singleton_function("get_default", &cv::ocl::Queue::getDefault);
-  rb_cCvOclKernelArg = define_class_under<cv::ocl::KernelArg>(rb_mCvOcl, "KernelArg").
+
+  Rice::Data_Type<cv::ocl::KernelArg> rb_cCvOclKernelArg = define_class_under<cv::ocl::KernelArg>(rb_mCvOcl, "KernelArg").
     define_constructor(Constructor<cv::ocl::KernelArg, int, cv::UMat*, int, int, const void*, size_t>(),
-      Arg("_flags"), Arg("_m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1), Arg("_obj") = static_cast<const void*>(0), Arg("_sz") = static_cast<size_t>(0)).
+      Arg("_flags"), Arg("_m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1), ArgBuffer("_obj") = static_cast<const void*>(0), Arg("_sz") = static_cast<size_t>(0)).
     define_constructor(Constructor<cv::ocl::KernelArg>()).
     define_attr("flags", &cv::ocl::KernelArg::flags).
     define_attr("m", &cv::ocl::KernelArg::m).
@@ -292,7 +303,11 @@ void Init_Ocl()
   rb_cCvOclKernelArg.define_constant("PTR_ONLY", (int)cv::ocl::KernelArg::PTR_ONLY);
   rb_cCvOclKernelArg.define_constant("NO_SIZE", (int)cv::ocl::KernelArg::NO_SIZE);
 
-  rb_cCvOclKernel = define_class_under<cv::ocl::Kernel>(rb_mCvOcl, "Kernel").
+  Rice::Data_Type<cv::ocl::Kernel> rb_cCvOclKernel = define_class_under<cv::ocl::Kernel>(rb_mCvOcl, "Kernel");
+
+  Rice::Data_Type<cv::ocl::Kernel::Impl> rb_cCvOclKernelImpl = define_class_under<cv::ocl::Kernel::Impl>(rb_cCvOclKernel, "Impl");
+
+  rb_cCvOclKernel.
     define_constructor(Constructor<cv::ocl::Kernel>()).
     define_constructor(Constructor<cv::ocl::Kernel, const char*, const cv::ocl::Program&>(),
       Arg("kname"), Arg("prog")).
@@ -305,31 +320,37 @@ void Init_Ocl()
     define_method<cv::ocl::Kernel&(cv::ocl::Kernel::*)(cv::ocl::Kernel&&) noexcept>("assign", &cv::ocl::Kernel::operator=,
       Arg("k")).
     define_method("empty?", &cv::ocl::Kernel::empty).
-    define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::Program&)>("create?", &cv::ocl::Kernel::create,
+    define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::Program&)>("create", &cv::ocl::Kernel::create,
       Arg("kname"), Arg("prog")).
-    define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::ProgramSource&, const cv::String&, cv::String*)>("create?", &cv::ocl::Kernel::create,
+    define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::ProgramSource&, const cv::String&, cv::String*)>("create", &cv::ocl::Kernel::create,
       Arg("kname"), Arg("prog"), Arg("buildopts"), Arg("errmsg") = static_cast<cv::String*>(0)).
     define_method<int(cv::ocl::Kernel::*)(int, const void*, size_t)>("set", &cv::ocl::Kernel::set,
-      Arg("i"), Arg("value"), Arg("sz")).
+      Arg("i"), ArgBuffer("value"), Arg("sz")).
     define_method<int(cv::ocl::Kernel::*)(int, const cv::ocl::Image2D&)>("set", &cv::ocl::Kernel::set,
       Arg("i"), Arg("image_2d")).
     define_method<int(cv::ocl::Kernel::*)(int, const cv::UMat&)>("set", &cv::ocl::Kernel::set,
       Arg("i"), Arg("m")).
     define_method<int(cv::ocl::Kernel::*)(int, const cv::ocl::KernelArg&)>("set", &cv::ocl::Kernel::set,
       Arg("i"), Arg("arg")).
-    define_method("run?", &cv::ocl::Kernel::run,
+    define_method("run", &cv::ocl::Kernel::run,
       Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
-    define_method("run_task?", &cv::ocl::Kernel::runTask,
+    define_method("run_task", &cv::ocl::Kernel::runTask,
       Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
     define_method("run_profiling", &cv::ocl::Kernel::runProfiling,
       Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
     define_method("work_group_size", &cv::ocl::Kernel::workGroupSize).
     define_method("prefered_work_group_size_multiple", &cv::ocl::Kernel::preferedWorkGroupSizeMultiple).
-    define_method("compile_work_group_size?", &cv::ocl::Kernel::compileWorkGroupSize,
+    define_method("compile_work_group_size", &cv::ocl::Kernel::compileWorkGroupSize,
       Arg("wsz")).
     define_method("local_mem_size", &cv::ocl::Kernel::localMemSize).
-    define_method("ptr", &cv::ocl::Kernel::ptr);
-  rb_cCvOclProgram = define_class_under<cv::ocl::Program>(rb_mCvOcl, "Program").
+    define_method("ptr", &cv::ocl::Kernel::ptr,
+      ReturnBuffer());
+
+  Rice::Data_Type<cv::ocl::Program> rb_cCvOclProgram = define_class_under<cv::ocl::Program>(rb_mCvOcl, "Program");
+
+  Rice::Data_Type<cv::ocl::Program::Impl> rb_cCvOclProgramImpl = define_class_under<cv::ocl::Program::Impl>(rb_cCvOclProgram, "Impl");
+
+  rb_cCvOclProgram.
     define_constructor(Constructor<cv::ocl::Program>()).
     define_constructor(Constructor<cv::ocl::Program, const cv::ocl::ProgramSource&, const cv::String&, cv::String&>(),
       Arg("src"), Arg("buildflags"), Arg("errmsg")).
@@ -339,13 +360,20 @@ void Init_Ocl()
       Arg("prog")).
     define_method<cv::ocl::Program&(cv::ocl::Program::*)(cv::ocl::Program&&) noexcept>("assign", &cv::ocl::Program::operator=,
       Arg("prog")).
-    define_method("create?", &cv::ocl::Program::create,
+    define_method("create", &cv::ocl::Program::create,
       Arg("src"), Arg("buildflags"), Arg("errmsg")).
-    define_method("ptr", &cv::ocl::Program::ptr).
+    define_method("ptr", &cv::ocl::Program::ptr,
+      ReturnBuffer()).
     define_method("get_binary", &cv::ocl::Program::getBinary,
       Arg("binary")).
+    define_method("get_impl", &cv::ocl::Program::getImpl).
     define_method("empty?", &cv::ocl::Program::empty);
-  rb_cCvOclProgramSource = define_class_under<cv::ocl::ProgramSource>(rb_mCvOcl, "ProgramSource").
+
+  Rice::Data_Type<cv::ocl::ProgramSource> rb_cCvOclProgramSource = define_class_under<cv::ocl::ProgramSource>(rb_mCvOcl, "ProgramSource");
+
+  Rice::Data_Type<cv::ocl::ProgramSource::Impl> rb_cCvOclProgramSourceImpl = define_class_under<cv::ocl::ProgramSource::Impl>(rb_cCvOclProgramSource, "Impl");
+
+  rb_cCvOclProgramSource.
     define_constructor(Constructor<cv::ocl::ProgramSource>()).
     define_constructor(Constructor<cv::ocl::ProgramSource, const cv::String&, const cv::String&, const cv::String&, const cv::String&>(),
       Arg("module"), Arg("name"), Arg("code_str"), Arg("code_hash")).
@@ -361,15 +389,21 @@ void Init_Ocl()
       Arg("prog")).
     define_method("source", &cv::ocl::ProgramSource::source).
     define_method("hash", &cv::ocl::ProgramSource::hash).
+    define_method("get_impl", &cv::ocl::ProgramSource::getImpl).
     define_method("empty?", &cv::ocl::ProgramSource::empty).
     define_singleton_function("from_binary", &cv::ocl::ProgramSource::fromBinary,
-      Arg("module"), Arg("name"), Arg("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String())).
+      Arg("module"), Arg("name"), ArgBuffer("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String())).
     define_singleton_function("from_spir", &cv::ocl::ProgramSource::fromSPIR,
-      Arg("module"), Arg("name"), Arg("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String()));
-  rb_cCvOclPlatformInfo = define_class_under<cv::ocl::PlatformInfo>(rb_mCvOcl, "PlatformInfo").
+      Arg("module"), Arg("name"), ArgBuffer("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String()));
+
+  Rice::Data_Type<cv::ocl::PlatformInfo> rb_cCvOclPlatformInfo = define_class_under<cv::ocl::PlatformInfo>(rb_mCvOcl, "PlatformInfo");
+
+  Rice::Data_Type<cv::ocl::PlatformInfo::Impl> rb_cCvOclPlatformInfoImpl = define_class_under<cv::ocl::PlatformInfo::Impl>(rb_cCvOclPlatformInfo, "Impl");
+
+  rb_cCvOclPlatformInfo.
     define_constructor(Constructor<cv::ocl::PlatformInfo>()).
     define_constructor(Constructor<cv::ocl::PlatformInfo, void*>(),
-      Arg("id")).
+      ArgBuffer("id")).
     define_constructor(Constructor<cv::ocl::PlatformInfo, const cv::ocl::PlatformInfo&>(),
       Arg("i")).
     define_method<cv::ocl::PlatformInfo&(cv::ocl::PlatformInfo::*)(const cv::ocl::PlatformInfo&)>("assign", &cv::ocl::PlatformInfo::operator=,
@@ -383,6 +417,7 @@ void Init_Ocl()
     define_method("get_device", &cv::ocl::PlatformInfo::getDevice,
       Arg("device"), Arg("d")).
     define_method("empty?", &cv::ocl::PlatformInfo::empty);
+
   rb_mCvOcl.define_module_function("type_to_str", &cv::ocl::typeToStr,
     Arg("t"));
 
@@ -407,10 +442,10 @@ void Init_Ocl()
     define_value("OCL_VECTOR_DEFAULT", cv::ocl::OclVectorStrategy::OCL_VECTOR_DEFAULT);
 
   rb_mCvOcl.define_module_function("predict_optimal_vector_width", &cv::ocl::predictOptimalVectorWidth,
-    Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat"));
+    Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat") = static_cast<cv::ocl::OclVectorStrategy>(cv::ocl::OCL_VECTOR_DEFAULT));
 
   rb_mCvOcl.define_module_function("check_optimal_vector_width", &cv::ocl::checkOptimalVectorWidth,
-    Arg("vector_widths"), Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat"));
+    ArgBuffer("vector_widths"), Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat") = static_cast<cv::ocl::OclVectorStrategy>(cv::ocl::OCL_VECTOR_DEFAULT));
 
   rb_mCvOcl.define_module_function("predict_optimal_vector_width_max", &cv::ocl::predictOptimalVectorWidthMax,
     Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()));
@@ -418,23 +453,24 @@ void Init_Ocl()
   rb_mCvOcl.define_module_function("build_options_add_matrix_description", &cv::ocl::buildOptionsAddMatrixDescription,
     Arg("build_options"), Arg("name"), Arg("_m"));
 
-  rb_cCvOclImage2D = define_class_under<cv::ocl::Image2D>(rb_mCvOcl, "Image2D").
+  Rice::Data_Type<cv::ocl::Image2D> rb_cCvOclImage2D = define_class_under<cv::ocl::Image2D>(rb_mCvOcl, "Image2D").
     define_constructor(Constructor<cv::ocl::Image2D>()).
     define_constructor(Constructor<cv::ocl::Image2D, const cv::UMat&, bool, bool>(),
-      Arg("src"), Arg("norm"), Arg("alias")).
+      Arg("src"), Arg("norm") = static_cast<bool>(false), Arg("alias") = static_cast<bool>(false)).
     define_constructor(Constructor<cv::ocl::Image2D, const cv::ocl::Image2D&>(),
       Arg("i")).
     define_method<cv::ocl::Image2D&(cv::ocl::Image2D::*)(const cv::ocl::Image2D&)>("assign", &cv::ocl::Image2D::operator=,
       Arg("i")).
     define_method<cv::ocl::Image2D&(cv::ocl::Image2D::*)(cv::ocl::Image2D&&) noexcept>("assign", &cv::ocl::Image2D::operator=,
       Arg("arg_0")).
-    define_method("ptr", &cv::ocl::Image2D::ptr).
-    define_singleton_function("can_create_alias?", &cv::ocl::Image2D::canCreateAlias,
+    define_method("ptr", &cv::ocl::Image2D::ptr,
+      ReturnBuffer()).
+    define_singleton_function("can_create_alias", &cv::ocl::Image2D::canCreateAlias,
       Arg("u")).
-    define_singleton_function("format_supported?", &cv::ocl::Image2D::isFormatSupported,
+    define_singleton_function("is_format_supported", &cv::ocl::Image2D::isFormatSupported,
       Arg("depth"), Arg("cn"), Arg("norm"));
 
-  rb_cCvOclTimer = define_class_under<cv::ocl::Timer>(rb_mCvOcl, "Timer").
+  Rice::Data_Type<cv::ocl::Timer> rb_cCvOclTimer = define_class_under<cv::ocl::Timer>(rb_mCvOcl, "Timer").
     define_constructor(Constructor<cv::ocl::Timer, const cv::ocl::Queue&>(),
       Arg("q")).
     define_method("start", &cv::ocl::Timer::start).
@@ -443,7 +479,11 @@ void Init_Ocl()
 
   rb_mCvOcl.define_module_function("get_open_cl_allocator", &cv::ocl::getOpenCLAllocator);
 
-  rb_cCvOclOpenCLExecutionContext = define_class_under<cv::ocl::OpenCLExecutionContext>(rb_mCvOcl, "OpenCLExecutionContext").
+  Rice::Data_Type<cv::ocl::OpenCLExecutionContext> rb_cCvOclOpenCLExecutionContext = define_class_under<cv::ocl::OpenCLExecutionContext>(rb_mCvOcl, "OpenCLExecutionContext");
+
+  Rice::Data_Type<cv::ocl::OpenCLExecutionContext::Impl> rb_cCvOclOpenCLExecutionContextImpl = define_class_under<cv::ocl::OpenCLExecutionContext::Impl>(rb_cCvOclOpenCLExecutionContext, "Impl");
+
+  rb_cCvOclOpenCLExecutionContext.
     define_constructor(Constructor<cv::ocl::OpenCLExecutionContext>()).
     define_constructor(Constructor<cv::ocl::OpenCLExecutionContext, const cv::ocl::OpenCLExecutionContext&>(),
       Arg("arg_0")).
@@ -466,13 +506,13 @@ void Init_Ocl()
     define_singleton_function("get_current", &cv::ocl::OpenCLExecutionContext::getCurrent).
     define_singleton_function("get_current_ref", &cv::ocl::OpenCLExecutionContext::getCurrentRef).
     define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const std::string&, void*, void*, void*)>("create", &cv::ocl::OpenCLExecutionContext::create,
-      Arg("platform_name"), Arg("platform_id"), Arg("context"), Arg("device_id")).
+      Arg("platform_name"), ArgBuffer("platform_id"), ArgBuffer("context"), ArgBuffer("device_id")).
     define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context&, const cv::ocl::Device&, const cv::ocl::Queue&)>("create", &cv::ocl::OpenCLExecutionContext::create,
       Arg("context"), Arg("device"), Arg("queue")).
     define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context&, const cv::ocl::Device&)>("create", &cv::ocl::OpenCLExecutionContext::create,
       Arg("context"), Arg("device"));
-  rb_cCvOclOpenCLExecutionContextScope = define_class_under<cv::ocl::OpenCLExecutionContextScope>(rb_mCvOcl, "OpenCLExecutionContextScope").
+
+  Rice::Data_Type<cv::ocl::OpenCLExecutionContextScope> rb_cCvOclOpenCLExecutionContextScope = define_class_under<cv::ocl::OpenCLExecutionContextScope>(rb_mCvOcl, "OpenCLExecutionContextScope").
     define_constructor(Constructor<cv::ocl::OpenCLExecutionContextScope, const cv::ocl::OpenCLExecutionContext&>(),
       Arg("ctx"));
-
 }

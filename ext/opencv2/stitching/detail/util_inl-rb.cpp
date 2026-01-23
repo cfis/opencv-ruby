@@ -3,7 +3,7 @@
 
 using namespace Rice;
 
-void Init_UtilInl()
+void Init_Stitching_Detail_UtilInl()
 {
   Module rb_mCv = define_module("Cv");
 

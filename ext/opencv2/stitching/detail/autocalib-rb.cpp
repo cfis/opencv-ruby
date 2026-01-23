@@ -3,7 +3,7 @@
 
 using namespace Rice;
 
-void Init_Autocalib()
+void Init_Stitching_Detail_Autocalib()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -15,6 +15,6 @@ void Init_Autocalib()
   rb_mCvDetail.define_module_function("estimate_focal", &cv::detail::estimateFocal,
     Arg("features"), Arg("pairwise_matches"), Arg("focals"));
 
-  rb_mCvDetail.define_module_function("calibrate_rotating_camera?", &cv::detail::calibrateRotatingCamera,
+  rb_mCvDetail.define_module_function("calibrate_rotating_camera", &cv::detail::calibrateRotatingCamera,
     Arg("hs"), Arg("k"));
 }

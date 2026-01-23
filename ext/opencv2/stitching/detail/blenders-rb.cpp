@@ -1,20 +1,15 @@
 #include <opencv2/stitching/detail/blenders.hpp>
-#include "../../core/cvstd_wrapper-rb.hpp"
 #include "blenders-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvDetailBlender;
-Rice::Class rb_cCvDetailFeatherBlender;
-Rice::Class rb_cCvDetailMultiBandBlender;
-
-void Init_Blenders()
+void Init_Stitching_Detail_Blenders()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  rb_cCvDetailBlender = define_class_under<cv::detail::Blender>(rb_mCvDetail, "Blender").
+  Rice::Data_Type<cv::detail::Blender> rb_cCvDetailBlender = define_class_under<cv::detail::Blender>(rb_mCvDetail, "Blender").
     define_constructor(Constructor<cv::detail::Blender>()).
     define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("prepare", &cv::detail::Blender::prepare,
       Arg("corners"), Arg("sizes")).
@@ -31,7 +26,7 @@ void Init_Blenders()
   rb_cCvDetailBlender.define_constant("FEATHER", (int)cv::detail::Blender::FEATHER);
   rb_cCvDetailBlender.define_constant("MULTI_BAND", (int)cv::detail::Blender::MULTI_BAND);
 
-  rb_cCvDetailFeatherBlender = define_class_under<cv::detail::FeatherBlender, cv::detail::Blender>(rb_mCvDetail, "FeatherBlender").
+  Rice::Data_Type<cv::detail::FeatherBlender> rb_cCvDetailFeatherBlender = define_class_under<cv::detail::FeatherBlender, cv::detail::Blender>(rb_mCvDetail, "FeatherBlender").
     define_constructor(Constructor<cv::detail::FeatherBlender, float>(),
       Arg("sharpness") = static_cast<float>(0.02f)).
     define_method("sharpness", &cv::detail::FeatherBlender::sharpness).
@@ -46,7 +41,7 @@ void Init_Blenders()
     define_method("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
       Arg("masks"), Arg("corners"), Arg("weight_maps"));
 
-  rb_cCvDetailMultiBandBlender = define_class_under<cv::detail::MultiBandBlender, cv::detail::Blender>(rb_mCvDetail, "MultiBandBlender").
+  Rice::Data_Type<cv::detail::MultiBandBlender> rb_cCvDetailMultiBandBlender = define_class_under<cv::detail::MultiBandBlender, cv::detail::Blender>(rb_mCvDetail, "MultiBandBlender").
     define_constructor(Constructor<cv::detail::MultiBandBlender, int, int, int>(),
       Arg("try_gpu") = static_cast<int>(false), Arg("num_bands") = static_cast<int>(5), Arg("weight_type") = static_cast<int>(CV_32F)).
     define_method("num_bands", &cv::detail::MultiBandBlender::numBands).

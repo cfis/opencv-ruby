@@ -3,17 +3,13 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDetailDisjointSets;
-Rice::Class rb_cCvDetailGraph;
-Rice::Class rb_cCvDetailGraphEdge;
-
-void Init_Util()
+void Init_Stitching_Detail_Util()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  rb_cCvDetailDisjointSets = define_class_under<cv::detail::DisjointSets>(rb_mCvDetail, "DisjointSets").
+  Rice::Data_Type<cv::detail::DisjointSets> rb_cCvDetailDisjointSets = define_class_under<cv::detail::DisjointSets>(rb_mCvDetail, "DisjointSets").
     define_constructor(Constructor<cv::detail::DisjointSets, int>(),
       Arg("elem_count") = static_cast<int>(0)).
     define_method("create_one_elem_sets", &cv::detail::DisjointSets::createOneElemSets,
@@ -25,7 +21,7 @@ void Init_Util()
     define_attr("parent", &cv::detail::DisjointSets::parent).
     define_attr("size", &cv::detail::DisjointSets::size);
 
-  rb_cCvDetailGraphEdge = define_class_under<cv::detail::GraphEdge>(rb_mCvDetail, "GraphEdge").
+  Rice::Data_Type<cv::detail::GraphEdge> rb_cCvDetailGraphEdge = define_class_under<cv::detail::GraphEdge>(rb_mCvDetail, "GraphEdge").
     define_constructor(Constructor<cv::detail::GraphEdge, int, int, float>(),
       Arg("from"), Arg("to"), Arg("weight")).
     define_method("<", &cv::detail::GraphEdge::operator<,
@@ -36,7 +32,7 @@ void Init_Util()
     define_attr("to", &cv::detail::GraphEdge::to).
     define_attr("weight", &cv::detail::GraphEdge::weight);
 
-  rb_cCvDetailGraph = define_class_under<cv::detail::Graph>(rb_mCvDetail, "Graph").
+  Rice::Data_Type<cv::detail::Graph> rb_cCvDetailGraph = define_class_under<cv::detail::Graph>(rb_mCvDetail, "Graph").
     define_constructor(Constructor<cv::detail::Graph, int>(),
       Arg("num_vertices") = static_cast<int>(0)).
     define_method("create", &cv::detail::Graph::create,
@@ -45,7 +41,7 @@ void Init_Util()
     define_method("add_edge", &cv::detail::Graph::addEdge,
       Arg("from"), Arg("to"), Arg("weight"));
 
-  rb_mCvDetail.define_module_function("overlap_roi?", &cv::detail::overlapRoi,
+  rb_mCvDetail.define_module_function("overlap_roi", &cv::detail::overlapRoi,
     Arg("tl1"), Arg("tl2"), Arg("sz1"), Arg("sz2"), Arg("roi"));
 
   rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&)>("result_roi", &cv::detail::resultRoi,

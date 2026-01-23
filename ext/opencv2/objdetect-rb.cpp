@@ -32,9 +32,10 @@ void Init_Objdetect()
     Arg("rect_list"), Arg("found_weights"), Arg("found_scales"), Arg("detect_threshold") = static_cast<double>(0.0), Arg("win_det_size") = static_cast<cv::Size>(cv::Size(64, 128)));
 
   Rice::Data_Type<cv::DefaultDeleter<CvHaarClassifierCascade>> rb_cCvDefaultDeleterCvHaarClassifierCascade = define_class_under<cv::DefaultDeleter<CvHaarClassifierCascade>>(rb_mCv, "DefaultDeleterCvHaarClassifierCascade").
-    define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>()).
-    define_method("call", &cv::DefaultDeleter<CvHaarClassifierCascade>::operator(),
-      Arg("obj"));
+    define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>());
+    // Causes linker errors
+    // define_method("call", &cv::DefaultDeleter<CvHaarClassifierCascade>::operator(),
+    //  Arg("obj"));
 
   rb_mCv.define_constant("CASCADE_DO_CANNY_PRUNING", (int)cv::CASCADE_DO_CANNY_PRUNING);
   rb_mCv.define_constant("CASCADE_SCALE_IMAGE", (int)cv::CASCADE_SCALE_IMAGE);

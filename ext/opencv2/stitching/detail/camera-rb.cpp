@@ -3,15 +3,13 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDetailCameraParams;
-
-void Init_Camera()
+void Init_Stitching_Detail_Camera()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  rb_cCvDetailCameraParams = define_class_under<cv::detail::CameraParams>(rb_mCvDetail, "CameraParams").
+  Rice::Data_Type<cv::detail::CameraParams> rb_cCvDetailCameraParams = define_class_under<cv::detail::CameraParams>(rb_mCvDetail, "CameraParams").
     define_constructor(Constructor<cv::detail::CameraParams>()).
     define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams&>(),
       Arg("other")).

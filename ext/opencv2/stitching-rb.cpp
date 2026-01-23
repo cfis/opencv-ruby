@@ -1,16 +1,13 @@
 #include <opencv2/stitching.hpp>
-#include "core/cvstd_wrapper-rb.hpp"
 #include "stitching-rb.hpp"
 
 using namespace Rice;
-
-Rice::Class rb_cCvStitcher;
 
 void Init_Stitching()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvStitcher = define_class_under<cv::Stitcher>(rb_mCv, "Stitcher").
+  Rice::Data_Type<cv::Stitcher> rb_cCvStitcher = define_class_under<cv::Stitcher>(rb_mCv, "Stitcher").
     define_constructor(Constructor<cv::Stitcher>()).
     define_constant("ORIG_RESOL", cv::Stitcher::ORIG_RESOL).
     define_method("registration_resol", &cv::Stitcher::registrationResol).

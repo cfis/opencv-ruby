@@ -1,24 +1,15 @@
 #include <opencv2/stitching/detail/matchers.hpp>
-#include "../../../opencv_ruby_version.hpp"
-#include "../../core/cvstd_wrapper-rb.hpp"
 #include "matchers-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvDetailAffineBestOf2NearestMatcher;
-Data_Type<cv::detail::BestOf2NearestMatcher> rb_cCvDetailBestOf2NearestMatcher;
-Rice::Class rb_cCvDetailBestOf2NearestRangeMatcher;
-Rice::Class rb_cCvDetailFeaturesMatcher;
-Rice::Class rb_cCvDetailImageFeatures;
-Rice::Class rb_cCvDetailMatchesInfo;
-
-void Init_Matchers()
+void Init_Stitching_Detail_Matchers()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  rb_cCvDetailImageFeatures = define_class_under<cv::detail::ImageFeatures>(rb_mCvDetail, "ImageFeatures").
+  Rice::Data_Type<cv::detail::ImageFeatures> rb_cCvDetailImageFeatures = define_class_under<cv::detail::ImageFeatures>(rb_mCvDetail, "ImageFeatures").
     define_constructor(Constructor<cv::detail::ImageFeatures>()).
     define_attr("img_idx", &cv::detail::ImageFeatures::img_idx).
     define_attr("img_size", &cv::detail::ImageFeatures::img_size).
@@ -32,7 +23,7 @@ void Init_Matchers()
   rb_mCvDetail.define_module_function<void(*)(const cv::Ptr<cv::Feature2D>&, cv::InputArray, cv::detail::ImageFeatures&, cv::InputArray)>("compute_image_features", &cv::detail::computeImageFeatures,
     Arg("features_finder"), Arg("image"), Arg("features"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_cCvDetailMatchesInfo = define_class_under<cv::detail::MatchesInfo>(rb_mCvDetail, "MatchesInfo").
+  Rice::Data_Type<cv::detail::MatchesInfo> rb_cCvDetailMatchesInfo = define_class_under<cv::detail::MatchesInfo>(rb_mCvDetail, "MatchesInfo").
     define_constructor(Constructor<cv::detail::MatchesInfo>()).
     define_constructor(Constructor<cv::detail::MatchesInfo, const cv::detail::MatchesInfo&>(),
       Arg("other")).
@@ -48,31 +39,30 @@ void Init_Matchers()
     define_method("get_matches", &cv::detail::MatchesInfo::getMatches).
     define_method("get_inliers", &cv::detail::MatchesInfo::getInliers);
 
-  rb_cCvDetailFeaturesMatcher = define_class_under<cv::detail::FeaturesMatcher>(rb_mCvDetail, "FeaturesMatcher").
+  Rice::Data_Type<cv::detail::FeaturesMatcher> rb_cCvDetailFeaturesMatcher = define_class_under<cv::detail::FeaturesMatcher>(rb_mCvDetail, "FeaturesMatcher").
     define_method<void(cv::detail::FeaturesMatcher::*)(const cv::detail::ImageFeatures&, const cv::detail::ImageFeatures&, cv::detail::MatchesInfo&)>("call", &cv::detail::FeaturesMatcher::operator(),
       Arg("features1"), Arg("features2"), Arg("matches_info")).
     define_method<void(cv::detail::FeaturesMatcher::*)(const std::vector<cv::detail::ImageFeatures>&, std::vector<cv::detail::MatchesInfo>&, const cv::UMat&)>("call", &cv::detail::FeaturesMatcher::operator(),
-      Arg("features"), Arg("pairwise_matches"), Arg("mask") = static_cast<const cv::UMat &>(cv::UMat())).
+      Arg("features"), Arg("pairwise_matches"), Arg("mask") = static_cast<const cv::UMat&>(cv::UMat())).
     define_method("thread_safe?", &cv::detail::FeaturesMatcher::isThreadSafe).
     define_method("collect_garbage", &cv::detail::FeaturesMatcher::collectGarbage);
 
-  rb_cCvDetailBestOf2NearestMatcher = define_class_under<cv::detail::BestOf2NearestMatcher, cv::detail::FeaturesMatcher>(rb_mCvDetail, "BestOf2NearestMatcher").
-    define_method("collect_garbage", &cv::detail::BestOf2NearestMatcher::collectGarbage).
-    define_singleton_function("create", &cv::detail::BestOf2NearestMatcher::create,
-      Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6), Arg("matches_confindece_thresh") = static_cast<double>(3.));
+  Rice::Data_Type<cv::detail::BestOf2NearestMatcher> rb_cCvDetailBestOf2NearestMatcher = define_class_under<cv::detail::BestOf2NearestMatcher, cv::detail::FeaturesMatcher>(rb_mCvDetail, "BestOf2NearestMatcher").
+    define_constructor(Constructor<cv::detail::BestOf2NearestMatcher, bool, float, int, int, double>(),
+      Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6), Arg("matches_confindece_thresh") = static_cast<double>(3.)).
+    define_method("collect_garbage", &cv::detail::BestOf2NearestMatcher::collectGarbage);
 
 #if RUBY_CV_VERSION >= 407
   rb_cCvDetailBestOf2NearestMatcher.
-    define_constructor(Constructor<cv::detail::BestOf2NearestMatcher, bool, float, int, int, double>(),
+    define_singleton_function("create", &cv::detail::BestOf2NearestMatcher::create,
       Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6), Arg("matches_confindece_thresh") = static_cast<double>(3.));
 #endif
 
-  rb_cCvDetailBestOf2NearestRangeMatcher = define_class_under<cv::detail::BestOf2NearestRangeMatcher, cv::detail::BestOf2NearestMatcher>(rb_mCvDetail, "BestOf2NearestRangeMatcher").
+  Rice::Data_Type<cv::detail::BestOf2NearestRangeMatcher> rb_cCvDetailBestOf2NearestRangeMatcher = define_class_under<cv::detail::BestOf2NearestRangeMatcher, cv::detail::BestOf2NearestMatcher>(rb_mCvDetail, "BestOf2NearestRangeMatcher").
     define_constructor(Constructor<cv::detail::BestOf2NearestRangeMatcher, int, bool, float, int, int>(),
       Arg("range_width") = static_cast<int>(5), Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6));
 
-  rb_cCvDetailAffineBestOf2NearestMatcher = define_class_under<cv::detail::AffineBestOf2NearestMatcher, cv::detail::BestOf2NearestMatcher>(rb_mCvDetail, "AffineBestOf2NearestMatcher").
+  Rice::Data_Type<cv::detail::AffineBestOf2NearestMatcher> rb_cCvDetailAffineBestOf2NearestMatcher = define_class_under<cv::detail::AffineBestOf2NearestMatcher, cv::detail::BestOf2NearestMatcher>(rb_mCvDetail, "AffineBestOf2NearestMatcher").
     define_constructor(Constructor<cv::detail::AffineBestOf2NearestMatcher, bool, bool, float, int>(),
       Arg("full_affine") = static_cast<bool>(false), Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6));
-
 }

@@ -270,11 +270,11 @@ void Init_opencv_ruby()
     Init_Video_Detail_TrackingDetail();
     Init_Video_BackgroundSegm();
     Init_Video_Tracking();
-    Init_Video_Video();
+    Init_Video_Video();*/
 
     // Top level
     Init_Calib3d();
-    Init_Features2d();
+  /*  Init_Features2d();
     Init_Flann();
     Init_Highgui();
     Init_Imgcodecs();

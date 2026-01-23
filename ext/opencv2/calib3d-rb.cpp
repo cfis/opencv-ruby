@@ -1,17 +1,7 @@
 #include <opencv2/calib3d.hpp>
-#include "../opencv_ruby_version.hpp"
-#include "core/cvstd_wrapper-rb.hpp"
 #include "calib3d-rb.hpp"
 
 using namespace Rice;
-
-Rice::Class rb_cCvCirclesGridFinderParameters;
-Rice::Class rb_cCvLMSolver;
-Rice::Class rb_cCvLMSolverCallback;
-Rice::Class rb_cCvStereoBM;
-Rice::Class rb_cCvStereoMatcher;
-Rice::Class rb_cCvStereoSGBM;
-Data_Type<cv::UsacParams> rb_cCvUsacParams;
 
 void Init_Calib3d()
 {
@@ -48,7 +38,7 @@ void Init_Calib3d()
   rb_mCv.define_constant("CALIB_CB_ACCURACY", (int)cv::CALIB_CB_ACCURACY);
   rb_mCv.define_constant("CALIB_CB_LARGER", (int)cv::CALIB_CB_LARGER);
   rb_mCv.define_constant("CALIB_CB_MARKER", (int)cv::CALIB_CB_MARKER);
-
+  
 #if RUBY_CV_VERSION >= 409
   rb_mCv.define_constant("CALIB_CB_PLAIN", (int)cv::CALIB_CB_PLAIN);
 #endif
@@ -130,7 +120,7 @@ void Init_Calib3d()
     define_value("COV_POLISHER", cv::PolishingMethod::COV_POLISHER);
 #endif
 
-  rb_cCvUsacParams = define_class_under<cv::UsacParams>(rb_mCv, "UsacParams").
+  Rice::Data_Type<cv::UsacParams> rb_cCvUsacParams = define_class_under<cv::UsacParams>(rb_mCv, "UsacParams").
     define_constructor(Constructor<cv::UsacParams>()).
     define_attr("confidence", &cv::UsacParams::confidence).
     define_attr("is_parallel", &cv::UsacParams::isParallel).
@@ -153,7 +143,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function("rodrigues", &cv::Rodrigues,
     Arg("src"), Arg("dst"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_cCvLMSolver = define_class_under<cv::LMSolver, cv::Algorithm>(rb_mCv, "LMSolver").
+  Rice::Data_Type<cv::LMSolver> rb_cCvLMSolver = define_class_under<cv::LMSolver, cv::Algorithm>(rb_mCv, "LMSolver").
     define_method("run", &cv::LMSolver::run,
       Arg("param")).
     define_method("set_max_iters", &cv::LMSolver::setMaxIters,
@@ -164,7 +154,7 @@ void Init_Calib3d()
     define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int, double)>("create", &cv::LMSolver::create,
       Arg("cb"), Arg("max_iters"), Arg("eps"));
 
-  rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback").
+  Rice::Data_Type<cv::LMSolver::Callback> rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback").
     define_method("compute", &cv::LMSolver::Callback::compute,
       Arg("param"), Arg("err"), Arg("j"));
 
@@ -240,7 +230,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function("draw_frame_axes", &cv::drawFrameAxes,
     Arg("image"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvec"), Arg("tvec"), Arg("length"), Arg("thickness") = static_cast<int>(3));
 
-  rb_cCvCirclesGridFinderParameters = define_class_under<cv::CirclesGridFinderParameters>(rb_mCv, "CirclesGridFinderParameters").
+  Rice::Data_Type<cv::CirclesGridFinderParameters> rb_cCvCirclesGridFinderParameters = define_class_under<cv::CirclesGridFinderParameters>(rb_mCv, "CirclesGridFinderParameters").
     define_constructor(Constructor<cv::CirclesGridFinderParameters>()).
     define_attr("density_neighborhood_size", &cv::CirclesGridFinderParameters::densityNeighborhoodSize).
     define_attr("min_density", &cv::CirclesGridFinderParameters::minDensity).
@@ -263,10 +253,10 @@ void Init_Calib3d()
     define_value("SYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::SYMMETRIC_GRID).
     define_value("ASYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::ASYMMETRIC_GRID);
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid?", &cv::findCirclesGrid,
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid", &cv::findCirclesGrid,
     Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags"), Arg("blob_detector"), Arg("parameters"));
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&)>("find_circles_grid?", &cv::findCirclesGrid,
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&)>("find_circles_grid", &cv::findCirclesGrid,
     Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags") = static_cast<int>(cv::CALIB_CB_SYMMETRIC_GRID), Arg("blob_detector") = static_cast<const cv::Ptr<cv::Feature2D>&>(cv::SimpleBlobDetector::create()));
 
   rb_mCv.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, cv::TermCriteria)>("calibrate_camera", &cv::calibrateCamera,
@@ -399,7 +389,7 @@ void Init_Calib3d()
     Arg("src"), Arg("dst"), Arg("out"), Arg("inliers"), Arg("ransac_threshold") = static_cast<double>(3), Arg("confidence") = static_cast<double>(0.99));
 
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, double*, bool)>("estimate_affine_3d", &cv::estimateAffine3D,
-    Arg("src"), Arg("dst"), Arg("scale") = static_cast<double*>(nullptr), Arg("force_rotation") = static_cast<bool>(true));
+    Arg("src"), Arg("dst"), ArgBuffer("scale") = static_cast<double*>(nullptr), Arg("force_rotation") = static_cast<bool>(true));
 
   rb_mCv.define_module_function("estimate_translation_3d", &cv::estimateTranslation3D,
     Arg("src"), Arg("dst"), Arg("out"), Arg("inliers"), Arg("ransac_threshold") = static_cast<double>(3), Arg("confidence") = static_cast<double>(0.99));
@@ -419,7 +409,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function("filter_homography_decomp_by_visible_refpoints", &cv::filterHomographyDecompByVisibleRefpoints,
     Arg("rotations"), Arg("normals"), Arg("before_points"), Arg("after_points"), Arg("possible_solutions"), Arg("points_mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_cCvStereoMatcher = define_class_under<cv::StereoMatcher, cv::Algorithm>(rb_mCv, "StereoMatcher").
+  Rice::Data_Type<cv::StereoMatcher> rb_cCvStereoMatcher = define_class_under<cv::StereoMatcher, cv::Algorithm>(rb_mCv, "StereoMatcher").
     define_method("compute", &cv::StereoMatcher::compute,
       Arg("left"), Arg("right"), Arg("disparity")).
     define_method("get_min_disparity", &cv::StereoMatcher::getMinDisparity).
@@ -444,7 +434,7 @@ void Init_Calib3d()
   rb_cCvStereoMatcher.define_constant("DISP_SHIFT", (int)cv::StereoMatcher::DISP_SHIFT);
   rb_cCvStereoMatcher.define_constant("DISP_SCALE", (int)cv::StereoMatcher::DISP_SCALE);
 
-  rb_cCvStereoBM = define_class_under<cv::StereoBM, cv::StereoMatcher>(rb_mCv, "StereoBM").
+  Rice::Data_Type<cv::StereoBM> rb_cCvStereoBM = define_class_under<cv::StereoBM, cv::StereoMatcher>(rb_mCv, "StereoBM").
     define_method("get_pre_filter_type", &cv::StereoBM::getPreFilterType).
     define_method("set_pre_filter_type", &cv::StereoBM::setPreFilterType,
       Arg("pre_filter_type")).
@@ -475,7 +465,7 @@ void Init_Calib3d()
   rb_cCvStereoBM.define_constant("PREFILTER_NORMALIZED_RESPONSE", (int)cv::StereoBM::PREFILTER_NORMALIZED_RESPONSE);
   rb_cCvStereoBM.define_constant("PREFILTER_XSOBEL", (int)cv::StereoBM::PREFILTER_XSOBEL);
 
-  rb_cCvStereoSGBM = define_class_under<cv::StereoSGBM, cv::StereoMatcher>(rb_mCv, "StereoSGBM").
+  Rice::Data_Type<cv::StereoSGBM> rb_cCvStereoSGBM = define_class_under<cv::StereoSGBM, cv::StereoMatcher>(rb_mCv, "StereoSGBM").
     define_method("get_pre_filter_cap", &cv::StereoSGBM::getPreFilterCap).
     define_method("set_pre_filter_cap", &cv::StereoSGBM::setPreFilterCap,
       Arg("pre_filter_cap")).

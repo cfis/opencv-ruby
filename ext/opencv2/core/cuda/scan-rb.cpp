@@ -2,6 +2,7 @@
 #include "scan-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, ScanKind Kind, typename T, typename F>
 inline void WarpScan_builder(Data_Type_T& klass)
 {
@@ -23,7 +24,8 @@ inline void BlockScan_builder(Data_Type_T& klass)
   klass.define_attr("__forceinline__", &cv::cuda::device::BlockScan<Kind, T, Sc, F>::__forceinline__).
     define_constant("Warp_mask", cv::cuda::device::BlockScan<Kind, T, Sc, F>::warp_mask);
 };
-void Init_Scan()
+
+void Init_Core_Cuda_Scan()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -35,13 +37,6 @@ void Init_Scan()
     define_value("EXCLUSIVE", cv::cuda::device::ScanKind::EXCLUSIVE).
     define_value("INCLUSIVE", cv::cuda::device::ScanKind::INCLUSIVE);
 
-  rb_mCvCudaDevice.define_module_function("warp_scan_inclusive", &cv::cuda::device::warpScanInclusive,
-    Arg("idata"), Arg("s_data"), Arg("tid"));
-
   rb_mCvCudaDevice.define_module_function("warp_scan_exclusive", &cv::cuda::device::warpScanExclusive,
-    Arg("idata"), Arg("s_data"), Arg("tid"));
-
-  rb_mCvCudaDevice.define_module_function("block_scan_inclusive", &cv::cuda::device::blockScanInclusive,
-    Arg("idata"), Arg("s_data"), Arg("tid"));
-
+    Arg("idata"), ArgBuffer("s_data"), Arg("tid"));
 }

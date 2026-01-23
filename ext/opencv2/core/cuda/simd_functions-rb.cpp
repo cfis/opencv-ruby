@@ -2,7 +2,8 @@
 #include "simd_functions-rb.hpp"
 
 using namespace Rice;
-void Init_SimdFunctions()
+
+void Init_Core_Cuda_SimdFunctions()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -123,5 +124,4 @@ void Init_SimdFunctions()
 
   rb_mCvCudaDevice.define_module_function("vmin4", &cv::cuda::device::vmin4,
     Arg("a"), Arg("b"));
-
 }

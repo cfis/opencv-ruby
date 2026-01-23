@@ -3,14 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvCudaDeviceColorDetailColorChannelFloat;
-Rice::Class rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter5;
-Rice::Class rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter6;
-Rice::Class rb_cCvCudaDeviceColorDetailGray2RGBUchar4;
-Rice::Class rb_cCvCudaDeviceColorDetailRGB2RGBUchar442;
-Rice::Class rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter5;
-Rice::Class rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter6;
-
 template<typename Data_Type_T, typename T>
 inline void ColorChannel_builder(Data_Type_T& klass)
 {
@@ -19,7 +11,7 @@ inline void ColorChannel_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2RGB_builder(Data_Type_T& klass)
 {
-  klass.template define_method<>("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
+  klass.define_method("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
       Arg("src")).
     define_attr("__device__", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::__device__);
 };
@@ -107,7 +99,8 @@ inline void HLS2RGB_builder(Data_Type_T& klass)
 {
   klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>::__forceinline__);
 };
-void Init_ColorDetail()
+
+void Init_Core_Cuda_Detail_ColorDetail()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -117,7 +110,7 @@ void Init_ColorDetail()
 
   Module rb_mCvCudaDeviceColorDetail = define_module_under(rb_mCvCudaDevice, "ColorDetail");
 
-  rb_cCvCudaDeviceColorDetailColorChannelFloat = define_class_under<cv::cuda::device::color_detail::ColorChannel<float>>(rb_mCvCudaDeviceColorDetail, "ColorChannelFloat").
+  Rice::Data_Type<cv::cuda::device::color_detail::ColorChannel<float>> rb_cCvCudaDeviceColorDetailColorChannelFloat = define_class_under<cv::cuda::device::color_detail::ColorChannel<float>>(rb_mCvCudaDeviceColorDetail, "ColorChannelFloat").
     define_constructor(Constructor<cv::cuda::device::color_detail::ColorChannel<float>>());
 
   rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(int&, int)>("set_alpha", &cv::cuda::device::color_detail::setAlpha,
@@ -126,10 +119,10 @@ void Init_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(int&, int)>("set_alpha", &cv::cuda::device::color_detail::setAlpha,
     Arg("vec"), Arg("val"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
+  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
     Arg("vec"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
+  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
     Arg("vec"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("B2YF", cv::cuda::device::color_detail::B2YF);
@@ -197,119 +190,92 @@ void Init_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_constant("BY15", (int)cv::cuda::device::color_detail::BY15);
   rb_mCvCudaDeviceColorDetail.define_constant("BLOCK_SIZE", (int)cv::cuda::device::color_detail::BLOCK_SIZE);
 
-  rb_cCvCudaDeviceColorDetailRGB2RGBUchar442 = define_class_under<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>>(rb_mCvCudaDeviceColorDetail, "RGB2RGBUchar442").
+  Rice::Data_Type<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>> rb_cCvCudaDeviceColorDetailRGB2RGBUchar442 = define_class_under<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>>(rb_mCvCudaDeviceColorDetail, "RGB2RGBUchar442").
     define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>>()).
     define_attr("uint", &cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::uint);
 
-  rb_cCvCudaDeviceColorDetailGray2RGBUchar4 = define_class_under<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>>(rb_mCvCudaDeviceColorDetail, "Gray2RGBUchar4").
+  Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>> rb_cCvCudaDeviceColorDetailGray2RGBUchar4 = define_class_under<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>>(rb_mCvCudaDeviceColorDetail, "Gray2RGBUchar4").
     define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>>()).
     define_attr("__forceinline__", &cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::__forceinline__);
 
-  rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter6 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter6").
+  Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>> rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter6 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter6").
     define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>());
 
-  rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter5 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter5").
+  Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>> rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter5 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter5").
     define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>());
 
-  rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter6 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter6").
+  Rice::Data_Type<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>> rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter6 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter6").
     define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>());
 
-  rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter5 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter5").
+  Rice::Data_Type<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>> rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter5 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter5").
     define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>());
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(const int*)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int*)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
+    ArgBuffer("src"));
 
   rb_mCvCudaDeviceColorDetail.define_module_function<uchar(*)(uint)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
     Arg("src"));
 
   rb_mCvCudaDeviceColorDetail.define_module_function<float(*)(const float*)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
-    Arg("src"));
+    ArgBuffer("src"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2YUVCoeffsF", &cv::cuda::device::color_detail::c_RGB2YUVCoeffs_f);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YUVCoeffs_f", cv::cuda::device::color_detail::c_RGB2YUVCoeffs_f);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2YUVCoeffsI", &cv::cuda::device::color_detail::c_RGB2YUVCoeffs_i);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YUVCoeffs_i", cv::cuda::device::color_detail::c_RGB2YUVCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_yuv_convert", &cv::cuda::device::color_detail::RGB2YUVConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2yuv_convert", &cv::cuda::device::color_detail::RGB2YUVConvert,
+    ArgBuffer("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CYUV2RGBCoeffsF", &cv::cuda::device::color_detail::c_YUV2RGBCoeffs_f);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_YUV2RGBCoeffs_f", cv::cuda::device::color_detail::c_YUV2RGBCoeffs_f);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CYUV2RGBCoeffsI", &cv::cuda::device::color_detail::c_YUV2RGBCoeffs_i);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_YUV2RGBCoeffs_i", cv::cuda::device::color_detail::c_YUV2RGBCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("yuv2_rgb_convert", &cv::cuda::device::color_detail::YUV2RGBConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("yuv2rgb_convert", &cv::cuda::device::color_detail::YUV2RGBConvert,
+    Arg("src"), ArgBuffer("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("yuv2_rgb_convert", &cv::cuda::device::color_detail::YUV2RGBConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YCrCbCoeffs_f", cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_f);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2YCrCbCoeffsF", &cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_f);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YCrCbCoeffs_i", cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2YCrCbCoeffsI", &cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_i);
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2y_cr_cb_convert", &cv::cuda::device::color_detail::RGB2YCrCbConvert,
+    ArgBuffer("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("rgb2_y_cr_cb_convert", &cv::cuda::device::color_detail::RGB2YCrCbConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_YCrCb2RGBCoeffs_f", cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_f);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2_y_cr_cb_convert", &cv::cuda::device::color_detail::RGB2YCrCbConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_YCrCb2RGBCoeffs_i", cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CYCrCb2RGBCoeffsF", &cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_f);
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("y_cr_cb_2rgb_convert", &cv::cuda::device::color_detail::YCrCb2RGBConvert,
+    Arg("src"), ArgBuffer("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CYCrCb2RGBCoeffsI", &cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_i);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2XYZ_D65f", cv::cuda::device::color_detail::c_RGB2XYZ_D65f);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("y_cr_cb2_rgb_convert", &cv::cuda::device::color_detail::YCrCb2RGBConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2XYZ_D65i", cv::cuda::device::color_detail::c_RGB2XYZ_D65i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("y_cr_cb2_rgb_convert", &cv::cuda::device::color_detail::YCrCb2RGBConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int*, int&)>("rgb2xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
+    ArgBuffer("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2XYZD65f", &cv::cuda::device::color_detail::c_RGB2XYZ_D65f);
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
+    ArgBuffer("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CRGB2XYZD65i", &cv::cuda::device::color_detail::c_RGB2XYZ_D65i);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_XYZ2sRGB_D65f", cv::cuda::device::color_detail::c_XYZ2sRGB_D65f);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int*, int&)>("rgb2_xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_XYZ2sRGB_D65i", cv::cuda::device::color_detail::c_XYZ2sRGB_D65i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("rgb2_xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, int*)>("xyz2rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
+    Arg("src"), ArgBuffer("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2_xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("xyz2rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
+    Arg("src"), ArgBuffer("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CXYZ2sRGBD65f", &cv::cuda::device::color_detail::c_XYZ2sRGB_D65f);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_HsvDivTable", cv::cuda::device::color_detail::c_HsvDivTable);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CXYZ2sRGBD65i", &cv::cuda::device::color_detail::c_XYZ2sRGB_D65i);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_HsvDivTable180", cv::cuda::device::color_detail::c_HsvDivTable180);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, int*)>("xyz2_rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
-    Arg("src"), Arg("dst"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_HsvDivTable256", cv::cuda::device::color_detail::c_HsvDivTable256);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("xyz2_rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_HsvSectorData", cv::cuda::device::color_detail::c_HsvSectorData);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("xyz2_rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CHsvDivTable", &cv::cuda::device::color_detail::c_HsvDivTable);
-
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CHsvDivTable180", &cv::cuda::device::color_detail::c_HsvDivTable180);
-
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CHsvDivTable256", &cv::cuda::device::color_detail::c_HsvDivTable256);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_hsv_convert", &cv::cuda::device::color_detail::RGB2HSVConvert,
-    Arg("src"));
-
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CHsvSectorData", &cv::cuda::device::color_detail::c_HsvSectorData);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("hsv2_rgb_convert", &cv::cuda::device::color_detail::HSV2RGBConvert,
-    Arg("src"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_hls_convert", &cv::cuda::device::color_detail::RGB2HLSConvert,
-    Arg("src"));
-
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CHlsSectorData", &cv::cuda::device::color_detail::c_HlsSectorData);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("hls2_rgb_convert", &cv::cuda::device::color_detail::HLS2RGBConvert,
-    Arg("src"));
+  rb_mCvCudaDeviceColorDetail.define_constant("C_HlsSectorData", cv::cuda::device::color_detail::c_HlsSectorData);
 
   rb_mCvCudaDeviceColorDetail.define_constant("LAB_CBRT_TAB_SIZE", (int)cv::cuda::device::color_detail::LAB_CBRT_TAB_SIZE);
   rb_mCvCudaDeviceColorDetail.define_constant("GAMMA_TAB_SIZE", (int)cv::cuda::device::color_detail::GAMMA_TAB_SIZE);
@@ -318,7 +284,7 @@ void Init_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_constant("Lab_shift2", (int)cv::cuda::device::color_detail::lab_shift2);
   rb_mCvCudaDeviceColorDetail.define_constant("LAB_CBRT_TAB_SIZE_B", (int)cv::cuda::device::color_detail::LAB_CBRT_TAB_SIZE_B);
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("Ushort", &cv::cuda::device::color_detail::ushort);
+  rb_mCvCudaDeviceColorDetail.define_constant("Ushort", cv::cuda::device::color_detail::ushort);
 
   rb_mCvCudaDeviceColorDetail.define_module_function("lab_cbrt_b", &cv::cuda::device::color_detail::LabCbrt_b,
     Arg("i"));
@@ -327,22 +293,22 @@ void Init_ColorDetail()
     Arg("src"), Arg("dst"));
 
   rb_mCvCudaDeviceColorDetail.define_module_function("spline_interpolate", &cv::cuda::device::color_detail::splineInterpolate,
-    Arg("x"), Arg("tab"), Arg("n"));
+    Arg("x"), ArgBuffer("tab"), Arg("n"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CSRGBGammaTab", &cv::cuda::device::color_detail::c_sRGBGammaTab);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_sRGBGammaTab", cv::cuda::device::color_detail::c_sRGBGammaTab);
 
   rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_lab_convert_f", &cv::cuda::device::color_detail::RGB2LabConvert_f,
     Arg("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CSRGBInvGammaTab", &cv::cuda::device::color_detail::c_sRGBInvGammaTab);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_sRGBInvGammaTab", cv::cuda::device::color_detail::c_sRGBInvGammaTab);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("lab2_rgb_convert_f", &cv::cuda::device::color_detail::Lab2RGBConvert_f,
+  rb_mCvCudaDeviceColorDetail.define_module_function("lab_2rgb_convert_f", &cv::cuda::device::color_detail::Lab2RGBConvert_f,
     Arg("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("lab2_rgb_convert_b", &cv::cuda::device::color_detail::Lab2RGBConvert_b,
+  rb_mCvCudaDeviceColorDetail.define_module_function("lab_2rgb_convert_b", &cv::cuda::device::color_detail::Lab2RGBConvert_b,
     Arg("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_singleton_attr("CLabCbrtTab", &cv::cuda::device::color_detail::c_LabCbrtTab);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_LabCbrtTab", cv::cuda::device::color_detail::c_LabCbrtTab);
 
   rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_luv_convert_f", &cv::cuda::device::color_detail::RGB2LuvConvert_f,
     Arg("src"), Arg("dst"));
@@ -350,10 +316,9 @@ void Init_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_luv_convert_b", &cv::cuda::device::color_detail::RGB2LuvConvert_b,
     Arg("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("luv2_rgb_convert_f", &cv::cuda::device::color_detail::Luv2RGBConvert_f,
+  rb_mCvCudaDeviceColorDetail.define_module_function("luv_2rgb_convert_f", &cv::cuda::device::color_detail::Luv2RGBConvert_f,
     Arg("src"), Arg("dst"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("luv2_rgb_convert_b", &cv::cuda::device::color_detail::Luv2RGBConvert_b,
+  rb_mCvCudaDeviceColorDetail.define_module_function("luv_2rgb_convert_b", &cv::cuda::device::color_detail::Luv2RGBConvert_b,
     Arg("src"), Arg("dst"));
-
 }

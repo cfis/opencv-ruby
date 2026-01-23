@@ -3,10 +3,7 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvCudaDeviceEmulation;
-Rice::Class rb_cCvCudaDeviceEmulationGlob;
-
-void Init_Emulation()
+void Init_Core_Cuda_Emulation()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -14,10 +11,9 @@ void Init_Emulation()
 
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
 
-  rb_cCvCudaDeviceEmulation = define_class_under<cv::cuda::device::Emulation>(rb_mCvCudaDevice, "Emulation").
+  Rice::Data_Type<cv::cuda::device::Emulation> rb_cCvCudaDeviceEmulation = define_class_under<cv::cuda::device::Emulation>(rb_mCvCudaDevice, "Emulation").
     define_constructor(Constructor<cv::cuda::device::Emulation>());
 
-  rb_cCvCudaDeviceEmulationGlob = define_class_under<cv::cuda::device::Emulation::glob>(rb_cCvCudaDeviceEmulation, "Glob").
+  Rice::Data_Type<cv::cuda::device::Emulation::glob> rb_cCvCudaDeviceEmulationGlob = define_class_under<cv::cuda::device::Emulation::glob>(rb_cCvCudaDeviceEmulation, "Glob").
     define_constructor(Constructor<cv::cuda::device::Emulation::glob>());
-
 }

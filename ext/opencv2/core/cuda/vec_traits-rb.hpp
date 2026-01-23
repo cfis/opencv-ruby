@@ -1,4 +1,3 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../../rice_include.hpp"
 
-void Init_VecTraits();
+void Init_Core_Cuda_VecTraits();

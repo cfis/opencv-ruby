@@ -1,4 +1,3 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../../../rice_include.hpp"
 
-void Init_ColorDetail();
+void Init_Core_Cuda_Detail_ColorDetail();

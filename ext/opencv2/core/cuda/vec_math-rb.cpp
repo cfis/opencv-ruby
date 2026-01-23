@@ -2,7 +2,8 @@
 #include "vec_math-rb.hpp"
 
 using namespace Rice;
-void Init_VecMath()
+
+void Init_Core_Cuda_VecMath()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -15,100 +16,99 @@ void Init_VecMath()
   rb_mCvCudaDeviceVecMathDetail.define_module_function("saturate_cast_helper", &cv::cuda::device::vec_math_detail::saturate_cast_helper,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
 
-  rb_mCvCudaDevice.define_module_function<int(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
+  rb_mCvCudaDevice.define_module_function<T(*)(const int&)>("saturate_cast", &cv::cuda::device::saturate_cast,
     Arg("v"));
-
 }

@@ -16,9 +16,13 @@
 #include "opencv2/core/bindings_utils-rb.hpp"
 #include "opencv2/core/bufferpool-rb.hpp"
 #include "opencv2/core/check-rb.hpp"
+
+#ifdef OpenCV_HAS_CUDA
 #include "opencv2/core/cuda-rb.hpp"
 #include "opencv2/core/cuda_stream_accessor-rb.hpp"
 #include "opencv2/core/cuda_types-rb.hpp"
+#endif
+
 #include "opencv2/core/cvdef-rb.hpp"
 #include "opencv2/core/cvstd-rb.hpp"
 #include "opencv2/core/cvstd_wrapper-rb.hpp"
@@ -142,15 +146,15 @@ void Init_opencv_ruby()
   return Rice::detail::cpp_protect([]
   {
     // HAL
-    Init_Core_Hal_Interface();
+    //Init_Core_Hal_Interface();
 
     // Core
     Init_Core();
 
     // Core Detail
     //Init_AsyncPromise();
-    Init_Core_Detail_DispatchHelperImpl();
-    Init_Core_Detail_ExceptionPtr();
+   // Init_Core_Detail_DispatchHelperImpl();
+   // Init_Core_Detail_ExceptionPtr();
 
     // Core
     Init_Core_Affine();
@@ -159,9 +163,13 @@ void Init_opencv_ruby()
     Init_Core_BindingsUtils();
     Init_Core_Bufferpool();
     Init_Core_Check();
+
+#ifdef OpenCV_HAS_CUDA
     Init_Core_Cuda();
-    //Init_Core_CudaStreamAccessor();
-    //Init_Core_CudaTypes();
+    Init_Core_CudaStreamAccessor();
+    Init_Core_CudaTypes();
+#endif 
+
     Init_Core_Cvdef();
     Init_Core_Cvstd();
     Init_Core_CvstdWrapper();
@@ -190,7 +198,7 @@ void Init_opencv_ruby()
     Init_Core_VsxUtils();
 
     // DNN
-    Init_Dnn_Version();
+  /*  Init_Dnn_Version();
     Init_Dnn_Dict();
     Init_Dnn_Dnn();
     Init_Dnn_Layer();
@@ -276,7 +284,7 @@ void Init_opencv_ruby()
     Init_OpencvModules();
     Init_Photo();
     Init_Stitching();
-    Init_Videoio();
+    Init_Videoio();*/
 
     // Validate types
     Rice::detail::Registries::instance.types.validateTypes();

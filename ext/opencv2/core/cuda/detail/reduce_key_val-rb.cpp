@@ -2,6 +2,7 @@
 #include "reduce_key_val-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, unsigned int I, unsigned int N>
 inline void For_builder(Data_Type_T& klass)
 {
@@ -15,9 +16,9 @@ inline void Generic_builder(Data_Type_T& klass)
 template<typename Data_Type_T, unsigned int I, typename KP, typename KR, typename VP, typename VR, typename Cmp>
 inline void Unroll_builder(Data_Type_T& klass)
 {
-  klass.template define_singleton_function<>("loop_shfl", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loopShfl,
+  klass.define_singleton_function("loop_shfl", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loopShfl,
       Arg("key"), Arg("val"), Arg("cmp"), Arg("n")).
-    template define_singleton_function<>("loop", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loop,
+    define_singleton_function("loop", &cv::cuda::device::reduce_key_val_detail::Unroll<I, KP, KR, VP, VR, Cmp>::loop,
       Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("tid"), Arg("cmp"));
 };
 
@@ -42,7 +43,8 @@ template<typename Data_Type_T, unsigned int N>
 inline void Dispatcher_builder(Data_Type_T& klass)
 {
 };
-void Init_ReduceKeyVal()
+
+void Init_Core_Cuda_Detail_ReduceKeyVal()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -53,10 +55,10 @@ void Init_ReduceKeyVal()
   Module rb_mCvCudaDeviceReduceKeyValDetail = define_module_under(rb_mCvCudaDevice, "ReduceKeyValDetail");
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(volatile int*, int&, unsigned int)>("load_to_smem", &cv::cuda::device::reduce_key_val_detail::loadToSmem,
-    Arg("smem"), Arg("data"), Arg("tid"));
+    ArgBuffer("smem"), Arg("data"), Arg("tid"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(volatile int*, int&, unsigned int)>("load_from_smem", &cv::cuda::device::reduce_key_val_detail::loadFromSmem,
-    Arg("smem"), Arg("data"), Arg("tid"));
+    ArgBuffer("smem"), Arg("data"), Arg("tid"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(const int&, const int&, unsigned int)>("load_to_smem", &cv::cuda::device::reduce_key_val_detail::loadToSmem,
     Arg("smem"), Arg("data"), Arg("tid"));
@@ -68,13 +70,13 @@ void Init_ReduceKeyVal()
     Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(volatile int*, int&, unsigned int, unsigned int)>("copy_vals", &cv::cuda::device::reduce_key_val_detail::copyVals,
-    Arg("svals"), Arg("val"), Arg("tid"), Arg("delta"));
+    ArgBuffer("svals"), Arg("val"), Arg("tid"), Arg("delta"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(int&, int&, const int&, unsigned int, int)>("merge_shfl", &cv::cuda::device::reduce_key_val_detail::mergeShfl,
     Arg("key"), Arg("val"), Arg("cmp"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(volatile int*, int&, volatile int*, int&, const int&, unsigned int, unsigned int)>("merge", &cv::cuda::device::reduce_key_val_detail::merge,
-    Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("cmp"), Arg("tid"), Arg("delta"));
+    ArgBuffer("skeys"), Arg("key"), ArgBuffer("svals"), Arg("val"), Arg("cmp"), Arg("tid"), Arg("delta"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(const int&, unsigned int, int)>("copy_vals_shfl", &cv::cuda::device::reduce_key_val_detail::copyValsShfl,
     Arg("val"), Arg("delta"), Arg("width"));
@@ -86,12 +88,11 @@ void Init_ReduceKeyVal()
     Arg("key"), Arg("val"), Arg("cmp"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(volatile int*, int&, const int&, const int&, const int&, unsigned int, unsigned int)>("merge", &cv::cuda::device::reduce_key_val_detail::merge,
-    Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("cmp"), Arg("tid"), Arg("delta"));
+    ArgBuffer("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("cmp"), Arg("tid"), Arg("delta"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(const int&, const int&, const int&, unsigned int, int)>("merge_shfl", &cv::cuda::device::reduce_key_val_detail::mergeShfl,
     Arg("key"), Arg("val"), Arg("cmp"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDeviceReduceKeyValDetail.define_module_function<void(*)(const int&, const int&, const int&, const int&, const int&, unsigned int, unsigned int)>("merge", &cv::cuda::device::reduce_key_val_detail::merge,
     Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("cmp"), Arg("tid"), Arg("delta"));
-
 }

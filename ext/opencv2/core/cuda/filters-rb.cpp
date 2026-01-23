@@ -2,6 +2,7 @@
 #include "filters-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename Ptr2D>
 inline void PointFilter_builder(Data_Type_T& klass)
 {
@@ -38,7 +39,8 @@ inline void AreaFilter_builder(Data_Type_T& klass)
     define_attr("width", &cv::cuda::device::AreaFilter<Ptr2D>::width).
     define_attr("haight", &cv::cuda::device::AreaFilter<Ptr2D>::haight);
 };
-void Init_Filters()
+
+void Init_Core_Cuda_Filters()
 {
   Module rb_mCv = define_module("Cv");
 

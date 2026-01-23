@@ -2,7 +2,8 @@
 #include "funcattrib-rb.hpp"
 
 using namespace Rice;
-void Init_Funcattrib()
+
+void Init_Core_Cuda_Funcattrib()
 {
   Module rb_mCv = define_module("Cv");
 

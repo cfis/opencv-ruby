@@ -1,4 +1,3 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../../rice_include.hpp"
 
-void Init_Scan();
+void Init_Core_Cuda_Scan();

@@ -2,6 +2,7 @@
 #include "border_interpolate-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename D>
 inline void BrdRowConstant_builder(Data_Type_T& klass)
 {
@@ -106,7 +107,8 @@ inline void BorderReader_builder(Data_Type_T& klass)
   klass.define_attr("__device__", &cv::cuda::device::BorderReader<Ptr2D, B>::__device__).
     define_attr("b", &cv::cuda::device::BorderReader<Ptr2D, B>::b);
 };
-void Init_BorderInterpolate()
+
+void Init_Core_Cuda_BorderInterpolate()
 {
   Module rb_mCv = define_module("Cv");
 

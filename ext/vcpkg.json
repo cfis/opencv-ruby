@@ -5,6 +5,7 @@
       "name": "opencv4",
       "features": [
         "calib3d",
+        "cuda",
         "directml",
         "dnn",
         "dshow",

@@ -1,10 +1,10 @@
 # Subdirectories
-add_subdirectory ("detail")
+#add_subdirectory ("detail")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-    "block-rb.cpp"
-    "border_interpolate-rb.cpp"
+    #"block-rb.cpp"
+    #"border_interpolate-rb.cpp"
     "color-rb.cpp"
     "common-rb.cpp"
     "datamov_utils-rb.cpp"

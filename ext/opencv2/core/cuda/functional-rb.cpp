@@ -3,18 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvCudaDeviceAbsFuncChar;
-Rice::Class rb_cCvCudaDeviceAbsFuncDouble;
-Rice::Class rb_cCvCudaDeviceAbsFuncFloat;
-Rice::Class rb_cCvCudaDeviceAbsFuncInt;
-Rice::Class rb_cCvCudaDeviceAbsFuncShort;
-Rice::Class rb_cCvCudaDeviceAbsFuncSignedChar;
-Rice::Class rb_cCvCudaDeviceAbsFuncUnsignedChar;
-Rice::Class rb_cCvCudaDeviceAbsFuncUnsignedInt;
-Rice::Class rb_cCvCudaDeviceAbsFuncUnsignedShort;
-Rice::Class rb_cCvCudaDeviceIsBinaryFunctionNo;
-Rice::Class rb_cCvCudaDeviceIsUnaryFunctionNo;
-
 template<typename Data_Type_T, typename Argument, typename Result>
 inline void unary_function_builder(Data_Type_T& klass)
 {
@@ -176,6 +164,138 @@ inline void abs_func_builder(Data_Type_T& klass)
 };
 
 template<typename Data_Type_T, typename T>
+inline void sqrt_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::sqrt_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void exp_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::exp_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void exp2_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::exp2_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void exp10_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::exp10_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void log_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::log_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void log2_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::log2_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void log10_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::log10_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void sin_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::sin_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void cos_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::cos_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void tan_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::tan_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void asin_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::asin_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void acos_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::acos_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void atan_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::atan_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void sinh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::sinh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void cosh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::cosh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void tanh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::tanh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void asinh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::asinh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void acosh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::acosh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void atanh_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::atanh_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void hypot_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::hypot_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void atan2_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::atan2_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
+inline void pow_func_builder(Data_Type_T& klass)
+{
+  klass.define_attr("__forceinline__", &cv::cuda::device::pow_func<T>::__forceinline__);
+};
+
+template<typename Data_Type_T, typename T>
 inline void hypot_sqr_func_builder(Data_Type_T& klass)
 {
   klass.define_attr("__forceinline__", &cv::cuda::device::hypot_sqr_func<T>::__forceinline__);
@@ -248,21 +368,21 @@ inline void binder2nd_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename F>
 inline void IsUnaryFunction_builder(Data_Type_T& klass)
 {
-  klass.rb_cCvCudaDeviceIsUnaryFunctionNo = define_class<cv::cuda::device::IsUnaryFunction::No>("No").
+  klass.Rice::Data_Type<cv::cuda::device::IsUnaryFunction::No> rb_cCvCudaDeviceIsUnaryFunctionNo = define_class<cv::cuda::device::IsUnaryFunction::No>("No").
       define_constructor(Constructor<cv::cuda::device::IsUnaryFunction::No>());.
-    template define_singleton_function<>("check", &cv::cuda::device::IsUnaryFunction<F>::check).
-    template define_singleton_function<>("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF).
-    define_constant("Value", (int)cv::cuda::device::IsUnaryFunction<F>::value);
+    define_constant("Value", (int)cv::cuda::device::IsUnaryFunction<F>::value).
+    template define_singleton_function<cv::cuda::device::IsUnaryFunction<F>::No(*)()>("check", &cv::cuda::device::IsUnaryFunction<F>::check).
+    define_singleton_function("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF);
 };
 
 template<typename Data_Type_T, typename F>
 inline void IsBinaryFunction_builder(Data_Type_T& klass)
 {
-  klass.rb_cCvCudaDeviceIsBinaryFunctionNo = define_class<cv::cuda::device::IsBinaryFunction::No>("No").
+  klass.Rice::Data_Type<cv::cuda::device::IsBinaryFunction::No> rb_cCvCudaDeviceIsBinaryFunctionNo = define_class<cv::cuda::device::IsBinaryFunction::No>("No").
       define_constructor(Constructor<cv::cuda::device::IsBinaryFunction::No>());.
-    template define_singleton_function<>("check", &cv::cuda::device::IsBinaryFunction<F>::check).
-    template define_singleton_function<>("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF).
-    define_constant("Value", (int)cv::cuda::device::IsBinaryFunction<F>::value);
+    define_constant("Value", (int)cv::cuda::device::IsBinaryFunction<F>::value).
+    template define_singleton_function<cv::cuda::device::IsBinaryFunction<F>::No(*)()>("check", &cv::cuda::device::IsBinaryFunction<F>::check).
+    define_singleton_function("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF);
 };
 
 template<typename Data_Type_T, size_t src_elem_size, size_t dst_elem_size>
@@ -309,7 +429,8 @@ template<typename Data_Type_T, typename Func>
 inline void TransformFunctorTraits_builder(Data_Type_T& klass)
 {
 };
-void Init_Functional()
+
+void Init_Core_Cuda_Functional()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -317,41 +438,201 @@ void Init_Functional()
 
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
 
-  rb_cCvCudaDeviceAbsFuncUnsignedChar = define_class_under<cv::cuda::device::abs_func<unsigned char>>(rb_mCvCudaDevice, "AbsFuncUnsignedChar").
+  Rice::Data_Type<cv::cuda::device::maximum<uchar>> rb_cCvCudaDeviceMaximumUchar = define_class_under<cv::cuda::device::maximum<uchar>>(rb_mCvCudaDevice, "MaximumUchar").
+    define_constructor(Constructor<cv::cuda::device::maximum<uchar>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<uchar>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<schar>> rb_cCvCudaDeviceMaximumSchar = define_class_under<cv::cuda::device::maximum<schar>>(rb_mCvCudaDevice, "MaximumSchar").
+    define_constructor(Constructor<cv::cuda::device::maximum<schar>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<schar>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<char>> rb_cCvCudaDeviceMaximumChar = define_class_under<cv::cuda::device::maximum<char>>(rb_mCvCudaDevice, "MaximumChar").
+    define_constructor(Constructor<cv::cuda::device::maximum<char>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<char>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<ushort>> rb_cCvCudaDeviceMaximumUshort = define_class_under<cv::cuda::device::maximum<ushort>>(rb_mCvCudaDevice, "MaximumUshort").
+    define_constructor(Constructor<cv::cuda::device::maximum<ushort>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<ushort>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<short>> rb_cCvCudaDeviceMaximumShort = define_class_under<cv::cuda::device::maximum<short>>(rb_mCvCudaDevice, "MaximumShort").
+    define_constructor(Constructor<cv::cuda::device::maximum<short>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<short>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<int>> rb_cCvCudaDeviceMaximumInt = define_class_under<cv::cuda::device::maximum<int>>(rb_mCvCudaDevice, "MaximumInt").
+    define_constructor(Constructor<cv::cuda::device::maximum<int>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<int>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<uint>> rb_cCvCudaDeviceMaximumUint = define_class_under<cv::cuda::device::maximum<uint>>(rb_mCvCudaDevice, "MaximumUint").
+    define_constructor(Constructor<cv::cuda::device::maximum<uint>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<uint>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<float>> rb_cCvCudaDeviceMaximumFloat = define_class_under<cv::cuda::device::maximum<float>>(rb_mCvCudaDevice, "MaximumFloat").
+    define_constructor(Constructor<cv::cuda::device::maximum<float>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<float>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::maximum<double>> rb_cCvCudaDeviceMaximumDouble = define_class_under<cv::cuda::device::maximum<double>>(rb_mCvCudaDevice, "MaximumDouble").
+    define_constructor(Constructor<cv::cuda::device::maximum<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::maximum<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<uchar>> rb_cCvCudaDeviceMinimumUchar = define_class_under<cv::cuda::device::minimum<uchar>>(rb_mCvCudaDevice, "MinimumUchar").
+    define_constructor(Constructor<cv::cuda::device::minimum<uchar>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<uchar>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<schar>> rb_cCvCudaDeviceMinimumSchar = define_class_under<cv::cuda::device::minimum<schar>>(rb_mCvCudaDevice, "MinimumSchar").
+    define_constructor(Constructor<cv::cuda::device::minimum<schar>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<schar>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<char>> rb_cCvCudaDeviceMinimumChar = define_class_under<cv::cuda::device::minimum<char>>(rb_mCvCudaDevice, "MinimumChar").
+    define_constructor(Constructor<cv::cuda::device::minimum<char>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<char>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<ushort>> rb_cCvCudaDeviceMinimumUshort = define_class_under<cv::cuda::device::minimum<ushort>>(rb_mCvCudaDevice, "MinimumUshort").
+    define_constructor(Constructor<cv::cuda::device::minimum<ushort>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<ushort>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<short>> rb_cCvCudaDeviceMinimumShort = define_class_under<cv::cuda::device::minimum<short>>(rb_mCvCudaDevice, "MinimumShort").
+    define_constructor(Constructor<cv::cuda::device::minimum<short>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<short>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<int>> rb_cCvCudaDeviceMinimumInt = define_class_under<cv::cuda::device::minimum<int>>(rb_mCvCudaDevice, "MinimumInt").
+    define_constructor(Constructor<cv::cuda::device::minimum<int>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<int>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<uint>> rb_cCvCudaDeviceMinimumUint = define_class_under<cv::cuda::device::minimum<uint>>(rb_mCvCudaDevice, "MinimumUint").
+    define_constructor(Constructor<cv::cuda::device::minimum<uint>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<uint>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<float>> rb_cCvCudaDeviceMinimumFloat = define_class_under<cv::cuda::device::minimum<float>>(rb_mCvCudaDevice, "MinimumFloat").
+    define_constructor(Constructor<cv::cuda::device::minimum<float>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<float>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::minimum<double>> rb_cCvCudaDeviceMinimumDouble = define_class_under<cv::cuda::device::minimum<double>>(rb_mCvCudaDevice, "MinimumDouble").
+    define_constructor(Constructor<cv::cuda::device::minimum<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::minimum<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::abs_func<unsigned char>> rb_cCvCudaDeviceAbsFuncUnsignedChar = define_class_under<cv::cuda::device::abs_func<unsigned char>>(rb_mCvCudaDevice, "AbsFuncUnsignedChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned char>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncSignedChar = define_class_under<cv::cuda::device::abs_func<signed char>>(rb_mCvCudaDevice, "AbsFuncSignedChar").
+  Rice::Data_Type<cv::cuda::device::abs_func<signed char>> rb_cCvCudaDeviceAbsFuncSignedChar = define_class_under<cv::cuda::device::abs_func<signed char>>(rb_mCvCudaDevice, "AbsFuncSignedChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<signed char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<signed char>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncChar = define_class_under<cv::cuda::device::abs_func<char>>(rb_mCvCudaDevice, "AbsFuncChar").
+  Rice::Data_Type<cv::cuda::device::abs_func<char>> rb_cCvCudaDeviceAbsFuncChar = define_class_under<cv::cuda::device::abs_func<char>>(rb_mCvCudaDevice, "AbsFuncChar").
     define_constructor(Constructor<cv::cuda::device::abs_func<char>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<char>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncUnsignedShort = define_class_under<cv::cuda::device::abs_func<unsigned short>>(rb_mCvCudaDevice, "AbsFuncUnsignedShort").
+  Rice::Data_Type<cv::cuda::device::abs_func<unsigned short>> rb_cCvCudaDeviceAbsFuncUnsignedShort = define_class_under<cv::cuda::device::abs_func<unsigned short>>(rb_mCvCudaDevice, "AbsFuncUnsignedShort").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned short>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned short>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncShort = define_class_under<cv::cuda::device::abs_func<short>>(rb_mCvCudaDevice, "AbsFuncShort").
+  Rice::Data_Type<cv::cuda::device::abs_func<short>> rb_cCvCudaDeviceAbsFuncShort = define_class_under<cv::cuda::device::abs_func<short>>(rb_mCvCudaDevice, "AbsFuncShort").
     define_constructor(Constructor<cv::cuda::device::abs_func<short>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<short>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncUnsignedInt = define_class_under<cv::cuda::device::abs_func<unsigned int>>(rb_mCvCudaDevice, "AbsFuncUnsignedInt").
+  Rice::Data_Type<cv::cuda::device::abs_func<unsigned int>> rb_cCvCudaDeviceAbsFuncUnsignedInt = define_class_under<cv::cuda::device::abs_func<unsigned int>>(rb_mCvCudaDevice, "AbsFuncUnsignedInt").
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned int>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<unsigned int>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncInt = define_class_under<cv::cuda::device::abs_func<int>>(rb_mCvCudaDevice, "AbsFuncInt").
+  Rice::Data_Type<cv::cuda::device::abs_func<int>> rb_cCvCudaDeviceAbsFuncInt = define_class_under<cv::cuda::device::abs_func<int>>(rb_mCvCudaDevice, "AbsFuncInt").
     define_constructor(Constructor<cv::cuda::device::abs_func<int>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<int>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncFloat = define_class_under<cv::cuda::device::abs_func<float>>(rb_mCvCudaDevice, "AbsFuncFloat").
+  Rice::Data_Type<cv::cuda::device::abs_func<float>> rb_cCvCudaDeviceAbsFuncFloat = define_class_under<cv::cuda::device::abs_func<float>>(rb_mCvCudaDevice, "AbsFuncFloat").
     define_constructor(Constructor<cv::cuda::device::abs_func<float>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<float>::__forceinline__);
 
-  rb_cCvCudaDeviceAbsFuncDouble = define_class_under<cv::cuda::device::abs_func<double>>(rb_mCvCudaDevice, "AbsFuncDouble").
+  Rice::Data_Type<cv::cuda::device::abs_func<double>> rb_cCvCudaDeviceAbsFuncDouble = define_class_under<cv::cuda::device::abs_func<double>>(rb_mCvCudaDevice, "AbsFuncDouble").
     define_constructor(Constructor<cv::cuda::device::abs_func<double>>()).
     define_attr("__forceinline__", &cv::cuda::device::abs_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::sqrt_func<double>> rb_cCvCudaDeviceSqrtFuncDouble = define_class_under<cv::cuda::device::sqrt_func<double>>(rb_mCvCudaDevice, "SqrtFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::sqrt_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::sqrt_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::exp_func<double>> rb_cCvCudaDeviceExpFuncDouble = define_class_under<cv::cuda::device::exp_func<double>>(rb_mCvCudaDevice, "ExpFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::exp_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::exp_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::exp2_func<double>> rb_cCvCudaDeviceExp2FuncDouble = define_class_under<cv::cuda::device::exp2_func<double>>(rb_mCvCudaDevice, "Exp2FuncDouble").
+    define_constructor(Constructor<cv::cuda::device::exp2_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::exp2_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::exp10_func<double>> rb_cCvCudaDeviceExp10FuncDouble = define_class_under<cv::cuda::device::exp10_func<double>>(rb_mCvCudaDevice, "Exp10FuncDouble").
+    define_constructor(Constructor<cv::cuda::device::exp10_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::exp10_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::log_func<double>> rb_cCvCudaDeviceLogFuncDouble = define_class_under<cv::cuda::device::log_func<double>>(rb_mCvCudaDevice, "LogFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::log_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::log_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::log2_func<double>> rb_cCvCudaDeviceLog2FuncDouble = define_class_under<cv::cuda::device::log2_func<double>>(rb_mCvCudaDevice, "Log2FuncDouble").
+    define_constructor(Constructor<cv::cuda::device::log2_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::log2_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::log10_func<double>> rb_cCvCudaDeviceLog10FuncDouble = define_class_under<cv::cuda::device::log10_func<double>>(rb_mCvCudaDevice, "Log10FuncDouble").
+    define_constructor(Constructor<cv::cuda::device::log10_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::log10_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::sin_func<double>> rb_cCvCudaDeviceSinFuncDouble = define_class_under<cv::cuda::device::sin_func<double>>(rb_mCvCudaDevice, "SinFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::sin_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::sin_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::cos_func<double>> rb_cCvCudaDeviceCosFuncDouble = define_class_under<cv::cuda::device::cos_func<double>>(rb_mCvCudaDevice, "CosFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::cos_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::cos_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::tan_func<double>> rb_cCvCudaDeviceTanFuncDouble = define_class_under<cv::cuda::device::tan_func<double>>(rb_mCvCudaDevice, "TanFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::tan_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::tan_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::asin_func<double>> rb_cCvCudaDeviceAsinFuncDouble = define_class_under<cv::cuda::device::asin_func<double>>(rb_mCvCudaDevice, "AsinFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::asin_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::asin_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::acos_func<double>> rb_cCvCudaDeviceAcosFuncDouble = define_class_under<cv::cuda::device::acos_func<double>>(rb_mCvCudaDevice, "AcosFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::acos_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::acos_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::atan_func<double>> rb_cCvCudaDeviceAtanFuncDouble = define_class_under<cv::cuda::device::atan_func<double>>(rb_mCvCudaDevice, "AtanFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::atan_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::atan_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::sinh_func<double>> rb_cCvCudaDeviceSinhFuncDouble = define_class_under<cv::cuda::device::sinh_func<double>>(rb_mCvCudaDevice, "SinhFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::sinh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::sinh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::cosh_func<double>> rb_cCvCudaDeviceCoshFuncDouble = define_class_under<cv::cuda::device::cosh_func<double>>(rb_mCvCudaDevice, "CoshFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::cosh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::cosh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::tanh_func<double>> rb_cCvCudaDeviceTanhFuncDouble = define_class_under<cv::cuda::device::tanh_func<double>>(rb_mCvCudaDevice, "TanhFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::tanh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::tanh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::asinh_func<double>> rb_cCvCudaDeviceAsinhFuncDouble = define_class_under<cv::cuda::device::asinh_func<double>>(rb_mCvCudaDevice, "AsinhFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::asinh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::asinh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::acosh_func<double>> rb_cCvCudaDeviceAcoshFuncDouble = define_class_under<cv::cuda::device::acosh_func<double>>(rb_mCvCudaDevice, "AcoshFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::acosh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::acosh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::atanh_func<double>> rb_cCvCudaDeviceAtanhFuncDouble = define_class_under<cv::cuda::device::atanh_func<double>>(rb_mCvCudaDevice, "AtanhFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::atanh_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::atanh_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::hypot_func<double>> rb_cCvCudaDeviceHypotFuncDouble = define_class_under<cv::cuda::device::hypot_func<double>>(rb_mCvCudaDevice, "HypotFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::hypot_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::hypot_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::atan2_func<double>> rb_cCvCudaDeviceAtan2FuncDouble = define_class_under<cv::cuda::device::atan2_func<double>>(rb_mCvCudaDevice, "Atan2FuncDouble").
+    define_constructor(Constructor<cv::cuda::device::atan2_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::atan2_func<double>::__forceinline__);
+
+  Rice::Data_Type<cv::cuda::device::pow_func<double>> rb_cCvCudaDevicePowFuncDouble = define_class_under<cv::cuda::device::pow_func<double>>(rb_mCvCudaDevice, "PowFuncDouble").
+    define_constructor(Constructor<cv::cuda::device::pow_func<double>>()).
+    define_attr("__forceinline__", &cv::cuda::device::pow_func<double>::__forceinline__);
 
   Module rb_mCvCudaDeviceFunctionalDetail = define_module_under(rb_mCvCudaDevice, "FunctionalDetail");
 }

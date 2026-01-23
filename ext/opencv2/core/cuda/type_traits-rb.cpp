@@ -2,6 +2,7 @@
 #include "type_traits-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename T>
 inline void IsSimpleParameter_builder(Data_Type_T& klass)
 {
@@ -22,7 +23,8 @@ inline void TypeTraits_builder(Data_Type_T& klass)
     define_constant("IsArith", (int)cv::cuda::device::TypeTraits<T>::isArith).
     define_constant("IsVec", (int)cv::cuda::device::TypeTraits<T>::isVec);
 };
-void Init_TypeTraits()
+
+void Init_Core_Cuda_TypeTraits()
 {
   Module rb_mCv = define_module("Cv");
 

@@ -112,6 +112,21 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
 
 # -----------------------------------------------------------------------------
+# CUDA (optional)
+# -----------------------------------------------------------------------------
+# CUDA bindings are only compiled if OpenCV was built with CUDA support.
+# This allows the extension to build without CUDA support.
+
+if(TARGET opencv_cudaarithm OR TARGET OpenCV::cudaarithm)
+  set(OpenCV_HAS_CUDA TRUE)
+  target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE OpenCV_HAS_CUDA)
+  message(STATUS "OpenCV has CUDA support - CUDA bindings will be built")
+else()
+  set(OpenCV_HAS_CUDA FALSE)
+  message(STATUS "OpenCV without CUDA - CUDA bindings will be skipped")
+endif()
+
+# -----------------------------------------------------------------------------
 # OpenCv
 # -----------------------------------------------------------------------------
 # FFI

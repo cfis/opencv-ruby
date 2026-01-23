@@ -1,5 +1,7 @@
 # Subdirectories
-#add_subdirectory ("cuda")
+if(OpenCV_HAS_CUDA)
+  #add_subdirectory ("cuda")
+endif()
 add_subdirectory ("detail")
 add_subdirectory ("hal")
 #add_subdirectory ("parallel")
@@ -13,9 +15,6 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "bindings_utils-rb.cpp"
     "bufferpool-rb.cpp"
     "check-rb.cpp"
-    "cuda-rb.cpp"
-    #"cuda_stream_accessor-rb.cpp"
-    "cuda_types-rb.cpp"
     "cvdef-rb.cpp"
     "cvstd-rb.cpp"
     "cvstd_wrapper-rb.cpp"
@@ -45,3 +44,11 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "version-rb.cpp"
     "vsx_utils-rb.cpp"
   )
+
+# CUDA sources (optional)
+if(OpenCV_HAS_CUDA)
+  target_sources(${CMAKE_PROJECT_NAME} PUBLIC
+      "cuda-rb.cpp"
+      "cuda_stream_accessor-rb.cpp"
+      "cuda_types-rb.cpp")
+endif()

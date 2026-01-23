@@ -2,7 +2,8 @@
 #include "transform-rb.hpp"
 
 using namespace Rice;
-void Init_Transform()
+
+void Init_Core_Cuda_Transform()
 {
   Module rb_mCv = define_module("Cv");
 

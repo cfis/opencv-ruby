@@ -1,28 +1,15 @@
 #include <opencv2/objdetect.hpp>
-#include "core/cvstd_wrapper-rb.hpp"
-#include "../opencv_ruby_version.hpp"
 #include "objdetect-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvBaseCascadeClassifier;
-Rice::Class rb_cCvBaseCascadeClassifierMaskGenerator;
-Rice::Class rb_cCvCascadeClassifier;
-Rice::Class rb_cCvDefaultDeleterCvHaarClassifierCascade;
-Rice::Class rb_cCvDetectionROI;
-Rice::Class rb_cCvHOGDescriptor;
-Rice::Class rb_cCvQRCodeDetector;
-Rice::Class rb_cCvQRCodeDetectorAruco;
-Rice::Class rb_cCvQRCodeDetectorArucoParams;
-Rice::Class rb_cCvQRCodeEncoder;
-Rice::Class rb_cCvQRCodeEncoderParams;
-Rice::Class rb_cCvSimilarRects;
-
 void Init_Objdetect()
 {
+  Rice::Data_Type<CvHaarClassifierCascade> rb_cCvHaarClassifierCascade = define_class<CvHaarClassifierCascade>("CvHaarClassifierCascade");
+
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvSimilarRects = define_class_under<cv::SimilarRects>(rb_mCv, "SimilarRects").
+  Rice::Data_Type<cv::SimilarRects> rb_cCvSimilarRects = define_class_under<cv::SimilarRects>(rb_mCv, "SimilarRects").
     define_constructor(Constructor<cv::SimilarRects, double>(),
       Arg("_eps")).
     define_method("call", &cv::SimilarRects::operator(),
@@ -44,18 +31,17 @@ void Init_Objdetect()
   rb_mCv.define_module_function("group_rectangles_meanshift", &cv::groupRectangles_meanshift,
     Arg("rect_list"), Arg("found_weights"), Arg("found_scales"), Arg("detect_threshold") = static_cast<double>(0.0), Arg("win_det_size") = static_cast<cv::Size>(cv::Size(64, 128)));
 
-  rb_cCvDefaultDeleterCvHaarClassifierCascade = define_class_under<cv::DefaultDeleter<CvHaarClassifierCascade>>(rb_mCv, "DefaultDeleterCvHaarClassifierCascade").
-    define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>());
-    // Causes link errors
-    //define_method("call", &cv::DefaultDeleter<CvHaarClassifierCascade>::operator(),
-    //  Arg("obj"));
+  Rice::Data_Type<cv::DefaultDeleter<CvHaarClassifierCascade>> rb_cCvDefaultDeleterCvHaarClassifierCascade = define_class_under<cv::DefaultDeleter<CvHaarClassifierCascade>>(rb_mCv, "DefaultDeleterCvHaarClassifierCascade").
+    define_constructor(Constructor<cv::DefaultDeleter<CvHaarClassifierCascade>>()).
+    define_method("call", &cv::DefaultDeleter<CvHaarClassifierCascade>::operator(),
+      Arg("obj"));
 
   rb_mCv.define_constant("CASCADE_DO_CANNY_PRUNING", (int)cv::CASCADE_DO_CANNY_PRUNING);
   rb_mCv.define_constant("CASCADE_SCALE_IMAGE", (int)cv::CASCADE_SCALE_IMAGE);
   rb_mCv.define_constant("CASCADE_FIND_BIGGEST_OBJECT", (int)cv::CASCADE_FIND_BIGGEST_OBJECT);
   rb_mCv.define_constant("CASCADE_DO_ROUGH_SEARCH", (int)cv::CASCADE_DO_ROUGH_SEARCH);
 
-  rb_cCvBaseCascadeClassifier = define_class_under<cv::BaseCascadeClassifier, cv::Algorithm>(rb_mCv, "BaseCascadeClassifier").
+  Rice::Data_Type<cv::BaseCascadeClassifier> rb_cCvBaseCascadeClassifier = define_class_under<cv::BaseCascadeClassifier, cv::Algorithm>(rb_mCv, "BaseCascadeClassifier").
     define_method("empty?", &cv::BaseCascadeClassifier::empty).
     define_method("load", &cv::BaseCascadeClassifier::load,
       Arg("filename")).
@@ -68,18 +54,19 @@ void Init_Objdetect()
     define_method("old_format_cascade?", &cv::BaseCascadeClassifier::isOldFormatCascade).
     define_method("get_original_window_size", &cv::BaseCascadeClassifier::getOriginalWindowSize).
     define_method("get_feature_type", &cv::BaseCascadeClassifier::getFeatureType).
-    define_method("get_old_cascade", &cv::BaseCascadeClassifier::getOldCascade).
+    define_method("get_old_cascade", &cv::BaseCascadeClassifier::getOldCascade,
+      ReturnBuffer()).
     define_method("set_mask_generator", &cv::BaseCascadeClassifier::setMaskGenerator,
       Arg("mask_generator")).
     define_method("get_mask_generator", &cv::BaseCascadeClassifier::getMaskGenerator);
 
-  rb_cCvBaseCascadeClassifierMaskGenerator = define_class_under<cv::BaseCascadeClassifier::MaskGenerator>(rb_cCvBaseCascadeClassifier, "MaskGenerator").
+  Rice::Data_Type<cv::BaseCascadeClassifier::MaskGenerator> rb_cCvBaseCascadeClassifierMaskGenerator = define_class_under<cv::BaseCascadeClassifier::MaskGenerator>(rb_cCvBaseCascadeClassifier, "MaskGenerator").
     define_method("generate_mask", &cv::BaseCascadeClassifier::MaskGenerator::generateMask,
       Arg("src")).
     define_method("initialize_mask", &cv::BaseCascadeClassifier::MaskGenerator::initializeMask,
       Arg("arg_0"));
 
-  rb_cCvCascadeClassifier = define_class_under<cv::CascadeClassifier>(rb_mCv, "CascadeClassifier").
+  Rice::Data_Type<cv::CascadeClassifier> rb_cCvCascadeClassifier = define_class_under<cv::CascadeClassifier>(rb_mCv, "CascadeClassifier").
     define_constructor(Constructor<cv::CascadeClassifier>()).
     define_constructor(Constructor<cv::CascadeClassifier, const cv::String&>(),
       Arg("filename")).
@@ -97,7 +84,8 @@ void Init_Objdetect()
     define_method("old_format_cascade?", &cv::CascadeClassifier::isOldFormatCascade).
     define_method("get_original_window_size", &cv::CascadeClassifier::getOriginalWindowSize).
     define_method("get_feature_type", &cv::CascadeClassifier::getFeatureType).
-    define_method("get_old_cascade", &cv::CascadeClassifier::getOldCascade).
+    define_method("get_old_cascade", &cv::CascadeClassifier::getOldCascade,
+      ReturnBuffer()).
     define_method("set_mask_generator", &cv::CascadeClassifier::setMaskGenerator,
       Arg("mask_generator")).
     define_method("get_mask_generator", &cv::CascadeClassifier::getMaskGenerator).
@@ -107,13 +95,13 @@ void Init_Objdetect()
 
   rb_mCv.define_module_function("create_face_detection_mask_generator", &cv::createFaceDetectionMaskGenerator);
 
-  rb_cCvDetectionROI = define_class_under<cv::DetectionROI>(rb_mCv, "DetectionROI").
+  Rice::Data_Type<cv::DetectionROI> rb_cCvDetectionROI = define_class_under<cv::DetectionROI>(rb_mCv, "DetectionROI").
     define_constructor(Constructor<cv::DetectionROI>()).
     define_attr("scale", &cv::DetectionROI::scale).
     define_attr("locations", &cv::DetectionROI::locations).
     define_attr("confidences", &cv::DetectionROI::confidences);
 
-  rb_cCvHOGDescriptor = define_class_under<cv::HOGDescriptor>(rb_mCv, "HOGDescriptor").
+  Rice::Data_Type<cv::HOGDescriptor> rb_cCvHOGDescriptor = define_class_under<cv::HOGDescriptor>(rb_mCv, "HOGDescriptor").
     define_constructor(Constructor<cv::HOGDescriptor>()).
     define_constructor(Constructor<cv::HOGDescriptor, cv::Size, cv::Size, cv::Size, cv::Size, int, int, double, cv::HOGDescriptor::HistogramNormType, double, bool, int, bool>(),
       Arg("_win_size"), Arg("_block_size"), Arg("_block_stride"), Arg("_cell_size"), Arg("_nbins"), Arg("_deriv_aperture") = static_cast<int>(1), Arg("_win_sigma") = static_cast<double>(-1), Arg("_histogram_norm_type") = static_cast<cv::HOGDescriptor::HistogramNormType>(cv::HOGDescriptor::L2Hys), Arg("_l2_hys_threshold") = static_cast<double>(0.2), Arg("_gamma_correction") = static_cast<bool>(false), Arg("_nlevels") = static_cast<int>(cv::HOGDescriptor::DEFAULT_NLEVELS), Arg("_signed_gradient") = static_cast<bool>(false)).
@@ -181,7 +169,7 @@ void Init_Objdetect()
     define_value("DESCR_FORMAT_COL_BY_COL", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_COL_BY_COL).
     define_value("DESCR_FORMAT_ROW_BY_ROW", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_ROW_BY_ROW);
 
-  rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder").
+  Rice::Data_Type<cv::QRCodeEncoder> rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder").
     define_method("encode", &cv::QRCodeEncoder::encode,
       Arg("encoded_info"), Arg("qrcode")).
     define_method("encode_structured_append", &cv::QRCodeEncoder::encodeStructuredAppend,
@@ -189,7 +177,7 @@ void Init_Objdetect()
     define_singleton_function("create", &cv::QRCodeEncoder::create,
       Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params&>(cv::QRCodeEncoder::Params()));
 
-  rb_cCvQRCodeEncoderParams = define_class_under<cv::QRCodeEncoder::Params>(rb_cCvQRCodeEncoder, "Params").
+  Rice::Data_Type<cv::QRCodeEncoder::Params> rb_cCvQRCodeEncoderParams = define_class_under<cv::QRCodeEncoder::Params>(rb_cCvQRCodeEncoder, "Params").
     define_constructor(Constructor<cv::QRCodeEncoder::Params>()).
     define_attr("version", &cv::QRCodeEncoder::Params::version).
     define_attr("correction_level", &cv::QRCodeEncoder::Params::correction_level).
@@ -214,8 +202,7 @@ void Init_Objdetect()
   Enum<cv::QRCodeEncoder::ECIEncodings> rb_cCvQRCodeEncoderECIEncodings = define_enum_under<cv::QRCodeEncoder::ECIEncodings>("ECIEncodings", rb_cCvQRCodeEncoder).
     define_value("ECI_UTF8", cv::QRCodeEncoder::ECIEncodings::ECI_UTF8);
 
-#if RUBY_CV_VERSION >= 408
-  rb_cCvQRCodeDetector = define_class_under<cv::QRCodeDetector, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetector").
+  Rice::Data_Type<cv::QRCodeDetector> rb_cCvQRCodeDetector = define_class_under<cv::QRCodeDetector, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetector").
     define_constructor(Constructor<cv::QRCodeDetector>()).
     define_method("set_eps_x", &cv::QRCodeDetector::setEpsX,
       Arg("eps_x")).
@@ -228,7 +215,7 @@ void Init_Objdetect()
     define_method("detect_and_decode_curved", &cv::QRCodeDetector::detectAndDecodeCurved,
       Arg("img"), Arg("points") = static_cast<cv::OutputArray>(cv::noArray()), Arg("straight_qrcode") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_cCvQRCodeDetectorAruco = define_class_under<cv::QRCodeDetectorAruco, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetectorAruco").
+  Rice::Data_Type<cv::QRCodeDetectorAruco> rb_cCvQRCodeDetectorAruco = define_class_under<cv::QRCodeDetectorAruco, cv::GraphicalCodeDetector>(rb_mCv, "QRCodeDetectorAruco").
     define_constructor(Constructor<cv::QRCodeDetectorAruco>()).
     define_constructor(Constructor<cv::QRCodeDetectorAruco, const cv::QRCodeDetectorAruco::Params&>(),
       Arg("params")).
@@ -239,7 +226,7 @@ void Init_Objdetect()
     define_method("set_aruco_parameters", &cv::QRCodeDetectorAruco::setArucoParameters,
       Arg("params"));
 
-  rb_cCvQRCodeDetectorArucoParams = define_class_under<cv::QRCodeDetectorAruco::Params>(rb_cCvQRCodeDetectorAruco, "Params").
+  Rice::Data_Type<cv::QRCodeDetectorAruco::Params> rb_cCvQRCodeDetectorArucoParams = define_class_under<cv::QRCodeDetectorAruco::Params>(rb_cCvQRCodeDetectorAruco, "Params").
     define_constructor(Constructor<cv::QRCodeDetectorAruco::Params>()).
     define_attr("min_module_size_in_pyramid", &cv::QRCodeDetectorAruco::Params::minModuleSizeInPyramid).
     define_attr("max_rotation", &cv::QRCodeDetectorAruco::Params::maxRotation).
@@ -248,5 +235,4 @@ void Init_Objdetect()
     define_attr("max_penalties", &cv::QRCodeDetectorAruco::Params::maxPenalties).
     define_attr("max_colors_mismatch", &cv::QRCodeDetectorAruco::Params::maxColorsMismatch).
     define_attr("scale_timing_pattern_score", &cv::QRCodeDetectorAruco::Params::scaleTimingPatternScore);
-#endif
 }

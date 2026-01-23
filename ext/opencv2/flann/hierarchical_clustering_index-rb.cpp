@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannHierarchicalClusteringIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void HierarchicalClusteringIndex_builder(Data_Type_T& klass)
 {
@@ -27,12 +25,12 @@ inline void HierarchicalClusteringIndex_builder(Data_Type_T& klass)
       Arg("result"), Arg("vec"), Arg("search_params")).
     define_method("get_parameters", &cvflann::HierarchicalClusteringIndex<Distance>::getParameters);
 };
-void Init_HierarchicalClusteringIndex()
+
+void Init_Flann_HierarchicalClusteringIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannHierarchicalClusteringIndexParams = define_class_under<cvflann::HierarchicalClusteringIndexParams, cvflann::IndexParams>(rb_mCvflann, "HierarchicalClusteringIndexParams").
+
+  Rice::Data_Type<cvflann::HierarchicalClusteringIndexParams> rb_cCvflannHierarchicalClusteringIndexParams = define_class_under<cvflann::HierarchicalClusteringIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "HierarchicalClusteringIndexParams").
     define_constructor(Constructor<cvflann::HierarchicalClusteringIndexParams, int, cvflann::flann_centers_init_t, int, int>(),
       Arg("branching") = static_cast<int>(32), Arg("centers_init") = static_cast<cvflann::flann_centers_init_t>(cvflann::FLANN_CENTERS_RANDOM), Arg("trees") = static_cast<int>(4), Arg("leaf_size") = static_cast<int>(100));
-
 }

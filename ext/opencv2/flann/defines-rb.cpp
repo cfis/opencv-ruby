@@ -2,7 +2,8 @@
 #include "defines-rb.hpp"
 
 using namespace Rice;
-void Init_Defines()
+
+void Init_Flann_Defines()
 {
   Module rb_mCvflann = define_module("Cvflann");
 
@@ -79,5 +80,4 @@ void Init_Defines()
 
   rb_mCvflann.define_constant("FLANN_CHECKS_UNLIMITED", (int)cvflann::FLANN_CHECKS_UNLIMITED);
   rb_mCvflann.define_constant("FLANN_CHECKS_AUTOTUNED", (int)cvflann::FLANN_CHECKS_AUTOTUNED);
-
 }

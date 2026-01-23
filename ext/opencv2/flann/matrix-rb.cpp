@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannUntypedMatrix;
-
 template<typename Data_Type_T, typename T>
 inline void Matrix_builder(Data_Type_T& klass)
 {
@@ -18,16 +16,16 @@ inline void Matrix_builder(Data_Type_T& klass)
     define_method("[]", &cvflann::Matrix<T>::operator[],
       Arg("index"));
 };
-void Init_Matrix()
+
+void Init_Flann_Matrix()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannUntypedMatrix = define_class_under<cvflann::UntypedMatrix>(rb_mCvflann, "UntypedMatrix").
+
+  Rice::Data_Type<cvflann::UntypedMatrix> rb_cCvflannUntypedMatrix = define_class_under<cvflann::UntypedMatrix>(rb_mCvflann, "UntypedMatrix").
     define_attr("rows", &cvflann::UntypedMatrix::rows).
     define_attr("cols", &cvflann::UntypedMatrix::cols).
     define_attr("data", &cvflann::UntypedMatrix::data).
     define_attr("type", &cvflann::UntypedMatrix::type).
     define_constructor(Constructor<cvflann::UntypedMatrix, void*, long, long>(),
-      Arg("data_"), Arg("rows_"), Arg("cols_"));
-
+      ArgBuffer("data_"), Arg("rows_"), Arg("cols_"));
 }

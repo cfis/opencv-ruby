@@ -1,4 +1,3 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../rice_include.hpp"
 
-void Init_General();
+void Init_Flann_General();

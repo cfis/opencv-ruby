@@ -1,20 +1,17 @@
 #include <vector>
 #include <opencv2/core/base.hpp>
-#include <opencv2/core/hal/interface.h>
 #include <opencv2/flann/dynamic_bitset.h>
 #include "dynamic_bitset-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannDynamicBitset;
-
-void Init_DynamicBitset()
+void Init_Flann_DynamicBitset()
 {
   Class(rb_cObject).define_constant("FLANN_USE_BOOST", FLANN_USE_BOOST);
 
   Module rb_mCvflann = define_module("Cvflann");
 
-  rb_cCvflannDynamicBitset = define_class_under<cvflann::DynamicBitset>(rb_mCvflann, "DynamicBitset").
+  Rice::Data_Type<cvflann::DynamicBitset> rb_cCvflannDynamicBitset = define_class_under<cvflann::DynamicBitset>(rb_mCvflann, "DynamicBitset").
     define_constructor(Constructor<cvflann::DynamicBitset>()).
     define_constructor(Constructor<cvflann::DynamicBitset, size_t>(),
       Arg("sz")).
@@ -30,7 +27,6 @@ void Init_DynamicBitset()
     define_method("set", &cvflann::DynamicBitset::set,
       Arg("index")).
     define_method("size", &cvflann::DynamicBitset::size).
-    define_method("test?", &cvflann::DynamicBitset::test,
+    define_method("test", &cvflann::DynamicBitset::test,
       Arg("index"));
-
 }

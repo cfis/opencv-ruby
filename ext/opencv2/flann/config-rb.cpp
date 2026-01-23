@@ -2,8 +2,8 @@
 #include "config-rb.hpp"
 
 using namespace Rice;
-void Init_Config()
+
+void Init_Flann_Config()
 {
   Class(rb_cObject).define_constant("FLANN_VERSION_", FLANN_VERSION_);
-
 }

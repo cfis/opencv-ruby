@@ -3,9 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannFILEScopeGuard;
-Rice::Class rb_cCvflannSavedIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void Index_builder(Data_Type_T& klass)
 {
@@ -30,19 +27,19 @@ inline void Index_builder(Data_Type_T& klass)
     define_method("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
-void Init_FlannBase()
+
+void Init_Flann_FlannBase()
 {
   Module rb_mCvflann = define_module("Cvflann");
 
-  rb_cCvflannFILEScopeGuard = define_class_under<cvflann::FILEScopeGuard>(rb_mCvflann, "FILEScopeGuard").
+  Rice::Data_Type<cvflann::FILEScopeGuard> rb_cCvflannFILEScopeGuard = define_class_under<cvflann::FILEScopeGuard>(rb_mCvflann, "FILEScopeGuard").
     define_constructor(Constructor<cvflann::FILEScopeGuard, FILE*>(),
       Arg("file"));
 
   rb_mCvflann.define_module_function("log_verbosity", &cvflann::log_verbosity,
     Arg("level"));
 
-  rb_cCvflannSavedIndexParams = define_class_under<cvflann::SavedIndexParams, cvflann::IndexParams>(rb_mCvflann, "SavedIndexParams").
+  Rice::Data_Type<cvflann::SavedIndexParams> rb_cCvflannSavedIndexParams = define_class_under<cvflann::SavedIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "SavedIndexParams").
     define_constructor(Constructor<cvflann::SavedIndexParams, cv::String>(),
       Arg("filename"));
-
 }

@@ -74,7 +74,6 @@
 #include "opencv2/flann/flann_base-rb.hpp"
 #include "opencv2/flann/general-rb.hpp"
 #include "opencv2/flann/ground_truth-rb.hpp"
-#include "opencv2/flann/hdf5-rb.hpp"
 #include "opencv2/flann/heap-rb.hpp"
 #include "opencv2/flann/hierarchical_clustering_index-rb.hpp"
 #include "opencv2/flann/index_testing-rb.hpp"
@@ -204,7 +203,7 @@ void Init_opencv_ruby()
     Init_Dnn_Layer();
     Init_Dnn_LayerDetails();
     Init_Dnn_AllLayers();
-    Init_Dnn_ShapeUtils();
+    Init_Dnn_ShapeUtils();*/
 
     // Flann
     Init_Flann_Allocator();
@@ -220,7 +219,6 @@ void Init_opencv_ruby()
     Init_Flann_Logger();
     Init_Flann_General();
     Init_Flann_GroundTruth();
-    // Init_Flann_Hdf5();
     Init_Flann_Heap();
     Init_Flann_HierarchicalClusteringIndex();
     Init_Flann_IndexTesting();
@@ -240,7 +238,7 @@ void Init_opencv_ruby()
     Init_Flann_Saving();
     Init_Flann_SimplexDownhill();
     Init_Flann_Timer();
-
+    /*
 #if RUBY_CV_VERSION >= 408
     // Object Detection
     Init_Objdetect_ArucoBoard();

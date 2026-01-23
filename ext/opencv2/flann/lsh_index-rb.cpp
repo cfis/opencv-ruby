@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannLshIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void LshIndex_builder(Data_Type_T& klass)
 {
@@ -29,12 +27,12 @@ inline void LshIndex_builder(Data_Type_T& klass)
     define_method("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("arg_2"));
 };
-void Init_LshIndex()
+
+void Init_Flann_LshIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannLshIndexParams = define_class_under<cvflann::LshIndexParams, cvflann::IndexParams>(rb_mCvflann, "LshIndexParams").
+
+  Rice::Data_Type<cvflann::LshIndexParams> rb_cCvflannLshIndexParams = define_class_under<cvflann::LshIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "LshIndexParams").
     define_constructor(Constructor<cvflann::LshIndexParams, int, int, int>(),
       Arg("table_number") = static_cast<int>(12), Arg("key_size") = static_cast<int>(20), Arg("multi_probe_level") = static_cast<int>(2));
-
 }

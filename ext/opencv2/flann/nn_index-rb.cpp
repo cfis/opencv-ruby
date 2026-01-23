@@ -2,6 +2,7 @@
 #include "nn_index-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename Distance>
 inline void NNIndex_builder(Data_Type_T& klass)
 {
@@ -22,9 +23,8 @@ inline void NNIndex_builder(Data_Type_T& klass)
     define_method("find_neighbors", &cvflann::NNIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
-void Init_NnIndex()
+
+void Init_Flann_NnIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-
 }

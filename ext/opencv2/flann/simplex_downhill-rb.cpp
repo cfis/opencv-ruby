@@ -3,10 +3,7 @@
 
 using namespace Rice;
 
-
-void Init_SimplexDownhill()
+void Init_Flann_SimplexDownhill()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-
 }

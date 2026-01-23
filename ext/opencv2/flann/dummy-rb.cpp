@@ -2,7 +2,8 @@
 #include "dummy-rb.hpp"
 
 using namespace Rice;
-void Init_Dummy()
+
+void Init_Flann_Dummy()
 {
   Module rb_mCvflann = define_module("Cvflann");
 }

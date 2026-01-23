@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannCompositeIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void CompositeIndex_builder(Data_Type_T& klass)
 {
@@ -27,12 +25,12 @@ inline void CompositeIndex_builder(Data_Type_T& klass)
     define_method("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
-void Init_CompositeIndex()
+
+void Init_Flann_CompositeIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
 
-  rb_cCvflannCompositeIndexParams = define_class_under<cvflann::CompositeIndexParams, cvflann::IndexParams>(rb_mCvflann, "CompositeIndexParams").
+  Rice::Data_Type<cvflann::CompositeIndexParams> rb_cCvflannCompositeIndexParams = define_class_under<cvflann::CompositeIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "CompositeIndexParams").
     define_constructor(Constructor<cvflann::CompositeIndexParams, int, int, int, cvflann::flann_centers_init_t, float>(),
       Arg("trees") = static_cast<int>(4), Arg("branching") = static_cast<int>(32), Arg("iterations") = static_cast<int>(11), Arg("centers_init") = static_cast<cvflann::flann_centers_init_t>(cvflann::FLANN_CENTERS_RANDOM), Arg("cb_index") = static_cast<float>(0.2));
-
 }

@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannUniqueResultSetDistIndex;
-
 template<typename Data_Type_T, typename T, typename DistanceType>
 inline void BranchStruct_builder(Data_Type_T& klass)
 {
@@ -32,7 +30,7 @@ inline void KNNSimpleResultSet_builder(Data_Type_T& klass)
   klass.define_constructor(Constructor<cvflann::KNNSimpleResultSet<DistanceType>, int>(),
       Arg("capacity_")).
     define_method("init", &cvflann::KNNSimpleResultSet<DistanceType>::init,
-      Arg("indices_"), Arg("dists_")).
+      ArgBuffer("indices_"), Arg("dists_")).
     define_method("size", &cvflann::KNNSimpleResultSet<DistanceType>::size).
     define_method("full?", &cvflann::KNNSimpleResultSet<DistanceType>::full).
     define_method("add_point", &cvflann::KNNSimpleResultSet<DistanceType>::addPoint,
@@ -46,7 +44,7 @@ inline void KNNResultSet_builder(Data_Type_T& klass)
   klass.define_constructor(Constructor<cvflann::KNNResultSet<DistanceType>, int>(),
       Arg("capacity_")).
     define_method("init", &cvflann::KNNResultSet<DistanceType>::init,
-      Arg("indices_"), Arg("dists_")).
+      ArgBuffer("indices_"), Arg("dists_")).
     define_method("size", &cvflann::KNNResultSet<DistanceType>::size).
     define_method("full?", &cvflann::KNNResultSet<DistanceType>::full).
     define_method("add_point", &cvflann::KNNResultSet<DistanceType>::addPoint,
@@ -58,7 +56,7 @@ template<typename Data_Type_T, typename DistanceType>
 inline void RadiusResultSet_builder(Data_Type_T& klass)
 {
   klass.define_constructor(Constructor<cvflann::RadiusResultSet<DistanceType>, DistanceType, int*, DistanceType*, int>(),
-      Arg("radius_"), Arg("indices_"), Arg("dists_"), Arg("capacity_")).
+      Arg("radius_"), ArgBuffer("indices_"), Arg("dists_"), Arg("capacity_")).
     define_method("init", &cvflann::RadiusResultSet<DistanceType>::init).
     define_method("size", &cvflann::RadiusResultSet<DistanceType>::size).
     define_method("full?", &cvflann::RadiusResultSet<DistanceType>::full).
@@ -70,7 +68,7 @@ inline void RadiusResultSet_builder(Data_Type_T& klass)
 template<typename Data_Type_T, typename DistanceType>
 inline void UniqueResultSet_builder(Data_Type_T& klass)
 {
-  klass.rb_cCvflannUniqueResultSetDistIndex = define_class<cvflann::UniqueResultSet::DistIndex>("DistIndex").
+  klass.Rice::Data_Type<cvflann::UniqueResultSet::DistIndex> rb_cCvflannUniqueResultSetDistIndex = define_class<cvflann::UniqueResultSet::DistIndex>("DistIndex").
       define_constructor(Constructor<cvflann::UniqueResultSet<DistanceType>::DistIndex, DistanceType, unsigned int>(),
         Arg("dist"), Arg("index")).
       define_method("<", &cvflann::UniqueResultSet<DistanceType>::DistIndex::operator<,
@@ -81,9 +79,9 @@ inline void UniqueResultSet_builder(Data_Type_T& klass)
     define_method("full?", &cvflann::UniqueResultSet<DistanceType>::full).
     define_method("clear", &cvflann::UniqueResultSet<DistanceType>::clear).
     define_method("copy", &cvflann::UniqueResultSet<DistanceType>::copy,
-      Arg("indices"), Arg("dist"), Arg("n_neighbors") = static_cast<int>(-1)).
+      ArgBuffer("indices"), Arg("dist"), Arg("n_neighbors") = static_cast<int>(-1)).
     define_method("sort_and_copy", &cvflann::UniqueResultSet<DistanceType>::sortAndCopy,
-      Arg("indices"), Arg("dist"), Arg("n_neighbors") = static_cast<int>(-1)).
+      ArgBuffer("indices"), Arg("dist"), Arg("n_neighbors") = static_cast<int>(-1)).
     define_method("size", &cvflann::UniqueResultSet<DistanceType>::size).
     define_method("worst_dist", &cvflann::UniqueResultSet<DistanceType>::worstDist);
 };
@@ -117,9 +115,8 @@ inline void KNNRadiusUniqueResultSet_builder(Data_Type_T& klass)
       Arg("capacity"), Arg("radius")).
     define_method("clear", &cvflann::KNNRadiusUniqueResultSet<DistanceType>::clear);
 };
-void Init_ResultSet()
+
+void Init_Flann_ResultSet()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-
 }

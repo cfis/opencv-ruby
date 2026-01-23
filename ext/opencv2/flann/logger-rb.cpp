@@ -3,13 +3,11 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannLogger;
-
 void Init_Flann_Logger()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannLogger = define_class_under<cvflann::Logger>(rb_mCvflann, "Logger").
+
+  Rice::Data_Type<cvflann::Logger> rb_cCvflannLogger = define_class_under<cvflann::Logger>(rb_mCvflann, "Logger").
     define_singleton_function("set_level", &cvflann::Logger::setLevel,
       Arg("level")).
     define_singleton_function("set_destination", &cvflann::Logger::setDestination,
@@ -24,5 +22,4 @@ void Init_Flann_Logger()
       Arg("fmt")).
     define_singleton_function("info", &cvflann::Logger::info,
       Arg("fmt"));
-
 }

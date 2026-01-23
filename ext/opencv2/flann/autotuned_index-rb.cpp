@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannAutotunedIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void AutotunedIndex_builder(Data_Type_T& klass)
 {
@@ -29,12 +27,12 @@ inline void AutotunedIndex_builder(Data_Type_T& klass)
     define_method("used_memory", &cvflann::AutotunedIndex<Distance>::usedMemory).
     define_method("get_type", &cvflann::AutotunedIndex<Distance>::getType);
 };
-void Init_AutotunedIndex()
+
+void Init_Flann_AutotunedIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
 
-  rb_cCvflannAutotunedIndexParams = define_class_under<cvflann::AutotunedIndexParams, cvflann::IndexParams>(rb_mCvflann, "AutotunedIndexParams").
+  Rice::Data_Type<cvflann::AutotunedIndexParams> rb_cCvflannAutotunedIndexParams = define_class_under<cvflann::AutotunedIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "AutotunedIndexParams").
     define_constructor(Constructor<cvflann::AutotunedIndexParams, float, float, float, float>(),
       Arg("target_precision") = static_cast<float>(0.8), Arg("build_weight") = static_cast<float>(0.01), Arg("memory_weight") = static_cast<float>(0), Arg("sample_fraction") = static_cast<float>(0.1));
-
 }

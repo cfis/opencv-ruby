@@ -4,18 +4,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannAccumulatorChar;
-Rice::Class rb_cCvflannAccumulatorInt;
-Rice::Class rb_cCvflannAccumulatorShort;
-Rice::Class rb_cCvflannAccumulatorUnsignedChar;
-Rice::Class rb_cCvflannAccumulatorUnsignedInt;
-Rice::Class rb_cCvflannAccumulatorUnsignedShort;
-Rice::Class rb_cCvflannDNAmmingLUT;
-Rice::Class rb_cCvflannFalse;
-Rice::Class rb_cCvflannHammingLUT;
-Rice::Class rb_cCvflannTrue;
-Rice::Class rb_cCvflannZeroIteratorUnsignedChar;
-
 template<typename Data_Type_T, typename T>
 inline void Accumulator_builder(Data_Type_T& klass)
 {
@@ -124,7 +112,8 @@ inline void simpleDistance_builder(Data_Type_T& klass)
   klass.define_method("call", &cvflann::simpleDistance<Distance, ElementType>::operator(),
       Arg("dist"));
 };
-void Init_Dist()
+
+void Init_Flann_Dist()
 {
   Module rb_mCvflann = define_module("Cvflann");
 
@@ -185,43 +174,42 @@ void Init_Dist()
   rb_mCvflann.define_module_function<char(*)(double)>("round", &cvflann::round,
     Arg("x"));
 
-  rb_cCvflannAccumulatorUnsignedChar = define_class_under<cvflann::Accumulator<unsigned char>>(rb_mCvflann, "AccumulatorUnsignedChar").
+  Rice::Data_Type<cvflann::Accumulator<unsigned char>> rb_cCvflannAccumulatorUnsignedChar = define_class_under<cvflann::Accumulator<unsigned char>>(rb_mCvflann, "AccumulatorUnsignedChar").
     define_constructor(Constructor<cvflann::Accumulator<unsigned char>>());
 
-  rb_cCvflannAccumulatorUnsignedShort = define_class_under<cvflann::Accumulator<unsigned short>>(rb_mCvflann, "AccumulatorUnsignedShort").
+  Rice::Data_Type<cvflann::Accumulator<unsigned short>> rb_cCvflannAccumulatorUnsignedShort = define_class_under<cvflann::Accumulator<unsigned short>>(rb_mCvflann, "AccumulatorUnsignedShort").
     define_constructor(Constructor<cvflann::Accumulator<unsigned short>>());
 
-  rb_cCvflannAccumulatorUnsignedInt = define_class_under<cvflann::Accumulator<unsigned int>>(rb_mCvflann, "AccumulatorUnsignedInt").
+  Rice::Data_Type<cvflann::Accumulator<unsigned int>> rb_cCvflannAccumulatorUnsignedInt = define_class_under<cvflann::Accumulator<unsigned int>>(rb_mCvflann, "AccumulatorUnsignedInt").
     define_constructor(Constructor<cvflann::Accumulator<unsigned int>>());
 
-  rb_cCvflannAccumulatorChar = define_class_under<cvflann::Accumulator<char>>(rb_mCvflann, "AccumulatorChar").
+  Rice::Data_Type<cvflann::Accumulator<char>> rb_cCvflannAccumulatorChar = define_class_under<cvflann::Accumulator<char>>(rb_mCvflann, "AccumulatorChar").
     define_constructor(Constructor<cvflann::Accumulator<char>>());
 
-  rb_cCvflannAccumulatorShort = define_class_under<cvflann::Accumulator<short>>(rb_mCvflann, "AccumulatorShort").
+  Rice::Data_Type<cvflann::Accumulator<short>> rb_cCvflannAccumulatorShort = define_class_under<cvflann::Accumulator<short>>(rb_mCvflann, "AccumulatorShort").
     define_constructor(Constructor<cvflann::Accumulator<short>>());
 
-  rb_cCvflannAccumulatorInt = define_class_under<cvflann::Accumulator<int>>(rb_mCvflann, "AccumulatorInt").
+  Rice::Data_Type<cvflann::Accumulator<int>> rb_cCvflannAccumulatorInt = define_class_under<cvflann::Accumulator<int>>(rb_mCvflann, "AccumulatorInt").
     define_constructor(Constructor<cvflann::Accumulator<int>>());
 
-  rb_cCvflannTrue = define_class_under<cvflann::True>(rb_mCvflann, "True").
+  Rice::Data_Type<cvflann::True> rb_cCvflannTrue = define_class_under<cvflann::True>(rb_mCvflann, "True").
     define_constructor(Constructor<cvflann::True>()).
     define_constant("Val", cvflann::True::val);
 
-  rb_cCvflannFalse = define_class_under<cvflann::False>(rb_mCvflann, "False").
+  Rice::Data_Type<cvflann::False> rb_cCvflannFalse = define_class_under<cvflann::False>(rb_mCvflann, "False").
     define_constructor(Constructor<cvflann::False>()).
     define_constant("Val", cvflann::False::val);
 
-  rb_cCvflannZeroIteratorUnsignedChar = define_class_under<cvflann::ZeroIterator<unsigned char>>(rb_mCvflann, "ZeroIteratorUnsignedChar").
+  Rice::Data_Type<cvflann::ZeroIterator<unsigned char>> rb_cCvflannZeroiteratorUnsignedChar = define_class_under<cvflann::ZeroIterator<unsigned char>>(rb_mCvflann, "ZeroIteratorUnsignedChar").
     define(&ZeroIterator_builder<Data_Type<cvflann::ZeroIterator<unsigned char>>, unsigned char>);
 
-  rb_cCvflannHammingLUT = define_class_under<cvflann::HammingLUT>(rb_mCvflann, "HammingLUT").
+  Rice::Data_Type<cvflann::HammingLUT> rb_cCvflannHammingLUT = define_class_under<cvflann::HammingLUT>(rb_mCvflann, "HammingLUT").
     define_constructor(Constructor<cvflann::HammingLUT>()).
     define_method<cvflann::HammingLUT::ResultType(cvflann::HammingLUT::*)(const unsigned char*, const cvflann::ZeroIterator<unsigned char>, size_t) const>("call", &cvflann::HammingLUT::operator(),
-      Arg("a"), Arg("b"), Arg("size"));
+      ArgBuffer("a"), Arg("b"), Arg("size"));
 
-  rb_cCvflannDNAmmingLUT = define_class_under<cvflann::DNAmmingLUT>(rb_mCvflann, "DNAmmingLUT").
+  Rice::Data_Type<cvflann::DNAmmingLUT> rb_cCvflannDNAmmingLUT = define_class_under<cvflann::DNAmmingLUT>(rb_mCvflann, "DNAmmingLUT").
     define_constructor(Constructor<cvflann::DNAmmingLUT>()).
     define_method<cvflann::DNAmmingLUT::ResultType(cvflann::DNAmmingLUT::*)(const unsigned char*, const cvflann::ZeroIterator<unsigned char>, size_t) const>("call", &cvflann::DNAmmingLUT::operator(),
-      Arg("a"), Arg("b"), Arg("size"));
-
+      ArgBuffer("a"), Arg("b"), Arg("size"));
 }

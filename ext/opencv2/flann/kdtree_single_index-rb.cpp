@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannKDTreeSingleIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void KDTreeSingleIndex_builder(Data_Type_T& klass)
 {
@@ -29,12 +27,12 @@ inline void KDTreeSingleIndex_builder(Data_Type_T& klass)
     define_method("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
-void Init_KdtreeSingleIndex()
+
+void Init_Flann_KdtreeSingleIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannKDTreeSingleIndexParams = define_class_under<cvflann::KDTreeSingleIndexParams, cvflann::IndexParams>(rb_mCvflann, "KDTreeSingleIndexParams").
+
+  Rice::Data_Type<cvflann::KDTreeSingleIndexParams> rb_cCvflannKDTreeSingleIndexParams = define_class_under<cvflann::KDTreeSingleIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "KDTreeSingleIndexParams").
     define_constructor(Constructor<cvflann::KDTreeSingleIndexParams, int, bool, int>(),
       Arg("leaf_max_size") = static_cast<int>(10), Arg("reorder") = static_cast<bool>(true), Arg("dim") = static_cast<int>(-1));
-
 }

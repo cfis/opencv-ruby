@@ -1,8 +1,9 @@
-#include <opencv2/core.hpp>
+#include <opencv2/core/base.hpp>
 #include <opencv2/flann/heap.h>
 #include "heap-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename T>
 inline void greater_builder(Data_Type_T& klass)
 {
@@ -25,12 +26,11 @@ inline void Heap_builder(Data_Type_T& klass)
       Arg("capacity")).
     define_method("insert", &cvflann::Heap<T>::insert,
       Arg("value")).
-    define_method("pop_min?", &cvflann::Heap<T>::popMin,
+    define_method("pop_min", &cvflann::Heap<T>::popMin,
       Arg("value"));
 };
-void Init_Heap()
+
+void Init_Flann_Heap()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-
 }

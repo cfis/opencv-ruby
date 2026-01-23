@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannLinearIndexParams;
-
 template<typename Data_Type_T, typename Distance>
 inline void LinearIndex_builder(Data_Type_T& klass)
 {
@@ -27,11 +25,11 @@ inline void LinearIndex_builder(Data_Type_T& klass)
       Arg("result_set"), Arg("vec"), Arg("arg_2")).
     define_method("get_parameters", &cvflann::LinearIndex<Distance>::getParameters);
 };
-void Init_LinearIndex()
+
+void Init_Flann_LinearIndex()
 {
   Module rb_mCvflann = define_module("Cvflann");
-  
-  rb_cCvflannLinearIndexParams = define_class_under<cvflann::LinearIndexParams, cvflann::IndexParams>(rb_mCvflann, "LinearIndexParams").
-    define_constructor(Constructor<cvflann::LinearIndexParams>());
 
+  Rice::Data_Type<cvflann::LinearIndexParams> rb_cCvflannLinearIndexParams = define_class_under<cvflann::LinearIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "LinearIndexParams").
+    define_constructor(Constructor<cvflann::LinearIndexParams>());
 }

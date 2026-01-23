@@ -2,13 +2,15 @@
 #include "all_indices-rb.hpp"
 
 using namespace Rice;
+
 template<typename Data_Type_T, typename KDTreeCapability, typename VectorSpace, typename Distance>
 inline void index_creator_builder(Data_Type_T& klass)
 {
   klass.define_singleton_function("create", &cvflann::index_creator<KDTreeCapability, VectorSpace, Distance>::create,
       Arg("dataset"), Arg("params"), Arg("distance"));
 };
-void Init_AllIndices()
+
+void Init_Flann_AllIndices()
 {
   Module rb_mCvflann = define_module("Cvflann");
 }

@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvflannLshLshStats;
-
 template<typename Data_Type_T, typename ElementType>
 inline void LshTable_builder(Data_Type_T& klass)
 {
@@ -21,15 +19,16 @@ inline void LshTable_builder(Data_Type_T& klass)
       Arg("arg_0")).
     define_method("get_stats", &cvflann::lsh::LshTable<ElementType>::getStats);
 };
-void Init_LshTable()
+
+void Init_Flann_LshTable()
 {
   Class(rb_cObject).define_constant("USE_UNORDERED_MAP", USE_UNORDERED_MAP);
-  
+
   Module rb_mCvflann = define_module("Cvflann");
-  
+
   Module rb_mCvflannLsh = define_module_under(rb_mCvflann, "Lsh");
-  
-  rb_cCvflannLshLshStats = define_class_under<cvflann::lsh::LshStats>(rb_mCvflannLsh, "LshStats").
+
+  Rice::Data_Type<cvflann::lsh::LshStats> rb_cCvflannLshLshStats = define_class_under<cvflann::lsh::LshStats>(rb_mCvflannLsh, "LshStats").
     define_constructor(Constructor<cvflann::lsh::LshStats>()).
     define_attr("bucket_sizes_", &cvflann::lsh::LshStats::bucket_sizes_).
     define_attr("n_buckets_", &cvflann::lsh::LshStats::n_buckets_).

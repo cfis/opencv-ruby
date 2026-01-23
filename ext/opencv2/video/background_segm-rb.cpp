@@ -1,24 +1,19 @@
 #include <opencv2/video/background_segm.hpp>
-#include "../core/cvstd_wrapper-rb.hpp"
 #include "background_segm-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvBackgroundSubtractor;
-Rice::Class rb_cCvBackgroundSubtractorKNN;
-Rice::Class rb_cCvBackgroundSubtractorMOG2;
-
-void Init_BackgroundSegm()
+void Init_Video_BackgroundSegm()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvBackgroundSubtractor = define_class_under<cv::BackgroundSubtractor, cv::Algorithm>(rb_mCv, "BackgroundSubtractor").
+  Rice::Data_Type<cv::BackgroundSubtractor> rb_cCvBackgroundSubtractor = define_class_under<cv::BackgroundSubtractor, cv::Algorithm>(rb_mCv, "BackgroundSubtractor").
     define_method("apply", &cv::BackgroundSubtractor::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1)).
     define_method("get_background_image", &cv::BackgroundSubtractor::getBackgroundImage,
       Arg("background_image"));
 
-  rb_cCvBackgroundSubtractorMOG2 = define_class_under<cv::BackgroundSubtractorMOG2, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorMOG2").
+  Rice::Data_Type<cv::BackgroundSubtractorMOG2> rb_cCvBackgroundSubtractorMOG2 = define_class_under<cv::BackgroundSubtractorMOG2, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorMOG2").
     define_method("get_history", &cv::BackgroundSubtractorMOG2::getHistory).
     define_method("set_history", &cv::BackgroundSubtractorMOG2::setHistory,
       Arg("history")).
@@ -61,7 +56,7 @@ void Init_BackgroundSegm()
   rb_mCv.define_module_function("create_background_subtractor_mog2", &cv::createBackgroundSubtractorMOG2,
     Arg("history") = static_cast<int>(500), Arg("var_threshold") = static_cast<double>(16), Arg("detect_shadows") = static_cast<bool>(true));
 
-  rb_cCvBackgroundSubtractorKNN = define_class_under<cv::BackgroundSubtractorKNN, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorKNN").
+  Rice::Data_Type<cv::BackgroundSubtractorKNN> rb_cCvBackgroundSubtractorKNN = define_class_under<cv::BackgroundSubtractorKNN, cv::BackgroundSubtractor>(rb_mCv, "BackgroundSubtractorKNN").
     define_method("get_history", &cv::BackgroundSubtractorKNN::getHistory).
     define_method("set_history", &cv::BackgroundSubtractorKNN::setHistory,
       Arg("history")).
@@ -86,5 +81,4 @@ void Init_BackgroundSegm()
 
   rb_mCv.define_module_function("create_background_subtractor_knn", &cv::createBackgroundSubtractorKNN,
     Arg("history") = static_cast<int>(500), Arg("dist2_threshold") = static_cast<double>(400.0), Arg("detect_shadows") = static_cast<bool>(true));
-
 }

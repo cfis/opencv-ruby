@@ -2,7 +2,7 @@
 #include "video-rb.hpp"
 
 using namespace Rice;
-void Init_Video()
-{
 
+void Init_Video_Video()
+{
 }

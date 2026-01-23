@@ -1,30 +1,9 @@
 #include <opencv2/video/tracking.hpp>
-#include "../../opencv_ruby_version.hpp"
-#include "../core/cvstd_wrapper-rb.hpp"
 #include "tracking-rb.hpp"
 
 using namespace Rice;
 
-Rice::Class rb_cCvDISOpticalFlow;
-Rice::Class rb_cCvDenseOpticalFlow;
-Rice::Class rb_cCvFarnebackOpticalFlow;
-Rice::Class rb_cCvKalmanFilter;
-Rice::Class rb_cCvSparseOpticalFlow;
-Rice::Class rb_cCvSparsePyrLKOpticalFlow;
-Rice::Class rb_cCvTracker;
-Rice::Class rb_cCvTrackerDaSiamRPN;
-Rice::Class rb_cCvTrackerDaSiamRPNParams;
-Rice::Class rb_cCvTrackerGOTURN;
-Rice::Class rb_cCvTrackerGOTURNParams;
-Rice::Class rb_cCvTrackerMIL;
-Rice::Class rb_cCvTrackerMILParams;
-Rice::Class rb_cCvTrackerNano;
-Rice::Class rb_cCvTrackerNanoParams;
-Rice::Class rb_cCvTrackerVit;
-Rice::Class rb_cCvTrackerVitParams;
-Rice::Class rb_cCvVariationalRefinement;
-
-void Init_Tracking()
+void Init_Video_Tracking()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -61,7 +40,7 @@ void Init_Tracking()
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray)>("find_transform_ecc", &cv::findTransformECC,
     Arg("template_image"), Arg("input_image"), Arg("warp_matrix"), Arg("motion_type") = static_cast<int>(cv::MOTION_AFFINE), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+cv::TermCriteria::EPS, 50, 0.001)), Arg("input_mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_cCvKalmanFilter = define_class_under<cv::KalmanFilter>(rb_mCv, "KalmanFilter").
+  Rice::Data_Type<cv::KalmanFilter> rb_cCvKalmanFilter = define_class_under<cv::KalmanFilter>(rb_mCv, "KalmanFilter").
     define_constructor(Constructor<cv::KalmanFilter>()).
     define_constructor(Constructor<cv::KalmanFilter, int, int, int, int>(),
       Arg("dynam_params"), Arg("measure_params"), Arg("control_params") = static_cast<int>(0), Arg("type") = static_cast<int>(CV_32F)).
@@ -90,19 +69,19 @@ void Init_Tracking()
   rb_mCv.define_module_function("read_optical_flow", &cv::readOpticalFlow,
     Arg("path"));
 
-  rb_mCv.define_module_function("write_optical_flow?", &cv::writeOpticalFlow,
+  rb_mCv.define_module_function("write_optical_flow", &cv::writeOpticalFlow,
     Arg("path"), Arg("flow"));
 
-  rb_cCvDenseOpticalFlow = define_class_under<cv::DenseOpticalFlow, cv::Algorithm>(rb_mCv, "DenseOpticalFlow").
+  Rice::Data_Type<cv::DenseOpticalFlow> rb_cCvDenseOpticalFlow = define_class_under<cv::DenseOpticalFlow, cv::Algorithm>(rb_mCv, "DenseOpticalFlow").
     define_method("calc", &cv::DenseOpticalFlow::calc,
       Arg("i0"), Arg("i1"), Arg("flow")).
     define_method("collect_garbage", &cv::DenseOpticalFlow::collectGarbage);
 
-  rb_cCvSparseOpticalFlow = define_class_under<cv::SparseOpticalFlow, cv::Algorithm>(rb_mCv, "SparseOpticalFlow").
+  Rice::Data_Type<cv::SparseOpticalFlow> rb_cCvSparseOpticalFlow = define_class_under<cv::SparseOpticalFlow, cv::Algorithm>(rb_mCv, "SparseOpticalFlow").
     define_method("calc", &cv::SparseOpticalFlow::calc,
       Arg("prev_img"), Arg("next_img"), Arg("prev_pts"), Arg("next_pts"), Arg("status"), Arg("err") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_cCvFarnebackOpticalFlow = define_class_under<cv::FarnebackOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "FarnebackOpticalFlow").
+  Rice::Data_Type<cv::FarnebackOpticalFlow> rb_cCvFarnebackOpticalFlow = define_class_under<cv::FarnebackOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "FarnebackOpticalFlow").
     define_method("get_num_levels", &cv::FarnebackOpticalFlow::getNumLevels).
     define_method("set_num_levels", &cv::FarnebackOpticalFlow::setNumLevels,
       Arg("num_levels")).
@@ -130,7 +109,7 @@ void Init_Tracking()
     define_singleton_function("create", &cv::FarnebackOpticalFlow::create,
       Arg("num_levels") = static_cast<int>(5), Arg("pyr_scale") = static_cast<double>(0.5), Arg("fast_pyramids") = static_cast<bool>(false), Arg("win_size") = static_cast<int>(13), Arg("num_iters") = static_cast<int>(10), Arg("poly_n") = static_cast<int>(5), Arg("poly_sigma") = static_cast<double>(1.1), Arg("flags") = static_cast<int>(0));
 
-  rb_cCvVariationalRefinement = define_class_under<cv::VariationalRefinement, cv::DenseOpticalFlow>(rb_mCv, "VariationalRefinement").
+  Rice::Data_Type<cv::VariationalRefinement> rb_cCvVariationalRefinement = define_class_under<cv::VariationalRefinement, cv::DenseOpticalFlow>(rb_mCv, "VariationalRefinement").
     define_method("calc_uv", &cv::VariationalRefinement::calcUV,
       Arg("i0"), Arg("i1"), Arg("flow_u"), Arg("flow_v")).
     define_method("get_fixed_point_iterations", &cv::VariationalRefinement::getFixedPointIterations).
@@ -160,7 +139,7 @@ void Init_Tracking()
       Arg("val"));
 #endif
 
-  rb_cCvDISOpticalFlow = define_class_under<cv::DISOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "DISOpticalFlow").
+  Rice::Data_Type<cv::DISOpticalFlow> rb_cCvDISOpticalFlow = define_class_under<cv::DISOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "DISOpticalFlow").
     define_method("get_finest_scale", &cv::DISOpticalFlow::getFinestScale).
     define_method("set_finest_scale", &cv::DISOpticalFlow::setFinestScale,
       Arg("val")).
@@ -185,6 +164,11 @@ void Init_Tracking()
     define_method("get_variational_refinement_gamma", &cv::DISOpticalFlow::getVariationalRefinementGamma).
     define_method("set_variational_refinement_gamma", &cv::DISOpticalFlow::setVariationalRefinementGamma,
       Arg("val")).
+#if RUBY_CV_VERSION >= 410
+    define_method("get_variational_refinement_epsilon", &cv::DISOpticalFlow::getVariationalRefinementEpsilon).
+    define_method("set_variational_refinement_epsilon", &cv::DISOpticalFlow::setVariationalRefinementEpsilon,
+      Arg("val")).
+#endif
     define_method("get_use_mean_normalization?", &cv::DISOpticalFlow::getUseMeanNormalization).
     define_method("set_use_mean_normalization", &cv::DISOpticalFlow::setUseMeanNormalization,
       Arg("val")).
@@ -199,15 +183,8 @@ void Init_Tracking()
   rb_cCvDISOpticalFlow.define_constant("PRESET_FAST", (int)cv::DISOpticalFlow::PRESET_FAST);
   rb_cCvDISOpticalFlow.define_constant("PRESET_MEDIUM", (int)cv::DISOpticalFlow::PRESET_MEDIUM);
 #endif
-
-#if RUBY_CV_VERSION >= 410
-  rb_cCvDISOpticalFlow.
-    define_method("get_variational_refinement_epsilon", &cv::DISOpticalFlow::getVariationalRefinementEpsilon).
-    define_method("set_variational_refinement_epsilon", &cv::DISOpticalFlow::setVariationalRefinementEpsilon,
-      Arg("val"));
-#endif
-
-  rb_cCvSparsePyrLKOpticalFlow = define_class_under<cv::SparsePyrLKOpticalFlow, cv::SparseOpticalFlow>(rb_mCv, "SparsePyrLKOpticalFlow").
+    
+  Rice::Data_Type<cv::SparsePyrLKOpticalFlow> rb_cCvSparsePyrLKOpticalFlow = define_class_under<cv::SparsePyrLKOpticalFlow, cv::SparseOpticalFlow>(rb_mCv, "SparsePyrLKOpticalFlow").
     define_method("get_win_size", &cv::SparsePyrLKOpticalFlow::getWinSize).
     define_method("set_win_size", &cv::SparsePyrLKOpticalFlow::setWinSize,
       Arg("win_size")).
@@ -224,19 +201,19 @@ void Init_Tracking()
     define_method("set_min_eig_threshold", &cv::SparsePyrLKOpticalFlow::setMinEigThreshold,
       Arg("min_eig_threshold")).
     define_singleton_function("create", &cv::SparsePyrLKOpticalFlow::create,
-      Arg("win_size") = static_cast<cv::Size>(cv::Size(21, 21)), Arg("max_level") = static_cast<int>(3), Arg("crit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+ cv::TermCriteria::EPS, 30, 0.01)), Arg("flags") = static_cast<int>(0), Arg("min_eig_threshold") = static_cast<double>(1e-4));
+      Arg("win_size") = static_cast<cv::Size>(cv::Size(21, 21)), Arg("max_level") = static_cast<int>(3), Arg("crit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::COUNT+cv::TermCriteria::EPS, 30, 0.01)), Arg("flags") = static_cast<int>(0), Arg("min_eig_threshold") = static_cast<double>(1e-4));
 
-  rb_cCvTracker = define_class_under<cv::Tracker>(rb_mCv, "Tracker").
+  Rice::Data_Type<cv::Tracker> rb_cCvTracker = define_class_under<cv::Tracker>(rb_mCv, "Tracker").
     define_method("init", &cv::Tracker::init,
       Arg("image"), Arg("bounding_box")).
-    define_method("update?", &cv::Tracker::update,
+    define_method("update", &cv::Tracker::update,
       Arg("image"), Arg("bounding_box"));
 
-  rb_cCvTrackerMIL = define_class_under<cv::TrackerMIL, cv::Tracker>(rb_mCv, "TrackerMIL").
+  Rice::Data_Type<cv::TrackerMIL> rb_cCvTrackerMIL = define_class_under<cv::TrackerMIL, cv::Tracker>(rb_mCv, "TrackerMIL").
     define_singleton_function("create", &cv::TrackerMIL::create,
-      Arg("parameters") = static_cast<const cv::TrackerMIL::Params &>(cv::TrackerMIL::Params()));
+      Arg("parameters") = static_cast<const cv::TrackerMIL::Params&>(cv::TrackerMIL::Params()));
 
-  rb_cCvTrackerMILParams = define_class_under<cv::TrackerMIL::Params>(rb_cCvTrackerMIL, "Params").
+  Rice::Data_Type<cv::TrackerMIL::Params> rb_cCvTrackerMILParams = define_class_under<cv::TrackerMIL::Params>(rb_cCvTrackerMIL, "Params").
     define_constructor(Constructor<cv::TrackerMIL::Params>()).
     define_attr("sampler_init_in_radius", &cv::TrackerMIL::Params::samplerInitInRadius).
     define_attr("sampler_init_max_neg_num", &cv::TrackerMIL::Params::samplerInitMaxNegNum).
@@ -246,33 +223,33 @@ void Init_Tracking()
     define_attr("sampler_track_max_neg_num", &cv::TrackerMIL::Params::samplerTrackMaxNegNum).
     define_attr("feature_set_num_features", &cv::TrackerMIL::Params::featureSetNumFeatures);
 
-  rb_cCvTrackerGOTURN = define_class_under<cv::TrackerGOTURN, cv::Tracker>(rb_mCv, "TrackerGOTURN").
-    define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::TrackerGOTURN::Params&)>("create", &cv::TrackerGOTURN::create,
-      Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params &>(cv::TrackerGOTURN::Params()));
-
 #if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerGOTURN.
     define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::dnn::Net&)>("create", &cv::TrackerGOTURN::create,
       Arg("model"));
 #endif
 
-  rb_cCvTrackerGOTURNParams = define_class_under<cv::TrackerGOTURN::Params>(rb_cCvTrackerGOTURN, "Params").
+  Rice::Data_Type<cv::TrackerGOTURN> rb_cCvTrackerGOTURN = define_class_under<cv::TrackerGOTURN, cv::Tracker>(rb_mCv, "TrackerGOTURN").
+    define_singleton_function("create", &cv::TrackerGOTURN::create,
+      Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params&>(cv::TrackerGOTURN::Params()));
+
+  Rice::Data_Type<cv::TrackerGOTURN::Params> rb_cCvTrackerGOTURNParams = define_class_under<cv::TrackerGOTURN::Params>(rb_cCvTrackerGOTURN, "Params").
     define_constructor(Constructor<cv::TrackerGOTURN::Params>()).
     define_attr("model_txt", &cv::TrackerGOTURN::Params::modelTxt).
     define_attr("model_bin", &cv::TrackerGOTURN::Params::modelBin);
 
-  rb_cCvTrackerDaSiamRPN = define_class_under<cv::TrackerDaSiamRPN, cv::Tracker>(rb_mCv, "TrackerDaSiamRPN").
-    define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::TrackerDaSiamRPN::Params&)>("create", &cv::TrackerDaSiamRPN::create,
-      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params &>(cv::TrackerDaSiamRPN::Params())).
-    define_method("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore);
+  Rice::Data_Type<cv::TrackerDaSiamRPN> rb_cCvTrackerDaSiamRPN = define_class_under<cv::TrackerDaSiamRPN, cv::Tracker>(rb_mCv, "TrackerDaSiamRPN").
+    define_method("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore).
+    define_singleton_function("create", &cv::TrackerDaSiamRPN::create,
+      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params&>(cv::TrackerDaSiamRPN::Params()));
 
 #if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerDaSiamRPN.
     define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::dnn::Net&, const cv::dnn::Net&, const cv::dnn::Net&)>("create", &cv::TrackerDaSiamRPN::create,
       Arg("siam_rpn"), Arg("kernel_cls1"), Arg("kernel_r1"));
-  #endif
+#endif
 
-  rb_cCvTrackerDaSiamRPNParams = define_class_under<cv::TrackerDaSiamRPN::Params>(rb_cCvTrackerDaSiamRPN, "Params").
+  Rice::Data_Type<cv::TrackerDaSiamRPN::Params> rb_cCvTrackerDaSiamRPNParams = define_class_under<cv::TrackerDaSiamRPN::Params>(rb_cCvTrackerDaSiamRPN, "Params").
     define_constructor(Constructor<cv::TrackerDaSiamRPN::Params>()).
     define_attr("model", &cv::TrackerDaSiamRPN::Params::model).
     define_attr("kernel_cls1", &cv::TrackerDaSiamRPN::Params::kernel_cls1).
@@ -281,18 +258,17 @@ void Init_Tracking()
     define_attr("target", &cv::TrackerDaSiamRPN::Params::target);
 
 #if RUBY_CV_VERSION >= 407
-  rb_cCvTrackerNano = define_class_under<cv::TrackerNano, cv::Tracker>(rb_mCv, "TrackerNano").
-    define_singleton_function<cv::Ptr<cv::TrackerNano>(*)(const cv::TrackerNano::Params&)>("create", &cv::TrackerNano::create,
-      Arg("parameters") = static_cast<const cv::TrackerNano::Params &>(cv::TrackerNano::Params())).
-    define_method("get_tracking_score", &cv::TrackerNano::getTrackingScore);
+  Rice::Data_Type<cv::TrackerNano> rb_cCvTrackerNano = define_class_under<cv::TrackerNano, cv::Tracker>(rb_mCv, "TrackerNano").
+    define_method("get_tracking_score", &cv::TrackerNano::getTrackingScore).
+    define_singleton_function("create", &cv::TrackerNano::create,
+      Arg("parameters") = static_cast<const cv::TrackerNano::Params&>(cv::TrackerNano::Params()));
 
 #if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerNano.
     define_singleton_function<cv::Ptr<cv::TrackerNano>(*)(const cv::dnn::Net&, const cv::dnn::Net&)>("create", &cv::TrackerNano::create,
       Arg("backbone"), Arg("neckhead"));
-  #endif
-
-  rb_cCvTrackerNanoParams = define_class_under<cv::TrackerNano::Params>(rb_cCvTrackerNano, "Params").
+#endif
+  Rice::Data_Type<cv::TrackerNano::Params> rb_cCvTrackerNanoParams = define_class_under<cv::TrackerNano::Params>(rb_cCvTrackerNano, "Params").
     define_constructor(Constructor<cv::TrackerNano::Params>()).
     define_attr("backbone", &cv::TrackerNano::Params::backbone).
     define_attr("neckhead", &cv::TrackerNano::Params::neckhead).
@@ -301,24 +277,24 @@ void Init_Tracking()
 #endif
 
 #if RUBY_CV_VERSION >= 409
-  rb_cCvTrackerVit = define_class_under<cv::TrackerVit, cv::Tracker>(rb_mCv, "TrackerVit").
-    define_singleton_function<cv::Ptr<cv::TrackerVit>(*)(const cv::TrackerVit::Params&)>("create", &cv::TrackerVit::create,
-      Arg("parameters") = static_cast<const cv::TrackerVit::Params &>(cv::TrackerVit::Params())).
-    define_method("get_tracking_score", &cv::TrackerVit::getTrackingScore);
+  Rice::Data_Type<cv::TrackerVit> rb_cCvTrackerVit = define_class_under<cv::TrackerVit, cv::Tracker>(rb_mCv, "TrackerVit").
+    define_method("get_tracking_score", &cv::TrackerVit::getTrackingScore).
+    define_singleton_function("create", &cv::TrackerVit::create,
+      Arg("parameters") = static_cast<const cv::TrackerVit::Params&>(cv::TrackerVit::Params()));
 
 #if defined(HAVE_OPENCV_DNN) && (RUBY_CV_VERSION >= 412)
   rb_cCvTrackerVit.
     define_singleton_function<cv::Ptr<cv::TrackerVit>(*)(const cv::dnn::Net&, cv::Scalar, cv::Scalar, float)>("create", &cv::TrackerVit::create,
       Arg("model"), Arg("meanvalue") = cv::Scalar(0.485, 0.456, 0.406),
       Arg("stdvalue") = cv::Scalar(0.229, 0.224, 0.225), Arg("tracking_score_threshold") = 0.20f);
-  #endif
-
-  rb_cCvTrackerVitParams = define_class_under<cv::TrackerVit::Params>(rb_cCvTrackerVit, "Params").
+#endif
+  Rice::Data_Type<cv::TrackerVit::Params> rb_cCvTrackerVitParams = define_class_under<cv::TrackerVit::Params>(rb_cCvTrackerVit, "Params").
     define_constructor(Constructor<cv::TrackerVit::Params>()).
     define_attr("net", &cv::TrackerVit::Params::net).
     define_attr("backend", &cv::TrackerVit::Params::backend).
     define_attr("target", &cv::TrackerVit::Params::target).
     define_attr("meanvalue", &cv::TrackerVit::Params::meanvalue).
-    define_attr("stdvalue", &cv::TrackerVit::Params::stdvalue);
+    define_attr("stdvalue", &cv::TrackerVit::Params::stdvalue).
+    define_attr("tracking_score_threshold", &cv::TrackerVit::Params::tracking_score_threshold);
 #endif
 }

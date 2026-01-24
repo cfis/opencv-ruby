@@ -3,15 +3,13 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnRange;
-
-void Init_ShapeUtils()
+void Init_Dnn_ShapeUtils()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
-  rb_cCvDnnRange = define_class_under<cv::dnn::_Range, cv::Range>(rb_mCvDnn, "Range").
+  Rice::Data_Type<cv::dnn::_Range> rb_cCvDnnRange = define_class_under<cv::dnn::_Range, cv::Range>(rb_mCvDnn, "Range").
     define_constructor(Constructor<cv::dnn::_Range, const cv::Range&>(),
       Arg("r")).
     define_constructor(Constructor<cv::dnn::_Range, int, int>(),
@@ -33,7 +31,7 @@ void Init_ShapeUtils()
     Arg("m"), Arg("n"), Arg("cn"));
 
   rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const int*, const int)>("shape", &cv::dnn::shape,
-    Arg("dims"), Arg("n"));
+    ArgBuffer("dims"), Arg("n"));
 
   rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::Mat&)>("shape", &cv::dnn::shape,
     Arg("mat"));
@@ -65,7 +63,6 @@ void Init_ShapeUtils()
   rb_mCvDnn.define_module_function("normalize_axis_range", &cv::dnn::normalize_axis_range,
     Arg("r"), Arg("axis_size"));
 
-  rb_mCvDnn.define_module_function("all_ones?", &cv::dnn::isAllOnes,
+  rb_mCvDnn.define_module_function("is_all_ones", &cv::dnn::isAllOnes,
     Arg("input_shape"), Arg("start_pos"), Arg("end_pos"));
-
 }

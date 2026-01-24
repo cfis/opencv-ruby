@@ -3,16 +3,13 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDnnDict;
-Rice::Class rb_cCvDnnDictValue;
-
-void Init_Dict()
+void Init_Dnn_Dict()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
-  rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue").
+  Rice::Data_Type<cv::dnn::DictValue> rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue").
     define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue&>(),
       Arg("r")).
     define_constructor(Constructor<cv::dnn::DictValue, bool>(),
@@ -42,9 +39,9 @@ void Init_Dict()
     define_method("assign", &cv::dnn::DictValue::operator=,
       Arg("r"));
 
-  rb_cCvDnnDict = define_class_under<cv::dnn::Dict>(rb_mCvDnn, "Dict").
+  Rice::Data_Type<cv::dnn::Dict> rb_cCvDnnDict = define_class_under<cv::dnn::Dict>(rb_mCvDnn, "Dict").
     define_constructor(Constructor<cv::dnn::Dict>()).
-    define_method("has?", &cv::dnn::Dict::has,
+    define_method("has", &cv::dnn::Dict::has,
       Arg("key")).
     define_method<cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&)>("ptr", &cv::dnn::Dict::ptr,
       Arg("key")).
@@ -54,6 +51,5 @@ void Init_Dict()
       Arg("key")).
     define_method("erase", &cv::dnn::Dict::erase,
       Arg("key")).
-    define_iterator<std::map<cv::String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
-
+    define_iterator<std::map<String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
 }

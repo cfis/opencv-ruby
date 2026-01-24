@@ -1,33 +1,17 @@
 #include <opencv2/dnn/dnn.hpp>
-#include "../core/cvstd_wrapper-rb.hpp"
 #include "dnn-rb.hpp"
 
 using namespace Rice;
 
-Rice::Data_Type<cv::dnn::BackendWrapper> rb_cCvDnnBackendWrapper;
-Rice::Data_Type<cv::dnn::ClassificationModel> rb_cCvDnnClassificationModel;
-Rice::Data_Type<cv::dnn::DetectionModel> rb_cCvDnnDetectionModel;
-Rice::Data_Type<cv::dnn::Image2BlobParams> rb_cCvDnnImage2BlobParams;
-Rice::Data_Type<cv::dnn::KeypointsModel> rb_cCvDnnKeypointsModel;
-Rice::Data_Type<cv::dnn::Layer> rb_cCvDnnLayer;
-Rice::Data_Type<cv::dnn::LayerParams> rb_cCvDnnLayerParams;
-Rice::Data_Type<cv::dnn::Model> rb_cCvDnnModel;
-Rice::Data_Type<cv::dnn::Model::Impl> rb_cCvDnnModelImpl;
-Rice::Data_Type<cv::dnn::Net> rb_cCvDnnNet;
-Rice::Data_Type<cv::dnn::Net::Impl> rb_cCvDnnNetImpl;
-Rice::Data_Type<cv::dnn::SegmentationModel> rb_cCvDnnSegmentationModel;
-Rice::Data_Type<cv::dnn::TextDetectionModel> rb_cCvDnnTextDetectionModel;
-Rice::Data_Type<cv::dnn::TextDetectionModel_DB> rb_cCvDnnTextDetectionModelDB;
-Rice::Data_Type<cv::dnn::TextDetectionModel_EAST> rb_cCvDnnTextDetectionModelEAST;
-Rice::Data_Type<cv::dnn::TextRecognitionModel> rb_cCvDnnTextRecognitionModel;
-
-void Init_Dnn()
+void Init_Dnn_Dnn()
 {
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
   Module rb_mCvDnnAccessor = define_module_under(rb_mCvDnn, "Accessor");
+
+  Rice::Data_Type<cv::dnn::accessor::DnnNetAccessor> rb_cCvDnnAccessorDnnNetAccessor = define_class_under<cv::dnn::accessor::DnnNetAccessor>(rb_mCvDnnAccessor, "DnnNetAccessor");
 
   Enum<cv::dnn::Backend> rb_cCvDnnBackend = define_enum_under<cv::dnn::Backend>("Backend", rb_mCvDnn).
     define_value("DNN_BACKEND_DEFAULT", cv::dnn::Backend::DNN_BACKEND_DEFAULT).
@@ -70,19 +54,26 @@ void Init_Dnn()
   rb_mCvDnn.define_module_function("enable_model_diagnostics", &cv::dnn::enableModelDiagnostics,
     Arg("is_diagnostics_mode"));
 
-  rb_cCvDnnLayerParams = define_class_under<cv::dnn::LayerParams, cv::dnn::Dict>(rb_mCvDnn, "LayerParams").
+  Rice::Data_Type<cv::dnn::LayerParams> rb_cCvDnnLayerParams = define_class_under<cv::dnn::LayerParams, cv::dnn::Dict>(rb_mCvDnn, "LayerParams").
     define_constructor(Constructor<cv::dnn::LayerParams>()).
     define_attr("blobs", &cv::dnn::LayerParams::blobs).
     define_attr("name", &cv::dnn::LayerParams::name).
     define_attr("type", &cv::dnn::LayerParams::type);
 
-  rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
+  Rice::Data_Type<cv::dnn::BackendNode> rb_cCvDnnBackendNode = define_class_under<cv::dnn::BackendNode>(rb_mCvDnn, "BackendNode").
+    define_constructor(Constructor<cv::dnn::BackendNode, int>(),
+      Arg("backend_id")).
+    define_attr("backend_id", &cv::dnn::BackendNode::backendId);
+
+  Rice::Data_Type<cv::dnn::BackendWrapper> rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
     define_method("copy_to_host", &cv::dnn::BackendWrapper::copyToHost).
     define_method("set_host_dirty", &cv::dnn::BackendWrapper::setHostDirty).
     define_attr("backend_id", &cv::dnn::BackendWrapper::backendId).
     define_attr("target_id", &cv::dnn::BackendWrapper::targetId);
 
-  rb_cCvDnnLayer = define_class_under<cv::dnn::Layer, cv::Algorithm>(rb_mCvDnn, "Layer").
+  Rice::Data_Type<cv::dnn::ActivationLayer> rb_cCvDnnActivationLayer = define_class_under<cv::dnn::ActivationLayer>(rb_mCvDnn, "ActivationLayer");
+
+  Rice::Data_Type<cv::dnn::Layer> rb_cCvDnnLayer = define_class_under<cv::dnn::Layer, cv::Algorithm>(rb_mCvDnn, "Layer").
     define_attr("blobs", &cv::dnn::Layer::blobs).
     define_method<void(cv::dnn::Layer::*)(cv::InputArrayOfArrays, cv::OutputArrayOfArrays)>("finalize", &cv::dnn::Layer::finalize,
       Arg("inputs"), Arg("outputs")).
@@ -98,6 +89,24 @@ void Init_Dnn()
       Arg("output_name")).
     define_method("support_backend", &cv::dnn::Layer::supportBackend,
       Arg("backend_id")).
+    define_method("init_halide", &cv::dnn::Layer::initHalide,
+      Arg("inputs")).
+    define_method("init_ngraph", &cv::dnn::Layer::initNgraph,
+      Arg("inputs"), Arg("nodes")).
+    define_method("init_vk_com", &cv::dnn::Layer::initVkCom,
+      Arg("inputs"), Arg("outputs")).
+    define_method("init_webnn", &cv::dnn::Layer::initWebnn,
+      Arg("inputs"), Arg("nodes")).
+    define_method("init_cuda", &cv::dnn::Layer::initCUDA,
+      ArgBuffer("context"), Arg("inputs"), Arg("outputs")).
+    define_method("init_tim_vx", &cv::dnn::Layer::initTimVX,
+      ArgBuffer("tim_vx_info"), Arg("inputs_wrapper"), Arg("outputs_wrapper"), Arg("is_last")).
+    define_method("init_cann", &cv::dnn::Layer::initCann,
+      Arg("inputs"), Arg("outputs"), Arg("nodes")).
+    define_method("apply_halide_scheduler", &cv::dnn::Layer::applyHalideScheduler,
+      Arg("node"), Arg("inputs"), Arg("outputs"), Arg("target_id")).
+    define_method("try_attach", &cv::dnn::Layer::tryAttach,
+      Arg("node")).
     define_method("set_activation", &cv::dnn::Layer::setActivation,
       Arg("layer")).
     define_method("try_fuse", &cv::dnn::Layer::tryFuse,
@@ -122,9 +131,9 @@ void Init_Dnn()
     define_method("set_params_from", &cv::dnn::Layer::setParamsFrom,
       Arg("params"));
 
-  rb_cCvDnnNet = define_class_under<cv::dnn::Net>(rb_mCvDnn, "Net");
+  Rice::Data_Type<cv::dnn::Net> rb_cCvDnnNet = define_class_under<cv::dnn::Net>(rb_mCvDnn, "Net");
 
-  rb_cCvDnnNetImpl = define_class_under<cv::dnn::Net::Impl>(rb_cCvDnnNet, "Impl");
+  Rice::Data_Type<cv::dnn::Net::Impl> rb_cCvDnnNetImpl = define_class_under<cv::dnn::Net::Impl>(rb_cCvDnnNet, "Impl");
 
   rb_cCvDnnNet.
     define_constructor(Constructor<cv::dnn::Net>()).
@@ -330,7 +339,7 @@ void Init_Dnn()
     define_value("DNN_PMODE_CROP_CENTER", cv::dnn::ImagePaddingMode::DNN_PMODE_CROP_CENTER).
     define_value("DNN_PMODE_LETTERBOX", cv::dnn::ImagePaddingMode::DNN_PMODE_LETTERBOX);
 
-  rb_cCvDnnImage2BlobParams = define_class_under<cv::dnn::Image2BlobParams>(rb_mCvDnn, "Image2BlobParams").
+  Rice::Data_Type<cv::dnn::Image2BlobParams> rb_cCvDnnImage2BlobParams = define_class_under<cv::dnn::Image2BlobParams>(rb_mCvDnn, "Image2BlobParams").
     define_constructor(Constructor<cv::dnn::Image2BlobParams>()).
     define_constructor(Constructor<cv::dnn::Image2BlobParams, const cv::Scalar&, const cv::Size&, const cv::Scalar&, bool, int, cv::dnn::DataLayout, cv::dnn::ImagePaddingMode, cv::Scalar>(),
       Arg("scalefactor"), Arg("size") = static_cast<const cv::Size&>(cv::Size()), Arg("mean") = static_cast<const cv::Scalar&>(cv::Scalar()), Arg("swap_rb") = static_cast<bool>(false), Arg("ddepth") = static_cast<int>(CV_32F), Arg("datalayout") = static_cast<cv::dnn::DataLayout>(cv::dnn::DNN_LAYOUT_NCHW), Arg("mode") = static_cast<cv::dnn::ImagePaddingMode>(cv::dnn::DNN_PMODE_NULL), Arg("border_value") = static_cast<cv::Scalar>(0.0)).
@@ -390,9 +399,9 @@ void Init_Dnn()
   rb_mCvDnn.define_module_function("soft_nms_boxes", &cv::dnn::softNMSBoxes,
     Arg("bboxes"), Arg("scores"), Arg("updated_scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("top_k") = static_cast<size_t>(0), Arg("sigma") = static_cast<const float>(0.5), Arg("method") = static_cast<cv::dnn::SoftNMSMethod>(cv::dnn::SoftNMSMethod::SOFTNMS_GAUSSIAN));
 
-  rb_cCvDnnModel = define_class_under<cv::dnn::Model>(rb_mCvDnn, "Model");
+  Rice::Data_Type<cv::dnn::Model> rb_cCvDnnModel = define_class_under<cv::dnn::Model>(rb_mCvDnn, "Model");
 
-  rb_cCvDnnModelImpl = define_class_under<cv::dnn::Model::Impl>(rb_cCvDnnModel, "Impl");
+  Rice::Data_Type<cv::dnn::Model::Impl> rb_cCvDnnModelImpl = define_class_under<cv::dnn::Model::Impl>(rb_cCvDnnModel, "Impl");
 
   rb_cCvDnnModel.
     define_constructor(Constructor<cv::dnn::Model, const cv::dnn::Model&>(),
@@ -432,7 +441,7 @@ void Init_Dnn()
     define_method("get_impl", &cv::dnn::Model::getImpl).
     define_method("get_impl_ref", &cv::dnn::Model::getImplRef);
 
-  rb_cCvDnnClassificationModel = define_class_under<cv::dnn::ClassificationModel, cv::dnn::Model>(rb_mCvDnn, "ClassificationModel").
+  Rice::Data_Type<cv::dnn::ClassificationModel> rb_cCvDnnClassificationModel = define_class_under<cv::dnn::ClassificationModel, cv::dnn::Model>(rb_mCvDnn, "ClassificationModel").
     define_constructor(Constructor<cv::dnn::ClassificationModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>("")).
     define_constructor(Constructor<cv::dnn::ClassificationModel, const cv::dnn::Net&>(),
@@ -445,7 +454,7 @@ void Init_Dnn()
     define_method<void(cv::dnn::ClassificationModel::*)(cv::InputArray, int&, float&)>("classify", &cv::dnn::ClassificationModel::classify,
       Arg("frame"), Arg("class_id"), Arg("conf"));
 
-  rb_cCvDnnKeypointsModel = define_class_under<cv::dnn::KeypointsModel, cv::dnn::Model>(rb_mCvDnn, "KeypointsModel").
+  Rice::Data_Type<cv::dnn::KeypointsModel> rb_cCvDnnKeypointsModel = define_class_under<cv::dnn::KeypointsModel, cv::dnn::Model>(rb_mCvDnn, "KeypointsModel").
     define_constructor(Constructor<cv::dnn::KeypointsModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>("")).
     define_constructor(Constructor<cv::dnn::KeypointsModel, const cv::dnn::Net&>(),
@@ -453,7 +462,7 @@ void Init_Dnn()
     define_method("estimate", &cv::dnn::KeypointsModel::estimate,
       Arg("frame"), Arg("thresh") = static_cast<float>(0.5));
 
-  rb_cCvDnnSegmentationModel = define_class_under<cv::dnn::SegmentationModel, cv::dnn::Model>(rb_mCvDnn, "SegmentationModel").
+  Rice::Data_Type<cv::dnn::SegmentationModel> rb_cCvDnnSegmentationModel = define_class_under<cv::dnn::SegmentationModel, cv::dnn::Model>(rb_mCvDnn, "SegmentationModel").
     define_constructor(Constructor<cv::dnn::SegmentationModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>("")).
     define_constructor(Constructor<cv::dnn::SegmentationModel, const cv::dnn::Net&>(),
@@ -461,7 +470,7 @@ void Init_Dnn()
     define_method("segment", &cv::dnn::SegmentationModel::segment,
       Arg("frame"), Arg("mask"));
 
-  rb_cCvDnnDetectionModel = define_class_under<cv::dnn::DetectionModel, cv::dnn::Model>(rb_mCvDnn, "DetectionModel").
+  Rice::Data_Type<cv::dnn::DetectionModel> rb_cCvDnnDetectionModel = define_class_under<cv::dnn::DetectionModel, cv::dnn::Model>(rb_mCvDnn, "DetectionModel").
     define_constructor(Constructor<cv::dnn::DetectionModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>("")).
     define_constructor(Constructor<cv::dnn::DetectionModel, const cv::dnn::Net&>(),
@@ -472,7 +481,7 @@ void Init_Dnn()
     define_method("detect", &cv::dnn::DetectionModel::detect,
       Arg("frame"), Arg("class_ids"), Arg("confidences"), Arg("boxes"), Arg("conf_threshold") = static_cast<float>(0.5f), Arg("nms_threshold") = static_cast<float>(0.0f));
 
-  rb_cCvDnnTextRecognitionModel = define_class_under<cv::dnn::TextRecognitionModel, cv::dnn::Model>(rb_mCvDnn, "TextRecognitionModel").
+  Rice::Data_Type<cv::dnn::TextRecognitionModel> rb_cCvDnnTextRecognitionModel = define_class_under<cv::dnn::TextRecognitionModel, cv::dnn::Model>(rb_mCvDnn, "TextRecognitionModel").
     define_constructor(Constructor<cv::dnn::TextRecognitionModel, const cv::dnn::Net&>(),
       Arg("network")).
     define_constructor(Constructor<cv::dnn::TextRecognitionModel, const std::string&, const std::string&>(),
@@ -490,7 +499,7 @@ void Init_Dnn()
     define_method<void(cv::dnn::TextRecognitionModel::*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::string>&) const>("recognize", &cv::dnn::TextRecognitionModel::recognize,
       Arg("frame"), Arg("roi_rects"), Arg("results"));
 
-  rb_cCvDnnTextDetectionModel = define_class_under<cv::dnn::TextDetectionModel, cv::dnn::Model>(rb_mCvDnn, "TextDetectionModel").
+  Rice::Data_Type<cv::dnn::TextDetectionModel> rb_cCvDnnTextDetectionModel = define_class_under<cv::dnn::TextDetectionModel, cv::dnn::Model>(rb_mCvDnn, "TextDetectionModel").
     define_method<void(cv::dnn::TextDetectionModel::*)(cv::InputArray, std::vector<std::vector<cv::Point_<int>>>&, std::vector<float>&) const>("detect", &cv::dnn::TextDetectionModel::detect,
       Arg("frame"), Arg("detections"), Arg("confidences")).
     define_method<void(cv::dnn::TextDetectionModel::*)(cv::InputArray, std::vector<std::vector<cv::Point_<int>>>&) const>("detect", &cv::dnn::TextDetectionModel::detect,
@@ -500,7 +509,7 @@ void Init_Dnn()
     define_method<void(cv::dnn::TextDetectionModel::*)(cv::InputArray, std::vector<cv::RotatedRect>&) const>("detect_text_rectangles", &cv::dnn::TextDetectionModel::detectTextRectangles,
       Arg("frame"), Arg("detections"));
 
-  rb_cCvDnnTextDetectionModelEAST = define_class_under<cv::dnn::TextDetectionModel_EAST, cv::dnn::TextDetectionModel>(rb_mCvDnn, "TextDetectionModelEAST").
+  Rice::Data_Type<cv::dnn::TextDetectionModel_EAST> rb_cCvDnnTextDetectionModelEAST = define_class_under<cv::dnn::TextDetectionModel_EAST, cv::dnn::TextDetectionModel>(rb_mCvDnn, "TextDetectionModelEAST").
     define_constructor(Constructor<cv::dnn::TextDetectionModel_EAST, const cv::dnn::Net&>(),
       Arg("network")).
     define_constructor(Constructor<cv::dnn::TextDetectionModel_EAST, const std::string&, const std::string&>(),
@@ -512,7 +521,7 @@ void Init_Dnn()
       Arg("nms_threshold")).
     define_method("get_nms_threshold", &cv::dnn::TextDetectionModel_EAST::getNMSThreshold);
 
-  rb_cCvDnnTextDetectionModelDB = define_class_under<cv::dnn::TextDetectionModel_DB, cv::dnn::TextDetectionModel>(rb_mCvDnn, "TextDetectionModelDB").
+  Rice::Data_Type<cv::dnn::TextDetectionModel_DB> rb_cCvDnnTextDetectionModelDB = define_class_under<cv::dnn::TextDetectionModel_DB, cv::dnn::TextDetectionModel>(rb_mCvDnn, "TextDetectionModelDB").
     define_constructor(Constructor<cv::dnn::TextDetectionModel_DB, const cv::dnn::Net&>(),
       Arg("network")).
     define_constructor(Constructor<cv::dnn::TextDetectionModel_DB, const std::string&, const std::string&>(),

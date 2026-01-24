@@ -3,8 +3,6 @@
 
 using namespace Rice;
 
-
 void Init_OpencvModules()
 {
-
 }

@@ -1,11 +1,7 @@
-#include <opencv2/core/opengl.hpp>
 #include <opencv2/highgui.hpp>
-#include "../opencv_ruby_version.hpp"
 #include "highgui-rb.hpp"
 
 using namespace Rice;
-
-Rice::Class rb_cCvQtFont;
 
 void Init_Highgui()
 {
@@ -117,24 +113,24 @@ void Init_Highgui()
     Arg("winname"));
 
   rb_mCv.define_module_function("set_mouse_callback", &cv::setMouseCallback,
-    Arg("winname"), Arg("on_mouse"), Arg("userdata").setOpaque() = static_cast<void*>(0));
+    Arg("winname"), Arg("on_mouse"), ArgBuffer("userdata") = static_cast<void*>(0));
 
   rb_mCv.define_module_function("get_mouse_wheel_delta", &cv::getMouseWheelDelta,
     Arg("flags"));
 
-#if RUBY_CV_VERSION >= 408
   rb_mCv.define_module_function<cv::Rect(*)(const cv::String&, cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
     Arg("window_name"), Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
+#if RUBY_CV_VERSION >= 408
   rb_mCv.define_module_function<cv::Rect(*)(cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
     Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
-#endif
 
   rb_mCv.define_module_function("select_ro_is", &cv::selectROIs,
     Arg("window_name"), Arg("img"), Arg("bounding_boxes"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
+#endif
 
   rb_mCv.define_module_function("create_trackbar", &cv::createTrackbar,
-    Arg("trackbarname"), Arg("winname"), Arg("value"), Arg("count"), Arg("on_change") = static_cast<cv::TrackbarCallback>(0), Arg("userdata").setOpaque() = static_cast<void*>(0));
+    Arg("trackbarname"), Arg("winname"), ArgBuffer("value"), Arg("count"), Arg("on_change") = static_cast<cv::TrackbarCallback>(0), ArgBuffer("userdata") = static_cast<void*>(0));
 
   rb_mCv.define_module_function("get_trackbar_pos", &cv::getTrackbarPos,
     Arg("trackbarname"), Arg("winname"));
@@ -152,7 +148,7 @@ void Init_Highgui()
     Arg("winname"), Arg("tex"));
 
   rb_mCv.define_module_function("set_open_gl_draw_callback", &cv::setOpenGlDrawCallback,
-    Arg("winname"), Arg("on_open_gl_draw"), Arg("userdata").setOpaque() = static_cast<void*>(0));
+    Arg("winname"), Arg("on_open_gl_draw"), ArgBuffer("userdata") = static_cast<void*>(0));
 
   rb_mCv.define_module_function("set_open_gl_context", &cv::setOpenGlContext,
     Arg("winname"));
@@ -160,14 +156,14 @@ void Init_Highgui()
   rb_mCv.define_module_function("update_window", &cv::updateWindow,
     Arg("winname"));
 
-  rb_cCvQtFont = define_class_under<cv::QtFont>(rb_mCv, "QtFont").
+  Rice::Data_Type<cv::QtFont> rb_cCvQtFont = define_class_under<cv::QtFont>(rb_mCv, "QtFont").
     define_constructor(Constructor<cv::QtFont>()).
     define_attr("name_font", &cv::QtFont::nameFont).
     define_attr("color", &cv::QtFont::color).
     define_attr("font_face", &cv::QtFont::font_face).
-    //define_attr("ascii", &cv::QtFont::ascii).
-    //define_attr("greek", &cv::QtFont::greek).
-    //define_attr("cyrillic", &cv::QtFont::cyrillic).
+    define_attr("ascii", &cv::QtFont::ascii).
+    define_attr("greek", &cv::QtFont::greek).
+    define_attr("cyrillic", &cv::QtFont::cyrillic).
     define_attr("hscale", &cv::QtFont::hscale).
     define_attr("vscale", &cv::QtFont::vscale).
     define_attr("shear", &cv::QtFont::shear).
@@ -196,13 +192,13 @@ void Init_Highgui()
   rb_mCv.define_module_function("load_window_parameters", &cv::loadWindowParameters,
     Arg("window_name"));
 
-  //rb_mCv.define_module_function("start_loop", &cv::startLoop,
-  //  Arg("pt2_func"), Arg("argc"), Arg("argv"));
+  rb_mCv.define_module_function("start_loop", &cv::startLoop,
+    Arg("pt2_func"), Arg("argc"), Arg("argv"));
 
   rb_mCv.define_module_function("stop_loop", &cv::stopLoop);
 
   rb_mCv.define_module_function("create_button", &cv::createButton,
-    Arg("bar_name"), Arg("on_change"), Arg("userdata") = static_cast<void*>(0), Arg("type") = static_cast<int>(cv::QT_PUSH_BUTTON), Arg("initial_button_state") = static_cast<bool>(false));
+    Arg("bar_name"), Arg("on_change"), ArgBuffer("userdata") = static_cast<void*>(0), Arg("type") = static_cast<int>(cv::QT_PUSH_BUTTON), Arg("initial_button_state") = static_cast<bool>(false));
 
   // Callbacks
   define_callback<cv::MouseCallback>(Arg("event"), Arg("x"), Arg("y"), Arg("flags"), Arg("user_data").setOpaque());

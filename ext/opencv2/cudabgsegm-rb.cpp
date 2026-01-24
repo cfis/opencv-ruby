@@ -1,0 +1,45 @@
+#include <opencv2/cudabgsegm.hpp>
+#include "cudabgsegm-rb.hpp"
+
+using namespace Rice;
+
+void Init_Cudabgsegm()
+{
+  Module rb_mCv = define_module("Cv");
+
+  Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
+
+  Rice::Data_Type<cv::cuda::BackgroundSubtractorMOG> rb_cCvCudaBackgroundSubtractorMOG = define_class_under<cv::cuda::BackgroundSubtractorMOG, cv::BackgroundSubtractor>(rb_mCvCuda, "BackgroundSubtractorMOG").
+    define_method("apply", &cv::cuda::BackgroundSubtractorMOG::apply,
+      Arg("image"), Arg("fgmask"), Arg("learning_rate"), Arg("stream")).
+    define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::OutputArray, cv::cuda::Stream&) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
+      Arg("background_image"), Arg("stream")).
+    define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
+      Arg("background_image"), Arg("stream")).
+    define_method("get_history", &cv::cuda::BackgroundSubtractorMOG::getHistory).
+    define_method("set_history", &cv::cuda::BackgroundSubtractorMOG::setHistory,
+      Arg("nframes")).
+    define_method("get_n_mixtures", &cv::cuda::BackgroundSubtractorMOG::getNMixtures).
+    define_method("set_n_mixtures", &cv::cuda::BackgroundSubtractorMOG::setNMixtures,
+      Arg("nmix")).
+    define_method("get_background_ratio", &cv::cuda::BackgroundSubtractorMOG::getBackgroundRatio).
+    define_method("set_background_ratio", &cv::cuda::BackgroundSubtractorMOG::setBackgroundRatio,
+      Arg("background_ratio")).
+    define_method("get_noise_sigma", &cv::cuda::BackgroundSubtractorMOG::getNoiseSigma).
+    define_method("set_noise_sigma", &cv::cuda::BackgroundSubtractorMOG::setNoiseSigma,
+      Arg("noise_sigma"));
+
+  rb_mCvCuda.define_module_function("create_background_subtractor_mog", &cv::cuda::createBackgroundSubtractorMOG,
+    Arg("history") = static_cast<int>(200), Arg("nmixtures") = static_cast<int>(5), Arg("background_ratio") = static_cast<double>(0.7), Arg("noise_sigma") = static_cast<double>(0));
+
+  Rice::Data_Type<cv::cuda::BackgroundSubtractorMOG2> rb_cCvCudaBackgroundSubtractorMOG2 = define_class_under<cv::cuda::BackgroundSubtractorMOG2, cv::BackgroundSubtractorMOG2>(rb_mCvCuda, "BackgroundSubtractorMOG2").
+    define_method("apply", &cv::cuda::BackgroundSubtractorMOG2::apply,
+      Arg("image"), Arg("fgmask"), Arg("learning_rate"), Arg("stream")).
+    define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::OutputArray, cv::cuda::Stream&) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
+      Arg("background_image"), Arg("stream")).
+    define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
+      Arg("background_image"), Arg("stream"));
+
+  rb_mCvCuda.define_module_function("create_background_subtractor_mog2", &cv::cuda::createBackgroundSubtractorMOG2,
+    Arg("history") = static_cast<int>(500), Arg("var_threshold") = static_cast<double>(16), Arg("detect_shadows") = static_cast<bool>(true));
+}

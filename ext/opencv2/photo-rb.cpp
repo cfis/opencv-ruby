@@ -1,22 +1,7 @@
 #include <opencv2/photo.hpp>
-#include "core/cvstd_wrapper-rb.hpp"
 #include "photo-rb.hpp"
 
 using namespace Rice;
-
-Rice::Class rb_cCvAlignExposures;
-Rice::Class rb_cCvAlignMTB;
-Rice::Class rb_cCvCalibrateCRF;
-Rice::Class rb_cCvCalibrateDebevec;
-Rice::Class rb_cCvCalibrateRobertson;
-Rice::Class rb_cCvMergeDebevec;
-Rice::Class rb_cCvMergeExposures;
-Rice::Class rb_cCvMergeMertens;
-Rice::Class rb_cCvMergeRobertson;
-Rice::Class rb_cCvTonemap;
-Rice::Class rb_cCvTonemapDrago;
-Rice::Class rb_cCvTonemapMantiuk;
-Rice::Class rb_cCvTonemapReinhard;
 
 void Init_Photo()
 {
@@ -51,7 +36,7 @@ void Init_Photo()
 
   rb_mCv.define_constant("LDR_SIZE", (int)cv::LDR_SIZE);
 
-  rb_cCvTonemap = define_class_under<cv::Tonemap, cv::Algorithm>(rb_mCv, "Tonemap").
+  Rice::Data_Type<cv::Tonemap> rb_cCvTonemap = define_class_under<cv::Tonemap, cv::Algorithm>(rb_mCv, "Tonemap").
     define_method("process", &cv::Tonemap::process,
       Arg("src"), Arg("dst")).
     define_method("get_gamma", &cv::Tonemap::getGamma).
@@ -61,7 +46,7 @@ void Init_Photo()
   rb_mCv.define_module_function("create_tonemap", &cv::createTonemap,
     Arg("gamma") = static_cast<float>(1.0f));
 
-  rb_cCvTonemapDrago = define_class_under<cv::TonemapDrago, cv::Tonemap>(rb_mCv, "TonemapDrago").
+  Rice::Data_Type<cv::TonemapDrago> rb_cCvTonemapDrago = define_class_under<cv::TonemapDrago, cv::Tonemap>(rb_mCv, "TonemapDrago").
     define_method("get_saturation", &cv::TonemapDrago::getSaturation).
     define_method("set_saturation", &cv::TonemapDrago::setSaturation,
       Arg("saturation")).
@@ -72,7 +57,7 @@ void Init_Photo()
   rb_mCv.define_module_function("create_tonemap_drago", &cv::createTonemapDrago,
     Arg("gamma") = static_cast<float>(1.0f), Arg("saturation") = static_cast<float>(1.0f), Arg("bias") = static_cast<float>(0.85f));
 
-  rb_cCvTonemapReinhard = define_class_under<cv::TonemapReinhard, cv::Tonemap>(rb_mCv, "TonemapReinhard").
+  Rice::Data_Type<cv::TonemapReinhard> rb_cCvTonemapReinhard = define_class_under<cv::TonemapReinhard, cv::Tonemap>(rb_mCv, "TonemapReinhard").
     define_method("get_intensity", &cv::TonemapReinhard::getIntensity).
     define_method("set_intensity", &cv::TonemapReinhard::setIntensity,
       Arg("intensity")).
@@ -86,7 +71,7 @@ void Init_Photo()
   rb_mCv.define_module_function("create_tonemap_reinhard", &cv::createTonemapReinhard,
     Arg("gamma") = static_cast<float>(1.0f), Arg("intensity") = static_cast<float>(0.0f), Arg("light_adapt") = static_cast<float>(1.0f), Arg("color_adapt") = static_cast<float>(0.0f));
 
-  rb_cCvTonemapMantiuk = define_class_under<cv::TonemapMantiuk, cv::Tonemap>(rb_mCv, "TonemapMantiuk").
+  Rice::Data_Type<cv::TonemapMantiuk> rb_cCvTonemapMantiuk = define_class_under<cv::TonemapMantiuk, cv::Tonemap>(rb_mCv, "TonemapMantiuk").
     define_method("get_scale", &cv::TonemapMantiuk::getScale).
     define_method("set_scale", &cv::TonemapMantiuk::setScale,
       Arg("scale")).
@@ -97,11 +82,11 @@ void Init_Photo()
   rb_mCv.define_module_function("create_tonemap_mantiuk", &cv::createTonemapMantiuk,
     Arg("gamma") = static_cast<float>(1.0f), Arg("scale") = static_cast<float>(0.7f), Arg("saturation") = static_cast<float>(1.0f));
 
-  rb_cCvAlignExposures = define_class_under<cv::AlignExposures, cv::Algorithm>(rb_mCv, "AlignExposures").
+  Rice::Data_Type<cv::AlignExposures> rb_cCvAlignExposures = define_class_under<cv::AlignExposures, cv::Algorithm>(rb_mCv, "AlignExposures").
     define_method("process", &cv::AlignExposures::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response"));
 
-  rb_cCvAlignMTB = define_class_under<cv::AlignMTB, cv::AlignExposures>(rb_mCv, "AlignMTB").
+  Rice::Data_Type<cv::AlignMTB> rb_cCvAlignMTB = define_class_under<cv::AlignMTB, cv::AlignExposures>(rb_mCv, "AlignMTB").
     define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat>&, cv::InputArray, cv::InputArray)>("process", &cv::AlignMTB::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response")).
     define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat>&)>("process", &cv::AlignMTB::process,
@@ -125,11 +110,11 @@ void Init_Photo()
   rb_mCv.define_module_function("create_align_mtb", &cv::createAlignMTB,
     Arg("max_bits") = static_cast<int>(6), Arg("exclude_range") = static_cast<int>(4), Arg("cut") = static_cast<bool>(true));
 
-  rb_cCvCalibrateCRF = define_class_under<cv::CalibrateCRF, cv::Algorithm>(rb_mCv, "CalibrateCRF").
+  Rice::Data_Type<cv::CalibrateCRF> rb_cCvCalibrateCRF = define_class_under<cv::CalibrateCRF, cv::Algorithm>(rb_mCv, "CalibrateCRF").
     define_method("process", &cv::CalibrateCRF::process,
       Arg("src"), Arg("dst"), Arg("times"));
 
-  rb_cCvCalibrateDebevec = define_class_under<cv::CalibrateDebevec, cv::CalibrateCRF>(rb_mCv, "CalibrateDebevec").
+  Rice::Data_Type<cv::CalibrateDebevec> rb_cCvCalibrateDebevec = define_class_under<cv::CalibrateDebevec, cv::CalibrateCRF>(rb_mCv, "CalibrateDebevec").
     define_method("get_lambda", &cv::CalibrateDebevec::getLambda).
     define_method("set_lambda", &cv::CalibrateDebevec::setLambda,
       Arg("lambda")).
@@ -143,7 +128,7 @@ void Init_Photo()
   rb_mCv.define_module_function("create_calibrate_debevec", &cv::createCalibrateDebevec,
     Arg("samples") = static_cast<int>(70), Arg("lambda") = static_cast<float>(10.0f), Arg("random") = static_cast<bool>(false));
 
-  rb_cCvCalibrateRobertson = define_class_under<cv::CalibrateRobertson, cv::CalibrateCRF>(rb_mCv, "CalibrateRobertson").
+  Rice::Data_Type<cv::CalibrateRobertson> rb_cCvCalibrateRobertson = define_class_under<cv::CalibrateRobertson, cv::CalibrateCRF>(rb_mCv, "CalibrateRobertson").
     define_method("get_max_iter", &cv::CalibrateRobertson::getMaxIter).
     define_method("set_max_iter", &cv::CalibrateRobertson::setMaxIter,
       Arg("max_iter")).
@@ -155,11 +140,11 @@ void Init_Photo()
   rb_mCv.define_module_function("create_calibrate_robertson", &cv::createCalibrateRobertson,
     Arg("max_iter") = static_cast<int>(30), Arg("threshold") = static_cast<float>(0.01f));
 
-  rb_cCvMergeExposures = define_class_under<cv::MergeExposures, cv::Algorithm>(rb_mCv, "MergeExposures").
+  Rice::Data_Type<cv::MergeExposures> rb_cCvMergeExposures = define_class_under<cv::MergeExposures, cv::Algorithm>(rb_mCv, "MergeExposures").
     define_method("process", &cv::MergeExposures::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response"));
 
-  rb_cCvMergeDebevec = define_class_under<cv::MergeDebevec, cv::MergeExposures>(rb_mCv, "MergeDebevec").
+  Rice::Data_Type<cv::MergeDebevec> rb_cCvMergeDebevec = define_class_under<cv::MergeDebevec, cv::MergeExposures>(rb_mCv, "MergeDebevec").
     define_method<void(cv::MergeDebevec::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::InputArray, cv::InputArray)>("process", &cv::MergeDebevec::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response")).
     define_method<void(cv::MergeDebevec::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::InputArray)>("process", &cv::MergeDebevec::process,
@@ -167,7 +152,7 @@ void Init_Photo()
 
   rb_mCv.define_module_function("create_merge_debevec", &cv::createMergeDebevec);
 
-  rb_cCvMergeMertens = define_class_under<cv::MergeMertens, cv::MergeExposures>(rb_mCv, "MergeMertens").
+  Rice::Data_Type<cv::MergeMertens> rb_cCvMergeMertens = define_class_under<cv::MergeMertens, cv::MergeExposures>(rb_mCv, "MergeMertens").
     define_method<void(cv::MergeMertens::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::InputArray, cv::InputArray)>("process", &cv::MergeMertens::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response")).
     define_method<void(cv::MergeMertens::*)(cv::InputArrayOfArrays, cv::OutputArray)>("process", &cv::MergeMertens::process,
@@ -185,7 +170,7 @@ void Init_Photo()
   rb_mCv.define_module_function("create_merge_mertens", &cv::createMergeMertens,
     Arg("contrast_weight") = static_cast<float>(1.0f), Arg("saturation_weight") = static_cast<float>(1.0f), Arg("exposure_weight") = static_cast<float>(0.0f));
 
-  rb_cCvMergeRobertson = define_class_under<cv::MergeRobertson, cv::MergeExposures>(rb_mCv, "MergeRobertson").
+  Rice::Data_Type<cv::MergeRobertson> rb_cCvMergeRobertson = define_class_under<cv::MergeRobertson, cv::MergeExposures>(rb_mCv, "MergeRobertson").
     define_method<void(cv::MergeRobertson::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::InputArray, cv::InputArray)>("process", &cv::MergeRobertson::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response")).
     define_method<void(cv::MergeRobertson::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::InputArray)>("process", &cv::MergeRobertson::process,

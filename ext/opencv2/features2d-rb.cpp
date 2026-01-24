@@ -1,45 +1,13 @@
 #include <opencv2/features2d.hpp>
-#include "../opencv_ruby_version.hpp"
-#include "core/cvstd_wrapper-rb.hpp"
 #include "features2d-rb.hpp"
 
 using namespace Rice;
-
-Rice::Class rb_cCvAKAZE;
-Rice::Class rb_cCvAccumulatorChar;
-Rice::Class rb_cCvAccumulatorShort;
-Rice::Class rb_cCvAccumulatorUnsignedChar;
-Rice::Class rb_cCvAccumulatorUnsignedShort;
-Rice::Class rb_cCvAffineFeature;
-Rice::Class rb_cCvAgastFeatureDetector;
-Rice::Class rb_cCvBFMatcher;
-Rice::Class rb_cCvBOWImgDescriptorExtractor;
-Rice::Class rb_cCvBOWKMeansTrainer;
-Rice::Class rb_cCvBOWTrainer;
-Rice::Class rb_cCvBRISK;
-Rice::Class rb_cCvDescriptorMatcher;
-Rice::Class rb_cCvFastFeatureDetector;
-Rice::Class rb_cCvFeature2D;
-Rice::Class rb_cCvFlannBasedMatcher;
-Rice::Class rb_cCvGFTTDetector;
-Rice::Class rb_cCvKAZE;
-Rice::Class rb_cCvKeyPointsFilter;
-Rice::Class rb_cCvMSER;
-Rice::Class rb_cCvORB;
-Rice::Class rb_cCvSIFT;
-Rice::Class rb_cCvSimpleBlobDetector;
-Data_Type<cv::SimpleBlobDetector::Params> rb_cCvSimpleBlobDetectorParams;
-
-template<typename Data_Type_T, typename T>
-inline void Accumulator_builder(Data_Type_T& klass)
-{
-};
 
 template<typename Data_Type_T, typename T>
 inline void SL2_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::SL2<T>::normType).
-    template define_method<>("call", &cv::SL2<T>::operator(),
+    define_method("call", &cv::SL2<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 
@@ -47,7 +15,7 @@ template<typename Data_Type_T, typename T>
 inline void L2_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::L2<T>::normType).
-    template define_method<>("call", &cv::L2<T>::operator(),
+    define_method("call", &cv::L2<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 
@@ -55,7 +23,7 @@ template<typename Data_Type_T, typename T>
 inline void L1_builder(Data_Type_T& klass)
 {
   klass.define_constant("NormType", cv::L1<T>::normType).
-    template define_method<>("call", &cv::L1<T>::operator(),
+    define_method("call", &cv::L1<T>::operator(),
       Arg("a"), Arg("b"), Arg("size"));
 };
 
@@ -63,7 +31,7 @@ void Init_Features2d()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_cCvKeyPointsFilter = define_class_under<cv::KeyPointsFilter>(rb_mCv, "KeyPointsFilter").
+  Rice::Data_Type<cv::KeyPointsFilter> rb_cCvKeyPointsFilter = define_class_under<cv::KeyPointsFilter>(rb_mCv, "KeyPointsFilter").
     define_constructor(Constructor<cv::KeyPointsFilter>()).
     define_singleton_function("run_by_image_border", &cv::KeyPointsFilter::runByImageBorder,
       Arg("keypoints"), Arg("image_size"), Arg("border_size")).
@@ -71,6 +39,10 @@ void Init_Features2d()
       Arg("keypoints"), Arg("min_size"), Arg("max_size") = static_cast<float>(FLT_MAX)).
     define_singleton_function("run_by_pixels_mask", &cv::KeyPointsFilter::runByPixelsMask,
       Arg("keypoints"), Arg("mask")).
+#if RUBY_CV_VERSION >= 407
+    define_singleton_function("run_by_pixels_mask2_vector_point", &cv::KeyPointsFilter::runByPixelsMask2VectorPoint,
+      Arg("keypoints"), Arg("remove_from"), Arg("mask")).
+#endif
     define_singleton_function("remove_duplicated", &cv::KeyPointsFilter::removeDuplicated,
       Arg("keypoints")).
     define_singleton_function("remove_duplicated_sorted", &cv::KeyPointsFilter::removeDuplicatedSorted,
@@ -78,13 +50,7 @@ void Init_Features2d()
     define_singleton_function("retain_best", &cv::KeyPointsFilter::retainBest,
       Arg("keypoints"), Arg("npoints"));
 
-#if RUBY_CV_VERSION >= 407
-  rb_cCvKeyPointsFilter.
-    define_singleton_function("run_by_pixels_mask2_vector_point", &cv::KeyPointsFilter::runByPixelsMask2VectorPoint,
-      Arg("keypoints"), Arg("remove_from"), Arg("mask"));
-#endif
-
-  rb_cCvFeature2D = define_class_under<cv::Feature2D, cv::Algorithm>(rb_mCv, "Feature2D").
+  Rice::Data_Type<cv::Feature2D> rb_cCvFeature2D = define_class_under<cv::Feature2D, cv::Algorithm>(rb_mCv, "Feature2D").
     define_constructor(Constructor<cv::Feature2D>()).
     define_method<void(cv::Feature2D::*)(cv::InputArray, std::vector<cv::KeyPoint>&, cv::InputArray)>("detect", &cv::Feature2D::detect,
       Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray())).
@@ -118,7 +84,7 @@ void Init_Features2d()
       Arg("fs"), Arg("name"));
 #endif
 
-  rb_cCvAffineFeature = define_class_under<cv::AffineFeature, cv::Feature2D>(rb_mCv, "AffineFeature").
+  Rice::Data_Type<cv::AffineFeature> rb_cCvAffineFeature = define_class_under<cv::AffineFeature, cv::Feature2D>(rb_mCv, "AffineFeature").
     define_method("set_view_params", &cv::AffineFeature::setViewParams,
       Arg("tilts"), Arg("rolls")).
     define_method("get_view_params", &cv::AffineFeature::getViewParams,
@@ -126,12 +92,9 @@ void Init_Features2d()
     define_method("get_default_name", &cv::AffineFeature::getDefaultName).
     define_singleton_function("create", &cv::AffineFeature::create,
       Arg("backend"), Arg("max_tilt") = static_cast<int>(5), Arg("min_tilt") = static_cast<int>(0), Arg("tilt_step") = static_cast<float>(1.4142135623730951f), Arg("rotate_step_base") = static_cast<float>(72));
+
 #if RUBY_CV_VERSION >= 407
-  rb_cCvSIFT = define_class_under<cv::SIFT, cv::Feature2D>(rb_mCv, "SIFT").
-    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", &cv::SIFT::create,
-      Arg("nfeatures") = static_cast<int>(0), Arg("n_octave_layers") = static_cast<int>(3), Arg("contrast_threshold") = static_cast<double>(0.04), Arg("edge_threshold") = static_cast<double>(10), Arg("sigma") = static_cast<double>(1.6), Arg("enable_precise_upscale") = static_cast<bool>(false)).
-    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", &cv::SIFT::create,
-      Arg("nfeatures"), Arg("n_octave_layers"), Arg("contrast_threshold"), Arg("edge_threshold"), Arg("sigma"), Arg("descriptor_type"), Arg("enable_precise_upscale") = static_cast<bool>(false)).
+  Rice::Data_Type<cv::SIFT> rb_cCvSIFT = define_class_under<cv::SIFT, cv::Feature2D>(rb_mCv, "SIFT").
     define_method("get_default_name", &cv::SIFT::getDefaultName).
     define_method("set_n_features", &cv::SIFT::setNFeatures,
       Arg("max_features")).
@@ -147,10 +110,14 @@ void Init_Features2d()
     define_method("get_edge_threshold", &cv::SIFT::getEdgeThreshold).
     define_method("set_sigma", &cv::SIFT::setSigma,
       Arg("sigma")).
-    define_method("get_sigma", &cv::SIFT::getSigma);
+    define_method("get_sigma", &cv::SIFT::getSigma).
+    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", &cv::SIFT::create,
+      Arg("nfeatures") = static_cast<int>(0), Arg("n_octave_layers") = static_cast<int>(3), Arg("contrast_threshold") = static_cast<double>(0.04), Arg("edge_threshold") = static_cast<double>(10), Arg("sigma") = static_cast<double>(1.6), Arg("enable_precise_upscale") = static_cast<bool>(false)).
+    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", &cv::SIFT::create,
+      Arg("nfeatures"), Arg("n_octave_layers"), Arg("contrast_threshold"), Arg("edge_threshold"), Arg("sigma"), Arg("descriptor_type"), Arg("enable_precise_upscale") = static_cast<bool>(false));
 #endif
 
-  rb_cCvBRISK = define_class_under<cv::BRISK, cv::Feature2D>(rb_mCv, "BRISK").
+  Rice::Data_Type<cv::BRISK> rb_cCvBRISK = define_class_under<cv::BRISK, cv::Feature2D>(rb_mCv, "BRISK").
     define_method("get_default_name", &cv::BRISK::getDefaultName).
     define_method("set_threshold", &cv::BRISK::setThreshold,
       Arg("threshold")).
@@ -158,21 +125,19 @@ void Init_Features2d()
     define_method("set_octaves", &cv::BRISK::setOctaves,
       Arg("octaves")).
     define_method("get_octaves", &cv::BRISK::getOctaves).
+#if RUBY_CV_VERSION >= 407
+    define_method("set_pattern_scale", &cv::BRISK::setPatternScale,
+      Arg("pattern_scale")).
+#endif
+    define_method("get_pattern_scale", &cv::BRISK::getPatternScale).
     define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", &cv::BRISK::create,
       Arg("thresh") = static_cast<int>(30), Arg("octaves") = static_cast<int>(3), Arg("pattern_scale") = static_cast<float>(1.0f)).
     define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>())).
+      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>())).
     define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>()));
+      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>()));
 
-#if RUBY_CV_VERSION >= 407
-  rb_cCvBRISK.
-    define_method("set_pattern_scale", &cv::BRISK::setPatternScale,
-      Arg("pattern_scale")).
-    define_method("get_pattern_scale", &cv::BRISK::getPatternScale);
-#endif
-
-  rb_cCvORB = define_class_under<cv::ORB, cv::Feature2D>(rb_mCv, "ORB").
+  Rice::Data_Type<cv::ORB> rb_cCvORB = define_class_under<cv::ORB, cv::Feature2D>(rb_mCv, "ORB").
     define_constant("KBytes", cv::ORB::kBytes).
     define_method("set_max_features", &cv::ORB::setMaxFeatures,
       Arg("max_features")).
@@ -209,7 +174,7 @@ void Init_Features2d()
     define_value("HARRIS_SCORE", cv::ORB::ScoreType::HARRIS_SCORE).
     define_value("FAST_SCORE", cv::ORB::ScoreType::FAST_SCORE);
 
-  rb_cCvMSER = define_class_under<cv::MSER, cv::Feature2D>(rb_mCv, "MSER").
+  Rice::Data_Type<cv::MSER> rb_cCvMSER = define_class_under<cv::MSER, cv::Feature2D>(rb_mCv, "MSER").
     define_method("detect_regions", &cv::MSER::detectRegions,
       Arg("image"), Arg("msers"), Arg("bboxes")).
     define_method("set_delta", &cv::MSER::setDelta,
@@ -220,13 +185,7 @@ void Init_Features2d()
     define_method("get_min_area", &cv::MSER::getMinArea).
     define_method("set_max_area", &cv::MSER::setMaxArea,
       Arg("max_area")).
-    define_method("get_max_area", &cv::MSER::getMaxArea).
-    define_method("set_pass2_only", &cv::MSER::setPass2Only,
-      Arg("f")).
-    define_method("get_pass2_only?", &cv::MSER::getPass2Only).
-    define_method("get_default_name", &cv::MSER::getDefaultName).
-    define_singleton_function("create", &cv::MSER::create,
-      Arg("delta") = static_cast<int>(5), Arg("min_area") = static_cast<int>(60), Arg("max_area") = static_cast<int>(14400), Arg("max_variation") = static_cast<double>(0.25), Arg("min_diversity") = static_cast<double>(.2), Arg("max_evolution") = static_cast<int>(200), Arg("area_threshold") = static_cast<double>(1.01), Arg("min_margin") = static_cast<double>(0.003), Arg("edge_blur_size") = static_cast<int>(5));
+    define_method("get_max_area", &cv::MSER::getMaxArea);
 
 #if RUBY_CV_VERSION >= 407
   rb_cCvMSER.
@@ -247,10 +206,16 @@ void Init_Features2d()
     define_method("get_min_margin", &cv::MSER::getMinMargin).
     define_method("set_edge_blur_size", &cv::MSER::setEdgeBlurSize,
       Arg("edge_blur_size")).
-    define_method("get_edge_blur_size", &cv::MSER::getEdgeBlurSize);
+    define_method("get_edge_blur_size", &cv::MSER::getEdgeBlurSize).
+    define_method("set_pass2_only", &cv::MSER::setPass2Only,
+      Arg("f")).
+    define_method("get_pass2_only?", &cv::MSER::getPass2Only).
+    define_method("get_default_name", &cv::MSER::getDefaultName).
+    define_singleton_function("create", &cv::MSER::create,
+      Arg("delta") = static_cast<int>(5), Arg("min_area") = static_cast<int>(60), Arg("max_area") = static_cast<int>(14400), Arg("max_variation") = static_cast<double>(0.25), Arg("min_diversity") = static_cast<double>(.2), Arg("max_evolution") = static_cast<int>(200), Arg("area_threshold") = static_cast<double>(1.01), Arg("min_margin") = static_cast<double>(0.003), Arg("edge_blur_size") = static_cast<int>(5));
 #endif
 
-  rb_cCvFastFeatureDetector = define_class_under<cv::FastFeatureDetector, cv::Feature2D>(rb_mCv, "FastFeatureDetector").
+  Rice::Data_Type<cv::FastFeatureDetector> rb_cCvFastFeatureDetector = define_class_under<cv::FastFeatureDetector, cv::Feature2D>(rb_mCv, "FastFeatureDetector").
     define_method("set_threshold", &cv::FastFeatureDetector::setThreshold,
       Arg("threshold")).
     define_method("get_threshold", &cv::FastFeatureDetector::getThreshold).
@@ -279,7 +244,7 @@ void Init_Features2d()
   rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool, cv::FastFeatureDetector::DetectorType)>("fast", &cv::FAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
-  rb_cCvAgastFeatureDetector = define_class_under<cv::AgastFeatureDetector, cv::Feature2D>(rb_mCv, "AgastFeatureDetector").
+  Rice::Data_Type<cv::AgastFeatureDetector> rb_cCvAgastFeatureDetector = define_class_under<cv::AgastFeatureDetector, cv::Feature2D>(rb_mCv, "AgastFeatureDetector").
     define_method("set_threshold", &cv::AgastFeatureDetector::setThreshold,
       Arg("threshold")).
     define_method("get_threshold", &cv::AgastFeatureDetector::getThreshold).
@@ -308,7 +273,7 @@ void Init_Features2d()
   rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool, cv::AgastFeatureDetector::DetectorType)>("agast", &cv::AGAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
-  rb_cCvGFTTDetector = define_class_under<cv::GFTTDetector, cv::Feature2D>(rb_mCv, "GFTTDetector").
+  Rice::Data_Type<cv::GFTTDetector> rb_cCvGFTTDetector = define_class_under<cv::GFTTDetector, cv::Feature2D>(rb_mCv, "GFTTDetector").
     define_method("set_max_features", &cv::GFTTDetector::setMaxFeatures,
       Arg("max_features")).
     define_method("get_max_features", &cv::GFTTDetector::getMaxFeatures).
@@ -321,6 +286,11 @@ void Init_Features2d()
     define_method("set_block_size", &cv::GFTTDetector::setBlockSize,
       Arg("block_size")).
     define_method("get_block_size", &cv::GFTTDetector::getBlockSize).
+#if RUBY_CV_VERSION >= 407
+    define_method("set_gradient_size", &cv::GFTTDetector::setGradientSize,
+      Arg("gradient_size_")).
+#endif
+    define_method("get_gradient_size", &cv::GFTTDetector::getGradientSize).
     define_method("set_harris_detector", &cv::GFTTDetector::setHarrisDetector,
       Arg("val")).
     define_method("get_harris_detector?", &cv::GFTTDetector::getHarrisDetector).
@@ -333,27 +303,20 @@ void Init_Features2d()
     define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>("create", &cv::GFTTDetector::create,
       Arg("max_corners"), Arg("quality_level"), Arg("min_distance"), Arg("block_size"), Arg("gradiant_size"), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04));
 
+  Rice::Data_Type<cv::SimpleBlobDetector> rb_cCvSimpleBlobDetector = define_class_under<cv::SimpleBlobDetector, cv::Feature2D>(rb_mCv, "SimpleBlobDetector").
 #if RUBY_CV_VERSION >= 407
-  rb_cCvGFTTDetector.
-    define_method("set_gradient_size", &cv::GFTTDetector::setGradientSize,
-      Arg("gradient_size_")).
-    define_method("get_gradient_size", &cv::GFTTDetector::getGradientSize);
-#endif
-
-  rb_cCvSimpleBlobDetector = define_class_under<cv::SimpleBlobDetector, cv::Feature2D>(rb_mCv, "SimpleBlobDetector").
-    define_method("get_default_name", &cv::SimpleBlobDetector::getDefaultName).
-    define_singleton_function("create", &cv::SimpleBlobDetector::create,
-      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params&>(cv::SimpleBlobDetector::Params()));
-
-#if RUBY_CV_VERSION >= 407
-  rb_cCvSimpleBlobDetector.
     define_method("set_params", &cv::SimpleBlobDetector::setParams,
       Arg("params")).
     define_method("get_params", &cv::SimpleBlobDetector::getParams).
-    define_method("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours);
 #endif
+    define_method("get_default_name", &cv::SimpleBlobDetector::getDefaultName).
+#if RUBY_CV_VERSION >= 407
+    define_method("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours).
+#endif
+    define_singleton_function("create", &cv::SimpleBlobDetector::create,
+      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params&>(cv::SimpleBlobDetector::Params()));
 
-  rb_cCvSimpleBlobDetectorParams = define_class_under<cv::SimpleBlobDetector::Params>(rb_cCvSimpleBlobDetector, "Params").
+  Rice::Data_Type<cv::SimpleBlobDetector::Params> rb_cCvSimpleBlobDetectorParams = define_class_under<cv::SimpleBlobDetector::Params>(rb_cCvSimpleBlobDetector, "Params").
     define_constructor(Constructor<cv::SimpleBlobDetector::Params>()).
     define_attr("threshold_step", &cv::SimpleBlobDetector::Params::thresholdStep).
     define_attr("min_threshold", &cv::SimpleBlobDetector::Params::minThreshold).
@@ -374,17 +337,15 @@ void Init_Features2d()
     define_attr("filter_by_convexity", &cv::SimpleBlobDetector::Params::filterByConvexity).
     define_attr("min_convexity", &cv::SimpleBlobDetector::Params::minConvexity).
     define_attr("max_convexity", &cv::SimpleBlobDetector::Params::maxConvexity).
+#if RUBY_CV_VERSION >= 407
+    define_attr("collect_contours", &cv::SimpleBlobDetector::Params::collectContours).
+#endif
     define_method("read", &cv::SimpleBlobDetector::Params::read,
       Arg("fn")).
     define_method("write", &cv::SimpleBlobDetector::Params::write,
       Arg("fs"));
 
-#if RUBY_CV_VERSION >= 407
-  rb_cCvSimpleBlobDetectorParams.
-    define_attr("collect_contours", &cv::SimpleBlobDetector::Params::collectContours);
-#endif
-
-  rb_cCvKAZE = define_class_under<cv::KAZE, cv::Feature2D>(rb_mCv, "KAZE").
+  Rice::Data_Type<cv::KAZE> rb_cCvKAZE = define_class_under<cv::KAZE, cv::Feature2D>(rb_mCv, "KAZE").
     define_method("set_extended", &cv::KAZE::setExtended,
       Arg("extended")).
     define_method("get_extended?", &cv::KAZE::getExtended).
@@ -413,7 +374,7 @@ void Init_Features2d()
     define_value("DIFF_WEICKERT", cv::KAZE::DiffusivityType::DIFF_WEICKERT).
     define_value("DIFF_CHARBONNIER", cv::KAZE::DiffusivityType::DIFF_CHARBONNIER);
 
-  rb_cCvAKAZE = define_class_under<cv::AKAZE, cv::Feature2D>(rb_mCv, "AKAZE").
+  Rice::Data_Type<cv::AKAZE> rb_cCvAKAZE = define_class_under<cv::AKAZE, cv::Feature2D>(rb_mCv, "AKAZE").
     define_method("set_descriptor_type", &cv::AKAZE::setDescriptorType,
       Arg("dtype")).
     define_method("get_descriptor_type", &cv::AKAZE::getDescriptorType).
@@ -436,15 +397,13 @@ void Init_Features2d()
       Arg("diff")).
     define_method("get_diffusivity", &cv::AKAZE::getDiffusivity).
     define_method("get_default_name", &cv::AKAZE::getDefaultName).
-    define_singleton_function("create", &cv::AKAZE::create,
-      Arg("descriptor_type") = static_cast<cv::AKAZE::DescriptorType>(cv::AKAZE::DESCRIPTOR_MLDB), Arg("descriptor_size") = static_cast<int>(0), Arg("descriptor_channels") = static_cast<int>(3), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DIFF_PM_G2), Arg("max_points") = static_cast<int>(-1));
-
 #if RUBY_CV_VERSION >= 409
-  rb_cCvAKAZE.
     define_method("set_max_points", &cv::AKAZE::setMaxPoints,
       Arg("max_points")).
-    define_method("get_max_points", &cv::AKAZE::getMaxPoints);
 #endif
+    define_method("get_max_points", &cv::AKAZE::getMaxPoints).
+    define_singleton_function("create", &cv::AKAZE::create,
+      Arg("descriptor_type") = static_cast<cv::AKAZE::DescriptorType>(cv::AKAZE::DESCRIPTOR_MLDB), Arg("descriptor_size") = static_cast<int>(0), Arg("descriptor_channels") = static_cast<int>(3), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DIFF_PM_G2), Arg("max_points") = static_cast<int>(-1));
 
   Enum<cv::AKAZE::DescriptorType> rb_cCvAKAZEDescriptorType = define_enum_under<cv::AKAZE::DescriptorType>("DescriptorType", rb_cCvAKAZE).
     define_value("DESCRIPTOR_KAZE_UPRIGHT", cv::AKAZE::DescriptorType::DESCRIPTOR_KAZE_UPRIGHT).
@@ -452,19 +411,19 @@ void Init_Features2d()
     define_value("DESCRIPTOR_MLDB_UPRIGHT", cv::AKAZE::DescriptorType::DESCRIPTOR_MLDB_UPRIGHT).
     define_value("DESCRIPTOR_MLDB", cv::AKAZE::DescriptorType::DESCRIPTOR_MLDB);
 
-  rb_cCvAccumulatorUnsignedChar = define_class_under<cv::Accumulator<unsigned char>>(rb_mCv, "AccumulatorUnsignedChar").
+  Rice::Data_Type<cv::Accumulator<unsigned char>> rb_cCvAccumulatorUnsignedChar = define_class_under<cv::Accumulator<unsigned char>>(rb_mCv, "AccumulatorUnsignedChar").
     define_constructor(Constructor<cv::Accumulator<unsigned char>>());
 
-  rb_cCvAccumulatorUnsignedShort = define_class_under<cv::Accumulator<unsigned short>>(rb_mCv, "AccumulatorUnsignedShort").
+  Rice::Data_Type<cv::Accumulator<unsigned short>> rb_cCvAccumulatorUnsignedShort = define_class_under<cv::Accumulator<unsigned short>>(rb_mCv, "AccumulatorUnsignedShort").
     define_constructor(Constructor<cv::Accumulator<unsigned short>>());
 
-  rb_cCvAccumulatorChar = define_class_under<cv::Accumulator<char>>(rb_mCv, "AccumulatorChar").
+  Rice::Data_Type<cv::Accumulator<char>> rb_cCvAccumulatorChar = define_class_under<cv::Accumulator<char>>(rb_mCv, "AccumulatorChar").
     define_constructor(Constructor<cv::Accumulator<char>>());
 
-  rb_cCvAccumulatorShort = define_class_under<cv::Accumulator<short>>(rb_mCv, "AccumulatorShort").
+  Rice::Data_Type<cv::Accumulator<short>> rb_cCvAccumulatorShort = define_class_under<cv::Accumulator<short>>(rb_mCv, "AccumulatorShort").
     define_constructor(Constructor<cv::Accumulator<short>>());
 
-  rb_cCvDescriptorMatcher = define_class_under<cv::DescriptorMatcher, cv::Algorithm>(rb_mCv, "DescriptorMatcher").
+  Rice::Data_Type<cv::DescriptorMatcher> rb_cCvDescriptorMatcher = define_class_under<cv::DescriptorMatcher, cv::Algorithm>(rb_mCv, "DescriptorMatcher").
     define_method("add", &cv::DescriptorMatcher::add,
       Arg("descriptors")).
     define_method("get_train_descriptors", &cv::DescriptorMatcher::getTrainDescriptors).
@@ -494,18 +453,16 @@ void Init_Features2d()
       Arg("arg_0")).
     define_method("clone", &cv::DescriptorMatcher::clone,
       Arg("empty_train_data") = static_cast<bool>(false)).
+#if RUBY_CV_VERSION >= 409
+    define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+      Arg("fs"), Arg("name")).
+    define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+      Arg("fs"), Arg("name")).
+#endif
     define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String&)>("create", &cv::DescriptorMatcher::create,
       Arg("descriptor_matcher_type")).
     define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType&)>("create", &cv::DescriptorMatcher::create,
       Arg("matcher_type"));
-
-#if RUBY_CV_VERSION >= 409
-  rb_cCvDescriptorMatcher.
-    define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
-      Arg("fs"), Arg("name")).
-    define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
-      Arg("fs"), Arg("name"));
-#endif
 
   Enum<cv::DescriptorMatcher::MatcherType> rb_cCvDescriptorMatcherMatcherType = define_enum_under<cv::DescriptorMatcher::MatcherType>("MatcherType", rb_cCvDescriptorMatcher).
     define_value("FLANNBASED", cv::DescriptorMatcher::MatcherType::FLANNBASED).
@@ -515,18 +472,18 @@ void Init_Features2d()
     define_value("BRUTEFORCE_HAMMINGLUT", cv::DescriptorMatcher::MatcherType::BRUTEFORCE_HAMMINGLUT).
     define_value("BRUTEFORCE_SL2", cv::DescriptorMatcher::MatcherType::BRUTEFORCE_SL2);
 
-  rb_cCvBFMatcher = define_class_under<cv::BFMatcher, cv::DescriptorMatcher>(rb_mCv, "BFMatcher").
+  Rice::Data_Type<cv::BFMatcher> rb_cCvBFMatcher = define_class_under<cv::BFMatcher, cv::DescriptorMatcher>(rb_mCv, "BFMatcher").
     define_constructor(Constructor<cv::BFMatcher, int, bool>(),
-      Arg("norm_type") = static_cast<int>(cv::NormTypes::NORM_L2), Arg("cross_check") = static_cast<bool>(false)).
+      Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("cross_check") = static_cast<bool>(false)).
     define_method("mask_supported?", &cv::BFMatcher::isMaskSupported).
     define_method("clone", &cv::BFMatcher::clone,
       Arg("empty_train_data") = static_cast<bool>(false)).
     define_singleton_function("create", &cv::BFMatcher::create,
-      Arg("norm_type") = static_cast<int>(cv::NormTypes::NORM_L2), Arg("cross_check") = static_cast<bool>(false));
+      Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("cross_check") = static_cast<bool>(false));
 
-  rb_cCvFlannBasedMatcher = define_class_under<cv::FlannBasedMatcher, cv::DescriptorMatcher>(rb_mCv, "FlannBasedMatcher").
+  Rice::Data_Type<cv::FlannBasedMatcher> rb_cCvFlannBasedMatcher = define_class_under<cv::FlannBasedMatcher, cv::DescriptorMatcher>(rb_mCv, "FlannBasedMatcher").
     define_constructor(Constructor<cv::FlannBasedMatcher, const cv::Ptr<cv::flann::IndexParams>&, const cv::Ptr<cv::flann::SearchParams>&>(),
-      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams> &>(cv::makePtr<cv::flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams> &>(cv::makePtr<cv::flann::SearchParams>())).
+      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams>&>(makePtr<flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams>&>(makePtr<flann::SearchParams>())).
     define_method("add", &cv::FlannBasedMatcher::add,
       Arg("descriptors")).
     define_method("clear", &cv::FlannBasedMatcher::clear).
@@ -547,19 +504,19 @@ void Init_Features2d()
     define_value("DRAW_RICH_KEYPOINTS", cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
   rb_mCv.define_module_function("draw_keypoints", &cv::drawKeypoints,
-    Arg("image"), Arg("keypoints"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+    Arg("image"), Arg("keypoints"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<cv::DMatch>&, cv::InputOutputArray, const cv::Scalar&, const cv::Scalar&, const std::vector<char>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char>&>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<cv::DMatch>&, cv::InputOutputArray, const int, const cv::Scalar&, const cv::Scalar&, const std::vector<char>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("matches_thickness"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("matches_thickness"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char>&>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<std::vector<cv::DMatch>>&, cv::InputOutputArray, const cv::Scalar&, const cv::Scalar&, const std::vector<std::vector<char>>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<std::vector<char>> &>(std::vector<std::vector<char> >()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<std::vector<char>>&>(std::vector<std::vector<char> >()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
   rb_mCv.define_module_function("evaluate_feature_detector", &cv::evaluateFeatureDetector,
-    Arg("img1"), Arg("img2"), Arg("h1to2"), Arg("keypoints1"), Arg("keypoints2"), Arg("repeatability"), Arg("corresp_count"), Arg("fdetector") = static_cast<const cv::Ptr<cv::FeatureDetector> &>(cv::Ptr<cv::FeatureDetector>()));
+    Arg("img1"), Arg("img2"), Arg("h1to2"), Arg("keypoints1"), Arg("keypoints2"), Arg("repeatability"), Arg("corresp_count"), Arg("fdetector") = static_cast<const cv::Ptr<cv::Feature2D>&>(cv::Ptr<cv::FeatureDetector>()));
 
   rb_mCv.define_module_function("compute_recall_precision_curve", &cv::computeRecallPrecisionCurve,
     Arg("matches1to2"), Arg("correct_matches1to2_mask"), Arg("recall_precision_curve"));
@@ -570,7 +527,7 @@ void Init_Features2d()
   rb_mCv.define_module_function("get_nearest_point", &cv::getNearestPoint,
     Arg("recall_precision_curve"), Arg("l_precision"));
 
-  rb_cCvBOWTrainer = define_class_under<cv::BOWTrainer>(rb_mCv, "BOWTrainer").
+  Rice::Data_Type<cv::BOWTrainer> rb_cCvBOWTrainer = define_class_under<cv::BOWTrainer>(rb_mCv, "BOWTrainer").
     define_method("add", &cv::BOWTrainer::add,
       Arg("descriptors")).
     define_method("get_descriptors", &cv::BOWTrainer::getDescriptors).
@@ -580,14 +537,14 @@ void Init_Features2d()
     define_method<cv::Mat(cv::BOWTrainer::*)(const cv::Mat&) const>("cluster", &cv::BOWTrainer::cluster,
       Arg("descriptors"));
 
-  rb_cCvBOWKMeansTrainer = define_class_under<cv::BOWKMeansTrainer, cv::BOWTrainer>(rb_mCv, "BOWKMeansTrainer").
+  Rice::Data_Type<cv::BOWKMeansTrainer> rb_cCvBOWKMeansTrainer = define_class_under<cv::BOWKMeansTrainer, cv::BOWTrainer>(rb_mCv, "BOWKMeansTrainer").
     define_constructor(Constructor<cv::BOWKMeansTrainer, int, const cv::TermCriteria&, int, int>(),
-      Arg("cluster_count"), Arg("termcrit") = static_cast<const cv::TermCriteria &>(cv::TermCriteria()), Arg("attempts") = static_cast<int>(3), Arg("flags") = static_cast<int>(cv::KmeansFlags::KMEANS_PP_CENTERS)).
+      Arg("cluster_count"), Arg("termcrit") = static_cast<const cv::TermCriteria&>(cv::TermCriteria()), Arg("attempts") = static_cast<int>(3), Arg("flags") = static_cast<int>(cv::KMEANS_PP_CENTERS)).
     define_method<cv::Mat(cv::BOWKMeansTrainer::*)() const>("cluster", &cv::BOWKMeansTrainer::cluster).
     define_method<cv::Mat(cv::BOWKMeansTrainer::*)(const cv::Mat&) const>("cluster", &cv::BOWKMeansTrainer::cluster,
       Arg("descriptors"));
 
-  rb_cCvBOWImgDescriptorExtractor = define_class_under<cv::BOWImgDescriptorExtractor>(rb_mCv, "BOWImgDescriptorExtractor").
+  Rice::Data_Type<cv::BOWImgDescriptorExtractor> rb_cCvBOWImgDescriptorExtractor = define_class_under<cv::BOWImgDescriptorExtractor>(rb_mCv, "BOWImgDescriptorExtractor").
     define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::Feature2D>&, const cv::Ptr<cv::DescriptorMatcher>&>(),
       Arg("dextractor"), Arg("dmatcher")).
     define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::DescriptorMatcher>&>(),
@@ -596,9 +553,9 @@ void Init_Features2d()
       Arg("vocabulary")).
     define_method("get_vocabulary", &cv::BOWImgDescriptorExtractor::getVocabulary).
     define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, std::vector<cv::KeyPoint>&, cv::OutputArray, std::vector<std::vector<int>>*, cv::Mat*)>("compute", &cv::BOWImgDescriptorExtractor::compute,
-      Arg("image"), Arg("keypoints"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>> *>(0), Arg("descriptors") = static_cast<cv::Mat *>(0)).
+      Arg("image"), Arg("keypoints"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>>*>(0), Arg("descriptors") = static_cast<cv::Mat*>(0)).
     define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, cv::OutputArray, std::vector<std::vector<int>>*)>("compute", &cv::BOWImgDescriptorExtractor::compute,
-      Arg("keypoint_descriptors"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>> *>(0)).
+      Arg("keypoint_descriptors"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>>*>(0)).
     define_method("compute2", &cv::BOWImgDescriptorExtractor::compute2,
       Arg("image"), Arg("keypoints"), Arg("img_descriptor")).
     define_method("descriptor_size", &cv::BOWImgDescriptorExtractor::descriptorSize).

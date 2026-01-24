@@ -7,8 +7,6 @@ void Init_Videoio()
 {
   Rice::Data_Type<CvCapture> rb_cCvCapture = define_class<CvCapture>("CvCapture");
 
-  Rice::Data_Type<CvVideoWriter> rb_cCvVideoWriter = define_class<CvVideoWriter>("CvVideoWriter");
-
   Module rb_mCv = define_module("Cv");
 
   Enum<cv::VideoCaptureAPIs> rb_cCvVideoCaptureAPIs = define_enum_under<cv::VideoCaptureAPIs>("VideoCaptureAPIs", rb_mCv).

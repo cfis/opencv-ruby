@@ -4,6 +4,7 @@
 using namespace Rice;
 
 // Manual
+Rice::Class rb_eCvException; 
 Rice::Class rb_eCvStsBackTrace;
 Rice::Class rb_eCvStsError;
 Rice::Class rb_eCvStsInternal;
@@ -246,7 +247,7 @@ void Init_Core()
 {
   Module rb_mCv = define_module("Cv");
 
-  Rice::Data_Type<cv::Exception> rb_cCvException = define_class_under<cv::Exception, std::exception>(rb_mCv, "Exception").
+  rb_eCvException = define_class_under<cv::Exception, std::exception>(rb_mCv, "Exception").
     define_constructor(Constructor<cv::Exception>()).
     define_constructor(Constructor<cv::Exception, int, const cv::String&, const cv::String&, const cv::String&, int>(),
       Arg("_code"), Arg("_err"), Arg("_func"), Arg("_file"), Arg("_line")).
@@ -260,7 +261,7 @@ void Init_Core()
     define_attr("line", &cv::Exception::line);
 
   // Manual marshalling needed for RubyMine debugger
-  rb_cCvException.
+  rb_eCvException.
     define_method("_dump_data", [](const cv::Exception& self) -> Rice::Hash
       {
         Rice::Hash result;
@@ -332,9 +333,10 @@ void Init_Core()
 
   // Install custom exception handler
   detail::Registries::instance.handlers.set(handleCvException);
-
-  rb_mCv.define_module_function("error", &cv::error,
-    Arg("exc"));
+  
+  // TODO
+  //rb_mCv.define_module_function("error", &cv::error,
+   // Arg("exc"));
 
   Enum<cv::SortFlags> rb_cCvSortFlags = define_enum_under<cv::SortFlags>("SortFlags", rb_mCv).
     define_value("SORT_EVERY_ROW", cv::SortFlags::SORT_EVERY_ROW).
@@ -750,8 +752,9 @@ void Init_Core()
   rb_mCv.define_module_function("set_rng_seed", &cv::setRNGSeed,
     Arg("seed"));
 
-  rb_mCv.define_module_function("randu", &cv::randu,
-    Arg("dst"), Arg("low"), Arg("high"));
+  //TODO 
+  // rb_mCv.define_module_function("randu", &cv::randu,
+  //  Arg("dst"), Arg("low"), Arg("high"));
 
   rb_mCv.define_module_function("randn", &cv::randn,
     Arg("dst"), Arg("mean"), Arg("stddev"));
@@ -1024,19 +1027,20 @@ void Init_Core()
 
   Rice::Data_Type<cv::ParamType<cv::String>> rb_cCvParamTypeString = define_class_under<cv::ParamType<cv::String>>(rb_mCv, "ParamTypeString").
     define_constructor(Constructor<cv::ParamType<cv::String>>()).
-    define_constant("Type", cv::ParamType<String>::type);
+    define_constant("Type", cv::ParamType<cv::String>::type);
 
+  // TODO - not correctly generated
   Rice::Data_Type<cv::ParamType<cv::Mat>> rb_cCvParamTypeMat = define_class_under<cv::ParamType<cv::Mat>>(rb_mCv, "ParamTypeMat").
     define_constructor(Constructor<cv::ParamType<cv::Mat>>()).
-    define_constant("Type", cv::ParamType<Mat>::type);
+    define_constant("Type", cv::ParamType<cv::Mat>::type);
 
   Rice::Data_Type<cv::ParamType<std::vector<cv::Mat>>> rb_cCvParamTypeStdVectorMat = define_class_under<cv::ParamType<std::vector<cv::Mat>>>(rb_mCv, "VectorMat").
-    define_constructor(Constructor<cv::ParamType<std::vector<Mat>>>()).
-    define_constant("Type", cv::ParamType<std::vector<Mat>>::type);
+    define_constructor(Constructor<cv::ParamType<std::vector<cv::Mat>>>()).
+    define_constant("Type", cv::ParamType<std::vector<cv::Mat>>::type);
 
   Rice::Data_Type<cv::ParamType<cv::Algorithm>> rb_cCvParamTypeAlgorithm = define_class_under<cv::ParamType<cv::Algorithm>>(rb_mCv, "ParamTypeAlgorithm").
     define_constructor(Constructor<cv::ParamType<cv::Algorithm>>()).
-    define_constant("Type", cv::ParamType<Algorithm>::type);
+    define_constant("Type", cv::ParamType<cv::Algorithm>::type);
 
   Rice::Data_Type<cv::ParamType<float>> rb_cCvParamTypeFloat = define_class_under<cv::ParamType<float>>(rb_mCv, "ParamTypeFloat").
     define_constructor(Constructor<cv::ParamType<float>>()).
@@ -1056,17 +1060,18 @@ void Init_Core()
 
   Rice::Data_Type<cv::ParamType<cv::Scalar>> rb_cCvParamTypeScalar = define_class_under<cv::ParamType<cv::Scalar>>(rb_mCv, "ParamTypeScalar").
     define_constructor(Constructor<cv::ParamType<cv::Scalar>>()).
-    define_constant("Type", cv::ParamType<Scalar>::type);
+    define_constant("Type", cv::ParamType<cv::Scalar>::type);
 
-  rb_cString.
-    define_method("<<", [](cv::String& self, cv::Ptr<cv::Formatted> other) -> cv::String&
-  {
-    self << other;
-    return self;
-  }).
-    define_method("<<", [](cv::String& self, const cv::Mat& other) -> cv::String&
-  {
-    self << other;
-    return self;
-  });
+  // TODO
+  //rb_cString.
+  //  define_method("<<", [](cv::String& self, cv::Ptr<cv::Formatted> other) -> cv::String&
+  //{
+  //  self << other;
+  //  return self;
+  //}).
+  //  define_method("<<", [](cv::String& self, const cv::Mat& other) -> cv::String&
+ // {
+ //   self << other;
+ //   return self;
+ // });
 }

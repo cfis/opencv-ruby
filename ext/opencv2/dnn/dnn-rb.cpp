@@ -60,10 +60,11 @@ void Init_Dnn_Dnn()
     define_attr("name", &cv::dnn::LayerParams::name).
     define_attr("type", &cv::dnn::LayerParams::type);
 
-  Rice::Data_Type<cv::dnn::BackendNode> rb_cCvDnnBackendNode = define_class_under<cv::dnn::BackendNode>(rb_mCvDnn, "BackendNode").
-    define_constructor(Constructor<cv::dnn::BackendNode, int>(),
-      Arg("backend_id")).
-    define_attr("backend_id", &cv::dnn::BackendNode::backendId);
+  // TODO - Not exported by OpenCV on Windows
+  // Rice::Data_Type<cv::dnn::BackendNode> rb_cCvDnnBackendNode = define_class_under<cv::dnn::BackendNode>(rb_mCvDnn, "BackendNode").
+  // define_constructor(Constructor<cv::dnn::BackendNode, int>(),
+  //   Arg("backend_id")).
+  // define_attr("backend_id", &cv::dnn::BackendNode::backendId);
 
   Rice::Data_Type<cv::dnn::BackendWrapper> rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper").
     define_method("copy_to_host", &cv::dnn::BackendWrapper::copyToHost).

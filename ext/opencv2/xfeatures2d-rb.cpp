@@ -1,3 +1,4 @@
+#include <opencv2/features2d.hpp>
 #include <opencv2/xfeatures2d.hpp>
 #include "xfeatures2d-rb.hpp"
 
@@ -370,9 +371,9 @@ void Init_Xfeatures2d()
       Arg("num_octaves") = static_cast<int>(6), Arg("corn_thresh") = static_cast<float>(0.01f), Arg("dog_thresh") = static_cast<float>(0.01f), Arg("max_corners") = static_cast<int>(5000), Arg("num_layers") = static_cast<int>(4));
 
   Rice::Data_Type<cv::xfeatures2d::AffineFeature2D> rb_cCvXfeatures2dAffineFeature2D = define_class_under<cv::xfeatures2d::AffineFeature2D, cv::Feature2D>(rb_mCvXfeatures2d, "AffineFeature2D").
-    define_method("detect", &cv::xfeatures2d::AffineFeature2D::detect,
+    define_method<void(cv::xfeatures2d::AffineFeature2D::*)(cv::InputArray, std::vector<cv::xfeatures2d::Elliptic_KeyPoint>&, cv::InputArray)>("detect", &cv::xfeatures2d::AffineFeature2D::detect,
       Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray())).
-    define_method("detect_and_compute", &cv::xfeatures2d::AffineFeature2D::detectAndCompute,
+    define_method<void(cv::xfeatures2d::AffineFeature2D::*)(cv::InputArray, cv::InputArray, std::vector<cv::xfeatures2d::Elliptic_KeyPoint>&, cv::OutputArray, bool)>("detect_and_compute", &cv::xfeatures2d::AffineFeature2D::detectAndCompute,
       Arg("image"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false)).
     define_singleton_function<cv::Ptr<cv::xfeatures2d::AffineFeature2D>(*)(cv::Ptr<cv::Feature2D>, cv::Ptr<cv::Feature2D>)>("create", &cv::xfeatures2d::AffineFeature2D::create,
       Arg("keypoint_detector"), Arg("descriptor_extractor")).
@@ -393,7 +394,7 @@ void Init_Xfeatures2d()
       Arg("n_scales")).
     define_method("get_n_scales", &cv::xfeatures2d::TBMR::getNScales).
     define_method("get_default_name", &cv::xfeatures2d::TBMR::getDefaultName).
-    define_singleton_function("create", &cv::xfeatures2d::TBMR::create,
+    define_singleton_function<cv::Ptr<cv::xfeatures2d::TBMR>(*)(int, float, float, int)>("create", &cv::xfeatures2d::TBMR::create,
       Arg("min_area") = static_cast<int>(60), Arg("max_area_relative") = static_cast<float>(0.01f), Arg("scale_factor") = static_cast<float>(1.25f), Arg("n_scales") = static_cast<int>(-1));
 
   rb_mCvXfeatures2d.define_module_function("fast_for_point_set", &cv::xfeatures2d::FASTForPointSet,

@@ -45,7 +45,7 @@ inline void Mat__builder(Data_Type_T& klass)
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&, const cv::Rect&>(),
       Arg("m"), Arg("roi")).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&, const cv::Range*>(),
-      Arg("m"), ArgBuffer("ranges")).
+      Arg("m"), Arg("ranges")).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&, const std::vector<cv::Range>&>(),
       Arg("m"), Arg("ranges")).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::MatExpr&>(),
@@ -966,7 +966,7 @@ void Init_Core_Mat()
     define_method("update_continuity_flag", &cv::Mat::updateContinuityFlag).
     define_attr("u", &cv::Mat::u).
     define_attr("size", &cv::Mat::size).
-    define_attr("step", &cv::Mat::step).
+    define_attr("step", &cv::Mat::step, AttrAccess::Read).
     define_singleton_function<cv::Mat(*)(const cv::Mat&)>("diag", &cv::Mat::diag,
       Arg("d")).
     define_singleton_function<cv::MatExpr(*)(int, int, int)>("zeros", &cv::Mat::zeros,
@@ -1723,7 +1723,7 @@ void Init_Core_Mat()
     define_attr("u", &cv::UMat::u).
     define_attr("offset", &cv::UMat::offset).
     define_attr("size", &cv::UMat::size).
-    define_attr("step", &cv::UMat::step).
+    define_attr("step", &cv::UMat::step, AttrAccess::Read).
     define_singleton_function<cv::UMat(*)(const cv::UMat&, cv::UMatUsageFlags)>("diag", &cv::UMat::diag,
       Arg("d"), Arg("usage_flags")).
     define_singleton_function<cv::UMat(*)(const cv::UMat&)>("diag", &cv::UMat::diag,

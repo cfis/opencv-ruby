@@ -50,6 +50,7 @@ void Init_Dnn_Dict()
     define_method<const cv::dnn::DictValue&(cv::dnn::Dict::*)(const cv::String&) const>("get", &cv::dnn::Dict::get,
       Arg("key")).
     define_method("erase", &cv::dnn::Dict::erase,
-      Arg("key")).
-    define_iterator<std::map<String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
+      Arg("key"));
+  // TODO
+  //  define_iterator<std::map<String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each");
 }

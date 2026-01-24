@@ -52,6 +52,15 @@
 #include "opencv2/core/version-rb.hpp"
 #include "opencv2/core/vsx_utils-rb.hpp"
 
+// Core Utils
+#include "opencv2/core/utils/allocator_stats-rb.hpp"
+#include "opencv2/core/utils/allocator_stats.impl-rb.hpp"
+#include "opencv2/core/utils/filesystem-rb.hpp"
+#include "opencv2/core/utils/logger-rb.hpp"
+#include "opencv2/core/utils/logger.defines-rb.hpp"
+#include "opencv2/core/utils/logtag-rb.hpp"
+#include "opencv2/core/utils/trace-rb.hpp"
+
 // DNN
 #include "opencv2/dnn/all_layers-rb.hpp"
 #include "opencv2/dnn/dict-rb.hpp"
@@ -60,6 +69,10 @@
 #include "opencv2/dnn/layer.details-rb.hpp"
 #include "opencv2/dnn/shape_utils-rb.hpp"
 #include "opencv2/dnn/version-rb.hpp"
+
+// DNN Utils
+#include "opencv2/dnn/utils/debug_utils-rb.hpp"
+#include "opencv2/dnn/utils/inference_engine-rb.hpp"
 
 // Flann
 #include "opencv2/flann/allocator-rb.hpp"
@@ -115,6 +128,7 @@
 #include "opencv2/stitching/detail/seam_finders-rb.hpp"
 #include "opencv2/stitching/detail/timelapsers-rb.hpp"
 #include "opencv2/stitching/detail/util-rb.hpp"
+#include "opencv2/stitching/detail/util_inl-rb.hpp"
 #include "opencv2/stitching/detail/warpers-rb.hpp"
 #include "opencv2/stitching/warpers-rb.hpp"
 
@@ -125,19 +139,69 @@
 #include "opencv2/video/video-rb.hpp"
 
 // Top Level
+#include "opencv2/aruco-rb.hpp"
+#include "opencv2/bgsegm-rb.hpp"
+#include "opencv2/bioinspired-rb.hpp"
 #include "opencv2/calib3d-rb.hpp"
+#include "opencv2/ccalib-rb.hpp"
 #include "opencv2/core-rb.hpp"
+#include "opencv2/core_detect-rb.hpp"
+//#include "opencv2/cudaarithm-rb.hpp"
+//#include "opencv2/cudabgsegm-rb.hpp"
+//#include "opencv2/cudacodec-rb.hpp"
+//#include "opencv2/cudafeatures2d-rb.hpp"
+//#include "opencv2/cudafilters-rb.hpp"
+//#include "opencv2/cudaimgproc-rb.hpp"
+//#include "opencv2/cudalegacy-rb.hpp"
+//#include "opencv2/cudaobjdetect-rb.hpp"
+//#include "opencv2/cudaoptflow-rb.hpp"
+//#include "opencv2/cudastereo-rb.hpp"
+//#include "opencv2/cudawarping-rb.hpp"
+//#include "opencv2/cudev-rb.hpp"
+#include "opencv2/cvconfig-rb.hpp"
+#include "opencv2/dnn-rb.hpp"
+#include "opencv2/dnn_superres-rb.hpp"
+#include "opencv2/dpm-rb.hpp"
+#include "opencv2/face-rb.hpp"
 #include "opencv2/features2d-rb.hpp"
 #include "opencv2/flann-rb.hpp"
+#include "opencv2/fuzzy-rb.hpp"
+#include "opencv2/hdf-rb.hpp"
+#include "opencv2/hfs-rb.hpp"
 #include "opencv2/highgui-rb.hpp"
+#include "opencv2/img_hash-rb.hpp"
 #include "opencv2/imgcodecs-rb.hpp"
 #include "opencv2/imgproc-rb.hpp"
+#include "opencv2/intensity_transform-rb.hpp"
+#include "opencv2/line_descriptor-rb.hpp"
+#include "opencv2/mcc-rb.hpp"
 #include "opencv2/ml-rb.hpp"
 #include "opencv2/objdetect-rb.hpp"
+#include "opencv2/opencv-rb.hpp"
 #include "opencv2/opencv_modules-rb.hpp"
+#include "opencv2/optflow-rb.hpp"
+#include "opencv2/phase_unwrapping-rb.hpp"
 #include "opencv2/photo-rb.hpp"
+#include "opencv2/plot-rb.hpp"
+#include "opencv2/rapid-rb.hpp"
+#include "opencv2/saliency-rb.hpp"
+#include "opencv2/shape-rb.hpp"
+#include "opencv2/signal-rb.hpp"
+#include "opencv2/stereo-rb.hpp"
 #include "opencv2/stitching-rb.hpp"
+#include "opencv2/structured_light-rb.hpp"
+#include "opencv2/superres-rb.hpp"
+#include "opencv2/surface_matching-rb.hpp"
+#include "opencv2/text-rb.hpp"
+#include "opencv2/tracking-rb.hpp"
+#include "opencv2/video-rb.hpp"
 #include "opencv2/videoio-rb.hpp"
+#include "opencv2/videostab-rb.hpp"
+#include "opencv2/wechat_qrcode-rb.hpp"
+#include "opencv2/xfeatures2d-rb.hpp"
+#include "opencv2/ximgproc-rb.hpp"
+#include "opencv2/xobjdetect-rb.hpp"
+#include "opencv2/xphoto-rb.hpp"
 
 extern "C"
 void Init_opencv_ruby()
@@ -152,8 +216,8 @@ void Init_opencv_ruby()
 
     // Core Detail
     //Init_AsyncPromise();
-   // Init_Core_Detail_DispatchHelperImpl();
-   // Init_Core_Detail_ExceptionPtr();
+    //Init_Core_Detail_DispatchHelperImpl();
+    //Init_Core_Detail_ExceptionPtr();
 
     // Core
     Init_Core_Affine();
@@ -196,14 +260,27 @@ void Init_opencv_ruby()
     Init_Core_Version();
     Init_Core_VsxUtils();
 
+    // Core Utils
+    /*Init_Core_Utils_AllocatorStats();
+    Init_Core_Utils_AllocatorStatsImpl();
+    Init_Core_Utils_Filesystem();
+    Init_Core_Utils_Logger();
+    Init_Core_Utils_LoggerDefines();
+    Init_Core_Utils_Logtag();
+    Init_Core_Utils_Trace();*/
+
     // DNN
-  /*  Init_Dnn_Version();
+    Init_Dnn_Version();
     Init_Dnn_Dict();
     Init_Dnn_Dnn();
     Init_Dnn_Layer();
     Init_Dnn_LayerDetails();
     Init_Dnn_AllLayers();
-    Init_Dnn_ShapeUtils();*/
+    Init_Dnn_ShapeUtils();
+
+    // DNN Utils
+    //Init_Dnn_Utils_DebugUtils();
+    //Init_Dnn_Utils_InferenceEngine();
 
     // Flann
     Init_Flann_Allocator();
@@ -238,7 +315,7 @@ void Init_opencv_ruby()
     Init_Flann_Saving();
     Init_Flann_SimplexDownhill();
     Init_Flann_Timer();
-    /*
+
 #if RUBY_CV_VERSION >= 408
     // Object Detection
     Init_Objdetect_ArucoBoard();
@@ -261,6 +338,7 @@ void Init_opencv_ruby()
     Init_Stitching_Detail_SeamFinders();
     Init_Stitching_Detail_Timelapsers();
     Init_Stitching_Detail_Util();
+    Init_Stitching_Detail_UtilInl();
     Init_Stitching_Detail_Warpers();
     Init_Stitching_Warpers();
 
@@ -268,21 +346,71 @@ void Init_opencv_ruby()
     Init_Video_Detail_TrackingDetail();
     Init_Video_BackgroundSegm();
     Init_Video_Tracking();
-    Init_Video_Video();*/
+    Init_Video_Video();
 
     // Top level
+    Init_Aruco();
+    Init_Bgsegm();
+    Init_Bioinspired();
     Init_Calib3d();
-  /*  Init_Features2d();
+    Init_Ccalib();
+    Init_CoreDetect();
+    //Init_Cudaarithm();
+    //Init_Cudabgsegm();
+    //Init_Cudacodec();
+    //Init_Cudafeatures2d();
+    //Init_Cudafilters();
+    //Init_Cudaimgproc();
+    //Init_Cudalegacy();
+    //Init_Cudaobjdetect();
+    //Init_Cudaoptflow();
+    //Init_Cudastereo();
+    //Init_Cudawarping();
+    //Init_Cudev();
+    Init_Cvconfig();
+    Init_Dnn();
+    Init_DnnSuperres();
+    Init_Dpm();
+    Init_Face();
+    Init_Features2d();
     Init_Flann();
+    Init_Fuzzy();
+    Init_Hdf();
+    Init_Hfs();
     Init_Highgui();
+    Init_ImgHash();
     Init_Imgcodecs();
     Init_Imgproc();
+    Init_IntensityTransform();
+    Init_LineDescriptor();
+    Init_Mcc();
     Init_Ml();
     Init_Objdetect();
+    Init_Opencv();
     Init_OpencvModules();
+    Init_Optflow();
+    Init_PhaseUnwrapping();
     Init_Photo();
+    Init_Plot();
+    Init_Rapid();
+    Init_Saliency();
+    Init_Shape();
+    Init_Signal();
+    Init_Stereo();
     Init_Stitching();
-    Init_Videoio();*/
+    Init_StructuredLight();
+    Init_Superres();
+    Init_SurfaceMatching();
+    Init_Text();
+    Init_Tracking();
+    Init_Video();
+    Init_Videoio();
+    Init_Videostab();
+    Init_WechatQrcode();
+    Init_Xfeatures2d();
+    Init_Ximgproc();
+    Init_Xobjdetect();
+    Init_Xphoto();
 
     // Validate types
     Rice::detail::Registries::instance.types.validateTypes();

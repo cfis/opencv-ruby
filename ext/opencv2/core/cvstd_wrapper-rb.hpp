@@ -1,7 +1,8 @@
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#pragma once
 
 #include <opencv2/core/cvstd_wrapper.hpp>
+#include <rice/rice.hpp>
+#include <rice/stl.hpp>
 
 void Init_Core_CvstdWrapper();
 

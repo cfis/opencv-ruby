@@ -23,10 +23,12 @@ namespace cv
 template<typename Data_Type_T, typename _Tp, int m, int n>
 inline void Matx_builder(Data_Type_T& klass)
 {
-  klass.define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
-    define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols).
-    define_constant("Channels", (int)cv::Matx<_Tp, m, n>::channels).
-    define_constant("Shortdim", (int)cv::Matx<_Tp, m, n>::shortdim).
+  klass.
+    // TODO - These block methods defined below
+    // define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
+    //define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols).
+    //define_constant("Channels", (int)cv::Matx<_Tp, m, n>::channels).
+    //define_constant("Shortdim", (int)cv::Matx<_Tp, m, n>::shortdim).
     define_constructor(Constructor<cv::Matx<_Tp, m, n>>());
 
   if constexpr (m * n == 1)
@@ -342,7 +344,8 @@ template<typename Data_Type_T, typename _Tp, int cn>
 inline void Vec_builder(Data_Type_T& klass)
 {
   klass.define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels).
-    define_constant("_dummy_enum_finalizer", (int)cv::Vec<_Tp, cn>::_dummy_enum_finalizer).
+    // TODO - not a valid Ruby identifer
+    //define_constant("_dummy_enum_finalizer", (int)cv::Vec<_Tp, cn>::_dummy_enum_finalizer).
     define_constructor(Constructor<cv::Vec<_Tp, cn>>());
 
   if constexpr (cn == 1)
@@ -760,6 +763,13 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Vec<float, 6>> rb_cVec6f = define_class_under<cv::Vec<float, 6>, cv::Matx<float, 6, 1>>(rb_mCv, "Vec6f").
     define(&Vec_builder<Data_Type<cv::Vec<float, 6>>, float, 6>);
 
+  // Needed by DualQuat
+  Rice::Data_Type<cv::Matx<float, 8, 1>> rb_cMatx81f = define_class_under<cv::Matx<float, 8, 1>>(rb_mCv, "Matx81f").
+    define(&Matx_builder<Data_Type<cv::Matx<float, 8, 1>>, float, 8, 1>);
+
+  Rice::Data_Type<cv::Vec<float, 8>> rb_cVec8f = define_class_under<cv::Vec<float, 8>, cv::Matx<float, 8, 1>>(rb_mCv, "Vec8f").
+    define(&Vec_builder<Data_Type<cv::Vec<float, 8>>, float, 8>);
+
   Rice::Data_Type<cv::Matx<double, 2, 1>> rb_cMatx21d = define_class_under<cv::Matx<double, 2, 1>>(rb_mCv, "Matx21d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 2, 1>>, double, 2, 1>);
 
@@ -808,9 +818,6 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Vec<double, 1>> rb_cVec1d = define_class_under<cv::Vec<double, 1>, cv::Matx<double, 1, 1>>(rb_mCv, "Vec1d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 1>>, double, 1>);
 
-  // Needed by DualQuat
-  Rice::Data_Type<cv::Vec<float, 8>> rb_cVec8f = define_class_under<cv::Vec<float, 8>, cv::Matx<float, 8, 1>>(rb_mCv, "Vec8f").
-    define(&Vec_builder<Data_Type<cv::Vec<float, 8>>, float, 8>);
 
   // Requires adding long long (int64) support from OpenCV5
   Rice::Data_Type<cv::Matx<int64, 2, 1>> rb_cMatx21l = define_class_under<cv::Matx<int64, 2, 1 >>(rb_mCv, "Matx21l").

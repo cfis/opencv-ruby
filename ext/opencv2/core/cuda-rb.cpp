@@ -354,8 +354,11 @@ void Init_Core_Cuda()
   rb_cCvCudaEvent.
     define_constructor(Constructor<cv::cuda::Event, const cv::cuda::Event::CreateFlags>(),
       Arg("flags") = static_cast<const cv::cuda::Event::CreateFlags>(cv::cuda::Event::CreateFlags::DEFAULT)).
+   // define_method("record", &cv::cuda::Event::record,
+   //   Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
+    // TODO - don't use default value of cv::cuda::Stream::Null() because that force initalizes CUDA
     define_method("record", &cv::cuda::Event::record,
-      Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
+      Arg("stream")).
     define_method("query_if_complete?", &cv::cuda::Event::queryIfComplete).
     define_method("wait_for_completion", &cv::cuda::Event::waitForCompletion).
     define_singleton_function("elapsed_time", &cv::cuda::Event::elapsedTime,

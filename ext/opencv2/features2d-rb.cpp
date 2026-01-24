@@ -483,7 +483,7 @@ void Init_Features2d()
 
   Rice::Data_Type<cv::FlannBasedMatcher> rb_cCvFlannBasedMatcher = define_class_under<cv::FlannBasedMatcher, cv::DescriptorMatcher>(rb_mCv, "FlannBasedMatcher").
     define_constructor(Constructor<cv::FlannBasedMatcher, const cv::Ptr<cv::flann::IndexParams>&, const cv::Ptr<cv::flann::SearchParams>&>(),
-      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams>&>(makePtr<flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams>&>(makePtr<flann::SearchParams>())).
+      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams>&>(cv::makePtr<cv::flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams>&>(cv::makePtr<cv::flann::SearchParams>())).
     define_method("add", &cv::FlannBasedMatcher::add,
       Arg("descriptors")).
     define_method("clear", &cv::FlannBasedMatcher::clear).

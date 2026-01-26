@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../rice_include.hpp"
 
 extern Rice::Class rb_cCvMat;

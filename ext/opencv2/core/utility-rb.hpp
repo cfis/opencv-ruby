@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../rice_include.hpp"
 
 template<typename Data_Type_T, typename OBJECT>

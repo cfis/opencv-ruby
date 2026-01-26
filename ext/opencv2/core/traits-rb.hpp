@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../rice_include.hpp"
 
 #include <opencv2/core/traits.hpp>

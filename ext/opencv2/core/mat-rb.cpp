@@ -10,13 +10,6 @@ using namespace Rice;
 Rice::Class rb_cCvMat;
 
 template<typename Data_Type_T, typename _Tp>
-inline void MatCommaInitializer__builder(Data_Type_T& klass)
-{
-  klass.define_constructor(Constructor<cv::MatCommaInitializer_<_Tp>, cv::Mat_<_Tp>*>(),
-      Arg("_m"));
-};
-
-template<typename Data_Type_T, typename _Tp>
 inline void Mat__builder(Data_Type_T& klass)
 {
   klass.define_constructor(Constructor<cv::Mat_<_Tp>>()).
@@ -56,8 +49,6 @@ inline void Mat__builder(Data_Type_T& klass)
       Arg("pt"), Arg("copy_data") = static_cast<bool>(true)).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Point3_<typename cv::DataType<_Tp>::channel_type>&, bool>(),
       Arg("pt"), Arg("copy_data") = static_cast<bool>(true)).
-    define_constructor(Constructor<cv::Mat_<_Tp>, const cv::MatCommaInitializer_<_Tp>&>(),
-      Arg("comma_initializer")).
     template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(const cv::Mat&)>("assign", &cv::Mat_<_Tp>::operator=,
       Arg("m")).
     template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(const cv::Mat_<_Tp>&)>("assign", &cv::Mat_<_Tp>::operator=,

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../../rice_include.hpp"
 
-void Init_AsyncPromise();
+void Init_Core_Detail_AsyncPromise();

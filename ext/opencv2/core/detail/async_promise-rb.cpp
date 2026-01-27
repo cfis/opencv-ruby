@@ -25,5 +25,6 @@ void Init_Core_Detail_AsyncPromise()
       Arg("exception")).
     define_method<cv::AsyncPromise&(cv::AsyncPromise::*)(cv::AsyncPromise&&) noexcept>("assign", &cv::AsyncPromise::operator=,
       Arg("o")).
-    define_method("_get_impl", &cv::AsyncPromise::_getImpl);
+    define_method("_get_impl", &cv::AsyncPromise::_getImpl,
+      ReturnBuffer());
 }

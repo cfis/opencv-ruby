@@ -517,7 +517,7 @@ void Init_Core_Types()
     define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
 
   Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = define_class_under<cv::Point_<int64>>(rb_mCv, "Point2l").
-    define(&Point__builder<Data_Type<cv::Point_<int64>>, long>);
+    define(&Point__builder<Data_Type<cv::Point_<int64>>, int64>);
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = define_class_under<cv::Point_<float>>(rb_mCv, "Point2f").
     define(&Point__builder<Data_Type<cv::Point_<float>>, float>);
@@ -561,7 +561,7 @@ void Init_Core_Types()
     define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
 
   Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = define_class_under<cv::Size_<int64>>(rb_mCv, "Size2l").
-    define(&Size__builder<Data_Type<cv::Size_<int64>>, long>);
+    define(&Size__builder<Data_Type<cv::Size_<int64>>, int64>);
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = define_class_under<cv::Size_<float>>(rb_mCv, "Size2f").
     define(&Size__builder<Data_Type<cv::Size_<float>>, float>);

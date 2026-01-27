@@ -1,37 +1,72 @@
 # Ruby-bindgen configuration for OpenCV Ruby bindings
 # Usage: ruby-bindgen bindings.yaml
 
-extension: opencv_ruby
+#extension: opencv_ruby
 
-input: C:\Source\opencv-ruby\ext\build\msvc-debug\vcpkg_installed\x64-windows\include\opencv4
-output: C:\Source\opencv-ruby\ext
+libclang:
+  clang-cl: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/x64/bin/libclang.dll
+  clang: /usr/lib64/libclang.so
+
+input: /mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+output: /mnt/c/Source/opencv-ruby/ext
 format: Rice
+include: rice_include.hpp
 
-# Header file patterns to process
+# Process all core files including subdirectories
 match:
-  - opencv2/core/ocl.hpp
+  - opencv2/core/detail/*.hpp
 
 # Header file patterns to skip
 skip:
-  - opencv2/core/opencl/**/*
-  - opencv2/cudalegacy/**/*.hpp
   - opencv2/**/*.inl*
+  - opencv2/calib3d/**/*
 
 # Only include functions/classes with these macros
 # This ensures we only wrap symbols that are actually exported from the library
-export_macros:
-  - CV_EXPORTS
-  - CV_EXPORTS_W
+export_macros: []
 
 # Functions/methods to explicitly skip (even if they have export macros)
 skip_symbols:
   - cv::ocl::PlatformInfo::versionMajor
   - cv::ocl::PlatformInfo::versionMinor
+  - cv::ocl::initializeContextFromHandle
+  - cv::ocl::convertTypeStr
+  # OpenCV bug: these methods use double literals that break MSVC template deduction for Quat<float>
+  # asinh/acosh/atanh have the bug, and asin/acos/atan call them internally
+  - cv::Quat::asinh
+  - cv::Quat::acosh
+  - cv::Quat::atanh
+  - cv::Quat::asin
+  - cv::Quat::acos
+  - cv::Quat::atan
+  # Layer backend methods use Ptr<BackendNode> which isn't exported
+  - /cv::dnn::Layer::init.*/
+  - cv::dnn::Layer::applyHalideScheduler
+  - cv::dnn::Layer::tryAttach
+  # C++ comma initializer idiom that doesn't apply to Ruby
+  - cv::MatCommaInitializer_
+  # BBox is declared but not exported from the DLL
+  - cv::face::FacemarkLBF::BBox
 
-# Clang compiler arguments
+# Clang compiler arguments (platform-specific)
 clang_args:
-  - -IC:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\MSVC\14.44.35207\include
-  - -IC:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\ucrt
-  - -IC:\Program Files\Microsoft Visual Studio\18\Insiders\VC\Tools\Llvm\lib\clang\20\include
-  - -IC:\Source\opencv-ruby\ext\build\msvc-debug\vcpkg_installed\x64-windows\include\opencv4
-  - -xc++
+  clang-cl:
+    - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include
+    - -IC:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt
+    - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/lib/clang/20/include
+    - -IC:/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+    - -IC:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6
+    - -DCV_EXPORTS=
+    - -DCV_EXPORTS_W=
+    - -include
+    - opencv2/opencv.hpp
+    - -xc++
+  clang:
+    - -I/usr/lib/clang/21/include
+    - -I/mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+    - -I/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6
+    - -DCV_EXPORTS=
+    - -DCV_EXPORTS_W=
+    - -include
+    - opencv2/opencv.hpp
+    - -xc++

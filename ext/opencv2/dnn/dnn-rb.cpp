@@ -90,24 +90,7 @@ void Init_Dnn_Dnn()
       Arg("output_name")).
     define_method("support_backend", &cv::dnn::Layer::supportBackend,
       Arg("backend_id")).
-    define_method("init_halide", &cv::dnn::Layer::initHalide,
-      Arg("inputs")).
-    define_method("init_ngraph", &cv::dnn::Layer::initNgraph,
-      Arg("inputs"), Arg("nodes")).
-    define_method("init_vk_com", &cv::dnn::Layer::initVkCom,
-      Arg("inputs"), Arg("outputs")).
-    define_method("init_webnn", &cv::dnn::Layer::initWebnn,
-      Arg("inputs"), Arg("nodes")).
-    define_method("init_cuda", &cv::dnn::Layer::initCUDA,
-      ArgBuffer("context"), Arg("inputs"), Arg("outputs")).
-    define_method("init_tim_vx", &cv::dnn::Layer::initTimVX,
-      ArgBuffer("tim_vx_info"), Arg("inputs_wrapper"), Arg("outputs_wrapper"), Arg("is_last")).
-    define_method("init_cann", &cv::dnn::Layer::initCann,
-      Arg("inputs"), Arg("outputs"), Arg("nodes")).
-    define_method("apply_halide_scheduler", &cv::dnn::Layer::applyHalideScheduler,
-      Arg("node"), Arg("inputs"), Arg("outputs"), Arg("target_id")).
-    define_method("try_attach", &cv::dnn::Layer::tryAttach,
-      Arg("node")).
+    // Skipped: init* methods use Ptr<BackendNode> which isn't exported
     define_method("set_activation", &cv::dnn::Layer::setActivation,
       Arg("layer")).
     define_method("try_fuse", &cv::dnn::Layer::tryFuse,

@@ -553,6 +553,12 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Matx<double, 1, 6>> rb_cMatx16d = define_class_under<cv::Matx<double, 1, 6>>(rb_mCv, "Matx16d").
     define(&Matx_builder<Data_Type<cv::Matx<double, 1, 6>>, double, 1, 6>);
 
+  Rice::Data_Type<cv::Matx<float, 1, 8>> rb_cMatx18f = define_class_under<cv::Matx<float, 1, 8>>(rb_mCv, "Matx18f").
+    define(&Matx_builder<Data_Type<cv::Matx<float, 1, 8>>, float, 1, 8>);
+
+  Rice::Data_Type<cv::Matx<double, 1, 8>> rb_cMatx18d = define_class_under<cv::Matx<double, 1, 8>>(rb_mCv, "Matx18d").
+    define(&Matx_builder<Data_Type<cv::Matx<double, 1, 8>>, double, 1, 8>);
+
   Rice::Data_Type<cv::Matx<float, 2, 2>> rb_cMatx22f = define_class_under<cv::Matx<float, 2, 2>>(rb_mCv, "Matx22f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 2, 2>>, float, 2, 2>);
 
@@ -793,7 +799,12 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Vec<double, 6>> rb_cVec6d = define_class_under<cv::Vec<double, 6>, cv::Matx<double, 6, 1>>(rb_mCv, "Vec6d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 6>>, double, 6>);
 
-  // Manually added
+  Rice::Data_Type<cv::Matx<double, 8, 1>> rb_cMatx81d = define_class_under<cv::Matx<double, 8, 1>>(rb_mCv, "Matx81d").
+    define(&Matx_builder<Data_Type<cv::Matx<double, 8, 1>>, double, 8, 1>);
+
+  Rice::Data_Type<cv::Vec<double, 8>> rb_cVec8d = define_class_under<cv::Vec<double, 8>, cv::Matx<double, 8, 1>>(rb_mCv, "Vec8d").
+    define(&Vec_builder<Data_Type<cv::Vec<double, 8>>, double, 8>);
+
   Rice::Data_Type<cv::Matx<float, 1, 1>> rb_cMatx11f = define_class_under<cv::Matx<float, 1, 1>>(rb_mCv, "Matx11f").
     define(&Matx_builder<Data_Type<cv::Matx<float, 1, 1>>, float, 1, 1>);
 

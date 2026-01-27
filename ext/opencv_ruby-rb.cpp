@@ -1,6 +1,10 @@
 #include "opencv_ruby_version.hpp"
 #include "opencv_ruby-rb.hpp"
 
+// Aruco
+#include "opencv2/aruco/aruco_calib-rb.hpp"
+#include "opencv2/aruco/charuco-rb.hpp"
+
 // Core Detail
 #include "opencv2/core/detail/async_promise-rb.hpp"
 #include "opencv2/core/detail/dispatch_helper.impl-rb.hpp"
@@ -73,6 +77,17 @@
 // DNN Utils
 #include "opencv2/dnn/utils/debug_utils-rb.hpp"
 #include "opencv2/dnn/utils/inference_engine-rb.hpp"
+
+// Face
+#include "opencv2/face/bif-rb.hpp"
+#include "opencv2/face/face_alignment-rb.hpp"
+#include "opencv2/face/facemark-rb.hpp"
+#include "opencv2/face/facemarkAAM-rb.hpp"
+#include "opencv2/face/facemarkLBF-rb.hpp"
+#include "opencv2/face/facemark_train-rb.hpp"
+#include "opencv2/face/facerec-rb.hpp"
+#include "opencv2/face/mace-rb.hpp"
+#include "opencv2/face/predict_collector-rb.hpp"
 
 // Flann
 #include "opencv2/flann/allocator-rb.hpp"
@@ -208,6 +223,10 @@ void Init_opencv_ruby()
 {
   return Rice::detail::cpp_protect([]
   {
+    // Aruco
+    Init_Aruco_ArucoCalib();
+    Init_Aruco_Charuco();
+
     // HAL
     //Init_Core_Hal_Interface();
 
@@ -316,6 +335,16 @@ void Init_opencv_ruby()
     Init_Flann_SimplexDownhill();
     Init_Flann_Timer();
 
+    // Face (order matters due to inheritance)
+    Init_Face_Bif();
+    Init_Face_Mace();
+    Init_Face_PredictCollector();
+    Init_Face_Facemark();
+    Init_Face_FacemarkTrain();
+    Init_Face_FaceAlignment();
+    Init_Face_FacemarkAAM();
+    Init_Face_FacemarkLBF();
+
 #if RUBY_CV_VERSION >= 408
     // Object Detection
     Init_Objdetect_ArucoBoard();
@@ -372,6 +401,7 @@ void Init_opencv_ruby()
     Init_DnnSuperres();
     Init_Dpm();
     Init_Face();
+    Init_Face_Facerec();  // Must come after Init_Face() which defines FaceRecognizer
     Init_Features2d();
     Init_Flann();
     Init_Fuzzy();

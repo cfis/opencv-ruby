@@ -9,8 +9,9 @@ void Init_Core_CudaStreamAccessor()
 
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
-  // Manually added - external opaque types from CUDA headers (forward-declared
-  // structs with no definition). These are used by StreamAccessor/EventAccessor.
+  // Manually added - external opaque types from CUDA headers (cuda_runtime.h).
+  // These are forward-declared structs with no definition accessible to the
+  // binding generator. To auto-generate these, process cuda_runtime.h directly.
   define_class<CUstream_st>("CUstreamSt");
   define_class<CUevent_st>("CUeventSt");
 

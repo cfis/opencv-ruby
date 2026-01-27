@@ -30,9 +30,9 @@ inline void Mat__builder(Data_Type_T& klass)
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&>(),
       Arg("m")).
     define_constructor(Constructor<cv::Mat_<_Tp>, int, int, _Tp*, size_t>(),
-      Arg("_rows"), Arg("_cols"), ArgBuffer("_data"), Arg("_step") = static_cast<size_t>(cv::Mat::AUTO_STEP)).
+      Arg("_rows"), Arg("_cols"), std::conditional_t<std::is_fundamental_v<_Tp>, ArgBuffer, Arg>("_data"), Arg("_step") = static_cast<size_t>(cv::Mat::AUTO_STEP)).
     define_constructor(Constructor<cv::Mat_<_Tp>, int, const int*, _Tp*, const size_t*>(),
-      Arg("_ndims"), ArgBuffer("_sizes"), ArgBuffer("_data"), Arg("_steps") = static_cast<const size_t*>(0)).
+      Arg("_ndims"), ArgBuffer("_sizes"), std::conditional_t<std::is_fundamental_v<_Tp>, ArgBuffer, Arg>("_data"), ArgBuffer("_steps") = static_cast<const size_t*>(0)).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&, const cv::Range&, const cv::Range&>(),
       Arg("m"), Arg("row_range"), Arg("col_range") = static_cast<const cv::Range&>(cv::Range::all())).
     define_constructor(Constructor<cv::Mat_<_Tp>, const cv::Mat_<_Tp>&, const cv::Rect&>(),
@@ -68,15 +68,15 @@ inline void Mat__builder(Data_Type_T& klass)
     template define_method<void(cv::Mat_<_Tp>::*)(int, const int*)>("create", &cv::Mat_<_Tp>::create,
       Arg("_ndims"), ArgBuffer("_sizes")).
     define_method("release", &cv::Mat_<_Tp>::release).
-    define_method("cross", &cv::Mat_<_Tp>::cross,
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Mat_<_Tp>&) const>("cross", &cv::Mat_<_Tp>::cross,
       Arg("m")).
-    define_method("row", &cv::Mat_<_Tp>::row,
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(int) const>("row", &cv::Mat_<_Tp>::row,
       Arg("y")).
-    define_method("col", &cv::Mat_<_Tp>::col,
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(int) const>("col", &cv::Mat_<_Tp>::col,
       Arg("x")).
-    define_method("diag", &cv::Mat_<_Tp>::diag,
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(int) const>("diag", &cv::Mat_<_Tp>::diag,
       Arg("d") = static_cast<int>(0)).
-    define_method("clone", &cv::Mat_<_Tp>::clone).
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)() const>("clone", &cv::Mat_<_Tp>::clone).
     define_method("elem_size", &cv::Mat_<_Tp>::elemSize).
     define_method("elem_size1", &cv::Mat_<_Tp>::elemSize1).
     define_method("type", &cv::Mat_<_Tp>::type).
@@ -86,7 +86,7 @@ inline void Mat__builder(Data_Type_T& klass)
       Arg("i") = static_cast<int>(0)).
     define_method("step_t", &cv::Mat_<_Tp>::stepT,
       Arg("i") = static_cast<int>(0)).
-    define_method("adjust_roi", &cv::Mat_<_Tp>::adjustROI,
+    template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(int, int, int, int)>("adjust_roi", &cv::Mat_<_Tp>::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
     template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Range&, const cv::Range&) const>("[]", &cv::Mat_<_Tp>::operator(),
       Arg("row_range"), Arg("col_range")).
@@ -104,7 +104,7 @@ inline void Mat__builder(Data_Type_T& klass)
       ArgBuffer("idx")).
     template define_method<const _Tp&(cv::Mat_<_Tp>::*)(const int*) const>("[]", &cv::Mat_<_Tp>::operator(),
       ArgBuffer("idx")).
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int)>("call", &cv::Mat_<_Tp>::operator(),
       Arg("idx0")).
     template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int) const>("[]", &cv::Mat_<_Tp>::operator(),
       Arg("idx0")).
@@ -132,7 +132,7 @@ inline void Mat__builder(Data_Type_T& klass)
       Arg("rows"), Arg("cols")).
     template define_singleton_function<cv::MatExpr(*)(cv::Size)>("zeros", &cv::Mat_<_Tp>::zeros,
       Arg("size")).
-    // TODO 
+    // TODO
     // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
     //  Arg("_ndims"), ArgBuffer("_sizes")).
     template define_singleton_function<cv::MatExpr(*)(int, int)>("ones", &cv::Mat_<_Tp>::ones,
@@ -195,28 +195,28 @@ inline void SparseMat__builder(Data_Type_T& klass)
       Arg("m")).
     template define_method<cv::SparseMat_<_Tp>&(cv::SparseMat_<_Tp>::*)(const cv::Mat&)>("assign", &cv::SparseMat_<_Tp>::operator=,
       Arg("m")).
-    define_method("clone", &cv::SparseMat_<_Tp>::clone).
-    define_method("create", &cv::SparseMat_<_Tp>::create,
+    template define_method<cv::SparseMat_<_Tp>(cv::SparseMat_<_Tp>::*)() const>("clone", &cv::SparseMat_<_Tp>::clone).
+    template define_method<void(cv::SparseMat_<_Tp>::*)(int, const int*)>("create", &cv::SparseMat_<_Tp>::create,
       Arg("dims"), ArgBuffer("_sizes")).
     define_method("type", &cv::SparseMat_<_Tp>::type).
     define_method("depth", &cv::SparseMat_<_Tp>::depth).
     define_method("channels", &cv::SparseMat_<_Tp>::channels).
     template define_method<_Tp&(cv::SparseMat_<_Tp>::*)(int, size_t*)>("ref", &cv::SparseMat_<_Tp>::ref,
-      Arg("i0"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp&(cv::SparseMat_<_Tp>::*)(int, int, size_t*)>("ref", &cv::SparseMat_<_Tp>::ref,
-      Arg("i0"), Arg("i1"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp&(cv::SparseMat_<_Tp>::*)(int, int, int, size_t*)>("ref", &cv::SparseMat_<_Tp>::ref,
-      Arg("i0"), Arg("i1"), Arg("i2"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp&(cv::SparseMat_<_Tp>::*)(const int*, size_t*)>("ref", &cv::SparseMat_<_Tp>::ref,
-      ArgBuffer("idx"), Arg("hashval") = static_cast<size_t*>(0)).
+      ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
-      Arg("i0"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
-      Arg("i0"), Arg("i1"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
-      Arg("i0"), Arg("i1"), Arg("i2"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp(cv::SparseMat_<_Tp>::*)(const int*, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
-      ArgBuffer("idx"), Arg("hashval") = static_cast<size_t*>(0)).
+      ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_iterator<cv::SparseMatIterator_<_Tp>(cv::SparseMat_<_Tp>::*)()>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each").
     template define_iterator<cv::SparseMatConstIterator_<_Tp>(cv::SparseMat_<_Tp>::*)() const>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each_const").
     // Provide access to SparseMatIterator_<_Tp> because it has additional methods on it
@@ -277,14 +277,14 @@ inline void MatConstIterator__builder(Data_Type_T& klass)
       Arg("_m"), ArgBuffer("_idx")).
     define_constructor(Constructor<cv::MatConstIterator_<_Tp>, const cv::MatConstIterator_<_Tp>&>(),
       Arg("it")).
-    define_method("assign", &cv::MatConstIterator_<_Tp>::operator=,
+    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)(const cv::MatConstIterator_<_Tp>&)>("assign", &cv::MatConstIterator_<_Tp>::operator=,
       Arg("it")).
-    define_method("dereference", &cv::MatConstIterator_<_Tp>::operator*).
-    define_method("[]", &cv::MatConstIterator_<_Tp>::operator[],
+    template define_method<const _Tp&(cv::MatConstIterator_<_Tp>::*)() const>("dereference", &cv::MatConstIterator_<_Tp>::operator*).
+    template define_method<const _Tp&(cv::MatConstIterator_<_Tp>::*)(ptrdiff_t) const>("[]", &cv::MatConstIterator_<_Tp>::operator[],
       Arg("i")).
-    define_method("assign_plus", &cv::MatConstIterator_<_Tp>::operator+=,
+    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)(ptrdiff_t)>("assign_plus", &cv::MatConstIterator_<_Tp>::operator+=,
       Arg("ofs")).
-    define_method("assign_minus", &cv::MatConstIterator_<_Tp>::operator-=,
+    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)(ptrdiff_t)>("assign_minus", &cv::MatConstIterator_<_Tp>::operator-=,
       Arg("ofs")).
     template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("decrement_pre", &cv::MatConstIterator_<_Tp>::operator--).
     template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("decrement", &cv::MatConstIterator_<_Tp>::operator--,
@@ -292,7 +292,7 @@ inline void MatConstIterator__builder(Data_Type_T& klass)
     template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("increment_pre", &cv::MatConstIterator_<_Tp>::operator++).
     template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment", &cv::MatConstIterator_<_Tp>::operator++,
       Arg("arg_0")).
-    define_method("pos", &cv::MatConstIterator_<_Tp>::pos);
+    template define_method<cv::Point(cv::MatConstIterator_<_Tp>::*)() const>("pos", &cv::MatConstIterator_<_Tp>::pos);
 };
 
 template<typename Data_Type_T, typename _Tp>
@@ -309,14 +309,14 @@ inline void MatIterator__builder(Data_Type_T& klass)
       Arg("_m"), ArgBuffer("_idx")).
     define_constructor(Constructor<cv::MatIterator_<_Tp>, const cv::MatIterator_<_Tp>&>(),
       Arg("it")).
-    define_method("assign", &cv::MatIterator_<_Tp>::operator=,
+    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)(const cv::MatIterator_<_Tp>&)>("assign", &cv::MatIterator_<_Tp>::operator=,
       Arg("it")).
-    define_method("dereference", &cv::MatIterator_<_Tp>::operator*).
-    define_method("[]", &cv::MatIterator_<_Tp>::operator[],
+    template define_method<_Tp&(cv::MatIterator_<_Tp>::*)() const>("dereference", &cv::MatIterator_<_Tp>::operator*).
+    template define_method<_Tp&(cv::MatIterator_<_Tp>::*)(ptrdiff_t) const>("[]", &cv::MatIterator_<_Tp>::operator[],
       Arg("i")).
-    define_method("assign_plus", &cv::MatIterator_<_Tp>::operator+=,
+    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)(ptrdiff_t)>("assign_plus", &cv::MatIterator_<_Tp>::operator+=,
       Arg("ofs")).
-    define_method("assign_minus", &cv::MatIterator_<_Tp>::operator-=,
+    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)(ptrdiff_t)>("assign_minus", &cv::MatIterator_<_Tp>::operator-=,
       Arg("ofs")).
     template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("decrement_pre", &cv::MatIterator_<_Tp>::operator--).
     template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("decrement", &cv::MatIterator_<_Tp>::operator--,
@@ -364,7 +364,7 @@ inline void SparseMatConstIterator__builder(Data_Type_T& klass)
       Arg("_m")).
     define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>, const cv::SparseMatConstIterator_<_Tp>&>(),
       Arg("it")).
-    define_method("assign", &cv::SparseMatConstIterator_<_Tp>::operator=,
+    template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)(const cv::SparseMatConstIterator_<_Tp>&)>("assign", &cv::SparseMatConstIterator_<_Tp>::operator=,
       Arg("it")).
     define_method("dereference", &cv::SparseMatConstIterator_<_Tp>::operator*).
     template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment_pre", &cv::SparseMatConstIterator_<_Tp>::operator++).
@@ -393,9 +393,9 @@ inline void SparseMatIterator__builder(Data_Type_T& klass)
       Arg("_m")).
     define_constructor(Constructor<cv::SparseMatIterator_<_Tp>, const cv::SparseMatIterator_<_Tp>&>(),
       Arg("it")).
-    define_method("assign", &cv::SparseMatIterator_<_Tp>::operator=,
+    template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)(const cv::SparseMatIterator_<_Tp>&)>("assign", &cv::SparseMatIterator_<_Tp>::operator=,
       Arg("it")).
-    define_method("dereference", &cv::SparseMatIterator_<_Tp>::operator*).
+    template define_method<_Tp&(cv::SparseMatIterator_<_Tp>::*)() const>("dereference", &cv::SparseMatIterator_<_Tp>::operator*).
     template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment_pre", &cv::SparseMatIterator_<_Tp>::operator++).
     template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment", &cv::SparseMatIterator_<_Tp>::operator++,
       Arg("arg_0"));
@@ -546,7 +546,7 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::GpuMat&>(),
       Arg("d_mat")).
     // TODO
-    // define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
+    //define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
     //  Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, cv::ogl::Buffer&>(),
       Arg("buf")).
@@ -563,7 +563,7 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::_OutputArray, const cv::cuda::GpuMat&>(),
       Arg("d_mat")).
     // TODO
-    //define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
+    // define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
     //  Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, const cv::ogl::Buffer&>(),
       Arg("buf")).
@@ -669,7 +669,7 @@ void Init_Core_Mat()
 
   Rice::Data_Type<cv::MatAllocator> rb_cCvMatAllocator = define_class_under<cv::MatAllocator>(rb_mCv, "MatAllocator").
     define_method<cv::UMatData*(cv::MatAllocator::*)(int, const int*, int, void*, size_t*, cv::AccessFlag, cv::UMatUsageFlags) const>("allocate", &cv::MatAllocator::allocate,
-      Arg("dims"), ArgBuffer("sizes"), Arg("type"), ArgBuffer("data"), Arg("step"), Arg("flags"), Arg("usage_flags")).
+      Arg("dims"), ArgBuffer("sizes"), Arg("type"), ArgBuffer("data"), ArgBuffer("step"), Arg("flags"), Arg("usage_flags")).
     define_method<bool(cv::MatAllocator::*)(cv::UMatData*, cv::AccessFlag, cv::UMatUsageFlags) const>("allocate", &cv::MatAllocator::allocate,
       Arg("data"), Arg("accessflags"), Arg("usage_flags")).
     define_method("deallocate", &cv::MatAllocator::deallocate,
@@ -788,7 +788,7 @@ void Init_Core_Mat()
     int, cv::Vec<int, 2>, cv::Vec<int, 3>, cv::Vec<int, 4>,
     float, cv::Vec<float, 2>, cv::Vec<float, 3>, cv::Vec<float, 4>,
     double, cv::Vec<double, 2>, cv::Vec<double, 3>, cv::Vec<double, 4>>;
-    
+
   rb_cCvMat = define_class_under<cv::Mat>(rb_mCv, "Mat").
     define_constructor(Constructor<cv::Mat>()).
     define_constructor(Constructor<cv::Mat, int, int, int>(),
@@ -814,9 +814,9 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::Mat, cv::Size, int, void*, size_t>(),
       Arg("size"), Arg("type"), ArgBuffer("data"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP)).
     define_constructor(Constructor<cv::Mat, int, const int*, int, void*, const size_t*>(),
-      Arg("ndims"), ArgBuffer("sizes"), Arg("type"), ArgBuffer("data"), Arg("steps") = static_cast<const size_t*>(0)).
+      Arg("ndims"), ArgBuffer("sizes"), Arg("type"), ArgBuffer("data"), ArgBuffer("steps") = static_cast<const size_t*>(0)).
     define_constructor(Constructor<cv::Mat, const std::vector<int>&, int, void*, const size_t*>(),
-      Arg("sizes"), Arg("type"), ArgBuffer("data"), Arg("steps") = static_cast<const size_t*>(0)).
+      Arg("sizes"), Arg("type"), ArgBuffer("data"), ArgBuffer("steps") = static_cast<const size_t*>(0)).
     define_constructor(Constructor<cv::Mat, const cv::Mat&, const cv::Range&, const cv::Range&>(),
       Arg("m"), Arg("row_range"), Arg("col_range") = static_cast<const cv::Range&>(cv::Range::all())).
     define_constructor(Constructor<cv::Mat, const cv::Mat&, const cv::Rect&>(),
@@ -928,21 +928,21 @@ void Init_Core_Mat()
     define_method("check_vector", &cv::Mat::checkVector,
       Arg("elem_channels"), Arg("depth") = static_cast<int>(-1), Arg("require_continuous") = static_cast<bool>(true)).
     define_method<uchar*(cv::Mat::*)(int)>("ptr", &cv::Mat::ptr,
-      Arg("i0") = static_cast<int>(0)).
+      Arg("i0") = static_cast<int>(0), ReturnBuffer()).
     define_method<const uchar*(cv::Mat::*)(int) const>("ptr", &cv::Mat::ptr,
-      Arg("i0") = static_cast<int>(0)).
+      Arg("i0") = static_cast<int>(0), ReturnBuffer()).
     define_method<uchar*(cv::Mat::*)(int, int)>("ptr", &cv::Mat::ptr,
-      Arg("row"), Arg("col")).
+      Arg("row"), Arg("col"), ReturnBuffer()).
     define_method<const uchar*(cv::Mat::*)(int, int) const>("ptr", &cv::Mat::ptr,
-      Arg("row"), Arg("col")).
+      Arg("row"), Arg("col"), ReturnBuffer()).
     define_method<uchar*(cv::Mat::*)(int, int, int)>("ptr", &cv::Mat::ptr,
-      Arg("i0"), Arg("i1"), Arg("i2")).
+      Arg("i0"), Arg("i1"), Arg("i2"), ReturnBuffer()).
     define_method<const uchar*(cv::Mat::*)(int, int, int) const>("ptr", &cv::Mat::ptr,
-      Arg("i0"), Arg("i1"), Arg("i2")).
+      Arg("i0"), Arg("i1"), Arg("i2"), ReturnBuffer()).
     define_method<uchar*(cv::Mat::*)(const int*)>("ptr", &cv::Mat::ptr,
-      ArgBuffer("idx")).
+      ArgBuffer("idx"), ReturnBuffer()).
     define_method<const uchar*(cv::Mat::*)(const int*) const>("ptr", &cv::Mat::ptr,
-      ArgBuffer("idx")).
+      ArgBuffer("idx"), ReturnBuffer()).
     define_method<cv::Mat&(cv::Mat::*)(cv::Mat&&)>("assign", &cv::Mat::operator=,
       Arg("m")).
     define_attr("flags", &cv::Mat::flags).
@@ -957,7 +957,7 @@ void Init_Core_Mat()
     define_method("update_continuity_flag", &cv::Mat::updateContinuityFlag).
     define_attr("u", &cv::Mat::u).
     define_attr("size", &cv::Mat::size).
-    define_attr("step", &cv::Mat::step, AttrAccess::Read).
+    define_attr("step", &cv::Mat::step, Rice::AttrAccess::Read).
     define_singleton_function<cv::Mat(*)(const cv::Mat&)>("diag", &cv::Mat::diag,
       Arg("d")).
     define_singleton_function<cv::MatExpr(*)(int, int, int)>("zeros", &cv::Mat::zeros,
@@ -1075,7 +1075,7 @@ void Init_Core_Mat()
     }
   });
   rb_define_alias(rb_cCvMat, "at", "[]");
-    
+
   rb_cCvMat.define_method("[]=", [](cv::Mat& self, int x, int y, Variant_T value) -> cv::Mat&
   {
     switch (self.type())
@@ -1467,8 +1467,8 @@ void Init_Core_Mat()
         return self;
       }
     }, Arg("proc").setValue() = Qnil, Return().setValue());
-    
-    
+
+
   rb_cCvMat.define_constant("MAGIC_VAL", (int)cv::Mat::MAGIC_VAL);
   rb_cCvMat.define_constant("AUTO_STEP", (int)cv::Mat::AUTO_STEP);
   rb_cCvMat.define_constant("CONTINUOUS_FLAG", (int)cv::Mat::CONTINUOUS_FLAG);
@@ -1478,78 +1478,78 @@ void Init_Core_Mat()
   rb_cCvMat.define_constant("TYPE_MASK", (int)cv::Mat::TYPE_MASK);
   rb_cCvMat.define_constant("DEPTH_MASK", (int)cv::Mat::DEPTH_MASK);
 
-  Rice::Data_Type<cv::Mat_<uchar>> rb_cMat1b = define_class_under<cv::Mat_<uchar>>(rb_mCv, "MatUnsignedChar").
+  Rice::Data_Type<cv::Mat_<uchar>> rb_cMat1b = define_class_under<cv::Mat_<uchar>>(rb_mCv, "Mat1b").
     define(&Mat__builder<Data_Type<cv::Mat_<uchar>>, unsigned char>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>> rb_cMat2b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 2>>>(rb_mCv, "MatCvVecUnsignedChar2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>> rb_cMat2b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 2>>>(rb_mCv, "Mat2b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>>, cv::Vec<unsigned char, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>> rb_cMat3b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 3>>>(rb_mCv, "MatCvVecUnsignedChar3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>> rb_cMat3b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 3>>>(rb_mCv, "Mat3b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>>, cv::Vec<unsigned char, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>> rb_cMat4b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 4>>>(rb_mCv, "MatCvVecUnsignedChar4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>> rb_cMat4b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 4>>>(rb_mCv, "Mat4b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>>, cv::Vec<unsigned char, 4>>);
 
-  Rice::Data_Type<cv::Mat_<short>> rb_cMat1s = define_class_under<cv::Mat_<short>>(rb_mCv, "MatShort").
+  Rice::Data_Type<cv::Mat_<short>> rb_cMat1s = define_class_under<cv::Mat_<short>>(rb_mCv, "Mat1s").
     define(&Mat__builder<Data_Type<cv::Mat_<short>>, short>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 2>>> rb_cMat2s = define_class_under<cv::Mat_<cv::Vec<short, 2>>>(rb_mCv, "MatCvVecShort2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 2>>> rb_cMat2s = define_class_under<cv::Mat_<cv::Vec<short, 2>>>(rb_mCv, "Mat2s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 2>>>, cv::Vec<short, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 3>>> rb_cMat3s = define_class_under<cv::Mat_<cv::Vec<short, 3>>>(rb_mCv, "MatCvVecShort3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 3>>> rb_cMat3s = define_class_under<cv::Mat_<cv::Vec<short, 3>>>(rb_mCv, "Mat3s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 3>>>, cv::Vec<short, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 4>>> rb_cMat4s = define_class_under<cv::Mat_<cv::Vec<short, 4>>>(rb_mCv, "MatCvVecShort4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 4>>> rb_cMat4s = define_class_under<cv::Mat_<cv::Vec<short, 4>>>(rb_mCv, "Mat4s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 4>>>, cv::Vec<short, 4>>);
 
-  Rice::Data_Type<cv::Mat_<ushort>> rb_cMat1w = define_class_under<cv::Mat_<ushort>>(rb_mCv, "MatUnsignedShort").
+  Rice::Data_Type<cv::Mat_<ushort>> rb_cMat1w = define_class_under<cv::Mat_<ushort>>(rb_mCv, "Mat1w").
     define(&Mat__builder<Data_Type<cv::Mat_<ushort>>, unsigned short>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>> rb_cMat2w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 2>>>(rb_mCv, "MatCvVecUnsignedShort2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>> rb_cMat2w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 2>>>(rb_mCv, "Mat2w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>>, cv::Vec<unsigned short, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>> rb_cMat3w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 3>>>(rb_mCv, "MatCvVecUnsignedShort3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>> rb_cMat3w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 3>>>(rb_mCv, "Mat3w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>>, cv::Vec<unsigned short, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>> rb_cMat4w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 4>>>(rb_mCv, "MatCvVecUnsignedShort4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>> rb_cMat4w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 4>>>(rb_mCv, "Mat4w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>>, cv::Vec<unsigned short, 4>>);
 
-  Rice::Data_Type<cv::Mat_<int>> rb_cMat1i = define_class_under<cv::Mat_<int>>(rb_mCv, "MatInt").
+  Rice::Data_Type<cv::Mat_<int>> rb_cMat1i = define_class_under<cv::Mat_<int>>(rb_mCv, "Mat1i").
     define(&Mat__builder<Data_Type<cv::Mat_<int>>, int>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 2>>> rb_cMat2i = define_class_under<cv::Mat_<cv::Vec<int, 2>>>(rb_mCv, "MatCvVecInt2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 2>>> rb_cMat2i = define_class_under<cv::Mat_<cv::Vec<int, 2>>>(rb_mCv, "Mat2i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 2>>>, cv::Vec<int, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 3>>> rb_cMat3i = define_class_under<cv::Mat_<cv::Vec<int, 3>>>(rb_mCv, "MatCvVecInt3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 3>>> rb_cMat3i = define_class_under<cv::Mat_<cv::Vec<int, 3>>>(rb_mCv, "Mat3i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 3>>>, cv::Vec<int, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 4>>> rb_cMat4i = define_class_under<cv::Mat_<cv::Vec<int, 4>>>(rb_mCv, "MatCvVecInt4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 4>>> rb_cMat4i = define_class_under<cv::Mat_<cv::Vec<int, 4>>>(rb_mCv, "Mat4i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 4>>>, cv::Vec<int, 4>>);
 
-  Rice::Data_Type<cv::Mat_<float>> rb_cMat1f = define_class_under<cv::Mat_<float>>(rb_mCv, "MatFloat").
+  Rice::Data_Type<cv::Mat_<float>> rb_cMat1f = define_class_under<cv::Mat_<float>>(rb_mCv, "Mat1f").
     define(&Mat__builder<Data_Type<cv::Mat_<float>>, float>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 2>>> rb_cMat2f = define_class_under<cv::Mat_<cv::Vec<float, 2>>>(rb_mCv, "MatCvVecFloat2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 2>>> rb_cMat2f = define_class_under<cv::Mat_<cv::Vec<float, 2>>>(rb_mCv, "Mat2f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 2>>>, cv::Vec<float, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 3>>> rb_cMat3f = define_class_under<cv::Mat_<cv::Vec<float, 3>>>(rb_mCv, "MatCvVecFloat3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 3>>> rb_cMat3f = define_class_under<cv::Mat_<cv::Vec<float, 3>>>(rb_mCv, "Mat3f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 3>>>, cv::Vec<float, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 4>>> rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>>(rb_mCv, "MatCvVecFloat4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 4>>> rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>>(rb_mCv, "Mat4f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 4>>>, cv::Vec<float, 4>>);
 
-  Rice::Data_Type<cv::Mat_<double>> rb_cMat1d = define_class_under<cv::Mat_<double>>(rb_mCv, "MatDouble").
+  Rice::Data_Type<cv::Mat_<double>> rb_cMat1d = define_class_under<cv::Mat_<double>>(rb_mCv, "Mat1d").
     define(&Mat__builder<Data_Type<cv::Mat_<double>>, double>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 2>>> rb_cMat2d = define_class_under<cv::Mat_<cv::Vec<double, 2>>>(rb_mCv, "MatCvVecDouble2").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 2>>> rb_cMat2d = define_class_under<cv::Mat_<cv::Vec<double, 2>>>(rb_mCv, "Mat2d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 2>>>, cv::Vec<double, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 3>>> rb_cMat3d = define_class_under<cv::Mat_<cv::Vec<double, 3>>>(rb_mCv, "MatCvVecDouble3").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 3>>> rb_cMat3d = define_class_under<cv::Mat_<cv::Vec<double, 3>>>(rb_mCv, "Mat3d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 3>>>, cv::Vec<double, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 4>>> rb_cMat4d = define_class_under<cv::Mat_<cv::Vec<double, 4>>>(rb_mCv, "MatCvVecDouble4").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 4>>> rb_cMat4d = define_class_under<cv::Mat_<cv::Vec<double, 4>>>(rb_mCv, "Mat4d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 4>>>, cv::Vec<double, 4>>);
-
+    
   // Manual
   // Define friendly class names for Pointer<T>
   define_pointer<cv::Vec<unsigned char, 2>>(u8"Pointer≺Cv꞉꞉Vec2b≻");
@@ -1703,7 +1703,7 @@ void Init_Core_Mat()
     define_method("handle", &cv::UMat::handle,
       Arg("access_flags"), ReturnBuffer()).
     define_method("ndoffset", &cv::UMat::ndoffset,
-      Arg("ofs")).
+      ArgBuffer("ofs")).
     define_attr("flags", &cv::UMat::flags).
     define_attr("dims", &cv::UMat::dims).
     define_attr("rows", &cv::UMat::rows).
@@ -1714,7 +1714,7 @@ void Init_Core_Mat()
     define_attr("u", &cv::UMat::u).
     define_attr("offset", &cv::UMat::offset).
     define_attr("size", &cv::UMat::size).
-    define_attr("step", &cv::UMat::step, AttrAccess::Read).
+    define_attr("step", &cv::UMat::step, Rice::AttrAccess::Read).
     define_singleton_function<cv::UMat(*)(const cv::UMat&, cv::UMatUsageFlags)>("diag", &cv::UMat::diag,
       Arg("d"), Arg("usage_flags")).
     define_singleton_function<cv::UMat(*)(const cv::UMat&)>("diag", &cv::UMat::diag,
@@ -1810,19 +1810,19 @@ void Init_Core_Mat()
     define_method<size_t(cv::SparseMat::*)(const int*) const>("hash", &cv::SparseMat::hash,
       ArgBuffer("idx")).
     define_method<uchar*(cv::SparseMat::*)(int, bool, size_t*)>("ptr", &cv::SparseMat::ptr,
-      Arg("i0"), Arg("create_missing"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("create_missing"), ArgBuffer("hashval") = static_cast<size_t*>(0), ReturnBuffer()).
     define_method<uchar*(cv::SparseMat::*)(int, int, bool, size_t*)>("ptr", &cv::SparseMat::ptr,
-      Arg("i0"), Arg("i1"), Arg("create_missing"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), Arg("create_missing"), ArgBuffer("hashval") = static_cast<size_t*>(0), ReturnBuffer()).
     define_method<uchar*(cv::SparseMat::*)(int, int, int, bool, size_t*)>("ptr", &cv::SparseMat::ptr,
-      Arg("i0"), Arg("i1"), Arg("i2"), Arg("create_missing"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), Arg("i2"), Arg("create_missing"), ArgBuffer("hashval") = static_cast<size_t*>(0), ReturnBuffer()).
     define_method<uchar*(cv::SparseMat::*)(const int*, bool, size_t*)>("ptr", &cv::SparseMat::ptr,
-      ArgBuffer("idx"), Arg("create_missing"), Arg("hashval") = static_cast<size_t*>(0)).
+      ArgBuffer("idx"), Arg("create_missing"), ArgBuffer("hashval") = static_cast<size_t*>(0), ReturnBuffer()).
     define_method<void(cv::SparseMat::*)(int, int, size_t*)>("erase", &cv::SparseMat::erase,
-      Arg("i0"), Arg("i1"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     define_method<void(cv::SparseMat::*)(int, int, int, size_t*)>("erase", &cv::SparseMat::erase,
-      Arg("i0"), Arg("i1"), Arg("i2"), Arg("hashval") = static_cast<size_t*>(0)).
+      Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     define_method<void(cv::SparseMat::*)(const int*, size_t*)>("erase", &cv::SparseMat::erase,
-      ArgBuffer("idx"), Arg("hashval") = static_cast<size_t*>(0)).
+      ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     // TODO
     // define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each").
     //define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const").
@@ -1831,7 +1831,7 @@ void Init_Core_Mat()
     define_method<const cv::SparseMat::Node*(cv::SparseMat::*)(size_t) const>("node", &cv::SparseMat::node,
       Arg("nidx")).
     define_method("new_node", &cv::SparseMat::newNode,
-      ArgBuffer("idx"), Arg("hashval")).
+      ArgBuffer("idx"), Arg("hashval"), ReturnBuffer()).
     define_method("remove_node", &cv::SparseMat::removeNode,
       Arg("hidx"), Arg("nidx"), Arg("previdx")).
     define_method("resize_hash_tab", &cv::SparseMat::resizeHashTab,
@@ -1871,15 +1871,16 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, cv::Point>(),
       Arg("_m"), Arg("_pt")).
     // TODO
-    //define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
+    // define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
     //  Arg("_m"), ArgBuffer("_idx")).
     define_constructor(Constructor<cv::MatConstIterator, const cv::MatConstIterator&>(),
       Arg("it")).
     define_method("assign", &cv::MatConstIterator::operator=,
       Arg("it")).
-    define_method("dereference", &cv::MatConstIterator::operator*).
+    define_method("dereference", &cv::MatConstIterator::operator*,
+      ReturnBuffer()).
     define_method("[]", &cv::MatConstIterator::operator[],
-      Arg("i")).
+      Arg("i"), ReturnBuffer()).
     define_method("assign_plus", &cv::MatConstIterator::operator+=,
       Arg("ofs")).
     define_method("assign_minus", &cv::MatConstIterator::operator-=,
@@ -1914,7 +1915,7 @@ void Init_Core_Mat()
       Arg("it")).
     define_method("node", &cv::SparseMatConstIterator::node).
     // TODO
-    // define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement_pre", &cv::SparseMatConstIterator::operator--).
+    //define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement_pre", &cv::SparseMatConstIterator::operator--).
     //define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement", &cv::SparseMatConstIterator::operator--,
     //  Arg("arg_0")).
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment_pre", &cv::SparseMatConstIterator::operator++).
@@ -1930,13 +1931,13 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
       Arg("_m")).
     // TODO
-    // define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
+    //define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
     //  Arg("_m"), ArgBuffer("idx")).
     define_constructor(Constructor<cv::SparseMatIterator, const cv::SparseMatIterator&>(),
       Arg("it")).
-    define_method("assign", &cv::SparseMatIterator::operator=,
+    define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,
       Arg("it")).
-    define_method("node", &cv::SparseMatIterator::node).
+    define_method<cv::SparseMat::Node*(cv::SparseMatIterator::*)() const>("node", &cv::SparseMatIterator::node).
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)()>("increment_pre", &cv::SparseMatIterator::operator++).
     define_method<cv::SparseMatIterator(cv::SparseMatIterator::*)(int)>("increment", &cv::SparseMatIterator::operator++,
       Arg("arg_0"));

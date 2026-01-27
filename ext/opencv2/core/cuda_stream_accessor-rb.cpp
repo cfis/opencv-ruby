@@ -9,6 +9,11 @@ void Init_Core_CudaStreamAccessor()
 
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
+  // Manually added - external opaque types from CUDA headers (forward-declared
+  // structs with no definition). These are used by StreamAccessor/EventAccessor.
+  define_class<CUstream_st>("CUstreamSt");
+  define_class<CUevent_st>("CUeventSt");
+
   Rice::Data_Type<cv::cuda::StreamAccessor> rb_cCvCudaStreamAccessor = define_class_under<cv::cuda::StreamAccessor>(rb_mCvCuda, "StreamAccessor").
     define_constructor(Constructor<cv::cuda::StreamAccessor>()).
     define_singleton_function("get_stream", &cv::cuda::StreamAccessor::getStream,

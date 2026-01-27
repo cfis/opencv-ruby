@@ -114,7 +114,7 @@ void Init_Core_Cuda()
 #if RUBY_CV_VERSION >= 409
   rb_cCvCudaGpuMat.
     define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, int, double, double, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
-      Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("beta"), Arg("stream")).
+      Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("beta"), Arg("stream"));
 #endif
   rb_cCvCudaGpuMat.
     define_method("assign_to", &cv::cuda::GpuMat::assignTo,

@@ -12,4 +12,4 @@
 #define CV_32U  12
 
 extern "C"
-void Init_Interface();
+void Init_Core_Hal_Interface();

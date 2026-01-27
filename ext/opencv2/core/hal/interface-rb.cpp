@@ -3,7 +3,7 @@
 
 using namespace Rice;
 
-void Init_Interface()
+void Init_Core_Hal_Interface()
 {
   Class(rb_cObject).define_constant("CV_HAL_ERROR_OK", CV_HAL_ERROR_OK);
   Class(rb_cObject).define_constant("CV_HAL_ERROR_NOT_IMPLEMENTED", CV_HAL_ERROR_NOT_IMPLEMENTED);

@@ -7,7 +7,8 @@ void Init_Videoio()
 {
   Rice::Data_Type<CvCapture> rb_cCvCapture = define_class<CvCapture>("CvCapture");
 
-  Rice::Data_Type<CvVideoWriter> rb_cCvVideoWriter = define_class<CvVideoWriter>("CvVideoWriter");
+  // Manual name to avoid conflict with cv::VideoWriter class
+  Rice::Data_Type<CvVideoWriter> rb_cCvVideoWriterLegacy = define_class<CvVideoWriter>("CvVideoWriter");
 
   Module rb_mCv = define_module("Cv");
 

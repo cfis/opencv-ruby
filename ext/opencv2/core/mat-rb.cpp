@@ -1478,76 +1478,76 @@ void Init_Core_Mat()
   rb_cCvMat.define_constant("TYPE_MASK", (int)cv::Mat::TYPE_MASK);
   rb_cCvMat.define_constant("DEPTH_MASK", (int)cv::Mat::DEPTH_MASK);
 
-  Rice::Data_Type<cv::Mat_<uchar>> rb_cMat1b = define_class_under<cv::Mat_<uchar>>(rb_mCv, "Mat1b").
+  Rice::Data_Type<cv::Mat_<uchar>> rb_cMat1b = define_class_under<cv::Mat_<uchar>, cv::Mat>(rb_mCv, "Mat1b").
     define(&Mat__builder<Data_Type<cv::Mat_<uchar>>, unsigned char>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>> rb_cMat2b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 2>>>(rb_mCv, "Mat2b").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>> rb_cMat2b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 2>>, cv::Mat>(rb_mCv, "Mat2b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 2>>>, cv::Vec<unsigned char, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>> rb_cMat3b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 3>>>(rb_mCv, "Mat3b").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>> rb_cMat3b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 3>>, cv::Mat>(rb_mCv, "Mat3b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 3>>>, cv::Vec<unsigned char, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>> rb_cMat4b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 4>>>(rb_mCv, "Mat4b").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>> rb_cMat4b = define_class_under<cv::Mat_<cv::Vec<unsigned char, 4>>, cv::Mat>(rb_mCv, "Mat4b").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned char, 4>>>, cv::Vec<unsigned char, 4>>);
 
-  Rice::Data_Type<cv::Mat_<short>> rb_cMat1s = define_class_under<cv::Mat_<short>>(rb_mCv, "Mat1s").
+  Rice::Data_Type<cv::Mat_<short>> rb_cMat1s = define_class_under<cv::Mat_<short>, cv::Mat>(rb_mCv, "Mat1s").
     define(&Mat__builder<Data_Type<cv::Mat_<short>>, short>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 2>>> rb_cMat2s = define_class_under<cv::Mat_<cv::Vec<short, 2>>>(rb_mCv, "Mat2s").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 2>>> rb_cMat2s = define_class_under<cv::Mat_<cv::Vec<short, 2>>, cv::Mat>(rb_mCv, "Mat2s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 2>>>, cv::Vec<short, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 3>>> rb_cMat3s = define_class_under<cv::Mat_<cv::Vec<short, 3>>>(rb_mCv, "Mat3s").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 3>>> rb_cMat3s = define_class_under<cv::Mat_<cv::Vec<short, 3>>, cv::Mat>(rb_mCv, "Mat3s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 3>>>, cv::Vec<short, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<short, 4>>> rb_cMat4s = define_class_under<cv::Mat_<cv::Vec<short, 4>>>(rb_mCv, "Mat4s").
+  Rice::Data_Type<cv::Mat_<cv::Vec<short, 4>>> rb_cMat4s = define_class_under<cv::Mat_<cv::Vec<short, 4>>, cv::Mat>(rb_mCv, "Mat4s").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<short, 4>>>, cv::Vec<short, 4>>);
 
-  Rice::Data_Type<cv::Mat_<ushort>> rb_cMat1w = define_class_under<cv::Mat_<ushort>>(rb_mCv, "Mat1w").
+  Rice::Data_Type<cv::Mat_<ushort>> rb_cMat1w = define_class_under<cv::Mat_<ushort>, cv::Mat>(rb_mCv, "Mat1w").
     define(&Mat__builder<Data_Type<cv::Mat_<ushort>>, unsigned short>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>> rb_cMat2w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 2>>>(rb_mCv, "Mat2w").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>> rb_cMat2w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 2>>, cv::Mat>(rb_mCv, "Mat2w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 2>>>, cv::Vec<unsigned short, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>> rb_cMat3w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 3>>>(rb_mCv, "Mat3w").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>> rb_cMat3w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 3>>, cv::Mat>(rb_mCv, "Mat3w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 3>>>, cv::Vec<unsigned short, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>> rb_cMat4w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 4>>>(rb_mCv, "Mat4w").
+  Rice::Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>> rb_cMat4w = define_class_under<cv::Mat_<cv::Vec<unsigned short, 4>>, cv::Mat>(rb_mCv, "Mat4w").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<unsigned short, 4>>>, cv::Vec<unsigned short, 4>>);
 
-  Rice::Data_Type<cv::Mat_<int>> rb_cMat1i = define_class_under<cv::Mat_<int>>(rb_mCv, "Mat1i").
+  Rice::Data_Type<cv::Mat_<int>> rb_cMat1i = define_class_under<cv::Mat_<int>, cv::Mat>(rb_mCv, "Mat1i").
     define(&Mat__builder<Data_Type<cv::Mat_<int>>, int>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 2>>> rb_cMat2i = define_class_under<cv::Mat_<cv::Vec<int, 2>>>(rb_mCv, "Mat2i").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 2>>> rb_cMat2i = define_class_under<cv::Mat_<cv::Vec<int, 2>>, cv::Mat>(rb_mCv, "Mat2i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 2>>>, cv::Vec<int, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 3>>> rb_cMat3i = define_class_under<cv::Mat_<cv::Vec<int, 3>>>(rb_mCv, "Mat3i").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 3>>> rb_cMat3i = define_class_under<cv::Mat_<cv::Vec<int, 3>>, cv::Mat>(rb_mCv, "Mat3i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 3>>>, cv::Vec<int, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<int, 4>>> rb_cMat4i = define_class_under<cv::Mat_<cv::Vec<int, 4>>>(rb_mCv, "Mat4i").
+  Rice::Data_Type<cv::Mat_<cv::Vec<int, 4>>> rb_cMat4i = define_class_under<cv::Mat_<cv::Vec<int, 4>>, cv::Mat>(rb_mCv, "Mat4i").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<int, 4>>>, cv::Vec<int, 4>>);
 
-  Rice::Data_Type<cv::Mat_<float>> rb_cMat1f = define_class_under<cv::Mat_<float>>(rb_mCv, "Mat1f").
+  Rice::Data_Type<cv::Mat_<float>> rb_cMat1f = define_class_under<cv::Mat_<float>, cv::Mat>(rb_mCv, "Mat1f").
     define(&Mat__builder<Data_Type<cv::Mat_<float>>, float>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 2>>> rb_cMat2f = define_class_under<cv::Mat_<cv::Vec<float, 2>>>(rb_mCv, "Mat2f").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 2>>> rb_cMat2f = define_class_under<cv::Mat_<cv::Vec<float, 2>>, cv::Mat>(rb_mCv, "Mat2f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 2>>>, cv::Vec<float, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 3>>> rb_cMat3f = define_class_under<cv::Mat_<cv::Vec<float, 3>>>(rb_mCv, "Mat3f").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 3>>> rb_cMat3f = define_class_under<cv::Mat_<cv::Vec<float, 3>>, cv::Mat>(rb_mCv, "Mat3f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 3>>>, cv::Vec<float, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<float, 4>>> rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>>(rb_mCv, "Mat4f").
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 4>>> rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>, cv::Mat>(rb_mCv, "Mat4f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 4>>>, cv::Vec<float, 4>>);
 
-  Rice::Data_Type<cv::Mat_<double>> rb_cMat1d = define_class_under<cv::Mat_<double>>(rb_mCv, "Mat1d").
+  Rice::Data_Type<cv::Mat_<double>> rb_cMat1d = define_class_under<cv::Mat_<double>, cv::Mat>(rb_mCv, "Mat1d").
     define(&Mat__builder<Data_Type<cv::Mat_<double>>, double>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 2>>> rb_cMat2d = define_class_under<cv::Mat_<cv::Vec<double, 2>>>(rb_mCv, "Mat2d").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 2>>> rb_cMat2d = define_class_under<cv::Mat_<cv::Vec<double, 2>>, cv::Mat>(rb_mCv, "Mat2d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 2>>>, cv::Vec<double, 2>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 3>>> rb_cMat3d = define_class_under<cv::Mat_<cv::Vec<double, 3>>>(rb_mCv, "Mat3d").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 3>>> rb_cMat3d = define_class_under<cv::Mat_<cv::Vec<double, 3>>, cv::Mat>(rb_mCv, "Mat3d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 3>>>, cv::Vec<double, 3>>);
 
-  Rice::Data_Type<cv::Mat_<cv::Vec<double, 4>>> rb_cMat4d = define_class_under<cv::Mat_<cv::Vec<double, 4>>>(rb_mCv, "Mat4d").
+  Rice::Data_Type<cv::Mat_<cv::Vec<double, 4>>> rb_cMat4d = define_class_under<cv::Mat_<cv::Vec<double, 4>>, cv::Mat>(rb_mCv, "Mat4d").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<double, 4>>>, cv::Vec<double, 4>>);
     
   // Manual

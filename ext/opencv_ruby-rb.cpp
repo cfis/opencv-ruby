@@ -147,6 +147,9 @@
 #include "opencv2/stitching/detail/warpers-rb.hpp"
 #include "opencv2/stitching/warpers-rb.hpp"
 
+// Superres
+#include "opencv2/superres/optical_flow-rb.hpp"
+
 // Video
 #include "opencv2/video/detail/tracking.detail-rb.hpp"
 #include "opencv2/video/background_segm-rb.hpp"
@@ -370,6 +373,9 @@ void Init_opencv_ruby()
     Init_Stitching_Detail_UtilInl();
     Init_Stitching_Detail_Warpers();
     Init_Stitching_Warpers();
+
+    // Superres
+    Init_Superres_OpticalFlow();
 
     // Video
     Init_Video_Detail_TrackingDetail();

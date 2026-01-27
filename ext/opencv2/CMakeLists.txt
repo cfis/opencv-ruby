@@ -1,8 +1,11 @@
 # Subdirectories
+add_subdirectory ("aruco")
 add_subdirectory ("core")
 add_subdirectory ("dnn")
+add_subdirectory ("face")
 add_subdirectory ("flann")
 add_subdirectory ("stitching")
+add_subdirectory ("superres")
 add_subdirectory ("video")
 
 if ((${OpenCV_VERSION_MAJOR} EQUAL 4 AND ${OpenCV_VERSION_MINOR} GREATER_EQUAL 8) OR ${OpenCV_VERSION_MAJOR} GREATER_EQUAL 5)

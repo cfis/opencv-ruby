@@ -8,16 +8,16 @@ libclang: /usr/lib64/libclang.so
 input: /mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
 output: /mnt/c/Source/opencv-ruby/ext
 format: Rice
+include: rice_include.hpp
 
-# Header file patterns to process
+# Process all core files including subdirectories
 match:
-  - opencv2/ml.hpp
+  - opencv2/videoio.hpp
 
 # Header file patterns to skip
 skip:
-  - opencv2/core/opencl/**/*
-  - opencv2/cudalegacy/**/*.hpp
   - opencv2/**/*.inl*
+  - opencv2/calib3d/**/*
 
 # Only include functions/classes with these macros
 # This ensures we only wrap symbols that are actually exported from the library
@@ -37,11 +37,20 @@ skip_symbols:
   - cv::Quat::asin
   - cv::Quat::acos
   - cv::Quat::atan
+  # Layer backend methods use Ptr<BackendNode> which isn't exported
+  - /cv::dnn::Layer::init.*/
+  - cv::dnn::Layer::applyHalideScheduler
+  - cv::dnn::Layer::tryAttach
+  # C++ comma initializer idiom that doesn't apply to Ruby
+  - cv::MatCommaInitializer_
+  # BBox is declared but not exported from the DLL
+  - cv::face::FacemarkLBF::BBox
 
 # Clang compiler arguments
 clang_args:
   - -I/usr/lib/clang/21/include
   - -I/mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+  - -I/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6
   - -DCV_EXPORTS=
   - -DCV_EXPORTS_W=
   - -include

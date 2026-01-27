@@ -231,15 +231,15 @@ void Init_opencv_ruby()
     Init_Aruco_Charuco();
 
     // HAL
-    //Init_Core_Hal_Interface();
+    Init_Core_Hal_Interface();
 
     // Core
     Init_Core();
 
     // Core Detail
-    //Init_AsyncPromise();
-    //Init_Core_Detail_DispatchHelperImpl();
-    //Init_Core_Detail_ExceptionPtr();
+    Init_Core_Detail_AsyncPromise();
+    Init_Core_Detail_DispatchHelperImpl();
+    Init_Core_Detail_ExceptionPtr();
 
     // Core
     Init_Core_Affine();

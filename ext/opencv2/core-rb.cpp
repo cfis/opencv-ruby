@@ -753,8 +753,8 @@ void Init_Core()
     Arg("seed"));
 
   //TODO 
-  // rb_mCv.define_module_function("randu", &cv::randu,
-  //  Arg("dst"), Arg("low"), Arg("high"));
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, cv::InputArray)>("randu", &cv::randu,
+    Arg("dst"), Arg("low"), Arg("high"));
 
   rb_mCv.define_module_function("randn", &cv::randn,
     Arg("dst"), Arg("mean"), Arg("stddev"));

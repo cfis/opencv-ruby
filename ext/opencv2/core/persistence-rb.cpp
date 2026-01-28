@@ -200,8 +200,8 @@ void Init_Core_Persistence()
     define_method("assign", &cv::FileNodeIterator::operator=,
       Arg("it")).
     define_method("dereference", &cv::FileNodeIterator::operator*).
-    define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)()>("increment_pre", &cv::FileNodeIterator::operator++).
-    define_method<cv::FileNodeIterator(cv::FileNodeIterator::*)(int)>("increment", &cv::FileNodeIterator::operator++,
+    define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)()>("increment", &cv::FileNodeIterator::operator++).
+    define_method<cv::FileNodeIterator(cv::FileNodeIterator::*)(int)>("increment_post", &cv::FileNodeIterator::operator++,
       Arg("arg_0")).
     define_method("assign_plus", &cv::FileNodeIterator::operator+=,
       Arg("ofs")).

@@ -1101,8 +1101,8 @@ void Init_Imgproc()
     define_method("init", &cv::LineIterator::init,
       Arg("img"), Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity"), Arg("left_to_right")).
     define_method("dereference", &cv::LineIterator::operator*).
-    define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment_pre", &cv::LineIterator::operator++).
-    define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment", &cv::LineIterator::operator++,
+    define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++).
+    define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment_post", &cv::LineIterator::operator++,
       Arg("arg_0")).
     define_method("pos", &cv::LineIterator::pos).
     define_attr("ptr", &cv::LineIterator::ptr).

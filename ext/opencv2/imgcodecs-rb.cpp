@@ -273,8 +273,8 @@ void Init_Imgcodecs()
       Arg("col"), Arg("end")).
     define_method("dereference", &cv::ImageCollection::iterator::operator*).
     define_method("arrow", &cv::ImageCollection::iterator::operator->).
-    define_method<cv::ImageCollection::iterator&(cv::ImageCollection::iterator::*)()>("increment_pre", &cv::ImageCollection::iterator::operator++).
-    define_method<cv::ImageCollection::iterator(cv::ImageCollection::iterator::*)(int)>("increment", &cv::ImageCollection::iterator::operator++,
+    define_method<cv::ImageCollection::iterator&(cv::ImageCollection::iterator::*)()>("increment", &cv::ImageCollection::iterator::operator++).
+    define_method<cv::ImageCollection::iterator(cv::ImageCollection::iterator::*)(int)>("increment_post", &cv::ImageCollection::iterator::operator++,
       Arg("arg_0"));
 #endif
 }

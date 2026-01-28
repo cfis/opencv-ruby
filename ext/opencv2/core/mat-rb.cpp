@@ -286,11 +286,11 @@ inline void MatConstIterator__builder(Data_Type_T& klass)
       Arg("ofs")).
     template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)(ptrdiff_t)>("assign_minus", &cv::MatConstIterator_<_Tp>::operator-=,
       Arg("ofs")).
-    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("decrement_pre", &cv::MatConstIterator_<_Tp>::operator--).
-    template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("decrement", &cv::MatConstIterator_<_Tp>::operator--,
+    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("decrement", &cv::MatConstIterator_<_Tp>::operator--).
+    template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("decrement_post", &cv::MatConstIterator_<_Tp>::operator--,
       Arg("arg_0")).
-    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("increment_pre", &cv::MatConstIterator_<_Tp>::operator++).
-    template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment", &cv::MatConstIterator_<_Tp>::operator++,
+    template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("increment", &cv::MatConstIterator_<_Tp>::operator++).
+    template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::MatConstIterator_<_Tp>::operator++,
       Arg("arg_0")).
     template define_method<cv::Point(cv::MatConstIterator_<_Tp>::*)() const>("pos", &cv::MatConstIterator_<_Tp>::pos);
 };
@@ -318,11 +318,11 @@ inline void MatIterator__builder(Data_Type_T& klass)
       Arg("ofs")).
     template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)(ptrdiff_t)>("assign_minus", &cv::MatIterator_<_Tp>::operator-=,
       Arg("ofs")).
-    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("decrement_pre", &cv::MatIterator_<_Tp>::operator--).
-    template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("decrement", &cv::MatIterator_<_Tp>::operator--,
+    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("decrement", &cv::MatIterator_<_Tp>::operator--).
+    template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("decrement_post", &cv::MatIterator_<_Tp>::operator--,
       Arg("arg_0")).
-    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("increment_pre", &cv::MatIterator_<_Tp>::operator++).
-    template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("increment", &cv::MatIterator_<_Tp>::operator++,
+    template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("increment", &cv::MatIterator_<_Tp>::operator++).
+    template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("increment_post", &cv::MatIterator_<_Tp>::operator++,
       Arg("arg_0"));
 };
 
@@ -367,8 +367,8 @@ inline void SparseMatConstIterator__builder(Data_Type_T& klass)
     template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)(const cv::SparseMatConstIterator_<_Tp>&)>("assign", &cv::SparseMatConstIterator_<_Tp>::operator=,
       Arg("it")).
     define_method("dereference", &cv::SparseMatConstIterator_<_Tp>::operator*).
-    template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment_pre", &cv::SparseMatConstIterator_<_Tp>::operator++).
-    template define_method<cv::SparseMatConstIterator_<_Tp>(cv::SparseMatConstIterator_<_Tp>::*)(int)>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++,
+    template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++).
+    template define_method<cv::SparseMatConstIterator_<_Tp>(cv::SparseMatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatConstIterator_<_Tp>::operator++,
       Arg("arg_0"));
 
   // Manual
@@ -396,8 +396,8 @@ inline void SparseMatIterator__builder(Data_Type_T& klass)
     template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)(const cv::SparseMatIterator_<_Tp>&)>("assign", &cv::SparseMatIterator_<_Tp>::operator=,
       Arg("it")).
     template define_method<_Tp&(cv::SparseMatIterator_<_Tp>::*)() const>("dereference", &cv::SparseMatIterator_<_Tp>::operator*).
-    template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment_pre", &cv::SparseMatIterator_<_Tp>::operator++).
-    template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment", &cv::SparseMatIterator_<_Tp>::operator++,
+    template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment", &cv::SparseMatIterator_<_Tp>::operator++).
+    template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatIterator_<_Tp>::operator++,
       Arg("arg_0"));
 };
 
@@ -1887,11 +1887,11 @@ void Init_Core_Mat()
       Arg("ofs")).
     define_method("assign_minus", &cv::MatConstIterator::operator-=,
       Arg("ofs")).
-    define_method<cv::MatConstIterator&(cv::MatConstIterator::*)()>("decrement_pre", &cv::MatConstIterator::operator--).
-    define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("decrement", &cv::MatConstIterator::operator--,
+    define_method<cv::MatConstIterator&(cv::MatConstIterator::*)()>("decrement", &cv::MatConstIterator::operator--).
+    define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("decrement_post", &cv::MatConstIterator::operator--,
       Arg("arg_0")).
-    define_method<cv::MatConstIterator&(cv::MatConstIterator::*)()>("increment_pre", &cv::MatConstIterator::operator++).
-    define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("increment", &cv::MatConstIterator::operator++,
+    define_method<cv::MatConstIterator&(cv::MatConstIterator::*)()>("increment", &cv::MatConstIterator::operator++).
+    define_method<cv::MatConstIterator(cv::MatConstIterator::*)(int)>("increment_post", &cv::MatConstIterator::operator++,
       Arg("arg_0")).
     define_method<cv::Point(cv::MatConstIterator::*)() const>("pos", &cv::MatConstIterator::pos).
     define_method<void(cv::MatConstIterator::*)(int*) const>("pos", &cv::MatConstIterator::pos,
@@ -1917,11 +1917,11 @@ void Init_Core_Mat()
       Arg("it")).
     define_method("node", &cv::SparseMatConstIterator::node).
     // TODO
-    //define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement_pre", &cv::SparseMatConstIterator::operator--).
-    //define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement", &cv::SparseMatConstIterator::operator--,
+    //define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
+    //define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
     //  Arg("arg_0")).
-    define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment_pre", &cv::SparseMatConstIterator::operator++).
-    define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("increment", &cv::SparseMatConstIterator::operator++,
+    define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment", &cv::SparseMatConstIterator::operator++).
+    define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("increment_post", &cv::SparseMatConstIterator::operator++,
       Arg("arg_0")).
     define_method("seek_end", &cv::SparseMatConstIterator::seekEnd).
     define_attr("m", &cv::SparseMatConstIterator::m).
@@ -1940,8 +1940,8 @@ void Init_Core_Mat()
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,
       Arg("it")).
     define_method<cv::SparseMat::Node*(cv::SparseMatIterator::*)() const>("node", &cv::SparseMatIterator::node).
-    define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)()>("increment_pre", &cv::SparseMatIterator::operator++).
-    define_method<cv::SparseMatIterator(cv::SparseMatIterator::*)(int)>("increment", &cv::SparseMatIterator::operator++,
+    define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)()>("increment", &cv::SparseMatIterator::operator++).
+    define_method<cv::SparseMatIterator(cv::SparseMatIterator::*)(int)>("increment_post", &cv::SparseMatIterator::operator++,
       Arg("arg_0"));
 
   // Manual
@@ -2178,8 +2178,8 @@ void Init_Core_Mat()
       ArgBuffer("arrays"), Arg("planes"), Arg("narrays") = static_cast<int>(-1)).
     define_method("init", &cv::NAryMatIterator::init,
       ArgBuffer("arrays"), Arg("planes"), ArgBuffer("ptrs"), Arg("narrays") = static_cast<int>(-1)).
-    define_method<cv::NAryMatIterator&(cv::NAryMatIterator::*)()>("increment_pre", &cv::NAryMatIterator::operator++).
-    define_method<cv::NAryMatIterator(cv::NAryMatIterator::*)(int)>("increment", &cv::NAryMatIterator::operator++,
+    define_method<cv::NAryMatIterator&(cv::NAryMatIterator::*)()>("increment", &cv::NAryMatIterator::operator++).
+    define_method<cv::NAryMatIterator(cv::NAryMatIterator::*)(int)>("increment_post", &cv::NAryMatIterator::operator++,
       Arg("arg_0")).
     define_attr("arrays", &cv::NAryMatIterator::arrays).
     define_attr("planes", &cv::NAryMatIterator::planes).

@@ -42,7 +42,7 @@ inline void Point__builder(Data_Type_T& klass)
       Arg("pt")).
     define_method("cross", &cv::Point_<_Tp>::cross,
       Arg("pt")).
-    define_method("inside", &cv::Point_<_Tp>::inside,
+    define_method("inside?", &cv::Point_<_Tp>::inside,
       Arg("r")).
     define_attr("x", &cv::Point_<_Tp>::x).
     define_attr("y", &cv::Point_<_Tp>::y);

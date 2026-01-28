@@ -733,7 +733,9 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::MatSize, int*>(),
       ArgBuffer("_p")).
     define_method("dims", &cv::MatSize::dims).
-    define_method("call", &cv::MatSize::operator()).
+    // Manual, change name to something more Ruby like
+    // define_method("call", &cv::MatSize::operator()).
+    define_method("to_size", &cv::MatSize::operator()).
     define_method<const int&(cv::MatSize::*)(int) const>("[]", &cv::MatSize::operator[],
       Arg("i")).
     define_method<int&(cv::MatSize::*)(int)>("[]", &cv::MatSize::operator[],

@@ -13,7 +13,7 @@ namespace cv
 {
   typedef Vec<uchar, 1> Vec1b;
   typedef Vec<short, 1> Vec1s;
-  typedef Vec<ushort, 1> Vec1w;
+  typedef Vec<unsigned short, 1> Vec1w;
   typedef Vec<int, 1> Vec1i;
   typedef Vec<float, 1> Vec1f;
   typedef Vec<double, 1> Vec1d;
@@ -24,11 +24,10 @@ template<typename Data_Type_T, typename _Tp, int m, int n>
 inline void Matx_builder(Data_Type_T& klass)
 {
   klass.
-    // TODO - These block methods defined below
-    // define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
-    //define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols).
-    //define_constant("Channels", (int)cv::Matx<_Tp, m, n>::channels).
-    //define_constant("Shortdim", (int)cv::Matx<_Tp, m, n>::shortdim).
+    define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
+    define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols).
+    define_constant("Channels", (int)cv::Matx<_Tp, m, n>::channels).
+    define_constant("Shortdim", (int)cv::Matx<_Tp, m, n>::shortdim).
     define_constructor(Constructor<cv::Matx<_Tp, m, n>>());
 
   if constexpr (m * n == 1)
@@ -667,35 +666,35 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Vec<short, 4>> rb_cVec4s = define_class_under<cv::Vec<short, 4>, cv::Matx<short, 4, 1>>(rb_mCv, "Vec4s").
     define(&Vec_builder<Data_Type<cv::Vec<short, 4>>, short, 4>);
 
-  Rice::Data_Type<cv::Vec<unsigned short, 1>> rb_cMatx11w = define_class_under<cv::Matx<unsigned short, 1, 1 >>(rb_mCv, "Matx11w").
+  Rice::Data_Type<cv::Matx<unsigned short, 1, 1>> rb_cMatx11w = define_class_under<cv::Matx<unsigned short, 1, 1 >>(rb_mCv, "Matx11w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 1, 1>>, unsigned short, 1, 1>);
 
-  Rice::Data_Type<cv::Vec<unsigned short, 2>> rb_cMatx12w = define_class_under<cv::Matx<unsigned short, 1, 2 >>(rb_mCv, "Matx12w").
+  Rice::Data_Type<cv::Matx<unsigned short, 1, 2>> rb_cMatx12w = define_class_under<cv::Matx<unsigned short, 1, 2 >>(rb_mCv, "Matx12w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 1, 2>>, unsigned short, 1, 2>);
 
-  Rice::Data_Type<cv::Vec<unsigned short, 3>> rb_cMatx13w = define_class_under<cv::Matx<unsigned short, 1, 3 >>(rb_mCv, "Matx13w").
+  Rice::Data_Type<cv::Matx<unsigned short, 1, 3>> rb_cMatx13w = define_class_under<cv::Matx<unsigned short, 1, 3 >>(rb_mCv, "Matx13w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 1, 3>>, unsigned short, 1, 3>);
 
-  Rice::Data_Type<cv::Vec<unsigned short, 4>> rb_cMatx14w = define_class_under<cv::Matx<unsigned short, 1, 4 >>(rb_mCv, "Matx14w").
+  Rice::Data_Type<cv::Matx<unsigned short, 1, 4>> rb_cMatx14w = define_class_under<cv::Matx<unsigned short, 1, 4 >>(rb_mCv, "Matx14w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 1, 4>>, unsigned short, 1, 4>);
 
   Rice::Data_Type<cv::Matx<unsigned short, 2, 1>> rb_cMatx21w = define_class_under<cv::Matx<unsigned short, 2, 1>>(rb_mCv, "Matx21w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 2, 1>>, unsigned short, 2, 1>);
     
-  Rice::Data_Type<cv::Vec<ushort, 2>> rb_cVec2w = define_class_under<cv::Vec<ushort, 2>, cv::Matx<unsigned short, 2, 1>>(rb_mCv, "Vec2w").
-    define(&Vec_builder<Data_Type<cv::Vec<ushort, 2>>, unsigned short, 2>);
+  Rice::Data_Type<cv::Vec<unsigned short, 2>> rb_cVec2w = define_class_under<cv::Vec<unsigned short, 2>, cv::Matx<unsigned short, 2, 1>>(rb_mCv, "Vec2w").
+    define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 2>>, unsigned short, 2>);
 
   Rice::Data_Type<cv::Matx<unsigned short, 3, 1>> rb_cMatx31w = define_class_under<cv::Matx<unsigned short, 3, 1>>(rb_mCv, "Matx31w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 3, 1>>, unsigned short, 3, 1>);
 
-  Rice::Data_Type<cv::Vec<ushort, 3>> rb_cVec3w = define_class_under<cv::Vec<ushort, 3>, cv::Matx<unsigned short, 3, 1>>(rb_mCv, "Vec3w").
-    define(&Vec_builder<Data_Type<cv::Vec<ushort, 3>>, unsigned short, 3>);
+  Rice::Data_Type<cv::Vec<unsigned short, 3>> rb_cVec3w = define_class_under<cv::Vec<unsigned short, 3>, cv::Matx<unsigned short, 3, 1>>(rb_mCv, "Vec3w").
+    define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 3>>, unsigned short, 3>);
 
   Rice::Data_Type<cv::Matx<unsigned short, 4, 1>> rb_cMatx41w = define_class_under<cv::Matx<unsigned short, 4, 1>>(rb_mCv, "Matx41w").
     define(&Matx_builder<Data_Type<cv::Matx<unsigned short, 4, 1>>, unsigned short, 4, 1>);
 
-  Rice::Data_Type<cv::Vec<ushort, 4>> rb_cVec4w = define_class_under<cv::Vec<ushort, 4>, cv::Matx<unsigned short, 4, 1>>(rb_mCv, "Vec4w").
-    define(&Vec_builder<Data_Type<cv::Vec<ushort, 4>>, unsigned short, 4>);
+  Rice::Data_Type<cv::Vec<unsigned short, 4>> rb_cVec4w = define_class_under<cv::Vec<unsigned short, 4>, cv::Matx<unsigned short, 4, 1>>(rb_mCv, "Vec4w").
+    define(&Vec_builder<Data_Type<cv::Vec<unsigned short, 4>>, unsigned short, 4>);
 
   Rice::Data_Type<cv::Matx<int, 1, 1>> rb_cMatx11i = define_class_under<cv::Matx<int, 1, 1 >>(rb_mCv, "Matx11i").
     define(&Matx_builder<Data_Type<cv::Matx<int, 1, 1>>, int, 1, 1>);
@@ -828,7 +827,6 @@ void Init_Core_Matx()
 
   Rice::Data_Type<cv::Vec<double, 1>> rb_cVec1d = define_class_under<cv::Vec<double, 1>, cv::Matx<double, 1, 1>>(rb_mCv, "Vec1d").
     define(&Vec_builder<Data_Type<cv::Vec<double, 1>>, double, 1>);
-
 
   // Requires adding long long (int64) support from OpenCV5
   Rice::Data_Type<cv::Matx<int64, 2, 1>> rb_cMatx21l = define_class_under<cv::Matx<int64, 2, 1 >>(rb_mCv, "Matx21l").

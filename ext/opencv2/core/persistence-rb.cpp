@@ -153,7 +153,7 @@ void Init_Core_Persistence()
     }).
     define_method<uchar*(cv::FileNode::*)()>("ptr", &cv::FileNode::ptr).
     define_method<const uchar*(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr).
-    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each_const").
+    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each").
     define_method("read_raw", &cv::FileNode::readRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method("set_value", &cv::FileNode::setValue,

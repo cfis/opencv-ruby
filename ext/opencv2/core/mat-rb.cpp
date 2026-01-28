@@ -781,7 +781,8 @@ void Init_Core_Mat()
     }).
     define_method<cv::MatStep&(cv::MatStep::*)(size_t)>("assign", &cv::MatStep::operator=,
       Arg("s")).
-    define_attr("p", &cv::MatStep::p);
+    define_attr("p", &cv::MatStep::p).
+    define_attr("buf", &cv::MatStep::buf, Rice::AttrAccess::Read);
 
   // Tuple of types we need to implement Mat template functions like at, begin, end.
   using Mat_Tuple_T = std::tuple<unsigned char, cv::Vec<unsigned char, 2>, cv::Vec<unsigned char, 3>, cv::Vec<unsigned char, 4>,
@@ -1852,12 +1853,14 @@ void Init_Core_Mat()
     define_attr("node_count", &cv::SparseMat::Hdr::nodeCount).
     define_attr("free_list", &cv::SparseMat::Hdr::freeList).
     define_attr("pool", &cv::SparseMat::Hdr::pool).
-    define_attr("hashtab", &cv::SparseMat::Hdr::hashtab);
+    define_attr("hashtab", &cv::SparseMat::Hdr::hashtab).
+    define_attr("size", &cv::SparseMat::Hdr::size, Rice::AttrAccess::Read);
 
   Rice::Data_Type<cv::SparseMat::Node> rb_cCvSparseMatNode = define_class_under<cv::SparseMat::Node>(rb_cCvSparseMat, "Node").
     define_constructor(Constructor<cv::SparseMat::Node>()).
     define_attr("hashval", &cv::SparseMat::Node::hashval).
-    define_attr("next", &cv::SparseMat::Node::next);
+    define_attr("next", &cv::SparseMat::Node::next).
+    define_attr("idx", &cv::SparseMat::Node::idx, Rice::AttrAccess::Read);
 
   rb_cCvSparseMat.define_constant("MAGIC_VAL", (int)cv::SparseMat::MAGIC_VAL);
   rb_cCvSparseMat.define_constant("MAX_DIM", (int)cv::SparseMat::MAX_DIM);

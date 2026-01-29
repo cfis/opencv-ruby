@@ -491,9 +491,9 @@ void Init_Core_Mat()
       Arg("i") = static_cast<int>(-1)).
     define_method("channels", &cv::_InputArray::channels,
       Arg("i") = static_cast<int>(-1)).
-    define_method("is_continuous", &cv::_InputArray::isContinuous,
+    define_method("continuous?", &cv::_InputArray::isContinuous,
       Arg("i") = static_cast<int>(-1)).
-    define_method("is_submatrix", &cv::_InputArray::isSubmatrix,
+    define_method("submatrix?", &cv::_InputArray::isSubmatrix,
       Arg("i") = static_cast<int>(-1)).
     define_method("empty?", &cv::_InputArray::empty).
     define_method<void(cv::_InputArray::*)(const cv::_OutputArray&) const>("copy_to", &cv::_InputArray::copyTo,

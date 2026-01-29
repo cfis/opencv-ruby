@@ -487,7 +487,7 @@ void Init_Videoio()
       Arg("source"), Arg("api_preference"), Arg("params")).
     define_method("opened?", &cv::VideoCapture::isOpened).
     define_method("release", &cv::VideoCapture::release).
-    define_method("grab?", &cv::VideoCapture::grab).
+    define_method("grab", &cv::VideoCapture::grab).
     define_method("retrieve", &cv::VideoCapture::retrieve,
       Arg("image"), Arg("flag") = static_cast<int>(0)).
     define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::Mat&)>(">>", &cv::VideoCapture::operator>>,

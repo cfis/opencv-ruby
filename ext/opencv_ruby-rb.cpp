@@ -283,7 +283,7 @@ void Init_opencv_ruby()
     Init_Core_VsxUtils();
 
     // Core Utils
-    /*Init_Core_Utils_AllocatorStats();
+   /* Init_Core_Utils_AllocatorStats();
     Init_Core_Utils_AllocatorStatsImpl();
     Init_Core_Utils_Filesystem();
     Init_Core_Utils_Logger();

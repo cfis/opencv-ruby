@@ -170,8 +170,10 @@ class HistogramTest < OpenCVTestCase
     hsv_image = image.cvt_color(Cv::ColorConversionCodes::COLOR_BGR2HSV)
     histograms << create_histogram(hsv_image, channels, hist_sizes, hist_ranges)
 
+    # Normalize to L1 norm with alpha=1.0 to ensure both histograms sum to exactly 1.0
+    # This is required for EMD to compute the lower_bound (equal_sums must be true)
     normalized = histograms.map do |histogram|
-      histogram.normalize
+      histogram.normalize(alpha: 1.0, norm_type: Cv::NormTypes::NORM_L1)
     end
 
     signatures = normalized.map do |histogram|
@@ -192,13 +194,22 @@ class HistogramTest < OpenCVTestCase
     cost = Cv.no_array
     lower_bound = Rice::Buffer≺float≻.new(0.0)
     flow = Cv.no_array
+
+    # API 1 - Returns tuple with (result, lower_bound)
     result, lower_bound = Cv.emd(signatures[0].input_array, signatures[1].input_array,
-                                 Cv::DistanceTypes::DIST_L1,
-                                 cost, lower_bound.data, flow)
+                                 Cv::DistanceTypes::DIST_L1, cost, flow)
 
     # EMD values can vary due to image decoding and floating-point differences
-    assert_in_delta(3.4, result, 0.5)
-    assert_equal(0, lower_bound)
+    # Lower bound is the distance between mass centers (centroids)
+    assert_in_delta(5.1456, result, 0.1)
+    assert_in_delta(3.7189, lower_bound,0.1)
+
+    # API 2 - Uses buffer for lower_bound
+    lower_bound_buffer = Rice::Buffer≺float≻.new(Float::MAX)
+    result = Cv.emd(signatures[0].input_array, signatures[1].input_array,
+                    Cv::DistanceTypes::DIST_L1, cost, lower_bound_buffer.data, flow)
+    assert_in_delta(5.1456, result, 0.1)
+    assert_in_delta(3.7189, lower_bound_buffer[0],0.1)
   end
 
   def test_calc_back_project

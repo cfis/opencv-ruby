@@ -313,10 +313,11 @@ class ImageCodesTest < OpenCVTestCase
       images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(255, 0, 0))    # Blue
       images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 255, 0))    # Green
       images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 0, 255))    # Red
+      images_array = Cv::InputArray.new(images)
 
       # Write as multi-page TIFF
       multipage_path = File.join(dir, "multipage.tiff")
-      result = Cv::imwritemulti(multipage_path, images.input_array)
+      result = Cv::imwritemulti(multipage_path, images_array)
       assert(result, "Failed to write multi-page TIFF")
 
       # Read with ImageCollection
@@ -350,9 +351,11 @@ class ImageCodesTest < OpenCVTestCase
       images << Cv::Mat.new(75, 75, CV_8UC3, Cv::Scalar.new(150, 150, 150))
       images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(200, 200, 200))
       images << Cv::Mat.new(125, 125, CV_8UC3, Cv::Scalar.new(250, 250, 250))
+      
+      images_array = Cv::InputArray.new(images)
 
       multipage_path = File.join(dir, "multipage_sizes.tiff")
-      Cv::imwritemulti(multipage_path, images.input_array)
+      Cv::imwritemulti(multipage_path, images_array)
 
       collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
 
@@ -367,6 +370,10 @@ class ImageCodesTest < OpenCVTestCase
       all_mats = collection.to_a
       assert_equal(50, all_mats.first.rows)
       assert_equal(125, all_mats.last.rows)
+      
+      # Try to release the file
+      collection = nil
+      GC.start
     end
   end
 

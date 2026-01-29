@@ -14,7 +14,7 @@ include: rice_include.hpp
 
 # Process all core files including subdirectories
 match:
-  - opencv2/core/detail/*.hpp
+  - opencv2/core/mat.hpp
 
 # Header file patterns to skip
 skip:

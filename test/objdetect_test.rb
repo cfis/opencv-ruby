@@ -124,7 +124,7 @@ class ObjdetectTest < OpenCVTestCase
     points = Cv::Mat.new
 
     # Try to detect on our test image (won't find a real QR code but tests API)
-    result = detector.detect?(@gray_image.input_array, points.output_array)
+    result = detector.detect(@gray_image.input_array, points.output_array)
     assert_kind_of(TrueClass.superclass, result)  # Boolean check
   end
 

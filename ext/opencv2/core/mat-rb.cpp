@@ -775,7 +775,7 @@ void Init_Core_Mat()
     {
         self[index] = value;
     }).
-    define_method("to_ul", [](const cv::MatStep& self) -> size_t
+    define_method("to_size", [](const cv::MatStep& self) -> size_t
     {
       return self;
     }).
@@ -1540,6 +1540,9 @@ void Init_Core_Mat()
 
   Rice::Data_Type<cv::Mat_<cv::Vec<float, 4>>> rb_cMat4f = define_class_under<cv::Mat_<cv::Vec<float, 4>>, cv::Mat>(rb_mCv, "Mat4f").
     define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 4>>>, cv::Vec<float, 4>>);
+
+  Rice::Data_Type<cv::Mat_<cv::Vec<float, 6>>> rb_cMat6f = define_class_under<cv::Mat_<cv::Vec<float, 6>>, cv::Mat>(rb_mCv, "Mat6f").
+    define(&Mat__builder<Data_Type<cv::Mat_<cv::Vec<float, 6>>>, cv::Vec<float, 6>>);
 
   Rice::Data_Type<cv::Mat_<double>> rb_cMat1d = define_class_under<cv::Mat_<double>, cv::Mat>(rb_mCv, "Mat1d").
     define(&Mat__builder<Data_Type<cv::Mat_<double>>, double>);

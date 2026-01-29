@@ -837,13 +837,16 @@ void Init_Imgproc()
 
   rb_mCv.define_module_function("emd", &cv::EMD,
     Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), ArgBuffer("lower_bound") = static_cast<float*>(0), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
-  /*
-  rb_mCv.define_module_function("emd", [](cv::InputArray signature1, cv::InputArray signature2, int dist_type, cv::InputArray cost, float* lower_bound, cv::OutputArray flow) -> std::tuple<float, float>
+  
+  rb_mCv.define_module_function("emd", [](cv::InputArray signature1, cv::InputArray signature2, int dist_type, cv::InputArray cost, cv::OutputArray flow) -> std::tuple<float, float>
   {
-      float result = cv::EMD(signature1, signature2, dist_type, cost, lower_bound, flow);
-      return std::forward_as_tuple(result, *lower_bound);
-  }, Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), Arg("lower_bound") = static_cast<float *>(0), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
- */
+      // Initialize to large value so OpenCV computes full EMD instead of early exit
+      // (if *lower_bound <= computed_lb, OpenCV returns early with just the lower bound)
+      float lower_bound = FLT_MAX;
+      float result = cv::EMD(signature1, signature2, dist_type, cost, &lower_bound, flow);
+      return std::make_tuple(result, lower_bound);
+  }, Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
+ 
   rb_mCv.define_module_function("wrapper_emd", &cv::wrapperEMD,
     Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), Arg("lower_bound") = static_cast<cv::Ptr<float>>(cv::Ptr<float>()), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
 

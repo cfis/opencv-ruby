@@ -36,7 +36,7 @@ class MatStepTest < OpenCVTestCase
 
   def test_to_size_t
     step = Cv::MatStep.new(444)
-    actual = step.to_size_t
+    actual = step.to_size
     assert_equal(444, actual)
   end
 

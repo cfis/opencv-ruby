@@ -471,6 +471,8 @@ inline void Rect__builder(Data_Type_T& klass)
     {
       return self | other;
     }).
+    template define_method<bool(cv::Rect_<_Tp>::*)(const cv::Point_<_Tp>&) const>("contains?", &cv::Rect_<_Tp>::contains,
+        Arg("pt")).
     define_method("inspect", [](const cv::Rect_<_Tp>& self) -> std::string
     {
       std::ostringstream stream;
@@ -513,8 +515,9 @@ void Init_Core_Types()
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 
-  Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = define_class_under<cv::Point_<int>>(rb_mCv, "Point2i").
-    define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
+ // See rb_define_const below
+ // Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = define_class_under<cv::Point_<int>>(rb_mCv, "Point2i").
+ //   define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
 
   Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = define_class_under<cv::Point_<int64>>(rb_mCv, "Point2l").
     define(&Point__builder<Data_Type<cv::Point_<int64>>, int64>);
@@ -527,6 +530,8 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint = define_class_under<cv::Point_<int>>(rb_mCv, "Point").
     define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
+
+  rb_define_const(rb_mCv, "Point2i", rb_cPoint);
 
   // Manual
   Rice::Data_Type<cv::Point_<unsigned char>> rb_cPoint2b = define_class_under<cv::Point_<unsigned char>>(rb_mCv, "Point2b").
@@ -557,8 +562,9 @@ void Init_Core_Types()
   Rice::Data_Type<cv::Point3_<unsigned short>> rb_cPoint3w = define_class_under<cv::Point3_<unsigned short>>(rb_mCv, "Point3w").
     define(&Point3__builder<Data_Type<cv::Point3_<unsigned short>>, unsigned short>);
 
-  Rice::Data_Type<cv::Size_<int>> rb_cSize2i = define_class_under<cv::Size_<int>>(rb_mCv, "Size2i").
-    define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
+  // See alias below
+//  Rice::Data_Type<cv::Size_<int>> rb_cSize2i = define_class_under<cv::Size_<int>>(rb_mCv, "Size2i").
+  //  define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
 
   Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = define_class_under<cv::Size_<int64>>(rb_mCv, "Size2l").
     define(&Size__builder<Data_Type<cv::Size_<int64>>, int64>);
@@ -572,6 +578,8 @@ void Init_Core_Types()
   Rice::Data_Type<cv::Size_<int>> rb_cSize = define_class_under<cv::Size_<int>>(rb_mCv, "Size").
     define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
 
+  rb_define_const(rb_mCv, "Size2i", rb_cSize);
+
   // Manual
   Rice::Data_Type<cv::Size_<unsigned char>> rb_cSize2b = define_class_under<cv::Size_<unsigned char>>(rb_mCv, "Size2b").
     define(&Size__builder<Data_Type<cv::Size_<unsigned char>>, unsigned char>);
@@ -582,8 +590,9 @@ void Init_Core_Types()
   Rice::Data_Type<cv::Size_<unsigned short>> rb_cSize2w = define_class_under<cv::Size_<unsigned short>>(rb_mCv, "Size2w").
     define(&Size__builder<Data_Type<cv::Size_<unsigned short>>, unsigned short>);
 
-  Rice::Data_Type<cv::Rect_<int>> rb_cRect2i = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect2i").
-    define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
+  // See rb_define_const below
+  // Rice::Data_Type<cv::Rect_<int>> rb_cRect2i = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect2i").
+  //  define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
 
   Rice::Data_Type<cv::Rect_<float>> rb_cRect2f = define_class_under<cv::Rect_<float>>(rb_mCv, "Rect2f").
     define(&Rect__builder<Data_Type<cv::Rect_<float>>, float>);
@@ -593,6 +602,8 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Rect_<int>> rb_cRect = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect").
     define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
+
+  rb_define_const(rb_mCv, "Rect2i", rb_cRect);
 
   // Manual
   Rice::Data_Type<cv::Rect_<unsigned char>> rb_cRect2b = define_class_under<cv::Rect_<unsigned char>>(rb_mCv, "Rect2b").

@@ -4,8 +4,10 @@ if RUBY_PLATFORM =~ /mingw|mswin/
 
   #$LOAD_PATH.unshift(ext_path)
   path = File.join(lib_path, "#{major}.#{minor}")
-  ENV["PATH"] = "#{path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
-
+  cuda_path = File.join(ENV["CUDA_PATH"], "bin")
+  ENV["PATH"] = "#{path}#{File::PATH_SEPARATOR}#{cuda_path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
+  #ENV['CUDA_VISIBLE_DEVICES'] = "-1"
+  #ENV['OPENCV_CUDA_DEVICE'] = "-1"
   #begin
     require "#{major}.#{minor}/opencv_ruby.so"
     #  rescue LoadError => e

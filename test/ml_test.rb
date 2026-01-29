@@ -134,14 +134,14 @@ class MLTest < OpenCVTestCase
 
   def test_normal_bayes_classifier_train
     classifier = Cv::Ml::NormalBayesClassifier.create
-    result = classifier.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    result = classifier.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
     assert(result)
     assert(classifier.trained?)
   end
 
   def test_normal_bayes_classifier_predict
     classifier = Cv::Ml::NormalBayesClassifier.create
-    classifier.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    classifier.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
 
     # Create test sample near class 0
     test_sample = Cv::Mat.new(1, 2, CV_32FC1)
@@ -188,14 +188,14 @@ class MLTest < OpenCVTestCase
   def test_knearest_train
     knn = Cv::Ml::KNearest.create
     knn.set_default_k(3)
-    result = knn.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    result = knn.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
     assert(result)
   end
 
   def test_knearest_find_nearest
     knn = Cv::Ml::KNearest.create
     knn.set_default_k(3)
-    knn.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    knn.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
 
     test_sample = Cv::Mat.new(1, 2, CV_32FC1)
     test_sample[0, 0] = 1.0
@@ -279,7 +279,7 @@ class MLTest < OpenCVTestCase
     svm.set_c(1.0)
 
     # SVM classification requires integer responses
-    result = svm.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    result = svm.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
     assert(result)
     assert(svm.trained?)
   end
@@ -291,7 +291,7 @@ class MLTest < OpenCVTestCase
     svm.set_c(1.0)
 
     # SVM classification requires integer responses
-    svm.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    svm.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
 
     test_sample = Cv::Mat.new(1, 2, CV_32FC1)
     test_sample[0, 0] = 1.0
@@ -310,7 +310,7 @@ class MLTest < OpenCVTestCase
     svm.set_c(1.0)
 
     # SVM classification requires integer responses
-    svm.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    svm.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
 
     sv = svm.get_support_vectors
     assert_operator(sv.rows, :>=, 1)
@@ -354,14 +354,14 @@ class MLTest < OpenCVTestCase
     em = Cv::Ml::EM.create
     em.set_clusters_number(2)
 
-    result = em.train_em?(@samples.input_array)
+    result = em.train_em(@samples.input_array)
     assert(result)
   end
 
   def test_em_predict
     em = Cv::Ml::EM.create
     em.set_clusters_number(2)
-    em.train_em?(@samples.input_array)
+    em.train_em(@samples.input_array)
 
     test_sample = Cv::Mat.new(1, 2, CV_32FC1)
     test_sample[0, 0] = 1.0
@@ -376,7 +376,7 @@ class MLTest < OpenCVTestCase
   def test_em_get_means
     em = Cv::Ml::EM.create
     em.set_clusters_number(2)
-    em.train_em?(@samples.input_array)
+    em.train_em(@samples.input_array)
 
     means = em.get_means
     assert_equal(2, means.rows)
@@ -386,7 +386,7 @@ class MLTest < OpenCVTestCase
   def test_em_get_weights
     em = Cv::Ml::EM.create
     em.set_clusters_number(2)
-    em.train_em?(@samples.input_array)
+    em.train_em(@samples.input_array)
 
     weights = em.get_weights
     assert_equal(1, weights.rows)
@@ -434,8 +434,8 @@ class MLTest < OpenCVTestCase
 
   def test_dtrees_get_set_use1_se_rule
     dtrees = Cv::Ml::DTrees.create
-    dtrees.set_use1_se_rule(true)
-    assert(dtrees.get_use1_se_rule?)
+    dtrees.set_use_1se_rule(true)
+    assert(dtrees.get_use_1se_rule?)
   end
 
   def test_dtrees_get_set_truncate_pruned_tree
@@ -460,7 +460,7 @@ class MLTest < OpenCVTestCase
     dtrees.set_cv_folds(0)
 
     # DTrees uses integer responses for classification
-    result = dtrees.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    result = dtrees.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
     assert(result)
   end
 
@@ -524,7 +524,7 @@ class MLTest < OpenCVTestCase
     rtrees.set_term_criteria(Cv::TermCriteria.new(Cv::TermCriteria::Type::COUNT.to_i, 10, 0.01))
 
     # RTrees uses integer responses for classification
-    result = rtrees.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    result = rtrees.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
     assert(result)
   end
 
@@ -534,7 +534,7 @@ class MLTest < OpenCVTestCase
     rtrees.set_term_criteria(Cv::TermCriteria.new(Cv::TermCriteria::Type::COUNT.to_i, 10, 0.01))
 
     # RTrees uses integer responses for classification
-    rtrees.train?(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
+    rtrees.train(@samples.input_array, Cv::Ml::SampleTypes::ROW_SAMPLE.to_i, @responses.input_array)
 
     importance = rtrees.get_var_importance
     refute(importance.empty?)

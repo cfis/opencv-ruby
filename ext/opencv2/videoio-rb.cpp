@@ -537,9 +537,4 @@ void Init_Videoio()
     define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>()).
     define_method<void(cv::DefaultDeleter<CvCapture>::*)(CvCapture*) const>("call", &cv::DefaultDeleter<CvCapture>::operator(),
       Arg("obj"));
-
-  Rice::Data_Type<cv::DefaultDeleter<CvVideoWriter>> rb_cCvDefaultDeleterCvVideoWriter = define_class_under<cv::DefaultDeleter<CvVideoWriter>>(rb_mCv, "DefaultDeleterCvVideoWriter").
-    define_constructor(Constructor<cv::DefaultDeleter<CvVideoWriter>>()).
-    define_method<void(cv::DefaultDeleter<CvVideoWriter>::*)(CvVideoWriter*) const>("call", &cv::DefaultDeleter<CvVideoWriter>::operator(),
-      Arg("obj"));
 }

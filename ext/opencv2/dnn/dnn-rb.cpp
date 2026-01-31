@@ -62,11 +62,6 @@ void Init_Dnn_Dnn()
     define_attr("name", &cv::dnn::dnn4_v20241223::LayerParams::name).
     define_attr("type", &cv::dnn::dnn4_v20241223::LayerParams::type);
 
-  Rice::Data_Type<cv::dnn::dnn4_v20241223::BackendNode> rb_cCvDnnDnn4V20241223BackendNode = define_class_under<cv::dnn::dnn4_v20241223::BackendNode>(rb_mCvDnnDnn4V20241223, "BackendNode").
-    define_constructor(Constructor<cv::dnn::dnn4_v20241223::BackendNode, int>(),
-      Arg("backend_id")).
-    define_attr("backend_id", &cv::dnn::dnn4_v20241223::BackendNode::backendId);
-
   Rice::Data_Type<cv::dnn::dnn4_v20241223::BackendWrapper> rb_cCvDnnDnn4V20241223BackendWrapper = define_class_under<cv::dnn::dnn4_v20241223::BackendWrapper>(rb_mCvDnnDnn4V20241223, "BackendWrapper").
     define_method<void(cv::dnn::dnn4_v20241223::BackendWrapper::*)()>("copy_to_host", &cv::dnn::dnn4_v20241223::BackendWrapper::copyToHost).
     define_method<void(cv::dnn::dnn4_v20241223::BackendWrapper::*)()>("set_host_dirty", &cv::dnn::dnn4_v20241223::BackendWrapper::setHostDirty).
@@ -91,24 +86,6 @@ void Init_Dnn_Dnn()
       Arg("output_name")).
     define_method<bool(cv::dnn::dnn4_v20241223::Layer::*)(int)>("support_backend", &cv::dnn::dnn4_v20241223::Layer::supportBackend,
       Arg("backend_id")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&)>("init_halide", &cv::dnn::dnn4_v20241223::Layer::initHalide,
-      Arg("inputs")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>>&)>("init_ngraph", &cv::dnn::dnn4_v20241223::Layer::initNgraph,
-      Arg("inputs"), Arg("nodes")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&)>("init_vk_com", &cv::dnn::dnn4_v20241223::Layer::initVkCom,
-      Arg("inputs"), Arg("outputs")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>>&)>("init_webnn", &cv::dnn::dnn4_v20241223::Layer::initWebnn,
-      Arg("inputs"), Arg("nodes")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(void*, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&)>("init_cuda", &cv::dnn::dnn4_v20241223::Layer::initCUDA,
-      ArgBuffer("context"), Arg("inputs"), Arg("outputs")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(void*, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, bool)>("init_tim_vx", &cv::dnn::dnn4_v20241223::Layer::initTimVX,
-      ArgBuffer("tim_vx_info"), Arg("inputs_wrapper"), Arg("outputs_wrapper"), Arg("is_last")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendWrapper>>&, const std::vector<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>>&)>("init_cann", &cv::dnn::dnn4_v20241223::Layer::initCann,
-      Arg("inputs"), Arg("outputs"), Arg("nodes")).
-    define_method<void(cv::dnn::dnn4_v20241223::Layer::*)(cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>&, const std::vector<cv::Mat *>&, const std::vector<cv::Mat>&, int) const>("apply_halide_scheduler", &cv::dnn::dnn4_v20241223::Layer::applyHalideScheduler,
-      Arg("node"), Arg("inputs"), Arg("outputs"), Arg("target_id")).
-    define_method<cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>(cv::dnn::dnn4_v20241223::Layer::*)(const cv::Ptr<cv::dnn::dnn4_v20241223::BackendNode>&)>("try_attach", &cv::dnn::dnn4_v20241223::Layer::tryAttach,
-      Arg("node")).
     define_method<bool(cv::dnn::dnn4_v20241223::Layer::*)(const cv::Ptr<cv::dnn::dnn4_v20241223::ActivationLayer>&)>("set_activation", &cv::dnn::dnn4_v20241223::Layer::setActivation,
       Arg("layer")).
     define_method<bool(cv::dnn::dnn4_v20241223::Layer::*)(cv::Ptr<cv::dnn::dnn4_v20241223::Layer>&)>("try_fuse", &cv::dnn::dnn4_v20241223::Layer::tryFuse,

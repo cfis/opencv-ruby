@@ -40,17 +40,18 @@ skip_symbols:
   - cv::Quat::acos
   - cv::Quat::atan
   # Layer backend methods use Ptr<BackendNode> which isn't exported
-  - /cv::dnn::Layer::init.*/
-  - cv::dnn::Layer::applyHalideScheduler
-  - cv::dnn::Layer::tryAttach
+  # Use regex to match versioned namespace (cv::dnn::dnn4_vXXXX::Layer)
+  - /cv::dnn::.*::Layer::init.*/
+  - /cv::dnn::.*::Layer::applyHalideScheduler/
+  - /cv::dnn::.*::Layer::tryAttach/
   # C++ comma initializer idiom that doesn't apply to Ruby
   - cv::MatCommaInitializer_
   # BBox is declared but not exported from the DLL
   - cv::face::FacemarkLBF::BBox
   # Old C API functions
   - CvVideoWriter
-  - cv::dnn::.*::BackendNode
-  - CvHaarClassifierCascade 
+  - /cv::dnn::.*::BackendNode/
+  - CvHaarClassifierCascade
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

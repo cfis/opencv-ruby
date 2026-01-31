@@ -8587,7 +8587,7 @@ void Init_Cudev_Util_VecMath()
     return self || other;
   });
   
-  rb_cUInt.
+  rb_cUint.
     define_method("+", [](uint self, const uint1& other) -> uint1
   {
     return self + other;
@@ -8829,7 +8829,7 @@ void Init_Cudev_Util_VecMath()
     return self ^ other;
   });
   
-  rb_cUChar.
+  rb_cUchar.
     define_method("==", [](uchar self, const uchar1& other) -> uchar1
   {
     return self == other;
@@ -9007,7 +9007,7 @@ void Init_Cudev_Util_VecMath()
     return self ^ other;
   });
   
-  rb_cUShort.
+  rb_cUshort.
     define_method("==", [](ushort self, const ushort1& other) -> uchar1
   {
     return self == other;

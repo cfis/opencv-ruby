@@ -15,7 +15,7 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/detail/async_promise-rb.cpp`                 | `<opencv2/core.hpp>`, `<opencv2/core/detail/exception_ptr.hpp>`          |
 | `opencv2/core/detail/dispatch_helper.impl-rb.cpp`          | `<opencv2/opencv.hpp>`                                                   |
 | `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"` |
-| `opencv2/core/matx-rb.cpp`                                 | `"traits-rb.hpp"`                                                        |
+| `opencv2/core/matx-rb.cpp`                                 | `<opencv2/core.hpp>`, `"traits-rb.hpp"`                                  |
 | `opencv2/core/ocl_genbase-rb.cpp`                          | `<opencv2/core/ocl.hpp>`                                                 |
 | `opencv2/core/opengl-rb.cpp`                               | `<opencv2/core/cuda.hpp>`                                                |
 | `opencv2/core/operations-rb.cpp`                           | `<opencv2/core/core.hpp>`, `"cvstd_wrapper-rb.hpp"`, `"mat-rb.hpp"`      |
@@ -41,19 +41,6 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/video/tracking-rb.cpp`                            | `"../../opencv_ruby_version.hpp"`                                        |
 | `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
 
-## Externs
-
-The following variables are needed across compilation units and thus need to be made global and setup as externs. Note if you add a global variable at the top of the cpp file you must remove its local declaration lower down in the file  
-
-| File                                     | Reason                                                                                                                                                                                                                |
-|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `opencv2/core/mat-rb.hpp`                | Add `extern Rice::Class rb_cCvMat;` declaration                                                                                                                                                                       |
-| `opencv2/core/mat-rb.cpp`                | Add global `Rice::Class rb_cCvMat;` after `using namespace Rice;` and remove type from local declaration (`Rice::Data_Type<cv::Mat> rb_cCvMat =` → `rb_cCvMat =`)                                                     |
-| `opencv2/core/types-rb.hpp`              | Add `extern Rice::Class rb_cCvRange;` and `extern Rice::Class rb_cScalar;` declarations                                                                                                                               |
-| `opencv2/core/types-rb.cpp`              | Add global `Rice::Class rb_cCvRange;` and `Rice::Class rb_cScalar;` after `using namespace Rice;` and remove types from local declarations                                                                            |
-| `opencv2/core/matx-rb.hpp`               | Add `extern Rice::Class rb_cMatx44d;` declaration and template forward declarations for `Matx_builder` and `Vec_builder`                                                                                              |
-| `opencv2/core/matx-rb.cpp`               | Add global `Rice::Class rb_cMatx44d;` after `using namespace Rice;` and remove type from local declaration                                                                                                            |
-
 ## DNN Module
 Remove the versioning in the DNN namespace.
 
@@ -71,6 +58,7 @@ Apply all these updates
 | `opencv2/core/matx-rb.cpp`               | Rename Matx types to OpenCV convention: `MatxUnsignedChar##` → `Matx##b`, `MatxShort##` → `Matx##s`, `MatxUnsignedShort##` → `Matx##w`, `MatxInt##` → `Matx##i` (applies to both variable names and Ruby class names) |
 | `opencv2/core/fast_math-rb.cpp`          | Wrap `OPENCV_USE_FASTMATH_BUILTINS` constant in `#ifdef` guard                                                                                                                                                        |
 | `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
+| `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls (~line 1197) - Rice doesn't support define_iterator yet                                                                                                                 |
 
 ## Template Builder Modifications
 

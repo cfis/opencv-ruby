@@ -13,18 +13,18 @@ void Init_Objdetect_Barcode()
     define_constructor(Constructor<cv::barcode::BarcodeDetector>()).
     define_constructor(Constructor<cv::barcode::BarcodeDetector, const std::string&, const std::string&>(),
       Arg("prototxt_path"), Arg("model_path")).
-    define_method("decode_with_type", &cv::barcode::BarcodeDetector::decodeWithType,
+    define_method<bool(cv::barcode::BarcodeDetector::*)(cv::InputArray, cv::InputArray, std::vector<std::string>&, std::vector<std::string>&) const>("decode_with_type", &cv::barcode::BarcodeDetector::decodeWithType,
       Arg("img"), Arg("points"), Arg("decoded_info"), Arg("decoded_type")).
-    define_method("detect_and_decode_with_type", &cv::barcode::BarcodeDetector::detectAndDecodeWithType,
+    define_method<bool(cv::barcode::BarcodeDetector::*)(cv::InputArray, std::vector<std::string>&, std::vector<std::string>&, cv::OutputArray) const>("detect_and_decode_with_type", &cv::barcode::BarcodeDetector::detectAndDecodeWithType,
       Arg("img"), Arg("decoded_info"), Arg("decoded_type"), Arg("points") = static_cast<cv::OutputArray>(cv::noArray())).
-    define_method("get_downsampling_threshold", &cv::barcode::BarcodeDetector::getDownsamplingThreshold).
-    define_method("set_downsampling_threshold", &cv::barcode::BarcodeDetector::setDownsamplingThreshold,
+    define_method<double(cv::barcode::BarcodeDetector::*)() const>("get_downsampling_threshold", &cv::barcode::BarcodeDetector::getDownsamplingThreshold).
+    define_method<cv::barcode::BarcodeDetector&(cv::barcode::BarcodeDetector::*)(double)>("set_downsampling_threshold", &cv::barcode::BarcodeDetector::setDownsamplingThreshold,
       Arg("thresh")).
-    define_method("get_detector_scales", &cv::barcode::BarcodeDetector::getDetectorScales,
+    define_method<void(cv::barcode::BarcodeDetector::*)(std::vector<float>&) const>("get_detector_scales", &cv::barcode::BarcodeDetector::getDetectorScales,
       Arg("sizes")).
-    define_method("set_detector_scales", &cv::barcode::BarcodeDetector::setDetectorScales,
+    define_method<cv::barcode::BarcodeDetector&(cv::barcode::BarcodeDetector::*)(const std::vector<float>&)>("set_detector_scales", &cv::barcode::BarcodeDetector::setDetectorScales,
       Arg("sizes")).
-    define_method("get_gradient_threshold", &cv::barcode::BarcodeDetector::getGradientThreshold).
-    define_method("set_gradient_threshold", &cv::barcode::BarcodeDetector::setGradientThreshold,
+    define_method<double(cv::barcode::BarcodeDetector::*)() const>("get_gradient_threshold", &cv::barcode::BarcodeDetector::getGradientThreshold).
+    define_method<cv::barcode::BarcodeDetector&(cv::barcode::BarcodeDetector::*)(double)>("set_gradient_threshold", &cv::barcode::BarcodeDetector::setGradientThreshold,
       Arg("thresh"));
 }

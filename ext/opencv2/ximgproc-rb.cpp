@@ -19,12 +19,12 @@ void Init_Ximgproc()
     define_value("BINARIZATION_WOLF", cv::ximgproc::LocalBinarizationMethods::BINARIZATION_WOLF).
     define_value("BINARIZATION_NICK", cv::ximgproc::LocalBinarizationMethods::BINARIZATION_NICK);
 
-  rb_mCvXimgproc.define_module_function("ni_black_threshold", &cv::ximgproc::niBlackThreshold,
+  rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray, double, int, int, double, int, double)>("ni_black_threshold", &cv::ximgproc::niBlackThreshold,
     Arg("_src"), Arg("_dst"), Arg("max_value"), Arg("type"), Arg("block_size"), Arg("k"), Arg("binarization_method") = static_cast<int>(cv::ximgproc::BINARIZATION_NIBLACK), Arg("r") = static_cast<double>(128));
 
-  rb_mCvXimgproc.define_module_function("thinning", &cv::ximgproc::thinning,
+  rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("thinning", &cv::ximgproc::thinning,
     Arg("src"), Arg("dst"), Arg("thinning_type") = static_cast<int>(cv::ximgproc::THINNING_ZHANGSUEN));
 
-  rb_mCvXimgproc.define_module_function("anisotropic_diffusion", &cv::ximgproc::anisotropicDiffusion,
+  rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float, int)>("anisotropic_diffusion", &cv::ximgproc::anisotropicDiffusion,
     Arg("src"), Arg("dst"), Arg("alpha"), Arg("k"), Arg("niters"));
 }

@@ -15,7 +15,7 @@ void Init_Stitching_Detail_UtilInl()
   rb_mCvDetail.define_module_function<float(*)(const cv::Point3f&, const cv::Point3f&)>("norm_l2", &cv::detail::normL2,
     Arg("a"), Arg("b"));
 
-  rb_mCvDetail.define_module_function("norm_l2sq", &cv::detail::normL2sq,
+  rb_mCvDetail.define_module_function<double(*)(const cv::Mat&)>("norm_l2sq", &cv::detail::normL2sq,
     Arg("r"));
 
   rb_mCvDetail.define_module_function<int(*)(int)>("sqr", &cv::detail::sqr,

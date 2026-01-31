@@ -13,9 +13,9 @@ void Init_Stitching_Detail_Camera()
     define_constructor(Constructor<cv::detail::CameraParams>()).
     define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams&>(),
       Arg("other")).
-    define_method("assign", &cv::detail::CameraParams::operator=,
+    define_method<cv::detail::CameraParams&(cv::detail::CameraParams::*)(const cv::detail::CameraParams&)>("assign", &cv::detail::CameraParams::operator=,
       Arg("other")).
-    define_method("k", &cv::detail::CameraParams::K).
+    define_method<cv::Mat(cv::detail::CameraParams::*)() const>("k", &cv::detail::CameraParams::K).
     define_attr("focal", &cv::detail::CameraParams::focal).
     define_attr("aspect", &cv::detail::CameraParams::aspect).
     define_attr("ppx", &cv::detail::CameraParams::ppx).

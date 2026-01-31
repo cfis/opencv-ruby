@@ -6,13 +6,13 @@ using namespace Rice;
 template<typename Data_Type_T, typename BaseClass, typename UniqueIdType, typename ObjectCreator>
 inline void ObjectFactory_builder(Data_Type_T& klass)
 {
-  klass.define_method("subscribe", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::subscribe,
+  klass.template define_method<bool(cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::*)(UniqueIdType, ObjectCreator)>("subscribe", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::subscribe,
       Arg("id"), Arg("creator")).
-    define_method("unregister", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::unregister,
+    template define_method<bool(cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::*)(UniqueIdType)>("unregister", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::unregister,
       Arg("id")).
-    define_method("create", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::create,
+    template define_method<ObjectCreator(cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::*)(UniqueIdType)>("create", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::create,
       Arg("id")).
-    define_singleton_function("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
+    template define_singleton_function<typename cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::ThisClass&(*)()>("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
 };
 
 void Init_Flann_ObjectFactory()

@@ -66,27 +66,25 @@ void Init_Highgui()
     define_value("QT_RADIOBOX", cv::QtButtonTypes::QT_RADIOBOX).
     define_value("QT_NEW_BUTTONBAR", cv::QtButtonTypes::QT_NEW_BUTTONBAR);
 
-  rb_mCv.define_module_function("named_window", &cv::namedWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String&, int)>("named_window", &cv::namedWindow,
     Arg("winname"), Arg("flags") = static_cast<int>(cv::WINDOW_AUTOSIZE));
 
-  rb_mCv.define_module_function("destroy_window", &cv::destroyWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String&)>("destroy_window", &cv::destroyWindow,
     Arg("winname"));
 
-  rb_mCv.define_module_function("destroy_all_windows", &cv::destroyAllWindows);
+  rb_mCv.define_module_function<void(*)()>("destroy_all_windows", &cv::destroyAllWindows);
 
-#if RUBY_CV_VERSION >= 410
-  rb_mCv.define_module_function("current_ui_framework", &cv::currentUIFramework);
-#endif
+  rb_mCv.define_module_function<const std::string(*)()>("current_ui_framework", &cv::currentUIFramework);
 
-  rb_mCv.define_module_function("start_window_thread", &cv::startWindowThread);
+  rb_mCv.define_module_function<int(*)()>("start_window_thread", &cv::startWindowThread);
 
-  rb_mCv.define_module_function("wait_key_ex", &cv::waitKeyEx,
+  rb_mCv.define_module_function<int(*)(int)>("wait_key_ex", &cv::waitKeyEx,
     Arg("delay") = static_cast<int>(0));
 
-  rb_mCv.define_module_function("wait_key", &cv::waitKey,
+  rb_mCv.define_module_function<int(*)(int)>("wait_key", &cv::waitKey,
     Arg("delay") = static_cast<int>(0));
 
-  rb_mCv.define_module_function("poll_key", &cv::pollKey);
+  rb_mCv.define_module_function<int(*)()>("poll_key", &cv::pollKey);
 
   rb_mCv.define_module_function<void(*)(const cv::String&, cv::InputArray)>("imshow", &cv::imshow,
     Arg("winname"), Arg("mat"));
@@ -97,63 +95,61 @@ void Init_Highgui()
   rb_mCv.define_module_function<void(*)(const cv::String&, const cv::Size&)>("resize_window", &cv::resizeWindow,
     Arg("winname"), Arg("size"));
 
-  rb_mCv.define_module_function("move_window", &cv::moveWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String&, int, int)>("move_window", &cv::moveWindow,
     Arg("winname"), Arg("x"), Arg("y"));
 
-  rb_mCv.define_module_function("set_window_property", &cv::setWindowProperty,
+  rb_mCv.define_module_function<void(*)(const cv::String&, int, double)>("set_window_property", &cv::setWindowProperty,
     Arg("winname"), Arg("prop_id"), Arg("prop_value"));
 
-  rb_mCv.define_module_function("set_window_title", &cv::setWindowTitle,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&)>("set_window_title", &cv::setWindowTitle,
     Arg("winname"), Arg("title"));
 
-  rb_mCv.define_module_function("get_window_property", &cv::getWindowProperty,
+  rb_mCv.define_module_function<double(*)(const cv::String&, int)>("get_window_property", &cv::getWindowProperty,
     Arg("winname"), Arg("prop_id"));
 
-  rb_mCv.define_module_function("get_window_image_rect", &cv::getWindowImageRect,
+  rb_mCv.define_module_function<cv::Rect(*)(const cv::String&)>("get_window_image_rect", &cv::getWindowImageRect,
     Arg("winname"));
 
-  rb_mCv.define_module_function("set_mouse_callback", &cv::setMouseCallback,
+  rb_mCv.define_module_function<void(*)(const cv::String&, cv::MouseCallback, void*)>("set_mouse_callback", &cv::setMouseCallback,
     Arg("winname"), Arg("on_mouse"), ArgBuffer("userdata") = static_cast<void*>(0));
 
-  rb_mCv.define_module_function("get_mouse_wheel_delta", &cv::getMouseWheelDelta,
+  rb_mCv.define_module_function<int(*)(int)>("get_mouse_wheel_delta", &cv::getMouseWheelDelta,
     Arg("flags"));
 
   rb_mCv.define_module_function<cv::Rect(*)(const cv::String&, cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
     Arg("window_name"), Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
-#if RUBY_CV_VERSION >= 408
   rb_mCv.define_module_function<cv::Rect(*)(cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
     Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function("select_ro_is", &cv::selectROIs,
+  rb_mCv.define_module_function<void(*)(const cv::String&, cv::InputArray, std::vector<cv::Rect_<int>>&, bool, bool, bool)>("select_ro_is", &cv::selectROIs,
     Arg("window_name"), Arg("img"), Arg("bounding_boxes"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
-#endif
 
-  rb_mCv.define_module_function("create_trackbar", &cv::createTrackbar,
+  rb_mCv.define_module_function<int(*)(const cv::String&, const cv::String&, int*, int, cv::TrackbarCallback, void*)>("create_trackbar", &cv::createTrackbar,
     Arg("trackbarname"), Arg("winname"), ArgBuffer("value"), Arg("count"), Arg("on_change") = static_cast<cv::TrackbarCallback>(0), ArgBuffer("userdata") = static_cast<void*>(0));
 
-  rb_mCv.define_module_function("get_trackbar_pos", &cv::getTrackbarPos,
+  rb_mCv.define_module_function<int(*)(const cv::String&, const cv::String&)>("get_trackbar_pos", &cv::getTrackbarPos,
     Arg("trackbarname"), Arg("winname"));
 
-  rb_mCv.define_module_function("set_trackbar_pos", &cv::setTrackbarPos,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&, int)>("set_trackbar_pos", &cv::setTrackbarPos,
     Arg("trackbarname"), Arg("winname"), Arg("pos"));
 
-  rb_mCv.define_module_function("set_trackbar_max", &cv::setTrackbarMax,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&, int)>("set_trackbar_max", &cv::setTrackbarMax,
     Arg("trackbarname"), Arg("winname"), Arg("maxval"));
 
-  rb_mCv.define_module_function("set_trackbar_min", &cv::setTrackbarMin,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&, int)>("set_trackbar_min", &cv::setTrackbarMin,
     Arg("trackbarname"), Arg("winname"), Arg("minval"));
 
   rb_mCv.define_module_function<void(*)(const cv::String&, const cv::ogl::Texture2D&)>("imshow", &cv::imshow,
     Arg("winname"), Arg("tex"));
 
-  rb_mCv.define_module_function("set_open_gl_draw_callback", &cv::setOpenGlDrawCallback,
+  rb_mCv.define_module_function<void(*)(const cv::String&, cv::OpenGlDrawCallback, void*)>("set_open_gl_draw_callback", &cv::setOpenGlDrawCallback,
     Arg("winname"), Arg("on_open_gl_draw"), ArgBuffer("userdata") = static_cast<void*>(0));
 
-  rb_mCv.define_module_function("set_open_gl_context", &cv::setOpenGlContext,
+  rb_mCv.define_module_function<void(*)(const cv::String&)>("set_open_gl_context", &cv::setOpenGlContext,
     Arg("winname"));
 
-  rb_mCv.define_module_function("update_window", &cv::updateWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String&)>("update_window", &cv::updateWindow,
     Arg("winname"));
 
   Rice::Data_Type<cv::QtFont> rb_cCvQtFont = define_class_under<cv::QtFont>(rb_mCv, "QtFont").
@@ -171,7 +167,7 @@ void Init_Highgui()
     define_attr("dx", &cv::QtFont::dx).
     define_attr("line_type", &cv::QtFont::line_type);
 
-  rb_mCv.define_module_function("font_qt", &cv::fontQt,
+  rb_mCv.define_module_function<cv::QtFont(*)(const cv::String&, int, cv::Scalar, int, int, int)>("font_qt", &cv::fontQt,
     Arg("name_font"), Arg("point_size") = static_cast<int>(-1), Arg("color") = static_cast<cv::Scalar>(cv::Scalar::all(0)), Arg("weight") = static_cast<int>(cv::QT_FONT_NORMAL), Arg("style") = static_cast<int>(cv::QT_STYLE_NORMAL), Arg("spacing") = static_cast<int>(0));
 
   rb_mCv.define_module_function<void(*)(const cv::Mat&, const cv::String&, cv::Point, const cv::QtFont&)>("add_text", &cv::addText,
@@ -180,29 +176,23 @@ void Init_Highgui()
   rb_mCv.define_module_function<void(*)(const cv::Mat&, const cv::String&, cv::Point, const cv::String&, int, cv::Scalar, int, int, int)>("add_text", &cv::addText,
     Arg("img"), Arg("text"), Arg("org"), Arg("name_font"), Arg("point_size") = static_cast<int>(-1), Arg("color") = static_cast<cv::Scalar>(cv::Scalar::all(0)), Arg("weight") = static_cast<int>(cv::QT_FONT_NORMAL), Arg("style") = static_cast<int>(cv::QT_STYLE_NORMAL), Arg("spacing") = static_cast<int>(0));
 
-  rb_mCv.define_module_function("display_overlay", &cv::displayOverlay,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&, int)>("display_overlay", &cv::displayOverlay,
     Arg("winname"), Arg("text"), Arg("delayms") = static_cast<int>(0));
 
-  rb_mCv.define_module_function("display_status_bar", &cv::displayStatusBar,
+  rb_mCv.define_module_function<void(*)(const cv::String&, const cv::String&, int)>("display_status_bar", &cv::displayStatusBar,
     Arg("winname"), Arg("text"), Arg("delayms") = static_cast<int>(0));
 
-  rb_mCv.define_module_function("save_window_parameters", &cv::saveWindowParameters,
+  rb_mCv.define_module_function<void(*)(const cv::String&)>("save_window_parameters", &cv::saveWindowParameters,
     Arg("window_name"));
 
-  rb_mCv.define_module_function("load_window_parameters", &cv::loadWindowParameters,
+  rb_mCv.define_module_function<void(*)(const cv::String&)>("load_window_parameters", &cv::loadWindowParameters,
     Arg("window_name"));
 
-  rb_mCv.define_module_function("start_loop", &cv::startLoop,
+  rb_mCv.define_module_function<int(*)(int (*)(int, char*[]), int, char*[])>("start_loop", &cv::startLoop,
     Arg("pt2_func"), Arg("argc"), Arg("argv"));
 
-  rb_mCv.define_module_function("stop_loop", &cv::stopLoop);
+  rb_mCv.define_module_function<void(*)()>("stop_loop", &cv::stopLoop);
 
-  rb_mCv.define_module_function("create_button", &cv::createButton,
+  rb_mCv.define_module_function<int(*)(const cv::String&, cv::ButtonCallback, void*, int, bool)>("create_button", &cv::createButton,
     Arg("bar_name"), Arg("on_change"), ArgBuffer("userdata") = static_cast<void*>(0), Arg("type") = static_cast<int>(cv::QT_PUSH_BUTTON), Arg("initial_button_state") = static_cast<bool>(false));
-
-  // Callbacks
-  define_callback<cv::MouseCallback>(Arg("event"), Arg("x"), Arg("y"), Arg("flags"), Arg("user_data").setOpaque());
-  define_callback<cv::TrackbarCallback>(Arg("pos"), Arg("user_data").setOpaque());
-  define_callback<cv::OpenGlDrawCallback>(Arg("user_data").setOpaque());
-  define_callback<cv::ButtonCallback>(Arg("state"), Arg("user_data").setOpaque());
 }

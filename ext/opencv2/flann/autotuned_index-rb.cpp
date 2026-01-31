@@ -6,26 +6,26 @@ using namespace Rice;
 template<typename Data_Type_T, typename Distance>
 inline void AutotunedIndex_builder(Data_Type_T& klass)
 {
-  klass.define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const Matrix<type-parameter-0-0::ElementType>&, const cvflann::IndexParams&, Distance>(),
+  klass.define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::AutotunedIndexParams()), Arg("d") = static_cast<Distance>(cvflann::AutotunedIndex::Distance())).
     define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::AutotunedIndex<Distance>&>(),
       Arg("arg_0")).
-    define_method("assign", &cvflann::AutotunedIndex<Distance>::operator=,
+    template define_method<cvflann::AutotunedIndex<Distance>&(cvflann::AutotunedIndex<Distance>::*)(const cvflann::AutotunedIndex<Distance>&)>("assign", &cvflann::AutotunedIndex<Distance>::operator=,
       Arg("arg_0")).
-    define_method("build_index", &cvflann::AutotunedIndex<Distance>::buildIndex).
-    define_method("save_index", &cvflann::AutotunedIndex<Distance>::saveIndex,
+    template define_method<void(cvflann::AutotunedIndex<Distance>::*)()>("build_index", &cvflann::AutotunedIndex<Distance>::buildIndex).
+    template define_method<void(cvflann::AutotunedIndex<Distance>::*)(FILE*)>("save_index", &cvflann::AutotunedIndex<Distance>::saveIndex,
       Arg("stream")).
-    define_method("load_index", &cvflann::AutotunedIndex<Distance>::loadIndex,
+    template define_method<void(cvflann::AutotunedIndex<Distance>::*)(FILE*)>("load_index", &cvflann::AutotunedIndex<Distance>::loadIndex,
       Arg("stream")).
-    define_method("find_neighbors", &cvflann::AutotunedIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::AutotunedIndex<Distance>::*)(cvflann::ResultSet<cvflann::AutotunedIndex<Distance>::DistanceType>&, const typename cvflann::AutotunedIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::AutotunedIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
-    define_method("get_parameters", &cvflann::AutotunedIndex<Distance>::getParameters).
-    define_method("get_search_parameters", &cvflann::AutotunedIndex<Distance>::getSearchParameters).
-    define_method("get_speedup", &cvflann::AutotunedIndex<Distance>::getSpeedup).
-    define_method("size", &cvflann::AutotunedIndex<Distance>::size).
-    define_method("veclen", &cvflann::AutotunedIndex<Distance>::veclen).
-    define_method("used_memory", &cvflann::AutotunedIndex<Distance>::usedMemory).
-    define_method("get_type", &cvflann::AutotunedIndex<Distance>::getType);
+    template define_method<cvflann::IndexParams(cvflann::AutotunedIndex<Distance>::*)() const>("get_parameters", &cvflann::AutotunedIndex<Distance>::getParameters).
+    template define_method<cvflann::SearchParams(cvflann::AutotunedIndex<Distance>::*)() const>("get_search_parameters", &cvflann::AutotunedIndex<Distance>::getSearchParameters).
+    template define_method<float(cvflann::AutotunedIndex<Distance>::*)() const>("get_speedup", &cvflann::AutotunedIndex<Distance>::getSpeedup).
+    template define_method<size_t(cvflann::AutotunedIndex<Distance>::*)() const>("size", &cvflann::AutotunedIndex<Distance>::size).
+    template define_method<size_t(cvflann::AutotunedIndex<Distance>::*)() const>("veclen", &cvflann::AutotunedIndex<Distance>::veclen).
+    template define_method<int(cvflann::AutotunedIndex<Distance>::*)() const>("used_memory", &cvflann::AutotunedIndex<Distance>::usedMemory).
+    template define_method<cvflann::flann_algorithm_t(cvflann::AutotunedIndex<Distance>::*)() const>("get_type", &cvflann::AutotunedIndex<Distance>::getType);
 };
 
 void Init_Flann_AutotunedIndex()

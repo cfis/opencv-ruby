@@ -12,18 +12,18 @@ void Init_Stitching_Detail_ExposureCompensate()
   Rice::Data_Type<cv::detail::ExposureCompensator> rb_cCvDetailExposureCompensator = define_class_under<cv::detail::ExposureCompensator>(rb_mCvDetail, "ExposureCompensator").
     define_method<void(cv::detail::ExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<cv::UMat>&)>("feed", &cv::detail::ExposureCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method<void(cv::detail::ExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, uchar>>&)>("feed", &cv::detail::ExposureCompensator::feed,
+    define_method<void(cv::detail::ExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::ExposureCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method("apply", &cv::detail::ExposureCompensator::apply,
+    define_method<void(cv::detail::ExposureCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::ExposureCompensator::apply,
       Arg("index"), Arg("corner"), Arg("image"), Arg("mask")).
-    define_method("get_mat_gains", &cv::detail::ExposureCompensator::getMatGains,
+    define_method<void(cv::detail::ExposureCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::ExposureCompensator::getMatGains,
       Arg("arg_0")).
-    define_method("set_mat_gains", &cv::detail::ExposureCompensator::setMatGains,
+    define_method<void(cv::detail::ExposureCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::ExposureCompensator::setMatGains,
       Arg("arg_0")).
-    define_method("set_update_gain", &cv::detail::ExposureCompensator::setUpdateGain,
+    define_method<void(cv::detail::ExposureCompensator::*)(bool)>("set_update_gain", &cv::detail::ExposureCompensator::setUpdateGain,
       Arg("b")).
-    define_method("get_update_gain?", &cv::detail::ExposureCompensator::getUpdateGain).
-    define_singleton_function("create_default", &cv::detail::ExposureCompensator::createDefault,
+    define_method<bool(cv::detail::ExposureCompensator::*)()>("get_update_gain?", &cv::detail::ExposureCompensator::getUpdateGain).
+    define_singleton_function<cv::Ptr<cv::detail::ExposureCompensator>(*)(int)>("create_default", &cv::detail::ExposureCompensator::createDefault,
       Arg("type"));
 
   rb_cCvDetailExposureCompensator.define_constant("NO", (int)cv::detail::ExposureCompensator::NO);
@@ -34,97 +34,97 @@ void Init_Stitching_Detail_ExposureCompensate()
 
   Rice::Data_Type<cv::detail::NoExposureCompensator> rb_cCvDetailNoExposureCompensator = define_class_under<cv::detail::NoExposureCompensator, cv::detail::ExposureCompensator>(rb_mCvDetail, "NoExposureCompensator").
     define_constructor(Constructor<cv::detail::NoExposureCompensator>()).
-    define_method("feed", &cv::detail::NoExposureCompensator::feed,
+    define_method<void(cv::detail::NoExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::NoExposureCompensator::feed,
       Arg("arg_0"), Arg("arg_1"), Arg("arg_2")).
-    define_method("apply", &cv::detail::NoExposureCompensator::apply,
+    define_method<void(cv::detail::NoExposureCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::NoExposureCompensator::apply,
       Arg("arg_0"), Arg("arg_1"), Arg("arg_2"), Arg("arg_3")).
-    define_method("get_mat_gains", &cv::detail::NoExposureCompensator::getMatGains,
+    define_method<void(cv::detail::NoExposureCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::NoExposureCompensator::getMatGains,
       Arg("umv")).
-    define_method("set_mat_gains", &cv::detail::NoExposureCompensator::setMatGains,
+    define_method<void(cv::detail::NoExposureCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::NoExposureCompensator::setMatGains,
       Arg("umv"));
 
   Rice::Data_Type<cv::detail::GainCompensator> rb_cCvDetailGainCompensator = define_class_under<cv::detail::GainCompensator, cv::detail::ExposureCompensator>(rb_mCvDetail, "GainCompensator").
     define_constructor(Constructor<cv::detail::GainCompensator>()).
     define_constructor(Constructor<cv::detail::GainCompensator, int>(),
       Arg("nr_feeds")).
-    define_method("feed", &cv::detail::GainCompensator::feed,
+    define_method<void(cv::detail::GainCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::GainCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method("single_feed", &cv::detail::GainCompensator::singleFeed,
+    define_method<void(cv::detail::GainCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("single_feed", &cv::detail::GainCompensator::singleFeed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method("apply", &cv::detail::GainCompensator::apply,
+    define_method<void(cv::detail::GainCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::GainCompensator::apply,
       Arg("index"), Arg("corner"), Arg("image"), Arg("mask")).
-    define_method("get_mat_gains", &cv::detail::GainCompensator::getMatGains,
+    define_method<void(cv::detail::GainCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::GainCompensator::getMatGains,
       Arg("umv")).
-    define_method("set_mat_gains", &cv::detail::GainCompensator::setMatGains,
+    define_method<void(cv::detail::GainCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::GainCompensator::setMatGains,
       Arg("umv")).
-    define_method("set_nr_feeds", &cv::detail::GainCompensator::setNrFeeds,
+    define_method<void(cv::detail::GainCompensator::*)(int)>("set_nr_feeds", &cv::detail::GainCompensator::setNrFeeds,
       Arg("nr_feeds")).
-    define_method("get_nr_feeds", &cv::detail::GainCompensator::getNrFeeds).
-    define_method("set_similarity_threshold", &cv::detail::GainCompensator::setSimilarityThreshold,
+    define_method<int(cv::detail::GainCompensator::*)()>("get_nr_feeds", &cv::detail::GainCompensator::getNrFeeds).
+    define_method<void(cv::detail::GainCompensator::*)(double)>("set_similarity_threshold", &cv::detail::GainCompensator::setSimilarityThreshold,
       Arg("similarity_threshold")).
-    define_method("get_similarity_threshold", &cv::detail::GainCompensator::getSimilarityThreshold).
-    define_method("prepare_similarity_mask", &cv::detail::GainCompensator::prepareSimilarityMask,
+    define_method<double(cv::detail::GainCompensator::*)() const>("get_similarity_threshold", &cv::detail::GainCompensator::getSimilarityThreshold).
+    define_method<void(cv::detail::GainCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&)>("prepare_similarity_mask", &cv::detail::GainCompensator::prepareSimilarityMask,
       Arg("corners"), Arg("images")).
-    define_method("gains", &cv::detail::GainCompensator::gains);
+    define_method<std::vector<double>(cv::detail::GainCompensator::*)() const>("gains", &cv::detail::GainCompensator::gains);
 
   Rice::Data_Type<cv::detail::ChannelsCompensator> rb_cCvDetailChannelsCompensator = define_class_under<cv::detail::ChannelsCompensator, cv::detail::ExposureCompensator>(rb_mCvDetail, "ChannelsCompensator").
     define_constructor(Constructor<cv::detail::ChannelsCompensator, int>(),
       Arg("nr_feeds") = static_cast<int>(1)).
-    define_method("feed", &cv::detail::ChannelsCompensator::feed,
+    define_method<void(cv::detail::ChannelsCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::ChannelsCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method("apply", &cv::detail::ChannelsCompensator::apply,
+    define_method<void(cv::detail::ChannelsCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::ChannelsCompensator::apply,
       Arg("index"), Arg("corner"), Arg("image"), Arg("mask")).
-    define_method("get_mat_gains", &cv::detail::ChannelsCompensator::getMatGains,
+    define_method<void(cv::detail::ChannelsCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::ChannelsCompensator::getMatGains,
       Arg("umv")).
-    define_method("set_mat_gains", &cv::detail::ChannelsCompensator::setMatGains,
+    define_method<void(cv::detail::ChannelsCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::ChannelsCompensator::setMatGains,
       Arg("umv")).
-    define_method("set_nr_feeds", &cv::detail::ChannelsCompensator::setNrFeeds,
+    define_method<void(cv::detail::ChannelsCompensator::*)(int)>("set_nr_feeds", &cv::detail::ChannelsCompensator::setNrFeeds,
       Arg("nr_feeds")).
-    define_method("get_nr_feeds", &cv::detail::ChannelsCompensator::getNrFeeds).
-    define_method("set_similarity_threshold", &cv::detail::ChannelsCompensator::setSimilarityThreshold,
+    define_method<int(cv::detail::ChannelsCompensator::*)()>("get_nr_feeds", &cv::detail::ChannelsCompensator::getNrFeeds).
+    define_method<void(cv::detail::ChannelsCompensator::*)(double)>("set_similarity_threshold", &cv::detail::ChannelsCompensator::setSimilarityThreshold,
       Arg("similarity_threshold")).
-    define_method("get_similarity_threshold", &cv::detail::ChannelsCompensator::getSimilarityThreshold).
-    define_method("gains", &cv::detail::ChannelsCompensator::gains);
+    define_method<double(cv::detail::ChannelsCompensator::*)() const>("get_similarity_threshold", &cv::detail::ChannelsCompensator::getSimilarityThreshold).
+    define_method<std::vector<cv::Scalar_<double>>(cv::detail::ChannelsCompensator::*)() const>("gains", &cv::detail::ChannelsCompensator::gains);
 
   Rice::Data_Type<cv::detail::BlocksCompensator> rb_cCvDetailBlocksCompensator = define_class_under<cv::detail::BlocksCompensator, cv::detail::ExposureCompensator>(rb_mCvDetail, "BlocksCompensator").
-    define_method("apply", &cv::detail::BlocksCompensator::apply,
+    define_method<void(cv::detail::BlocksCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::BlocksCompensator::apply,
       Arg("index"), Arg("corner"), Arg("image"), Arg("mask")).
-    define_method("get_mat_gains", &cv::detail::BlocksCompensator::getMatGains,
+    define_method<void(cv::detail::BlocksCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::BlocksCompensator::getMatGains,
       Arg("umv")).
-    define_method("set_mat_gains", &cv::detail::BlocksCompensator::setMatGains,
+    define_method<void(cv::detail::BlocksCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::BlocksCompensator::setMatGains,
       Arg("umv")).
-    define_method("set_nr_feeds", &cv::detail::BlocksCompensator::setNrFeeds,
+    define_method<void(cv::detail::BlocksCompensator::*)(int)>("set_nr_feeds", &cv::detail::BlocksCompensator::setNrFeeds,
       Arg("nr_feeds")).
-    define_method("get_nr_feeds", &cv::detail::BlocksCompensator::getNrFeeds).
-    define_method("set_similarity_threshold", &cv::detail::BlocksCompensator::setSimilarityThreshold,
+    define_method<int(cv::detail::BlocksCompensator::*)()>("get_nr_feeds", &cv::detail::BlocksCompensator::getNrFeeds).
+    define_method<void(cv::detail::BlocksCompensator::*)(double)>("set_similarity_threshold", &cv::detail::BlocksCompensator::setSimilarityThreshold,
       Arg("similarity_threshold")).
-    define_method("get_similarity_threshold", &cv::detail::BlocksCompensator::getSimilarityThreshold).
+    define_method<double(cv::detail::BlocksCompensator::*)() const>("get_similarity_threshold", &cv::detail::BlocksCompensator::getSimilarityThreshold).
     define_method<void(cv::detail::BlocksCompensator::*)(int, int)>("set_block_size", &cv::detail::BlocksCompensator::setBlockSize,
       Arg("width"), Arg("height")).
     define_method<void(cv::detail::BlocksCompensator::*)(cv::Size)>("set_block_size", &cv::detail::BlocksCompensator::setBlockSize,
       Arg("size")).
-    define_method("get_block_size", &cv::detail::BlocksCompensator::getBlockSize).
-    define_method("set_nr_gains_filtering_iterations", &cv::detail::BlocksCompensator::setNrGainsFilteringIterations,
+    define_method<cv::Size(cv::detail::BlocksCompensator::*)() const>("get_block_size", &cv::detail::BlocksCompensator::getBlockSize).
+    define_method<void(cv::detail::BlocksCompensator::*)(int)>("set_nr_gains_filtering_iterations", &cv::detail::BlocksCompensator::setNrGainsFilteringIterations,
       Arg("nr_iterations")).
-    define_method("get_nr_gains_filtering_iterations", &cv::detail::BlocksCompensator::getNrGainsFilteringIterations);
+    define_method<int(cv::detail::BlocksCompensator::*)() const>("get_nr_gains_filtering_iterations", &cv::detail::BlocksCompensator::getNrGainsFilteringIterations);
 
   Rice::Data_Type<cv::detail::BlocksGainCompensator> rb_cCvDetailBlocksGainCompensator = define_class_under<cv::detail::BlocksGainCompensator, cv::detail::BlocksCompensator>(rb_mCvDetail, "BlocksGainCompensator").
     define_constructor(Constructor<cv::detail::BlocksGainCompensator, int, int>(),
       Arg("bl_width") = static_cast<int>(32), Arg("bl_height") = static_cast<int>(32)).
     define_constructor(Constructor<cv::detail::BlocksGainCompensator, int, int, int>(),
       Arg("bl_width"), Arg("bl_height"), Arg("nr_feeds")).
-    define_method("feed", &cv::detail::BlocksGainCompensator::feed,
+    define_method<void(cv::detail::BlocksGainCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::BlocksGainCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
-    define_method("apply", &cv::detail::BlocksGainCompensator::apply,
+    define_method<void(cv::detail::BlocksGainCompensator::*)(int, cv::Point, cv::InputOutputArray, cv::InputArray)>("apply", &cv::detail::BlocksGainCompensator::apply,
       Arg("index"), Arg("corner"), Arg("image"), Arg("mask")).
-    define_method("get_mat_gains", &cv::detail::BlocksGainCompensator::getMatGains,
+    define_method<void(cv::detail::BlocksGainCompensator::*)(std::vector<cv::Mat>&)>("get_mat_gains", &cv::detail::BlocksGainCompensator::getMatGains,
       Arg("umv")).
-    define_method("set_mat_gains", &cv::detail::BlocksGainCompensator::setMatGains,
+    define_method<void(cv::detail::BlocksGainCompensator::*)(std::vector<cv::Mat>&)>("set_mat_gains", &cv::detail::BlocksGainCompensator::setMatGains,
       Arg("umv"));
 
   Rice::Data_Type<cv::detail::BlocksChannelsCompensator> rb_cCvDetailBlocksChannelsCompensator = define_class_under<cv::detail::BlocksChannelsCompensator, cv::detail::BlocksCompensator>(rb_mCvDetail, "BlocksChannelsCompensator").
     define_constructor(Constructor<cv::detail::BlocksChannelsCompensator, int, int, int>(),
       Arg("bl_width") = static_cast<int>(32), Arg("bl_height") = static_cast<int>(32), Arg("nr_feeds") = static_cast<int>(1)).
-    define_method("feed", &cv::detail::BlocksChannelsCompensator::feed,
+    define_method<void(cv::detail::BlocksChannelsCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::BlocksChannelsCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks"));
 }

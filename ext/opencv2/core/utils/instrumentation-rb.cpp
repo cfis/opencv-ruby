@@ -3,11 +3,7 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvInstrNodeData;
-Rice::Class rb_cCvInstrNodeDataTls;
-Rice::Class rb_cInstrNode;
-
-void Init_Instrumentation()
+void Init_Core_Utils_Instrumentation()
 {
   Module rb_mCv = define_module("Cv");
 
@@ -24,16 +20,16 @@ void Init_Instrumentation()
     define_value("IMPL_IPP", cv::instr::IMPL::IMPL_IPP).
     define_value("IMPL_OPENCL", cv::instr::IMPL::IMPL_OPENCL);
 
-  rb_cCvInstrNodeDataTls = define_class_under<cv::instr::NodeDataTls>(rb_mCvInstr, "NodeDataTls").
+  Rice::Data_Type<cv::instr::NodeDataTls> rb_cCvInstrNodeDataTls = define_class_under<cv::instr::NodeDataTls>(rb_mCvInstr, "NodeDataTls").
     define_constructor(Constructor<cv::instr::NodeDataTls>()).
     define_attr("m_ticks_total", &cv::instr::NodeDataTls::m_ticksTotal);
 
-  rb_cCvInstrNodeData = define_class_under<cv::instr::NodeData>(rb_mCvInstr, "NodeData").
+  Rice::Data_Type<cv::instr::NodeData> rb_cCvInstrNodeData = define_class_under<cv::instr::NodeData>(rb_mCvInstr, "NodeData").
     define_constructor(Constructor<cv::instr::NodeData, const char*, const char*, int, void*, bool, cv::instr::TYPE, cv::instr::IMPL>(),
-      Arg("fun_name") = static_cast<const char*>(0), Arg("file_name") = static_cast<const char*>(NULL), Arg("line_num") = static_cast<int>(0), Arg("ret_address") = static_cast<void*>(NULL), Arg("always_expand") = static_cast<bool>(false), Arg("instr_type") = static_cast<cv::instr::TYPE>(cv::instr::TYPE_GENERAL), Arg("impl_type") = static_cast<cv::instr::IMPL>(cv::instr::IMPL_PLAIN)).
+      Arg("fun_name") = static_cast<const char*>(0), Arg("file_name") = static_cast<const char*>(NULL), Arg("line_num") = static_cast<int>(0), ArgBuffer("ret_address") = static_cast<void*>(NULL), Arg("always_expand") = static_cast<bool>(false), Arg("instr_type") = static_cast<cv::instr::TYPE>(cv::instr::TYPE_GENERAL), Arg("impl_type") = static_cast<cv::instr::IMPL>(cv::instr::IMPL_PLAIN)).
     define_constructor(Constructor<cv::instr::NodeData, cv::instr::NodeData&>(),
       Arg("ref")).
-    define_method("assign", &cv::instr::NodeData::operator=,
+    define_method<cv::instr::NodeData&(cv::instr::NodeData::*)(const cv::instr::NodeData&)>("assign", &cv::instr::NodeData::operator=,
       Arg("arg_0")).
     define_attr("m_fun_name", &cv::instr::NodeData::m_funName).
     define_attr("m_instr_type", &cv::instr::NodeData::m_instrType).
@@ -47,20 +43,20 @@ void Init_Instrumentation()
     define_attr("m_ticks_total", &cv::instr::NodeData::m_ticksTotal).
     define_attr("m_tls", &cv::instr::NodeData::m_tls).
     define_attr("m_threads", &cv::instr::NodeData::m_threads).
-    define_method("get_total_ms", &cv::instr::NodeData::getTotalMs).
-    define_method("get_mean_ms", &cv::instr::NodeData::getMeanMs);
+    define_method<double(cv::instr::NodeData::*)() const>("get_total_ms", &cv::instr::NodeData::getTotalMs).
+    define_method<double(cv::instr::NodeData::*)() const>("get_mean_ms", &cv::instr::NodeData::getMeanMs);
 
-  rb_cInstrNode = define_class_under<cv::Node<cv::instr::NodeData>>(rb_mCvInstr, "InstrNode").
+  Rice::Data_Type<cv::Node<cv::instr::NodeData>> rb_cInstrNode = define_class_under<cv::Node<cv::instr::NodeData>>(rb_mCvInstr, "InstrNode").
     define(&Node_builder<Data_Type<cv::Node<cv::instr::NodeData>>, cv::instr::NodeData>);
 
-  rb_mCvInstr.define_module_function("get_trace", &cv::instr::getTrace);
+  rb_mCvInstr.define_module_function<cv::instr::InstrNode*(*)()>("get_trace", &cv::instr::getTrace);
 
-  rb_mCvInstr.define_module_function("use_instrumentation?", &cv::instr::useInstrumentation);
+  rb_mCvInstr.define_module_function<bool(*)()>("use_instrumentation?", &cv::instr::useInstrumentation);
 
-  rb_mCvInstr.define_module_function("set_use_instrumentation", &cv::instr::setUseInstrumentation,
+  rb_mCvInstr.define_module_function<void(*)(bool)>("set_use_instrumentation", &cv::instr::setUseInstrumentation,
     Arg("flag"));
 
-  rb_mCvInstr.define_module_function("reset_trace", &cv::instr::resetTrace);
+  rb_mCvInstr.define_module_function<void(*)()>("reset_trace", &cv::instr::resetTrace);
 
   Enum<cv::instr::FLAGS> rb_cCvInstrFLAGS = define_enum_under<cv::instr::FLAGS>("FLAGS", rb_mCvInstr).
     define_value("FLAGS_NONE", cv::instr::FLAGS::FLAGS_NONE).
@@ -73,7 +69,7 @@ void Init_Instrumentation()
   rb_mCvInstr.define_module_function<void(*)(int)>("set_flags", &cv::instr::setFlags,
     Arg("mode_flags"));
 
-  rb_mCvInstr.define_module_function("get_flags", &cv::instr::getFlags);
+  rb_mCvInstr.define_module_function<cv::instr::FLAGS(*)()>("get_flags", &cv::instr::getFlags);
 
   rb_cCvInstrNodeData.
     define_method("==", [](const cv::instr::NodeData& self, const cv::instr::NodeData& other) -> bool

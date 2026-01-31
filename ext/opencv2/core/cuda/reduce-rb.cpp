@@ -27,4 +27,34 @@ void Init_Core_Cuda_Reduce()
 
   rb_mCvCudaDevice.define_module_function<void(*)(const int&, const int&, const int&, const int&, unsigned int, const int&)>("reduce_key_val", &cv::cuda::device::reduceKeyVal,
     Arg("skeys"), Arg("key"), Arg("svals"), Arg("val"), Arg("tid"), Arg("cmp"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *>(*)(int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *>(*)(int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *>(*)(int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *>(*)(int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *>(*)(int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *, volatile T5 *>(*)(int*, int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"), ArgBuffer("t5"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *, volatile T5 *, volatile T6 *>(*)(int*, int*, int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"), ArgBuffer("t5"), ArgBuffer("t6"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *, volatile T5 *, volatile T6 *, volatile T7 *>(*)(int*, int*, int*, int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"), ArgBuffer("t5"), ArgBuffer("t6"), ArgBuffer("t7"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *, volatile T5 *, volatile T6 *, volatile T7 *, volatile T8 *>(*)(int*, int*, int*, int*, int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"), ArgBuffer("t5"), ArgBuffer("t6"), ArgBuffer("t7"), ArgBuffer("t8"));
+
+  rb_mCvCudaDevice.define_module_function<thrust::tuple<volatile T0 *, volatile T1 *, volatile T2 *, volatile T3 *, volatile T4 *, volatile T5 *, volatile T6 *, volatile T7 *, volatile T8 *, volatile T9 *>(*)(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*)>("smem_tuple", &cv::cuda::device::smem_tuple,
+    ArgBuffer("t0"), ArgBuffer("t1"), ArgBuffer("t2"), ArgBuffer("t3"), ArgBuffer("t4"), ArgBuffer("t5"), ArgBuffer("t6"), ArgBuffer("t7"), ArgBuffer("t8"), ArgBuffer("t9"));
 }

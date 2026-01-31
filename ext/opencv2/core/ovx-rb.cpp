@@ -7,10 +7,10 @@ void Init_Core_Ovx()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_mCv.define_module_function("have_open_vx?", &cv::haveOpenVX);
+  rb_mCv.define_module_function<bool(*)()>("have_open_vx?", &cv::haveOpenVX);
 
-  rb_mCv.define_module_function("use_open_vx?", &cv::useOpenVX);
+  rb_mCv.define_module_function<bool(*)()>("use_open_vx?", &cv::useOpenVX);
 
-  rb_mCv.define_module_function("set_use_open_vx", &cv::setUseOpenVX,
+  rb_mCv.define_module_function<void(*)(bool)>("set_use_open_vx", &cv::setUseOpenVX,
     Arg("flag"));
 }

@@ -56,8 +56,9 @@ include(FetchContent)
 
 FetchContent_Declare(
   rice
-  GIT_REPOSITORY https://github.com/ruby-rice/rice.git
-  GIT_TAG 4.9.1
+  #GIT_REPOSITORY https://github.com/ruby-rice/rice.git
+  #GIT_TAG 4.9.1
+  SOURCE_DIR c:/Source/rice
 )
 FetchContent_MakeAvailable(rice)
 
@@ -221,3 +222,4 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
 
 # Add subdirectories
 add_subdirectory ("opencv2")
+add_subdirectory ("refinements")

@@ -1,0 +1,285 @@
+# Manual Include Directives
+
+When regenerating bindings with ruby-bindgen, each of the following sections must be applied completely.
+
+**IMPORTANT FOR AI ASSISTANTS:** After ANY regeneration, systematically check EVERY file listed in this document and apply missing changes. Do not wait for the user to specify which files - iterate through all entries below and verify each one.
+
+## Manual Includes
+First add the following `#include` directives. These are required for compilation but are not automatically generated. They must be applied in the correct order within a file.
+
+
+| File                                                       | Manual Includes                                                          |
+|------------------------------------------------------------|--------------------------------------------------------------------------|
+| `opencv2/core/bindings_utils-rb.cpp`                       | `<opencv2/core.hpp>`                                                     |
+| `opencv2/core/check-rb.cpp`                                | `<opencv2/core/types.hpp>`                                               |
+| `opencv2/core/detail/async_promise-rb.cpp`                 | `<opencv2/core.hpp>`, `<opencv2/core/detail/exception_ptr.hpp>`          |
+| `opencv2/core/detail/dispatch_helper.impl-rb.cpp`          | `<opencv2/opencv.hpp>`                                                   |
+| `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"` |
+| `opencv2/core/matx-rb.cpp`                                 | `"traits-rb.hpp"`                                                        |
+| `opencv2/core/ocl_genbase-rb.cpp`                          | `<opencv2/core/ocl.hpp>`                                                 |
+| `opencv2/core/opengl-rb.cpp`                               | `<opencv2/core/cuda.hpp>`                                                |
+| `opencv2/core/operations-rb.cpp`                           | `<opencv2/core/core.hpp>`, `"cvstd_wrapper-rb.hpp"`, `"mat-rb.hpp"`      |
+| `opencv2/core/parallel/backend/parallel_for.openmp-rb.cpp` | `<string>`                                                               |
+| `opencv2/core/parallel/backend/parallel_for.tbb-rb.cpp`    | `<string>`                                                               |
+| `opencv2/core/parallel/parallel_backend-rb.cpp`            | `<string>`, `<memory>`                                                   |
+| `opencv2/core/saturate-rb.cpp`                             | `<algorithm>`, `<climits>`                                               |
+| `opencv2/core/softfloat-rb.cpp`                            | `<opencv2/opencv.hpp>`                                                   |
+| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `"matx-rb.hpp"`                                    |
+| `opencv2/core/utils/filesystem-rb.cpp`                     | `<opencv2/core/core.hpp>`                                                |
+| `opencv2/core/utils/logger-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
+| `opencv2/core/utils/logger.defines-rb.cpp`                 | `<opencv2/opencv.hpp>`                                                   |
+| `opencv2/core/utils/trace-rb.cpp`                          | `<opencv2/core/base.hpp>`                                                |
+| `opencv2/flann/dist-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
+| `opencv2/flann/dynamic_bitset-rb.cpp`                      | `<vector>`, `<opencv2/core/base.hpp>`                                    |
+| `opencv2/flann/flann_base-rb.cpp`                          | `<opencv2/core/base.hpp>`, `<opencv2/flann/defines.h>`, `"../../opencv_ruby_version.hpp"` |
+| `opencv2/flann/ground_truth-rb.cpp`                        | `<opencv2/core/base.hpp>`                                                |
+| `opencv2/flann/heap-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
+| `opencv2/flann/random-rb.cpp`                              | `<opencv2/core.hpp>`                                                     |
+| `opencv2/flann/sampling-rb.cpp`                            | `<opencv2/core/core.hpp>`, `<opencv2/flann/defines.h>`                   |
+| `opencv2/objdetect/aruco_board-rb.cpp`                     | `<opencv2/objdetect/aruco_dictionary.hpp>`                               |
+| `opencv2/stitching/detail/matchers-rb.cpp`                 | `"../../../opencv_ruby_version.hpp"`                                     |
+| `opencv2/video/tracking-rb.cpp`                            | `"../../opencv_ruby_version.hpp"`                                        |
+| `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
+
+## Externs
+
+The following variables are needed across compilation units and thus need to be made global and setup as externs. Note if you add a global variable at the top of the cpp file you must remove its local declaration lower down in the file  
+
+| File                                     | Reason                                                                                                                                                                                                                |
+|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `opencv2/core/mat-rb.hpp`                | Add `extern Rice::Class rb_cCvMat;` declaration                                                                                                                                                                       |
+| `opencv2/core/mat-rb.cpp`                | Add global `Rice::Class rb_cCvMat;` after `using namespace Rice;` and remove type from local declaration (`Rice::Data_Type<cv::Mat> rb_cCvMat =` → `rb_cCvMat =`)                                                     |
+| `opencv2/core/types-rb.hpp`              | Add `extern Rice::Class rb_cCvRange;` and `extern Rice::Class rb_cScalar;` declarations                                                                                                                               |
+| `opencv2/core/types-rb.cpp`              | Add global `Rice::Class rb_cCvRange;` and `Rice::Class rb_cScalar;` after `using namespace Rice;` and remove types from local declarations                                                                            |
+| `opencv2/core/matx-rb.hpp`               | Add `extern Rice::Class rb_cMatx44d;` declaration and template forward declarations for `Matx_builder` and `Vec_builder`                                                                                              |
+| `opencv2/core/matx-rb.cpp`               | Add global `Rice::Class rb_cMatx44d;` after `using namespace Rice;` and remove type from local declaration                                                                                                            |
+
+## DNN Module
+Remove the versioning in the DNN namespace.
+
+| File                                     | Reason                                                                                                                                                                                                                |
+|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `opencv2/dnn/*.cpp`, `opencv2/dnn/*.hpp` | Remove inline namespace version suffix: replace `::dnn4_v\d+` with empty string (e.g., `cv::dnn::dnn4_v20241223` → `cv::dnn`)                                                                                         |
+| `opencv2/dnn/*.cpp`, `opencv2/dnn/*.hpp` | Remove version from variable names: replace `Dnn4V\d+` with empty string (e.g., `rb_cCvDnnDnn4V20241223Layer` → `rb_cCvDnnLayer`)                                                                                     |
+| `opencv2/dnn/*.cpp`                      | Delete empty module definition line: `Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");`                                                                                                                         |
+
+## Additional Updates
+Apply all these updates
+
+| File                                     | Reason                                                                                                                                                                                                                |
+|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `opencv2/core/matx-rb.cpp`               | Rename Matx types to OpenCV convention: `MatxUnsignedChar##` → `Matx##b`, `MatxShort##` → `Matx##s`, `MatxUnsignedShort##` → `Matx##w`, `MatxInt##` → `Matx##i` (applies to both variable names and Ruby class names) |
+| `opencv2/core/fast_math-rb.cpp`          | Wrap `OPENCV_USE_FASTMATH_BUILTINS` constant in `#ifdef` guard                                                                                                                                                        |
+| `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
+
+## Template Builder Modifications
+
+The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.cpp` require `if constexpr` guards because OpenCV only defines constructors and methods for specific dimensions/types.
+
+### `Matx_builder<Data_Type_T, _Tp, m, n>` changes:
+
+1. **Dimension-specific constructors** - Wrap each multi-arg constructor in `if constexpr (m * n == N)`:
+   - `m * n == 1`: 1-arg constructor
+   - `m * n == 2`: 2-arg constructor
+   - `m * n == 3`: 3-arg constructor
+   - `m * n == 4`: 4-arg constructor
+   - `m * n == 5`: 5-arg constructor
+   - `m * n == 6`: 6-arg constructor
+   - `m * n == 7`: 7-arg constructor
+   - `m * n == 8`: 8-arg constructor
+   - `m * n == 9`: 9-arg constructor
+   - `m * n == 10`: 10-arg constructor
+   - `m * n == 12`: 12-arg constructor
+   - `m * n == 14`: 14-arg constructor
+   - `m * n == 16`: 16-arg constructor
+
+2. **Float/double-only methods** - Wrap `inv` and `solve` methods in:
+   ```cpp
+   if constexpr (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>)
+   ```
+
+3. **Vector-only single-index operator** - Wrap single-index `operator()` in:
+   ```cpp
+   if constexpr (m == 1 || n == 1)
+   ```
+
+### `Vec_builder<Data_Type_T, _Tp, cn>` changes:
+
+1. **Channel-specific constructors** - Wrap each multi-arg constructor in `if constexpr (cn == N)`:
+   - `cn == 1` through `cn == 10`, and `cn == 14`
+
+2. **Complex conjugate method** - Wrap `conj` method in:
+   ```cpp
+   if constexpr ((cn == 2 || cn == 4) && (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>))
+   ```
+
+3. **Cross product method** - Wrap `cross` method in:
+   ```cpp
+   if constexpr (cn == 3)
+   ```
+
+## DualQuaternion Linker Fixes
+
+The `opencv2/core/dualquaternion-rb.cpp` file has methods that cause linker errors because OpenCV doesn't provide explicit template instantiations for them. Comment out the following sections:
+
+**Lines 59-64** (assign_multiply and operator* methods):
+```cpp
+// Commented out - causes linker errors (no explicit template instantiation in OpenCV)
+// template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
+//   Arg("arg_0")).
+// template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
+//   Arg("s")).
+// template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&) const>("*", &cv::DualQuat<_Tp>::operator*,
+//   Arg("arg_0")).
+```
+
+**Lines 69-76** (assign_divide and static factory methods):
+```cpp
+// Commented out - causes linker errors (no explicit template instantiation in OpenCV)
+// template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
+//   Arg("arg_0")).
+// template define_method<cv::Quat<_Tp>&(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
+//   Arg("s")).
+// template define_singleton_function<cv::DualQuat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&)>("create_from_quat", &cv::DualQuat<_Tp>::createFromQuat,
+//   Arg("real_part"), Arg("dual_part")).
+// template define_singleton_function<cv::DualQuat<_Tp>(*)(const _Tp, const cv::Vec<_Tp, 3>&, const cv::Vec<_Tp, 3>&)>("create_from_angle_axis_trans", &cv::DualQuat<_Tp>::createFromAngleAxisTrans,
+//   Arg("angle"), Arg("axis"), Arg("translation")).
+```
+
+## Mat Linker Fixes
+
+The `opencv2/core/mat-rb.cpp` file has methods that cause linker errors. Comment out the following sections (line numbers are from freshly generated file):
+
+**Line 135** (Mat_::zeros with ndims in `Mat__builder`):
+```cpp
+// Commented out - causes linker errors
+// template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
+//   Arg("_ndims"), ArgBuffer("_sizes")).
+```
+
+**Line 143** (Mat_::ones with ndims in `Mat__builder`):
+```cpp
+// Commented out - causes linker errors
+// template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,
+//   Arg("_ndims"), ArgBuffer("_sizes")).
+```
+
+**Line 549** (_OutputArray constructor with `std::vector<cv::cuda::GpuMat>&`):
+```cpp
+// Commented out - causes linker errors
+// define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
+//   Arg("d_mat")).
+```
+
+**Line 566** (_OutputArray constructor with `const std::vector<cv::cuda::GpuMat>&`):
+```cpp
+// Commented out - causes linker errors
+// define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
+//   Arg("d_mat")).
+```
+
+**Line 737** (MatSize::operator() in `Init_Core_Mat`):
+```cpp
+// Commented out - causes linker errors
+// define_method<cv::Size(cv::MatSize::*)() const>("call", &cv::MatSize::operator()).
+```
+
+## OpenCV Version Guards
+
+Some features are only available in certain OpenCV versions. Wrap them with `#if RUBY_CV_VERSION >= XXX` guards.
+
+### `opencv2/core/bindings_utils-rb.cpp`
+- **Line ~38**: `dump_int64` (>= 407)
+- **Line ~113**: `dump_vec2i` through `ClassWithKeywordProperties` (>= 407)
+- **Line ~124**: `FunctionParams` class (>= 408)
+
+### `opencv2/core/check-rb.cpp`
+- **Line ~48**: `check_failed_auto` for bool (>= 407)
+- **Line ~77**: `check_failed_true` and `check_failed_false` (>= 407)
+
+### `opencv2/core/cuda-rb.cpp`
+- **Line ~130**: `GpuMat::copyTo` overloads (>= 409)
+- **Line ~237**: `createGpuMatFromCudaMemory` functions (>= 409)
+- **Line ~336**: `wrapStream` function (>= 408)
+- **Line ~349**: `Event::record` (>= 407, commented TODO)
+
+### `opencv2/core/cvdef-rb.cpp`
+- **Line ~73**: `CV_CPU_NEON_DOTPROD` constant (>= 407)
+- **Line ~77**: `CV_CPU_NEON_FP16`, `CV_CPU_NEON_BF16` constants (>= 409)
+- **Line ~93**: `CV_CPU_LSX`, `CV_CPU_LASX` constants (>= 409)
+- **Line ~127**: `CV_MAX_DIM` constant (>= 410)
+- **Line ~181**: `CpuFeatures::CPU_NEON_DOTPROD` enum value (>= 407)
+- **Line ~186**: `CpuFeatures::CPU_NEON_FP16`, `CPU_NEON_BF16`, `CPU_LSX`, `CPU_LASX` enum values (>= 409)
+- **Line ~210**: `cv::hfloat` class (>= 410)
+
+### `opencv2/core/ocl-rb.cpp`
+- **Line ~137**: `Device::hasFP64`, `Device::hasFP16` methods (>= 410)
+
+### `opencv2/core/optim-rb.cpp`
+- **Line ~53**: `SolveLPResult::SOLVELP_LOST` enum value (>= 408)
+
+### `opencv2/core/saturate-rb.cpp`
+- **Line ~163**: `saturate_cast` overloads for `cv::hfloat` (>= 410)
+
+### `opencv2/core/traits-rb.cpp`
+- **Line ~136**: `DataType<cv::hfloat>` class (>= 410)
+
+### `opencv2/core/types-rb.cpp`
+- **Line ~639**: `RotatedRect::points` with vector<Point_<float>> (>= 408)
+- **Line ~803**: `rectangleIntersectionArea` function (>= 407)
+
+### `opencv2/core/utility-rb.cpp`
+- **Line ~146**: `AlgorithmHint` enum (>= 411)
+- **Line ~194**: `CommandLineParser` constructor with argc/argv/keys (>= 411)
+
+### `opencv2/flann/flann_base-rb.cpp`
+- **Line ~43**: `FILEScopeGuard` class (>= 408)
+
+### `opencv2/stitching/detail/matchers-rb.cpp`
+- **Line ~64**: `BestOf2NearestMatcher` constructor (>= 407)
+
+### `opencv2/video/tracking-rb.cpp`
+- **Line ~156**: `VariationalRefinement::getEpsilon/setEpsilon` (>= 410)
+- **Line ~197**: `DISOpticalFlow::PRESET_*` constants (>= 407)
+- **Line ~203**: `DISOpticalFlow::getVariationalRefinementEpsilon/setVariationalRefinementEpsilon` (>= 410)
+- **Line ~253**: `TrackerGOTURN::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
+- **Line ~269**: `TrackerDaSiamRPN::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
+- **Line ~283**: `TrackerNano` class (>= 407)
+- **Line ~289**: `TrackerNano::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
+- **Line ~303**: `TrackerVit` class (>= 409)
+- **Line ~309**: `TrackerVit::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
+
+## Refinements Directory
+
+The `ext/refinements` directory contains manual additions to generated classes that are applied after the class is defined. This separates manual code from generated code, making regeneration easier.
+
+### How Refinements Work
+
+1. Each refinements file exports a function that takes a reference to a Rice class
+2. The function adds manual methods (lambdas, includes, etc.) to the class
+3. The function is called from `opencv_ruby-rb.cpp` after the Init function creates the class
+
+### Current Refinements
+
+| File                      | Class       | Additions                                                        |
+|---------------------------|-------------|------------------------------------------------------------------|
+| `mat_refinements.cpp`     | `cv::Mat`   | `[]`, `[]=`, `ptr`, `each` methods with type dispatch            |
+
+### Adding New Refinements
+
+1. Create `ext/refinements/<class>_refinements.hpp` with function declaration
+2. Create `ext/refinements/<class>_refinements.cpp` with implementation
+3. Add source file to `ext/refinements/CMakeLists.txt`
+4. In `opencv_ruby-rb.cpp`:
+   - Add `#include "refinements/<class>_refinements.hpp"`
+   - Add `extern Rice::Class rb_c<ClassName>;` if needed
+   - Call refinements function after the Init function (e.g., `<Class>_refinements(rb_c<ClassName>);`)
+
+## Notes
+
+- **IMPORTANT: Include order matters for compilation.** Follow these rules:
+  - **OpenCV/system headers** (e.g., `<opencv2/core.hpp>`, `<vector>`, `<string>`) - Place BEFORE the primary header
+  - **Local project headers** (e.g., `"cvstd_wrapper-rb.hpp"`, `"mat-rb.hpp"`, `"matx-rb.hpp"`) - Place AFTER the primary header but before the file's own `-rb.hpp` header
+  - When in doubt, check `git diff main` to see the working order from the main branch
+- All manual includes should be marked with `// Manual` comment for identification
+- These includes are needed because the generated bindings reference types or declarations from headers that aren't automatically included by the primary header

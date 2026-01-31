@@ -9,20 +9,20 @@ void Init_Core_Ocl()
 
   Module rb_mCvOcl = define_module_under(rb_mCv, "Ocl");
 
-  rb_mCvOcl.define_module_function("have_open_cl?", &cv::ocl::haveOpenCL);
+  rb_mCvOcl.define_module_function<bool(*)()>("have_open_cl?", &cv::ocl::haveOpenCL);
 
-  rb_mCvOcl.define_module_function("use_open_cl?", &cv::ocl::useOpenCL);
+  rb_mCvOcl.define_module_function<bool(*)()>("use_open_cl?", &cv::ocl::useOpenCL);
 
-  rb_mCvOcl.define_module_function("have_amd_blas?", &cv::ocl::haveAmdBlas);
+  rb_mCvOcl.define_module_function<bool(*)()>("have_amd_blas?", &cv::ocl::haveAmdBlas);
 
-  rb_mCvOcl.define_module_function("have_amd_fft?", &cv::ocl::haveAmdFft);
+  rb_mCvOcl.define_module_function<bool(*)()>("have_amd_fft?", &cv::ocl::haveAmdFft);
 
-  rb_mCvOcl.define_module_function("set_use_open_cl", &cv::ocl::setUseOpenCL,
+  rb_mCvOcl.define_module_function<void(*)(bool)>("set_use_open_cl", &cv::ocl::setUseOpenCL,
     Arg("flag"));
 
-  rb_mCvOcl.define_module_function("finish", &cv::ocl::finish);
+  rb_mCvOcl.define_module_function<void(*)()>("finish", &cv::ocl::finish);
 
-  rb_mCvOcl.define_module_function("have_svm?", &cv::ocl::haveSVM);
+  rb_mCvOcl.define_module_function<bool(*)()>("have_svm?", &cv::ocl::haveSVM);
 
   Rice::Data_Type<cv::ocl::Device> rb_cCvOclDevice = define_class_under<cv::ocl::Device>(rb_mCvOcl, "Device");
 
@@ -38,93 +38,91 @@ void Init_Core_Ocl()
       Arg("d")).
     define_method<cv::ocl::Device&(cv::ocl::Device::*)(cv::ocl::Device&&) noexcept>("assign", &cv::ocl::Device::operator=,
       Arg("d")).
-    define_method("set", &cv::ocl::Device::set,
+    define_method<void(cv::ocl::Device::*)(void*)>("set", &cv::ocl::Device::set,
       ArgBuffer("d")).
-    define_method("name", &cv::ocl::Device::name).
-    define_method("extensions", &cv::ocl::Device::extensions).
-    define_method("is_extension_supported", &cv::ocl::Device::isExtensionSupported,
+    define_method<cv::String(cv::ocl::Device::*)() const>("name", &cv::ocl::Device::name).
+    define_method<cv::String(cv::ocl::Device::*)() const>("extensions", &cv::ocl::Device::extensions).
+    define_method<bool(cv::ocl::Device::*)(const cv::String&) const>("extension_supported?", &cv::ocl::Device::isExtensionSupported,
       Arg("extension_name")).
-    define_method("version", &cv::ocl::Device::version).
-    define_method("vendor_name", &cv::ocl::Device::vendorName).
-    define_method("open_cl_c_version", &cv::ocl::Device::OpenCL_C_Version).
-    define_method("open_cl_version", &cv::ocl::Device::OpenCLVersion).
-    define_method("device_version_major", &cv::ocl::Device::deviceVersionMajor).
-    define_method("device_version_minor", &cv::ocl::Device::deviceVersionMinor).
-    define_method("driver_version", &cv::ocl::Device::driverVersion).
-    define_method("ptr", &cv::ocl::Device::ptr,
+    define_method<cv::String(cv::ocl::Device::*)() const>("version", &cv::ocl::Device::version).
+    define_method<cv::String(cv::ocl::Device::*)() const>("vendor_name", &cv::ocl::Device::vendorName).
+    define_method<cv::String(cv::ocl::Device::*)() const>("open_cl_c_version", &cv::ocl::Device::OpenCL_C_Version).
+    define_method<cv::String(cv::ocl::Device::*)() const>("open_cl_version", &cv::ocl::Device::OpenCLVersion).
+    define_method<int(cv::ocl::Device::*)() const>("device_version_major", &cv::ocl::Device::deviceVersionMajor).
+    define_method<int(cv::ocl::Device::*)() const>("device_version_minor", &cv::ocl::Device::deviceVersionMinor).
+    define_method<cv::String(cv::ocl::Device::*)() const>("driver_version", &cv::ocl::Device::driverVersion).
+    define_method<void*(cv::ocl::Device::*)() const>("ptr", &cv::ocl::Device::ptr,
       ReturnBuffer()).
-    define_method("type", &cv::ocl::Device::type).
-    define_method("address_bits", &cv::ocl::Device::addressBits).
-    define_method("available?", &cv::ocl::Device::available).
-    define_method("compiler_available?", &cv::ocl::Device::compilerAvailable).
-    define_method("linker_available?", &cv::ocl::Device::linkerAvailable).
-    define_method("double_fp_config", &cv::ocl::Device::doubleFPConfig).
-    define_method("single_fp_config", &cv::ocl::Device::singleFPConfig).
-    define_method("half_fp_config", &cv::ocl::Device::halfFPConfig).
-#if RUBY_CV_VERSION >= 410
-    define_method("has_fp64?", &cv::ocl::Device::hasFP64).
-    define_method("has_fp16?", &cv::ocl::Device::hasFP16).
-#endif
-    define_method("endian_little?", &cv::ocl::Device::endianLittle).
-    define_method("error_correction_support?", &cv::ocl::Device::errorCorrectionSupport).
-    define_method("execution_capabilities", &cv::ocl::Device::executionCapabilities).
-    define_method("global_mem_cache_size", &cv::ocl::Device::globalMemCacheSize).
-    define_method("global_mem_cache_type", &cv::ocl::Device::globalMemCacheType).
-    define_method("global_mem_cache_line_size", &cv::ocl::Device::globalMemCacheLineSize).
-    define_method("global_mem_size", &cv::ocl::Device::globalMemSize).
-    define_method("local_mem_size", &cv::ocl::Device::localMemSize).
-    define_method("local_mem_type", &cv::ocl::Device::localMemType).
-    define_method("host_unified_memory?", &cv::ocl::Device::hostUnifiedMemory).
-    define_method("image_support?", &cv::ocl::Device::imageSupport).
-    define_method("image_from_buffer_support?", &cv::ocl::Device::imageFromBufferSupport).
-    define_method("image_pitch_alignment", &cv::ocl::Device::imagePitchAlignment).
-    define_method("image_base_address_alignment", &cv::ocl::Device::imageBaseAddressAlignment).
-    define_method("intel_subgroups_support?", &cv::ocl::Device::intelSubgroupsSupport).
-    define_method("image_2d_max_width", &cv::ocl::Device::image2DMaxWidth).
-    define_method("image_2d_max_height", &cv::ocl::Device::image2DMaxHeight).
-    define_method("image_3d_max_width", &cv::ocl::Device::image3DMaxWidth).
-    define_method("image_3d_max_height", &cv::ocl::Device::image3DMaxHeight).
-    define_method("image_3d_max_depth", &cv::ocl::Device::image3DMaxDepth).
-    define_method("image_max_buffer_size", &cv::ocl::Device::imageMaxBufferSize).
-    define_method("image_max_array_size", &cv::ocl::Device::imageMaxArraySize).
-    define_method("vendor_id", &cv::ocl::Device::vendorID).
-    define_method("amd?", &cv::ocl::Device::isAMD).
-    define_method("intel?", &cv::ocl::Device::isIntel).
-    define_method("n_vidia?", &cv::ocl::Device::isNVidia).
-    define_method("max_clock_frequency", &cv::ocl::Device::maxClockFrequency).
-    define_method("max_compute_units", &cv::ocl::Device::maxComputeUnits).
-    define_method("max_constant_args", &cv::ocl::Device::maxConstantArgs).
-    define_method("max_constant_buffer_size", &cv::ocl::Device::maxConstantBufferSize).
-    define_method("max_mem_alloc_size", &cv::ocl::Device::maxMemAllocSize).
-    define_method("max_parameter_size", &cv::ocl::Device::maxParameterSize).
-    define_method("max_read_image_args", &cv::ocl::Device::maxReadImageArgs).
-    define_method("max_write_image_args", &cv::ocl::Device::maxWriteImageArgs).
-    define_method("max_samplers", &cv::ocl::Device::maxSamplers).
-    define_method("max_work_group_size", &cv::ocl::Device::maxWorkGroupSize).
-    define_method("max_work_item_dims", &cv::ocl::Device::maxWorkItemDims).
-    define_method("max_work_item_sizes", &cv::ocl::Device::maxWorkItemSizes,
-      Arg("arg_0")).
-    define_method("mem_base_addr_align", &cv::ocl::Device::memBaseAddrAlign).
-    define_method("native_vector_width_char", &cv::ocl::Device::nativeVectorWidthChar).
-    define_method("native_vector_width_short", &cv::ocl::Device::nativeVectorWidthShort).
-    define_method("native_vector_width_int", &cv::ocl::Device::nativeVectorWidthInt).
-    define_method("native_vector_width_long", &cv::ocl::Device::nativeVectorWidthLong).
-    define_method("native_vector_width_float", &cv::ocl::Device::nativeVectorWidthFloat).
-    define_method("native_vector_width_double", &cv::ocl::Device::nativeVectorWidthDouble).
-    define_method("native_vector_width_half", &cv::ocl::Device::nativeVectorWidthHalf).
-    define_method("preferred_vector_width_char", &cv::ocl::Device::preferredVectorWidthChar).
-    define_method("preferred_vector_width_short", &cv::ocl::Device::preferredVectorWidthShort).
-    define_method("preferred_vector_width_int", &cv::ocl::Device::preferredVectorWidthInt).
-    define_method("preferred_vector_width_long", &cv::ocl::Device::preferredVectorWidthLong).
-    define_method("preferred_vector_width_float", &cv::ocl::Device::preferredVectorWidthFloat).
-    define_method("preferred_vector_width_double", &cv::ocl::Device::preferredVectorWidthDouble).
-    define_method("preferred_vector_width_half", &cv::ocl::Device::preferredVectorWidthHalf).
-    define_method("printf_buffer_size", &cv::ocl::Device::printfBufferSize).
-    define_method("profiling_timer_resolution", &cv::ocl::Device::profilingTimerResolution).
-    define_method("get_impl", &cv::ocl::Device::getImpl).
-    define_method("empty?", &cv::ocl::Device::empty).
-    define_singleton_function("get_default", &cv::ocl::Device::getDefault).
-    define_singleton_function("from_handle", &cv::ocl::Device::fromHandle,
+    define_method<int(cv::ocl::Device::*)() const>("type", &cv::ocl::Device::type).
+    define_method<int(cv::ocl::Device::*)() const>("address_bits", &cv::ocl::Device::addressBits).
+    define_method<bool(cv::ocl::Device::*)() const>("available?", &cv::ocl::Device::available).
+    define_method<bool(cv::ocl::Device::*)() const>("compiler_available?", &cv::ocl::Device::compilerAvailable).
+    define_method<bool(cv::ocl::Device::*)() const>("linker_available?", &cv::ocl::Device::linkerAvailable).
+    define_method<int(cv::ocl::Device::*)() const>("double_fp_config", &cv::ocl::Device::doubleFPConfig).
+    define_method<int(cv::ocl::Device::*)() const>("single_fp_config", &cv::ocl::Device::singleFPConfig).
+    define_method<int(cv::ocl::Device::*)() const>("half_fp_config", &cv::ocl::Device::halfFPConfig).
+    define_method<bool(cv::ocl::Device::*)() const>("has_fp64?", &cv::ocl::Device::hasFP64).
+    define_method<bool(cv::ocl::Device::*)() const>("has_fp16?", &cv::ocl::Device::hasFP16).
+    define_method<bool(cv::ocl::Device::*)() const>("endian_little?", &cv::ocl::Device::endianLittle).
+    define_method<bool(cv::ocl::Device::*)() const>("error_correction_support?", &cv::ocl::Device::errorCorrectionSupport).
+    define_method<int(cv::ocl::Device::*)() const>("execution_capabilities", &cv::ocl::Device::executionCapabilities).
+    define_method<size_t(cv::ocl::Device::*)() const>("global_mem_cache_size", &cv::ocl::Device::globalMemCacheSize).
+    define_method<int(cv::ocl::Device::*)() const>("global_mem_cache_type", &cv::ocl::Device::globalMemCacheType).
+    define_method<int(cv::ocl::Device::*)() const>("global_mem_cache_line_size", &cv::ocl::Device::globalMemCacheLineSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("global_mem_size", &cv::ocl::Device::globalMemSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("local_mem_size", &cv::ocl::Device::localMemSize).
+    define_method<int(cv::ocl::Device::*)() const>("local_mem_type", &cv::ocl::Device::localMemType).
+    define_method<bool(cv::ocl::Device::*)() const>("host_unified_memory?", &cv::ocl::Device::hostUnifiedMemory).
+    define_method<bool(cv::ocl::Device::*)() const>("image_support?", &cv::ocl::Device::imageSupport).
+    define_method<bool(cv::ocl::Device::*)() const>("image_from_buffer_support?", &cv::ocl::Device::imageFromBufferSupport).
+    define_method<uint(cv::ocl::Device::*)() const>("image_pitch_alignment", &cv::ocl::Device::imagePitchAlignment).
+    define_method<uint(cv::ocl::Device::*)() const>("image_base_address_alignment", &cv::ocl::Device::imageBaseAddressAlignment).
+    define_method<bool(cv::ocl::Device::*)() const>("intel_subgroups_support?", &cv::ocl::Device::intelSubgroupsSupport).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_2d_max_width", &cv::ocl::Device::image2DMaxWidth).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_2d_max_height", &cv::ocl::Device::image2DMaxHeight).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_3d_max_width", &cv::ocl::Device::image3DMaxWidth).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_3d_max_height", &cv::ocl::Device::image3DMaxHeight).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_3d_max_depth", &cv::ocl::Device::image3DMaxDepth).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_max_buffer_size", &cv::ocl::Device::imageMaxBufferSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("image_max_array_size", &cv::ocl::Device::imageMaxArraySize).
+    define_method<int(cv::ocl::Device::*)() const>("vendor_id", &cv::ocl::Device::vendorID).
+    define_method<bool(cv::ocl::Device::*)() const>("amd?", &cv::ocl::Device::isAMD).
+    define_method<bool(cv::ocl::Device::*)() const>("intel?", &cv::ocl::Device::isIntel).
+    define_method<bool(cv::ocl::Device::*)() const>("n_vidia?", &cv::ocl::Device::isNVidia).
+    define_method<int(cv::ocl::Device::*)() const>("max_clock_frequency", &cv::ocl::Device::maxClockFrequency).
+    define_method<int(cv::ocl::Device::*)() const>("max_compute_units", &cv::ocl::Device::maxComputeUnits).
+    define_method<int(cv::ocl::Device::*)() const>("max_constant_args", &cv::ocl::Device::maxConstantArgs).
+    define_method<size_t(cv::ocl::Device::*)() const>("max_constant_buffer_size", &cv::ocl::Device::maxConstantBufferSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("max_mem_alloc_size", &cv::ocl::Device::maxMemAllocSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("max_parameter_size", &cv::ocl::Device::maxParameterSize).
+    define_method<int(cv::ocl::Device::*)() const>("max_read_image_args", &cv::ocl::Device::maxReadImageArgs).
+    define_method<int(cv::ocl::Device::*)() const>("max_write_image_args", &cv::ocl::Device::maxWriteImageArgs).
+    define_method<int(cv::ocl::Device::*)() const>("max_samplers", &cv::ocl::Device::maxSamplers).
+    define_method<size_t(cv::ocl::Device::*)() const>("max_work_group_size", &cv::ocl::Device::maxWorkGroupSize).
+    define_method<int(cv::ocl::Device::*)() const>("max_work_item_dims", &cv::ocl::Device::maxWorkItemDims).
+    define_method<void(cv::ocl::Device::*)(size_t*) const>("max_work_item_sizes", &cv::ocl::Device::maxWorkItemSizes,
+      ArgBuffer("arg_0")).
+    define_method<int(cv::ocl::Device::*)() const>("mem_base_addr_align", &cv::ocl::Device::memBaseAddrAlign).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_char", &cv::ocl::Device::nativeVectorWidthChar).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_short", &cv::ocl::Device::nativeVectorWidthShort).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_int", &cv::ocl::Device::nativeVectorWidthInt).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_long", &cv::ocl::Device::nativeVectorWidthLong).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_float", &cv::ocl::Device::nativeVectorWidthFloat).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_double", &cv::ocl::Device::nativeVectorWidthDouble).
+    define_method<int(cv::ocl::Device::*)() const>("native_vector_width_half", &cv::ocl::Device::nativeVectorWidthHalf).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_char", &cv::ocl::Device::preferredVectorWidthChar).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_short", &cv::ocl::Device::preferredVectorWidthShort).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_int", &cv::ocl::Device::preferredVectorWidthInt).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_long", &cv::ocl::Device::preferredVectorWidthLong).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_float", &cv::ocl::Device::preferredVectorWidthFloat).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_double", &cv::ocl::Device::preferredVectorWidthDouble).
+    define_method<int(cv::ocl::Device::*)() const>("preferred_vector_width_half", &cv::ocl::Device::preferredVectorWidthHalf).
+    define_method<size_t(cv::ocl::Device::*)() const>("printf_buffer_size", &cv::ocl::Device::printfBufferSize).
+    define_method<size_t(cv::ocl::Device::*)() const>("profiling_timer_resolution", &cv::ocl::Device::profilingTimerResolution).
+    define_method<cv::ocl::Device::Impl*(cv::ocl::Device::*)() const>("get_impl", &cv::ocl::Device::getImpl).
+    define_method<bool(cv::ocl::Device::*)() const>("empty?", &cv::ocl::Device::empty).
+    define_singleton_function<const cv::ocl::Device&(*)()>("get_default", &cv::ocl::Device::getDefault).
+    define_singleton_function<cv::ocl::Device(*)(void*)>("from_handle", &cv::ocl::Device::fromHandle,
       ArgBuffer("d"));
 
   rb_cCvOclDevice.define_constant("TYPE_DEFAULT", (int)cv::ocl::Device::TYPE_DEFAULT);
@@ -177,33 +175,33 @@ void Init_Core_Ocl()
     define_method<bool(cv::ocl::Context::*)()>("create?", &cv::ocl::Context::create).
     define_method<bool(cv::ocl::Context::*)(int)>("create", &cv::ocl::Context::create,
       Arg("dtype")).
-    define_method("ndevices", &cv::ocl::Context::ndevices).
-    define_method("device", &cv::ocl::Context::device,
+    define_method<size_t(cv::ocl::Context::*)() const>("ndevices", &cv::ocl::Context::ndevices).
+    define_method<cv::ocl::Device&(cv::ocl::Context::*)(size_t) const>("device", &cv::ocl::Context::device,
       Arg("idx")).
-    define_method("get_prog", &cv::ocl::Context::getProg,
+    define_method<cv::ocl::Program(cv::ocl::Context::*)(const cv::ocl::ProgramSource&, const cv::String&, cv::String&)>("get_prog", &cv::ocl::Context::getProg,
       Arg("prog"), Arg("buildopt"), Arg("errmsg")).
-    define_method("unload_prog", &cv::ocl::Context::unloadProg,
+    define_method<void(cv::ocl::Context::*)(cv::ocl::Program&)>("unload_prog", &cv::ocl::Context::unloadProg,
       Arg("prog")).
-    define_method("ptr", &cv::ocl::Context::ptr,
+    define_method<void*(cv::ocl::Context::*)() const>("ptr", &cv::ocl::Context::ptr,
       ReturnBuffer()).
-    define_method("get_open_cl_context_property", &cv::ocl::Context::getOpenCLContextProperty,
+    define_method<void*(cv::ocl::Context::*)(int) const>("get_open_cl_context_property", &cv::ocl::Context::getOpenCLContextProperty,
       Arg("property_id"), ReturnBuffer()).
-    define_method("use_svm?", &cv::ocl::Context::useSVM).
-    define_method("set_use_svm", &cv::ocl::Context::setUseSVM,
+    define_method<bool(cv::ocl::Context::*)() const>("use_svm?", &cv::ocl::Context::useSVM).
+    define_method<void(cv::ocl::Context::*)(bool)>("set_use_svm", &cv::ocl::Context::setUseSVM,
       Arg("enabled")).
-    define_method("release", &cv::ocl::Context::release).
+    define_method<void(cv::ocl::Context::*)()>("release", &cv::ocl::Context::release).
     define_method<void(cv::ocl::Context::*)(std::type_index, const std::shared_ptr<cv::ocl::Context::UserContext>&)>("set_user_context", &cv::ocl::Context::setUserContext,
       Arg("type_id"), Arg("user_context")).
     define_method<std::shared_ptr<cv::ocl::Context::UserContext>(cv::ocl::Context::*)(std::type_index)>("get_user_context", &cv::ocl::Context::getUserContext,
       Arg("type_id")).
-    define_method("get_impl", &cv::ocl::Context::getImpl).
-    define_method("empty?", &cv::ocl::Context::empty).
+    define_method<cv::ocl::Context::Impl*(cv::ocl::Context::*)() const>("get_impl", &cv::ocl::Context::getImpl).
+    define_method<bool(cv::ocl::Context::*)() const>("empty?", &cv::ocl::Context::empty).
     define_attr("p", &cv::ocl::Context::p).
-    define_singleton_function("get_default", &cv::ocl::Context::getDefault,
+    define_singleton_function<cv::ocl::Context&(*)(bool)>("get_default", &cv::ocl::Context::getDefault,
       Arg("initialize") = static_cast<bool>(true)).
-    define_singleton_function("from_handle", &cv::ocl::Context::fromHandle,
+    define_singleton_function<cv::ocl::Context(*)(void*)>("from_handle", &cv::ocl::Context::fromHandle,
       ArgBuffer("context")).
-    define_singleton_function("from_device", &cv::ocl::Context::fromDevice,
+    define_singleton_function<cv::ocl::Context(*)(const cv::ocl::Device&)>("from_device", &cv::ocl::Context::fromDevice,
       Arg("device")).
     define_singleton_function<cv::ocl::Context(*)(const std::string&)>("create", &cv::ocl::Context::create,
       Arg("configuration"));
@@ -223,19 +221,19 @@ void Init_Core_Ocl()
       Arg("p")).
     define_method<cv::ocl::Platform&(cv::ocl::Platform::*)(cv::ocl::Platform&&) noexcept>("assign", &cv::ocl::Platform::operator=,
       Arg("p")).
-    define_method("ptr", &cv::ocl::Platform::ptr,
+    define_method<void*(cv::ocl::Platform::*)() const>("ptr", &cv::ocl::Platform::ptr,
       ReturnBuffer()).
-    define_method("get_impl", &cv::ocl::Platform::getImpl).
-    define_method("empty?", &cv::ocl::Platform::empty).
-    define_singleton_function("get_default", &cv::ocl::Platform::getDefault);
+    define_method<cv::ocl::Platform::Impl*(cv::ocl::Platform::*)() const>("get_impl", &cv::ocl::Platform::getImpl).
+    define_method<bool(cv::ocl::Platform::*)() const>("empty?", &cv::ocl::Platform::empty).
+    define_singleton_function<cv::ocl::Platform&(*)()>("get_default", &cv::ocl::Platform::getDefault);
 
-  rb_mCvOcl.define_module_function("attach_context", &cv::ocl::attachContext,
+  rb_mCvOcl.define_module_function<void(*)(const cv::String&, void*, void*, void*)>("attach_context", &cv::ocl::attachContext,
     Arg("platform_name"), ArgBuffer("platform_id"), ArgBuffer("context"), ArgBuffer("device_id"));
 
-  rb_mCvOcl.define_module_function("convert_from_buffer", &cv::ocl::convertFromBuffer,
+  rb_mCvOcl.define_module_function<void(*)(void*, size_t, int, int, int, cv::UMat&)>("convert_from_buffer", &cv::ocl::convertFromBuffer,
     ArgBuffer("cl_mem_buffer"), Arg("step"), Arg("rows"), Arg("cols"), Arg("type"), Arg("dst"));
 
-  rb_mCvOcl.define_module_function("convert_from_image", &cv::ocl::convertFromImage,
+  rb_mCvOcl.define_module_function<void(*)(void*, cv::UMat&)>("convert_from_image", &cv::ocl::convertFromImage,
     ArgBuffer("cl_mem_image"), Arg("dst"));
 
   Rice::Data_Type<cv::ocl::Queue> rb_cCvOclQueue = define_class_under<cv::ocl::Queue>(rb_mCvOcl, "Queue");
@@ -252,15 +250,15 @@ void Init_Core_Ocl()
       Arg("q")).
     define_method<cv::ocl::Queue&(cv::ocl::Queue::*)(cv::ocl::Queue&&) noexcept>("assign", &cv::ocl::Queue::operator=,
       Arg("q")).
-    define_method("create", &cv::ocl::Queue::create,
+    define_method<bool(cv::ocl::Queue::*)(const cv::ocl::Context&, const cv::ocl::Device&)>("create", &cv::ocl::Queue::create,
       Arg("c") = static_cast<const cv::ocl::Context&>(cv::ocl::Context()), Arg("d") = static_cast<const cv::ocl::Device&>(cv::ocl::Device())).
-    define_method("finish", &cv::ocl::Queue::finish).
-    define_method("ptr", &cv::ocl::Queue::ptr,
+    define_method<void(cv::ocl::Queue::*)()>("finish", &cv::ocl::Queue::finish).
+    define_method<void*(cv::ocl::Queue::*)() const>("ptr", &cv::ocl::Queue::ptr,
       ReturnBuffer()).
-    define_method("get_profiling_queue", &cv::ocl::Queue::getProfilingQueue).
-    define_method("get_impl", &cv::ocl::Queue::getImpl).
-    define_method("empty?", &cv::ocl::Queue::empty).
-    define_singleton_function("get_default", &cv::ocl::Queue::getDefault);
+    define_method<const cv::ocl::Queue&(cv::ocl::Queue::*)() const>("get_profiling_queue", &cv::ocl::Queue::getProfilingQueue).
+    define_method<cv::ocl::Queue::Impl*(cv::ocl::Queue::*)() const>("get_impl", &cv::ocl::Queue::getImpl).
+    define_method<bool(cv::ocl::Queue::*)() const>("empty?", &cv::ocl::Queue::empty).
+    define_singleton_function<cv::ocl::Queue&(*)()>("get_default", &cv::ocl::Queue::getDefault);
 
   Rice::Data_Type<cv::ocl::KernelArg> rb_cCvOclKernelArg = define_class_under<cv::ocl::KernelArg>(rb_mCvOcl, "KernelArg").
     define_constructor(Constructor<cv::ocl::KernelArg, int, cv::UMat*, int, int, const void*, size_t>(),
@@ -272,25 +270,25 @@ void Init_Core_Ocl()
     define_attr("sz", &cv::ocl::KernelArg::sz).
     define_attr("wscale", &cv::ocl::KernelArg::wscale).
     define_attr("iwscale", &cv::ocl::KernelArg::iwscale).
-    define_singleton_function("local", &cv::ocl::KernelArg::Local,
+    define_singleton_function<cv::ocl::KernelArg(*)(size_t)>("local", &cv::ocl::KernelArg::Local,
       Arg("local_mem_size")).
-    define_singleton_function("ptr_write_only", &cv::ocl::KernelArg::PtrWriteOnly,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&)>("ptr_write_only", &cv::ocl::KernelArg::PtrWriteOnly,
       Arg("m")).
-    define_singleton_function("ptr_read_only", &cv::ocl::KernelArg::PtrReadOnly,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&)>("ptr_read_only", &cv::ocl::KernelArg::PtrReadOnly,
       Arg("m")).
-    define_singleton_function("ptr_read_write", &cv::ocl::KernelArg::PtrReadWrite,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&)>("ptr_read_write", &cv::ocl::KernelArg::PtrReadWrite,
       Arg("m")).
-    define_singleton_function("read_write", &cv::ocl::KernelArg::ReadWrite,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("read_write", &cv::ocl::KernelArg::ReadWrite,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
-    define_singleton_function("read_write_no_size", &cv::ocl::KernelArg::ReadWriteNoSize,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("read_write_no_size", &cv::ocl::KernelArg::ReadWriteNoSize,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
-    define_singleton_function("read_only", &cv::ocl::KernelArg::ReadOnly,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("read_only", &cv::ocl::KernelArg::ReadOnly,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
-    define_singleton_function("write_only", &cv::ocl::KernelArg::WriteOnly,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("write_only", &cv::ocl::KernelArg::WriteOnly,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
-    define_singleton_function("read_only_no_size", &cv::ocl::KernelArg::ReadOnlyNoSize,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("read_only_no_size", &cv::ocl::KernelArg::ReadOnlyNoSize,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
-    define_singleton_function("write_only_no_size", &cv::ocl::KernelArg::WriteOnlyNoSize,
+    define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat&, int, int)>("write_only_no_size", &cv::ocl::KernelArg::WriteOnlyNoSize,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1)).
     define_singleton_function<cv::ocl::KernelArg(*)(const cv::Mat&)>("constant", &cv::ocl::KernelArg::Constant,
       Arg("m"));
@@ -319,7 +317,7 @@ void Init_Core_Ocl()
       Arg("k")).
     define_method<cv::ocl::Kernel&(cv::ocl::Kernel::*)(cv::ocl::Kernel&&) noexcept>("assign", &cv::ocl::Kernel::operator=,
       Arg("k")).
-    define_method("empty?", &cv::ocl::Kernel::empty).
+    define_method<bool(cv::ocl::Kernel::*)() const>("empty?", &cv::ocl::Kernel::empty).
     define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::Program&)>("create", &cv::ocl::Kernel::create,
       Arg("kname"), Arg("prog")).
     define_method<bool(cv::ocl::Kernel::*)(const char*, const cv::ocl::ProgramSource&, const cv::String&, cv::String*)>("create", &cv::ocl::Kernel::create,
@@ -332,18 +330,18 @@ void Init_Core_Ocl()
       Arg("i"), Arg("m")).
     define_method<int(cv::ocl::Kernel::*)(int, const cv::ocl::KernelArg&)>("set", &cv::ocl::Kernel::set,
       Arg("i"), Arg("arg")).
-    define_method("run", &cv::ocl::Kernel::run,
+    define_method<bool(cv::ocl::Kernel::*)(int, size_t[], size_t[], bool, const cv::ocl::Queue&)>("run", &cv::ocl::Kernel::run,
       Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
-    define_method("run_task", &cv::ocl::Kernel::runTask,
+    define_method<bool(cv::ocl::Kernel::*)(bool, const cv::ocl::Queue&)>("run_task", &cv::ocl::Kernel::runTask,
       Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
-    define_method("run_profiling", &cv::ocl::Kernel::runProfiling,
+    define_method<int64(cv::ocl::Kernel::*)(int, size_t[], size_t[], const cv::ocl::Queue&)>("run_profiling", &cv::ocl::Kernel::runProfiling,
       Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue())).
-    define_method("work_group_size", &cv::ocl::Kernel::workGroupSize).
-    define_method("prefered_work_group_size_multiple", &cv::ocl::Kernel::preferedWorkGroupSizeMultiple).
-    define_method("compile_work_group_size", &cv::ocl::Kernel::compileWorkGroupSize,
+    define_method<size_t(cv::ocl::Kernel::*)() const>("work_group_size", &cv::ocl::Kernel::workGroupSize).
+    define_method<size_t(cv::ocl::Kernel::*)() const>("prefered_work_group_size_multiple", &cv::ocl::Kernel::preferedWorkGroupSizeMultiple).
+    define_method<bool(cv::ocl::Kernel::*)(size_t[]) const>("compile_work_group_size", &cv::ocl::Kernel::compileWorkGroupSize,
       Arg("wsz")).
-    define_method("local_mem_size", &cv::ocl::Kernel::localMemSize).
-    define_method("ptr", &cv::ocl::Kernel::ptr,
+    define_method<size_t(cv::ocl::Kernel::*)() const>("local_mem_size", &cv::ocl::Kernel::localMemSize).
+    define_method<void*(cv::ocl::Kernel::*)() const>("ptr", &cv::ocl::Kernel::ptr,
       ReturnBuffer());
 
   Rice::Data_Type<cv::ocl::Program> rb_cCvOclProgram = define_class_under<cv::ocl::Program>(rb_mCvOcl, "Program");
@@ -360,14 +358,14 @@ void Init_Core_Ocl()
       Arg("prog")).
     define_method<cv::ocl::Program&(cv::ocl::Program::*)(cv::ocl::Program&&) noexcept>("assign", &cv::ocl::Program::operator=,
       Arg("prog")).
-    define_method("create", &cv::ocl::Program::create,
+    define_method<bool(cv::ocl::Program::*)(const cv::ocl::ProgramSource&, const cv::String&, cv::String&)>("create", &cv::ocl::Program::create,
       Arg("src"), Arg("buildflags"), Arg("errmsg")).
-    define_method("ptr", &cv::ocl::Program::ptr,
+    define_method<void*(cv::ocl::Program::*)() const>("ptr", &cv::ocl::Program::ptr,
       ReturnBuffer()).
-    define_method("get_binary", &cv::ocl::Program::getBinary,
+    define_method<void(cv::ocl::Program::*)(std::vector<char>&) const>("get_binary", &cv::ocl::Program::getBinary,
       Arg("binary")).
-    define_method("get_impl", &cv::ocl::Program::getImpl).
-    define_method("empty?", &cv::ocl::Program::empty);
+    define_method<cv::ocl::Program::Impl*(cv::ocl::Program::*)() const>("get_impl", &cv::ocl::Program::getImpl).
+    define_method<bool(cv::ocl::Program::*)() const>("empty?", &cv::ocl::Program::empty);
 
   Rice::Data_Type<cv::ocl::ProgramSource> rb_cCvOclProgramSource = define_class_under<cv::ocl::ProgramSource>(rb_mCvOcl, "ProgramSource");
 
@@ -387,13 +385,13 @@ void Init_Core_Ocl()
       Arg("prog")).
     define_method<cv::ocl::ProgramSource&(cv::ocl::ProgramSource::*)(cv::ocl::ProgramSource&&) noexcept>("assign", &cv::ocl::ProgramSource::operator=,
       Arg("prog")).
-    define_method("source", &cv::ocl::ProgramSource::source).
-    define_method("hash", &cv::ocl::ProgramSource::hash).
-    define_method("get_impl", &cv::ocl::ProgramSource::getImpl).
-    define_method("empty?", &cv::ocl::ProgramSource::empty).
-    define_singleton_function("from_binary", &cv::ocl::ProgramSource::fromBinary,
+    define_method<const cv::String&(cv::ocl::ProgramSource::*)() const>("source", &cv::ocl::ProgramSource::source).
+    define_method<cv::ocl::ProgramSource::hash_t(cv::ocl::ProgramSource::*)() const>("hash", &cv::ocl::ProgramSource::hash).
+    define_method<cv::ocl::ProgramSource::Impl*(cv::ocl::ProgramSource::*)() const>("get_impl", &cv::ocl::ProgramSource::getImpl).
+    define_method<bool(cv::ocl::ProgramSource::*)() const>("empty?", &cv::ocl::ProgramSource::empty).
+    define_singleton_function<cv::ocl::ProgramSource(*)(const cv::String&, const cv::String&, const unsigned char*, const size_t, const cv::String&)>("from_binary", &cv::ocl::ProgramSource::fromBinary,
       Arg("module"), Arg("name"), ArgBuffer("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String())).
-    define_singleton_function("from_spir", &cv::ocl::ProgramSource::fromSPIR,
+    define_singleton_function<cv::ocl::ProgramSource(*)(const cv::String&, const cv::String&, const unsigned char*, const size_t, const cv::String&)>("from_spir", &cv::ocl::ProgramSource::fromSPIR,
       Arg("module"), Arg("name"), ArgBuffer("binary"), Arg("size"), Arg("build_options") = static_cast<const cv::String&>(cv::String()));
 
   Rice::Data_Type<cv::ocl::PlatformInfo> rb_cCvOclPlatformInfo = define_class_under<cv::ocl::PlatformInfo>(rb_mCvOcl, "PlatformInfo");
@@ -410,30 +408,30 @@ void Init_Core_Ocl()
       Arg("i")).
     define_method<cv::ocl::PlatformInfo&(cv::ocl::PlatformInfo::*)(cv::ocl::PlatformInfo&&) noexcept>("assign", &cv::ocl::PlatformInfo::operator=,
       Arg("i")).
-    define_method("name", &cv::ocl::PlatformInfo::name).
-    define_method("vendor", &cv::ocl::PlatformInfo::vendor).
-    define_method("version", &cv::ocl::PlatformInfo::version).
-    define_method("device_number", &cv::ocl::PlatformInfo::deviceNumber).
-    define_method("get_device", &cv::ocl::PlatformInfo::getDevice,
+    define_method<cv::String(cv::ocl::PlatformInfo::*)() const>("name", &cv::ocl::PlatformInfo::name).
+    define_method<cv::String(cv::ocl::PlatformInfo::*)() const>("vendor", &cv::ocl::PlatformInfo::vendor).
+    define_method<cv::String(cv::ocl::PlatformInfo::*)() const>("version", &cv::ocl::PlatformInfo::version).
+    define_method<int(cv::ocl::PlatformInfo::*)() const>("device_number", &cv::ocl::PlatformInfo::deviceNumber).
+    define_method<void(cv::ocl::PlatformInfo::*)(cv::ocl::Device&, int) const>("get_device", &cv::ocl::PlatformInfo::getDevice,
       Arg("device"), Arg("d")).
-    define_method("empty?", &cv::ocl::PlatformInfo::empty);
+    define_method<bool(cv::ocl::PlatformInfo::*)() const>("empty?", &cv::ocl::PlatformInfo::empty);
 
-  rb_mCvOcl.define_module_function("type_to_str", &cv::ocl::typeToStr,
+  rb_mCvOcl.define_module_function<const char*(*)(int)>("type_to_str", &cv::ocl::typeToStr,
     Arg("t"));
 
-  rb_mCvOcl.define_module_function("memop_type_to_str", &cv::ocl::memopTypeToStr,
+  rb_mCvOcl.define_module_function<const char*(*)(int)>("memop_type_to_str", &cv::ocl::memopTypeToStr,
     Arg("t"));
 
-  rb_mCvOcl.define_module_function("vecop_type_to_str", &cv::ocl::vecopTypeToStr,
+  rb_mCvOcl.define_module_function<const char*(*)(int)>("vecop_type_to_str", &cv::ocl::vecopTypeToStr,
     Arg("t"));
 
-  rb_mCvOcl.define_module_function("get_open_cl_error_string", &cv::ocl::getOpenCLErrorString,
+  rb_mCvOcl.define_module_function<const char*(*)(int)>("get_open_cl_error_string", &cv::ocl::getOpenCLErrorString,
     Arg("error_code"));
 
-  rb_mCvOcl.define_module_function("kernel_to_str", &cv::ocl::kernelToStr,
+  rb_mCvOcl.define_module_function<cv::String(*)(cv::InputArray, int, const char*)>("kernel_to_str", &cv::ocl::kernelToStr,
     Arg("_kernel"), Arg("ddepth") = static_cast<int>(-1), Arg("name") = static_cast<const char*>(NULL));
 
-  rb_mCvOcl.define_module_function("get_platfoms_info", &cv::ocl::getPlatfomsInfo,
+  rb_mCvOcl.define_module_function<void(*)(std::vector<cv::ocl::PlatformInfo>&)>("get_platfoms_info", &cv::ocl::getPlatfomsInfo,
     Arg("platform_info"));
 
   Enum<cv::ocl::OclVectorStrategy> rb_cCvOclOclVectorStrategy = define_enum_under<cv::ocl::OclVectorStrategy>("OclVectorStrategy", rb_mCvOcl).
@@ -441,16 +439,16 @@ void Init_Core_Ocl()
     define_value("OCL_VECTOR_MAX", cv::ocl::OclVectorStrategy::OCL_VECTOR_MAX).
     define_value("OCL_VECTOR_DEFAULT", cv::ocl::OclVectorStrategy::OCL_VECTOR_DEFAULT);
 
-  rb_mCvOcl.define_module_function("predict_optimal_vector_width", &cv::ocl::predictOptimalVectorWidth,
+  rb_mCvOcl.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::ocl::OclVectorStrategy)>("predict_optimal_vector_width", &cv::ocl::predictOptimalVectorWidth,
     Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat") = static_cast<cv::ocl::OclVectorStrategy>(cv::ocl::OCL_VECTOR_DEFAULT));
 
-  rb_mCvOcl.define_module_function("check_optimal_vector_width", &cv::ocl::checkOptimalVectorWidth,
+  rb_mCvOcl.define_module_function<int(*)(const int*, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::ocl::OclVectorStrategy)>("check_optimal_vector_width", &cv::ocl::checkOptimalVectorWidth,
     ArgBuffer("vector_widths"), Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()), Arg("strat") = static_cast<cv::ocl::OclVectorStrategy>(cv::ocl::OCL_VECTOR_DEFAULT));
 
-  rb_mCvOcl.define_module_function("predict_optimal_vector_width_max", &cv::ocl::predictOptimalVectorWidthMax,
+  rb_mCvOcl.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray)>("predict_optimal_vector_width_max", &cv::ocl::predictOptimalVectorWidthMax,
     Arg("src1"), Arg("src2") = static_cast<cv::InputArray>(cv::noArray()), Arg("src3") = static_cast<cv::InputArray>(cv::noArray()), Arg("src4") = static_cast<cv::InputArray>(cv::noArray()), Arg("src5") = static_cast<cv::InputArray>(cv::noArray()), Arg("src6") = static_cast<cv::InputArray>(cv::noArray()), Arg("src7") = static_cast<cv::InputArray>(cv::noArray()), Arg("src8") = static_cast<cv::InputArray>(cv::noArray()), Arg("src9") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCvOcl.define_module_function("build_options_add_matrix_description", &cv::ocl::buildOptionsAddMatrixDescription,
+  rb_mCvOcl.define_module_function<void(*)(cv::String&, const cv::String&, cv::InputArray)>("build_options_add_matrix_description", &cv::ocl::buildOptionsAddMatrixDescription,
     Arg("build_options"), Arg("name"), Arg("_m"));
 
   Rice::Data_Type<cv::ocl::Image2D> rb_cCvOclImage2D = define_class_under<cv::ocl::Image2D>(rb_mCvOcl, "Image2D").
@@ -463,21 +461,21 @@ void Init_Core_Ocl()
       Arg("i")).
     define_method<cv::ocl::Image2D&(cv::ocl::Image2D::*)(cv::ocl::Image2D&&) noexcept>("assign", &cv::ocl::Image2D::operator=,
       Arg("arg_0")).
-    define_method("ptr", &cv::ocl::Image2D::ptr,
+    define_method<void*(cv::ocl::Image2D::*)() const>("ptr", &cv::ocl::Image2D::ptr,
       ReturnBuffer()).
-    define_singleton_function("can_create_alias", &cv::ocl::Image2D::canCreateAlias,
+    define_singleton_function<bool(*)(const cv::UMat&)>("can_create_alias", &cv::ocl::Image2D::canCreateAlias,
       Arg("u")).
-    define_singleton_function("is_format_supported", &cv::ocl::Image2D::isFormatSupported,
+    define_singleton_function<bool(*)(int, int, bool)>("format_supported?", &cv::ocl::Image2D::isFormatSupported,
       Arg("depth"), Arg("cn"), Arg("norm"));
 
   Rice::Data_Type<cv::ocl::Timer> rb_cCvOclTimer = define_class_under<cv::ocl::Timer>(rb_mCvOcl, "Timer").
     define_constructor(Constructor<cv::ocl::Timer, const cv::ocl::Queue&>(),
       Arg("q")).
-    define_method("start", &cv::ocl::Timer::start).
-    define_method("stop", &cv::ocl::Timer::stop).
-    define_method("duration_ns", &cv::ocl::Timer::durationNS);
+    define_method<void(cv::ocl::Timer::*)()>("start", &cv::ocl::Timer::start).
+    define_method<void(cv::ocl::Timer::*)()>("stop", &cv::ocl::Timer::stop).
+    define_method<uint64(cv::ocl::Timer::*)() const>("duration_ns", &cv::ocl::Timer::durationNS);
 
-  rb_mCvOcl.define_module_function("get_open_cl_allocator", &cv::ocl::getOpenCLAllocator);
+  rb_mCvOcl.define_module_function<cv::MatAllocator*(*)()>("get_open_cl_allocator", &cv::ocl::getOpenCLAllocator);
 
   Rice::Data_Type<cv::ocl::OpenCLExecutionContext> rb_cCvOclOpenCLExecutionContext = define_class_under<cv::ocl::OpenCLExecutionContext>(rb_mCvOcl, "OpenCLExecutionContext");
 
@@ -491,20 +489,20 @@ void Init_Core_Ocl()
       Arg("arg_0")).
     define_method<cv::ocl::OpenCLExecutionContext&(cv::ocl::OpenCLExecutionContext::*)(cv::ocl::OpenCLExecutionContext&&)>("assign", &cv::ocl::OpenCLExecutionContext::operator=,
       Arg("arg_0")).
-    define_method("get_context", &cv::ocl::OpenCLExecutionContext::getContext).
-    define_method("get_device", &cv::ocl::OpenCLExecutionContext::getDevice).
-    define_method("get_queue", &cv::ocl::OpenCLExecutionContext::getQueue).
-    define_method("use_open_cl?", &cv::ocl::OpenCLExecutionContext::useOpenCL).
-    define_method("set_use_open_cl", &cv::ocl::OpenCLExecutionContext::setUseOpenCL,
+    define_method<cv::ocl::Context&(cv::ocl::OpenCLExecutionContext::*)() const>("get_context", &cv::ocl::OpenCLExecutionContext::getContext).
+    define_method<cv::ocl::Device&(cv::ocl::OpenCLExecutionContext::*)() const>("get_device", &cv::ocl::OpenCLExecutionContext::getDevice).
+    define_method<cv::ocl::Queue&(cv::ocl::OpenCLExecutionContext::*)() const>("get_queue", &cv::ocl::OpenCLExecutionContext::getQueue).
+    define_method<bool(cv::ocl::OpenCLExecutionContext::*)() const>("use_open_cl?", &cv::ocl::OpenCLExecutionContext::useOpenCL).
+    define_method<void(cv::ocl::OpenCLExecutionContext::*)(bool)>("set_use_open_cl", &cv::ocl::OpenCLExecutionContext::setUseOpenCL,
       Arg("flag")).
-    define_method("bind", &cv::ocl::OpenCLExecutionContext::bind).
+    define_method<void(cv::ocl::OpenCLExecutionContext::*)() const>("bind", &cv::ocl::OpenCLExecutionContext::bind).
     define_method<cv::ocl::OpenCLExecutionContext(cv::ocl::OpenCLExecutionContext::*)(const cv::ocl::Queue&) const>("clone_with_new_queue", &cv::ocl::OpenCLExecutionContext::cloneWithNewQueue,
       Arg("q")).
     define_method<cv::ocl::OpenCLExecutionContext(cv::ocl::OpenCLExecutionContext::*)() const>("clone_with_new_queue", &cv::ocl::OpenCLExecutionContext::cloneWithNewQueue).
-    define_method("empty?", &cv::ocl::OpenCLExecutionContext::empty).
-    define_method("release", &cv::ocl::OpenCLExecutionContext::release).
-    define_singleton_function("get_current", &cv::ocl::OpenCLExecutionContext::getCurrent).
-    define_singleton_function("get_current_ref", &cv::ocl::OpenCLExecutionContext::getCurrentRef).
+    define_method<bool(cv::ocl::OpenCLExecutionContext::*)() const>("empty?", &cv::ocl::OpenCLExecutionContext::empty).
+    define_method<void(cv::ocl::OpenCLExecutionContext::*)()>("release", &cv::ocl::OpenCLExecutionContext::release).
+    define_singleton_function<cv::ocl::OpenCLExecutionContext&(*)()>("get_current", &cv::ocl::OpenCLExecutionContext::getCurrent).
+    define_singleton_function<cv::ocl::OpenCLExecutionContext&(*)()>("get_current_ref", &cv::ocl::OpenCLExecutionContext::getCurrentRef).
     define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const std::string&, void*, void*, void*)>("create", &cv::ocl::OpenCLExecutionContext::create,
       Arg("platform_name"), ArgBuffer("platform_id"), ArgBuffer("context"), ArgBuffer("device_id")).
     define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context&, const cv::ocl::Device&, const cv::ocl::Queue&)>("create", &cv::ocl::OpenCLExecutionContext::create,

@@ -1,4 +1,3 @@
-#include <opencv2/core/base.hpp>
 #include <opencv2/flann/ground_truth.h>
 #include "ground_truth-rb.hpp"
 

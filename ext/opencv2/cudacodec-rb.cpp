@@ -107,20 +107,20 @@ void Init_Cudacodec()
     define_attr("idr_period", &cv::cudacodec::EncoderParams::idrPeriod);
 
   Rice::Data_Type<cv::cudacodec::EncoderCallback> rb_cCvCudacodecEncoderCallback = define_class_under<cv::cudacodec::EncoderCallback>(rb_mCvCudacodec, "EncoderCallback").
-    define_method("on_encoded", &cv::cudacodec::EncoderCallback::onEncoded,
+    define_method<void(cv::cudacodec::EncoderCallback::*)(const std::vector<std::vector<uint8_t>>&, const std::vector<uint64_t>&)>("on_encoded", &cv::cudacodec::EncoderCallback::onEncoded,
       Arg("v_packet"), Arg("pts")).
-    define_method("set_frame_interval_p", &cv::cudacodec::EncoderCallback::setFrameIntervalP,
+    define_method<bool(cv::cudacodec::EncoderCallback::*)(const int)>("set_frame_interval_p", &cv::cudacodec::EncoderCallback::setFrameIntervalP,
       Arg("frame_interval_p")).
-    define_method("on_encoding_finished", &cv::cudacodec::EncoderCallback::onEncodingFinished);
+    define_method<void(cv::cudacodec::EncoderCallback::*)()>("on_encoding_finished", &cv::cudacodec::EncoderCallback::onEncodingFinished);
 
   Rice::Data_Type<cv::cudacodec::VideoWriter> rb_cCvCudacodecVideoWriter = define_class_under<cv::cudacodec::VideoWriter>(rb_mCvCudacodec, "VideoWriter").
-    define_method("write", &cv::cudacodec::VideoWriter::write,
+    define_method<void(cv::cudacodec::VideoWriter::*)(cv::InputArray)>("write", &cv::cudacodec::VideoWriter::write,
       Arg("frame")).
-    define_method("get_encoder_params", &cv::cudacodec::VideoWriter::getEncoderParams).
-    define_method("release", &cv::cudacodec::VideoWriter::release);
+    define_method<cv::cudacodec::EncoderParams(cv::cudacodec::VideoWriter::*)() const>("get_encoder_params", &cv::cudacodec::VideoWriter::getEncoderParams).
+    define_method<void(cv::cudacodec::VideoWriter::*)()>("release", &cv::cudacodec::VideoWriter::release);
 
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String&, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream&)>("create_video_writer", &cv::cudacodec::createVideoWriter,
-    Arg("file_name"), Arg("frame_size"), Arg("codec") = static_cast<const cv::cudacodec::Codec>(cv::cudacodec::Codec::H264), Arg("fps") = static_cast<const double>(25.0), Arg("color_format") = static_cast<const cv::cudacodec::ColorFormat>(cv::cudacodec::ColorFormat::BGR), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+    Arg("file_name"), Arg("frame_size"), Arg("codec") = static_cast<const cv::cudacodec::Codec>(cv::cudacodec::H264), Arg("fps") = static_cast<const double>(25.0), Arg("color_format") = static_cast<const cv::cudacodec::ColorFormat>(cv::cudacodec::BGR), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String&, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, const cv::cudacodec::EncoderParams&, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream&)>("create_video_writer", &cv::cudacodec::createVideoWriter,
     Arg("file_name"), Arg("frame_size"), Arg("codec"), Arg("fps"), Arg("color_format"), Arg("params"), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream&>(cv::cuda::Stream::Null()));
@@ -160,7 +160,7 @@ void Init_Cudacodec()
     define_value("SIXTEEN", cv::cudacodec::BitDepth::SIXTEEN).
     define_value("UNCHANGED", cv::cudacodec::BitDepth::UNCHANGED);
 
-  rb_mCvCudacodec.define_module_function("map_hist", &cv::cudacodec::MapHist,
+  rb_mCvCudacodec.define_module_function<void(*)(const cv::cuda::GpuMat&, cv::Mat&)>("map_hist", &cv::cudacodec::MapHist,
     Arg("hist"), Arg("hist_full"));
 
   Rice::Data_Type<cv::cudacodec::FormatInfo> rb_cCvCudacodecFormatInfo = define_class_under<cv::cudacodec::FormatInfo>(rb_mCvCudacodec, "FormatInfo").
@@ -191,10 +191,10 @@ void Init_Cudacodec()
     define_attr("n_max_histogram_bins", &cv::cudacodec::FormatInfo::nMaxHistogramBins);
 
   Rice::Data_Type<cv::cudacodec::NVSurfaceToColorConverter> rb_cCvCudacodecNVSurfaceToColorConverter = define_class_under<cv::cudacodec::NVSurfaceToColorConverter>(rb_mCvCudacodec, "NVSurfaceToColorConverter").
-    define_method("convert", &cv::cudacodec::NVSurfaceToColorConverter::convert,
-      Arg("yuv"), Arg("color"), Arg("surface_format"), Arg("output_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::BitDepth::UNCHANGED), Arg("planar") = static_cast<const bool>(false), Arg("video_full_range_flag") = static_cast<const bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+    define_method<bool(cv::cudacodec::NVSurfaceToColorConverter::*)(cv::InputArray, cv::OutputArray, const cv::cudacodec::SurfaceFormat, const cv::cudacodec::ColorFormat, const cv::cudacodec::BitDepth, const bool, const bool, cv::cuda::Stream&)>("convert", &cv::cudacodec::NVSurfaceToColorConverter::convert,
+      Arg("yuv"), Arg("color"), Arg("surface_format"), Arg("output_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::UNCHANGED), Arg("planar") = static_cast<const bool>(false), Arg("video_full_range_flag") = static_cast<const bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
-  rb_mCvCudacodec.define_module_function("create_nv_surface_to_color_converter", &cv::cudacodec::createNVSurfaceToColorConverter,
+  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::NVSurfaceToColorConverter>(*)(const cv::cudacodec::ColorSpaceStandard, const bool)>("create_nv_surface_to_color_converter", &cv::cudacodec::createNVSurfaceToColorConverter,
     Arg("color_space"), Arg("video_full_range_flag") = static_cast<const bool>(false));
 
   Enum<cv::cudacodec::VideoReaderProps> rb_cCvCudacodecVideoReaderProps = define_enum_under<cv::cudacodec::VideoReaderProps>("VideoReaderProps", rb_mCvCudacodec).
@@ -216,8 +216,8 @@ void Init_Cudacodec()
       Arg("frame"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
     define_method<bool(cv::cudacodec::VideoReader::*)(cv::cuda::GpuMat&, cv::cuda::GpuMat&, cv::cuda::Stream&)>("next_frame", &cv::cudacodec::VideoReader::nextFrame,
       Arg("frame"), Arg("histogram"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
-    define_method("format", &cv::cudacodec::VideoReader::format).
-    define_method("grab", &cv::cudacodec::VideoReader::grab,
+    define_method<cv::cudacodec::FormatInfo(cv::cudacodec::VideoReader::*)() const>("format", &cv::cudacodec::VideoReader::format).
+    define_method<bool(cv::cudacodec::VideoReader::*)(cv::cuda::Stream&)>("grab", &cv::cudacodec::VideoReader::grab,
       Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
     define_method<bool(cv::cudacodec::VideoReader::*)(cv::OutputArray, const size_t) const>("retrieve", &cv::cudacodec::VideoReader::retrieve,
       Arg("frame"), Arg("idx")).
@@ -227,29 +227,29 @@ void Init_Cudacodec()
       Arg("frame")).
     define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::VideoReaderProps, const double)>("set", &cv::cudacodec::VideoReader::set,
       Arg("property_id"), Arg("property_val")).
-    define_method("set_video_reader_props", &cv::cudacodec::VideoReader::setVideoReaderProps,
+    define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::VideoReaderProps, double)>("set_video_reader_props", &cv::cudacodec::VideoReader::setVideoReaderProps,
       Arg("property_id"), Arg("property_val")).
     define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::ColorFormat, const cv::cudacodec::BitDepth, const bool)>("set", &cv::cudacodec::VideoReader::set,
-      Arg("color_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::BitDepth::UNCHANGED), Arg("planar") = static_cast<const bool>(false)).
+      Arg("color_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::UNCHANGED), Arg("planar") = static_cast<const bool>(false)).
     define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::VideoReaderProps, double&) const>("get", &cv::cudacodec::VideoReader::get,
       Arg("property_id"), Arg("property_val")).
-    define_method("get_video_reader_props", &cv::cudacodec::VideoReader::getVideoReaderProps,
+    define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::VideoReaderProps, double&, double) const>("get_video_reader_props", &cv::cudacodec::VideoReader::getVideoReaderProps,
       Arg("property_id"), Arg("property_val_out"), Arg("property_val_in") = static_cast<double>(0)).
     define_method<bool(cv::cudacodec::VideoReader::*)(const int, double&) const>("get", &cv::cudacodec::VideoReader::get,
       Arg("property_id"), Arg("property_val"));
 
   Rice::Data_Type<cv::cudacodec::RawVideoSource> rb_cCvCudacodecRawVideoSource = define_class_under<cv::cudacodec::RawVideoSource>(rb_mCvCudacodec, "RawVideoSource").
-    define_method("get_next_packet", &cv::cudacodec::RawVideoSource::getNextPacket,
-      ArgBuffer("data"), Arg("size")).
-    define_method("last_packet_contains_key_frame?", &cv::cudacodec::RawVideoSource::lastPacketContainsKeyFrame).
-    define_method("format", &cv::cudacodec::RawVideoSource::format).
-    define_method("update_format", &cv::cudacodec::RawVideoSource::updateFormat,
+    define_method<bool(cv::cudacodec::RawVideoSource::*)(unsigned char**, size_t*)>("get_next_packet", &cv::cudacodec::RawVideoSource::getNextPacket,
+      ArgBuffer("data"), ArgBuffer("size")).
+    define_method<bool(cv::cudacodec::RawVideoSource::*)() const>("last_packet_contains_key_frame?", &cv::cudacodec::RawVideoSource::lastPacketContainsKeyFrame).
+    define_method<cv::cudacodec::FormatInfo(cv::cudacodec::RawVideoSource::*)() const>("format", &cv::cudacodec::RawVideoSource::format).
+    define_method<void(cv::cudacodec::RawVideoSource::*)(const cv::cudacodec::FormatInfo&)>("update_format", &cv::cudacodec::RawVideoSource::updateFormat,
       Arg("video_format")).
-    define_method("get_extra_data", &cv::cudacodec::RawVideoSource::getExtraData,
+    define_method<void(cv::cudacodec::RawVideoSource::*)(cv::Mat&) const>("get_extra_data", &cv::cudacodec::RawVideoSource::getExtraData,
       Arg("extra_data")).
-    define_method("get", &cv::cudacodec::RawVideoSource::get,
+    define_method<bool(cv::cudacodec::RawVideoSource::*)(const int, double&) const>("get", &cv::cudacodec::RawVideoSource::get,
       Arg("property_id"), Arg("property_val")).
-    define_method("get_first_frame_idx", &cv::cudacodec::RawVideoSource::getFirstFrameIdx);
+    define_method<int(cv::cudacodec::RawVideoSource::*)() const>("get_first_frame_idx", &cv::cudacodec::RawVideoSource::getFirstFrameIdx);
 
   Rice::Data_Type<cv::cudacodec::VideoReaderInitParams> rb_cCvCudacodecVideoReaderInitParams = define_class_under<cv::cudacodec::VideoReaderInitParams>(rb_mCvCudacodec, "VideoReaderInitParams").
     define_constructor(Constructor<cv::cudacodec::VideoReaderInitParams>()).

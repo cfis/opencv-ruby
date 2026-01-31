@@ -10,48 +10,48 @@ void Init_Cudafilters()
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Rice::Data_Type<cv::cuda::Filter> rb_cCvCudaFilter = define_class_under<cv::cuda::Filter, cv::Algorithm>(rb_mCvCuda, "Filter").
-    define_method("apply", &cv::cuda::Filter::apply,
+    define_method<void(cv::cuda::Filter::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("apply", &cv::cuda::Filter::apply,
       Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function("create_box_filter", &cv::cuda::createBoxFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::Size, cv::Point, int, cv::Scalar)>("create_box_filter", &cv::cuda::createBoxFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_linear_filter", &cv::cuda::createLinearFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::InputArray, cv::Point, int, cv::Scalar)>("create_linear_filter", &cv::cuda::createLinearFilter,
     Arg("src_type"), Arg("dst_type"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_laplacian_filter", &cv::cuda::createLaplacianFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, double, int, cv::Scalar)>("create_laplacian_filter", &cv::cuda::createLaplacianFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize") = static_cast<int>(1), Arg("scale") = static_cast<double>(1), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_separable_linear_filter", &cv::cuda::createSeparableLinearFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::InputArray, cv::InputArray, cv::Point, int, int)>("create_separable_linear_filter", &cv::cuda::createSeparableLinearFilter,
     Arg("src_type"), Arg("dst_type"), Arg("row_kernel"), Arg("column_kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("row_border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("column_border_mode") = static_cast<int>(-1));
 
-  rb_mCvCuda.define_module_function("create_deriv_filter", &cv::cuda::createDerivFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, int, int, bool, double, int, int)>("create_deriv_filter", &cv::cuda::createDerivFilter,
     Arg("src_type"), Arg("dst_type"), Arg("dx"), Arg("dy"), Arg("ksize"), Arg("normalize") = static_cast<bool>(false), Arg("scale") = static_cast<double>(1), Arg("row_border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("column_border_mode") = static_cast<int>(-1));
 
-  rb_mCvCuda.define_module_function("create_sobel_filter", &cv::cuda::createSobelFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, int, int, double, int, int)>("create_sobel_filter", &cv::cuda::createSobelFilter,
     Arg("src_type"), Arg("dst_type"), Arg("dx"), Arg("dy"), Arg("ksize") = static_cast<int>(3), Arg("scale") = static_cast<double>(1), Arg("row_border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("column_border_mode") = static_cast<int>(-1));
 
-  rb_mCvCuda.define_module_function("create_scharr_filter", &cv::cuda::createScharrFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, int, double, int, int)>("create_scharr_filter", &cv::cuda::createScharrFilter,
     Arg("src_type"), Arg("dst_type"), Arg("dx"), Arg("dy"), Arg("scale") = static_cast<double>(1), Arg("row_border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("column_border_mode") = static_cast<int>(-1));
 
-  rb_mCvCuda.define_module_function("create_gaussian_filter", &cv::cuda::createGaussianFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::Size, double, double, int, int)>("create_gaussian_filter", &cv::cuda::createGaussianFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize"), Arg("sigma1"), Arg("sigma2") = static_cast<double>(0), Arg("row_border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("column_border_mode") = static_cast<int>(-1));
 
-  rb_mCvCuda.define_module_function("create_morphology_filter", &cv::cuda::createMorphologyFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::InputArray, cv::Point, int)>("create_morphology_filter", &cv::cuda::createMorphologyFilter,
     Arg("op"), Arg("src_type"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("iterations") = static_cast<int>(1));
 
-  rb_mCvCuda.define_module_function("create_box_max_filter", &cv::cuda::createBoxMaxFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, cv::Size, cv::Point, int, cv::Scalar)>("create_box_max_filter", &cv::cuda::createBoxMaxFilter,
     Arg("src_type"), Arg("ksize"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_box_min_filter", &cv::cuda::createBoxMinFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, cv::Size, cv::Point, int, cv::Scalar)>("create_box_min_filter", &cv::cuda::createBoxMinFilter,
     Arg("src_type"), Arg("ksize"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_row_sum_filter", &cv::cuda::createRowSumFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, int, int, cv::Scalar)>("create_row_sum_filter", &cv::cuda::createRowSumFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize"), Arg("anchor") = static_cast<int>(-1), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_column_sum_filter", &cv::cuda::createColumnSumFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int, int, int, cv::Scalar)>("create_column_sum_filter", &cv::cuda::createColumnSumFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize"), Arg("anchor") = static_cast<int>(-1), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));
 
-  rb_mCvCuda.define_module_function("create_median_filter", &cv::cuda::createMedianFilter,
+  rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, int)>("create_median_filter", &cv::cuda::createMedianFilter,
     Arg("src_type"), Arg("window_size"), Arg("partition") = static_cast<int>(128));
 }

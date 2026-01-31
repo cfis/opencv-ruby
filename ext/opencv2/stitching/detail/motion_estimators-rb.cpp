@@ -10,7 +10,7 @@ void Init_Stitching_Detail_MotionEstimators()
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
   Rice::Data_Type<cv::detail::Estimator> rb_cCvDetailEstimator = define_class_under<cv::detail::Estimator>(rb_mCvDetail, "Estimator").
-    define_method("call", &cv::detail::Estimator::operator(),
+    define_method<bool(cv::detail::Estimator::*)(const std::vector<cv::detail::ImageFeatures>&, const std::vector<cv::detail::MatchesInfo>&, std::vector<cv::detail::CameraParams>&)>("call", &cv::detail::Estimator::operator(),
       Arg("features"), Arg("pairwise_matches"), Arg("cameras"));
 
   Rice::Data_Type<cv::detail::HomographyBasedEstimator> rb_cCvDetailHomographyBasedEstimator = define_class_under<cv::detail::HomographyBasedEstimator, cv::detail::Estimator>(rb_mCvDetail, "HomographyBasedEstimator").
@@ -21,14 +21,14 @@ void Init_Stitching_Detail_MotionEstimators()
     define_constructor(Constructor<cv::detail::AffineBasedEstimator>());
 
   Rice::Data_Type<cv::detail::BundleAdjusterBase> rb_cCvDetailBundleAdjusterBase = define_class_under<cv::detail::BundleAdjusterBase, cv::detail::Estimator>(rb_mCvDetail, "BundleAdjusterBase").
-    define_method("refinement_mask", &cv::detail::BundleAdjusterBase::refinementMask).
-    define_method("set_refinement_mask", &cv::detail::BundleAdjusterBase::setRefinementMask,
+    define_method<cv::Mat(cv::detail::BundleAdjusterBase::*)() const>("refinement_mask", &cv::detail::BundleAdjusterBase::refinementMask).
+    define_method<void(cv::detail::BundleAdjusterBase::*)(const cv::Mat&)>("set_refinement_mask", &cv::detail::BundleAdjusterBase::setRefinementMask,
       Arg("mask")).
-    define_method("conf_thresh", &cv::detail::BundleAdjusterBase::confThresh).
-    define_method("set_conf_thresh", &cv::detail::BundleAdjusterBase::setConfThresh,
+    define_method<double(cv::detail::BundleAdjusterBase::*)() const>("conf_thresh", &cv::detail::BundleAdjusterBase::confThresh).
+    define_method<void(cv::detail::BundleAdjusterBase::*)(double)>("set_conf_thresh", &cv::detail::BundleAdjusterBase::setConfThresh,
       Arg("conf_thresh")).
-    define_method("term_criteria", &cv::detail::BundleAdjusterBase::termCriteria).
-    define_method("set_term_criteria", &cv::detail::BundleAdjusterBase::setTermCriteria,
+    define_method<cv::TermCriteria(cv::detail::BundleAdjusterBase::*)()>("term_criteria", &cv::detail::BundleAdjusterBase::termCriteria).
+    define_method<void(cv::detail::BundleAdjusterBase::*)(const cv::TermCriteria&)>("set_term_criteria", &cv::detail::BundleAdjusterBase::setTermCriteria,
       Arg("term_criteria"));
 
   Rice::Data_Type<cv::detail::NoBundleAdjuster> rb_cCvDetailNoBundleAdjuster = define_class_under<cv::detail::NoBundleAdjuster, cv::detail::BundleAdjusterBase>(rb_mCvDetail, "NoBundleAdjuster").
@@ -51,18 +51,18 @@ void Init_Stitching_Detail_MotionEstimators()
     define_value("WAVE_CORRECT_VERT", cv::detail::WaveCorrectKind::WAVE_CORRECT_VERT).
     define_value("WAVE_CORRECT_AUTO", cv::detail::WaveCorrectKind::WAVE_CORRECT_AUTO);
 
-  rb_mCvDetail.define_module_function("auto_detect_wave_correct_kind", &cv::detail::autoDetectWaveCorrectKind,
+  rb_mCvDetail.define_module_function<cv::detail::WaveCorrectKind(*)(const std::vector<cv::Mat>&)>("auto_detect_wave_correct_kind", &cv::detail::autoDetectWaveCorrectKind,
     Arg("rmats"));
 
-  rb_mCvDetail.define_module_function("wave_correct", &cv::detail::waveCorrect,
+  rb_mCvDetail.define_module_function<void(*)(std::vector<cv::Mat>&, cv::detail::WaveCorrectKind)>("wave_correct", &cv::detail::waveCorrect,
     Arg("rmats"), Arg("kind"));
 
-  rb_mCvDetail.define_module_function("matches_graph_as_string", &cv::detail::matchesGraphAsString,
+  rb_mCvDetail.define_module_function<cv::String(*)(std::vector<std::basic_string<char>>&, std::vector<cv::detail::MatchesInfo>&, float)>("matches_graph_as_string", &cv::detail::matchesGraphAsString,
     Arg("paths"), Arg("pairwise_matches"), Arg("conf_threshold"));
 
-  rb_mCvDetail.define_module_function("leave_biggest_component", &cv::detail::leaveBiggestComponent,
+  rb_mCvDetail.define_module_function<std::vector<int>(*)(std::vector<cv::detail::ImageFeatures>&, std::vector<cv::detail::MatchesInfo>&, float)>("leave_biggest_component", &cv::detail::leaveBiggestComponent,
     Arg("features"), Arg("pairwise_matches"), Arg("conf_threshold"));
 
-  rb_mCvDetail.define_module_function("find_max_spanning_tree", &cv::detail::findMaxSpanningTree,
+  rb_mCvDetail.define_module_function<void(*)(int, const std::vector<cv::detail::MatchesInfo>&, cv::detail::Graph&, std::vector<int>&)>("find_max_spanning_tree", &cv::detail::findMaxSpanningTree,
     Arg("num_images"), Arg("pairwise_matches"), Arg("span_tree"), Arg("centers"));
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <rice/rice.hpp>
-#include <rice/stl.hpp>
+#include "../../../../rice_include.hpp"
 
-void Init_ParallelForOpenmp();
+void Init_Core_Parallel_Backend_ParallelForOpenmp();

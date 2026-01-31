@@ -3,11 +3,6 @@
 
 using namespace Rice;
 
-template<typename Data_Type_T, int THREAD_DIM, int N>
-inline void UnrollVecDiffCached_builder(Data_Type_T& klass)
-{
-};
-
 void Init_Core_Cuda_Detail_VecDistanceDetail()
 {
   Module rb_mCv = define_module("Cv");

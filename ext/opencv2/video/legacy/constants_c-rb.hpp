@@ -1,0 +1,5 @@
+#pragma once
+
+#include "../../../rice_include.hpp"
+
+void Init_Video_Legacy_ConstantsC();

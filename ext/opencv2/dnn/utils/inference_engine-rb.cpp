@@ -2,7 +2,8 @@
 #include "inference_engine-rb.hpp"
 
 using namespace Rice;
-void Init_InferenceEngine()
+
+void Init_Dnn_Utils_InferenceEngine()
 {
   Class(rb_cObject).define_constant("CV_DNN_BACKEND_INFERENCE_ENGINE_NN_BUILDER_API", CV_DNN_BACKEND_INFERENCE_ENGINE_NN_BUILDER_API);
 
@@ -22,17 +23,18 @@ void Init_InferenceEngine()
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
-  rb_mCvDnn.define_module_function("get_inference_engine_backend_type", &cv::dnn::getInferenceEngineBackendType);
+  Module rb_mCvDnnDnn4V20241223 = define_module_under(rb_mCvDnn, "Dnn4V20241223");
 
-  rb_mCvDnn.define_module_function("set_inference_engine_backend_type", &cv::dnn::setInferenceEngineBackendType,
+  rb_mCvDnnDnn4V20241223.define_module_function<cv::String(*)()>("get_inference_engine_backend_type", &cv::dnn::dnn4_v20241223::getInferenceEngineBackendType);
+
+  rb_mCvDnnDnn4V20241223.define_module_function<cv::String(*)(const cv::String&)>("set_inference_engine_backend_type", &cv::dnn::dnn4_v20241223::setInferenceEngineBackendType,
     Arg("new_backend_type"));
 
-  rb_mCvDnn.define_module_function("reset_myriad_device", &cv::dnn::resetMyriadDevice);
+  rb_mCvDnnDnn4V20241223.define_module_function<void(*)()>("reset_myriad_device", &cv::dnn::dnn4_v20241223::resetMyriadDevice);
 
-  rb_mCvDnn.define_module_function("get_inference_engine_vpu_type", &cv::dnn::getInferenceEngineVPUType);
+  rb_mCvDnnDnn4V20241223.define_module_function<cv::String(*)()>("get_inference_engine_vpu_type", &cv::dnn::dnn4_v20241223::getInferenceEngineVPUType);
 
-  rb_mCvDnn.define_module_function("get_inference_engine_cpu_type", &cv::dnn::getInferenceEngineCPUType);
+  rb_mCvDnnDnn4V20241223.define_module_function<cv::String(*)()>("get_inference_engine_cpu_type", &cv::dnn::dnn4_v20241223::getInferenceEngineCPUType);
 
-  rb_mCvDnn.define_module_function("release_hddl_plugin", &cv::dnn::releaseHDDLPlugin);
-
+  rb_mCvDnnDnn4V20241223.define_module_function<void(*)()>("release_hddl_plugin", &cv::dnn::dnn4_v20241223::releaseHDDLPlugin);
 }

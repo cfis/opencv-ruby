@@ -1,5 +1,3 @@
-#include <vector>
-#include <opencv2/core/base.hpp>
 #include <opencv2/flann/dynamic_bitset.h>
 #include "dynamic_bitset-rb.hpp"
 
@@ -15,18 +13,18 @@ void Init_Flann_DynamicBitset()
     define_constructor(Constructor<cvflann::DynamicBitset>()).
     define_constructor(Constructor<cvflann::DynamicBitset, size_t>(),
       Arg("sz")).
-    define_method("clear", &cvflann::DynamicBitset::clear).
-    define_method("empty?", &cvflann::DynamicBitset::empty).
+    define_method<void(cvflann::DynamicBitset::*)()>("clear", &cvflann::DynamicBitset::clear).
+    define_method<bool(cvflann::DynamicBitset::*)() const>("empty?", &cvflann::DynamicBitset::empty).
     define_method<void(cvflann::DynamicBitset::*)()>("reset", &cvflann::DynamicBitset::reset).
     define_method<void(cvflann::DynamicBitset::*)(size_t)>("reset", &cvflann::DynamicBitset::reset,
       Arg("index")).
-    define_method("reset_block", &cvflann::DynamicBitset::reset_block,
+    define_method<void(cvflann::DynamicBitset::*)(size_t)>("reset_block", &cvflann::DynamicBitset::reset_block,
       Arg("index")).
-    define_method("resize", &cvflann::DynamicBitset::resize,
+    define_method<void(cvflann::DynamicBitset::*)(size_t)>("resize", &cvflann::DynamicBitset::resize,
       Arg("sz")).
-    define_method("set", &cvflann::DynamicBitset::set,
+    define_method<void(cvflann::DynamicBitset::*)(size_t)>("set", &cvflann::DynamicBitset::set,
       Arg("index")).
-    define_method("size", &cvflann::DynamicBitset::size).
-    define_method("test", &cvflann::DynamicBitset::test,
+    define_method<size_t(cvflann::DynamicBitset::*)() const>("size", &cvflann::DynamicBitset::size).
+    define_method<bool(cvflann::DynamicBitset::*)(size_t) const>("test", &cvflann::DynamicBitset::test,
       Arg("index"));
 }

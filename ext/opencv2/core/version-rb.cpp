@@ -5,9 +5,6 @@ using namespace Rice;
 
 void Init_Core_Version()
 {
-  // Manual
-  Class(rb_cObject).define_constant("CV_VERSION", CV_VERSION);
-
   Class(rb_cObject).define_constant("CV_VERSION_MAJOR", CV_VERSION_MAJOR);
 
   Class(rb_cObject).define_constant("CV_VERSION_MINOR", CV_VERSION_MINOR);

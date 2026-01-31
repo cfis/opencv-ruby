@@ -1,9 +1,9 @@
-#include <opencv2/opencv.hpp>
 #include <opencv2/core/utils/logger.defines.hpp>
 #include "logger.defines-rb.hpp"
 
 using namespace Rice;
-void Init_LoggerDefines()
+
+void Init_Core_Utils_LoggerDefines()
 {
   Class(rb_cObject).define_constant("CV_LOG_LEVEL_SILENT", CV_LOG_LEVEL_SILENT);
 
@@ -34,5 +34,4 @@ void Init_LoggerDefines()
     define_value("LOG_LEVEL_DEBUG", cv::utils::logging::LogLevel::LOG_LEVEL_DEBUG).
     define_value("LOG_LEVEL_VERBOSE", cv::utils::logging::LogLevel::LOG_LEVEL_VERBOSE).
     define_value("ENUM_LOG_LEVEL_FORCE_INT", cv::utils::logging::LogLevel::ENUM_LOG_LEVEL_FORCE_INT);
-
 }

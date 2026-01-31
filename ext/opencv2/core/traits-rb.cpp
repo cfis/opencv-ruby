@@ -4,11 +4,6 @@
 using namespace Rice;
 
 template<typename Data_Type_T, typename _Tp>
-inline void DataType_builder(Data_Type_T& klass)
-{
-};
-
-template<typename Data_Type_T, typename _Tp>
 inline void DataDepth_builder(Data_Type_T& klass)
 {
   klass.define_constant("Value", (int)cv::DataDepth<_Tp>::value).
@@ -37,16 +32,6 @@ template<typename Data_Type_T, typename T>
 inline void Type_builder(Data_Type_T& klass)
 {
   klass.define_constant("Value", (int)cv::traits::Type<T>::value);
-};
-
-template<typename Data_Type_T, typename T, bool available>
-inline void SafeType_builder(Data_Type_T& klass)
-{
-};
-
-template<typename Data_Type_T, typename T, bool available>
-inline void SafeFmt_builder(Data_Type_T& klass)
-{
 };
 
 void Init_Core_Traits()
@@ -134,7 +119,6 @@ void Init_Core_Traits()
   rb_cCvDataTypeDouble.define_constant("Fmt", (int)cv::DataType<double>::fmt);
   rb_cCvDataTypeDouble.define_constant("Type", (int)cv::DataType<double>::type);
 
-#if RUBY_CV_VERSION >= 410
   Rice::Data_Type<cv::DataType<cv::hfloat>> rb_cCvDataTypeHfloat = define_class_under<cv::DataType<cv::hfloat>>(rb_mCv, "DataTypeHfloat").
     define_constructor(Constructor<cv::DataType<cv::hfloat>>());
 
@@ -143,7 +127,6 @@ void Init_Core_Traits()
   rb_cCvDataTypeHfloat.define_constant("Channels", (int)cv::DataType<cv::hfloat>::channels);
   rb_cCvDataTypeHfloat.define_constant("Fmt", (int)cv::DataType<cv::hfloat>::fmt);
   rb_cCvDataTypeHfloat.define_constant("Type", (int)cv::DataType<cv::hfloat>::type);
-#endif
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 

@@ -6,25 +6,25 @@ using namespace Rice;
 template<typename Data_Type_T, typename Distance>
 inline void Index_builder(Data_Type_T& klass)
 {
-  klass.define_constructor(Constructor<cvflann::Index<Distance>, const Matrix<type-parameter-0-0::ElementType>&, const cvflann::IndexParams&, Distance>(),
+  klass.define_constructor(Constructor<cvflann::Index<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("features"), Arg("params"), Arg("distance") = static_cast<Distance>(cvflann::Index::Distance())).
-    define_method("build_index", &cvflann::Index<Distance>::buildIndex).
-    define_method("save", &cvflann::Index<Distance>::save,
+    template define_method<void(cvflann::Index<Distance>::*)()>("build_index", &cvflann::Index<Distance>::buildIndex).
+    template define_method<void(cvflann::Index<Distance>::*)(cv::String)>("save", &cvflann::Index<Distance>::save,
       Arg("filename")).
-    define_method("save_index", &cvflann::Index<Distance>::saveIndex,
+    template define_method<void(cvflann::Index<Distance>::*)(FILE*)>("save_index", &cvflann::Index<Distance>::saveIndex,
       Arg("stream")).
-    define_method("load_index", &cvflann::Index<Distance>::loadIndex,
+    template define_method<void(cvflann::Index<Distance>::*)(FILE*)>("load_index", &cvflann::Index<Distance>::loadIndex,
       Arg("stream")).
-    define_method("veclen", &cvflann::Index<Distance>::veclen).
-    define_method("size", &cvflann::Index<Distance>::size).
-    define_method("get_type", &cvflann::Index<Distance>::getType).
-    define_method("used_memory", &cvflann::Index<Distance>::usedMemory).
-    define_method("get_parameters", &cvflann::Index<Distance>::getParameters).
-    define_method("knn_search", &cvflann::Index<Distance>::knnSearch,
+    template define_method<size_t(cvflann::Index<Distance>::*)() const>("veclen", &cvflann::Index<Distance>::veclen).
+    template define_method<size_t(cvflann::Index<Distance>::*)() const>("size", &cvflann::Index<Distance>::size).
+    template define_method<cvflann::flann_algorithm_t(cvflann::Index<Distance>::*)() const>("get_type", &cvflann::Index<Distance>::getType).
+    template define_method<int(cvflann::Index<Distance>::*)() const>("used_memory", &cvflann::Index<Distance>::usedMemory).
+    template define_method<cvflann::IndexParams(cvflann::Index<Distance>::*)() const>("get_parameters", &cvflann::Index<Distance>::getParameters).
+    template define_method<void(cvflann::Index<Distance>::*)(const cvflann::Matrix<cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::Index<Distance>::DistanceType>&, int, const cvflann::SearchParams&)>("knn_search", &cvflann::Index<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    define_method("radius_search", &cvflann::Index<Distance>::radiusSearch,
+    template define_method<int(cvflann::Index<Distance>::*)(const cvflann::Matrix<cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::Index<Distance>::DistanceType>&, float, const cvflann::SearchParams&)>("radius_search", &cvflann::Index<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
-    define_method("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
+    template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<cvflann::Index<Distance>::DistanceType>&, const typename cvflann::Index<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 };
 
@@ -36,7 +36,7 @@ void Init_Flann_FlannBase()
     define_constructor(Constructor<cvflann::FILEScopeGuard, FILE*>(),
       Arg("file"));
 
-  rb_mCvflann.define_module_function("log_verbosity", &cvflann::log_verbosity,
+  rb_mCvflann.define_module_function<void(*)(int)>("log_verbosity", &cvflann::log_verbosity,
     Arg("level"));
 
   Rice::Data_Type<cvflann::SavedIndexParams> rb_cCvflannSavedIndexParams = define_class_under<cvflann::SavedIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "SavedIndexParams").

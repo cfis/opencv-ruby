@@ -10,16 +10,16 @@ void Init_Face_FacemarkAAM()
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
   Rice::Data_Type<cv::face::FacemarkAAM> rb_cCvFaceFacemarkAAM = define_class_under<cv::face::FacemarkAAM, cv::face::FacemarkTrain>(rb_mCvFace, "FacemarkAAM").
-    define_method("fit_config", &cv::face::FacemarkAAM::fitConfig,
+    define_method<bool(cv::face::FacemarkAAM::*)(cv::InputArray, cv::InputArray, cv::OutputArrayOfArrays, const std::vector<cv::face::FacemarkAAM::Config>&)>("fit_config", &cv::face::FacemarkAAM::fitConfig,
       Arg("image"), Arg("roi"), Arg("_landmarks"), Arg("runtime_params")).
-    define_singleton_function("create", &cv::face::FacemarkAAM::create,
+    define_singleton_function<cv::Ptr<cv::face::FacemarkAAM>(*)(const cv::face::FacemarkAAM::Params&)>("create", &cv::face::FacemarkAAM::create,
       Arg("parameters") = static_cast<const cv::face::FacemarkAAM::Params&>(cv::face::FacemarkAAM::Params()));
 
   Rice::Data_Type<cv::face::FacemarkAAM::Params> rb_cCvFaceFacemarkAAMParams = define_class_under<cv::face::FacemarkAAM::Params>(rb_cCvFaceFacemarkAAM, "Params").
     define_constructor(Constructor<cv::face::FacemarkAAM::Params>()).
-    define_method("read", &cv::face::FacemarkAAM::Params::read,
+    define_method<void(cv::face::FacemarkAAM::Params::*)(const cv::FileNode&)>("read", &cv::face::FacemarkAAM::Params::read,
       Arg("arg_0")).
-    define_method("write", &cv::face::FacemarkAAM::Params::write,
+    define_method<void(cv::face::FacemarkAAM::Params::*)(cv::FileStorage&) const>("write", &cv::face::FacemarkAAM::Params::write,
       Arg("arg_0")).
     define_attr("model_filename", &cv::face::FacemarkAAM::Params::model_filename).
     define_attr("m", &cv::face::FacemarkAAM::Params::m).

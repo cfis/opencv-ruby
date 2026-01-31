@@ -10,21 +10,21 @@ void Init_Objdetect_DetectionBasedTracker()
   Rice::Data_Type<cv::DetectionBasedTracker> rb_cCvDetectionBasedTracker = define_class_under<cv::DetectionBasedTracker>(rb_mCv, "DetectionBasedTracker").
     define_constructor(Constructor<cv::DetectionBasedTracker, cv::Ptr<cv::DetectionBasedTracker::IDetector>, cv::Ptr<cv::DetectionBasedTracker::IDetector>, const cv::DetectionBasedTracker::Parameters&>(),
       Arg("main_detector"), Arg("tracking_detector"), Arg("params")).
-    define_method("run?", &cv::DetectionBasedTracker::run).
-    define_method("stop", &cv::DetectionBasedTracker::stop).
-    define_method("reset_tracking", &cv::DetectionBasedTracker::resetTracking).
-    define_method("process", &cv::DetectionBasedTracker::process,
+    define_method<bool(cv::DetectionBasedTracker::*)()>("run?", &cv::DetectionBasedTracker::run).
+    define_method<void(cv::DetectionBasedTracker::*)()>("stop", &cv::DetectionBasedTracker::stop).
+    define_method<void(cv::DetectionBasedTracker::*)()>("reset_tracking", &cv::DetectionBasedTracker::resetTracking).
+    define_method<void(cv::DetectionBasedTracker::*)(const cv::Mat&)>("process", &cv::DetectionBasedTracker::process,
       Arg("image_gray")).
-    define_method("set_parameters", &cv::DetectionBasedTracker::setParameters,
+    define_method<bool(cv::DetectionBasedTracker::*)(const cv::DetectionBasedTracker::Parameters&)>("set_parameters", &cv::DetectionBasedTracker::setParameters,
       Arg("params")).
-    define_method("get_parameters", &cv::DetectionBasedTracker::getParameters).
+    define_method<const cv::DetectionBasedTracker::Parameters&(cv::DetectionBasedTracker::*)() const>("get_parameters", &cv::DetectionBasedTracker::getParameters).
     define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::Rect>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).
     define_method<void(cv::DetectionBasedTracker::*)(std::vector<std::pair<cv::Rect_<int>, int>>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).
     define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::DetectionBasedTracker::ExtObject>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).
-    define_method("add_object", &cv::DetectionBasedTracker::addObject,
+    define_method<int(cv::DetectionBasedTracker::*)(const cv::Rect&)>("add_object", &cv::DetectionBasedTracker::addObject,
       Arg("location"));
 
   Rice::Data_Type<cv::DetectionBasedTracker::Parameters> rb_cCvDetectionBasedTrackerParameters = define_class_under<cv::DetectionBasedTracker::Parameters>(rb_cCvDetectionBasedTracker, "Parameters").
@@ -33,19 +33,19 @@ void Init_Objdetect_DetectionBasedTracker()
     define_constructor(Constructor<cv::DetectionBasedTracker::Parameters>());
 
   Rice::Data_Type<cv::DetectionBasedTracker::IDetector> rb_cCvDetectionBasedTrackerIDetector = define_class_under<cv::DetectionBasedTracker::IDetector>(rb_cCvDetectionBasedTracker, "IDetector").
-    define_method("detect", &cv::DetectionBasedTracker::IDetector::detect,
+    define_method<void(cv::DetectionBasedTracker::IDetector::*)(const cv::Mat&, std::vector<cv::Rect>&)>("detect", &cv::DetectionBasedTracker::IDetector::detect,
       Arg("image"), Arg("objects")).
-    define_method("set_min_object_size", &cv::DetectionBasedTracker::IDetector::setMinObjectSize,
+    define_method<void(cv::DetectionBasedTracker::IDetector::*)(const cv::Size&)>("set_min_object_size", &cv::DetectionBasedTracker::IDetector::setMinObjectSize,
       Arg("min")).
-    define_method("set_max_object_size", &cv::DetectionBasedTracker::IDetector::setMaxObjectSize,
+    define_method<void(cv::DetectionBasedTracker::IDetector::*)(const cv::Size&)>("set_max_object_size", &cv::DetectionBasedTracker::IDetector::setMaxObjectSize,
       Arg("max")).
-    define_method("get_min_object_size", &cv::DetectionBasedTracker::IDetector::getMinObjectSize).
-    define_method("get_max_object_size", &cv::DetectionBasedTracker::IDetector::getMaxObjectSize).
-    define_method("get_scale_factor", &cv::DetectionBasedTracker::IDetector::getScaleFactor).
-    define_method("set_scale_factor", &cv::DetectionBasedTracker::IDetector::setScaleFactor,
+    define_method<cv::Size(cv::DetectionBasedTracker::IDetector::*)() const>("get_min_object_size", &cv::DetectionBasedTracker::IDetector::getMinObjectSize).
+    define_method<cv::Size(cv::DetectionBasedTracker::IDetector::*)() const>("get_max_object_size", &cv::DetectionBasedTracker::IDetector::getMaxObjectSize).
+    define_method<float(cv::DetectionBasedTracker::IDetector::*)()>("get_scale_factor", &cv::DetectionBasedTracker::IDetector::getScaleFactor).
+    define_method<void(cv::DetectionBasedTracker::IDetector::*)(float)>("set_scale_factor", &cv::DetectionBasedTracker::IDetector::setScaleFactor,
       Arg("value")).
-    define_method("get_min_neighbours", &cv::DetectionBasedTracker::IDetector::getMinNeighbours).
-    define_method("set_min_neighbours", &cv::DetectionBasedTracker::IDetector::setMinNeighbours,
+    define_method<int(cv::DetectionBasedTracker::IDetector::*)()>("get_min_neighbours", &cv::DetectionBasedTracker::IDetector::getMinNeighbours).
+    define_method<void(cv::DetectionBasedTracker::IDetector::*)(int)>("set_min_neighbours", &cv::DetectionBasedTracker::IDetector::setMinNeighbours,
       Arg("value"));
 
   Rice::Data_Type<cv::DetectionBasedTracker::ExtObject> rb_cCvDetectionBasedTrackerExtObject = define_class_under<cv::DetectionBasedTracker::ExtObject>(rb_cCvDetectionBasedTracker, "ExtObject").

@@ -30,29 +30,29 @@ inline void Affine3_builder(Data_Type_T& klass)
     template define_method<typename cv::Affine3<T>::Mat3(cv::Affine3<T>::*)() const>("rotation", &cv::Affine3<T>::rotation).
     template define_method<typename cv::Affine3<T>::Mat3(cv::Affine3<T>::*)() const>("linear", &cv::Affine3<T>::linear).
     template define_method<typename cv::Affine3<T>::Vec3(cv::Affine3<T>::*)() const>("translation", &cv::Affine3<T>::translation).
-    define_method("rvec", &cv::Affine3<T>::rvec).
-    define_method("inv", &cv::Affine3<T>::inv,
+    template define_method<typename cv::Affine3<T>::Vec3(cv::Affine3<T>::*)() const>("rvec", &cv::Affine3<T>::rvec).
+    template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(int) const>("inv", &cv::Affine3<T>::inv,
       Arg("method") = static_cast<int>(cv::DECOMP_SVD)).
     template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Mat3&) const>("rotate", &cv::Affine3<T>::rotate,
       Arg("r")).
     template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Vec3&) const>("rotate", &cv::Affine3<T>::rotate,
       Arg("rvec")).
-    define_method("translate", &cv::Affine3<T>::translate,
+    template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Vec3&) const>("translate", &cv::Affine3<T>::translate,
       Arg("t")).
-    define_method("concatenate", &cv::Affine3<T>::concatenate,
+    template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(const cv::Affine3<T>&) const>("concatenate", &cv::Affine3<T>::concatenate,
       Arg("affine")).
     define_attr("matrix", &cv::Affine3<T>::matrix).
-    define_singleton_function("identity", &cv::Affine3<T>::Identity);
+    template define_singleton_function<cv::Affine3<T>(*)()>("identity", &cv::Affine3<T>::Identity);
 };
 
 void Init_Core_Affine()
 {
   Module rb_mCv = define_module("Cv");
 
-  Rice::Data_Type<cv::Affine3<float>> rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3Float").
+  Rice::Data_Type<cv::Affine3<float>> rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3f").
     define(&Affine3_builder<Data_Type<cv::Affine3<float>>, float>);
 
-  Rice::Data_Type<cv::Affine3<double>> rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3Double").
+  Rice::Data_Type<cv::Affine3<double>> rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3d").
     define(&Affine3_builder<Data_Type<cv::Affine3<double>>, double>);
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");

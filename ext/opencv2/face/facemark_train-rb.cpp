@@ -19,13 +19,13 @@ void Init_Face_FacemarkTrain()
       Arg("cascade_model"), Arg("sf") = static_cast<double>(1.1), Arg("min_n") = static_cast<int>(3), Arg("min_sz") = static_cast<cv::Size>(cv::Size(30, 30)), Arg("max_sz") = static_cast<cv::Size>(cv::Size())).
     define_attr("face_cascade", &cv::face::CParams::face_cascade);
 
-  rb_mCvFace.define_module_function("get_faces", &cv::face::getFaces,
+  rb_mCvFace.define_module_function<bool(*)(cv::InputArray, cv::OutputArray, cv::face::CParams*)>("get_faces", &cv::face::getFaces,
     Arg("image"), Arg("faces"), Arg("params"));
 
-  rb_mCvFace.define_module_function("get_faces_haar", &cv::face::getFacesHAAR,
+  rb_mCvFace.define_module_function<bool(*)(cv::InputArray, cv::OutputArray, const cv::String&)>("get_faces_haar", &cv::face::getFacesHAAR,
     Arg("image"), Arg("faces"), Arg("face_cascade_name"));
 
-  rb_mCvFace.define_module_function("load_dataset_list", &cv::face::loadDatasetList,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<std::basic_string<char>>&, std::vector<std::basic_string<char>>&)>("load_dataset_list", &cv::face::loadDatasetList,
     Arg("image_list"), Arg("annotation_list"), Arg("images"), Arg("annotations"));
 
   rb_mCvFace.define_module_function<bool(*)(cv::String, std::vector<std::basic_string<char>>&, cv::OutputArray, char, float)>("load_training_data", &cv::face::loadTrainingData,
@@ -37,21 +37,21 @@ void Init_Face_FacemarkTrain()
   rb_mCvFace.define_module_function<bool(*)(std::vector<std::basic_string<char>>, std::vector<std::vector<cv::Point_<float>>>&, std::vector<std::basic_string<char>>&)>("load_training_data", &cv::face::loadTrainingData,
     Arg("filename"), Arg("trainlandmarks"), Arg("trainimages"));
 
-  rb_mCvFace.define_module_function("load_face_points", &cv::face::loadFacePoints,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::OutputArray, float)>("load_face_points", &cv::face::loadFacePoints,
     Arg("filename"), Arg("points"), Arg("offset") = static_cast<float>(0.0f));
 
-  rb_mCvFace.define_module_function("draw_facemarks", &cv::face::drawFacemarks,
+  rb_mCvFace.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, cv::Scalar)>("draw_facemarks", &cv::face::drawFacemarks,
     Arg("image"), Arg("points"), Arg("color") = static_cast<cv::Scalar>(cv::Scalar(255,0,0)));
 
   Rice::Data_Type<cv::face::FacemarkTrain> rb_cCvFaceFacemarkTrain = define_class_under<cv::face::FacemarkTrain, cv::face::Facemark>(rb_mCvFace, "FacemarkTrain").
-    define_method("add_training_sample", &cv::face::FacemarkTrain::addTrainingSample,
+    define_method<bool(cv::face::FacemarkTrain::*)(cv::InputArray, cv::InputArray)>("add_training_sample", &cv::face::FacemarkTrain::addTrainingSample,
       Arg("image"), Arg("landmarks")).
-    define_method("training", &cv::face::FacemarkTrain::training,
+    define_method<void(cv::face::FacemarkTrain::*)(void*)>("training", &cv::face::FacemarkTrain::training,
       ArgBuffer("parameters") = static_cast<void*>(0)).
-    define_method("set_face_detector", &cv::face::FacemarkTrain::setFaceDetector,
+    define_method<bool(cv::face::FacemarkTrain::*)(cv::face::FN_FaceDetector, void*)>("set_face_detector", &cv::face::FacemarkTrain::setFaceDetector,
       Arg("detector"), ArgBuffer("user_data") = static_cast<void*>(0)).
-    define_method("get_faces", &cv::face::FacemarkTrain::getFaces,
+    define_method<bool(cv::face::FacemarkTrain::*)(cv::InputArray, cv::OutputArray)>("get_faces", &cv::face::FacemarkTrain::getFaces,
       Arg("image"), Arg("faces")).
-    define_method("get_data", &cv::face::FacemarkTrain::getData,
+    define_method<bool(cv::face::FacemarkTrain::*)(void*)>("get_data", &cv::face::FacemarkTrain::getData,
       ArgBuffer("items") = static_cast<void*>(0));
 }

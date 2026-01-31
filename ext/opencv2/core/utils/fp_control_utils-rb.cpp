@@ -3,11 +3,7 @@
 
 using namespace Rice;
 
-Rice::Class rb_cCvDetailsFPDenormalsIgnoreHintScope;
-Rice::Class rb_cCvDetailsFPDenormalsIgnoreHintScopeNOOP;
-Rice::Class rb_cCvDetailsFPDenormalsModeState;
-
-void Init_FpControlUtils()
+void Init_Core_Utils_FpControlUtils()
 {
   Class(rb_cObject).define_constant("OPENCV_SUPPORTS_FP_DENORMALS_HINT", OPENCV_SUPPORTS_FP_DENORMALS_HINT);
 
@@ -15,28 +11,28 @@ void Init_FpControlUtils()
 
   Module rb_mCvDetails = define_module_under(rb_mCv, "Details");
 
-  rb_cCvDetailsFPDenormalsModeState = define_class_under<cv::details::FPDenormalsModeState>(rb_mCvDetails, "FPDenormalsModeState").
-    define_constructor(Constructor<cv::details::FPDenormalsModeState>());
+  Rice::Data_Type<cv::details::FPDenormalsModeState> rb_cCvDetailsFPDenormalsModeState = define_class_under<cv::details::FPDenormalsModeState>(rb_mCvDetails, "FPDenormalsModeState").
+    define_constructor(Constructor<cv::details::FPDenormalsModeState>()).
+    define_attr("reserved", &cv::details::FPDenormalsModeState::reserved, Rice::AttrAccess::Read);
 
-  rb_mCvDetails.define_module_function("set_fp_denormals_ignore_hint", &cv::details::setFPDenormalsIgnoreHint,
+  rb_mCvDetails.define_module_function<void(*)(bool, cv::details::FPDenormalsModeState&)>("set_fp_denormals_ignore_hint", &cv::details::setFPDenormalsIgnoreHint,
     Arg("ignore"), Arg("state"));
 
-  rb_mCvDetails.define_module_function("save_fp_denormals_state", &cv::details::saveFPDenormalsState,
+  rb_mCvDetails.define_module_function<int(*)(cv::details::FPDenormalsModeState&)>("save_fp_denormals_state", &cv::details::saveFPDenormalsState,
     Arg("state"));
 
-  rb_mCvDetails.define_module_function("restore_fp_denormals_state?", &cv::details::restoreFPDenormalsState,
+  rb_mCvDetails.define_module_function<bool(*)(const cv::details::FPDenormalsModeState&)>("restore_fp_denormals_state", &cv::details::restoreFPDenormalsState,
     Arg("state"));
 
-  rb_cCvDetailsFPDenormalsIgnoreHintScope = define_class_under<cv::details::FPDenormalsIgnoreHintScope>(rb_mCvDetails, "FPDenormalsIgnoreHintScope").
+  Rice::Data_Type<cv::details::FPDenormalsIgnoreHintScope> rb_cCvDetailsFPDenormalsIgnoreHintScope = define_class_under<cv::details::FPDenormalsIgnoreHintScope>(rb_mCvDetails, "FPDenormalsIgnoreHintScope").
     define_constructor(Constructor<cv::details::FPDenormalsIgnoreHintScope, bool>(),
       Arg("ignore") = static_cast<bool>(true)).
     define_constructor(Constructor<cv::details::FPDenormalsIgnoreHintScope, const cv::details::FPDenormalsModeState&>(),
       Arg("state"));
 
-  rb_cCvDetailsFPDenormalsIgnoreHintScopeNOOP = define_class_under<cv::details::FPDenormalsIgnoreHintScopeNOOP>(rb_mCvDetails, "FPDenormalsIgnoreHintScopeNOOP").
+  Rice::Data_Type<cv::details::FPDenormalsIgnoreHintScopeNOOP> rb_cCvDetailsFPDenormalsIgnoreHintScopeNOOP = define_class_under<cv::details::FPDenormalsIgnoreHintScopeNOOP>(rb_mCvDetails, "FPDenormalsIgnoreHintScopeNOOP").
     define_constructor(Constructor<cv::details::FPDenormalsIgnoreHintScopeNOOP, bool>(),
       Arg("ignore") = static_cast<bool>(true)).
     define_constructor(Constructor<cv::details::FPDenormalsIgnoreHintScopeNOOP, const cv::details::FPDenormalsModeState&>(),
       Arg("state"));
-
 }

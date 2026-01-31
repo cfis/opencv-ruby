@@ -6,57 +6,52 @@ using namespace Rice;
 template<typename Data_Type_T, typename T>
 inline void typed_base_any_policy_builder(Data_Type_T& klass)
 {
-  klass.define_method("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size).
-    define_method("type", &cvflann::anyimpl::typed_base_any_policy<T>::type);
+  klass.template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size).
+    template define_method<const std::type_info&(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("type", &cvflann::anyimpl::typed_base_any_policy<T>::type);
 };
 
 template<typename Data_Type_T, typename T>
 inline void small_any_policy_builder(Data_Type_T& klass)
 {
-  klass.define_method("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
+  klass.template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
       ArgBuffer("arg_0")).
-    define_method("copy_from_value", &cvflann::anyimpl::small_any_policy<T>::copy_from_value,
+    template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::small_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("clone", &cvflann::anyimpl::small_any_policy<T>::clone,
+    template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void* const*, void**)>("clone", &cvflann::anyimpl::small_any_policy<T>::clone,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("move", &cvflann::anyimpl::small_any_policy<T>::move,
+    template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void* const*, void**)>("move", &cvflann::anyimpl::small_any_policy<T>::move,
       ArgBuffer("src"), ArgBuffer("dest")).
     template define_method<void*(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer()).
     template define_method<const void*(cvflann::anyimpl::small_any_policy<T>::*)(void* const*)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer()).
-    define_method("print", &cvflann::anyimpl::small_any_policy<T>::print,
+    template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::small_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
 };
 
 template<typename Data_Type_T, typename T>
 inline void big_any_policy_builder(Data_Type_T& klass)
 {
-  klass.define_method("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
+  klass.template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
       ArgBuffer("x")).
-    define_method("copy_from_value", &cvflann::anyimpl::big_any_policy<T>::copy_from_value,
+    template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::big_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("clone", &cvflann::anyimpl::big_any_policy<T>::clone,
+    template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void* const*, void**)>("clone", &cvflann::anyimpl::big_any_policy<T>::clone,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("move", &cvflann::anyimpl::big_any_policy<T>::move,
+    template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void* const*, void**)>("move", &cvflann::anyimpl::big_any_policy<T>::move,
       ArgBuffer("src"), ArgBuffer("dest")).
     template define_method<void*(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer()).
     template define_method<const void*(cvflann::anyimpl::big_any_policy<T>::*)(void* const*)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer()).
-    define_method("print", &cvflann::anyimpl::big_any_policy<T>::print,
+    template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::big_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
-};
-
-template<typename Data_Type_T, typename T>
-inline void choose_policy_builder(Data_Type_T& klass)
-{
 };
 
 template<typename Data_Type_T, typename T>
 inline void SinglePolicy_builder(Data_Type_T& klass)
 {
-  klass.define_singleton_function("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);
+  klass.template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);
 };
 
 void Init_Flann_Any()
@@ -69,27 +64,27 @@ void Init_Flann_Any()
     define_constructor(Constructor<cvflann::anyimpl::bad_any_cast>()).
     define_constructor(Constructor<cvflann::anyimpl::bad_any_cast, const char*, const char*>(),
       Arg("src"), Arg("dst")).
-    define_method("what", &cvflann::anyimpl::bad_any_cast::what);
+    define_method<const char*(cvflann::anyimpl::bad_any_cast::*)() const noexcept>("what", &cvflann::anyimpl::bad_any_cast::what);
 
   Rice::Data_Type<cvflann::anyimpl::empty_any> rb_cCvflannAnyimplEmptyAny = define_class_under<cvflann::anyimpl::empty_any>(rb_mCvflannAnyimpl, "EmptyAny").
     define_constructor(Constructor<cvflann::anyimpl::empty_any>());
 
   Rice::Data_Type<cvflann::anyimpl::base_any_policy> rb_cCvflannAnyimplBaseAnyPolicy = define_class_under<cvflann::anyimpl::base_any_policy>(rb_mCvflannAnyimpl, "BaseAnyPolicy").
-    define_method("static_delete", &cvflann::anyimpl::base_any_policy::static_delete,
+    define_method<void(cvflann::anyimpl::base_any_policy::*)(void**)>("static_delete", &cvflann::anyimpl::base_any_policy::static_delete,
       ArgBuffer("x")).
-    define_method("copy_from_value", &cvflann::anyimpl::base_any_policy::copy_from_value,
+    define_method<void(cvflann::anyimpl::base_any_policy::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::base_any_policy::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("clone", &cvflann::anyimpl::base_any_policy::clone,
+    define_method<void(cvflann::anyimpl::base_any_policy::*)(void* const*, void**)>("clone", &cvflann::anyimpl::base_any_policy::clone,
       ArgBuffer("src"), ArgBuffer("dest")).
-    define_method("move", &cvflann::anyimpl::base_any_policy::move,
+    define_method<void(cvflann::anyimpl::base_any_policy::*)(void* const*, void**)>("move", &cvflann::anyimpl::base_any_policy::move,
       ArgBuffer("src"), ArgBuffer("dest")).
     define_method<void*(cvflann::anyimpl::base_any_policy::*)(void**)>("get_value", &cvflann::anyimpl::base_any_policy::get_value,
       ArgBuffer("src"), ReturnBuffer()).
     define_method<const void*(cvflann::anyimpl::base_any_policy::*)(void* const*)>("get_value", &cvflann::anyimpl::base_any_policy::get_value,
       ArgBuffer("src"), ReturnBuffer()).
-    define_method("get_size", &cvflann::anyimpl::base_any_policy::get_size).
-    define_method("type", &cvflann::anyimpl::base_any_policy::type).
-    define_method("print", &cvflann::anyimpl::base_any_policy::print,
+    define_method<::size_t(cvflann::anyimpl::base_any_policy::*)()>("get_size", &cvflann::anyimpl::base_any_policy::get_size).
+    define_method<const std::type_info&(cvflann::anyimpl::base_any_policy::*)()>("type", &cvflann::anyimpl::base_any_policy::type).
+    define_method<void(cvflann::anyimpl::base_any_policy::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::base_any_policy::print,
       Arg("out"), ArgBuffer("src"));
 
   Rice::Data_Type<cvflann::anyimpl::any> rb_cCvflannAnyimplAny = define_class_under<cvflann::anyimpl::any>(rb_mCvflannAnyimpl, "Any");
@@ -139,13 +134,13 @@ void Init_Flann_Any()
       Arg("x")).
     define_method<cvflann::any&(cvflann::any::*)(const char*)>("assign", &cvflann::any::operator=,
       Arg("x")).
-    define_method("swap", &cvflann::any::swap,
+    define_method<cvflann::any&(cvflann::any::*)(cvflann::any&)>("swap", &cvflann::any::swap,
       Arg("x")).
-    define_method("empty?", &cvflann::any::empty).
-    define_method("reset", &cvflann::any::reset).
-    define_method("compatible", &cvflann::any::compatible,
+    define_method<bool(cvflann::any::*)() const>("empty?", &cvflann::any::empty).
+    define_method<void(cvflann::any::*)()>("reset", &cvflann::any::reset).
+    define_method<bool(cvflann::any::*)(const cvflann::any&) const>("compatible", &cvflann::any::compatible,
       Arg("x")).
-    define_method("type", &cvflann::any::type);
+    define_method<const std::type_info&(cvflann::any::*)() const>("type", &cvflann::any::type);
 
   rb_cCvflannAnyimplEmptyAny.
     define_method("inspect", [](const cvflann::anyimpl::empty_any& self) -> std::string

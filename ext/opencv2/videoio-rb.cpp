@@ -7,9 +7,6 @@ void Init_Videoio()
 {
   Rice::Data_Type<CvCapture> rb_cCvCapture = define_class<CvCapture>("CvCapture");
 
-  // Manual name to avoid conflict with cv::VideoWriter class
-  Rice::Data_Type<CvVideoWriter> rb_cCvVideoWriterLegacy = define_class<CvVideoWriter>("CvVideoWriter");
-
   Module rb_mCv = define_module("Cv");
 
   Enum<cv::VideoCaptureAPIs> rb_cCvVideoCaptureAPIs = define_enum_under<cv::VideoCaptureAPIs>("VideoCaptureAPIs", rb_mCv).
@@ -47,11 +44,8 @@ void Init_Videoio()
     define_value("CAP_OPENCV_MJPEG", cv::VideoCaptureAPIs::CAP_OPENCV_MJPEG).
     define_value("CAP_INTEL_MFX", cv::VideoCaptureAPIs::CAP_INTEL_MFX).
     define_value("CAP_XINE", cv::VideoCaptureAPIs::CAP_XINE).
-    define_value("CAP_UEYE", cv::VideoCaptureAPIs::CAP_UEYE);
-#if RUBY_CV_VERSION >= 407
-  rb_cCvVideoCaptureAPIs.
+    define_value("CAP_UEYE", cv::VideoCaptureAPIs::CAP_UEYE).
     define_value("CAP_OBSENSOR", cv::VideoCaptureAPIs::CAP_OBSENSOR);
-#endif
 
   Enum<cv::VideoCaptureProperties> rb_cCvVideoCaptureProperties = define_enum_under<cv::VideoCaptureProperties>("VideoCaptureProperties", rb_mCv).
     define_value("CAP_PROP_POS_MSEC", cv::VideoCaptureProperties::CAP_PROP_POS_MSEC).
@@ -137,11 +131,9 @@ void Init_Videoio()
     define_value("VIDEOWRITER_PROP_HW_ACCELERATION", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_ACCELERATION).
     define_value("VIDEOWRITER_PROP_HW_DEVICE", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_DEVICE).
     define_value("VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL", cv::VideoWriterProperties::VIDEOWRITER_PROP_HW_ACCELERATION_USE_OPENCL).
-#if RUBY_CV_VERSION >= 409
     define_value("VIDEOWRITER_PROP_RAW_VIDEO", cv::VideoWriterProperties::VIDEOWRITER_PROP_RAW_VIDEO).
     define_value("VIDEOWRITER_PROP_KEY_INTERVAL", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_INTERVAL).
     define_value("VIDEOWRITER_PROP_KEY_FLAG", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_FLAG).
-#endif
     define_value("VIDEOWRITER_PROP_PTS", cv::VideoWriterProperties::VIDEOWRITER_PROP_PTS).
     define_value("VIDEOWRITER_PROP_DTS_DELAY", cv::VideoWriterProperties::VIDEOWRITER_PROP_DTS_DELAY).
     define_value("CV__VIDEOWRITER_PROP_LATEST", cv::VideoWriterProperties::CV__VIDEOWRITER_PROP_LATEST);
@@ -432,7 +424,6 @@ void Init_Videoio()
   rb_mCv.define_constant("CAP_PROP_IMAGES_BASE", (int)cv::CAP_PROP_IMAGES_BASE);
   rb_mCv.define_constant("CAP_PROP_IMAGES_LAST", (int)cv::CAP_PROP_IMAGES_LAST);
 
-#if RUBY_CV_VERSION >= 407
   Enum<cv::VideoCaptureOBSensorDataType> rb_cCvVideoCaptureOBSensorDataType = define_enum_under<cv::VideoCaptureOBSensorDataType>("VideoCaptureOBSensorDataType", rb_mCv).
     define_value("CAP_OBSENSOR_DEPTH_MAP", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_DEPTH_MAP).
     define_value("CAP_OBSENSOR_BGR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_BGR_IMAGE).
@@ -449,12 +440,11 @@ void Init_Videoio()
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_FY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_FY).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_CX", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CX).
     define_value("CAP_PROP_OBSENSOR_INTRINSIC_CY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CY);
-#endif
 
   Rice::Data_Type<cv::IStreamReader> rb_cCvIStreamReader = define_class_under<cv::IStreamReader>(rb_mCv, "IStreamReader").
-    define_method("read", &cv::IStreamReader::read,
+    define_method<long long(cv::IStreamReader::*)(char*, long long)>("read", &cv::IStreamReader::read,
       Arg("buffer"), Arg("size")).
-    define_method("seek", &cv::IStreamReader::seek,
+    define_method<long long(cv::IStreamReader::*)(long long, int)>("seek", &cv::IStreamReader::seek,
       Arg("offset"), Arg("origin"));
 
   Rice::Data_Type<cv::IVideoCapture> rb_cCvIVideoCapture = define_class_under<cv::IVideoCapture>(rb_mCv, "IVideoCapture");
@@ -485,26 +475,26 @@ void Init_Videoio()
       Arg("index"), Arg("api_preference"), Arg("params")).
     define_method<bool(cv::VideoCapture::*)(const cv::Ptr<cv::IStreamReader>&, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
       Arg("source"), Arg("api_preference"), Arg("params")).
-    define_method("opened?", &cv::VideoCapture::isOpened).
-    define_method("release", &cv::VideoCapture::release).
-    define_method("grab", &cv::VideoCapture::grab).
-    define_method("retrieve", &cv::VideoCapture::retrieve,
+    define_method<bool(cv::VideoCapture::*)() const>("opened?", &cv::VideoCapture::isOpened).
+    define_method<void(cv::VideoCapture::*)()>("release", &cv::VideoCapture::release).
+    define_method<bool(cv::VideoCapture::*)()>("grab?", &cv::VideoCapture::grab).
+    define_method<bool(cv::VideoCapture::*)(cv::OutputArray, int)>("retrieve", &cv::VideoCapture::retrieve,
       Arg("image"), Arg("flag") = static_cast<int>(0)).
     define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::Mat&)>(">>", &cv::VideoCapture::operator>>,
       Arg("image")).
     define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::UMat&)>(">>", &cv::VideoCapture::operator>>,
       Arg("image")).
-    define_method("read", &cv::VideoCapture::read,
+    define_method<bool(cv::VideoCapture::*)(cv::OutputArray)>("read", &cv::VideoCapture::read,
       Arg("image")).
-    define_method("set", &cv::VideoCapture::set,
+    define_method<bool(cv::VideoCapture::*)(int, double)>("set", &cv::VideoCapture::set,
       Arg("prop_id"), Arg("value")).
-    define_method("get", &cv::VideoCapture::get,
+    define_method<double(cv::VideoCapture::*)(int) const>("get", &cv::VideoCapture::get,
       Arg("prop_id")).
-    define_method("get_backend_name", &cv::VideoCapture::getBackendName).
-    define_method("set_exception_mode", &cv::VideoCapture::setExceptionMode,
+    define_method<cv::String(cv::VideoCapture::*)() const>("get_backend_name", &cv::VideoCapture::getBackendName).
+    define_method<void(cv::VideoCapture::*)(bool)>("set_exception_mode", &cv::VideoCapture::setExceptionMode,
       Arg("enable")).
-    define_method("get_exception_mode?", &cv::VideoCapture::getExceptionMode).
-    define_singleton_function("wait_any", &cv::VideoCapture::waitAny,
+    define_method<bool(cv::VideoCapture::*)() const>("get_exception_mode?", &cv::VideoCapture::getExceptionMode).
+    define_singleton_function<bool(*)(const std::vector<cv::VideoCapture>&, std::vector<int>&, int64)>("wait_any", &cv::VideoCapture::waitAny,
       Arg("streams"), Arg("ready_index"), Arg("timeout_ns") = static_cast<int64>(0));
 
   Rice::Data_Type<cv::IVideoWriter> rb_cCvIVideoWriter = define_class_under<cv::IVideoWriter>(rb_mCv, "IVideoWriter");
@@ -527,29 +517,29 @@ void Init_Videoio()
       Arg("filename"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params")).
     define_method<bool(cv::VideoWriter::*)(const cv::String&, int, int, double, const cv::Size&, const std::vector<int>&)>("open", &cv::VideoWriter::open,
       Arg("filename"), Arg("api_preference"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params")).
-    define_method("opened?", &cv::VideoWriter::isOpened).
-    define_method("release", &cv::VideoWriter::release).
+    define_method<bool(cv::VideoWriter::*)() const>("opened?", &cv::VideoWriter::isOpened).
+    define_method<void(cv::VideoWriter::*)()>("release", &cv::VideoWriter::release).
     define_method<cv::VideoWriter&(cv::VideoWriter::*)(const cv::Mat&)>("<<", &cv::VideoWriter::operator<<,
       Arg("image")).
     define_method<cv::VideoWriter&(cv::VideoWriter::*)(const cv::UMat&)>("<<", &cv::VideoWriter::operator<<,
       Arg("image")).
-    define_method("write", &cv::VideoWriter::write,
+    define_method<void(cv::VideoWriter::*)(cv::InputArray)>("write", &cv::VideoWriter::write,
       Arg("image")).
-    define_method("set", &cv::VideoWriter::set,
+    define_method<bool(cv::VideoWriter::*)(int, double)>("set", &cv::VideoWriter::set,
       Arg("prop_id"), Arg("value")).
-    define_method("get", &cv::VideoWriter::get,
+    define_method<double(cv::VideoWriter::*)(int) const>("get", &cv::VideoWriter::get,
       Arg("prop_id")).
-    define_method("get_backend_name", &cv::VideoWriter::getBackendName).
-    define_singleton_function("fourcc", &cv::VideoWriter::fourcc,
+    define_method<cv::String(cv::VideoWriter::*)() const>("get_backend_name", &cv::VideoWriter::getBackendName).
+    define_singleton_function<int(*)(char, char, char, char)>("fourcc", &cv::VideoWriter::fourcc,
       Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));
 
   Rice::Data_Type<cv::DefaultDeleter<CvCapture>> rb_cCvDefaultDeleterCvCapture = define_class_under<cv::DefaultDeleter<CvCapture>>(rb_mCv, "DefaultDeleterCvCapture").
     define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>()).
-    define_method("call", &cv::DefaultDeleter<CvCapture>::operator(),
+    define_method<void(cv::DefaultDeleter<CvCapture>::*)(CvCapture*) const>("call", &cv::DefaultDeleter<CvCapture>::operator(),
       Arg("obj"));
 
   Rice::Data_Type<cv::DefaultDeleter<CvVideoWriter>> rb_cCvDefaultDeleterCvVideoWriter = define_class_under<cv::DefaultDeleter<CvVideoWriter>>(rb_mCv, "DefaultDeleterCvVideoWriter").
     define_constructor(Constructor<cv::DefaultDeleter<CvVideoWriter>>()).
-    define_method("call", &cv::DefaultDeleter<CvVideoWriter>::operator(),
+    define_method<void(cv::DefaultDeleter<CvVideoWriter>::*)(CvVideoWriter*) const>("call", &cv::DefaultDeleter<CvVideoWriter>::operator(),
       Arg("obj"));
 }

@@ -10,13 +10,13 @@ void Init_Face_FaceAlignment()
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
   Rice::Data_Type<cv::face::FacemarkKazemi> rb_cCvFaceFacemarkKazemi = define_class_under<cv::face::FacemarkKazemi, cv::face::Facemark>(rb_mCvFace, "FacemarkKazemi").
-    define_method("training", &cv::face::FacemarkKazemi::training,
+    define_method<bool(cv::face::FacemarkKazemi::*)(std::vector<cv::Mat>&, std::vector<std::vector<cv::Point_<float>>>&, std::string, cv::Size, std::string)>("training", &cv::face::FacemarkKazemi::training,
       Arg("images"), Arg("landmarks"), Arg("configfile"), Arg("scale"), Arg("model_filename") = static_cast<std::string>("face_landmarks.dat")).
-    define_method("set_face_detector", &cv::face::FacemarkKazemi::setFaceDetector,
+    define_method<bool(cv::face::FacemarkKazemi::*)(bool (*)(cv::InputArray, cv::OutputArray, void*), void*)>("set_face_detector", &cv::face::FacemarkKazemi::setFaceDetector,
       Arg("f"), ArgBuffer("user_data")).
-    define_method("get_faces", &cv::face::FacemarkKazemi::getFaces,
+    define_method<bool(cv::face::FacemarkKazemi::*)(cv::InputArray, cv::OutputArray)>("get_faces", &cv::face::FacemarkKazemi::getFaces,
       Arg("image"), Arg("faces")).
-    define_singleton_function("create", &cv::face::FacemarkKazemi::create,
+    define_singleton_function<cv::Ptr<cv::face::FacemarkKazemi>(*)(const cv::face::FacemarkKazemi::Params&)>("create", &cv::face::FacemarkKazemi::create,
       Arg("parameters") = static_cast<const cv::face::FacemarkKazemi::Params&>(cv::face::FacemarkKazemi::Params()));
 
   Rice::Data_Type<cv::face::FacemarkKazemi::Params> rb_cCvFaceFacemarkKazemiParams = define_class_under<cv::face::FacemarkKazemi::Params>(rb_cCvFaceFacemarkKazemi, "Params").

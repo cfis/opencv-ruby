@@ -10,9 +10,9 @@ void Init_Face()
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
   Rice::Data_Type<cv::face::FaceRecognizer> rb_cCvFaceFaceRecognizer = define_class_under<cv::face::FaceRecognizer, cv::Algorithm>(rb_mCvFace, "FaceRecognizer").
-    define_method("train", &cv::face::FaceRecognizer::train,
+    define_method<void(cv::face::FaceRecognizer::*)(cv::InputArrayOfArrays, cv::InputArray)>("train", &cv::face::FaceRecognizer::train,
       Arg("src"), Arg("labels")).
-    define_method("update", &cv::face::FaceRecognizer::update,
+    define_method<void(cv::face::FaceRecognizer::*)(cv::InputArrayOfArrays, cv::InputArray)>("update", &cv::face::FaceRecognizer::update,
       Arg("src"), Arg("labels")).
     define_method<int(cv::face::FaceRecognizer::*)(cv::InputArray) const>("predict", &cv::face::FaceRecognizer::predict,
       Arg("src")).
@@ -28,14 +28,14 @@ void Init_Face()
       Arg("fs")).
     define_method<void(cv::face::FaceRecognizer::*)(const cv::FileNode&)>("read", &cv::face::FaceRecognizer::read,
       Arg("fn")).
-    define_method("empty?", &cv::face::FaceRecognizer::empty).
-    define_method("set_label_info", &cv::face::FaceRecognizer::setLabelInfo,
+    define_method<bool(cv::face::FaceRecognizer::*)() const>("empty?", &cv::face::FaceRecognizer::empty).
+    define_method<void(cv::face::FaceRecognizer::*)(int, const cv::String&)>("set_label_info", &cv::face::FaceRecognizer::setLabelInfo,
       Arg("label"), Arg("str_info")).
-    define_method("get_label_info", &cv::face::FaceRecognizer::getLabelInfo,
+    define_method<cv::String(cv::face::FaceRecognizer::*)(int) const>("get_label_info", &cv::face::FaceRecognizer::getLabelInfo,
       Arg("label")).
-    define_method("get_labels_by_string", &cv::face::FaceRecognizer::getLabelsByString,
+    define_method<std::vector<int>(cv::face::FaceRecognizer::*)(const cv::String&) const>("get_labels_by_string", &cv::face::FaceRecognizer::getLabelsByString,
       Arg("str")).
-    define_method("get_threshold", &cv::face::FaceRecognizer::getThreshold).
-    define_method("set_threshold", &cv::face::FaceRecognizer::setThreshold,
+    define_method<double(cv::face::FaceRecognizer::*)() const>("get_threshold", &cv::face::FaceRecognizer::getThreshold).
+    define_method<void(cv::face::FaceRecognizer::*)(double)>("set_threshold", &cv::face::FaceRecognizer::setThreshold,
       Arg("val"));
 }

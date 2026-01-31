@@ -12,29 +12,29 @@ void Init_Core_Cuda_WarpShuffle()
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
 
   rb_mCvCudaDevice.define_module_function<T(*)(int, int, int)>("shfl", &cv::cuda::device::shfl,
-    Arg("val"), Arg("src_lane"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("src_lane"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<unsigned int(*)(unsigned int, int, int)>("shfl", &cv::cuda::device::shfl,
-    Arg("val"), Arg("src_lane"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("src_lane"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<double(*)(double, int, int)>("shfl", &cv::cuda::device::shfl,
-    Arg("val"), Arg("src_lane"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("src_lane"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<T(*)(int, unsigned int, int)>("shfl_down", &cv::cuda::device::shfl_down,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<unsigned int(*)(unsigned int, unsigned int, int)>("shfl_down", &cv::cuda::device::shfl_down,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<double(*)(double, unsigned int, int)>("shfl_down", &cv::cuda::device::shfl_down,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<T(*)(int, unsigned int, int)>("shfl_up", &cv::cuda::device::shfl_up,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<unsigned int(*)(unsigned int, unsigned int, int)>("shfl_up", &cv::cuda::device::shfl_up,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 
   rb_mCvCudaDevice.define_module_function<double(*)(double, unsigned int, int)>("shfl_up", &cv::cuda::device::shfl_up,
-    Arg("val"), Arg("delta"), Arg("width") = static_cast<int>());
+    Arg("val"), Arg("delta"), Arg("width"));
 }

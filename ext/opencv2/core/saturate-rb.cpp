@@ -1,5 +1,3 @@
-#include <algorithm> // Manual
-#include <climits> // Manual
 #include <opencv2/core/saturate.hpp>
 #include "saturate-rb.hpp"
 
@@ -159,7 +157,6 @@ void Init_Core_Saturate()
   rb_mCv.define_module_function<int64(*)(uint64)>("saturate_cast", &cv::saturate_cast,
     Arg("v"));
 
-#if RUBY_CV_VERSION >= 410
   rb_mCv.define_module_function<cv::hfloat(*)(uchar)>("saturate_cast", &cv::saturate_cast,
     Arg("v"));
 
@@ -189,5 +186,4 @@ void Init_Core_Saturate()
 
   rb_mCv.define_module_function<cv::hfloat(*)(double)>("saturate_cast", &cv::saturate_cast,
     Arg("v"));
-#endif
 }

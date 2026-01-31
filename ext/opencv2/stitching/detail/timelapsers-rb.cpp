@@ -11,12 +11,12 @@ void Init_Stitching_Detail_Timelapsers()
 
   Rice::Data_Type<cv::detail::Timelapser> rb_cCvDetailTimelapser = define_class_under<cv::detail::Timelapser>(rb_mCvDetail, "Timelapser").
     define_constructor(Constructor<cv::detail::Timelapser>()).
-    define_method("initialize", &cv::detail::Timelapser::initialize,
+    define_method<void(cv::detail::Timelapser::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("initialize", &cv::detail::Timelapser::initialize,
       Arg("corners"), Arg("sizes")).
-    define_method("process", &cv::detail::Timelapser::process,
+    define_method<void(cv::detail::Timelapser::*)(cv::InputArray, cv::InputArray, cv::Point)>("process", &cv::detail::Timelapser::process,
       Arg("img"), Arg("mask"), Arg("tl")).
-    define_method("get_dst", &cv::detail::Timelapser::getDst).
-    define_singleton_function("create_default", &cv::detail::Timelapser::createDefault,
+    define_method<const cv::UMat&(cv::detail::Timelapser::*)()>("get_dst", &cv::detail::Timelapser::getDst).
+    define_singleton_function<cv::Ptr<cv::detail::Timelapser>(*)(int)>("create_default", &cv::detail::Timelapser::createDefault,
       Arg("type"));
 
   rb_cCvDetailTimelapser.define_constant("AS_IS", (int)cv::detail::Timelapser::AS_IS);
@@ -24,6 +24,6 @@ void Init_Stitching_Detail_Timelapsers()
 
   Rice::Data_Type<cv::detail::TimelapserCrop> rb_cCvDetailTimelapserCrop = define_class_under<cv::detail::TimelapserCrop, cv::detail::Timelapser>(rb_mCvDetail, "TimelapserCrop").
     define_constructor(Constructor<cv::detail::TimelapserCrop>()).
-    define_method("initialize", &cv::detail::TimelapserCrop::initialize,
+    define_method<void(cv::detail::TimelapserCrop::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("initialize", &cv::detail::TimelapserCrop::initialize,
       Arg("corners"), Arg("sizes"));
 }

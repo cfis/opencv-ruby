@@ -9,16 +9,16 @@ void Init_IntensityTransform()
 
   Module rb_mCvIntensityTransform = define_module_under(rb_mCv, "IntensityTransform");
 
-  rb_mCvIntensityTransform.define_module_function("log_transform", &cv::intensity_transform::logTransform,
+  rb_mCvIntensityTransform.define_module_function<void(*)(const cv::Mat, cv::Mat&)>("log_transform", &cv::intensity_transform::logTransform,
     Arg("input"), Arg("output"));
 
-  rb_mCvIntensityTransform.define_module_function("gamma_correction", &cv::intensity_transform::gammaCorrection,
+  rb_mCvIntensityTransform.define_module_function<void(*)(const cv::Mat, cv::Mat&, const float)>("gamma_correction", &cv::intensity_transform::gammaCorrection,
     Arg("input"), Arg("output"), Arg("gamma"));
 
-  rb_mCvIntensityTransform.define_module_function("autoscaling", &cv::intensity_transform::autoscaling,
+  rb_mCvIntensityTransform.define_module_function<void(*)(const cv::Mat, cv::Mat&)>("autoscaling", &cv::intensity_transform::autoscaling,
     Arg("input"), Arg("output"));
 
-  rb_mCvIntensityTransform.define_module_function("contrast_stretching", &cv::intensity_transform::contrastStretching,
+  rb_mCvIntensityTransform.define_module_function<void(*)(const cv::Mat, cv::Mat&, const int, const int, const int, const int)>("contrast_stretching", &cv::intensity_transform::contrastStretching,
     Arg("input"), Arg("output"), Arg("r1"), Arg("s1"), Arg("r2"), Arg("s2"));
 
   rb_mCvIntensityTransform.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float, float)>("bimef", &cv::intensity_transform::BIMEF,

@@ -6,24 +6,24 @@ using namespace Rice;
 template<typename Data_Type_T, typename Distance>
 inline void HierarchicalClusteringIndex_builder(Data_Type_T& klass)
 {
-  klass.define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const Matrix<type-parameter-0-0::ElementType>&, const cvflann::IndexParams&, Distance>(),
+  klass.define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("index_params") = static_cast<const cvflann::IndexParams&>(cvflann::HierarchicalClusteringIndexParams()), Arg("d") = static_cast<Distance>(cvflann::HierarchicalClusteringIndex::Distance())).
     define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::HierarchicalClusteringIndex<Distance>&>(),
       Arg("arg_0")).
-    define_method("assign", &cvflann::HierarchicalClusteringIndex<Distance>::operator=,
+    template define_method<cvflann::HierarchicalClusteringIndex<Distance>&(cvflann::HierarchicalClusteringIndex<Distance>::*)(const cvflann::HierarchicalClusteringIndex<Distance>&)>("assign", &cvflann::HierarchicalClusteringIndex<Distance>::operator=,
       Arg("arg_0")).
-    define_method("size", &cvflann::HierarchicalClusteringIndex<Distance>::size).
-    define_method("veclen", &cvflann::HierarchicalClusteringIndex<Distance>::veclen).
-    define_method("used_memory", &cvflann::HierarchicalClusteringIndex<Distance>::usedMemory).
-    define_method("build_index", &cvflann::HierarchicalClusteringIndex<Distance>::buildIndex).
-    define_method("get_type", &cvflann::HierarchicalClusteringIndex<Distance>::getType).
-    define_method("save_index", &cvflann::HierarchicalClusteringIndex<Distance>::saveIndex,
+    template define_method<size_t(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("size", &cvflann::HierarchicalClusteringIndex<Distance>::size).
+    template define_method<size_t(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("veclen", &cvflann::HierarchicalClusteringIndex<Distance>::veclen).
+    template define_method<int(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("used_memory", &cvflann::HierarchicalClusteringIndex<Distance>::usedMemory).
+    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)()>("build_index", &cvflann::HierarchicalClusteringIndex<Distance>::buildIndex).
+    template define_method<cvflann::flann_algorithm_t(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("get_type", &cvflann::HierarchicalClusteringIndex<Distance>::getType).
+    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(FILE*)>("save_index", &cvflann::HierarchicalClusteringIndex<Distance>::saveIndex,
       Arg("stream")).
-    define_method("load_index", &cvflann::HierarchicalClusteringIndex<Distance>::loadIndex,
+    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(FILE*)>("load_index", &cvflann::HierarchicalClusteringIndex<Distance>::loadIndex,
       Arg("stream")).
-    define_method("find_neighbors", &cvflann::HierarchicalClusteringIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(cvflann::ResultSet<cvflann::HierarchicalClusteringIndex<Distance>::DistanceType>&, const typename cvflann::HierarchicalClusteringIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::HierarchicalClusteringIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
-    define_method("get_parameters", &cvflann::HierarchicalClusteringIndex<Distance>::getParameters);
+    template define_method<cvflann::IndexParams(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("get_parameters", &cvflann::HierarchicalClusteringIndex<Distance>::getParameters);
 };
 
 void Init_Flann_HierarchicalClusteringIndex()

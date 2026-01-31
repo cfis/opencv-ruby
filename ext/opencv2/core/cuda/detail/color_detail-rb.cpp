@@ -6,98 +6,158 @@ using namespace Rice;
 template<typename Data_Type_T, typename T>
 inline void ColorChannel_builder(Data_Type_T& klass)
 {
+  klass.template define_singleton_function<T(*)()>("max", &cv::cuda::device::color_detail::ColorChannel<T>::max).
+    template define_singleton_function<T(*)()>("half", &cv::cuda::device::color_detail::ColorChannel<T>::half);
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_method("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::operator(),
       Arg("src")).
-    define_attr("__device__", &cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>::__device__);
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::RGB2RGB<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int dcn>
 inline void Gray2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::Gray2RGB<T, dcn>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::Gray2RGB<T, dcn>::*)(T) const>("call", &cv::cuda::device::color_detail::Gray2RGB<T, dcn>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB<T, dcn>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB<T, dcn>, const cv::cuda::device::color_detail::Gray2RGB<T, dcn>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, int green_bits>
 inline void Gray2RGB5x5_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>::__forceinline__);
+  klass.template define_method<ushort(cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>::*)(uint) const>("call", &cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>, const cv::cuda::device::color_detail::Gray2RGB5x5<green_bits>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, int green_bits>
 inline void RGB5x52Gray_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB5x52Gray<green_bits>::__forceinline__);
+  klass.template define_method<uchar(cv::cuda::device::color_detail::RGB5x52Gray<green_bits>::*)(uint) const>("call", &cv::cuda::device::color_detail::RGB5x52Gray<green_bits>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52Gray<green_bits>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52Gray<green_bits>, const cv::cuda::device::color_detail::RGB5x52Gray<green_bits>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int bidx>
 inline void RGB2Gray_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>::__forceinline__);
+  klass.template define_method<T(cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>, const cv::cuda::device::color_detail::RGB2Gray<T, scn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2YUV_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::RGB2YUV<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void YUV2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::YUV2RGB<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2YCrCb_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::RGB2YCrCb<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void YCrCb2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::YCrCb2RGB<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void RGB2XYZ_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::RGB2XYZ<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx>
 inline void XYZ2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>, const cv::cuda::device::color_detail::XYZ2RGB<T, scn, dcn, bidx>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx, int hr>
 inline void RGB2HSV_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>, const cv::cuda::device::color_detail::RGB2HSV<T, scn, dcn, bidx, hr>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx, int hr>
 inline void HSV2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>, const cv::cuda::device::color_detail::HSV2RGB<T, scn, dcn, bidx, hr>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx, int hr>
 inline void RGB2HLS_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>, const cv::cuda::device::color_detail::RGB2HLS<T, scn, dcn, bidx, hr>&>(),
+      Arg("arg_0"));
 };
 
 template<typename Data_Type_T, typename T, int scn, int dcn, int bidx, int hr>
 inline void HLS2RGB_builder(Data_Type_T& klass)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>::__forceinline__);
+  klass.template define_method<typename TypeVec<T, dcn>::vec_type(cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>::*)(const typename TypeVec<T, scn>::vec_type&) const>("call", &cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>::operator(),
+      Arg("src")).
+    define_constructor(Constructor<cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>>()).
+    define_constructor(Constructor<cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>, const cv::cuda::device::color_detail::HLS2RGB<T, scn, dcn, bidx, hr>&>(),
+      Arg("arg_0"));
 };
 
 void Init_Core_Cuda_Detail_ColorDetail()
@@ -111,19 +171,9 @@ void Init_Core_Cuda_Detail_ColorDetail()
   Module rb_mCvCudaDeviceColorDetail = define_module_under(rb_mCvCudaDevice, "ColorDetail");
 
   Rice::Data_Type<cv::cuda::device::color_detail::ColorChannel<float>> rb_cCvCudaDeviceColorDetailColorChannelFloat = define_class_under<cv::cuda::device::color_detail::ColorChannel<float>>(rb_mCvCudaDeviceColorDetail, "ColorChannelFloat").
-    define_constructor(Constructor<cv::cuda::device::color_detail::ColorChannel<float>>());
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(int&, int)>("set_alpha", &cv::cuda::device::color_detail::setAlpha,
-    Arg("vec"), Arg("val"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(int&, int)>("set_alpha", &cv::cuda::device::color_detail::setAlpha,
-    Arg("vec"), Arg("val"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
-    Arg("vec"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int&)>("get_alpha", &cv::cuda::device::color_detail::getAlpha,
-    Arg("vec"));
+    define_constructor(Constructor<cv::cuda::device::color_detail::ColorChannel<float>>()).
+    define_singleton_function<float(*)()>("max", &cv::cuda::device::color_detail::ColorChannel<float>::max).
+    define_singleton_function<float(*)()>("half", &cv::cuda::device::color_detail::ColorChannel<float>::half);
 
   rb_mCvCudaDeviceColorDetail.define_constant("B2YF", cv::cuda::device::color_detail::B2YF);
 
@@ -190,82 +240,67 @@ void Init_Core_Cuda_Detail_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_constant("BY15", (int)cv::cuda::device::color_detail::BY15);
   rb_mCvCudaDeviceColorDetail.define_constant("BLOCK_SIZE", (int)cv::cuda::device::color_detail::BLOCK_SIZE);
 
-  Rice::Data_Type<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>> rb_cCvCudaDeviceColorDetailRGB2RGBUchar442 = define_class_under<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>>(rb_mCvCudaDeviceColorDetail, "RGB2RGBUchar442").
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = define_class_under<cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedIntUnsignedInt").
+    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>>, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>> rb_cCvCudaDeviceColorDetailRGB2RGBUchar442 = define_class_under<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>, cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDeviceColorDetail, "RGB2RGBUchar442").
+    define_method<uint(cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::*)(uint) const>("call", &cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::operator(),
+      Arg("src")).
     define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>>()).
-    define_attr("uint", &cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::uint);
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>, const cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>&>(),
+      Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>> rb_cCvCudaDeviceColorDetailGray2RGBUchar4 = define_class_under<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>>(rb_mCvCudaDeviceColorDetail, "Gray2RGBUchar4").
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned int>> rb_cUnaryFunctionUnsignedCharUnsignedInt = define_class_under<cv::cuda::device::unary_function<unsigned char, unsigned int>>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedCharUnsignedInt").
+    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned int>>, unsigned char, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>> rb_cCvCudaDeviceColorDetailGray2RGBUchar4 = define_class_under<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>, cv::cuda::device::unary_function<unsigned char, unsigned int>>(rb_mCvCudaDeviceColorDetail, "Gray2RGBUchar4").
+    define_method<uint(cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::*)(uint) const>("call", &cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::operator(),
+      Arg("src")).
     define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>>()).
-    define_attr("__forceinline__", &cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::__forceinline__);
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>, const cv::cuda::device::color_detail::Gray2RGB<uchar, 4>&>(),
+      Arg("arg_0"));
 
   Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>> rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter6 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter6").
-    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>());
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>>()).
+    define_singleton_function<ushort(*)(uint)>("cvt", &cv::cuda::device::color_detail::Gray2RGB5x5Converter<6>::cvt,
+      Arg("t"));
 
   Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>> rb_cCvCudaDeviceColorDetailGray2RGB5x5Converter5 = define_class_under<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>(rb_mCvCudaDeviceColorDetail, "Gray2RGB5x5Converter5").
-    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>());
+    define_constructor(Constructor<cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>>()).
+    define_singleton_function<ushort(*)(uint)>("cvt", &cv::cuda::device::color_detail::Gray2RGB5x5Converter<5>::cvt,
+      Arg("t"));
 
   Rice::Data_Type<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>> rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter6 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter6").
-    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>());
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<6>>()).
+    define_singleton_function<uchar(*)(uint)>("cvt", &cv::cuda::device::color_detail::RGB5x52GrayConverter<6>::cvt,
+      Arg("t"));
 
   Rice::Data_Type<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>> rb_cCvCudaDeviceColorDetailRGB5x52GrayConverter5 = define_class_under<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>(rb_mCvCudaDeviceColorDetail, "RGB5x52GrayConverter5").
-    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>());
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<T(*)(const int*)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
-    ArgBuffer("src"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<uchar(*)(uint)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
-    Arg("src"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<float(*)(const float*)>("rgb2_gray_convert", &cv::cuda::device::color_detail::RGB2GrayConvert,
-    ArgBuffer("src"));
+    define_constructor(Constructor<cv::cuda::device::color_detail::RGB5x52GrayConverter<5>>()).
+    define_singleton_function<uchar(*)(uint)>("cvt", &cv::cuda::device::color_detail::RGB5x52GrayConverter<5>::cvt,
+      Arg("t"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YUVCoeffs_f", cv::cuda::device::color_detail::c_RGB2YUVCoeffs_f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YUVCoeffs_i", cv::cuda::device::color_detail::c_RGB2YUVCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2yuv_convert", &cv::cuda::device::color_detail::RGB2YUVConvert,
-    ArgBuffer("src"), Arg("dst"));
-
   rb_mCvCudaDeviceColorDetail.define_constant("C_YUV2RGBCoeffs_f", cv::cuda::device::color_detail::c_YUV2RGBCoeffs_f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_YUV2RGBCoeffs_i", cv::cuda::device::color_detail::c_YUV2RGBCoeffs_i);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("yuv2rgb_convert", &cv::cuda::device::color_detail::YUV2RGBConvert,
-    Arg("src"), ArgBuffer("dst"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YCrCbCoeffs_f", cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2YCrCbCoeffs_i", cv::cuda::device::color_detail::c_RGB2YCrCbCoeffs_i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2y_cr_cb_convert", &cv::cuda::device::color_detail::RGB2YCrCbConvert,
-    ArgBuffer("src"), Arg("dst"));
-
   rb_mCvCudaDeviceColorDetail.define_constant("C_YCrCb2RGBCoeffs_f", cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_YCrCb2RGBCoeffs_i", cv::cuda::device::color_detail::c_YCrCb2RGBCoeffs_i);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("y_cr_cb_2rgb_convert", &cv::cuda::device::color_detail::YCrCb2RGBConvert,
-    Arg("src"), ArgBuffer("dst"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2XYZ_D65f", cv::cuda::device::color_detail::c_RGB2XYZ_D65f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_RGB2XYZ_D65i", cv::cuda::device::color_detail::c_RGB2XYZ_D65i);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int*, int&)>("rgb2xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
-    ArgBuffer("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const float*, int&)>("rgb2xyz_convert", &cv::cuda::device::color_detail::RGB2XYZConvert,
-    ArgBuffer("src"), Arg("dst"));
-
   rb_mCvCudaDeviceColorDetail.define_constant("C_XYZ2sRGB_D65f", cv::cuda::device::color_detail::c_XYZ2sRGB_D65f);
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_XYZ2sRGB_D65i", cv::cuda::device::color_detail::c_XYZ2sRGB_D65i);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, int*)>("xyz2rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
-    Arg("src"), ArgBuffer("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function<void(*)(const int&, float*)>("xyz2rgb_convert", &cv::cuda::device::color_detail::XYZ2RGBConvert,
-    Arg("src"), ArgBuffer("dst"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_HsvDivTable", cv::cuda::device::color_detail::c_HsvDivTable);
 
@@ -284,41 +319,17 @@ void Init_Core_Cuda_Detail_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_constant("Lab_shift2", (int)cv::cuda::device::color_detail::lab_shift2);
   rb_mCvCudaDeviceColorDetail.define_constant("LAB_CBRT_TAB_SIZE_B", (int)cv::cuda::device::color_detail::LAB_CBRT_TAB_SIZE_B);
 
-  rb_mCvCudaDeviceColorDetail.define_constant("Ushort", cv::cuda::device::color_detail::ushort);
+  rb_mCvCudaDeviceColorDetail.define_constant("C_sRGBGammaTab_b", cv::cuda::device::color_detail::c_sRGBGammaTab_b);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("lab_cbrt_b", &cv::cuda::device::color_detail::LabCbrt_b,
+  rb_mCvCudaDeviceColorDetail.define_module_function<int(*)(int)>("lab_cbrt_b", &cv::cuda::device::color_detail::LabCbrt_b,
     Arg("i"));
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_lab_convert_b", &cv::cuda::device::color_detail::RGB2LabConvert_b,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("spline_interpolate", &cv::cuda::device::color_detail::splineInterpolate,
+  rb_mCvCudaDeviceColorDetail.define_module_function<float(*)(float, const float*, int)>("spline_interpolate", &cv::cuda::device::color_detail::splineInterpolate,
     Arg("x"), ArgBuffer("tab"), Arg("n"));
 
   rb_mCvCudaDeviceColorDetail.define_constant("C_sRGBGammaTab", cv::cuda::device::color_detail::c_sRGBGammaTab);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_lab_convert_f", &cv::cuda::device::color_detail::RGB2LabConvert_f,
-    Arg("src"), Arg("dst"));
-
   rb_mCvCudaDeviceColorDetail.define_constant("C_sRGBInvGammaTab", cv::cuda::device::color_detail::c_sRGBInvGammaTab);
 
-  rb_mCvCudaDeviceColorDetail.define_module_function("lab_2rgb_convert_f", &cv::cuda::device::color_detail::Lab2RGBConvert_f,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("lab_2rgb_convert_b", &cv::cuda::device::color_detail::Lab2RGBConvert_b,
-    Arg("src"), Arg("dst"));
-
   rb_mCvCudaDeviceColorDetail.define_constant("C_LabCbrtTab", cv::cuda::device::color_detail::c_LabCbrtTab);
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_luv_convert_f", &cv::cuda::device::color_detail::RGB2LuvConvert_f,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("rgb2_luv_convert_b", &cv::cuda::device::color_detail::RGB2LuvConvert_b,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("luv_2rgb_convert_f", &cv::cuda::device::color_detail::Luv2RGBConvert_f,
-    Arg("src"), Arg("dst"));
-
-  rb_mCvCudaDeviceColorDetail.define_module_function("luv_2rgb_convert_b", &cv::cuda::device::color_detail::Luv2RGBConvert_b,
-    Arg("src"), Arg("dst"));
 }

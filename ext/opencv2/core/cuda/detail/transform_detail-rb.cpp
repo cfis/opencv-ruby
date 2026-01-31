@@ -3,16 +3,6 @@
 
 using namespace Rice;
 
-template<typename Data_Type_T, typename T, typename D, int shift>
-inline void UnaryReadWriteTraits_builder(Data_Type_T& klass)
-{
-};
-
-template<typename Data_Type_T, typename T1, typename T2, typename D, int shift>
-inline void BinaryReadWriteTraits_builder(Data_Type_T& klass)
-{
-};
-
 void Init_Core_Cuda_Detail_TransformDetail()
 {
   Module rb_mCv = define_module("Cv");

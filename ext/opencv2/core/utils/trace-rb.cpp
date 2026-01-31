@@ -1,4 +1,3 @@
-#include <opencv2/core/base.hpp> // Manual
 #include <opencv2/core/utils/trace.hpp>
 #include "trace-rb.hpp"
 
@@ -27,8 +26,8 @@ void Init_Core_Utils_Trace()
       Arg("location")).
     define_attr("p_impl", &cv::utils::trace::details::Region::pImpl).
     define_attr("impl_flags", &cv::utils::trace::details::Region::implFlags).
-    define_method("active?", &cv::utils::trace::details::Region::isActive).
-    define_method("destroy", &cv::utils::trace::details::Region::destroy);
+    define_method<bool(cv::utils::trace::details::Region::*)() const>("active?", &cv::utils::trace::details::Region::isActive).
+    define_method<void(cv::utils::trace::details::Region::*)()>("destroy", &cv::utils::trace::details::Region::destroy);
 
   Rice::Data_Type<cv::utils::trace::details::Region::LocationStaticStorage> rb_cCvUtilsTraceDetailsRegionLocationStaticStorage = define_class_under<cv::utils::trace::details::Region::LocationStaticStorage>(rb_cCvUtilsTraceDetailsRegion, "LocationStaticStorage").
     define_constructor(Constructor<cv::utils::trace::details::Region::LocationStaticStorage>()).

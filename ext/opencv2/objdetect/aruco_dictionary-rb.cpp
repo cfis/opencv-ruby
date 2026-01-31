@@ -16,19 +16,19 @@ void Init_Objdetect_ArucoDictionary()
     define_constructor(Constructor<cv::aruco::Dictionary>()).
     define_constructor(Constructor<cv::aruco::Dictionary, const cv::Mat&, int, int>(),
       Arg("bytes_list"), Arg("_marker_size"), Arg("maxcorr") = static_cast<int>(0)).
-    define_method("read_dictionary", &cv::aruco::Dictionary::readDictionary,
+    define_method<bool(cv::aruco::Dictionary::*)(const cv::FileNode&)>("read_dictionary", &cv::aruco::Dictionary::readDictionary,
       Arg("fn")).
-    define_method("write_dictionary", &cv::aruco::Dictionary::writeDictionary,
+    define_method<void(cv::aruco::Dictionary::*)(cv::FileStorage&, const cv::String&)>("write_dictionary", &cv::aruco::Dictionary::writeDictionary,
       Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String())).
-    define_method("identify", &cv::aruco::Dictionary::identify,
+    define_method<bool(cv::aruco::Dictionary::*)(const cv::Mat&, int&, int&, double) const>("identify", &cv::aruco::Dictionary::identify,
       Arg("only_bits"), Arg("idx"), Arg("rotation"), Arg("max_correction_rate")).
-    define_method("get_distance_to_id", &cv::aruco::Dictionary::getDistanceToId,
+    define_method<int(cv::aruco::Dictionary::*)(cv::InputArray, int, bool) const>("get_distance_to_id", &cv::aruco::Dictionary::getDistanceToId,
       Arg("bits"), Arg("id"), Arg("all_rotations") = static_cast<bool>(true)).
-    define_method("generate_image_marker", &cv::aruco::Dictionary::generateImageMarker,
+    define_method<void(cv::aruco::Dictionary::*)(int, int, cv::OutputArray, int) const>("generate_image_marker", &cv::aruco::Dictionary::generateImageMarker,
       Arg("id"), Arg("side_pixels"), Arg("_img"), Arg("border_bits") = static_cast<int>(1)).
-    define_singleton_function("get_byte_list_from_bits", &cv::aruco::Dictionary::getByteListFromBits,
+    define_singleton_function<cv::Mat(*)(const cv::Mat&)>("get_byte_list_from_bits", &cv::aruco::Dictionary::getByteListFromBits,
       Arg("bits")).
-    define_singleton_function("get_bits_from_byte_list", &cv::aruco::Dictionary::getBitsFromByteList,
+    define_singleton_function<cv::Mat(*)(const cv::Mat&, int)>("get_bits_from_byte_list", &cv::aruco::Dictionary::getBitsFromByteList,
       Arg("byte_list"), Arg("marker_size"));
 
   Enum<cv::aruco::PredefinedDictionaryType> rb_cCvArucoPredefinedDictionaryType = define_enum_under<cv::aruco::PredefinedDictionaryType>("PredefinedDictionaryType", rb_mCvAruco).
@@ -61,6 +61,6 @@ void Init_Objdetect_ArucoDictionary()
   rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(int)>("get_predefined_dictionary", &cv::aruco::getPredefinedDictionary,
     Arg("dict"));
 
-  rb_mCvAruco.define_module_function("extend_dictionary", &cv::aruco::extendDictionary,
+  rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(int, int, const cv::aruco::Dictionary&, int)>("extend_dictionary", &cv::aruco::extendDictionary,
     Arg("n_markers"), Arg("marker_size"), Arg("base_dictionary") = static_cast<const cv::aruco::Dictionary&>(cv::aruco::Dictionary()), Arg("random_seed") = static_cast<int>(0));
 }

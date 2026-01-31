@@ -1,5 +1,3 @@
-#include <opencv2/core.hpp> //Manual
-#include <opencv2/core/detail/exception_ptr.hpp> // Manual
 #include <opencv2/core/detail/async_promise.hpp>
 #include "async_promise-rb.hpp"
 
@@ -15,9 +13,9 @@ void Init_Core_Detail_AsyncPromise()
       Arg("o")).
     define_method<cv::AsyncPromise&(cv::AsyncPromise::*)(const cv::AsyncPromise&) noexcept>("assign", &cv::AsyncPromise::operator=,
       Arg("o")).
-    define_method("release", &cv::AsyncPromise::release).
-    define_method("get_array_result", &cv::AsyncPromise::getArrayResult).
-    define_method("set_value", &cv::AsyncPromise::setValue,
+    define_method<void(cv::AsyncPromise::*)() noexcept>("release", &cv::AsyncPromise::release).
+    define_method<cv::AsyncArray(cv::AsyncPromise::*)()>("get_array_result", &cv::AsyncPromise::getArrayResult).
+    define_method<void(cv::AsyncPromise::*)(cv::InputArray)>("set_value", &cv::AsyncPromise::setValue,
       Arg("value")).
     define_method<void(cv::AsyncPromise::*)(std::exception_ptr)>("set_exception", &cv::AsyncPromise::setException,
       Arg("exception")).
@@ -25,6 +23,6 @@ void Init_Core_Detail_AsyncPromise()
       Arg("exception")).
     define_method<cv::AsyncPromise&(cv::AsyncPromise::*)(cv::AsyncPromise&&) noexcept>("assign", &cv::AsyncPromise::operator=,
       Arg("o")).
-    define_method("_get_impl", &cv::AsyncPromise::_getImpl,
+    define_method<void*(cv::AsyncPromise::*)() const noexcept>("_get_impl", &cv::AsyncPromise::_getImpl,
       ReturnBuffer());
 }

@@ -1,31 +1,31 @@
 # Ruby-bindgen configuration for OpenCV Ruby bindings
 # Usage: ruby-bindgen bindings.yaml
 
-#extension: opencv_ruby
-
-libclang:
-  clang-cl: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/x64/bin/libclang.dll
-  clang: /usr/lib64/libclang.so
-
-input: /mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
-output: /mnt/c/Source/opencv-ruby/ext
+# === Output Settings ===
+input: build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+output: .
 format: Rice
 include: rice_include.hpp
 
-# Process all core files including subdirectories
+# === File Selection ===
 match:
-  - opencv2/core/mat.hpp
+  #- opencv2/core/mat.hpp
+  #- opencv2/core/types.hpp
+  - opencv2/**/*.hpp
+  - opencv2/**/*.h
 
-# Header file patterns to skip
 skip:
   - opencv2/**/*.inl*
-  - opencv2/calib3d/**/*
+  - opencv2/core/hal/intrin*
+  - opencv2/core/hal/hal.hpp
+  - opencv2/core/hal/msa_macros.h
+  - opencv2/core/hal/simd_utils.impl.hpp
+  - opencv2/core/opencl/**/*
+  - opencv2/cudalegacy/**/*.hpp
 
-# Only include functions/classes with these macros
-# This ensures we only wrap symbols that are actually exported from the library
+# === Symbol Filtering ===
 export_macros: []
 
-# Functions/methods to explicitly skip (even if they have export macros)
 skip_symbols:
   - cv::ocl::PlatformInfo::versionMajor
   - cv::ocl::PlatformInfo::versionMinor
@@ -47,24 +47,32 @@ skip_symbols:
   - cv::MatCommaInitializer_
   # BBox is declared but not exported from the DLL
   - cv::face::FacemarkLBF::BBox
+  # Old C API functions
+  - CvVideoWriter
+  - cv::dnn::.*::BackendNode
+  - CvHaarClassifierCascade 
 
-# Clang compiler arguments (platform-specific)
-clang_args:
-  clang-cl:
+# === Compiler Toolchain (platform-specific) ===
+clang-cl:
+  libclang: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/x64/bin/libclang.dll
+  args:
     - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include
     - -IC:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt
     - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/lib/clang/20/include
     - -IC:/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
-    - -IC:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6
+    - -IC:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include
     - -DCV_EXPORTS=
     - -DCV_EXPORTS_W=
     - -include
     - opencv2/opencv.hpp
     - -xc++
-  clang:
+
+clang:
+  libclang: /usr/lib64/libclang.so
+  args:
     - -I/usr/lib/clang/21/include
     - -I/mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
-    - -I/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6
+    - -I/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include
     - -DCV_EXPORTS=
     - -DCV_EXPORTS_W=
     - -include

@@ -9,13 +9,6 @@ void Init_Core_Base()
 
   Module rb_mCvError = define_module_under(rb_mCv, "Error");
 
-// Manual
-#if defined _DEBUG || defined CV_STATIC_ANALYSIS
-  rb_mCv.const_set("DBG_ASSERT_ENABLED", true);
-#else
-  rb_mCv.const_set("DBG_ASSERT_ENABLED", false);
-#endif
-
   Enum<cv::Error::Code> rb_cCvErrorCode = define_enum_under<cv::Error::Code>("Code", rb_mCvError).
     define_value("StsOk", cv::Error::Code::StsOk).
     define_value("StsBackTrace", cv::Error::Code::StsBackTrace).
@@ -126,16 +119,16 @@ void Init_Core_Base()
     define_value("BORDER_DEFAULT", cv::BorderTypes::BORDER_DEFAULT).
     define_value("BORDER_ISOLATED", cv::BorderTypes::BORDER_ISOLATED);
 
-  rb_mCv.define_module_function("error", &cv::error,
+  rb_mCv.define_module_function<void(*)(int, const cv::String&, const char*, const char*, int)>("error", &cv::error,
     Arg("code"), Arg("err"), Arg("func"), Arg("file"), Arg("line"));
 
-  rb_mCv.define_module_function("terminate", &cv::terminate,
+  rb_mCv.define_module_function<void(*)(int, const cv::String&, const char*, const char*, int) noexcept>("terminate", &cv::terminate,
     Arg("code"), Arg("err"), Arg("func"), Arg("file"), Arg("line"));
 
   Rice::Data_Type<cv::Hamming> rb_cCvHamming = define_class_under<cv::Hamming>(rb_mCv, "Hamming").
     define_constructor(Constructor<cv::Hamming>()).
     define_constant("NormType", cv::Hamming::normType).
-    define_method("call", &cv::Hamming::operator(),
+    define_method<cv::Hamming::ResultType(cv::Hamming::*)(const unsigned char*, const unsigned char*, int) const>("call", &cv::Hamming::operator(),
       ArgBuffer("a"), ArgBuffer("b"), Arg("size"));
 
   rb_mCv.define_module_function<int(*)(uchar)>("cv_abs", &cv::cv_abs,
@@ -157,7 +150,7 @@ void Init_Core_Base()
     ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
   rb_mCv.define_module_function<int(*)(const uchar*, const uchar*, int)>("norm_l1", &cv::normL1,
-    Arg("a"), Arg("b"), Arg("n"));
+    ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
   rb_mCv.define_module_function<float(*)(float)>("cube_root", &cv::cubeRoot,
     Arg("val"));
@@ -165,7 +158,7 @@ void Init_Core_Base()
   rb_mCv.define_module_function<double(*)(double)>("cube_root", &cv::cubeRoot,
     Arg("val"));
 
-  rb_mCv.define_module_function("fast_atan2", &cv::fastAtan2,
+  rb_mCv.define_module_function<float(*)(float, float)>("fast_atan2", &cv::fastAtan2,
     Arg("y"), Arg("x"));
 
   rb_mCv.define_module_function<int(*)(float*, size_t, int, float*, size_t, int)>("lu", &cv::LU,
@@ -194,29 +187,29 @@ void Init_Core_Base()
 
   Module rb_mCvIpp = define_module_under(rb_mCv, "Ipp");
 
-  rb_mCvIpp.define_module_function("get_ipp_features", &cv::ipp::getIppFeatures);
+  rb_mCvIpp.define_module_function<unsigned long long(*)()>("get_ipp_features", &cv::ipp::getIppFeatures);
 
-  rb_mCvIpp.define_module_function("set_ipp_status", &cv::ipp::setIppStatus,
+  rb_mCvIpp.define_module_function<void(*)(int, const char* const, const char* const, int)>("set_ipp_status", &cv::ipp::setIppStatus,
     Arg("status"), Arg("funcname") = static_cast<const char* const>(NULL), Arg("filename") = static_cast<const char* const>(NULL), Arg("line") = static_cast<int>(0));
 
-  rb_mCvIpp.define_module_function("get_ipp_status", &cv::ipp::getIppStatus);
+  rb_mCvIpp.define_module_function<int(*)()>("get_ipp_status", &cv::ipp::getIppStatus);
 
-  rb_mCvIpp.define_module_function("get_ipp_error_location", &cv::ipp::getIppErrorLocation);
+  rb_mCvIpp.define_module_function<cv::String(*)()>("get_ipp_error_location", &cv::ipp::getIppErrorLocation);
 
-  rb_mCvIpp.define_module_function("use_ipp?", &cv::ipp::useIPP);
+  rb_mCvIpp.define_module_function<bool(*)()>("use_ipp?", &cv::ipp::useIPP);
 
-  rb_mCvIpp.define_module_function("set_use_ipp", &cv::ipp::setUseIPP,
+  rb_mCvIpp.define_module_function<void(*)(bool)>("set_use_ipp", &cv::ipp::setUseIPP,
     Arg("flag"));
 
-  rb_mCvIpp.define_module_function("get_ipp_version", &cv::ipp::getIppVersion);
+  rb_mCvIpp.define_module_function<cv::String(*)()>("get_ipp_version", &cv::ipp::getIppVersion);
 
-  rb_mCvIpp.define_module_function("use_ipp_not_exact?", &cv::ipp::useIPP_NotExact);
+  rb_mCvIpp.define_module_function<bool(*)()>("use_ipp_not_exact?", &cv::ipp::useIPP_NotExact);
 
-  rb_mCvIpp.define_module_function("set_use_ipp_not_exact", &cv::ipp::setUseIPP_NotExact,
+  rb_mCvIpp.define_module_function<void(*)(bool)>("set_use_ipp_not_exact", &cv::ipp::setUseIPP_NotExact,
     Arg("flag"));
 
-  rb_mCvIpp.define_module_function("use_ipp_ne?", &cv::ipp::useIPP_NE);
+  rb_mCvIpp.define_module_function<bool(*)()>("use_ipp_ne?", &cv::ipp::useIPP_NE);
 
-  rb_mCvIpp.define_module_function("set_use_ipp_ne", &cv::ipp::setUseIPP_NE,
+  rb_mCvIpp.define_module_function<void(*)(bool)>("set_use_ipp_ne", &cv::ipp::setUseIPP_NE,
     Arg("flag"));
 }

@@ -13,8 +13,9 @@ match:
   #- opencv2/core/cuda/**/*.hpp
   #- opencv2/core/mat.hpp
   #- opencv2/core/types.hpp
-  - opencv2/**/*.hpp
-  - opencv2/**/*.h
+  - opencv2/core/persistence.hpp
+  #- opencv2/**/*.hpp
+  #- opencv2/**/*.h
 
 skip:
   - opencv2/**/*.inl*
@@ -54,6 +55,8 @@ skip_symbols:
   - CvVideoWriter
   - /cv::dnn::.*::BackendNode/
   - CvHaarClassifierCascade
+  # Internal enum finalizer not needed in Ruby
+  - cv::Vec::_dummy_enum_finalizer
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

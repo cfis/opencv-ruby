@@ -139,7 +139,7 @@ void Init_Core_Persistence()
       ReturnBuffer()).
     define_method<const uchar*(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr,
       ReturnBuffer()).
-    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each_const").
+    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each").
     define_method<void(cv::FileNode::*)(const cv::String&, void*, size_t) const>("read_raw", &cv::FileNode::readRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method<void(cv::FileNode::*)(int, const void*, int)>("set_value", &cv::FileNode::setValue,
@@ -340,54 +340,54 @@ void Init_Core_Persistence()
 
   rb_cCvFileStorage.
     define_method("<<", [](cv::FileStorage& self, const cv::String& other) -> cv::FileStorage&
-  {
-    self << other;
-    return self;
-  }).
+    {
+      self << other;
+      return self;
+    }).
     define_method("<<", [](cv::FileStorage& self, const char* other) -> cv::FileStorage&
-  {
-    self << other;
-    return self;
-  }).
+    {
+      self << other;
+      return self;
+    }).
     define_method("<<", [](cv::FileStorage& self, char* other) -> cv::FileStorage&
-  {
-    self << other;
-    return self;
-  });
+    {
+      self << other;
+      return self;
+    });
   
   rb_cCvFileNode.
     define_method(">>", [](const cv::FileNode& self, cv::KeyPoint& other) -> void
-  {
-    self >> other;
-  }).
+    {
+      self >> other;
+    }).
     define_method(">>", [](const cv::FileNode& self, std::vector<cv::KeyPoint>& other) -> void
-  {
-    self >> other;
-  }).
+    {
+      self >> other;
+    }).
     define_method(">>", [](const cv::FileNode& self, std::vector<cv::DMatch>& other) -> void
-  {
-    self >> other;
-  }).
+    {
+      self >> other;
+    }).
     define_method(">>", [](const cv::FileNode& self, cv::DMatch& other) -> void
-  {
-    self >> other;
-  });
+    {
+      self >> other;
+    });
   
   rb_cCvFileNodeIterator.
     define_method("==", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("-", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> ptrdiff_t
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("<", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
-  {
-    return self < other;
-  });
+    {
+      return self < other;
+    });
 }

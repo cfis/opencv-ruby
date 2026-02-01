@@ -1018,8 +1018,10 @@ class CoreTest < OpenCVTestCase
 
   def test_formatter_format
     mat = Cv::Mat.new(2, 2, CV_32FC1)
-    mat[0, 0] = 1.0; mat[0, 1] = 2.0
-    mat[1, 0] = 3.0; mat[1, 1] = 4.0
+    mat[0, 0] = 1.0
+    mat[0, 1] = 2.0
+    mat[1, 0] = 3.0
+    mat[1, 1] = 4.0
 
     formatter = Cv::Formatter.get
     formatted = formatter.format(mat)

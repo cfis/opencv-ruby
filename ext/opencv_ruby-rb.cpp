@@ -1,9 +1,6 @@
 #include "opencv_ruby_version.hpp"
 #include "opencv_ruby-rb.hpp"
 
-// Refinements - manual additions to generated classes
-#include "refinements/mat_refinements.hpp"
-
 // Aruco
 #include "opencv2/aruco/aruco_calib-rb.hpp"
 #include "opencv2/aruco/charuco-rb.hpp"
@@ -224,6 +221,16 @@
 #include "opencv2/xobjdetect-rb.hpp"
 #include "opencv2/xphoto-rb.hpp"
 
+// Refinements - manual additions to generated classes
+#include "refinements/base-rb.hpp"
+#include "refinements/core-rb.hpp"
+#include "refinements/cuda-rb.hpp"
+#include "refinements/hal-rb.hpp"
+#include "refinements/mat-rb.hpp"
+#include "refinements/matx-rb.hpp"
+#include "refinements/persistence-rb.hpp"
+#include "refinements/types-rb.hpp"
+
 extern "C"
 void Init_opencv_ruby()
 {
@@ -268,7 +275,6 @@ void Init_opencv_ruby()
     Init_Core_Matx();
     Init_Core_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
     Init_Core_Mat();
-    Init_Core_Mat_Refinements(); // Apply manual refinements to Mat class
     Init_Core_NeonUtils();
     Init_Core_Ocl();
     Init_Core_OclGenbase();
@@ -294,6 +300,16 @@ void Init_opencv_ruby()
     Init_Core_Utils_LoggerDefines();
     Init_Core_Utils_Logtag();
     Init_Core_Utils_Trace();*/
+
+    // Core Refinements
+    Init_Core_Refinements();
+    Init_Core_Base_Refinements();
+    Init_Core_Cuda_Refinements();
+    Init_Core_Mat_Refinements();
+    Init_Core_Matx_Refinements();
+    Init_Core_Persistence_Refinements();
+    Init_Core_Types_Refinements();
+    Init_Core_Hal_Refinements();
 
     // DNN
     Init_Dnn_Version();

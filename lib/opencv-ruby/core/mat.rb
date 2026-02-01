@@ -222,7 +222,7 @@ module Cv
       dest = self.class.new(self.rows, self.cols, self.type)
     	Cv::compare(self.input_array, other.input_array, dest.output_array, operation)
 			dest
-		end
+    end
 
 		def eql?(other)
 			return false if self.class != other.class
@@ -721,5 +721,5 @@ module Cv
 
 			self
 		end
-	end
+  end
 end

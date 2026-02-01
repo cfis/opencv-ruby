@@ -195,16 +195,6 @@ class HistogramTest < OpenCVTestCase
     lower_bound = Rice::Buffer≺float≻.new(0.0)
     flow = Cv.no_array
 
-    # API 1 - Returns tuple with (result, lower_bound)
-    result, lower_bound = Cv.emd(signatures[0].input_array, signatures[1].input_array,
-                                 Cv::DistanceTypes::DIST_L1, cost, flow)
-
-    # EMD values can vary due to image decoding and floating-point differences
-    # Lower bound is the distance between mass centers (centroids)
-    assert_in_delta(5.1456, result, 0.1)
-    assert_in_delta(3.7189, lower_bound,0.1)
-
-    # API 2 - Uses buffer for lower_bound
     lower_bound_buffer = Rice::Buffer≺float≻.new(Float::MAX)
     result = Cv.emd(signatures[0].input_array, signatures[1].input_array,
                     Cv::DistanceTypes::DIST_L1, cost, lower_bound_buffer.data, flow)

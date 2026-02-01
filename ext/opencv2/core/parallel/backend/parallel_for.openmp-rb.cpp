@@ -1,3 +1,4 @@
+#include <string> // Manual
 #include <opencv2/core/parallel/backend/parallel_for.openmp.hpp>
 #include "parallel_for.openmp-rb.hpp"
 

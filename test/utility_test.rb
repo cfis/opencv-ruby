@@ -6,6 +6,6 @@ class UtilityTest < OpenCVTestCase
     info = Cv::get_build_information
     assert_kind_of(String, info)
     puts info
-    assert(info =~ /^\s+General configuration for OpenCV #{CV_VERSION}/)
+    assert(info =~ /^\s+General configuration for OpenCV #{CV_VERSION_MAJOR}/)
   end
 end

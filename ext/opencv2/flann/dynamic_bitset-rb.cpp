@@ -1,3 +1,5 @@
+#include <vector> // Manual
+#include <opencv2/core/base.hpp> // Manual
 #include <opencv2/flann/dynamic_bitset.h>
 #include "dynamic_bitset-rb.hpp"
 

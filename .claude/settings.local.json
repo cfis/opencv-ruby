@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(grep:*)",
+      "Bash(git checkout:*)",
+      "Bash(for file in ext/opencv2/core/cvdef-rb.cpp ext/opencv2/core/ocl-rb.cpp ext/opencv2/core/optim-rb.cpp ext/opencv2/core/saturate-rb.cpp ext/opencv2/core/traits-rb.cpp ext/opencv2/core/types-rb.cpp ext/opencv2/core/utility-rb.cpp ext/opencv2/flann/flann_base-rb.cpp ext/opencv2/stitching/detail/matchers-rb.cpp ext/opencv2/video/tracking-rb.cpp)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(ls:*)",
+      "Bash(perl -i -pe:*)",
+      "Bash(perl -i -ne:*)",
+      "Bash(git apply:*)",
+      "Bash(xargs sed:*)"
     ]
   }
 }

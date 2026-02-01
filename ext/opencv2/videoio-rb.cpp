@@ -477,7 +477,7 @@ void Init_Videoio()
       Arg("source"), Arg("api_preference"), Arg("params")).
     define_method<bool(cv::VideoCapture::*)() const>("opened?", &cv::VideoCapture::isOpened).
     define_method<void(cv::VideoCapture::*)()>("release", &cv::VideoCapture::release).
-    define_method<bool(cv::VideoCapture::*)()>("grab?", &cv::VideoCapture::grab).
+    define_method<bool(cv::VideoCapture::*)()>("grab", &cv::VideoCapture::grab).
     define_method<bool(cv::VideoCapture::*)(cv::OutputArray, int)>("retrieve", &cv::VideoCapture::retrieve,
       Arg("image"), Arg("flag") = static_cast<int>(0)).
     define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::Mat&)>(">>", &cv::VideoCapture::operator>>,

@@ -14,8 +14,8 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/check-rb.cpp`                                | `<opencv2/core/types.hpp>`                                               |
 | `opencv2/core/detail/async_promise-rb.cpp`                 | `<opencv2/core.hpp>`, `<opencv2/core/detail/exception_ptr.hpp>`          |
 | `opencv2/core/detail/dispatch_helper.impl-rb.cpp`          | `<opencv2/opencv.hpp>`                                                   |
-| `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"` |
-| `opencv2/core/matx-rb.cpp`                                 | `<opencv2/core.hpp>`, `"traits-rb.hpp"`                                  |
+| `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"`, `"refinements/mat-iterators.hpp"` |
+| `opencv2/core/matx-rb.cpp`                                 | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/ocl_genbase-rb.cpp`                          | `<opencv2/core/ocl.hpp>`                                                 |
 | `opencv2/core/opengl-rb.cpp`                               | `<opencv2/core/cuda.hpp>`                                                |
 | `opencv2/core/operations-rb.cpp`                           | `<opencv2/core/core.hpp>`, `"mat-rb.hpp"`      |
@@ -24,7 +24,6 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/parallel/parallel_backend-rb.cpp`            | `<string>`, `<memory>`                                                   |
 | `opencv2/core/saturate-rb.cpp`                             | `<algorithm>`, `<climits>`                                               |
 | `opencv2/core/softfloat-rb.cpp`                            | `<opencv2/opencv.hpp>`                                                   |
-| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `<opencv2/core/matx.hpp>`, `"matx-rb.ipp"`         |
 | `opencv2/core/utils/filesystem-rb.cpp`                     | `<opencv2/core/core.hpp>`                                                |
 | `opencv2/core/utils/logger-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/utils/logger.defines-rb.cpp`                 | `<opencv2/opencv.hpp>`                                                   |
@@ -56,7 +55,61 @@ Apply all these updates
 | `opencv2/core/matx-rb.cpp`               | Rename Matx types to OpenCV convention: `MatxUnsignedChar##` → `Matx##b`, `MatxShort##` → `Matx##s`, `MatxUnsignedShort##` → `Matx##w`, `MatxInt##` → `Matx##i` (applies to both variable names and Ruby class names) |
 | `opencv2/core/fast_math-rb.cpp`          | Wrap `OPENCV_USE_FASTMATH_BUILTINS` constant in `#ifdef` guard                                                                                                                                                        |
 | `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
-| `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls (~line 1197) - Rice doesn't support define_iterator yet                                                                                                                 |
+| `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead |
+| `opencv2/core/cuda-rb.cpp`               | Remove default `Stream::Null()` arguments (~lines 332, 472) from `Event::record` and `convert_fp16`. Change `Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())` to just `Arg("stream")`. Add comment: `// Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed` |
+| `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Add comment: `// Manual fix: use cv::int64 instead of long` |
+| `opencv2/core/mat-rb.cpp`                | Rename `MatSize::operator()` from `"call"` to `"to_size"` (~line 327) - returns cv::Size, more descriptive name |
+| `opencv2/videoio-rb.cpp`                 | Rename `VideoCapture::grab` from `"grab?"` to `"grab"` (~line 480) - not a predicate, actually grabs a frame |
+
+## Fix Operator()
+
+Change `"call"` to `"[]"` for `operator()` methods that provide element or ROI access. This makes the Ruby API more idiomatic (e.g., `mat[rect]` instead of `mat.call(rect)`).
+
+### `opencv2/core/mat-rb.cpp`
+
+**cv::Mat** (~line 482-488) - ROI access methods:
+- `operator()(cv::Range, cv::Range)` - row/column range
+- `operator()(const cv::Rect&)` - rectangular ROI
+- `operator()(const cv::Range*)` - multi-dimensional ranges
+- `operator()(const std::vector<cv::Range>&)` - vector of ranges
+
+**cv::UMat** (~line 700-706) - ROI access methods (same pattern as Mat):
+- `operator()(cv::Range, cv::Range)`
+- `operator()(const cv::Rect&)`
+- `operator()(const cv::Range*)`
+- `operator()(const std::vector<cv::Range>&)`
+
+**cv::MatExpr** (~line 1055-1057) - ROI access methods:
+- `operator()(const cv::Range&, const cv::Range&)`
+- `operator()(const cv::Rect&)`
+
+### `opencv2/core/mat-rb.ipp`
+
+**Mat_** template (~line 81-88) - ROI access methods:
+- `operator()(const cv::Range&, const cv::Range&)`
+- `operator()(const cv::Rect&)`
+- `operator()(const cv::Range*)`
+- `operator()(const std::vector<cv::Range>&)`
+
+**SparseMat_** template (~line 174-181) - element access methods:
+- `operator()(int, size_t*)` - 1D access with hashval
+- `operator()(int, int, size_t*)` - 2D access with hashval
+- `operator()(int, int, int, size_t*)` - 3D access with hashval
+- `operator()(const int*, size_t*)` - N-D access with hashval
+
+### `opencv2/core/matx-rb.ipp`
+
+**Matx** template (~line 26-28) - 2D element access:
+- `operator()(int, int) const`
+- `operator()(int, int)` (non-const)
+
+**Matx** template (~line 133-135) - single-index access (for vectors where m==1 or n==1):
+- `operator()(int) const`
+- `operator()(int)` (non-const)
+
+**Vec** template (~line 162-164) - single-index element access:
+- `operator()(int) const`
+- `operator()(int)` (non-const)
 
 ## Template Builder Modifications
 
@@ -84,7 +137,9 @@ The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` req
 2. **Float/double-only methods** - Wrap `inv` and `solve` methods in:
    ```cpp
    if constexpr (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>)
+   {
    ```
+   Note: Opening braces go on new lines per project code style.
 
 3. **Vector-only single-index operator** - Wrap single-index `operator()` in:
    ```cpp
@@ -96,15 +151,39 @@ The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` req
 1. **Channel-specific constructors** - Wrap each multi-arg constructor in `if constexpr (cn == N)`:
    - `cn == 1` through `cn == 10`, and `cn == 14`
 
-2. **Complex conjugate method** - Wrap `conj` method in:
+2. **Comment out randu/randn** - Same as Matx, these don't have explicit instantiations:
+   ```cpp
+   // Manual - Commented out randu/randn - no explicit template instantiations in OpenCV DLL
+   // template define_singleton_function<cv::Vec<_Tp, cn>(*)(_Tp, _Tp)>("randn", ...);
+   // template define_singleton_function<cv::Vec<_Tp, cn>(*)(_Tp, _Tp)>("randu", ...);
+   ```
+
+3. **Complex conjugate method** - Wrap `conj` method in:
    ```cpp
    if constexpr ((cn == 2 || cn == 4) && (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>))
    ```
 
-3. **Cross product method** - Wrap `cross` method in:
+4. **Cross product method** - Wrap `cross` method in:
    ```cpp
    if constexpr (cn == 3)
    ```
+
+### Why These Guards Are Needed
+
+OpenCV's Matx and Vec are C++ templates. While the template definitions exist in headers, OpenCV only provides **explicit template instantiations** in its compiled library for specific type/dimension combinations that are commonly used.
+
+**Problem on Windows/MSVC:** The linker requires all symbols to be resolved at link time. If you try to use a template method that OpenCV didn't explicitly instantiate (e.g., `Matx<float,2,1>::randu`), you get an "unresolved external symbol" error.
+
+**Problem on Linux/macOS:** These platforms may use lazy symbol binding, so missing instantiations might not cause immediate errors (they'd fail at runtime if called).
+
+**What OpenCV explicitly instantiates:**
+- `randu`/`randn`: Not instantiated for most Matx/Vec types
+- `inv`/`solve`: Only instantiated for square matrices (2x2, 3x3, 4x4, 6x6) with float/double
+- `conj`: Only for Vec2f, Vec2d, Vec4f, Vec4d (complex number operations)
+- `cross`: Only for Vec3 types (3D cross product)
+- Constructors: Only for dimensions that match element count (e.g., 4-arg constructor only for 4-element matrices)
+
+The `if constexpr` guards ensure we only define Ruby bindings for methods that have actual implementations in the OpenCV library.
 
 ## Class Inheritance Fixes
 
@@ -226,12 +305,6 @@ The `opencv2/core/mat-rb.ipp` and `opencv2/core/mat-rb.cpp` files have methods t
 // Commented out - causes linker errors
 // define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
 //   Arg("d_mat")).
-```
-
-**In `opencv2/core/mat-rb.cpp` - Line 737** (MatSize::operator() in `Init_Core_Mat`):
-```cpp
-// Commented out - causes linker errors
-// define_method<cv::Size(cv::MatSize::*)() const>("call", &cv::MatSize::operator()).
 ```
 
 **In `opencv2/core/mat-rb.cpp` - Line ~920** (MatConstIterator constructor with `const int*`):
@@ -361,9 +434,26 @@ This diff file serves as a reference for what manual changes were applied and ca
 
 ## Notes
 
+- **NEVER use `git checkout` to restore files.** The generated branch contains freshly generated code. Checking out from main or other branches will overwrite the generated code and require regeneration.
 - **IMPORTANT: Include order matters for compilation.** Follow these rules:
   - **OpenCV/system headers** (e.g., `<opencv2/core.hpp>`, `<vector>`, `<string>`) - Place BEFORE the primary header
   - **Local project headers** (e.g., `"mat-rb.hpp"`, `"matx-rb.hpp"`) - Place AFTER the primary header but before the file's own `-rb.hpp` header
   - When in doubt, check `git diff main` to see the working order from the main branch
 - All manual includes should be marked with `// Manual` comment for identification
 - These includes are needed because the generated bindings reference types or declarations from headers that aren't automatically included by the primary header
+
+## Verification Checklist
+
+**CRITICAL:** Do not mark any task as complete without performing these verification steps.
+
+1. **Verify after editing** - After claiming to edit a file, re-read it to confirm the changes are actually present before marking the task complete
+
+2. **Show concrete evidence** - When completing a task, show the actual diff or key lines that changed, not just "I updated the file"
+
+3. **Don't trust session summaries** - When resuming from a compacted session, verify file state by reading the files rather than trusting claims about what was done
+
+4. **Be skeptical of completion claims** - Before saying "all done" on a multi-part task, read each affected file to verify the changes exist
+
+5. **Explicit checkpoints** - For complex tasks, read each file after modification and state specifically what you see before moving on
+
+Verification is not optional - it is part of completing a task. Saying something is done without confirming it creates problems.

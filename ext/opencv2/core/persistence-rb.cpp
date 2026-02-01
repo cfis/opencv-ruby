@@ -1,3 +1,22 @@
+#include <opencv2/core/persistence.hpp>
+#include "persistence-rb.hpp"
+
+// Iterator traits specializations for iterators missing std::iterator_traits
+namespace std
+{
+  template<>
+  struct iterator_traits<cv::FileNodeIterator>
+  {
+    using iterator_category = forward_iterator_tag;
+    using value_type = cv::FileNode;
+    using difference_type = ptrdiff_t;
+    using pointer = cv::FileNode*;
+    using reference = cv::FileNode&;
+  };
+}
+
+using namespace Rice;
+
 #include "persistence-rb.ipp"
 
 void Init_Core_Persistence()

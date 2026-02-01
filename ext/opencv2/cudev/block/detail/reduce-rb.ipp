@@ -1,18 +1,17 @@
-#include <opencv2/cudev/block/detail/reduce.hpp>
-#include "reduce-rb.hpp"
 
-using namespace Rice;
 
-template<typename Data_Type_T, int I, typename Pointer, typename Reference, typename Op>
-inline void Unroll_builder(Data_Type_T& klass)
+template<int I, typename Pointer, typename Reference, typename Op>
+inline Rice::Data_Type<cv::cudev::block_reduce_detail::Unroll<I, Pointer, Reference, Op>> Unroll_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_singleton_function<void(*)(Pointer, Reference, uint, Op)>("loop", &cv::cudev::block_reduce_detail::Unroll<I, Pointer, Reference, Op>::loop,
+  return Rice::define_class_under<cv::cudev::block_reduce_detail::Unroll<I, Pointer, Reference, Op>>(parent, name).
+    template define_singleton_function<void(*)(Pointer, Reference, uint, Op)>("loop", &cv::cudev::block_reduce_detail::Unroll<I, Pointer, Reference, Op>::loop,
       Arg("smem"), Arg("val"), Arg("tid"), Arg("op"));
-};
+}
 
-template<typename Data_Type_T, int N>
-inline void GenericOptimized32_builder(Data_Type_T& klass)
+template<int N>
+inline Rice::Data_Type<cv::cudev::block_reduce_detail::GenericOptimized32<N>> GenericOptimized32_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("M", (int)cv::cudev::block_reduce_detail::GenericOptimized32<N>::M);
-};
+  return Rice::define_class_under<cv::cudev::block_reduce_detail::GenericOptimized32<N>>(parent, name).
+    define_constant("M", (int)cv::cudev::block_reduce_detail::GenericOptimized32<N>::M);
+}
 

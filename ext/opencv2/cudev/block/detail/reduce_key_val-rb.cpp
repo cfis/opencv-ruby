@@ -1,3 +1,8 @@
+#include <opencv2/cudev/block/detail/reduce_key_val.hpp>
+#include "reduce_key_val-rb.hpp"
+
+using namespace Rice;
+
 #include "reduce_key_val-rb.ipp"
 
 void Init_Cudev_Block_Detail_ReduceKeyVal()

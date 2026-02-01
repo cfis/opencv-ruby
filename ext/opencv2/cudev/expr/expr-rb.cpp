@@ -1,3 +1,8 @@
+#include <opencv2/cudev/expr/expr.hpp>
+#include "expr-rb.hpp"
+
+using namespace Rice;
+
 #include "expr-rb.ipp"
 
 void Init_Cudev_Expr_Expr()

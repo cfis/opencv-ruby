@@ -1,11 +1,5 @@
-#ifndef MAT_REFINEMENTS_HPP
-#define MAT_REFINEMENTS_HPP
+#pragma once
 
-#include <rice/rice.hpp>
-#include <opencv2/core/mat.hpp>
+#include "../rice_include.hpp"
 
-// Apply manual refinements to cv::Mat class
-// This includes [], []=, ptr, and each methods that require type dispatch
-void Mat_refinements(Rice::Class& rb_cCvMat);
-
-#endif // MAT_REFINEMENTS_HPP
+void Init_Core_Mat_Refinements();

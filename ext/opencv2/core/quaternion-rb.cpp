@@ -1,3 +1,8 @@
+#include <opencv2/core/quaternion.hpp>
+#include "quaternion-rb.hpp"
+
+using namespace Rice;
+
 #include "quaternion-rb.ipp"
 
 void Init_Core_Quaternion()
@@ -38,9 +43,7 @@ void Init_Core_Quaternion()
     define_value("EXT_ZYZ", cv::QuatEnum::EulerAnglesType::EXT_ZYZ).
     define_value("EULER_ANGLES_MAX_VALUE", cv::QuatEnum::EulerAnglesType::EULER_ANGLES_MAX_VALUE);
 
-  Rice::Data_Type<cv::Quat<double>> quatd = define_class_under<cv::Quat<double>>(rb_mCv, "Quatd").
-    define(&Quat_builder<Data_Type<cv::Quat<double>>, double>);
+  Rice::Data_Type<cv::Quat<double>> quatd = Quat_instantiate<double>(rb_mCv, "Quatd");
 
-  Rice::Data_Type<cv::Quat<float>> quatf = define_class_under<cv::Quat<float>>(rb_mCv, "Quatf").
-    define(&Quat_builder<Data_Type<cv::Quat<float>>, float>);
+  Rice::Data_Type<cv::Quat<float>> quatf = Quat_instantiate<float>(rb_mCv, "Quatf");
 }

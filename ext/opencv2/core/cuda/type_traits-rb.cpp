@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/type_traits.hpp>
+#include "type_traits-rb.hpp"
+
+using namespace Rice;
+
 #include "type_traits-rb.ipp"
 
 void Init_Core_Cuda_TypeTraits()

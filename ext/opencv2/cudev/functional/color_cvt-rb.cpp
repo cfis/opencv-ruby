@@ -265,63 +265,43 @@ void Init_Cudev_Functional_ColorCvt()
   Rice::Data_Type<cv::cudev::HLS4_to_BGRA_FULL_func<float>> rb_cCvCudevHLS4ToBGRAFULLFuncFloat = define_class_under<cv::cudev::HLS4_to_BGRA_FULL_func<float>, cv::cudev::color_cvt_detail::HLS2RGB<float, 4, 4, 0, 360>>(rb_mCvCudev, "HLS4ToBGRAFULLFuncFloat").
     define_constructor(Constructor<cv::cudev::HLS4_to_BGRA_FULL_func<float>>());
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 5>> rb_cBGRToBGR555Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 5>>(rb_mCvCudev, "BGRToBGR555Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 5>>, 3, 0, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 5>> rb_cBGRToBGR555Func = RGB2RGB5x5_instantiate<3, 0, 5>(rb_mCvCudev, "BGRToBGR555Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 6>> rb_cBGRToBGR565Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 6>>(rb_mCvCudev, "BGRToBGR565Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 6>>, 3, 0, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 0, 6>> rb_cBGRToBGR565Func = RGB2RGB5x5_instantiate<3, 0, 6>(rb_mCvCudev, "BGRToBGR565Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 5>> rb_cRGBToBGR555Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 5>>(rb_mCvCudev, "RGBToBGR555Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 5>>, 3, 2, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 5>> rb_cRGBToBGR555Func = RGB2RGB5x5_instantiate<3, 2, 5>(rb_mCvCudev, "RGBToBGR555Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 6>> rb_cRGBToBGR565Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 6>>(rb_mCvCudev, "RGBToBGR565Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 6>>, 3, 2, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<3, 2, 6>> rb_cRGBToBGR565Func = RGB2RGB5x5_instantiate<3, 2, 6>(rb_mCvCudev, "RGBToBGR565Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 5>> rb_cBGRAToBGR555Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 5>>(rb_mCvCudev, "BGRAToBGR555Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 5>>, 4, 0, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 5>> rb_cBGRAToBGR555Func = RGB2RGB5x5_instantiate<4, 0, 5>(rb_mCvCudev, "BGRAToBGR555Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 6>> rb_cBGRAToBGR565Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 6>>(rb_mCvCudev, "BGRAToBGR565Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 6>>, 4, 0, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 0, 6>> rb_cBGRAToBGR565Func = RGB2RGB5x5_instantiate<4, 0, 6>(rb_mCvCudev, "BGRAToBGR565Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 5>> rb_cRGBAToBGR555Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 5>>(rb_mCvCudev, "RGBAToBGR555Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 5>>, 4, 2, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 5>> rb_cRGBAToBGR555Func = RGB2RGB5x5_instantiate<4, 2, 5>(rb_mCvCudev, "RGBAToBGR555Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 6>> rb_cRGBAToBGR565Func = define_class_under<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 6>>(rb_mCvCudev, "RGBAToBGR565Func").
-    define(&RGB2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 6>>, 4, 2, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB2RGB5x5<4, 2, 6>> rb_cRGBAToBGR565Func = RGB2RGB5x5_instantiate<4, 2, 6>(rb_mCvCudev, "RGBAToBGR565Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 5>> rb_cBGR555ToRGBFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 5>>(rb_mCvCudev, "BGR555ToRGBFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 5>>, 3, 2, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 5>> rb_cBGR555ToRGBFunc = RGB5x52RGB_instantiate<3, 2, 5>(rb_mCvCudev, "BGR555ToRGBFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 6>> rb_cBGR565ToRGBFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 6>>(rb_mCvCudev, "BGR565ToRGBFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 6>>, 3, 2, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 2, 6>> rb_cBGR565ToRGBFunc = RGB5x52RGB_instantiate<3, 2, 6>(rb_mCvCudev, "BGR565ToRGBFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 5>> rb_cBGR555ToBGRFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 5>>(rb_mCvCudev, "BGR555ToBGRFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 5>>, 3, 0, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 5>> rb_cBGR555ToBGRFunc = RGB5x52RGB_instantiate<3, 0, 5>(rb_mCvCudev, "BGR555ToBGRFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 6>> rb_cBGR565ToBGRFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 6>>(rb_mCvCudev, "BGR565ToBGRFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 6>>, 3, 0, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<3, 0, 6>> rb_cBGR565ToBGRFunc = RGB5x52RGB_instantiate<3, 0, 6>(rb_mCvCudev, "BGR565ToBGRFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 5>> rb_cBGR555ToRGBAFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 5>>(rb_mCvCudev, "BGR555ToRGBAFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 5>>, 4, 2, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 5>> rb_cBGR555ToRGBAFunc = RGB5x52RGB_instantiate<4, 2, 5>(rb_mCvCudev, "BGR555ToRGBAFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 6>> rb_cBGR565ToRGBAFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 6>>(rb_mCvCudev, "BGR565ToRGBAFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 6>>, 4, 2, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 2, 6>> rb_cBGR565ToRGBAFunc = RGB5x52RGB_instantiate<4, 2, 6>(rb_mCvCudev, "BGR565ToRGBAFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 5>> rb_cBGR555ToBGRAFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 5>>(rb_mCvCudev, "BGR555ToBGRAFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 5>>, 4, 0, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 5>> rb_cBGR555ToBGRAFunc = RGB5x52RGB_instantiate<4, 0, 5>(rb_mCvCudev, "BGR555ToBGRAFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 6>> rb_cBGR565ToBGRAFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 6>>(rb_mCvCudev, "BGR565ToBGRAFunc").
-    define(&RGB5x52RGB_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 6>>, 4, 0, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52RGB<4, 0, 6>> rb_cBGR565ToBGRAFunc = RGB5x52RGB_instantiate<4, 0, 6>(rb_mCvCudev, "BGR565ToBGRAFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>> rb_cGRAYToBGR555Func = define_class_under<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>>(rb_mCvCudev, "GRAYToBGR555Func").
-    define(&Gray2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>>, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>> rb_cGRAYToBGR555Func = Gray2RGB5x5_instantiate<5>(rb_mCvCudev, "GRAYToBGR555Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<6>> rb_cGRAYToBGR565Func = define_class_under<cv::cudev::color_cvt_detail::Gray2RGB5x5<6>>(rb_mCvCudev, "GRAYToBGR565Func").
-    define(&Gray2RGB5x5_builder<Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<6>>, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<6>> rb_cGRAYToBGR565Func = Gray2RGB5x5_instantiate<6>(rb_mCvCudev, "GRAYToBGR565Func");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<5>> rb_cBGR555ToGRAYFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52Gray<5>>(rb_mCvCudev, "BGR555ToGRAYFunc").
-    define(&RGB5x52Gray_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<5>>, 5>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<5>> rb_cBGR555ToGRAYFunc = RGB5x52Gray_instantiate<5>(rb_mCvCudev, "BGR555ToGRAYFunc");
 
-  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<6>> rb_cBGR565ToGRAYFunc = define_class_under<cv::cudev::color_cvt_detail::RGB5x52Gray<6>>(rb_mCvCudev, "BGR565ToGRAYFunc").
-    define(&RGB5x52Gray_builder<Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<6>>, 6>);
+  Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<6>> rb_cBGR565ToGRAYFunc = RGB5x52Gray_instantiate<6>(rb_mCvCudev, "BGR565ToGRAYFunc");
 }

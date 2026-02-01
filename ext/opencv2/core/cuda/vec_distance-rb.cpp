@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/vec_distance.hpp>
+#include "vec_distance-rb.hpp"
+
+using namespace Rice;
+
 #include "vec_distance-rb.ipp"
 
 void Init_Core_Cuda_VecDistance()

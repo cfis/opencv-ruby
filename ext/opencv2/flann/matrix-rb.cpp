@@ -1,3 +1,8 @@
+#include <opencv2/flann/matrix.h>
+#include "matrix-rb.hpp"
+
+using namespace Rice;
+
 #include "matrix-rb.ipp"
 
 void Init_Flann_Matrix()

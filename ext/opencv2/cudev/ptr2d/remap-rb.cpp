@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/remap.hpp>
+#include "remap-rb.hpp"
+
+using namespace Rice;
+
 #include "remap-rb.ipp"
 
 void Init_Cudev_Ptr2d_Remap()

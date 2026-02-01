@@ -1,12 +1,8 @@
-#include <opencv2/flann/hierarchical_clustering_index.h>
-#include "hierarchical_clustering_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void HierarchicalClusteringIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::HierarchicalClusteringIndex<Distance>> HierarchicalClusteringIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::HierarchicalClusteringIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("index_params") = static_cast<const cvflann::IndexParams&>(cvflann::HierarchicalClusteringIndexParams()), Arg("d") = static_cast<Distance>(cvflann::HierarchicalClusteringIndex::Distance())).
     define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::HierarchicalClusteringIndex<Distance>&>(),
       Arg("arg_0")).
@@ -24,5 +20,5 @@ inline void HierarchicalClusteringIndex_builder(Data_Type_T& klass)
     template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(cvflann::ResultSet<cvflann::HierarchicalClusteringIndex<Distance>::DistanceType>&, const typename cvflann::HierarchicalClusteringIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::HierarchicalClusteringIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
     template define_method<cvflann::IndexParams(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("get_parameters", &cvflann::HierarchicalClusteringIndex<Distance>::getParameters);
-};
+}
 

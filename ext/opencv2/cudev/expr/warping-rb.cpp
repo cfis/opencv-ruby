@@ -1,3 +1,8 @@
+#include <opencv2/cudev/expr/warping.hpp>
+#include "warping-rb.hpp"
+
+using namespace Rice;
+
 #include "warping-rb.ipp"
 
 void Init_Cudev_Expr_Warping()

@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/border_interpolate.hpp>
+#include "border_interpolate-rb.hpp"
+
+using namespace Rice;
+
 #include "border_interpolate-rb.ipp"
 
 void Init_Core_Cuda_BorderInterpolate()

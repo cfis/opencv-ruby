@@ -1,12 +1,8 @@
-#include <opencv2/core/matx.hpp>
-#include "matx-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp, int m, int n>
-inline void Matx_builder(Data_Type_T& klass)
+template<typename _Tp, int m, int n>
+inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
+  return Rice::define_class_under<cv::Matx<_Tp, m, n>>(parent, name).
+    define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
     define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols).
     define_constant("Channels", (int)cv::Matx<_Tp, m, n>::channels).
     define_constant("Shortdim", (int)cv::Matx<_Tp, m, n>::shortdim).
@@ -87,12 +83,13 @@ inline void Matx_builder(Data_Type_T& klass)
       Arg("a"), Arg("b")).
     template define_singleton_function<cv::Matx<_Tp, m, n>(*)(_Tp, _Tp)>("randn", &cv::Matx<_Tp, m, n>::randn,
       Arg("a"), Arg("b"));
-};
+}
 
-template<typename Data_Type_T, typename _Tp, int cn>
-inline void Vec_builder(Data_Type_T& klass)
+template<typename _Tp, int cn>
+inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels).
+  return Rice::define_class_under<cv::Vec<_Tp, cn>>(parent, name).
+    define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels).
     define_constant("_dummy_enum_finalizer", (int)cv::Vec<_Tp, cn>::_dummy_enum_finalizer).
     define_constructor(Constructor<cv::Vec<_Tp, cn>>()).
     define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp>(),
@@ -152,5 +149,5 @@ inline void Vec_builder(Data_Type_T& klass)
     template define_singleton_function<cv::Vec<_Tp, cn>(*)(_Tp, _Tp)>("randu", &cv::Vec<_Tp, cn>::randu,
       Arg("a"), Arg("b")).
     template define_singleton_function<cv::Vec<_Tp, cn>(*)()>("zeros", &cv::Vec<_Tp, cn>::zeros);
-};
+}
 

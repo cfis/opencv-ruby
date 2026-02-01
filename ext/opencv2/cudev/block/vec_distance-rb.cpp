@@ -1,3 +1,8 @@
+#include <opencv2/cudev/block/vec_distance.hpp>
+#include "vec_distance-rb.hpp"
+
+using namespace Rice;
+
 #include "vec_distance-rb.ipp"
 
 void Init_Cudev_Block_VecDistance()

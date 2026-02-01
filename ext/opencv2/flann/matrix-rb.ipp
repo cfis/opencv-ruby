@@ -1,12 +1,8 @@
-#include <opencv2/flann/matrix.h>
-#include "matrix-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void Matrix_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::Matrix<T>> Matrix_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("rows", &cvflann::Matrix<T>::rows).
+  return Rice::define_class_under<cvflann::Matrix<T>>(parent, name).
+    define_attr("rows", &cvflann::Matrix<T>::rows).
     define_attr("cols", &cvflann::Matrix<T>::cols).
     define_attr("stride", &cvflann::Matrix<T>::stride).
     define_attr("data", &cvflann::Matrix<T>::data).
@@ -15,5 +11,5 @@ inline void Matrix_builder(Data_Type_T& klass)
       std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("rows_"), Arg("cols_"), Arg("stride_") = static_cast<size_t>(0)).
     template define_method<T*(cvflann::Matrix<T>::*)(size_t) const>("[]", &cvflann::Matrix<T>::operator[],
       Arg("index"));
-};
+}
 

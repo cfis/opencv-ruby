@@ -1,3 +1,8 @@
+#include <opencv2/cudev/util/detail/type_traits.hpp>
+#include "type_traits-rb.hpp"
+
+using namespace Rice;
+
 #include "type_traits-rb.ipp"
 
 void Init_Cudev_Util_Detail_TypeTraits()

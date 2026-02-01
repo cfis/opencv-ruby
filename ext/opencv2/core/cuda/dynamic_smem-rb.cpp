@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/dynamic_smem.hpp>
+#include "dynamic_smem-rb.hpp"
+
+using namespace Rice;
+
 #include "dynamic_smem-rb.ipp"
 
 void Init_Core_Cuda_DynamicSmem()

@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/mask.hpp>
+#include "mask-rb.hpp"
+
+using namespace Rice;
+
 #include "mask-rb.ipp"
 
 void Init_Cudev_Ptr2d_Mask()

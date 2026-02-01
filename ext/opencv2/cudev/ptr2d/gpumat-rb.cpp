@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/gpumat.hpp>
+#include "gpumat-rb.hpp"
+
+using namespace Rice;
+
 #include "gpumat-rb.ipp"
 
 void Init_Cudev_Ptr2d_Gpumat()

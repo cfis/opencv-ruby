@@ -224,9 +224,6 @@
 #include "opencv2/xobjdetect-rb.hpp"
 #include "opencv2/xphoto-rb.hpp"
 
-// Extern declarations for refinements
-extern Rice::Class rb_cCvMat;
-
 extern "C"
 void Init_opencv_ruby()
 {
@@ -271,7 +268,7 @@ void Init_opencv_ruby()
     Init_Core_Matx();
     Init_Core_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
     Init_Core_Mat();
-    Mat_refinements(rb_cCvMat); // Apply manual refinements to Mat class
+    Init_Core_Mat_Refinements(); // Apply manual refinements to Mat class
     Init_Core_NeonUtils();
     Init_Core_Ocl();
     Init_Core_OclGenbase();

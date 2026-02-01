@@ -3961,7 +3961,7 @@ void Init_Core_Cuda_VecMath()
   rb_mCvCudaDevice.define_module_function<double4(*)(double, const double4&)>("atan2", &cv::cuda::device::atan2,
     Arg("s"), Arg("b"));
 
-  rb_cUchar1.
+  Data_Type<uchar1>().
     define_method("+", [](const uchar1& self, const uchar1& other) -> int1
   {
     return self + other;
@@ -4115,7 +4115,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUchar2.
+  Data_Type<uchar2>().
     define_method("+", [](const uchar2& self, const uchar2& other) -> int2
   {
     return self + other;
@@ -4269,7 +4269,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUchar3.
+  Data_Type<uchar3>().
     define_method("+", [](const uchar3& self, const uchar3& other) -> int3
   {
     return self + other;
@@ -4423,7 +4423,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUchar4.
+  Data_Type<uchar4>().
     define_method("+", [](const uchar4& self, const uchar4& other) -> int4
   {
     return self + other;
@@ -4577,7 +4577,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cChar1.
+  Data_Type<char1>().
     define_method("+", [](const char1& self, const char1& other) -> int1
   {
     return self + other;
@@ -4731,7 +4731,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cChar2.
+  Data_Type<char2>().
     define_method("+", [](const char2& self, const char2& other) -> int2
   {
     return self + other;
@@ -4885,7 +4885,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cChar3.
+  Data_Type<char3>().
     define_method("+", [](const char3& self, const char3& other) -> int3
   {
     return self + other;
@@ -5039,7 +5039,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cChar4.
+  Data_Type<char4>().
     define_method("+", [](const char4& self, const char4& other) -> int4
   {
     return self + other;
@@ -5193,7 +5193,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUshort1.
+  Data_Type<ushort1>().
     define_method("+", [](const ushort1& self, const ushort1& other) -> int1
   {
     return self + other;
@@ -5347,7 +5347,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUshort2.
+  Data_Type<ushort2>().
     define_method("+", [](const ushort2& self, const ushort2& other) -> int2
   {
     return self + other;
@@ -5501,7 +5501,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUshort3.
+  Data_Type<ushort3>().
     define_method("+", [](const ushort3& self, const ushort3& other) -> int3
   {
     return self + other;
@@ -5655,7 +5655,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUshort4.
+  Data_Type<ushort4>().
     define_method("+", [](const ushort4& self, const ushort4& other) -> int4
   {
     return self + other;
@@ -5809,7 +5809,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cShort1.
+  Data_Type<short1>().
     define_method("+", [](const short1& self, const short1& other) -> int1
   {
     return self + other;
@@ -5963,7 +5963,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cShort2.
+  Data_Type<short2>().
     define_method("+", [](const short2& self, const short2& other) -> int2
   {
     return self + other;
@@ -6117,7 +6117,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cShort3.
+  Data_Type<short3>().
     define_method("+", [](const short3& self, const short3& other) -> int3
   {
     return self + other;
@@ -6271,7 +6271,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cShort4.
+  Data_Type<short4>().
     define_method("+", [](const short4& self, const short4& other) -> int4
   {
     return self + other;
@@ -6425,7 +6425,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cInt1.
+  Data_Type<int1>().
     define_method("+", [](const int1& self, const int1& other) -> int1
   {
     return self + other;
@@ -6579,7 +6579,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cInt2.
+  Data_Type<int2>().
     define_method("+", [](const int2& self, const int2& other) -> int2
   {
     return self + other;
@@ -6733,7 +6733,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cInt3.
+  Data_Type<int3>().
     define_method("+", [](const int3& self, const int3& other) -> int3
   {
     return self + other;
@@ -6887,7 +6887,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cInt4.
+  Data_Type<int4>().
     define_method("+", [](const int4& self, const int4& other) -> int4
   {
     return self + other;
@@ -7041,7 +7041,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUint1.
+  Data_Type<uint1>().
     define_method("+", [](const uint1& self, const uint1& other) -> uint1
   {
     return self + other;
@@ -7195,7 +7195,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUint2.
+  Data_Type<uint2>().
     define_method("+", [](const uint2& self, const uint2& other) -> uint2
   {
     return self + other;
@@ -7349,7 +7349,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUint3.
+  Data_Type<uint3>().
     define_method("+", [](const uint3& self, const uint3& other) -> uint3
   {
     return self + other;
@@ -7503,7 +7503,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUint4.
+  Data_Type<uint4>().
     define_method("+", [](const uint4& self, const uint4& other) -> uint4
   {
     return self + other;
@@ -7657,7 +7657,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cFloat1.
+  Data_Type<float1>().
     define_method("+", [](const float1& self, const float1& other) -> float1
   {
     return self + other;
@@ -7771,7 +7771,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cFloat2.
+  Data_Type<float2>().
     define_method("+", [](const float2& self, const float2& other) -> float2
   {
     return self + other;
@@ -7885,7 +7885,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cFloat3.
+  Data_Type<float3>().
     define_method("+", [](const float3& self, const float3& other) -> float3
   {
     return self + other;
@@ -7999,7 +7999,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cFloat4.
+  Data_Type<float4>().
     define_method("+", [](const float4& self, const float4& other) -> float4
   {
     return self + other;
@@ -8113,7 +8113,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cDouble1.
+  Data_Type<double1>().
     define_method("+", [](const double1& self, const double1& other) -> double1
   {
     return self + other;
@@ -8211,7 +8211,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cDouble2.
+  Data_Type<double2>().
     define_method("+", [](const double2& self, const double2& other) -> double2
   {
     return self + other;
@@ -8309,7 +8309,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cDouble3.
+  Data_Type<double3>().
     define_method("+", [](const double3& self, const double3& other) -> double3
   {
     return self + other;
@@ -8407,7 +8407,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cDouble4.
+  Data_Type<double4>().
     define_method("+", [](const double4& self, const double4& other) -> double4
   {
     return self + other;
@@ -8505,7 +8505,7 @@ void Init_Core_Cuda_VecMath()
     return self || other;
   });
   
-  rb_cUint.
+  Data_Type<uint>().
     define_method("+", [](uint self, const uint1& other) -> uint1
   {
     return self + other;
@@ -8747,7 +8747,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUchar.
+  Data_Type<uchar>().
     define_method("==", [](uchar self, const uchar1& other) -> uchar1
   {
     return self == other;
@@ -8925,7 +8925,7 @@ void Init_Core_Cuda_VecMath()
     return self ^ other;
   });
   
-  rb_cUshort.
+  Data_Type<ushort>().
     define_method("==", [](ushort self, const ushort1& other) -> uchar1
   {
     return self == other;

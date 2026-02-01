@@ -1,3 +1,8 @@
+#include <opencv2/core/utils/tls.hpp>
+#include "tls-rb.hpp"
+
+using namespace Rice;
+
 #include "tls-rb.ipp"
 
 void Init_Core_Utils_Tls()

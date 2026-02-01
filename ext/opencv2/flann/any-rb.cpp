@@ -1,3 +1,8 @@
+#include <opencv2/flann/any.h>
+#include "any-rb.hpp"
+
+using namespace Rice;
+
 #include "any-rb.ipp"
 
 void Init_Flann_Any()

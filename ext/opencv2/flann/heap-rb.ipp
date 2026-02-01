@@ -1,19 +1,16 @@
-#include <opencv2/flann/heap.h>
-#include "heap-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void greater_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::greater<T>> greater_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_method<bool(cvflann::greater<T>::*)(const T&, const T&) const>("call", &cvflann::greater<T>::operator(),
+  return Rice::define_class_under<cvflann::greater<T>>(parent, name).
+    template define_method<bool(cvflann::greater<T>::*)(const T&, const T&) const>("call", &cvflann::greater<T>::operator(),
       Arg("x"), Arg("y"));
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void Heap_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::Heap<T>> Heap_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::Heap<T>, const int>(),
+  return Rice::define_class_under<cvflann::Heap<T>>(parent, name).
+    define_constructor(Constructor<cvflann::Heap<T>, const int>(),
       Arg("capacity")).
     define_constructor(Constructor<cvflann::Heap<T>, std::vector<T>&&>(),
       Arg("vec")).
@@ -27,5 +24,5 @@ inline void Heap_builder(Data_Type_T& klass)
       Arg("value")).
     template define_method<bool(cvflann::Heap<T>::*)(T&)>("pop_min", &cvflann::Heap<T>::popMin,
       Arg("value"));
-};
+}
 

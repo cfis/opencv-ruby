@@ -1,12 +1,8 @@
-#include <opencv2/flann/flann_base.hpp>
-#include "flann_base-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void Index_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::Index<Distance>> Index_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::Index<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::Index<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::Index<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("features"), Arg("params"), Arg("distance") = static_cast<Distance>(cvflann::Index::Distance())).
     template define_method<void(cvflann::Index<Distance>::*)()>("build_index", &cvflann::Index<Distance>::buildIndex).
     template define_method<void(cvflann::Index<Distance>::*)(cv::String)>("save", &cvflann::Index<Distance>::save,
@@ -26,5 +22,5 @@ inline void Index_builder(Data_Type_T& klass)
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
     template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<cvflann::Index<Distance>::DistanceType>&, const typename cvflann::Index<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
-};
+}
 

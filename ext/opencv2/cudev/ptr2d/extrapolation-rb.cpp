@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/extrapolation.hpp>
+#include "extrapolation-rb.hpp"
+
+using namespace Rice;
+
 #include "extrapolation-rb.ipp"
 
 void Init_Cudev_Ptr2d_Extrapolation()

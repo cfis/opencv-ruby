@@ -1,3 +1,8 @@
+#include <opencv2/cudev/grid/detail/reduce.hpp>
+#include "reduce-rb.hpp"
+
+using namespace Rice;
+
 #include "reduce-rb.ipp"
 
 void Init_Cudev_Grid_Detail_Reduce()

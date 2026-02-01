@@ -1,12 +1,8 @@
-#include <opencv2/core/cuda_types.hpp>
-#include "cuda_types-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void DevPtr_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Elem_size", (int)cv::cuda::DevPtr<T>::elem_size).
+  return Rice::define_class_under<cv::cuda::DevPtr<T>>(parent, name).
+    define_constant("Elem_size", (int)cv::cuda::DevPtr<T>::elem_size).
     define_attr("data", &cv::cuda::DevPtr<T>::data).
     define_constructor(Constructor<cv::cuda::DevPtr<T>>()).
     define_constructor(Constructor<cv::cuda::DevPtr<T>, T*>(),
@@ -20,21 +16,23 @@ inline void DevPtr_builder(Data_Type_T& klass)
     {
       return self;
     });
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void PtrSz_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::cuda::PtrSz<T>>()).
+  return Rice::define_class_under<cv::cuda::PtrSz<T>>(parent, name).
+    define_constructor(Constructor<cv::cuda::PtrSz<T>>()).
     define_constructor(Constructor<cv::cuda::PtrSz<T>, T*, size_t>(),
       std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("size_")).
     define_attr("size", &cv::cuda::PtrSz<T>::size);
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void PtrStep_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::cuda::PtrStep<T>>()).
+  return Rice::define_class_under<cv::cuda::PtrStep<T>>(parent, name).
+    define_constructor(Constructor<cv::cuda::PtrStep<T>>()).
     define_constructor(Constructor<cv::cuda::PtrStep<T>, T*, size_t>(),
       std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("step_")).
     define_attr("step", &cv::cuda::PtrStep<T>::step).
@@ -46,12 +44,13 @@ inline void PtrStep_builder(Data_Type_T& klass)
       Arg("y"), Arg("x")).
     template define_method<const T&(cv::cuda::PtrStep<T>::*)(int, int) const>("call", &cv::cuda::PtrStep<T>::operator(),
       Arg("y"), Arg("x"));
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void PtrStepSz_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::PtrStepSz<T>> PtrStepSz_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::cuda::PtrStepSz<T>>()).
+  return Rice::define_class_under<cv::cuda::PtrStepSz<T>>(parent, name).
+    define_constructor(Constructor<cv::cuda::PtrStepSz<T>>()).
     define_constructor(Constructor<cv::cuda::PtrStepSz<T>, int, int, T*, size_t>(),
       Arg("rows_"), Arg("cols_"), std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("step_")).
     define_attr("cols", &cv::cuda::PtrStepSz<T>::cols).
@@ -61,5 +60,5 @@ inline void PtrStepSz_builder(Data_Type_T& klass)
       Arg("pos")).
     template define_method<const T&(cv::cuda::PtrStepSz<T>::*)(const cv::Point&) const>("call", &cv::cuda::PtrStepSz<T>::operator(),
       Arg("pos"));
-};
+}
 

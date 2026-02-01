@@ -1,12 +1,8 @@
-#include <opencv2/core/mat.hpp>
-#include "mat-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp>
-inline void Mat__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Mat_<_Tp>>()).
+  return Rice::define_class_under<cv::Mat_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Mat_<_Tp>>()).
     define_constructor(Constructor<cv::Mat_<_Tp>, int, int>(),
       Arg("_rows"), Arg("_cols")).
     define_constructor(Constructor<cv::Mat_<_Tp>, int, int, const _Tp&>(),
@@ -138,12 +134,13 @@ inline void Mat__builder(Data_Type_T& klass)
       Arg("rows"), Arg("cols")).
     template define_singleton_function<cv::MatExpr(*)(cv::Size)>("eye", &cv::Mat_<_Tp>::eye,
       Arg("size"));
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void SparseMat__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::SparseMat_<_Tp>>()).
+  return Rice::define_class_under<cv::SparseMat_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::SparseMat_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMat_<_Tp>, int, const int*>(),
       Arg("dims"), ArgBuffer("_sizes")).
     define_constructor(Constructor<cv::SparseMat_<_Tp>, const cv::SparseMat&>(),
@@ -182,12 +179,13 @@ inline void SparseMat__builder(Data_Type_T& klass)
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_iterator<cv::SparseMatIterator_<_Tp>(cv::SparseMat_<_Tp>::*)()>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each").
     template define_iterator<cv::SparseMatConstIterator_<_Tp>(cv::SparseMat_<_Tp>::*)() const>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each_const");
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void MatConstIterator__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::MatConstIterator_<_Tp>>()).
+  return Rice::define_class_under<cv::MatConstIterator_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::MatConstIterator_<_Tp>>()).
     define_constructor(Constructor<cv::MatConstIterator_<_Tp>, const cv::Mat_<_Tp>*>(),
       Arg("_m")).
     define_constructor(Constructor<cv::MatConstIterator_<_Tp>, const cv::Mat_<_Tp>*, int, int>(),
@@ -214,12 +212,13 @@ inline void MatConstIterator__builder(Data_Type_T& klass)
     template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::MatConstIterator_<_Tp>::operator++,
       Arg("arg_0")).
     template define_method<cv::Point(cv::MatConstIterator_<_Tp>::*)() const>("pos", &cv::MatConstIterator_<_Tp>::pos);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void MatIterator__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::MatIterator_<_Tp>>()).
+  return Rice::define_class_under<cv::MatIterator_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::MatIterator_<_Tp>>()).
     define_constructor(Constructor<cv::MatIterator_<_Tp>, cv::Mat_<_Tp>*>(),
       Arg("_m")).
     define_constructor(Constructor<cv::MatIterator_<_Tp>, cv::Mat_<_Tp>*, int, int>(),
@@ -245,12 +244,13 @@ inline void MatIterator__builder(Data_Type_T& klass)
     template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("increment", &cv::MatIterator_<_Tp>::operator++).
     template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("increment_post", &cv::MatIterator_<_Tp>::operator++,
       Arg("arg_0"));
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void SparseMatConstIterator__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>>()).
+  return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>, const cv::SparseMat_<_Tp>*>(),
       Arg("_m")).
     define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>, const cv::SparseMat*>(),
@@ -263,12 +263,13 @@ inline void SparseMatConstIterator__builder(Data_Type_T& klass)
     template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++).
     template define_method<cv::SparseMatConstIterator_<_Tp>(cv::SparseMatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatConstIterator_<_Tp>::operator++,
       Arg("arg_0"));
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void SparseMatIterator__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::SparseMatIterator_<_Tp>> SparseMatIterator__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::SparseMatIterator_<_Tp>>()).
+  return Rice::define_class_under<cv::SparseMatIterator_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::SparseMatIterator_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMatIterator_<_Tp>, cv::SparseMat_<_Tp>*>(),
       Arg("_m")).
     define_constructor(Constructor<cv::SparseMatIterator_<_Tp>, cv::SparseMat*>(),
@@ -281,5 +282,5 @@ inline void SparseMatIterator__builder(Data_Type_T& klass)
     template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment", &cv::SparseMatIterator_<_Tp>::operator++).
     template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatIterator_<_Tp>::operator++,
       Arg("arg_0"));
-};
+}
 

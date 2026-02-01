@@ -1,3 +1,8 @@
+#include <opencv2/flann/kdtree_single_index.h>
+#include "kdtree_single_index-rb.hpp"
+
+using namespace Rice;
+
 #include "kdtree_single_index-rb.ipp"
 
 void Init_Flann_KdtreeSingleIndex()

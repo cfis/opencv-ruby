@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/scan.hpp>
+#include "scan-rb.hpp"
+
+using namespace Rice;
+
 #include "scan-rb.ipp"
 
 void Init_Core_Cuda_Scan()

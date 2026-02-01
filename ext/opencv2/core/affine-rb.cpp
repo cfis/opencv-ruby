@@ -1,14 +1,17 @@
+#include <opencv2/core/affine.hpp>
+#include "affine-rb.hpp"
+
+using namespace Rice;
+
 #include "affine-rb.ipp"
 
 void Init_Core_Affine()
 {
   Module rb_mCv = define_module("Cv");
 
-  Rice::Data_Type<cv::Affine3<float>> rb_cAffine3f = define_class_under<cv::Affine3<float>>(rb_mCv, "Affine3f").
-    define(&Affine3_builder<Data_Type<cv::Affine3<float>>, float>);
+  Rice::Data_Type<cv::Affine3<float>> rb_cAffine3f = Affine3_instantiate<float>(rb_mCv, "Affine3f");
 
-  Rice::Data_Type<cv::Affine3<double>> rb_cAffine3d = define_class_under<cv::Affine3<double>>(rb_mCv, "Affine3d").
-    define(&Affine3_builder<Data_Type<cv::Affine3<double>>, double>);
+  Rice::Data_Type<cv::Affine3<double>> rb_cAffine3d = Affine3_instantiate<double>(rb_mCv, "Affine3d");
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 

@@ -1,12 +1,8 @@
-#include <opencv2/flann/kmeans_index.h>
-#include "kmeans_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void KMeansIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("choose_centers", &cvflann::KMeansIndex<Distance>::chooseCenters).
+  return Rice::define_class_under<cvflann::KMeansIndex<Distance>>(parent, name).
+    define_attr("choose_centers", &cvflann::KMeansIndex<Distance>::chooseCenters).
     template define_method<void(cvflann::KMeansIndex<Distance>::*)(int, int*, int, int*, int&)>("choose_centers_random", &cvflann::KMeansIndex<Distance>::chooseCentersRandom,
       Arg("k"), ArgBuffer("indices"), Arg("indices_length"), ArgBuffer("centers"), Arg("centers_length")).
     template define_method<void(cvflann::KMeansIndex<Distance>::*)(int, int*, int, int*, int&)>("choose_centers_gonzales", &cvflann::KMeansIndex<Distance>::chooseCentersGonzales,
@@ -35,14 +31,15 @@ inline void KMeansIndex_builder(Data_Type_T& klass)
     template define_method<int(cvflann::KMeansIndex<Distance>::*)(cvflann::Matrix<cvflann::KMeansIndex<Distance>::CentersType>&)>("get_cluster_centers", &cvflann::KMeansIndex<Distance>::getClusterCenters,
       Arg("centers")).
     template define_method<cvflann::IndexParams(cvflann::KMeansIndex<Distance>::*)() const>("get_parameters", &cvflann::KMeansIndex<Distance>::getParameters);
-};
+}
 
-template<typename Data_Type_T, typename CentersContainerType>
-inline void KMeansDistanceComputer_builder(Data_Type_T& klass)
+template<typename CentersContainerType>
+inline Rice::Data_Type<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>> KMeansDistanceComputer_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>, Distance, const cvflann::Matrix<ElementType>&, const int, const int*, const CentersContainerType&, const size_t, std::vector<int>&, std::vector<DistanceType>&>(),
+  return Rice::define_class_under<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>>(parent, name).
+    define_constructor(Constructor<cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>, Distance, const cvflann::Matrix<ElementType>&, const int, const int*, const CentersContainerType&, const size_t, std::vector<int>&, std::vector<DistanceType>&>(),
       Arg("_distance"), Arg("_dataset"), Arg("_branching"), ArgBuffer("_indices"), Arg("_dcenters"), Arg("_veclen"), Arg("_new_centroids"), Arg("_sq_dists")).
     template define_method<void(cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::*)(const cv::Range&) const>("call", &cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::operator(),
       Arg("range"));
-};
+}
 

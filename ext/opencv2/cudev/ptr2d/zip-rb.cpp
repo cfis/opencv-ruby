@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/zip.hpp>
+#include "zip-rb.hpp"
+
+using namespace Rice;
+
 #include "zip-rb.ipp"
 
 void Init_Cudev_Ptr2d_Zip()

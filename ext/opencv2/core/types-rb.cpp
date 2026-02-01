@@ -1,67 +1,53 @@
+#include <opencv2/core/types.hpp>
+#include "types-rb.hpp"
+
+using namespace Rice;
+
 #include "types-rb.ipp"
 
 void Init_Core_Types()
 {
   Module rb_mCv = define_module("Cv");
 
-  Rice::Data_Type<cv::Complex<float>> rb_cComplexf = define_class_under<cv::Complex<float>>(rb_mCv, "Complexf").
-    define(&Complex_builder<Data_Type<cv::Complex<float>>, float>);
+  Rice::Data_Type<cv::Complex<float>> rb_cComplexf = Complex_instantiate<float>(rb_mCv, "Complexf");
 
-  Rice::Data_Type<cv::Complex<double>> rb_cComplexd = define_class_under<cv::Complex<double>>(rb_mCv, "Complexd").
-    define(&Complex_builder<Data_Type<cv::Complex<double>>, double>);
+  Rice::Data_Type<cv::Complex<double>> rb_cComplexd = Complex_instantiate<double>(rb_mCv, "Complexd");
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 
-  Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = define_class_under<cv::Point_<int>>(rb_mCv, "Point2i").
-    define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
+  Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = define_class_under<cv::Point_<int64>>(rb_mCv, "Point2l").
-    define(&Point__builder<Data_Type<cv::Point_<int64>>, long>);
+  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
 
-  Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = define_class_under<cv::Point_<float>>(rb_mCv, "Point2f").
-    define(&Point__builder<Data_Type<cv::Point_<float>>, float>);
+  Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
-  Rice::Data_Type<cv::Point_<double>> rb_cPoint2d = define_class_under<cv::Point_<double>>(rb_mCv, "Point2d").
-    define(&Point__builder<Data_Type<cv::Point_<double>>, double>);
+  Rice::Data_Type<cv::Point_<double>> rb_cPoint2d = Point__instantiate<double>(rb_mCv, "Point2d");
 
-  Rice::Data_Type<cv::Point_<int>> rb_cPoint = define_class_under<cv::Point_<int>>(rb_mCv, "Point").
-    define(&Point__builder<Data_Type<cv::Point_<int>>, int>);
+  Rice::Data_Type<cv::Point_<int>> rb_cPoint = Point__instantiate<int>(rb_mCv, "Point");
 
-  Rice::Data_Type<cv::Point3_<int>> rb_cPoint3i = define_class_under<cv::Point3_<int>>(rb_mCv, "Point3i").
-    define(&Point3__builder<Data_Type<cv::Point3_<int>>, int>);
+  Rice::Data_Type<cv::Point3_<int>> rb_cPoint3i = Point3__instantiate<int>(rb_mCv, "Point3i");
 
-  Rice::Data_Type<cv::Point3_<float>> rb_cPoint3f = define_class_under<cv::Point3_<float>>(rb_mCv, "Point3f").
-    define(&Point3__builder<Data_Type<cv::Point3_<float>>, float>);
+  Rice::Data_Type<cv::Point3_<float>> rb_cPoint3f = Point3__instantiate<float>(rb_mCv, "Point3f");
 
-  Rice::Data_Type<cv::Point3_<double>> rb_cPoint3d = define_class_under<cv::Point3_<double>>(rb_mCv, "Point3d").
-    define(&Point3__builder<Data_Type<cv::Point3_<double>>, double>);
+  Rice::Data_Type<cv::Point3_<double>> rb_cPoint3d = Point3__instantiate<double>(rb_mCv, "Point3d");
 
-  Rice::Data_Type<cv::Size_<int>> rb_cSize2i = define_class_under<cv::Size_<int>>(rb_mCv, "Size2i").
-    define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
+  Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = define_class_under<cv::Size_<int64>>(rb_mCv, "Size2l").
-    define(&Size__builder<Data_Type<cv::Size_<int64>>, long>);
+  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
 
-  Rice::Data_Type<cv::Size_<float>> rb_cSize2f = define_class_under<cv::Size_<float>>(rb_mCv, "Size2f").
-    define(&Size__builder<Data_Type<cv::Size_<float>>, float>);
+  Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
-  Rice::Data_Type<cv::Size_<double>> rb_cSize2d = define_class_under<cv::Size_<double>>(rb_mCv, "Size2d").
-    define(&Size__builder<Data_Type<cv::Size_<double>>, double>);
+  Rice::Data_Type<cv::Size_<double>> rb_cSize2d = Size__instantiate<double>(rb_mCv, "Size2d");
 
-  Rice::Data_Type<cv::Size_<int>> rb_cSize = define_class_under<cv::Size_<int>>(rb_mCv, "Size").
-    define(&Size__builder<Data_Type<cv::Size_<int>>, int>);
+  Rice::Data_Type<cv::Size_<int>> rb_cSize = Size__instantiate<int>(rb_mCv, "Size");
 
-  Rice::Data_Type<cv::Rect_<int>> rb_cRect2i = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect2i").
-    define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
+  Rice::Data_Type<cv::Rect_<int>> rb_cRect2i = Rect__instantiate<int>(rb_mCv, "Rect2i");
 
-  Rice::Data_Type<cv::Rect_<float>> rb_cRect2f = define_class_under<cv::Rect_<float>>(rb_mCv, "Rect2f").
-    define(&Rect__builder<Data_Type<cv::Rect_<float>>, float>);
+  Rice::Data_Type<cv::Rect_<float>> rb_cRect2f = Rect__instantiate<float>(rb_mCv, "Rect2f");
 
-  Rice::Data_Type<cv::Rect_<double>> rb_cRect2d = define_class_under<cv::Rect_<double>>(rb_mCv, "Rect2d").
-    define(&Rect__builder<Data_Type<cv::Rect_<double>>, double>);
+  Rice::Data_Type<cv::Rect_<double>> rb_cRect2d = Rect__instantiate<double>(rb_mCv, "Rect2d");
 
-  Rice::Data_Type<cv::Rect_<int>> rb_cRect = define_class_under<cv::Rect_<int>>(rb_mCv, "Rect").
-    define(&Rect__builder<Data_Type<cv::Rect_<int>>, int>);
+  Rice::Data_Type<cv::Rect_<int>> rb_cRect = Rect__instantiate<int>(rb_mCv, "Rect");
 
   Rice::Data_Type<cv::RotatedRect> rb_cCvRotatedRect = define_class_under<cv::RotatedRect>(rb_mCv, "RotatedRect").
     define_constructor(Constructor<cv::RotatedRect>()).
@@ -123,12 +109,9 @@ void Init_Core_Types()
 
   rb_cCvTraitsTypeRange.define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
 
-  Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = define_class_under<cv::Matx<double, 4, 1>>(rb_mCv, "Matx41d").
-    define(&Matx_builder<Data_Type<cv::Matx<double, 4, 1>>, double, 4, 1>);
-  Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = define_class_under<cv::Vec<double, 4>, cv::Matx<double, 4, 1>>(rb_mCv, "Vec4d").
-    define(&Vec_builder<Data_Type<cv::Vec<double, 4>>, double, 4>);
-  Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = define_class_under<cv::Scalar_<double>, cv::Vec<double, 4>>(rb_mCv, "Scalar").
-    define(&Scalar__builder<Data_Type<cv::Scalar_<double>>, double>);
+  Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");
+  Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");
+  Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = Scalar__instantiate<double>(rb_mCv, "Scalar");
 
   Rice::Data_Type<cv::KeyPoint> rb_cCvKeyPoint = define_class_under<cv::KeyPoint>(rb_mCv, "KeyPoint").
     define_constructor(Constructor<cv::KeyPoint>()).
@@ -271,7 +254,7 @@ void Init_Core_Types()
     return self - other;
   });
   
-  rb_cCvMatxDouble44.
+  Data_Type<cv::Matx<double, 4, 4>>().
     define_method("*", [](const cv::Matx<double, 4, 4>& self, const cv::Scalar& other) -> cv::Scalar
   {
     return self * other;

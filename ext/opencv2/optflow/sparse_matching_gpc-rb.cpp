@@ -1,3 +1,8 @@
+#include <opencv2/optflow/sparse_matching_gpc.hpp>
+#include "sparse_matching_gpc-rb.hpp"
+
+using namespace Rice;
+
 #include "sparse_matching_gpc-rb.ipp"
 
 void Init_Optflow_SparseMatchingGpc()

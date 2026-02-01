@@ -1,3 +1,8 @@
+#include <opencv2/flann/dist.h>
+#include "dist-rb.hpp"
+
+using namespace Rice;
+
 #include "dist-rb.ipp"
 
 void Init_Flann_Dist()
@@ -87,8 +92,7 @@ void Init_Flann_Dist()
     define_constructor(Constructor<cvflann::False>()).
     define_constant("Val", cvflann::False::val);
 
-  Rice::Data_Type<cvflann::ZeroIterator<unsigned char>> rb_cCvflannZeroiteratorUnsignedChar = define_class_under<cvflann::ZeroIterator<unsigned char>>(rb_mCvflann, "ZeroIteratorUnsignedChar").
-    define(&ZeroIterator_builder<Data_Type<cvflann::ZeroIterator<unsigned char>>, unsigned char>);
+  Rice::Data_Type<cvflann::ZeroIterator<unsigned char>> rb_cCvflannZeroiteratorUnsignedChar = ZeroIterator_instantiate<unsigned char>(rb_mCvflann, "ZeroIteratorUnsignedChar");
 
   Rice::Data_Type<cvflann::HammingLUT> rb_cCvflannHammingLUT = define_class_under<cvflann::HammingLUT>(rb_mCvflann, "HammingLUT").
     define_constructor(Constructor<cvflann::HammingLUT>()).

@@ -1,3 +1,8 @@
+#include <opencv2/stitching/detail/warpers.hpp>
+#include "warpers-rb.hpp"
+
+using namespace Rice;
+
 #include "warpers-rb.ipp"
 
 void Init_Stitching_Detail_Warpers()

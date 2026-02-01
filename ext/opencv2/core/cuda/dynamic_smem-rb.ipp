@@ -1,11 +1,7 @@
-#include <opencv2/core/cuda/dynamic_smem.hpp>
-#include "dynamic_smem-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void DynamicSharedMem_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::device::DynamicSharedMem<T>> DynamicSharedMem_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("__forceinline__", &cv::cuda::device::DynamicSharedMem<T>::__forceinline__);
-};
+  return Rice::define_class_under<cv::cuda::device::DynamicSharedMem<T>>(parent, name).
+    define_attr("__forceinline__", &cv::cuda::device::DynamicSharedMem<T>::__forceinline__);
+}
 

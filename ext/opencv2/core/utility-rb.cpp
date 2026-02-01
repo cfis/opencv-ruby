@@ -1,3 +1,8 @@
+#include <opencv2/core/utility.hpp>
+#include "utility-rb.hpp"
+
+using namespace Rice;
+
 #include "utility-rb.ipp"
 
 void Init_Core_Utility()

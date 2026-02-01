@@ -1,12 +1,8 @@
-#include <opencv2/flann/kdtree_single_index.h>
-#include "kdtree_single_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void KDTreeSingleIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::KDTreeSingleIndex<Distance>> KDTreeSingleIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::KDTreeSingleIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::KDTreeSingleIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::KDTreeSingleIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::KDTreeSingleIndexParams()), Arg("d") = static_cast<Distance>(cvflann::KDTreeSingleIndex::Distance())).
     define_constructor(Constructor<cvflann::KDTreeSingleIndex<Distance>, const cvflann::KDTreeSingleIndex<Distance>&>(),
       Arg("arg_0")).
@@ -26,5 +22,5 @@ inline void KDTreeSingleIndex_builder(Data_Type_T& klass)
     template define_method<cvflann::IndexParams(cvflann::KDTreeSingleIndex<Distance>::*)() const>("get_parameters", &cvflann::KDTreeSingleIndex<Distance>::getParameters).
     template define_method<void(cvflann::KDTreeSingleIndex<Distance>::*)(cvflann::ResultSet<cvflann::KDTreeSingleIndex<Distance>::DistanceType>&, const typename cvflann::KDTreeSingleIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
-};
+}
 

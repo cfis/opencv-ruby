@@ -1,18 +1,15 @@
-#include <opencv2/core/cvstd_wrapper.hpp>
-#include "cvstd_wrapper-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename C, typename Ret, typename Args>
-inline void has_parenthesis_operator_builder(Data_Type_T& klass)
+template<typename C, typename Ret, typename Args>
+inline Rice::Data_Type<cv::sfinae::has_parenthesis_operator<C, Ret, Args>> has_parenthesis_operator_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", cv::sfinae::has_parenthesis_operator<C, Ret, Args>::value);
-};
+  return Rice::define_class_under<cv::sfinae::has_parenthesis_operator<C, Ret, Args>>(parent, name).
+    define_constant("Value", cv::sfinae::has_parenthesis_operator<C, Ret, Args>::value);
+}
 
-template<typename Data_Type_T, typename T>
-inline void Ptr_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::Ptr<T>> Ptr_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Ptr<T>>()).
+  return Rice::define_class_under<cv::Ptr<T>>(parent, name).
+    define_constructor(Constructor<cv::Ptr<T>>()).
     define_constructor(Constructor<cv::Ptr<T>, nullptr_t>(),
       Arg("arg_0")).
     define_constructor(Constructor<cv::Ptr<T>, const cv::Ptr<T>&>(),
@@ -32,5 +29,5 @@ inline void Ptr_builder(Data_Type_T& klass)
       return self;
     }).
     template define_method<bool(cv::Ptr<T>::*)() const>("empty?", &cv::Ptr<T>::empty);
-};
+}
 

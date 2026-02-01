@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda_types.hpp>
+#include "cuda_types-rb.hpp"
+
+using namespace Rice;
+
 #include "cuda_types-rb.ipp"
 
 void Init_Core_CudaTypes()
@@ -6,31 +11,19 @@ void Init_Core_CudaTypes()
 
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
-  Rice::Data_Type<cv::cuda::DevPtr<unsigned char>> rb_cDevPtrUnsignedChar = define_class_under<cv::cuda::DevPtr<unsigned char>>(rb_mCvCuda, "DevPtrUnsignedChar").
-    define(&DevPtr_builder<Data_Type<cv::cuda::DevPtr<unsigned char>>, unsigned char>);
-  Rice::Data_Type<cv::cuda::PtrStep<unsigned char>> rb_cPtrStepb = define_class_under<cv::cuda::PtrStep<unsigned char>, cv::cuda::DevPtr<unsigned char>>(rb_mCvCuda, "PtrStepb").
-    define(&PtrStep_builder<Data_Type<cv::cuda::PtrStep<unsigned char>>, unsigned char>);
-  Rice::Data_Type<cv::cuda::PtrStepSz<unsigned char>> rb_cPtrStepSzb = define_class_under<cv::cuda::PtrStepSz<unsigned char>, cv::cuda::PtrStep<unsigned char>>(rb_mCvCuda, "PtrStepSzb").
-    define(&PtrStepSz_builder<Data_Type<cv::cuda::PtrStepSz<unsigned char>>, unsigned char>);
+  Rice::Data_Type<cv::cuda::DevPtr<unsigned char>> rb_cDevPtrUnsignedChar = DevPtr_instantiate<unsigned char>(rb_mCvCuda, "DevPtrUnsignedChar");
+  Rice::Data_Type<cv::cuda::PtrStep<unsigned char>> rb_cPtrStepb = PtrStep_instantiate<unsigned char>(rb_mCvCuda, "PtrStepb");
+  Rice::Data_Type<cv::cuda::PtrStepSz<unsigned char>> rb_cPtrStepSzb = PtrStepSz_instantiate<unsigned char>(rb_mCvCuda, "PtrStepSzb");
 
-  Rice::Data_Type<cv::cuda::DevPtr<unsigned short>> rb_cDevPtrUnsignedShort = define_class_under<cv::cuda::DevPtr<unsigned short>>(rb_mCvCuda, "DevPtrUnsignedShort").
-    define(&DevPtr_builder<Data_Type<cv::cuda::DevPtr<unsigned short>>, unsigned short>);
-  Rice::Data_Type<cv::cuda::PtrStep<unsigned short>> rb_cPtrStepus = define_class_under<cv::cuda::PtrStep<unsigned short>, cv::cuda::DevPtr<unsigned short>>(rb_mCvCuda, "PtrStepus").
-    define(&PtrStep_builder<Data_Type<cv::cuda::PtrStep<unsigned short>>, unsigned short>);
-  Rice::Data_Type<cv::cuda::PtrStepSz<unsigned short>> rb_cPtrStepSzus = define_class_under<cv::cuda::PtrStepSz<unsigned short>, cv::cuda::PtrStep<unsigned short>>(rb_mCvCuda, "PtrStepSzus").
-    define(&PtrStepSz_builder<Data_Type<cv::cuda::PtrStepSz<unsigned short>>, unsigned short>);
+  Rice::Data_Type<cv::cuda::DevPtr<unsigned short>> rb_cDevPtrUnsignedShort = DevPtr_instantiate<unsigned short>(rb_mCvCuda, "DevPtrUnsignedShort");
+  Rice::Data_Type<cv::cuda::PtrStep<unsigned short>> rb_cPtrStepus = PtrStep_instantiate<unsigned short>(rb_mCvCuda, "PtrStepus");
+  Rice::Data_Type<cv::cuda::PtrStepSz<unsigned short>> rb_cPtrStepSzus = PtrStepSz_instantiate<unsigned short>(rb_mCvCuda, "PtrStepSzus");
 
-  Rice::Data_Type<cv::cuda::DevPtr<float>> rb_cDevPtrFloat = define_class_under<cv::cuda::DevPtr<float>>(rb_mCvCuda, "DevPtrFloat").
-    define(&DevPtr_builder<Data_Type<cv::cuda::DevPtr<float>>, float>);
-  Rice::Data_Type<cv::cuda::PtrStep<float>> rb_cPtrStepf = define_class_under<cv::cuda::PtrStep<float>, cv::cuda::DevPtr<float>>(rb_mCvCuda, "PtrStepf").
-    define(&PtrStep_builder<Data_Type<cv::cuda::PtrStep<float>>, float>);
-  Rice::Data_Type<cv::cuda::PtrStepSz<float>> rb_cPtrStepSzf = define_class_under<cv::cuda::PtrStepSz<float>, cv::cuda::PtrStep<float>>(rb_mCvCuda, "PtrStepSzf").
-    define(&PtrStepSz_builder<Data_Type<cv::cuda::PtrStepSz<float>>, float>);
+  Rice::Data_Type<cv::cuda::DevPtr<float>> rb_cDevPtrFloat = DevPtr_instantiate<float>(rb_mCvCuda, "DevPtrFloat");
+  Rice::Data_Type<cv::cuda::PtrStep<float>> rb_cPtrStepf = PtrStep_instantiate<float>(rb_mCvCuda, "PtrStepf");
+  Rice::Data_Type<cv::cuda::PtrStepSz<float>> rb_cPtrStepSzf = PtrStepSz_instantiate<float>(rb_mCvCuda, "PtrStepSzf");
 
-  Rice::Data_Type<cv::cuda::DevPtr<int>> rb_cDevPtrInt = define_class_under<cv::cuda::DevPtr<int>>(rb_mCvCuda, "DevPtrInt").
-    define(&DevPtr_builder<Data_Type<cv::cuda::DevPtr<int>>, int>);
-  Rice::Data_Type<cv::cuda::PtrStep<int>> rb_cPtrStepi = define_class_under<cv::cuda::PtrStep<int>, cv::cuda::DevPtr<int>>(rb_mCvCuda, "PtrStepi").
-    define(&PtrStep_builder<Data_Type<cv::cuda::PtrStep<int>>, int>);
-  Rice::Data_Type<cv::cuda::PtrStepSz<int>> rb_cPtrStepSzi = define_class_under<cv::cuda::PtrStepSz<int>, cv::cuda::PtrStep<int>>(rb_mCvCuda, "PtrStepSzi").
-    define(&PtrStepSz_builder<Data_Type<cv::cuda::PtrStepSz<int>>, int>);
+  Rice::Data_Type<cv::cuda::DevPtr<int>> rb_cDevPtrInt = DevPtr_instantiate<int>(rb_mCvCuda, "DevPtrInt");
+  Rice::Data_Type<cv::cuda::PtrStep<int>> rb_cPtrStepi = PtrStep_instantiate<int>(rb_mCvCuda, "PtrStepi");
+  Rice::Data_Type<cv::cuda::PtrStepSz<int>> rb_cPtrStepSzi = PtrStepSz_instantiate<int>(rb_mCvCuda, "PtrStepSzi");
 }

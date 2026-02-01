@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/color.hpp>
+#include "color-rb.hpp"
+
+using namespace Rice;
+
 #include "color-rb.ipp"
 
 void Init_Core_Cuda_Color()

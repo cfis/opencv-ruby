@@ -1,3 +1,8 @@
+#include <opencv2/core/operations.hpp>
+#include "operations-rb.hpp"
+
+using namespace Rice;
+
 #include "operations-rb.ipp"
 
 void Init_Core_Operations()
@@ -18,7 +23,7 @@ void Init_Core_Operations()
   rb_mCv.define_module_function<int(*)(const cv::UMat&, FILE*)>("print", &cv::print,
     Arg("mtx"), Arg("stream") = static_cast<FILE*>(stdout));
 
-  rb_cCvMat.
+  Data_Type<cv::Mat>().
     define_method("assign_plus", [](cv::Mat& self, const cv::Mat& other) -> cv::Mat&
   {
     self += other;

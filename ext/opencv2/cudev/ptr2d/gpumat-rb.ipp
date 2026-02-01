@@ -1,12 +1,8 @@
-#include <opencv2/cudev/ptr2d/gpumat.hpp>
-#include "gpumat-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void GpuMat__builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cudev::GpuMat_<T>> GpuMat__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::cudev::GpuMat_<T>, cv::cuda::GpuMat::Allocator*>(),
+  return Rice::define_class_under<cv::cudev::GpuMat_<T>>(parent, name).
+    define_constructor(Constructor<cv::cudev::GpuMat_<T>, cv::cuda::GpuMat::Allocator*>(),
       Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator())).
     define_constructor(Constructor<cv::cudev::GpuMat_<T>, int, int, cv::cuda::GpuMat::Allocator*>(),
       Arg("arows"), Arg("acols"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator())).
@@ -72,5 +68,5 @@ inline void GpuMat__builder(Data_Type_T& klass)
       Arg("y")).
     template define_method<const T*(cv::cudev::GpuMat_<T>::*)(int) const>("[]", &cv::cudev::GpuMat_<T>::operator[],
       Arg("y"));
-};
+}
 

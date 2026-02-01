@@ -1,12 +1,8 @@
-#include <opencv2/core/dualquaternion.hpp>
-#include "dualquaternion-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp>
-inline void DualQuat_builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::DualQuat<_Tp>> DualQuat_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("CV_DUAL_QUAT_EPS", cv::DualQuat<_Tp>::CV_DUAL_QUAT_EPS).
+  return Rice::define_class_under<cv::DualQuat<_Tp>>(parent, name).
+    define_constant("CV_DUAL_QUAT_EPS", cv::DualQuat<_Tp>::CV_DUAL_QUAT_EPS).
     define_constructor(Constructor<cv::DualQuat<_Tp>>()).
     define_constructor(Constructor<cv::DualQuat<_Tp>, const _Tp, const _Tp, const _Tp, const _Tp, const _Tp, const _Tp, const _Tp, const _Tp>(),
       Arg("w"), Arg("x"), Arg("y"), Arg("z"), Arg("w_"), Arg("x_"), Arg("y_"), Arg("z_")).
@@ -86,5 +82,5 @@ inline void DualQuat_builder(Data_Type_T& klass)
       Arg("q1"), Arg("q2"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
     template define_singleton_function<cv::DualQuat<_Tp>(*)(cv::InputArray, cv::InputArray, cv::QuatAssumeType)>("gdqblend", &cv::DualQuat<_Tp>::gdqblend,
       Arg("dualquat"), Arg("weights"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT));
-};
+}
 

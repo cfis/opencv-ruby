@@ -1,3 +1,8 @@
+#include <opencv2/cudev/util/tuple.hpp>
+#include "tuple-rb.hpp"
+
+using namespace Rice;
+
 #include "tuple-rb.ipp"
 
 void Init_Cudev_Util_Tuple()

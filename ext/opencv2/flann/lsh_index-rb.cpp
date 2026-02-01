@@ -1,3 +1,8 @@
+#include <opencv2/flann/lsh_index.h>
+#include "lsh_index-rb.hpp"
+
+using namespace Rice;
+
 #include "lsh_index-rb.ipp"
 
 void Init_Flann_LshIndex()

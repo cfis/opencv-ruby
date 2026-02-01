@@ -46,8 +46,7 @@ void Init_Core_Utils_Instrumentation()
     define_method<double(cv::instr::NodeData::*)() const>("get_total_ms", &cv::instr::NodeData::getTotalMs).
     define_method<double(cv::instr::NodeData::*)() const>("get_mean_ms", &cv::instr::NodeData::getMeanMs);
 
-  Rice::Data_Type<cv::Node<cv::instr::NodeData>> rb_cInstrNode = define_class_under<cv::Node<cv::instr::NodeData>>(rb_mCvInstr, "InstrNode").
-    define(&Node_builder<Data_Type<cv::Node<cv::instr::NodeData>>, cv::instr::NodeData>);
+  Rice::Data_Type<cv::Node<cv::instr::NodeData>> rb_cInstrNode = Node_instantiate<cv::instr::NodeData>(rb_mCvInstr, "InstrNode");
 
   rb_mCvInstr.define_module_function<cv::instr::InstrNode*(*)()>("get_trace", &cv::instr::getTrace);
 

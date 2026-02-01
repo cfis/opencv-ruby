@@ -1,23 +1,20 @@
-#include <opencv2/core/types.hpp>
-#include "types-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp>
-inline void Complex_builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Complex<_Tp>> Complex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Complex<_Tp>>()).
+  return Rice::define_class_under<cv::Complex<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Complex<_Tp>>()).
     define_constructor(Constructor<cv::Complex<_Tp>, _Tp, _Tp>(),
       Arg("_re"), Arg("_im") = static_cast<_Tp>(0)).
     template define_method<cv::Complex<_Tp>(cv::Complex<_Tp>::*)() const>("conj", &cv::Complex<_Tp>::conj).
     define_attr("re", &cv::Complex<_Tp>::re).
     define_attr("im", &cv::Complex<_Tp>::im);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void Point__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Point_<_Tp>>()).
+  return Rice::define_class_under<cv::Point_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Point_<_Tp>>()).
     define_constructor(Constructor<cv::Point_<_Tp>, _Tp, _Tp>(),
       Arg("_x"), Arg("_y")).
     define_constructor(Constructor<cv::Point_<_Tp>, const cv::Point_<_Tp>&>(),
@@ -40,12 +37,13 @@ inline void Point__builder(Data_Type_T& klass)
       Arg("r")).
     define_attr("x", &cv::Point_<_Tp>::x).
     define_attr("y", &cv::Point_<_Tp>::y);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void Point3__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Point3_<_Tp>> Point3__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Point3_<_Tp>>()).
+  return Rice::define_class_under<cv::Point3_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Point3_<_Tp>>()).
     define_constructor(Constructor<cv::Point3_<_Tp>, _Tp, _Tp, _Tp>(),
       Arg("_x"), Arg("_y"), Arg("_z")).
     define_constructor(Constructor<cv::Point3_<_Tp>, const cv::Point3_<_Tp>&>(),
@@ -67,12 +65,13 @@ inline void Point3__builder(Data_Type_T& klass)
     define_attr("x", &cv::Point3_<_Tp>::x).
     define_attr("y", &cv::Point3_<_Tp>::y).
     define_attr("z", &cv::Point3_<_Tp>::z);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void Size__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Size_<_Tp>> Size__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Size_<_Tp>>()).
+  return Rice::define_class_under<cv::Size_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Size_<_Tp>>()).
     define_constructor(Constructor<cv::Size_<_Tp>, _Tp, _Tp>(),
       Arg("_width"), Arg("_height")).
     define_constructor(Constructor<cv::Size_<_Tp>, const cv::Size_<_Tp>&>(),
@@ -88,12 +87,13 @@ inline void Size__builder(Data_Type_T& klass)
     template define_method<bool(cv::Size_<_Tp>::*)() const>("empty?", &cv::Size_<_Tp>::empty).
     define_attr("width", &cv::Size_<_Tp>::width).
     define_attr("height", &cv::Size_<_Tp>::height);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void Rect__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Rect_<_Tp>>()).
+  return Rice::define_class_under<cv::Rect_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Rect_<_Tp>>()).
     define_constructor(Constructor<cv::Rect_<_Tp>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("_x"), Arg("_y"), Arg("_width"), Arg("_height")).
     define_constructor(Constructor<cv::Rect_<_Tp>, const cv::Rect_<_Tp>&>(),
@@ -115,12 +115,13 @@ inline void Rect__builder(Data_Type_T& klass)
     define_attr("y", &cv::Rect_<_Tp>::y).
     define_attr("width", &cv::Rect_<_Tp>::width).
     define_attr("height", &cv::Rect_<_Tp>::height);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void Scalar__builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Scalar_<_Tp>>()).
+  return Rice::define_class_under<cv::Scalar_<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Scalar_<_Tp>>()).
     define_constructor(Constructor<cv::Scalar_<_Tp>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2") = static_cast<_Tp>(0), Arg("v3") = static_cast<_Tp>(0)).
     define_constructor(Constructor<cv::Scalar_<_Tp>, _Tp>(),
@@ -137,5 +138,5 @@ inline void Scalar__builder(Data_Type_T& klass)
     template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal).
     template define_singleton_function<cv::Scalar_<_Tp>(*)(_Tp)>("all", &cv::Scalar_<_Tp>::all,
       Arg("v0"));
-};
+}
 

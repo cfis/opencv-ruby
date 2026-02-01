@@ -1,3 +1,8 @@
+#include <opencv2/core/core_c.h>
+#include "core_c-rb.hpp"
+
+using namespace Rice;
+
 #include "core_c-rb.ipp"
 
 void Init_Core_CoreC()
@@ -187,8 +192,7 @@ void Init_Core_CoreC()
     define(&__shared_ptr_builder<Data_Type<cv::__shared_ptr<CvMemStorage>>, CvMemStorage>);
   Rice::Data_Type<cv::shared_ptr<CvMemStorage>> rb_cSharedPtrCvMemStorage = define_class_under<cv::shared_ptr<CvMemStorage>, cv::__shared_ptr<CvMemStorage>>(rb_mCv, "SharedPtrCvMemStorage").
     define(&shared_ptr_builder<Data_Type<cv::shared_ptr<CvMemStorage>>, CvMemStorage>);
-  Rice::Data_Type<cv::Ptr<CvMemStorage>> rb_cMemStorage = define_class_under<cv::Ptr<CvMemStorage>, cv::shared_ptr<CvMemStorage>>(rb_mCv, "MemStorage").
-    define(&Ptr_builder<Data_Type<cv::Ptr<CvMemStorage>>, CvMemStorage>);
+  Rice::Data_Type<cv::Ptr<CvMemStorage>> rb_cMemStorage = Ptr_instantiate<CvMemStorage>(rb_mCv, "MemStorage");
 
   rb_mCv.define_module_function<schar*(*)(CvSeq*, const void*)>("seq_push", &cv::seqPush,
     Arg("seq"), ArgBuffer("element") = static_cast<const void*>(0), ReturnBuffer());

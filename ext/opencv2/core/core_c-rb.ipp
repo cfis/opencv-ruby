@@ -1,12 +1,8 @@
-#include <opencv2/core/core_c.h>
-#include "core_c-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp>
-inline void Seq_builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::Seq<_Tp>> Seq_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Seq<_Tp>>()).
+  return Rice::define_class_under<cv::Seq<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::Seq<_Tp>>()).
     define_constructor(Constructor<cv::Seq<_Tp>, const CvSeq*>(),
       Arg("seq")).
     define_constructor(Constructor<cv::Seq<_Tp>, cv::MemStorage&, int>(),
@@ -58,12 +54,13 @@ inline void Seq_builder(Data_Type_T& klass)
     template define_method<void(cv::Seq<_Tp>::*)(std::vector<_Tp>&, const cv::Range&) const>("copy_to", &cv::Seq<_Tp>::copyTo,
       Arg("vec"), Arg("range") = static_cast<const cv::Range&>(cv::Range::all())).
     define_attr("seq", &cv::Seq<_Tp>::seq);
-};
+}
 
-template<typename Data_Type_T, typename _Tp>
-inline void SeqIterator_builder(Data_Type_T& klass)
+template<typename _Tp>
+inline Rice::Data_Type<cv::SeqIterator<_Tp>> SeqIterator_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::SeqIterator<_Tp>>()).
+  return Rice::define_class_under<cv::SeqIterator<_Tp>>(parent, name).
+    define_constructor(Constructor<cv::SeqIterator<_Tp>>()).
     define_constructor(Constructor<cv::SeqIterator<_Tp>, const cv::Seq<_Tp>&, bool>(),
       Arg("seq"), Arg("seek_end") = static_cast<bool>(false)).
     template define_method<void(cv::SeqIterator<_Tp>::*)(size_t)>("seek", &cv::SeqIterator<_Tp>::seek,
@@ -82,5 +79,5 @@ inline void SeqIterator_builder(Data_Type_T& klass)
     template define_method<cv::SeqIterator<_Tp>&(cv::SeqIterator<_Tp>::*)(int)>("assign_minus", &cv::SeqIterator<_Tp>::operator-=,
       Arg("arg_0")).
     define_attr("index", &cv::SeqIterator<_Tp>::index);
-};
+}
 

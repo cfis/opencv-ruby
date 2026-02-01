@@ -1,3 +1,8 @@
+#include <opencv2/cudev/functional/functional.hpp>
+#include "functional-rb.hpp"
+
+using namespace Rice;
+
 #include "functional-rb.ipp"
 
 void Init_Cudev_Functional_Functional()

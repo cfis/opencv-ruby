@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/traits.hpp>
+#include "traits-rb.hpp"
+
+using namespace Rice;
+
 #include "traits-rb.ipp"
 
 void Init_Cudev_Ptr2d_Traits()

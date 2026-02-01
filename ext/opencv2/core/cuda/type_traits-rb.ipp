@@ -1,18 +1,15 @@
-#include <opencv2/core/cuda/type_traits.hpp>
-#include "type_traits-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void IsSimpleParameter_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::device::IsSimpleParameter<T>> IsSimpleParameter_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", (int)cv::cuda::device::IsSimpleParameter<T>::value);
-};
+  return Rice::define_class_under<cv::cuda::device::IsSimpleParameter<T>>(parent, name).
+    define_constant("Value", (int)cv::cuda::device::IsSimpleParameter<T>::value);
+}
 
-template<typename Data_Type_T, typename T>
-inline void TypeTraits_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cuda::device::TypeTraits<T>> TypeTraits_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("IsConst", (int)cv::cuda::device::TypeTraits<T>::isConst).
+  return Rice::define_class_under<cv::cuda::device::TypeTraits<T>>(parent, name).
+    define_constant("IsConst", (int)cv::cuda::device::TypeTraits<T>::isConst).
     define_constant("IsVolatile", (int)cv::cuda::device::TypeTraits<T>::isVolatile).
     define_constant("IsReference", (int)cv::cuda::device::TypeTraits<T>::isReference).
     define_constant("IsPointer", (int)cv::cuda::device::TypeTraits<T>::isPointer).
@@ -22,5 +19,5 @@ inline void TypeTraits_builder(Data_Type_T& klass)
     define_constant("IsFloat", (int)cv::cuda::device::TypeTraits<T>::isFloat).
     define_constant("IsArith", (int)cv::cuda::device::TypeTraits<T>::isArith).
     define_constant("IsVec", (int)cv::cuda::device::TypeTraits<T>::isVec);
-};
+}
 

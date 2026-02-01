@@ -1,3 +1,8 @@
+#include <opencv2/flann/composite_index.h>
+#include "composite_index-rb.hpp"
+
+using namespace Rice;
+
 #include "composite_index-rb.ipp"
 
 void Init_Flann_CompositeIndex()

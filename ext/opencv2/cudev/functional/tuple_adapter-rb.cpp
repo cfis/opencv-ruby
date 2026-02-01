@@ -1,3 +1,8 @@
+#include <opencv2/cudev/functional/tuple_adapter.hpp>
+#include "tuple_adapter-rb.hpp"
+
+using namespace Rice;
+
 #include "tuple_adapter-rb.ipp"
 
 void Init_Cudev_Functional_TupleAdapter()

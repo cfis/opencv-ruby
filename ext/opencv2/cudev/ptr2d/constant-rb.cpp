@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/constant.hpp>
+#include "constant-rb.hpp"
+
+using namespace Rice;
+
 #include "constant-rb.ipp"
 
 void Init_Cudev_Ptr2d_Constant()

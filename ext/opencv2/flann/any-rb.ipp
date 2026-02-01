@@ -1,19 +1,16 @@
-#include <opencv2/flann/any.h>
-#include "any-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void typed_base_any_policy_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_any_policy_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size).
+  return Rice::define_class_under<cvflann::anyimpl::typed_base_any_policy<T>>(parent, name).
+    template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size).
     template define_method<const std::type_info&(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("type", &cvflann::anyimpl::typed_base_any_policy<T>::type);
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void small_any_policy_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
+  return Rice::define_class_under<cvflann::anyimpl::small_any_policy<T>>(parent, name).
+    template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
       ArgBuffer("arg_0")).
     template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::small_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest")).
@@ -27,12 +24,13 @@ inline void small_any_policy_builder(Data_Type_T& klass)
       ArgBuffer("src"), ReturnBuffer()).
     template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::small_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void big_any_policy_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
+  return Rice::define_class_under<cvflann::anyimpl::big_any_policy<T>>(parent, name).
+    template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
       ArgBuffer("x")).
     template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::big_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest")).
@@ -46,11 +44,12 @@ inline void big_any_policy_builder(Data_Type_T& klass)
       ArgBuffer("src"), ReturnBuffer()).
     template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::big_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
-};
+}
 
-template<typename Data_Type_T, typename T>
-inline void SinglePolicy_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cvflann::anyimpl::SinglePolicy<T>> SinglePolicy_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);
-};
+  return Rice::define_class_under<cvflann::anyimpl::SinglePolicy<T>>(parent, name).
+    template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);
+}
 

@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/detail/color_detail.hpp>
+#include "color_detail-rb.hpp"
+
+using namespace Rice;
+
 #include "color_detail-rb.ipp"
 
 void Init_Core_Cuda_Detail_ColorDetail()

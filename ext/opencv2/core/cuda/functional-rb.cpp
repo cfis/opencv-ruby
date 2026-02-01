@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/functional.hpp>
+#include "functional-rb.hpp"
+
+using namespace Rice;
+
 #include "functional-rb.ipp"
 
 void Init_Core_Cuda_Functional()

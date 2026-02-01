@@ -1,12 +1,8 @@
-#include <opencv2/stitching/detail/warpers.hpp>
-#include "warpers-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename P>
-inline void RotationWarperBase_builder(Data_Type_T& klass)
+template<typename P>
+inline Rice::Data_Type<cv::detail::RotationWarperBase<P>> RotationWarperBase_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarperBase<P>::warpPoint,
+  return Rice::define_class_under<cv::detail::RotationWarperBase<P>>(parent, name).
+    template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarperBase<P>::warpPoint,
       Arg("pt"), Arg("k"), Arg("r")).
     template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::RotationWarperBase<P>::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r")).
@@ -21,5 +17,5 @@ inline void RotationWarperBase_builder(Data_Type_T& klass)
     template define_method<float(cv::detail::RotationWarperBase<P>::*)() const>("get_scale", &cv::detail::RotationWarperBase<P>::getScale).
     template define_method<void(cv::detail::RotationWarperBase<P>::*)(float)>("set_scale", &cv::detail::RotationWarperBase<P>::setScale,
       Arg("val"));
-};
+}
 

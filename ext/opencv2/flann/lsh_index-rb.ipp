@@ -1,12 +1,8 @@
-#include <opencv2/flann/lsh_index.h>
-#include "lsh_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void LshIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::LshIndex<Distance>> LshIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::LshIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::LshIndexParams()), Arg("d") = static_cast<Distance>(cvflann::LshIndex::Distance())).
     define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::LshIndex<Distance>&>(),
       Arg("arg_0")).
@@ -26,5 +22,5 @@ inline void LshIndex_builder(Data_Type_T& klass)
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
     template define_method<void(cvflann::LshIndex<Distance>::*)(cvflann::ResultSet<cvflann::LshIndex<Distance>::DistanceType>&, const typename cvflann::LshIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("arg_2"));
-};
+}
 

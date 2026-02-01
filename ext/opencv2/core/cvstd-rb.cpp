@@ -1,3 +1,8 @@
+#include <opencv2/core/cvstd.hpp>
+#include "cvstd-rb.hpp"
+
+using namespace Rice;
+
 #include "cvstd-rb.ipp"
 
 void Init_Core_Cvstd()

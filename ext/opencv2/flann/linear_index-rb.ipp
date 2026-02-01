@@ -1,12 +1,8 @@
-#include <opencv2/flann/linear_index.h>
-#include "linear_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void LinearIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::LinearIndex<Distance>> LinearIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::LinearIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::LinearIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::LinearIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::LinearIndexParams()), Arg("d") = static_cast<Distance>(cvflann::LinearIndex::Distance())).
     define_constructor(Constructor<cvflann::LinearIndex<Distance>, const cvflann::LinearIndex<Distance>&>(),
       Arg("arg_0")).
@@ -24,5 +20,5 @@ inline void LinearIndex_builder(Data_Type_T& klass)
     template define_method<void(cvflann::LinearIndex<Distance>::*)(cvflann::ResultSet<cvflann::LinearIndex<Distance>::DistanceType>&, const typename cvflann::LinearIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::LinearIndex<Distance>::findNeighbors,
       Arg("result_set"), Arg("vec"), Arg("arg_2")).
     template define_method<cvflann::IndexParams(cvflann::LinearIndex<Distance>::*)() const>("get_parameters", &cvflann::LinearIndex<Distance>::getParameters);
-};
+}
 

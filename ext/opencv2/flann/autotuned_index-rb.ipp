@@ -1,12 +1,8 @@
-#include <opencv2/flann/autotuned_index.h>
-#include "autotuned_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void AutotunedIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::AutotunedIndex<Distance>> AutotunedIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::AutotunedIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::AutotunedIndexParams()), Arg("d") = static_cast<Distance>(cvflann::AutotunedIndex::Distance())).
     define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::AutotunedIndex<Distance>&>(),
       Arg("arg_0")).
@@ -26,5 +22,5 @@ inline void AutotunedIndex_builder(Data_Type_T& klass)
     template define_method<size_t(cvflann::AutotunedIndex<Distance>::*)() const>("veclen", &cvflann::AutotunedIndex<Distance>::veclen).
     template define_method<int(cvflann::AutotunedIndex<Distance>::*)() const>("used_memory", &cvflann::AutotunedIndex<Distance>::usedMemory).
     template define_method<cvflann::flann_algorithm_t(cvflann::AutotunedIndex<Distance>::*)() const>("get_type", &cvflann::AutotunedIndex<Distance>::getType);
-};
+}
 

@@ -1,23 +1,21 @@
-#include <opencv2/cudev/expr/warping.hpp>
-#include "warping-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename SrcPtr>
-inline void PyrDownBody_builder(Data_Type_T& klass)
+template<typename SrcPtr>
+inline Rice::Data_Type<cv::cudev::PyrDownBody<SrcPtr>> PyrDownBody_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("src", &cv::cudev::PyrDownBody<SrcPtr>::src);
-};
+  return Rice::define_class_under<cv::cudev::PyrDownBody<SrcPtr>>(parent, name).
+    define_attr("src", &cv::cudev::PyrDownBody<SrcPtr>::src);
+}
 
-template<typename Data_Type_T, typename SrcPtr>
-inline void PyrUpBody_builder(Data_Type_T& klass)
+template<typename SrcPtr>
+inline Rice::Data_Type<cv::cudev::PyrUpBody<SrcPtr>> PyrUpBody_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("src", &cv::cudev::PyrUpBody<SrcPtr>::src);
-};
+  return Rice::define_class_under<cv::cudev::PyrUpBody<SrcPtr>>(parent, name).
+    define_attr("src", &cv::cudev::PyrUpBody<SrcPtr>::src);
+}
 
-template<typename Data_Type_T, typename SrcPtr>
-inline void TransposeBody_builder(Data_Type_T& klass)
+template<typename SrcPtr>
+inline Rice::Data_Type<cv::cudev::TransposeBody<SrcPtr>> TransposeBody_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("src", &cv::cudev::TransposeBody<SrcPtr>::src);
-};
+  return Rice::define_class_under<cv::cudev::TransposeBody<SrcPtr>>(parent, name).
+    define_attr("src", &cv::cudev::TransposeBody<SrcPtr>::src);
+}
 

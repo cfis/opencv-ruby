@@ -1,3 +1,8 @@
+#include <opencv2/cudev/block/dynamic_smem.hpp>
+#include "dynamic_smem-rb.hpp"
+
+using namespace Rice;
+
 #include "dynamic_smem-rb.ipp"
 
 void Init_Cudev_Block_DynamicSmem()

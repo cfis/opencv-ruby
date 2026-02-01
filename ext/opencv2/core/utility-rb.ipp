@@ -1,12 +1,8 @@
-#include <opencv2/core/utility.hpp>
-#include "utility-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename _Tp, size_t fixed_size>
-inline void AutoBuffer_builder(Data_Type_T& klass)
+template<typename _Tp, size_t fixed_size>
+inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>>()).
+  return Rice::define_class_under<cv::AutoBuffer<_Tp, fixed_size>>(parent, name).
+    define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>>()).
     define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, size_t>(),
       Arg("_size")).
     define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, const cv::AutoBuffer<_Tp, fixed_size>&>(),
@@ -29,12 +25,13 @@ inline void AutoBuffer_builder(Data_Type_T& klass)
     {
       return self;
     });
-};
+}
 
-template<typename Data_Type_T, typename OBJECT>
-inline void Node_builder(Data_Type_T& klass)
+template<typename OBJECT>
+inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Node<OBJECT>>()).
+  return Rice::define_class_under<cv::Node<OBJECT>>(parent, name).
+    define_constructor(Constructor<cv::Node<OBJECT>>()).
     define_constructor(Constructor<cv::Node<OBJECT>, OBJECT&>(),
       Arg("payload")).
     template define_method<cv::Node<OBJECT>*(cv::Node<OBJECT>::*)(OBJECT&) const>("find_child", &cv::Node<OBJECT>::findChild,
@@ -48,5 +45,5 @@ inline void Node_builder(Data_Type_T& klass)
     define_attr("m_payload", &cv::Node<OBJECT>::m_payload).
     define_attr("m_p_parent", &cv::Node<OBJECT>::m_pParent).
     define_attr("m_childs", &cv::Node<OBJECT>::m_childs);
-};
+}
 

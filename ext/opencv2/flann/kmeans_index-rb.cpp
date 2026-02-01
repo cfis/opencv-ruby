@@ -1,3 +1,8 @@
+#include <opencv2/flann/kmeans_index.h>
+#include "kmeans_index-rb.hpp"
+
+using namespace Rice;
+
 #include "kmeans_index-rb.ipp"
 
 void Init_Flann_KmeansIndex()

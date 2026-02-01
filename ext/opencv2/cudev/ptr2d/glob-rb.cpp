@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/glob.hpp>
+#include "glob-rb.hpp"
+
+using namespace Rice;
+
 #include "glob-rb.ipp"
 
 void Init_Cudev_Ptr2d_Glob()

@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/filters.hpp>
+#include "filters-rb.hpp"
+
+using namespace Rice;
+
 #include "filters-rb.ipp"
 
 void Init_Core_Cuda_Filters()

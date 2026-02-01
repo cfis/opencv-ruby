@@ -1,3 +1,8 @@
+#include <opencv2/cudev/grid/reduce_to_vec.hpp>
+#include "reduce_to_vec-rb.hpp"
+
+using namespace Rice;
+
 #include "reduce_to_vec-rb.ipp"
 
 void Init_Cudev_Grid_ReduceToVec()

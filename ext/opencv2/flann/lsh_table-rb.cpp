@@ -1,3 +1,8 @@
+#include <opencv2/flann/lsh_table.h>
+#include "lsh_table-rb.hpp"
+
+using namespace Rice;
+
 #include "lsh_table-rb.ipp"
 
 void Init_Flann_LshTable()

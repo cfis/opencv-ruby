@@ -1,3 +1,8 @@
+#include <opencv2/cudev/functional/detail/color_cvt.hpp>
+#include "color_cvt-rb.hpp"
+
+using namespace Rice;
+
 #include "color_cvt-rb.ipp"
 
 void Init_Cudev_Functional_Detail_ColorCvt()

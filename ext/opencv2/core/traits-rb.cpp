@@ -1,3 +1,8 @@
+#include <opencv2/core/traits.hpp>
+#include "traits-rb.hpp"
+
+using namespace Rice;
+
 #include "traits-rb.ipp"
 
 void Init_Core_Traits()

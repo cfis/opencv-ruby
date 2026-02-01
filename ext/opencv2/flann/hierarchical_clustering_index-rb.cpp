@@ -1,3 +1,8 @@
+#include <opencv2/flann/hierarchical_clustering_index.h>
+#include "hierarchical_clustering_index-rb.hpp"
+
+using namespace Rice;
+
 #include "hierarchical_clustering_index-rb.ipp"
 
 void Init_Flann_HierarchicalClusteringIndex()

@@ -1,3 +1,8 @@
+#include <opencv2/flann/autotuned_index.h>
+#include "autotuned_index-rb.hpp"
+
+using namespace Rice;
+
 #include "autotuned_index-rb.ipp"
 
 void Init_Flann_AutotunedIndex()

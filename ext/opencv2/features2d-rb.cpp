@@ -1,3 +1,8 @@
+#include <opencv2/features2d.hpp>
+#include "features2d-rb.hpp"
+
+using namespace Rice;
+
 #include "features2d-rb.ipp"
 
 void Init_Features2d()

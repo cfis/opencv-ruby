@@ -1,3 +1,8 @@
+#include <opencv2/core/cuda/detail/reduce.hpp>
+#include "reduce-rb.hpp"
+
+using namespace Rice;
+
 #include "reduce-rb.ipp"
 
 void Init_Core_Cuda_Detail_Reduce()

@@ -1,3 +1,8 @@
+#include <opencv2/flann/kdtree_index.h>
+#include "kdtree_index-rb.hpp"
+
+using namespace Rice;
+
 #include "kdtree_index-rb.ipp"
 
 void Init_Flann_KdtreeIndex()

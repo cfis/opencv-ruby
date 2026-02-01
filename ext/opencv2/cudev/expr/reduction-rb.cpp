@@ -1,3 +1,8 @@
+#include <opencv2/cudev/expr/reduction.hpp>
+#include "reduction-rb.hpp"
+
+using namespace Rice;
+
 #include "reduction-rb.ipp"
 
 void Init_Cudev_Expr_Reduction()

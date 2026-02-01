@@ -1,3 +1,8 @@
+#include <opencv2/flann/linear_index.h>
+#include "linear_index-rb.hpp"
+
+using namespace Rice;
+
 #include "linear_index-rb.ipp"
 
 void Init_Flann_LinearIndex()

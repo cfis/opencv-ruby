@@ -1,12 +1,8 @@
-#include <opencv2/flann/composite_index.h>
-#include "composite_index-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename Distance>
-inline void CompositeIndex_builder(Data_Type_T& klass)
+template<typename Distance>
+inline Rice::Data_Type<cvflann::CompositeIndex<Distance>> CompositeIndex_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
+  return Rice::define_class_under<cvflann::CompositeIndex<Distance>>(parent, name).
+    define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::CompositeIndexParams()), Arg("d") = static_cast<Distance>(cvflann::CompositeIndex::Distance())).
     define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::CompositeIndex<Distance>&>(),
       Arg("arg_0")).
@@ -24,5 +20,5 @@ inline void CompositeIndex_builder(Data_Type_T& klass)
     template define_method<cvflann::IndexParams(cvflann::CompositeIndex<Distance>::*)() const>("get_parameters", &cvflann::CompositeIndex<Distance>::getParameters).
     template define_method<void(cvflann::CompositeIndex<Distance>::*)(cvflann::ResultSet<cvflann::CompositeIndex<Distance>::DistanceType>&, const typename cvflann::CompositeIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
-};
+}
 

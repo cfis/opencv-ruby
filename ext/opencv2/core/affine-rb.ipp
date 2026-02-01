@@ -1,12 +1,8 @@
-#include <opencv2/core/affine.hpp>
-#include "affine-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void Affine3_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::Affine3<T>> Affine3_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::Affine3<T>>()).
+  return Rice::define_class_under<cv::Affine3<T>>(parent, name).
+    define_constructor(Constructor<cv::Affine3<T>>()).
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::Mat4&>(),
       Arg("affine")).
     define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::Mat3&, const typename cv::Affine3<T>::Vec3&>(),
@@ -43,5 +39,5 @@ inline void Affine3_builder(Data_Type_T& klass)
       Arg("affine")).
     define_attr("matrix", &cv::Affine3<T>::matrix).
     template define_singleton_function<cv::Affine3<T>(*)()>("identity", &cv::Affine3<T>::Identity);
-};
+}
 

@@ -1,3 +1,8 @@
+#include <opencv2/flann/flann_base.hpp>
+#include "flann_base-rb.hpp"
+
+using namespace Rice;
+
 #include "flann_base-rb.ipp"
 
 void Init_Flann_FlannBase()

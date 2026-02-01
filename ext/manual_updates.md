@@ -18,27 +18,25 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/matx-rb.cpp`                                 | `<opencv2/core.hpp>`, `"traits-rb.hpp"`                                  |
 | `opencv2/core/ocl_genbase-rb.cpp`                          | `<opencv2/core/ocl.hpp>`                                                 |
 | `opencv2/core/opengl-rb.cpp`                               | `<opencv2/core/cuda.hpp>`                                                |
-| `opencv2/core/operations-rb.cpp`                           | `<opencv2/core/core.hpp>`, `"cvstd_wrapper-rb.hpp"`, `"mat-rb.hpp"`      |
+| `opencv2/core/operations-rb.cpp`                           | `<opencv2/core/core.hpp>`, `"mat-rb.hpp"`      |
 | `opencv2/core/parallel/backend/parallel_for.openmp-rb.cpp` | `<string>`                                                               |
 | `opencv2/core/parallel/backend/parallel_for.tbb-rb.cpp`    | `<string>`                                                               |
 | `opencv2/core/parallel/parallel_backend-rb.cpp`            | `<string>`, `<memory>`                                                   |
 | `opencv2/core/saturate-rb.cpp`                             | `<algorithm>`, `<climits>`                                               |
 | `opencv2/core/softfloat-rb.cpp`                            | `<opencv2/opencv.hpp>`                                                   |
-| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `"matx-rb.hpp"`                                    |
+| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `"matx-rb.ipp"`                                    |
 | `opencv2/core/utils/filesystem-rb.cpp`                     | `<opencv2/core/core.hpp>`                                                |
 | `opencv2/core/utils/logger-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/utils/logger.defines-rb.cpp`                 | `<opencv2/opencv.hpp>`                                                   |
 | `opencv2/core/utils/trace-rb.cpp`                          | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/dist-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/dynamic_bitset-rb.cpp`                      | `<vector>`, `<opencv2/core/base.hpp>`                                    |
-| `opencv2/flann/flann_base-rb.cpp`                          | `<opencv2/core/base.hpp>`, `<opencv2/flann/defines.h>`, `"../../opencv_ruby_version.hpp"` |
+| `opencv2/flann/flann_base-rb.cpp`                          | `<opencv2/core/base.hpp>`, `<opencv2/flann/defines.h>`                   |
 | `opencv2/flann/ground_truth-rb.cpp`                        | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/heap-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/random-rb.cpp`                              | `<opencv2/core.hpp>`                                                     |
 | `opencv2/flann/sampling-rb.cpp`                            | `<opencv2/core/core.hpp>`, `<opencv2/flann/defines.h>`                   |
 | `opencv2/objdetect/aruco_board-rb.cpp`                     | `<opencv2/objdetect/aruco_dictionary.hpp>`                               |
-| `opencv2/stitching/detail/matchers-rb.cpp`                 | `"../../../opencv_ruby_version.hpp"`                                     |
-| `opencv2/video/tracking-rb.cpp`                            | `"../../opencv_ruby_version.hpp"`                                        |
 | `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
 
 ## DNN Module
@@ -62,7 +60,9 @@ Apply all these updates
 
 ## Template Builder Modifications
 
-The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.cpp` require `if constexpr` guards because OpenCV only defines constructors and methods for specific dimensions/types.
+**NOTE:** Template builder functions (`*_builder`) are located in `.ipp` files, not `.cpp` files. The `.cpp` files include the `.ipp` files and instantiate the templates.
+
+The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` require `if constexpr` guards because OpenCV only defines constructors and methods for specific dimensions/types.
 
 ### `Matx_builder<Data_Type_T, _Tp, m, n>` changes:
 
@@ -108,7 +108,7 @@ The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.cpp` req
 
 ## DualQuaternion Linker Fixes
 
-The `opencv2/core/dualquaternion-rb.cpp` file has methods that cause linker errors because OpenCV doesn't provide explicit template instantiations for them. Comment out the following sections:
+The `opencv2/core/dualquaternion-rb.ipp` file has template builder methods that cause linker errors because OpenCV doesn't provide explicit template instantiations for them. Comment out the following sections in `DualQuat_builder`:
 
 **Lines 59-64** (assign_multiply and operator* methods):
 ```cpp
@@ -136,45 +136,69 @@ The `opencv2/core/dualquaternion-rb.cpp` file has methods that cause linker erro
 
 ## Mat Linker Fixes
 
-The `opencv2/core/mat-rb.cpp` file has methods that cause linker errors. Comment out the following sections (line numbers are from freshly generated file):
+The `opencv2/core/mat-rb.ipp` and `opencv2/core/mat-rb.cpp` files have methods that cause linker errors. Comment out the following sections (line numbers are from freshly generated file):
 
-**Line 135** (Mat_::zeros with ndims in `Mat__builder`):
+**In `opencv2/core/mat-rb.ipp` - Line 135** (Mat_::zeros with ndims in `Mat__builder`):
 ```cpp
 // Commented out - causes linker errors
 // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
 //   Arg("_ndims"), ArgBuffer("_sizes")).
 ```
 
-**Line 143** (Mat_::ones with ndims in `Mat__builder`):
+**In `opencv2/core/mat-rb.ipp` - Line 143** (Mat_::ones with ndims in `Mat__builder`):
 ```cpp
 // Commented out - causes linker errors
 // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,
 //   Arg("_ndims"), ArgBuffer("_sizes")).
 ```
 
-**Line 549** (_OutputArray constructor with `std::vector<cv::cuda::GpuMat>&`):
+**In `opencv2/core/mat-rb.cpp` - Line 549** (_OutputArray constructor with `std::vector<cv::cuda::GpuMat>&`):
 ```cpp
 // Commented out - causes linker errors
 // define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
 //   Arg("d_mat")).
 ```
 
-**Line 566** (_OutputArray constructor with `const std::vector<cv::cuda::GpuMat>&`):
+**In `opencv2/core/mat-rb.cpp` - Line 566** (_OutputArray constructor with `const std::vector<cv::cuda::GpuMat>&`):
 ```cpp
 // Commented out - causes linker errors
 // define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
 //   Arg("d_mat")).
 ```
 
-**Line 737** (MatSize::operator() in `Init_Core_Mat`):
+**In `opencv2/core/mat-rb.cpp` - Line 737** (MatSize::operator() in `Init_Core_Mat`):
 ```cpp
 // Commented out - causes linker errors
 // define_method<cv::Size(cv::MatSize::*)() const>("call", &cv::MatSize::operator()).
 ```
 
+**In `opencv2/core/mat-rb.cpp` - Line ~920** (MatConstIterator constructor with `const int*`):
+```cpp
+// Linker error - no explicit template instantiation
+//define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
+//  Arg("_m"), ArgBuffer("_idx")).
+```
+
+**In `opencv2/core/mat-rb.cpp` - Line ~963** (SparseMatConstIterator decrement operators):
+```cpp
+// Linker error - no explicit template instantiation
+//define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
+//define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
+//  Arg("arg_0")).
+```
+
+**In `opencv2/core/mat-rb.cpp` - Line ~978** (SparseMatIterator constructor with `const int*`):
+```cpp
+// Linker error - no explicit template instantiation
+//define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
+//  Arg("_m"), ArgBuffer("idx")).
+```
+
 ## OpenCV Version Guards
 
 Some features are only available in certain OpenCV versions. Wrap them with `#if RUBY_CV_VERSION >= XXX` guards.
+
+**NOTE:** Do NOT add `#include "opencv_ruby_version.hpp"` manually - the `RUBY_CV_VERSION` macro is already available globally via `rice_includes.cpp`.
 
 ### `opencv2/core/bindings_utils-rb.cpp`
 - **Line ~38**: `dump_int64` (>= 407)
@@ -263,11 +287,21 @@ The `ext/refinements` directory contains manual additions to generated classes t
    - Add `extern Rice::Class rb_c<ClassName>;` if needed
    - Call refinements function after the Init function (e.g., `<Class>_refinements(rb_c<ClassName>);`)
 
+## Final Step: Generate Diff File
+
+After applying all manual updates, generate a unified diff file to document the changes:
+
+```bash
+git diff -- ext/ ':(exclude)ext/manual_updates.md' > ext/manual_updates.diff
+```
+
+This diff file serves as a reference for what manual changes were applied and can be used to verify or reapply changes if needed.
+
 ## Notes
 
 - **IMPORTANT: Include order matters for compilation.** Follow these rules:
   - **OpenCV/system headers** (e.g., `<opencv2/core.hpp>`, `<vector>`, `<string>`) - Place BEFORE the primary header
-  - **Local project headers** (e.g., `"cvstd_wrapper-rb.hpp"`, `"mat-rb.hpp"`, `"matx-rb.hpp"`) - Place AFTER the primary header but before the file's own `-rb.hpp` header
+  - **Local project headers** (e.g., `"mat-rb.hpp"`, `"matx-rb.hpp"`) - Place AFTER the primary header but before the file's own `-rb.hpp` header
   - When in doubt, check `git diff main` to see the working order from the main branch
 - All manual includes should be marked with `// Manual` comment for identification
 - These includes are needed because the generated bindings reference types or declarations from headers that aren't automatically included by the primary header

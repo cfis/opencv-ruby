@@ -1,12 +1,8 @@
-#include <opencv2/imgproc/detail/gcgraph.hpp>
-#include "gcgraph-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename TWeight>
-inline void GCGraph_builder(Data_Type_T& klass)
+template<typename TWeight>
+inline Rice::Data_Type<cv::detail::GCGraph<TWeight>> GCGraph_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constructor(Constructor<cv::detail::GCGraph<TWeight>>()).
+  return Rice::define_class_under<cv::detail::GCGraph<TWeight>>(parent, name).
+    define_constructor(Constructor<cv::detail::GCGraph<TWeight>>()).
     define_constructor(Constructor<cv::detail::GCGraph<TWeight>, unsigned int, unsigned int>(),
       Arg("vtx_count"), Arg("edge_count")).
     template define_method<void(cv::detail::GCGraph<TWeight>::*)(unsigned int, unsigned int)>("create", &cv::detail::GCGraph<TWeight>::create,
@@ -19,5 +15,5 @@ inline void GCGraph_builder(Data_Type_T& klass)
     template define_method<TWeight(cv::detail::GCGraph<TWeight>::*)()>("max_flow", &cv::detail::GCGraph<TWeight>::maxFlow).
     template define_method<bool(cv::detail::GCGraph<TWeight>::*)(int)>("in_source_segment", &cv::detail::GCGraph<TWeight>::inSourceSegment,
       Arg("i"));
-};
+}
 

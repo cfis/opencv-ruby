@@ -1,42 +1,43 @@
-#include <opencv2/cudev/util/type_traits.hpp>
-#include "type_traits-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, int A>
-inline void Int2Type_builder(Data_Type_T& klass)
+template<int A>
+inline Rice::Data_Type<cv::cudev::Int2Type<A>> Int2Type_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", (int)cv::cudev::Int2Type<A>::value);
-};
+  return Rice::define_class_under<cv::cudev::Int2Type<A>>(parent, name).
+    define_constant("Value", (int)cv::cudev::Int2Type<A>::value);
+}
 
-template<typename Data_Type_T, typename T, int COUNT>
-inline void ArrayWrapper_builder(Data_Type_T& klass)
+template<typename T, int COUNT>
+inline Rice::Data_Type<cv::cudev::ArrayWrapper<T, COUNT>> ArrayWrapper_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_attr("array", &cv::cudev::ArrayWrapper<T, COUNT>::array, Rice::AttrAccess::Read);
-};
+  return Rice::define_class_under<cv::cudev::ArrayWrapper<T, COUNT>>(parent, name).
+    define_attr("array", &cv::cudev::ArrayWrapper<T, COUNT>::array, Rice::AttrAccess::Read);
+}
 
-template<typename Data_Type_T, int N, int CURRENT_VAL, int COUNT>
-inline void Log2_builder(Data_Type_T& klass)
+template<int N, int CURRENT_VAL, int COUNT>
+inline Rice::Data_Type<cv::cudev::Log2<N, CURRENT_VAL, COUNT>> Log2_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", (int)cv::cudev::Log2<N, CURRENT_VAL, COUNT>::value);
-};
+  return Rice::define_class_under<cv::cudev::Log2<N, CURRENT_VAL, COUNT>>(parent, name).
+    define_constant("Value", (int)cv::cudev::Log2<N, CURRENT_VAL, COUNT>::value);
+}
 
-template<typename Data_Type_T, int N>
-inline void IsPowerOf2_builder(Data_Type_T& klass)
+template<int N>
+inline Rice::Data_Type<cv::cudev::IsPowerOf2<N>> IsPowerOf2_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", (int)cv::cudev::IsPowerOf2<N>::value);
-};
+  return Rice::define_class_under<cv::cudev::IsPowerOf2<N>>(parent, name).
+    define_constant("Value", (int)cv::cudev::IsPowerOf2<N>::value);
+}
 
-template<typename Data_Type_T, typename A, typename B>
-inline void TypesEquals_builder(Data_Type_T& klass)
+template<typename A, typename B>
+inline Rice::Data_Type<cv::cudev::TypesEquals<A, B>> TypesEquals_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Value", (int)cv::cudev::TypesEquals<A, B>::value);
-};
+  return Rice::define_class_under<cv::cudev::TypesEquals<A, B>>(parent, name).
+    define_constant("Value", (int)cv::cudev::TypesEquals<A, B>::value);
+}
 
-template<typename Data_Type_T, typename T>
-inline void TypeTraits_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cudev::TypeTraits<T>> TypeTraits_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_constant("Is_const", (int)cv::cudev::TypeTraits<T>::is_const).
+  return Rice::define_class_under<cv::cudev::TypeTraits<T>>(parent, name).
+    define_constant("Is_const", (int)cv::cudev::TypeTraits<T>::is_const).
     define_constant("Is_volatile", (int)cv::cudev::TypeTraits<T>::is_volatile).
     define_constant("Is_reference", (int)cv::cudev::TypeTraits<T>::is_reference).
     define_constant("Is_pointer", (int)cv::cudev::TypeTraits<T>::is_pointer).
@@ -46,5 +47,5 @@ inline void TypeTraits_builder(Data_Type_T& klass)
     define_constant("Is_float", (int)cv::cudev::TypeTraits<T>::is_float).
     define_constant("Is_scalar", (int)cv::cudev::TypeTraits<T>::is_scalar).
     define_constant("Is_vec", (int)cv::cudev::TypeTraits<T>::is_vec);
-};
+}
 

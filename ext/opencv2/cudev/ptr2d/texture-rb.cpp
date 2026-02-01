@@ -1,3 +1,8 @@
+#include <opencv2/cudev/ptr2d/texture.hpp>
+#include "texture-rb.hpp"
+
+using namespace Rice;
+
 #include "texture-rb.ipp"
 
 void Init_Cudev_Ptr2d_Texture()

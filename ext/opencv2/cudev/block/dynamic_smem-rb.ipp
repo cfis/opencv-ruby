@@ -1,12 +1,8 @@
-#include <opencv2/cudev/block/dynamic_smem.hpp>
-#include "dynamic_smem-rb.hpp"
-
-using namespace Rice;
-
-template<typename Data_Type_T, typename T>
-inline void DynamicSharedMem_builder(Data_Type_T& klass)
+template<typename T>
+inline Rice::Data_Type<cv::cudev::DynamicSharedMem<T>> DynamicSharedMem_instantiate(Rice::Module& parent, const char* name)
 {
-  klass.define_method("to_ptr", [](cv::cudev::DynamicSharedMem<T>& self) -> T*
+  return Rice::define_class_under<cv::cudev::DynamicSharedMem<T>>(parent, name).
+    define_method("to_ptr", [](cv::cudev::DynamicSharedMem<T>& self) -> T*
     {
       return self;
     }).
@@ -14,5 +10,5 @@ inline void DynamicSharedMem_builder(Data_Type_T& klass)
     {
       return self;
     });
-};
+}
 

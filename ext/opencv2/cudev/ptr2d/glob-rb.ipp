@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cudev::GlobPtr<T>> GlobPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::GlobPtr<T>> GlobPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::GlobPtr<T>>(parent, name).
     define_attr("data", &cv::cudev::GlobPtr<T>::data).
@@ -15,7 +15,7 @@ inline Rice::Data_Type<cv::cudev::GlobPtr<T>> GlobPtr_instantiate(Rice::Module& 
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::GlobPtrSz<T>> GlobPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::GlobPtrSz<T>> GlobPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::GlobPtrSz<T>>(parent, name).
     define_attr("rows", &cv::cudev::GlobPtrSz<T>::rows).

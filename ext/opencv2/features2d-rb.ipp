@@ -1,6 +1,6 @@
 
 template<typename T>
-inline Rice::Data_Type<cv::SL2<T>> SL2_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::SL2<T>> SL2_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::SL2<T>>(parent, name).
     define_constant("NormType", cv::SL2<T>::normType).
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::SL2<T>> SL2_instantiate(Rice::Module& parent, const c
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::L2<T>> L2_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::L2<T>> L2_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::L2<T>>(parent, name).
     define_constant("NormType", cv::L2<T>::normType).
@@ -18,7 +18,7 @@ inline Rice::Data_Type<cv::L2<T>> L2_instantiate(Rice::Module& parent, const cha
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::L1<T>> L1_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::L1<T>> L1_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::L1<T>>(parent, name).
     define_constant("NormType", cv::L1<T>::normType).

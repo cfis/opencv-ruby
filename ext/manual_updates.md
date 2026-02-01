@@ -1,6 +1,6 @@
 # Manual Include Directives
 
-When regenerating bindings with ruby-bindgen, each of the following sections must be applied completely.
+When regenerating bindings with ruby-bindgen, each of the following sections must be applied completely. This is a plan previously created by Claude. You do not need to plan again. Just execute the steps in this file.
 
 **IMPORTANT FOR AI ASSISTANTS:** After ANY regeneration, systematically check EVERY file listed in this document and apply missing changes. Do not wait for the user to specify which files - iterate through all entries below and verify each one.
 
@@ -24,7 +24,7 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/parallel/parallel_backend-rb.cpp`            | `<string>`, `<memory>`                                                   |
 | `opencv2/core/saturate-rb.cpp`                             | `<algorithm>`, `<climits>`                                               |
 | `opencv2/core/softfloat-rb.cpp`                            | `<opencv2/opencv.hpp>`                                                   |
-| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `"matx-rb.ipp"`                                    |
+| `opencv2/core/types-rb.cpp`                                | `<opencv2/core.hpp>`, `<opencv2/core/matx.hpp>`, `"matx-rb.ipp"`         |
 | `opencv2/core/utils/filesystem-rb.cpp`                     | `<opencv2/core/core.hpp>`                                                |
 | `opencv2/core/utils/logger-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/utils/logger.defines-rb.cpp`                 | `<opencv2/opencv.hpp>`                                                   |
@@ -105,6 +105,68 @@ The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` req
    ```cpp
    if constexpr (cn == 3)
    ```
+
+## Class Inheritance Fixes
+
+The generated `_instantiate` templates must specify parent classes for proper Ruby class inheritance.
+
+### Vec inherits from Matx
+
+**File:** `opencv2/core/matx-rb.ipp`, **Line ~129** (in `Vec_instantiate` function)
+
+Change:
+```cpp
+Rice::Data_Type<cv::Vec<_Tp, cn>> klass = Rice::define_class_under<cv::Vec<_Tp, cn>>(parent, name).
+```
+
+To:
+```cpp
+Rice::Data_Type<cv::Vec<_Tp, cn>> klass = Rice::define_class_under<cv::Vec<_Tp, cn>, cv::Matx<_Tp, cn, 1>>(parent, name).
+```
+
+### Scalar_ inherits from Vec
+
+**File:** `opencv2/core/types-rb.ipp`, **Line ~123** (in `Scalar__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::Scalar_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::Scalar_<_Tp>, cv::Vec<_Tp, 4>>(parent, name).
+```
+
+### Mat_ inherits from Mat
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~4** (in `Mat__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::Mat_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::Mat_<_Tp>, cv::Mat>(parent, name).
+```
+
+### PtrStep inherits from DevPtr
+
+**File:** `opencv2/core/cuda_types-rb.ipp`, **Line ~34** (in `PtrStep_instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::cuda::PtrStep<T>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::cuda::PtrStep<T>, cv::cuda::DevPtr<T>>(parent, name).
+```
+
+This ensures proper class hierarchies in Ruby.
 
 ## DualQuaternion Linker Fixes
 

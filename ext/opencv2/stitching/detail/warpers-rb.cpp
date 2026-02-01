@@ -46,8 +46,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::PlaneProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PlaneProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlaneProjector>> rb_cRotationWarperBasePlaneProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::PlaneProjector>>(rb_mCvDetail, "RotationWarperBasePlaneProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::PlaneProjector>>, cv::detail::PlaneProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlaneProjector>> rb_cRotationWarperBasePlaneProjector = RotationWarperBase_instantiate<cv::detail::PlaneProjector>(rb_mCvDetail, "RotationWarperBasePlaneProjector");
   Rice::Data_Type<cv::detail::PlaneWarper> rb_cCvDetailPlaneWarper = define_class_under<cv::detail::PlaneWarper, cv::detail::RotationWarperBase<cv::detail::PlaneProjector>>(rb_mCvDetail, "PlaneWarper").
     define_constructor(Constructor<cv::detail::PlaneWarper, float>(),
       Arg("scale") = static_cast<float>(1.f)).
@@ -93,8 +92,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::SphericalProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::SphericalProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalProjector>> rb_cRotationWarperBaseSphericalProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::SphericalProjector>>(rb_mCvDetail, "RotationWarperBaseSphericalProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalProjector>>, cv::detail::SphericalProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalProjector>> rb_cRotationWarperBaseSphericalProjector = RotationWarperBase_instantiate<cv::detail::SphericalProjector>(rb_mCvDetail, "RotationWarperBaseSphericalProjector");
   Rice::Data_Type<cv::detail::SphericalWarper> rb_cCvDetailSphericalWarper = define_class_under<cv::detail::SphericalWarper, cv::detail::RotationWarperBase<cv::detail::SphericalProjector>>(rb_mCvDetail, "SphericalWarper").
     define_constructor(Constructor<cv::detail::SphericalWarper, float>(),
       Arg("scale")).
@@ -110,8 +108,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::CylindricalProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CylindricalProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>> rb_cRotationWarperBaseCylindricalProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>>(rb_mCvDetail, "RotationWarperBaseCylindricalProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>>, cv::detail::CylindricalProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>> rb_cRotationWarperBaseCylindricalProjector = RotationWarperBase_instantiate<cv::detail::CylindricalProjector>(rb_mCvDetail, "RotationWarperBaseCylindricalProjector");
   Rice::Data_Type<cv::detail::CylindricalWarper> rb_cCvDetailCylindricalWarper = define_class_under<cv::detail::CylindricalWarper, cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>>(rb_mCvDetail, "CylindricalWarper").
     define_constructor(Constructor<cv::detail::CylindricalWarper, float>(),
       Arg("scale")).
@@ -127,8 +124,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::FisheyeProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::FisheyeProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>> rb_cRotationWarperBaseFisheyeProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>>(rb_mCvDetail, "RotationWarperBaseFisheyeProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>>, cv::detail::FisheyeProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>> rb_cRotationWarperBaseFisheyeProjector = RotationWarperBase_instantiate<cv::detail::FisheyeProjector>(rb_mCvDetail, "RotationWarperBaseFisheyeProjector");
   Rice::Data_Type<cv::detail::FisheyeWarper> rb_cCvDetailFisheyeWarper = define_class_under<cv::detail::FisheyeWarper, cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>>(rb_mCvDetail, "FisheyeWarper").
     define_constructor(Constructor<cv::detail::FisheyeWarper, float>(),
       Arg("scale"));
@@ -140,8 +136,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::StereographicProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::StereographicProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::StereographicProjector>> rb_cRotationWarperBaseStereographicProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::StereographicProjector>>(rb_mCvDetail, "RotationWarperBaseStereographicProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::StereographicProjector>>, cv::detail::StereographicProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::StereographicProjector>> rb_cRotationWarperBaseStereographicProjector = RotationWarperBase_instantiate<cv::detail::StereographicProjector>(rb_mCvDetail, "RotationWarperBaseStereographicProjector");
   Rice::Data_Type<cv::detail::StereographicWarper> rb_cCvDetailStereographicWarper = define_class_under<cv::detail::StereographicWarper, cv::detail::RotationWarperBase<cv::detail::StereographicProjector>>(rb_mCvDetail, "StereographicWarper").
     define_constructor(Constructor<cv::detail::StereographicWarper, float>(),
       Arg("scale"));
@@ -155,8 +150,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::CompressedRectilinearProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CompressedRectilinearProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>> rb_cRotationWarperBaseCompressedRectilinearProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>>, cv::detail::CompressedRectilinearProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>> rb_cRotationWarperBaseCompressedRectilinearProjector = RotationWarperBase_instantiate<cv::detail::CompressedRectilinearProjector>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearProjector");
   Rice::Data_Type<cv::detail::CompressedRectilinearWarper> rb_cCvDetailCompressedRectilinearWarper = define_class_under<cv::detail::CompressedRectilinearWarper, cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>>(rb_mCvDetail, "CompressedRectilinearWarper").
     define_constructor(Constructor<cv::detail::CompressedRectilinearWarper, float, float, float>(),
       Arg("scale"), Arg("a") = static_cast<float>(1), Arg("b") = static_cast<float>(1));
@@ -170,8 +164,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::CompressedRectilinearPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CompressedRectilinearPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>> rb_cRotationWarperBaseCompressedRectilinearPortraitProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearPortraitProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>>, cv::detail::CompressedRectilinearPortraitProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>> rb_cRotationWarperBaseCompressedRectilinearPortraitProjector = RotationWarperBase_instantiate<cv::detail::CompressedRectilinearPortraitProjector>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearPortraitProjector");
   Rice::Data_Type<cv::detail::CompressedRectilinearPortraitWarper> rb_cCvDetailCompressedRectilinearPortraitWarper = define_class_under<cv::detail::CompressedRectilinearPortraitWarper, cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>>(rb_mCvDetail, "CompressedRectilinearPortraitWarper").
     define_constructor(Constructor<cv::detail::CompressedRectilinearPortraitWarper, float, float, float>(),
       Arg("scale"), Arg("a") = static_cast<float>(1), Arg("b") = static_cast<float>(1));
@@ -185,8 +178,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::PaniniProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PaniniProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniProjector>> rb_cRotationWarperBasePaniniProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::PaniniProjector>>(rb_mCvDetail, "RotationWarperBasePaniniProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniProjector>>, cv::detail::PaniniProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniProjector>> rb_cRotationWarperBasePaniniProjector = RotationWarperBase_instantiate<cv::detail::PaniniProjector>(rb_mCvDetail, "RotationWarperBasePaniniProjector");
   Rice::Data_Type<cv::detail::PaniniWarper> rb_cCvDetailPaniniWarper = define_class_under<cv::detail::PaniniWarper, cv::detail::RotationWarperBase<cv::detail::PaniniProjector>>(rb_mCvDetail, "PaniniWarper").
     define_constructor(Constructor<cv::detail::PaniniWarper, float, float, float>(),
       Arg("scale"), Arg("a") = static_cast<float>(1), Arg("b") = static_cast<float>(1));
@@ -200,8 +192,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::PaniniPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PaniniPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>> rb_cRotationWarperBasePaniniPortraitProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>>(rb_mCvDetail, "RotationWarperBasePaniniPortraitProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>>, cv::detail::PaniniPortraitProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>> rb_cRotationWarperBasePaniniPortraitProjector = RotationWarperBase_instantiate<cv::detail::PaniniPortraitProjector>(rb_mCvDetail, "RotationWarperBasePaniniPortraitProjector");
   Rice::Data_Type<cv::detail::PaniniPortraitWarper> rb_cCvDetailPaniniPortraitWarper = define_class_under<cv::detail::PaniniPortraitWarper, cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>>(rb_mCvDetail, "PaniniPortraitWarper").
     define_constructor(Constructor<cv::detail::PaniniPortraitWarper, float, float, float>(),
       Arg("scale"), Arg("a") = static_cast<float>(1), Arg("b") = static_cast<float>(1));
@@ -213,8 +204,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::MercatorProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::MercatorProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::MercatorProjector>> rb_cRotationWarperBaseMercatorProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::MercatorProjector>>(rb_mCvDetail, "RotationWarperBaseMercatorProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::MercatorProjector>>, cv::detail::MercatorProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::MercatorProjector>> rb_cRotationWarperBaseMercatorProjector = RotationWarperBase_instantiate<cv::detail::MercatorProjector>(rb_mCvDetail, "RotationWarperBaseMercatorProjector");
   Rice::Data_Type<cv::detail::MercatorWarper> rb_cCvDetailMercatorWarper = define_class_under<cv::detail::MercatorWarper, cv::detail::RotationWarperBase<cv::detail::MercatorProjector>>(rb_mCvDetail, "MercatorWarper").
     define_constructor(Constructor<cv::detail::MercatorWarper, float>(),
       Arg("scale"));
@@ -226,8 +216,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::TransverseMercatorProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::TransverseMercatorProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>> rb_cRotationWarperBaseTransverseMercatorProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>>(rb_mCvDetail, "RotationWarperBaseTransverseMercatorProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>>, cv::detail::TransverseMercatorProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>> rb_cRotationWarperBaseTransverseMercatorProjector = RotationWarperBase_instantiate<cv::detail::TransverseMercatorProjector>(rb_mCvDetail, "RotationWarperBaseTransverseMercatorProjector");
   Rice::Data_Type<cv::detail::TransverseMercatorWarper> rb_cCvDetailTransverseMercatorWarper = define_class_under<cv::detail::TransverseMercatorWarper, cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>>(rb_mCvDetail, "TransverseMercatorWarper").
     define_constructor(Constructor<cv::detail::TransverseMercatorWarper, float>(),
       Arg("scale"));
@@ -283,8 +272,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::SphericalPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::SphericalPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>> rb_cRotationWarperBaseSphericalPortraitProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>>(rb_mCvDetail, "RotationWarperBaseSphericalPortraitProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>>, cv::detail::SphericalPortraitProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>> rb_cRotationWarperBaseSphericalPortraitProjector = RotationWarperBase_instantiate<cv::detail::SphericalPortraitProjector>(rb_mCvDetail, "RotationWarperBaseSphericalPortraitProjector");
   Rice::Data_Type<cv::detail::SphericalPortraitWarper> rb_cCvDetailSphericalPortraitWarper = define_class_under<cv::detail::SphericalPortraitWarper, cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>>(rb_mCvDetail, "SphericalPortraitWarper").
     define_constructor(Constructor<cv::detail::SphericalPortraitWarper, float>(),
       Arg("scale"));
@@ -296,8 +284,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::CylindricalPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CylindricalPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>> rb_cRotationWarperBaseCylindricalPortraitProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>>(rb_mCvDetail, "RotationWarperBaseCylindricalPortraitProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>>, cv::detail::CylindricalPortraitProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>> rb_cRotationWarperBaseCylindricalPortraitProjector = RotationWarperBase_instantiate<cv::detail::CylindricalPortraitProjector>(rb_mCvDetail, "RotationWarperBaseCylindricalPortraitProjector");
   Rice::Data_Type<cv::detail::CylindricalPortraitWarper> rb_cCvDetailCylindricalPortraitWarper = define_class_under<cv::detail::CylindricalPortraitWarper, cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>>(rb_mCvDetail, "CylindricalPortraitWarper").
     define_constructor(Constructor<cv::detail::CylindricalPortraitWarper, float>(),
       Arg("scale"));
@@ -309,8 +296,7 @@ void Init_Stitching_Detail_Warpers()
     define_method<void(cv::detail::PlanePortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PlanePortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
-  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>> rb_cRotationWarperBasePlanePortraitProjector = define_class_under<cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>>(rb_mCvDetail, "RotationWarperBasePlanePortraitProjector").
-    define(&RotationWarperBase_builder<Data_Type<cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>>, cv::detail::PlanePortraitProjector>);
+  Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>> rb_cRotationWarperBasePlanePortraitProjector = RotationWarperBase_instantiate<cv::detail::PlanePortraitProjector>(rb_mCvDetail, "RotationWarperBasePlanePortraitProjector");
   Rice::Data_Type<cv::detail::PlanePortraitWarper> rb_cCvDetailPlanePortraitWarper = define_class_under<cv::detail::PlanePortraitWarper, cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>>(rb_mCvDetail, "PlanePortraitWarper").
     define_constructor(Constructor<cv::detail::PlanePortraitWarper, float>(),
       Arg("scale"));

@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cudev::NormL1<T>> NormL1_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::NormL1<T>> NormL1_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::NormL1<T>>(parent, name).
     define_attr("my_sum", &cv::cudev::NormL1<T>::mySum).

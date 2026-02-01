@@ -1,5 +1,5 @@
 template<typename _Tp>
-inline Rice::Data_Type<cv::Seq<_Tp>> Seq_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Seq<_Tp>> Seq_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Seq<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Seq<_Tp>>()).
@@ -57,7 +57,7 @@ inline Rice::Data_Type<cv::Seq<_Tp>> Seq_instantiate(Rice::Module& parent, const
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::SeqIterator<_Tp>> SeqIterator_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::SeqIterator<_Tp>> SeqIterator_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::SeqIterator<_Tp>>(parent, name).
     define_constructor(Constructor<cv::SeqIterator<_Tp>>()).

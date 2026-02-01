@@ -85,8 +85,7 @@ void Init_Core_Cuda_Detail_ColorDetail()
   rb_mCvCudaDeviceColorDetail.define_constant("BY15", (int)cv::cuda::device::color_detail::BY15);
   rb_mCvCudaDeviceColorDetail.define_constant("BLOCK_SIZE", (int)cv::cuda::device::color_detail::BLOCK_SIZE);
 
-  Rice::Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = define_class_under<cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedIntUnsignedInt").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>>, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = unary_function_instantiate<unsigned int, unsigned int>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedIntUnsignedInt");
   Rice::Data_Type<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>> rb_cCvCudaDeviceColorDetailRGB2RGBUchar442 = define_class_under<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>, cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDeviceColorDetail, "RGB2RGBUchar442").
     define_method<uint(cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::*)(uint) const>("call", &cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>::operator(),
       Arg("src")).
@@ -94,8 +93,7 @@ void Init_Core_Cuda_Detail_ColorDetail()
     define_constructor(Constructor<cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>, const cv::cuda::device::color_detail::RGB2RGB<uchar, 4, 4, 2>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned int>> rb_cUnaryFunctionUnsignedCharUnsignedInt = define_class_under<cv::cuda::device::unary_function<unsigned char, unsigned int>>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedCharUnsignedInt").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned int>>, unsigned char, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned int>> rb_cUnaryFunctionUnsignedCharUnsignedInt = unary_function_instantiate<unsigned char, unsigned int>(rb_mCvCudaDeviceColorDetail, "UnaryFunctionUnsignedCharUnsignedInt");
   Rice::Data_Type<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>> rb_cCvCudaDeviceColorDetailGray2RGBUchar4 = define_class_under<cv::cuda::device::color_detail::Gray2RGB<uchar, 4>, cv::cuda::device::unary_function<unsigned char, unsigned int>>(rb_mCvCudaDeviceColorDetail, "Gray2RGBUchar4").
     define_method<uint(cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::*)(uint) const>("call", &cv::cuda::device::color_detail::Gray2RGB<uchar, 4>::operator(),
       Arg("src")).

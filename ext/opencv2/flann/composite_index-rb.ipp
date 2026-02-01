@@ -1,5 +1,5 @@
 template<typename Distance>
-inline Rice::Data_Type<cvflann::CompositeIndex<Distance>> CompositeIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::CompositeIndex<Distance>> CompositeIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::CompositeIndex<Distance>>(parent, name).
     define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),

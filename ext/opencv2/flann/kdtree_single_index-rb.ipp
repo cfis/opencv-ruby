@@ -1,5 +1,5 @@
 template<typename Distance>
-inline Rice::Data_Type<cvflann::KDTreeSingleIndex<Distance>> KDTreeSingleIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::KDTreeSingleIndex<Distance>> KDTreeSingleIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::KDTreeSingleIndex<Distance>>(parent, name).
     define_constructor(Constructor<cvflann::KDTreeSingleIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),

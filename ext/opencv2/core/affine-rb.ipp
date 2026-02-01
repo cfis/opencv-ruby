@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::Affine3<T>> Affine3_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Affine3<T>> Affine3_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Affine3<T>>(parent, name).
     define_constructor(Constructor<cv::Affine3<T>>()).

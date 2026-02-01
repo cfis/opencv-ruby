@@ -9,20 +9,14 @@ void Init_SurfaceMatching_Pose3d()
 
   Module rb_mCvPpfMatch3d = define_module_under(rb_mCv, "PpfMatch3d");
 
-  Rice::Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::Pose3D, _Lp>> rb_cSharedPtrAccessPose3DLp = define_class_under<cv::__shared_ptr_access<cv::ppf_match_3d::Pose3D, _Lp>>(rb_mCvPpfMatch3d, "SharedPtrAccessPose3DLp").
-    define(&__shared_ptr_access_builder<Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::Pose3D, _Lp>>, cv::ppf_match_3d::Pose3D, _Lp>);
-  Rice::Data_Type<cv::__shared_ptr<cv::ppf_match_3d::Pose3D>> rb_cSharedPtrPose3D = define_class_under<cv::__shared_ptr<cv::ppf_match_3d::Pose3D>, cv::__shared_ptr_access<cv::ppf_match_3d::Pose3D, _Lp>>(rb_mCvPpfMatch3d, "SharedPtrPose3D").
-    define(&__shared_ptr_builder<Data_Type<cv::__shared_ptr<cv::ppf_match_3d::Pose3D>>, cv::ppf_match_3d::Pose3D>);
-  Rice::Data_Type<cv::shared_ptr<cv::ppf_match_3d::Pose3D>> rb_cSharedPtrPose3D = define_class_under<cv::shared_ptr<cv::ppf_match_3d::Pose3D>, cv::__shared_ptr<cv::ppf_match_3d::Pose3D>>(rb_mCvPpfMatch3d, "SharedPtrPose3D").
-    define(&shared_ptr_builder<Data_Type<cv::shared_ptr<cv::ppf_match_3d::Pose3D>>, cv::ppf_match_3d::Pose3D>);
+  Rice::Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::Pose3D, _Lp>> rb_cSharedPtrAccessPose3DLp = __shared_ptr_access_instantiate<cv::ppf_match_3d::Pose3D, _Lp>(rb_mCvPpfMatch3d, "SharedPtrAccessPose3DLp");
+  Rice::Data_Type<cv::__shared_ptr<cv::ppf_match_3d::Pose3D>> rb_cSharedPtrPose3D = __shared_ptr_instantiate<cv::ppf_match_3d::Pose3D>(rb_mCvPpfMatch3d, "SharedPtrPose3D");
+  Rice::Data_Type<cv::shared_ptr<cv::ppf_match_3d::Pose3D>> rb_cSharedPtrPose3D = shared_ptr_instantiate<cv::ppf_match_3d::Pose3D>(rb_mCvPpfMatch3d, "SharedPtrPose3D");
   Rice::Data_Type<cv::Ptr<cv::ppf_match_3d::Pose3D>> rb_cPose3DPtr = Ptr_instantiate<cv::ppf_match_3d::Pose3D>(rb_mCvPpfMatch3d, "Pose3DPtr");
 
-  Rice::Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::PoseCluster3D, _Lp>> rb_cSharedPtrAccessPoseCluster3DLp = define_class_under<cv::__shared_ptr_access<cv::ppf_match_3d::PoseCluster3D, _Lp>>(rb_mCvPpfMatch3d, "SharedPtrAccessPoseCluster3DLp").
-    define(&__shared_ptr_access_builder<Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::PoseCluster3D, _Lp>>, cv::ppf_match_3d::PoseCluster3D, _Lp>);
-  Rice::Data_Type<cv::__shared_ptr<cv::ppf_match_3d::PoseCluster3D>> rb_cSharedPtrPoseCluster3D = define_class_under<cv::__shared_ptr<cv::ppf_match_3d::PoseCluster3D>, cv::__shared_ptr_access<cv::ppf_match_3d::PoseCluster3D, _Lp>>(rb_mCvPpfMatch3d, "SharedPtrPoseCluster3D").
-    define(&__shared_ptr_builder<Data_Type<cv::__shared_ptr<cv::ppf_match_3d::PoseCluster3D>>, cv::ppf_match_3d::PoseCluster3D>);
-  Rice::Data_Type<cv::shared_ptr<cv::ppf_match_3d::PoseCluster3D>> rb_cSharedPtrPoseCluster3D = define_class_under<cv::shared_ptr<cv::ppf_match_3d::PoseCluster3D>, cv::__shared_ptr<cv::ppf_match_3d::PoseCluster3D>>(rb_mCvPpfMatch3d, "SharedPtrPoseCluster3D").
-    define(&shared_ptr_builder<Data_Type<cv::shared_ptr<cv::ppf_match_3d::PoseCluster3D>>, cv::ppf_match_3d::PoseCluster3D>);
+  Rice::Data_Type<cv::__shared_ptr_access<cv::ppf_match_3d::PoseCluster3D, _Lp>> rb_cSharedPtrAccessPoseCluster3DLp = __shared_ptr_access_instantiate<cv::ppf_match_3d::PoseCluster3D, _Lp>(rb_mCvPpfMatch3d, "SharedPtrAccessPoseCluster3DLp");
+  Rice::Data_Type<cv::__shared_ptr<cv::ppf_match_3d::PoseCluster3D>> rb_cSharedPtrPoseCluster3D = __shared_ptr_instantiate<cv::ppf_match_3d::PoseCluster3D>(rb_mCvPpfMatch3d, "SharedPtrPoseCluster3D");
+  Rice::Data_Type<cv::shared_ptr<cv::ppf_match_3d::PoseCluster3D>> rb_cSharedPtrPoseCluster3D = shared_ptr_instantiate<cv::ppf_match_3d::PoseCluster3D>(rb_mCvPpfMatch3d, "SharedPtrPoseCluster3D");
   Rice::Data_Type<cv::Ptr<cv::ppf_match_3d::PoseCluster3D>> rb_cPoseCluster3DPtr = Ptr_instantiate<cv::ppf_match_3d::PoseCluster3D>(rb_mCvPpfMatch3d, "PoseCluster3DPtr");
 
   Rice::Data_Type<cv::ppf_match_3d::Pose3D> rb_cCvPpfMatch3dPose3D = define_class_under<cv::ppf_match_3d::Pose3D>(rb_mCvPpfMatch3d, "Pose3D").

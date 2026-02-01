@@ -1,5 +1,5 @@
 template<typename _Tp>
-inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Quat<_Tp>>(parent, name).
     define_constant("CV_QUAT_EPS", cv::Quat<_Tp>::CV_QUAT_EPS).

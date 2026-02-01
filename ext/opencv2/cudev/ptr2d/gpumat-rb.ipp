@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cudev::GpuMat_<T>> GpuMat__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::GpuMat_<T>> GpuMat__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::GpuMat_<T>>(parent, name).
     define_constructor(Constructor<cv::cudev::GpuMat_<T>, cv::cuda::GpuMat::Allocator*>(),

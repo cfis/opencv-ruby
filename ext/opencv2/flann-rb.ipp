@@ -1,6 +1,6 @@
 
 template<typename Distance>
-inline Rice::Data_Type<cv::flann::GenericIndex<Distance>> GenericIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::flann::GenericIndex<Distance>> GenericIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::flann::GenericIndex<Distance>>(parent, name).
     define_constructor(Constructor<cv::flann::GenericIndex<Distance>, const cv::Mat&, const ::cvflann::IndexParams&, Distance>(),

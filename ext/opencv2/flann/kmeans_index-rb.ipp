@@ -1,5 +1,5 @@
 template<typename Distance>
-inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::KMeansIndex<Distance>>(parent, name).
     define_attr("choose_centers", &cvflann::KMeansIndex<Distance>::chooseCenters).
@@ -34,7 +34,7 @@ inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(R
 }
 
 template<typename CentersContainerType>
-inline Rice::Data_Type<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>> KMeansDistanceComputer_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>> KMeansDistanceComputer_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>>(parent, name).
     define_constructor(Constructor<cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>, Distance, const cvflann::Matrix<ElementType>&, const int, const int*, const CentersContainerType&, const size_t, std::vector<int>&, std::vector<DistanceType>&>(),

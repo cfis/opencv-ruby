@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::DevPtr<T>>(parent, name).
     define_constant("Elem_size", (int)cv::cuda::DevPtr<T>::elem_size).
@@ -19,7 +19,7 @@ inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module& par
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::PtrSz<T>>(parent, name).
     define_constructor(Constructor<cv::cuda::PtrSz<T>>()).
@@ -29,7 +29,7 @@ inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module& paren
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::PtrStep<T>>(parent, name).
     define_constructor(Constructor<cv::cuda::PtrStep<T>>()).
@@ -47,7 +47,7 @@ inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module& p
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cuda::PtrStepSz<T>> PtrStepSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::PtrStepSz<T>> PtrStepSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::PtrStepSz<T>>(parent, name).
     define_constructor(Constructor<cv::cuda::PtrStepSz<T>>()).

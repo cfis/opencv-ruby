@@ -1,5 +1,5 @@
 template<typename src_type, typename work_type>
-inline Rice::Data_Type<cv::cudev::grid_reduce_detail::SumReductor<src_type, work_type>> SumReductor_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::grid_reduce_detail::SumReductor<src_type, work_type>> SumReductor_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::grid_reduce_detail::SumReductor<src_type, work_type>>(parent, name).
     define_constant("Cn", (int)cv::cudev::grid_reduce_detail::SumReductor<src_type, work_type>::cn).
@@ -10,7 +10,7 @@ inline Rice::Data_Type<cv::cudev::grid_reduce_detail::SumReductor<src_type, work
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::grid_reduce_detail::minop<T>> minop_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::grid_reduce_detail::minop<T>> minop_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::grid_reduce_detail::minop<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial", &cv::cudev::grid_reduce_detail::minop<T>::initial).
@@ -19,7 +19,7 @@ inline Rice::Data_Type<cv::cudev::grid_reduce_detail::minop<T>> minop_instantiat
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::grid_reduce_detail::maxop<T>> maxop_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::grid_reduce_detail::maxop<T>> maxop_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::grid_reduce_detail::maxop<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial", &cv::cudev::grid_reduce_detail::maxop<T>::initial).
@@ -28,7 +28,7 @@ inline Rice::Data_Type<cv::cudev::grid_reduce_detail::maxop<T>> maxop_instantiat
 }
 
 template<typename Op, typename src_type, typename work_type>
-inline Rice::Data_Type<cv::cudev::grid_reduce_detail::MinMaxReductor<Op, src_type, work_type>> MinMaxReductor_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::grid_reduce_detail::MinMaxReductor<Op, src_type, work_type>> MinMaxReductor_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::grid_reduce_detail::MinMaxReductor<Op, src_type, work_type>>(parent, name).
     define_attr("myval", &cv::cudev::grid_reduce_detail::MinMaxReductor<Op, src_type, work_type>::myval).

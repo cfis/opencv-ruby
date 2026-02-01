@@ -1,5 +1,5 @@
 template<typename MaskPtr>
-inline Rice::Data_Type<cv::cudev::SingleMaskChannels<MaskPtr>> SingleMaskChannels_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SingleMaskChannels<MaskPtr>> SingleMaskChannels_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SingleMaskChannels<MaskPtr>>(parent, name).
     define_attr("mask", &cv::cudev::SingleMaskChannels<MaskPtr>::mask).
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::cudev::SingleMaskChannels<MaskPtr>> SingleMaskChannel
 }
 
 template<typename MaskPtr>
-inline Rice::Data_Type<cv::cudev::SingleMaskChannelsSz<MaskPtr>> SingleMaskChannelsSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SingleMaskChannelsSz<MaskPtr>> SingleMaskChannelsSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SingleMaskChannelsSz<MaskPtr>>(parent, name).
     define_attr("rows", &cv::cudev::SingleMaskChannelsSz<MaskPtr>::rows).

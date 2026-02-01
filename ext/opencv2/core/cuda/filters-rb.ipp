@@ -1,5 +1,5 @@
 template<typename Ptr2D>
-inline Rice::Data_Type<cv::cuda::device::PointFilter<Ptr2D>> PointFilter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::PointFilter<Ptr2D>> PointFilter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::PointFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::PointFilter<Ptr2D>, const Ptr2D&, float, float>(),
@@ -10,7 +10,7 @@ inline Rice::Data_Type<cv::cuda::device::PointFilter<Ptr2D>> PointFilter_instant
 }
 
 template<typename Ptr2D>
-inline Rice::Data_Type<cv::cuda::device::LinearFilter<Ptr2D>> LinearFilter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::LinearFilter<Ptr2D>> LinearFilter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::LinearFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::LinearFilter<Ptr2D>, const Ptr2D&, float, float>(),
@@ -21,7 +21,7 @@ inline Rice::Data_Type<cv::cuda::device::LinearFilter<Ptr2D>> LinearFilter_insta
 }
 
 template<typename Ptr2D>
-inline Rice::Data_Type<cv::cuda::device::CubicFilter<Ptr2D>> CubicFilter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::CubicFilter<Ptr2D>> CubicFilter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::CubicFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::CubicFilter<Ptr2D>, const Ptr2D&, float, float>(),
@@ -34,7 +34,7 @@ inline Rice::Data_Type<cv::cuda::device::CubicFilter<Ptr2D>> CubicFilter_instant
 }
 
 template<typename Ptr2D>
-inline Rice::Data_Type<cv::cuda::device::IntegerAreaFilter<Ptr2D>> IntegerAreaFilter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::IntegerAreaFilter<Ptr2D>> IntegerAreaFilter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::IntegerAreaFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::IntegerAreaFilter<Ptr2D>, const Ptr2D&, float, float>(),
@@ -48,7 +48,7 @@ inline Rice::Data_Type<cv::cuda::device::IntegerAreaFilter<Ptr2D>> IntegerAreaFi
 }
 
 template<typename Ptr2D>
-inline Rice::Data_Type<cv::cuda::device::AreaFilter<Ptr2D>> AreaFilter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::AreaFilter<Ptr2D>> AreaFilter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::AreaFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::AreaFilter<Ptr2D>, const Ptr2D&, float, float>(),

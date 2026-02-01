@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::TLSData<T>> TLSData_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::TLSData<T>> TLSData_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::TLSData<T>>(parent, name).
     define_constructor(Constructor<cv::TLSData<T>>()).
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::TLSData<T>> TLSData_instantiate(Rice::Module& parent,
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::TLSDataAccumulator<T>> TLSDataAccumulator_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::TLSDataAccumulator<T>> TLSDataAccumulator_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::TLSDataAccumulator<T>>(parent, name).
     define_constructor(Constructor<cv::TLSDataAccumulator<T>>()).

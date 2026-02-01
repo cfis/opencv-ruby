@@ -20,8 +20,7 @@ void Init_Cudev_Ptr2d_Warping()
     define_attr("rows", &cv::cudev::AffineMapPtrSz::rows).
     define_attr("cols", &cv::cudev::AffineMapPtrSz::cols);
 
-  Rice::Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>> rb_cPtrTraitsBaseAffineMapPtrSzAffineMapPtr = define_class_under<cv::cudev::PtrTraitsBase<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>>(rb_mCvCudev, "PtrTraitsBaseAffineMapPtrSzAffineMapPtr").
-    define(&PtrTraitsBase_builder<Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>>, cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>);
+  Rice::Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>> rb_cPtrTraitsBaseAffineMapPtrSzAffineMapPtr = PtrTraitsBase_instantiate<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>(rb_mCvCudev, "PtrTraitsBaseAffineMapPtrSzAffineMapPtr");
   Rice::Data_Type<cv::cudev::PtrTraits<cv::cudev::AffineMapPtrSz>> rb_cCvCudevPtrTraitsAffineMapPtrSz = define_class_under<cv::cudev::PtrTraits<cv::cudev::AffineMapPtrSz>, cv::cudev::PtrTraitsBase<cv::cudev::AffineMapPtrSz, cv::cudev::AffineMapPtr>>(rb_mCvCudev, "PtrTraitsAffineMapPtrSz").
     define_constructor(Constructor<cv::cudev::PtrTraits<cv::cudev::AffineMapPtrSz>>());
 
@@ -39,8 +38,7 @@ void Init_Cudev_Ptr2d_Warping()
     define_attr("rows", &cv::cudev::PerspectiveMapPtrSz::rows).
     define_attr("cols", &cv::cudev::PerspectiveMapPtrSz::cols);
 
-  Rice::Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>> rb_cPtrTraitsBasePerspectiveMapPtrSzPerspectiveMapPtr = define_class_under<cv::cudev::PtrTraitsBase<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>>(rb_mCvCudev, "PtrTraitsBasePerspectiveMapPtrSzPerspectiveMapPtr").
-    define(&PtrTraitsBase_builder<Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>>, cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>);
+  Rice::Data_Type<cv::cudev::PtrTraitsBase<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>> rb_cPtrTraitsBasePerspectiveMapPtrSzPerspectiveMapPtr = PtrTraitsBase_instantiate<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>(rb_mCvCudev, "PtrTraitsBasePerspectiveMapPtrSzPerspectiveMapPtr");
   Rice::Data_Type<cv::cudev::PtrTraits<cv::cudev::PerspectiveMapPtrSz>> rb_cCvCudevPtrTraitsPerspectiveMapPtrSz = define_class_under<cv::cudev::PtrTraits<cv::cudev::PerspectiveMapPtrSz>, cv::cudev::PtrTraitsBase<cv::cudev::PerspectiveMapPtrSz, cv::cudev::PerspectiveMapPtr>>(rb_mCvCudev, "PtrTraitsPerspectiveMapPtrSz").
     define_constructor(Constructor<cv::cudev::PtrTraits<cv::cudev::PerspectiveMapPtrSz>>());
 

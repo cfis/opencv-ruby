@@ -1,12 +1,12 @@
 template<typename T>
-inline Rice::Data_Type<cv::cuda::device::IsSimpleParameter<T>> IsSimpleParameter_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::IsSimpleParameter<T>> IsSimpleParameter_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::IsSimpleParameter<T>>(parent, name).
     define_constant("Value", (int)cv::cuda::device::IsSimpleParameter<T>::value);
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cuda::device::TypeTraits<T>> TypeTraits_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::TypeTraits<T>> TypeTraits_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::TypeTraits<T>>(parent, name).
     define_constant("IsConst", (int)cv::cuda::device::TypeTraits<T>::isConst).

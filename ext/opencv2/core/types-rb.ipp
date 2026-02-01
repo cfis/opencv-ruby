@@ -1,5 +1,5 @@
 template<typename _Tp>
-inline Rice::Data_Type<cv::Complex<_Tp>> Complex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Complex<_Tp>> Complex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Complex<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Complex<_Tp>>()).
@@ -11,7 +11,7 @@ inline Rice::Data_Type<cv::Complex<_Tp>> Complex_instantiate(Rice::Module& paren
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Point_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Point_<_Tp>>()).
@@ -40,7 +40,7 @@ inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module& parent,
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::Point3_<_Tp>> Point3__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Point3_<_Tp>> Point3__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Point3_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Point3_<_Tp>>()).
@@ -68,7 +68,7 @@ inline Rice::Data_Type<cv::Point3_<_Tp>> Point3__instantiate(Rice::Module& paren
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::Size_<_Tp>> Size__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Size_<_Tp>> Size__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Size_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Size_<_Tp>>()).
@@ -90,7 +90,7 @@ inline Rice::Data_Type<cv::Size_<_Tp>> Size__instantiate(Rice::Module& parent, c
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Rect_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Rect_<_Tp>>()).
@@ -118,7 +118,7 @@ inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module& parent, c
 }
 
 template<typename _Tp>
-inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Scalar_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Scalar_<_Tp>>()).

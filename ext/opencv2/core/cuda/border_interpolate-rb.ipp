@@ -1,5 +1,5 @@
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdRowConstant<D>> BrdRowConstant_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdRowConstant<D>> BrdRowConstant_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdRowConstant<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdRowConstant<D>, int, const D&>(),
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdRowConstant<D>> BrdRowConstant_insta
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdColConstant<D>> BrdColConstant_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdColConstant<D>> BrdColConstant_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdColConstant<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdColConstant<D>, int, const D&>(),
@@ -19,7 +19,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdColConstant<D>> BrdColConstant_insta
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdConstant<D>> BrdConstant_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdConstant<D>> BrdConstant_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdConstant<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdConstant<D>, int, int, const D&>(),
@@ -30,7 +30,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdConstant<D>> BrdConstant_instantiate
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdRowReplicate<D>> BrdRowReplicate_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdRowReplicate<D>> BrdRowReplicate_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdRowReplicate<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdRowReplicate<D>, int>(),
@@ -45,7 +45,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdRowReplicate<D>> BrdRowReplicate_ins
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdColReplicate<D>> BrdColReplicate_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdColReplicate<D>> BrdColReplicate_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdColReplicate<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdColReplicate<D>, int>(),
@@ -60,7 +60,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdColReplicate<D>> BrdColReplicate_ins
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdReplicate<D>> BrdReplicate_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdReplicate<D>> BrdReplicate_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdReplicate<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdReplicate<D>, int, int>(),
@@ -82,7 +82,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdReplicate<D>> BrdReplicate_instantia
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdRowReflect101<D>> BrdRowReflect101_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdRowReflect101<D>> BrdRowReflect101_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdRowReflect101<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdRowReflect101<D>, int>(),
@@ -97,7 +97,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdRowReflect101<D>> BrdRowReflect101_i
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdColReflect101<D>> BrdColReflect101_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdColReflect101<D>> BrdColReflect101_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdColReflect101<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdColReflect101<D>, int>(),
@@ -112,7 +112,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdColReflect101<D>> BrdColReflect101_i
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdReflect101<D>> BrdReflect101_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdReflect101<D>> BrdReflect101_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdReflect101<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdReflect101<D>, int, int>(),
@@ -134,7 +134,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdReflect101<D>> BrdReflect101_instant
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdRowReflect<D>> BrdRowReflect_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdRowReflect<D>> BrdRowReflect_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdRowReflect<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdRowReflect<D>, int>(),
@@ -149,7 +149,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdRowReflect<D>> BrdRowReflect_instant
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdColReflect<D>> BrdColReflect_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdColReflect<D>> BrdColReflect_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdColReflect<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdColReflect<D>, int>(),
@@ -164,7 +164,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdColReflect<D>> BrdColReflect_instant
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdReflect<D>> BrdReflect_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdReflect<D>> BrdReflect_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdReflect<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdReflect<D>, int, int>(),
@@ -186,7 +186,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdReflect<D>> BrdReflect_instantiate(R
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdRowWrap<D>> BrdRowWrap_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdRowWrap<D>> BrdRowWrap_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdRowWrap<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdRowWrap<D>, int>(),
@@ -201,7 +201,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdRowWrap<D>> BrdRowWrap_instantiate(R
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdColWrap<D>> BrdColWrap_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdColWrap<D>> BrdColWrap_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdColWrap<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdColWrap<D>, int>(),
@@ -216,7 +216,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdColWrap<D>> BrdColWrap_instantiate(R
 }
 
 template<typename D>
-inline Rice::Data_Type<cv::cuda::device::BrdWrap<D>> BrdWrap_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BrdWrap<D>> BrdWrap_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BrdWrap<D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BrdWrap<D>, int, int>(),
@@ -238,7 +238,7 @@ inline Rice::Data_Type<cv::cuda::device::BrdWrap<D>> BrdWrap_instantiate(Rice::M
 }
 
 template<typename Ptr2D, typename B>
-inline Rice::Data_Type<cv::cuda::device::BorderReader<Ptr2D, B>> BorderReader_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BorderReader<Ptr2D, B>> BorderReader_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BorderReader<Ptr2D, B>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BorderReader<Ptr2D, B>, const Ptr2D&, const B&>(),

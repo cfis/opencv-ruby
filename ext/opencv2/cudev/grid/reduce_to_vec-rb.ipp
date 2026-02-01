@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cudev::Sum<T>> Sum_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::Sum<T>> Sum_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::Sum<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial_value", &cv::cudev::Sum<T>::initialValue).
@@ -8,7 +8,7 @@ inline Rice::Data_Type<cv::cudev::Sum<T>> Sum_instantiate(Rice::Module& parent, 
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::Avg<T>> Avg_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::Avg<T>> Avg_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::Avg<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial_value", &cv::cudev::Avg<T>::initialValue).
@@ -17,7 +17,7 @@ inline Rice::Data_Type<cv::cudev::Avg<T>> Avg_instantiate(Rice::Module& parent, 
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::Min<T>> Min_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::Min<T>> Min_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::Min<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial_value", &cv::cudev::Min<T>::initialValue).
@@ -26,7 +26,7 @@ inline Rice::Data_Type<cv::cudev::Min<T>> Min_instantiate(Rice::Module& parent, 
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::Max<T>> Max_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::Max<T>> Max_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::Max<T>>(parent, name).
     template define_singleton_function<T(*)()>("initial_value", &cv::cudev::Max<T>::initialValue).

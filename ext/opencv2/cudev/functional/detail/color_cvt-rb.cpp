@@ -29,8 +29,7 @@ void Init_Cudev_Functional_Detail_ColorCvt()
   rb_mCvCudevColorCvtDetail.define_constant("BY15", (int)cv::cudev::color_cvt_detail::BY15);
   rb_mCvCudevColorCvtDetail.define_constant("BLOCK_SIZE", (int)cv::cudev::color_cvt_detail::BLOCK_SIZE);
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned char, unsigned short>> rb_cUnaryFunctionUnsignedCharUnsignedShort = define_class_under<cv::cudev::unary_function<unsigned char, unsigned short>>(rb_mCvCudevColorCvtDetail, "UnaryFunctionUnsignedCharUnsignedShort").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned char, unsigned short>>, unsigned char, unsigned short>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned char, unsigned short>> rb_cUnaryFunctionUnsignedCharUnsignedShort = unary_function_instantiate<unsigned char, unsigned short>(rb_mCvCudevColorCvtDetail, "UnaryFunctionUnsignedCharUnsignedShort");
   Rice::Data_Type<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>> rb_cCvCudevColorCvtDetailGray2RGB5x55 = define_class_under<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>, cv::cudev::unary_function<unsigned char, unsigned short>>(rb_mCvCudevColorCvtDetail, "Gray2RGB5x55").
     define_constructor(Constructor<cv::cudev::color_cvt_detail::Gray2RGB5x5<5>>()).
     define_method<ushort(cv::cudev::color_cvt_detail::Gray2RGB5x5<5>::*)(uchar) const>("call", &cv::cudev::color_cvt_detail::Gray2RGB5x5<5>::operator(),
@@ -41,8 +40,7 @@ void Init_Cudev_Functional_Detail_ColorCvt()
     define_method<ushort(cv::cudev::color_cvt_detail::Gray2RGB5x5<6>::*)(uchar) const>("call", &cv::cudev::color_cvt_detail::Gray2RGB5x5<6>::operator(),
       Arg("src"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned short, unsigned char>> rb_cUnaryFunctionUnsignedShortUnsignedChar = define_class_under<cv::cudev::unary_function<unsigned short, unsigned char>>(rb_mCvCudevColorCvtDetail, "UnaryFunctionUnsignedShortUnsignedChar").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned short, unsigned char>>, unsigned short, unsigned char>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned short, unsigned char>> rb_cUnaryFunctionUnsignedShortUnsignedChar = unary_function_instantiate<unsigned short, unsigned char>(rb_mCvCudevColorCvtDetail, "UnaryFunctionUnsignedShortUnsignedChar");
   Rice::Data_Type<cv::cudev::color_cvt_detail::RGB5x52Gray<5>> rb_cCvCudevColorCvtDetailRGB5x52Gray5 = define_class_under<cv::cudev::color_cvt_detail::RGB5x52Gray<5>, cv::cudev::unary_function<unsigned short, unsigned char>>(rb_mCvCudevColorCvtDetail, "RGB5x52Gray5").
     define_constructor(Constructor<cv::cudev::color_cvt_detail::RGB5x52Gray<5>>()).
     define_method<uchar(cv::cudev::color_cvt_detail::RGB5x52Gray<5>::*)(ushort) const>("call", &cv::cudev::color_cvt_detail::RGB5x52Gray<5>::operator(),

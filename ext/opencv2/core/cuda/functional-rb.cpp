@@ -13,8 +13,7 @@ void Init_Core_Cuda_Functional()
 
   Module rb_mCvCudaDevice = define_module_under(rb_mCvCuda, "Device");
 
-  Rice::Data_Type<cv::cuda::device::binary_function<unsigned char, unsigned char, unsigned char>> rb_cBinaryFunctionUnsignedCharUnsignedCharUnsignedChar = define_class_under<cv::cuda::device::binary_function<unsigned char, unsigned char, unsigned char>>(rb_mCvCudaDevice, "BinaryFunctionUnsignedCharUnsignedCharUnsignedChar").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<unsigned char, unsigned char, unsigned char>>, unsigned char, unsigned char, unsigned char>);
+  Rice::Data_Type<cv::cuda::device::binary_function<unsigned char, unsigned char, unsigned char>> rb_cBinaryFunctionUnsignedCharUnsignedCharUnsignedChar = binary_function_instantiate<unsigned char, unsigned char, unsigned char>(rb_mCvCudaDevice, "BinaryFunctionUnsignedCharUnsignedCharUnsignedChar");
   Rice::Data_Type<cv::cuda::device::maximum<uchar>> rb_cCvCudaDeviceMaximumUchar = define_class_under<cv::cuda::device::maximum<uchar>, cv::cuda::device::binary_function<unsigned char, unsigned char, unsigned char>>(rb_mCvCudaDevice, "MaximumUchar").
     define_method<uchar(cv::cuda::device::maximum<uchar>::*)(uchar, uchar) const>("call", &cv::cuda::device::maximum<uchar>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -22,8 +21,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<uchar>, const cv::cuda::device::maximum<uchar>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<signed char, signed char, signed char>> rb_cBinaryFunctionSignedCharSignedCharSignedChar = define_class_under<cv::cuda::device::binary_function<signed char, signed char, signed char>>(rb_mCvCudaDevice, "BinaryFunctionSignedCharSignedCharSignedChar").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<signed char, signed char, signed char>>, signed char, signed char, signed char>);
+  Rice::Data_Type<cv::cuda::device::binary_function<signed char, signed char, signed char>> rb_cBinaryFunctionSignedCharSignedCharSignedChar = binary_function_instantiate<signed char, signed char, signed char>(rb_mCvCudaDevice, "BinaryFunctionSignedCharSignedCharSignedChar");
   Rice::Data_Type<cv::cuda::device::maximum<schar>> rb_cCvCudaDeviceMaximumSchar = define_class_under<cv::cuda::device::maximum<schar>, cv::cuda::device::binary_function<signed char, signed char, signed char>>(rb_mCvCudaDevice, "MaximumSchar").
     define_method<schar(cv::cuda::device::maximum<schar>::*)(schar, schar) const>("call", &cv::cuda::device::maximum<schar>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -31,8 +29,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<schar>, const cv::cuda::device::maximum<schar>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<char, char, char>> rb_cBinaryFunctionCharCharChar = define_class_under<cv::cuda::device::binary_function<char, char, char>>(rb_mCvCudaDevice, "BinaryFunctionCharCharChar").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<char, char, char>>, char, char, char>);
+  Rice::Data_Type<cv::cuda::device::binary_function<char, char, char>> rb_cBinaryFunctionCharCharChar = binary_function_instantiate<char, char, char>(rb_mCvCudaDevice, "BinaryFunctionCharCharChar");
   Rice::Data_Type<cv::cuda::device::maximum<char>> rb_cCvCudaDeviceMaximumChar = define_class_under<cv::cuda::device::maximum<char>, cv::cuda::device::binary_function<char, char, char>>(rb_mCvCudaDevice, "MaximumChar").
     define_method<char(cv::cuda::device::maximum<char>::*)(char, char) const>("call", &cv::cuda::device::maximum<char>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -40,8 +37,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<char>, const cv::cuda::device::maximum<char>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<unsigned short, unsigned short, unsigned short>> rb_cBinaryFunctionUnsignedShortUnsignedShortUnsignedShort = define_class_under<cv::cuda::device::binary_function<unsigned short, unsigned short, unsigned short>>(rb_mCvCudaDevice, "BinaryFunctionUnsignedShortUnsignedShortUnsignedShort").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<unsigned short, unsigned short, unsigned short>>, unsigned short, unsigned short, unsigned short>);
+  Rice::Data_Type<cv::cuda::device::binary_function<unsigned short, unsigned short, unsigned short>> rb_cBinaryFunctionUnsignedShortUnsignedShortUnsignedShort = binary_function_instantiate<unsigned short, unsigned short, unsigned short>(rb_mCvCudaDevice, "BinaryFunctionUnsignedShortUnsignedShortUnsignedShort");
   Rice::Data_Type<cv::cuda::device::maximum<ushort>> rb_cCvCudaDeviceMaximumUshort = define_class_under<cv::cuda::device::maximum<ushort>, cv::cuda::device::binary_function<unsigned short, unsigned short, unsigned short>>(rb_mCvCudaDevice, "MaximumUshort").
     define_method<ushort(cv::cuda::device::maximum<ushort>::*)(ushort, ushort) const>("call", &cv::cuda::device::maximum<ushort>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -49,8 +45,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<ushort>, const cv::cuda::device::maximum<ushort>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<short, short, short>> rb_cBinaryFunctionShortShortShort = define_class_under<cv::cuda::device::binary_function<short, short, short>>(rb_mCvCudaDevice, "BinaryFunctionShortShortShort").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<short, short, short>>, short, short, short>);
+  Rice::Data_Type<cv::cuda::device::binary_function<short, short, short>> rb_cBinaryFunctionShortShortShort = binary_function_instantiate<short, short, short>(rb_mCvCudaDevice, "BinaryFunctionShortShortShort");
   Rice::Data_Type<cv::cuda::device::maximum<short>> rb_cCvCudaDeviceMaximumShort = define_class_under<cv::cuda::device::maximum<short>, cv::cuda::device::binary_function<short, short, short>>(rb_mCvCudaDevice, "MaximumShort").
     define_method<short(cv::cuda::device::maximum<short>::*)(short, short) const>("call", &cv::cuda::device::maximum<short>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -58,8 +53,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<short>, const cv::cuda::device::maximum<short>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<int, int, int>> rb_cBinaryFunctionIntIntInt = define_class_under<cv::cuda::device::binary_function<int, int, int>>(rb_mCvCudaDevice, "BinaryFunctionIntIntInt").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<int, int, int>>, int, int, int>);
+  Rice::Data_Type<cv::cuda::device::binary_function<int, int, int>> rb_cBinaryFunctionIntIntInt = binary_function_instantiate<int, int, int>(rb_mCvCudaDevice, "BinaryFunctionIntIntInt");
   Rice::Data_Type<cv::cuda::device::maximum<int>> rb_cCvCudaDeviceMaximumInt = define_class_under<cv::cuda::device::maximum<int>, cv::cuda::device::binary_function<int, int, int>>(rb_mCvCudaDevice, "MaximumInt").
     define_method<int(cv::cuda::device::maximum<int>::*)(int, int) const>("call", &cv::cuda::device::maximum<int>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -67,8 +61,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<int>, const cv::cuda::device::maximum<int>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<unsigned int, unsigned int, unsigned int>> rb_cBinaryFunctionUnsignedIntUnsignedIntUnsignedInt = define_class_under<cv::cuda::device::binary_function<unsigned int, unsigned int, unsigned int>>(rb_mCvCudaDevice, "BinaryFunctionUnsignedIntUnsignedIntUnsignedInt").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<unsigned int, unsigned int, unsigned int>>, unsigned int, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::binary_function<unsigned int, unsigned int, unsigned int>> rb_cBinaryFunctionUnsignedIntUnsignedIntUnsignedInt = binary_function_instantiate<unsigned int, unsigned int, unsigned int>(rb_mCvCudaDevice, "BinaryFunctionUnsignedIntUnsignedIntUnsignedInt");
   Rice::Data_Type<cv::cuda::device::maximum<uint>> rb_cCvCudaDeviceMaximumUint = define_class_under<cv::cuda::device::maximum<uint>, cv::cuda::device::binary_function<unsigned int, unsigned int, unsigned int>>(rb_mCvCudaDevice, "MaximumUint").
     define_method<uint(cv::cuda::device::maximum<uint>::*)(uint, uint) const>("call", &cv::cuda::device::maximum<uint>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -76,8 +69,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<uint>, const cv::cuda::device::maximum<uint>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<float, float, float>> rb_cBinaryFunctionFloatFloatFloat = define_class_under<cv::cuda::device::binary_function<float, float, float>>(rb_mCvCudaDevice, "BinaryFunctionFloatFloatFloat").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<float, float, float>>, float, float, float>);
+  Rice::Data_Type<cv::cuda::device::binary_function<float, float, float>> rb_cBinaryFunctionFloatFloatFloat = binary_function_instantiate<float, float, float>(rb_mCvCudaDevice, "BinaryFunctionFloatFloatFloat");
   Rice::Data_Type<cv::cuda::device::maximum<float>> rb_cCvCudaDeviceMaximumFloat = define_class_under<cv::cuda::device::maximum<float>, cv::cuda::device::binary_function<float, float, float>>(rb_mCvCudaDevice, "MaximumFloat").
     define_method<float(cv::cuda::device::maximum<float>::*)(float, float) const>("call", &cv::cuda::device::maximum<float>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -85,8 +77,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::maximum<float>, const cv::cuda::device::maximum<float>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::binary_function<double, double, double>> rb_cBinaryFunctionDoubleDoubleDouble = define_class_under<cv::cuda::device::binary_function<double, double, double>>(rb_mCvCudaDevice, "BinaryFunctionDoubleDoubleDouble").
-    define(&binary_function_builder<Data_Type<cv::cuda::device::binary_function<double, double, double>>, double, double, double>);
+  Rice::Data_Type<cv::cuda::device::binary_function<double, double, double>> rb_cBinaryFunctionDoubleDoubleDouble = binary_function_instantiate<double, double, double>(rb_mCvCudaDevice, "BinaryFunctionDoubleDoubleDouble");
   Rice::Data_Type<cv::cuda::device::maximum<double>> rb_cCvCudaDeviceMaximumDouble = define_class_under<cv::cuda::device::maximum<double>, cv::cuda::device::binary_function<double, double, double>>(rb_mCvCudaDevice, "MaximumDouble").
     define_method<double(cv::cuda::device::maximum<double>::*)(double, double) const>("call", &cv::cuda::device::maximum<double>::operator(),
       Arg("lhs"), Arg("rhs")).
@@ -157,8 +148,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::minimum<double>, const cv::cuda::device::minimum<double>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned char>> rb_cUnaryFunctionUnsignedCharUnsignedChar = define_class_under<cv::cuda::device::unary_function<unsigned char, unsigned char>>(rb_mCvCudaDevice, "UnaryFunctionUnsignedCharUnsignedChar").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned char>>, unsigned char, unsigned char>);
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned char, unsigned char>> rb_cUnaryFunctionUnsignedCharUnsignedChar = unary_function_instantiate<unsigned char, unsigned char>(rb_mCvCudaDevice, "UnaryFunctionUnsignedCharUnsignedChar");
   Rice::Data_Type<cv::cuda::device::abs_func<unsigned char>> rb_cCvCudaDeviceAbsFuncUnsignedChar = define_class_under<cv::cuda::device::abs_func<unsigned char>, cv::cuda::device::unary_function<unsigned char, unsigned char>>(rb_mCvCudaDevice, "AbsFuncUnsignedChar").
     define_method<unsigned char(cv::cuda::device::abs_func<unsigned char>::*)(unsigned char) const>("call", &cv::cuda::device::abs_func<unsigned char>::operator(),
       Arg("x")).
@@ -166,8 +156,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned char>, const cv::cuda::device::abs_func<unsigned char>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<signed char, signed char>> rb_cUnaryFunctionSignedCharSignedChar = define_class_under<cv::cuda::device::unary_function<signed char, signed char>>(rb_mCvCudaDevice, "UnaryFunctionSignedCharSignedChar").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<signed char, signed char>>, signed char, signed char>);
+  Rice::Data_Type<cv::cuda::device::unary_function<signed char, signed char>> rb_cUnaryFunctionSignedCharSignedChar = unary_function_instantiate<signed char, signed char>(rb_mCvCudaDevice, "UnaryFunctionSignedCharSignedChar");
   Rice::Data_Type<cv::cuda::device::abs_func<signed char>> rb_cCvCudaDeviceAbsFuncSignedChar = define_class_under<cv::cuda::device::abs_func<signed char>, cv::cuda::device::unary_function<signed char, signed char>>(rb_mCvCudaDevice, "AbsFuncSignedChar").
     define_method<signed char(cv::cuda::device::abs_func<signed char>::*)(signed char) const>("call", &cv::cuda::device::abs_func<signed char>::operator(),
       Arg("x")).
@@ -175,8 +164,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<signed char>, const cv::cuda::device::abs_func<signed char>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<char, char>> rb_cUnaryFunctionCharChar = define_class_under<cv::cuda::device::unary_function<char, char>>(rb_mCvCudaDevice, "UnaryFunctionCharChar").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<char, char>>, char, char>);
+  Rice::Data_Type<cv::cuda::device::unary_function<char, char>> rb_cUnaryFunctionCharChar = unary_function_instantiate<char, char>(rb_mCvCudaDevice, "UnaryFunctionCharChar");
   Rice::Data_Type<cv::cuda::device::abs_func<char>> rb_cCvCudaDeviceAbsFuncChar = define_class_under<cv::cuda::device::abs_func<char>, cv::cuda::device::unary_function<char, char>>(rb_mCvCudaDevice, "AbsFuncChar").
     define_method<char(cv::cuda::device::abs_func<char>::*)(char) const>("call", &cv::cuda::device::abs_func<char>::operator(),
       Arg("x")).
@@ -184,8 +172,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<char>, const cv::cuda::device::abs_func<char>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<unsigned short, unsigned short>> rb_cUnaryFunctionUnsignedShortUnsignedShort = define_class_under<cv::cuda::device::unary_function<unsigned short, unsigned short>>(rb_mCvCudaDevice, "UnaryFunctionUnsignedShortUnsignedShort").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned short, unsigned short>>, unsigned short, unsigned short>);
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned short, unsigned short>> rb_cUnaryFunctionUnsignedShortUnsignedShort = unary_function_instantiate<unsigned short, unsigned short>(rb_mCvCudaDevice, "UnaryFunctionUnsignedShortUnsignedShort");
   Rice::Data_Type<cv::cuda::device::abs_func<unsigned short>> rb_cCvCudaDeviceAbsFuncUnsignedShort = define_class_under<cv::cuda::device::abs_func<unsigned short>, cv::cuda::device::unary_function<unsigned short, unsigned short>>(rb_mCvCudaDevice, "AbsFuncUnsignedShort").
     define_method<unsigned short(cv::cuda::device::abs_func<unsigned short>::*)(unsigned short) const>("call", &cv::cuda::device::abs_func<unsigned short>::operator(),
       Arg("x")).
@@ -193,8 +180,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned short>, const cv::cuda::device::abs_func<unsigned short>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<short, short>> rb_cUnaryFunctionShortShort = define_class_under<cv::cuda::device::unary_function<short, short>>(rb_mCvCudaDevice, "UnaryFunctionShortShort").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<short, short>>, short, short>);
+  Rice::Data_Type<cv::cuda::device::unary_function<short, short>> rb_cUnaryFunctionShortShort = unary_function_instantiate<short, short>(rb_mCvCudaDevice, "UnaryFunctionShortShort");
   Rice::Data_Type<cv::cuda::device::abs_func<short>> rb_cCvCudaDeviceAbsFuncShort = define_class_under<cv::cuda::device::abs_func<short>, cv::cuda::device::unary_function<short, short>>(rb_mCvCudaDevice, "AbsFuncShort").
     define_method<short(cv::cuda::device::abs_func<short>::*)(short) const>("call", &cv::cuda::device::abs_func<short>::operator(),
       Arg("x")).
@@ -202,8 +188,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<short>, const cv::cuda::device::abs_func<short>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = define_class_under<cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDevice, "UnaryFunctionUnsignedIntUnsignedInt").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>>, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cuda::device::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = unary_function_instantiate<unsigned int, unsigned int>(rb_mCvCudaDevice, "UnaryFunctionUnsignedIntUnsignedInt");
   Rice::Data_Type<cv::cuda::device::abs_func<unsigned int>> rb_cCvCudaDeviceAbsFuncUnsignedInt = define_class_under<cv::cuda::device::abs_func<unsigned int>, cv::cuda::device::unary_function<unsigned int, unsigned int>>(rb_mCvCudaDevice, "AbsFuncUnsignedInt").
     define_method<unsigned int(cv::cuda::device::abs_func<unsigned int>::*)(unsigned int) const>("call", &cv::cuda::device::abs_func<unsigned int>::operator(),
       Arg("x")).
@@ -211,8 +196,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<unsigned int>, const cv::cuda::device::abs_func<unsigned int>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<int, int>> rb_cUnaryFunctionIntInt = define_class_under<cv::cuda::device::unary_function<int, int>>(rb_mCvCudaDevice, "UnaryFunctionIntInt").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<int, int>>, int, int>);
+  Rice::Data_Type<cv::cuda::device::unary_function<int, int>> rb_cUnaryFunctionIntInt = unary_function_instantiate<int, int>(rb_mCvCudaDevice, "UnaryFunctionIntInt");
   Rice::Data_Type<cv::cuda::device::abs_func<int>> rb_cCvCudaDeviceAbsFuncInt = define_class_under<cv::cuda::device::abs_func<int>, cv::cuda::device::unary_function<int, int>>(rb_mCvCudaDevice, "AbsFuncInt").
     define_method<int(cv::cuda::device::abs_func<int>::*)(int) const>("call", &cv::cuda::device::abs_func<int>::operator(),
       Arg("x")).
@@ -220,8 +204,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<int>, const cv::cuda::device::abs_func<int>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<float, float>> rb_cUnaryFunctionFloatFloat = define_class_under<cv::cuda::device::unary_function<float, float>>(rb_mCvCudaDevice, "UnaryFunctionFloatFloat").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<float, float>>, float, float>);
+  Rice::Data_Type<cv::cuda::device::unary_function<float, float>> rb_cUnaryFunctionFloatFloat = unary_function_instantiate<float, float>(rb_mCvCudaDevice, "UnaryFunctionFloatFloat");
   Rice::Data_Type<cv::cuda::device::abs_func<float>> rb_cCvCudaDeviceAbsFuncFloat = define_class_under<cv::cuda::device::abs_func<float>, cv::cuda::device::unary_function<float, float>>(rb_mCvCudaDevice, "AbsFuncFloat").
     define_method<float(cv::cuda::device::abs_func<float>::*)(float) const>("call", &cv::cuda::device::abs_func<float>::operator(),
       Arg("x")).
@@ -229,8 +212,7 @@ void Init_Core_Cuda_Functional()
     define_constructor(Constructor<cv::cuda::device::abs_func<float>, const cv::cuda::device::abs_func<float>&>(),
       Arg("arg_0"));
 
-  Rice::Data_Type<cv::cuda::device::unary_function<double, double>> rb_cUnaryFunctionDoubleDouble = define_class_under<cv::cuda::device::unary_function<double, double>>(rb_mCvCudaDevice, "UnaryFunctionDoubleDouble").
-    define(&unary_function_builder<Data_Type<cv::cuda::device::unary_function<double, double>>, double, double>);
+  Rice::Data_Type<cv::cuda::device::unary_function<double, double>> rb_cUnaryFunctionDoubleDouble = unary_function_instantiate<double, double>(rb_mCvCudaDevice, "UnaryFunctionDoubleDouble");
   Rice::Data_Type<cv::cuda::device::abs_func<double>> rb_cCvCudaDeviceAbsFuncDouble = define_class_under<cv::cuda::device::abs_func<double>, cv::cuda::device::unary_function<double, double>>(rb_mCvCudaDevice, "AbsFuncDouble").
     define_method<double(cv::cuda::device::abs_func<double>::*)(double) const>("call", &cv::cuda::device::abs_func<double>::operator(),
       Arg("x")).

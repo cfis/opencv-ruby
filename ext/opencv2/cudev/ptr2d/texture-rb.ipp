@@ -1,5 +1,5 @@
 template<typename T, typename R>
-inline Rice::Data_Type<cv::cudev::TexturePtr<T, R>> TexturePtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::TexturePtr<T, R>> TexturePtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::TexturePtr<T, R>>(parent, name).
     define_constructor(Constructor<cv::cudev::TexturePtr<T, R>>()).
@@ -12,7 +12,7 @@ inline Rice::Data_Type<cv::cudev::TexturePtr<T, R>> TexturePtr_instantiate(Rice:
 }
 
 template<typename T, typename R>
-inline Rice::Data_Type<cv::cudev::TextureOffPtr<T, R>> TextureOffPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::TextureOffPtr<T, R>> TextureOffPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::TextureOffPtr<T, R>>(parent, name).
     define_constructor(Constructor<cv::cudev::TextureOffPtr<T, R>, const cudaTextureObject_t, const int, const int>(),
@@ -22,7 +22,7 @@ inline Rice::Data_Type<cv::cudev::TextureOffPtr<T, R>> TextureOffPtr_instantiate
 }
 
 template<typename T, typename R>
-inline Rice::Data_Type<cv::cudev::UniqueTexture<T, R>> UniqueTexture_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::UniqueTexture<T, R>> UniqueTexture_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::UniqueTexture<T, R>>(parent, name).
     define_constructor(Constructor<cv::cudev::UniqueTexture<T, R>>()).
@@ -40,7 +40,7 @@ inline Rice::Data_Type<cv::cudev::UniqueTexture<T, R>> UniqueTexture_instantiate
 }
 
 template<typename T, typename R>
-inline Rice::Data_Type<cv::cudev::Texture<T, R>> Texture_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::Texture<T, R>> Texture_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::Texture<T, R>>(parent, name).
     define_constructor(Constructor<cv::cudev::Texture<T, R>>()).
@@ -65,7 +65,7 @@ inline Rice::Data_Type<cv::cudev::Texture<T, R>> Texture_instantiate(Rice::Modul
 }
 
 template<typename T, typename R>
-inline Rice::Data_Type<cv::cudev::TextureOff<T, R>> TextureOff_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::TextureOff<T, R>> TextureOff_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::TextureOff<T, R>>(parent, name).
     define_constructor(Constructor<cv::cudev::TextureOff<T, R>, const cv::cudev::TextureOff<T, R>&>(),

@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_any_policy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_any_policy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::anyimpl::typed_base_any_policy<T>>(parent, name).
     template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size).
@@ -7,7 +7,7 @@ inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_an
 }
 
 template<typename T>
-inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::anyimpl::small_any_policy<T>>(parent, name).
     template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
@@ -27,7 +27,7 @@ inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_i
 }
 
 template<typename T>
-inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::anyimpl::big_any_policy<T>>(parent, name).
     template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
@@ -47,7 +47,7 @@ inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_insta
 }
 
 template<typename T>
-inline Rice::Data_Type<cvflann::anyimpl::SinglePolicy<T>> SinglePolicy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::anyimpl::SinglePolicy<T>> SinglePolicy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::anyimpl::SinglePolicy<T>>(parent, name).
     template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);

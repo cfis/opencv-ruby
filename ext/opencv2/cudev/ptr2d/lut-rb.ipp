@@ -1,5 +1,5 @@
 template<typename SrcPtr, typename TablePtr>
-inline Rice::Data_Type<cv::cudev::LutPtr<SrcPtr, TablePtr>> LutPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::LutPtr<SrcPtr, TablePtr>> LutPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::LutPtr<SrcPtr, TablePtr>>(parent, name).
     define_attr("src", &cv::cudev::LutPtr<SrcPtr, TablePtr>::src).
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::cudev::LutPtr<SrcPtr, TablePtr>> LutPtr_instantiate(R
 }
 
 template<typename SrcPtr, typename TablePtr>
-inline Rice::Data_Type<cv::cudev::LutPtrSz<SrcPtr, TablePtr>> LutPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::LutPtrSz<SrcPtr, TablePtr>> LutPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::LutPtrSz<SrcPtr, TablePtr>>(parent, name).
     define_attr("rows", &cv::cudev::LutPtrSz<SrcPtr, TablePtr>::rows).

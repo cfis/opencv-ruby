@@ -1,5 +1,5 @@
 template<int T>
-inline Rice::Data_Type<cv::optflow::GPCForest<T>> GPCForest_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::optflow::GPCForest<T>> GPCForest_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::optflow::GPCForest<T>>(parent, name).
     template define_method<void(cv::optflow::GPCForest<T>::*)(cv::optflow::GPCTrainingSamples&, const cv::optflow::GPCTrainingParams)>("train", &cv::optflow::GPCForest<T>::train,

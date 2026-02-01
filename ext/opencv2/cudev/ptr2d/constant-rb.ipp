@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cudev::ConstantPtr<T>> ConstantPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ConstantPtr<T>> ConstantPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ConstantPtr<T>>(parent, name).
     define_attr("value", &cv::cudev::ConstantPtr<T>::value).
@@ -8,7 +8,7 @@ inline Rice::Data_Type<cv::cudev::ConstantPtr<T>> ConstantPtr_instantiate(Rice::
 }
 
 template<typename T>
-inline Rice::Data_Type<cv::cudev::ConstantPtrSz<T>> ConstantPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ConstantPtrSz<T>> ConstantPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ConstantPtrSz<T>>(parent, name).
     define_attr("rows", &cv::cudev::ConstantPtrSz<T>::rows).

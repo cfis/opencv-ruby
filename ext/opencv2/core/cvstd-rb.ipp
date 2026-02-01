@@ -1,5 +1,5 @@
 template<typename _Tp>
-inline Rice::Data_Type<cv::Allocator<_Tp>> Allocator_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Allocator<_Tp>> Allocator_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Allocator<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Allocator<_Tp>>()).

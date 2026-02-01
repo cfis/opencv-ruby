@@ -1,5 +1,5 @@
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::BrdConstant<SrcPtr>> BrdConstant_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::BrdConstant<SrcPtr>> BrdConstant_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::BrdConstant<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::BrdConstant<SrcPtr>::src).
@@ -11,7 +11,7 @@ inline Rice::Data_Type<cv::cudev::BrdConstant<SrcPtr>> BrdConstant_instantiate(R
 }
 
 template<typename BrdImpl, typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::BrdBase<BrdImpl, SrcPtr>> BrdBase_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::BrdBase<BrdImpl, SrcPtr>> BrdBase_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::BrdBase<BrdImpl, SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::BrdBase<BrdImpl, SrcPtr>::src).

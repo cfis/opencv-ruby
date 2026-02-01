@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cvflann::Matrix<T>> Matrix_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::Matrix<T>> Matrix_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::Matrix<T>>(parent, name).
     define_attr("rows", &cvflann::Matrix<T>::rows).

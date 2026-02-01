@@ -1,5 +1,5 @@
 template<ScanKind Kind, typename T, typename F>
-inline Rice::Data_Type<cv::cuda::device::WarpScan<Kind, T, F>> WarpScan_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::WarpScan<Kind, T, F>> WarpScan_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::WarpScan<Kind, T, F>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::WarpScan<Kind, T, F>>()).
@@ -15,7 +15,7 @@ inline Rice::Data_Type<cv::cuda::device::WarpScan<Kind, T, F>> WarpScan_instanti
 }
 
 template<ScanKind Kind, typename T, typename F>
-inline Rice::Data_Type<cv::cuda::device::WarpScanNoComp<Kind, T, F>> WarpScanNoComp_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::WarpScanNoComp<Kind, T, F>> WarpScanNoComp_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::WarpScanNoComp<Kind, T, F>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::WarpScanNoComp<Kind, T, F>>()).
@@ -34,7 +34,7 @@ inline Rice::Data_Type<cv::cuda::device::WarpScanNoComp<Kind, T, F>> WarpScanNoC
 }
 
 template<ScanKind Kind, typename T, typename Sc, typename F>
-inline Rice::Data_Type<cv::cuda::device::BlockScan<Kind, T, Sc, F>> BlockScan_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::BlockScan<Kind, T, Sc, F>> BlockScan_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::BlockScan<Kind, T, Sc, F>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::BlockScan<Kind, T, Sc, F>>()).

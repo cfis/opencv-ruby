@@ -1,5 +1,5 @@
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ResizePtr<SrcPtr>> ResizePtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ResizePtr<SrcPtr>> ResizePtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ResizePtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::ResizePtr<SrcPtr>::src).
@@ -10,7 +10,7 @@ inline Rice::Data_Type<cv::cudev::ResizePtr<SrcPtr>> ResizePtr_instantiate(Rice:
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ResizePtrSz<SrcPtr>> ResizePtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ResizePtrSz<SrcPtr>> ResizePtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ResizePtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::ResizePtrSz<SrcPtr>::rows).

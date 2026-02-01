@@ -1,5 +1,5 @@
 template<typename _Tp, int numflag>
-inline Rice::Data_Type<cv::internal::VecWriterProxy<_Tp, numflag>> VecWriterProxy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::internal::VecWriterProxy<_Tp, numflag>> VecWriterProxy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::internal::VecWriterProxy<_Tp, numflag>>(parent, name).
     define_constructor(Constructor<cv::internal::VecWriterProxy<_Tp, numflag>, cv::FileStorage*>(),
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::internal::VecWriterProxy<_Tp, numflag>> VecWriterProx
 }
 
 template<typename _Tp, int numflag>
-inline Rice::Data_Type<cv::internal::VecReaderProxy<_Tp, numflag>> VecReaderProxy_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::internal::VecReaderProxy<_Tp, numflag>> VecReaderProxy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::internal::VecReaderProxy<_Tp, numflag>>(parent, name).
     define_constructor(Constructor<cv::internal::VecReaderProxy<_Tp, numflag>, cv::FileNodeIterator*>(),

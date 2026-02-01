@@ -1,5 +1,5 @@
 template<typename TWeight>
-inline Rice::Data_Type<cv::detail::GCGraph<TWeight>> GCGraph_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::detail::GCGraph<TWeight>> GCGraph_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::detail::GCGraph<TWeight>>(parent, name).
     define_constructor(Constructor<cv::detail::GCGraph<TWeight>>()).

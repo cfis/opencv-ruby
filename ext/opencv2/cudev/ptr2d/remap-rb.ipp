@@ -1,5 +1,5 @@
 template<typename SrcPtr, typename MapPtr>
-inline Rice::Data_Type<cv::cudev::RemapPtr1<SrcPtr, MapPtr>> RemapPtr1_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::RemapPtr1<SrcPtr, MapPtr>> RemapPtr1_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::RemapPtr1<SrcPtr, MapPtr>>(parent, name).
     define_attr("src", &cv::cudev::RemapPtr1<SrcPtr, MapPtr>::src).
@@ -9,7 +9,7 @@ inline Rice::Data_Type<cv::cudev::RemapPtr1<SrcPtr, MapPtr>> RemapPtr1_instantia
 }
 
 template<typename SrcPtr, typename MapXPtr, typename MapYPtr>
-inline Rice::Data_Type<cv::cudev::RemapPtr2<SrcPtr, MapXPtr, MapYPtr>> RemapPtr2_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::RemapPtr2<SrcPtr, MapXPtr, MapYPtr>> RemapPtr2_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::RemapPtr2<SrcPtr, MapXPtr, MapYPtr>>(parent, name).
     define_attr("src", &cv::cudev::RemapPtr2<SrcPtr, MapXPtr, MapYPtr>::src).
@@ -20,7 +20,7 @@ inline Rice::Data_Type<cv::cudev::RemapPtr2<SrcPtr, MapXPtr, MapYPtr>> RemapPtr2
 }
 
 template<typename SrcPtr, typename MapPtr>
-inline Rice::Data_Type<cv::cudev::RemapPtr1Sz<SrcPtr, MapPtr>> RemapPtr1Sz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::RemapPtr1Sz<SrcPtr, MapPtr>> RemapPtr1Sz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::RemapPtr1Sz<SrcPtr, MapPtr>>(parent, name).
     define_attr("rows", &cv::cudev::RemapPtr1Sz<SrcPtr, MapPtr>::rows).
@@ -28,7 +28,7 @@ inline Rice::Data_Type<cv::cudev::RemapPtr1Sz<SrcPtr, MapPtr>> RemapPtr1Sz_insta
 }
 
 template<typename SrcPtr, typename MapXPtr, typename MapYPtr>
-inline Rice::Data_Type<cv::cudev::RemapPtr2Sz<SrcPtr, MapXPtr, MapYPtr>> RemapPtr2Sz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::RemapPtr2Sz<SrcPtr, MapXPtr, MapYPtr>> RemapPtr2Sz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::RemapPtr2Sz<SrcPtr, MapXPtr, MapYPtr>>(parent, name).
     define_attr("rows", &cv::cudev::RemapPtr2Sz<SrcPtr, MapXPtr, MapYPtr>::rows).

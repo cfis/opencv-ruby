@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cv::cuda::device::L1Dist<T>> L1Dist_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::L1Dist<T>> L1Dist_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::L1Dist<T>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::L1Dist<T>>()).
@@ -13,7 +13,7 @@ inline Rice::Data_Type<cv::cuda::device::L1Dist<T>> L1Dist_instantiate(Rice::Mod
 }
 
 template<int THREAD_DIM, typename T1>
-inline Rice::Data_Type<cv::cuda::device::VecDiffGlobal<THREAD_DIM, T1>> VecDiffGlobal_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::VecDiffGlobal<THREAD_DIM, T1>> VecDiffGlobal_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::VecDiffGlobal<THREAD_DIM, T1>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::VecDiffGlobal<THREAD_DIM, T1>, const T1*, int, void*, int, int>(),
@@ -22,7 +22,7 @@ inline Rice::Data_Type<cv::cuda::device::VecDiffGlobal<THREAD_DIM, T1>> VecDiffG
 }
 
 template<int THREAD_DIM, int MAX_LEN, bool LEN_EQ_MAX_LEN, typename U>
-inline Rice::Data_Type<cv::cuda::device::VecDiffCachedRegister<THREAD_DIM, MAX_LEN, LEN_EQ_MAX_LEN, U>> VecDiffCachedRegister_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cuda::device::VecDiffCachedRegister<THREAD_DIM, MAX_LEN, LEN_EQ_MAX_LEN, U>> VecDiffCachedRegister_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::VecDiffCachedRegister<THREAD_DIM, MAX_LEN, LEN_EQ_MAX_LEN, U>>(parent, name).
     define_attr("vec1_vals", &cv::cuda::device::VecDiffCachedRegister<THREAD_DIM, MAX_LEN, LEN_EQ_MAX_LEN, U>::vec1Vals, Rice::AttrAccess::Read);

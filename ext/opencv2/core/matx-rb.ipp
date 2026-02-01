@@ -1,5 +1,5 @@
 template<typename _Tp, int m, int n>
-inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Matx<_Tp, m, n>>(parent, name).
     define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows).
@@ -86,7 +86,7 @@ inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module& paren
 }
 
 template<typename _Tp, int cn>
-inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Vec<_Tp, cn>>(parent, name).
     define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels).

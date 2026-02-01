@@ -1,5 +1,5 @@
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::NearestInterPtr<SrcPtr>> NearestInterPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::NearestInterPtr<SrcPtr>> NearestInterPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::NearestInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::NearestInterPtr<SrcPtr>::src).
@@ -8,7 +8,7 @@ inline Rice::Data_Type<cv::cudev::NearestInterPtr<SrcPtr>> NearestInterPtr_insta
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::NearestInterPtrSz<SrcPtr>> NearestInterPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::NearestInterPtrSz<SrcPtr>> NearestInterPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::NearestInterPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::NearestInterPtrSz<SrcPtr>::rows).
@@ -16,7 +16,7 @@ inline Rice::Data_Type<cv::cudev::NearestInterPtrSz<SrcPtr>> NearestInterPtrSz_i
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::LinearInterPtr<SrcPtr>> LinearInterPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::LinearInterPtr<SrcPtr>> LinearInterPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::LinearInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::LinearInterPtr<SrcPtr>::src).
@@ -25,7 +25,7 @@ inline Rice::Data_Type<cv::cudev::LinearInterPtr<SrcPtr>> LinearInterPtr_instant
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::LinearInterPtrSz<SrcPtr>> LinearInterPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::LinearInterPtrSz<SrcPtr>> LinearInterPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::LinearInterPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::LinearInterPtrSz<SrcPtr>::rows).
@@ -33,7 +33,7 @@ inline Rice::Data_Type<cv::cudev::LinearInterPtrSz<SrcPtr>> LinearInterPtrSz_ins
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::CubicInterPtr<SrcPtr>> CubicInterPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::CubicInterPtr<SrcPtr>> CubicInterPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::CubicInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::CubicInterPtr<SrcPtr>::src).
@@ -44,7 +44,7 @@ inline Rice::Data_Type<cv::cudev::CubicInterPtr<SrcPtr>> CubicInterPtr_instantia
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::CubicInterPtrSz<SrcPtr>> CubicInterPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::CubicInterPtrSz<SrcPtr>> CubicInterPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::CubicInterPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::CubicInterPtrSz<SrcPtr>::rows).
@@ -52,7 +52,7 @@ inline Rice::Data_Type<cv::cudev::CubicInterPtrSz<SrcPtr>> CubicInterPtrSz_insta
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtr<SrcPtr>> IntegerAreaInterPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtr<SrcPtr>> IntegerAreaInterPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::IntegerAreaInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::IntegerAreaInterPtr<SrcPtr>::src).
@@ -63,7 +63,7 @@ inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtr<SrcPtr>> IntegerAreaInterP
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtrSz<SrcPtr>> IntegerAreaInterPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtrSz<SrcPtr>> IntegerAreaInterPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::IntegerAreaInterPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::IntegerAreaInterPtrSz<SrcPtr>::rows).
@@ -71,7 +71,7 @@ inline Rice::Data_Type<cv::cudev::IntegerAreaInterPtrSz<SrcPtr>> IntegerAreaInte
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::CommonAreaInterPtr<SrcPtr>> CommonAreaInterPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::CommonAreaInterPtr<SrcPtr>> CommonAreaInterPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::CommonAreaInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::CommonAreaInterPtr<SrcPtr>::src).
@@ -82,7 +82,7 @@ inline Rice::Data_Type<cv::cudev::CommonAreaInterPtr<SrcPtr>> CommonAreaInterPtr
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::CommonAreaInterPtrSz<SrcPtr>> CommonAreaInterPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::CommonAreaInterPtrSz<SrcPtr>> CommonAreaInterPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::CommonAreaInterPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::CommonAreaInterPtrSz<SrcPtr>::rows).

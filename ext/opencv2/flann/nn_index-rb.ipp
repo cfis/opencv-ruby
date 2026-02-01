@@ -1,5 +1,5 @@
 template<typename Distance>
-inline Rice::Data_Type<cvflann::NNIndex<Distance>> NNIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::NNIndex<Distance>> NNIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::NNIndex<Distance>>(parent, name).
     template define_method<void(cvflann::NNIndex<Distance>::*)()>("build_index", &cvflann::NNIndex<Distance>::buildIndex).

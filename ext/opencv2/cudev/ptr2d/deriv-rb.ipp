@@ -1,5 +1,5 @@
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::DerivXPtr<SrcPtr>> DerivXPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::DerivXPtr<SrcPtr>> DerivXPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::DerivXPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::DerivXPtr<SrcPtr>::src).
@@ -8,7 +8,7 @@ inline Rice::Data_Type<cv::cudev::DerivXPtr<SrcPtr>> DerivXPtr_instantiate(Rice:
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::DerivXPtrSz<SrcPtr>> DerivXPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::DerivXPtrSz<SrcPtr>> DerivXPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::DerivXPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::DerivXPtrSz<SrcPtr>::rows).
@@ -16,7 +16,7 @@ inline Rice::Data_Type<cv::cudev::DerivXPtrSz<SrcPtr>> DerivXPtrSz_instantiate(R
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::DerivYPtr<SrcPtr>> DerivYPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::DerivYPtr<SrcPtr>> DerivYPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::DerivYPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::DerivYPtr<SrcPtr>::src).
@@ -25,7 +25,7 @@ inline Rice::Data_Type<cv::cudev::DerivYPtr<SrcPtr>> DerivYPtr_instantiate(Rice:
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::DerivYPtrSz<SrcPtr>> DerivYPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::DerivYPtrSz<SrcPtr>> DerivYPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::DerivYPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::DerivYPtrSz<SrcPtr>::rows).
@@ -33,7 +33,7 @@ inline Rice::Data_Type<cv::cudev::DerivYPtrSz<SrcPtr>> DerivYPtrSz_instantiate(R
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::SobelXPtr<SrcPtr>> SobelXPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SobelXPtr<SrcPtr>> SobelXPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SobelXPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::SobelXPtr<SrcPtr>::src).
@@ -42,7 +42,7 @@ inline Rice::Data_Type<cv::cudev::SobelXPtr<SrcPtr>> SobelXPtr_instantiate(Rice:
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::SobelXPtrSz<SrcPtr>> SobelXPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SobelXPtrSz<SrcPtr>> SobelXPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SobelXPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::SobelXPtrSz<SrcPtr>::rows).
@@ -50,7 +50,7 @@ inline Rice::Data_Type<cv::cudev::SobelXPtrSz<SrcPtr>> SobelXPtrSz_instantiate(R
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::SobelYPtr<SrcPtr>> SobelYPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SobelYPtr<SrcPtr>> SobelYPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SobelYPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::SobelYPtr<SrcPtr>::src).
@@ -59,7 +59,7 @@ inline Rice::Data_Type<cv::cudev::SobelYPtr<SrcPtr>> SobelYPtr_instantiate(Rice:
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::SobelYPtrSz<SrcPtr>> SobelYPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::SobelYPtrSz<SrcPtr>> SobelYPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::SobelYPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::SobelYPtrSz<SrcPtr>::rows).
@@ -67,7 +67,7 @@ inline Rice::Data_Type<cv::cudev::SobelYPtrSz<SrcPtr>> SobelYPtrSz_instantiate(R
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ScharrXPtr<SrcPtr>> ScharrXPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ScharrXPtr<SrcPtr>> ScharrXPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ScharrXPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::ScharrXPtr<SrcPtr>::src).
@@ -76,7 +76,7 @@ inline Rice::Data_Type<cv::cudev::ScharrXPtr<SrcPtr>> ScharrXPtr_instantiate(Ric
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ScharrXPtrSz<SrcPtr>> ScharrXPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ScharrXPtrSz<SrcPtr>> ScharrXPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ScharrXPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::ScharrXPtrSz<SrcPtr>::rows).
@@ -84,7 +84,7 @@ inline Rice::Data_Type<cv::cudev::ScharrXPtrSz<SrcPtr>> ScharrXPtrSz_instantiate
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ScharrYPtr<SrcPtr>> ScharrYPtr_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ScharrYPtr<SrcPtr>> ScharrYPtr_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ScharrYPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::ScharrYPtr<SrcPtr>::src).
@@ -93,7 +93,7 @@ inline Rice::Data_Type<cv::cudev::ScharrYPtr<SrcPtr>> ScharrYPtr_instantiate(Ric
 }
 
 template<typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::ScharrYPtrSz<SrcPtr>> ScharrYPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::ScharrYPtrSz<SrcPtr>> ScharrYPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::ScharrYPtrSz<SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::ScharrYPtrSz<SrcPtr>::rows).
@@ -101,7 +101,7 @@ inline Rice::Data_Type<cv::cudev::ScharrYPtrSz<SrcPtr>> ScharrYPtrSz_instantiate
 }
 
 template<int ksize, typename SrcPtr>
-inline Rice::Data_Type<cv::cudev::LaplacianPtrSz<ksize, SrcPtr>> LaplacianPtrSz_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::cudev::LaplacianPtrSz<ksize, SrcPtr>> LaplacianPtrSz_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::LaplacianPtrSz<ksize, SrcPtr>>(parent, name).
     define_attr("rows", &cv::cudev::LaplacianPtrSz<ksize, SrcPtr>::rows).

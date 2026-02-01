@@ -1,5 +1,5 @@
 template<typename _Tp, size_t fixed_size>
-inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::AutoBuffer<_Tp, fixed_size>>(parent, name).
     define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>>()).
@@ -28,7 +28,7 @@ inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(R
 }
 
 template<typename OBJECT>
-inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::Node<OBJECT>>(parent, name).
     define_constructor(Constructor<cv::Node<OBJECT>>()).

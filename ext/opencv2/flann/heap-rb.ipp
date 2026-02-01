@@ -1,5 +1,5 @@
 template<typename T>
-inline Rice::Data_Type<cvflann::greater<T>> greater_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::greater<T>> greater_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::greater<T>>(parent, name).
     template define_method<bool(cvflann::greater<T>::*)(const T&, const T&) const>("call", &cvflann::greater<T>::operator(),
@@ -7,7 +7,7 @@ inline Rice::Data_Type<cvflann::greater<T>> greater_instantiate(Rice::Module& pa
 }
 
 template<typename T>
-inline Rice::Data_Type<cvflann::Heap<T>> Heap_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::Heap<T>> Heap_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::Heap<T>>(parent, name).
     define_constructor(Constructor<cvflann::Heap<T>, const int>(),

@@ -1,5 +1,5 @@
 template<typename Distance>
-inline Rice::Data_Type<cvflann::LinearIndex<Distance>> LinearIndex_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::LinearIndex<Distance>> LinearIndex_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::LinearIndex<Distance>>(parent, name).
     define_constructor(Constructor<cvflann::LinearIndex<Distance>, const cvflann::Matrix<ElementType>&, const cvflann::IndexParams&, Distance>(),

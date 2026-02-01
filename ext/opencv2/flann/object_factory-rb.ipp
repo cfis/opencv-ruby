@@ -1,5 +1,5 @@
 template<typename BaseClass, typename UniqueIdType, typename ObjectCreator>
-inline Rice::Data_Type<cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>> ObjectFactory_instantiate(Rice::Module& parent, const char* name)
+inline Rice::Data_Type<cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>> ObjectFactory_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>>(parent, name).
     template define_method<bool(cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::*)(UniqueIdType, ObjectCreator)>("subscribe", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::subscribe,

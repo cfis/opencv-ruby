@@ -11,8 +11,7 @@ void Init_Cudev_Functional_Functional()
 
   Module rb_mCvCudev = define_module_under(rb_mCv, "Cudev");
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, unsigned char>> rb_cBinaryFunctionUnsignedCharUnsignedCharUnsignedChar = define_class_under<cv::cudev::binary_function<unsigned char, unsigned char, unsigned char>>(rb_mCvCudev, "BinaryFunctionUnsignedCharUnsignedCharUnsignedChar").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, unsigned char>>, unsigned char, unsigned char, unsigned char>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, unsigned char>> rb_cBinaryFunctionUnsignedCharUnsignedCharUnsignedChar = binary_function_instantiate<unsigned char, unsigned char, unsigned char>(rb_mCvCudev, "BinaryFunctionUnsignedCharUnsignedCharUnsignedChar");
   Rice::Data_Type<cv::cudev::maximum<uchar>> rb_cCvCudevMaximumUchar = define_class_under<cv::cudev::maximum<uchar>, cv::cudev::binary_function<unsigned char, unsigned char, unsigned char>>(rb_mCvCudev, "MaximumUchar").
     define_constructor(Constructor<cv::cudev::maximum<uchar>>()).
     define_method<uchar(cv::cudev::maximum<uchar>::*)(uchar, uchar) const>("call", &cv::cudev::maximum<uchar>::operator(),
@@ -23,8 +22,7 @@ void Init_Cudev_Functional_Functional()
     define_method<uchar(cv::cudev::minimum<uchar>::*)(uchar, uchar) const>("call", &cv::cudev::minimum<uchar>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<signed char, signed char, signed char>> rb_cBinaryFunctionSignedCharSignedCharSignedChar = define_class_under<cv::cudev::binary_function<signed char, signed char, signed char>>(rb_mCvCudev, "BinaryFunctionSignedCharSignedCharSignedChar").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<signed char, signed char, signed char>>, signed char, signed char, signed char>);
+  Rice::Data_Type<cv::cudev::binary_function<signed char, signed char, signed char>> rb_cBinaryFunctionSignedCharSignedCharSignedChar = binary_function_instantiate<signed char, signed char, signed char>(rb_mCvCudev, "BinaryFunctionSignedCharSignedCharSignedChar");
   Rice::Data_Type<cv::cudev::maximum<schar>> rb_cCvCudevMaximumSchar = define_class_under<cv::cudev::maximum<schar>, cv::cudev::binary_function<signed char, signed char, signed char>>(rb_mCvCudev, "MaximumSchar").
     define_constructor(Constructor<cv::cudev::maximum<schar>>()).
     define_method<schar(cv::cudev::maximum<schar>::*)(schar, schar) const>("call", &cv::cudev::maximum<schar>::operator(),
@@ -35,8 +33,7 @@ void Init_Cudev_Functional_Functional()
     define_method<schar(cv::cudev::minimum<schar>::*)(schar, schar) const>("call", &cv::cudev::minimum<schar>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, unsigned short>> rb_cBinaryFunctionUnsignedShortUnsignedShortUnsignedShort = define_class_under<cv::cudev::binary_function<unsigned short, unsigned short, unsigned short>>(rb_mCvCudev, "BinaryFunctionUnsignedShortUnsignedShortUnsignedShort").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, unsigned short>>, unsigned short, unsigned short, unsigned short>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, unsigned short>> rb_cBinaryFunctionUnsignedShortUnsignedShortUnsignedShort = binary_function_instantiate<unsigned short, unsigned short, unsigned short>(rb_mCvCudev, "BinaryFunctionUnsignedShortUnsignedShortUnsignedShort");
   Rice::Data_Type<cv::cudev::maximum<ushort>> rb_cCvCudevMaximumUshort = define_class_under<cv::cudev::maximum<ushort>, cv::cudev::binary_function<unsigned short, unsigned short, unsigned short>>(rb_mCvCudev, "MaximumUshort").
     define_constructor(Constructor<cv::cudev::maximum<ushort>>()).
     define_method<ushort(cv::cudev::maximum<ushort>::*)(ushort, ushort) const>("call", &cv::cudev::maximum<ushort>::operator(),
@@ -47,8 +44,7 @@ void Init_Cudev_Functional_Functional()
     define_method<ushort(cv::cudev::minimum<ushort>::*)(ushort, ushort) const>("call", &cv::cudev::minimum<ushort>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<short, short, short>> rb_cBinaryFunctionShortShortShort = define_class_under<cv::cudev::binary_function<short, short, short>>(rb_mCvCudev, "BinaryFunctionShortShortShort").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<short, short, short>>, short, short, short>);
+  Rice::Data_Type<cv::cudev::binary_function<short, short, short>> rb_cBinaryFunctionShortShortShort = binary_function_instantiate<short, short, short>(rb_mCvCudev, "BinaryFunctionShortShortShort");
   Rice::Data_Type<cv::cudev::maximum<short>> rb_cCvCudevMaximumShort = define_class_under<cv::cudev::maximum<short>, cv::cudev::binary_function<short, short, short>>(rb_mCvCudev, "MaximumShort").
     define_constructor(Constructor<cv::cudev::maximum<short>>()).
     define_method<short(cv::cudev::maximum<short>::*)(short, short) const>("call", &cv::cudev::maximum<short>::operator(),
@@ -59,8 +55,7 @@ void Init_Cudev_Functional_Functional()
     define_method<short(cv::cudev::minimum<short>::*)(short, short) const>("call", &cv::cudev::minimum<short>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<int, int, int>> rb_cBinaryFunctionIntIntInt = define_class_under<cv::cudev::binary_function<int, int, int>>(rb_mCvCudev, "BinaryFunctionIntIntInt").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<int, int, int>>, int, int, int>);
+  Rice::Data_Type<cv::cudev::binary_function<int, int, int>> rb_cBinaryFunctionIntIntInt = binary_function_instantiate<int, int, int>(rb_mCvCudev, "BinaryFunctionIntIntInt");
   Rice::Data_Type<cv::cudev::maximum<int>> rb_cCvCudevMaximumInt = define_class_under<cv::cudev::maximum<int>, cv::cudev::binary_function<int, int, int>>(rb_mCvCudev, "MaximumInt").
     define_constructor(Constructor<cv::cudev::maximum<int>>()).
     define_method<int(cv::cudev::maximum<int>::*)(int, int) const>("call", &cv::cudev::maximum<int>::operator(),
@@ -71,8 +66,7 @@ void Init_Cudev_Functional_Functional()
     define_method<int(cv::cudev::minimum<int>::*)(int, int) const>("call", &cv::cudev::minimum<int>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, unsigned int>> rb_cBinaryFunctionUnsignedIntUnsignedIntUnsignedInt = define_class_under<cv::cudev::binary_function<unsigned int, unsigned int, unsigned int>>(rb_mCvCudev, "BinaryFunctionUnsignedIntUnsignedIntUnsignedInt").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, unsigned int>>, unsigned int, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, unsigned int>> rb_cBinaryFunctionUnsignedIntUnsignedIntUnsignedInt = binary_function_instantiate<unsigned int, unsigned int, unsigned int>(rb_mCvCudev, "BinaryFunctionUnsignedIntUnsignedIntUnsignedInt");
   Rice::Data_Type<cv::cudev::maximum<uint>> rb_cCvCudevMaximumUint = define_class_under<cv::cudev::maximum<uint>, cv::cudev::binary_function<unsigned int, unsigned int, unsigned int>>(rb_mCvCudev, "MaximumUint").
     define_constructor(Constructor<cv::cudev::maximum<uint>>()).
     define_method<uint(cv::cudev::maximum<uint>::*)(uint, uint) const>("call", &cv::cudev::maximum<uint>::operator(),
@@ -83,8 +77,7 @@ void Init_Cudev_Functional_Functional()
     define_method<uint(cv::cudev::minimum<uint>::*)(uint, uint) const>("call", &cv::cudev::minimum<uint>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<float, float, float>> rb_cBinaryFunctionFloatFloatFloat = define_class_under<cv::cudev::binary_function<float, float, float>>(rb_mCvCudev, "BinaryFunctionFloatFloatFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<float, float, float>>, float, float, float>);
+  Rice::Data_Type<cv::cudev::binary_function<float, float, float>> rb_cBinaryFunctionFloatFloatFloat = binary_function_instantiate<float, float, float>(rb_mCvCudev, "BinaryFunctionFloatFloatFloat");
   Rice::Data_Type<cv::cudev::maximum<float>> rb_cCvCudevMaximumFloat = define_class_under<cv::cudev::maximum<float>, cv::cudev::binary_function<float, float, float>>(rb_mCvCudev, "MaximumFloat").
     define_constructor(Constructor<cv::cudev::maximum<float>>()).
     define_method<float(cv::cudev::maximum<float>::*)(float, float) const>("call", &cv::cudev::maximum<float>::operator(),
@@ -95,8 +88,7 @@ void Init_Cudev_Functional_Functional()
     define_method<float(cv::cudev::minimum<float>::*)(float, float) const>("call", &cv::cudev::minimum<float>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<double, double, double>> rb_cBinaryFunctionDoubleDoubleDouble = define_class_under<cv::cudev::binary_function<double, double, double>>(rb_mCvCudev, "BinaryFunctionDoubleDoubleDouble").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<double, double, double>>, double, double, double>);
+  Rice::Data_Type<cv::cudev::binary_function<double, double, double>> rb_cBinaryFunctionDoubleDoubleDouble = binary_function_instantiate<double, double, double>(rb_mCvCudev, "BinaryFunctionDoubleDoubleDouble");
   Rice::Data_Type<cv::cudev::maximum<double>> rb_cCvCudevMaximumDouble = define_class_under<cv::cudev::maximum<double>, cv::cudev::binary_function<double, double, double>>(rb_mCvCudev, "MaximumDouble").
     define_constructor(Constructor<cv::cudev::maximum<double>>()).
     define_method<double(cv::cudev::maximum<double>::*)(double, double) const>("call", &cv::cudev::maximum<double>::operator(),
@@ -107,57 +99,49 @@ void Init_Cudev_Functional_Functional()
     define_method<double(cv::cudev::minimum<double>::*)(double, double) const>("call", &cv::cudev::minimum<double>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned char, unsigned char>> rb_cUnaryFunctionUnsignedCharUnsignedChar = define_class_under<cv::cudev::unary_function<unsigned char, unsigned char>>(rb_mCvCudev, "UnaryFunctionUnsignedCharUnsignedChar").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned char, unsigned char>>, unsigned char, unsigned char>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned char, unsigned char>> rb_cUnaryFunctionUnsignedCharUnsignedChar = unary_function_instantiate<unsigned char, unsigned char>(rb_mCvCudev, "UnaryFunctionUnsignedCharUnsignedChar");
   Rice::Data_Type<cv::cudev::abs_func<uchar>> rb_cCvCudevAbsFuncUchar = define_class_under<cv::cudev::abs_func<uchar>, cv::cudev::unary_function<unsigned char, unsigned char>>(rb_mCvCudev, "AbsFuncUchar").
     define_constructor(Constructor<cv::cudev::abs_func<uchar>>()).
     define_method<uchar(cv::cudev::abs_func<uchar>::*)(uchar) const>("call", &cv::cudev::abs_func<uchar>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<signed char, signed char>> rb_cUnaryFunctionSignedCharSignedChar = define_class_under<cv::cudev::unary_function<signed char, signed char>>(rb_mCvCudev, "UnaryFunctionSignedCharSignedChar").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<signed char, signed char>>, signed char, signed char>);
+  Rice::Data_Type<cv::cudev::unary_function<signed char, signed char>> rb_cUnaryFunctionSignedCharSignedChar = unary_function_instantiate<signed char, signed char>(rb_mCvCudev, "UnaryFunctionSignedCharSignedChar");
   Rice::Data_Type<cv::cudev::abs_func<schar>> rb_cCvCudevAbsFuncSchar = define_class_under<cv::cudev::abs_func<schar>, cv::cudev::unary_function<signed char, signed char>>(rb_mCvCudev, "AbsFuncSchar").
     define_constructor(Constructor<cv::cudev::abs_func<schar>>()).
     define_method<schar(cv::cudev::abs_func<schar>::*)(schar) const>("call", &cv::cudev::abs_func<schar>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned short, unsigned short>> rb_cUnaryFunctionUnsignedShortUnsignedShort = define_class_under<cv::cudev::unary_function<unsigned short, unsigned short>>(rb_mCvCudev, "UnaryFunctionUnsignedShortUnsignedShort").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned short, unsigned short>>, unsigned short, unsigned short>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned short, unsigned short>> rb_cUnaryFunctionUnsignedShortUnsignedShort = unary_function_instantiate<unsigned short, unsigned short>(rb_mCvCudev, "UnaryFunctionUnsignedShortUnsignedShort");
   Rice::Data_Type<cv::cudev::abs_func<ushort>> rb_cCvCudevAbsFuncUshort = define_class_under<cv::cudev::abs_func<ushort>, cv::cudev::unary_function<unsigned short, unsigned short>>(rb_mCvCudev, "AbsFuncUshort").
     define_constructor(Constructor<cv::cudev::abs_func<ushort>>()).
     define_method<ushort(cv::cudev::abs_func<ushort>::*)(ushort) const>("call", &cv::cudev::abs_func<ushort>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<short, short>> rb_cUnaryFunctionShortShort = define_class_under<cv::cudev::unary_function<short, short>>(rb_mCvCudev, "UnaryFunctionShortShort").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<short, short>>, short, short>);
+  Rice::Data_Type<cv::cudev::unary_function<short, short>> rb_cUnaryFunctionShortShort = unary_function_instantiate<short, short>(rb_mCvCudev, "UnaryFunctionShortShort");
   Rice::Data_Type<cv::cudev::abs_func<short>> rb_cCvCudevAbsFuncShort = define_class_under<cv::cudev::abs_func<short>, cv::cudev::unary_function<short, short>>(rb_mCvCudev, "AbsFuncShort").
     define_constructor(Constructor<cv::cudev::abs_func<short>>()).
     define_method<short(cv::cudev::abs_func<short>::*)(short) const>("call", &cv::cudev::abs_func<short>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = define_class_under<cv::cudev::unary_function<unsigned int, unsigned int>>(rb_mCvCudev, "UnaryFunctionUnsignedIntUnsignedInt").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned int, unsigned int>>, unsigned int, unsigned int>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned int, unsigned int>> rb_cUnaryFunctionUnsignedIntUnsignedInt = unary_function_instantiate<unsigned int, unsigned int>(rb_mCvCudev, "UnaryFunctionUnsignedIntUnsignedInt");
   Rice::Data_Type<cv::cudev::abs_func<uint>> rb_cCvCudevAbsFuncUint = define_class_under<cv::cudev::abs_func<uint>, cv::cudev::unary_function<unsigned int, unsigned int>>(rb_mCvCudev, "AbsFuncUint").
     define_constructor(Constructor<cv::cudev::abs_func<uint>>()).
     define_method<uint(cv::cudev::abs_func<uint>::*)(uint) const>("call", &cv::cudev::abs_func<uint>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<int, int>> rb_cUnaryFunctionIntInt = define_class_under<cv::cudev::unary_function<int, int>>(rb_mCvCudev, "UnaryFunctionIntInt").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<int, int>>, int, int>);
+  Rice::Data_Type<cv::cudev::unary_function<int, int>> rb_cUnaryFunctionIntInt = unary_function_instantiate<int, int>(rb_mCvCudev, "UnaryFunctionIntInt");
   Rice::Data_Type<cv::cudev::abs_func<int>> rb_cCvCudevAbsFuncInt = define_class_under<cv::cudev::abs_func<int>, cv::cudev::unary_function<int, int>>(rb_mCvCudev, "AbsFuncInt").
     define_constructor(Constructor<cv::cudev::abs_func<int>>()).
     define_method<int(cv::cudev::abs_func<int>::*)(int) const>("call", &cv::cudev::abs_func<int>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<float, float>> rb_cUnaryFunctionFloatFloat = define_class_under<cv::cudev::unary_function<float, float>>(rb_mCvCudev, "UnaryFunctionFloatFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<float, float>>, float, float>);
+  Rice::Data_Type<cv::cudev::unary_function<float, float>> rb_cUnaryFunctionFloatFloat = unary_function_instantiate<float, float>(rb_mCvCudev, "UnaryFunctionFloatFloat");
   Rice::Data_Type<cv::cudev::abs_func<float>> rb_cCvCudevAbsFuncFloat = define_class_under<cv::cudev::abs_func<float>, cv::cudev::unary_function<float, float>>(rb_mCvCudev, "AbsFuncFloat").
     define_constructor(Constructor<cv::cudev::abs_func<float>>()).
     define_method<float(cv::cudev::abs_func<float>::*)(float) const>("call", &cv::cudev::abs_func<float>::operator(),
       Arg("x"));
 
-  Rice::Data_Type<cv::cudev::unary_function<double, double>> rb_cUnaryFunctionDoubleDouble = define_class_under<cv::cudev::unary_function<double, double>>(rb_mCvCudev, "UnaryFunctionDoubleDouble").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<double, double>>, double, double>);
+  Rice::Data_Type<cv::cudev::unary_function<double, double>> rb_cUnaryFunctionDoubleDouble = unary_function_instantiate<double, double>(rb_mCvCudev, "UnaryFunctionDoubleDouble");
   Rice::Data_Type<cv::cudev::abs_func<double>> rb_cCvCudevAbsFuncDouble = define_class_under<cv::cudev::abs_func<double>, cv::cudev::unary_function<double, double>>(rb_mCvCudev, "AbsFuncDouble").
     define_constructor(Constructor<cv::cudev::abs_func<double>>()).
     define_method<double(cv::cudev::abs_func<double>::*)(double) const>("call", &cv::cudev::abs_func<double>::operator(),
@@ -165,43 +149,37 @@ void Init_Cudev_Functional_Functional()
 
   Module rb_mCvCudevFunctionalDetail = define_module_under(rb_mCvCudev, "FunctionalDetail");
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned char, float>> rb_cUnaryFunctionUnsignedCharFloat = define_class_under<cv::cudev::unary_function<unsigned char, float>>(rb_mCvCudev, "UnaryFunctionUnsignedCharFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned char, float>>, unsigned char, float>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned char, float>> rb_cUnaryFunctionUnsignedCharFloat = unary_function_instantiate<unsigned char, float>(rb_mCvCudev, "UnaryFunctionUnsignedCharFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<uchar>> rb_cCvCudevSqrtFuncUchar = define_class_under<cv::cudev::sqrt_func<uchar>, cv::cudev::unary_function<unsigned char, float>>(rb_mCvCudev, "SqrtFuncUchar").
     define_constructor(Constructor<cv::cudev::sqrt_func<uchar>>()).
     define_method<float(cv::cudev::sqrt_func<uchar>::*)(uchar) const>("call", &cv::cudev::sqrt_func<uchar>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::unary_function<signed char, float>> rb_cUnaryFunctionSignedCharFloat = define_class_under<cv::cudev::unary_function<signed char, float>>(rb_mCvCudev, "UnaryFunctionSignedCharFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<signed char, float>>, signed char, float>);
+  Rice::Data_Type<cv::cudev::unary_function<signed char, float>> rb_cUnaryFunctionSignedCharFloat = unary_function_instantiate<signed char, float>(rb_mCvCudev, "UnaryFunctionSignedCharFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<schar>> rb_cCvCudevSqrtFuncSchar = define_class_under<cv::cudev::sqrt_func<schar>, cv::cudev::unary_function<signed char, float>>(rb_mCvCudev, "SqrtFuncSchar").
     define_constructor(Constructor<cv::cudev::sqrt_func<schar>>()).
     define_method<float(cv::cudev::sqrt_func<schar>::*)(schar) const>("call", &cv::cudev::sqrt_func<schar>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned short, float>> rb_cUnaryFunctionUnsignedShortFloat = define_class_under<cv::cudev::unary_function<unsigned short, float>>(rb_mCvCudev, "UnaryFunctionUnsignedShortFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned short, float>>, unsigned short, float>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned short, float>> rb_cUnaryFunctionUnsignedShortFloat = unary_function_instantiate<unsigned short, float>(rb_mCvCudev, "UnaryFunctionUnsignedShortFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<ushort>> rb_cCvCudevSqrtFuncUshort = define_class_under<cv::cudev::sqrt_func<ushort>, cv::cudev::unary_function<unsigned short, float>>(rb_mCvCudev, "SqrtFuncUshort").
     define_constructor(Constructor<cv::cudev::sqrt_func<ushort>>()).
     define_method<float(cv::cudev::sqrt_func<ushort>::*)(ushort) const>("call", &cv::cudev::sqrt_func<ushort>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::unary_function<short, float>> rb_cUnaryFunctionShortFloat = define_class_under<cv::cudev::unary_function<short, float>>(rb_mCvCudev, "UnaryFunctionShortFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<short, float>>, short, float>);
+  Rice::Data_Type<cv::cudev::unary_function<short, float>> rb_cUnaryFunctionShortFloat = unary_function_instantiate<short, float>(rb_mCvCudev, "UnaryFunctionShortFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<short>> rb_cCvCudevSqrtFuncShort = define_class_under<cv::cudev::sqrt_func<short>, cv::cudev::unary_function<short, float>>(rb_mCvCudev, "SqrtFuncShort").
     define_constructor(Constructor<cv::cudev::sqrt_func<short>>()).
     define_method<float(cv::cudev::sqrt_func<short>::*)(short) const>("call", &cv::cudev::sqrt_func<short>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::unary_function<unsigned int, float>> rb_cUnaryFunctionUnsignedIntFloat = define_class_under<cv::cudev::unary_function<unsigned int, float>>(rb_mCvCudev, "UnaryFunctionUnsignedIntFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<unsigned int, float>>, unsigned int, float>);
+  Rice::Data_Type<cv::cudev::unary_function<unsigned int, float>> rb_cUnaryFunctionUnsignedIntFloat = unary_function_instantiate<unsigned int, float>(rb_mCvCudev, "UnaryFunctionUnsignedIntFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<uint>> rb_cCvCudevSqrtFuncUint = define_class_under<cv::cudev::sqrt_func<uint>, cv::cudev::unary_function<unsigned int, float>>(rb_mCvCudev, "SqrtFuncUint").
     define_constructor(Constructor<cv::cudev::sqrt_func<uint>>()).
     define_method<float(cv::cudev::sqrt_func<uint>::*)(uint) const>("call", &cv::cudev::sqrt_func<uint>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::unary_function<int, float>> rb_cUnaryFunctionIntFloat = define_class_under<cv::cudev::unary_function<int, float>>(rb_mCvCudev, "UnaryFunctionIntFloat").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<int, float>>, int, float>);
+  Rice::Data_Type<cv::cudev::unary_function<int, float>> rb_cUnaryFunctionIntFloat = unary_function_instantiate<int, float>(rb_mCvCudev, "UnaryFunctionIntFloat");
   Rice::Data_Type<cv::cudev::sqrt_func<int>> rb_cCvCudevSqrtFuncInt = define_class_under<cv::cudev::sqrt_func<int>, cv::cudev::unary_function<int, float>>(rb_mCvCudev, "SqrtFuncInt").
     define_constructor(Constructor<cv::cudev::sqrt_func<int>>()).
     define_method<float(cv::cudev::sqrt_func<int>::*)(int) const>("call", &cv::cudev::sqrt_func<int>::operator(),
@@ -937,43 +915,37 @@ void Init_Cudev_Functional_Functional()
     define_method<double(cv::cudev::atanh_func<double>::*)(double) const>("call", &cv::cudev::atanh_func<double>::operator(),
       Arg("a"));
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, float>> rb_cBinaryFunctionUnsignedCharUnsignedCharFloat = define_class_under<cv::cudev::binary_function<unsigned char, unsigned char, float>>(rb_mCvCudev, "BinaryFunctionUnsignedCharUnsignedCharFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, float>>, unsigned char, unsigned char, float>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned char, unsigned char, float>> rb_cBinaryFunctionUnsignedCharUnsignedCharFloat = binary_function_instantiate<unsigned char, unsigned char, float>(rb_mCvCudev, "BinaryFunctionUnsignedCharUnsignedCharFloat");
   Rice::Data_Type<cv::cudev::hypot_func<uchar>> rb_cCvCudevHypotFuncUchar = define_class_under<cv::cudev::hypot_func<uchar>, cv::cudev::binary_function<unsigned char, unsigned char, float>>(rb_mCvCudev, "HypotFuncUchar").
     define_constructor(Constructor<cv::cudev::hypot_func<uchar>>()).
     define_method<float(cv::cudev::hypot_func<uchar>::*)(uchar, uchar) const>("call", &cv::cudev::hypot_func<uchar>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<signed char, signed char, float>> rb_cBinaryFunctionSignedCharSignedCharFloat = define_class_under<cv::cudev::binary_function<signed char, signed char, float>>(rb_mCvCudev, "BinaryFunctionSignedCharSignedCharFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<signed char, signed char, float>>, signed char, signed char, float>);
+  Rice::Data_Type<cv::cudev::binary_function<signed char, signed char, float>> rb_cBinaryFunctionSignedCharSignedCharFloat = binary_function_instantiate<signed char, signed char, float>(rb_mCvCudev, "BinaryFunctionSignedCharSignedCharFloat");
   Rice::Data_Type<cv::cudev::hypot_func<schar>> rb_cCvCudevHypotFuncSchar = define_class_under<cv::cudev::hypot_func<schar>, cv::cudev::binary_function<signed char, signed char, float>>(rb_mCvCudev, "HypotFuncSchar").
     define_constructor(Constructor<cv::cudev::hypot_func<schar>>()).
     define_method<float(cv::cudev::hypot_func<schar>::*)(schar, schar) const>("call", &cv::cudev::hypot_func<schar>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, float>> rb_cBinaryFunctionUnsignedShortUnsignedShortFloat = define_class_under<cv::cudev::binary_function<unsigned short, unsigned short, float>>(rb_mCvCudev, "BinaryFunctionUnsignedShortUnsignedShortFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, float>>, unsigned short, unsigned short, float>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned short, unsigned short, float>> rb_cBinaryFunctionUnsignedShortUnsignedShortFloat = binary_function_instantiate<unsigned short, unsigned short, float>(rb_mCvCudev, "BinaryFunctionUnsignedShortUnsignedShortFloat");
   Rice::Data_Type<cv::cudev::hypot_func<ushort>> rb_cCvCudevHypotFuncUshort = define_class_under<cv::cudev::hypot_func<ushort>, cv::cudev::binary_function<unsigned short, unsigned short, float>>(rb_mCvCudev, "HypotFuncUshort").
     define_constructor(Constructor<cv::cudev::hypot_func<ushort>>()).
     define_method<float(cv::cudev::hypot_func<ushort>::*)(ushort, ushort) const>("call", &cv::cudev::hypot_func<ushort>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<short, short, float>> rb_cBinaryFunctionShortShortFloat = define_class_under<cv::cudev::binary_function<short, short, float>>(rb_mCvCudev, "BinaryFunctionShortShortFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<short, short, float>>, short, short, float>);
+  Rice::Data_Type<cv::cudev::binary_function<short, short, float>> rb_cBinaryFunctionShortShortFloat = binary_function_instantiate<short, short, float>(rb_mCvCudev, "BinaryFunctionShortShortFloat");
   Rice::Data_Type<cv::cudev::hypot_func<short>> rb_cCvCudevHypotFuncShort = define_class_under<cv::cudev::hypot_func<short>, cv::cudev::binary_function<short, short, float>>(rb_mCvCudev, "HypotFuncShort").
     define_constructor(Constructor<cv::cudev::hypot_func<short>>()).
     define_method<float(cv::cudev::hypot_func<short>::*)(short, short) const>("call", &cv::cudev::hypot_func<short>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, float>> rb_cBinaryFunctionUnsignedIntUnsignedIntFloat = define_class_under<cv::cudev::binary_function<unsigned int, unsigned int, float>>(rb_mCvCudev, "BinaryFunctionUnsignedIntUnsignedIntFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, float>>, unsigned int, unsigned int, float>);
+  Rice::Data_Type<cv::cudev::binary_function<unsigned int, unsigned int, float>> rb_cBinaryFunctionUnsignedIntUnsignedIntFloat = binary_function_instantiate<unsigned int, unsigned int, float>(rb_mCvCudev, "BinaryFunctionUnsignedIntUnsignedIntFloat");
   Rice::Data_Type<cv::cudev::hypot_func<uint>> rb_cCvCudevHypotFuncUint = define_class_under<cv::cudev::hypot_func<uint>, cv::cudev::binary_function<unsigned int, unsigned int, float>>(rb_mCvCudev, "HypotFuncUint").
     define_constructor(Constructor<cv::cudev::hypot_func<uint>>()).
     define_method<float(cv::cudev::hypot_func<uint>::*)(uint, uint) const>("call", &cv::cudev::hypot_func<uint>::operator(),
       Arg("a"), Arg("b"));
 
-  Rice::Data_Type<cv::cudev::binary_function<int, int, float>> rb_cBinaryFunctionIntIntFloat = define_class_under<cv::cudev::binary_function<int, int, float>>(rb_mCvCudev, "BinaryFunctionIntIntFloat").
-    define(&binary_function_builder<Data_Type<cv::cudev::binary_function<int, int, float>>, int, int, float>);
+  Rice::Data_Type<cv::cudev::binary_function<int, int, float>> rb_cBinaryFunctionIntIntFloat = binary_function_instantiate<int, int, float>(rb_mCvCudev, "BinaryFunctionIntIntFloat");
   Rice::Data_Type<cv::cudev::hypot_func<int>> rb_cCvCudevHypotFuncInt = define_class_under<cv::cudev::hypot_func<int>, cv::cudev::binary_function<int, int, float>>(rb_mCvCudev, "HypotFuncInt").
     define_constructor(Constructor<cv::cudev::hypot_func<int>>()).
     define_method<float(cv::cudev::hypot_func<int>::*)(int, int) const>("call", &cv::cudev::hypot_func<int>::operator(),
@@ -1034,8 +1006,7 @@ void Init_Cudev_Functional_Functional()
     define_method<double(cv::cudev::pow_func<double>::*)(double, double) const>("call", &cv::cudev::pow_func<double>::operator(),
       Arg("val"), Arg("power"));
 
-  Rice::Data_Type<cv::cudev::unary_function<float, short>> rb_cUnaryFunctionFloatShort = define_class_under<cv::cudev::unary_function<float, short>>(rb_mCvCudev, "UnaryFunctionFloatShort").
-    define(&unary_function_builder<Data_Type<cv::cudev::unary_function<float, short>>, float, short>);
+  Rice::Data_Type<cv::cudev::unary_function<float, short>> rb_cUnaryFunctionFloatShort = unary_function_instantiate<float, short>(rb_mCvCudev, "UnaryFunctionFloatShort");
   Rice::Data_Type<cv::cudev::saturate_cast_fp16_func<float, short>> rb_cCvCudevSaturateCastFp16FuncFloatShort = define_class_under<cv::cudev::saturate_cast_fp16_func<float, short>, cv::cudev::unary_function<float, short>>(rb_mCvCudev, "SaturateCastFp16FuncFloatShort").
     define_constructor(Constructor<cv::cudev::saturate_cast_fp16_func<float, short>>()).
     define_method<short(cv::cudev::saturate_cast_fp16_func<float, short>::*)(float) const>("call", &cv::cudev::saturate_cast_fp16_func<float, short>::operator(),

@@ -186,12 +186,9 @@ void Init_Core_CoreC()
     define_method<void(cv::DefaultDeleter<CvMemStorage>::*)(CvMemStorage*) const>("call", &cv::DefaultDeleter<CvMemStorage>::operator(),
       Arg("obj"));
 
-  Rice::Data_Type<cv::__shared_ptr_access<CvMemStorage, _Lp>> rb_cSharedPtrAccessCvMemStorageLp = define_class_under<cv::__shared_ptr_access<CvMemStorage, _Lp>>(rb_mCv, "SharedPtrAccessCvMemStorageLp").
-    define(&__shared_ptr_access_builder<Data_Type<cv::__shared_ptr_access<CvMemStorage, _Lp>>, CvMemStorage, _Lp>);
-  Rice::Data_Type<cv::__shared_ptr<CvMemStorage>> rb_cSharedPtrCvMemStorage = define_class_under<cv::__shared_ptr<CvMemStorage>, cv::__shared_ptr_access<CvMemStorage, _Lp>>(rb_mCv, "SharedPtrCvMemStorage").
-    define(&__shared_ptr_builder<Data_Type<cv::__shared_ptr<CvMemStorage>>, CvMemStorage>);
-  Rice::Data_Type<cv::shared_ptr<CvMemStorage>> rb_cSharedPtrCvMemStorage = define_class_under<cv::shared_ptr<CvMemStorage>, cv::__shared_ptr<CvMemStorage>>(rb_mCv, "SharedPtrCvMemStorage").
-    define(&shared_ptr_builder<Data_Type<cv::shared_ptr<CvMemStorage>>, CvMemStorage>);
+  Rice::Data_Type<cv::__shared_ptr_access<CvMemStorage, _Lp>> rb_cSharedPtrAccessCvMemStorageLp = __shared_ptr_access_instantiate<CvMemStorage, _Lp>(rb_mCv, "SharedPtrAccessCvMemStorageLp");
+  Rice::Data_Type<cv::__shared_ptr<CvMemStorage>> rb_cSharedPtrCvMemStorage = __shared_ptr_instantiate<CvMemStorage>(rb_mCv, "SharedPtrCvMemStorage");
+  Rice::Data_Type<cv::shared_ptr<CvMemStorage>> rb_cSharedPtrCvMemStorage = shared_ptr_instantiate<CvMemStorage>(rb_mCv, "SharedPtrCvMemStorage");
   Rice::Data_Type<cv::Ptr<CvMemStorage>> rb_cMemStorage = Ptr_instantiate<CvMemStorage>(rb_mCv, "MemStorage");
 
   rb_mCv.define_module_function<schar*(*)(CvSeq*, const void*)>("seq_push", &cv::seqPush,

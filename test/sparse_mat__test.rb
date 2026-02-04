@@ -50,38 +50,22 @@ class SparseMat_Test < OpenCVTestCase
     assert_equal([1, 2, 3, 4], sparse.each.to_a)
   end
 
-  def test_iterate_manual
-    mat = create_mat(2, 2, CV_32SC1)
-    sparse = Cv::SparseMat1i.new(mat)
-
-    iter = sparse.begin
-    finish = sparse.end
-
-    actual = []
-    while iter != finish
-      actual << iter.dereference
-      iter.increment
-    end
-    assert_equal([1, 2, 3, 4], sparse.each.to_a)
-  end
-
-  def test_node
-    mat = create_mat(2, 2, CV_32SC1)
-    sparse = Cv::SparseMat1i.new(mat)
-    iter = sparse.begin
-
-    node = iter.node
-    assert_kind_of(Cv::SparseMat::Node, node)
-    assert_equal(0, node.hashval)
-    assert_equal(0, node.next)
-
-    indexes = node.idx.to_ary(Cv::SparseMat::MAX_DIM)
-
-    expected = [0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 1540483477,
-                0, 0, 0, 1, 0, 3, 0, 1540483478,
-                0, 0, 0, 1, 1, 4, 0, 0, 0, 192, 0]
-    assert_equal(expected, indexes)
-  end
+  # Removed the begin/end methods from the bindings
+  # def test_node
+  #   mat = create_mat(2, 2, CV_32SC1)
+  #   sparse = Cv::SparseMat.new(mat)
+  #   node = sparse.begin
+  #   assert_kind_of(Cv::SparseMat::Node, node)
+  #   assert_equal(0, node.hashval)
+  #   assert_equal(0, node.next)
+  #
+  #   indexes = node.idx.to_ary(Cv::SparseMat::MAX_DIM)
+  #
+  #   expected = [0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 1540483477,
+  #               0, 0, 0, 1, 0, 3, 0, 1540483478,
+  #               0, 0, 0, 1, 1, 4, 0, 0, 0, 192, 0]
+  #   assert_equal(expected, indexes)
+  # end
 
   def test_test_update
     sizes = [2, 2]

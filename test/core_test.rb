@@ -1023,9 +1023,9 @@ class CoreTest < OpenCVTestCase
     mat[1, 0] = 3.0
     mat[1, 1] = 4.0
 
-    formatter = Cv::Formatter.get
-    formatted = formatter.format(mat)
-    str = formatted.to_s
+    formatter_ptr = Cv::Formatter.get
+    formatted_ptr = formatter_ptr.format(mat)
+    str = formatted_ptr.get.to_s
 
     assert(str.include?("1"))
     assert(str.include?("2"))

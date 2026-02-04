@@ -98,25 +98,24 @@ class MatTest < OpenCVTestCase
     expr = Cv::Mat.eye(3, 3, CV_8UC1)
     mat = expr.to_mat
 
-    row = mat.ptr(0).to_ary
-    assert_equal([1, 0, 0], row)
+    # Create a buffer to access the memory
+    buffer = Rice::Buffer≺unsigned char≻.new(mat.ptr, mat.rows * mat.cols)
 
-    row = mat.ptr(1).to_ary(3)
-    assert_equal([0, 1, 0], row)
-
-    row = mat.ptr(2).to_ary
-    assert_equal([0, 0, 1], row)
+    expected = [1, 0, 0, 
+                0, 1, 0, 
+                0, 0, 1]
+    assert_equal(expected, buffer.to_ary)
   end
 
   def test_ptr_float
-    mat = Cv::Mat.new(2, 3, CV_32FC4, Cv::Scalar.new(1.1, 2.2, 3.3, 4.4))
-
-    cell = Cv::Matx41f.new(1.1, 2.2, 3.3, 4.4)
-    row = mat.ptr(0).to_ary
-    assert_equal([cell, cell, cell], row)
-
-    row = mat.ptr(1).to_ary
-    assert_equal([cell, cell, cell], row)
+    mat = Cv::Mat.new(1, 2, CV_32FC4, Cv::Scalar.new(1.1, 2.2, 3.3, 4.4))
+    # 4 scalar values, floats are 4 bytes
+    buffer = Rice::Buffer≺unsigned char≻.new(mat.ptr, mat.rows * mat.cols * 4 * 4)
+    # Unpack the bytes to floats
+    data = buffer.bytes.unpack("F*")
+    expected = [1.100000023841858, 2.200000047683716, 3.299999952316284, 4.400000095367432, 
+                1.100000023841858, 2.200000047683716, 3.299999952316284, 4.400000095367432]
+    assert_in_delta_array(expected, data)
   end
 
   def test_data
@@ -1255,7 +1254,7 @@ class MatTest < OpenCVTestCase
       [1, 2, 3;
        4, 5, 6]
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
 
     formatted = Cv.format(mat.input_array, Cv::Formatter::FormatType::FMT_MATLAB)
     expected = <<~EOS.chomp

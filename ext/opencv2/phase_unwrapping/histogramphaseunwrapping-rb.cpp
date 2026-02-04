@@ -10,10 +10,10 @@ void Init_PhaseUnwrapping_Histogramphaseunwrapping()
   Module rb_mCvPhaseUnwrapping = define_module_under(rb_mCv, "PhaseUnwrapping");
 
   Rice::Data_Type<cv::phase_unwrapping::HistogramPhaseUnwrapping> rb_cCvPhaseUnwrappingHistogramPhaseUnwrapping = define_class_under<cv::phase_unwrapping::HistogramPhaseUnwrapping, cv::phase_unwrapping::PhaseUnwrapping>(rb_mCvPhaseUnwrapping, "HistogramPhaseUnwrapping").
-    define_method<void(cv::phase_unwrapping::HistogramPhaseUnwrapping::*)(cv::OutputArray)>("get_inverse_reliability_map", &cv::phase_unwrapping::HistogramPhaseUnwrapping::getInverseReliabilityMap,
-      Arg("reliability_map")).
     define_singleton_function<cv::Ptr<cv::phase_unwrapping::HistogramPhaseUnwrapping>(*)(const cv::phase_unwrapping::HistogramPhaseUnwrapping::Params&)>("create", &cv::phase_unwrapping::HistogramPhaseUnwrapping::create,
-      Arg("parameters") = static_cast<const cv::phase_unwrapping::HistogramPhaseUnwrapping::Params&>(cv::phase_unwrapping::HistogramPhaseUnwrapping::Params()));
+      Arg("parameters") = static_cast<const cv::phase_unwrapping::HistogramPhaseUnwrapping::Params&>(cv::phase_unwrapping::HistogramPhaseUnwrapping::Params())).
+    define_method<void(cv::phase_unwrapping::HistogramPhaseUnwrapping::*)(cv::OutputArray)>("get_inverse_reliability_map", &cv::phase_unwrapping::HistogramPhaseUnwrapping::getInverseReliabilityMap,
+      Arg("reliability_map"));
 
   Rice::Data_Type<cv::phase_unwrapping::HistogramPhaseUnwrapping::Params> rb_cCvPhaseUnwrappingHistogramPhaseUnwrappingParams = define_class_under<cv::phase_unwrapping::HistogramPhaseUnwrapping::Params>(rb_cCvPhaseUnwrappingHistogramPhaseUnwrapping, "Params").
     define_constructor(Constructor<cv::phase_unwrapping::HistogramPhaseUnwrapping::Params>()).

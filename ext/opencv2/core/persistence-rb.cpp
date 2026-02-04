@@ -62,12 +62,12 @@ void Init_Core_Persistence()
     define_method<void(cv::FileStorage::*)(const cv::String&, int, const cv::String&)>("start_write_struct", &cv::FileStorage::startWriteStruct,
       Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String&>(cv::String())).
     define_method<void(cv::FileStorage::*)()>("end_write_struct", &cv::FileStorage::endWriteStruct).
+    define_singleton_function<cv::String(*)(const cv::String&)>("get_default_object_name", &cv::FileStorage::getDefaultObjectName,
+      Arg("filename")).
     define_method<int(cv::FileStorage::*)() const>("get_format", &cv::FileStorage::getFormat).
     define_attr("state", &cv::FileStorage::state).
     define_attr("elname", &cv::FileStorage::elname).
-    define_attr("p", &cv::FileStorage::p).
-    define_singleton_function<cv::String(*)(const cv::String&)>("get_default_object_name", &cv::FileStorage::getDefaultObjectName,
-      Arg("filename"));
+    define_attr("p", &cv::FileStorage::p);
 
   Enum<cv::FileStorage::Mode> rb_cCvFileStorageMode = define_enum_under<cv::FileStorage::Mode>("Mode", rb_cCvFileStorage).
     define_value("READ", cv::FileStorage::Mode::READ).
@@ -135,11 +135,21 @@ void Init_Core_Persistence()
     {
       return self;
     }).
+    define_singleton_function<bool(*)(int)>("map?", &cv::FileNode::isMap,
+      Arg("flags")).
+    define_singleton_function<bool(*)(int)>("seq?", &cv::FileNode::isSeq,
+      Arg("flags")).
+    define_singleton_function<bool(*)(int)>("collection?", &cv::FileNode::isCollection,
+      Arg("flags")).
+    define_singleton_function<bool(*)(int)>("empty_collection?", &cv::FileNode::isEmptyCollection,
+      Arg("flags")).
+    define_singleton_function<bool(*)(int)>("flow?", &cv::FileNode::isFlow,
+      Arg("flags")).
     define_method<uchar*(cv::FileNode::*)()>("ptr", &cv::FileNode::ptr,
       ReturnBuffer()).
     define_method<const uchar*(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr,
       ReturnBuffer()).
-    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each").
+    define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each_const").
     define_method<void(cv::FileNode::*)(const cv::String&, void*, size_t) const>("read_raw", &cv::FileNode::readRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len")).
     define_method<void(cv::FileNode::*)(int, const void*, int)>("set_value", &cv::FileNode::setValue,
@@ -151,17 +161,7 @@ void Init_Core_Persistence()
       Arg("fs"), Arg("block_idx"), Arg("ofs")).
     define_attr("fs", &cv::FileNode::fs).
     define_attr("block_idx", &cv::FileNode::blockIdx).
-    define_attr("ofs", &cv::FileNode::ofs).
-    define_singleton_function<bool(*)(int)>("map?", &cv::FileNode::isMap,
-      Arg("flags")).
-    define_singleton_function<bool(*)(int)>("seq?", &cv::FileNode::isSeq,
-      Arg("flags")).
-    define_singleton_function<bool(*)(int)>("collection?", &cv::FileNode::isCollection,
-      Arg("flags")).
-    define_singleton_function<bool(*)(int)>("empty_collection?", &cv::FileNode::isEmptyCollection,
-      Arg("flags")).
-    define_singleton_function<bool(*)(int)>("flow?", &cv::FileNode::isFlow,
-      Arg("flags"));
+    define_attr("ofs", &cv::FileNode::ofs);
 
   rb_cCvFileNode.define_constant("NONE", (int)cv::FileNode::NONE);
   rb_cCvFileNode.define_constant("INT", (int)cv::FileNode::INT);

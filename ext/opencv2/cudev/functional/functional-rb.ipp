@@ -589,15 +589,15 @@ template<typename F>
 inline Rice::Data_Type<cv::cudev::IsUnaryFunction<F>> IsUnaryFunction_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::IsUnaryFunction<F>>(parent, name).
-    define_constant("Value", (int)cv::cudev::IsUnaryFunction<F>::value).
-    template define_singleton_function<F(*)()>("make_f", &cv::cudev::IsUnaryFunction<F>::makeF);
+    template define_singleton_function<F(*)()>("make_f", &cv::cudev::IsUnaryFunction<F>::makeF).
+    define_constant("Value", (int)cv::cudev::IsUnaryFunction<F>::value);
 }
 
 template<typename F>
 inline Rice::Data_Type<cv::cudev::IsBinaryFunction<F>> IsBinaryFunction_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cudev::IsBinaryFunction<F>>(parent, name).
-    define_constant("Value", (int)cv::cudev::IsBinaryFunction<F>::value).
-    template define_singleton_function<F(*)()>("make_f", &cv::cudev::IsBinaryFunction<F>::makeF);
+    template define_singleton_function<F(*)()>("make_f", &cv::cudev::IsBinaryFunction<F>::makeF).
+    define_constant("Value", (int)cv::cudev::IsBinaryFunction<F>::value);
 }
 

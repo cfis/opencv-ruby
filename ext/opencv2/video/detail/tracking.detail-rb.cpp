@@ -54,9 +54,9 @@ void Init_Video_Detail_TrackingDetail()
       Arg("confidence_maps")).
     define_method<void(cv::detail::tracking::TrackerStateEstimator::*)(std::vector<std::vector<std::pair<cv::Ptr<cv::detail::TrackerTargetState>, float>>>&)>("update", &cv::detail::tracking::TrackerStateEstimator::update,
       Arg("confidence_maps")).
-    define_method<cv::String(cv::detail::tracking::TrackerStateEstimator::*)() const>("get_class_name", &cv::detail::tracking::TrackerStateEstimator::getClassName).
     define_singleton_function<cv::Ptr<cv::detail::TrackerStateEstimator>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerStateEstimator::create,
-      Arg("tracke_state_estimator_type"));
+      Arg("tracke_state_estimator_type")).
+    define_method<cv::String(cv::detail::tracking::TrackerStateEstimator::*)() const>("get_class_name", &cv::detail::tracking::TrackerStateEstimator::getClassName);
 
   Rice::Data_Type<cv::detail::TrackerModel> rb_cCvDetailTrackerModel = define_class_under<cv::detail::TrackerModel>(rb_mCvDetailTracking, "TrackerModel").
     define_method<bool(cv::detail::tracking::TrackerModel::*)(cv::Ptr<cv::detail::TrackerStateEstimator>)>("set_tracker_state_estimator", &cv::detail::tracking::TrackerModel::setTrackerStateEstimator,

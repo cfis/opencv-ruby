@@ -127,11 +127,11 @@ void Init_Tracking_TrackingLegacy()
       Arg("image"));
 
   Rice::Data_Type<cv::legacy::TrackerCSRT> rb_cCvLegacyTrackerCSRT = define_class_under<cv::legacy::TrackerCSRT, cv::legacy::Tracker>(rb_mCvLegacyTracking, "TrackerCSRT").
-    define_method<void(cv::legacy::tracking::TrackerCSRT::*)(cv::InputArray)>("set_initial_mask", &cv::legacy::tracking::TrackerCSRT::setInitialMask,
-      Arg("mask")).
     define_singleton_function<cv::Ptr<cv::legacy::TrackerCSRT>(*)(const cv::legacy::tracking::TrackerCSRT::Params&)>("create", &cv::legacy::tracking::TrackerCSRT::create,
       Arg("parameters")).
-    define_singleton_function<cv::Ptr<cv::legacy::TrackerCSRT>(*)()>("create", &cv::legacy::tracking::TrackerCSRT::create);
+    define_singleton_function<cv::Ptr<cv::legacy::TrackerCSRT>(*)()>("create", &cv::legacy::tracking::TrackerCSRT::create).
+    define_method<void(cv::legacy::tracking::TrackerCSRT::*)(cv::InputArray)>("set_initial_mask", &cv::legacy::tracking::TrackerCSRT::setInitialMask,
+      Arg("mask"));
 
   Rice::Data_Type<cv::legacy::TrackerCSRT::Params> rb_cCvLegacyTrackerCSRTParams = define_class_under<cv::legacy::TrackerCSRT::Params>(rb_cCvLegacyTrackerCSRT, "Params").
     define_constructor(Constructor<cv::legacy::tracking::TrackerCSRT::Params>()).

@@ -1,4 +1,3 @@
-#include <opencv2/core/cuda.hpp> // Manual
 #include <opencv2/core/opengl.hpp>
 #include "opengl-rb.hpp"
 
@@ -45,6 +44,8 @@ void Init_Core_Opengl()
       Arg("target") = static_cast<cv::ogl::Buffer::Target>(cv::ogl::Buffer::Target::ARRAY_BUFFER), Arg("auto_release") = static_cast<bool>(false)).
     define_method<void(cv::ogl::Buffer::*)(cv::ogl::Buffer::Target) const>("bind", &cv::ogl::Buffer::bind,
       Arg("target")).
+    define_singleton_function<void(*)(cv::ogl::Buffer::Target)>("unbind", &cv::ogl::Buffer::unbind,
+      Arg("target")).
     define_method<cv::Mat(cv::ogl::Buffer::*)(cv::ogl::Buffer::Access)>("map_host", &cv::ogl::Buffer::mapHost,
       Arg("access")).
     define_method<void(cv::ogl::Buffer::*)()>("unmap_host", &cv::ogl::Buffer::unmapHost).
@@ -63,9 +64,7 @@ void Init_Core_Opengl()
     define_method<int(cv::ogl::Buffer::*)() const>("channels", &cv::ogl::Buffer::channels).
     define_method<int(cv::ogl::Buffer::*)() const>("elem_size", &cv::ogl::Buffer::elemSize).
     define_method<int(cv::ogl::Buffer::*)() const>("elem_size1", &cv::ogl::Buffer::elemSize1).
-    define_method<unsigned int(cv::ogl::Buffer::*)() const>("buf_id", &cv::ogl::Buffer::bufId).
-    define_singleton_function<void(*)(cv::ogl::Buffer::Target)>("unbind", &cv::ogl::Buffer::unbind,
-      Arg("target"));
+    define_method<unsigned int(cv::ogl::Buffer::*)() const>("buf_id", &cv::ogl::Buffer::bufId);
 
   Enum<cv::ogl::Buffer::Target> rb_cCvOglBufferTarget = define_enum_under<cv::ogl::Buffer::Target>("Target", rb_cCvOglBuffer).
     define_value("ARRAY_BUFFER", cv::ogl::Buffer::Target::ARRAY_BUFFER).

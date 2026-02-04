@@ -12,11 +12,11 @@ void Init_Tracking_TrackingInternals()
   Module rb_mCvDetailTracking = define_module_under(rb_mCvDetail, "Tracking");
 
   Rice::Data_Type<cv::detail::TrackerContribFeature> rb_cCvDetailTrackerContribFeature = define_class_under<cv::detail::TrackerContribFeature, cv::detail::TrackerFeature>(rb_mCvDetailTracking, "TrackerContribFeature").
+    define_singleton_function<cv::Ptr<cv::detail::TrackerContribFeature>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerContribFeature::create,
+      Arg("tracker_feature_type")).
     define_method<void(cv::detail::tracking::TrackerContribFeature::*)(cv::Mat&, int)>("selection", &cv::detail::tracking::TrackerContribFeature::selection,
       Arg("response"), Arg("npoints")).
-    define_method<cv::String(cv::detail::tracking::TrackerContribFeature::*)() const>("get_class_name", &cv::detail::tracking::TrackerContribFeature::getClassName).
-    define_singleton_function<cv::Ptr<cv::detail::TrackerContribFeature>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerContribFeature::create,
-      Arg("tracker_feature_type"));
+    define_method<cv::String(cv::detail::tracking::TrackerContribFeature::*)() const>("get_class_name", &cv::detail::tracking::TrackerContribFeature::getClassName);
 
   Rice::Data_Type<cv::detail::TrackerContribFeatureSet> rb_cCvDetailTrackerContribFeatureSet = define_class_under<cv::detail::TrackerContribFeatureSet>(rb_mCvDetailTracking, "TrackerContribFeatureSet").
     define_constructor(Constructor<cv::detail::tracking::TrackerContribFeatureSet>()).
@@ -32,11 +32,11 @@ void Init_Tracking_TrackingInternals()
     define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerContribFeatureSet::*)() const>("get_responses", &cv::detail::tracking::TrackerContribFeatureSet::getResponses);
 
   Rice::Data_Type<cv::detail::TrackerContribSamplerAlgorithm> rb_cCvDetailTrackerContribSamplerAlgorithm = define_class_under<cv::detail::TrackerContribSamplerAlgorithm, cv::detail::TrackerSamplerAlgorithm>(rb_mCvDetailTracking, "TrackerContribSamplerAlgorithm").
+    define_singleton_function<cv::Ptr<cv::detail::TrackerContribSamplerAlgorithm>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerContribSamplerAlgorithm::create,
+      Arg("tracker_sampler_type")).
     define_method<bool(cv::detail::tracking::TrackerContribSamplerAlgorithm::*)(const cv::Mat&, const cv::Rect&, std::vector<cv::Mat>&)>("sampling", &cv::detail::tracking::TrackerContribSamplerAlgorithm::sampling,
       Arg("image"), Arg("bounding_box"), Arg("sample")).
-    define_method<cv::String(cv::detail::tracking::TrackerContribSamplerAlgorithm::*)() const>("get_class_name", &cv::detail::tracking::TrackerContribSamplerAlgorithm::getClassName).
-    define_singleton_function<cv::Ptr<cv::detail::TrackerContribSamplerAlgorithm>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerContribSamplerAlgorithm::create,
-      Arg("tracker_sampler_type"));
+    define_method<cv::String(cv::detail::tracking::TrackerContribSamplerAlgorithm::*)() const>("get_class_name", &cv::detail::tracking::TrackerContribSamplerAlgorithm::getClassName);
 
   Rice::Data_Type<cv::detail::TrackerContribSampler> rb_cCvDetailTrackerContribSampler = define_class_under<cv::detail::TrackerContribSampler>(rb_mCvDetailTracking, "TrackerContribSampler").
     define_constructor(Constructor<cv::detail::tracking::TrackerContribSampler>()).

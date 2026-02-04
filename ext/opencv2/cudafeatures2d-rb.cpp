@@ -10,6 +10,8 @@ void Init_Cudafeatures2d()
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Rice::Data_Type<cv::cuda::DescriptorMatcher> rb_cCvCudaDescriptorMatcher = define_class_under<cv::cuda::DescriptorMatcher, cv::Algorithm>(rb_mCvCuda, "DescriptorMatcher").
+    define_singleton_function<cv::Ptr<cv::cuda::DescriptorMatcher>(*)(int)>("create_bf_matcher", &cv::cuda::DescriptorMatcher::createBFMatcher,
+      Arg("norm_type") = static_cast<int>(cv::NORM_L2)).
     define_method<bool(cv::cuda::DescriptorMatcher::*)() const>("mask_supported?", &cv::cuda::DescriptorMatcher::isMaskSupported).
     define_method<void(cv::cuda::DescriptorMatcher::*)(const std::vector<cv::cuda::GpuMat>&)>("add", &cv::cuda::DescriptorMatcher::add,
       Arg("descriptors")).
@@ -46,9 +48,7 @@ void Init_Cudafeatures2d()
     define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, float, const std::vector<cv::cuda::GpuMat>&, cv::cuda::Stream&)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
       Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
     define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, bool)>("radius_match_convert", &cv::cuda::DescriptorMatcher::radiusMatchConvert,
-      Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false)).
-    define_singleton_function<cv::Ptr<cv::cuda::DescriptorMatcher>(*)(int)>("create_bf_matcher", &cv::cuda::DescriptorMatcher::createBFMatcher,
-      Arg("norm_type") = static_cast<int>(cv::NORM_L2));
+      Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::cuda::Feature2DAsync> rb_cCvCudaFeature2DAsync = define_class_under<cv::cuda::Feature2DAsync, cv::Feature2D>(rb_mCvCuda, "Feature2DAsync").
     define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream&)>("detect_async", &cv::cuda::Feature2DAsync::detectAsync,
@@ -65,13 +65,13 @@ void Init_Cudafeatures2d()
     define_constant("RESPONSE_ROW", cv::cuda::FastFeatureDetector::RESPONSE_ROW).
     define_constant("ROWS_COUNT", cv::cuda::FastFeatureDetector::ROWS_COUNT).
     define_constant("FEATURE_SIZE", cv::cuda::FastFeatureDetector::FEATURE_SIZE).
+    define_singleton_function<cv::Ptr<cv::cuda::FastFeatureDetector>(*)(int, bool, int, int)>("create", &cv::cuda::FastFeatureDetector::create,
+      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<int>(cv::FastFeatureDetector::DetectorType::TYPE_9_16), Arg("max_npoints") = static_cast<int>(5000)).
     define_method<void(cv::cuda::FastFeatureDetector::*)(int)>("set_threshold", &cv::cuda::FastFeatureDetector::setThreshold,
       Arg("threshold")).
     define_method<void(cv::cuda::FastFeatureDetector::*)(int)>("set_max_num_points", &cv::cuda::FastFeatureDetector::setMaxNumPoints,
       Arg("max_npoints")).
-    define_method<int(cv::cuda::FastFeatureDetector::*)() const>("get_max_num_points", &cv::cuda::FastFeatureDetector::getMaxNumPoints).
-    define_singleton_function<cv::Ptr<cv::cuda::FastFeatureDetector>(*)(int, bool, int, int)>("create", &cv::cuda::FastFeatureDetector::create,
-      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<int>(cv::FastFeatureDetector::DetectorType::TYPE_9_16), Arg("max_npoints") = static_cast<int>(5000));
+    define_method<int(cv::cuda::FastFeatureDetector::*)() const>("get_max_num_points", &cv::cuda::FastFeatureDetector::getMaxNumPoints);
 
   Rice::Data_Type<cv::cuda::ORB> rb_cCvCudaORB = define_class_under<cv::cuda::ORB, cv::cuda::Feature2DAsync>(rb_mCvCuda, "ORB").
     define_constant("X_ROW", cv::cuda::ORB::X_ROW).
@@ -81,6 +81,8 @@ void Init_Cudafeatures2d()
     define_constant("OCTAVE_ROW", cv::cuda::ORB::OCTAVE_ROW).
     define_constant("SIZE_ROW", cv::cuda::ORB::SIZE_ROW).
     define_constant("ROWS_COUNT", cv::cuda::ORB::ROWS_COUNT).
+    define_singleton_function<cv::Ptr<cv::cuda::ORB>(*)(int, float, int, int, int, int, int, int, int, bool)>("create", &cv::cuda::ORB::create,
+      Arg("nfeatures") = static_cast<int>(500), Arg("scale_factor") = static_cast<float>(1.2f), Arg("nlevels") = static_cast<int>(8), Arg("edge_threshold") = static_cast<int>(31), Arg("first_level") = static_cast<int>(0), Arg("wta_k") = static_cast<int>(2), Arg("score_type") = static_cast<int>(cv::ORB::ScoreType::HARRIS_SCORE), Arg("patch_size") = static_cast<int>(31), Arg("fast_threshold") = static_cast<int>(20), Arg("blur_for_descriptor") = static_cast<bool>(false)).
     define_method<void(cv::cuda::ORB::*)(int)>("set_max_features", &cv::cuda::ORB::setMaxFeatures,
       Arg("max_features")).
     define_method<int(cv::cuda::ORB::*)() const>("get_max_features", &cv::cuda::ORB::getMaxFeatures).
@@ -110,7 +112,5 @@ void Init_Cudafeatures2d()
     define_method<int(cv::cuda::ORB::*)() const>("get_fast_threshold", &cv::cuda::ORB::getFastThreshold).
     define_method<void(cv::cuda::ORB::*)(bool)>("set_blur_for_descriptor", &cv::cuda::ORB::setBlurForDescriptor,
       Arg("blur_for_descriptor")).
-    define_method<bool(cv::cuda::ORB::*)() const>("get_blur_for_descriptor?", &cv::cuda::ORB::getBlurForDescriptor).
-    define_singleton_function<cv::Ptr<cv::cuda::ORB>(*)(int, float, int, int, int, int, int, int, int, bool)>("create", &cv::cuda::ORB::create,
-      Arg("nfeatures") = static_cast<int>(500), Arg("scale_factor") = static_cast<float>(1.2f), Arg("nlevels") = static_cast<int>(8), Arg("edge_threshold") = static_cast<int>(31), Arg("first_level") = static_cast<int>(0), Arg("wta_k") = static_cast<int>(2), Arg("score_type") = static_cast<int>(cv::ORB::ScoreType::HARRIS_SCORE), Arg("patch_size") = static_cast<int>(31), Arg("fast_threshold") = static_cast<int>(20), Arg("blur_for_descriptor") = static_cast<bool>(false));
+    define_method<bool(cv::cuda::ORB::*)() const>("get_blur_for_descriptor?", &cv::cuda::ORB::getBlurForDescriptor);
 }

@@ -15,8 +15,9 @@ void Init_Core_Types()
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 
-  // Manual fix: use cv::int64 instead of long
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l");
+  Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
+
+  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -24,20 +25,23 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint = Point__instantiate<int>(rb_mCv, "Point");
 
-  Rice::Data_Type<cv::Point3_<int>> rb_cPoint3i = Point3__instantiate<int>(rb_mCv, "Point3");
+  Rice::Data_Type<cv::Point3_<int>> rb_cPoint3i = Point3__instantiate<int>(rb_mCv, "Point3i");
 
   Rice::Data_Type<cv::Point3_<float>> rb_cPoint3f = Point3__instantiate<float>(rb_mCv, "Point3f");
 
   Rice::Data_Type<cv::Point3_<double>> rb_cPoint3d = Point3__instantiate<double>(rb_mCv, "Point3d");
 
-  // Manual fix: use cv::int64 instead of long
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l");
+  Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
+
+  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
   Rice::Data_Type<cv::Size_<double>> rb_cSize2d = Size__instantiate<double>(rb_mCv, "Size2d");
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize = Size__instantiate<int>(rb_mCv, "Size");
+
+  Rice::Data_Type<cv::Rect_<int>> rb_cRect2i = Rect__instantiate<int>(rb_mCv, "Rect2i");
 
   Rice::Data_Type<cv::Rect_<float>> rb_cRect2f = Rect__instantiate<float>(rb_mCv, "Rect2f");
 
@@ -84,9 +88,9 @@ void Init_Core_Types()
       Arg("_start"), Arg("_end")).
     define_method<int(cv::Range::*)() const>("size", &cv::Range::size).
     define_method<bool(cv::Range::*)() const>("empty?", &cv::Range::empty).
+    define_singleton_function<cv::Range(*)()>("all", &cv::Range::all).
     define_attr("start", &cv::Range::start).
-    define_attr("end", &cv::Range::end).
-    define_singleton_function<cv::Range(*)()>("all", &cv::Range::all);
+    define_attr("end", &cv::Range::end);
 
   Rice::Data_Type<cv::DataType<cv::Range>> rb_cCvDataTypeRange = define_class_under<cv::DataType<cv::Range>>(rb_mCv, "DataTypeRange").
     define_constructor(Constructor<cv::DataType<cv::Range>>());
@@ -105,6 +109,8 @@ void Init_Core_Types()
 
   rb_cCvTraitsTypeRange.define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
 
+  Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");
+  Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");
   Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = Scalar__instantiate<double>(rb_mCv, "Scalar");
 
   Rice::Data_Type<cv::KeyPoint> rb_cCvKeyPoint = define_class_under<cv::KeyPoint>(rb_mCv, "KeyPoint").
@@ -114,18 +120,18 @@ void Init_Core_Types()
     define_constructor(Constructor<cv::KeyPoint, float, float, float, float, float, int, int>(),
       Arg("x"), Arg("y"), Arg("size"), Arg("angle") = static_cast<float>(-1), Arg("response") = static_cast<float>(0), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1)).
     define_method<size_t(cv::KeyPoint::*)() const>("hash", &cv::KeyPoint::hash).
-    define_attr("pt", &cv::KeyPoint::pt).
-    define_attr("size", &cv::KeyPoint::size).
-    define_attr("angle", &cv::KeyPoint::angle).
-    define_attr("response", &cv::KeyPoint::response).
-    define_attr("octave", &cv::KeyPoint::octave).
-    define_attr("class_id", &cv::KeyPoint::class_id).
     define_singleton_function<void(*)(const std::vector<cv::KeyPoint>&, std::vector<cv::Point_<float>>&, const std::vector<int>&)>("convert", &cv::KeyPoint::convert,
       Arg("keypoints"), Arg("points2f"), Arg("keypoint_indexes") = static_cast<const std::vector<int>&>(std::vector<int>())).
     define_singleton_function<void(*)(const std::vector<cv::Point_<float>>&, std::vector<cv::KeyPoint>&, float, float, int, int)>("convert", &cv::KeyPoint::convert,
       Arg("points2f"), Arg("keypoints"), Arg("size") = static_cast<float>(1), Arg("response") = static_cast<float>(1), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1)).
     define_singleton_function<float(*)(const cv::KeyPoint&, const cv::KeyPoint&)>("overlap", &cv::KeyPoint::overlap,
-      Arg("kp1"), Arg("kp2"));
+      Arg("kp1"), Arg("kp2")).
+    define_attr("pt", &cv::KeyPoint::pt).
+    define_attr("size", &cv::KeyPoint::size).
+    define_attr("angle", &cv::KeyPoint::angle).
+    define_attr("response", &cv::KeyPoint::response).
+    define_attr("octave", &cv::KeyPoint::octave).
+    define_attr("class_id", &cv::KeyPoint::class_id);
 
   Rice::Data_Type<cv::DMatch> rb_cCvDMatch = define_class_under<cv::DMatch>(rb_mCv, "DMatch").
     define_constructor(Constructor<cv::DMatch>()).
@@ -218,41 +224,43 @@ void Init_Core_Types()
   rb_mCv.define_module_function<double(*)(const cv::Point_<double>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-#if RUBY_CV_VERSION >= 407
   rb_mCv.define_module_function<double(*)(const cv::Rect2d&, const cv::Rect2d&)>("rectangle_intersection_area", &cv::rectangleIntersectionArea,
     Arg("a"), Arg("b"));
-#endif
 
   rb_cCvRange.
     define_method("==", [](const cv::Range& self, const cv::Range& other) -> bool
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const cv::Range& self, const cv::Range& other) -> bool
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
+    define_method("!", [](const cv::Range& self) -> bool
+    {
+      return !self;
+    }).
     define_method("&", [](const cv::Range& self, const cv::Range& other) -> cv::Range
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("assign_and", [](cv::Range& self, const cv::Range& other) -> cv::Range&
-  {
-    self &= other;
-    return self;
-  }).
+    {
+      self &= other;
+      return self;
+    }).
     define_method("+", [](const cv::Range& self, int other) -> cv::Range
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const cv::Range& self, int other) -> cv::Range
-  {
-    return self - other;
-  });
+    {
+      return self - other;
+    });
   
   Data_Type<cv::Matx<double, 4, 4>>().
     define_method("*", [](const cv::Matx<double, 4, 4>& self, const cv::Scalar& other) -> cv::Scalar
-  {
-    return self * other;
-  });
+    {
+      return self * other;
+    });
 }

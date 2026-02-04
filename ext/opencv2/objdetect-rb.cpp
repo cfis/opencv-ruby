@@ -79,12 +79,12 @@ void Init_Objdetect()
     define_method<int(cv::CascadeClassifier::*)() const>("get_feature_type", &cv::CascadeClassifier::getFeatureType).
     define_method<void*(cv::CascadeClassifier::*)()>("get_old_cascade", &cv::CascadeClassifier::getOldCascade,
       ReturnBuffer()).
+    define_singleton_function<bool(*)(const cv::String&, const cv::String&)>("convert", &cv::CascadeClassifier::convert,
+      Arg("oldcascade"), Arg("newcascade")).
     define_method<void(cv::CascadeClassifier::*)(const cv::Ptr<cv::BaseCascadeClassifier::MaskGenerator>&)>("set_mask_generator", &cv::CascadeClassifier::setMaskGenerator,
       Arg("mask_generator")).
     define_method<cv::Ptr<cv::BaseCascadeClassifier::MaskGenerator>(cv::CascadeClassifier::*)()>("get_mask_generator", &cv::CascadeClassifier::getMaskGenerator).
-    define_attr("cc", &cv::CascadeClassifier::cc).
-    define_singleton_function<bool(*)(const cv::String&, const cv::String&)>("convert", &cv::CascadeClassifier::convert,
-      Arg("oldcascade"), Arg("newcascade"));
+    define_attr("cc", &cv::CascadeClassifier::cc);
 
   rb_mCv.define_module_function<cv::Ptr<cv::BaseCascadeClassifier::MaskGenerator>(*)()>("create_face_detection_mask_generator", &cv::createFaceDetectionMaskGenerator);
 
@@ -129,6 +129,8 @@ void Init_Objdetect()
       Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("scale") = static_cast<double>(1.05), Arg("group_threshold") = static_cast<double>(2.0), Arg("use_meanshift_grouping") = static_cast<bool>(false)).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, cv::Size, cv::Size) const>("compute_gradient", &cv::HOGDescriptor::computeGradient,
       Arg("img"), Arg("grad"), Arg("angle_ofs"), Arg("padding_tl") = static_cast<cv::Size>(cv::Size()), Arg("padding_br") = static_cast<cv::Size>(cv::Size())).
+    define_singleton_function<std::vector<float>(*)()>("get_default_people_detector", &cv::HOGDescriptor::getDefaultPeopleDetector).
+    define_singleton_function<std::vector<float>(*)()>("get_daimler_people_detector", &cv::HOGDescriptor::getDaimlerPeopleDetector).
     define_attr("win_size", &cv::HOGDescriptor::winSize).
     define_attr("block_size", &cv::HOGDescriptor::blockSize).
     define_attr("block_stride", &cv::HOGDescriptor::blockStride).
@@ -149,9 +151,7 @@ void Init_Objdetect()
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<cv::DetectionROI>&, double, int) const>("detect_multi_scale_roi", &cv::HOGDescriptor::detectMultiScaleROI,
       Arg("img"), Arg("found_locations"), Arg("locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("group_threshold") = static_cast<int>(0)).
     define_method<void(cv::HOGDescriptor::*)(std::vector<cv::Rect>&, std::vector<double>&, int, double) const>("group_rectangles", &cv::HOGDescriptor::groupRectangles,
-      Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps")).
-    define_singleton_function<std::vector<float>(*)()>("get_default_people_detector", &cv::HOGDescriptor::getDefaultPeopleDetector).
-    define_singleton_function<std::vector<float>(*)()>("get_daimler_people_detector", &cv::HOGDescriptor::getDaimlerPeopleDetector);
+      Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps"));
 
   Enum<cv::HOGDescriptor::HistogramNormType> rb_cCvHOGDescriptorHistogramNormType = define_enum_under<cv::HOGDescriptor::HistogramNormType>("HistogramNormType", rb_cCvHOGDescriptor).
     define_value("L2Hys", cv::HOGDescriptor::HistogramNormType::L2Hys);
@@ -163,12 +163,12 @@ void Init_Objdetect()
     define_value("DESCR_FORMAT_ROW_BY_ROW", cv::HOGDescriptor::DescriptorStorageFormat::DESCR_FORMAT_ROW_BY_ROW);
 
   Rice::Data_Type<cv::QRCodeEncoder> rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder").
+    define_singleton_function<cv::Ptr<cv::QRCodeEncoder>(*)(const cv::QRCodeEncoder::Params&)>("create", &cv::QRCodeEncoder::create,
+      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params&>(cv::QRCodeEncoder::Params())).
     define_method<void(cv::QRCodeEncoder::*)(const cv::String&, cv::OutputArray)>("encode", &cv::QRCodeEncoder::encode,
       Arg("encoded_info"), Arg("qrcode")).
     define_method<void(cv::QRCodeEncoder::*)(const cv::String&, cv::OutputArrayOfArrays)>("encode_structured_append", &cv::QRCodeEncoder::encodeStructuredAppend,
-      Arg("encoded_info"), Arg("qrcodes")).
-    define_singleton_function<cv::Ptr<cv::QRCodeEncoder>(*)(const cv::QRCodeEncoder::Params&)>("create", &cv::QRCodeEncoder::create,
-      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params&>(cv::QRCodeEncoder::Params()));
+      Arg("encoded_info"), Arg("qrcodes"));
 
   Rice::Data_Type<cv::QRCodeEncoder::Params> rb_cCvQRCodeEncoderParams = define_class_under<cv::QRCodeEncoder::Params>(rb_cCvQRCodeEncoder, "Params").
     define_constructor(Constructor<cv::QRCodeEncoder::Params>()).

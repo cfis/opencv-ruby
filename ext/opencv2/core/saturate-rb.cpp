@@ -1,5 +1,3 @@
-#include <algorithm> // Manual
-#include <climits> // Manual
 #include <opencv2/core/saturate.hpp>
 #include "saturate-rb.hpp"
 

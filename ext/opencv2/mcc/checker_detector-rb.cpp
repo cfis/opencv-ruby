@@ -11,6 +11,7 @@ void Init_Mcc_CheckerDetector()
 
   Rice::Data_Type<cv::mcc::DetectorParameters> rb_cCvMccDetectorParameters = define_class_under<cv::mcc::DetectorParameters>(rb_mCvMcc, "DetectorParameters").
     define_constructor(Constructor<cv::mcc::DetectorParameters>()).
+    define_singleton_function<cv::Ptr<cv::mcc::DetectorParameters>(*)()>("create", &cv::mcc::DetectorParameters::create).
     define_attr("adaptive_thresh_win_size_min", &cv::mcc::DetectorParameters::adaptiveThreshWinSizeMin).
     define_attr("adaptive_thresh_win_size_max", &cv::mcc::DetectorParameters::adaptiveThreshWinSizeMax).
     define_attr("adaptive_thresh_win_size_step", &cv::mcc::DetectorParameters::adaptiveThreshWinSizeStep).
@@ -28,8 +29,7 @@ void Init_Mcc_CheckerDetector()
     define_attr("min_inter_contour_distance", &cv::mcc::DetectorParameters::minInterContourDistance).
     define_attr("min_inter_checker_distance", &cv::mcc::DetectorParameters::minInterCheckerDistance).
     define_attr("min_image_size", &cv::mcc::DetectorParameters::minImageSize).
-    define_attr("min_group_size", &cv::mcc::DetectorParameters::minGroupSize).
-    define_singleton_function<cv::Ptr<cv::mcc::DetectorParameters>(*)()>("create", &cv::mcc::DetectorParameters::create);
+    define_attr("min_group_size", &cv::mcc::DetectorParameters::minGroupSize);
 
   Rice::Data_Type<cv::mcc::CCheckerDetector> rb_cCvMccCCheckerDetector = define_class_under<cv::mcc::CCheckerDetector, cv::Algorithm>(rb_mCvMcc, "CCheckerDetector").
     define_method<bool(cv::mcc::CCheckerDetector::*)(dnn::Net)>("set_net", &cv::mcc::CCheckerDetector::setNet,

@@ -41,12 +41,8 @@ void Init_Core()
     define_value("REDUCE_SUM", cv::ReduceTypes::REDUCE_SUM).
     define_value("REDUCE_AVG", cv::ReduceTypes::REDUCE_AVG).
     define_value("REDUCE_MAX", cv::ReduceTypes::REDUCE_MAX).
-    define_value("REDUCE_MIN", cv::ReduceTypes::REDUCE_MIN);
-
-#if RUBY_CV_VERSION >= 408
-  rb_cCvReduceTypes.
+    define_value("REDUCE_MIN", cv::ReduceTypes::REDUCE_MIN).
     define_value("REDUCE_SUM2", cv::ReduceTypes::REDUCE_SUM2);
-#endif
 
   rb_mCv.define_module_function<void(*)(cv::Mat&, cv::Mat&)>("swap", &cv::swap,
     Arg("a"), Arg("b"));
@@ -93,10 +89,8 @@ void Init_Core()
   rb_mCv.define_module_function<cv::Scalar(*)(cv::InputArray)>("sum", &cv::sum,
     Arg("src"));
 
-#if RUBY_CV_VERSION >= 408
   rb_mCv.define_module_function<bool(*)(cv::InputArray)>("has_non_zero", &cv::hasNonZero,
     Arg("src"));
-#endif
 
   rb_mCv.define_module_function<int(*)(cv::InputArray)>("count_non_zero", &cv::countNonZero,
     Arg("src"));
@@ -179,10 +173,8 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("flip", &cv::flip,
     Arg("src"), Arg("dst"), Arg("flip_code"));
 
-#if RUBY_CV_VERSION >= 407
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("flip_nd", &cv::flipND,
     Arg("src"), Arg("dst"), Arg("axis"));
-#endif
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("broadcast", &cv::broadcast,
     Arg("src"), Arg("shape"), Arg("dst"));
@@ -473,11 +465,6 @@ void Init_Core()
       Arg("src"), Arg("flags") = static_cast<int>(0)).
     define_method<cv::SVD&(cv::SVD::*)(cv::InputArray, int)>("call", &cv::SVD::operator(),
       Arg("src"), Arg("flags") = static_cast<int>(0)).
-    define_method<void(cv::SVD::*)(cv::InputArray, cv::OutputArray) const>("back_subst", &cv::SVD::backSubst,
-      Arg("rhs"), Arg("dst")).
-    define_attr("u", &cv::SVD::u).
-    define_attr("w", &cv::SVD::w).
-    define_attr("vt", &cv::SVD::vt).
     define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int)>("compute", &cv::SVD::compute,
       Arg("src"), Arg("w"), Arg("u"), Arg("vt"), Arg("flags") = static_cast<int>(0)).
     define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, int)>("compute", &cv::SVD::compute,
@@ -485,7 +472,12 @@ void Init_Core()
     define_singleton_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("back_subst", &cv::SVD::backSubst,
       Arg("w"), Arg("u"), Arg("vt"), Arg("rhs"), Arg("dst")).
     define_singleton_function<void(*)(cv::InputArray, cv::OutputArray)>("solve_z", &cv::SVD::solveZ,
-      Arg("src"), Arg("dst"));
+      Arg("src"), Arg("dst")).
+    define_method<void(cv::SVD::*)(cv::InputArray, cv::OutputArray) const>("back_subst", &cv::SVD::backSubst,
+      Arg("rhs"), Arg("dst")).
+    define_attr("u", &cv::SVD::u).
+    define_attr("w", &cv::SVD::w).
+    define_attr("vt", &cv::SVD::vt);
 
   Enum<cv::SVD::Flags> rb_cCvSVDFlags = define_enum_under<cv::SVD::Flags>("Flags", rb_cCvSVD).
     define_value("MODIFY_A", cv::SVD::Flags::MODIFY_A).
@@ -621,10 +613,8 @@ void Init_Core()
     define_method<void(cv::Algorithm::*)()>("clear", &cv::Algorithm::clear).
     define_method<void(cv::Algorithm::*)(cv::FileStorage&) const>("write", &cv::Algorithm::write,
       Arg("fs")).
-#if RUBY_CV_VERSION >= 407
     define_method<void(cv::Algorithm::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::Algorithm::write,
       Arg("fs"), Arg("name")).
-#endif
     define_method<void(cv::Algorithm::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::Algorithm::write,
       Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String())).
     define_method<void(cv::Algorithm::*)(const cv::FileNode&)>("read", &cv::Algorithm::read,

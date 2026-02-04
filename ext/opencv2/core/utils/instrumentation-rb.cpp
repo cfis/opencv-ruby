@@ -72,7 +72,7 @@ void Init_Core_Utils_Instrumentation()
 
   rb_cCvInstrNodeData.
     define_method("==", [](const cv::instr::NodeData& self, const cv::instr::NodeData& other) -> bool
-  {
-    return self == other;
-  });
+    {
+      return self == other;
+    });
 }

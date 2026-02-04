@@ -4043,5145 +4043,5449 @@ void Init_Cudev_Util_VecMath()
   rb_mCvCudev.define_module_function<double4(*)(double, const double4&)>("atan2", &cv::cudev::atan2,
     Arg("s"), Arg("b"));
 
-  Data_Type<uchar1>().
-    define_method("+", [](const uchar1& self, const uchar1& other) -> int1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar1& self, const uchar1& other) -> int1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar1& self, const uchar1& other) -> int1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar1& self, const uchar1& other) -> int1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar1& self, const uchar1& other) -> uchar1
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uchar1& self, int other) -> int1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar1& self, float other) -> float1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar1& self, double other) -> double1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar1& self, int other) -> int1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar1& self, float other) -> float1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar1& self, double other) -> double1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar1& self, int other) -> int1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar1& self, float other) -> float1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar1& self, double other) -> double1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar1& self, int other) -> int1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar1& self, float other) -> float1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar1& self, double other) -> double1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar1& self, uchar other) -> uchar1
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uchar2>().
-    define_method("+", [](const uchar2& self, const uchar2& other) -> int2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar2& self, const uchar2& other) -> int2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar2& self, const uchar2& other) -> int2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar2& self, const uchar2& other) -> int2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar2& self, const uchar2& other) -> uchar2
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uchar2& self, int other) -> int2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar2& self, float other) -> float2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar2& self, double other) -> double2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar2& self, int other) -> int2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar2& self, float other) -> float2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar2& self, double other) -> double2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar2& self, int other) -> int2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar2& self, float other) -> float2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar2& self, double other) -> double2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar2& self, int other) -> int2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar2& self, float other) -> float2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar2& self, double other) -> double2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar2& self, uchar other) -> uchar2
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uchar3>().
-    define_method("+", [](const uchar3& self, const uchar3& other) -> int3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar3& self, const uchar3& other) -> int3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar3& self, const uchar3& other) -> int3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar3& self, const uchar3& other) -> int3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar3& self, const uchar3& other) -> uchar3
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uchar3& self, int other) -> int3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar3& self, float other) -> float3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar3& self, double other) -> double3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar3& self, int other) -> int3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar3& self, float other) -> float3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar3& self, double other) -> double3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar3& self, int other) -> int3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar3& self, float other) -> float3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar3& self, double other) -> double3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar3& self, int other) -> int3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar3& self, float other) -> float3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar3& self, double other) -> double3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar3& self, uchar other) -> uchar3
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uchar4>().
-    define_method("+", [](const uchar4& self, const uchar4& other) -> int4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar4& self, const uchar4& other) -> int4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar4& self, const uchar4& other) -> int4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar4& self, const uchar4& other) -> int4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar4& self, const uchar4& other) -> uchar4
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uchar4& self, int other) -> int4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar4& self, float other) -> float4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uchar4& self, double other) -> double4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uchar4& self, int other) -> int4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar4& self, float other) -> float4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uchar4& self, double other) -> double4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uchar4& self, int other) -> int4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar4& self, float other) -> float4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uchar4& self, double other) -> double4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uchar4& self, int other) -> int4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar4& self, float other) -> float4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uchar4& self, double other) -> double4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uchar4& self, uchar other) -> uchar4
-  {
-    return self ^ other;
-  });
-  
   Data_Type<char1>().
+    define_method("-@", [](const char1& self) -> char1
+    {
+      return -self;
+    }).
+    define_method("!", [](const char1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const char1& self) -> char1
+    {
+      return ~self;
+    }).
     define_method("+", [](const char1& self, const char1& other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char1& self, const char1& other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char1& self, const char1& other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char1& self, const char1& other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char1& self, const char1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char1& self, const char1& other) -> char1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char1& self, const char1& other) -> char1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char1& self, const char1& other) -> char1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const char1& self, int other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char1& self, float other) -> float1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char1& self, double other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char1& self, int other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char1& self, float other) -> float1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char1& self, double other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char1& self, int other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char1& self, float other) -> float1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char1& self, double other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char1& self, int other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char1& self, float other) -> float1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char1& self, double other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char1& self, char other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char1& self, char other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char1& self, char other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char1& self, char other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char1& self, char other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char1& self, char other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char1& self, char other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char1& self, char other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char1& self, char other) -> char1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char1& self, char other) -> char1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char1& self, char other) -> char1
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<char2>().
+    define_method("-@", [](const char2& self) -> char2
+    {
+      return -self;
+    }).
+    define_method("!", [](const char2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const char2& self) -> char2
+    {
+      return ~self;
+    }).
     define_method("+", [](const char2& self, const char2& other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char2& self, const char2& other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char2& self, const char2& other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char2& self, const char2& other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char2& self, const char2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char2& self, const char2& other) -> char2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char2& self, const char2& other) -> char2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char2& self, const char2& other) -> char2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const char2& self, int other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char2& self, float other) -> float2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char2& self, double other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char2& self, int other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char2& self, float other) -> float2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char2& self, double other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char2& self, int other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char2& self, float other) -> float2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char2& self, double other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char2& self, int other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char2& self, float other) -> float2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char2& self, double other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char2& self, char other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char2& self, char other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char2& self, char other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char2& self, char other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char2& self, char other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char2& self, char other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char2& self, char other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char2& self, char other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char2& self, char other) -> char2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char2& self, char other) -> char2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char2& self, char other) -> char2
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<char3>().
+    define_method("-@", [](const char3& self) -> char3
+    {
+      return -self;
+    }).
+    define_method("!", [](const char3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const char3& self) -> char3
+    {
+      return ~self;
+    }).
     define_method("+", [](const char3& self, const char3& other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char3& self, const char3& other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char3& self, const char3& other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char3& self, const char3& other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char3& self, const char3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char3& self, const char3& other) -> char3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char3& self, const char3& other) -> char3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char3& self, const char3& other) -> char3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const char3& self, int other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char3& self, float other) -> float3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char3& self, double other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char3& self, int other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char3& self, float other) -> float3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char3& self, double other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char3& self, int other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char3& self, float other) -> float3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char3& self, double other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char3& self, int other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char3& self, float other) -> float3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char3& self, double other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char3& self, char other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char3& self, char other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char3& self, char other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char3& self, char other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char3& self, char other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char3& self, char other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char3& self, char other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char3& self, char other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char3& self, char other) -> char3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char3& self, char other) -> char3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char3& self, char other) -> char3
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<char4>().
+    define_method("-@", [](const char4& self) -> char4
+    {
+      return -self;
+    }).
+    define_method("!", [](const char4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const char4& self) -> char4
+    {
+      return ~self;
+    }).
     define_method("+", [](const char4& self, const char4& other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char4& self, const char4& other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char4& self, const char4& other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char4& self, const char4& other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char4& self, const char4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char4& self, const char4& other) -> char4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char4& self, const char4& other) -> char4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char4& self, const char4& other) -> char4
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const char4& self, int other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char4& self, float other) -> float4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const char4& self, double other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const char4& self, int other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char4& self, float other) -> float4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const char4& self, double other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const char4& self, int other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char4& self, float other) -> float4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const char4& self, double other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const char4& self, int other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char4& self, float other) -> float4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const char4& self, double other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const char4& self, char other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const char4& self, char other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const char4& self, char other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const char4& self, char other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const char4& self, char other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const char4& self, char other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const char4& self, char other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const char4& self, char other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const char4& self, char other) -> char4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const char4& self, char other) -> char4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const char4& self, char other) -> char4
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<ushort1>().
-    define_method("+", [](const ushort1& self, const ushort1& other) -> int1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort1& self, const ushort1& other) -> int1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort1& self, const ushort1& other) -> int1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort1& self, const ushort1& other) -> int1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort1& self, const ushort1& other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort1& self, const ushort1& other) -> ushort1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort1& self, const ushort1& other) -> ushort1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort1& self, const ushort1& other) -> ushort1
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const ushort1& self, int other) -> int1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort1& self, float other) -> float1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort1& self, double other) -> double1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort1& self, int other) -> int1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort1& self, float other) -> float1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort1& self, double other) -> double1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort1& self, int other) -> int1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort1& self, float other) -> float1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort1& self, double other) -> double1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort1& self, int other) -> int1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort1& self, float other) -> float1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort1& self, double other) -> double1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort1& self, ushort other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort1& self, ushort other) -> ushort1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort1& self, ushort other) -> ushort1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort1& self, ushort other) -> ushort1
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<ushort2>().
-    define_method("+", [](const ushort2& self, const ushort2& other) -> int2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort2& self, const ushort2& other) -> int2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort2& self, const ushort2& other) -> int2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort2& self, const ushort2& other) -> int2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort2& self, const ushort2& other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort2& self, const ushort2& other) -> ushort2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort2& self, const ushort2& other) -> ushort2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort2& self, const ushort2& other) -> ushort2
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const ushort2& self, int other) -> int2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort2& self, float other) -> float2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort2& self, double other) -> double2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort2& self, int other) -> int2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort2& self, float other) -> float2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort2& self, double other) -> double2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort2& self, int other) -> int2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort2& self, float other) -> float2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort2& self, double other) -> double2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort2& self, int other) -> int2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort2& self, float other) -> float2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort2& self, double other) -> double2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort2& self, ushort other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort2& self, ushort other) -> ushort2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort2& self, ushort other) -> ushort2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort2& self, ushort other) -> ushort2
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<ushort3>().
-    define_method("+", [](const ushort3& self, const ushort3& other) -> int3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort3& self, const ushort3& other) -> int3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort3& self, const ushort3& other) -> int3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort3& self, const ushort3& other) -> int3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort3& self, const ushort3& other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort3& self, const ushort3& other) -> ushort3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort3& self, const ushort3& other) -> ushort3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort3& self, const ushort3& other) -> ushort3
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const ushort3& self, int other) -> int3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort3& self, float other) -> float3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort3& self, double other) -> double3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort3& self, int other) -> int3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort3& self, float other) -> float3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort3& self, double other) -> double3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort3& self, int other) -> int3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort3& self, float other) -> float3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort3& self, double other) -> double3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort3& self, int other) -> int3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort3& self, float other) -> float3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort3& self, double other) -> double3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort3& self, ushort other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort3& self, ushort other) -> ushort3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort3& self, ushort other) -> ushort3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort3& self, ushort other) -> ushort3
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<ushort4>().
-    define_method("+", [](const ushort4& self, const ushort4& other) -> int4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort4& self, const ushort4& other) -> int4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort4& self, const ushort4& other) -> int4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort4& self, const ushort4& other) -> int4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort4& self, const ushort4& other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort4& self, const ushort4& other) -> ushort4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort4& self, const ushort4& other) -> ushort4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort4& self, const ushort4& other) -> ushort4
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const ushort4& self, int other) -> int4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort4& self, float other) -> float4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const ushort4& self, double other) -> double4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const ushort4& self, int other) -> int4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort4& self, float other) -> float4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const ushort4& self, double other) -> double4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const ushort4& self, int other) -> int4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort4& self, float other) -> float4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const ushort4& self, double other) -> double4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const ushort4& self, int other) -> int4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort4& self, float other) -> float4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const ushort4& self, double other) -> double4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const ushort4& self, ushort other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const ushort4& self, ushort other) -> ushort4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const ushort4& self, ushort other) -> ushort4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const ushort4& self, ushort other) -> ushort4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<short1>().
+    define_method("-@", [](const short1& self) -> short1
+    {
+      return -self;
+    }).
+    define_method("!", [](const short1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const short1& self) -> short1
+    {
+      return ~self;
+    }).
     define_method("+", [](const short1& self, const short1& other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short1& self, const short1& other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short1& self, const short1& other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short1& self, const short1& other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short1& self, const short1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short1& self, const short1& other) -> short1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short1& self, const short1& other) -> short1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short1& self, const short1& other) -> short1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const short1& self, int other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short1& self, float other) -> float1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short1& self, double other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short1& self, int other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short1& self, float other) -> float1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short1& self, double other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short1& self, int other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short1& self, float other) -> float1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short1& self, double other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short1& self, int other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short1& self, float other) -> float1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short1& self, double other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short1& self, short other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short1& self, short other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short1& self, short other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short1& self, short other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short1& self, short other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short1& self, short other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short1& self, short other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short1& self, short other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short1& self, short other) -> short1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short1& self, short other) -> short1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short1& self, short other) -> short1
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<short2>().
+    define_method("-@", [](const short2& self) -> short2
+    {
+      return -self;
+    }).
+    define_method("!", [](const short2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const short2& self) -> short2
+    {
+      return ~self;
+    }).
     define_method("+", [](const short2& self, const short2& other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short2& self, const short2& other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short2& self, const short2& other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short2& self, const short2& other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short2& self, const short2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short2& self, const short2& other) -> short2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short2& self, const short2& other) -> short2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short2& self, const short2& other) -> short2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const short2& self, int other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short2& self, float other) -> float2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short2& self, double other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short2& self, int other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short2& self, float other) -> float2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short2& self, double other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short2& self, int other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short2& self, float other) -> float2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short2& self, double other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short2& self, int other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short2& self, float other) -> float2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short2& self, double other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short2& self, short other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short2& self, short other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short2& self, short other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short2& self, short other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short2& self, short other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short2& self, short other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short2& self, short other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short2& self, short other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short2& self, short other) -> short2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short2& self, short other) -> short2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short2& self, short other) -> short2
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<short3>().
+    define_method("-@", [](const short3& self) -> short3
+    {
+      return -self;
+    }).
+    define_method("!", [](const short3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const short3& self) -> short3
+    {
+      return ~self;
+    }).
     define_method("+", [](const short3& self, const short3& other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short3& self, const short3& other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short3& self, const short3& other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short3& self, const short3& other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short3& self, const short3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short3& self, const short3& other) -> short3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short3& self, const short3& other) -> short3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short3& self, const short3& other) -> short3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const short3& self, int other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short3& self, float other) -> float3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short3& self, double other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short3& self, int other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short3& self, float other) -> float3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short3& self, double other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short3& self, int other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short3& self, float other) -> float3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short3& self, double other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short3& self, int other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short3& self, float other) -> float3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short3& self, double other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short3& self, short other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short3& self, short other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short3& self, short other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short3& self, short other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short3& self, short other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short3& self, short other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short3& self, short other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short3& self, short other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short3& self, short other) -> short3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short3& self, short other) -> short3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short3& self, short other) -> short3
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<short4>().
+    define_method("-@", [](const short4& self) -> short4
+    {
+      return -self;
+    }).
+    define_method("!", [](const short4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const short4& self) -> short4
+    {
+      return ~self;
+    }).
     define_method("+", [](const short4& self, const short4& other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short4& self, const short4& other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short4& self, const short4& other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short4& self, const short4& other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short4& self, const short4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short4& self, const short4& other) -> short4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short4& self, const short4& other) -> short4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short4& self, const short4& other) -> short4
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const short4& self, int other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short4& self, float other) -> float4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const short4& self, double other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const short4& self, int other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short4& self, float other) -> float4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const short4& self, double other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const short4& self, int other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short4& self, float other) -> float4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const short4& self, double other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const short4& self, int other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short4& self, float other) -> float4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const short4& self, double other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const short4& self, short other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const short4& self, short other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const short4& self, short other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const short4& self, short other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const short4& self, short other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const short4& self, short other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const short4& self, short other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const short4& self, short other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const short4& self, short other) -> short4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const short4& self, short other) -> short4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const short4& self, short other) -> short4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<int1>().
+    define_method("-@", [](const int1& self) -> int1
+    {
+      return -self;
+    }).
+    define_method("!", [](const int1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const int1& self) -> int1
+    {
+      return ~self;
+    }).
     define_method("+", [](const int1& self, const int1& other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int1& self, const int1& other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int1& self, const int1& other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int1& self, const int1& other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int1& self, const int1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int1& self, const int1& other) -> int1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int1& self, const int1& other) -> int1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int1& self, const int1& other) -> int1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const int1& self, int other) -> int1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int1& self, float other) -> float1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int1& self, double other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int1& self, int other) -> int1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int1& self, float other) -> float1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int1& self, double other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int1& self, int other) -> int1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int1& self, float other) -> float1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int1& self, double other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int1& self, int other) -> int1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int1& self, float other) -> float1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int1& self, double other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int1& self, int other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int1& self, int other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int1& self, int other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int1& self, int other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int1& self, int other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int1& self, int other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int1& self, int other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int1& self, int other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int1& self, int other) -> int1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int1& self, int other) -> int1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int1& self, int other) -> int1
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<int2>().
+    define_method("-@", [](const int2& self) -> int2
+    {
+      return -self;
+    }).
+    define_method("!", [](const int2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const int2& self) -> int2
+    {
+      return ~self;
+    }).
     define_method("+", [](const int2& self, const int2& other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int2& self, const int2& other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int2& self, const int2& other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int2& self, const int2& other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int2& self, const int2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int2& self, const int2& other) -> int2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int2& self, const int2& other) -> int2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int2& self, const int2& other) -> int2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const int2& self, int other) -> int2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int2& self, float other) -> float2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int2& self, double other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int2& self, int other) -> int2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int2& self, float other) -> float2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int2& self, double other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int2& self, int other) -> int2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int2& self, float other) -> float2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int2& self, double other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int2& self, int other) -> int2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int2& self, float other) -> float2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int2& self, double other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int2& self, int other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int2& self, int other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int2& self, int other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int2& self, int other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int2& self, int other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int2& self, int other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int2& self, int other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int2& self, int other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int2& self, int other) -> int2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int2& self, int other) -> int2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int2& self, int other) -> int2
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<int3>().
+    define_method("-@", [](const int3& self) -> int3
+    {
+      return -self;
+    }).
+    define_method("!", [](const int3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const int3& self) -> int3
+    {
+      return ~self;
+    }).
     define_method("+", [](const int3& self, const int3& other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int3& self, const int3& other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int3& self, const int3& other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int3& self, const int3& other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int3& self, const int3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int3& self, const int3& other) -> int3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int3& self, const int3& other) -> int3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int3& self, const int3& other) -> int3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const int3& self, int other) -> int3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int3& self, float other) -> float3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int3& self, double other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int3& self, int other) -> int3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int3& self, float other) -> float3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int3& self, double other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int3& self, int other) -> int3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int3& self, float other) -> float3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int3& self, double other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int3& self, int other) -> int3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int3& self, float other) -> float3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int3& self, double other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int3& self, int other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int3& self, int other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int3& self, int other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int3& self, int other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int3& self, int other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int3& self, int other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int3& self, int other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int3& self, int other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int3& self, int other) -> int3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int3& self, int other) -> int3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int3& self, int other) -> int3
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<int4>().
+    define_method("-@", [](const int4& self) -> int4
+    {
+      return -self;
+    }).
+    define_method("!", [](const int4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const int4& self) -> int4
+    {
+      return ~self;
+    }).
     define_method("+", [](const int4& self, const int4& other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int4& self, const int4& other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int4& self, const int4& other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int4& self, const int4& other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int4& self, const int4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int4& self, const int4& other) -> int4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int4& self, const int4& other) -> int4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int4& self, const int4& other) -> int4
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("+", [](const int4& self, int other) -> int4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int4& self, float other) -> float4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const int4& self, double other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const int4& self, int other) -> int4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int4& self, float other) -> float4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const int4& self, double other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const int4& self, int other) -> int4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int4& self, float other) -> float4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const int4& self, double other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const int4& self, int other) -> int4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int4& self, float other) -> float4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const int4& self, double other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const int4& self, int other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const int4& self, int other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const int4& self, int other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const int4& self, int other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const int4& self, int other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const int4& self, int other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const int4& self, int other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const int4& self, int other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](const int4& self, int other) -> int4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](const int4& self, int other) -> int4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](const int4& self, int other) -> int4
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uint1>().
-    define_method("+", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint1& self, const uint1& other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint1& self, const uint1& other) -> uint1
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uint1& self, uint other) -> uint1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint1& self, float other) -> float1
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint1& self, double other) -> double1
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint1& self, uint other) -> uint1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint1& self, float other) -> float1
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint1& self, double other) -> double1
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint1& self, uint other) -> uint1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint1& self, float other) -> float1
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint1& self, double other) -> double1
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint1& self, uint other) -> uint1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint1& self, float other) -> float1
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint1& self, double other) -> double1
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint1& self, uint other) -> uchar1
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint1& self, uint other) -> uchar1
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint1& self, uint other) -> uchar1
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint1& self, uint other) -> uchar1
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint1& self, uint other) -> uchar1
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint1& self, uint other) -> uchar1
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint1& self, uint other) -> uchar1
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint1& self, uint other) -> uchar1
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint1& self, uint other) -> uint1
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint1& self, uint other) -> uint1
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint1& self, uint other) -> uint1
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uint2>().
-    define_method("+", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint2& self, const uint2& other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint2& self, const uint2& other) -> uint2
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uint2& self, uint other) -> uint2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint2& self, float other) -> float2
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint2& self, double other) -> double2
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint2& self, uint other) -> uint2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint2& self, float other) -> float2
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint2& self, double other) -> double2
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint2& self, uint other) -> uint2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint2& self, float other) -> float2
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint2& self, double other) -> double2
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint2& self, uint other) -> uint2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint2& self, float other) -> float2
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint2& self, double other) -> double2
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint2& self, uint other) -> uchar2
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint2& self, uint other) -> uchar2
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint2& self, uint other) -> uchar2
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint2& self, uint other) -> uchar2
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint2& self, uint other) -> uchar2
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint2& self, uint other) -> uchar2
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint2& self, uint other) -> uchar2
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint2& self, uint other) -> uchar2
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint2& self, uint other) -> uint2
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint2& self, uint other) -> uint2
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint2& self, uint other) -> uint2
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uint3>().
-    define_method("+", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint3& self, const uint3& other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint3& self, const uint3& other) -> uint3
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uint3& self, uint other) -> uint3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint3& self, float other) -> float3
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint3& self, double other) -> double3
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint3& self, uint other) -> uint3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint3& self, float other) -> float3
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint3& self, double other) -> double3
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint3& self, uint other) -> uint3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint3& self, float other) -> float3
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint3& self, double other) -> double3
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint3& self, uint other) -> uint3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint3& self, float other) -> float3
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint3& self, double other) -> double3
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint3& self, uint other) -> uchar3
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint3& self, uint other) -> uchar3
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint3& self, uint other) -> uchar3
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint3& self, uint other) -> uchar3
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint3& self, uint other) -> uchar3
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint3& self, uint other) -> uchar3
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint3& self, uint other) -> uchar3
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint3& self, uint other) -> uchar3
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint3& self, uint other) -> uint3
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint3& self, uint other) -> uint3
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint3& self, uint other) -> uint3
-  {
-    return self ^ other;
-  });
-  
-  Data_Type<uint4>().
-    define_method("+", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint4& self, const uint4& other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint4& self, const uint4& other) -> uint4
-  {
-    return self ^ other;
-  }).
-    define_method("+", [](const uint4& self, uint other) -> uint4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint4& self, float other) -> float4
-  {
-    return self + other;
-  }).
-    define_method("+", [](const uint4& self, double other) -> double4
-  {
-    return self + other;
-  }).
-    define_method("-", [](const uint4& self, uint other) -> uint4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint4& self, float other) -> float4
-  {
-    return self - other;
-  }).
-    define_method("-", [](const uint4& self, double other) -> double4
-  {
-    return self - other;
-  }).
-    define_method("*", [](const uint4& self, uint other) -> uint4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint4& self, float other) -> float4
-  {
-    return self * other;
-  }).
-    define_method("*", [](const uint4& self, double other) -> double4
-  {
-    return self * other;
-  }).
-    define_method("/", [](const uint4& self, uint other) -> uint4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint4& self, float other) -> float4
-  {
-    return self / other;
-  }).
-    define_method("/", [](const uint4& self, double other) -> double4
-  {
-    return self / other;
-  }).
-    define_method("==", [](const uint4& self, uint other) -> uchar4
-  {
-    return self == other;
-  }).
-    define_method("!=", [](const uint4& self, uint other) -> uchar4
-  {
-    return self != other;
-  }).
-    define_method(">", [](const uint4& self, uint other) -> uchar4
-  {
-    return self > other;
-  }).
-    define_method("<", [](const uint4& self, uint other) -> uchar4
-  {
-    return self < other;
-  }).
-    define_method(">=", [](const uint4& self, uint other) -> uchar4
-  {
-    return self >= other;
-  }).
-    define_method("<=", [](const uint4& self, uint other) -> uchar4
-  {
-    return self <= other;
-  }).
-    define_method("logical_and", [](const uint4& self, uint other) -> uchar4
-  {
-    return self && other;
-  }).
-    define_method("logical_or", [](const uint4& self, uint other) -> uchar4
-  {
-    return self || other;
-  }).
-    define_method("&", [](const uint4& self, uint other) -> uint4
-  {
-    return self & other;
-  }).
-    define_method("|", [](const uint4& self, uint other) -> uint4
-  {
-    return self | other;
-  }).
-    define_method("^", [](const uint4& self, uint other) -> uint4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<float1>().
+    define_method("-@", [](const float1& self) -> float1
+    {
+      return -self;
+    }).
+    define_method("!", [](const float1& self) -> uchar1
+    {
+      return !self;
+    }).
     define_method("+", [](const float1& self, const float1& other) -> float1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float1& self, const float1& other) -> float1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float1& self, const float1& other) -> float1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float1& self, const float1& other) -> float1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float1& self, const float1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const float1& self, float other) -> float1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const float1& self, double other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float1& self, float other) -> float1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const float1& self, double other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float1& self, float other) -> float1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const float1& self, double other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float1& self, float other) -> float1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const float1& self, double other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float1& self, float other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float1& self, float other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float1& self, float other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float1& self, float other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float1& self, float other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float1& self, float other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float1& self, float other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float1& self, float other) -> uchar1
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<float2>().
+    define_method("-@", [](const float2& self) -> float2
+    {
+      return -self;
+    }).
+    define_method("!", [](const float2& self) -> uchar2
+    {
+      return !self;
+    }).
     define_method("+", [](const float2& self, const float2& other) -> float2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float2& self, const float2& other) -> float2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float2& self, const float2& other) -> float2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float2& self, const float2& other) -> float2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float2& self, const float2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const float2& self, float other) -> float2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const float2& self, double other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float2& self, float other) -> float2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const float2& self, double other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float2& self, float other) -> float2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const float2& self, double other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float2& self, float other) -> float2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const float2& self, double other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float2& self, float other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float2& self, float other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float2& self, float other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float2& self, float other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float2& self, float other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float2& self, float other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float2& self, float other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float2& self, float other) -> uchar2
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<float3>().
+    define_method("-@", [](const float3& self) -> float3
+    {
+      return -self;
+    }).
+    define_method("!", [](const float3& self) -> uchar3
+    {
+      return !self;
+    }).
     define_method("+", [](const float3& self, const float3& other) -> float3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float3& self, const float3& other) -> float3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float3& self, const float3& other) -> float3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float3& self, const float3& other) -> float3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float3& self, const float3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const float3& self, float other) -> float3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const float3& self, double other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float3& self, float other) -> float3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const float3& self, double other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float3& self, float other) -> float3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const float3& self, double other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float3& self, float other) -> float3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const float3& self, double other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float3& self, float other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float3& self, float other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float3& self, float other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float3& self, float other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float3& self, float other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float3& self, float other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float3& self, float other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float3& self, float other) -> uchar3
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<float4>().
+    define_method("-@", [](const float4& self) -> float4
+    {
+      return -self;
+    }).
+    define_method("!", [](const float4& self) -> uchar4
+    {
+      return !self;
+    }).
     define_method("+", [](const float4& self, const float4& other) -> float4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float4& self, const float4& other) -> float4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float4& self, const float4& other) -> float4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float4& self, const float4& other) -> float4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float4& self, const float4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const float4& self, float other) -> float4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](const float4& self, double other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const float4& self, float other) -> float4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](const float4& self, double other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const float4& self, float other) -> float4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](const float4& self, double other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const float4& self, float other) -> float4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](const float4& self, double other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const float4& self, float other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const float4& self, float other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const float4& self, float other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const float4& self, float other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const float4& self, float other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const float4& self, float other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const float4& self, float other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const float4& self, float other) -> uchar4
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<double1>().
+    define_method("-@", [](const double1& self) -> double1
+    {
+      return -self;
+    }).
+    define_method("!", [](const double1& self) -> uchar1
+    {
+      return !self;
+    }).
     define_method("+", [](const double1& self, const double1& other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double1& self, const double1& other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double1& self, const double1& other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double1& self, const double1& other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double1& self, const double1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const double1& self, double other) -> double1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double1& self, double other) -> double1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double1& self, double other) -> double1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double1& self, double other) -> double1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double1& self, double other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double1& self, double other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double1& self, double other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double1& self, double other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double1& self, double other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double1& self, double other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double1& self, double other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double1& self, double other) -> uchar1
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<double2>().
+    define_method("-@", [](const double2& self) -> double2
+    {
+      return -self;
+    }).
+    define_method("!", [](const double2& self) -> uchar2
+    {
+      return !self;
+    }).
     define_method("+", [](const double2& self, const double2& other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double2& self, const double2& other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double2& self, const double2& other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double2& self, const double2& other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double2& self, const double2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const double2& self, double other) -> double2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double2& self, double other) -> double2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double2& self, double other) -> double2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double2& self, double other) -> double2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double2& self, double other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double2& self, double other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double2& self, double other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double2& self, double other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double2& self, double other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double2& self, double other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double2& self, double other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double2& self, double other) -> uchar2
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<double3>().
+    define_method("-@", [](const double3& self) -> double3
+    {
+      return -self;
+    }).
+    define_method("!", [](const double3& self) -> uchar3
+    {
+      return !self;
+    }).
     define_method("+", [](const double3& self, const double3& other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double3& self, const double3& other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double3& self, const double3& other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double3& self, const double3& other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double3& self, const double3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const double3& self, double other) -> double3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double3& self, double other) -> double3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double3& self, double other) -> double3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double3& self, double other) -> double3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double3& self, double other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double3& self, double other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double3& self, double other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double3& self, double other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double3& self, double other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double3& self, double other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double3& self, double other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double3& self, double other) -> uchar3
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
   
   Data_Type<double4>().
+    define_method("-@", [](const double4& self) -> double4
+    {
+      return -self;
+    }).
+    define_method("!", [](const double4& self) -> uchar4
+    {
+      return !self;
+    }).
     define_method("+", [](const double4& self, const double4& other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double4& self, const double4& other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double4& self, const double4& other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double4& self, const double4& other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double4& self, const double4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("+", [](const double4& self, double other) -> double4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](const double4& self, double other) -> double4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](const double4& self, double other) -> double4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](const double4& self, double other) -> double4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](const double4& self, double other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const double4& self, double other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](const double4& self, double other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](const double4& self, double other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](const double4& self, double other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](const double4& self, double other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](const double4& self, double other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](const double4& self, double other) -> uchar4
-  {
-    return self || other;
-  });
+    {
+      return self || other;
+    });
+  
+  Data_Type<uchar1>().
+    define_method("!", [](const uchar1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const uchar1& self) -> uchar1
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uchar1& self, const uchar1& other) -> int1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar1& self, const uchar1& other) -> int1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar1& self, const uchar1& other) -> int1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar1& self, const uchar1& other) -> int1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar1& self, const uchar1& other) -> uchar1
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uchar1& self, int other) -> int1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar1& self, float other) -> float1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar1& self, double other) -> double1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar1& self, int other) -> int1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar1& self, float other) -> float1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar1& self, double other) -> double1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar1& self, int other) -> int1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar1& self, float other) -> float1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar1& self, double other) -> double1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar1& self, int other) -> int1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar1& self, float other) -> float1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar1& self, double other) -> double1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar1& self, uchar other) -> uchar1
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uchar2>().
+    define_method("!", [](const uchar2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const uchar2& self) -> uchar2
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uchar2& self, const uchar2& other) -> int2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar2& self, const uchar2& other) -> int2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar2& self, const uchar2& other) -> int2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar2& self, const uchar2& other) -> int2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar2& self, const uchar2& other) -> uchar2
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uchar2& self, int other) -> int2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar2& self, float other) -> float2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar2& self, double other) -> double2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar2& self, int other) -> int2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar2& self, float other) -> float2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar2& self, double other) -> double2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar2& self, int other) -> int2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar2& self, float other) -> float2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar2& self, double other) -> double2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar2& self, int other) -> int2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar2& self, float other) -> float2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar2& self, double other) -> double2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar2& self, uchar other) -> uchar2
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uchar3>().
+    define_method("!", [](const uchar3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const uchar3& self) -> uchar3
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uchar3& self, const uchar3& other) -> int3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar3& self, const uchar3& other) -> int3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar3& self, const uchar3& other) -> int3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar3& self, const uchar3& other) -> int3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar3& self, const uchar3& other) -> uchar3
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uchar3& self, int other) -> int3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar3& self, float other) -> float3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar3& self, double other) -> double3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar3& self, int other) -> int3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar3& self, float other) -> float3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar3& self, double other) -> double3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar3& self, int other) -> int3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar3& self, float other) -> float3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar3& self, double other) -> double3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar3& self, int other) -> int3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar3& self, float other) -> float3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar3& self, double other) -> double3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar3& self, uchar other) -> uchar3
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uchar4>().
+    define_method("!", [](const uchar4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const uchar4& self) -> uchar4
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uchar4& self, const uchar4& other) -> int4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar4& self, const uchar4& other) -> int4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar4& self, const uchar4& other) -> int4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar4& self, const uchar4& other) -> int4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar4& self, const uchar4& other) -> uchar4
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uchar4& self, int other) -> int4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar4& self, float other) -> float4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uchar4& self, double other) -> double4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uchar4& self, int other) -> int4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar4& self, float other) -> float4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uchar4& self, double other) -> double4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uchar4& self, int other) -> int4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar4& self, float other) -> float4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uchar4& self, double other) -> double4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uchar4& self, int other) -> int4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar4& self, float other) -> float4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uchar4& self, double other) -> double4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uchar4& self, uchar other) -> uchar4
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<ushort1>().
+    define_method("!", [](const ushort1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const ushort1& self) -> ushort1
+    {
+      return ~self;
+    }).
+    define_method("+", [](const ushort1& self, const ushort1& other) -> int1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort1& self, const ushort1& other) -> int1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort1& self, const ushort1& other) -> int1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort1& self, const ushort1& other) -> int1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort1& self, const ushort1& other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort1& self, const ushort1& other) -> ushort1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort1& self, const ushort1& other) -> ushort1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort1& self, const ushort1& other) -> ushort1
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const ushort1& self, int other) -> int1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort1& self, float other) -> float1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort1& self, double other) -> double1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort1& self, int other) -> int1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort1& self, float other) -> float1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort1& self, double other) -> double1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort1& self, int other) -> int1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort1& self, float other) -> float1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort1& self, double other) -> double1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort1& self, int other) -> int1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort1& self, float other) -> float1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort1& self, double other) -> double1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort1& self, ushort other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort1& self, ushort other) -> ushort1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort1& self, ushort other) -> ushort1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort1& self, ushort other) -> ushort1
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<ushort2>().
+    define_method("!", [](const ushort2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const ushort2& self) -> ushort2
+    {
+      return ~self;
+    }).
+    define_method("+", [](const ushort2& self, const ushort2& other) -> int2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort2& self, const ushort2& other) -> int2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort2& self, const ushort2& other) -> int2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort2& self, const ushort2& other) -> int2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort2& self, const ushort2& other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort2& self, const ushort2& other) -> ushort2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort2& self, const ushort2& other) -> ushort2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort2& self, const ushort2& other) -> ushort2
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const ushort2& self, int other) -> int2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort2& self, float other) -> float2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort2& self, double other) -> double2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort2& self, int other) -> int2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort2& self, float other) -> float2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort2& self, double other) -> double2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort2& self, int other) -> int2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort2& self, float other) -> float2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort2& self, double other) -> double2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort2& self, int other) -> int2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort2& self, float other) -> float2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort2& self, double other) -> double2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort2& self, ushort other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort2& self, ushort other) -> ushort2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort2& self, ushort other) -> ushort2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort2& self, ushort other) -> ushort2
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<ushort3>().
+    define_method("!", [](const ushort3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const ushort3& self) -> ushort3
+    {
+      return ~self;
+    }).
+    define_method("+", [](const ushort3& self, const ushort3& other) -> int3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort3& self, const ushort3& other) -> int3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort3& self, const ushort3& other) -> int3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort3& self, const ushort3& other) -> int3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort3& self, const ushort3& other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort3& self, const ushort3& other) -> ushort3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort3& self, const ushort3& other) -> ushort3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort3& self, const ushort3& other) -> ushort3
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const ushort3& self, int other) -> int3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort3& self, float other) -> float3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort3& self, double other) -> double3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort3& self, int other) -> int3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort3& self, float other) -> float3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort3& self, double other) -> double3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort3& self, int other) -> int3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort3& self, float other) -> float3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort3& self, double other) -> double3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort3& self, int other) -> int3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort3& self, float other) -> float3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort3& self, double other) -> double3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort3& self, ushort other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort3& self, ushort other) -> ushort3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort3& self, ushort other) -> ushort3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort3& self, ushort other) -> ushort3
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<ushort4>().
+    define_method("!", [](const ushort4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const ushort4& self) -> ushort4
+    {
+      return ~self;
+    }).
+    define_method("+", [](const ushort4& self, const ushort4& other) -> int4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort4& self, const ushort4& other) -> int4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort4& self, const ushort4& other) -> int4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort4& self, const ushort4& other) -> int4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort4& self, const ushort4& other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort4& self, const ushort4& other) -> ushort4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort4& self, const ushort4& other) -> ushort4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort4& self, const ushort4& other) -> ushort4
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const ushort4& self, int other) -> int4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort4& self, float other) -> float4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const ushort4& self, double other) -> double4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const ushort4& self, int other) -> int4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort4& self, float other) -> float4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const ushort4& self, double other) -> double4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const ushort4& self, int other) -> int4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort4& self, float other) -> float4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const ushort4& self, double other) -> double4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const ushort4& self, int other) -> int4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort4& self, float other) -> float4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const ushort4& self, double other) -> double4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const ushort4& self, ushort other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const ushort4& self, ushort other) -> ushort4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const ushort4& self, ushort other) -> ushort4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const ushort4& self, ushort other) -> ushort4
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uint1>().
+    define_method("!", [](const uint1& self) -> uchar1
+    {
+      return !self;
+    }).
+    define_method("~", [](const uint1& self) -> uint1
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint1& self, const uint1& other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint1& self, const uint1& other) -> uint1
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uint1& self, uint other) -> uint1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint1& self, float other) -> float1
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint1& self, double other) -> double1
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint1& self, uint other) -> uint1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint1& self, float other) -> float1
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint1& self, double other) -> double1
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint1& self, uint other) -> uint1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint1& self, float other) -> float1
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint1& self, double other) -> double1
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint1& self, uint other) -> uint1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint1& self, float other) -> float1
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint1& self, double other) -> double1
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint1& self, uint other) -> uchar1
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint1& self, uint other) -> uchar1
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint1& self, uint other) -> uchar1
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint1& self, uint other) -> uchar1
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint1& self, uint other) -> uchar1
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint1& self, uint other) -> uchar1
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint1& self, uint other) -> uchar1
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint1& self, uint other) -> uchar1
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint1& self, uint other) -> uint1
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint1& self, uint other) -> uint1
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint1& self, uint other) -> uint1
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uint2>().
+    define_method("!", [](const uint2& self) -> uchar2
+    {
+      return !self;
+    }).
+    define_method("~", [](const uint2& self) -> uint2
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint2& self, const uint2& other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint2& self, const uint2& other) -> uint2
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uint2& self, uint other) -> uint2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint2& self, float other) -> float2
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint2& self, double other) -> double2
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint2& self, uint other) -> uint2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint2& self, float other) -> float2
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint2& self, double other) -> double2
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint2& self, uint other) -> uint2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint2& self, float other) -> float2
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint2& self, double other) -> double2
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint2& self, uint other) -> uint2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint2& self, float other) -> float2
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint2& self, double other) -> double2
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint2& self, uint other) -> uchar2
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint2& self, uint other) -> uchar2
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint2& self, uint other) -> uchar2
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint2& self, uint other) -> uchar2
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint2& self, uint other) -> uchar2
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint2& self, uint other) -> uchar2
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint2& self, uint other) -> uchar2
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint2& self, uint other) -> uchar2
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint2& self, uint other) -> uint2
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint2& self, uint other) -> uint2
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint2& self, uint other) -> uint2
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uint3>().
+    define_method("!", [](const uint3& self) -> uchar3
+    {
+      return !self;
+    }).
+    define_method("~", [](const uint3& self) -> uint3
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint3& self, const uint3& other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint3& self, const uint3& other) -> uint3
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uint3& self, uint other) -> uint3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint3& self, float other) -> float3
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint3& self, double other) -> double3
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint3& self, uint other) -> uint3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint3& self, float other) -> float3
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint3& self, double other) -> double3
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint3& self, uint other) -> uint3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint3& self, float other) -> float3
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint3& self, double other) -> double3
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint3& self, uint other) -> uint3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint3& self, float other) -> float3
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint3& self, double other) -> double3
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint3& self, uint other) -> uchar3
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint3& self, uint other) -> uchar3
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint3& self, uint other) -> uchar3
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint3& self, uint other) -> uchar3
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint3& self, uint other) -> uchar3
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint3& self, uint other) -> uchar3
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint3& self, uint other) -> uchar3
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint3& self, uint other) -> uchar3
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint3& self, uint other) -> uint3
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint3& self, uint other) -> uint3
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint3& self, uint other) -> uint3
+    {
+      return self ^ other;
+    });
+  
+  Data_Type<uint4>().
+    define_method("!", [](const uint4& self) -> uchar4
+    {
+      return !self;
+    }).
+    define_method("~", [](const uint4& self) -> uint4
+    {
+      return ~self;
+    }).
+    define_method("+", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint4& self, const uint4& other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint4& self, const uint4& other) -> uint4
+    {
+      return self ^ other;
+    }).
+    define_method("+", [](const uint4& self, uint other) -> uint4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint4& self, float other) -> float4
+    {
+      return self + other;
+    }).
+    define_method("+", [](const uint4& self, double other) -> double4
+    {
+      return self + other;
+    }).
+    define_method("-", [](const uint4& self, uint other) -> uint4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint4& self, float other) -> float4
+    {
+      return self - other;
+    }).
+    define_method("-", [](const uint4& self, double other) -> double4
+    {
+      return self - other;
+    }).
+    define_method("*", [](const uint4& self, uint other) -> uint4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint4& self, float other) -> float4
+    {
+      return self * other;
+    }).
+    define_method("*", [](const uint4& self, double other) -> double4
+    {
+      return self * other;
+    }).
+    define_method("/", [](const uint4& self, uint other) -> uint4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint4& self, float other) -> float4
+    {
+      return self / other;
+    }).
+    define_method("/", [](const uint4& self, double other) -> double4
+    {
+      return self / other;
+    }).
+    define_method("==", [](const uint4& self, uint other) -> uchar4
+    {
+      return self == other;
+    }).
+    define_method("!=", [](const uint4& self, uint other) -> uchar4
+    {
+      return self != other;
+    }).
+    define_method(">", [](const uint4& self, uint other) -> uchar4
+    {
+      return self > other;
+    }).
+    define_method("<", [](const uint4& self, uint other) -> uchar4
+    {
+      return self < other;
+    }).
+    define_method(">=", [](const uint4& self, uint other) -> uchar4
+    {
+      return self >= other;
+    }).
+    define_method("<=", [](const uint4& self, uint other) -> uchar4
+    {
+      return self <= other;
+    }).
+    define_method("logical_and", [](const uint4& self, uint other) -> uchar4
+    {
+      return self && other;
+    }).
+    define_method("logical_or", [](const uint4& self, uint other) -> uchar4
+    {
+      return self || other;
+    }).
+    define_method("&", [](const uint4& self, uint other) -> uint4
+    {
+      return self & other;
+    }).
+    define_method("|", [](const uint4& self, uint other) -> uint4
+    {
+      return self | other;
+    }).
+    define_method("^", [](const uint4& self, uint other) -> uint4
+    {
+      return self ^ other;
+    });
   
   Data_Type<uint>().
     define_method("+", [](uint self, const uint1& other) -> uint1
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](uint self, const uint2& other) -> uint2
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](uint self, const uint3& other) -> uint3
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("+", [](uint self, const uint4& other) -> uint4
-  {
-    return self + other;
-  }).
+    {
+      return self + other;
+    }).
     define_method("-", [](uint self, const uint1& other) -> uint1
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](uint self, const uint2& other) -> uint2
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](uint self, const uint3& other) -> uint3
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("-", [](uint self, const uint4& other) -> uint4
-  {
-    return self - other;
-  }).
+    {
+      return self - other;
+    }).
     define_method("*", [](uint self, const uint1& other) -> uint1
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](uint self, const uint2& other) -> uint2
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](uint self, const uint3& other) -> uint3
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("*", [](uint self, const uint4& other) -> uint4
-  {
-    return self * other;
-  }).
+    {
+      return self * other;
+    }).
     define_method("/", [](uint self, const uint1& other) -> uint1
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](uint self, const uint2& other) -> uint2
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](uint self, const uint3& other) -> uint3
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("/", [](uint self, const uint4& other) -> uint4
-  {
-    return self / other;
-  }).
+    {
+      return self / other;
+    }).
     define_method("==", [](uint self, const uint1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uint self, const uint2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uint self, const uint3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uint self, const uint4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](uint self, const uint1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uint self, const uint2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uint self, const uint3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uint self, const uint4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](uint self, const uint1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uint self, const uint2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uint self, const uint3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uint self, const uint4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](uint self, const uint1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uint self, const uint2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uint self, const uint3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uint self, const uint4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](uint self, const uint1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uint self, const uint2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uint self, const uint3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uint self, const uint4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](uint self, const uint1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uint self, const uint2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uint self, const uint3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uint self, const uint4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](uint self, const uint1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uint self, const uint2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uint self, const uint3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uint self, const uint4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](uint self, const uint1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uint self, const uint2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uint self, const uint3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uint self, const uint4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](uint self, const uint1& other) -> uint1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uint self, const uint2& other) -> uint2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uint self, const uint3& other) -> uint3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uint self, const uint4& other) -> uint4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](uint self, const uint1& other) -> uint1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uint self, const uint2& other) -> uint2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uint self, const uint3& other) -> uint3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uint self, const uint4& other) -> uint4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](uint self, const uint1& other) -> uint1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uint self, const uint2& other) -> uint2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uint self, const uint3& other) -> uint3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uint self, const uint4& other) -> uint4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<uchar>().
     define_method("==", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](uchar self, const uchar1& other) -> uchar1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uchar self, const uchar2& other) -> uchar2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uchar self, const uchar3& other) -> uchar3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](uchar self, const uchar4& other) -> uchar4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
   
   Data_Type<ushort>().
     define_method("==", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("==", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method("!=", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self != other;
-  }).
+    {
+      return self != other;
+    }).
     define_method(">", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method(">", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self > other;
-  }).
+    {
+      return self > other;
+    }).
     define_method("<", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method("<", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self < other;
-  }).
+    {
+      return self < other;
+    }).
     define_method(">=", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method(">=", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self >= other;
-  }).
+    {
+      return self >= other;
+    }).
     define_method("<=", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("<=", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self <= other;
-  }).
+    {
+      return self <= other;
+    }).
     define_method("logical_and", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_and", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self && other;
-  }).
+    {
+      return self && other;
+    }).
     define_method("logical_or", [](ushort self, const ushort1& other) -> uchar1
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](ushort self, const ushort2& other) -> uchar2
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](ushort self, const ushort3& other) -> uchar3
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("logical_or", [](ushort self, const ushort4& other) -> uchar4
-  {
-    return self || other;
-  }).
+    {
+      return self || other;
+    }).
     define_method("&", [](ushort self, const ushort1& other) -> ushort1
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](ushort self, const ushort2& other) -> ushort2
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](ushort self, const ushort3& other) -> ushort3
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("&", [](ushort self, const ushort4& other) -> ushort4
-  {
-    return self & other;
-  }).
+    {
+      return self & other;
+    }).
     define_method("|", [](ushort self, const ushort1& other) -> ushort1
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](ushort self, const ushort2& other) -> ushort2
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](ushort self, const ushort3& other) -> ushort3
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("|", [](ushort self, const ushort4& other) -> ushort4
-  {
-    return self | other;
-  }).
+    {
+      return self | other;
+    }).
     define_method("^", [](ushort self, const ushort1& other) -> ushort1
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](ushort self, const ushort2& other) -> ushort2
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](ushort self, const ushort3& other) -> ushort3
-  {
-    return self ^ other;
-  }).
+    {
+      return self ^ other;
+    }).
     define_method("^", [](ushort self, const ushort4& other) -> ushort4
-  {
-    return self ^ other;
-  });
+    {
+      return self ^ other;
+    });
 }

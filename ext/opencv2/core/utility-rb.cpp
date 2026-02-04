@@ -87,14 +87,12 @@ void Init_Core_Utility()
   rb_mCv.define_module_function<size_t(*)(size_t, unsigned int)>("round_up", &cv::roundUp,
     Arg("a"), Arg("b"));
 
-#if RUBY_CV_VERSION >= 411
   Enum<cv::AlgorithmHint> rb_cCvAlgorithmHint = define_enum_under<cv::AlgorithmHint>("AlgorithmHint", rb_mCv).
     define_value("ALGO_HINT_DEFAULT", cv::AlgorithmHint::ALGO_HINT_DEFAULT).
     define_value("ALGO_HINT_ACCURATE", cv::AlgorithmHint::ALGO_HINT_ACCURATE).
     define_value("ALGO_HINT_APPROX", cv::AlgorithmHint::ALGO_HINT_APPROX);
 
   rb_mCv.define_module_function<cv::AlgorithmHint(*)()>("get_default_algorithm_hint", &cv::getDefaultAlgorithmHint);
-#endif
 
   rb_mCv.define_module_function<void(*)(bool)>("set_use_optimized", &cv::setUseOptimized,
     Arg("onoff"));
@@ -153,9 +151,9 @@ void Init_Core_Utility()
 
   rb_cCvTickMeter.
     define_method("inspect", [](const cv::TickMeter& self) -> std::string
-  {
-    std::ostringstream stream;
-    stream << self;
-    return stream.str();
-  });
+    {
+      std::ostringstream stream;
+      stream << self;
+      return stream.str();
+    });
 }

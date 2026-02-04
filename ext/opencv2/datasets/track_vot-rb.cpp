@@ -16,6 +16,7 @@ void Init_Datasets_TrackVot()
     define_attr("gtbb", &cv::datasets::TRACK_votObj::gtbb);
 
   Rice::Data_Type<cv::datasets::TRACK_vot> rb_cCvDatasetsTRACKVot = define_class_under<cv::datasets::TRACK_vot, cv::datasets::Dataset>(rb_mCvDatasets, "TRACKVot").
+    define_singleton_function<cv::Ptr<cv::datasets::TRACK_vot>(*)()>("create", &cv::datasets::TRACK_vot::create).
     define_method<void(cv::datasets::TRACK_vot::*)(const std::string&)>("load", &cv::datasets::TRACK_vot::load,
       Arg("path")).
     define_method<int(cv::datasets::TRACK_vot::*)()>("get_datasets_num", &cv::datasets::TRACK_vot::getDatasetsNum).
@@ -25,6 +26,5 @@ void Init_Datasets_TrackVot()
       Arg("id")).
     define_method<bool(cv::datasets::TRACK_vot::*)(cv::Mat&)>("get_next_frame", &cv::datasets::TRACK_vot::getNextFrame,
       Arg("frame")).
-    define_method<std::vector<cv::Point_<double>>(cv::datasets::TRACK_vot::*)()>("get_gt", &cv::datasets::TRACK_vot::getGT).
-    define_singleton_function<cv::Ptr<cv::datasets::TRACK_vot>(*)()>("create", &cv::datasets::TRACK_vot::create);
+    define_method<std::vector<cv::Point_<double>>(cv::datasets::TRACK_vot::*)()>("get_gt", &cv::datasets::TRACK_vot::getGT);
 }

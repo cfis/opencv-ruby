@@ -659,16 +659,16 @@ template<typename F>
 inline Rice::Data_Type<cv::cuda::device::IsUnaryFunction<F>> IsUnaryFunction_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::IsUnaryFunction<F>>(parent, name).
-    define_constant("Value", (int)cv::cuda::device::IsUnaryFunction<F>::value).
-    template define_singleton_function<F(*)()>("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF);
+    template define_singleton_function<F(*)()>("make_f", &cv::cuda::device::IsUnaryFunction<F>::makeF).
+    define_constant("Value", (int)cv::cuda::device::IsUnaryFunction<F>::value);
 }
 
 template<typename F>
 inline Rice::Data_Type<cv::cuda::device::IsBinaryFunction<F>> IsBinaryFunction_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::cuda::device::IsBinaryFunction<F>>(parent, name).
-    define_constant("Value", (int)cv::cuda::device::IsBinaryFunction<F>::value).
-    template define_singleton_function<F(*)()>("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF);
+    template define_singleton_function<F(*)()>("make_f", &cv::cuda::device::IsBinaryFunction<F>::makeF).
+    define_constant("Value", (int)cv::cuda::device::IsBinaryFunction<F>::value);
 }
 
 template<size_t src_elem_size, size_t dst_elem_size>

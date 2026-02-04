@@ -10,6 +10,8 @@ void Init_Stitching_Detail_ExposureCompensate()
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
   Rice::Data_Type<cv::detail::ExposureCompensator> rb_cCvDetailExposureCompensator = define_class_under<cv::detail::ExposureCompensator>(rb_mCvDetail, "ExposureCompensator").
+    define_singleton_function<cv::Ptr<cv::detail::ExposureCompensator>(*)(int)>("create_default", &cv::detail::ExposureCompensator::createDefault,
+      Arg("type")).
     define_method<void(cv::detail::ExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<cv::UMat>&)>("feed", &cv::detail::ExposureCompensator::feed,
       Arg("corners"), Arg("images"), Arg("masks")).
     define_method<void(cv::detail::ExposureCompensator::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&, const std::vector<std::pair<cv::UMat, unsigned char>>&)>("feed", &cv::detail::ExposureCompensator::feed,
@@ -22,9 +24,7 @@ void Init_Stitching_Detail_ExposureCompensate()
       Arg("arg_0")).
     define_method<void(cv::detail::ExposureCompensator::*)(bool)>("set_update_gain", &cv::detail::ExposureCompensator::setUpdateGain,
       Arg("b")).
-    define_method<bool(cv::detail::ExposureCompensator::*)()>("get_update_gain?", &cv::detail::ExposureCompensator::getUpdateGain).
-    define_singleton_function<cv::Ptr<cv::detail::ExposureCompensator>(*)(int)>("create_default", &cv::detail::ExposureCompensator::createDefault,
-      Arg("type"));
+    define_method<bool(cv::detail::ExposureCompensator::*)()>("get_update_gain?", &cv::detail::ExposureCompensator::getUpdateGain);
 
   rb_cCvDetailExposureCompensator.define_constant("NO", (int)cv::detail::ExposureCompensator::NO);
   rb_cCvDetailExposureCompensator.define_constant("GAIN", (int)cv::detail::ExposureCompensator::GAIN);

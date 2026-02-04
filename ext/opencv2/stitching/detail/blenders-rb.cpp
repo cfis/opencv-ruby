@@ -11,6 +11,8 @@ void Init_Stitching_Detail_Blenders()
 
   Rice::Data_Type<cv::detail::Blender> rb_cCvDetailBlender = define_class_under<cv::detail::Blender>(rb_mCvDetail, "Blender").
     define_constructor(Constructor<cv::detail::Blender>()).
+    define_singleton_function<cv::Ptr<cv::detail::Blender>(*)(int, bool)>("create_default", &cv::detail::Blender::createDefault,
+      Arg("type"), Arg("try_gpu") = static_cast<bool>(false)).
     define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("prepare", &cv::detail::Blender::prepare,
       Arg("corners"), Arg("sizes")).
     define_method<void(cv::detail::Blender::*)(cv::Rect)>("prepare", &cv::detail::Blender::prepare,
@@ -18,9 +20,7 @@ void Init_Stitching_Detail_Blenders()
     define_method<void(cv::detail::Blender::*)(cv::InputArray, cv::InputArray, cv::Point)>("feed", &cv::detail::Blender::feed,
       Arg("img"), Arg("mask"), Arg("tl")).
     define_method<void(cv::detail::Blender::*)(cv::InputOutputArray, cv::InputOutputArray)>("blend", &cv::detail::Blender::blend,
-      Arg("dst"), Arg("dst_mask")).
-    define_singleton_function<cv::Ptr<cv::detail::Blender>(*)(int, bool)>("create_default", &cv::detail::Blender::createDefault,
-      Arg("type"), Arg("try_gpu") = static_cast<bool>(false));
+      Arg("dst"), Arg("dst_mask"));
 
   rb_cCvDetailBlender.define_constant("NO", (int)cv::detail::Blender::NO);
   rb_cCvDetailBlender.define_constant("FEATHER", (int)cv::detail::Blender::FEATHER);

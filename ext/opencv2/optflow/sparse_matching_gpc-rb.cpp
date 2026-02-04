@@ -34,16 +34,16 @@ void Init_Optflow_SparseMatchingGpc()
 
   Rice::Data_Type<cv::optflow::GPCTrainingSamples> rb_cCvOptflowGPCTrainingSamples = define_class_under<cv::optflow::GPCTrainingSamples>(rb_mCvOptflow, "GPCTrainingSamples").
     define_constructor(Constructor<cv::optflow::GPCTrainingSamples>()).
+    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, int)>("create", &cv::optflow::GPCTrainingSamples::create,
+      Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type")).
+    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>("create", &cv::optflow::GPCTrainingSamples::create,
+      Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type")).
     define_method<size_t(cv::optflow::GPCTrainingSamples::*)() const>("size", &cv::optflow::GPCTrainingSamples::size).
     define_method<int(cv::optflow::GPCTrainingSamples::*)() const>("type", &cv::optflow::GPCTrainingSamples::type).
     define_method("to_gpc_samples_vector", [](cv::optflow::GPCTrainingSamples& self) -> cv::optflow::GPCSamplesVector&
     {
       return self;
-    }).
-    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, int)>("create", &cv::optflow::GPCTrainingSamples::create,
-      Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type")).
-    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>("create", &cv::optflow::GPCTrainingSamples::create,
-      Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type"));
+    });
 
   Rice::Data_Type<cv::optflow::GPCTrainingParams> rb_cCvOptflowGPCTrainingParams = define_class_under<cv::optflow::GPCTrainingParams>(rb_mCvOptflow, "GPCTrainingParams").
     define_attr("max_tree_depth", &cv::optflow::GPCTrainingParams::maxTreeDepth).
@@ -71,10 +71,10 @@ void Init_Optflow_SparseMatchingGpc()
       Arg("fn")).
     define_method<unsigned int(cv::optflow::GPCTree::*)(const cv::optflow::GPCPatchDescriptor&) const>("find_leaf_for_patch", &cv::optflow::GPCTree::findLeafForPatch,
       Arg("descr")).
+    define_singleton_function<cv::Ptr<cv::optflow::GPCTree>(*)()>("create", &cv::optflow::GPCTree::create).
     define_method<bool(cv::optflow::GPCTree::*)(const cv::optflow::GPCTree&) const>("==", &cv::optflow::GPCTree::operator==,
       Arg("t")).
-    define_method<int(cv::optflow::GPCTree::*)() const>("get_descriptor_type", &cv::optflow::GPCTree::getDescriptorType).
-    define_singleton_function<cv::Ptr<cv::optflow::GPCTree>(*)()>("create", &cv::optflow::GPCTree::create);
+    define_method<int(cv::optflow::GPCTree::*)() const>("get_descriptor_type", &cv::optflow::GPCTree::getDescriptorType);
 
   Rice::Data_Type<cv::optflow::GPCTree::Node> rb_cCvOptflowGPCTreeNode = define_class_under<cv::optflow::GPCTree::Node>(rb_cCvOptflowGPCTree, "Node").
     define_constructor(Constructor<cv::optflow::GPCTree::Node>()).

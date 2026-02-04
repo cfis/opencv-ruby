@@ -1,4 +1,3 @@
-#include <opencv2/opencv.hpp> // Manual
 #include <opencv2/core/softfloat.hpp>
 #include "softfloat-rb.hpp"
 
@@ -16,6 +15,8 @@ void Init_Core_Softfloat()
       Arg("c")).
     define_method<cv::softfloat&(cv::softfloat::*)(const cv::softfloat&)>("assign", &cv::softfloat::operator=,
       Arg("c")).
+    define_singleton_function<const cv::softfloat(*)(const uint32_t)>("from_raw", &cv::softfloat::fromRaw,
+      Arg("a")).
     define_constructor(Constructor<cv::softfloat, const uint32_t>(),
       Arg("arg_0")).
     define_constructor(Constructor<cv::softfloat, const uint64_t>(),
@@ -42,7 +43,7 @@ void Init_Core_Softfloat()
       Arg("arg_0")).
     define_method<cv::softfloat(cv::softfloat::*)(const cv::softfloat&) const>("/", &cv::softfloat::operator/,
       Arg("arg_0")).
-    define_method<cv::softfloat(cv::softfloat::*)() const>("-", &cv::softfloat::operator-).
+    define_method<cv::softfloat(cv::softfloat::*)() const>("-@", &cv::softfloat::operator-).
     define_method<cv::softfloat(cv::softfloat::*)(const cv::softfloat&) const>("%", &cv::softfloat::operator%,
       Arg("arg_0")).
     define_method<cv::softfloat&(cv::softfloat::*)(const cv::softfloat&)>("assign_plus", &cv::softfloat::operator+=,
@@ -79,9 +80,6 @@ void Init_Core_Softfloat()
     define_method<cv::softfloat(cv::softfloat::*)() const>("get_frac", &cv::softfloat::getFrac).
     define_method<cv::softfloat(cv::softfloat::*)(const cv::softfloat&) const>("set_frac", &cv::softfloat::setFrac,
       Arg("s")).
-    define_attr("v", &cv::softfloat::v).
-    define_singleton_function<const cv::softfloat(*)(const uint32_t)>("from_raw", &cv::softfloat::fromRaw,
-      Arg("a")).
     define_singleton_function<cv::softfloat(*)()>("zero", &cv::softfloat::zero).
     define_singleton_function<cv::softfloat(*)()>("inf", &cv::softfloat::inf).
     define_singleton_function<cv::softfloat(*)()>("nan", &cv::softfloat::nan).
@@ -89,7 +87,8 @@ void Init_Core_Softfloat()
     define_singleton_function<cv::softfloat(*)()>("min", &cv::softfloat::min).
     define_singleton_function<cv::softfloat(*)()>("eps", &cv::softfloat::eps).
     define_singleton_function<cv::softfloat(*)()>("max", &cv::softfloat::max).
-    define_singleton_function<cv::softfloat(*)()>("pi", &cv::softfloat::pi);
+    define_singleton_function<cv::softfloat(*)()>("pi", &cv::softfloat::pi).
+    define_attr("v", &cv::softfloat::v);
 
   Rice::Data_Type<cv::softdouble> rb_cCvSoftdouble = define_class_under<cv::softdouble>(rb_mCv, "Softdouble").
     define_constructor(Constructor<cv::softdouble>()).
@@ -97,6 +96,8 @@ void Init_Core_Softfloat()
       Arg("c")).
     define_method<cv::softdouble&(cv::softdouble::*)(const cv::softdouble&)>("assign", &cv::softdouble::operator=,
       Arg("c")).
+    define_singleton_function<cv::softdouble(*)(const uint64_t)>("from_raw", &cv::softdouble::fromRaw,
+      Arg("a")).
     define_constructor(Constructor<cv::softdouble, const uint32_t>(),
       Arg("arg_0")).
     define_constructor(Constructor<cv::softdouble, const uint64_t>(),
@@ -123,7 +124,7 @@ void Init_Core_Softfloat()
       Arg("arg_0")).
     define_method<cv::softdouble(cv::softdouble::*)(const cv::softdouble&) const>("/", &cv::softdouble::operator/,
       Arg("arg_0")).
-    define_method<cv::softdouble(cv::softdouble::*)() const>("-", &cv::softdouble::operator-).
+    define_method<cv::softdouble(cv::softdouble::*)() const>("-@", &cv::softdouble::operator-).
     define_method<cv::softdouble(cv::softdouble::*)(const cv::softdouble&) const>("%", &cv::softdouble::operator%,
       Arg("arg_0")).
     define_method<cv::softdouble&(cv::softdouble::*)(const cv::softdouble&)>("assign_plus", &cv::softdouble::operator+=,
@@ -160,9 +161,6 @@ void Init_Core_Softfloat()
     define_method<cv::softdouble(cv::softdouble::*)() const>("get_frac", &cv::softdouble::getFrac).
     define_method<cv::softdouble(cv::softdouble::*)(const cv::softdouble&) const>("set_frac", &cv::softdouble::setFrac,
       Arg("s")).
-    define_attr("v", &cv::softdouble::v).
-    define_singleton_function<cv::softdouble(*)(const uint64_t)>("from_raw", &cv::softdouble::fromRaw,
-      Arg("a")).
     define_singleton_function<cv::softdouble(*)()>("zero", &cv::softdouble::zero).
     define_singleton_function<cv::softdouble(*)()>("inf", &cv::softdouble::inf).
     define_singleton_function<cv::softdouble(*)()>("nan", &cv::softdouble::nan).
@@ -170,7 +168,8 @@ void Init_Core_Softfloat()
     define_singleton_function<cv::softdouble(*)()>("min", &cv::softdouble::min).
     define_singleton_function<cv::softdouble(*)()>("eps", &cv::softdouble::eps).
     define_singleton_function<cv::softdouble(*)()>("max", &cv::softdouble::max).
-    define_singleton_function<cv::softdouble(*)()>("pi", &cv::softdouble::pi);
+    define_singleton_function<cv::softdouble(*)()>("pi", &cv::softdouble::pi).
+    define_attr("v", &cv::softdouble::v);
 
   rb_mCv.define_module_function<cv::softfloat(*)(const cv::softfloat&, const cv::softfloat&, const cv::softfloat&)>("mul_add", &cv::mulAdd,
     Arg("a"), Arg("b"), Arg("c"));

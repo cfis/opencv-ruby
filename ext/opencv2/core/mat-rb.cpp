@@ -1,8 +1,4 @@
-#include <opencv2/core/cuda.hpp> // Manual
-#include <opencv2/core/opengl.hpp> // Manual
 #include <opencv2/core/mat.hpp>
-#include "types-rb.hpp" // Manual
-#include "refinements/mat-iterators.hpp" // Manual
 #include "mat-rb.hpp"
 
 using namespace Rice;
@@ -137,9 +133,8 @@ void Init_Core_Mat()
       Arg("vec")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::GpuMat&>(),
       Arg("d_mat")).
-    // Commented out - causes linker errors (Manual)
-    // define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
-    //   Arg("d_mat")).
+    define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
+      Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, cv::ogl::Buffer&>(),
       Arg("buf")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::HostMem&>(),
@@ -154,9 +149,8 @@ void Init_Core_Mat()
       Arg("vec")).
     define_constructor(Constructor<cv::_OutputArray, const cv::cuda::GpuMat&>(),
       Arg("d_mat")).
-    // Commented out - causes linker errors (Manual)
-    // define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
-    //   Arg("d_mat")).
+    define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
+      Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, const cv::ogl::Buffer&>(),
       Arg("buf")).
     define_constructor(Constructor<cv::_OutputArray, const cv::cuda::HostMem&>(),
@@ -325,7 +319,7 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::MatSize, int*>(),
       ArgBuffer("_p")).
     define_method<int(cv::MatSize::*)() const noexcept>("dims", &cv::MatSize::dims).
-    define_method<cv::Size(cv::MatSize::*)() const>("to_size", &cv::MatSize::operator()). // Manual - renamed from "call"
+    define_method<cv::Size(cv::MatSize::*)() const>("call", &cv::MatSize::operator()).
     define_method<const int&(cv::MatSize::*)(int) const>("[]", &cv::MatSize::operator[],
       Arg("i")).
     define_method<int&(cv::MatSize::*)(int)>("[]", &cv::MatSize::operator[],
@@ -423,6 +417,8 @@ void Init_Core_Mat()
       Arg("r")).
     define_method<cv::Mat(cv::Mat::*)(int) const>("diag", &cv::Mat::diag,
       Arg("d") = static_cast<int>(0)).
+    define_singleton_function<cv::Mat(*)(const cv::Mat&)>("diag", &cv::Mat::diag,
+      Arg("d")).
     define_method<cv::Mat(cv::Mat::*)() const>("clone", &cv::Mat::clone).
     define_method<void(cv::Mat::*)(cv::OutputArray) const>("copy_to", &cv::Mat::copyTo,
       Arg("m")).
@@ -451,6 +447,22 @@ void Init_Core_Mat()
       Arg("m")).
     define_method<double(cv::Mat::*)(cv::InputArray) const>("dot", &cv::Mat::dot,
       Arg("m")).
+    define_singleton_function<cv::MatExpr(*)(int, int, int)>("zeros", &cv::Mat::zeros,
+      Arg("rows"), Arg("cols"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("zeros", &cv::Mat::zeros,
+      Arg("size"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(int, const int*, int)>("zeros", &cv::Mat::zeros,
+      Arg("ndims"), ArgBuffer("sz"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(int, int, int)>("ones", &cv::Mat::ones,
+      Arg("rows"), Arg("cols"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("ones", &cv::Mat::ones,
+      Arg("size"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(int, const int*, int)>("ones", &cv::Mat::ones,
+      Arg("ndims"), ArgBuffer("sz"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(int, int, int)>("eye", &cv::Mat::eye,
+      Arg("rows"), Arg("cols"), Arg("type")).
+    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("eye", &cv::Mat::eye,
+      Arg("size"), Arg("type")).
     define_method<void(cv::Mat::*)(int, int, int)>("create", &cv::Mat::create,
       Arg("rows"), Arg("cols"), Arg("type")).
     define_method<void(cv::Mat::*)(cv::Size, int)>("create", &cv::Mat::create,
@@ -480,13 +492,13 @@ void Init_Core_Mat()
       Arg("whole_size"), Arg("ofs")).
     define_method<cv::Mat&(cv::Mat::*)(int, int, int, int)>("adjust_roi", &cv::Mat::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
-    define_method<cv::Mat(cv::Mat::*)(cv::Range, cv::Range) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(cv::Range, cv::Range) const>("call", &cv::Mat::operator(),
       Arg("row_range"), Arg("col_range")).
-    define_method<cv::Mat(cv::Mat::*)(const cv::Rect&) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const cv::Rect&) const>("call", &cv::Mat::operator(),
       Arg("roi")).
-    define_method<cv::Mat(cv::Mat::*)(const cv::Range*) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const cv::Range*) const>("call", &cv::Mat::operator(),
       Arg("ranges")).
-    define_method<cv::Mat(cv::Mat::*)(const std::vector<cv::Range>&) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const std::vector<cv::Range>&) const>("call", &cv::Mat::operator(),
       Arg("ranges")).
     define_method<bool(cv::Mat::*)() const>("continuous?", &cv::Mat::isContinuous).
     define_method<bool(cv::Mat::*)() const>("submatrix?", &cv::Mat::isSubmatrix).
@@ -530,32 +542,14 @@ void Init_Core_Mat()
     define_attr("dataend", &cv::Mat::dataend).
     define_attr("datalimit", &cv::Mat::datalimit).
     define_attr("allocator", &cv::Mat::allocator).
-    define_method<void(cv::Mat::*)()>("update_continuity_flag", &cv::Mat::updateContinuityFlag).
-    define_attr("u", &cv::Mat::u).
-    define_attr("size", &cv::Mat::size).
-    define_attr("step", &cv::Mat::step, Rice::AttrAccess::Read).
-    define_singleton_function<cv::Mat(*)(const cv::Mat&)>("diag", &cv::Mat::diag,
-      Arg("d")).
-    define_singleton_function<cv::MatExpr(*)(int, int, int)>("zeros", &cv::Mat::zeros,
-      Arg("rows"), Arg("cols"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("zeros", &cv::Mat::zeros,
-      Arg("size"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(int, const int*, int)>("zeros", &cv::Mat::zeros,
-      Arg("ndims"), ArgBuffer("sz"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(int, int, int)>("ones", &cv::Mat::ones,
-      Arg("rows"), Arg("cols"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("ones", &cv::Mat::ones,
-      Arg("size"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(int, const int*, int)>("ones", &cv::Mat::ones,
-      Arg("ndims"), ArgBuffer("sz"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(int, int, int)>("eye", &cv::Mat::eye,
-      Arg("rows"), Arg("cols"), Arg("type")).
-    define_singleton_function<cv::MatExpr(*)(cv::Size, int)>("eye", &cv::Mat::eye,
-      Arg("size"), Arg("type")).
     define_singleton_function<cv::MatAllocator*(*)()>("get_std_allocator", &cv::Mat::getStdAllocator).
     define_singleton_function<cv::MatAllocator*(*)()>("get_default_allocator", &cv::Mat::getDefaultAllocator).
     define_singleton_function<void(*)(cv::MatAllocator*)>("set_default_allocator", &cv::Mat::setDefaultAllocator,
-      Arg("allocator"));
+      Arg("allocator")).
+    define_method<void(cv::Mat::*)()>("update_continuity_flag", &cv::Mat::updateContinuityFlag).
+    define_attr("u", &cv::Mat::u).
+    define_attr("size", &cv::Mat::size).
+    define_attr("step", &cv::Mat::step, Rice::AttrAccess::Read);
 
   rb_cCvMat.define_constant("MAGIC_VAL", (int)cv::Mat::MAGIC_VAL);
   rb_cCvMat.define_constant("AUTO_STEP", (int)cv::Mat::AUTO_STEP);
@@ -657,6 +651,10 @@ void Init_Core_Mat()
       Arg("r")).
     define_method<cv::UMat(cv::UMat::*)(int) const>("diag", &cv::UMat::diag,
       Arg("d") = static_cast<int>(0)).
+    define_singleton_function<cv::UMat(*)(const cv::UMat&, cv::UMatUsageFlags)>("diag", &cv::UMat::diag,
+      Arg("d"), Arg("usage_flags")).
+    define_singleton_function<cv::UMat(*)(const cv::UMat&)>("diag", &cv::UMat::diag,
+      Arg("d")).
     define_method<cv::UMat(cv::UMat::*)() const>("clone", &cv::UMat::clone).
     define_method<void(cv::UMat::*)(cv::OutputArray) const>("copy_to", &cv::UMat::copyTo,
       Arg("m")).
@@ -681,65 +679,6 @@ void Init_Core_Mat()
       Arg("m"), Arg("scale") = static_cast<double>(1)).
     define_method<double(cv::UMat::*)(cv::InputArray) const>("dot", &cv::UMat::dot,
       Arg("m")).
-    define_method<void(cv::UMat::*)(int, int, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
-      Arg("rows"), Arg("cols"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
-    define_method<void(cv::UMat::*)(cv::Size, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
-      Arg("size"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
-    define_method<void(cv::UMat::*)(int, const int*, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
-      Arg("ndims"), ArgBuffer("sizes"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
-    define_method<void(cv::UMat::*)(const std::vector<int>&, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
-      Arg("sizes"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
-    define_method<void(cv::UMat::*)()>("addref", &cv::UMat::addref).
-    define_method<void(cv::UMat::*)()>("release", &cv::UMat::release).
-    define_method<void(cv::UMat::*)()>("deallocate", &cv::UMat::deallocate).
-    define_method<void(cv::UMat::*)(const cv::UMat&)>("copy_size", &cv::UMat::copySize,
-      Arg("m")).
-    define_method<void(cv::UMat::*)(cv::Size&, cv::Point&) const>("locate_roi", &cv::UMat::locateROI,
-      Arg("whole_size"), Arg("ofs")).
-    define_method<cv::UMat&(cv::UMat::*)(int, int, int, int)>("adjust_roi", &cv::UMat::adjustROI,
-      Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
-    define_method<cv::UMat(cv::UMat::*)(cv::Range, cv::Range) const>("[]", &cv::UMat::operator(),
-      Arg("row_range"), Arg("col_range")).
-    define_method<cv::UMat(cv::UMat::*)(const cv::Rect&) const>("[]", &cv::UMat::operator(),
-      Arg("roi")).
-    define_method<cv::UMat(cv::UMat::*)(const cv::Range*) const>("[]", &cv::UMat::operator(),
-      Arg("ranges")).
-    define_method<cv::UMat(cv::UMat::*)(const std::vector<cv::Range>&) const>("[]", &cv::UMat::operator(),
-      Arg("ranges")).
-    define_method<bool(cv::UMat::*)() const>("continuous?", &cv::UMat::isContinuous).
-    define_method<bool(cv::UMat::*)() const>("submatrix?", &cv::UMat::isSubmatrix).
-    define_method<size_t(cv::UMat::*)() const>("elem_size", &cv::UMat::elemSize).
-    define_method<size_t(cv::UMat::*)() const>("elem_size1", &cv::UMat::elemSize1).
-    define_method<int(cv::UMat::*)() const>("type", &cv::UMat::type).
-    define_method<int(cv::UMat::*)() const>("depth", &cv::UMat::depth).
-    define_method<int(cv::UMat::*)() const>("channels", &cv::UMat::channels).
-    define_method<size_t(cv::UMat::*)(int) const>("step1", &cv::UMat::step1,
-      Arg("i") = static_cast<int>(0)).
-    define_method<bool(cv::UMat::*)() const>("empty?", &cv::UMat::empty).
-    define_method<size_t(cv::UMat::*)() const>("total", &cv::UMat::total).
-    define_method<int(cv::UMat::*)(int, int, bool) const>("check_vector", &cv::UMat::checkVector,
-      Arg("elem_channels"), Arg("depth") = static_cast<int>(-1), Arg("require_continuous") = static_cast<bool>(true)).
-    define_method<cv::UMat&(cv::UMat::*)(cv::UMat&&)>("assign", &cv::UMat::operator=,
-      Arg("m")).
-    define_method<void*(cv::UMat::*)(cv::AccessFlag) const>("handle", &cv::UMat::handle,
-      Arg("access_flags"), ReturnBuffer()).
-    define_method<void(cv::UMat::*)(size_t*) const>("ndoffset", &cv::UMat::ndoffset,
-      ArgBuffer("ofs")).
-    define_attr("flags", &cv::UMat::flags).
-    define_attr("dims", &cv::UMat::dims).
-    define_attr("rows", &cv::UMat::rows).
-    define_attr("cols", &cv::UMat::cols).
-    define_attr("allocator", &cv::UMat::allocator).
-    define_attr("usage_flags", &cv::UMat::usageFlags).
-    define_method<void(cv::UMat::*)()>("update_continuity_flag", &cv::UMat::updateContinuityFlag).
-    define_attr("u", &cv::UMat::u).
-    define_attr("offset", &cv::UMat::offset).
-    define_attr("size", &cv::UMat::size).
-    define_attr("step", &cv::UMat::step, Rice::AttrAccess::Read).
-    define_singleton_function<cv::UMat(*)(const cv::UMat&, cv::UMatUsageFlags)>("diag", &cv::UMat::diag,
-      Arg("d"), Arg("usage_flags")).
-    define_singleton_function<cv::UMat(*)(const cv::UMat&)>("diag", &cv::UMat::diag,
-      Arg("d")).
     define_singleton_function<cv::UMat(*)(int, int, int, cv::UMatUsageFlags)>("zeros", &cv::UMat::zeros,
       Arg("rows"), Arg("cols"), Arg("type"), Arg("usage_flags")).
     define_singleton_function<cv::UMat(*)(cv::Size, int, cv::UMatUsageFlags)>("zeros", &cv::UMat::zeros,
@@ -772,7 +711,62 @@ void Init_Core_Mat()
       Arg("rows"), Arg("cols"), Arg("type")).
     define_singleton_function<cv::UMat(*)(cv::Size, int)>("eye", &cv::UMat::eye,
       Arg("size"), Arg("type")).
-    define_singleton_function<cv::MatAllocator*(*)()>("get_std_allocator", &cv::UMat::getStdAllocator);
+    define_method<void(cv::UMat::*)(int, int, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
+      Arg("rows"), Arg("cols"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
+    define_method<void(cv::UMat::*)(cv::Size, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
+      Arg("size"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
+    define_method<void(cv::UMat::*)(int, const int*, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
+      Arg("ndims"), ArgBuffer("sizes"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
+    define_method<void(cv::UMat::*)(const std::vector<int>&, int, cv::UMatUsageFlags)>("create", &cv::UMat::create,
+      Arg("sizes"), Arg("type"), Arg("usage_flags") = static_cast<cv::UMatUsageFlags>(cv::USAGE_DEFAULT)).
+    define_method<void(cv::UMat::*)()>("addref", &cv::UMat::addref).
+    define_method<void(cv::UMat::*)()>("release", &cv::UMat::release).
+    define_method<void(cv::UMat::*)()>("deallocate", &cv::UMat::deallocate).
+    define_method<void(cv::UMat::*)(const cv::UMat&)>("copy_size", &cv::UMat::copySize,
+      Arg("m")).
+    define_method<void(cv::UMat::*)(cv::Size&, cv::Point&) const>("locate_roi", &cv::UMat::locateROI,
+      Arg("whole_size"), Arg("ofs")).
+    define_method<cv::UMat&(cv::UMat::*)(int, int, int, int)>("adjust_roi", &cv::UMat::adjustROI,
+      Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
+    define_method<cv::UMat(cv::UMat::*)(cv::Range, cv::Range) const>("call", &cv::UMat::operator(),
+      Arg("row_range"), Arg("col_range")).
+    define_method<cv::UMat(cv::UMat::*)(const cv::Rect&) const>("call", &cv::UMat::operator(),
+      Arg("roi")).
+    define_method<cv::UMat(cv::UMat::*)(const cv::Range*) const>("call", &cv::UMat::operator(),
+      Arg("ranges")).
+    define_method<cv::UMat(cv::UMat::*)(const std::vector<cv::Range>&) const>("call", &cv::UMat::operator(),
+      Arg("ranges")).
+    define_method<bool(cv::UMat::*)() const>("continuous?", &cv::UMat::isContinuous).
+    define_method<bool(cv::UMat::*)() const>("submatrix?", &cv::UMat::isSubmatrix).
+    define_method<size_t(cv::UMat::*)() const>("elem_size", &cv::UMat::elemSize).
+    define_method<size_t(cv::UMat::*)() const>("elem_size1", &cv::UMat::elemSize1).
+    define_method<int(cv::UMat::*)() const>("type", &cv::UMat::type).
+    define_method<int(cv::UMat::*)() const>("depth", &cv::UMat::depth).
+    define_method<int(cv::UMat::*)() const>("channels", &cv::UMat::channels).
+    define_method<size_t(cv::UMat::*)(int) const>("step1", &cv::UMat::step1,
+      Arg("i") = static_cast<int>(0)).
+    define_method<bool(cv::UMat::*)() const>("empty?", &cv::UMat::empty).
+    define_method<size_t(cv::UMat::*)() const>("total", &cv::UMat::total).
+    define_method<int(cv::UMat::*)(int, int, bool) const>("check_vector", &cv::UMat::checkVector,
+      Arg("elem_channels"), Arg("depth") = static_cast<int>(-1), Arg("require_continuous") = static_cast<bool>(true)).
+    define_method<cv::UMat&(cv::UMat::*)(cv::UMat&&)>("assign", &cv::UMat::operator=,
+      Arg("m")).
+    define_method<void*(cv::UMat::*)(cv::AccessFlag) const>("handle", &cv::UMat::handle,
+      Arg("access_flags"), ReturnBuffer()).
+    define_method<void(cv::UMat::*)(size_t*) const>("ndoffset", &cv::UMat::ndoffset,
+      ArgBuffer("ofs")).
+    define_attr("flags", &cv::UMat::flags).
+    define_attr("dims", &cv::UMat::dims).
+    define_attr("rows", &cv::UMat::rows).
+    define_attr("cols", &cv::UMat::cols).
+    define_attr("allocator", &cv::UMat::allocator).
+    define_attr("usage_flags", &cv::UMat::usageFlags).
+    define_singleton_function<cv::MatAllocator*(*)()>("get_std_allocator", &cv::UMat::getStdAllocator).
+    define_method<void(cv::UMat::*)()>("update_continuity_flag", &cv::UMat::updateContinuityFlag).
+    define_attr("u", &cv::UMat::u).
+    define_attr("offset", &cv::UMat::offset).
+    define_attr("size", &cv::UMat::size).
+    define_attr("step", &cv::UMat::step, Rice::AttrAccess::Read);
 
   rb_cCvUMat.define_constant("MAGIC_VAL", (int)cv::UMat::MAGIC_VAL);
   rb_cCvUMat.define_constant("AUTO_STEP", (int)cv::UMat::AUTO_STEP);
@@ -844,9 +838,8 @@ void Init_Core_Mat()
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     define_method<void(cv::SparseMat::*)(const int*, size_t*)>("erase", &cv::SparseMat::erase,
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    // Manual - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead
-    // define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each").
-    // define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const").
+    define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each").
+    define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const").
     define_method<cv::SparseMat::Node*(cv::SparseMat::*)(size_t)>("node", &cv::SparseMat::node,
       Arg("nidx")).
     define_method<const cv::SparseMat::Node*(cv::SparseMat::*)(size_t) const>("node", &cv::SparseMat::node,
@@ -893,9 +886,8 @@ void Init_Core_Mat()
       Arg("_m"), Arg("_row"), Arg("_col") = static_cast<int>(0)).
     define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, cv::Point>(),
       Arg("_m"), Arg("_pt")).
-    // Linker error - no explicit template instantiation (Manual)
-    // define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("_idx")).
+    define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
+      Arg("_m"), ArgBuffer("_idx")).
     define_constructor(Constructor<cv::MatConstIterator, const cv::MatConstIterator&>(),
       Arg("it")).
     define_method<cv::MatConstIterator&(cv::MatConstIterator::*)(const cv::MatConstIterator&)>("assign", &cv::MatConstIterator::operator=,
@@ -937,10 +929,9 @@ void Init_Core_Mat()
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)(const cv::SparseMatConstIterator&)>("assign", &cv::SparseMatConstIterator::operator=,
       Arg("it")).
     define_method<const cv::SparseMat::Node*(cv::SparseMatConstIterator::*)() const>("node", &cv::SparseMatConstIterator::node).
-    // Linker error - no explicit template instantiation (Manual)
-    // define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
-    // define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
-    //   Arg("arg_0")).
+    define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
+    define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
+      Arg("arg_0")).
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment", &cv::SparseMatConstIterator::operator++).
     define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("increment_post", &cv::SparseMatConstIterator::operator++,
       Arg("arg_0")).
@@ -953,9 +944,8 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::SparseMatIterator>()).
     define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
       Arg("_m")).
-    // Manual - SparseMatIterator doesn't dereference like standard iterators
-    // define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("idx")).
+    define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
+      Arg("_m"), ArgBuffer("idx")).
     define_constructor(Constructor<cv::SparseMatIterator, const cv::SparseMatIterator&>(),
       Arg("it")).
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,
@@ -1053,9 +1043,9 @@ void Init_Core_Mat()
       Arg("x")).
     define_method<cv::MatExpr(cv::MatExpr::*)(int) const>("diag", &cv::MatExpr::diag,
       Arg("d") = static_cast<int>(0)).
-    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Range&, const cv::Range&) const>("[]", &cv::MatExpr::operator(),
+    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Range&, const cv::Range&) const>("call", &cv::MatExpr::operator(),
       Arg("row_range"), Arg("col_range")).
-    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Rect&) const>("[]", &cv::MatExpr::operator(),
+    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Rect&) const>("call", &cv::MatExpr::operator(),
       Arg("roi")).
     define_method<cv::MatExpr(cv::MatExpr::*)() const>("t", &cv::MatExpr::t).
     define_method<cv::MatExpr(cv::MatExpr::*)(int) const>("inv", &cv::MatExpr::inv,

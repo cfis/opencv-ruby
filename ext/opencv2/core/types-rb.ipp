@@ -33,7 +33,7 @@ inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module parent, 
       Arg("pt")).
     template define_method<double(cv::Point_<_Tp>::*)(const cv::Point_<_Tp>&) const>("cross", &cv::Point_<_Tp>::cross,
       Arg("pt")).
-    template define_method<bool(cv::Point_<_Tp>::*)(const cv::Rect_<_Tp>&) const>("inside?", &cv::Point_<_Tp>::inside,
+    template define_method<bool(cv::Point_<_Tp>::*)(const cv::Rect_<_Tp>&) const>("inside", &cv::Point_<_Tp>::inside,
       Arg("r")).
     define_attr("x", &cv::Point_<_Tp>::x).
     define_attr("y", &cv::Point_<_Tp>::y);
@@ -120,7 +120,7 @@ inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module parent, co
 template<typename _Tp>
 inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::Scalar_<_Tp>, cv::Vec<_Tp, 4>>(parent, name). // Manual - inherit from Vec
+  return Rice::define_class_under<cv::Scalar_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Scalar_<_Tp>>()).
     define_constructor(Constructor<cv::Scalar_<_Tp>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2") = static_cast<_Tp>(0), Arg("v3") = static_cast<_Tp>(0)).
@@ -132,11 +132,11 @@ inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent
       Arg("s")).
     template define_method<cv::Scalar_<_Tp>&(cv::Scalar_<_Tp>::*)(cv::Scalar_<_Tp>&&) noexcept>("assign", &cv::Scalar_<_Tp>::operator=,
       Arg("s")).
+    template define_singleton_function<cv::Scalar_<_Tp>(*)(_Tp)>("all", &cv::Scalar_<_Tp>::all,
+      Arg("v0")).
     template define_method<cv::Scalar_<_Tp>(cv::Scalar_<_Tp>::*)(const cv::Scalar_<_Tp>&, double) const>("mul", &cv::Scalar_<_Tp>::mul,
       Arg("a"), Arg("scale") = static_cast<double>(1)).
     template define_method<cv::Scalar_<_Tp>(cv::Scalar_<_Tp>::*)() const>("conj", &cv::Scalar_<_Tp>::conj).
-    template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal).
-    template define_singleton_function<cv::Scalar_<_Tp>(*)(_Tp)>("all", &cv::Scalar_<_Tp>::all,
-      Arg("v0"));
+    template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal);
 }
 

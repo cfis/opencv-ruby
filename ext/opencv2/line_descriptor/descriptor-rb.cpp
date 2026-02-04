@@ -39,6 +39,9 @@ void Init_LineDescriptor_Descriptor()
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor> rb_cCvLineDescriptorBinaryDescriptor = define_class_under<cv::line_descriptor::BinaryDescriptor, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptor").
     define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor, const cv::line_descriptor::BinaryDescriptor::Params&>(),
       Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params&>(cv::line_descriptor::BinaryDescriptor::Params())).
+    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor).
+    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor,
+      Arg("parameters")).
     define_method<int(cv::line_descriptor::BinaryDescriptor::*)()>("get_num_of_octaves", &cv::line_descriptor::BinaryDescriptor::getNumOfOctaves).
     define_method<void(cv::line_descriptor::BinaryDescriptor::*)(int)>("set_num_of_octaves", &cv::line_descriptor::BinaryDescriptor::setNumOfOctaves,
       Arg("octaves")).
@@ -64,10 +67,7 @@ void Init_LineDescriptor_Descriptor()
     define_method<int(cv::line_descriptor::BinaryDescriptor::*)() const>("descriptor_type", &cv::line_descriptor::BinaryDescriptor::descriptorType).
     define_method<int(cv::line_descriptor::BinaryDescriptor::*)() const>("default_norm", &cv::line_descriptor::BinaryDescriptor::defaultNorm).
     define_method<void(cv::line_descriptor::BinaryDescriptor::*)(cv::InputArray, cv::InputArray, std::vector<cv::line_descriptor::KeyLine>&, cv::OutputArray, bool, bool) const>("call", &cv::line_descriptor::BinaryDescriptor::operator(),
-      Arg("image"), Arg("mask"), Arg("keylines"), Arg("descriptors"), Arg("use_provided_key_lines") = static_cast<bool>(false), Arg("return_float_descr") = static_cast<bool>(false)).
-    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor).
-    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor,
-      Arg("parameters"));
+      Arg("image"), Arg("mask"), Arg("keylines"), Arg("descriptors"), Arg("use_provided_key_lines") = static_cast<bool>(false), Arg("return_float_descr") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor::Params> rb_cCvLineDescriptorBinaryDescriptorParams = define_class_under<cv::line_descriptor::BinaryDescriptor::Params>(rb_cCvLineDescriptorBinaryDescriptor, "Params").
     define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor::Params>()).
@@ -94,13 +94,13 @@ void Init_LineDescriptor_Descriptor()
     define_constructor(Constructor<cv::line_descriptor::LSDDetector>()).
     define_constructor(Constructor<cv::line_descriptor::LSDDetector, cv::line_descriptor::LSDParam>(),
       Arg("_params")).
+    define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector).
+    define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector,
+      Arg("params")).
     define_method<void(cv::line_descriptor::LSDDetector::*)(const cv::Mat&, std::vector<cv::line_descriptor::KeyLine>&, int, int, const cv::Mat&)>("detect", &cv::line_descriptor::LSDDetector::detect,
       Arg("image"), Arg("keypoints"), Arg("scale"), Arg("num_octaves"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat())).
     define_method<void(cv::line_descriptor::LSDDetector::*)(const std::vector<cv::Mat>&, std::vector<std::vector<cv::line_descriptor::KeyLine>>&, int, int, const std::vector<cv::Mat>&) const>("detect", &cv::line_descriptor::LSDDetector::detect,
-      Arg("images"), Arg("keylines"), Arg("scale"), Arg("num_octaves"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>())).
-    define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector).
-    define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector,
-      Arg("params"));
+      Arg("images"), Arg("keylines"), Arg("scale"), Arg("num_octaves"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()));
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptorMatcher> rb_cCvLineDescriptorBinaryDescriptorMatcher = define_class_under<cv::line_descriptor::BinaryDescriptorMatcher, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptorMatcher").
     define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, const cv::Mat&, std::vector<cv::DMatch>&, const cv::Mat&) const>("match", &cv::line_descriptor::BinaryDescriptorMatcher::match,
@@ -118,9 +118,9 @@ void Init_LineDescriptor_Descriptor()
     define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const std::vector<cv::Mat>&)>("add", &cv::line_descriptor::BinaryDescriptorMatcher::add,
       Arg("descriptors")).
     define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)()>("train", &cv::line_descriptor::BinaryDescriptorMatcher::train).
+    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptorMatcher>(*)()>("create_binary_descriptor_matcher", &cv::line_descriptor::BinaryDescriptorMatcher::createBinaryDescriptorMatcher).
     define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)()>("clear", &cv::line_descriptor::BinaryDescriptorMatcher::clear).
-    define_constructor(Constructor<cv::line_descriptor::BinaryDescriptorMatcher>()).
-    define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptorMatcher>(*)()>("create_binary_descriptor_matcher", &cv::line_descriptor::BinaryDescriptorMatcher::createBinaryDescriptorMatcher);
+    define_constructor(Constructor<cv::line_descriptor::BinaryDescriptorMatcher>());
 
   Rice::Data_Type<cv::line_descriptor::DrawLinesMatchesFlags> rb_cCvLineDescriptorDrawLinesMatchesFlags = define_class_under<cv::line_descriptor::DrawLinesMatchesFlags>(rb_mCvLineDescriptor, "DrawLinesMatchesFlags").
     define_constructor(Constructor<cv::line_descriptor::DrawLinesMatchesFlags>());

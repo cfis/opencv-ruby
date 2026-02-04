@@ -40,6 +40,7 @@ void Init_Ximgproc_EdgeFilter()
     define_method<void(cv::ximgproc::AdaptiveManifoldFilter::*)(cv::InputArray, cv::OutputArray, cv::InputArray)>("filter", &cv::ximgproc::AdaptiveManifoldFilter::filter,
       Arg("src"), Arg("dst"), Arg("joint") = static_cast<cv::InputArray>(cv::noArray())).
     define_method<void(cv::ximgproc::AdaptiveManifoldFilter::*)()>("collect_garbage", &cv::ximgproc::AdaptiveManifoldFilter::collectGarbage).
+    define_singleton_function<cv::Ptr<cv::ximgproc::AdaptiveManifoldFilter>(*)()>("create", &cv::ximgproc::AdaptiveManifoldFilter::create).
     define_method<double(cv::ximgproc::AdaptiveManifoldFilter::*)() const>("get_sigma_s", &cv::ximgproc::AdaptiveManifoldFilter::getSigmaS).
     define_method<void(cv::ximgproc::AdaptiveManifoldFilter::*)(double)>("set_sigma_s", &cv::ximgproc::AdaptiveManifoldFilter::setSigmaS,
       Arg("val")).
@@ -57,8 +58,7 @@ void Init_Ximgproc_EdgeFilter()
       Arg("val")).
     define_method<bool(cv::ximgproc::AdaptiveManifoldFilter::*)() const>("get_use_rng?", &cv::ximgproc::AdaptiveManifoldFilter::getUseRNG).
     define_method<void(cv::ximgproc::AdaptiveManifoldFilter::*)(bool)>("set_use_rng", &cv::ximgproc::AdaptiveManifoldFilter::setUseRNG,
-      Arg("val")).
-    define_singleton_function<cv::Ptr<cv::ximgproc::AdaptiveManifoldFilter>(*)()>("create", &cv::ximgproc::AdaptiveManifoldFilter::create);
+      Arg("val"));
 
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::AdaptiveManifoldFilter>(*)(double, double, bool)>("create_am_filter", &cv::ximgproc::createAMFilter,
     Arg("sigma_s"), Arg("sigma_r"), Arg("adjust_outliers") = static_cast<bool>(false));

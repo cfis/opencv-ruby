@@ -49,7 +49,7 @@ void Init_Stereo_QuasiDenseStereo()
     define_method<cv::Point2f(cv::stereo::QuasiDenseStereo::*)(const int, const int)>("get_match", &cv::stereo::QuasiDenseStereo::getMatch,
       Arg("x"), Arg("y")).
     define_method<cv::Mat(cv::stereo::QuasiDenseStereo::*)()>("get_disparity", &cv::stereo::QuasiDenseStereo::getDisparity).
-    define_attr("param", &cv::stereo::QuasiDenseStereo::Param).
     define_singleton_function<cv::Ptr<cv::stereo::QuasiDenseStereo>(*)(cv::Size, cv::String)>("create", &cv::stereo::QuasiDenseStereo::create,
-      Arg("mono_img_size"), Arg("param_filepath") = static_cast<cv::String>(cv::String()));
+      Arg("mono_img_size"), Arg("param_filepath") = static_cast<cv::String>(cv::String())).
+    define_attr("param", &cv::stereo::QuasiDenseStereo::Param);
 }

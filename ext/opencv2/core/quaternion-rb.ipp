@@ -9,6 +9,20 @@ inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, cons
       Arg("coeff")).
     define_constructor(Constructor<cv::Quat<_Tp>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("w"), Arg("x"), Arg("y"), Arg("z")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp, const cv::Vec<_Tp, 3>&)>("create_from_angle_axis", &cv::Quat<_Tp>::createFromAngleAxis,
+      Arg("angle"), Arg("axis")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(cv::InputArray)>("create_from_rot_mat", &cv::Quat<_Tp>::createFromRotMat,
+      Arg("r")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(cv::InputArray)>("create_from_rvec", &cv::Quat<_Tp>::createFromRvec,
+      Arg("rvec")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Vec<_Tp, 3>&, cv::QuatEnum::EulerAnglesType)>("create_from_euler_angles", &cv::Quat<_Tp>::createFromEulerAngles,
+      Arg("angles"), Arg("euler_angles_type")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_y_rot", &cv::Quat<_Tp>::createFromYRot,
+      Arg("theta")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_x_rot", &cv::Quat<_Tp>::createFromXRot,
+      Arg("theta")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_z_rot", &cv::Quat<_Tp>::createFromZRot,
+      Arg("theta")).
     template define_method<_Tp(cv::Quat<_Tp>::*)(size_t) const>("at", &cv::Quat<_Tp>::at,
       Arg("index")).
     template define_method<cv::Quat<_Tp>(cv::Quat<_Tp>::*)() const>("conjugate", &cv::Quat<_Tp>::conjugate).
@@ -50,7 +64,19 @@ inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, cons
       Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
     template define_method<_Tp(cv::Quat<_Tp>::*)(cv::Quat<_Tp>) const>("dot", &cv::Quat<_Tp>::dot,
       Arg("q")).
-    template define_method<cv::Quat<_Tp>(cv::Quat<_Tp>::*)() const>("-", &cv::Quat<_Tp>::operator-).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp)>("lerp", &cv::Quat<_Tp>::lerp,
+      Arg("q0"), Arg("q1"), Arg("t")).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType)>("nlerp", &cv::Quat<_Tp>::nlerp,
+      Arg("q0"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType, bool)>("slerp", &cv::Quat<_Tp>::slerp,
+      Arg("q0"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT), Arg("direct_change") = static_cast<bool>(true)).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType, bool)>("squad", &cv::Quat<_Tp>::squad,
+      Arg("q0"), Arg("s0"), Arg("s1"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT), Arg("direct_change") = static_cast<bool>(true)).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, cv::QuatAssumeType)>("inter_point", &cv::Quat<_Tp>::interPoint,
+      Arg("q0"), Arg("q1"), Arg("q2"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
+    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType)>("spline", &cv::Quat<_Tp>::spline,
+      Arg("q0"), Arg("q1"), Arg("q2"), Arg("q3"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
+    template define_method<cv::Quat<_Tp>(cv::Quat<_Tp>::*)() const>("-@", &cv::Quat<_Tp>::operator-).
     template define_method<bool(cv::Quat<_Tp>::*)(const cv::Quat<_Tp>&) const>("==", &cv::Quat<_Tp>::operator==,
       Arg("arg_0")).
     template define_method<cv::Quat<_Tp>(cv::Quat<_Tp>::*)(const cv::Quat<_Tp>&) const>("+", &cv::Quat<_Tp>::operator+,
@@ -88,32 +114,6 @@ inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, cons
     define_attr("w", &cv::Quat<_Tp>::w).
     define_attr("x", &cv::Quat<_Tp>::x).
     define_attr("y", &cv::Quat<_Tp>::y).
-    define_attr("z", &cv::Quat<_Tp>::z).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp, const cv::Vec<_Tp, 3>&)>("create_from_angle_axis", &cv::Quat<_Tp>::createFromAngleAxis,
-      Arg("angle"), Arg("axis")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(cv::InputArray)>("create_from_rot_mat", &cv::Quat<_Tp>::createFromRotMat,
-      Arg("r")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(cv::InputArray)>("create_from_rvec", &cv::Quat<_Tp>::createFromRvec,
-      Arg("rvec")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Vec<_Tp, 3>&, cv::QuatEnum::EulerAnglesType)>("create_from_euler_angles", &cv::Quat<_Tp>::createFromEulerAngles,
-      Arg("angles"), Arg("euler_angles_type")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_y_rot", &cv::Quat<_Tp>::createFromYRot,
-      Arg("theta")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_x_rot", &cv::Quat<_Tp>::createFromXRot,
-      Arg("theta")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const _Tp)>("create_from_z_rot", &cv::Quat<_Tp>::createFromZRot,
-      Arg("theta")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp)>("lerp", &cv::Quat<_Tp>::lerp,
-      Arg("q0"), Arg("q1"), Arg("t")).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType)>("nlerp", &cv::Quat<_Tp>::nlerp,
-      Arg("q0"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType, bool)>("slerp", &cv::Quat<_Tp>::slerp,
-      Arg("q0"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT), Arg("direct_change") = static_cast<bool>(true)).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType, bool)>("squad", &cv::Quat<_Tp>::squad,
-      Arg("q0"), Arg("s0"), Arg("s1"), Arg("q1"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT), Arg("direct_change") = static_cast<bool>(true)).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, cv::QuatAssumeType)>("inter_point", &cv::Quat<_Tp>::interPoint,
-      Arg("q0"), Arg("q1"), Arg("q2"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT)).
-    template define_singleton_function<cv::Quat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const cv::Quat<_Tp>&, const _Tp, cv::QuatAssumeType)>("spline", &cv::Quat<_Tp>::spline,
-      Arg("q0"), Arg("q1"), Arg("q2"), Arg("q3"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT));
+    define_attr("z", &cv::Quat<_Tp>::z);
 }
 

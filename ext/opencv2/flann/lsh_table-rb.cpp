@@ -26,9 +26,9 @@ void Init_Flann_LshTable()
 
   rb_cCvflannLshLshStats.
     define_method("inspect", [](const cvflann::lsh::LshStats& self) -> std::string
-  {
-    std::ostringstream stream;
-    stream << self;
-    return stream.str();
-  });
+    {
+      std::ostringstream stream;
+      stream << self;
+      return stream.str();
+    });
 }

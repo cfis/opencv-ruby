@@ -26,11 +26,11 @@ inline Rice::Data_Type<cv::cuda::device::CubicFilter<Ptr2D>> CubicFilter_instant
   return Rice::define_class_under<cv::cuda::device::CubicFilter<Ptr2D>>(parent, name).
     define_constructor(Constructor<cv::cuda::device::CubicFilter<Ptr2D>, const Ptr2D&, float, float>(),
       Arg("src_"), Arg("fx") = static_cast<float>(0.f), Arg("fy") = static_cast<float>(0.f)).
+    template define_singleton_function<float(*)(float)>("bicubic_coeff", &cv::cuda::device::CubicFilter<Ptr2D>::bicubicCoeff,
+      Arg("x_")).
     template define_method<typename cv::cuda::device::CubicFilter<Ptr2D>::elem_type(cv::cuda::device::CubicFilter<Ptr2D>::*)(float, float) const>("call", &cv::cuda::device::CubicFilter<Ptr2D>::operator(),
       Arg("y"), Arg("x")).
-    define_attr("src", &cv::cuda::device::CubicFilter<Ptr2D>::src).
-    template define_singleton_function<float(*)(float)>("bicubic_coeff", &cv::cuda::device::CubicFilter<Ptr2D>::bicubicCoeff,
-      Arg("x_"));
+    define_attr("src", &cv::cuda::device::CubicFilter<Ptr2D>::src);
 }
 
 template<typename Ptr2D>

@@ -130,11 +130,9 @@ void Init_Video_Tracking()
     define_method<float(cv::VariationalRefinement::*)() const>("get_gamma", &cv::VariationalRefinement::getGamma).
     define_method<void(cv::VariationalRefinement::*)(float)>("set_gamma", &cv::VariationalRefinement::setGamma,
       Arg("val")).
-#if RUBY_CV_VERSION >= 410
     define_method<float(cv::VariationalRefinement::*)() const>("get_epsilon", &cv::VariationalRefinement::getEpsilon).
     define_method<void(cv::VariationalRefinement::*)(float)>("set_epsilon", &cv::VariationalRefinement::setEpsilon,
       Arg("val")).
-#endif
     define_singleton_function<cv::Ptr<cv::VariationalRefinement>(*)()>("create", &cv::VariationalRefinement::create);
 
   Rice::Data_Type<cv::DISOpticalFlow> rb_cCvDISOpticalFlow = define_class_under<cv::DISOpticalFlow, cv::DenseOpticalFlow>(rb_mCv, "DISOpticalFlow").
@@ -162,11 +160,9 @@ void Init_Video_Tracking()
     define_method<float(cv::DISOpticalFlow::*)() const>("get_variational_refinement_gamma", &cv::DISOpticalFlow::getVariationalRefinementGamma).
     define_method<void(cv::DISOpticalFlow::*)(float)>("set_variational_refinement_gamma", &cv::DISOpticalFlow::setVariationalRefinementGamma,
       Arg("val")).
-#if RUBY_CV_VERSION >= 410
     define_method<float(cv::DISOpticalFlow::*)() const>("get_variational_refinement_epsilon", &cv::DISOpticalFlow::getVariationalRefinementEpsilon).
     define_method<void(cv::DISOpticalFlow::*)(float)>("set_variational_refinement_epsilon", &cv::DISOpticalFlow::setVariationalRefinementEpsilon,
       Arg("val")).
-#endif
     define_method<bool(cv::DISOpticalFlow::*)() const>("get_use_mean_normalization?", &cv::DISOpticalFlow::getUseMeanNormalization).
     define_method<void(cv::DISOpticalFlow::*)(bool)>("set_use_mean_normalization", &cv::DISOpticalFlow::setUseMeanNormalization,
       Arg("val")).
@@ -229,9 +225,9 @@ void Init_Video_Tracking()
     define_attr("model_bin", &cv::TrackerGOTURN::Params::modelBin);
 
   Rice::Data_Type<cv::TrackerDaSiamRPN> rb_cCvTrackerDaSiamRPN = define_class_under<cv::TrackerDaSiamRPN, cv::Tracker>(rb_mCv, "TrackerDaSiamRPN").
-    define_method<float(cv::TrackerDaSiamRPN::*)()>("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore).
     define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::TrackerDaSiamRPN::Params&)>("create", &cv::TrackerDaSiamRPN::create,
-      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params&>(cv::TrackerDaSiamRPN::Params()));
+      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params&>(cv::TrackerDaSiamRPN::Params())).
+    define_method<float(cv::TrackerDaSiamRPN::*)()>("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerDaSiamRPN::Params> rb_cCvTrackerDaSiamRPNParams = define_class_under<cv::TrackerDaSiamRPN::Params>(rb_cCvTrackerDaSiamRPN, "Params").
     define_constructor(Constructor<cv::TrackerDaSiamRPN::Params>()).
@@ -241,11 +237,10 @@ void Init_Video_Tracking()
     define_attr("backend", &cv::TrackerDaSiamRPN::Params::backend).
     define_attr("target", &cv::TrackerDaSiamRPN::Params::target);
 
-#if RUBY_CV_VERSION >= 407
   Rice::Data_Type<cv::TrackerNano> rb_cCvTrackerNano = define_class_under<cv::TrackerNano, cv::Tracker>(rb_mCv, "TrackerNano").
-    define_method<float(cv::TrackerNano::*)()>("get_tracking_score", &cv::TrackerNano::getTrackingScore).
     define_singleton_function<cv::Ptr<cv::TrackerNano>(*)(const cv::TrackerNano::Params&)>("create", &cv::TrackerNano::create,
-      Arg("parameters") = static_cast<const cv::TrackerNano::Params&>(cv::TrackerNano::Params()));
+      Arg("parameters") = static_cast<const cv::TrackerNano::Params&>(cv::TrackerNano::Params())).
+    define_method<float(cv::TrackerNano::*)()>("get_tracking_score", &cv::TrackerNano::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerNano::Params> rb_cCvTrackerNanoParams = define_class_under<cv::TrackerNano::Params>(rb_cCvTrackerNano, "Params").
     define_constructor(Constructor<cv::TrackerNano::Params>()).
@@ -253,13 +248,11 @@ void Init_Video_Tracking()
     define_attr("neckhead", &cv::TrackerNano::Params::neckhead).
     define_attr("backend", &cv::TrackerNano::Params::backend).
     define_attr("target", &cv::TrackerNano::Params::target);
-#endif
 
-#if RUBY_CV_VERSION >= 409
   Rice::Data_Type<cv::TrackerVit> rb_cCvTrackerVit = define_class_under<cv::TrackerVit, cv::Tracker>(rb_mCv, "TrackerVit").
-    define_method<float(cv::TrackerVit::*)()>("get_tracking_score", &cv::TrackerVit::getTrackingScore).
     define_singleton_function<cv::Ptr<cv::TrackerVit>(*)(const cv::TrackerVit::Params&)>("create", &cv::TrackerVit::create,
-      Arg("parameters") = static_cast<const cv::TrackerVit::Params&>(cv::TrackerVit::Params()));
+      Arg("parameters") = static_cast<const cv::TrackerVit::Params&>(cv::TrackerVit::Params())).
+    define_method<float(cv::TrackerVit::*)()>("get_tracking_score", &cv::TrackerVit::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerVit::Params> rb_cCvTrackerVitParams = define_class_under<cv::TrackerVit::Params>(rb_cCvTrackerVit, "Params").
     define_constructor(Constructor<cv::TrackerVit::Params>()).
@@ -269,5 +262,4 @@ void Init_Video_Tracking()
     define_attr("meanvalue", &cv::TrackerVit::Params::meanvalue).
     define_attr("stdvalue", &cv::TrackerVit::Params::stdvalue).
     define_attr("tracking_score_threshold", &cv::TrackerVit::Params::tracking_score_threshold);
-#endif
 }

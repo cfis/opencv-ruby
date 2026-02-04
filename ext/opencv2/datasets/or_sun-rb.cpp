@@ -17,6 +17,6 @@ void Init_Datasets_OrSun()
   Rice::Data_Type<cv::datasets::OR_sun> rb_cCvDatasetsORSun = define_class_under<cv::datasets::OR_sun, cv::datasets::Dataset>(rb_mCvDatasets, "ORSun").
     define_method<void(cv::datasets::OR_sun::*)(const std::string&)>("load", &cv::datasets::OR_sun::load,
       Arg("path")).
-    define_attr("paths", &cv::datasets::OR_sun::paths).
-    define_singleton_function<cv::Ptr<cv::datasets::OR_sun>(*)()>("create", &cv::datasets::OR_sun::create);
+    define_singleton_function<cv::Ptr<cv::datasets::OR_sun>(*)()>("create", &cv::datasets::OR_sun::create).
+    define_attr("paths", &cv::datasets::OR_sun::paths);
 }

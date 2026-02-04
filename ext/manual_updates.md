@@ -57,7 +57,7 @@ Apply all these updates
 | `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
 | `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead |
 | `opencv2/core/cuda-rb.cpp`               | Remove default `Stream::Null()` arguments (~lines 332, 472) from `Event::record` and `convert_fp16`. Change `Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())` to just `Arg("stream")`. Add comment: `// Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed` |
-| `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Add comment: `// Manual fix: use cv::int64 instead of long` |
+| `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Change template argument from `<long>` to `<int64>`. Add comment: `// Manual fix: use int64 instead of long` |
 | `opencv2/core/mat-rb.cpp`                | Rename `MatSize::operator()` from `"call"` to `"to_size"` (~line 327) - returns cv::Size, more descriptive name |
 | `opencv2/videoio-rb.cpp`                 | Rename `VideoCapture::grab` from `"grab?"` to `"grab"` (~line 480) - not a predicate, actually grabs a frame |
 
@@ -243,6 +243,76 @@ return Rice::define_class_under<cv::cuda::PtrStep<T>>(parent, name).
 To:
 ```cpp
 return Rice::define_class_under<cv::cuda::PtrStep<T>, cv::cuda::DevPtr<T>>(parent, name).
+```
+
+### SparseMat_ inherits from SparseMat
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~146** (in `SparseMat__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::SparseMat_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::SparseMat_<_Tp>, cv::SparseMat>(parent, name).
+```
+
+### MatConstIterator_ inherits from MatConstIterator
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~193** (in `MatConstIterator__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::MatConstIterator_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::MatConstIterator_<_Tp>, cv::MatConstIterator>(parent, name).
+```
+
+### MatIterator_ inherits from MatConstIterator_
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~227** (in `MatIterator__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::MatIterator_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::MatIterator_<_Tp>, cv::MatConstIterator_<_Tp>>(parent, name).
+```
+
+### SparseMatConstIterator_ inherits from SparseMatConstIterator
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~260** (in `SparseMatConstIterator__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>, cv::SparseMatConstIterator>(parent, name).
+```
+
+### SparseMatIterator_ inherits from SparseMatConstIterator_
+
+**File:** `opencv2/core/mat-rb.ipp`, **Line ~280** (in `SparseMatIterator__instantiate` function)
+
+Change:
+```cpp
+return Rice::define_class_under<cv::SparseMatIterator_<_Tp>>(parent, name).
+```
+
+To:
+```cpp
+return Rice::define_class_under<cv::SparseMatIterator_<_Tp>, cv::SparseMatConstIterator_<_Tp>>(parent, name).
 ```
 
 This ensures proper class hierarchies in Ruby.
@@ -441,6 +511,44 @@ This diff file serves as a reference for what manual changes were applied and ca
   - When in doubt, check `git diff main` to see the working order from the main branch
 - All manual includes should be marked with `// Manual` comment for identification
 - These includes are needed because the generated bindings reference types or declarations from headers that aren't automatically included by the primary header
+
+## Common Syntax Pitfalls
+
+**IMPORTANT:** When applying manual updates, watch out for these syntax issues:
+
+### 1. Commenting out methods in fluent chains
+
+When commenting out methods at the end of a fluent chain (like in `dualquaternion-rb.ipp`), you must change the preceding `.` to `;` to properly terminate the chain.
+
+**Wrong:**
+```cpp
+    template define_method<...>("/", &cv::DualQuat<_Tp>::operator/,
+      Arg("arg_0")).
+    // Commented out - causes linker errors
+    // template define_method<...>("assign_divide", ...).
+```
+
+**Correct:**
+```cpp
+    template define_method<...>("/", &cv::DualQuat<_Tp>::operator/,
+      Arg("arg_0"));  // Changed . to ; because next methods are commented out
+    // Commented out - causes linker errors
+    // template define_method<...>("assign_divide", ...).
+```
+
+### 2. Semicolon placement in rename comments
+
+When adding comments to renamed lines (like in `matx-rb.cpp`), ensure the semicolon comes before the comment, not at the end.
+
+**Wrong:**
+```cpp
+Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatx21b = Matx_instantiate<...>(rb_mCv, "Matx21b") // Manual - renamed to OpenCV convention;
+```
+
+**Correct:**
+```cpp
+Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatx21b = Matx_instantiate<...>(rb_mCv, "Matx21b"); // Manual - renamed to OpenCV convention
+```
 
 ## Verification Checklist
 

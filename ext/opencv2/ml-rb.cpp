@@ -33,6 +33,7 @@ void Init_Ml()
       Arg("min_val") = static_cast<double>(0.), Arg("max_val") = static_cast<double>(0.), Arg("logstep") = static_cast<double>(1.));
 
   Rice::Data_Type<cv::ml::TrainData> rb_cCvMlTrainData = define_class_under<cv::ml::TrainData>(rb_mCvMl, "TrainData").
+    define_singleton_function<float(*)()>("missing_value", &cv::ml::TrainData::missingValue).
     define_method<int(cv::ml::TrainData::*)() const>("get_layout", &cv::ml::TrainData::getLayout).
     define_method<int(cv::ml::TrainData::*)() const>("get_n_train_samples", &cv::ml::TrainData::getNTrainSamples).
     define_method<int(cv::ml::TrainData::*)() const>("get_n_test_samples", &cv::ml::TrainData::getNTestSamples).
@@ -78,7 +79,6 @@ void Init_Ml()
     define_method<cv::Mat(cv::ml::TrainData::*)() const>("get_test_samples", &cv::ml::TrainData::getTestSamples).
     define_method<void(cv::ml::TrainData::*)(std::vector<std::basic_string<char>>&) const>("get_names", &cv::ml::TrainData::getNames,
       Arg("names")).
-    define_singleton_function<float(*)()>("missing_value", &cv::ml::TrainData::missingValue).
     define_singleton_function<cv::Mat(*)(const cv::Mat&, const cv::Mat&)>("get_sub_vector", &cv::ml::TrainData::getSubVector,
       Arg("vec"), Arg("idx")).
     define_singleton_function<cv::Mat(*)(const cv::Mat&, const cv::Mat&, int)>("get_sub_matrix", &cv::ml::TrainData::getSubMatrix,
@@ -464,6 +464,9 @@ void Init_Ml()
   Rice::Data_Type<cv::ml::SVMSGD> rb_cCvMlSVMSGD = define_class_under<cv::ml::SVMSGD, cv::ml::StatModel>(rb_mCvMl, "SVMSGD").
     define_method<cv::Mat(cv::ml::SVMSGD::*)()>("get_weights", &cv::ml::SVMSGD::getWeights).
     define_method<float(cv::ml::SVMSGD::*)()>("get_shift", &cv::ml::SVMSGD::getShift).
+    define_singleton_function<cv::Ptr<cv::ml::SVMSGD>(*)()>("create", &cv::ml::SVMSGD::create).
+    define_singleton_function<cv::Ptr<cv::ml::SVMSGD>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::SVMSGD::load,
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String())).
     define_method<void(cv::ml::SVMSGD::*)(int, int)>("set_optimal_parameters", &cv::ml::SVMSGD::setOptimalParameters,
       Arg("svmsgd_type") = static_cast<int>(cv::ml::SVMSGD::SvmsgdType::ASGD), Arg("margin_type") = static_cast<int>(cv::ml::SVMSGD::MarginType::SOFT_MARGIN)).
     define_method<int(cv::ml::SVMSGD::*)() const>("get_svmsgd_type", &cv::ml::SVMSGD::getSvmsgdType).
@@ -483,10 +486,7 @@ void Init_Ml()
       Arg("step_decreasing_power")).
     define_method<cv::TermCriteria(cv::ml::SVMSGD::*)() const>("get_term_criteria", &cv::ml::SVMSGD::getTermCriteria).
     define_method<void(cv::ml::SVMSGD::*)(const cv::TermCriteria&)>("set_term_criteria", &cv::ml::SVMSGD::setTermCriteria,
-      Arg("val")).
-    define_singleton_function<cv::Ptr<cv::ml::SVMSGD>(*)()>("create", &cv::ml::SVMSGD::create).
-    define_singleton_function<cv::Ptr<cv::ml::SVMSGD>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::SVMSGD::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
+      Arg("val"));
 
   Enum<cv::ml::SVMSGD::SvmsgdType> rb_cCvMlSVMSGDSvmsgdType = define_enum_under<cv::ml::SVMSGD::SvmsgdType>("SvmsgdType", rb_cCvMlSVMSGD).
     define_value("SGD", cv::ml::SVMSGD::SvmsgdType::SGD).

@@ -37,10 +37,10 @@ inline Rice::Data_Type<cv::cudev::CubicInterPtr<SrcPtr>> CubicInterPtr_instantia
 {
   return Rice::define_class_under<cv::cudev::CubicInterPtr<SrcPtr>>(parent, name).
     define_attr("src", &cv::cudev::CubicInterPtr<SrcPtr>::src).
-    template define_method<typename PtrTraits<SrcPtr>::value_type(cv::cudev::CubicInterPtr<SrcPtr>::*)(float, float) const>("call", &cv::cudev::CubicInterPtr<SrcPtr>::operator(),
-      Arg("y"), Arg("x")).
     template define_singleton_function<float(*)(float)>("bicubic_coeff", &cv::cudev::CubicInterPtr<SrcPtr>::bicubicCoeff,
-      Arg("x_"));
+      Arg("x_")).
+    template define_method<typename PtrTraits<SrcPtr>::value_type(cv::cudev::CubicInterPtr<SrcPtr>::*)(float, float) const>("call", &cv::cudev::CubicInterPtr<SrcPtr>::operator(),
+      Arg("y"), Arg("x"));
 }
 
 template<typename SrcPtr>

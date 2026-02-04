@@ -65,11 +65,11 @@ void Init_Tracking_Feature()
       Arg("fs")).
     define_method<bool(cv::detail::tracking::contrib_feature::CvFeatureParams::*)(const cv::FileNode&)>("read", &cv::detail::tracking::contrib_feature::CvFeatureParams::read,
       Arg("node")).
+    define_singleton_function<cv::Ptr<cv::detail::CvFeatureParams>(*)(cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType)>("create", &cv::detail::tracking::contrib_feature::CvFeatureParams::create,
+      Arg("feature_type")).
     define_attr("max_cat_count", &cv::detail::tracking::contrib_feature::CvFeatureParams::maxCatCount).
     define_attr("feat_size", &cv::detail::tracking::contrib_feature::CvFeatureParams::featSize).
-    define_attr("num_features", &cv::detail::tracking::contrib_feature::CvFeatureParams::numFeatures).
-    define_singleton_function<cv::Ptr<cv::detail::CvFeatureParams>(*)(cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType)>("create", &cv::detail::tracking::contrib_feature::CvFeatureParams::create,
-      Arg("feature_type"));
+    define_attr("num_features", &cv::detail::tracking::contrib_feature::CvFeatureParams::numFeatures);
 
   Enum<cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType> rb_cCvDetailCvFeatureParamsFeatureType = define_enum_under<cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType>("FeatureType", rb_cCvDetailCvFeatureParams).
     define_value("HAAR", cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType::HAAR).
@@ -85,14 +85,14 @@ void Init_Tracking_Feature()
       Arg("fs"), Arg("feature_map")).
     define_method<float(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)(int, int)>("call", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::operator(),
       Arg("feature_idx"), Arg("sample_idx")).
+    define_singleton_function<cv::Ptr<cv::detail::CvFeatureEvaluator>(*)(cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType)>("create", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::create,
+      Arg("type")).
     define_method<int(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)() const>("get_num_features", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::getNumFeatures).
     define_method<int(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)() const>("get_max_cat_count", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::getMaxCatCount).
     define_method<int(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)() const>("get_feature_size", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::getFeatureSize).
     define_method<const cv::Mat&(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)() const>("get_cls", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::getCls).
     define_method<float(cv::detail::tracking::contrib_feature::CvFeatureEvaluator::*)(int) const>("get_cls", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::getCls,
-      Arg("si")).
-    define_singleton_function<cv::Ptr<cv::detail::CvFeatureEvaluator>(*)(cv::detail::tracking::contrib_feature::CvFeatureParams::FeatureType)>("create", &cv::detail::tracking::contrib_feature::CvFeatureEvaluator::create,
-      Arg("type"));
+      Arg("si"));
 
   Rice::Data_Type<cv::detail::CvHaarFeatureParams> rb_cCvDetailCvHaarFeatureParams = define_class_under<cv::detail::CvHaarFeatureParams, cv::detail::CvFeatureParams>(rb_mCvDetailTrackingContribFeature, "CvHaarFeatureParams").
     define_constructor(Constructor<cv::detail::tracking::contrib_feature::CvHaarFeatureParams>()).

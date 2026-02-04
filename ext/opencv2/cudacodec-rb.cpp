@@ -271,7 +271,7 @@ void Init_Cudacodec()
 
   rb_cCvCudacodecEncoderParams.
     define_method("==", [](const cv::cudacodec::EncoderParams& self, const cv::cudacodec::EncoderParams& other) -> bool
-  {
-    return self == other;
-  });
+    {
+      return self == other;
+    });
 }

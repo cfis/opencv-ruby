@@ -95,17 +95,17 @@ void Init_Flann_Any()
 
   rb_cCvflannAnyimplEmptyAny.
     define_method("inspect", [](const cvflann::anyimpl::empty_any& self) -> std::string
-  {
-    std::ostringstream stream;
-    stream << self;
-    return stream.str();
-  });
+    {
+      std::ostringstream stream;
+      stream << self;
+      return stream.str();
+    });
   
   rb_cCvflannAny.
     define_method("inspect", [](const cvflann::any& self) -> std::string
-  {
-    std::ostringstream stream;
-    stream << self;
-    return stream.str();
-  });
+    {
+      std::ostringstream stream;
+      stream << self;
+      return stream.str();
+    });
 }

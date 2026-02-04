@@ -13,6 +13,8 @@ void Init_Xfeatures2d_Cuda()
     define_constructor(Constructor<cv::cuda::SURF_CUDA>()).
     define_constructor(Constructor<cv::cuda::SURF_CUDA, double, int, int, bool, float, bool>(),
       Arg("_hessian_threshold"), Arg("_n_octaves") = static_cast<int>(4), Arg("_n_octave_layers") = static_cast<int>(2), Arg("_extended") = static_cast<bool>(false), Arg("_keypoints_ratio") = static_cast<float>(0.01f), Arg("_upright") = static_cast<bool>(false)).
+    define_singleton_function<cv::Ptr<cv::cuda::SURF_CUDA>(*)(double, int, int, bool, float, bool)>("create", &cv::cuda::SURF_CUDA::create,
+      Arg("_hessian_threshold"), Arg("_n_octaves") = static_cast<int>(4), Arg("_n_octave_layers") = static_cast<int>(2), Arg("_extended") = static_cast<bool>(false), Arg("_keypoints_ratio") = static_cast<float>(0.01f), Arg("_upright") = static_cast<bool>(false)).
     define_method<int(cv::cuda::SURF_CUDA::*)() const>("descriptor_size", &cv::cuda::SURF_CUDA::descriptorSize).
     define_method<int(cv::cuda::SURF_CUDA::*)() const>("default_norm", &cv::cuda::SURF_CUDA::defaultNorm).
     define_method<void(cv::cuda::SURF_CUDA::*)(const std::vector<cv::KeyPoint>&, cv::cuda::GpuMat&)>("upload_keypoints", &cv::cuda::SURF_CUDA::uploadKeypoints,
@@ -47,9 +49,7 @@ void Init_Xfeatures2d_Cuda()
     define_attr("mask_sum", &cv::cuda::SURF_CUDA::maskSum).
     define_attr("det", &cv::cuda::SURF_CUDA::det).
     define_attr("trace", &cv::cuda::SURF_CUDA::trace).
-    define_attr("max_pos_buffer", &cv::cuda::SURF_CUDA::maxPosBuffer).
-    define_singleton_function<cv::Ptr<cv::cuda::SURF_CUDA>(*)(double, int, int, bool, float, bool)>("create", &cv::cuda::SURF_CUDA::create,
-      Arg("_hessian_threshold"), Arg("_n_octaves") = static_cast<int>(4), Arg("_n_octave_layers") = static_cast<int>(2), Arg("_extended") = static_cast<bool>(false), Arg("_keypoints_ratio") = static_cast<float>(0.01f), Arg("_upright") = static_cast<bool>(false));
+    define_attr("max_pos_buffer", &cv::cuda::SURF_CUDA::maxPosBuffer);
 
   Enum<cv::cuda::SURF_CUDA::KeypointLayout> rb_cCvCudaSURFCUDAKeypointLayout = define_enum_under<cv::cuda::SURF_CUDA::KeypointLayout>("KeypointLayout", rb_cCvCudaSURFCUDA).
     define_value("X_ROW", cv::cuda::SURF_CUDA::KeypointLayout::X_ROW).

@@ -57,15 +57,19 @@ void Init_Features2d()
       Arg("fs"), Arg("name"));
 
   Rice::Data_Type<cv::AffineFeature> rb_cCvAffineFeature = define_class_under<cv::AffineFeature, cv::Feature2D>(rb_mCv, "AffineFeature").
+    define_singleton_function<cv::Ptr<cv::AffineFeature>(*)(const cv::Ptr<cv::Feature2D>&, int, int, float, float)>("create", &cv::AffineFeature::create,
+      Arg("backend"), Arg("max_tilt") = static_cast<int>(5), Arg("min_tilt") = static_cast<int>(0), Arg("tilt_step") = static_cast<float>(1.4142135623730951f), Arg("rotate_step_base") = static_cast<float>(72)).
     define_method<void(cv::AffineFeature::*)(const std::vector<float>&, const std::vector<float>&)>("set_view_params", &cv::AffineFeature::setViewParams,
       Arg("tilts"), Arg("rolls")).
     define_method<void(cv::AffineFeature::*)(std::vector<float>&, std::vector<float>&) const>("get_view_params", &cv::AffineFeature::getViewParams,
       Arg("tilts"), Arg("rolls")).
-    define_method<cv::String(cv::AffineFeature::*)() const>("get_default_name", &cv::AffineFeature::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::AffineFeature>(*)(const cv::Ptr<cv::Feature2D>&, int, int, float, float)>("create", &cv::AffineFeature::create,
-      Arg("backend"), Arg("max_tilt") = static_cast<int>(5), Arg("min_tilt") = static_cast<int>(0), Arg("tilt_step") = static_cast<float>(1.4142135623730951f), Arg("rotate_step_base") = static_cast<float>(72));
+    define_method<cv::String(cv::AffineFeature::*)() const>("get_default_name", &cv::AffineFeature::getDefaultName);
 
   Rice::Data_Type<cv::SIFT> rb_cCvSIFT = define_class_under<cv::SIFT, cv::Feature2D>(rb_mCv, "SIFT").
+    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", &cv::SIFT::create,
+      Arg("nfeatures") = static_cast<int>(0), Arg("n_octave_layers") = static_cast<int>(3), Arg("contrast_threshold") = static_cast<double>(0.04), Arg("edge_threshold") = static_cast<double>(10), Arg("sigma") = static_cast<double>(1.6), Arg("enable_precise_upscale") = static_cast<bool>(false)).
+    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", &cv::SIFT::create,
+      Arg("nfeatures"), Arg("n_octave_layers"), Arg("contrast_threshold"), Arg("edge_threshold"), Arg("sigma"), Arg("descriptor_type"), Arg("enable_precise_upscale") = static_cast<bool>(false)).
     define_method<cv::String(cv::SIFT::*)() const>("get_default_name", &cv::SIFT::getDefaultName).
     define_method<void(cv::SIFT::*)(int)>("set_n_features", &cv::SIFT::setNFeatures,
       Arg("max_features")).
@@ -81,13 +85,15 @@ void Init_Features2d()
     define_method<double(cv::SIFT::*)() const>("get_edge_threshold", &cv::SIFT::getEdgeThreshold).
     define_method<void(cv::SIFT::*)(double)>("set_sigma", &cv::SIFT::setSigma,
       Arg("sigma")).
-    define_method<double(cv::SIFT::*)() const>("get_sigma", &cv::SIFT::getSigma).
-    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", &cv::SIFT::create,
-      Arg("nfeatures") = static_cast<int>(0), Arg("n_octave_layers") = static_cast<int>(3), Arg("contrast_threshold") = static_cast<double>(0.04), Arg("edge_threshold") = static_cast<double>(10), Arg("sigma") = static_cast<double>(1.6), Arg("enable_precise_upscale") = static_cast<bool>(false)).
-    define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", &cv::SIFT::create,
-      Arg("nfeatures"), Arg("n_octave_layers"), Arg("contrast_threshold"), Arg("edge_threshold"), Arg("sigma"), Arg("descriptor_type"), Arg("enable_precise_upscale") = static_cast<bool>(false));
+    define_method<double(cv::SIFT::*)() const>("get_sigma", &cv::SIFT::getSigma);
 
   Rice::Data_Type<cv::BRISK> rb_cCvBRISK = define_class_under<cv::BRISK, cv::Feature2D>(rb_mCv, "BRISK").
+    define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", &cv::BRISK::create,
+      Arg("thresh") = static_cast<int>(30), Arg("octaves") = static_cast<int>(3), Arg("pattern_scale") = static_cast<float>(1.0f)).
+    define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
+      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>())).
+    define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
+      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>())).
     define_method<cv::String(cv::BRISK::*)() const>("get_default_name", &cv::BRISK::getDefaultName).
     define_method<void(cv::BRISK::*)(int)>("set_threshold", &cv::BRISK::setThreshold,
       Arg("threshold")).
@@ -97,16 +103,12 @@ void Init_Features2d()
     define_method<int(cv::BRISK::*)() const>("get_octaves", &cv::BRISK::getOctaves).
     define_method<void(cv::BRISK::*)(float)>("set_pattern_scale", &cv::BRISK::setPatternScale,
       Arg("pattern_scale")).
-    define_method<float(cv::BRISK::*)() const>("get_pattern_scale", &cv::BRISK::getPatternScale).
-    define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", &cv::BRISK::create,
-      Arg("thresh") = static_cast<int>(30), Arg("octaves") = static_cast<int>(3), Arg("pattern_scale") = static_cast<float>(1.0f)).
-    define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>())).
-    define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>()));
+    define_method<float(cv::BRISK::*)() const>("get_pattern_scale", &cv::BRISK::getPatternScale);
 
   Rice::Data_Type<cv::ORB> rb_cCvORB = define_class_under<cv::ORB, cv::Feature2D>(rb_mCv, "ORB").
     define_constant("KBytes", cv::ORB::kBytes).
+    define_singleton_function<cv::Ptr<cv::ORB>(*)(int, float, int, int, int, int, cv::ORB::ScoreType, int, int)>("create", &cv::ORB::create,
+      Arg("nfeatures") = static_cast<int>(500), Arg("scale_factor") = static_cast<float>(1.2f), Arg("nlevels") = static_cast<int>(8), Arg("edge_threshold") = static_cast<int>(31), Arg("first_level") = static_cast<int>(0), Arg("wta_k") = static_cast<int>(2), Arg("score_type") = static_cast<cv::ORB::ScoreType>(cv::ORB::ScoreType::HARRIS_SCORE), Arg("patch_size") = static_cast<int>(31), Arg("fast_threshold") = static_cast<int>(20)).
     define_method<void(cv::ORB::*)(int)>("set_max_features", &cv::ORB::setMaxFeatures,
       Arg("max_features")).
     define_method<int(cv::ORB::*)() const>("get_max_features", &cv::ORB::getMaxFeatures).
@@ -134,15 +136,15 @@ void Init_Features2d()
     define_method<void(cv::ORB::*)(int)>("set_fast_threshold", &cv::ORB::setFastThreshold,
       Arg("fast_threshold")).
     define_method<int(cv::ORB::*)() const>("get_fast_threshold", &cv::ORB::getFastThreshold).
-    define_method<cv::String(cv::ORB::*)() const>("get_default_name", &cv::ORB::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::ORB>(*)(int, float, int, int, int, int, cv::ORB::ScoreType, int, int)>("create", &cv::ORB::create,
-      Arg("nfeatures") = static_cast<int>(500), Arg("scale_factor") = static_cast<float>(1.2f), Arg("nlevels") = static_cast<int>(8), Arg("edge_threshold") = static_cast<int>(31), Arg("first_level") = static_cast<int>(0), Arg("wta_k") = static_cast<int>(2), Arg("score_type") = static_cast<cv::ORB::ScoreType>(cv::ORB::ScoreType::HARRIS_SCORE), Arg("patch_size") = static_cast<int>(31), Arg("fast_threshold") = static_cast<int>(20));
+    define_method<cv::String(cv::ORB::*)() const>("get_default_name", &cv::ORB::getDefaultName);
 
   Enum<cv::ORB::ScoreType> rb_cCvORBScoreType = define_enum_under<cv::ORB::ScoreType>("ScoreType", rb_cCvORB).
     define_value("HARRIS_SCORE", cv::ORB::ScoreType::HARRIS_SCORE).
     define_value("FAST_SCORE", cv::ORB::ScoreType::FAST_SCORE);
 
   Rice::Data_Type<cv::MSER> rb_cCvMSER = define_class_under<cv::MSER, cv::Feature2D>(rb_mCv, "MSER").
+    define_singleton_function<cv::Ptr<cv::MSER>(*)(int, int, int, double, double, int, double, double, int)>("create", &cv::MSER::create,
+      Arg("delta") = static_cast<int>(5), Arg("min_area") = static_cast<int>(60), Arg("max_area") = static_cast<int>(14400), Arg("max_variation") = static_cast<double>(0.25), Arg("min_diversity") = static_cast<double>(.2), Arg("max_evolution") = static_cast<int>(200), Arg("area_threshold") = static_cast<double>(1.01), Arg("min_margin") = static_cast<double>(0.003), Arg("edge_blur_size") = static_cast<int>(5)).
     define_method<void(cv::MSER::*)(cv::InputArray, std::vector<std::vector<cv::Point_<int>>>&, std::vector<cv::Rect_<int>>&)>("detect_regions", &cv::MSER::detectRegions,
       Arg("image"), Arg("msers"), Arg("bboxes")).
     define_method<void(cv::MSER::*)(int)>("set_delta", &cv::MSER::setDelta,
@@ -175,11 +177,11 @@ void Init_Features2d()
     define_method<void(cv::MSER::*)(bool)>("set_pass2_only", &cv::MSER::setPass2Only,
       Arg("f")).
     define_method<bool(cv::MSER::*)() const>("get_pass2_only?", &cv::MSER::getPass2Only).
-    define_method<cv::String(cv::MSER::*)() const>("get_default_name", &cv::MSER::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::MSER>(*)(int, int, int, double, double, int, double, double, int)>("create", &cv::MSER::create,
-      Arg("delta") = static_cast<int>(5), Arg("min_area") = static_cast<int>(60), Arg("max_area") = static_cast<int>(14400), Arg("max_variation") = static_cast<double>(0.25), Arg("min_diversity") = static_cast<double>(.2), Arg("max_evolution") = static_cast<int>(200), Arg("area_threshold") = static_cast<double>(1.01), Arg("min_margin") = static_cast<double>(0.003), Arg("edge_blur_size") = static_cast<int>(5));
+    define_method<cv::String(cv::MSER::*)() const>("get_default_name", &cv::MSER::getDefaultName);
 
   Rice::Data_Type<cv::FastFeatureDetector> rb_cCvFastFeatureDetector = define_class_under<cv::FastFeatureDetector, cv::Feature2D>(rb_mCv, "FastFeatureDetector").
+    define_singleton_function<cv::Ptr<cv::FastFeatureDetector>(*)(int, bool, cv::FastFeatureDetector::DetectorType)>("create", &cv::FastFeatureDetector::create,
+      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<cv::FastFeatureDetector::DetectorType>(cv::FastFeatureDetector::DetectorType::TYPE_9_16)).
     define_method<void(cv::FastFeatureDetector::*)(int)>("set_threshold", &cv::FastFeatureDetector::setThreshold,
       Arg("threshold")).
     define_method<int(cv::FastFeatureDetector::*)() const>("get_threshold", &cv::FastFeatureDetector::getThreshold).
@@ -189,9 +191,7 @@ void Init_Features2d()
     define_method<void(cv::FastFeatureDetector::*)(cv::FastFeatureDetector::DetectorType)>("set_type", &cv::FastFeatureDetector::setType,
       Arg("type")).
     define_method<cv::FastFeatureDetector::DetectorType(cv::FastFeatureDetector::*)() const>("get_type", &cv::FastFeatureDetector::getType).
-    define_method<cv::String(cv::FastFeatureDetector::*)() const>("get_default_name", &cv::FastFeatureDetector::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::FastFeatureDetector>(*)(int, bool, cv::FastFeatureDetector::DetectorType)>("create", &cv::FastFeatureDetector::create,
-      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<cv::FastFeatureDetector::DetectorType>(cv::FastFeatureDetector::DetectorType::TYPE_9_16));
+    define_method<cv::String(cv::FastFeatureDetector::*)() const>("get_default_name", &cv::FastFeatureDetector::getDefaultName);
 
   Enum<cv::FastFeatureDetector::DetectorType> rb_cCvFastFeatureDetectorDetectorType = define_enum_under<cv::FastFeatureDetector::DetectorType>("DetectorType", rb_cCvFastFeatureDetector).
     define_value("TYPE_5_8", cv::FastFeatureDetector::DetectorType::TYPE_5_8).
@@ -209,6 +209,8 @@ void Init_Features2d()
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::AgastFeatureDetector> rb_cCvAgastFeatureDetector = define_class_under<cv::AgastFeatureDetector, cv::Feature2D>(rb_mCv, "AgastFeatureDetector").
+    define_singleton_function<cv::Ptr<cv::AgastFeatureDetector>(*)(int, bool, cv::AgastFeatureDetector::DetectorType)>("create", &cv::AgastFeatureDetector::create,
+      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<cv::AgastFeatureDetector::DetectorType>(cv::AgastFeatureDetector::DetectorType::OAST_9_16)).
     define_method<void(cv::AgastFeatureDetector::*)(int)>("set_threshold", &cv::AgastFeatureDetector::setThreshold,
       Arg("threshold")).
     define_method<int(cv::AgastFeatureDetector::*)() const>("get_threshold", &cv::AgastFeatureDetector::getThreshold).
@@ -218,9 +220,7 @@ void Init_Features2d()
     define_method<void(cv::AgastFeatureDetector::*)(cv::AgastFeatureDetector::DetectorType)>("set_type", &cv::AgastFeatureDetector::setType,
       Arg("type")).
     define_method<cv::AgastFeatureDetector::DetectorType(cv::AgastFeatureDetector::*)() const>("get_type", &cv::AgastFeatureDetector::getType).
-    define_method<cv::String(cv::AgastFeatureDetector::*)() const>("get_default_name", &cv::AgastFeatureDetector::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::AgastFeatureDetector>(*)(int, bool, cv::AgastFeatureDetector::DetectorType)>("create", &cv::AgastFeatureDetector::create,
-      Arg("threshold") = static_cast<int>(10), Arg("nonmax_suppression") = static_cast<bool>(true), Arg("type") = static_cast<cv::AgastFeatureDetector::DetectorType>(cv::AgastFeatureDetector::DetectorType::OAST_9_16));
+    define_method<cv::String(cv::AgastFeatureDetector::*)() const>("get_default_name", &cv::AgastFeatureDetector::getDefaultName);
 
   Enum<cv::AgastFeatureDetector::DetectorType> rb_cCvAgastFeatureDetectorDetectorType = define_enum_under<cv::AgastFeatureDetector::DetectorType>("DetectorType", rb_cCvAgastFeatureDetector).
     define_value("AGAST_5_8", cv::AgastFeatureDetector::DetectorType::AGAST_5_8).
@@ -238,6 +238,10 @@ void Init_Features2d()
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::GFTTDetector> rb_cCvGFTTDetector = define_class_under<cv::GFTTDetector, cv::Feature2D>(rb_mCv, "GFTTDetector").
+    define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, bool, double)>("create", &cv::GFTTDetector::create,
+      Arg("max_corners") = static_cast<int>(1000), Arg("quality_level") = static_cast<double>(0.01), Arg("min_distance") = static_cast<double>(1), Arg("block_size") = static_cast<int>(3), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04)).
+    define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>("create", &cv::GFTTDetector::create,
+      Arg("max_corners"), Arg("quality_level"), Arg("min_distance"), Arg("block_size"), Arg("gradiant_size"), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04)).
     define_method<void(cv::GFTTDetector::*)(int)>("set_max_features", &cv::GFTTDetector::setMaxFeatures,
       Arg("max_features")).
     define_method<int(cv::GFTTDetector::*)() const>("get_max_features", &cv::GFTTDetector::getMaxFeatures).
@@ -259,20 +263,16 @@ void Init_Features2d()
     define_method<void(cv::GFTTDetector::*)(double)>("set_k", &cv::GFTTDetector::setK,
       Arg("k")).
     define_method<double(cv::GFTTDetector::*)() const>("get_k", &cv::GFTTDetector::getK).
-    define_method<cv::String(cv::GFTTDetector::*)() const>("get_default_name", &cv::GFTTDetector::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, bool, double)>("create", &cv::GFTTDetector::create,
-      Arg("max_corners") = static_cast<int>(1000), Arg("quality_level") = static_cast<double>(0.01), Arg("min_distance") = static_cast<double>(1), Arg("block_size") = static_cast<int>(3), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04)).
-    define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>("create", &cv::GFTTDetector::create,
-      Arg("max_corners"), Arg("quality_level"), Arg("min_distance"), Arg("block_size"), Arg("gradiant_size"), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04));
+    define_method<cv::String(cv::GFTTDetector::*)() const>("get_default_name", &cv::GFTTDetector::getDefaultName);
 
   Rice::Data_Type<cv::SimpleBlobDetector> rb_cCvSimpleBlobDetector = define_class_under<cv::SimpleBlobDetector, cv::Feature2D>(rb_mCv, "SimpleBlobDetector").
+    define_singleton_function<cv::Ptr<cv::SimpleBlobDetector>(*)(const cv::SimpleBlobDetector::Params&)>("create", &cv::SimpleBlobDetector::create,
+      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params&>(cv::SimpleBlobDetector::Params())).
     define_method<void(cv::SimpleBlobDetector::*)(const cv::SimpleBlobDetector::Params&)>("set_params", &cv::SimpleBlobDetector::setParams,
       Arg("params")).
     define_method<cv::SimpleBlobDetector::Params(cv::SimpleBlobDetector::*)() const>("get_params", &cv::SimpleBlobDetector::getParams).
     define_method<cv::String(cv::SimpleBlobDetector::*)() const>("get_default_name", &cv::SimpleBlobDetector::getDefaultName).
-    define_method<const std::vector<std::vector<cv::Point>>&(cv::SimpleBlobDetector::*)() const>("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours).
-    define_singleton_function<cv::Ptr<cv::SimpleBlobDetector>(*)(const cv::SimpleBlobDetector::Params&)>("create", &cv::SimpleBlobDetector::create,
-      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params&>(cv::SimpleBlobDetector::Params()));
+    define_method<const std::vector<std::vector<cv::Point>>&(cv::SimpleBlobDetector::*)() const>("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours);
 
   Rice::Data_Type<cv::SimpleBlobDetector::Params> rb_cCvSimpleBlobDetectorParams = define_class_under<cv::SimpleBlobDetector::Params>(rb_cCvSimpleBlobDetector, "Params").
     define_constructor(Constructor<cv::SimpleBlobDetector::Params>()).
@@ -302,6 +302,8 @@ void Init_Features2d()
       Arg("fs"));
 
   Rice::Data_Type<cv::KAZE> rb_cCvKAZE = define_class_under<cv::KAZE, cv::Feature2D>(rb_mCv, "KAZE").
+    define_singleton_function<cv::Ptr<cv::KAZE>(*)(bool, bool, float, int, int, cv::KAZE::DiffusivityType)>("create", &cv::KAZE::create,
+      Arg("extended") = static_cast<bool>(false), Arg("upright") = static_cast<bool>(false), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DiffusivityType::DIFF_PM_G2)).
     define_method<void(cv::KAZE::*)(bool)>("set_extended", &cv::KAZE::setExtended,
       Arg("extended")).
     define_method<bool(cv::KAZE::*)() const>("get_extended?", &cv::KAZE::getExtended).
@@ -320,9 +322,7 @@ void Init_Features2d()
     define_method<void(cv::KAZE::*)(cv::KAZE::DiffusivityType)>("set_diffusivity", &cv::KAZE::setDiffusivity,
       Arg("diff")).
     define_method<cv::KAZE::DiffusivityType(cv::KAZE::*)() const>("get_diffusivity", &cv::KAZE::getDiffusivity).
-    define_method<cv::String(cv::KAZE::*)() const>("get_default_name", &cv::KAZE::getDefaultName).
-    define_singleton_function<cv::Ptr<cv::KAZE>(*)(bool, bool, float, int, int, cv::KAZE::DiffusivityType)>("create", &cv::KAZE::create,
-      Arg("extended") = static_cast<bool>(false), Arg("upright") = static_cast<bool>(false), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DiffusivityType::DIFF_PM_G2));
+    define_method<cv::String(cv::KAZE::*)() const>("get_default_name", &cv::KAZE::getDefaultName);
 
   Enum<cv::KAZE::DiffusivityType> rb_cCvKAZEDiffusivityType = define_enum_under<cv::KAZE::DiffusivityType>("DiffusivityType", rb_cCvKAZE).
     define_value("DIFF_PM_G1", cv::KAZE::DiffusivityType::DIFF_PM_G1).
@@ -331,6 +331,8 @@ void Init_Features2d()
     define_value("DIFF_CHARBONNIER", cv::KAZE::DiffusivityType::DIFF_CHARBONNIER);
 
   Rice::Data_Type<cv::AKAZE> rb_cCvAKAZE = define_class_under<cv::AKAZE, cv::Feature2D>(rb_mCv, "AKAZE").
+    define_singleton_function<cv::Ptr<cv::AKAZE>(*)(cv::AKAZE::DescriptorType, int, int, float, int, int, cv::KAZE::DiffusivityType, int)>("create", &cv::AKAZE::create,
+      Arg("descriptor_type") = static_cast<cv::AKAZE::DescriptorType>(cv::AKAZE::DescriptorType::DESCRIPTOR_MLDB), Arg("descriptor_size") = static_cast<int>(0), Arg("descriptor_channels") = static_cast<int>(3), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DiffusivityType::DIFF_PM_G2), Arg("max_points") = static_cast<int>(-1)).
     define_method<void(cv::AKAZE::*)(cv::AKAZE::DescriptorType)>("set_descriptor_type", &cv::AKAZE::setDescriptorType,
       Arg("dtype")).
     define_method<cv::AKAZE::DescriptorType(cv::AKAZE::*)() const>("get_descriptor_type", &cv::AKAZE::getDescriptorType).
@@ -355,9 +357,7 @@ void Init_Features2d()
     define_method<cv::String(cv::AKAZE::*)() const>("get_default_name", &cv::AKAZE::getDefaultName).
     define_method<void(cv::AKAZE::*)(int)>("set_max_points", &cv::AKAZE::setMaxPoints,
       Arg("max_points")).
-    define_method<int(cv::AKAZE::*)() const>("get_max_points", &cv::AKAZE::getMaxPoints).
-    define_singleton_function<cv::Ptr<cv::AKAZE>(*)(cv::AKAZE::DescriptorType, int, int, float, int, int, cv::KAZE::DiffusivityType, int)>("create", &cv::AKAZE::create,
-      Arg("descriptor_type") = static_cast<cv::AKAZE::DescriptorType>(cv::AKAZE::DescriptorType::DESCRIPTOR_MLDB), Arg("descriptor_size") = static_cast<int>(0), Arg("descriptor_channels") = static_cast<int>(3), Arg("threshold") = static_cast<float>(0.001f), Arg("n_octaves") = static_cast<int>(4), Arg("n_octave_layers") = static_cast<int>(4), Arg("diffusivity") = static_cast<cv::KAZE::DiffusivityType>(cv::KAZE::DiffusivityType::DIFF_PM_G2), Arg("max_points") = static_cast<int>(-1));
+    define_method<int(cv::AKAZE::*)() const>("get_max_points", &cv::AKAZE::getMaxPoints);
 
   Enum<cv::AKAZE::DescriptorType> rb_cCvAKAZEDescriptorType = define_enum_under<cv::AKAZE::DescriptorType>("DescriptorType", rb_cCvAKAZE).
     define_value("DESCRIPTOR_KAZE_UPRIGHT", cv::AKAZE::DescriptorType::DESCRIPTOR_KAZE_UPRIGHT).
@@ -407,14 +407,14 @@ void Init_Features2d()
       Arg("arg_0")).
     define_method<cv::Ptr<cv::DescriptorMatcher>(cv::DescriptorMatcher::*)(bool) const>("clone", &cv::DescriptorMatcher::clone,
       Arg("empty_train_data") = static_cast<bool>(false)).
-    define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
-      Arg("fs"), Arg("name")).
-    define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
-      Arg("fs"), Arg("name")).
     define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String&)>("create", &cv::DescriptorMatcher::create,
       Arg("descriptor_matcher_type")).
     define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType&)>("create", &cv::DescriptorMatcher::create,
-      Arg("matcher_type"));
+      Arg("matcher_type")).
+    define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+      Arg("fs"), Arg("name")).
+    define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+      Arg("fs"), Arg("name"));
 
   Enum<cv::DescriptorMatcher::MatcherType> rb_cCvDescriptorMatcherMatcherType = define_enum_under<cv::DescriptorMatcher::MatcherType>("MatcherType", rb_cCvDescriptorMatcher).
     define_value("FLANNBASED", cv::DescriptorMatcher::MatcherType::FLANNBASED).
@@ -428,10 +428,10 @@ void Init_Features2d()
     define_constructor(Constructor<cv::BFMatcher, int, bool>(),
       Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("cross_check") = static_cast<bool>(false)).
     define_method<bool(cv::BFMatcher::*)() const>("mask_supported?", &cv::BFMatcher::isMaskSupported).
-    define_method<cv::Ptr<cv::DescriptorMatcher>(cv::BFMatcher::*)(bool) const>("clone", &cv::BFMatcher::clone,
-      Arg("empty_train_data") = static_cast<bool>(false)).
     define_singleton_function<cv::Ptr<cv::BFMatcher>(*)(int, bool)>("create", &cv::BFMatcher::create,
-      Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("cross_check") = static_cast<bool>(false));
+      Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("cross_check") = static_cast<bool>(false)).
+    define_method<cv::Ptr<cv::DescriptorMatcher>(cv::BFMatcher::*)(bool) const>("clone", &cv::BFMatcher::clone,
+      Arg("empty_train_data") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::FlannBasedMatcher> rb_cCvFlannBasedMatcher = define_class_under<cv::FlannBasedMatcher, cv::DescriptorMatcher>(rb_mCv, "FlannBasedMatcher").
     define_constructor(Constructor<cv::FlannBasedMatcher, const cv::Ptr<cv::flann::IndexParams>&, const cv::Ptr<cv::flann::SearchParams>&>(),
@@ -445,9 +445,9 @@ void Init_Features2d()
       Arg("arg_0")).
     define_method<void(cv::FlannBasedMatcher::*)()>("train", &cv::FlannBasedMatcher::train).
     define_method<bool(cv::FlannBasedMatcher::*)() const>("mask_supported?", &cv::FlannBasedMatcher::isMaskSupported).
+    define_singleton_function<cv::Ptr<cv::FlannBasedMatcher>(*)()>("create", &cv::FlannBasedMatcher::create).
     define_method<cv::Ptr<cv::DescriptorMatcher>(cv::FlannBasedMatcher::*)(bool) const>("clone", &cv::FlannBasedMatcher::clone,
-      Arg("empty_train_data") = static_cast<bool>(false)).
-    define_singleton_function<cv::Ptr<cv::FlannBasedMatcher>(*)()>("create", &cv::FlannBasedMatcher::create);
+      Arg("empty_train_data") = static_cast<bool>(false));
 
   Enum<cv::DrawMatchesFlags> rb_cCvDrawMatchesFlags = define_enum_under<cv::DrawMatchesFlags>("DrawMatchesFlags", rb_mCv).
     define_value("DEFAULT", cv::DrawMatchesFlags::DEFAULT).

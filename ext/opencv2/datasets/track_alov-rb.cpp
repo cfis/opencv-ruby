@@ -20,6 +20,7 @@ void Init_Datasets_TrackAlov()
   rb_mCvDatasets.define_constant("SectionSizes", cv::datasets::sectionSizes);
 
   Rice::Data_Type<cv::datasets::TRACK_alov> rb_cCvDatasetsTRACKAlov = define_class_under<cv::datasets::TRACK_alov, cv::datasets::Dataset>(rb_mCvDatasets, "TRACKAlov").
+    define_singleton_function<cv::Ptr<cv::datasets::TRACK_alov>(*)()>("create", &cv::datasets::TRACK_alov::create).
     define_method<void(cv::datasets::TRACK_alov::*)(const std::string&)>("load", &cv::datasets::TRACK_alov::load,
       Arg("path")).
     define_method<void(cv::datasets::TRACK_alov::*)(const std::string&)>("load_annotated_only", &cv::datasets::TRACK_alov::loadAnnotatedOnly,
@@ -35,6 +36,5 @@ void Init_Datasets_TrackAlov()
     define_method<bool(cv::datasets::TRACK_alov::*)(cv::Mat&, int, int)>("get_frame", &cv::datasets::TRACK_alov::getFrame,
       Arg("frame"), Arg("dataset_id"), Arg("frame_id")).
     define_method<std::vector<cv::Point_<float>>(cv::datasets::TRACK_alov::*)(int, int)>("get_gt", &cv::datasets::TRACK_alov::getGT,
-      Arg("dataset_id"), Arg("frame_id")).
-    define_singleton_function<cv::Ptr<cv::datasets::TRACK_alov>(*)()>("create", &cv::datasets::TRACK_alov::create);
+      Arg("dataset_id"), Arg("frame_id"));
 }

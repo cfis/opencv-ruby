@@ -140,11 +140,11 @@ void Init_Tracking_TrackingByMatching()
 
   rb_cCvDetailTbmTrackedObject.
     define_method("==", [](const cv::detail::tracking::tbm::TrackedObject& self, const cv::detail::tracking::tbm::TrackedObject& other) -> bool
-  {
-    return self == other;
-  }).
+    {
+      return self == other;
+    }).
     define_method("!=", [](const cv::detail::tracking::tbm::TrackedObject& self, const cv::detail::tracking::tbm::TrackedObject& other) -> bool
-  {
-    return self != other;
-  });
+    {
+      return self != other;
+    });
 }

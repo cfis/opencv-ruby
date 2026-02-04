@@ -9,13 +9,8 @@ include: rice_include.hpp
 
 # === File Selection ===
 match:
-  #- opencv2/core/cuda/detail/color_detail.hpp
-  #- opencv2/core/cuda/**/*.hpp
-  #- opencv2/core/mat.hpp
-  #- opencv2/core/types.hpp
-  - opencv2/core/persistence.hpp
-  #- opencv2/**/*.hpp
-  #- opencv2/**/*.h
+  - opencv2/**/*.hpp
+  - opencv2/**/*.h
 
 skip:
   - opencv2/**/*.inl*

@@ -10,6 +10,8 @@ void Init_Stitching()
   Rice::Data_Type<cv::Stitcher> rb_cCvStitcher = define_class_under<cv::Stitcher>(rb_mCv, "Stitcher").
     define_constructor(Constructor<cv::Stitcher>()).
     define_constant("ORIG_RESOL", cv::Stitcher::ORIG_RESOL).
+    define_singleton_function<cv::Ptr<cv::Stitcher>(*)(cv::Stitcher::Mode)>("create", &cv::Stitcher::create,
+      Arg("mode") = static_cast<cv::Stitcher::Mode>(cv::Stitcher::Mode::PANORAMA)).
     define_method<double(cv::Stitcher::*)() const>("registration_resol", &cv::Stitcher::registrationResol).
     define_method<void(cv::Stitcher::*)(double)>("set_registration_resol", &cv::Stitcher::setRegistrationResol,
       Arg("resol_mpx")).
@@ -83,9 +85,7 @@ void Init_Stitching()
     define_method<std::vector<int>(cv::Stitcher::*)() const>("component", &cv::Stitcher::component).
     define_method<std::vector<cv::detail::CameraParams>(cv::Stitcher::*)() const>("cameras", &cv::Stitcher::cameras).
     define_method<double(cv::Stitcher::*)() const>("work_scale", &cv::Stitcher::workScale).
-    define_method<cv::UMat(cv::Stitcher::*)() const>("result_mask", &cv::Stitcher::resultMask).
-    define_singleton_function<cv::Ptr<cv::Stitcher>(*)(cv::Stitcher::Mode)>("create", &cv::Stitcher::create,
-      Arg("mode") = static_cast<cv::Stitcher::Mode>(cv::Stitcher::Mode::PANORAMA));
+    define_method<cv::UMat(cv::Stitcher::*)() const>("result_mask", &cv::Stitcher::resultMask);
 
   Enum<cv::Stitcher::Status> rb_cCvStitcherStatus = define_enum_under<cv::Stitcher::Status>("Status", rb_cCvStitcher).
     define_value("OK", cv::Stitcher::Status::OK).

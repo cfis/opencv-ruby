@@ -225,6 +225,7 @@
 #include "refinements/base-rb.hpp"
 #include "refinements/core-rb.hpp"
 #include "refinements/cuda-rb.hpp"
+#include "refinements/dnn-rb.hpp"
 #include "refinements/hal-rb.hpp"
 #include "refinements/mat-rb.hpp"
 #include "refinements/matx-rb.hpp"
@@ -323,6 +324,9 @@ void Init_opencv_ruby()
     // DNN Utils
     //Init_Dnn_Utils_DebugUtils();
     //Init_Dnn_Utils_InferenceEngine();
+
+    // DNN Refinements
+    Init_Dnn_Refinements();
 
     // Flann
     Init_Flann_Allocator();

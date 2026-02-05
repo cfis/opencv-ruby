@@ -658,7 +658,7 @@ void Init_Core()
     define_constructor(Constructor<cv::ParamType<cv::Mat>>()).
     define_constant("Type", cv::ParamType<cv::Mat>::type);
 
-  Rice::Data_Type<cv::ParamType<std::vector<cv::Mat>>> rb_cCvParamTypeStdVectorMat = define_class_under<cv::ParamType<std::vector<cv::Mat>>>(rb_mCv, "VectorMat").
+  Rice::Data_Type<cv::ParamType<std::vector<cv::Mat>>> rb_cCvParamTypeStdVectorMat = define_class_under<cv::ParamType<std::vector<cv::Mat>>>(rb_mCv, "ParamTypeStdVectorMat").
     define_constructor(Constructor<cv::ParamType<std::vector<cv::Mat>>>()).
     define_constant("Type", cv::ParamType<std::vector<cv::Mat>>::type);
 

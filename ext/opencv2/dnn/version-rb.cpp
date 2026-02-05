@@ -1,3 +1,4 @@
+#define CV_DNN_DONT_ADD_INLINE_NS // Manual - must be before includes
 #include <opencv2/dnn/version.hpp>
 #include "version-rb.hpp"
 
@@ -11,5 +12,4 @@ void Init_Dnn_Version()
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
-  Module rb_mCvDnnDnn4V20241223 = define_module_under(rb_mCvDnn, "Dnn4V20241223");
 }

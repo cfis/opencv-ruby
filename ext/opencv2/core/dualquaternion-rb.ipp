@@ -16,10 +16,11 @@ inline Rice::Data_Type<cv::DualQuat<_Tp>> DualQuat_instantiate(Rice::Module pare
     define_attr("x_", &cv::DualQuat<_Tp>::x_).
     define_attr("y_", &cv::DualQuat<_Tp>::y_).
     define_attr("z_", &cv::DualQuat<_Tp>::z_).
-    template define_singleton_function<cv::DualQuat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&)>("create_from_quat", &cv::DualQuat<_Tp>::createFromQuat,
-      Arg("real_part"), Arg("dual_part")).
-    template define_singleton_function<cv::DualQuat<_Tp>(*)(const _Tp, const cv::Vec<_Tp, 3>&, const cv::Vec<_Tp, 3>&)>("create_from_angle_axis_trans", &cv::DualQuat<_Tp>::createFromAngleAxisTrans,
-      Arg("angle"), Arg("axis"), Arg("translation")).
+    // Commented out - causes linker errors (no explicit template instantiation in OpenCV)
+    // template define_singleton_function<cv::DualQuat<_Tp>(*)(const cv::Quat<_Tp>&, const cv::Quat<_Tp>&)>("create_from_quat", &cv::DualQuat<_Tp>::createFromQuat,
+    //   Arg("real_part"), Arg("dual_part")).
+    // template define_singleton_function<cv::DualQuat<_Tp>(*)(const _Tp, const cv::Vec<_Tp, 3>&, const cv::Vec<_Tp, 3>&)>("create_from_angle_axis_trans", &cv::DualQuat<_Tp>::createFromAngleAxisTrans,
+    //   Arg("angle"), Arg("axis"), Arg("translation")).
     template define_singleton_function<cv::DualQuat<_Tp>(*)(cv::InputArray)>("create_from_mat", &cv::DualQuat<_Tp>::createFromMat,
       Arg("_r")).
     template define_singleton_function<cv::DualQuat<_Tp>(*)(const cv::Affine3<_Tp>&)>("create_from_affine3", &cv::DualQuat<_Tp>::createFromAffine3,
@@ -68,19 +69,21 @@ inline Rice::Data_Type<cv::DualQuat<_Tp>> DualQuat_instantiate(Rice::Module pare
       Arg("arg_0")).
     template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_plus", &cv::DualQuat<_Tp>::operator+=,
       Arg("arg_0")).
-    template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
-      Arg("arg_0")).
-    template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
-      Arg("s")).
-    template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&) const>("*", &cv::DualQuat<_Tp>::operator*,
-      Arg("arg_0")).
+    // Commented out - causes linker errors (no explicit template instantiation in OpenCV)
+    // template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
+    //   Arg("arg_0")).
+    // template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_multiply", &cv::DualQuat<_Tp>::operator*=,
+    //   Arg("s")).
+    // template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&) const>("*", &cv::DualQuat<_Tp>::operator*,
+    //   Arg("arg_0")).
     template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const _Tp) const>("/", &cv::DualQuat<_Tp>::operator/,
       Arg("s")).
     template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&) const>("/", &cv::DualQuat<_Tp>::operator/,
-      Arg("arg_0")).
-    template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
-      Arg("arg_0")).
-    template define_method<cv::Quat<_Tp>&(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
-      Arg("s"));
+      Arg("arg_0"));
+    // Commented out - causes linker errors (no explicit template instantiation in OpenCV)
+    // template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
+    //   Arg("arg_0")).
+    // template define_method<cv::Quat<_Tp>&(cv::DualQuat<_Tp>::*)(const _Tp)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
+    //   Arg("s"));
 }
 

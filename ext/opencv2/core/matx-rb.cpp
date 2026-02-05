@@ -1,3 +1,4 @@
+#include <opencv2/core.hpp> // Manual
 #include <opencv2/core/matx.hpp>
 #include "matx-rb.hpp"
 
@@ -108,46 +109,46 @@ void Init_Core_Matx()
 
   Rice::Data_Type<cv::Matx<double, 6, 6>> rb_cMatx66d = Matx_instantiate<double, 6, 6>(rb_mCv, "Matx66d");
 
-  Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatxUnsignedChar21 = Matx_instantiate<unsigned char, 2, 1>(rb_mCv, "MatxUnsignedChar21");
+  Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatx21b = Matx_instantiate<unsigned char, 2, 1>(rb_mCv, "Matx21b"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<uchar, 2>> rb_cVec2b = Vec_instantiate<unsigned char, 2>(rb_mCv, "Vec2b");
 
-  Rice::Data_Type<cv::Matx<unsigned char, 3, 1>> rb_cMatxUnsignedChar31 = Matx_instantiate<unsigned char, 3, 1>(rb_mCv, "MatxUnsignedChar31");
+  Rice::Data_Type<cv::Matx<unsigned char, 3, 1>> rb_cMatx31b = Matx_instantiate<unsigned char, 3, 1>(rb_mCv, "Matx31b"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<uchar, 3>> rb_cVec3b = Vec_instantiate<unsigned char, 3>(rb_mCv, "Vec3b");
 
-  Rice::Data_Type<cv::Matx<unsigned char, 4, 1>> rb_cMatxUnsignedChar41 = Matx_instantiate<unsigned char, 4, 1>(rb_mCv, "MatxUnsignedChar41");
+  Rice::Data_Type<cv::Matx<unsigned char, 4, 1>> rb_cMatx41b = Matx_instantiate<unsigned char, 4, 1>(rb_mCv, "Matx41b"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<uchar, 4>> rb_cVec4b = Vec_instantiate<unsigned char, 4>(rb_mCv, "Vec4b");
 
-  Rice::Data_Type<cv::Matx<short, 2, 1>> rb_cMatxShort21 = Matx_instantiate<short, 2, 1>(rb_mCv, "MatxShort21");
+  Rice::Data_Type<cv::Matx<short, 2, 1>> rb_cMatx21s = Matx_instantiate<short, 2, 1>(rb_mCv, "Matx21s"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<short, 2>> rb_cVec2s = Vec_instantiate<short, 2>(rb_mCv, "Vec2s");
 
-  Rice::Data_Type<cv::Matx<short, 3, 1>> rb_cMatxShort31 = Matx_instantiate<short, 3, 1>(rb_mCv, "MatxShort31");
+  Rice::Data_Type<cv::Matx<short, 3, 1>> rb_cMatx31s = Matx_instantiate<short, 3, 1>(rb_mCv, "Matx31s"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<short, 3>> rb_cVec3s = Vec_instantiate<short, 3>(rb_mCv, "Vec3s");
 
-  Rice::Data_Type<cv::Matx<short, 4, 1>> rb_cMatxShort41 = Matx_instantiate<short, 4, 1>(rb_mCv, "MatxShort41");
+  Rice::Data_Type<cv::Matx<short, 4, 1>> rb_cMatx41s = Matx_instantiate<short, 4, 1>(rb_mCv, "Matx41s"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<short, 4>> rb_cVec4s = Vec_instantiate<short, 4>(rb_mCv, "Vec4s");
 
-  Rice::Data_Type<cv::Matx<unsigned short, 2, 1>> rb_cMatxUnsignedShort21 = Matx_instantiate<unsigned short, 2, 1>(rb_mCv, "MatxUnsignedShort21");
+  Rice::Data_Type<cv::Matx<unsigned short, 2, 1>> rb_cMatx21w = Matx_instantiate<unsigned short, 2, 1>(rb_mCv, "Matx21w"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<ushort, 2>> rb_cVec2w = Vec_instantiate<unsigned short, 2>(rb_mCv, "Vec2w");
 
-  Rice::Data_Type<cv::Matx<unsigned short, 3, 1>> rb_cMatxUnsignedShort31 = Matx_instantiate<unsigned short, 3, 1>(rb_mCv, "MatxUnsignedShort31");
+  Rice::Data_Type<cv::Matx<unsigned short, 3, 1>> rb_cMatx31w = Matx_instantiate<unsigned short, 3, 1>(rb_mCv, "Matx31w"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<ushort, 3>> rb_cVec3w = Vec_instantiate<unsigned short, 3>(rb_mCv, "Vec3w");
 
-  Rice::Data_Type<cv::Matx<unsigned short, 4, 1>> rb_cMatxUnsignedShort41 = Matx_instantiate<unsigned short, 4, 1>(rb_mCv, "MatxUnsignedShort41");
+  Rice::Data_Type<cv::Matx<unsigned short, 4, 1>> rb_cMatx41w = Matx_instantiate<unsigned short, 4, 1>(rb_mCv, "Matx41w"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<ushort, 4>> rb_cVec4w = Vec_instantiate<unsigned short, 4>(rb_mCv, "Vec4w");
 
-  Rice::Data_Type<cv::Matx<int, 2, 1>> rb_cMatxInt21 = Matx_instantiate<int, 2, 1>(rb_mCv, "MatxInt21");
+  Rice::Data_Type<cv::Matx<int, 2, 1>> rb_cMatx21i = Matx_instantiate<int, 2, 1>(rb_mCv, "Matx21i"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<int, 2>> rb_cVec2i = Vec_instantiate<int, 2>(rb_mCv, "Vec2i");
 
-  Rice::Data_Type<cv::Matx<int, 3, 1>> rb_cMatxInt31 = Matx_instantiate<int, 3, 1>(rb_mCv, "MatxInt31");
+  Rice::Data_Type<cv::Matx<int, 3, 1>> rb_cMatx31i = Matx_instantiate<int, 3, 1>(rb_mCv, "Matx31i"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<int, 3>> rb_cVec3i = Vec_instantiate<int, 3>(rb_mCv, "Vec3i");
 
-  Rice::Data_Type<cv::Matx<int, 4, 1>> rb_cMatxInt41 = Matx_instantiate<int, 4, 1>(rb_mCv, "MatxInt41");
+  Rice::Data_Type<cv::Matx<int, 4, 1>> rb_cMatx41i = Matx_instantiate<int, 4, 1>(rb_mCv, "Matx41i"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<int, 4>> rb_cVec4i = Vec_instantiate<int, 4>(rb_mCv, "Vec4i");
 
-  Rice::Data_Type<cv::Matx<int, 6, 1>> rb_cMatxInt61 = Matx_instantiate<int, 6, 1>(rb_mCv, "MatxInt61");
+  Rice::Data_Type<cv::Matx<int, 6, 1>> rb_cMatx61i = Matx_instantiate<int, 6, 1>(rb_mCv, "Matx61i"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<int, 6>> rb_cVec6i = Vec_instantiate<int, 6>(rb_mCv, "Vec6i");
 
-  Rice::Data_Type<cv::Matx<int, 8, 1>> rb_cMatxInt81 = Matx_instantiate<int, 8, 1>(rb_mCv, "MatxInt81");
+  Rice::Data_Type<cv::Matx<int, 8, 1>> rb_cMatx81i = Matx_instantiate<int, 8, 1>(rb_mCv, "Matx81i"); // Manual - renamed to OpenCV convention
   Rice::Data_Type<cv::Vec<int, 8>> rb_cVec8i = Vec_instantiate<int, 8>(rb_mCv, "Vec8i");
 
   Rice::Data_Type<cv::Vec<float, 2>> rb_cVec2f = Vec_instantiate<float, 2>(rb_mCv, "Vec2f");

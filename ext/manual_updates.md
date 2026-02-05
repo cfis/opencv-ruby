@@ -85,13 +85,20 @@ Change `"call"` to `"[]"` for `operator()` methods that provide element or ROI a
 
 ### `opencv2/core/mat-rb.ipp`
 
-**Mat_** template (~line 81-88) - ROI access methods:
+**Mat_** template (~line 100-108) - ROI access methods:
 - `operator()(const cv::Range&, const cv::Range&)`
 - `operator()(const cv::Rect&)`
 - `operator()(const cv::Range*)`
 - `operator()(const std::vector<cv::Range>&)`
 
-**SparseMat_** template (~line 174-181) - element access methods:
+**Mat_** template (~line 114-133) - element access methods:
+- `operator()(const int*)` - N-D access
+- `operator()(int)` - 1D access
+- `operator()(int, int)` - 2D access (row, col)
+- `operator()(int, int, int)` - 3D access
+- `operator()(cv::Point)` - Point access
+
+**SparseMat_** template (~line 177-184) - element access methods:
 - `operator()(int, size_t*)` - 1D access with hashval
 - `operator()(int, int, size_t*)` - 2D access with hashval
 - `operator()(int, int, int, size_t*)` - 3D access with hashval

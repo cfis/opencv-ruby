@@ -85,6 +85,9 @@ inline void Point__Refinements()
       stream << "<" << Data_Type<cv::Point_<_Tp>>::klass().name() << ": " << self << ">";
       return stream.str();
     });
+
+  // Alias inside to inside? (Ruby predicate convention)
+  rb_define_alias(Data_Type<cv::Point_<_Tp>>::klass(), "inside?", "inside");
 }
 
 template<typename _Tp>
@@ -344,12 +347,6 @@ void Init_Core_Types_Refinements()
   Size__Refinements<short>();
   Size__instantiate<unsigned short>(rb_mCv, "Size2w");
   Size__Refinements<unsigned short>();
-
-  // Define some aliases
-  rb_define_const(rb_mCv, "Point2i", Data_Type<cv::Point_<int>>::klass());
-  rb_define_const(rb_mCv, "Point3i", Data_Type<cv::Point3_<int>>::klass());
-  rb_define_const(rb_mCv, "Size2i", Data_Type<cv::Size_<int>>::klass());
-  rb_define_const(rb_mCv, "Rect2i", Data_Type<cv::Rect_<int>>::klass());
 
   // Define point vectors
   define_vector<cv::Point>(u8"Vector≺Cv꞉꞉Point≻");

@@ -1,3 +1,5 @@
+#include <opencv2/core/base.hpp> // Manual
+#include <opencv2/flann/defines.h> // Manual
 #include <opencv2/flann/flann_base.hpp>
 #include "flann_base-rb.hpp"
 

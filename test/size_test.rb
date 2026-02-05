@@ -124,10 +124,10 @@ class SizeTest < OpenCVTestCase
 
   def test_to_s
     size = Cv::Size.new(10, 20)
-    assert_equal('<Cv::Size:10x20>', size.to_s)
+    assert_equal('<Cv::Size2i:10x20>', size.to_s)
 
     size = Cv::Size2i.new(10, 20)
-    assert_equal('<Cv::Size:10x20>', size.to_s)
+    assert_equal('<Cv::Size2i:10x20>', size.to_s)
 
     size = Cv::Size2l.new(10, 20)
     assert_equal('<Cv::Size2l:10x20>', size.to_s)

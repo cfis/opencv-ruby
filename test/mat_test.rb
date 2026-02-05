@@ -1262,7 +1262,7 @@ class MatTest < OpenCVTestCase
       1, 2, 3;
       4, 5, 6
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
 
     formatted = Cv.format(mat.input_array, Cv::Formatter::FormatType::FMT_CSV)
     expected = <<~EOS.chomp
@@ -1270,28 +1270,28 @@ class MatTest < OpenCVTestCase
       4, 5, 6
 
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
 
     formatted = Cv.format(mat.input_array, Cv::Formatter::FormatType::FMT_PYTHON)
     expected = <<~EOS.chomp
       [[1, 2, 3],
        [4, 5, 6]]
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
 
     formatted = Cv.format(mat.input_array, Cv::Formatter::FormatType::FMT_NUMPY)
     expected = <<~EOS.chomp
       array([[1, 2, 3],
              [4, 5, 6]], dtype='int32')
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
 
     formatted = Cv.format(mat.input_array, Cv::Formatter::FormatType::FMT_C)
     expected = <<~EOS.chomp
       {1, 2, 3,
        4, 5, 6}
     EOS
-    assert_equal(expected, formatted.to_s)
+    assert_equal(expected, formatted.get.to_s)
   end
 
   def test_to_s

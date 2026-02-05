@@ -3,6 +3,13 @@ require File.join(__dir__, 'helper')
 require 'tmpdir'
 
 class ImageCodesTest < OpenCVTestCase
+  def teardown
+    # Try to clean up ImageCollection temp files (may fail on Windows if still locked)
+    GC.start
+    FileUtils.rm_f(File.join(Dir.tmpdir, "opencv_ruby_test_multipage.tiff"))
+    FileUtils.rm_f(File.join(Dir.tmpdir, "opencv_ruby_test_multipage_enum.tiff"))
+  end
+
   def test_read
     image_path = self.sample_path("starry_night.jpg")
     image = Cv::imread(image_path, Cv::ImreadModes::IMREAD_COLOR)
@@ -307,74 +314,70 @@ class ImageCodesTest < OpenCVTestCase
   end
 
   def test_image_collection_multipage
-    Dir.mktmpdir do |dir|
-      # Create 3 different colored images
-      images = Std::Vector≺cv꞉꞉Mat≻.new
-      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(255, 0, 0))    # Blue
-      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 255, 0))    # Green
-      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 0, 255))    # Red
-      images_array = Cv::InputArray.new(images)
+    # Use fixed path - teardown handles cleanup after GC releases file handle
+    multipage_path = File.join(Dir.tmpdir, "opencv_ruby_test_multipage.tiff")
 
-      # Write as multi-page TIFF
-      multipage_path = File.join(dir, "multipage.tiff")
-      result = Cv::imwritemulti(multipage_path, images_array)
-      assert(result, "Failed to write multi-page TIFF")
+    # Create 3 different colored images
+    images = Std::Vector≺cv꞉꞉Mat≻.new
+    images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(255, 0, 0))    # Blue
+    images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 255, 0))    # Green
+    images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(0, 0, 255))    # Red
+    images_array = Cv::InputArray.new(images)
 
-      # Read with ImageCollection
-      collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
-      assert_equal(3, collection.size)
+    # Write as multi-page TIFF
+    result = Cv::imwritemulti(multipage_path, images_array)
+    assert(result, "Failed to write multi-page TIFF")
 
-      # Iterate and verify each page
-      colors = []
-      collection.each do |mat|
-        refute(mat.empty?)
-        assert_equal(100, mat.rows)
-        assert_equal(100, mat.cols)
-        # Get center pixel color
-        pixel = mat[50, 50]
-        colors << [pixel[0], pixel[1], pixel[2]]
-      end
+    # Read with ImageCollection
+    collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
+    assert_equal(3, collection.size)
 
-      assert_equal(3, colors.size)
-      # Verify colors (BGR order)
-      assert_equal([255, 0, 0], colors[0])  # Blue
-      assert_equal([0, 255, 0], colors[1])  # Green
-      assert_equal([0, 0, 255], colors[2])  # Red
+    # Iterate and verify each page
+    colors = []
+    collection.each do |mat|
+      refute(mat.empty?)
+      assert_equal(100, mat.rows)
+      assert_equal(100, mat.cols)
+      # Get center pixel color
+      pixel = mat[50, 50]
+      colors << [pixel[0], pixel[1], pixel[2]]
     end
+
+    assert_equal(3, colors.size)
+    # Verify colors (BGR order)
+    assert_equal([255, 0, 0], colors[0])  # Blue
+    assert_equal([0, 255, 0], colors[1])  # Green
+    assert_equal([0, 0, 255], colors[2])  # Red
   end
 
   def test_image_collection_multipage_enumerable
-    Dir.mktmpdir do |dir|
-      # Create 4 images of different sizes
-      images = Std::Vector≺cv꞉꞉Mat≻.new
-      images << Cv::Mat.new(50, 50, CV_8UC3, Cv::Scalar.new(100, 100, 100))
-      images << Cv::Mat.new(75, 75, CV_8UC3, Cv::Scalar.new(150, 150, 150))
-      images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(200, 200, 200))
-      images << Cv::Mat.new(125, 125, CV_8UC3, Cv::Scalar.new(250, 250, 250))
-      
-      images_array = Cv::InputArray.new(images)
+    # Use fixed path - teardown handles cleanup after GC releases file handle
+    multipage_path = File.join(Dir.tmpdir, "opencv_ruby_test_multipage_enum.tiff")
 
-      multipage_path = File.join(dir, "multipage_sizes.tiff")
-      Cv::imwritemulti(multipage_path, images_array)
+    # Create 4 images of different sizes
+    images = Std::Vector≺cv꞉꞉Mat≻.new
+    images << Cv::Mat.new(50, 50, CV_8UC3, Cv::Scalar.new(100, 100, 100))
+    images << Cv::Mat.new(75, 75, CV_8UC3, Cv::Scalar.new(150, 150, 150))
+    images << Cv::Mat.new(100, 100, CV_8UC3, Cv::Scalar.new(200, 200, 200))
+    images << Cv::Mat.new(125, 125, CV_8UC3, Cv::Scalar.new(250, 250, 250))
 
-      collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
+    images_array = Cv::InputArray.new(images)
 
-      # Test Enumerable methods
-      sizes = collection.map { |mat| mat.rows }
-      assert_equal([50, 75, 100, 125], sizes)
+    Cv::imwritemulti(multipage_path, images_array)
 
-      # Test count
-      assert_equal(4, collection.count)
+    collection = Cv::ImageCollection.new(multipage_path, Cv::ImreadModes::IMREAD_COLOR)
 
-      # Test first/last via to_a
-      all_mats = collection.to_a
-      assert_equal(50, all_mats.first.rows)
-      assert_equal(125, all_mats.last.rows)
-      
-      # Try to release the file
-      collection = nil
-      GC.start
-    end
+    # Test Enumerable methods
+    sizes = collection.map { |mat| mat.rows }
+    assert_equal([50, 75, 100, 125], sizes)
+
+    # Test count
+    assert_equal(4, collection.count)
+
+    # Test first/last via to_a
+    all_mats = collection.to_a
+    assert_equal(50, all_mats.first.rows)
+    assert_equal(125, all_mats.last.rows)
   end
 
   def test_image_collection_size

@@ -224,7 +224,9 @@
 // Refinements - manual additions to generated classes
 #include "refinements/base-rb.hpp"
 #include "refinements/core-rb.hpp"
+#ifdef OpenCV_HAS_CUDA
 #include "refinements/cuda-rb.hpp"
+#endif
 #include "refinements/dnn-rb.hpp"
 #include "refinements/hal-rb.hpp"
 #include "refinements/mat-rb.hpp"
@@ -305,7 +307,9 @@ void Init_opencv_ruby()
     // Core Refinements
     Init_Core_Refinements();
     Init_Core_Base_Refinements();
+#ifdef OpenCV_HAS_CUDA
     Init_Core_Cuda_Refinements();
+#endif
     Init_Core_Mat_Refinements();
     Init_Core_Matx_Refinements();
     Init_Core_Persistence_Refinements();

@@ -1,6 +1,7 @@
 nav:
   - index.md
   - AbsLayer.md
+  - Accessor
   - AccumLayer.md
   - AcosLayer.md
   - AcoshLayer.md
@@ -40,8 +41,11 @@ nav:
   - DeconvolutionLayer.md
   - DepthToSpaceLayer.md
   - DequantizeLayer.md
+  - Details
   - DetectionModel.md
   - DetectionOutputLayer.md
+  - Dict.md
+  - DictValue.md
   - Dnn4V20241223
   - ELULayer.md
   - EinsumLayer.md
@@ -80,8 +84,10 @@ nav:
   - MatMulLayer.md
   - MaxUnpoolLayer.md
   - MishLayer.md
+  - Model
   - Model.md
   - NaryEltwiseLayer.md
+  - Net
   - Net.md
   - NormalizeBBoxLayer.md
   - NotLayer.md

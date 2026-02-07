@@ -2,9 +2,9 @@
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a9b5f1214a43144122b158c354a93e338)()
 
-[initialize](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a9b5f1214a43144122b158c354a93e338)(m: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html))
-
 [initialize](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a9b5f1214a43144122b158c354a93e338)(dims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), _sizes: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), _type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+
+[initialize](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a9b5f1214a43144122b158c354a93e338)(m: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html))
 
 
 ## Attributes
@@ -15,6 +15,10 @@
 
 ## Methods
 [addref](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a8d1d03d3c19ccd8cd5653b3b7375bb68) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+[assign](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a0ddfb53cd5f03f1b262d0f3c7b951f6d)(m: [Cv::SparseMat](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html)) -> [Cv::SparseMat](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html)
+
+[assign](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#a0ddfb53cd5f03f1b262d0f3c7b951f6d)(m: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)) -> [Cv::SparseMat](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html)
 
 [assign_to](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ae102ac11f15a875d9b689575d585d21f)(m: [Cv::SparseMat](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -66,9 +70,9 @@
 
 [nzcount](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ad0cd6ef01802341dda3e8b75af5933f0) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[ptr](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ab02def057f311c51c22d7310b54c8f99)(idx: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), create_missing: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html), hashval: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
-
 [ptr](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ab02def057f311c51c22d7310b54c8f99)(i0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), create_missing: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html), hashval: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
+
+[ptr](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ab02def057f311c51c22d7310b54c8f99)(idx: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), create_missing: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html), hashval: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
 [ptr](https://docs.opencv.org/4.x/dd/da9/classcv_1_1SparseMat.html#ab02def057f311c51c22d7310b54c8f99)(i0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), i1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), create_missing: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html), hashval: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 

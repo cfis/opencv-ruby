@@ -6,9 +6,9 @@
 
 
 ## Methods
-[\[\]](https://ruby-rice.github.io/4.x/ruby_api/buffer)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[\[\]](https://ruby-rice.github.io/4.x/ruby_api/buffer)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
-[\[\]=](https://ruby-rice.github.io/4.x/ruby_api/buffer)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://ruby-rice.github.io/4.x/ruby_api/buffer)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [bytes](https://ruby-rice.github.io/4.x/ruby_api/buffer) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

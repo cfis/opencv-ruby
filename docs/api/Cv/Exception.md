@@ -24,6 +24,6 @@ _dump_data -> [Hash](https://docs.ruby-lang.org/en/master/Hash.html)
 
 [format_message](https://docs.opencv.org/4.x/d1/dee/classcv_1_1Exception.html#afe6c2198ca3815de5385fd93f81f2c34) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-message -> [String](https://docs.ruby-lang.org/en/master/String.html)
+[what](https://docs.opencv.org/4.x/d1/dee/classcv_1_1Exception.html#a8afb38e57baf8b262ea6bc6697d7e2fd) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 

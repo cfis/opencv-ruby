@@ -13,3 +13,4 @@
 * [IMREAD_REDUCED_GRAYSCALE_8](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga61d9b0126a3e57d9277ac48327799c80a838097893b5d5385d43e6a4470227a33)
 * [IMREAD_REDUCED_COLOR_8](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga61d9b0126a3e57d9277ac48327799c80ac865811dba56b17a8241f9e62c273198)
 * [IMREAD_IGNORE_ORIENTATION](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga61d9b0126a3e57d9277ac48327799c80a34f91a514cd95127d8ba900840af548e)
+* [IMREAD_COLOR_RGB](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga61d9b0126a3e57d9277ac48327799c80a18afb429fb71972a327314b2f0d8d56a)

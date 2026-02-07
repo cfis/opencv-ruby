@@ -2,11 +2,11 @@
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)()
 
-[initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)(pt: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html))
-
-[initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)(v: [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
+[initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)(pt: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html))
 
 [initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)(_x: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), _y: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), _z: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+
+[initialize](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a9e4715523bb9b888741fd72d2b21b003)(v: [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
 
 
 ## Attributes
@@ -20,37 +20,23 @@
 ## Methods
 !=(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-!=(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
-
-\*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
 \*(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 \*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 \+(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
-\+(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
 \-(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
-\-(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
-/(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
-/(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 /(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
-/(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
+/(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 ==(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-==(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[assign](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a8579099825c77c922f39a1dd1ccff99b)(pt: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
-assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
-assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
+[assign](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html#a8579099825c77c922f39a1dd1ccff99b)(pt: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
@@ -58,13 +44,9 @@ assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -
 
 assign_minus(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
-assign_minus(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
 assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
-
-assign_plus(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 
 assign_plus(arg_0: [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)) -> [Cv::Point3i](https://docs.opencv.org/4.x/df/d6c/classcv_1_1Point3__.html)
 

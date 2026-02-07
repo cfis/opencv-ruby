@@ -8,7 +8,11 @@ initialize(x: [String](https://docs.ruby-lang.org/en/master/String.html))
 ## Methods
 assign(x: Cvflann::Any) -> Cvflann::Any
 
-compatible?(x: Cvflann::Any) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+assign(x: Cvflann::Any) -> Cvflann::Any
+
+assign(x: [String](https://docs.ruby-lang.org/en/master/String.html)) -> Cvflann::Any
+
+compatible(x: Cvflann::Any) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 empty? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 

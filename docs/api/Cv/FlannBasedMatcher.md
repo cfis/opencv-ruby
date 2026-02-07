@@ -16,10 +16,10 @@
 
 [mask_supported?](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#a614976020b9ef7ecfc419b23e122206d) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[read](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#a54caa24612b5b6840c2df65b924a557a)(: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[read](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#a54caa24612b5b6840c2df65b924a557a)(arg_0: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [train](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#a4fc9f506ff3185caa168b937c4e71080) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[write](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#af612c5c0956c84b96886214850d3a0bc)(: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[write](https://docs.opencv.org/4.x/dc/de2/classcv_1_1FlannBasedMatcher.html#af612c5c0956c84b96886214850d3a0bc)(arg_0: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 

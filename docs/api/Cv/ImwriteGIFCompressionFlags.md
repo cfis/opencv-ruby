@@ -1,0 +1,10 @@
+#[ImwriteGIFCompressionFlags Enum](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#ga7a81dd6c2445d1716fc400ae2d9acaec)
+## Values
+* [IMWRITE_GIF_FAST_NO_DITHER](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaecafb2a7d3516397acd0010e6cdb2d767ed)
+* [IMWRITE_GIF_FAST_FLOYD_DITHER](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaecaa316b30319cdb96f763fa8765f1ce5e5)
+* [IMWRITE_GIF_COLORTABLE_SIZE_8](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaecad7e21c9608bcd8d45ed994808eb2b7dc)
+* [IMWRITE_GIF_COLORTABLE_SIZE_16](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaeca52eaf7d3ad8357931516db3baa60b0df)
+* [IMWRITE_GIF_COLORTABLE_SIZE_32](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaeca0f1ab59d270b07fdf20e8744ab3a06f7)
+* [IMWRITE_GIF_COLORTABLE_SIZE_64](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaeca3c07ad694af9367f5acdcbc3a1d7c379)
+* [IMWRITE_GIF_COLORTABLE_SIZE_128](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaeca08a773aeca0a47831ae3b06019b9d9fb)
+* [IMWRITE_GIF_COLORTABLE_SIZE_256](https://docs.opencv.org/4.x/d8/d6a/group__imgcodecs__flags.html#gga7a81dd6c2445d1716fc400ae2d9acaeca6dfaa4e25ccc22df3f6d443014cb38e0)

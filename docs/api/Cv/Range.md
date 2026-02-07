@@ -16,17 +16,19 @@
 
 
 ## Methods
+\! -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
 !=(arg_0: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 &(arg_0: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)
-
-&=(arg_0: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)
 
 \+(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)
 
 \-(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)
 
 ==(arg_0: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+assign_and(arg_0: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)
 
 [empty?](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html#af17854e9243042f39ae1c7a5ef5f7600) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 

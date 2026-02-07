@@ -10,6 +10,8 @@
 ## Methods
 [query_if_complete?](https://docs.opencv.org/4.x/d5/d38/classcv_1_1cuda_1_1Event.html#aa4cff2204d3bd883376e87885d7b8287) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
+[record](https://docs.opencv.org/4.x/d5/d38/classcv_1_1cuda_1_1Event.html#a81021ecb82ef875935c20f74f053d5c3)(stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
 [wait_for_completion](https://docs.opencv.org/4.x/d5/d38/classcv_1_1cuda_1_1Event.html#aa57a4f5827c54710436c895c1346ce0d) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 

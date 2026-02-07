@@ -20,11 +20,11 @@
 
 [assign](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#aaac8ab2e1ae25024978e08815c1ba182)(it: [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)) -> [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)
 
-[equal_to?](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#a693c0472549f95a40cb7ea13a602db53)(it: [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[equal_to](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#a693c0472549f95a40cb7ea13a602db53)(it: [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [increment](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#a04c84786f9ef334736ca51a85f4d98d9) -> [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)
 
-[increment](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#a04c84786f9ef334736ca51a85f4d98d9)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)
+increment_post(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)
 
 [initialize_copy](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html#aa048945804bcbd368db919ce3ef775e5)(it: [Cv::FileNodeIterator](https://docs.opencv.org/4.x/d7/d4e/classcv_1_1FileNodeIterator.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

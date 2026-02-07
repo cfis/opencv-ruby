@@ -12,7 +12,7 @@
 
 [get_path_to_application](https://docs.opencv.org/4.x/d0/d2e/classcv_1_1CommandLineParser.html#a19086a9bc59b7e3d943ea13b0a9fcb7e) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
-[has?](https://docs.opencv.org/4.x/d0/d2e/classcv_1_1CommandLineParser.html#a8c41cf242b2ad8c0472e3b57893ef200)(name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[has](https://docs.opencv.org/4.x/d0/d2e/classcv_1_1CommandLineParser.html#a8c41cf242b2ad8c0472e3b57893ef200)(name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [initialize_copy](https://docs.opencv.org/4.x/d0/d2e/classcv_1_1CommandLineParser.html#a614095229293b2ab780cadd41a83313a)(parser: [Cv::CommandLineParser](https://docs.opencv.org/4.x/d0/d2e/classcv_1_1CommandLineParser.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

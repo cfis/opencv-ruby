@@ -2,17 +2,25 @@ nav:
   - index.md
   - Context
   - Context.md
+  - Device
   - Device.md
   - Image2D.md
   - Internal
+  - Kernel
   - Kernel.md
   - KernelArg.md
   - OclVectorStrategy.md
+  - OpenCLExecutionContext
   - OpenCLExecutionContext.md
   - OpenCLExecutionContextScope.md
+  - Platform
   - Platform.md
+  - PlatformInfo
   - PlatformInfo.md
+  - Program
   - Program.md
+  - ProgramSource
   - ProgramSource.md
+  - Queue
   - Queue.md
   - Timer.md

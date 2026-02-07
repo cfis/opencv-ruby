@@ -64,9 +64,14 @@ nav:
   - Buffer≺cv꞉꞉detail꞉꞉CameraParams≻.md
   - Buffer≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
   - Buffer≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Buffer≺cv꞉꞉dnnObjdetect꞉꞉object≻.md
+  - Buffer≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻.md
+  - Buffer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻.md
+  - Buffer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻.md
   - Buffer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
   - Buffer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
   - Buffer≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Buffer≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻.md
   - Buffer≺double≻.md
   - Buffer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
   - Buffer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
@@ -77,6 +82,7 @@ nav:
   - Buffer≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
   - Buffer≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
   - Buffer≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Buffer≺pair≺int‚ double≻≻.md
   - Buffer≺short≻.md
   - Buffer≺signed char≻.md
   - Buffer≺string≻.md
@@ -97,6 +103,7 @@ nav:
   - Buffer≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻.md
   - Buffer≺vector≺unsigned char≻≻.md
   - Buffer≺vector≺vector≺int≻≻≻.md
+  - Buffer≺void∗≻.md
   - Buffer≺void≻.md
   - ModuleRegistry.md
   - Native.md
@@ -166,9 +173,14 @@ nav:
   - Pointer≺cv꞉꞉detail꞉꞉CameraParams≻.md
   - Pointer≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
   - Pointer≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Pointer≺cv꞉꞉dnnObjdetect꞉꞉object≻.md
+  - Pointer≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻.md
+  - Pointer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻.md
+  - Pointer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻.md
   - Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
   - Pointer≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
   - Pointer≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Pointer≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻.md
   - Pointer≺double≻.md
   - Pointer≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
   - Pointer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
@@ -179,6 +191,7 @@ nav:
   - Pointer≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
   - Pointer≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
   - Pointer≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Pointer≺pair≺int‚ double≻≻.md
   - Pointer≺short≻.md
   - Pointer≺signed char≻.md
   - Pointer≺string≻.md
@@ -199,6 +212,7 @@ nav:
   - Pointer≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻.md
   - Pointer≺vector≺unsigned char≻≻.md
   - Pointer≺vector≺vector≺int≻≻≻.md
+  - Pointer≺void∗≻.md
   - Pointer≺void≻.md
   - Reference≺Int64≻.md
   - Reference≺bool≻.md

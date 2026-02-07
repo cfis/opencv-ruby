@@ -14,9 +14,11 @@
 
 
 ## Methods
+[assign](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html#a0c3d1ec6fd7bbdfd56782ae991a4e37f)(it: [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)) -> [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)
+
 [increment](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html#a3a71293bc82385a43478772209e764bb) -> [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)
 
-[increment](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html#a3a71293bc82385a43478772209e764bb)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)
+increment_post(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)
 
 [initialize_copy](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html#af3502cb42a852646d4f8cfed6e3b3c6b)(it: [Cv::SparseMatConstIterator](https://docs.opencv.org/4.x/df/dec/classcv_1_1SparseMatConstIterator.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

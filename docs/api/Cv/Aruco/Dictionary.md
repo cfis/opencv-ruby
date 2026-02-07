@@ -24,9 +24,9 @@
 
 [get_distance_to_id](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#af49505e713e72ead5314216d0c2842d7)(bits: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), all_rotations: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[identify?](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#a82348e625eafe407794a4a757168b70d)(only_bits: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), idx: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), rotation: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), max_correction_rate: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[identify](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#a82348e625eafe407794a4a757168b70d)(only_bits: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), idx: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), rotation: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), max_correction_rate: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[read_dictionary?](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#a69ec5ae547b01be07b7ce8c437ad1db4)(fn: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[read_dictionary](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#a69ec5ae547b01be07b7ce8c437ad1db4)(fn: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [write_dictionary](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html#a2d0bfe5fab9f66d822cfdaadd1a477f2)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html), name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

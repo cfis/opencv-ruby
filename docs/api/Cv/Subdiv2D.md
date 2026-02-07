@@ -2,7 +2,7 @@
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#aed58be264a17cdbe712b6a35036d13cb)()
 
-[initialize](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#aed58be264a17cdbe712b6a35036d13cb)(rect: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
+[initialize](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#aed58be264a17cdbe712b6a35036d13cb)(rect: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
 
 
 ## Methods
@@ -24,7 +24,7 @@
 
 [get_voronoi_facet_list](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#a3a9e080423475be056a79da4c04741ea)(idx: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), facet_list: [Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html), facet_centers: [Std::Vector≺cv꞉꞉Point_≺float≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[init_delaunay](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#ae4a3d65e798c46fd6ce64370f24b0287)(rect: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[init_delaunay](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#ae4a3d65e798c46fd6ce64370f24b0287)(rect: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [insert](https://docs.opencv.org/4.x/df/dbf/classcv_1_1Subdiv2D.html#a37223a499032ef57364f1372ad0c9c2e)(ptvec: [Std::Vector≺cv꞉꞉Point_≺float≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

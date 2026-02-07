@@ -16,6 +16,8 @@ log_verbosity(level: [Integer](https://docs.ruby-lang.org/en/master/Integer.html
 
 print_params(params: [Std::Map≺string‚ cvflann꞉꞉any≻](https://en.cppreference.com/w/cpp/container/map.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
+print_params(params: [Std::Map≺string‚ cvflann꞉꞉any≻](https://en.cppreference.com/w/cpp/container/map.html), stream: [Std::OStream](https://en.cppreference.com/w/cpp/io/basic_ostream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
 rand -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 rand_double(high: [Float](https://docs.ruby-lang.org/en/master/Float.html), low: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
@@ -24,17 +26,17 @@ rand_int(high: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), low
 
 round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
-
-round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
-
-round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
-
 round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 round(x: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 

@@ -1,6 +1,7 @@
 nav:
   - index.md
   - ArucoDetector.md
+  - Board
   - Board.md
   - CharucoBoard.md
   - CharucoDetector.md
@@ -8,6 +9,8 @@ nav:
   - CornerRefineMethod.md
   - DetectorParameters.md
   - Dictionary.md
+  - EstimateParameters.md
   - GridBoard.md
+  - PatternPositionType.md
   - PredefinedDictionaryType.md
   - RefineParameters.md

@@ -1,11 +1,18 @@
 nav:
   - index.md
   - Exception.md
+  - ExceptionPtr.md
+  - Function≺void❨cv꞉꞉Range const &❩≻.md
+  - IOSBase.md
+  - Map≺int‚ double≻.md
   - Map≺string‚ cvflann꞉꞉any≻.md
+  - OStream.md
   - Pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻.md
   - Pair≺cv꞉꞉Rect_≺int≻‚ int≻.md
   - Pair≺cv꞉꞉UMat‚ unsigned char≻.md
   - Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
+  - Pair≺int const ‚ double≻.md
+  - Pair≺int‚ double≻.md
   - Pair≺int‚ float≻.md
   - Pair≺string const ‚ cvflann꞉꞉any≻.md
   - RuntimeError.md
@@ -24,6 +31,7 @@ nav:
   - SharedPtr≺cv꞉꞉CalibrateRobertson≻.md
   - SharedPtr≺cv꞉꞉ConjGradSolver≻.md
   - SharedPtr≺cv꞉꞉DISOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉DenseOpticalFlow≻.md
   - SharedPtr≺cv꞉꞉DescriptorMatcher≻.md
   - SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻.md
   - SharedPtr≺cv꞉꞉DownhillSolver≻.md
@@ -33,12 +41,15 @@ nav:
   - SharedPtr≺cv꞉꞉FastFeatureDetector≻.md
   - SharedPtr≺cv꞉꞉Feature2D≻.md
   - SharedPtr≺cv꞉꞉FileStorage≻.md
+  - SharedPtr≺cv꞉꞉FileStorage꞉꞉Impl≻.md
   - SharedPtr≺cv꞉꞉FlannBasedMatcher≻.md
   - SharedPtr≺cv꞉꞉Formatted≻.md
   - SharedPtr≺cv꞉꞉Formatter≻.md
   - SharedPtr≺cv꞉꞉GFTTDetector≻.md
   - SharedPtr≺cv꞉꞉GeneralizedHoughBallard≻.md
   - SharedPtr≺cv꞉꞉GeneralizedHoughGuil≻.md
+  - SharedPtr≺cv꞉꞉IStreamReader≻.md
+  - SharedPtr≺cv꞉꞉ImageCollection꞉꞉Impl≻.md
   - SharedPtr≺cv꞉꞉KAZE≻.md
   - SharedPtr≺cv꞉꞉LMSolver≻.md
   - SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻.md
@@ -67,6 +78,17 @@ nav:
   - SharedPtr≺cv꞉꞉TrackerVit≻.md
   - SharedPtr≺cv꞉꞉VariationalRefinement≻.md
   - SharedPtr≺cv꞉꞉WarperCreator≻.md
+  - SharedPtr≺cv꞉꞉aruco꞉꞉Board≻.md
+  - SharedPtr≺cv꞉꞉aruco꞉꞉CharucoBoard≻.md
+  - SharedPtr≺cv꞉꞉aruco꞉꞉DetectorParameters≻.md
+  - SharedPtr≺cv꞉꞉aruco꞉꞉Dictionary≻.md
+  - SharedPtr≺cv꞉꞉aruco꞉꞉EstimateParameters≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorCNT≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorGMG≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorGSOC≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorLSBP≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻.md
+  - SharedPtr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻.md
   - SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻.md
   - SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻.md
   - SharedPtr≺cv꞉꞉detail꞉꞉Blender≻.md
@@ -81,11 +103,13 @@ nav:
   - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻.md
   - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻.md
   - SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻.md
+  - SharedPtr≺cv꞉꞉dnnSuperres꞉꞉DnnSuperResImpl≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AbsLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AccumLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcosLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcoshLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayerInt8≻.md
+  - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ArgLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinhLayer≻.md
@@ -184,8 +208,21 @@ nav:
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ThresholdedReluLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TileLayer≻.md
   - SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TopKLayer≻.md
+  - SharedPtr≺cv꞉꞉dpm꞉꞉DPMDetector≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉BIF≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉FacemarkAAM≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉FacemarkKazemi≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉FacemarkLBF≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉Facemark≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉FisherFaceRecognizer≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉LBPHFaceRecognizer≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉MACE≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉PredictCollector≻.md
+  - SharedPtr≺cv꞉꞉face꞉꞉StandardCollector≻.md
   - SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻.md
   - SharedPtr≺cv꞉꞉flann꞉꞉SearchParams≻.md
+  - SharedPtr≺cv꞉꞉hfs꞉꞉HfsSegment≻.md
   - SharedPtr≺cv꞉꞉ml꞉꞉ANNMLP≻.md
   - SharedPtr≺cv꞉꞉ml꞉꞉Boost≻.md
   - SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻.md
@@ -199,9 +236,43 @@ nav:
   - SharedPtr≺cv꞉꞉ml꞉꞉SVM≻.md
   - SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻.md
   - SharedPtr≺cv꞉꞉ml꞉꞉TrainData≻.md
+  - SharedPtr≺cv꞉꞉ocl꞉꞉Context꞉꞉UserContext≻.md
+  - SharedPtr≺cv꞉꞉optflow꞉꞉DualTVL1OpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉plot꞉꞉Plot2d≻.md
+  - SharedPtr≺cv꞉꞉rapid꞉꞉OLSTracker≻.md
+  - SharedPtr≺cv꞉꞉rapid꞉꞉Rapid≻.md
+  - SharedPtr≺cv꞉꞉stereo꞉꞉StereoBinaryBM≻.md
+  - SharedPtr≺cv꞉꞉stereo꞉꞉StereoBinarySGBM≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉BroxOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉DenseOpticalFlowExt≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉FarnebackOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉FrameSource≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉PyrLKOpticalFlow≻.md
+  - SharedPtr≺cv꞉꞉superres꞉꞉SuperResolution≻.md
+  - SharedPtr≺cv꞉꞉tracking꞉꞉TrackerCSRT≻.md
+  - SharedPtr≺cv꞉꞉tracking꞉꞉TrackerKCF≻.md
   - SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉AffineFeature2D≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉BEBLID≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉BriefDescriptorExtractor≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉DAISY≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉FREAK≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉HarrisLaplaceFeatureDetector≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉LATCH≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉LUCID≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉PCTSignaturesSQFD≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉PCTSignatures≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉StarDetector≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉TBMR≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉TEBLID≻.md
+  - SharedPtr≺cv꞉꞉xfeatures2d꞉꞉VGG≻.md
+  - SharedPtr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻.md
   - SharedPtr≺float≻.md
   - SharedPtr≺void≻.md
+  - TypeIndex.md
   - TypeInfo.md
   - Vector≺Cv꞉꞉Point2l≻.md
   - Vector≺Cv꞉꞉Point3d≻.md
@@ -232,6 +303,7 @@ nav:
   - Vector≺cv꞉꞉Scalar_≺double≻≻.md
   - Vector≺cv꞉꞉Size_≺int≻≻.md
   - Vector≺cv꞉꞉UMat≻.md
+  - Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻.md
   - Vector≺cv꞉꞉Vec≺double‚ 1≻≻.md
   - Vector≺cv꞉꞉Vec≺double‚ 2≻≻.md
   - Vector≺cv꞉꞉Vec≺double‚ 3≻≻.md
@@ -262,9 +334,14 @@ nav:
   - Vector≺cv꞉꞉detail꞉꞉CameraParams≻.md
   - Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻.md
   - Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻.md
+  - Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻.md
+  - Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻.md
+  - Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻.md
+  - Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻.md
   - Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Node≻.md
   - Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻.md
   - Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻.md
+  - Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻.md
   - Vector≺double≻.md
   - Vector≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻.md
   - Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻.md
@@ -274,6 +351,7 @@ nav:
   - Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻.md
   - Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻.md
   - Vector≺pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻≻.md
+  - Vector≺pair≺int‚ double≻≻.md
   - Vector≺short≻.md
   - Vector≺string≻.md
   - Vector≺unsigned Int64≻.md

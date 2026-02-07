@@ -1,0 +1,21 @@
+nav:
+  - index.md
+  - BIF.md
+  - BasicFaceRecognizer.md
+  - CParams.md
+  - EigenFaceRecognizer.md
+  - FaceRecognizer.md
+  - Facemark.md
+  - FacemarkAAM
+  - FacemarkAAM.md
+  - FacemarkKazemi
+  - FacemarkKazemi.md
+  - FacemarkLBF
+  - FacemarkLBF.md
+  - FacemarkTrain.md
+  - FisherFaceRecognizer.md
+  - LBPHFaceRecognizer.md
+  - MACE.md
+  - PredictCollector.md
+  - StandardCollector
+  - StandardCollector.md

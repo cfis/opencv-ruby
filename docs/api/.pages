@@ -1,10 +1,13 @@
 nav:
+  - CUeventSt.md
+  - CUstreamSt.md
   - Callback.md
   - CpuFeatures.md
   - Cv
   - Cv16suf.md
   - Cv32suf.md
   - Cv64suf.md
+  - CvCapture.md
   - Cvflann
   - ExtObject.md
   - IDetector.md

@@ -2,29 +2,29 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Array](https://docs.ruby-lang.org/en/master/Array.html))
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
 
 
 ## Methods
-==(arg_0: [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+==(other: [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(start: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), length: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [capacity](https://en.cppreference.com/w/cpp/container/vector/capacity.html) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [data](https://en.cppreference.com/w/cpp/container/vector/data.html) -> [Rice::Pointer≺cv꞉꞉Vec≺short‚ 3≻≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
-delete(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+delete(value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 [empty?](https://en.cppreference.com/w/cpp/container/vector/empty.html) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -32,13 +32,13 @@ delete(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html
 
 [first](https://en.cppreference.com/w/cpp/container/vector/front.html) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-include?(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+include?(value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-index(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+index(value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(other: [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
 [last](https://en.cppreference.com/w/cpp/container/vector/back.html) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
@@ -46,11 +46,11 @@ index(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 [pop](https://en.cppreference.com/w/cpp/container/vector/pop_back.html) -> [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(arg_0: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(value: [Cv::Vec3s](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)) -> [Std::Vector≺cv꞉꞉Vec≺short‚ 3≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(new_cap: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [shrink_to_fit](https://en.cppreference.com/w/cpp/container/vector/shrink_to_fit.html) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

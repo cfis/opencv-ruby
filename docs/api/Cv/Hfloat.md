@@ -6,6 +6,6 @@
 
 
 ## Methods
-[to_float](https://docs.opencv.org/4.x/d4/d45/classcv_1_1hfloat.html#a22b61fa5d335bdf43906ace5de6474c3) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+to_f32 -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
 

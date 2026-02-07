@@ -6,15 +6,15 @@ initialize(o: [Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻]
 
 initialize(o: [Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻](https://en.cppreference.com/w/cpp/memory/shared_ptr.html))
 
-initialize(ptr: [IDetector](https://docs.ruby-lang.org/en/master/IDetector.html))
+initialize(ptr: [Cv::DetectionBasedTracker::IDetector](https://docs.opencv.org/4.x/d8/da6/classcv_1_1DetectionBasedTracker_1_1IDetector.html))
 
-initialize(value: [IDetector](https://docs.ruby-lang.org/en/master/IDetector.html))
+initialize(value: [Cv::DetectionBasedTracker::IDetector](https://docs.opencv.org/4.x/d8/da6/classcv_1_1DetectionBasedTracker_1_1IDetector.html))
 
 
 ## Methods
 assign(o: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻
 
-get -> [IDetector](https://docs.ruby-lang.org/en/master/IDetector.html)
+get -> [Cv::DetectionBasedTracker::IDetector](https://docs.opencv.org/4.x/d8/da6/classcv_1_1DetectionBasedTracker_1_1IDetector.html)
 
 empty? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 

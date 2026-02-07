@@ -16,8 +16,8 @@
 
 [write](https://docs.opencv.org/4.x/d3/d46/classcv_1_1Algorithm.html#a763a62d1b03042eef7d7fc3ac6c87c79)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[write](https://docs.opencv.org/4.x/d3/d46/classcv_1_1Algorithm.html#a763a62d1b03042eef7d7fc3ac6c87c79)(fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
 [write](https://docs.opencv.org/4.x/d3/d46/classcv_1_1Algorithm.html#a763a62d1b03042eef7d7fc3ac6c87c79)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html), name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+[write](https://docs.opencv.org/4.x/d3/d46/classcv_1_1Algorithm.html#a763a62d1b03042eef7d7fc3ac6c87c79)(fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 

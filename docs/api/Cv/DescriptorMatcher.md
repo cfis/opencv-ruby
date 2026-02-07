@@ -32,13 +32,13 @@
 
 [read](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#abb46ea487ffa0c0f9dd72d3de9fd42ab)(file_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[read](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#abb46ea487ffa0c0f9dd72d3de9fd42ab)(: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[read](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#abb46ea487ffa0c0f9dd72d3de9fd42ab)(arg_0: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [train](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#a80e9fd98de5908f5348c17696eeb1a32) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [write](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#ac921506f2862b292b41de95546319174)(file_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[write](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#ac921506f2862b292b41de95546319174)(: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[write](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#ac921506f2862b292b41de95546319174)(arg_0: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [write](https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#ac921506f2862b292b41de95546319174)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html), name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

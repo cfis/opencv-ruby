@@ -70,4 +70,6 @@
 * [CAP_PROP_CODEC_EXTRADATA_INDEX](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704da8ad0a54b189e248160b6c365cfb32b2b)
 * [CAP_PROP_FRAME_TYPE](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704da70ca9073281c31c0e5d4213eca0757e2)
 * [CAP_PROP_N_THREADS](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704da51ce961200ba1b2a64c1860bbfb8e9d8)
+* [CAP_PROP_PTS](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704da8128d2e7c641921042bf75e9e90ccfd1)
+* [CAP_PROP_DTS_DELAY](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704dadde8b82877652db811cd23207f18a618)
 * CV__CAP_PROP_LATEST

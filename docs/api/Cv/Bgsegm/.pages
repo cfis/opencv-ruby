@@ -1,0 +1,10 @@
+nav:
+  - index.md
+  - BackgroundSubtractorCNT.md
+  - BackgroundSubtractorGMG.md
+  - BackgroundSubtractorGSOC.md
+  - BackgroundSubtractorLSBP.md
+  - BackgroundSubtractorLSBPDesc.md
+  - BackgroundSubtractorMOG.md
+  - LSBPCameraMotionCompensation.md
+  - SyntheticSequenceGenerator.md

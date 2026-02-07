@@ -2,19 +2,19 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Array](https://docs.ruby-lang.org/en/master/Array.html))
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html))
 
 
 ## Methods
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(start: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), length: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [capacity](https://en.cppreference.com/w/cpp/container/vector/capacity.html) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -22,21 +22,21 @@
 
 [data](https://en.cppreference.com/w/cpp/container/vector/data.html) -> [Rice::Pointer≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
-[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
+[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
 [empty?](https://en.cppreference.com/w/cpp/container/vector/empty.html) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [first](https://en.cppreference.com/w/cpp/container/vector/front.html) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
-include?(arg_0: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+include?(value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-index(arg_0: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+index(value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-delete(arg_0: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
+delete(value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
-[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(other: [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
 [last](https://en.cppreference.com/w/cpp/container/vector/back.html) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
@@ -44,11 +44,11 @@ delete(arg_0: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/str
 
 [pop](https://en.cppreference.com/w/cpp/container/vector/pop_back.html) -> [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)
 
-[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(arg_0: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(value: [Cv::Detail::ImageFeatures](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html)) -> [Std::Vector≺cv꞉꞉detail꞉꞉ImageFeatures≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(new_cap: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [shrink_to_fit](https://en.cppreference.com/w/cpp/container/vector/shrink_to_fit.html) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

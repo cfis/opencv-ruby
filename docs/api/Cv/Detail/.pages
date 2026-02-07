@@ -40,6 +40,7 @@ nav:
   - GraphCutSeamFinder.md
   - GraphCutSeamFinderBase
   - GraphCutSeamFinderBase.md
+  - GraphCutSeamFinderGpu.md
   - GraphEdge.md
   - HomographyBasedEstimator.md
   - ImageFeatures.md

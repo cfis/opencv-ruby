@@ -1,0 +1,9 @@
+#[DistanceFunction Enum](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9c)
+## Values
+* [L0_25](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9ca329bc6c9f8b2f66e0074b5b7d53c6c44)
+* [L0_5](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9ca6f767af8fdecce184366a58e6446f0f6)
+* [L1](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9caa4d7e3bd3f4f28c1a9460b5b0314395a)
+* [L2](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9cac9cff6959282d25cd4c9cc3008a17dcc)
+* [L2SQUARED](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9ca512d1f81e9e6f513bf7c338947a430cd)
+* [L5](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9ca9b61ece212bb491a39009290c1b47b9b)
+* [L_INFINITY](https://docs.opencv.org/4.x/d0/d74/classcv_1_1xfeatures2d_1_1PCTSignatures.html#afbfb1e721fa42ab53fe6cd733a51af9ca66115018ae41e0ef9a0bacd83fbbccfc)

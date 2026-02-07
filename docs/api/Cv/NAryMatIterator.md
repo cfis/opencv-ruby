@@ -24,7 +24,7 @@
 ## Methods
 [increment](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html#a0875e1ddb7063269fdf6230e93f063d4) -> [Cv::NAryMatIterator](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html)
 
-[increment](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html#a0875e1ddb7063269fdf6230e93f063d4)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::NAryMatIterator](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html)
+increment_post(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::NAryMatIterator](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html)
 
 [init](https://docs.opencv.org/4.x/d5/dd2/classcv_1_1NAryMatIterator.html#acbe9be31cecb11ea14fcf4b0fafe6f3d)(arrays: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), planes: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), ptrs: [Rice::Pointer≺unsigned char∗≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), narrays: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

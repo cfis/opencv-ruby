@@ -34,6 +34,8 @@ input_name_to_index(input_name: [String](https://docs.ruby-lang.org/en/master/St
 
 output_name_to_index(output_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
+set_activation(layer: Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayer≻) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
 set_params_from(params: Cv::Dnn::LayerParams) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 support_backend(backend_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)

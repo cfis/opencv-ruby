@@ -2,8 +2,12 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/error/exception.html)()
 
+[initialize](https://en.cppreference.com/w/cpp/error/exception.html)()
+
 
 ## Methods
+[message](https://en.cppreference.com/w/cpp/error/exception/what.html) -> [String](https://docs.ruby-lang.org/en/master/String.html)
+
 [message](https://en.cppreference.com/w/cpp/error/exception/what.html) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 

@@ -16,6 +16,6 @@
 
 [set_last_target_state](https://docs.opencv.org/4.x/da/dba/classcv_1_1detail_1_1tracking_1_1TrackerModel.html#aa3ed13409d319282a67e0e6eb1208455)(last_target_state: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[set_tracker_state_estimator?](https://docs.opencv.org/4.x/da/dba/classcv_1_1detail_1_1tracking_1_1TrackerModel.html#a0108d94e9b6fc6031b8cbca4472657c4)(tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[set_tracker_state_estimator](https://docs.opencv.org/4.x/da/dba/classcv_1_1detail_1_1tracking_1_1TrackerModel.html#a0108d94e9b6fc6031b8cbca4472657c4)(tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 

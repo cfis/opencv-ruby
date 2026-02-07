@@ -4,7 +4,7 @@
 
 
 ## Methods
-[generate_image](https://docs.opencv.org/4.x/d4/db2/classcv_1_1aruco_1_1Board.html#a25b6823cad11256f1043bfd0e51b7c14)(out_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), img: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), margin_size: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), border_bits: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[generate_image](https://docs.opencv.org/4.x/d4/db2/classcv_1_1aruco_1_1Board.html#a25b6823cad11256f1043bfd0e51b7c14)(out_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), img: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), margin_size: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), border_bits: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [get_dictionary](https://docs.opencv.org/4.x/d4/db2/classcv_1_1aruco_1_1Board.html#ae23d7d30921a16f72f1cc48cec0d2069) -> [Cv::Aruco::Dictionary](https://docs.opencv.org/4.x/d5/d0b/classcv_1_1aruco_1_1Dictionary.html)
 

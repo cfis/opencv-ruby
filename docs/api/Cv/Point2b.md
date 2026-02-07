@@ -24,6 +24,8 @@
 
 \*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
+\*(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
 \*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 \+(arg_0: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
@@ -46,17 +48,25 @@
 
 ==(arg_0: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
+[assign](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a73a8d26a4f21affffd32144300442d36)(pt: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+[assign](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a73a8d26a4f21affffd32144300442d36)(pt: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
 assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
-assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
 assign_minus(arg_0: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_minus(arg_0: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
@@ -74,13 +84,21 @@ assign_plus(arg_0: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1P
 
 [initialize_copy](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(pt: [Cv::Point2b](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[inside?](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a48aaacb8db7971b6c42fa2d6717d12eb)(r: [Cv::Rect2b](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[inside](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a48aaacb8db7971b6c42fa2d6717d12eb)(r: [Cv::Rect2b](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+inspect -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 inspect -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 norm -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
+norm -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
 to_s -> [String](https://docs.ruby-lang.org/en/master/String.html)
+
+to_s -> [String](https://docs.ruby-lang.org/en/master/String.html)
+
+to_vec -> [Cv::Vec2b](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 to_vec -> [Cv::Vec2b](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 

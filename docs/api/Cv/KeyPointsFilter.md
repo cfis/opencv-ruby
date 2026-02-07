@@ -6,7 +6,7 @@
 
 [retain_best](https://docs.opencv.org/4.x/de/db2/classcv_1_1KeyPointsFilter.html#adeb110acade85bf7a110968c6d856a1c)(keypoints: [Std::Vector≺cv꞉꞉KeyPoint≻](https://en.cppreference.com/w/cpp/container/vector.html), npoints: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[run_by_image_border](https://docs.opencv.org/4.x/de/db2/classcv_1_1KeyPointsFilter.html#a8feeffd95d167db42575f2dce2337ed6)(keypoints: [Std::Vector≺cv꞉꞉KeyPoint≻](https://en.cppreference.com/w/cpp/container/vector.html), image_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), border_size: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[run_by_image_border](https://docs.opencv.org/4.x/de/db2/classcv_1_1KeyPointsFilter.html#a8feeffd95d167db42575f2dce2337ed6)(keypoints: [Std::Vector≺cv꞉꞉KeyPoint≻](https://en.cppreference.com/w/cpp/container/vector.html), image_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), border_size: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [run_by_keypoint_size](https://docs.opencv.org/4.x/de/db2/classcv_1_1KeyPointsFilter.html#a0970d203b5cda500d8f77bd92ae0a894)(keypoints: [Std::Vector≺cv꞉꞉KeyPoint≻](https://en.cppreference.com/w/cpp/container/vector.html), min_size: [Float](https://docs.ruby-lang.org/en/master/Float.html), max_size: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

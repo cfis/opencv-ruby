@@ -16,6 +16,6 @@ program_hash: [String](https://docs.ruby-lang.org/en/master/String.html) (read/w
 
 
 ## Methods
-to_cv/ocl/program_source & -> [Cv::Ocl::ProgramSource](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html)
+to_program_source -> [Cv::Ocl::ProgramSource](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html)
 
 

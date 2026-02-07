@@ -6,9 +6,9 @@
 
 
 ## Methods
-[\[\]](https://ruby-rice.github.io/4.x/ruby_api/buffer)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[\[\]](https://ruby-rice.github.io/4.x/ruby_api/buffer)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
-[\[\]=](https://ruby-rice.github.io/4.x/ruby_api/buffer)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://ruby-rice.github.io/4.x/ruby_api/buffer)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [bytes](https://ruby-rice.github.io/4.x/ruby_api/buffer) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

@@ -1,0 +1,23 @@
+nav:
+  - index.md
+  - AffineFeature2D.md
+  - BEBLID
+  - BEBLID.md
+  - BoostDesc.md
+  - BriefDescriptorExtractor.md
+  - DAISY
+  - DAISY.md
+  - EllipticKeyPoint.md
+  - FREAK.md
+  - HarrisLaplaceFeatureDetector.md
+  - LATCH.md
+  - LUCID.md
+  - MSDDetector.md
+  - PCTSignatures
+  - PCTSignatures.md
+  - PCTSignaturesSQFD.md
+  - StarDetector.md
+  - TBMR.md
+  - TEBLID
+  - TEBLID.md
+  - VGG.md

@@ -2,29 +2,29 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Array](https://docs.ruby-lang.org/en/master/Array.html))
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html))
 
 
 ## Methods
-==(arg_0: [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+==(other: [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(start: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), length: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [capacity](https://en.cppreference.com/w/cpp/container/vector/capacity.html) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [data](https://en.cppreference.com/w/cpp/container/vector/data.html) -> [Rice::Pointer≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
-delete(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
+delete(value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
 [empty?](https://en.cppreference.com/w/cpp/container/vector/empty.html) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -32,13 +32,13 @@ delete(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/c
 
 [first](https://en.cppreference.com/w/cpp/container/vector/front.html) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-include?(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+include?(value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-index(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+index(value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(other: [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
 [last](https://en.cppreference.com/w/cpp/container/vector/back.html) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
@@ -46,11 +46,11 @@ index(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cp
 
 [pop](https://en.cppreference.com/w/cpp/container/vector/pop_back.html) -> [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(arg_0: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(value: [Std::Vector≺Cv꞉꞉Point3f≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(new_cap: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [shrink_to_fit](https://en.cppreference.com/w/cpp/container/vector/shrink_to_fit.html) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

@@ -1,6 +1,6 @@
 #[VideoCapture](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html)
 ## Singleton Methods
-[wait_any?](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#ade1c7b8d276fea4d000bc0af0f1017b3)(streams: [Std::Vector≺cv꞉꞉VideoCapture≻](https://en.cppreference.com/w/cpp/container/vector.html), ready_index: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), timeout_ns: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[wait_any](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#ade1c7b8d276fea4d000bc0af0f1017b3)(streams: [Std::Vector≺cv꞉꞉VideoCapture≻](https://en.cppreference.com/w/cpp/container/vector.html), ready_index: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), timeout_ns: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 
 ## Constructors
@@ -9,6 +9,8 @@
 [initialize](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a57c0e81e83e60f36c83027dc2a188e80)(filename: [String](https://docs.ruby-lang.org/en/master/String.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a57c0e81e83e60f36c83027dc2a188e80)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+
+[initialize](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a57c0e81e83e60f36c83027dc2a188e80)(source: Cv::Ptr≺cv꞉꞉IStreamReader≻, api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), params: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html))
 
 [initialize](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a57c0e81e83e60f36c83027dc2a188e80)(filename: [String](https://docs.ruby-lang.org/en/master/String.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), params: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html))
 
@@ -24,7 +26,7 @@
 
 [get](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#aa6480e6972ef4c00d74814ec841a2939)(prop_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
-[get_exception_mode](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a811ac1629c09f4ee0328712a42b7f851) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[get_exception_mode?](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a811ac1629c09f4ee0328712a42b7f851) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [grab](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#ae38c2a053d39d6b20c9c649e08ff0146) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -33,6 +35,8 @@
 [open](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a37913018b736ed917aa3b1976efc3d0c)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [open](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a37913018b736ed917aa3b1976efc3d0c)(filename: [String](https://docs.ruby-lang.org/en/master/String.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), params: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+[open](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a37913018b736ed917aa3b1976efc3d0c)(source: Cv::Ptr≺cv꞉꞉IStreamReader≻, api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), params: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [open](https://docs.opencv.org/4.x/d8/dfe/classcv_1_1VideoCapture.html#a37913018b736ed917aa3b1976efc3d0c)(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), api_preference: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), params: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 

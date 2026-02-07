@@ -4,9 +4,9 @@
 
 [diag](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a7ed3700dc5b99bf1ae2e9760247733ec)(d: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[eye](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a2e701e21eaddc984ff95dd13264edf95)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[eye](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a2e701e21eaddc984ff95dd13264edf95)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[eye](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a2e701e21eaddc984ff95dd13264edf95)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[eye](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a2e701e21eaddc984ff95dd13264edf95)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [eye](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a2e701e21eaddc984ff95dd13264edf95)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
@@ -14,25 +14,25 @@
 
 [get_std_allocator](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a251543c5c5f4d5cc32809c448cf534ef) -> [Cv::MatAllocator](https://docs.opencv.org/4.x/df/d4c/classcv_1_1MatAllocator.html)
 
-[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
-
-[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[ones](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4b96783d9807499f66bced7345fcc115)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
-
-[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
+[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
+[zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [zeros](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af456dc2779324a092d2d0e88302b0738)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
@@ -42,13 +42,13 @@
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
 
-[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), ranges: [Std::Vector≺cv꞉꞉Range≻](https://en.cppreference.com/w/cpp/container/vector.html))
-
-[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), roi: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
-
 [initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), ranges: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html))
 
-[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
+[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), ranges: [Std::Vector≺cv꞉꞉Range≻](https://en.cppreference.com/w/cpp/container/vector.html))
+
+[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), roi: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
+
+[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
 
 [initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html))
 
@@ -56,7 +56,7 @@
 
 [initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
 
-[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
+[initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
 
 [initialize](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a0edcf01672609ffb76bccc84e6039c4b)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2))
 
@@ -86,7 +86,7 @@
 
 
 ## Methods
-\[\](roi: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+\[\](roi: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 \[\](ranges: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
@@ -94,7 +94,15 @@
 
 \[\](row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
+[addref](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a9f87daa635b42c20579ef2e526fc2b54) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
 adjust_roi(dtop: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), dbottom: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), dleft: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), dright: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
+[assign](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a64b12667a6af01b3e177068fb1c85b0f)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
+[assign](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a64b12667a6af01b3e177068fb1c85b0f)(s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
+[assign](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a64b12667a6af01b3e177068fb1c85b0f)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [assign_to](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#aef524a90c600f04e1cdd12788c608476)(m: [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -104,13 +112,11 @@ adjust_roi(dtop: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), d
 
 [clone](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a4a34bd1ccbf3fbb966ce0f99d1484540) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
+[col](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#aaaa4b7216656ea35c63fcfc745c6995c)(x: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+
 [col_range](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#ade9f05c6bae4f6de8b24cc71d29f4b8a)(r: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [col_range](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#ade9f05c6bae4f6de8b24cc71d29f4b8a)(startcol: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), endcol: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
-
-[addref](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a9f87daa635b42c20579ef2e526fc2b54) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
-[col](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#aaaa4b7216656ea35c63fcfc745c6995c)(x: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
 [continuous?](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af9f1dc7d12bb762061089e1c3bd77875) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -122,9 +128,9 @@ adjust_roi(dtop: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), d
 
 [copy_to](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#ab9f4b02e099696dc0fb43c85c6f4a2f1)(m: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[create](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a1f51b337fe0ee25e7c659502e3fe1022)(sizes: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[create](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a1f51b337fe0ee25e7c659502e3fe1022)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[create](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a1f51b337fe0ee25e7c659502e3fe1022)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[create](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a1f51b337fe0ee25e7c659502e3fe1022)(sizes: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [create](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#a1f51b337fe0ee25e7c659502e3fe1022)(ndims: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), sizes: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), usage_flags: [Cv::UMatUsageFlags](https://docs.opencv.org/4.x/dc/d84/group__core__basic.html#ga5681439dda418431eb0a672697135ed2)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -154,7 +160,7 @@ inspect -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 [inv](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#abb77173e3e661fc3f161f79e5559c5d7)(method: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-locate_roi(whole_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), ofs: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+locate_roi(whole_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), ofs: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [mul](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html#af50d8160ca05a304b30c1dd64ae20755)(m: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), scale: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 

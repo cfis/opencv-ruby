@@ -20,9 +20,11 @@ from_spir(module: [String](https://docs.ruby-lang.org/en/master/String.html), na
 
 [assign](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#ac299b5b930b3c08b4e2c1285a9e9a340)(prog: [Cv::Ocl::ProgramSource](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html)) -> [Cv::Ocl::ProgramSource](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html)
 
+[empty?](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#a1ddf4a183ba9f5111e2b50905d45f393) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
 [hash](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#a545d3245e411cf8988b6df58e35e7357) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[empty?](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#a1ddf4a183ba9f5111e2b50905d45f393) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[get_impl](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#adb698ece87d81f3a0cdfd1ff56c51e51) -> Cv::Ocl::ProgramSource::Impl
 
 [initialize_copy](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html#ae1e9a91d48c66979e6869102e381e420)(prog: [Cv::Ocl::ProgramSource](https://docs.opencv.org/4.x/d5/de3/classcv_1_1ocl_1_1ProgramSource.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

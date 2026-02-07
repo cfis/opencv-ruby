@@ -16,7 +16,7 @@
 
 
 ## Methods
-[bounding_rect](https://docs.opencv.org/4.x/db/dd6/classcv_1_1RotatedRect.html#a055a5d35e50bce65e3b1dee318dd3044) -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+[bounding_rect](https://docs.opencv.org/4.x/db/dd6/classcv_1_1RotatedRect.html#a055a5d35e50bce65e3b1dee318dd3044) -> [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
 [bounding_rect2f](https://docs.opencv.org/4.x/db/dd6/classcv_1_1RotatedRect.html#af9b2552eacd336acc950696d0d4c39fa) -> [Cv::Rect2f](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 

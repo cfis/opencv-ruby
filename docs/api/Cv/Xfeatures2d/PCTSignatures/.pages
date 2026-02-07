@@ -1,0 +1,4 @@
+nav:
+  - DistanceFunction.md
+  - PointDistribution.md
+  - SimilarityFunction.md

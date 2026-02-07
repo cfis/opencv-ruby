@@ -2,7 +2,7 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/utility/pair.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: Cv::Dnn::Backend, arg_1: Cv::Dnn::Target)
+[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(x: Cv::Dnn::Backend, y: Cv::Dnn::Target)
 
 
 ## Attributes
@@ -12,7 +12,7 @@
 
 
 ## Methods
-[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: [Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(other: [Std::Pair≺enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Backend‚ enum cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Target≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 to_s -> [String](https://docs.ruby-lang.org/en/master/String.html)
 

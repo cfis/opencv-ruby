@@ -18,6 +18,8 @@
 
 [\[\]=](https://docs.opencv.org/4.x/d4/d26/structcv_1_1MatStep.html#a76355b86b9545a4310d8c5322f9bda1e)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-to_size_t -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[assign](https://docs.opencv.org/4.x/d4/d26/structcv_1_1MatStep.html#ab4c06eeca1bc7982989d9669fb14281e)(s: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::MatStep](https://docs.opencv.org/4.x/d4/d26/structcv_1_1MatStep.html)
+
+to_size -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 

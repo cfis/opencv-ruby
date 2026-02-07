@@ -22,6 +22,6 @@ set(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Nil
 
 size -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-test?(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+test(index: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 

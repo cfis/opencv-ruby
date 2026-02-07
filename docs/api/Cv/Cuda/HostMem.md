@@ -8,7 +8,7 @@
 
 [initialize](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#abddf8d1a9db3b9369841e2bf40e4b210)(arr: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa0d69b2aa95680a6b2af6dc4dda44e16))
 
-[initialize](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#abddf8d1a9db3b9369841e2bf40e4b210)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa0d69b2aa95680a6b2af6dc4dda44e16))
+[initialize](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#abddf8d1a9db3b9369841e2bf40e4b210)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa0d69b2aa95680a6b2af6dc4dda44e16))
 
 [initialize](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#abddf8d1a9db3b9369841e2bf40e4b210)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa0d69b2aa95680a6b2af6dc4dda44e16))
 
@@ -18,7 +18,15 @@ alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/cl
 
 [cols](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a637b04a3a6e107d9bdb16eba7ca238eb): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
+[data](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a22e267551b43057c9371aa927cc34ee9): [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer) (read/write)
+
+[dataend](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a895b08a1958e4d6a73bd5410a7b86c3b): [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer) (read/write)
+
+[datastart](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a5e62aeda0a11c82ed104ad2c0475e1fb): [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer) (read/write)
+
 [flags](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#af81a4ce11a420f2905f7666d5545c674): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
+
+[refcount](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#ae3e7ec959e9a6a3142d55f1896be1b6e): [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer) (read/write)
 
 [rows](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a454a7773e1423302f35819ea7720303f): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
@@ -34,7 +42,7 @@ alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/cl
 
 [continuous?](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#ad091db7d7ddc0e484d2556cf36b8e0af) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[create](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a62eea66ac1a181eeeb10a2335f3bd4bd)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[create](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a62eea66ac1a181eeeb10a2335f3bd4bd)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [create](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a62eea66ac1a181eeeb10a2335f3bd4bd)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -56,7 +64,7 @@ alloc_type: [Cv::Cuda::HostMem::AllocType](https://docs.opencv.org/4.x/d0/d44/cl
 
 [reshape](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#a31e3165f8fc1a4863d7a67a973f5bd68)(cn: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Cuda::HostMem](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html)
 
-[size](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa61acd6d1db2ec950221831dc3fe1ca9) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[size](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#aa61acd6d1db2ec950221831dc3fe1ca9) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [step1](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html#ab51be367c23f9976389efd3eccbded97) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

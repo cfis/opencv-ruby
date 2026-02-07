@@ -4,9 +4,9 @@
 
 [initialize](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(sz: [Cv::Size2f](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html))
 
-[initialize](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(v: [Cv::Vec2f](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
-
 [initialize](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(_x: [Float](https://docs.ruby-lang.org/en/master/Float.html), _y: [Float](https://docs.ruby-lang.org/en/master/Float.html))
+
+[initialize](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(v: [Cv::Vec2f](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html))
 
 
 ## Attributes
@@ -18,19 +18,11 @@
 ## Methods
 !=(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-!=(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
-
 \*(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 \*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
-\*(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
 \+(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-\+(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-\-(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 \-(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
@@ -38,31 +30,21 @@
 
 /(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
-/(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-/(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
 ==(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-==(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[assign](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a73a8d26a4f21affffd32144300442d36)(pt: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+
+[assign](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a73a8d26a4f21affffd32144300442d36)(pt: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-assign_divide(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-assign_divide(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-assign_minus(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_minus(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_multiply(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
-
-assign_plus(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 assign_plus(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
@@ -74,7 +56,7 @@ assign_plus(arg_0: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1P
 
 [initialize_copy](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a415ac41e8676210b06bcfaf23d7e6105)(pt: [Cv::Point2f](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[inside?](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a48aaacb8db7971b6c42fa2d6717d12eb)(r: [Cv::Rect2f](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[inside](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html#a48aaacb8db7971b6c42fa2d6717d12eb)(r: [Cv::Rect2f](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 inspect -> [String](https://docs.ruby-lang.org/en/master/String.html)
 

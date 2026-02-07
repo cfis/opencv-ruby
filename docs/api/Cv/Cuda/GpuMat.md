@@ -2,29 +2,31 @@
 ## Singleton Methods
 [default_allocator](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5c97009a327d58934cf00cd879a24755) -> [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html)
 
+[get_std_allocator](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a31e089f29c260a3eec9b94a197bbb418) -> [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html)
+
 [set_default_allocator](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc463cf6516957a2d78bd03c6d81de5)(allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
 
-[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(m: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), roi: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
+[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(m: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), roi: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html))
 
 [initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(arr: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
 
-[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
-
 [initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(m: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html))
 
-[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), data: [Rice::Pointer≺void≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), step: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
+
+[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), data: [Rice::Pointer≺void≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), step: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
 
-[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
-
-[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), data: [Rice::Pointer≺void≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), step: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
 
 [initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), allocator: [Cv::Cuda::GpuMat::Allocator](https://docs.opencv.org/4.x/df/d98/classcv_1_1cuda_1_1GpuMat_1_1Allocator.html))
+
+[initialize](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), data: [Rice::Pointer≺void≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), step: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 
 ## Attributes
@@ -54,9 +56,9 @@
 
 [assign_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a03e76eb8993215020cff624ace66d7e6)(m: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[call](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a2b3c25e36b0f82ca8f9f74b6ae68c41d)(roi: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)
-
 [call](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a2b3c25e36b0f82ca8f9f74b6ae68c41d)(row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)
+
+[call](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a2b3c25e36b0f82ca8f9f74b6ae68c41d)(roi: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)
 
 [channels](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a538fc6d75281b4ecb7ad50e4555f3fc6) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -72,11 +74,13 @@
 
 [convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
 [convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
+[convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
 [convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alpha: [Float](https://docs.ruby-lang.org/en/master/Float.html), beta: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+[convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alpha: [Float](https://docs.ruby-lang.org/en/master/Float.html), beta: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [convert_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ac15573aeafb223f9341658118a54e254)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), rtype: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), alpha: [Float](https://docs.ruby-lang.org/en/master/Float.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -88,19 +92,19 @@
 
 [copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
-[copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), mask: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
 [copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+[copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), mask: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+[copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), mask: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [copy_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5cc77b91600fe774e398c1978b52cc0f)(dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[create](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af21454929f3efba4c783edbc27042200)(size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[create](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af21454929f3efba4c783edbc27042200)(size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [create](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af21454929f3efba4c783edbc27042200)(rows: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), cols: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -120,7 +124,7 @@
 
 [initialize_copy](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#af1fd1025a62d333c9c970ca3761a23db)(m: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[locate_roi](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a934d25560bfb1f03c0077e437d41e0cb)(whole_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), ofs: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[locate_roi](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a934d25560bfb1f03c0077e437d41e0cb)(whole_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), ofs: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [ptr](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ab0f7199a9b564bc020e7251588b657f4)(y: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
@@ -144,7 +148,7 @@
 
 [set_to](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#aa4c50630ceb28bb28cb861a9a96945a1)(s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), stream: [Cv::Cuda::Stream](https://docs.opencv.org/4.x/d9/df3/classcv_1_1cuda_1_1Stream.html)) -> [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)
 
-[size](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ab02f97698d8272f0d253f3029329ed10) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[size](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#ab02f97698d8272f0d253f3029329ed10) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [step1](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html#a5ead91d096cca20e59ba9af8574187cc) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

@@ -74,8 +74,8 @@
 
 
 ## Methods
-[read_detector_parameters?](https://docs.opencv.org/4.x/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html#a2c2c3a6faa0dab76a7bb931e657ffa47)(fn: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[read_detector_parameters](https://docs.opencv.org/4.x/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html#a2c2c3a6faa0dab76a7bb931e657ffa47)(fn: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[write_detector_parameters?](https://docs.opencv.org/4.x/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html#a2dbb6f50de2621c474fcfe9177430d95)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html), name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[write_detector_parameters](https://docs.opencv.org/4.x/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html#a2dbb6f50de2621c474fcfe9177430d95)(fs: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html), name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 

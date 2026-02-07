@@ -34,19 +34,23 @@
 
 [area](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a0dba3ba97160894da4b8c8b4d8712c8e) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-assign_minus(arg_0: [Cv::Size2w](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+[assign](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a204c156ee184735b3a512118dc3a1544)(r: [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+
+[assign](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a204c156ee184735b3a512118dc3a1544)(r: [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
 assign_minus(arg_0: [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
-assign_plus(arg_0: [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+assign_minus(arg_0: [Cv::Size2w](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
 assign_plus(arg_0: [Cv::Size2w](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
+assign_plus(arg_0: [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+
 [br](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a82e906ac45136f22dacf6b453f61d36a) -> [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
-[contains?](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a4506eca68c36d1c68af51489a7ac58a7)(pt: [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
-
 [empty?](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a6b7f5a0fd792784b865806ef4b6e47f2) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+[contains?](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#a4506eca68c36d1c68af51489a7ac58a7)(pt: [Cv::Point2w](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [initialize_copy](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html#afb53dd5c7f9a57ecb3d50d62d2d6dd14)(r: [Cv::Rect2w](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

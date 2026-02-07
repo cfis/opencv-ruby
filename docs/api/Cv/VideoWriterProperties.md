@@ -11,4 +11,6 @@
 * [VIDEOWRITER_PROP_RAW_VIDEO](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a82ec0ab4a5f354764ba4ff8ba698fb4b)
 * [VIDEOWRITER_PROP_KEY_INTERVAL](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a011eba37921e51af9bbc840fb9f191cd)
 * [VIDEOWRITER_PROP_KEY_FLAG](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a516fdb82d3585f4c89d3cce9b7de2221)
+* [VIDEOWRITER_PROP_PTS](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4a5dcbf3d815a9f4ca887fd80825b418e2)
+* [VIDEOWRITER_PROP_DTS_DELAY](https://docs.opencv.org/4.x/d4/d15/group__videoio__flags__base.html#gga41c5cfa7859ae542b71b1d33bbd4d2b4ae2af7f8013df56866df7d9e57e159d17)
 * CV__VIDEOWRITER_PROP_LATEST

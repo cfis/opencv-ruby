@@ -1,4 +1,8 @@
 #[TrackerStateEstimator](https://docs.opencv.org/4.x/d8/dd0/classcv_1_1detail_1_1tracking_1_1TrackerStateEstimator.html)
+## Singleton Methods
+[create](https://docs.opencv.org/4.x/d8/dd0/classcv_1_1detail_1_1tracking_1_1TrackerStateEstimator.html#a1ad3a694b7af88d0d9782fcae95b2f1c)(tracke_state_estimator_type: [String](https://docs.ruby-lang.org/en/master/String.html)) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻
+
+
 ## Methods
 [estimate](https://docs.opencv.org/4.x/d8/dd0/classcv_1_1detail_1_1tracking_1_1TrackerStateEstimator.html#aaa36fe18e2194f12fb100d8a3e9ab1bd)(confidence_maps: [Std::Vector≺vector≺pair≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻‚ float≻≻≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻
 

@@ -2,6 +2,8 @@
 ## Singleton Methods
 [create](https://docs.opencv.org/4.x/da/d09/classcv_1_1FaceRecognizerSF.html#a5f43ba1750485e4504f822ba86d7d34e)(model: [String](https://docs.ruby-lang.org/en/master/String.html), config: [String](https://docs.ruby-lang.org/en/master/String.html), backend_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), target_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> Cv::Ptr≺cv꞉꞉FaceRecognizerSF≻
 
+[create](https://docs.opencv.org/4.x/da/d09/classcv_1_1FaceRecognizerSF.html#a5f43ba1750485e4504f822ba86d7d34e)(framework: [String](https://docs.ruby-lang.org/en/master/String.html), buffer_model: [Std::Vector≺unsigned char≻](https://en.cppreference.com/w/cpp/container/vector.html), buffer_config: [Std::Vector≺unsigned char≻](https://en.cppreference.com/w/cpp/container/vector.html), backend_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), target_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> Cv::Ptr≺cv꞉꞉FaceRecognizerSF≻
+
 
 ## Methods
 [align_crop](https://docs.opencv.org/4.x/da/d09/classcv_1_1FaceRecognizerSF.html#a84492908abecbc9362b4ddc8d46b8345)(src_img: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), face_box: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), aligned_img: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)

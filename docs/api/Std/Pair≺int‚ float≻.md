@@ -2,7 +2,7 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/utility/pair.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Float](https://docs.ruby-lang.org/en/master/Float.html))
+[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(x: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), y: [Float](https://docs.ruby-lang.org/en/master/Float.html))
 
 
 ## Attributes
@@ -12,7 +12,7 @@
 
 
 ## Methods
-[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: [Std::Pair≺int‚ float≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(other: [Std::Pair≺int‚ float≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 to_s -> [String](https://docs.ruby-lang.org/en/master/String.html)
 

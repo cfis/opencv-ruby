@@ -4,15 +4,15 @@
 
 [initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Array](https://docs.ruby-lang.org/en/master/Array.html))
 
-[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html))
+[initialize](https://en.cppreference.com/w/cpp/container/vector.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html))
 
 
 ## Methods
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
-[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[\[\]](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(start: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), length: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[\[\]=](https://en.cppreference.com/w/cpp/container/vector/operator_at.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [capacity](https://en.cppreference.com/w/cpp/container/vector/capacity.html) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -20,33 +20,33 @@
 
 [data](https://en.cppreference.com/w/cpp/container/vector/data.html) -> [Rice::Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
-[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[delete_at](https://en.cppreference.com/w/cpp/container/vector/erase.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
 [empty?](https://en.cppreference.com/w/cpp/container/vector/empty.html) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-include?(arg_0: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+include?(value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-index(arg_0: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+index(value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[first](https://en.cppreference.com/w/cpp/container/vector/front.html) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[first](https://en.cppreference.com/w/cpp/container/vector/front.html) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
-delete(arg_0: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+delete(value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
-[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(arg_0: [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/container/vector.html)(other: [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), arg_1: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[insert](https://en.cppreference.com/w/cpp/container/vector/insert.html)(pos: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[last](https://en.cppreference.com/w/cpp/container/vector/back.html) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[last](https://en.cppreference.com/w/cpp/container/vector/back.html) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
 [max_size](https://en.cppreference.com/w/cpp/container/vector/max_size.html) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[pop](https://en.cppreference.com/w/cpp/container/vector/pop_back.html) -> [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)
+[pop](https://en.cppreference.com/w/cpp/container/vector/pop_back.html) -> [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)
 
-[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(arg_0: [ExtObject](https://docs.ruby-lang.org/en/master/ExtObject.html)) -> [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)
+[push](https://en.cppreference.com/w/cpp/container/vector/push_back.html)(value: [Cv::DetectionBasedTracker::ExtObject](https://docs.opencv.org/4.x/d1/dda/structcv_1_1DetectionBasedTracker_1_1ExtObject.html)) -> [Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻](https://en.cppreference.com/w/cpp/container/vector.html)
 
-[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[reserve](https://en.cppreference.com/w/cpp/container/vector/reserve.html)(new_cap: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[resize](https://en.cppreference.com/w/cpp/container/vector/resize.html)(count: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [shrink_to_fit](https://en.cppreference.com/w/cpp/container/vector/shrink_to_fit.html) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

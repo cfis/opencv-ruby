@@ -7,6 +7,7 @@ nav:
   - AccumulatorUnsignedInt.md
   - AccumulatorUnsignedShort.md
   - Any.md
+  - Anyimpl
   - AutotunedIndexParams.md
   - CompositeIndexParams.md
   - CreatorNotFound.md
@@ -45,3 +46,4 @@ nav:
   - True.md
   - UniqueRandom.md
   - UntypedMatrix.md
+  - ZeroIteratorUnsignedChar.md

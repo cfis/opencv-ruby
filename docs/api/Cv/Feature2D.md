@@ -26,9 +26,9 @@
 
 [read](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#a484d5df8a2768a38073c581f056d91d7)(file_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[read](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#a484d5df8a2768a38073c581f056d91d7)(: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[read](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#a484d5df8a2768a38073c581f056d91d7)(arg_0: [Cv::FileNode](https://docs.opencv.org/4.x/de/dd9/classcv_1_1FileNode.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[write](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#aed9ce99af8afa02ddf2fc78c5f46249b)(: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[write](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#aed9ce99af8afa02ddf2fc78c5f46249b)(arg_0: [Cv::FileStorage](https://docs.opencv.org/4.x/da/d56/classcv_1_1FileStorage.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [write](https://docs.opencv.org/4.x/d0/d13/classcv_1_1Feature2D.html#aed9ce99af8afa02ddf2fc78c5f46249b)(file_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

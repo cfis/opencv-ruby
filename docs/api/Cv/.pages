@@ -18,8 +18,11 @@ nav:
   - AlgorithmHint.md
   - AlignExposures.md
   - AlignMTB.md
+  - Animation.md
   - Aruco
+  - AsyncArray
   - AsyncArray.md
+  - AsyncPromise.md
   - BFMatcher.md
   - BOWImgDescriptorExtractor.md
   - BOWKMeansTrainer.md
@@ -31,6 +34,7 @@ nav:
   - Barcode
   - BaseCascadeClassifier
   - BaseCascadeClassifier.md
+  - Bgsegm
   - BorderTypes.md
   - BufferPoolController.md
   - CLAHE.md
@@ -38,6 +42,7 @@ nav:
   - CalibrateDebevec.md
   - CalibrateRobertson.md
   - CascadeClassifier.md
+  - Ccalib
   - CirclesGridFinderParameters
   - CirclesGridFinderParameters.md
   - CmpTypes.md
@@ -56,12 +61,14 @@ nav:
   - Cuda
   - Cudev
   - CylindricalWarper.md
+  - CylindricalWarperGpu.md
   - DISOpticalFlow.md
   - DMatch.md
   - DataTypeMoments.md
   - DataTypeRange.md
   - DataTypeRotatedRect.md
   - DecompTypes.md
+  - DefaultDeleterCvCapture.md
   - DenseOpticalFlow.md
   - DescriptorMatcher
   - DescriptorMatcher.md
@@ -75,10 +82,16 @@ nav:
   - DistanceTransformMasks.md
   - DistanceTypes.md
   - Dnn
+  - DnnObjdetect
+  - DnnSuperres
   - DownhillSolver.md
+  - Dpm
   - DrawMatchesFlags.md
+  - DualQuatd.md
+  - DualQuatf.md
   - Error
   - Exception.md
+  - Face
   - FaceDetectorYN.md
   - FaceRecognizerSF
   - FaceRecognizerSF.md
@@ -105,6 +118,7 @@ nav:
   - GeneralizedHoughGuil.md
   - GrabCutClasses.md
   - GrabCutModes.md
+  - GraphicalCodeDetector
   - GraphicalCodeDetector.md
   - HOGDescriptor
   - HOGDescriptor.md
@@ -112,14 +126,19 @@ nav:
   - HandEyeCalibrationMethod.md
   - HersheyFonts.md
   - Hfloat.md
+  - Hfs
   - HistCompMethods.md
   - HoughModes.md
+  - IStreamReader.md
+  - IVideoCapture.md
+  - IVideoWriter.md
   - ImageCollection
   - ImageCollection.md
   - ImreadModes.md
   - ImwriteEXRCompressionFlags.md
   - ImwriteEXRTypeFlags.md
   - ImwriteFlags.md
+  - ImwriteGIFCompressionFlags.md
   - ImwriteHDRCompressionFlags.md
   - ImwriteJPEGSamplingFactorParams.md
   - ImwritePAMFlags.md
@@ -129,6 +148,7 @@ nav:
   - InputArray
   - InputArray.md
   - InputOutputArray.md
+  - IntensityTransform
   - Internal
   - InterpolationFlags.md
   - InterpolationMasks.md
@@ -185,12 +205,14 @@ nav:
   - Matx11d.md
   - Matx11f.md
   - Matx11i.md
+  - Matx11l.md
   - Matx11s.md
   - Matx11w.md
   - Matx12b.md
   - Matx12d.md
   - Matx12f.md
   - Matx12i.md
+  - Matx12l.md
   - Matx12s.md
   - Matx12w.md
   - Matx13b.md
@@ -208,6 +230,8 @@ nav:
   - Matx16d.md
   - Matx16f.md
   - Matx16i.md
+  - Matx18d.md
+  - Matx18f.md
   - Matx18i.md
   - Matx21b.md
   - Matx21d.md
@@ -247,6 +271,8 @@ nav:
   - Matx61i.md
   - Matx66d.md
   - Matx66f.md
+  - Matx81d.md
+  - Matx81f.md
   - Matx81i.md
   - MatxAddOp.md
   - MatxDivOp.md
@@ -275,6 +301,7 @@ nav:
   - ORB.md
   - Ocl
   - Ogl
+  - Optflow
   - OutputArray
   - OutputArray.md
   - PCA
@@ -282,6 +309,7 @@ nav:
   - PaniniPortraitWarper.md
   - PaniniWarper.md
   - ParallelLoopBody.md
+  - ParallelLoopBodyLambdaWrapper.md
   - Param.md
   - ParamTypeAlgorithm.md
   - ParamTypeBool.md
@@ -296,10 +324,13 @@ nav:
   - ParamTypeUint64.md
   - ParamTypeUnsignedInt.md
   - PlaneWarper.md
+  - PlaneWarperGpu.md
+  - Plot
   - Point.md
   - Point2b.md
   - Point2d.md
   - Point2f.md
+  - Point2i.md
   - Point2l.md
   - Point2s.md
   - Point2w.md
@@ -325,6 +356,7 @@ nav:
   - Ptr≺cv꞉꞉CalibrateRobertson≻.md
   - Ptr≺cv꞉꞉ConjGradSolver≻.md
   - Ptr≺cv꞉꞉DISOpticalFlow≻.md
+  - Ptr≺cv꞉꞉DenseOpticalFlow≻.md
   - Ptr≺cv꞉꞉DescriptorMatcher≻.md
   - Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻.md
   - Ptr≺cv꞉꞉DownhillSolver≻.md
@@ -334,12 +366,15 @@ nav:
   - Ptr≺cv꞉꞉FastFeatureDetector≻.md
   - Ptr≺cv꞉꞉Feature2D≻.md
   - Ptr≺cv꞉꞉FileStorage≻.md
+  - Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻.md
   - Ptr≺cv꞉꞉FlannBasedMatcher≻.md
   - Ptr≺cv꞉꞉Formatted≻.md
   - Ptr≺cv꞉꞉Formatter≻.md
   - Ptr≺cv꞉꞉GFTTDetector≻.md
   - Ptr≺cv꞉꞉GeneralizedHoughBallard≻.md
   - Ptr≺cv꞉꞉GeneralizedHoughGuil≻.md
+  - Ptr≺cv꞉꞉IStreamReader≻.md
+  - Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻.md
   - Ptr≺cv꞉꞉KAZE≻.md
   - Ptr≺cv꞉꞉LMSolver≻.md
   - Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻.md
@@ -368,6 +403,17 @@ nav:
   - Ptr≺cv꞉꞉TrackerVit≻.md
   - Ptr≺cv꞉꞉VariationalRefinement≻.md
   - Ptr≺cv꞉꞉WarperCreator≻.md
+  - Ptr≺cv꞉꞉aruco꞉꞉Board≻.md
+  - Ptr≺cv꞉꞉aruco꞉꞉CharucoBoard≻.md
+  - Ptr≺cv꞉꞉aruco꞉꞉DetectorParameters≻.md
+  - Ptr≺cv꞉꞉aruco꞉꞉Dictionary≻.md
+  - Ptr≺cv꞉꞉aruco꞉꞉EstimateParameters≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorCNT≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorGMG≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorGSOC≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorLSBP≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻.md
+  - Ptr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻.md
   - Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻.md
   - Ptr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻.md
   - Ptr≺cv꞉꞉detail꞉꞉Blender≻.md
@@ -382,11 +428,13 @@ nav:
   - Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻.md
   - Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻.md
   - Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻.md
+  - Ptr≺cv꞉꞉dnnSuperres꞉꞉DnnSuperResImpl≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AbsLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AccumLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcosLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AcoshLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayerInt8≻.md
+  - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ActivationLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ArgLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉AsinhLayer≻.md
@@ -485,8 +533,21 @@ nav:
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉ThresholdedReluLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TileLayer≻.md
   - Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉TopKLayer≻.md
+  - Ptr≺cv꞉꞉dpm꞉꞉DPMDetector≻.md
+  - Ptr≺cv꞉꞉face꞉꞉BIF≻.md
+  - Ptr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻.md
+  - Ptr≺cv꞉꞉face꞉꞉FacemarkAAM≻.md
+  - Ptr≺cv꞉꞉face꞉꞉FacemarkKazemi≻.md
+  - Ptr≺cv꞉꞉face꞉꞉FacemarkLBF≻.md
+  - Ptr≺cv꞉꞉face꞉꞉Facemark≻.md
+  - Ptr≺cv꞉꞉face꞉꞉FisherFaceRecognizer≻.md
+  - Ptr≺cv꞉꞉face꞉꞉LBPHFaceRecognizer≻.md
+  - Ptr≺cv꞉꞉face꞉꞉MACE≻.md
+  - Ptr≺cv꞉꞉face꞉꞉PredictCollector≻.md
+  - Ptr≺cv꞉꞉face꞉꞉StandardCollector≻.md
   - Ptr≺cv꞉꞉flann꞉꞉IndexParams≻.md
   - Ptr≺cv꞉꞉flann꞉꞉SearchParams≻.md
+  - Ptr≺cv꞉꞉hfs꞉꞉HfsSegment≻.md
   - Ptr≺cv꞉꞉ml꞉꞉ANNMLP≻.md
   - Ptr≺cv꞉꞉ml꞉꞉Boost≻.md
   - Ptr≺cv꞉꞉ml꞉꞉DTrees≻.md
@@ -500,7 +561,39 @@ nav:
   - Ptr≺cv꞉꞉ml꞉꞉SVM≻.md
   - Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻.md
   - Ptr≺cv꞉꞉ml꞉꞉TrainData≻.md
+  - Ptr≺cv꞉꞉optflow꞉꞉DualTVL1OpticalFlow≻.md
+  - Ptr≺cv꞉꞉plot꞉꞉Plot2d≻.md
+  - Ptr≺cv꞉꞉rapid꞉꞉OLSTracker≻.md
+  - Ptr≺cv꞉꞉rapid꞉꞉Rapid≻.md
+  - Ptr≺cv꞉꞉stereo꞉꞉StereoBinaryBM≻.md
+  - Ptr≺cv꞉꞉stereo꞉꞉StereoBinarySGBM≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉BroxOpticalFlow≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉DenseOpticalFlowExt≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉FarnebackOpticalFlow≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉FrameSource≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉PyrLKOpticalFlow≻.md
+  - Ptr≺cv꞉꞉superres꞉꞉SuperResolution≻.md
+  - Ptr≺cv꞉꞉tracking꞉꞉TrackerCSRT≻.md
+  - Ptr≺cv꞉꞉tracking꞉꞉TrackerKCF≻.md
   - Ptr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉AffineFeature2D≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉BEBLID≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉BriefDescriptorExtractor≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉DAISY≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉FREAK≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉HarrisLaplaceFeatureDetector≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉LATCH≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉LUCID≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉PCTSignaturesSQFD≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉PCTSignatures≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉StarDetector≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉TBMR≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉TEBLID≻.md
+  - Ptr≺cv꞉꞉xfeatures2d꞉꞉VGG≻.md
+  - Ptr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻.md
   - Ptr≺float≻.md
   - PyRotationWarper.md
   - QRCodeDetector.md
@@ -515,13 +608,17 @@ nav:
   - QuatAssumeType.md
   - QuatEnum
   - QuatEnum.md
+  - Quatd.md
+  - Quatf.md
   - RNG.md
   - RNG_MT19937.md
   - Range.md
+  - Rapid
   - Rect.md
   - Rect2b.md
   - Rect2d.md
   - Rect2f.md
+  - Rect2i.md
   - Rect2l.md
   - Rect2s.md
   - Rect2w.md
@@ -538,6 +635,7 @@ nav:
   - SamplingMethod.md
   - Scalar.md
   - ScoreMethod.md
+  - SeamlessCloneFlags.md
   - ShapeMatchModes.md
   - SimilarRects.md
   - SimpleBlobDetector
@@ -546,6 +644,7 @@ nav:
   - Size2b.md
   - Size2d.md
   - Size2f.md
+  - Size2i.md
   - Size2l.md
   - Size2s.md
   - Size2w.md
@@ -637,6 +736,8 @@ nav:
   - SparsePyrLKOpticalFlow.md
   - SpecialFilter.md
   - SphericalWarper.md
+  - SphericalWarperGpu.md
+  - Stereo
   - StereoBM.md
   - StereoMatcher.md
   - StereoSGBM.md
@@ -644,6 +745,7 @@ nav:
   - Stitcher
   - Stitcher.md
   - Subdiv2D.md
+  - Superres
   - TemplateMatchModes.md
   - TermCriteria
   - TermCriteria.md
@@ -664,6 +766,7 @@ nav:
   - TrackerNano.md
   - TrackerVit
   - TrackerVit.md
+  - Tracking
   - Traits
   - TransverseMercatorWarper.md
   - UMat.md
@@ -679,6 +782,7 @@ nav:
   - Vec1d.md
   - Vec1f.md
   - Vec1i.md
+  - Vec1l.md
   - Vec1s.md
   - Vec1w.md
   - Vec2b.md
@@ -703,14 +807,23 @@ nav:
   - Vec6d.md
   - Vec6f.md
   - Vec6i.md
+  - Vec8d.md
+  - Vec8f.md
   - Vec8i.md
   - VideoAccelerationType.md
   - VideoCapture.md
   - VideoCaptureAPIs.md
+  - VideoCaptureOBSensorDataType.md
+  - VideoCaptureOBSensorGenerators.md
+  - VideoCaptureOBSensorProperties.md
   - VideoCaptureProperties.md
   - VideoWriter.md
   - VideoWriterProperties.md
   - WarpPolarMode.md
   - WarperCreator.md
+  - WechatQrcode
   - WindowFlags.md
   - WindowPropertyFlags.md
+  - Xfeatures2d
+  - Ximgproc
+  - Xobjdetect

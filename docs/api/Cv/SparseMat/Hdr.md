@@ -18,6 +18,8 @@
 
 [refcount](https://docs.opencv.org/4.x/d4/d8d/structcv_1_1SparseMat_1_1Hdr.html#acdcfa90051a2b0cc818ab61ea3f89f74): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
+[size](https://docs.opencv.org/4.x/d4/d8d/structcv_1_1SparseMat_1_1Hdr.html#ac90d9bd519dc9d1c1c03bac053f5293a): [String](https://docs.ruby-lang.org/en/master/String.html) (read)
+
 [value_offset](https://docs.opencv.org/4.x/d4/d8d/structcv_1_1SparseMat_1_1Hdr.html#a6b09668278ec34c931b93d6f7bb1547c): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
 

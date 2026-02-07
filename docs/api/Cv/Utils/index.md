@@ -24,7 +24,7 @@ copy_mat_and_dump_named_arguments(src: [Cv::InputArray](https://docs.opencv.org/
 
 [dump_range](https://docs.opencv.org/4.x/db/de0/group__core__utils.html#gaca30624c96f1d24b65253c6cc7a71070)(argument: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
-[dump_rect](https://docs.opencv.org/4.x/db/de0/group__core__utils.html#gae58d2ea1c92b0c33da50b56e92a35dd9)(argument: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
+[dump_rect](https://docs.opencv.org/4.x/db/de0/group__core__utils.html#gae58d2ea1c92b0c33da50b56e92a35dd9)(argument: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 [dump_rotated_rect](https://docs.opencv.org/4.x/db/de0/group__core__utils.html#ga43fb24612294359fadba16f68e9cd488)(argument: [Cv::RotatedRect](https://docs.opencv.org/4.x/db/dd6/classcv_1_1RotatedRect.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
@@ -54,9 +54,9 @@ test_async_array(argument: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/c
 
 test_async_exception -> [Cv::AsyncArray](https://docs.opencv.org/4.x/d4/d20/classcv_1_1AsyncArray.html)
 
-test_overload_resolution(rect: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
+test_overload_resolution(rect: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
-test_overload_resolution(value: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), point: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
+test_overload_resolution(value: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), point: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
 test_overwrite_native_method(argument: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

@@ -14,4 +14,6 @@
 
 [target](https://docs.opencv.org/4.x/d8/da4/structcv_1_1TrackerVit_1_1Params.html#a43711ff68b0c5deba472338ff34fefe1): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
+tracking_score_threshold: [Float](https://docs.ruby-lang.org/en/master/Float.html) (read/write)
+
 

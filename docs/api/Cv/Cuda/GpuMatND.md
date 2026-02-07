@@ -18,9 +18,9 @@
 
 
 ## Methods
-[assign](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a8d6d1ef75427ba64fefc4be5f45494f5)(: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)
+[assign](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a8d6d1ef75427ba64fefc4be5f45494f5)(arg_0: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)
 
-[assign](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a8d6d1ef75427ba64fefc4be5f45494f5)(: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)
+[assign](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a8d6d1ef75427ba64fefc4be5f45494f5)(arg_0: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)
 
 [call](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#ac50c25ab533701f7e6c590f77ceca463)(ranges: [Std::Vector≺cv꞉꞉Range≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)
 
@@ -50,7 +50,9 @@
 
 [external?](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a1c5ccfd3a01b3c25ef2b860668781017) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[initialize_copy](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a0121ae48309b703132bdd1c62a74e8b9)(: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[get_device_ptr](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#ac9392a4ba521750ad34b23f2773afaf2) -> [Rice::Pointer≺unsigned char≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
+
+[initialize_copy](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#a0121ae48309b703132bdd1c62a74e8b9)(arg_0: [Cv::Cuda::GpuMatND](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [release](https://docs.opencv.org/4.x/d2/d0f/classcv_1_1cuda_1_1GpuMatND.html#ab2fb57a56ebd24076ff2ab715cfdb55b) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

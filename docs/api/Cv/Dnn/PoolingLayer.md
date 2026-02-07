@@ -26,7 +26,7 @@ pads_begin: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp
 
 pads_end: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html) (read/write)
 
-pooled_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html) (read/write)
+pooled_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html) (read/write)
 
 ps_roi_out_channels: [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 

@@ -1,10 +1,10 @@
 #[MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 ## Constructors
-[initialize](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a667e294461d09da9a1b1760d33adbbc8)()
-
 [initialize](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a667e294461d09da9a1b1760d33adbbc8)(m: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html))
 
 [initialize](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a667e294461d09da9a1b1760d33adbbc8)(_op: [Cv::MatOp](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html), _flags: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), _a: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), _b: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), _c: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), _alpha: [Float](https://docs.ruby-lang.org/en/master/Float.html), _beta: [Float](https://docs.ruby-lang.org/en/master/Float.html), _s: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html))
+
+[initialize](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a667e294461d09da9a1b1760d33adbbc8)()
 
 
 ## Attributes
@@ -32,25 +32,27 @@
 
 [\*](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ac66fa81bbfc418c535a7f9f49a900554)(arg_0: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-[\+](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a366cabf9cd5b9a9fb0e313570c5b3cac)(arg_0: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
-
 [\+](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a366cabf9cd5b9a9fb0e313570c5b3cac)(arg_0: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
+[\+](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a366cabf9cd5b9a9fb0e313570c5b3cac)(arg_0: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+
 [\+](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a366cabf9cd5b9a9fb0e313570c5b3cac)(arg_0: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+
+[\-](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ae07cd7b4ce3474dbdb1a264e2f6e7b0d)(arg_0: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 [\-](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ae07cd7b4ce3474dbdb1a264e2f6e7b0d)(arg_0: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 [\-](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ae07cd7b4ce3474dbdb1a264e2f6e7b0d)(arg_0: [Cv::Scalar](https://docs.opencv.org/4.x/d1/da0/classcv_1_1Scalar__.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-[\-](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ae07cd7b4ce3474dbdb1a264e2f6e7b0d)(arg_0: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+-@ -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 [/](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a4fd7c94c36187ae1dd810e5e1cb98506)(arg_0: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-[/](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a4fd7c94c36187ae1dd810e5e1cb98506)(arg_0: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
-
 [/](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a4fd7c94c36187ae1dd810e5e1cb98506)(arg_0: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-\[\](roi: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+[/](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a4fd7c94c36187ae1dd810e5e1cb98506)(arg_0: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+
+\[\](roi: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 \[\](row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
@@ -64,13 +66,13 @@
 
 [inv](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a6b6f538841a37416d5461f919f5e7bf6)(method: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-[mul](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a3be890f1c079879bbd106050972f24ea)(e: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), scale: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
-
 [mul](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a3be890f1c079879bbd106050972f24ea)(m: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), scale: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+
+[mul](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a3be890f1c079879bbd106050972f24ea)(e: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), scale: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 [row](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#ac3d30cfb0af133632c2f0593767b9690)(y: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
-[size](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a8b5fcf3cec72903e2692e5c71e1c283b) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[size](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a8b5fcf3cec72903e2692e5c71e1c283b) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [swap](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html#a77a3d7d7f1a88cbd26601dbb51856a37)(b: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

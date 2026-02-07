@@ -8,7 +8,7 @@
 
 img_idx: [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
-img_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html) (read/write)
+img_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html) (read/write)
 
 [keypoints](https://docs.opencv.org/4.x/d4/db5/structcv_1_1detail_1_1ImageFeatures.html#a1defd2a583122cb6360ab12c6333212b): [Std::Vector≺cv꞉꞉KeyPoint≻](https://en.cppreference.com/w/cpp/container/vector.html) (read/write)
 

@@ -12,6 +12,14 @@
 
 get_fps -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
+[get_last_time_micro](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#a094a0ddbeca890ebed26317dbc2886fd) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
+[get_last_time_milli](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#afce0396d69504417d88bbd2e74e5cd0c) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
+[get_last_time_sec](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#a346716378aed3c0a2e912ac034d7e4e6) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
+[get_last_time_ticks](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#aeac723214c91e8721ab7d71f9f2d55f5) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
 [get_time_micro](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#a8faced8c9ddd99cb01619e09a0ec6ce6) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
 [get_time_milli](https://docs.opencv.org/4.x/d9/d6f/classcv_1_1TickMeter.html#afb68ae3f1d181fec9d1cd5d80bd3bdce) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)

@@ -34,39 +34,39 @@
 
 [max_grid_size](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a0a1d357f595900f4ecdac350db7d672c) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[max_surface1_d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a260dccdd9395ca059b60d2c250a7b19d) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+max_surface_1d -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[max_surface1_d_layered](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a2c6c2d86c79673e0f003f72999901e0b) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_surface2_d_layered](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#ab382770adf2533cf52a6ec8dfdeceefd) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_surface3_d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#add5a8209f3a0a244bca9ce602a3ca8b9) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+max_surface_1d_layered -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 [max_surface_2d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a5c46713e52796df8de5cc0675545b591) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_surface_2d_layered -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_surface_3d -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 [max_surface_cubemap](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a380277029eb0760f3cdd599fdd6d6a68) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [max_surface_cubemap_layered](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a6d2514b8ea311750d6640cb0a09ee885) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[max_texture1_d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a7dadb9baaef83deb18a19340eff89efd) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+max_texture_1d -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[max_texture1_d_layered](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a63595aa52127a5e101aa2bd05bf21213) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+max_texture_1d_layered -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
-[max_texture1_d_linear](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a6ca6a1f3ccffbe4bcd082bb051a84709) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+max_texture_1d_linear -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[max_texture1_d_mipmap](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a8400034f3a46ec994d5f0b2b3097994d) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
-
-[max_texture2_d_gather](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a91932040e2174937d7db801dc51e37e1) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_texture2_d_layered](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a868a27580ea696306c83aa5da2fea496) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_texture2_d_linear](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#afe9b3a92a9832c6a8f52f8a006b8f297) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_texture2_d_mipmap](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#abd1a87ff21e6ace392634e05403618b6) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
-
-[max_texture3_d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#aed437fa43c5294c1fbb3f909a535ca57) -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+max_texture_1d_mipmap -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [max_texture_2d](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a99a188ab0931a15cd512a75e7fa448b5) -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_texture_2d_gather -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_texture_2d_layered -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_texture_2d_linear -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_texture_2d_mipmap -> [Cv::Vec2i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
+
+max_texture_3d -> [Cv::Vec3i](https://docs.opencv.org/4.x/d6/dcf/classcv_1_1Vec.html)
 
 [max_texture_cubemap](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#ab66a0f8545b5f2b0104c56fe1373451c) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -102,7 +102,7 @@
 
 [shared_mem_per_block](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a7b4b9d16c69096eed5c08d2241f23a2f) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[supports?](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a67e89f47a61b1bb016e3b20f644f762e)(feature_set: [Cv::Cuda::FeatureSet](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#ga776cf8e0301b18e19be4782754274fe0)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[supports](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a67e89f47a61b1bb016e3b20f644f762e)(feature_set: [Cv::Cuda::FeatureSet](https://docs.opencv.org/4.x/d8/d40/group__cudacore__init.html#ga776cf8e0301b18e19be4782754274fe0)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [surface_alignment](https://docs.opencv.org/4.x/d7/d7c/classcv_1_1cuda_1_1DeviceInfo.html#a125e3c0cbd8c63d07637863dff8b0608) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

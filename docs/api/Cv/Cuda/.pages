@@ -1,10 +1,15 @@
 nav:
   - index.md
   - BufferPool.md
+  - DevPtrFloat.md
+  - DevPtrInt.md
+  - DevPtrUnsignedChar.md
+  - DevPtrUnsignedShort.md
   - DeviceInfo
   - DeviceInfo.md
   - Event
   - Event.md
+  - EventAccessor.md
   - FeatureSet.md
   - GpuData.md
   - GpuMat
@@ -12,5 +17,15 @@ nav:
   - GpuMatND.md
   - HostMem
   - HostMem.md
+  - PtrStepSzb.md
+  - PtrStepSzf.md
+  - PtrStepSzi.md
+  - PtrStepSzus.md
+  - PtrStepb.md
+  - PtrStepf.md
+  - PtrStepi.md
+  - PtrStepus.md
+  - Stream
   - Stream.md
+  - StreamAccessor.md
   - TargetArchs.md

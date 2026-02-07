@@ -22,13 +22,13 @@
 ## Constructors
 [initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)()
 
-[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
-[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
-[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
-[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
+[initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html))
 
 [initialize](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga3bff550288d8719474fe71f463fbfc7f)(a: [Float](https://docs.ruby-lang.org/en/master/Float.html))
 
@@ -38,47 +38,47 @@
 
 
 ## Methods
-[!=](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gafa7691dc904caca8588ea6a4b0954e08)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[!=](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gafa7691dc904caca8588ea6a4b0954e08)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-%(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+%(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[\+](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gadb3c3fbb5bf49638bcaeddbfd16f3df7)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+[\*](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gab2ccc99b90013df8b9cf49f6c63842ff)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[\-](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gabb6d151a3faa03d866700dd46f0ad04a) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+[\+](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gadb3c3fbb5bf49638bcaeddbfd16f3df7)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[\-](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gabb6d151a3faa03d866700dd46f0ad04a)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+[\-](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gabb6d151a3faa03d866700dd46f0ad04a)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[/](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gaad5d6d10fa57557f159b67b9618bf557)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+-@ -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[<](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga86f3dce677d4a2fb357774c872647522)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[/](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gaad5d6d10fa57557f159b67b9618bf557)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[<=](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga6c17bb1577e0284585be0ba580811e8f)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[<](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga86f3dce677d4a2fb357774c872647522)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[==](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gaf9ae987f5788edbe1aada59dd7f41717)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[<=](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga6c17bb1577e0284585be0ba580811e8f)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[>](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga9e6bd3f5911bf05d858b143d76813b13)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[==](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gaf9ae987f5788edbe1aada59dd7f41717)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
->=(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[>](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga9e6bd3f5911bf05d858b143d76813b13)(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+>=(arg_0: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [assign](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gaefb8ac83b4e7cfae1b8188a8c930ab9d)(c: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
-
-[assign_divide](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga69d6a647b6b508f7ea18a4026860d2cc)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
-
-assign_modulus(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
-
-[assign_plus](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga7ab1cd200e310d11836af63a7e3c5cea)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
-
-[dereference](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gab2ccc99b90013df8b9cf49f6c63842ff)(: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
 [assign_minus](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga503eaaaf07b06066c396e5cbb97dfe76)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
 [assign_multiply](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gad4b76b5e234cdf5d9d61509348198ce5)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
-[get_exp](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga037d41e536aaaa6bbb5cc8a0271241d2) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+[assign_plus](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga7ab1cd200e310d11836af63a7e3c5cea)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
 [get_frac](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga078c541088c266a12c79a1bf52ca3710) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
 [get_sign?](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#gae4968636f759c9b3900b1ef0f9f3ca96) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+
+[assign_divide](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga69d6a647b6b508f7ea18a4026860d2cc)(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
+
+[get_exp](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga037d41e536aaaa6bbb5cc8a0271241d2) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+assign_modulus(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)) -> [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_1softfloat.html)
 
 [inf?](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga361d1cbf6593c26ea61285d094b5aa54) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -94,7 +94,7 @@ assign_modulus(a: [Cv::Softfloat](https://docs.opencv.org/4.x/d7/d2f/structcv_1_
 
 [subnormal?](https://docs.opencv.org/4.x/d7/dcc/group__core__utils__softfloat.html#ga5420ac5bdd327653ee0b90005c5c2b94) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-to_float -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+to_f32 -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
 to_softdouble -> [Cv::Softdouble](https://docs.opencv.org/4.x/de/df1/structcv_1_1softdouble.html)
 

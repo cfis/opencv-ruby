@@ -6,15 +6,15 @@ initialize(o: [Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻](https://en.c
 
 initialize(o: [Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻](https://en.cppreference.com/w/cpp/memory/shared_ptr.html))
 
-initialize(ptr: [Cv::Ml::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html))
+initialize(ptr: [Cv::Ml::SVM::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html))
 
-initialize(value: [Cv::Ml::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html))
+initialize(value: [Cv::Ml::SVM::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html))
 
 
 ## Methods
 assign(o: Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻
 
-get -> [Cv::Ml::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html)
+get -> [Cv::Ml::SVM::Kernel](https://docs.opencv.org/4.x/d7/db8/classcv_1_1ml_1_1SVM_1_1Kernel.html)
 
 empty? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 

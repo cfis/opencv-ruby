@@ -1,12 +1,12 @@
 #[LineIterator](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html)
 ## Constructors
-[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(pt1: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
+[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(pt1: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
 
-[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(bounding_area_size: [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), pt1: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
+[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(bounding_area_size: [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html), pt1: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
 
-[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(bounding_area_rect: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html), pt1: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
+[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(bounding_area_rect: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html), pt1: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
 
-[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(img: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), pt1: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
+[initialize](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ac83a4c574ce6a50a78a52d7eee10371b)(img: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), pt1: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html))
 
 
 ## Attributes
@@ -22,7 +22,7 @@
 
 [minus_step](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a293eafffedcac965ae5d7fb7fc8d8345): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
-[p](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ad3f28c0cbd51d1a08b44d6c55ae92a28): [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html) (read/write)
+[p](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#ad3f28c0cbd51d1a08b44d6c55ae92a28): [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html) (read/write)
 
 [plus_delta](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a364babc688c58ba62ea0cad61a65f07b): [Integer](https://docs.ruby-lang.org/en/master/Integer.html) (read/write)
 
@@ -44,10 +44,10 @@
 
 [increment](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a70f9337c9047f24405f25d6b3f97c4c5) -> [Cv::LineIterator](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html)
 
-[increment](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a70f9337c9047f24405f25d6b3f97c4c5)(: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::LineIterator](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html)
+increment_post(arg_0: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::LineIterator](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html)
 
-[init](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a278f4f6d0ff9bef5193789af647c421e)(img: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), bounding_area_rect: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html), pt1: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[init](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#a278f4f6d0ff9bef5193789af647c421e)(img: [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html), bounding_area_rect: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html), pt1: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), pt2: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html), connectivity: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), left_to_right: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[pos](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#afeddb548b519ef727e3d07b2361cd8e1) -> [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+[pos](https://docs.opencv.org/4.x/dc/dd2/classcv_1_1LineIterator.html#afeddb548b519ef727e3d07b2361cd8e1) -> [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 

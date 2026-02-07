@@ -16,9 +16,9 @@
 
 
 ## Methods
-[assign](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a437fad0f4316e1202bc0f029f10dcbef)(: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)
+[assign](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a437fad0f4316e1202bc0f029f10dcbef)(arg_0: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)
 
-[assign](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a437fad0f4316e1202bc0f029f10dcbef)(: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)
+[assign](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a437fad0f4316e1202bc0f029f10dcbef)(arg_0: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)
 
 [bind](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a48b5bca72706e8875c581fd6e55d0782) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -34,7 +34,7 @@
 
 [get_queue](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#a65e4fe3d729052ac4c01cb67e874775a) -> [Cv::Ocl::Queue](https://docs.opencv.org/4.x/dd/dc0/classcv_1_1ocl_1_1Queue.html)
 
-[initialize_copy](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#ac6af8e4cf012090c19898515e4dcbf0b)(: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#ac6af8e4cf012090c19898515e4dcbf0b)(arg_0: [Cv::Ocl::OpenCLExecutionContext](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [release](https://docs.opencv.org/4.x/d7/d83/classcv_1_1ocl_1_1OpenCLExecutionContext.html#aa8420514ef03983363809720a7fe1902) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

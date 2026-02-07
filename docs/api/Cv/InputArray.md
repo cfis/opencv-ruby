@@ -14,7 +14,9 @@
 
 [initialize](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a53021a00f01d897cd73b8da2ebf1bddb)(d_mat: [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html))
 
-[initialize](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a53021a00f01d897cd73b8da2ebf1bddb)(buf: [Cv::Ogl::Buffer](https://docs.opencv.org/4.x/d3/d68/classcv_1_1ogl_1_1Buffer.html))
+[initialize](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a53021a00f01d897cd73b8da2ebf1bddb)(d_mat_array: [Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻](https://en.cppreference.com/w/cpp/container/vector.html))
+
+[initialize](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a53021a00f01d897cd73b8da2ebf1bddb)(buf: Cv::Ogl::Buffer)
 
 [initialize](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a53021a00f01d897cd73b8da2ebf1bddb)(cuda_mem: [Cv::Cuda::HostMem](https://docs.opencv.org/4.x/d0/d44/classcv_1_1cuda_1_1HostMem.html))
 
@@ -88,13 +90,13 @@
 ## Methods
 [channels](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#af198cb2bf572d2877185756a58b724f8)(i: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[get_sz](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a30139470fc4ac0d3a1e20ad63163dc4f) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[get_sz](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a30139470fc4ac0d3a1e20ad63163dc4f) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [gpu_mat?](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a541a32b10224d53e8407ba0bb2c8f076) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [get_obj](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a9424d3318008cd55eb49af3982077936) -> [Rice::Pointer≺void≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)
 
-[get_o_gl_buffer](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#ac1db5c859bf438693b1e22aa31397a40) -> [Cv::Ogl::Buffer](https://docs.opencv.org/4.x/d3/d68/classcv_1_1ogl_1_1Buffer.html)
+[get_o_gl_buffer](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#ac1db5c859bf438693b1e22aa31397a40) -> Cv::Ogl::Buffer
 
 [get_gpu_mat](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a27af21d5fb66f761f6b7c0c59ce1b808) -> [Cv::Cuda::GpuMat](https://docs.opencv.org/4.x/d0/d60/classcv_1_1cuda_1_1GpuMat.html)
 
@@ -124,8 +126,6 @@
 
 [get_mat](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a9c09739ca3e0ce212e2ab8374aa2f195)(idx: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)
 
-[get_mat_](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#ad240d5085e65fa2ceacbaaa086aa8801)(idx: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Mat](https://docs.opencv.org/4.x/d3/d63/classcv_1_1Mat.html)
-
 [gpu_mat_vector?](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a2f3eb944ab23455d4a0c5db922a3705b) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [kind](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#aab9143957595156ba406324574c5ac1f) -> Cv::InputArray::KindFlag
@@ -140,9 +140,9 @@
 
 [rows](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a4ee92cc0ce081ee8af90c8c3970b316a)(i: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[same_size?](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a72b0761972d6ed08761c74545f6b5622)(arr: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[same_size](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a72b0761972d6ed08761c74545f6b5622)(arr: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[size](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a0d8ed64f7bbbda6d34e3289681ffdff0)(i: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[size](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a0d8ed64f7bbbda6d34e3289681ffdff0)(i: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [sizend](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html#a7cb4cadf3108dc232e05e3ae5550e912)(sz: [Rice::Pointer≺int≻](https://ruby-rice.github.io/4.x/ruby_api/pointer), i: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

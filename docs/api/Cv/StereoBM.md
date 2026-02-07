@@ -10,9 +10,9 @@
 
 [get_pre_filter_type](https://docs.opencv.org/4.x/d9/dba/classcv_1_1StereoBM.html#a2c148484f1b69d300e608c6a52dfe537) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-get_roi1 -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+get_roi1 -> [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
-get_roi2 -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
+get_roi2 -> [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)
 
 [get_smaller_block_size](https://docs.opencv.org/4.x/d9/dba/classcv_1_1StereoBM.html#a6c048feee99fb565d0dd14c23b9f4a3c) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -26,9 +26,9 @@ get_roi2 -> [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html
 
 [set_pre_filter_type](https://docs.opencv.org/4.x/d9/dba/classcv_1_1StereoBM.html#ae44e1b05ac1b36917cd5fb4d4fd1d7c2)(pre_filter_type: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-set_roi1(roi1: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+set_roi1(roi1: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-set_roi2(roi2: [Cv::Rect](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+set_roi2(roi2: [Cv::Rect2i](https://docs.opencv.org/4.x/d2/d44/classcv_1_1Rect__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [set_smaller_block_size](https://docs.opencv.org/4.x/d9/dba/classcv_1_1StereoBM.html#abb6280255bb070f51ade69d6455216d6)(block_size: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

@@ -12,6 +12,6 @@
 ## Methods
 [get_dst](https://docs.opencv.org/4.x/dd/dac/classcv_1_1detail_1_1Timelapser.html#a219f010dd2b44c710ae71bb89e1a4de2) -> [Cv::UMat](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 
-[process](https://docs.opencv.org/4.x/dd/dac/classcv_1_1detail_1_1Timelapser.html#ade5839ec71229a08257c560afd7db907)(img: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), tl: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[process](https://docs.opencv.org/4.x/dd/dac/classcv_1_1detail_1_1Timelapser.html#ade5839ec71229a08257c560afd7db907)(img: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), mask: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), tl: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 

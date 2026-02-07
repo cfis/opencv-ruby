@@ -22,6 +22,22 @@
 
 [next](https://docs.opencv.org/4.x/d1/dd6/classcv_1_1RNG.html#ad8d035897a5e31e7fc3e1e6c378c32f5) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
+to_f -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
+to_f32 -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
+
+to_i -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+to_i16 -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+to_schar -> [String](https://docs.ruby-lang.org/en/master/String.html)
+
+to_u -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
+to_uchar -> [String](https://docs.ruby-lang.org/en/master/String.html)
+
+to_ushort -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+
 [uniform](https://docs.opencv.org/4.x/d1/dd6/classcv_1_1RNG.html#a8325cc562269b47bcac2343639b6fafc)(a: [Float](https://docs.ruby-lang.org/en/master/Float.html), b: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)
 
 [uniform](https://docs.opencv.org/4.x/d1/dd6/classcv_1_1RNG.html#a8325cc562269b47bcac2343639b6fafc)(a: [Float](https://docs.ruby-lang.org/en/master/Float.html), b: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [Float](https://docs.ruby-lang.org/en/master/Float.html)

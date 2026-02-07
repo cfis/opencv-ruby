@@ -2,7 +2,7 @@
 ## Constructors
 [initialize](https://en.cppreference.com/w/cpp/utility/pair.html)()
 
-[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: [String](https://docs.ruby-lang.org/en/master/String.html), arg_1: Cvflann::Any)
+[initialize](https://en.cppreference.com/w/cpp/utility/pair.html)(x: [String](https://docs.ruby-lang.org/en/master/String.html), y: Cvflann::Any)
 
 
 ## Attributes
@@ -12,7 +12,7 @@
 
 
 ## Methods
-[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(arg_0: [Std::Pair≺string const ‚ cvflann꞉꞉any≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[initialize_copy](https://en.cppreference.com/w/cpp/utility/pair.html)(other: [Std::Pair≺string const ‚ cvflann꞉꞉any≻](https://en.cppreference.com/w/cpp/utility/pair.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 to_s -> [String](https://docs.ruby-lang.org/en/master/String.html)
 

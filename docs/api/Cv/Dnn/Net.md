@@ -54,13 +54,17 @@ get_flops(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 get_flops(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), net_input_shape: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
+get_impl -> Cv::Dnn::Net::Impl
+
+get_impl_ref -> Cv::Dnn::Net::Impl
+
 get_input_details(scales: [Std::Vector≺float≻](https://en.cppreference.com/w/cpp/container/vector.html), zeropoints: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+get_layer(layer_id: Cv::Dnn::DictValue) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
 
 get_layer(layer_name: [String](https://docs.ruby-lang.org/en/master/String.html)) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
 
 get_layer(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
-
-get_layer(layer_id: Cv::Dnn::Dnn4V20241223::DictValue) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
 
 get_layer_id(layer: [String](https://docs.ruby-lang.org/en/master/String.html)) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -84,13 +88,13 @@ get_memory_consumption(net_input_shapes: [Std::Vector≺vector≺int≻≻](http
 
 get_memory_consumption(net_input_shape: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), blobs: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-get_memory_consumption(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), net_input_shape: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), blobs: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
-
 get_memory_consumption(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), net_input_shapes: [Std::Vector≺vector≺int≻≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), blobs: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-get_memory_consumption(net_input_shapes: [Std::Vector≺vector≺int≻≻](https://en.cppreference.com/w/cpp/container/vector.html), layer_ids: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html), blobs: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+get_memory_consumption(layer_id: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), net_input_shape: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), blobs: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 get_memory_consumption(net_input_shape: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), layer_ids: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html), blobs: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+
+get_memory_consumption(net_input_shapes: [Std::Vector≺vector≺int≻≻](https://en.cppreference.com/w/cpp/container/vector.html), layer_ids: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html), weights: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html), blobs: [Std::Vector≺unsigned Int64≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 get_output_details(scales: [Std::Vector≺float≻](https://en.cppreference.com/w/cpp/container/vector.html), zeropoints: [Std::Vector≺int≻](https://en.cppreference.com/w/cpp/container/vector.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

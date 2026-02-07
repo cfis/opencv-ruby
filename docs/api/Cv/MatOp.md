@@ -28,7 +28,7 @@ assign(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr
 
 [divide](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#aa8b2962155ee09a215639c59c50340f4)(expr1: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), expr2: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), res: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), scale: [Float](https://docs.ruby-lang.org/en/master/Float.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[element_wise?](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#aeadefd8cf1e2d0b6734c16d084b1e6e7)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+[element_wise](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#aeadefd8cf1e2d0b6734c16d084b1e6e7)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [invert](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#a33bc65dedc2b1a9b626b277b49493bc0)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), method: [Integer](https://docs.ruby-lang.org/en/master/Integer.html), res: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -40,7 +40,7 @@ assign(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr
 
 [roi](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#a4a39d30a977f213f196420244fe1708b)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), row_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), col_range: [Cv::Range](https://docs.opencv.org/4.x/da/d35/classcv_1_1Range.html), res: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[size](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#a80309fab69773987e1c740279b82abd1)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::Size](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
+[size](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#a80309fab69773987e1c740279b82abd1)(expr: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [Cv::Size2i](https://docs.opencv.org/4.x/d6/d50/classcv_1_1Size__.html)
 
 [subtract](https://docs.opencv.org/4.x/d1/d9d/classcv_1_1MatOp.html#adf3a27e2d042073f2d765522c3f2c870)(expr1: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), expr2: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html), res: [Cv::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

@@ -1,6 +1,6 @@
 #[AlignMTB](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html)
 ## Methods
-[calculate_shift](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a49782cba1b954472ade1d1ff1b8341bb)(img0: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), img1: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
+[calculate_shift](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a49782cba1b954472ade1d1ff1b8341bb)(img0: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), img1: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html)) -> [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)
 
 [compute_bitmaps](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a05dfd95e34ecb2c02b179d0a9d790b22)(img: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), tb: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), eb: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
@@ -20,6 +20,6 @@
 
 [set_max_bits](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a6f55841ed6e1f9482483595008250560)(max_bits: [Integer](https://docs.ruby-lang.org/en/master/Integer.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[shift_mat](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a9718fe1a611b341eb1063245c9d327e3)(src: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), shift: [Cv::Point](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[shift_mat](https://docs.opencv.org/4.x/d7/db6/classcv_1_1AlignMTB.html#a9718fe1a611b341eb1063245c9d327e3)(src: [Cv::InputArray](https://docs.opencv.org/4.x/d4/d32/classcv_1_1__InputArray.html), dst: [Cv::OutputArray](https://docs.opencv.org/4.x/d2/d9e/classcv_1_1__OutputArray.html), shift: [Cv::Point2i](https://docs.opencv.org/4.x/db/d4e/classcv_1_1Point__.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 

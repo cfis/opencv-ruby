@@ -44,6 +44,8 @@ double_fp_config -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [extensions](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a963606957c52e6ca0b58de3f63afa309) -> [String](https://docs.ruby-lang.org/en/master/String.html)
 
+[get_impl](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#ad6c26a9eea0a39ac9e9653a834c34761) -> Cv::Ocl::Device::Impl
+
 [global_mem_cache_line_size](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a6c9662e162a4f2a73c33f05a6c664c2d) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [global_mem_cache_size](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a98a5e7472ced8c84a51280e291c035f0) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
@@ -60,15 +62,15 @@ has_fp64? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [host_unified_memory?](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a95d6767205937a8c46258a23b993395c) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[image2_d_max_height](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a0d604ced5333c5d611b3beae76bb9363) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+image_2d_max_height -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[image2_d_max_width](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#af6ceb593795e6993dd8da6ae804eae7f) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+image_2d_max_width -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[image3_d_max_depth](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a11ef7435cb679fabecdb34e6d9ea6d4a) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+image_3d_max_depth -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[image3_d_max_height](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a6c1b13f92f9455f1c8b6f32fa18457c4) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+image_3d_max_height -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[image3_d_max_width](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a1af061caf478f15609ce31fa065820dc) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
+image_3d_max_width -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
 [image_base_address_alignment](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#ac2a1da702ac445d6fcfb3fcba6d8f2fa) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
@@ -114,7 +116,7 @@ has_fp64? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [max_work_item_dims](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a6c76e7f57a273ea51e3564a4f1269158) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 
-[max_work_item_sizes](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a693878609398a5edafad71026661e41f)(: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+[max_work_item_sizes](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#a693878609398a5edafad71026661e41f)(arg_0: [Rice::Pointer≺unsigned Int64≻](https://ruby-rice.github.io/4.x/ruby_api/pointer)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [max_write_image_args](https://docs.opencv.org/4.x/d7/d9f/classcv_1_1ocl_1_1Device.html#afc62c78591b741fdca19a729867686ca) -> [Integer](https://docs.ruby-lang.org/en/master/Integer.html)
 

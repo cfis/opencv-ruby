@@ -28,7 +28,7 @@
 
 [get_truncate_pruned_tree?](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a905b23962a6c393a87b79bcc086cc6c2) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
-[get_use1_se_rule?](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a5d8bd6934507c56905f93b5b8c7d1584) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
+get_use_1se_rule? -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
 [get_use_surrogates?](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a566708bb8841067f146afae81b6219f4) -> [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)
 
@@ -46,7 +46,7 @@
 
 [set_truncate_pruned_tree](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a6f2663a08abc3e872bd3f3a53a84615c)(val: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
-[set_use1_se_rule](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a08089831f9a07e0ce6a5e5faccdf31f6)(val: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
+set_use_1se_rule(val: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 
 [set_use_surrogates](https://docs.opencv.org/4.x/d8/d89/classcv_1_1ml_1_1DTrees.html#a33d8fec217d423609a9f29a0a787111c)(val: [TrueClass](https://docs.ruby-lang.org/en/master/TrueClass.html)) -> [NilClass](https://docs.ruby-lang.org/en/master/NilClass.html)
 

@@ -13,13 +13,22 @@ Rice::Class rb_cCvUtilsNestedOriginalClassNameParams;
 
 static int set_log_level_int(int level)
 {
+#if CV_VERSION_MAJOR > 4 || (CV_VERSION_MAJOR == 4 && CV_VERSION_MINOR >= 13)
   return static_cast<int>(cv::utils::logging::setLogLevel(
     static_cast<cv::utils::logging::LogLevel>(level)));
+#else
+  return static_cast<int>(cv::setLogLevel(
+    static_cast<cv::utils::logging::LogLevel>(level)));
+#endif
 }
 
 static int get_log_level_int()
 {
+#if CV_VERSION_MAJOR > 4 || (CV_VERSION_MAJOR == 4 && CV_VERSION_MINOR >= 13)
   return static_cast<int>(cv::utils::logging::getLogLevel());
+#else
+  return static_cast<int>(cv::getLogLevel());
+#endif
 }
 
 void Init_BindingsUtils()

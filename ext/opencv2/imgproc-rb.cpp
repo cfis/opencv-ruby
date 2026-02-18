@@ -561,11 +561,11 @@ void Init_Imgproc()
     define_constructor(Constructor<cv::Subdiv2D>()).
     define_constructor(Constructor<cv::Subdiv2D, cv::Rect>(),
       Arg("rect")).
-    define_method("init_delaunay", &cv::Subdiv2D::initDelaunay,
+    define_method("init_delaunay", static_cast<void(cv::Subdiv2D::*)(cv::Rect)>(&cv::Subdiv2D::initDelaunay),
       Arg("rect")).
-    define_method<int(cv::Subdiv2D::*)(cv::Point2f)>("insert", &cv::Subdiv2D::insert,
+    define_method("insert", static_cast<int(cv::Subdiv2D::*)(cv::Point2f)>(&cv::Subdiv2D::insert),
       Arg("pt")).
-    define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point_<float>>&)>("insert", &cv::Subdiv2D::insert,
+    define_method("insert", static_cast<void(cv::Subdiv2D::*)(const std::vector<cv::Point2f>&)>(&cv::Subdiv2D::insert),
       Arg("ptvec")).
     define_method("locate", &cv::Subdiv2D::locate,
       Arg("pt"), Arg("edge"), Arg("vertex")).

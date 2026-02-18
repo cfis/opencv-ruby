@@ -593,7 +593,7 @@ void Init_Mat()
       Arg("i") = static_cast<int>(-1)).
     define_method("submatrix?", &cv::_InputArray::isSubmatrix,
       Arg("i") = static_cast<int>(-1)).
-    define_method("empty?", &cv::_InputArray::empty).
+    define_method("empty?", static_cast<bool(cv::_InputArray::*)() const>(&cv::_InputArray::empty)).
     define_method<void(cv::_InputArray::*)(const cv::_OutputArray&) const>("copy_to", &cv::_InputArray::copyTo,
       Arg("arr")).
     define_method<void(cv::_InputArray::*)(const cv::_OutputArray&, const cv::_InputArray&) const>("copy_to", &cv::_InputArray::copyTo,

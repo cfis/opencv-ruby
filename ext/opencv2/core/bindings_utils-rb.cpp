@@ -11,6 +11,26 @@ Rice::Class rb_cCvUtilsFunctionParams;
 Rice::Class rb_cCvUtilsNestedOriginalClassName;
 Rice::Class rb_cCvUtilsNestedOriginalClassNameParams;
 
+static int set_log_level_int(int level)
+{
+#if CV_VERSION_MAJOR > 4 || (CV_VERSION_MAJOR == 4 && CV_VERSION_MINOR >= 13)
+  return static_cast<int>(cv::utils::logging::setLogLevel(
+    static_cast<cv::utils::logging::LogLevel>(level)));
+#else
+  return static_cast<int>(cv::setLogLevel(
+    static_cast<cv::utils::logging::LogLevel>(level)));
+#endif
+}
+
+static int get_log_level_int()
+{
+#if CV_VERSION_MAJOR > 4 || (CV_VERSION_MAJOR == 4 && CV_VERSION_MINOR >= 13)
+  return static_cast<int>(cv::utils::logging::getLogLevel());
+#else
+  return static_cast<int>(cv::getLogLevel());
+#endif
+}
+
 void Init_BindingsUtils()
 {
   Module rb_mCv = define_module("Cv");
@@ -159,8 +179,8 @@ void Init_BindingsUtils()
   
   rb_mCvUtilsFs.define_module_function("get_cache_directory_for_downloads", &cv::utils::fs::getCacheDirectoryForDownloads);
   
-  rb_mCv.define_module_function("set_log_level", &cv::setLogLevel,
+  rb_mCv.define_module_function("set_log_level", &set_log_level_int,
     Arg("level"));
   
-  rb_mCv.define_module_function("get_log_level", &cv::getLogLevel);
+  rb_mCv.define_module_function("get_log_level", &get_log_level_int);
 }

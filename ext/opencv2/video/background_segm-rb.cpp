@@ -13,7 +13,7 @@ void Init_BackgroundSegm()
   Module rb_mCv = define_module("Cv");
   
   rb_cCvBackgroundSubtractor = define_class_under<cv::BackgroundSubtractor, cv::Algorithm>(rb_mCv, "BackgroundSubtractor").
-    define_method("apply", &cv::BackgroundSubtractor::apply,
+    define_method<void(cv::BackgroundSubtractor::*)(cv::InputArray, cv::OutputArray, double)>("apply", &cv::BackgroundSubtractor::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1)).
     define_method("get_background_image", &cv::BackgroundSubtractor::getBackgroundImage,
       Arg("background_image"));
@@ -55,7 +55,7 @@ void Init_BackgroundSegm()
     define_method("get_shadow_threshold", &cv::BackgroundSubtractorMOG2::getShadowThreshold).
     define_method("set_shadow_threshold", &cv::BackgroundSubtractorMOG2::setShadowThreshold,
       Arg("threshold")).
-    define_method("apply", &cv::BackgroundSubtractorMOG2::apply,
+    define_method<void(cv::BackgroundSubtractorMOG2::*)(cv::InputArray, cv::OutputArray, double)>("apply", &cv::BackgroundSubtractorMOG2::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1));
   
   rb_mCv.define_module_function("create_background_subtractor_mog2", &cv::createBackgroundSubtractorMOG2,

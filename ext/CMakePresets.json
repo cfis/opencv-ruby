@@ -1,4 +1,4 @@
-﻿{
+{
   "version": 6,
   "configurePresets": [
     {
@@ -147,7 +147,6 @@
         "CMAKE_MSVC_DEBUG_INFORMATION_FORMAT": "ProgramDatabase"
       }
     },
-
     {
       "name": "clang-windows-debug",
       "inherits": "windows-base",
@@ -172,7 +171,6 @@
       }
     }
   ],
-
   "buildPresets": [
     {
       "name": "linux-debug",

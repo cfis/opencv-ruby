@@ -3,6 +3,8 @@
 
 using namespace Rice;
 
+#include "utility-rb.ipp"
+
 void Init_Core_Utils_Instrumentation()
 {
   Module rb_mCv = define_module("Cv");

@@ -16,11 +16,11 @@ inline Rice::Data_Type<cvflann::Index<Distance>> Index_instantiate(Rice::Module 
     template define_method<cvflann::flann_algorithm_t(cvflann::Index<Distance>::*)() const>("get_type", &cvflann::Index<Distance>::getType).
     template define_method<int(cvflann::Index<Distance>::*)() const>("used_memory", &cvflann::Index<Distance>::usedMemory).
     template define_method<cvflann::IndexParams(cvflann::Index<Distance>::*)() const>("get_parameters", &cvflann::Index<Distance>::getParameters).
-    template define_method<void(cvflann::Index<Distance>::*)(const cvflann::Matrix<cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::Index<Distance>::DistanceType>&, int, const cvflann::SearchParams&)>("knn_search", &cvflann::Index<Distance>::knnSearch,
+    template define_method<void(cvflann::Index<Distance>::*)(const cvflann::Matrix<typename cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<typename cvflann::Index<Distance>::DistanceType>&, int, const cvflann::SearchParams&)>("knn_search", &cvflann::Index<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    template define_method<int(cvflann::Index<Distance>::*)(const cvflann::Matrix<cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::Index<Distance>::DistanceType>&, float, const cvflann::SearchParams&)>("radius_search", &cvflann::Index<Distance>::radiusSearch,
+    template define_method<int(cvflann::Index<Distance>::*)(const cvflann::Matrix<typename cvflann::Index<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<typename cvflann::Index<Distance>::DistanceType>&, float, const cvflann::SearchParams&)>("radius_search", &cvflann::Index<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
-    template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<cvflann::Index<Distance>::DistanceType>&, const typename cvflann::Index<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
+    template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<typename cvflann::Index<Distance>::DistanceType>&, const typename cvflann::Index<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }
 

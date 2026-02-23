@@ -1,8 +1,4 @@
-#include <opencv2/core/cuda.hpp> // Manual
-#include <opencv2/core/opengl.hpp> // Manual
 #include <opencv2/core/mat.hpp>
-#include "types-rb.hpp" // Manual
-#include "refinements/mat-iterators.hpp" // Manual
 #include "mat-rb.hpp"
 
 using namespace Rice;
@@ -137,9 +133,8 @@ void Init_Core_Mat()
       Arg("vec")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::GpuMat&>(),
       Arg("d_mat")).
-    // Commented out - causes linker errors
-    // define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
-    //   Arg("d_mat")).
+    define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
+      Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, cv::ogl::Buffer&>(),
       Arg("buf")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::HostMem&>(),
@@ -154,9 +149,8 @@ void Init_Core_Mat()
       Arg("vec")).
     define_constructor(Constructor<cv::_OutputArray, const cv::cuda::GpuMat&>(),
       Arg("d_mat")).
-    // Commented out - causes linker errors
-    // define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
-    //   Arg("d_mat")).
+    define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
+      Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, const cv::ogl::Buffer&>(),
       Arg("buf")).
     define_constructor(Constructor<cv::_OutputArray, const cv::cuda::HostMem&>(),
@@ -325,7 +319,7 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::MatSize, int*>(),
       ArgBuffer("_p")).
     define_method<int(cv::MatSize::*)() const noexcept>("dims", &cv::MatSize::dims).
-    define_method<cv::Size(cv::MatSize::*)() const>("to_size", &cv::MatSize::operator()). // Manual - renamed from "call", returns cv::Size
+    define_method<cv::Size(cv::MatSize::*)() const>("call", &cv::MatSize::operator()).
     define_method<const int&(cv::MatSize::*)(int) const>("[]", &cv::MatSize::operator[],
       Arg("i")).
     define_method<int&(cv::MatSize::*)(int)>("[]", &cv::MatSize::operator[],
@@ -498,14 +492,13 @@ void Init_Core_Mat()
       Arg("whole_size"), Arg("ofs")).
     define_method<cv::Mat&(cv::Mat::*)(int, int, int, int)>("adjust_roi", &cv::Mat::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
-    // Manual - changed "call" to "[]" for ROI access methods
-    define_method<cv::Mat(cv::Mat::*)(cv::Range, cv::Range) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(cv::Range, cv::Range) const>("call", &cv::Mat::operator(),
       Arg("row_range"), Arg("col_range")).
-    define_method<cv::Mat(cv::Mat::*)(const cv::Rect&) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const cv::Rect&) const>("call", &cv::Mat::operator(),
       Arg("roi")).
-    define_method<cv::Mat(cv::Mat::*)(const cv::Range*) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const cv::Range*) const>("call", &cv::Mat::operator(),
       Arg("ranges")).
-    define_method<cv::Mat(cv::Mat::*)(const std::vector<cv::Range>&) const>("[]", &cv::Mat::operator(),
+    define_method<cv::Mat(cv::Mat::*)(const std::vector<cv::Range>&) const>("call", &cv::Mat::operator(),
       Arg("ranges")).
     define_method<bool(cv::Mat::*)() const>("continuous?", &cv::Mat::isContinuous).
     define_method<bool(cv::Mat::*)() const>("submatrix?", &cv::Mat::isSubmatrix).
@@ -735,14 +728,13 @@ void Init_Core_Mat()
       Arg("whole_size"), Arg("ofs")).
     define_method<cv::UMat&(cv::UMat::*)(int, int, int, int)>("adjust_roi", &cv::UMat::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
-    // Manual - changed "call" to "[]" for ROI access methods
-    define_method<cv::UMat(cv::UMat::*)(cv::Range, cv::Range) const>("[]", &cv::UMat::operator(),
+    define_method<cv::UMat(cv::UMat::*)(cv::Range, cv::Range) const>("call", &cv::UMat::operator(),
       Arg("row_range"), Arg("col_range")).
-    define_method<cv::UMat(cv::UMat::*)(const cv::Rect&) const>("[]", &cv::UMat::operator(),
+    define_method<cv::UMat(cv::UMat::*)(const cv::Rect&) const>("call", &cv::UMat::operator(),
       Arg("roi")).
-    define_method<cv::UMat(cv::UMat::*)(const cv::Range*) const>("[]", &cv::UMat::operator(),
+    define_method<cv::UMat(cv::UMat::*)(const cv::Range*) const>("call", &cv::UMat::operator(),
       Arg("ranges")).
-    define_method<cv::UMat(cv::UMat::*)(const std::vector<cv::Range>&) const>("[]", &cv::UMat::operator(),
+    define_method<cv::UMat(cv::UMat::*)(const std::vector<cv::Range>&) const>("call", &cv::UMat::operator(),
       Arg("ranges")).
     define_method<bool(cv::UMat::*)() const>("continuous?", &cv::UMat::isContinuous).
     define_method<bool(cv::UMat::*)() const>("submatrix?", &cv::UMat::isSubmatrix).
@@ -846,9 +838,8 @@ void Init_Core_Mat()
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     define_method<void(cv::SparseMat::*)(const int*, size_t*)>("erase", &cv::SparseMat::erase,
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    // Manual - Comment out SparseMat define_iterator calls - SparseMatIterator doesn't dereference like standard iterators
-    // define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each").
-    // define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const").
+    define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each").
+    define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const").
     define_method<cv::SparseMat::Node*(cv::SparseMat::*)(size_t)>("node", &cv::SparseMat::node,
       Arg("nidx")).
     define_method<const cv::SparseMat::Node*(cv::SparseMat::*)(size_t) const>("node", &cv::SparseMat::node,
@@ -895,9 +886,8 @@ void Init_Core_Mat()
       Arg("_m"), Arg("_row"), Arg("_col") = static_cast<int>(0)).
     define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, cv::Point>(),
       Arg("_m"), Arg("_pt")).
-    // Linker error - no explicit template instantiation
-    // define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("_idx")).
+    define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
+      Arg("_m"), ArgBuffer("_idx")).
     define_constructor(Constructor<cv::MatConstIterator, const cv::MatConstIterator&>(),
       Arg("it")).
     define_method<cv::MatConstIterator&(cv::MatConstIterator::*)(const cv::MatConstIterator&)>("assign", &cv::MatConstIterator::operator=,
@@ -939,10 +929,9 @@ void Init_Core_Mat()
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)(const cv::SparseMatConstIterator&)>("assign", &cv::SparseMatConstIterator::operator=,
       Arg("it")).
     define_method<const cv::SparseMat::Node*(cv::SparseMatConstIterator::*)() const>("node", &cv::SparseMatConstIterator::node).
-    // Linker error - no explicit template instantiation
-    // define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
-    // define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
-    //   Arg("arg_0")).
+    define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("decrement", &cv::SparseMatConstIterator::operator--).
+    define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("decrement_post", &cv::SparseMatConstIterator::operator--,
+      Arg("arg_0")).
     define_method<cv::SparseMatConstIterator&(cv::SparseMatConstIterator::*)()>("increment", &cv::SparseMatConstIterator::operator++).
     define_method<cv::SparseMatConstIterator(cv::SparseMatConstIterator::*)(int)>("increment_post", &cv::SparseMatConstIterator::operator++,
       Arg("arg_0")).
@@ -955,9 +944,8 @@ void Init_Core_Mat()
     define_constructor(Constructor<cv::SparseMatIterator>()).
     define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
       Arg("_m")).
-    // Linker error - no explicit template instantiation
-    // define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("idx")).
+    define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
+      Arg("_m"), ArgBuffer("idx")).
     define_constructor(Constructor<cv::SparseMatIterator, const cv::SparseMatIterator&>(),
       Arg("it")).
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,
@@ -1055,10 +1043,9 @@ void Init_Core_Mat()
       Arg("x")).
     define_method<cv::MatExpr(cv::MatExpr::*)(int) const>("diag", &cv::MatExpr::diag,
       Arg("d") = static_cast<int>(0)).
-    // Manual - changed "call" to "[]" for ROI access methods
-    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Range&, const cv::Range&) const>("[]", &cv::MatExpr::operator(),
+    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Range&, const cv::Range&) const>("call", &cv::MatExpr::operator(),
       Arg("row_range"), Arg("col_range")).
-    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Rect&) const>("[]", &cv::MatExpr::operator(),
+    define_method<cv::MatExpr(cv::MatExpr::*)(const cv::Rect&) const>("call", &cv::MatExpr::operator(),
       Arg("roi")).
     define_method<cv::MatExpr(cv::MatExpr::*)() const>("t", &cv::MatExpr::t).
     define_method<cv::MatExpr(cv::MatExpr::*)(int) const>("inv", &cv::MatExpr::inv,

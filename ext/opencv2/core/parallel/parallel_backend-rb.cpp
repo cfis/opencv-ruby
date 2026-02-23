@@ -1,5 +1,3 @@
-#include <string> // Manual
-#include <memory> // Manual
 #include <opencv2/core/parallel/parallel_backend.hpp>
 #include "parallel_backend-rb.hpp"
 

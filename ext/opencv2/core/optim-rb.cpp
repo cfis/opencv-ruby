@@ -38,9 +38,7 @@ void Init_Core_Optim()
       Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function>&>(cv::Ptr<cv::MinProblemSolver::Function>()), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER+cv::TermCriteria::Type::EPS,5000,0.000001)));
 
   Enum<cv::SolveLPResult> rb_cCvSolveLPResult = define_enum_under<cv::SolveLPResult>("SolveLPResult", rb_mCv).
-#if RUBY_CV_VERSION >= 408
     define_value("SOLVELP_LOST", cv::SolveLPResult::SOLVELP_LOST).
-#endif
     define_value("SOLVELP_UNBOUNDED", cv::SolveLPResult::SOLVELP_UNBOUNDED).
     define_value("SOLVELP_UNFEASIBLE", cv::SolveLPResult::SOLVELP_UNFEASIBLE).
     define_value("SOLVELP_SINGLE", cv::SolveLPResult::SOLVELP_SINGLE).

@@ -1,4 +1,3 @@
-#include <string> // Manual
 #include <opencv2/core/parallel/backend/parallel_for.tbb.hpp>
 #include "parallel_for.tbb-rb.hpp"
 

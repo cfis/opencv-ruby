@@ -1,4 +1,3 @@
-#include <opencv2/features2d.hpp> // Manual
 #include <opencv2/xfeatures2d.hpp>
 #include "xfeatures2d-rb.hpp"
 

@@ -3,6 +3,11 @@
 
 using namespace Rice;
 
+#include "color_detail-rb.ipp"
+#include "color_detail-rb.ipp"
+#include "color_detail-rb.ipp"
+#include "color_detail-rb.ipp"
+
 void Init_Cudev_Functional_ColorCvt()
 {
   Module rb_mCv = define_module("Cv");

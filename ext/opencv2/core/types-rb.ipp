@@ -120,8 +120,7 @@ inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module parent, co
 template<typename _Tp>
 inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - Scalar_ inherits from Vec
-  return Rice::define_class_under<cv::Scalar_<_Tp>, cv::Vec<_Tp, 4>>(parent, name).
+  return Rice::define_class_under<cv::Scalar_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Scalar_<_Tp>>()).
     define_constructor(Constructor<cv::Scalar_<_Tp>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2") = static_cast<_Tp>(0), Arg("v3") = static_cast<_Tp>(0)).

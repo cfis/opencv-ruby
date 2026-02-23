@@ -29,12 +29,14 @@
 
 #include "opencv2/core/cvdef-rb.hpp"
 #include "opencv2/core/cvstd-rb.hpp"
+#include "opencv2/core/cvstd.inl-rb.hpp"
 #include "opencv2/core/cvstd_wrapper-rb.hpp"
 #include "opencv2/core/directx-rb.hpp"
 #include "opencv2/core/dualquaternion-rb.hpp"
 #include "opencv2/core/eigen-rb.hpp"
 #include "opencv2/core/fast_math-rb.hpp"
 #include "opencv2/core/mat-rb.hpp"
+#include "opencv2/core/mat.inl-rb.hpp"
 #include "opencv2/core/matx-rb.hpp"
 #include "opencv2/core/neon_utils-rb.hpp"
 #include "opencv2/core/ocl-rb.hpp"
@@ -69,6 +71,7 @@
 #include "opencv2/dnn/all_layers-rb.hpp"
 #include "opencv2/dnn/dict-rb.hpp"
 #include "opencv2/dnn/dnn-rb.hpp"
+#include "opencv2/dnn/dnn.inl-rb.hpp"
 #include "opencv2/dnn/layer-rb.hpp"
 #include "opencv2/dnn/layer.details-rb.hpp"
 #include "opencv2/dnn/shape_utils-rb.hpp"
@@ -278,6 +281,8 @@ void Init_opencv_ruby()
     Init_Core_Matx();
     Init_Core_Types(); // Types needs to come before mat since it nees to initialize Range and Scalar externs
     Init_Core_Mat();
+    Init_Core_CvstdInl();
+    Init_Core_MatInl();
     Init_Core_NeonUtils();
     Init_Core_Ocl();
     Init_Core_OclGenbase();
@@ -320,6 +325,7 @@ void Init_opencv_ruby()
     Init_Dnn_Version();
     Init_Dnn_Dict();
     Init_Dnn_Dnn();
+    Init_Dnn_DnnInl();
     Init_Dnn_Layer();
     Init_Dnn_LayerDetails();
     Init_Dnn_AllLayers();

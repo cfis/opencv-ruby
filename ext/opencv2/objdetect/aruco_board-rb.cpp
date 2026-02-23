@@ -1,4 +1,3 @@
-#include <opencv2/objdetect/aruco_dictionary.hpp> // Manual
 #include <opencv2/objdetect/aruco_board.hpp>
 #include "aruco_board-rb.hpp"
 

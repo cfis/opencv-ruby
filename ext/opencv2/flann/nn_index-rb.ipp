@@ -3,9 +3,9 @@ inline Rice::Data_Type<cvflann::NNIndex<Distance>> NNIndex_instantiate(Rice::Mod
 {
   return Rice::define_class_under<cvflann::NNIndex<Distance>>(parent, name).
     template define_method<void(cvflann::NNIndex<Distance>::*)()>("build_index", &cvflann::NNIndex<Distance>::buildIndex).
-    template define_method<void(cvflann::NNIndex<Distance>::*)(const cvflann::Matrix<cvflann::NNIndex<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::NNIndex<Distance>::DistanceType>&, int, const cvflann::SearchParams&)>("knn_search", &cvflann::NNIndex<Distance>::knnSearch,
+    template define_method<void(cvflann::NNIndex<Distance>::*)(const cvflann::Matrix<typename cvflann::NNIndex<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<typename cvflann::NNIndex<Distance>::DistanceType>&, int, const cvflann::SearchParams&)>("knn_search", &cvflann::NNIndex<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params")).
-    template define_method<int(cvflann::NNIndex<Distance>::*)(const cvflann::Matrix<cvflann::NNIndex<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<cvflann::NNIndex<Distance>::DistanceType>&, float, const cvflann::SearchParams&)>("radius_search", &cvflann::NNIndex<Distance>::radiusSearch,
+    template define_method<int(cvflann::NNIndex<Distance>::*)(const cvflann::Matrix<typename cvflann::NNIndex<Distance>::ElementType>&, cvflann::Matrix<int>&, cvflann::Matrix<typename cvflann::NNIndex<Distance>::DistanceType>&, float, const cvflann::SearchParams&)>("radius_search", &cvflann::NNIndex<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params")).
     template define_method<void(cvflann::NNIndex<Distance>::*)(FILE*)>("save_index", &cvflann::NNIndex<Distance>::saveIndex,
       Arg("stream")).
@@ -16,7 +16,7 @@ inline Rice::Data_Type<cvflann::NNIndex<Distance>> NNIndex_instantiate(Rice::Mod
     template define_method<int(cvflann::NNIndex<Distance>::*)() const>("used_memory", &cvflann::NNIndex<Distance>::usedMemory).
     template define_method<cvflann::flann_algorithm_t(cvflann::NNIndex<Distance>::*)() const>("get_type", &cvflann::NNIndex<Distance>::getType).
     template define_method<cvflann::IndexParams(cvflann::NNIndex<Distance>::*)() const>("get_parameters", &cvflann::NNIndex<Distance>::getParameters).
-    template define_method<void(cvflann::NNIndex<Distance>::*)(cvflann::ResultSet<cvflann::NNIndex<Distance>::DistanceType>&, const typename cvflann::NNIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::NNIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::NNIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::NNIndex<Distance>::DistanceType>&, const typename cvflann::NNIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::NNIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }
 

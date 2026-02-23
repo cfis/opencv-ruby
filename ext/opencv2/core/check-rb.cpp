@@ -1,4 +1,3 @@
-#include <opencv2/core/types.hpp> // Manual
 #include <opencv2/core/check.hpp>
 #include "check-rb.hpp"
 
@@ -36,10 +35,8 @@ void Init_Core_Check()
     define_attr("p1_str", &cv::detail::CheckContext::p1_str).
     define_attr("p2_str", &cv::detail::CheckContext::p2_str);
 
-#if RUBY_CV_VERSION >= 407
   rb_mCvDetail.define_module_function<void(*)(const bool, const bool, const cv::detail::CheckContext&)>("check_failed_auto", &cv::detail::check_failed_auto,
     Arg("v1"), Arg("v2"), Arg("ctx"));
-#endif
 
   rb_mCvDetail.define_module_function<void(*)(const int, const int, const cv::detail::CheckContext&)>("check_failed_auto", &cv::detail::check_failed_auto,
     Arg("v1"), Arg("v2"), Arg("ctx"));
@@ -65,13 +62,11 @@ void Init_Core_Check()
   rb_mCvDetail.define_module_function<void(*)(const int, const int, const cv::detail::CheckContext&)>("check_failed_mat_channels", &cv::detail::check_failed_MatChannels,
     Arg("v1"), Arg("v2"), Arg("ctx"));
 
-#if RUBY_CV_VERSION >= 407
   rb_mCvDetail.define_module_function<void(*)(const bool, const cv::detail::CheckContext&)>("check_failed_true", &cv::detail::check_failed_true,
     Arg("v"), Arg("ctx"));
 
   rb_mCvDetail.define_module_function<void(*)(const bool, const cv::detail::CheckContext&)>("check_failed_false", &cv::detail::check_failed_false,
     Arg("v"), Arg("ctx"));
-#endif
 
   rb_mCvDetail.define_module_function<void(*)(const int, const cv::detail::CheckContext&)>("check_failed_auto", &cv::detail::check_failed_auto,
     Arg("v"), Arg("ctx"));

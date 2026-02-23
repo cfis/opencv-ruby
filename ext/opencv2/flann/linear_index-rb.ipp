@@ -17,7 +17,7 @@ inline Rice::Data_Type<cvflann::LinearIndex<Distance>> LinearIndex_instantiate(R
       Arg("arg_0")).
     template define_method<void(cvflann::LinearIndex<Distance>::*)(FILE*)>("load_index", &cvflann::LinearIndex<Distance>::loadIndex,
       Arg("arg_0")).
-    template define_method<void(cvflann::LinearIndex<Distance>::*)(cvflann::ResultSet<cvflann::LinearIndex<Distance>::DistanceType>&, const typename cvflann::LinearIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::LinearIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::LinearIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::LinearIndex<Distance>::DistanceType>&, const typename cvflann::LinearIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::LinearIndex<Distance>::findNeighbors,
       Arg("result_set"), Arg("vec"), Arg("arg_2")).
     template define_method<cvflann::IndexParams(cvflann::LinearIndex<Distance>::*)() const>("get_parameters", &cvflann::LinearIndex<Distance>::getParameters);
 }

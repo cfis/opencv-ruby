@@ -1,8 +1,11 @@
 #include <opencv2/core/types.hpp>
 #include "types-rb.hpp"
-#include "types-rb.ipp"
 
 using namespace Rice;
+
+#include "matx-rb.ipp"
+#include "matx-rb.ipp"
+#include "types-rb.ipp"
 
 void Init_Core_Types()
 {
@@ -16,8 +19,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  // Manual fix: use int64 instead of long
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l");
+  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -33,8 +35,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  // Manual fix: use int64 instead of long
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l");
+  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
@@ -110,6 +111,8 @@ void Init_Core_Types()
 
   rb_cCvTraitsTypeRange.define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
 
+  Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");
+  Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");
   Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = Scalar__instantiate<double>(rb_mCv, "Scalar");
 
   Rice::Data_Type<cv::KeyPoint> rb_cCvKeyPoint = define_class_under<cv::KeyPoint>(rb_mCv, "KeyPoint").

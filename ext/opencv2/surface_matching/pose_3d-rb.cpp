@@ -3,6 +3,9 @@
 
 using namespace Rice;
 
+#include "cvstd_wrapper-rb.ipp"
+#include "cvstd_wrapper-rb.ipp"
+
 void Init_SurfaceMatching_Pose3d()
 {
   Module rb_mCv = define_module("Cv");

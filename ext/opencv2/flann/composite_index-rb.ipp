@@ -18,7 +18,7 @@ inline Rice::Data_Type<cvflann::CompositeIndex<Distance>> CompositeIndex_instant
     template define_method<void(cvflann::CompositeIndex<Distance>::*)(FILE*)>("load_index", &cvflann::CompositeIndex<Distance>::loadIndex,
       Arg("stream")).
     template define_method<cvflann::IndexParams(cvflann::CompositeIndex<Distance>::*)() const>("get_parameters", &cvflann::CompositeIndex<Distance>::getParameters).
-    template define_method<void(cvflann::CompositeIndex<Distance>::*)(cvflann::ResultSet<cvflann::CompositeIndex<Distance>::DistanceType>&, const typename cvflann::CompositeIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::CompositeIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::CompositeIndex<Distance>::DistanceType>&, const typename cvflann::CompositeIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::CompositeIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }
 

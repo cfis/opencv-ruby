@@ -122,7 +122,7 @@ void Init_Tracking_TrackingByMatching()
     define_method<void(cv::detail::tracking::tbm::ITrackerByMatching::*)(const cv::detail::tracking::tbm::ITrackerByMatching::Distance&)>("set_distance_strong", &cv::detail::tracking::tbm::ITrackerByMatching::setDistanceStrong,
       Arg("val")).
     define_method<size_t(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("count", &cv::detail::tracking::tbm::ITrackerByMatching::count).
-    define_method<std::unordered_map<size_t, std::vector<cv::Point>>(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("get_active_tracks", &cv::detail::tracking::tbm::ITrackerByMatching::getActiveTracks).
+    define_method<std::unordered_map<std::size_t, std::vector<cv::Point>>(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("get_active_tracks", &cv::detail::tracking::tbm::ITrackerByMatching::getActiveTracks).
     define_method<cv::detail::tracking::tbm::TrackedObjects(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("tracked_detections", &cv::detail::tracking::tbm::ITrackerByMatching::trackedDetections).
     define_method<cv::Mat(cv::detail::tracking::tbm::ITrackerByMatching::*)(const cv::Mat&)>("draw_active_tracks", &cv::detail::tracking::tbm::ITrackerByMatching::drawActiveTracks,
       Arg("frame")).

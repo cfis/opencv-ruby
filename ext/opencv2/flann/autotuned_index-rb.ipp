@@ -13,7 +13,7 @@ inline Rice::Data_Type<cvflann::AutotunedIndex<Distance>> AutotunedIndex_instant
       Arg("stream")).
     template define_method<void(cvflann::AutotunedIndex<Distance>::*)(FILE*)>("load_index", &cvflann::AutotunedIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method<void(cvflann::AutotunedIndex<Distance>::*)(cvflann::ResultSet<cvflann::AutotunedIndex<Distance>::DistanceType>&, const typename cvflann::AutotunedIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::AutotunedIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::AutotunedIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::AutotunedIndex<Distance>::DistanceType>&, const typename cvflann::AutotunedIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::AutotunedIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
     template define_method<cvflann::IndexParams(cvflann::AutotunedIndex<Distance>::*)() const>("get_parameters", &cvflann::AutotunedIndex<Distance>::getParameters).
     template define_method<cvflann::SearchParams(cvflann::AutotunedIndex<Distance>::*)() const>("get_search_parameters", &cvflann::AutotunedIndex<Distance>::getSearchParameters).

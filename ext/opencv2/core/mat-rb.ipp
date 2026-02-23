@@ -1,8 +1,7 @@
 template<typename _Tp>
 inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - Mat_ inherits from Mat
-  return Rice::define_class_under<cv::Mat_<_Tp>, cv::Mat>(parent, name).
+  return Rice::define_class_under<cv::Mat_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::Mat_<_Tp>>()).
     define_constructor(Constructor<cv::Mat_<_Tp>, int, int>(),
       Arg("_rows"), Arg("_cols")).
@@ -50,8 +49,8 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
       Arg("e")).
     template define_iterator<typename cv::Mat_<_Tp>::iterator(cv::Mat_<_Tp>::*)()>(&cv::Mat_<_Tp>::begin, &cv::Mat_<_Tp>::end, "each").
     template define_iterator<typename cv::Mat_<_Tp>::const_iterator(cv::Mat_<_Tp>::*)() const>(&cv::Mat_<_Tp>::begin, &cv::Mat_<_Tp>::end, "each_const").
-    template define_iterator<std::reverse_iterator<cv::Mat_<_Tp>::iterator>(cv::Mat_<_Tp>::*)()>(&cv::Mat_<_Tp>::rbegin, &cv::Mat_<_Tp>::rend, "each_reverse").
-    template define_iterator<std::reverse_iterator<cv::Mat_<_Tp>::const_iterator>(cv::Mat_<_Tp>::*)() const>(&cv::Mat_<_Tp>::rbegin, &cv::Mat_<_Tp>::rend, "each_reverse_const").
+    template define_iterator<std::reverse_iterator<typename cv::Mat_<_Tp>::iterator>(cv::Mat_<_Tp>::*)()>(&cv::Mat_<_Tp>::rbegin, &cv::Mat_<_Tp>::rend, "each_reverse").
+    template define_iterator<std::reverse_iterator<typename cv::Mat_<_Tp>::const_iterator>(cv::Mat_<_Tp>::*)() const>(&cv::Mat_<_Tp>::rbegin, &cv::Mat_<_Tp>::rend, "each_reverse_const").
     template define_method<void(cv::Mat_<_Tp>::*)(int, int)>("create", &cv::Mat_<_Tp>::create,
       Arg("_rows"), Arg("_cols")).
     template define_method<void(cv::Mat_<_Tp>::*)(cv::Size)>("create", &cv::Mat_<_Tp>::create,
@@ -81,55 +80,51 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
       Arg("rows"), Arg("cols")).
     template define_singleton_function<cv::MatExpr(*)(cv::Size)>("zeros", &cv::Mat_<_Tp>::zeros,
       Arg("size")).
-    // Commented out - causes linker errors
-    // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
-    //   Arg("_ndims"), ArgBuffer("_sizes")).
+    template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
+      Arg("_ndims"), ArgBuffer("_sizes")).
     template define_singleton_function<cv::MatExpr(*)(int, int)>("ones", &cv::Mat_<_Tp>::ones,
       Arg("rows"), Arg("cols")).
     template define_singleton_function<cv::MatExpr(*)(cv::Size)>("ones", &cv::Mat_<_Tp>::ones,
       Arg("size")).
-    // Commented out - causes linker errors
-    // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,
-    //   Arg("_ndims"), ArgBuffer("_sizes")).
+    template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,
+      Arg("_ndims"), ArgBuffer("_sizes")).
     template define_singleton_function<cv::MatExpr(*)(int, int)>("eye", &cv::Mat_<_Tp>::eye,
       Arg("rows"), Arg("cols")).
     template define_singleton_function<cv::MatExpr(*)(cv::Size)>("eye", &cv::Mat_<_Tp>::eye,
       Arg("size")).
     template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(int, int, int, int)>("adjust_roi", &cv::Mat_<_Tp>::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright")).
-    // Manual - changed "call" to "[]" for ROI access methods
-    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Range&, const cv::Range&) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Range&, const cv::Range&) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("row_range"), Arg("col_range")).
-    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Rect&) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Rect&) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("roi")).
-    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Range*) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const cv::Range*) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("ranges")).
-    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const std::vector<cv::Range>&) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<cv::Mat_<_Tp>(cv::Mat_<_Tp>::*)(const std::vector<cv::Range>&) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("ranges")).
     template define_method<_Tp*(cv::Mat_<_Tp>::*)(int)>("[]", &cv::Mat_<_Tp>::operator[],
       Arg("y")).
     template define_method<const _Tp*(cv::Mat_<_Tp>::*)(int) const>("[]", &cv::Mat_<_Tp>::operator[],
       Arg("y")).
-    // Manual - changed "call" to "[]" for element access methods
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(const int*)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(const int*)>("call", &cv::Mat_<_Tp>::operator(),
       ArgBuffer("idx")).
-    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(const int*) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(const int*) const>("call", &cv::Mat_<_Tp>::operator(),
       ArgBuffer("idx")).
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int)>("call", &cv::Mat_<_Tp>::operator(),
       Arg("idx0")).
-    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("idx0")).
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int, int)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int, int)>("call", &cv::Mat_<_Tp>::operator(),
       Arg("row"), Arg("col")).
-    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int, int) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int, int) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("row"), Arg("col")).
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int, int, int)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(int, int, int)>("call", &cv::Mat_<_Tp>::operator(),
       Arg("idx0"), Arg("idx1"), Arg("idx2")).
-    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int, int, int) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(int, int, int) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("idx0"), Arg("idx1"), Arg("idx2")).
-    template define_method<_Tp&(cv::Mat_<_Tp>::*)(cv::Point)>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<_Tp&(cv::Mat_<_Tp>::*)(cv::Point)>("call", &cv::Mat_<_Tp>::operator(),
       Arg("pt")).
-    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(cv::Point) const>("[]", &cv::Mat_<_Tp>::operator(),
+    template define_method<const _Tp&(cv::Mat_<_Tp>::*)(cv::Point) const>("call", &cv::Mat_<_Tp>::operator(),
       Arg("pt")).
     template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(cv::Mat_<_Tp>&&)>("assign", &cv::Mat_<_Tp>::operator=,
       Arg("m")).
@@ -144,8 +139,7 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - SparseMat_ inherits from SparseMat
-  return Rice::define_class_under<cv::SparseMat_<_Tp>, cv::SparseMat>(parent, name).
+  return Rice::define_class_under<cv::SparseMat_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::SparseMat_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMat_<_Tp>, int, const int*>(),
       Arg("dims"), ArgBuffer("_sizes")).
@@ -175,14 +169,13 @@ inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module 
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_method<_Tp&(cv::SparseMat_<_Tp>::*)(const int*, size_t*)>("ref", &cv::SparseMat_<_Tp>::ref,
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    // Manual - changed "call" to "[]" for element access methods
-    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, size_t*) const>("[]", &cv::SparseMat_<_Tp>::operator(),
+    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
       Arg("i0"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, size_t*) const>("[]", &cv::SparseMat_<_Tp>::operator(),
+    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
       Arg("i0"), Arg("i1"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, int, size_t*) const>("[]", &cv::SparseMat_<_Tp>::operator(),
+    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(int, int, int, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
-    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(const int*, size_t*) const>("[]", &cv::SparseMat_<_Tp>::operator(),
+    template define_method<_Tp(cv::SparseMat_<_Tp>::*)(const int*, size_t*) const>("call", &cv::SparseMat_<_Tp>::operator(),
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0)).
     template define_iterator<cv::SparseMatIterator_<_Tp>(cv::SparseMat_<_Tp>::*)()>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each").
     template define_iterator<cv::SparseMatConstIterator_<_Tp>(cv::SparseMat_<_Tp>::*)() const>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each_const");
@@ -191,8 +184,7 @@ inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module 
 template<typename _Tp>
 inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - MatConstIterator_ inherits from MatConstIterator
-  return Rice::define_class_under<cv::MatConstIterator_<_Tp>, cv::MatConstIterator>(parent, name).
+  return Rice::define_class_under<cv::MatConstIterator_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::MatConstIterator_<_Tp>>()).
     define_constructor(Constructor<cv::MatConstIterator_<_Tp>, const cv::Mat_<_Tp>*>(),
       Arg("_m")).
@@ -225,8 +217,7 @@ inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate
 template<typename _Tp>
 inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - MatIterator_ inherits from MatConstIterator_
-  return Rice::define_class_under<cv::MatIterator_<_Tp>, cv::MatConstIterator_<_Tp>>(parent, name).
+  return Rice::define_class_under<cv::MatIterator_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::MatIterator_<_Tp>>()).
     define_constructor(Constructor<cv::MatIterator_<_Tp>, cv::Mat_<_Tp>*>(),
       Arg("_m")).
@@ -258,8 +249,7 @@ inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Mod
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - SparseMatConstIterator_ inherits from SparseMatConstIterator
-  return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>, cv::SparseMatConstIterator>(parent, name).
+  return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>, const cv::SparseMat_<_Tp>*>(),
       Arg("_m")).
@@ -278,8 +268,7 @@ inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator_
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMatIterator_<_Tp>> SparseMatIterator__instantiate(Rice::Module parent, const char* name)
 {
-  // Manual - SparseMatIterator_ inherits from SparseMatConstIterator_
-  return Rice::define_class_under<cv::SparseMatIterator_<_Tp>, cv::SparseMatConstIterator_<_Tp>>(parent, name).
+  return Rice::define_class_under<cv::SparseMatIterator_<_Tp>>(parent, name).
     define_constructor(Constructor<cv::SparseMatIterator_<_Tp>>()).
     define_constructor(Constructor<cv::SparseMatIterator_<_Tp>, cv::SparseMat_<_Tp>*>(),
       Arg("_m")).

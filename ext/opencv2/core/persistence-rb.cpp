@@ -163,6 +163,8 @@ void Init_Core_Persistence()
     define_attr("block_idx", &cv::FileNode::blockIdx).
     define_attr("ofs", &cv::FileNode::ofs);
 
+  Rice::detail::protect(rb_alias, rb_cCvFileNode, rb_intern("each"), rb_intern("each_const"));
+
   rb_cCvFileNode.define_constant("NONE", (int)cv::FileNode::NONE);
   rb_cCvFileNode.define_constant("INT", (int)cv::FileNode::INT);
   rb_cCvFileNode.define_constant("REAL", (int)cv::FileNode::REAL);

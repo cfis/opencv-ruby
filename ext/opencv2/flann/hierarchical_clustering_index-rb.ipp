@@ -17,7 +17,7 @@ inline Rice::Data_Type<cvflann::HierarchicalClusteringIndex<Distance>> Hierarchi
       Arg("stream")).
     template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(FILE*)>("load_index", &cvflann::HierarchicalClusteringIndex<Distance>::loadIndex,
       Arg("stream")).
-    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(cvflann::ResultSet<cvflann::HierarchicalClusteringIndex<Distance>::DistanceType>&, const typename cvflann::HierarchicalClusteringIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::HierarchicalClusteringIndex<Distance>::findNeighbors,
+    template define_method<void(cvflann::HierarchicalClusteringIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::HierarchicalClusteringIndex<Distance>::DistanceType>&, const typename cvflann::HierarchicalClusteringIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::HierarchicalClusteringIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params")).
     template define_method<cvflann::IndexParams(cvflann::HierarchicalClusteringIndex<Distance>::*)() const>("get_parameters", &cvflann::HierarchicalClusteringIndex<Distance>::getParameters);
 }

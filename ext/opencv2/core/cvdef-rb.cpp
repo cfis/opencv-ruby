@@ -67,15 +67,11 @@ void Init_Core_Cvdef()
 
   Class(rb_cObject).define_constant("CV_CPU_NEON", CV_CPU_NEON);
 
-#if RUBY_CV_VERSION >= 407
   Class(rb_cObject).define_constant("CV_CPU_NEON_DOTPROD", CV_CPU_NEON_DOTPROD);
-#endif
 
-#if RUBY_CV_VERSION >= 409
   Class(rb_cObject).define_constant("CV_CPU_NEON_FP16", CV_CPU_NEON_FP16);
 
   Class(rb_cObject).define_constant("CV_CPU_NEON_BF16", CV_CPU_NEON_BF16);
-#endif
 
   Class(rb_cObject).define_constant("CV_CPU_MSA", CV_CPU_MSA);
 
@@ -87,11 +83,9 @@ void Init_Core_Cvdef()
 
   Class(rb_cObject).define_constant("CV_CPU_RVV", CV_CPU_RVV);
 
-#if RUBY_CV_VERSION >= 409
   Class(rb_cObject).define_constant("CV_CPU_LSX", CV_CPU_LSX);
 
   Class(rb_cObject).define_constant("CV_CPU_LASX", CV_CPU_LASX);
-#endif
 
   Class(rb_cObject).define_constant("CV_CPU_AVX512_SKX", CV_CPU_AVX512_SKX);
 
@@ -121,9 +115,7 @@ void Init_Core_Cvdef()
 
   Class(rb_cObject).define_constant("OPENCV_ABI_COMPATIBILITY", OPENCV_ABI_COMPATIBILITY);
 
-#if RUBY_CV_VERSION >= 410
   Class(rb_cObject).define_constant("CV_MAX_DIM", CV_MAX_DIM);
-#endif
 
   Class(rb_cObject).define_constant("CV_MAT_CONT_FLAG_SHIFT", CV_MAT_CONT_FLAG_SHIFT);
 
@@ -161,22 +153,16 @@ void Init_Core_Cvdef()
     define_value("CPU_AVX_5124VNNIW", CpuFeatures::CPU_AVX_5124VNNIW).
     define_value("CPU_AVX_5124FMAPS", CpuFeatures::CPU_AVX_5124FMAPS).
     define_value("CPU_NEON", CpuFeatures::CPU_NEON).
-#if RUBY_CV_VERSION >= 407
     define_value("CPU_NEON_DOTPROD", CpuFeatures::CPU_NEON_DOTPROD).
-#endif
-#if RUBY_CV_VERSION >= 409
     define_value("CPU_NEON_FP16", CpuFeatures::CPU_NEON_FP16).
     define_value("CPU_NEON_BF16", CpuFeatures::CPU_NEON_BF16).
-#endif
     define_value("CPU_MSA", CpuFeatures::CPU_MSA).
     define_value("CPU_RISCVV", CpuFeatures::CPU_RISCVV).
     define_value("CPU_VSX", CpuFeatures::CPU_VSX).
     define_value("CPU_VSX3", CpuFeatures::CPU_VSX3).
     define_value("CPU_RVV", CpuFeatures::CPU_RVV).
-#if RUBY_CV_VERSION >= 409
     define_value("CPU_LSX", CpuFeatures::CPU_LSX).
     define_value("CPU_LASX", CpuFeatures::CPU_LASX).
-#endif
     define_value("CPU_AVX512_SKX", CpuFeatures::CPU_AVX512_SKX).
     define_value("CPU_AVX512_COMMON", CpuFeatures::CPU_AVX512_COMMON).
     define_value("CPU_AVX512_KNL", CpuFeatures::CPU_AVX512_KNL).
@@ -210,7 +196,6 @@ void Init_Core_Cvdef()
 
   Module rb_mCv = define_module("Cv");
 
-#if RUBY_CV_VERSION >= 410
   Rice::Data_Type<cv::hfloat> rb_cCvHfloat = define_class_under<cv::hfloat>(rb_mCv, "Hfloat").
     define_constructor(Constructor<cv::hfloat>()).
     define_constructor(Constructor<cv::hfloat, float>(),
@@ -222,7 +207,6 @@ void Init_Core_Cvdef()
 
   rb_mCv.define_module_function<cv::hfloat(*)(ushort)>("hfloat_from_bits", &cv::hfloatFromBits,
     Arg("w"));
-#endif
 
   define_global_function<int(*)(char, char, char, char)>("cv_fourcc", &CV_FOURCC,
     Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));

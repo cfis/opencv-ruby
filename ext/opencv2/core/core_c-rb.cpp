@@ -3,6 +3,7 @@
 
 using namespace Rice;
 
+#include "cvstd_wrapper-rb.ipp"
 #include "core_c-rb.ipp"
 
 void Init_Core_CoreC()

@@ -128,10 +128,8 @@ namespace Rice
           result = result && Type<intrinsic_type<T>>::verify();
         }
 
-        if (result)
-        {
-          define_cv_ptr<T>();
-        }
+        // We ALWAYS need to define the cv::Ptr<T>, even if T is not bound, because it could be bound after this call
+        define_cv_ptr<T>();
 
         return result;
       }

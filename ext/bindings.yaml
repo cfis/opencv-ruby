@@ -13,7 +13,9 @@ match:
   - opencv2/**/*.h
 
 skip:
-  - opencv2/**/*.inl*
+  - opencv2/core/cuda.inl.hpp
+  - opencv2/core/dualquaternion.inl.hpp
+  - opencv2/core/quaternion.inl.hpp
   - opencv2/core/hal/intrin*
   - opencv2/core/hal/hal.hpp
   - opencv2/core/hal/msa_macros.h

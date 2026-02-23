@@ -131,12 +131,6 @@ void Init_Core_Mat_Refinements()
     {
       return cv::_InputOutputArray(self);
     }).
-    define_method("inspect", [](const cv::Mat& self) -> std::string
-    {
-      std::ostringstream stream;
-      stream << self;
-      return stream.str();
-    }).
     define_method("[]", [](const cv::Mat& self, int x, int y) -> Variant_T
     {
       switch (self.type())
@@ -576,25 +570,6 @@ void Init_Core_Mat_Refinements()
         return self;
       }
     }, Arg("proc").setValue() = Qnil, Return().setValue());
-
-  // ------  MatSize ----------
-  Rice::Data_Type<cv::MatSize> matSize;
-  matSize.
-    define_method("inspect", [](const cv::MatSize& self) -> std::string
-    {
-      std::ostringstream stream;
-      stream << self;
-      return stream.str();
-    });
-
-  // ------  Umat ----------
-  Data_Type<cv::UMat>().
-    define_method("inspect", [](const cv::UMat& self) -> std::string
-    {
-      std::ostringstream stream;
-      stream << self;
-      return stream.str();
-    });
 
   // ------  InputArray ----------
   Rice::Data_Type<cv::_InputArray> inputArray;

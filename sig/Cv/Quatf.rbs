@@ -1,0 +1,55 @@
+module Cv
+  class Quatf
+    attr_accessor w: Float
+    attr_accessor x: Float
+    attr_accessor y: Float
+    attr_accessor z: Float
+
+    def initialize: () -> NilClass
+               | (w: Float, x: Float, y: Float, z: Float) -> NilClass
+               | (coeff: Cv::Vec4f) -> NilClass
+    def *: (arg_0: Cv::Quatf) -> Cv::Quatf
+    def +: (arg_0: Cv::Quatf) -> Cv::Quatf
+    def -: (arg_0: Cv::Quatf) -> Cv::Quatf
+    def -@: () -> Cv::Quatf
+    def /: (arg_0: Cv::Quatf) -> Cv::Quatf
+      | (s: Float) -> Cv::Quatf
+    def ==: (arg_0: Cv::Quatf) -> TrueClass
+    def []: (n: Integer) -> Float
+       | (n: Integer) -> Float
+    def []=: (arg_0: Integer, arg_1: Float) -> NilClass
+    def assert_normal: (eps: Float) -> NilClass
+    def assign_divide: (arg_0: Cv::Quatf) -> Cv::Quatf
+                  | (s: Float) -> Cv::Quatf
+    def assign_minus: (arg_0: Cv::Quatf) -> Cv::Quatf
+    def assign_multiply: (arg_0: Cv::Quatf) -> Cv::Quatf
+                    | (s: Float) -> Cv::Quatf
+    def assign_plus: (arg_0: Cv::Quatf) -> Cv::Quatf
+    def at: (index: Integer) -> Float
+    def conjugate: () -> Cv::Quatf
+    def cos: () -> Cv::Quatf
+    def cosh: () -> Cv::Quatf
+    def cross_product: (q: Cv::Quatf) -> Cv::Quatf
+    def dot: (q: Cv::Quatf) -> Float
+    def exp: () -> Cv::Quatf
+    def get_angle: (assume_unit: Cv::QuatAssumeType) -> Float
+    def get_axis: (assume_unit: Cv::QuatAssumeType) -> Cv::Vec3f
+    def inv: (assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+    def log: (assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+    def norm: () -> Float
+    def normal?: (eps: Float) -> TrueClass
+    def normalize: () -> Cv::Quatf
+    def power: (x: Float, assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+          | (q: Cv::Quatf, assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+    def sin: () -> Cv::Quatf
+    def sinh: () -> Cv::Quatf
+    def sqrt: (assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+    def tan: () -> Cv::Quatf
+    def tanh: () -> Cv::Quatf
+    def to_euler_angles: (euler_angles_type: Cv::QuatEnum::EulerAnglesType) -> Cv::Vec3f
+    def to_rot_mat3x3: (assume_unit: Cv::QuatAssumeType) -> Cv::Matx33f
+    def to_rot_mat4x4: (assume_unit: Cv::QuatAssumeType) -> Cv::Matx44f
+    def to_rot_vec: (assume_unit: Cv::QuatAssumeType) -> Cv::Vec3f
+    def to_vec: () -> Cv::Vec4f
+  end
+end

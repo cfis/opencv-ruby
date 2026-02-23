@@ -3,16 +3,16 @@ module Cv
     def get_pre_filter_cap: () -> Integer
     def get_pre_filter_size: () -> Integer
     def get_pre_filter_type: () -> Integer
-    def get_roi1: () -> Cv::Rect
-    def get_roi2: () -> Cv::Rect
+    def get_roi1: () -> Cv::Rect2i
+    def get_roi2: () -> Cv::Rect2i
     def get_smaller_block_size: () -> Integer
     def get_texture_threshold: () -> Integer
     def get_uniqueness_ratio: () -> Integer
     def set_pre_filter_cap: (pre_filter_cap: Integer) -> NilClass
     def set_pre_filter_size: (pre_filter_size: Integer) -> NilClass
     def set_pre_filter_type: (pre_filter_type: Integer) -> NilClass
-    def set_roi1: (roi1: Cv::Rect) -> NilClass
-    def set_roi2: (roi2: Cv::Rect) -> NilClass
+    def set_roi1: (roi1: Cv::Rect2i) -> NilClass
+    def set_roi2: (roi2: Cv::Rect2i) -> NilClass
     def set_smaller_block_size: (block_size: Integer) -> NilClass
     def set_texture_threshold: (texture_threshold: Integer) -> NilClass
     def set_uniqueness_ratio: (uniqueness_ratio: Integer) -> NilClass

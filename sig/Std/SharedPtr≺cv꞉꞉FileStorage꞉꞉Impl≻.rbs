@@ -1,0 +1,8 @@
+module Std
+  class SharedPtr≺cv꞉꞉FileStorage꞉꞉Impl≻
+    def empty?: () -> TrueClass
+    def get: () -> Cv::FileStorage::Impl
+    def swap: (r: Std::SharedPtr≺cv꞉꞉FileStorage꞉꞉Impl≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

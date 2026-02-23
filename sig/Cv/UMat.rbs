@@ -11,24 +11,27 @@ module Cv
     attr_accessor u: Cv::UMatData
     attr_accessor usage_flags: Cv::UMatUsageFlags
 
-    def []: (roi: Cv::Rect) -> Cv::UMat
+    def []: (roi: Cv::Rect2i) -> Cv::UMat
        | (ranges: Cv::Range) -> Cv::UMat
        | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::UMat
        | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::UMat
     def initialize: (usage_flags: Cv::UMatUsageFlags) -> NilClass
                | (m: Cv::UMat, ranges: Cv::Range) -> NilClass
                | (m: Cv::UMat, ranges: Std::Vector≺cv꞉꞉Range≻) -> NilClass
-               | (m: Cv::UMat, roi: Cv::Rect) -> NilClass
-               | (size: Cv::Size, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
+               | (m: Cv::UMat, roi: Cv::Rect2i) -> NilClass
+               | (size: Cv::Size2i, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
                | (m: Cv::UMat, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
                | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
-               | (size: Cv::Size, type: Integer, s: Cv::Scalar, usage_flags: Cv::UMatUsageFlags) -> NilClass
+               | (size: Cv::Size2i, type: Integer, s: Cv::Scalar, usage_flags: Cv::UMatUsageFlags) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar, usage_flags: Cv::UMatUsageFlags) -> NilClass
                | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, s: Cv::Scalar, usage_flags: Cv::UMatUsageFlags) -> NilClass
-    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::UMat
-    def assign_to: (m: Cv::UMat, type: Integer) -> NilClass
     def addref: () -> NilClass
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::UMat
+    def assign: (m: Cv::UMat) -> Cv::UMat
+           | (s: Cv::Scalar) -> Cv::UMat
+           | (m: Cv::UMat) -> Cv::UMat
+    def assign_to: (m: Cv::UMat, type: Integer) -> NilClass
     def channels: () -> Integer
     def check_vector: (elem_channels: Integer, depth: Integer, require_continuous: TrueClass) -> Integer
     def clone: () -> Cv::UMat
@@ -40,10 +43,10 @@ module Cv
     def copy_size: (m: Cv::UMat) -> NilClass
     def copy_to: (m: Cv::OutputArray) -> NilClass
             | (m: Cv::OutputArray, mask: Cv::InputArray) -> NilClass
-    def create: (sizes: Std::Vector≺int≻, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
-           | (size: Cv::Size, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
-           | (rows: Integer, cols: Integer, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
+    def create: (size: Cv::Size2i, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
+           | (sizes: Std::Vector≺int≻, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
            | (ndims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
+           | (rows: Integer, cols: Integer, type: Integer, usage_flags: Cv::UMatUsageFlags) -> NilClass
     def deallocate: () -> NilClass
     def depth: () -> Integer
     def diag: (d: Integer) -> Cv::UMat
@@ -56,7 +59,7 @@ module Cv
     def initialize_copy: (m: Cv::UMat) -> NilClass
     def inspect: () -> String
     def inv: (method: Integer) -> Cv::UMat
-    def locate_roi: (whole_size: Cv::Size, ofs: Cv::Point) -> NilClass
+    def locate_roi: (whole_size: Cv::Size2i, ofs: Cv::Point2i) -> NilClass
     def mul: (m: Cv::InputArray, scale: Float) -> Cv::UMat
     def ndoffset: (ofs: Rice::Pointer≺unsigned Int64≻) -> NilClass
     def release: () -> NilClass

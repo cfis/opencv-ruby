@@ -1,0 +1,5 @@
+module Cvflann::Anyimpl
+  class ChoosePolicyAny
+    def initialize: () -> NilClass
+  end
+end

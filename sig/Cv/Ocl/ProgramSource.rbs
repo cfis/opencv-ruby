@@ -6,8 +6,9 @@ module Cv::Ocl
                | (prog: String) -> NilClass
                | (prog: String) -> NilClass
                | (module: String, name: String, code_str: String, code_hash: String) -> NilClass
-    def hash: () -> Integer
     def empty?: () -> TrueClass
+    def hash: () -> Integer
+    def get_impl: () -> Cv::Ocl::ProgramSource::Impl
     def initialize_copy: (prog: Cv::Ocl::ProgramSource) -> NilClass
     def source: () -> String
   end

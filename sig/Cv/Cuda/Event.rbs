@@ -2,6 +2,7 @@ module Cv::Cuda
   class Event
     def initialize: (flags: Cv::Cuda::Event::CreateFlags) -> NilClass
     def query_if_complete?: () -> TrueClass
+    def record: (stream: Cv::Cuda::Stream) -> NilClass
     def wait_for_completion: () -> NilClass
   end
 end

@@ -1,14 +1,14 @@
 module Cv
   class BaseCascadeClassifier
-    def detect_multi_scale: (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size, max_size: Cv::Size) -> NilClass
-                       | (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, num_detections: Std::Vector≺int≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size, max_size: Cv::Size) -> NilClass
-                       | (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, reject_levels: Std::Vector≺int≻, level_weights: Std::Vector≺double≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size, max_size: Cv::Size, output_reject_levels: TrueClass) -> NilClass
+    def detect_multi_scale: (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size2i, max_size: Cv::Size2i) -> NilClass
+                       | (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, num_detections: Std::Vector≺int≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size2i, max_size: Cv::Size2i) -> NilClass
+                       | (image: Cv::InputArray, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻, reject_levels: Std::Vector≺int≻, level_weights: Std::Vector≺double≻, scale_factor: Float, min_neighbors: Integer, flags: Integer, min_size: Cv::Size2i, max_size: Cv::Size2i, output_reject_levels: TrueClass) -> NilClass
     def empty?: () -> TrueClass
     def get_feature_type: () -> Integer
     def get_mask_generator: () -> Cv::Ptr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻
     def get_old_cascade: () -> Rice::Pointer≺void≻
-    def get_original_window_size: () -> Cv::Size
-    def load?: (filename: String) -> TrueClass
+    def get_original_window_size: () -> Cv::Size2i
+    def load: (filename: String) -> TrueClass
     def old_format_cascade?: () -> TrueClass
     def set_mask_generator: (mask_generator: Cv::Ptr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻) -> NilClass
   end

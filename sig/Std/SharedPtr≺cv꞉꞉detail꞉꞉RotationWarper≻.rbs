@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::RotationWarper) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::RotationWarper
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉RotationWarper≻) -> NilClass
     def use_count: () -> Integer
   end
 end

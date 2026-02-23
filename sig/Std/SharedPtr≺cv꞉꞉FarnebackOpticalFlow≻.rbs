@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::FarnebackOpticalFlow) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::FarnebackOpticalFlow
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉FarnebackOpticalFlow≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉FarnebackOpticalFlow≻) -> NilClass
     def use_count: () -> Integer
   end
 end

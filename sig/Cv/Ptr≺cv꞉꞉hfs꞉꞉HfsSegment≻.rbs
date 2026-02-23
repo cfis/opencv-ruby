@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉hfs꞉꞉HfsSegment≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉hfs꞉꞉HfsSegment≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉hfs꞉꞉HfsSegment≻) -> NilClass
+               | (ptr: Cv::Hfs::HfsSegment) -> NilClass
+               | (value: Cv::Hfs::HfsSegment) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉hfs꞉꞉HfsSegment≻) -> Cv::Ptr≺cv꞉꞉hfs꞉꞉HfsSegment≻
+    def get: () -> Cv::Hfs::HfsSegment
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉hfs꞉꞉HfsSegment≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -2,7 +2,7 @@ module Cv
   class SimilarRects
     attr_accessor eps: Float
 
-    def call: (r1: Cv::Rect, r2: Cv::Rect) -> TrueClass
+    def call: (r1: Cv::Rect2i, r2: Cv::Rect2i) -> TrueClass
     def initialize: (_eps: Float) -> NilClass
   end
 end

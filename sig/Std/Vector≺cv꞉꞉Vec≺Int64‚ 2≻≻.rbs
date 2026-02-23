@@ -1,0 +1,33 @@
+module Std
+  class Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::Vec2l) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Vec2l
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Vec2l) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺cv꞉꞉Vec≺Int64‚ 2≻≻
+    def delete: (value: Cv::Vec2l) -> Cv::Vec2l
+    def delete_at: (pos: Integer) -> Cv::Vec2l
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Cv::Vec2l
+    def include?: (value: Cv::Vec2l) -> TrueClass
+    def index: (value: Cv::Vec2l) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Vec2l) -> Std::Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻
+    def last: () -> Cv::Vec2l
+    def max_size: () -> Integer
+    def pop: () -> Cv::Vec2l
+    def push: (value: Cv::Vec2l) -> Std::Vector≺cv꞉꞉Vec≺Int64‚ 2≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

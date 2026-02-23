@@ -4,6 +4,7 @@ module Cv
                | (filename: String, flags: Integer) -> NilClass
     def []: (index: Integer) -> Cv::Mat
     def at: (index: Integer) -> Cv::Mat
+    def get_impl: () -> Cv::Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻
     def init: (img: String, flags: Integer) -> NilClass
     def release_cache: (index: Integer) -> NilClass
     def size: () -> Integer

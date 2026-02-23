@@ -1,23 +1,31 @@
 module Cv
   class Matx13i
-    def !=: (arg_0: Cv::Matx13i) -> TrueClass
-    def *: (arg_0: Float) -> Cv::Matx13i
-      | (arg_0: Cv::Vec3i) -> Cv::Vec1i
-      | (arg_0: Float) -> Cv::Matx13i
-      | (arg_0: Integer) -> Cv::Matx13i
+    attr_reader val: String
+
     def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
                | (vals: Rice::Pointer≺int≻) -> NilClass
+               | (a: Cv::Matx31i, arg_1: Cv::MatxTOp) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
                | (v0: Integer, v1: Integer, v2: Integer) -> NilClass
                | (a: Cv::Matx13i, b: Cv::Matx13i, arg_2: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx13i, b: Cv::Matx13i, arg_2: Cv::MatxAddOp) -> NilClass
                | (a: Cv::Matx13i, b: Cv::Matx13i, arg_2: Cv::MatxMulOp) -> NilClass
                | (a: Cv::Matx13i, b: Cv::Matx13i, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx31i, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx13i, b: Cv::Matx13i, arg_2: Cv::MatxAddOp) -> NilClass
+    def !=: (arg_0: Cv::Matx13i) -> TrueClass
+    def *: (arg_0: Cv::Vec3i) -> Cv::Vec1i
+      | (arg_0: Float) -> Cv::Matx13i
+      | (arg_0: Float) -> Cv::Matx13i
+      | (arg_0: Integer) -> Cv::Matx13i
     def +: (arg_0: Cv::Matx13i) -> Cv::Matx13i
     def -: (arg_0: Cv::Matx13i) -> Cv::Matx13i
     def /: (arg_0: Float) -> Cv::Matx13i
       | (arg_0: Float) -> Cv::Matx13i
     def ==: (arg_0: Cv::Matx13i) -> TrueClass
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx13i
                   | (arg_0: Float) -> Cv::Matx13i
@@ -26,20 +34,15 @@ module Cv
                     | (arg_0: Float) -> Cv::Matx13i
                     | (arg_0: Float) -> Cv::Matx13i
     def assign_plus: (arg_0: Cv::Matx13i) -> Cv::Matx13i
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-    def channels: () -> Integer
     def col: (i: Integer) -> Cv::Matx11i
     def cols: () -> Integer
     def ddot: (v: Cv::Matx13i) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx11i
     def div: (a: Cv::Matx13i) -> Cv::Matx13i
     def dot: (v: Cv::Matx13i) -> Integer
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx13i) -> TrueClass
+    def channels: () -> Integer
     def input_array: () -> Cv::InputArray
     def inspect: () -> String
     def mul: (a: Cv::Matx13i) -> Cv::Matx13i

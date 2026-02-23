@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉hfs꞉꞉HfsSegment≻
+    def initialize: (value: Cv::Hfs::HfsSegment) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Hfs::HfsSegment
+    def swap: (r: Std::SharedPtr≺cv꞉꞉hfs꞉꞉HfsSegment≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

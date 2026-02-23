@@ -1,0 +1,16 @@
+module Cv::Face::FacemarkAAM::Model
+  class Texture
+    attr_accessor a: Cv::Mat
+    attr_accessor a0: Cv::Mat
+    attr_accessor aa: Cv::Mat
+    attr_accessor aa0: Cv::Mat
+    attr_accessor base_shape: Std::Vector≺cv꞉꞉Point_≺float≻≻
+    attr_accessor ind1: Std::Vector≺int≻
+    attr_accessor ind2: Std::Vector≺int≻
+    attr_accessor max_m: Integer
+    attr_accessor resolution: Cv::Rect2i
+    attr_accessor texture_idx: Std::Vector≺vector≺cv꞉꞉Point_≺int≻≻≻
+
+    def initialize: () -> NilClass
+  end
+end

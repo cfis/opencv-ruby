@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+  end
+end

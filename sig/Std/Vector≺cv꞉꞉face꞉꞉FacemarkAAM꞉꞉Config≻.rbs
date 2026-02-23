@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::Face::FacemarkAAM::Config) -> NilClass
+    def []: (pos: Integer) -> Cv::Face::FacemarkAAM::Config
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Face::FacemarkAAM::Config) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+    def delete_at: (pos: Integer) -> Cv::Face::FacemarkAAM::Config
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Face::FacemarkAAM::Config
+    def include?: (value: Cv::Face::FacemarkAAM::Config) -> TrueClass
+    def index: (value: Cv::Face::FacemarkAAM::Config) -> Integer
+    def delete: (value: Cv::Face::FacemarkAAM::Config) -> Cv::Face::FacemarkAAM::Config
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Face::FacemarkAAM::Config) -> Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+    def last: () -> Cv::Face::FacemarkAAM::Config
+    def max_size: () -> Integer
+    def pop: () -> Cv::Face::FacemarkAAM::Config
+    def push: (value: Cv::Face::FacemarkAAM::Config) -> Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

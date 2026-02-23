@@ -1,5 +1,6 @@
 module Rice
   class NativeRegistry
     def lookup: (klass: Integer) -> Array
+    def lookup_by_kind: (klass: Integer, kind: Rice::NativeKind) -> Array
   end
 end

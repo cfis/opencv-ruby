@@ -1,0 +1,4 @@
+module Cv::Internal
+  class VideoCapturePrivateAccessor
+  end
+end

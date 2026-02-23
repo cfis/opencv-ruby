@@ -2,27 +2,27 @@ module Std
   class Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
     def initialize: () -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: ExtObject) -> NilClass
-    def []: (arg_0: Integer) -> ExtObject
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: ExtObject) -> NilClass
+               | (count: Integer, value: Cv::DetectionBasedTracker::ExtObject) -> NilClass
+    def []: (pos: Integer) -> Cv::DetectionBasedTracker::ExtObject
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::DetectionBasedTracker::ExtObject) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
-    def delete_at: (arg_0: Integer) -> ExtObject
+    def delete_at: (pos: Integer) -> Cv::DetectionBasedTracker::ExtObject
     def empty?: () -> TrueClass
-    def include?: (arg_0: ExtObject) -> TrueClass
-    def index: (arg_0: ExtObject) -> Integer
-    def first: () -> ExtObject
-    def delete: (arg_0: ExtObject) -> ExtObject
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
-    def last: () -> ExtObject
+    def include?: (value: Cv::DetectionBasedTracker::ExtObject) -> TrueClass
+    def index: (value: Cv::DetectionBasedTracker::ExtObject) -> Integer
+    def first: () -> Cv::DetectionBasedTracker::ExtObject
+    def delete: (value: Cv::DetectionBasedTracker::ExtObject) -> Cv::DetectionBasedTracker::ExtObject
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::DetectionBasedTracker::ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def last: () -> Cv::DetectionBasedTracker::ExtObject
     def max_size: () -> Integer
-    def pop: () -> ExtObject
-    def push: (arg_0: ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def pop: () -> Cv::DetectionBasedTracker::ExtObject
+    def push: (value: Cv::DetectionBasedTracker::ExtObject) -> Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

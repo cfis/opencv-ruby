@@ -1,0 +1,4 @@
+module Cv::GraphicalCodeDetector
+  class Impl
+  end
+end

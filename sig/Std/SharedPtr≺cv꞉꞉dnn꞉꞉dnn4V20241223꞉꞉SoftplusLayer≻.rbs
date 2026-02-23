@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Dnn::SoftplusLayer) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Dnn::SoftplusLayer
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftplusLayer≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉SoftplusLayer≻) -> NilClass
     def use_count: () -> Integer
   end
 end

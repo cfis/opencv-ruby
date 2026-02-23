@@ -1,0 +1,6 @@
+module Cv::Face
+  class Facemark
+    def fit: (image: Cv::InputArray, faces: Cv::InputArray, landmarks: Cv::OutputArray) -> TrueClass
+    def load_model: (model: String) -> NilClass
+  end
+end

@@ -1,0 +1,15 @@
+module Cv::Xfeatures2d
+  class VGG
+    def get_default_name: () -> String
+    def get_scale_factor: () -> Float
+    def get_sigma: () -> Float
+    def get_use_normalize_descriptor?: () -> TrueClass
+    def get_use_normalize_image?: () -> TrueClass
+    def get_use_scale_orientation?: () -> TrueClass
+    def set_scale_factor: (scale_factor: Float) -> NilClass
+    def set_sigma: (isigma: Float) -> NilClass
+    def set_use_normalize_descriptor: (dsc_normalize: TrueClass) -> NilClass
+    def set_use_normalize_image: (img_normalize: TrueClass) -> NilClass
+    def set_use_scale_orientation: (use_scale_orientation: TrueClass) -> NilClass
+  end
+end

@@ -1,0 +1,4 @@
+module Std
+  class IOSBase
+  end
+end

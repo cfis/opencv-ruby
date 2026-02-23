@@ -6,6 +6,10 @@ module Cv
                | (s: Integer) -> NilClass
     def next: () -> Integer
     def seed: (s: Integer) -> NilClass
+    def to_f: () -> Float
+    def to_f32: () -> Float
+    def to_i: () -> Integer
+    def to_u: () -> Integer
     def uniform: (a: Float, b: Float) -> Float
             | (a: Float, b: Float) -> Float
             | (a: Integer, b: Integer) -> Integer

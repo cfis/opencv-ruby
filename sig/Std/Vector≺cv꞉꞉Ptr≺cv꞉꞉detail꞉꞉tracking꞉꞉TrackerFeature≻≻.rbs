@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> NilClass
+               | (count: Integer, value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
-    def delete: (arg_0: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
-    def delete_at: (arg_0: Integer) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
+    def delete: (value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
+    def delete_at: (pos: Integer) -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
-    def include?: (arg_0: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> TrueClass
-    def index: (arg_0: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
+    def include?: (value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> TrueClass
+    def index: (value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
     def last: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
     def max_size: () -> Integer
     def pop: () -> Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻
-    def push: (arg_0: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerFeature≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

@@ -1,0 +1,9 @@
+module Cv::Face
+  class FacemarkTrain
+    def add_training_sample: (image: Cv::InputArray, landmarks: Cv::InputArray) -> TrueClass
+    def get_data: (items: Rice::Pointer≺void≻) -> TrueClass
+    def get_faces: (image: Cv::InputArray, faces: Cv::OutputArray) -> TrueClass
+    def set_face_detector: (detector: Proc, user_data: Rice::Pointer≺void≻) -> TrueClass
+    def training: (parameters: Rice::Pointer≺void≻) -> NilClass
+  end
+end

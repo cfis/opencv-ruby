@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::GeneralizedHoughBallard) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::GeneralizedHoughBallard
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉GeneralizedHoughBallard≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉GeneralizedHoughBallard≻) -> NilClass
     def use_count: () -> Integer
   end
 end

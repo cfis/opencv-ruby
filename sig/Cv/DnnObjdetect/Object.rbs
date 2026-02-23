@@ -1,0 +1,13 @@
+module Cv::DnnObjdetect
+  class Object
+    attr_accessor class_idx: Integer
+    attr_accessor class_prob: Float
+    attr_accessor label_name: String
+    attr_accessor xmax: Integer
+    attr_accessor xmin: Integer
+    attr_accessor ymax: Integer
+    attr_accessor ymin: Integer
+
+    def initialize: () -> NilClass
+  end
+end

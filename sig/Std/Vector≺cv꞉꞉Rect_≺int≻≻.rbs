@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Rect_≺int≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Rect) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Rect
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Rect) -> NilClass
+               | (count: Integer, value: Cv::Rect2i) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Rect2i
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Rect2i) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Rect_≺int≻≻
-    def delete: (arg_0: Cv::Rect) -> Cv::Rect
-    def delete_at: (arg_0: Integer) -> Cv::Rect
+    def delete: (value: Cv::Rect2i) -> Cv::Rect2i
+    def delete_at: (pos: Integer) -> Cv::Rect2i
     def empty?: () -> TrueClass
     def clear: () -> NilClass
-    def first: () -> Cv::Rect
-    def include?: (arg_0: Cv::Rect) -> TrueClass
-    def index: (arg_0: Cv::Rect) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Rect) -> Std::Vector≺cv꞉꞉Rect_≺int≻≻
-    def last: () -> Cv::Rect
+    def first: () -> Cv::Rect2i
+    def include?: (value: Cv::Rect2i) -> TrueClass
+    def index: (value: Cv::Rect2i) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Rect2i) -> Std::Vector≺cv꞉꞉Rect_≺int≻≻
+    def last: () -> Cv::Rect2i
     def max_size: () -> Integer
-    def pop: () -> Cv::Rect
-    def push: (arg_0: Cv::Rect) -> Std::Vector≺cv꞉꞉Rect_≺int≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def pop: () -> Cv::Rect2i
+    def push: (value: Cv::Rect2i) -> Std::Vector≺cv꞉꞉Rect_≺int≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

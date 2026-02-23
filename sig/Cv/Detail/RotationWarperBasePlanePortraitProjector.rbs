@@ -1,12 +1,12 @@
 module Cv::Detail
   class RotationWarperBasePlanePortraitProjector
-    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
+    def build_maps: (src_size: Cv::Size2i, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect2i
     def get_scale: () -> Float
     def set_scale: (val: Float) -> NilClass
-    def warp: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
-    def warp_backward: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst_size: Cv::Size, dst: Cv::OutputArray) -> NilClass
+    def warp: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point2i
+    def warp_backward: (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst_size: Cv::Size2i, dst: Cv::OutputArray) -> NilClass
     def warp_point: (pt: Cv::Point2f, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Point2f
     def warp_point_backward: (pt: Cv::Point2f, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Point2f
-    def warp_roi: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Rect
+    def warp_roi: (src_size: Cv::Size2i, k: Cv::InputArray, r: Cv::InputArray) -> Cv::Rect2i
   end
 end

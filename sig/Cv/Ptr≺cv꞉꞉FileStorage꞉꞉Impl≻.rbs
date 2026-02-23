@@ -1,0 +1,12 @@
+module Cv
+  class Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻
+    def initialize: (o: Std::SharedPtr≺cv꞉꞉FileStorage꞉꞉Impl≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉FileStorage꞉꞉Impl≻) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻) -> Cv::Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻
+    def empty?: () -> TrueClass
+    def get: () -> Cv::FileStorage::Impl
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

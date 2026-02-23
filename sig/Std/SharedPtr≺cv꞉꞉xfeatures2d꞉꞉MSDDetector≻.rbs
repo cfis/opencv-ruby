@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻
+    def initialize: (value: Cv::Xfeatures2d::MSDDetector) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Xfeatures2d::MSDDetector
+    def swap: (r: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

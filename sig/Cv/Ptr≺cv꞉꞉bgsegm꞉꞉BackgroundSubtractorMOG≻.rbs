@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻) -> NilClass
+               | (ptr: Cv::Bgsegm::BackgroundSubtractorMOG) -> NilClass
+               | (value: Cv::Bgsegm::BackgroundSubtractorMOG) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻) -> Cv::Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻
+    def get: () -> Cv::Bgsegm::BackgroundSubtractorMOG
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorMOG≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

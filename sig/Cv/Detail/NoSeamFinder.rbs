@@ -1,6 +1,6 @@
 module Cv::Detail
   class NoSeamFinder
-    def find: (: Std::Vector≺cv꞉꞉UMat≻, : Std::Vector≺cv꞉꞉Point_≺int≻≻, arg_2: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
+    def find: (arg_0: Std::Vector≺cv꞉꞉UMat≻, arg_1: Std::Vector≺cv꞉꞉Point_≺int≻≻, arg_2: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
     def initialize: () -> NilClass
   end
 end

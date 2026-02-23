@@ -5,6 +5,7 @@ module Cv::TrackerVit
     attr_accessor net: String
     attr_accessor stdvalue: Cv::Scalar
     attr_accessor target: Integer
+    attr_accessor tracking_score_threshold: Float
 
     def initialize: () -> NilClass
   end

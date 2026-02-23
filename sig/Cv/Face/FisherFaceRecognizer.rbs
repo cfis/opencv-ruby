@@ -1,0 +1,4 @@
+module Cv::Face
+  class FisherFaceRecognizer
+  end
+end

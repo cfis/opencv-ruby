@@ -7,7 +7,7 @@ module Cv
     def read: (fn: Cv::FileNode) -> NilClass
     def save: (filename: String) -> NilClass
     def write: (fs: Cv::FileStorage) -> NilClass
-          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
           | (fs: Cv::FileStorage, name: String) -> NilClass
+          | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
   end
 end

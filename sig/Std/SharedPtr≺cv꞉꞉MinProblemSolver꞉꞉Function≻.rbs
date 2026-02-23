@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::MinProblemSolver::Function) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::MinProblemSolver::Function
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉MinProblemSolver꞉꞉Function≻) -> NilClass
     def use_count: () -> Integer
   end
 end

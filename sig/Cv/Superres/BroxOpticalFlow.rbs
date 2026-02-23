@@ -1,0 +1,16 @@
+module Cv::Superres
+  class BroxOpticalFlow
+    def get_alpha: () -> Float
+    def get_gamma: () -> Float
+    def get_inner_iterations: () -> Integer
+    def get_outer_iterations: () -> Integer
+    def get_scale_factor: () -> Float
+    def get_solver_iterations: () -> Integer
+    def set_alpha: (val: Float) -> NilClass
+    def set_gamma: (val: Float) -> NilClass
+    def set_inner_iterations: (val: Integer) -> NilClass
+    def set_outer_iterations: (val: Integer) -> NilClass
+    def set_scale_factor: (val: Float) -> NilClass
+    def set_solver_iterations: (val: Integer) -> NilClass
+  end
+end

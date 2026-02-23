@@ -3,10 +3,10 @@ module Cv
     def initialize: () -> NilClass
                | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> NilClass
                | (o: Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> NilClass
-               | (ptr: Cv::Ml::Kernel) -> NilClass
-               | (value: Cv::Ml::Kernel) -> NilClass
+               | (ptr: Cv::Ml::SVM::Kernel) -> NilClass
+               | (value: Cv::Ml::SVM::Kernel) -> NilClass
     def assign: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻
-    def get: () -> Cv::Ml::Kernel
+    def get: () -> Cv::Ml::SVM::Kernel
     def empty?: () -> TrueClass
     def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> NilClass
     def release: () -> NilClass

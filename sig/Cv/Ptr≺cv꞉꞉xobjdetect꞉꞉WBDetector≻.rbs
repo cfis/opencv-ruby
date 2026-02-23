@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻) -> NilClass
+               | (ptr: Cv::Xobjdetect::WBDetector) -> NilClass
+               | (value: Cv::Xobjdetect::WBDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻) -> Cv::Ptr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻
+    def get: () -> Cv::Xobjdetect::WBDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉xobjdetect꞉꞉WBDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

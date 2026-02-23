@@ -1,0 +1,5 @@
+module Cv::Cuda
+  class EventAccessor
+    def initialize: () -> NilClass
+  end
+end

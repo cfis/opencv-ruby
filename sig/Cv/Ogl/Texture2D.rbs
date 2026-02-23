@@ -2,14 +2,14 @@ module Cv::Ogl
   class Texture2D
     def initialize: () -> NilClass
                | (arr: Cv::InputArray, auto_release: TrueClass) -> NilClass
-               | (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
-               | (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, atex_id: Integer, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size2i, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size2i, aformat: Cv::Ogl::Texture2D::Format, atex_id: Integer, auto_release: TrueClass) -> NilClass
                | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
                | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, atex_id: Integer, auto_release: TrueClass) -> NilClass
     def bind: () -> NilClass
     def cols: () -> Integer
     def copy_from: (arr: Cv::InputArray, auto_release: TrueClass) -> NilClass
-    def create: (asize: Cv::Size, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
+    def create: (asize: Cv::Size2i, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
            | (arows: Integer, acols: Integer, aformat: Cv::Ogl::Texture2D::Format, auto_release: TrueClass) -> NilClass
     def empty?: () -> TrueClass
     def copy_to: (arr: Cv::OutputArray, ddepth: Integer, auto_release: TrueClass) -> NilClass
@@ -17,7 +17,7 @@ module Cv::Ogl
     def release: () -> NilClass
     def rows: () -> Integer
     def set_auto_release: (flag: TrueClass) -> NilClass
-    def size: () -> Cv::Size
+    def size: () -> Cv::Size2i
     def tex_id: () -> Integer
   end
 end

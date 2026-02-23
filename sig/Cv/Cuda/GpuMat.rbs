@@ -10,43 +10,44 @@ module Cv::Cuda
     attr_accessor rows: Integer
     attr_accessor step: Integer
 
-    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Cuda::GpuMat
     def initialize: (allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
-               | (arr: Cv::InputArray, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
-               | (size: Cv::Size, type: Integer, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
+               | (m: Cv::Cuda::GpuMat, roi: Cv::Rect2i) -> NilClass
                | (m: Cv::Cuda::GpuMat, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
-               | (m: Cv::Cuda::GpuMat, roi: Cv::Rect) -> NilClass
-               | (size: Cv::Size, type: Integer, s: Cv::Scalar, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
+               | (size: Cv::Size2i, type: Integer, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
+               | (arr: Cv::InputArray, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
+               | (size: Cv::Size2i, type: Integer, s: Cv::Scalar, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
-               | (size: Cv::Size, type: Integer, data: Rice::Pointer≺void≻, step: Integer) -> NilClass
+               | (size: Cv::Size2i, type: Integer, data: Rice::Pointer≺void≻, step: Integer) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, s: Cv::Scalar, allocator: Cv::Cuda::GpuMat::Allocator) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, data: Rice::Pointer≺void≻, step: Integer) -> NilClass
+    def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Cuda::GpuMat
     def assign: (m: Cv::Cuda::GpuMat) -> Cv::Cuda::GpuMat
-    def call: (roi: Cv::Rect) -> Cv::Cuda::GpuMat
+    def assign_to: (m: Cv::Cuda::GpuMat, type: Integer) -> NilClass
+    def call: (roi: Cv::Rect2i) -> Cv::Cuda::GpuMat
          | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Cuda::GpuMat
     def channels: () -> Integer
-    def clone: () -> Cv::Cuda::GpuMat
     def col: (x: Integer) -> Cv::Cuda::GpuMat
+    def clone: () -> Cv::Cuda::GpuMat
     def col_range: (r: Cv::Range) -> Cv::Cuda::GpuMat
               | (startcol: Integer, endcol: Integer) -> Cv::Cuda::GpuMat
-    def assign_to: (m: Cv::Cuda::GpuMat, type: Integer) -> NilClass
     def continuous?: () -> TrueClass
     def convert_to: (dst: Cv::OutputArray, rtype: Integer) -> NilClass
                | (dst: Cv::Cuda::GpuMat, rtype: Integer, stream: Cv::Cuda::Stream) -> NilClass
                | (dst: Cv::OutputArray, rtype: Integer, stream: Cv::Cuda::Stream) -> NilClass
+               | (dst: Cv::Cuda::GpuMat, rtype: Integer, alpha: Float, beta: Float) -> NilClass
                | (dst: Cv::OutputArray, rtype: Integer, alpha: Float, beta: Float) -> NilClass
                | (dst: Cv::OutputArray, rtype: Integer, alpha: Float, stream: Cv::Cuda::Stream) -> NilClass
-               | (dst: Cv::OutputArray, rtype: Integer, alpha: Float, beta: Float, stream: Cv::Cuda::Stream) -> NilClass
                | (dst: Cv::Cuda::GpuMat, rtype: Integer, alpha: Float, beta: Float, stream: Cv::Cuda::Stream) -> NilClass
-    def copy_to: (dst: Cv::OutputArray) -> NilClass
-            | (dst: Cv::Cuda::GpuMat) -> NilClass
-            | (dst: Cv::OutputArray, stream: Cv::Cuda::Stream) -> NilClass
-            | (dst: Cv::Cuda::GpuMat, mask: Cv::Cuda::GpuMat) -> NilClass
+               | (dst: Cv::OutputArray, rtype: Integer, alpha: Float, beta: Float, stream: Cv::Cuda::Stream) -> NilClass
+    def copy_to: (dst: Cv::Cuda::GpuMat) -> NilClass
+            | (dst: Cv::OutputArray) -> NilClass
             | (dst: Cv::Cuda::GpuMat, stream: Cv::Cuda::Stream) -> NilClass
+            | (dst: Cv::Cuda::GpuMat, mask: Cv::Cuda::GpuMat) -> NilClass
             | (dst: Cv::OutputArray, mask: Cv::InputArray) -> NilClass
-            | (dst: Cv::OutputArray, mask: Cv::InputArray, stream: Cv::Cuda::Stream) -> NilClass
+            | (dst: Cv::OutputArray, stream: Cv::Cuda::Stream) -> NilClass
             | (dst: Cv::Cuda::GpuMat, mask: Cv::Cuda::GpuMat, stream: Cv::Cuda::Stream) -> NilClass
-    def create: (size: Cv::Size, type: Integer) -> NilClass
+            | (dst: Cv::OutputArray, mask: Cv::InputArray, stream: Cv::Cuda::Stream) -> NilClass
+    def create: (size: Cv::Size2i, type: Integer) -> NilClass
            | (rows: Integer, cols: Integer, type: Integer) -> NilClass
     def cuda_ptr: () -> Rice::Pointer≺void≻
     def depth: () -> Integer
@@ -56,7 +57,7 @@ module Cv::Cuda
     def elem_size1: () -> Integer
     def empty?: () -> TrueClass
     def initialize_copy: (m: Cv::Cuda::GpuMat) -> NilClass
-    def locate_roi: (whole_size: Cv::Size, ofs: Cv::Point) -> NilClass
+    def locate_roi: (whole_size: Cv::Size2i, ofs: Cv::Point2i) -> NilClass
     def ptr: (y: Integer) -> Rice::Pointer≺unsigned char≻
         | (y: Integer) -> Rice::Pointer≺unsigned char≻
     def release: () -> NilClass
@@ -68,7 +69,7 @@ module Cv::Cuda
            | (s: Cv::Scalar, mask: Cv::InputArray) -> Cv::Cuda::GpuMat
            | (s: Cv::Scalar, stream: Cv::Cuda::Stream) -> Cv::Cuda::GpuMat
            | (s: Cv::Scalar, mask: Cv::InputArray, stream: Cv::Cuda::Stream) -> Cv::Cuda::GpuMat
-    def size: () -> Cv::Size
+    def size: () -> Cv::Size2i
     def step1: () -> Integer
     def swap: (mat: Cv::Cuda::GpuMat) -> NilClass
     def type: () -> Integer

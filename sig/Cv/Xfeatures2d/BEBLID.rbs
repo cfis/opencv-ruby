@@ -1,0 +1,7 @@
+module Cv::Xfeatures2d
+  class BEBLID
+    def get_default_name: () -> String
+    def get_scale_factor: () -> Float
+    def set_scale_factor: (scale_factor: Float) -> NilClass
+  end
+end

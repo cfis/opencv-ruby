@@ -1,0 +1,7 @@
+module Rice
+  class Buffer≺void∗≻
+    def data: () -> Rice::Pointer≺void∗≻
+    def release: () -> Rice::Pointer≺void∗≻
+    def size: () -> Integer
+  end
+end

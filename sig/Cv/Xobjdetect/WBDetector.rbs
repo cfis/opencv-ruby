@@ -1,0 +1,8 @@
+module Cv::Xobjdetect
+  class WBDetector
+    def detect: (img: Cv::Mat, bboxes: Std::Vector≺cv꞉꞉Rect_≺int≻≻, confidences: Std::Vector≺double≻) -> NilClass
+    def read: (node: Cv::FileNode) -> NilClass
+    def train: (pos_samples: String, neg_imgs: String) -> NilClass
+    def write: (fs: Cv::FileStorage) -> NilClass
+  end
+end

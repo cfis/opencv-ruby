@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Point_≺double≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Point2d) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Point2d
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Point2d) -> NilClass
+               | (count: Integer, value: Cv::Point2d) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Point2d
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Point2d) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Point_≺double≻≻
-    def delete: (arg_0: Cv::Point2d) -> Cv::Point2d
-    def delete_at: (arg_0: Integer) -> Cv::Point2d
+    def delete: (value: Cv::Point2d) -> Cv::Point2d
+    def delete_at: (pos: Integer) -> Cv::Point2d
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Point2d
-    def include?: (arg_0: Cv::Point2d) -> TrueClass
-    def index: (arg_0: Cv::Point2d) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Point2d) -> Std::Vector≺cv꞉꞉Point_≺double≻≻
+    def include?: (value: Cv::Point2d) -> TrueClass
+    def index: (value: Cv::Point2d) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Point_≺double≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Point2d) -> Std::Vector≺cv꞉꞉Point_≺double≻≻
     def last: () -> Cv::Point2d
     def max_size: () -> Integer
     def pop: () -> Cv::Point2d
-    def push: (arg_0: Cv::Point2d) -> Std::Vector≺cv꞉꞉Point_≺double≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Point2d) -> Std::Vector≺cv꞉꞉Point_≺double≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

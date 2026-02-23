@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::TonemapMantiuk) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::TonemapMantiuk
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉TonemapMantiuk≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉TonemapMantiuk≻) -> NilClass
     def use_count: () -> Integer
   end
 end

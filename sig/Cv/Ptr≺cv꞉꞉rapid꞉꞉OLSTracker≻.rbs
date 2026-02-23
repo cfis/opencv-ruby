@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉rapid꞉꞉OLSTracker≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉rapid꞉꞉OLSTracker≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉rapid꞉꞉OLSTracker≻) -> NilClass
+               | (ptr: Cv::Rapid::OLSTracker) -> NilClass
+               | (value: Cv::Rapid::OLSTracker) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉rapid꞉꞉OLSTracker≻) -> Cv::Ptr≺cv꞉꞉rapid꞉꞉OLSTracker≻
+    def get: () -> Cv::Rapid::OLSTracker
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉rapid꞉꞉OLSTracker≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

@@ -1,0 +1,6 @@
+module Cvflann::Anyimpl
+  class EmptyAny
+    def initialize: () -> NilClass
+    def inspect: () -> String
+  end
+end

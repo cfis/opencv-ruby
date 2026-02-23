@@ -1,0 +1,12 @@
+module Cv::Cuda
+  class PtrStepf
+    attr_accessor step: Integer
+
+    def call: (y: Integer, x: Integer) -> Float
+         | (y: Integer, x: Integer) -> Float
+    def initialize: () -> NilClass
+               | (data_: Rice::Pointer≺float≻, step_: Integer) -> NilClass
+    def ptr: (y: Integer) -> Rice::Pointer≺float≻
+        | (y: Integer) -> Rice::Pointer≺float≻
+  end
+end

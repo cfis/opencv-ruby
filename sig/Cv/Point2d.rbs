@@ -3,40 +3,31 @@ module Cv
     attr_accessor x: Float
     attr_accessor y: Float
 
-    def initialize: () -> NilClass
-               | (sz: Cv::Size2d) -> NilClass
-               | (v: Cv::Vec2d) -> NilClass
-               | (_x: Float, _y: Float) -> NilClass
     def !=: (arg_0: Cv::Point2d) -> TrueClass
-       | (arg_0: Cv::Point2d) -> TrueClass
     def *: (arg_0: Float) -> Cv::Point2d
       | (arg_0: Integer) -> Cv::Point2d
-      | (arg_0: Integer) -> Cv::Point2d
+    def initialize: () -> NilClass
+               | (sz: Cv::Size2d) -> NilClass
+               | (_x: Float, _y: Float) -> NilClass
+               | (v: Cv::Vec2d) -> NilClass
     def +: (arg_0: Cv::Point2d) -> Cv::Point2d
-      | (arg_0: Cv::Point2d) -> Cv::Point2d
     def -: (arg_0: Cv::Point2d) -> Cv::Point2d
-      | (arg_0: Cv::Point2d) -> Cv::Point2d
     def /: (arg_0: Float) -> Cv::Point2d
       | (arg_0: Integer) -> Cv::Point2d
-      | (arg_0: Integer) -> Cv::Point2d
-      | (arg_0: Float) -> Cv::Point2d
     def ==: (arg_0: Cv::Point2d) -> TrueClass
-       | (arg_0: Cv::Point2d) -> TrueClass
+    def assign: (pt: Cv::Point2d) -> Cv::Point2d
+           | (pt: Cv::Point2d) -> Cv::Point2d
     def assign_divide: (arg_0: Integer) -> Cv::Point2d
                   | (arg_0: Float) -> Cv::Point2d
-                  | (arg_0: Float) -> Cv::Point2d
-                  | (arg_0: Integer) -> Cv::Point2d
     def assign_minus: (arg_0: Cv::Point2d) -> Cv::Point2d
-                 | (arg_0: Cv::Point2d) -> Cv::Point2d
     def assign_multiply: (arg_0: Float) -> Cv::Point2d
                     | (arg_0: Float) -> Cv::Point2d
     def assign_plus: (arg_0: Cv::Point2d) -> Cv::Point2d
-                | (arg_0: Cv::Point2d) -> Cv::Point2d
     def cross: (pt: Cv::Point2d) -> Float
     def ddot: (pt: Cv::Point2d) -> Float
     def dot: (pt: Cv::Point2d) -> Float
     def initialize_copy: (pt: Cv::Point2d) -> NilClass
-    def inside?: (r: Cv::Rect2d) -> TrueClass
+    def inside: (r: Cv::Rect2d) -> TrueClass
     def inspect: () -> String
     def norm: () -> Float
     def to_s: () -> String

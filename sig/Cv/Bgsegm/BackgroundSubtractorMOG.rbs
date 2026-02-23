@@ -1,0 +1,12 @@
+module Cv::Bgsegm
+  class BackgroundSubtractorMOG
+    def get_background_ratio: () -> Float
+    def get_history: () -> Integer
+    def get_n_mixtures: () -> Integer
+    def get_noise_sigma: () -> Float
+    def set_background_ratio: (background_ratio: Float) -> NilClass
+    def set_history: (nframes: Integer) -> NilClass
+    def set_n_mixtures: (nmix: Integer) -> NilClass
+    def set_noise_sigma: (noise_sigma: Float) -> NilClass
+  end
+end

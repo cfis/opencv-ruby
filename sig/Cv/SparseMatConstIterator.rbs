@@ -4,8 +4,9 @@ module Cv
     attr_accessor m: Cv::SparseMat
     attr_accessor ptr: Rice::Pointer≺unsigned char≻
 
+    def assign: (it: Cv::SparseMatConstIterator) -> Cv::SparseMatConstIterator
     def increment: () -> Cv::SparseMatConstIterator
-              | (: Integer) -> Cv::SparseMatConstIterator
+    def increment_post: (arg_0: Integer) -> Cv::SparseMatConstIterator
     def initialize: () -> NilClass
                | (_m: Cv::SparseMat) -> NilClass
     def initialize_copy: (it: Cv::SparseMatConstIterator) -> NilClass

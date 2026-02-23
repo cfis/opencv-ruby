@@ -1,0 +1,5 @@
+module Cv::Tracking
+  class TrackerCSRT
+    def set_initial_mask: (mask: Cv::InputArray) -> NilClass
+  end
+end

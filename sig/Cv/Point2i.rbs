@@ -1,0 +1,65 @@
+module Cv
+  class Point2i
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+
+    def initialize: (v: Cv::Vec2i) -> NilClass
+               | (sz: Cv::Size2i) -> NilClass
+               | (sz: Cv::Size2i) -> NilClass
+               | (_x: Integer, _y: Integer) -> NilClass
+               | () -> NilClass
+               | (_x: Integer, _y: Integer) -> NilClass
+               | () -> NilClass
+               | (v: Cv::Vec2i) -> NilClass
+    def !=: (arg_0: Cv::Point2i) -> TrueClass
+       | (arg_0: Cv::Point2i) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Point2i
+      | (arg_0: Integer) -> Cv::Point2i
+      | (arg_0: Float) -> Cv::Point2i
+      | (arg_0: Integer) -> Cv::Point2i
+    def +: (arg_0: Cv::Point2i) -> Cv::Point2i
+      | (arg_0: Cv::Point2i) -> Cv::Point2i
+    def -: (arg_0: Cv::Point2i) -> Cv::Point2i
+      | (arg_0: Cv::Point2i) -> Cv::Point2i
+    def /: (arg_0: Float) -> Cv::Point2i
+      | (arg_0: Integer) -> Cv::Point2i
+      | (arg_0: Integer) -> Cv::Point2i
+      | (arg_0: Float) -> Cv::Point2i
+    def ==: (arg_0: Cv::Point2i) -> TrueClass
+       | (arg_0: Cv::Point2i) -> TrueClass
+    def assign: (pt: Cv::Point2i) -> Cv::Point2i
+           | (pt: Cv::Point2i) -> Cv::Point2i
+           | (pt: Cv::Point2i) -> Cv::Point2i
+           | (pt: Cv::Point2i) -> Cv::Point2i
+    def assign_divide: (arg_0: Float) -> Cv::Point2i
+                  | (arg_0: Float) -> Cv::Point2i
+                  | (arg_0: Integer) -> Cv::Point2i
+                  | (arg_0: Integer) -> Cv::Point2i
+    def assign_minus: (arg_0: Cv::Point2i) -> Cv::Point2i
+                 | (arg_0: Cv::Point2i) -> Cv::Point2i
+    def assign_multiply: (arg_0: Float) -> Cv::Point2i
+                    | (arg_0: Float) -> Cv::Point2i
+                    | (arg_0: Float) -> Cv::Point2i
+                    | (arg_0: Float) -> Cv::Point2i
+    def assign_plus: (arg_0: Cv::Point2i) -> Cv::Point2i
+                | (arg_0: Cv::Point2i) -> Cv::Point2i
+    def cross: (pt: Cv::Point2i) -> Float
+          | (pt: Cv::Point2i) -> Float
+    def ddot: (pt: Cv::Point2i) -> Float
+         | (pt: Cv::Point2i) -> Float
+    def dot: (pt: Cv::Point2i) -> Integer
+        | (pt: Cv::Point2i) -> Integer
+    def initialize_copy: (pt: Cv::Point2i) -> NilClass
+                    | (pt: Cv::Point2i) -> NilClass
+    def inside: (r: Cv::Rect2i) -> TrueClass
+           | (r: Cv::Rect2i) -> TrueClass
+    def inspect: () -> String
+            | () -> String
+    def norm: () -> Float
+         | () -> Float
+    def to_s: () -> String
+         | () -> String
+    def to_vec: () -> Cv::Vec2i
+           | () -> Cv::Vec2i
+  end
+end

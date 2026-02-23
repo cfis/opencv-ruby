@@ -1,14 +1,16 @@
 module Cv
   class FileNode
     attr_accessor block_idx: Integer
+    attr_accessor fs: Cv::FileStorage::Impl
     attr_accessor ofs: Integer
 
     def >>: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
        | (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
        | (arg_0: Cv::DMatch) -> NilClass
        | (arg_0: Cv::KeyPoint) -> NilClass
-    def initialize: (fs: Cv::FileStorage, block_idx: Integer, ofs: Integer) -> NilClass
-               | () -> NilClass
+    def initialize: () -> NilClass
+               | (fs: Cv::FileStorage::Impl, block_idx: Integer, ofs: Integer) -> NilClass
+               | (fs: Cv::FileStorage, block_idx: Integer, ofs: Integer) -> NilClass
     def []: (i: Integer) -> Cv::FileNode
        | (nodename: String) -> Cv::FileNode
        | (nodename: String) -> Cv::FileNode
@@ -22,6 +24,8 @@ module Cv
     def name: () -> String
     def named?: () -> TrueClass
     def none?: () -> TrueClass
+    def ptr: () -> Rice::Pointer≺unsigned char≻
+        | () -> Rice::Pointer≺unsigned char≻
     def raw_size: () -> Integer
     def read_raw: (fmt: String, vec: Rice::Pointer≺void≻, len: Integer) -> NilClass
     def real: () -> Float
@@ -31,10 +35,11 @@ module Cv
     def size: () -> Integer
     def string: () -> String
     def string?: () -> TrueClass
-    def to_double: () -> Float
-    def to_float: () -> Float
-    def to_int: () -> Integer
-    def to_string: () -> String
+    def to_f: () -> Float
+    def to_f32: () -> Float
+    def to_i: () -> Integer
+    def to_i64: () -> Integer
+    def to_s: () -> String
     def type: () -> Integer
   end
 end

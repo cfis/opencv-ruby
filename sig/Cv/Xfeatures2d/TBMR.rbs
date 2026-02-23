@@ -1,0 +1,13 @@
+module Cv::Xfeatures2d
+  class TBMR
+    def get_default_name: () -> String
+    def get_max_area_relative: () -> Float
+    def get_min_area: () -> Integer
+    def get_n_scales: () -> Integer
+    def get_scale_factor: () -> Float
+    def set_max_area_relative: (max_area: Float) -> NilClass
+    def set_min_area: (min_area: Integer) -> NilClass
+    def set_n_scales: (n_scales: Integer) -> NilClass
+    def set_scale_factor: (scale_factor: Float) -> NilClass
+  end
+end

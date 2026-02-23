@@ -3,7 +3,7 @@ module Cv::Dnn
     def initialize: (network: Cv::Dnn::Net) -> NilClass
                | (model: String, config: String) -> NilClass
     def detect: (frame: Cv::InputArray, class_ids: Std::Vector≺int≻, confidences: Std::Vector≺float≻, boxes: Std::Vector≺cv꞉꞉Rect_≺int≻≻, conf_threshold: Float, nms_threshold: Float) -> NilClass
-    def get_nms_across_classes: () -> TrueClass
+    def get_nms_across_classes?: () -> TrueClass
     def set_nms_across_classes: (value: TrueClass) -> Cv::Dnn::DetectionModel
   end
 end

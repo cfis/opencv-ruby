@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Utils::Nested::OriginalClassName) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Utils::Nested::OriginalClassName
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉utils꞉꞉nested꞉꞉OriginalClassName≻) -> NilClass
     def use_count: () -> Integer
   end
 end

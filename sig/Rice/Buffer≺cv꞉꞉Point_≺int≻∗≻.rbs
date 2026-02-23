@@ -2,8 +2,8 @@ module Rice
   class Buffer≺cv꞉꞉Point_≺int≻∗≻
     def initialize: (value: Integer) -> NilClass
                | (value: Integer, size: Integer) -> NilClass
-    def []: (index: Integer) -> Cv::Point
-    def []=: (arg_0: Integer, arg_1: Cv::Point) -> NilClass
+    def []: (index: Integer) -> Cv::Point2i
+    def []=: (arg_0: Integer, arg_1: Cv::Point2i) -> NilClass
     def bytes: () -> Integer
           | (arg_0: Integer) -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Point_≺int≻∗≻

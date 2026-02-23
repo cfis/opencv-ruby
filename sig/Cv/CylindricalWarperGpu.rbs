@@ -1,0 +1,6 @@
+module Cv
+  class CylindricalWarperGpu
+    def create: (scale: Float) -> Cv::Ptr≺cv꞉꞉detail꞉꞉RotationWarper≻
+    def initialize: () -> NilClass
+  end
+end

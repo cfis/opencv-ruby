@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉plot꞉꞉Plot2d≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉plot꞉꞉Plot2d≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉plot꞉꞉Plot2d≻) -> NilClass
+               | (ptr: Cv::Plot::Plot2d) -> NilClass
+               | (value: Cv::Plot::Plot2d) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉plot꞉꞉Plot2d≻) -> Cv::Ptr≺cv꞉꞉plot꞉꞉Plot2d≻
+    def get: () -> Cv::Plot::Plot2d
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉plot꞉꞉Plot2d≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

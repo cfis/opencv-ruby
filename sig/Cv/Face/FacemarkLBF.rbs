@@ -1,0 +1,4 @@
+module Cv::Face
+  class FacemarkLBF
+  end
+end

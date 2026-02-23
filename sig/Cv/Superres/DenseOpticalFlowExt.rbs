@@ -1,0 +1,6 @@
+module Cv::Superres
+  class DenseOpticalFlowExt
+    def calc: (frame0: Cv::InputArray, frame1: Cv::InputArray, flow1: Cv::OutputArray, flow2: Cv::OutputArray) -> NilClass
+    def collect_garbage: () -> NilClass
+  end
+end

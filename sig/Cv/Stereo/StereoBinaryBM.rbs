@@ -1,0 +1,26 @@
+module Cv::Stereo
+  class StereoBinaryBM
+    def get_agregation_window_size: () -> Integer
+    def get_binary_kernel_type: () -> Integer
+    def get_pre_filter_cap: () -> Integer
+    def get_pre_filter_size: () -> Integer
+    def get_pre_filter_type: () -> Integer
+    def get_scalle_factor: () -> Integer
+    def get_smaller_block_size: () -> Integer
+    def get_spekle_removal_technique: () -> Integer
+    def get_texture_threshold: () -> Integer
+    def get_uniqueness_ratio: () -> Integer
+    def get_use_prefilter?: () -> TrueClass
+    def set_agregation_window_size: (value: Integer) -> NilClass
+    def set_binary_kernel_type: (value: Integer) -> NilClass
+    def set_pre_filter_cap: (pre_filter_cap: Integer) -> NilClass
+    def set_pre_filter_size: (pre_filter_size: Integer) -> NilClass
+    def set_pre_filter_type: (pre_filter_type: Integer) -> NilClass
+    def set_scalle_factor: (factor: Integer) -> NilClass
+    def set_smaller_block_size: (block_size: Integer) -> NilClass
+    def set_spekle_removal_technique: (factor: Integer) -> NilClass
+    def set_texture_threshold: (texture_threshold: Integer) -> NilClass
+    def set_uniqueness_ratio: (uniqueness_ratio: Integer) -> NilClass
+    def set_use_prefilter: (factor: TrueClass) -> NilClass
+  end
+end

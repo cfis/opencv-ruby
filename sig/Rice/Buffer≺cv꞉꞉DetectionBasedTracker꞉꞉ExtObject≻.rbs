@@ -2,8 +2,8 @@ module Rice
   class Buffer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻
     def initialize: (value: Integer) -> NilClass
                | (value: Integer, size: Integer) -> NilClass
-    def []: (index: Integer) -> ExtObject
-    def []=: (arg_0: Integer, arg_1: ExtObject) -> NilClass
+    def []: (index: Integer) -> Cv::DetectionBasedTracker::ExtObject
+    def []=: (arg_0: Integer, arg_1: Cv::DetectionBasedTracker::ExtObject) -> NilClass
     def bytes: () -> Integer
           | (arg_0: Integer) -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻

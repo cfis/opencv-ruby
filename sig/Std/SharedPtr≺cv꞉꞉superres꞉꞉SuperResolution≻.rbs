@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉superres꞉꞉SuperResolution≻
+    def initialize: (value: Cv::Superres::SuperResolution) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Superres::SuperResolution
+    def swap: (r: Std::SharedPtr≺cv꞉꞉superres꞉꞉SuperResolution≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

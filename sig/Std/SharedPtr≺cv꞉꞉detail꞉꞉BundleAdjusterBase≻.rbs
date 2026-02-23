@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::BundleAdjusterBase) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::BundleAdjusterBase
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉BundleAdjusterBase≻) -> NilClass
     def use_count: () -> Integer
   end
 end

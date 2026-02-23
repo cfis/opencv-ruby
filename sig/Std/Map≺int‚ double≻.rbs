@@ -1,0 +1,20 @@
+module Std
+  class Map≺int‚ double≻
+    def initialize: () -> NilClass
+    def ==: (other: Std::Map≺int‚ double≻) -> TrueClass
+    def []: (key: Integer) -> Float
+    def []=: (key: Integer, value: Float) -> Float
+    def clear: () -> NilClass
+    def delete: (key: Integer) -> Float
+    def empty?: () -> TrueClass
+    def include?: (key: Integer) -> TrueClass
+    def initialize_copy: (other: Std::Map≺int‚ double≻) -> NilClass
+    def keys: () -> Std::Vector≺int≻
+    def max_size: () -> Integer
+    def size: () -> Integer
+    def to_h: () -> Integer
+    def to_s: () -> String
+    def value?: (value: Float) -> TrueClass
+    def values: () -> Std::Vector≺double≻
+  end
+end

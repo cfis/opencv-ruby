@@ -1,6 +1,6 @@
 module Cv
   class LineSegmentDetector
-    def compare_segments: (size: Cv::Size, lines1: Cv::InputArray, lines2: Cv::InputArray, image: Cv::InputOutputArray) -> Integer
+    def compare_segments: (size: Cv::Size2i, lines1: Cv::InputArray, lines2: Cv::InputArray, image: Cv::InputOutputArray) -> Integer
     def detect: (image: Cv::InputArray, lines: Cv::OutputArray, width: Cv::OutputArray, prec: Cv::OutputArray, nfa: Cv::OutputArray) -> NilClass
     def draw_segments: (image: Cv::InputOutputArray, lines: Cv::InputArray) -> NilClass
   end

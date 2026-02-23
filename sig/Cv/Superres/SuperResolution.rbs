@@ -1,0 +1,28 @@
+module Cv::Superres
+  class SuperResolution
+    def collect_garbage: () -> NilClass
+    def get_alpha: () -> Float
+    def get_blur_kernel_size: () -> Integer
+    def get_blur_sigma: () -> Float
+    def get_iterations: () -> Integer
+    def get_kernel_size: () -> Integer
+    def get_lambda: () -> Float
+    def get_optical_flow: () -> Cv::Ptr≺cv꞉꞉superres꞉꞉DenseOpticalFlowExt≻
+    def get_scale: () -> Integer
+    def get_tau: () -> Float
+    def get_temporal_area_radius: () -> Integer
+    def next_frame: (frame: Cv::OutputArray) -> NilClass
+    def reset: () -> NilClass
+    def set_alpha: (val: Float) -> NilClass
+    def set_blur_kernel_size: (val: Integer) -> NilClass
+    def set_blur_sigma: (val: Float) -> NilClass
+    def set_input: (frame_source: Cv::Ptr≺cv꞉꞉superres꞉꞉FrameSource≻) -> NilClass
+    def set_iterations: (val: Integer) -> NilClass
+    def set_kernel_size: (val: Integer) -> NilClass
+    def set_lambda: (val: Float) -> NilClass
+    def set_optical_flow: (val: Cv::Ptr≺cv꞉꞉superres꞉꞉DenseOpticalFlowExt≻) -> NilClass
+    def set_scale: (val: Integer) -> NilClass
+    def set_tau: (val: Float) -> NilClass
+    def set_temporal_area_radius: (val: Integer) -> NilClass
+  end
+end

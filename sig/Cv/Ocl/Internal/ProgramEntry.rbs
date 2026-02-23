@@ -7,6 +7,6 @@ module Cv::Ocl::Internal
     attr_accessor program_hash: String
 
     def initialize: () -> NilClass
-    def to_cv/ocl/program_source &: () -> Cv::Ocl::ProgramSource
+    def to_program_source: () -> Cv::Ocl::ProgramSource
   end
 end

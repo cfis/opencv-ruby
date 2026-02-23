@@ -9,9 +9,9 @@ module Cv
     def assign_plus: (ofs: Integer) -> Cv::FileNodeIterator
     def dereference: () -> Cv::FileNode
     def assign: (it: Cv::FileNodeIterator) -> Cv::FileNodeIterator
-    def equal_to?: (it: Cv::FileNodeIterator) -> TrueClass
+    def equal_to: (it: Cv::FileNodeIterator) -> TrueClass
     def increment: () -> Cv::FileNodeIterator
-              | (: Integer) -> Cv::FileNodeIterator
+    def increment_post: (arg_0: Integer) -> Cv::FileNodeIterator
     def initialize_copy: (it: Cv::FileNodeIterator) -> NilClass
     def read_raw: (fmt: String, vec: Rice::Pointer≺void≻, len: Integer) -> Cv::FileNodeIterator
     def remaining: () -> Integer

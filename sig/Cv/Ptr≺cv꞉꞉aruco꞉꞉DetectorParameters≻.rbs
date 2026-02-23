@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉aruco꞉꞉DetectorParameters≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉DetectorParameters≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉DetectorParameters≻) -> NilClass
+               | (ptr: Cv::Aruco::DetectorParameters) -> NilClass
+               | (value: Cv::Aruco::DetectorParameters) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉DetectorParameters≻) -> Cv::Ptr≺cv꞉꞉aruco꞉꞉DetectorParameters≻
+    def get: () -> Cv::Aruco::DetectorParameters
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉DetectorParameters≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

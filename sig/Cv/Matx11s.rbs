@@ -1,45 +1,46 @@
 module Cv
   class Matx11s
+    attr_reader val: String
+
     def !=: (arg_0: Cv::Matx11s) -> TrueClass
     def *: (arg_0: Float) -> Cv::Matx11s
-      | (arg_0: Cv::Vec1s) -> Cv::Vec1s
       | (arg_0: Float) -> Cv::Matx11s
+      | (arg_0: Cv::Vec1s) -> Cv::Vec1s
       | (arg_0: Integer) -> Cv::Matx11s
-    def initialize: () -> NilClass
-               | (vals: Rice::Pointer≺short≻) -> NilClass
-               | (v0: Integer) -> NilClass
-               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxAddOp) -> NilClass
-               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxMulOp) -> NilClass
-               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx11s, arg_1: Cv::MatxTOp) -> NilClass
     def +: (arg_0: Cv::Matx11s) -> Cv::Matx11s
     def -: (arg_0: Cv::Matx11s) -> Cv::Matx11s
     def /: (arg_0: Float) -> Cv::Matx11s
       | (arg_0: Float) -> Cv::Matx11s
     def ==: (arg_0: Cv::Matx11s) -> TrueClass
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+    def initialize: () -> NilClass
+               | (vals: Rice::Pointer≺short≻) -> NilClass
+               | (v0: Integer) -> NilClass
+               | (a: Cv::Matx11s, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx11s, b: Cv::Matx11s, arg_2: Cv::MatxAddOp) -> NilClass
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx11s
                   | (arg_0: Float) -> Cv::Matx11s
     def assign_minus: (arg_0: Cv::Matx11s) -> Cv::Matx11s
-    def assign_multiply: (arg_0: Integer) -> Cv::Matx11s
+    def assign_multiply: (arg_0: Float) -> Cv::Matx11s
                     | (arg_0: Float) -> Cv::Matx11s
-                    | (arg_0: Float) -> Cv::Matx11s
+                    | (arg_0: Integer) -> Cv::Matx11s
     def assign_plus: (arg_0: Cv::Matx11s) -> Cv::Matx11s
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-    def channels: () -> Integer
     def col: (i: Integer) -> Cv::Matx11s
     def cols: () -> Integer
     def ddot: (v: Cv::Matx11s) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx11s
     def div: (a: Cv::Matx11s) -> Cv::Matx11s
     def dot: (v: Cv::Matx11s) -> Integer
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx11s) -> TrueClass
+    def channels: () -> Integer
     def input_array: () -> Cv::InputArray
     def inspect: () -> String
     def mul: (a: Cv::Matx11s) -> Cv::Matx11s

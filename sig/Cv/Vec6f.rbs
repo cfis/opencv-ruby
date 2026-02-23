@@ -2,16 +2,20 @@ module Cv
   class Vec6f
     def []: (i: Integer) -> Float
        | (i: Integer) -> Float
+       | (i: Integer) -> Float
+       | (i: Integer) -> Float
     def initialize: () -> NilClass
                | (values: Rice::Pointer≺float≻) -> NilClass
-               | (a: Cv::Matx61f, b: Cv::Matx61f, op: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx61f, b: Cv::Matx61f, op: Cv::MatxAddOp) -> NilClass
+               | (v0: Float) -> NilClass
+               | (v0: Float, v1: Float) -> NilClass
+               | (a: Cv::Matx61f, b: Cv::Matx61f, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float) -> NilClass
+               | (a: Cv::Matx61f, b: Cv::Matx61f, arg_2: Cv::MatxSubOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float) -> NilClass
                | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float) -> NilClass
     def []=: (arg_0: Integer, arg_1: Float) -> NilClass
     def assign: (rhs: Cv::Vec6f) -> Cv::Vec6f
-    def call: (i: Integer) -> Float
-         | (i: Integer) -> Float
-    def count: () -> Integer
     def initialize_copy: (v: Cv::Vec6f) -> NilClass
     def inspect: () -> String
     def mul: (v: Cv::Vec6f) -> Cv::Vec6f

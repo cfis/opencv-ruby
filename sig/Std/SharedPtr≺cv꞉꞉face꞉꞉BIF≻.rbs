@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉face꞉꞉BIF≻
+    def initialize: (value: Cv::Face::BIF) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Face::BIF
+    def swap: (r: Std::SharedPtr≺cv꞉꞉face꞉꞉BIF≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

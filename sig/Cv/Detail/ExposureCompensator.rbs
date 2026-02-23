@@ -1,11 +1,11 @@
 module Cv::Detail
   class ExposureCompensator
-    def apply: (index: Integer, corner: Cv::Point, image: Cv::InputOutputArray, mask: Cv::InputArray) -> NilClass
+    def apply: (index: Integer, corner: Cv::Point2i, image: Cv::InputOutputArray, mask: Cv::InputArray) -> NilClass
     def feed: (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
          | (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, images: Std::Vector≺cv꞉꞉UMat≻, masks: Std::Vector≺cv꞉꞉UMat≻) -> NilClass
-    def get_mat_gains: (: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def get_mat_gains: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def get_update_gain?: () -> TrueClass
-    def set_mat_gains: (: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def set_mat_gains: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def set_update_gain: (b: TrueClass) -> NilClass
   end
 end

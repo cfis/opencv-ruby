@@ -4,11 +4,11 @@ module Cv
     def get_max_level: () -> Integer
     def get_min_eig_threshold: () -> Float
     def get_term_criteria: () -> Cv::TermCriteria
-    def get_win_size: () -> Cv::Size
+    def get_win_size: () -> Cv::Size2i
     def set_flags: (flags: Integer) -> NilClass
     def set_max_level: (max_level: Integer) -> NilClass
     def set_min_eig_threshold: (min_eig_threshold: Float) -> NilClass
     def set_term_criteria: (crit: Cv::TermCriteria) -> NilClass
-    def set_win_size: (win_size: Cv::Size) -> NilClass
+    def set_win_size: (win_size: Cv::Size2i) -> NilClass
   end
 end

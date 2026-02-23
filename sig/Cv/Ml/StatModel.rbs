@@ -5,8 +5,8 @@ module Cv::Ml
     def empty?: () -> TrueClass
     def get_var_count: () -> Integer
     def predict: (samples: Cv::InputArray, results: Cv::OutputArray, flags: Integer) -> Float
-    def train?: (train_data: Cv::Ptr≺cv꞉꞉ml꞉꞉TrainData≻, flags: Integer) -> TrueClass
-           | (samples: Cv::InputArray, layout: Integer, responses: Cv::InputArray) -> TrueClass
+    def train: (train_data: Cv::Ptr≺cv꞉꞉ml꞉꞉TrainData≻, flags: Integer) -> TrueClass
+          | (samples: Cv::InputArray, layout: Integer, responses: Cv::InputArray) -> TrueClass
     def trained?: () -> TrueClass
   end
 end

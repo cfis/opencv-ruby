@@ -1,0 +1,14 @@
+module Cv::Bgsegm
+  class BackgroundSubtractorCNT
+    def apply: (image: Cv::InputArray, fgmask: Cv::OutputArray, learning_rate: Float) -> NilClass
+    def get_background_image: (background_image: Cv::OutputArray) -> NilClass
+    def get_is_parallel?: () -> TrueClass
+    def get_max_pixel_stability: () -> Integer
+    def get_min_pixel_stability: () -> Integer
+    def get_use_history?: () -> TrueClass
+    def set_is_parallel: (value: TrueClass) -> NilClass
+    def set_max_pixel_stability: (value: Integer) -> NilClass
+    def set_min_pixel_stability: (value: Integer) -> NilClass
+    def set_use_history: (value: TrueClass) -> NilClass
+  end
+end

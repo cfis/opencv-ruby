@@ -8,7 +8,7 @@ module Cv
     attr_accessor size: Integer
 
     def increment: () -> Cv::NAryMatIterator
-              | (: Integer) -> Cv::NAryMatIterator
+    def increment_post: (arg_0: Integer) -> Cv::NAryMatIterator
     def init: (arrays: Cv::Mat, planes: Cv::Mat, ptrs: Rice::Pointer≺unsigned char∗≻, narrays: Integer) -> NilClass
     def initialize: () -> NilClass
                | (arrays: Cv::Mat, planes: Cv::Mat, narrays: Integer) -> NilClass

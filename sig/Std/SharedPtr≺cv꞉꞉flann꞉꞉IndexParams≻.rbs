@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Flann::IndexParams) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Flann::IndexParams
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉flann꞉꞉IndexParams≻) -> NilClass
     def use_count: () -> Integer
   end
 end

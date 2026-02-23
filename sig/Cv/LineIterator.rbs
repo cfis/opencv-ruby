@@ -6,7 +6,7 @@ module Cv
     attr_accessor minus_delta: Integer
     attr_accessor minus_shift: Integer
     attr_accessor minus_step: Integer
-    attr_accessor p: Cv::Point
+    attr_accessor p: Cv::Point2i
     attr_accessor plus_delta: Integer
     attr_accessor plus_shift: Integer
     attr_accessor plus_step: Integer
@@ -15,14 +15,14 @@ module Cv
     attr_accessor ptr0: Rice::Pointer≺unsigned char≻
     attr_accessor step: Integer
 
-    def initialize: (pt1: Cv::Point, pt2: Cv::Point, connectivity: Integer, left_to_right: TrueClass) -> NilClass
-               | (bounding_area_size: Cv::Size, pt1: Cv::Point, pt2: Cv::Point, connectivity: Integer, left_to_right: TrueClass) -> NilClass
-               | (bounding_area_rect: Cv::Rect, pt1: Cv::Point, pt2: Cv::Point, connectivity: Integer, left_to_right: TrueClass) -> NilClass
-               | (img: Cv::Mat, pt1: Cv::Point, pt2: Cv::Point, connectivity: Integer, left_to_right: TrueClass) -> NilClass
+    def initialize: (pt1: Cv::Point2i, pt2: Cv::Point2i, connectivity: Integer, left_to_right: TrueClass) -> NilClass
+               | (bounding_area_size: Cv::Size2i, pt1: Cv::Point2i, pt2: Cv::Point2i, connectivity: Integer, left_to_right: TrueClass) -> NilClass
+               | (bounding_area_rect: Cv::Rect2i, pt1: Cv::Point2i, pt2: Cv::Point2i, connectivity: Integer, left_to_right: TrueClass) -> NilClass
+               | (img: Cv::Mat, pt1: Cv::Point2i, pt2: Cv::Point2i, connectivity: Integer, left_to_right: TrueClass) -> NilClass
     def dereference: () -> Rice::Pointer≺unsigned char≻
     def increment: () -> Cv::LineIterator
-              | (: Integer) -> Cv::LineIterator
-    def init: (img: Cv::Mat, bounding_area_rect: Cv::Rect, pt1: Cv::Point, pt2: Cv::Point, connectivity: Integer, left_to_right: TrueClass) -> NilClass
-    def pos: () -> Cv::Point
+    def increment_post: (arg_0: Integer) -> Cv::LineIterator
+    def init: (img: Cv::Mat, bounding_area_rect: Cv::Rect2i, pt1: Cv::Point2i, pt2: Cv::Point2i, connectivity: Integer, left_to_right: TrueClass) -> NilClass
+    def pos: () -> Cv::Point2i
   end
 end

@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Vec1b) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Vec1b
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Vec1b) -> NilClass
+               | (count: Integer, value: Cv::Vec1b) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Vec1b
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Vec1b) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
-    def delete: (arg_0: Cv::Vec1b) -> Cv::Vec1b
-    def delete_at: (arg_0: Integer) -> Cv::Vec1b
+    def delete: (value: Cv::Vec1b) -> Cv::Vec1b
+    def delete_at: (pos: Integer) -> Cv::Vec1b
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Vec1b
-    def include?: (arg_0: Cv::Vec1b) -> TrueClass
-    def index: (arg_0: Cv::Vec1b) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Vec1b) -> Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
+    def include?: (value: Cv::Vec1b) -> TrueClass
+    def index: (value: Cv::Vec1b) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Vec1b) -> Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
     def last: () -> Cv::Vec1b
     def max_size: () -> Integer
     def pop: () -> Cv::Vec1b
-    def push: (arg_0: Cv::Vec1b) -> Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Vec1b) -> Std::Vector≺cv꞉꞉Vec≺unsigned char‚ 1≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

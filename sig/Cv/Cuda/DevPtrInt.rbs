@@ -1,0 +1,11 @@
+module Cv::Cuda
+  class DevPtrInt
+    attr_accessor data: Rice::Pointer≺int≻
+
+    def elem_size: () -> Integer
+    def initialize: () -> NilClass
+               | (data_: Rice::Pointer≺int≻) -> NilClass
+    def to_const_ptr: () -> Rice::Pointer≺int≻
+    def to_ptr: () -> Rice::Pointer≺int≻
+  end
+end

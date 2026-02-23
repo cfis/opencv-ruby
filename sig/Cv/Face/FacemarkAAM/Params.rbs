@@ -1,0 +1,18 @@
+module Cv::Face::FacemarkAAM
+  class Params
+    attr_accessor m: Integer
+    attr_accessor max_m: Integer
+    attr_accessor max_n: Integer
+    attr_accessor model_filename: String
+    attr_accessor n: Integer
+    attr_accessor n_iter: Integer
+    attr_accessor save_model: TrueClass
+    attr_accessor scales: Std::Vector≺float≻
+    attr_accessor texture_max_m: Integer
+    attr_accessor verbose: TrueClass
+
+    def initialize: () -> NilClass
+    def read: (arg_0: Cv::FileNode) -> NilClass
+    def write: (arg_0: Cv::FileStorage) -> NilClass
+  end
+end

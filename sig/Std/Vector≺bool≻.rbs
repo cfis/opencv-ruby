@@ -2,28 +2,28 @@ module Std
   class Vector≺bool≻
     def initialize: () -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer) -> NilClass
-               | (arg_0: Integer, arg_1: TrueClass) -> NilClass
-    def ==: (arg_0: Std::Vector≺bool≻) -> TrueClass
-    def []: (arg_0: Integer) -> TrueClass
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: TrueClass) -> NilClass
+               | (count: Integer) -> NilClass
+               | (count: Integer, value: TrueClass) -> NilClass
+    def ==: (other: Std::Vector≺bool≻) -> TrueClass
+    def []: (pos: Integer) -> TrueClass
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: TrueClass) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
-    def delete: (arg_0: TrueClass) -> TrueClass
-    def delete_at: (arg_0: Integer) -> TrueClass
+    def delete: (value: TrueClass) -> TrueClass
+    def delete_at: (pos: Integer) -> TrueClass
     def empty?: () -> TrueClass
     def first: () -> TrueClass
-    def include?: (arg_0: TrueClass) -> TrueClass
-    def index: (arg_0: TrueClass) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺bool≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: TrueClass) -> Std::Vector≺bool≻
+    def include?: (value: TrueClass) -> TrueClass
+    def index: (value: TrueClass) -> Integer
+    def initialize_copy: (other: Std::Vector≺bool≻) -> NilClass
+    def insert: (pos: Integer, value: TrueClass) -> Std::Vector≺bool≻
     def last: () -> TrueClass
     def max_size: () -> Integer
     def pop: () -> TrueClass
-    def push: (arg_0: TrueClass) -> Std::Vector≺bool≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer, arg_1: TrueClass) -> NilClass
+    def push: (value: TrueClass) -> Std::Vector≺bool≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer, value: TrueClass) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

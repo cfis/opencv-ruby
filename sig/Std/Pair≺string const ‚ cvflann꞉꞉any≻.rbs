@@ -4,8 +4,8 @@ module Std
     attr_accessor second: Cvflann::Any
 
     def initialize: () -> NilClass
-               | (arg_0: String, arg_1: Cvflann::Any) -> NilClass
-    def initialize_copy: (arg_0: Std::Pair≺string const ‚ cvflann꞉꞉any≻) -> NilClass
+               | (x: String, y: Cvflann::Any) -> NilClass
+    def initialize_copy: (other: Std::Pair≺string const ‚ cvflann꞉꞉any≻) -> NilClass
     def to_s: () -> String
   end
 end

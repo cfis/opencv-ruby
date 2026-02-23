@@ -4,6 +4,7 @@ module Cv::Ocl
     def assign: (p: Cv::Ocl::Platform) -> Cv::Ocl::Platform
            | (p: Cv::Ocl::Platform) -> Cv::Ocl::Platform
     def empty?: () -> TrueClass
+    def get_impl: () -> Cv::Ocl::Platform::Impl
     def initialize_copy: (p: Cv::Ocl::Platform) -> NilClass
     def ptr: () -> Rice::Pointer≺void≻
   end

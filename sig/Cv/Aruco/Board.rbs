@@ -1,6 +1,6 @@
 module Cv::Aruco
   class Board
-    def generate_image: (out_size: Cv::Size, img: Cv::OutputArray, margin_size: Integer, border_bits: Integer) -> NilClass
+    def generate_image: (out_size: Cv::Size2i, img: Cv::OutputArray, margin_size: Integer, border_bits: Integer) -> NilClass
     def get_dictionary: () -> Cv::Aruco::Dictionary
     def get_ids: () -> Std::Vector≺int≻
     def get_obj_points: () -> Std::Vector≺vector≺cv꞉꞉Point3_≺float≻≻≻

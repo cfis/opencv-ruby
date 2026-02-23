@@ -2,16 +2,23 @@ module Cv
   class SparseMat3s
     def []: (arg_0: Rice::Pointer≺int≻) -> Cv::Vec3s
        | (arg_0: Integer) -> Cv::Vec3s
+       | (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
+       | (i0: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
        | (arg_0: Integer, arg_1: Integer) -> Cv::Vec3s
+       | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
        | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Cv::Vec3s
-    def []=: (arg_0: Integer, arg_1: Cv::Vec3s) -> Cv::Vec3s
-        | (arg_0: Rice::Pointer≺int≻, arg_1: Cv::Vec3s) -> Cv::Vec3s
+       | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
+    def initialize: (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | () -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def []=: (arg_0: Rice::Pointer≺int≻, arg_1: Cv::Vec3s) -> Cv::Vec3s
+        | (arg_0: Integer, arg_1: Cv::Vec3s) -> Cv::Vec3s
         | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec3s) -> Cv::Vec3s
         | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec3s) -> Cv::Vec3s
-    def initialize: () -> NilClass
-               | (m: Cv::SparseMat) -> NilClass
-               | (m: Cv::Mat) -> NilClass
-               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def assign: (m: Cv::SparseMat3s) -> Cv::SparseMat3s
+           | (m: Cv::SparseMat) -> Cv::SparseMat3s
+           | (m: Cv::Mat) -> Cv::SparseMat3s
     def begin: () -> Cv::SparseMatIterator3s
     def clone: () -> Cv::SparseMat3s
     def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
@@ -19,6 +26,10 @@ module Cv
     def end: () -> Cv::SparseMatIterator3s
     def channels: () -> Integer
     def initialize_copy: (m: Cv::SparseMat3s) -> NilClass
+    def ref: (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
+        | (i0: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
+        | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
+        | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Cv::Vec3s
     def type: () -> Integer
   end
 end

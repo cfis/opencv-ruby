@@ -1,0 +1,6 @@
+module Cv::Bgsegm
+  class BackgroundSubtractorLSBP
+    def apply: (image: Cv::InputArray, fgmask: Cv::OutputArray, learning_rate: Float) -> NilClass
+    def get_background_image: (background_image: Cv::OutputArray) -> NilClass
+  end
+end

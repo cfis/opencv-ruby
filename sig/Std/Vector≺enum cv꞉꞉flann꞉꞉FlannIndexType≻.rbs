@@ -1,30 +1,30 @@
 module Std
   class Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Flann::FlannIndexType) -> NilClass
-    def ==: (arg_0: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Flann::FlannIndexType
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Flann::FlannIndexType) -> NilClass
+               | (count: Integer, value: Cv::Flann::FlannIndexType) -> NilClass
+    def ==: (other: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Flann::FlannIndexType
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Flann::FlannIndexType) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
-    def delete: (arg_0: Cv::Flann::FlannIndexType) -> Cv::Flann::FlannIndexType
-    def delete_at: (arg_0: Integer) -> Cv::Flann::FlannIndexType
+    def delete: (value: Cv::Flann::FlannIndexType) -> Cv::Flann::FlannIndexType
+    def delete_at: (pos: Integer) -> Cv::Flann::FlannIndexType
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Flann::FlannIndexType
-    def include?: (arg_0: Cv::Flann::FlannIndexType) -> TrueClass
-    def index: (arg_0: Cv::Flann::FlannIndexType) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Flann::FlannIndexType) -> Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
+    def include?: (value: Cv::Flann::FlannIndexType) -> TrueClass
+    def index: (value: Cv::Flann::FlannIndexType) -> Integer
+    def initialize_copy: (other: Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Flann::FlannIndexType) -> Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
     def last: () -> Cv::Flann::FlannIndexType
     def max_size: () -> Integer
     def pop: () -> Cv::Flann::FlannIndexType
-    def push: (arg_0: Cv::Flann::FlannIndexType) -> Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Flann::FlannIndexType) -> Std::Vector≺enum cv꞉꞉flann꞉꞉FlannIndexType≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

@@ -1,9 +1,13 @@
 module Cv
   class FileStorage
     attr_accessor elname: String
+    attr_accessor p: Cv::Ptr≺cv꞉꞉FileStorage꞉꞉Impl≻
     attr_accessor state: Integer
 
     def <<: (arg_0: String) -> Cv::FileStorage
+       | (arg_0: String) -> Cv::FileStorage
+       | (arg_0: String) -> Cv::FileStorage
+       | (arg_0: String) -> Cv::FileStorage
        | (arg_0: String) -> Cv::FileStorage
        | (arg_0: String) -> Cv::FileStorage
        | (arg_0: TrueClass) -> Cv::FileStorage
@@ -20,17 +24,18 @@ module Cv
     def end_write_struct: () -> NilClass
     def get_first_top_level_node: () -> Cv::FileNode
     def get_format: () -> Integer
-    def open?: (filename: String, flags: Integer, encoding: String) -> TrueClass
+    def open: (filename: String, flags: Integer, encoding: String) -> TrueClass
     def opened?: () -> TrueClass
     def release: () -> NilClass
     def release_and_get_string: () -> String
     def root: (streamidx: Integer) -> Cv::FileNode
     def start_write_struct: (name: String, flags: Integer, type_name: String) -> NilClass
     def write: (name: String, val: String) -> NilClass
+          | (name: String, val: Float) -> NilClass
           | (name: String, val: Integer) -> NilClass
           | (name: String, val: Cv::Mat) -> NilClass
           | (name: String, val: Std::Vector≺string≻) -> NilClass
-          | (name: String, val: Float) -> NilClass
+          | (name: String, val: Integer) -> NilClass
     def write_comment: (comment: String, append: TrueClass) -> NilClass
     def write_raw: (fmt: String, vec: Rice::Pointer≺void≻, len: Integer) -> NilClass
   end

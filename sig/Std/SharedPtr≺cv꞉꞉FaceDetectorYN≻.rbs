@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::FaceDetectorYN) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::FaceDetectorYN
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉FaceDetectorYN≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉FaceDetectorYN≻) -> NilClass
     def use_count: () -> Integer
   end
 end

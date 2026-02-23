@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Dnn::DetectionOutputLayer) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Dnn::DetectionOutputLayer
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DetectionOutputLayer≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DetectionOutputLayer≻) -> NilClass
     def use_count: () -> Integer
   end
 end

@@ -1,6 +1,8 @@
 module Std
   class RuntimeError
-    def initialize: (arg_0: String) -> NilClass
+    def initialize: (what: String) -> NilClass
+               | (what: String) -> NilClass
     def message: () -> String
+            | () -> String
   end
 end

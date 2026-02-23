@@ -46,7 +46,7 @@ module Cv
     def clear: () -> NilClass
     def get_o_gl_buffer_ref: () -> Cv::Ogl::Buffer
     def get_gpu_mat_vec_ref: () -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
-    def create: (sz: Cv::Size, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
+    def create: (sz: Cv::Size2i, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
            | (rows: Integer, cols: Integer, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
            | (dims: Integer, size: Rice::Pointer≺int≻, type: Integer, i: Integer, allow_transposed: TrueClass, fixed_depth_mask: Cv::OutputArray::DepthMask) -> NilClass
     def get_gpu_mat_ref: () -> Cv::Cuda::GpuMat

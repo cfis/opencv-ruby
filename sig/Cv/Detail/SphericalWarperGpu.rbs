@@ -1,9 +1,9 @@
 module Cv::Detail
   class SphericalWarperGpu
-    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
-               | (src_size: Cv::Size, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::Cuda::GpuMat, ymap: Cv::Cuda::GpuMat) -> Cv::Rect
+    def build_maps: (src_size: Cv::Size2i, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect2i
+               | (src_size: Cv::Size2i, k: Cv::InputArray, r: Cv::InputArray, xmap: Cv::Cuda::GpuMat, ymap: Cv::Cuda::GpuMat) -> Cv::Rect2i
     def initialize: (scale: Float) -> NilClass
-    def warp: (src: Cv::Cuda::GpuMat, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::Cuda::GpuMat) -> Cv::Point
-         | (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
+    def warp: (src: Cv::Cuda::GpuMat, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::Cuda::GpuMat) -> Cv::Point2i
+         | (src: Cv::InputArray, k: Cv::InputArray, r: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point2i
   end
 end

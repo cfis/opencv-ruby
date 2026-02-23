@@ -5,6 +5,10 @@ module Cv
     def get_avg_time_sec: () -> Float
     def get_counter: () -> Integer
     def get_fps: () -> Float
+    def get_last_time_micro: () -> Float
+    def get_last_time_milli: () -> Float
+    def get_last_time_sec: () -> Float
+    def get_last_time_ticks: () -> Integer
     def get_time_micro: () -> Float
     def get_time_milli: () -> Float
     def get_time_sec: () -> Float

@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Stitcher) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Stitcher
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉Stitcher≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉Stitcher≻) -> NilClass
     def use_count: () -> Integer
   end
 end

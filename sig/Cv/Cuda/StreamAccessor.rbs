@@ -1,0 +1,5 @@
+module Cv::Cuda
+  class StreamAccessor
+    def initialize: () -> NilClass
+  end
+end

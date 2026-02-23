@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Formatted) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Formatted
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉Formatted≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉Formatted≻) -> NilClass
     def use_count: () -> Integer
   end
 end

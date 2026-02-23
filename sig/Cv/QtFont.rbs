@@ -1,8 +1,11 @@
 module Cv
   class QtFont
+    attr_accessor ascii: Rice::Pointer≺int≻
     attr_accessor color: Cv::Scalar
+    attr_accessor cyrillic: Rice::Pointer≺int≻
     attr_accessor dx: Float
     attr_accessor font_face: Integer
+    attr_accessor greek: Rice::Pointer≺int≻
     attr_accessor hscale: Float
     attr_accessor line_type: Integer
     attr_accessor name_font: String

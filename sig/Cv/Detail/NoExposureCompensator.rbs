@@ -1,7 +1,7 @@
 module Cv::Detail
   class NoExposureCompensator
-    def apply: (: Integer, : Cv::Point, : Cv::InputOutputArray, arg_3: Cv::InputArray) -> NilClass
-    def feed: (: Std::Vector≺cv꞉꞉Point_≺int≻≻, : Std::Vector≺cv꞉꞉UMat≻, arg_2: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
+    def apply: (arg_0: Integer, arg_1: Cv::Point2i, arg_2: Cv::InputOutputArray, arg_3: Cv::InputArray) -> NilClass
+    def feed: (arg_0: Std::Vector≺cv꞉꞉Point_≺int≻≻, arg_1: Std::Vector≺cv꞉꞉UMat≻, arg_2: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
     def get_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def initialize: () -> NilClass
     def set_mat_gains: (umv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass

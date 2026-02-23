@@ -1,0 +1,19 @@
+module Cv::Face
+  class FaceRecognizer
+    def empty?: () -> TrueClass
+    def get_label_info: (label: Integer) -> String
+    def get_labels_by_string: (str: String) -> Std::Vector≺int≻
+    def get_threshold: () -> Float
+    def predict: (src: Cv::InputArray) -> Integer
+            | (src: Cv::InputArray, collector: Cv::Ptr≺cv꞉꞉face꞉꞉PredictCollector≻) -> NilClass
+            | (src: Cv::InputArray, label: Integer, confidence: Float) -> NilClass
+    def read: (filename: String) -> NilClass
+         | (fn: Cv::FileNode) -> NilClass
+    def set_label_info: (label: Integer, str_info: String) -> NilClass
+    def set_threshold: (val: Float) -> NilClass
+    def train: (src: Cv::InputArray, labels: Cv::InputArray) -> NilClass
+    def update: (src: Cv::InputArray, labels: Cv::InputArray) -> NilClass
+    def write: (filename: String) -> NilClass
+          | (fs: Cv::FileStorage) -> NilClass
+  end
+end

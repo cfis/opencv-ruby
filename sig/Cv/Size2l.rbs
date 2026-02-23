@@ -3,24 +3,38 @@ module Cv
     attr_accessor height: Integer
     attr_accessor width: Integer
 
+    def !=: (arg_0: Cv::Size2l) -> TrueClass
+       | (arg_0: Cv::Size2l) -> TrueClass
     def initialize: () -> NilClass
                | (pt: Cv::Point2l) -> NilClass
                | (_width: Integer, _height: Integer) -> NilClass
-    def !=: (arg_0: Cv::Size2l) -> TrueClass
     def *: (arg_0: Integer) -> Cv::Size2l
+      | (arg_0: Integer) -> Cv::Size2l
     def +: (arg_0: Cv::Size2l) -> Cv::Size2l
+      | (arg_0: Cv::Size2l) -> Cv::Size2l
     def -: (arg_0: Cv::Size2l) -> Cv::Size2l
+      | (arg_0: Cv::Size2l) -> Cv::Size2l
     def /: (arg_0: Integer) -> Cv::Size2l
+      | (arg_0: Integer) -> Cv::Size2l
     def ==: (arg_0: Cv::Size2l) -> TrueClass
+       | (arg_0: Cv::Size2l) -> TrueClass
     def area: () -> Integer
-    def assign_divide: (arg_0: Integer) -> Cv::Size2l
-    def assign_minus: (arg_0: Cv::Size2l) -> Cv::Size2l
-    def assign_multiply: (arg_0: Integer) -> Cv::Size2l
-    def assign_plus: (arg_0: Cv::Size2l) -> Cv::Size2l
-    def empty?: () -> TrueClass
     def aspect_ratio: () -> Float
+    def assign: (sz: Cv::Size2l) -> Cv::Size2l
+           | (sz: Cv::Size2l) -> Cv::Size2l
+    def assign_divide: (arg_0: Integer) -> Cv::Size2l
+                  | (arg_0: Integer) -> Cv::Size2l
+    def assign_minus: (arg_0: Cv::Size2l) -> Cv::Size2l
+                 | (arg_0: Cv::Size2l) -> Cv::Size2l
+    def assign_multiply: (arg_0: Integer) -> Cv::Size2l
+                    | (arg_0: Integer) -> Cv::Size2l
+    def assign_plus: (arg_0: Cv::Size2l) -> Cv::Size2l
+                | (arg_0: Cv::Size2l) -> Cv::Size2l
+    def empty?: () -> TrueClass
     def initialize_copy: (sz: Cv::Size2l) -> NilClass
     def inspect: () -> String
+            | () -> String
     def to_s: () -> String
+         | () -> String
   end
 end

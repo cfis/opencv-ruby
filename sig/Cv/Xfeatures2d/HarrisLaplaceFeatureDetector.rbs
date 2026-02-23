@@ -1,0 +1,15 @@
+module Cv::Xfeatures2d
+  class HarrisLaplaceFeatureDetector
+    def get_corn_thresh: () -> Float
+    def get_default_name: () -> String
+    def get_dog_thresh: () -> Float
+    def get_max_corners: () -> Integer
+    def get_num_layers: () -> Integer
+    def get_num_octaves: () -> Integer
+    def set_corn_thresh: (corn_thresh_: Float) -> NilClass
+    def set_dog_thresh: (dog_thresh_: Float) -> NilClass
+    def set_max_corners: (max_corners_: Integer) -> NilClass
+    def set_num_layers: (num_layers_: Integer) -> NilClass
+    def set_num_octaves: (num_octaves_: Integer) -> NilClass
+  end
+end

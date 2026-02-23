@@ -1,9 +1,11 @@
 module Cvflann
   class Any
+    def assign: (x: Cvflann::Any) -> Cvflann::Any
+           | (x: Cvflann::Any) -> Cvflann::Any
+           | (x: String) -> Cvflann::Any
     def initialize: () -> NilClass
                | (x: String) -> NilClass
-    def assign: (x: Cvflann::Any) -> Cvflann::Any
-    def compatible?: (x: Cvflann::Any) -> TrueClass
+    def compatible: (x: Cvflann::Any) -> TrueClass
     def empty?: () -> TrueClass
     def initialize_copy: (x: Cvflann::Any) -> NilClass
     def inspect: () -> String

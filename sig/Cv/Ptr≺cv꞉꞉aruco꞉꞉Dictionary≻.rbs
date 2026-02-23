@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉aruco꞉꞉Dictionary≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉Dictionary≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉Dictionary≻) -> NilClass
+               | (ptr: Cv::Aruco::Dictionary) -> NilClass
+               | (value: Cv::Aruco::Dictionary) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉Dictionary≻) -> Cv::Ptr≺cv꞉꞉aruco꞉꞉Dictionary≻
+    def get: () -> Cv::Aruco::Dictionary
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉Dictionary≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

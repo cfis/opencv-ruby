@@ -1,0 +1,20 @@
+module Cv::Dnn
+  class DictValue
+    def assign: (r: Cv::Dnn::DictValue) -> Cv::Dnn::DictValue
+    def initialize: (i: TrueClass) -> NilClass
+               | (i: Integer) -> NilClass
+               | (i: Integer) -> NilClass
+               | (p: Integer) -> NilClass
+               | (p: Float) -> NilClass
+               | (s: String) -> NilClass
+               | (s: String) -> NilClass
+    def get_int_value: (idx: Integer) -> Integer
+    def get_real_value: (idx: Integer) -> Float
+    def get_string_value: (idx: Integer) -> String
+    def initialize_copy: (r: Cv::Dnn::DictValue) -> NilClass
+    def int?: () -> TrueClass
+    def real?: () -> TrueClass
+    def size: () -> Integer
+    def string?: () -> TrueClass
+  end
+end

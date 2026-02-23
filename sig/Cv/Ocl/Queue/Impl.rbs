@@ -1,0 +1,4 @@
+module Cv::Ocl::Queue
+  class Impl
+  end
+end

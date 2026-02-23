@@ -1,0 +1,61 @@
+module Cv
+  class Rect2i
+    attr_accessor height: Integer
+    attr_accessor width: Integer
+    attr_accessor x: Integer
+    attr_accessor y: Integer
+
+    def initialize: () -> NilClass
+               | () -> NilClass
+               | (org: Cv::Point2i, sz: Cv::Size2i) -> NilClass
+               | (pt1: Cv::Point2i, pt2: Cv::Point2i) -> NilClass
+               | (org: Cv::Point2i, sz: Cv::Size2i) -> NilClass
+               | (pt1: Cv::Point2i, pt2: Cv::Point2i) -> NilClass
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> NilClass
+               | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> NilClass
+    def !=: (arg_0: Cv::Rect2i) -> TrueClass
+       | (arg_0: Cv::Rect2i) -> TrueClass
+    def +: (arg_0: Cv::Size2i) -> Cv::Rect2i
+      | (arg_0: Cv::Point2i) -> Cv::Rect2i
+      | (arg_0: Cv::Size2i) -> Cv::Rect2i
+      | (arg_0: Cv::Point2i) -> Cv::Rect2i
+    def -: (arg_0: Cv::Size2i) -> Cv::Rect2i
+      | (arg_0: Cv::Size2i) -> Cv::Rect2i
+      | (arg_0: Cv::Point2i) -> Cv::Rect2i
+      | (arg_0: Cv::Point2i) -> Cv::Rect2i
+    def ==: (arg_0: Cv::Rect2i) -> TrueClass
+       | (arg_0: Cv::Rect2i) -> TrueClass
+    def area: () -> Integer
+         | () -> Integer
+    def assign: (r: Cv::Rect2i) -> Cv::Rect2i
+           | (r: Cv::Rect2i) -> Cv::Rect2i
+           | (r: Cv::Rect2i) -> Cv::Rect2i
+           | (r: Cv::Rect2i) -> Cv::Rect2i
+    def assign_minus: (arg_0: Cv::Size2i) -> Cv::Rect2i
+                 | (arg_0: Cv::Size2i) -> Cv::Rect2i
+                 | (arg_0: Cv::Point2i) -> Cv::Rect2i
+                 | (arg_0: Cv::Point2i) -> Cv::Rect2i
+    def assign_plus: (arg_0: Cv::Point2i) -> Cv::Rect2i
+                | (arg_0: Cv::Size2i) -> Cv::Rect2i
+                | (arg_0: Cv::Point2i) -> Cv::Rect2i
+                | (arg_0: Cv::Size2i) -> Cv::Rect2i
+    def br: () -> Cv::Point2i
+       | () -> Cv::Point2i
+    def contains?: (pt: Cv::Point2i) -> TrueClass
+              | (pt: Cv::Point2i) -> TrueClass
+    def empty?: () -> TrueClass
+           | () -> TrueClass
+    def initialize_copy: (r: Cv::Rect2i) -> NilClass
+                    | (r: Cv::Rect2i) -> NilClass
+    def inspect: () -> String
+            | () -> String
+    def size: () -> Cv::Size2i
+         | () -> Cv::Size2i
+    def tl: () -> Cv::Point2i
+       | () -> Cv::Point2i
+    def |: (arg_0: Cv::Rect2i) -> Cv::Rect2i
+      | (arg_0: Cv::Rect2i) -> Cv::Rect2i
+    def |=: (arg_0: Cv::Rect2i) -> Cv::Rect2i
+       | (arg_0: Cv::Rect2i) -> Cv::Rect2i
+  end
+end

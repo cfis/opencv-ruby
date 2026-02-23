@@ -1,29 +1,29 @@
 module Std
   class Vector≺vector≺cv꞉꞉Mat≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
-    def []: (arg_0: Integer) -> Std::Vector≺cv꞉꞉Mat≻
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+               | (count: Integer, value: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def []: (pos: Integer) -> Std::Vector≺cv꞉꞉Mat≻
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺vector≺cv꞉꞉Mat≻≻
-    def delete_at: (arg_0: Integer) -> Std::Vector≺cv꞉꞉Mat≻
+    def delete_at: (pos: Integer) -> Std::Vector≺cv꞉꞉Mat≻
     def empty?: () -> TrueClass
     def first: () -> Std::Vector≺cv꞉꞉Mat≻
-    def include?: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> TrueClass
-    def index: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> Integer
-    def delete: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺cv꞉꞉Mat≻
-    def initialize_copy: (arg_0: Std::Vector≺vector≺cv꞉꞉Mat≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺vector≺cv꞉꞉Mat≻≻
+    def include?: (value: Std::Vector≺cv꞉꞉Mat≻) -> TrueClass
+    def index: (value: Std::Vector≺cv꞉꞉Mat≻) -> Integer
+    def delete: (value: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺cv꞉꞉Mat≻
+    def initialize_copy: (other: Std::Vector≺vector≺cv꞉꞉Mat≻≻) -> NilClass
+    def insert: (pos: Integer, value: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺vector≺cv꞉꞉Mat≻≻
     def last: () -> Std::Vector≺cv꞉꞉Mat≻
     def max_size: () -> Integer
     def pop: () -> Std::Vector≺cv꞉꞉Mat≻
-    def push: (arg_0: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺vector≺cv꞉꞉Mat≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Std::Vector≺cv꞉꞉Mat≻) -> Std::Vector≺vector≺cv꞉꞉Mat≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

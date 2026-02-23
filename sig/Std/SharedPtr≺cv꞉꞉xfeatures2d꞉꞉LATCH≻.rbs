@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉xfeatures2d꞉꞉LATCH≻
+    def initialize: (value: Cv::Xfeatures2d::LATCH) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Xfeatures2d::LATCH
+    def swap: (r: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉LATCH≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

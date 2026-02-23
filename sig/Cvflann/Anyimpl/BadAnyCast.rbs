@@ -1,0 +1,7 @@
+module Cvflann::Anyimpl
+  class BadAnyCast
+    def initialize: () -> NilClass
+               | (src: String, dst: String) -> NilClass
+    def what: () -> String
+  end
+end

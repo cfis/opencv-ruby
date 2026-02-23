@@ -1,0 +1,13 @@
+module Cv::Xfeatures2d
+  class FREAK
+    def get_default_name: () -> String
+    def get_n_octaves: () -> Integer
+    def get_orientation_normalized?: () -> TrueClass
+    def get_pattern_scale: () -> Float
+    def get_scale_normalized?: () -> TrueClass
+    def set_n_octaves: (n_octaves: Integer) -> NilClass
+    def set_orientation_normalized: (orientation_normalized: TrueClass) -> NilClass
+    def set_pattern_scale: (pattern_scale: Float) -> NilClass
+    def set_scale_normalized: (scale_normalized: TrueClass) -> NilClass
+  end
+end

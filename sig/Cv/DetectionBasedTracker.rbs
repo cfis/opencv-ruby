@@ -1,15 +1,15 @@
 module Cv
   class DetectionBasedTracker
-    def initialize: (main_detector: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻, tracking_detector: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻, params: Parameters) -> NilClass
-    def add_object: (location: Cv::Rect) -> Integer
+    def initialize: (main_detector: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻, tracking_detector: Cv::Ptr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻, params: Cv::DetectionBasedTracker::Parameters) -> NilClass
+    def add_object: (location: Cv::Rect2i) -> Integer
     def get_objects: (result: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
                 | (result: Std::Vector≺pair≺cv꞉꞉Rect_≺int≻‚ int≻≻) -> NilClass
                 | (result: Std::Vector≺cv꞉꞉DetectionBasedTracker꞉꞉ExtObject≻) -> NilClass
-    def get_parameters: () -> Parameters
+    def get_parameters: () -> Cv::DetectionBasedTracker::Parameters
     def process: (image_gray: Cv::Mat) -> NilClass
     def reset_tracking: () -> NilClass
-    def run: () -> TrueClass
-    def set_parameters?: (params: Parameters) -> TrueClass
+    def run?: () -> TrueClass
+    def set_parameters: (params: Cv::DetectionBasedTracker::Parameters) -> TrueClass
     def stop: () -> NilClass
   end
 end

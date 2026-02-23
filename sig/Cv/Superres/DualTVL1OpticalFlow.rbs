@@ -1,0 +1,20 @@
+module Cv::Superres
+  class DualTVL1OpticalFlow
+    def get_epsilon: () -> Float
+    def get_iterations: () -> Integer
+    def get_lambda: () -> Float
+    def get_scales_number: () -> Integer
+    def get_tau: () -> Float
+    def get_theta: () -> Float
+    def get_use_initial_flow?: () -> TrueClass
+    def get_warpings_number: () -> Integer
+    def set_epsilon: (val: Float) -> NilClass
+    def set_iterations: (val: Integer) -> NilClass
+    def set_lambda: (val: Float) -> NilClass
+    def set_scales_number: (val: Integer) -> NilClass
+    def set_tau: (val: Float) -> NilClass
+    def set_theta: (val: Float) -> NilClass
+    def set_use_initial_flow: (val: TrueClass) -> NilClass
+    def set_warpings_number: (val: Integer) -> NilClass
+  end
+end

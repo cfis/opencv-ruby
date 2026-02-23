@@ -2,6 +2,6 @@ module Cv
   class Hfloat
     def initialize: () -> NilClass
                | (x: Float) -> NilClass
-    def to_float: () -> Float
+    def to_f32: () -> Float
   end
 end

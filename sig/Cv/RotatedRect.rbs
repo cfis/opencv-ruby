@@ -4,7 +4,7 @@ module Cv
     attr_accessor center: Cv::Point2f
     attr_accessor size: Cv::Size2f
 
-    def bounding_rect: () -> Cv::Rect
+    def bounding_rect: () -> Cv::Rect2i
     def bounding_rect2f: () -> Cv::Rect2f
     def initialize: () -> NilClass
                | (point1: Cv::Point2f, point2: Cv::Point2f, point3: Cv::Point2f) -> NilClass

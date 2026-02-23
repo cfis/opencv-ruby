@@ -3,40 +3,31 @@ module Cv
     attr_accessor x: Integer
     attr_accessor y: Integer
 
-    def initialize: () -> NilClass
-               | (sz: Cv::Size2l) -> NilClass
-               | (v: Cv::Vec2l) -> NilClass
-               | (_x: Integer, _y: Integer) -> NilClass
     def !=: (arg_0: Cv::Point2l) -> TrueClass
-       | (arg_0: Cv::Point2l) -> TrueClass
     def *: (arg_0: Float) -> Cv::Point2l
       | (arg_0: Integer) -> Cv::Point2l
-      | (arg_0: Integer) -> Cv::Point2l
+    def initialize: () -> NilClass
+               | (sz: Cv::Size2l) -> NilClass
+               | (_x: Integer, _y: Integer) -> NilClass
+               | (v: Cv::Vec2l) -> NilClass
     def +: (arg_0: Cv::Point2l) -> Cv::Point2l
-      | (arg_0: Cv::Point2l) -> Cv::Point2l
     def -: (arg_0: Cv::Point2l) -> Cv::Point2l
-      | (arg_0: Cv::Point2l) -> Cv::Point2l
     def /: (arg_0: Float) -> Cv::Point2l
       | (arg_0: Integer) -> Cv::Point2l
-      | (arg_0: Integer) -> Cv::Point2l
-      | (arg_0: Float) -> Cv::Point2l
     def ==: (arg_0: Cv::Point2l) -> TrueClass
-       | (arg_0: Cv::Point2l) -> TrueClass
+    def assign: (pt: Cv::Point2l) -> Cv::Point2l
+           | (pt: Cv::Point2l) -> Cv::Point2l
     def assign_divide: (arg_0: Integer) -> Cv::Point2l
                   | (arg_0: Float) -> Cv::Point2l
-                  | (arg_0: Float) -> Cv::Point2l
-                  | (arg_0: Integer) -> Cv::Point2l
     def assign_minus: (arg_0: Cv::Point2l) -> Cv::Point2l
-                 | (arg_0: Cv::Point2l) -> Cv::Point2l
     def assign_multiply: (arg_0: Float) -> Cv::Point2l
                     | (arg_0: Float) -> Cv::Point2l
     def assign_plus: (arg_0: Cv::Point2l) -> Cv::Point2l
-                | (arg_0: Cv::Point2l) -> Cv::Point2l
     def cross: (pt: Cv::Point2l) -> Float
     def ddot: (pt: Cv::Point2l) -> Float
     def dot: (pt: Cv::Point2l) -> Integer
     def initialize_copy: (pt: Cv::Point2l) -> NilClass
-    def inside?: (r: Cv::Rect2l) -> TrueClass
+    def inside: (r: Cv::Rect2l) -> TrueClass
     def inspect: () -> String
     def norm: () -> Float
     def to_s: () -> String

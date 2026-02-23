@@ -3,6 +3,6 @@ module Cv::DetectionBasedTracker
     attr_accessor max_track_lifetime: Integer
     attr_accessor min_detection_period: Integer
 
-    def initialize: () -> void
+    def initialize: () -> NilClass
   end
 end

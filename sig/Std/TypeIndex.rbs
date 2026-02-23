@@ -1,0 +1,7 @@
+module Std
+  class TypeIndex
+    def hash_code: () -> Integer
+    def initialize: (target: Std::TypeInfo) -> NilClass
+    def name: () -> String
+  end
+end

@@ -2,10 +2,12 @@ module Cv::Flann
   class Index
     def build: (features: Cv::InputArray, params: Cv::Flann::IndexParams, dist_type: Cvflann::FlannDistanceT) -> NilClass
     def get_algorithm: () -> Cvflann::FlannAlgorithmT
-    def get_distance: () -> Cvflann::FlannDistanceT
     def initialize: () -> NilClass
                | (features: Cv::InputArray, params: Cv::Flann::IndexParams, dist_type: Cvflann::FlannDistanceT) -> NilClass
-    def load?: (features: Cv::InputArray, filename: String) -> TrueClass
+    def get_distance: () -> Cvflann::FlannDistanceT
+    def knn_search: (query: Cv::InputArray, indices: Cv::OutputArray, dists: Cv::OutputArray, knn: Integer, params: Cv::Flann::SearchParams) -> NilClass
+    def load: (features: Cv::InputArray, filename: String) -> TrueClass
+    def radius_search: (query: Cv::InputArray, indices: Cv::OutputArray, dists: Cv::OutputArray, radius: Float, max_results: Integer, params: Cv::Flann::SearchParams) -> Integer
     def release: () -> NilClass
     def save: (filename: String) -> NilClass
   end

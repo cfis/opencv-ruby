@@ -1,0 +1,23 @@
+module Cv::Xfeatures2d
+  class MSDDetector
+    def get_compute_orientation?: () -> TrueClass
+    def get_default_name: () -> String
+    def get_knn: () -> Integer
+    def get_n_scales: () -> Integer
+    def get_nms_radius: () -> Integer
+    def get_nms_scale_radius: () -> Integer
+    def get_patch_radius: () -> Integer
+    def get_scale_factor: () -> Float
+    def get_search_area_radius: () -> Integer
+    def get_th_saliency: () -> Float
+    def set_compute_orientation: (compute_orientation: TrueClass) -> NilClass
+    def set_knn: (k_nn: Integer) -> NilClass
+    def set_n_scales: (use_orientation: Integer) -> NilClass
+    def set_nms_radius: (nms_radius: Integer) -> NilClass
+    def set_nms_scale_radius: (nms_scale_radius: Integer) -> NilClass
+    def set_patch_radius: (patch_radius: Integer) -> NilClass
+    def set_scale_factor: (scale_factor: Float) -> NilClass
+    def set_search_area_radius: (use_orientation: Integer) -> NilClass
+    def set_th_saliency: (th_saliency: Float) -> NilClass
+  end
+end

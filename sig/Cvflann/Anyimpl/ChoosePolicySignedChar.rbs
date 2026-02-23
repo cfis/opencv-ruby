@@ -1,0 +1,5 @@
+module Cvflann::Anyimpl
+  class ChoosePolicySignedChar
+    def initialize: () -> NilClass
+  end
+end

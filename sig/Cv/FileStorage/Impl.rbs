@@ -1,0 +1,4 @@
+module Cv::FileStorage
+  class Impl
+  end
+end

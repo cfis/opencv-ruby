@@ -1,0 +1,18 @@
+module Cv::Superres
+  class FarnebackOpticalFlow
+    def get_flags: () -> Integer
+    def get_iterations: () -> Integer
+    def get_levels_number: () -> Integer
+    def get_poly_n: () -> Integer
+    def get_poly_sigma: () -> Float
+    def get_pyr_scale: () -> Float
+    def get_window_size: () -> Integer
+    def set_flags: (val: Integer) -> NilClass
+    def set_iterations: (val: Integer) -> NilClass
+    def set_levels_number: (val: Integer) -> NilClass
+    def set_poly_n: (val: Integer) -> NilClass
+    def set_poly_sigma: (val: Float) -> NilClass
+    def set_pyr_scale: (val: Float) -> NilClass
+    def set_window_size: (val: Integer) -> NilClass
+  end
+end

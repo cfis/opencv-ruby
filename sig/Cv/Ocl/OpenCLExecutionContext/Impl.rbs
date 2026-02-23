@@ -1,0 +1,4 @@
+module Cv::Ocl::OpenCLExecutionContext
+  class Impl
+  end
+end

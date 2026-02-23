@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻) -> NilClass
+               | (ptr: Cv::Bgsegm::SyntheticSequenceGenerator) -> NilClass
+               | (value: Cv::Bgsegm::SyntheticSequenceGenerator) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻) -> Cv::Ptr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻
+    def get: () -> Cv::Bgsegm::SyntheticSequenceGenerator
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉bgsegm꞉꞉SyntheticSequenceGenerator≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

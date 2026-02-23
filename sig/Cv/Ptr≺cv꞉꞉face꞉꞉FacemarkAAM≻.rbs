@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉face꞉꞉FacemarkAAM≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉FacemarkAAM≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉FacemarkAAM≻) -> NilClass
+               | (ptr: Cv::Face::FacemarkAAM) -> NilClass
+               | (value: Cv::Face::FacemarkAAM) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉face꞉꞉FacemarkAAM≻) -> Cv::Ptr≺cv꞉꞉face꞉꞉FacemarkAAM≻
+    def get: () -> Cv::Face::FacemarkAAM
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉face꞉꞉FacemarkAAM≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

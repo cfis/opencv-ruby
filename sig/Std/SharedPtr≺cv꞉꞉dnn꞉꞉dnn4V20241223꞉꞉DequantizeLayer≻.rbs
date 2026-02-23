@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Dnn::DequantizeLayer) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Dnn::DequantizeLayer
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DequantizeLayer≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉DequantizeLayer≻) -> NilClass
     def use_count: () -> Integer
   end
 end

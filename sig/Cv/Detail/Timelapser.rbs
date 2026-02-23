@@ -3,6 +3,6 @@ module Cv::Detail
     def get_dst: () -> Cv::UMat
     def initialize: () -> NilClass
                | (corners: Std::Vector≺cv꞉꞉Point_≺int≻≻, sizes: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> NilClass
-    def process: (img: Cv::InputArray, mask: Cv::InputArray, tl: Cv::Point) -> NilClass
+    def process: (img: Cv::InputArray, mask: Cv::InputArray, tl: Cv::Point2i) -> NilClass
   end
 end

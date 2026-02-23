@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉aruco꞉꞉Board≻
+    def initialize: (value: Cv::Aruco::Board) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Aruco::Board
+    def swap: (r: Std::SharedPtr≺cv꞉꞉aruco꞉꞉Board≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

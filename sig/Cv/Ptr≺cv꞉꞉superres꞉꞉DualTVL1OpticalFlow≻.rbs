@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻) -> NilClass
+               | (ptr: Cv::Superres::DualTVL1OpticalFlow) -> NilClass
+               | (value: Cv::Superres::DualTVL1OpticalFlow) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻) -> Cv::Ptr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻
+    def get: () -> Cv::Superres::DualTVL1OpticalFlow
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉superres꞉꞉DualTVL1OpticalFlow≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

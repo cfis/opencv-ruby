@@ -1,0 +1,13 @@
+module Cvflann::Anyimpl
+  class BaseAnyPolicy
+    def clone: (src: Rice::Pointer≺void∗≻, dest: Rice::Pointer≺void∗≻) -> NilClass
+    def copy_from_value: (src: Rice::Pointer≺void≻, dest: Rice::Pointer≺void∗≻) -> NilClass
+    def get_size: () -> Integer
+    def get_value: (src: Rice::Pointer≺void∗≻) -> Rice::Pointer≺void≻
+              | (src: Rice::Pointer≺void∗≻) -> Rice::Pointer≺void≻
+    def move: (src: Rice::Pointer≺void∗≻, dest: Rice::Pointer≺void∗≻) -> NilClass
+    def print: (out: Std::OStream, src: Rice::Pointer≺void∗≻) -> NilClass
+    def static_delete: (x: Rice::Pointer≺void∗≻) -> NilClass
+    def type: () -> Std::TypeInfo
+  end
+end

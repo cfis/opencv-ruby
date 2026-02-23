@@ -1,0 +1,9 @@
+module Cv::Xfeatures2d
+  class BoostDesc
+    def get_default_name: () -> String
+    def get_scale_factor: () -> Float
+    def get_use_scale_orientation?: () -> TrueClass
+    def set_scale_factor: (scale_factor: Float) -> NilClass
+    def set_use_scale_orientation: (use_scale_orientation: TrueClass) -> NilClass
+  end
+end

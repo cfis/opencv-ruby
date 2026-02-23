@@ -3,8 +3,8 @@ module Cv
     def apply: (src: Cv::InputArray, dst: Cv::OutputArray) -> NilClass
     def collect_garbage: () -> NilClass
     def get_clip_limit: () -> Float
-    def get_tiles_grid_size: () -> Cv::Size
+    def get_tiles_grid_size: () -> Cv::Size2i
     def set_clip_limit: (clip_limit: Float) -> NilClass
-    def set_tiles_grid_size: (tile_grid_size: Cv::Size) -> NilClass
+    def set_tiles_grid_size: (tile_grid_size: Cv::Size2i) -> NilClass
   end
 end

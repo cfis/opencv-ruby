@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::SIFT) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::SIFT
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉SIFT≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉SIFT≻) -> NilClass
     def use_count: () -> Integer
   end
 end

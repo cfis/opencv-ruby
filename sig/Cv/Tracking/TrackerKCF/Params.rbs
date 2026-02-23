@@ -1,0 +1,20 @@
+module Cv::Tracking::TrackerKCF
+  class Params
+    attr_accessor compress_feature: TrueClass
+    attr_accessor compressed_size: Integer
+    attr_accessor desc_npca: Integer
+    attr_accessor desc_pca: Integer
+    attr_accessor detect_thresh: Float
+    attr_accessor interp_factor: Float
+    attr_accessor lambda: Float
+    attr_accessor max_patch_size: Integer
+    attr_accessor output_sigma_factor: Float
+    attr_accessor pca_learning_rate: Float
+    attr_accessor resize: TrueClass
+    attr_accessor sigma: Float
+    attr_accessor split_coeff: TrueClass
+    attr_accessor wrap_kernel: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

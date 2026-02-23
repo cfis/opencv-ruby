@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉aruco꞉꞉EstimateParameters≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉EstimateParameters≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉aruco꞉꞉EstimateParameters≻) -> NilClass
+               | (ptr: Cv::Aruco::EstimateParameters) -> NilClass
+               | (value: Cv::Aruco::EstimateParameters) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉EstimateParameters≻) -> Cv::Ptr≺cv꞉꞉aruco꞉꞉EstimateParameters≻
+    def get: () -> Cv::Aruco::EstimateParameters
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉aruco꞉꞉EstimateParameters≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

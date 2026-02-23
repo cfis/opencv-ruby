@@ -1,0 +1,15 @@
+module Cv::Face::FacemarkKazemi
+  class Params
+    attr_accessor cascade_depth: Integer
+    attr_accessor configfile: String
+    attr_accessor lambda: Float
+    attr_accessor learning_rate: Float
+    attr_accessor num_test_coordinates: Integer
+    attr_accessor num_test_splits: Integer
+    attr_accessor num_trees_per_cascade_level: Integer
+    attr_accessor oversampling_amount: Integer
+    attr_accessor tree_depth: Integer
+
+    def initialize: () -> NilClass
+  end
+end

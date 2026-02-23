@@ -10,6 +10,14 @@ module Cv
     def fill: (mat: Cv::InputOutputArray, dist_type: Integer, a: Cv::InputArray, b: Cv::InputArray, saturate_range: TrueClass) -> NilClass
     def gaussian: (sigma: Float) -> Float
     def next: () -> Integer
+    def to_f: () -> Float
+    def to_f32: () -> Float
+    def to_i: () -> Integer
+    def to_i16: () -> Integer
+    def to_schar: () -> String
+    def to_u: () -> Integer
+    def to_uchar: () -> String
+    def to_ushort: () -> Integer
     def uniform: (a: Float, b: Float) -> Float
             | (a: Float, b: Float) -> Float
             | (a: Integer, b: Integer) -> Integer

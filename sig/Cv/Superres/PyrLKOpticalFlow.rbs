@@ -1,0 +1,10 @@
+module Cv::Superres
+  class PyrLKOpticalFlow
+    def get_iterations: () -> Integer
+    def get_max_level: () -> Integer
+    def get_window_size: () -> Integer
+    def set_iterations: (val: Integer) -> NilClass
+    def set_max_level: (val: Integer) -> NilClass
+    def set_window_size: (val: Integer) -> NilClass
+  end
+end

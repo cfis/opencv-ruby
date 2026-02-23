@@ -36,7 +36,7 @@ module Cv::Aruco
     attr_accessor use_aruco3_detection: TrueClass
 
     def initialize: () -> NilClass
-    def read_detector_parameters?: (fn: Cv::FileNode) -> TrueClass
-    def write_detector_parameters?: (fs: Cv::FileStorage, name: String) -> TrueClass
+    def read_detector_parameters: (fn: Cv::FileNode) -> TrueClass
+    def write_detector_parameters: (fs: Cv::FileStorage, name: String) -> TrueClass
   end
 end

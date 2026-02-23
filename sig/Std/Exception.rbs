@@ -1,6 +1,8 @@
 module Std
   class Exception
     def initialize: () -> NilClass
+               | () -> NilClass
     def message: () -> String
+            | () -> String
   end
 end

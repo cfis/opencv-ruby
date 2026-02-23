@@ -1,0 +1,12 @@
+module Cv::Face::FacemarkAAM
+  class Model
+    attr_accessor q: Cv::Mat
+    attr_accessor s: Cv::Mat
+    attr_accessor s0: Std::Vector≺cv꞉꞉Point_≺float≻≻
+    attr_accessor scales: Std::Vector≺float≻
+    attr_accessor textures: Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻
+    attr_accessor triangles: Std::Vector≺cv꞉꞉Vec≺int‚ 3≻≻
+
+    def initialize: () -> NilClass
+  end
+end

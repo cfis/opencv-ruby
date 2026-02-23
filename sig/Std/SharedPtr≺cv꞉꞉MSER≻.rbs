@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::MSER) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::MSER
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉MSER≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉MSER≻) -> NilClass
     def use_count: () -> Integer
   end
 end

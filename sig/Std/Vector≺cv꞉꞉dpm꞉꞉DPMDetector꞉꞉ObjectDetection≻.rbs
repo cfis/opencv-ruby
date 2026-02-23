@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::Dpm::DPMDetector::ObjectDetection) -> NilClass
+    def []: (pos: Integer) -> Cv::Dpm::DPMDetector::ObjectDetection
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Dpm::DPMDetector::ObjectDetection) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻
+    def delete_at: (pos: Integer) -> Cv::Dpm::DPMDetector::ObjectDetection
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Dpm::DPMDetector::ObjectDetection
+    def include?: (value: Cv::Dpm::DPMDetector::ObjectDetection) -> TrueClass
+    def index: (value: Cv::Dpm::DPMDetector::ObjectDetection) -> Integer
+    def delete: (value: Cv::Dpm::DPMDetector::ObjectDetection) -> Cv::Dpm::DPMDetector::ObjectDetection
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Dpm::DPMDetector::ObjectDetection) -> Std::Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻
+    def last: () -> Cv::Dpm::DPMDetector::ObjectDetection
+    def max_size: () -> Integer
+    def pop: () -> Cv::Dpm::DPMDetector::ObjectDetection
+    def push: (value: Cv::Dpm::DPMDetector::ObjectDetection) -> Std::Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

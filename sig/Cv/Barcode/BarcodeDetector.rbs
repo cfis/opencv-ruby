@@ -1,7 +1,7 @@
 module Cv::Barcode
   class BarcodeDetector
-    def decode_with_type?: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻) -> TrueClass
-    def detect_and_decode_with_type?: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻, points: Cv::OutputArray) -> TrueClass
+    def decode_with_type: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻) -> TrueClass
+    def detect_and_decode_with_type: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, decoded_type: Std::Vector≺string≻, points: Cv::OutputArray) -> TrueClass
     def get_detector_scales: (sizes: Std::Vector≺float≻) -> NilClass
     def get_downsampling_threshold: () -> Float
     def initialize: () -> NilClass

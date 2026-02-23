@@ -1,7 +1,7 @@
 module Cv::Cuda
   class BufferPool
     def get_allocator: () -> Cv::Ptr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻
-    def get_buffer: (size: Cv::Size, type: Integer) -> Cv::Cuda::GpuMat
+    def get_buffer: (size: Cv::Size2i, type: Integer) -> Cv::Cuda::GpuMat
                | (rows: Integer, cols: Integer, type: Integer) -> Cv::Cuda::GpuMat
     def initialize: (stream: Cv::Cuda::Stream) -> NilClass
   end

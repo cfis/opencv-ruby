@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉aruco꞉꞉DetectorParameters≻
+    def initialize: (value: Cv::Aruco::DetectorParameters) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Aruco::DetectorParameters
+    def swap: (r: Std::SharedPtr≺cv꞉꞉aruco꞉꞉DetectorParameters≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

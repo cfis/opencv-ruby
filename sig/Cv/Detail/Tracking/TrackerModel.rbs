@@ -8,6 +8,6 @@ module Cv::Detail::Tracking
     def model_update: () -> NilClass
     def run_state_estimator?: () -> TrueClass
     def set_last_target_state: (last_target_state: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> NilClass
-    def set_tracker_state_estimator?: (tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> TrueClass
+    def set_tracker_state_estimator: (tracker_state_estimator: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerStateEstimator≻) -> TrueClass
   end
 end

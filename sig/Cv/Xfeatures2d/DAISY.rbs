@@ -1,0 +1,29 @@
+module Cv::Xfeatures2d
+  class DAISY
+    def compute: (image: Cv::InputArray, descriptors: Cv::OutputArray) -> NilClass
+            | (image: Cv::InputArray, roi: Cv::Rect2i, descriptors: Cv::OutputArray) -> NilClass
+            | (images: Cv::InputArray, keypoints: Std::Vector≺vector≺cv꞉꞉KeyPoint≻≻, descriptors: Cv::OutputArray) -> NilClass
+            | (image: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉KeyPoint≻, descriptors: Cv::OutputArray) -> NilClass
+    def get_default_name: () -> String
+    def get_descriptor: (y: Float, x: Float, orientation: Integer, descriptor: Rice::Pointer≺float≻) -> NilClass
+                   | (y: Float, x: Float, orientation: Integer, descriptor: Rice::Pointer≺float≻, h: Rice::Pointer≺double≻) -> TrueClass
+    def get_h: () -> Cv::Mat
+    def get_interpolation?: () -> TrueClass
+    def get_norm: () -> Integer
+    def get_q_hist: () -> Integer
+    def get_q_radius: () -> Integer
+    def get_q_theta: () -> Integer
+    def get_radius: () -> Float
+    def get_unnormalized_descriptor: (y: Float, x: Float, orientation: Integer, descriptor: Rice::Pointer≺float≻) -> NilClass
+                                | (y: Float, x: Float, orientation: Integer, descriptor: Rice::Pointer≺float≻, h: Rice::Pointer≺double≻) -> TrueClass
+    def get_use_orientation?: () -> TrueClass
+    def set_h: (h: Cv::InputArray) -> NilClass
+    def set_interpolation: (interpolation: TrueClass) -> NilClass
+    def set_norm: (norm: Integer) -> NilClass
+    def set_q_hist: (q_hist: Integer) -> NilClass
+    def set_q_radius: (q_radius: Integer) -> NilClass
+    def set_q_theta: (q_theta: Integer) -> NilClass
+    def set_radius: (radius: Float) -> NilClass
+    def set_use_orientation: (use_orientation: TrueClass) -> NilClass
+  end
+end

@@ -1,9 +1,9 @@
 module Std
   class SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻
-    def initialize: (value: Callback) -> NilClass
+    def initialize: (value: Cv::LMSolver::Callback) -> NilClass
     def empty?: () -> TrueClass
-    def get: () -> Callback
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
+    def get: () -> Cv::LMSolver::Callback
+    def swap: (r: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
     def use_count: () -> Integer
   end
 end

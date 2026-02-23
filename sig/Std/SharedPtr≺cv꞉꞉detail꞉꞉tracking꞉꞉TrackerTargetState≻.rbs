@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::Tracking::TrackerTargetState) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::Tracking::TrackerTargetState
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerTargetState≻) -> NilClass
     def use_count: () -> Integer
   end
 end

@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉KeyPoint≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::KeyPoint) -> NilClass
-    def []: (arg_0: Integer) -> Cv::KeyPoint
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::KeyPoint) -> NilClass
+               | (count: Integer, value: Cv::KeyPoint) -> NilClass
+    def []: (pos: Integer) -> Cv::KeyPoint
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::KeyPoint) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉KeyPoint≻
-    def delete_at: (arg_0: Integer) -> Cv::KeyPoint
+    def delete_at: (pos: Integer) -> Cv::KeyPoint
     def empty?: () -> TrueClass
     def first: () -> Cv::KeyPoint
-    def include?: (arg_0: Cv::KeyPoint) -> TrueClass
-    def index: (arg_0: Cv::KeyPoint) -> Integer
-    def delete: (arg_0: Cv::KeyPoint) -> Cv::KeyPoint
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::KeyPoint) -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def include?: (value: Cv::KeyPoint) -> TrueClass
+    def index: (value: Cv::KeyPoint) -> Integer
+    def delete: (value: Cv::KeyPoint) -> Cv::KeyPoint
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::KeyPoint) -> Std::Vector≺cv꞉꞉KeyPoint≻
     def last: () -> Cv::KeyPoint
     def max_size: () -> Integer
     def pop: () -> Cv::KeyPoint
-    def push: (arg_0: Cv::KeyPoint) -> Std::Vector≺cv꞉꞉KeyPoint≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::KeyPoint) -> Std::Vector≺cv꞉꞉KeyPoint≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

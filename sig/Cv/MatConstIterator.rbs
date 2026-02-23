@@ -6,19 +6,22 @@ module Cv
     attr_accessor slice_end: Rice::Pointer≺unsigned char≻
     attr_accessor slice_start: Rice::Pointer≺unsigned char≻
 
-    def assign_minus: (ofs: Integer) -> Cv::MatConstIterator
-    def assign_plus: (ofs: Integer) -> Cv::MatConstIterator
     def initialize: () -> NilClass
                | (_m: Cv::Mat) -> NilClass
-               | (_m: Cv::Mat, _pt: Cv::Point) -> NilClass
+               | (_m: Cv::Mat, _pt: Cv::Point2i) -> NilClass
                | (_m: Cv::Mat, _row: Integer, _col: Integer) -> NilClass
+    def []: (i: Integer) -> Rice::Pointer≺unsigned char≻
+    def assign_minus: (ofs: Integer) -> Cv::MatConstIterator
+    def assign_plus: (ofs: Integer) -> Cv::MatConstIterator
     def decrement: () -> Cv::MatConstIterator
-              | (: Integer) -> Cv::MatConstIterator
+    def assign: (it: Cv::MatConstIterator) -> Cv::MatConstIterator
+    def decrement_post: (arg_0: Integer) -> Cv::MatConstIterator
+    def dereference: () -> Rice::Pointer≺unsigned char≻
     def increment: () -> Cv::MatConstIterator
-              | (: Integer) -> Cv::MatConstIterator
+    def increment_post: (arg_0: Integer) -> Cv::MatConstIterator
     def initialize_copy: (it: Cv::MatConstIterator) -> NilClass
     def lpos: () -> Integer
-    def pos: () -> Cv::Point
+    def pos: () -> Cv::Point2i
         | (_idx: Rice::Pointer≺int≻) -> NilClass
     def seek: (ofs: Integer, relative: TrueClass) -> NilClass
          | (_idx: Rice::Pointer≺int≻, relative: TrueClass) -> NilClass

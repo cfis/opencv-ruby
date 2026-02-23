@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::CalibrateDebevec) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::CalibrateDebevec
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉CalibrateDebevec≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉CalibrateDebevec≻) -> NilClass
     def use_count: () -> Integer
   end
 end

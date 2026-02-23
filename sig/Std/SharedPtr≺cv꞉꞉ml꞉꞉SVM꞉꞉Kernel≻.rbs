@@ -1,9 +1,9 @@
 module Std
   class SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻
-    def initialize: (value: Cv::Ml::Kernel) -> NilClass
+    def initialize: (value: Cv::Ml::SVM::Kernel) -> NilClass
     def empty?: () -> TrueClass
-    def get: () -> Cv::Ml::Kernel
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> NilClass
+    def get: () -> Cv::Ml::SVM::Kernel
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ml꞉꞉SVM꞉꞉Kernel≻) -> NilClass
     def use_count: () -> Integer
   end
 end

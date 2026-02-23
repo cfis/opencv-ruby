@@ -5,34 +5,25 @@ module Cv
     attr_accessor z: Float
 
     def !=: (arg_0: Cv::Point3d) -> TrueClass
-       | (arg_0: Cv::Point3d) -> TrueClass
+    def *: (arg_0: Float) -> Cv::Point3d
+      | (arg_0: Integer) -> Cv::Point3d
     def initialize: () -> NilClass
                | (pt: Cv::Point2d) -> NilClass
-               | (v: Cv::Vec3d) -> NilClass
                | (_x: Float, _y: Float, _z: Float) -> NilClass
-    def *: (arg_0: Integer) -> Cv::Point3d
-      | (arg_0: Float) -> Cv::Point3d
-      | (arg_0: Integer) -> Cv::Point3d
+               | (v: Cv::Vec3d) -> NilClass
     def +: (arg_0: Cv::Point3d) -> Cv::Point3d
-      | (arg_0: Cv::Point3d) -> Cv::Point3d
     def -: (arg_0: Cv::Point3d) -> Cv::Point3d
-      | (arg_0: Cv::Point3d) -> Cv::Point3d
-    def /: (arg_0: Integer) -> Cv::Point3d
+    def /: (arg_0: Float) -> Cv::Point3d
       | (arg_0: Integer) -> Cv::Point3d
-      | (arg_0: Float) -> Cv::Point3d
-      | (arg_0: Float) -> Cv::Point3d
     def ==: (arg_0: Cv::Point3d) -> TrueClass
-       | (arg_0: Cv::Point3d) -> TrueClass
-    def assign_divide: (arg_0: Float) -> Cv::Point3d
-                  | (arg_0: Integer) -> Cv::Point3d
-                  | (arg_0: Integer) -> Cv::Point3d
+    def assign: (pt: Cv::Point3d) -> Cv::Point3d
+           | (pt: Cv::Point3d) -> Cv::Point3d
+    def assign_divide: (arg_0: Integer) -> Cv::Point3d
                   | (arg_0: Float) -> Cv::Point3d
     def assign_minus: (arg_0: Cv::Point3d) -> Cv::Point3d
-                 | (arg_0: Cv::Point3d) -> Cv::Point3d
     def assign_multiply: (arg_0: Float) -> Cv::Point3d
                     | (arg_0: Float) -> Cv::Point3d
     def assign_plus: (arg_0: Cv::Point3d) -> Cv::Point3d
-                | (arg_0: Cv::Point3d) -> Cv::Point3d
     def cross: (pt: Cv::Point3d) -> Cv::Point3d
     def ddot: (pt: Cv::Point3d) -> Float
     def dot: (pt: Cv::Point3d) -> Float

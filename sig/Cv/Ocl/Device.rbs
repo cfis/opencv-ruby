@@ -18,6 +18,7 @@ module Cv::Ocl
     def execution_capabilities: () -> Integer
     def extension_supported?: (extension_name: String) -> TrueClass
     def extensions: () -> String
+    def get_impl: () -> Cv::Ocl::Device::Impl
     def global_mem_cache_line_size: () -> Integer
     def global_mem_cache_size: () -> Integer
     def global_mem_cache_type: () -> Integer
@@ -26,11 +27,11 @@ module Cv::Ocl
     def has_fp16?: () -> TrueClass
     def has_fp64?: () -> TrueClass
     def host_unified_memory?: () -> TrueClass
-    def image2_d_max_height: () -> Integer
-    def image2_d_max_width: () -> Integer
-    def image3_d_max_depth: () -> Integer
-    def image3_d_max_height: () -> Integer
-    def image3_d_max_width: () -> Integer
+    def image_2d_max_height: () -> Integer
+    def image_2d_max_width: () -> Integer
+    def image_3d_max_depth: () -> Integer
+    def image_3d_max_height: () -> Integer
+    def image_3d_max_width: () -> Integer
     def image_base_address_alignment: () -> Integer
     def image_from_buffer_support?: () -> TrueClass
     def image_max_array_size: () -> Integer
@@ -53,7 +54,7 @@ module Cv::Ocl
     def max_samplers: () -> Integer
     def max_work_group_size: () -> Integer
     def max_work_item_dims: () -> Integer
-    def max_work_item_sizes: (: Rice::Pointer≺unsigned Int64≻) -> NilClass
+    def max_work_item_sizes: (arg_0: Rice::Pointer≺unsigned Int64≻) -> NilClass
     def max_write_image_args: () -> Integer
     def mem_base_addr_align: () -> Integer
     def n_vidia?: () -> TrueClass

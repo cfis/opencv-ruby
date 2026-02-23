@@ -1,0 +1,7 @@
+module Cv::Face
+  class BIF
+    def compute: (image: Cv::InputArray, features: Cv::OutputArray) -> NilClass
+    def get_num_bands: () -> Integer
+    def get_num_rotations: () -> Integer
+  end
+end

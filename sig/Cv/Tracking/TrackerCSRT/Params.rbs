@@ -1,0 +1,33 @@
+module Cv::Tracking::TrackerCSRT
+  class Params
+    attr_accessor admm_iterations: Integer
+    attr_accessor background_ratio: Integer
+    attr_accessor cheb_attenuation: Float
+    attr_accessor filter_lr: Float
+    attr_accessor gsl_sigma: Float
+    attr_accessor histogram_bins: Integer
+    attr_accessor histogram_lr: Float
+    attr_accessor hog_clip: Float
+    attr_accessor hog_orientations: Float
+    attr_accessor kaiser_alpha: Float
+    attr_accessor num_hog_channels_used: Integer
+    attr_accessor number_of_scales: Integer
+    attr_accessor padding: Float
+    attr_accessor psr_threshold: Float
+    attr_accessor scale_lr: Float
+    attr_accessor scale_model_max_area: Float
+    attr_accessor scale_sigma_factor: Float
+    attr_accessor scale_step: Float
+    attr_accessor template_size: Float
+    attr_accessor use_channel_weights: TrueClass
+    attr_accessor use_color_names: TrueClass
+    attr_accessor use_gray: TrueClass
+    attr_accessor use_hog: TrueClass
+    attr_accessor use_rgb: TrueClass
+    attr_accessor use_segmentation: TrueClass
+    attr_accessor weights_lr: Float
+    attr_accessor window_function: String
+
+    def initialize: () -> NilClass
+  end
+end

@@ -1,0 +1,7 @@
+module Cv::Face::FacemarkAAM
+  class Data
+    attr_accessor s0: Std::Vector≺cv꞉꞉Point_≺float≻≻
+
+    def initialize: () -> NilClass
+  end
+end

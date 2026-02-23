@@ -14,13 +14,13 @@ module Cv
     def diag: (expr: Cv::MatExpr, d: Integer, res: Cv::MatExpr) -> NilClass
     def divide: (s: Float, expr: Cv::MatExpr, res: Cv::MatExpr) -> NilClass
            | (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr, scale: Float) -> NilClass
-    def element_wise?: (expr: Cv::MatExpr) -> TrueClass
+    def element_wise: (expr: Cv::MatExpr) -> TrueClass
     def invert: (expr: Cv::MatExpr, method: Integer, res: Cv::MatExpr) -> NilClass
     def matmul: (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr) -> NilClass
     def multiply: (expr1: Cv::MatExpr, s: Float, res: Cv::MatExpr) -> NilClass
              | (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr, scale: Float) -> NilClass
     def roi: (expr: Cv::MatExpr, row_range: Cv::Range, col_range: Cv::Range, res: Cv::MatExpr) -> NilClass
-    def size: (expr: Cv::MatExpr) -> Cv::Size
+    def size: (expr: Cv::MatExpr) -> Cv::Size2i
     def subtract: (expr1: Cv::MatExpr, expr2: Cv::MatExpr, res: Cv::MatExpr) -> NilClass
              | (s: Cv::Scalar, expr: Cv::MatExpr, res: Cv::MatExpr) -> NilClass
     def transpose: (expr: Cv::MatExpr, res: Cv::MatExpr) -> NilClass

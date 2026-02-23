@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Ml::DTrees) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Ml::DTrees
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ml꞉꞉DTrees≻) -> NilClass
     def use_count: () -> Integer
   end
 end

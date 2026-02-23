@@ -1,0 +1,10 @@
+module Cv::Xfeatures2d
+  class EllipticKeyPoint
+    attr_accessor axes: Cv::Size2f
+    attr_accessor si: Float
+    attr_accessor transf: Cv::Matx23f
+
+    def initialize: () -> NilClass
+               | (pt: Cv::Point2f, angle: Float, axes: Cv::Size2i, size: Float, si: Float) -> NilClass
+  end
+end

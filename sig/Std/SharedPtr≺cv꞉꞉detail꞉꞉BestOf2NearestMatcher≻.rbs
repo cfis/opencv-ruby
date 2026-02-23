@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::BestOf2NearestMatcher) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::BestOf2NearestMatcher
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉BestOf2NearestMatcher≻) -> NilClass
     def use_count: () -> Integer
   end
 end

@@ -7,6 +7,7 @@ module Cv::SparseMat
     attr_accessor node_size: Integer
     attr_accessor pool: Std::Vector≺unsigned char≻
     attr_accessor refcount: Integer
+    attr_reader size: String
     attr_accessor value_offset: Integer
 
     def clear: () -> NilClass

@@ -1,9 +1,9 @@
 module Cv::Aruco
   class CharucoBoard
-    def initialize: (size: Cv::Size, square_length: Float, marker_length: Float, dictionary: Cv::Aruco::Dictionary, ids: Cv::InputArray) -> NilClass
-    def check_charuco_corners_collinear?: (charuco_ids: Cv::InputArray) -> TrueClass
+    def initialize: (size: Cv::Size2i, square_length: Float, marker_length: Float, dictionary: Cv::Aruco::Dictionary, ids: Cv::InputArray) -> NilClass
+    def check_charuco_corners_collinear: (charuco_ids: Cv::InputArray) -> TrueClass
     def get_chessboard_corners: () -> Std::Vector≺Cv꞉꞉Point3f≻
-    def get_chessboard_size: () -> Cv::Size
+    def get_chessboard_size: () -> Cv::Size2i
     def get_legacy_pattern?: () -> TrueClass
     def get_marker_length: () -> Float
     def get_nearest_marker_corners: () -> Std::Vector≺vector≺int≻≻

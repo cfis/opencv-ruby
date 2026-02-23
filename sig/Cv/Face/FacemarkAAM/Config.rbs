@@ -1,0 +1,10 @@
+module Cv::Face::FacemarkAAM
+  class Config
+    attr_accessor model_scale_idx: Integer
+    attr_accessor r: Cv::Mat
+    attr_accessor scale: Float
+    attr_accessor t: Cv::Point2f
+
+    def initialize: (rot: Cv::Mat, trans: Cv::Point2f, scaling: Float, scale_id: Integer) -> NilClass
+  end
+end

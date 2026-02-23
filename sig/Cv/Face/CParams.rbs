@@ -1,0 +1,12 @@
+module Cv::Face
+  class CParams
+    attr_accessor cascade: String
+    attr_accessor face_cascade: Cv::CascadeClassifier
+    attr_accessor max_size: Cv::Size2i
+    attr_accessor min_neighbors: Integer
+    attr_accessor min_size: Cv::Size2i
+    attr_accessor scale_factor: Float
+
+    def initialize: (cascade_model: String, sf: Float, min_n: Integer, min_sz: Cv::Size2i, max_sz: Cv::Size2i) -> NilClass
+  end
+end

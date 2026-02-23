@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉detail꞉꞉CameraParams≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Detail::CameraParams) -> NilClass
-    def []: (arg_0: Integer) -> Cv::Detail::CameraParams
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Detail::CameraParams) -> NilClass
+               | (count: Integer, value: Cv::Detail::CameraParams) -> NilClass
+    def []: (pos: Integer) -> Cv::Detail::CameraParams
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Detail::CameraParams) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉detail꞉꞉CameraParams≻
-    def delete_at: (arg_0: Integer) -> Cv::Detail::CameraParams
+    def delete_at: (pos: Integer) -> Cv::Detail::CameraParams
     def empty?: () -> TrueClass
     def first: () -> Cv::Detail::CameraParams
-    def include?: (arg_0: Cv::Detail::CameraParams) -> TrueClass
-    def index: (arg_0: Cv::Detail::CameraParams) -> Integer
-    def delete: (arg_0: Cv::Detail::CameraParams) -> Cv::Detail::CameraParams
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Detail::CameraParams) -> Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻
+    def include?: (value: Cv::Detail::CameraParams) -> TrueClass
+    def index: (value: Cv::Detail::CameraParams) -> Integer
+    def delete: (value: Cv::Detail::CameraParams) -> Cv::Detail::CameraParams
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Detail::CameraParams) -> Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻
     def last: () -> Cv::Detail::CameraParams
     def max_size: () -> Integer
     def pop: () -> Cv::Detail::CameraParams
-    def push: (arg_0: Cv::Detail::CameraParams) -> Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Detail::CameraParams) -> Std::Vector≺cv꞉꞉detail꞉꞉CameraParams≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

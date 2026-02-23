@@ -1,6 +1,11 @@
 module Cv::Detail
   class ProjectorBase
+    attr_reader k: String
+    attr_reader k_rinv: String
+    attr_reader r_kinv: String
+    attr_reader rinv: String
     attr_accessor scale: Float
+    attr_reader t: String
 
     def initialize: () -> NilClass
     def set_camera_params: (k: Cv::InputArray, r: Cv::InputArray, t: Cv::InputArray) -> NilClass

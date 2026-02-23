@@ -1,9 +1,9 @@
 module Cv::Detail::Tracking
   class TrackerSampler
-    def add_tracker_sampler_algorithm?: (sampler: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻) -> TrueClass
+    def add_tracker_sampler_algorithm: (sampler: Cv::Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻) -> TrueClass
     def get_samplers: () -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉detail꞉꞉tracking꞉꞉TrackerSamplerAlgorithm≻≻
     def get_samples: () -> Std::Vector≺cv꞉꞉Mat≻
     def initialize: () -> NilClass
-    def sampling: (image: Cv::Mat, bounding_box: Cv::Rect) -> NilClass
+    def sampling: (image: Cv::Mat, bounding_box: Cv::Rect2i) -> NilClass
   end
 end

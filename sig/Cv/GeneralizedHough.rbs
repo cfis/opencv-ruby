@@ -12,7 +12,7 @@ module Cv
     def set_dp: (dp: Float) -> NilClass
     def set_max_buffer_size: (max_buffer_size: Integer) -> NilClass
     def set_min_dist: (min_dist: Float) -> NilClass
-    def set_template: (templ: Cv::InputArray, templ_center: Cv::Point) -> NilClass
-                 | (edges: Cv::InputArray, dx: Cv::InputArray, dy: Cv::InputArray, templ_center: Cv::Point) -> NilClass
+    def set_template: (templ: Cv::InputArray, templ_center: Cv::Point2i) -> NilClass
+                 | (edges: Cv::InputArray, dx: Cv::InputArray, dy: Cv::InputArray, templ_center: Cv::Point2i) -> NilClass
   end
 end

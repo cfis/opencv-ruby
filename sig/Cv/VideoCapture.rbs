@@ -5,15 +5,17 @@ module Cv
     def initialize: () -> NilClass
                | (filename: String, api_preference: Integer) -> NilClass
                | (index: Integer, api_preference: Integer) -> NilClass
+               | (source: Cv::Ptr≺cv꞉꞉IStreamReader≻, api_preference: Integer, params: Std::Vector≺int≻) -> NilClass
                | (filename: String, api_preference: Integer, params: Std::Vector≺int≻) -> NilClass
                | (index: Integer, api_preference: Integer, params: Std::Vector≺int≻) -> NilClass
     def get_backend_name: () -> String
     def get: (prop_id: Integer) -> Float
-    def get_exception_mode: () -> TrueClass
+    def get_exception_mode?: () -> TrueClass
     def grab: () -> TrueClass
     def open: (filename: String, api_preference: Integer) -> TrueClass
          | (index: Integer, api_preference: Integer) -> TrueClass
          | (filename: String, api_preference: Integer, params: Std::Vector≺int≻) -> TrueClass
+         | (source: Cv::Ptr≺cv꞉꞉IStreamReader≻, api_preference: Integer, params: Std::Vector≺int≻) -> TrueClass
          | (index: Integer, api_preference: Integer, params: Std::Vector≺int≻) -> TrueClass
     def opened?: () -> TrueClass
     def read: (image: Cv::OutputArray) -> TrueClass

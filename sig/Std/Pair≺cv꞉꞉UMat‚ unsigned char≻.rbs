@@ -4,8 +4,8 @@ module Std
     attr_accessor second: String
 
     def initialize: () -> NilClass
-               | (arg_0: Cv::UMat, arg_1: String) -> NilClass
-    def initialize_copy: (arg_0: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
+               | (x: Cv::UMat, y: String) -> NilClass
+    def initialize_copy: (other: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
     def to_s: () -> String
   end
 end

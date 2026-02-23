@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉plot꞉꞉Plot2d≻
+    def initialize: (value: Cv::Plot::Plot2d) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Plot::Plot2d
+    def swap: (r: Std::SharedPtr≺cv꞉꞉plot꞉꞉Plot2d≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

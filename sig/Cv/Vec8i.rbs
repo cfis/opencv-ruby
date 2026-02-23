@@ -2,16 +2,22 @@ module Cv
   class Vec8i
     def []: (i: Integer) -> Integer
        | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
     def initialize: () -> NilClass
                | (values: Rice::Pointer≺int≻) -> NilClass
-               | (a: Cv::Matx81i, b: Cv::Matx81i, op: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx81i, b: Cv::Matx81i, op: Cv::MatxAddOp) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (v0: Integer) -> NilClass
+               | (a: Cv::Matx81i, b: Cv::Matx81i, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer) -> NilClass
+               | (a: Cv::Matx81i, b: Cv::Matx81i, arg_2: Cv::MatxSubOp) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer, v4: Integer) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer, v4: Integer, v5: Integer) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer, v4: Integer, v5: Integer, v6: Integer) -> NilClass
                | (v0: Integer, v1: Integer, v2: Integer, v3: Integer, v4: Integer, v5: Integer, v6: Integer, v7: Integer) -> NilClass
     def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
     def assign: (rhs: Cv::Vec8i) -> Cv::Vec8i
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-    def count: () -> Integer
     def initialize_copy: (v: Cv::Vec8i) -> NilClass
     def inspect: () -> String
     def mul: (v: Cv::Vec8i) -> Cv::Vec8i

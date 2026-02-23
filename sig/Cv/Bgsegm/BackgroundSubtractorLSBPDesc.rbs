@@ -1,0 +1,5 @@
+module Cv::Bgsegm
+  class BackgroundSubtractorLSBPDesc
+    def initialize: () -> NilClass
+  end
+end

@@ -1,0 +1,5 @@
+module Rice
+  class Pointer≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+    def buffer: () -> Rice::Buffer≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+  end
+end

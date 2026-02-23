@@ -1,0 +1,4 @@
+module Cvflann::Anyimpl
+  class Any
+  end
+end

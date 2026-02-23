@@ -3,10 +3,10 @@ module Cv
     def initialize: () -> NilClass
                | (o: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
                | (o: Std::SharedPtr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
-               | (ptr: Callback) -> NilClass
-               | (value: Callback) -> NilClass
+               | (ptr: Cv::LMSolver::Callback) -> NilClass
+               | (value: Cv::LMSolver::Callback) -> NilClass
     def assign: (o: Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻
-    def get: () -> Callback
+    def get: () -> Cv::LMSolver::Callback
     def empty?: () -> TrueClass
     def initialize_copy: (o: Cv::Ptr≺cv꞉꞉LMSolver꞉꞉Callback≻) -> NilClass
     def release: () -> NilClass

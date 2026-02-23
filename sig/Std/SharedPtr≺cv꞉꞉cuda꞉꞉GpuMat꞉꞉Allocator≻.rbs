@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Cuda::GpuMat::Allocator) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Cuda::GpuMat::Allocator
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉cuda꞉꞉GpuMat꞉꞉Allocator≻) -> NilClass
     def use_count: () -> Integer
   end
 end

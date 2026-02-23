@@ -1,0 +1,11 @@
+module Cv::Face
+  class StandardCollector
+    def collect: (label: Integer, dist: Float) -> TrueClass
+    def get_min_dist: () -> Float
+    def get_min_label: () -> Integer
+    def get_results: (sorted: TrueClass) -> Std::Vector≺pair≺int‚ double≻≻
+    def get_results_map: () -> Std::Map≺int‚ double≻
+    def init: (size: Integer) -> NilClass
+    def initialize: (threshold_: Float) -> NilClass
+  end
+end

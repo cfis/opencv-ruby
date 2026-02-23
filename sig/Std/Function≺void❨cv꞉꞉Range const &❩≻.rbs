@@ -1,0 +1,8 @@
+module Std
+  class Function≺void❨cv꞉꞉Range const &❩≻
+    def call: (arg_0: Cv::Range) -> NilClass
+    def callable?: () -> TrueClass
+    def initialize: () -> NilClass
+               | (callable: Integer) -> NilClass
+  end
+end

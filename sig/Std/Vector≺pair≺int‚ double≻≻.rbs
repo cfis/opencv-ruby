@@ -1,0 +1,33 @@
+module Std
+  class Vector≺pair≺int‚ double≻≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Std::Pair≺int‚ double≻) -> NilClass
+    def ==: (other: Std::Vector≺pair≺int‚ double≻≻) -> TrueClass
+    def []: (pos: Integer) -> Std::Pair≺int‚ double≻
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Std::Pair≺int‚ double≻) -> NilClass
+    def capacity: () -> Integer
+    def data: () -> Rice::Pointer≺pair≺int‚ double≻≻
+    def delete: (value: Std::Pair≺int‚ double≻) -> Std::Pair≺int‚ double≻
+    def delete_at: (pos: Integer) -> Std::Pair≺int‚ double≻
+    def empty?: () -> TrueClass
+    def clear: () -> NilClass
+    def first: () -> Std::Pair≺int‚ double≻
+    def include?: (value: Std::Pair≺int‚ double≻) -> TrueClass
+    def index: (value: Std::Pair≺int‚ double≻) -> Integer
+    def initialize_copy: (other: Std::Vector≺pair≺int‚ double≻≻) -> NilClass
+    def insert: (pos: Integer, value: Std::Pair≺int‚ double≻) -> Std::Vector≺pair≺int‚ double≻≻
+    def last: () -> Std::Pair≺int‚ double≻
+    def max_size: () -> Integer
+    def pop: () -> Std::Pair≺int‚ double≻
+    def push: (value: Std::Pair≺int‚ double≻) -> Std::Vector≺pair≺int‚ double≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

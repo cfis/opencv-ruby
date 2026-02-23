@@ -6,9 +6,11 @@ module Cv
     def initialize: (_p: Rice::Pointer≺int≻) -> NilClass
     def ==: (sz: Cv::MatSize) -> TrueClass
     def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
     def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
     def dims: () -> Integer
     def inspect: () -> String
-    def to_size: () -> Cv::Size
+    def to_const int: () -> Rice::Pointer≺int≻
+    def to_size: () -> Cv::Size2i
   end
 end

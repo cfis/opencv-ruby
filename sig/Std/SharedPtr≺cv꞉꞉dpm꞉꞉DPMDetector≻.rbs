@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉dpm꞉꞉DPMDetector≻
+    def initialize: (value: Cv::Dpm::DPMDetector) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Dpm::DPMDetector
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dpm꞉꞉DPMDetector≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

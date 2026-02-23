@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::Face::FacemarkAAM::Model::Texture) -> NilClass
+    def []: (pos: Integer) -> Cv::Face::FacemarkAAM::Model::Texture
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Face::FacemarkAAM::Model::Texture) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻
+    def delete_at: (pos: Integer) -> Cv::Face::FacemarkAAM::Model::Texture
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Face::FacemarkAAM::Model::Texture
+    def include?: (value: Cv::Face::FacemarkAAM::Model::Texture) -> TrueClass
+    def index: (value: Cv::Face::FacemarkAAM::Model::Texture) -> Integer
+    def delete: (value: Cv::Face::FacemarkAAM::Model::Texture) -> Cv::Face::FacemarkAAM::Model::Texture
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Face::FacemarkAAM::Model::Texture) -> Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻
+    def last: () -> Cv::Face::FacemarkAAM::Model::Texture
+    def max_size: () -> Integer
+    def pop: () -> Cv::Face::FacemarkAAM::Model::Texture
+    def push: (value: Cv::Face::FacemarkAAM::Model::Texture) -> Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Model꞉꞉Texture≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

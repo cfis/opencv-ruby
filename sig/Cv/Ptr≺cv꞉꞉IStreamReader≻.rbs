@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉IStreamReader≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉IStreamReader≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉IStreamReader≻) -> NilClass
+               | (ptr: Cv::IStreamReader) -> NilClass
+               | (value: Cv::IStreamReader) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉IStreamReader≻) -> Cv::Ptr≺cv꞉꞉IStreamReader≻
+    def get: () -> Cv::IStreamReader
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉IStreamReader≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

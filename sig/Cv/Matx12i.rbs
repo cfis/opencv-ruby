@@ -1,23 +1,30 @@
 module Cv
   class Matx12i
+    attr_reader val: String
+
+    def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
+               | (vals: Rice::Pointer≺int≻) -> NilClass
+               | (a: Cv::Matx21i, arg_1: Cv::MatxTOp) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxAddOp) -> NilClass
     def !=: (arg_0: Cv::Matx12i) -> TrueClass
-    def *: (arg_0: Float) -> Cv::Matx12i
-      | (arg_0: Cv::Vec2i) -> Cv::Vec1i
+    def *: (arg_0: Cv::Vec2i) -> Cv::Vec1i
+      | (arg_0: Float) -> Cv::Matx12i
       | (arg_0: Float) -> Cv::Matx12i
       | (arg_0: Integer) -> Cv::Matx12i
-    def initialize: () -> NilClass
-               | (vals: Rice::Pointer≺int≻) -> NilClass
-               | (v0: Integer, v1: Integer) -> NilClass
-               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxAddOp) -> NilClass
-               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxMulOp) -> NilClass
-               | (a: Cv::Matx12i, b: Cv::Matx12i, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx21i, arg_1: Cv::MatxTOp) -> NilClass
     def +: (arg_0: Cv::Matx12i) -> Cv::Matx12i
     def -: (arg_0: Cv::Matx12i) -> Cv::Matx12i
     def /: (arg_0: Float) -> Cv::Matx12i
       | (arg_0: Float) -> Cv::Matx12i
     def ==: (arg_0: Cv::Matx12i) -> TrueClass
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx12i
                   | (arg_0: Float) -> Cv::Matx12i
@@ -26,20 +33,15 @@ module Cv
                     | (arg_0: Float) -> Cv::Matx12i
                     | (arg_0: Float) -> Cv::Matx12i
     def assign_plus: (arg_0: Cv::Matx12i) -> Cv::Matx12i
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
     def channels: () -> Integer
     def col: (i: Integer) -> Cv::Matx11i
-    def cols: () -> Integer
     def ddot: (v: Cv::Matx12i) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx11i
     def div: (a: Cv::Matx12i) -> Cv::Matx12i
     def dot: (v: Cv::Matx12i) -> Integer
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx12i) -> TrueClass
+    def cols: () -> Integer
     def input_array: () -> Cv::InputArray
     def inspect: () -> String
     def mul: (a: Cv::Matx12i) -> Cv::Matx12i

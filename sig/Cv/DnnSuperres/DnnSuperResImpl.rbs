@@ -1,0 +1,15 @@
+module Cv::DnnSuperres
+  class DnnSuperResImpl
+    def get_algorithm: () -> String
+    def get_scale: () -> Integer
+    def initialize: () -> NilClass
+               | (algo: String, scale: Integer) -> NilClass
+    def read_model: (path: String) -> NilClass
+               | (weights: String, definition: String) -> NilClass
+    def set_model: (algo: String, scale: Integer) -> NilClass
+    def set_preferable_backend: (backend_id: Integer) -> NilClass
+    def set_preferable_target: (target_id: Integer) -> NilClass
+    def upsample: (img: Cv::InputArray, result: Cv::OutputArray) -> NilClass
+    def upsample_multioutput: (img: Cv::InputArray, imgs_new: Std::Vector≺cv꞉꞉Mat≻, scale_factors: Std::Vector≺int≻, node_names: Std::Vector≺string≻) -> NilClass
+  end
+end

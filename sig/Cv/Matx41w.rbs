@@ -1,45 +1,49 @@
 module Cv
   class Matx41w
+    attr_reader val: String
+
     def !=: (arg_0: Cv::Matx41w) -> TrueClass
     def *: (arg_0: Float) -> Cv::Matx41w
       | (arg_0: Cv::Vec1w) -> Cv::Vec4w
       | (arg_0: Float) -> Cv::Matx41w
       | (arg_0: Integer) -> Cv::Matx41w
-    def initialize: () -> NilClass
-               | (vals: Rice::Pointer≺unsigned short≻) -> NilClass
+    def initialize: (vals: Rice::Pointer≺unsigned short≻) -> NilClass
+               | (v0: Integer) -> NilClass
+               | () -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (a: Cv::Matx14w, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxMulOp) -> NilClass
                | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxSubOp) -> NilClass
                | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer) -> NilClass
                | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> NilClass
-               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxMulOp) -> NilClass
-               | (a: Cv::Matx41w, b: Cv::Matx41w, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx14w, arg_1: Cv::MatxTOp) -> NilClass
     def +: (arg_0: Cv::Matx41w) -> Cv::Matx41w
     def -: (arg_0: Cv::Matx41w) -> Cv::Matx41w
     def /: (arg_0: Float) -> Cv::Matx41w
       | (arg_0: Float) -> Cv::Matx41w
     def ==: (arg_0: Cv::Matx41w) -> TrueClass
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx41w
                   | (arg_0: Float) -> Cv::Matx41w
-    def assign_minus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
-    def assign_multiply: (arg_0: Integer) -> Cv::Matx41w
+    def assign_multiply: (arg_0: Float) -> Cv::Matx41w
+                    | (arg_0: Integer) -> Cv::Matx41w
                     | (arg_0: Float) -> Cv::Matx41w
-                    | (arg_0: Float) -> Cv::Matx41w
-    def assign_plus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-         | (row: Integer, col: Integer) -> Integer
-    def channels: () -> Integer
     def col: (i: Integer) -> Cv::Matx41w
-    def cols: () -> Integer
     def ddot: (v: Cv::Matx41w) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx11w
     def div: (a: Cv::Matx41w) -> Cv::Matx41w
-    def dot: (v: Cv::Matx41w) -> Integer
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx41w) -> TrueClass
+    def channels: () -> Integer
+    def assign_plus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
+    def cols: () -> Integer
+    def dot: (v: Cv::Matx41w) -> Integer
+    def assign_minus: (arg_0: Cv::Matx41w) -> Cv::Matx41w
     def input_array: () -> Cv::InputArray
     def inspect: () -> String
     def mul: (a: Cv::Matx41w) -> Cv::Matx41w

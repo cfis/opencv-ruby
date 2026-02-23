@@ -1,30 +1,30 @@
 module Std
   class Vector≺unsigned char≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: String) -> NilClass
-    def ==: (arg_0: Std::Vector≺unsigned char≻) -> TrueClass
-    def []: (arg_0: Integer) -> String
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: String) -> NilClass
+               | (count: Integer, value: String) -> NilClass
+    def ==: (other: Std::Vector≺unsigned char≻) -> TrueClass
+    def []: (pos: Integer) -> String
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: String) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺unsigned char≻
-    def delete: (arg_0: String) -> String
-    def delete_at: (arg_0: Integer) -> String
+    def delete: (value: String) -> String
+    def delete_at: (pos: Integer) -> String
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> String
-    def include?: (arg_0: String) -> TrueClass
-    def index: (arg_0: String) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺unsigned char≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: String) -> Std::Vector≺unsigned char≻
+    def include?: (value: String) -> TrueClass
+    def index: (value: String) -> Integer
+    def initialize_copy: (other: Std::Vector≺unsigned char≻) -> NilClass
+    def insert: (pos: Integer, value: String) -> Std::Vector≺unsigned char≻
     def last: () -> String
     def max_size: () -> Integer
     def pop: () -> String
-    def push: (arg_0: String) -> Std::Vector≺unsigned char≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: String) -> Std::Vector≺unsigned char≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

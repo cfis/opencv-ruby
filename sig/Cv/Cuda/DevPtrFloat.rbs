@@ -1,0 +1,11 @@
+module Cv::Cuda
+  class DevPtrFloat
+    attr_accessor data: Rice::Pointer≺float≻
+
+    def elem_size: () -> Integer
+    def initialize: () -> NilClass
+               | (data_: Rice::Pointer≺float≻) -> NilClass
+    def to_const_ptr: () -> Rice::Pointer≺float≻
+    def to_ptr: () -> Rice::Pointer≺float≻
+  end
+end

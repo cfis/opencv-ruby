@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉DenseOpticalFlow≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DenseOpticalFlow≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉DenseOpticalFlow≻) -> NilClass
+               | (ptr: Cv::DenseOpticalFlow) -> NilClass
+               | (value: Cv::DenseOpticalFlow) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉DenseOpticalFlow≻) -> Cv::Ptr≺cv꞉꞉DenseOpticalFlow≻
+    def get: () -> Cv::DenseOpticalFlow
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉DenseOpticalFlow≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

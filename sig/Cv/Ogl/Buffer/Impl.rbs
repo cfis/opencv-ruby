@@ -1,0 +1,4 @@
+module Cv::Ogl::Buffer
+  class Impl
+  end
+end

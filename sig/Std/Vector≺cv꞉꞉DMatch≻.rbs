@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉DMatch≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::DMatch) -> NilClass
-    def []: (arg_0: Integer) -> Cv::DMatch
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::DMatch) -> NilClass
+               | (count: Integer, value: Cv::DMatch) -> NilClass
+    def []: (pos: Integer) -> Cv::DMatch
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::DMatch) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉DMatch≻
-    def delete_at: (arg_0: Integer) -> Cv::DMatch
+    def delete_at: (pos: Integer) -> Cv::DMatch
     def empty?: () -> TrueClass
     def first: () -> Cv::DMatch
-    def include?: (arg_0: Cv::DMatch) -> TrueClass
-    def index: (arg_0: Cv::DMatch) -> Integer
-    def delete: (arg_0: Cv::DMatch) -> Cv::DMatch
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
+    def include?: (value: Cv::DMatch) -> TrueClass
+    def index: (value: Cv::DMatch) -> Integer
+    def delete: (value: Cv::DMatch) -> Cv::DMatch
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
     def last: () -> Cv::DMatch
     def max_size: () -> Integer
     def pop: () -> Cv::DMatch
-    def push: (arg_0: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::DMatch) -> Std::Vector≺cv꞉꞉DMatch≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

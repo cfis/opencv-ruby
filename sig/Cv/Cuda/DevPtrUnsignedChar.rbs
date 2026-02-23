@@ -1,0 +1,11 @@
+module Cv::Cuda
+  class DevPtrUnsignedChar
+    attr_accessor data: Rice::Pointer≺unsigned char≻
+
+    def elem_size: () -> Integer
+    def initialize: () -> NilClass
+               | (data_: Rice::Pointer≺unsigned char≻) -> NilClass
+    def to_const_ptr: () -> Rice::Pointer≺unsigned char≻
+    def to_ptr: () -> Rice::Pointer≺unsigned char≻
+  end
+end

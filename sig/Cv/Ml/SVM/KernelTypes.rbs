@@ -1,18 +1,20 @@
 module Cv::Ml::SVM
   class KernelTypes
-    def initialize: () -> void
-    def &: (arg_0: Enum cv::ml::SVM::KernelTypes) -> Integer
+    def initialize: () -> NilClass
+    def &: (arg_0: Cv::Ml::SVM::KernelTypes) -> Integer
     def <<: (arg_0: Integer) -> Integer
-    def <=>: (arg_0: Enum cv::ml::SVM::KernelTypes) -> Integer
+    def <=>: (arg_0: Cv::Ml::SVM::KernelTypes) -> Integer
+        | (arg_0: Integer) -> Integer
     def >>: (arg_0: Integer) -> Integer
-    def ^: (arg_0: Enum cv::ml::SVM::KernelTypes) -> Integer
-    def coerce: (arg_0: Int) -> Rice::Array
-    def eql?: (arg_0: Enum cv::ml::SVM::KernelTypes) -> bool
+    def ^: (arg_0: Cv::Ml::SVM::KernelTypes) -> Integer
+    def coerce: (arg_0: Integer) -> Array
+    def eql?: (arg_0: Integer) -> TrueClass
+         | (arg_0: Cv::Ml::SVM::KernelTypes) -> TrueClass
     def hash: () -> Integer
-    def inspect: () -> Rice::String
+    def inspect: () -> String
     def to_int: () -> Integer
-    def to_s: () -> Rice::String
-    def |: (arg_0: Enum cv::ml::SVM::KernelTypes) -> Integer
+    def to_s: () -> String
+    def |: (arg_0: Cv::Ml::SVM::KernelTypes) -> Integer
     def ~: () -> Integer
   end
 end

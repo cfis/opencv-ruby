@@ -1,5 +1,6 @@
 module Cvflann
   class DNAmmingLUT
+    def call: (a: Rice::Pointer≺unsigned char≻, b: Cvflann::ZeroIteratorUnsignedChar, size: Integer) -> Integer
     def initialize: () -> NilClass
   end
 end

@@ -1,0 +1,4 @@
+module Cv::Dnn::Net
+  class Impl
+  end
+end

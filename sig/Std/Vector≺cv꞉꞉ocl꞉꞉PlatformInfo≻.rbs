@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Ocl::PlatformInfo) -> NilClass
-    def []: (arg_0: Integer) -> Cv::Ocl::PlatformInfo
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Ocl::PlatformInfo) -> NilClass
+               | (count: Integer, value: Cv::Ocl::PlatformInfo) -> NilClass
+    def []: (pos: Integer) -> Cv::Ocl::PlatformInfo
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Ocl::PlatformInfo) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉ocl꞉꞉PlatformInfo≻
-    def delete_at: (arg_0: Integer) -> Cv::Ocl::PlatformInfo
+    def delete_at: (pos: Integer) -> Cv::Ocl::PlatformInfo
     def empty?: () -> TrueClass
     def first: () -> Cv::Ocl::PlatformInfo
-    def include?: (arg_0: Cv::Ocl::PlatformInfo) -> TrueClass
-    def index: (arg_0: Cv::Ocl::PlatformInfo) -> Integer
-    def delete: (arg_0: Cv::Ocl::PlatformInfo) -> Cv::Ocl::PlatformInfo
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Ocl::PlatformInfo) -> Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻
+    def include?: (value: Cv::Ocl::PlatformInfo) -> TrueClass
+    def index: (value: Cv::Ocl::PlatformInfo) -> Integer
+    def delete: (value: Cv::Ocl::PlatformInfo) -> Cv::Ocl::PlatformInfo
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Ocl::PlatformInfo) -> Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻
     def last: () -> Cv::Ocl::PlatformInfo
     def max_size: () -> Integer
     def pop: () -> Cv::Ocl::PlatformInfo
-    def push: (arg_0: Cv::Ocl::PlatformInfo) -> Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Ocl::PlatformInfo) -> Std::Vector≺cv꞉꞉ocl꞉꞉PlatformInfo≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

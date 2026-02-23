@@ -1,7 +1,7 @@
 module Cv::Detail::Tracking
   class TrackerSamplerCSC
     def initialize: (parameters: Cv::Detail::Tracking::TrackerSamplerCSC::Params) -> NilClass
-    def sampling?: (image: Cv::Mat, bounding_box: Cv::Rect, sample: Std::Vector≺cv꞉꞉Mat≻) -> TrueClass
+    def sampling: (image: Cv::Mat, bounding_box: Cv::Rect2i, sample: Std::Vector≺cv꞉꞉Mat≻) -> TrueClass
     def set_mode: (sampling_mode: Integer) -> NilClass
   end
 end

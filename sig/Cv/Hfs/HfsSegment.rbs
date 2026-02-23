@@ -1,0 +1,20 @@
+module Cv::Hfs
+  class HfsSegment
+    def get_min_region_size_i: () -> Integer
+    def get_min_region_size_ii: () -> Integer
+    def get_num_slic_iter: () -> Integer
+    def get_seg_egb_threshold_i: () -> Float
+    def get_seg_egb_threshold_ii: () -> Float
+    def get_slic_spixel_size: () -> Integer
+    def get_spatial_weight: () -> Float
+    def perform_segment_cpu: (src: Cv::InputArray, if_draw: TrueClass) -> Cv::Mat
+    def perform_segment_gpu: (src: Cv::InputArray, if_draw: TrueClass) -> Cv::Mat
+    def set_min_region_size_i: (n: Integer) -> NilClass
+    def set_min_region_size_ii: (n: Integer) -> NilClass
+    def set_num_slic_iter: (n: Integer) -> NilClass
+    def set_seg_egb_threshold_i: (c: Float) -> NilClass
+    def set_seg_egb_threshold_ii: (c: Float) -> NilClass
+    def set_slic_spixel_size: (n: Integer) -> NilClass
+    def set_spatial_weight: (w: Float) -> NilClass
+  end
+end

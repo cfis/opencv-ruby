@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻) -> NilClass
+               | (ptr: Cv::Face::EigenFaceRecognizer) -> NilClass
+               | (value: Cv::Face::EigenFaceRecognizer) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻) -> Cv::Ptr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻
+    def get: () -> Cv::Face::EigenFaceRecognizer
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉face꞉꞉EigenFaceRecognizer≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

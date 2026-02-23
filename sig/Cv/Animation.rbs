@@ -1,0 +1,10 @@
+module Cv
+  class Animation
+    attr_accessor bgcolor: Cv::Scalar
+    attr_accessor durations: Std::Vector≺int≻
+    attr_accessor frames: Std::Vector≺cv꞉꞉Mat≻
+    attr_accessor loop_count: Integer
+
+    def initialize: (loop_count: Integer, bg_color: Cv::Scalar) -> NilClass
+  end
+end

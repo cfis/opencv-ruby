@@ -6,10 +6,10 @@ module Cv::Aruco
 
     def generate_image_marker: (id: Integer, side_pixels: Integer, _img: Cv::OutputArray, border_bits: Integer) -> NilClass
     def get_distance_to_id: (bits: Cv::InputArray, id: Integer, all_rotations: TrueClass) -> Integer
-    def identify?: (only_bits: Cv::Mat, idx: Integer, rotation: Integer, max_correction_rate: Float) -> TrueClass
+    def identify: (only_bits: Cv::Mat, idx: Integer, rotation: Integer, max_correction_rate: Float) -> TrueClass
     def initialize: () -> NilClass
                | (bytes_list: Cv::Mat, _marker_size: Integer, maxcorr: Integer) -> NilClass
-    def read_dictionary?: (fn: Cv::FileNode) -> TrueClass
+    def read_dictionary: (fn: Cv::FileNode) -> TrueClass
     def write_dictionary: (fs: Cv::FileStorage, name: String) -> NilClass
   end
 end

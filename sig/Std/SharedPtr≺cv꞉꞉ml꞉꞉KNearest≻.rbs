@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Ml::KNearest) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Ml::KNearest
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉KNearest≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ml꞉꞉KNearest≻) -> NilClass
     def use_count: () -> Integer
   end
 end

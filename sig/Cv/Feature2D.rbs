@@ -12,8 +12,8 @@ module Cv
     def empty?: () -> TrueClass
     def get_default_name: () -> String
     def read: (file_name: String) -> NilClass
-         | (: Cv::FileNode) -> NilClass
-    def write: (: Cv::FileStorage) -> NilClass
+         | (arg_0: Cv::FileNode) -> NilClass
+    def write: (arg_0: Cv::FileStorage) -> NilClass
           | (file_name: String) -> NilClass
           | (fs: Cv::FileStorage, name: String) -> NilClass
           | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass

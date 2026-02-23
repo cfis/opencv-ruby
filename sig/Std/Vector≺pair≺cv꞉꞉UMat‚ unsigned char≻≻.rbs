@@ -1,29 +1,29 @@
 module Std
   class Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
-    def []: (arg_0: Integer) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
+               | (count: Integer, value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
+    def []: (pos: Integer) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
-    def delete_at: (arg_0: Integer) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
+    def delete_at: (pos: Integer) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
     def empty?: () -> TrueClass
     def first: () -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
-    def include?: (arg_0: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> TrueClass
-    def index: (arg_0: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Integer
-    def delete: (arg_0: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
-    def initialize_copy: (arg_0: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
+    def include?: (value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> TrueClass
+    def index: (value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Integer
+    def delete: (value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
+    def initialize_copy: (other: Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻) -> NilClass
+    def insert: (pos: Integer, value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
     def last: () -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
     def max_size: () -> Integer
     def pop: () -> Std::Pair≺cv꞉꞉UMat‚ unsigned char≻
-    def push: (arg_0: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Std::Pair≺cv꞉꞉UMat‚ unsigned char≻) -> Std::Vector≺pair≺cv꞉꞉UMat‚ unsigned char≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

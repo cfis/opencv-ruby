@@ -8,6 +8,7 @@ module Cv
     def initialize: () -> NilClass
                | (s: Integer) -> NilClass
     def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
-    def to_size_t: () -> Integer
+    def assign: (s: Integer) -> Cv::MatStep
+    def to_size: () -> Integer
   end
 end

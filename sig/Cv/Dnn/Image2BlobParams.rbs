@@ -6,12 +6,12 @@ module Cv::Dnn
     attr_accessor mean: Cv::Scalar
     attr_accessor paddingmode: Cv::Dnn::ImagePaddingMode
     attr_accessor scalefactor: Cv::Scalar
-    attr_accessor size: Cv::Size
+    attr_accessor size: Cv::Size2i
     attr_accessor swap_rb: TrueClass
 
-    def blob_rect_to_image_rect: (r_blob: Cv::Rect, size: Cv::Size) -> Cv::Rect
-    def blob_rects_to_image_rects: (r_blob: Std::Vector≺cv꞉꞉Rect_≺int≻≻, r_img: Std::Vector≺cv꞉꞉Rect_≺int≻≻, size: Cv::Size) -> NilClass
+    def blob_rect_to_image_rect: (r_blob: Cv::Rect2i, size: Cv::Size2i) -> Cv::Rect2i
+    def blob_rects_to_image_rects: (r_blob: Std::Vector≺cv꞉꞉Rect_≺int≻≻, r_img: Std::Vector≺cv꞉꞉Rect_≺int≻≻, size: Cv::Size2i) -> NilClass
     def initialize: () -> NilClass
-               | (scalefactor: Cv::Scalar, size: Cv::Size, mean: Cv::Scalar, swap_rb: TrueClass, ddepth: Integer, datalayout: Cv::Dnn::DataLayout, mode: Cv::Dnn::ImagePaddingMode, border_value: Cv::Scalar) -> NilClass
+               | (scalefactor: Cv::Scalar, size: Cv::Size2i, mean: Cv::Scalar, swap_rb: TrueClass, ddepth: Integer, datalayout: Cv::Dnn::DataLayout, mode: Cv::Dnn::ImagePaddingMode, border_value: Cv::Scalar) -> NilClass
   end
 end

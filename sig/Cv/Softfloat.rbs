@@ -2,33 +2,33 @@ module Cv
   class Softfloat
     attr_accessor v: Integer
 
-    def !=: (: Cv::Softfloat) -> TrueClass
-    def %: (: Cv::Softfloat) -> Cv::Softfloat
-    def +: (: Cv::Softfloat) -> Cv::Softfloat
-    def -: () -> Cv::Softfloat
-      | (: Cv::Softfloat) -> Cv::Softfloat
-    def /: (: Cv::Softfloat) -> Cv::Softfloat
-    def <: (: Cv::Softfloat) -> TrueClass
-    def <=: (: Cv::Softfloat) -> TrueClass
-    def ==: (: Cv::Softfloat) -> TrueClass
-    def >: (: Cv::Softfloat) -> TrueClass
+    def !=: (arg_0: Cv::Softfloat) -> TrueClass
+    def %: (arg_0: Cv::Softfloat) -> Cv::Softfloat
+    def *: (arg_0: Cv::Softfloat) -> Cv::Softfloat
+    def +: (arg_0: Cv::Softfloat) -> Cv::Softfloat
+    def -: (arg_0: Cv::Softfloat) -> Cv::Softfloat
+    def -@: () -> Cv::Softfloat
+    def /: (arg_0: Cv::Softfloat) -> Cv::Softfloat
+    def <: (arg_0: Cv::Softfloat) -> TrueClass
+    def <=: (arg_0: Cv::Softfloat) -> TrueClass
+    def ==: (arg_0: Cv::Softfloat) -> TrueClass
+    def >: (arg_0: Cv::Softfloat) -> TrueClass
     def initialize: () -> NilClass
-               | (: Integer) -> NilClass
-               | (: Integer) -> NilClass
-               | (: Integer) -> NilClass
-               | (: Integer) -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Integer) -> NilClass
+               | (arg_0: Integer) -> NilClass
                | (a: Float) -> NilClass
-    def >=: (: Cv::Softfloat) -> TrueClass
+    def >=: (arg_0: Cv::Softfloat) -> TrueClass
     def assign: (c: Cv::Softfloat) -> Cv::Softfloat
-    def assign_divide: (a: Cv::Softfloat) -> Cv::Softfloat
-    def assign_modulus: (a: Cv::Softfloat) -> Cv::Softfloat
-    def assign_plus: (a: Cv::Softfloat) -> Cv::Softfloat
-    def dereference: (: Cv::Softfloat) -> Cv::Softfloat
     def assign_minus: (a: Cv::Softfloat) -> Cv::Softfloat
     def assign_multiply: (a: Cv::Softfloat) -> Cv::Softfloat
-    def get_exp: () -> Integer
+    def assign_plus: (a: Cv::Softfloat) -> Cv::Softfloat
     def get_frac: () -> Cv::Softfloat
     def get_sign?: () -> TrueClass
+    def assign_divide: (a: Cv::Softfloat) -> Cv::Softfloat
+    def get_exp: () -> Integer
+    def assign_modulus: (a: Cv::Softfloat) -> Cv::Softfloat
     def inf?: () -> TrueClass
     def initialize_copy: (c: Cv::Softfloat) -> NilClass
     def na_n?: () -> TrueClass
@@ -36,7 +36,7 @@ module Cv
     def set_frac: (s: Cv::Softfloat) -> Cv::Softfloat
     def set_sign: (sign: TrueClass) -> Cv::Softfloat
     def subnormal?: () -> TrueClass
-    def to_float: () -> Float
+    def to_f32: () -> Float
     def to_softdouble: () -> Cv::Softdouble
   end
 end

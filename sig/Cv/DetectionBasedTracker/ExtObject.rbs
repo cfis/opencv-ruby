@@ -1,9 +1,9 @@
 module Cv::DetectionBasedTracker
   class ExtObject
     attr_accessor id: Integer
-    attr_accessor location: Cv::Rect_≺int≻
-    attr_accessor status: Enum cv::DetectionBasedTracker::ObjectStatus
+    attr_accessor location: Cv::Rect2i
+    attr_accessor status: Cv::DetectionBasedTracker::ObjectStatus
 
-    def initialize: (_id: Integer, _location: Cv::Rect_≺int≻, _status: Enum cv::DetectionBasedTracker::ObjectStatus) -> void
+    def initialize: (_id: Integer, _location: Cv::Rect2i, _status: Cv::DetectionBasedTracker::ObjectStatus) -> NilClass
   end
 end

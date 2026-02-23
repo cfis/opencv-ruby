@@ -2,8 +2,8 @@ module Cv::Ogl
   class Buffer
     def initialize: () -> NilClass
                | (arr: Cv::InputArray, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
-               | (asize: Cv::Size, atype: Integer, abuf_id: Integer, auto_release: TrueClass) -> NilClass
-               | (asize: Cv::Size, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size2i, atype: Integer, abuf_id: Integer, auto_release: TrueClass) -> NilClass
+               | (asize: Cv::Size2i, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
                | (arows: Integer, acols: Integer, atype: Integer, abuf_id: Integer, auto_release: TrueClass) -> NilClass
                | (arows: Integer, acols: Integer, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
     def bind: (target: Cv::Ogl::Buffer::Target) -> NilClass
@@ -15,7 +15,7 @@ module Cv::Ogl
               | (arr: Cv::InputArray, stream: Cv::Cuda::Stream, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
     def copy_to: (arr: Cv::OutputArray, stream: Cv::Cuda::Stream) -> NilClass
             | (arr: Cv::OutputArray) -> NilClass
-    def create: (asize: Cv::Size, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
+    def create: (asize: Cv::Size2i, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
            | (arows: Integer, acols: Integer, atype: Integer, target: Cv::Ogl::Buffer::Target, auto_release: TrueClass) -> NilClass
     def depth: () -> Integer
     def elem_size: () -> Integer
@@ -27,7 +27,7 @@ module Cv::Ogl
     def release: () -> NilClass
     def rows: () -> Integer
     def set_auto_release: (flag: TrueClass) -> NilClass
-    def size: () -> Cv::Size
+    def size: () -> Cv::Size2i
     def type: () -> Integer
     def unmap_device: () -> NilClass
                  | (stream: Cv::Cuda::Stream) -> NilClass

@@ -9,13 +9,15 @@ module Cv
     def +: (arg_0: Cv::Size2s) -> Cv::Rect2s
       | (arg_0: Cv::Point2s) -> Cv::Rect2s
     def initialize: (org: Cv::Point2s, sz: Cv::Size2s) -> NilClass
-               | (pt1: Cv::Point2s, pt2: Cv::Point2s) -> NilClass
                | () -> NilClass
+               | (pt1: Cv::Point2s, pt2: Cv::Point2s) -> NilClass
                | (_x: Integer, _y: Integer, _width: Integer, _height: Integer) -> NilClass
     def -: (arg_0: Cv::Size2s) -> Cv::Rect2s
       | (arg_0: Cv::Point2s) -> Cv::Rect2s
     def ==: (arg_0: Cv::Rect2s) -> TrueClass
     def area: () -> Integer
+    def assign: (r: Cv::Rect2s) -> Cv::Rect2s
+           | (r: Cv::Rect2s) -> Cv::Rect2s
     def assign_minus: (arg_0: Cv::Point2s) -> Cv::Rect2s
                  | (arg_0: Cv::Size2s) -> Cv::Rect2s
     def assign_plus: (arg_0: Cv::Size2s) -> Cv::Rect2s

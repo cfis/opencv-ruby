@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::Estimator) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::Estimator
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉Estimator≻) -> NilClass
     def use_count: () -> Integer
   end
 end

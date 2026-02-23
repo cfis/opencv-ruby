@@ -1,7 +1,7 @@
 module Cv::Ocl
   class Image2D
     def assign: (i: Cv::Ocl::Image2D) -> Cv::Ocl::Image2D
-           | (: Cv::Ocl::Image2D) -> Cv::Ocl::Image2D
+           | (arg_0: Cv::Ocl::Image2D) -> Cv::Ocl::Image2D
     def initialize: () -> NilClass
                | (src: Cv::UMat, norm: TrueClass, alias: TrueClass) -> NilClass
     def initialize_copy: (i: Cv::Ocl::Image2D) -> NilClass

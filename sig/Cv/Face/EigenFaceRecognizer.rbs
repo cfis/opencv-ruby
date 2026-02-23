@@ -1,0 +1,4 @@
+module Cv::Face
+  class EigenFaceRecognizer
+  end
+end

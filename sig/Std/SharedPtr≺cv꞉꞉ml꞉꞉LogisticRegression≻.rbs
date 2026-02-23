@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Ml::LogisticRegression) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Ml::LogisticRegression
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ml꞉꞉LogisticRegression≻) -> NilClass
     def use_count: () -> Integer
   end
 end

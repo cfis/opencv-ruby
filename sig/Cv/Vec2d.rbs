@@ -2,17 +2,17 @@ module Cv
   class Vec2d
     def []: (i: Integer) -> Float
        | (i: Integer) -> Float
-    def initialize: () -> NilClass
-               | (values: Rice::Pointer≺double≻) -> NilClass
-               | (v0: Float, v1: Float) -> NilClass
-               | (a: Cv::Matx21d, b: Cv::Matx21d, op: Cv::MatxAddOp) -> NilClass
-               | (a: Cv::Matx21d, b: Cv::Matx21d, op: Cv::MatxSubOp) -> NilClass
+       | (i: Integer) -> Float
+       | (i: Integer) -> Float
     def []=: (arg_0: Integer, arg_1: Float) -> NilClass
     def assign: (rhs: Cv::Vec2d) -> Cv::Vec2d
-    def call: (i: Integer) -> Float
-         | (i: Integer) -> Float
+    def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
+               | (values: Rice::Pointer≺double≻) -> NilClass
+               | (v0: Float, v1: Float) -> NilClass
+               | (a: Cv::Matx21d, b: Cv::Matx21d, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx21d, b: Cv::Matx21d, arg_2: Cv::MatxAddOp) -> NilClass
     def conj: () -> Cv::Vec2d
-    def count: () -> Integer
     def initialize_copy: (v: Cv::Vec2d) -> NilClass
     def inspect: () -> String
     def mul: (v: Cv::Vec2d) -> Cv::Vec2d

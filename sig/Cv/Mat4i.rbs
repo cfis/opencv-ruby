@@ -1,43 +1,57 @@
 module Cv
   class Mat4i
-    def []: (roi: Cv::Rect) -> Cv::Mat4i
+    def []: (idx0: Integer) -> Cv::Vec4i
+       | (roi: Cv::Rect2i) -> Cv::Mat4i
        | (ranges: Cv::Range) -> Cv::Mat4i
        | (ranges: Std::Vector≺cv꞉꞉Range≻) -> Cv::Mat4i
+       | (y: Integer) -> Cv::Vec4i
+       | (y: Integer) -> Cv::Vec4i
+       | (idx: Rice::Pointer≺int≻) -> Cv::Vec4i
+       | (idx: Rice::Pointer≺int≻) -> Cv::Vec4i
+       | (pt: Cv::Point2i) -> Cv::Vec4i
        | (idx0: Integer) -> Cv::Vec4i
-       | (pt: Cv::Point) -> Cv::Vec4i
+       | (pt: Cv::Point2i) -> Cv::Vec4i
+       | (row: Integer, col: Integer) -> Cv::Vec4i
        | (row_range: Cv::Range, col_range: Cv::Range) -> Cv::Mat4i
        | (row: Integer, col: Integer) -> Cv::Vec4i
        | (idx0: Integer, idx1: Integer, idx2: Integer) -> Cv::Vec4i
+       | (idx0: Integer, idx1: Integer, idx2: Integer) -> Cv::Vec4i
     def initialize: (e: Cv::MatExpr) -> NilClass
-               | () -> NilClass
-               | (_size: Cv::Size) -> NilClass
-               | (m: Cv::Mat) -> NilClass
                | (e: Cv::MatExpr) -> NilClass
+               | (_size: Cv::Size2i) -> NilClass
+               | () -> NilClass
+               | (m: Cv::Mat) -> NilClass
                | (m: Cv::Mat) -> NilClass
                | (pt: Cv::Point3i, copy_data: TrueClass) -> NilClass
-               | (_size: Cv::Size, value: Cv::Vec4i) -> NilClass
-               | (pt: Cv::Point, copy_data: TrueClass) -> NilClass
+               | (pt: Cv::Point2i, copy_data: TrueClass) -> NilClass
                | (vec: Std::Vector≺cv꞉꞉Vec≺int‚ 4≻≻, copy_data: TrueClass) -> NilClass
-               | (_rows: Integer, _cols: Integer) -> NilClass
                | (m: Cv::Mat4i, ranges: Std::Vector≺cv꞉꞉Range≻) -> NilClass
                | (m: Cv::Mat4i, ranges: Cv::Range) -> NilClass
-               | (m: Cv::Mat4i, roi: Cv::Rect) -> NilClass
+               | (m: Cv::Mat4i, roi: Cv::Rect2i) -> NilClass
                | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
-               | (m: Cv::Mat4i, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
+               | (_size: Cv::Size2i, value: Cv::Vec4i) -> NilClass
+               | (_rows: Integer, _cols: Integer) -> NilClass
                | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, value: Cv::Vec4i) -> NilClass
                | (_rows: Integer, _cols: Integer, value: Cv::Vec4i) -> NilClass
-               | (_rows: Integer, _cols: Integer, _data: Cv::Vec4i, _step: Integer) -> NilClass
+               | (m: Cv::Mat4i, row_range: Cv::Range, col_range: Cv::Range) -> NilClass
                | (_ndims: Integer, _sizes: Rice::Pointer≺int≻, _data: Cv::Vec4i, _steps: Rice::Pointer≺unsigned Int64≻) -> NilClass
+               | (_rows: Integer, _cols: Integer, _data: Cv::Vec4i, _step: Integer) -> NilClass
     def []=: (arg_0: Integer, arg_1: Cv::Vec4i) -> NilClass
-        | (arg_0: Cv::Point, arg_1: Cv::Vec4i) -> NilClass
+        | (arg_0: Cv::Point2i, arg_1: Cv::Vec4i) -> NilClass
         | (arg_0: Integer, arg_1: Integer, arg_2: Cv::Vec4i) -> NilClass
         | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Cv::Vec4i) -> NilClass
     def _dump_data: () -> Hash
     def adjust_roi: (dtop: Integer, dbottom: Integer, dleft: Integer, dright: Integer) -> Cv::Mat4i
+    def assign: (m: Cv::Mat4i) -> Cv::Mat4i
+           | (s: Cv::Vec4i) -> Cv::Mat4i
+           | (m: Cv::Mat) -> Cv::Mat4i
+           | (m: Cv::Mat) -> Cv::Mat4i
+           | (m: Cv::Mat4i) -> Cv::Mat4i
+           | (e: Cv::MatExpr) -> Cv::Mat4i
     def channels: () -> Integer
     def clone: () -> Cv::Mat4i
     def col: (x: Integer) -> Cv::Mat4i
-    def create: (_size: Cv::Size) -> NilClass
+    def create: (_size: Cv::Size2i) -> NilClass
            | (_ndims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
            | (_rows: Integer, _cols: Integer) -> NilClass
     def cross: (m: Cv::Mat4i) -> Cv::Mat4i

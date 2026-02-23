@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉face꞉꞉StandardCollector≻
+    def initialize: (value: Cv::Face::StandardCollector) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Face::StandardCollector
+    def swap: (r: Std::SharedPtr≺cv꞉꞉face꞉꞉StandardCollector≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

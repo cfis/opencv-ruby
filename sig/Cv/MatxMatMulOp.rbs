@@ -1,6 +1,6 @@
 module Cv
   class MatxMatMulOp
     def initialize: () -> NilClass
-    def initialize_copy: (: Cv::MatxMatMulOp) -> NilClass
+    def initialize_copy: (arg_0: Cv::MatxMatMulOp) -> NilClass
   end
 end

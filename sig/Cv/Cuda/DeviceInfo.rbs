@@ -3,10 +3,10 @@ module Cv::Cuda
     def async_engine_count: () -> Integer
     def can_map_host_memory?: () -> TrueClass
     def clock_rate: () -> Integer
-    def initialize: () -> NilClass
-               | (device_id: Integer) -> NilClass
     def compatible?: () -> TrueClass
     def compute_mode: () -> Cv::Cuda::DeviceInfo::ComputeMode
+    def initialize: () -> NilClass
+               | (device_id: Integer) -> NilClass
     def concurrent_kernels?: () -> TrueClass
     def device_id: () -> Integer
     def ecc_enabled?: () -> TrueClass
@@ -16,23 +16,23 @@ module Cv::Cuda
     def l2_cache_size: () -> Integer
     def major_version: () -> Integer
     def max_grid_size: () -> Cv::Vec3i
-    def max_surface1_d: () -> Integer
-    def max_surface1_d_layered: () -> Cv::Vec2i
-    def max_surface2_d_layered: () -> Cv::Vec3i
-    def max_surface3_d: () -> Cv::Vec3i
+    def max_surface_1d: () -> Integer
+    def max_surface_1d_layered: () -> Cv::Vec2i
     def max_surface_2d: () -> Cv::Vec2i
+    def max_surface_2d_layered: () -> Cv::Vec3i
+    def max_surface_3d: () -> Cv::Vec3i
     def max_surface_cubemap: () -> Integer
     def max_surface_cubemap_layered: () -> Cv::Vec2i
-    def max_texture1_d: () -> Integer
-    def max_texture1_d_layered: () -> Cv::Vec2i
-    def max_texture1_d_linear: () -> Integer
-    def max_texture1_d_mipmap: () -> Integer
-    def max_texture2_d_gather: () -> Cv::Vec2i
-    def max_texture2_d_layered: () -> Cv::Vec3i
-    def max_texture2_d_linear: () -> Cv::Vec3i
-    def max_texture2_d_mipmap: () -> Cv::Vec2i
-    def max_texture3_d: () -> Cv::Vec3i
+    def max_texture_1d: () -> Integer
+    def max_texture_1d_layered: () -> Cv::Vec2i
+    def max_texture_1d_linear: () -> Integer
+    def max_texture_1d_mipmap: () -> Integer
     def max_texture_2d: () -> Cv::Vec2i
+    def max_texture_2d_gather: () -> Cv::Vec2i
+    def max_texture_2d_layered: () -> Cv::Vec3i
+    def max_texture_2d_linear: () -> Cv::Vec3i
+    def max_texture_2d_mipmap: () -> Cv::Vec2i
+    def max_texture_3d: () -> Cv::Vec3i
     def max_texture_cubemap: () -> Integer
     def max_texture_cubemap_layered: () -> Cv::Vec2i
     def max_threads_dim: () -> Cv::Vec3i
@@ -50,7 +50,7 @@ module Cv::Cuda
     def query_memory: (total_memory: Integer, free_memory: Integer) -> NilClass
     def regs_per_block: () -> Integer
     def shared_mem_per_block: () -> Integer
-    def supports?: (feature_set: Cv::Cuda::FeatureSet) -> TrueClass
+    def supports: (feature_set: Cv::Cuda::FeatureSet) -> TrueClass
     def surface_alignment: () -> Integer
     def tcc_driver?: () -> TrueClass
     def texture_alignment: () -> Integer

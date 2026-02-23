@@ -1,42 +1,46 @@
 module Cv
   class Matx22f
-    def !=: (arg_0: Cv::Matx22f) -> TrueClass
-    def *: (arg_0: Float) -> Cv::Matx22f
-      | (arg_0: Cv::Vec2f) -> Cv::Vec2f
-      | (arg_0: Float) -> Cv::Matx22f
-      | (arg_0: Integer) -> Cv::Matx22f
+    attr_reader val: String
+
     def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
                | (vals: Rice::Pointer≺float≻) -> NilClass
+               | (v0: Float, v1: Float) -> NilClass
+               | (a: Cv::Matx22f, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxMulOp) -> NilClass
                | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxSubOp) -> NilClass
                | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float) -> NilClass
                | (v0: Float, v1: Float, v2: Float, v3: Float) -> NilClass
-               | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxMulOp) -> NilClass
-               | (a: Cv::Matx22f, b: Cv::Matx22f, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx22f, arg_1: Cv::MatxTOp) -> NilClass
+    def !=: (arg_0: Cv::Matx22f) -> TrueClass
+    def *: (arg_0: Cv::Vec2f) -> Cv::Vec2f
+      | (arg_0: Float) -> Cv::Matx22f
+      | (arg_0: Float) -> Cv::Matx22f
+      | (arg_0: Integer) -> Cv::Matx22f
     def +: (arg_0: Cv::Matx22f) -> Cv::Matx22f
     def -: (arg_0: Cv::Matx22f) -> Cv::Matx22f
     def /: (arg_0: Float) -> Cv::Matx22f
       | (arg_0: Float) -> Cv::Matx22f
     def ==: (arg_0: Cv::Matx22f) -> TrueClass
+    def []: (row: Integer, col: Integer) -> Float
+       | (row: Integer, col: Integer) -> Float
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx22f
                   | (arg_0: Float) -> Cv::Matx22f
-    def assign_minus: (arg_0: Cv::Matx22f) -> Cv::Matx22f
-    def assign_multiply: (arg_0: Float) -> Cv::Matx22f
+    def assign_multiply: (arg_0: Integer) -> Cv::Matx22f
                     | (arg_0: Float) -> Cv::Matx22f
-                    | (arg_0: Integer) -> Cv::Matx22f
-    def assign_plus: (arg_0: Cv::Matx22f) -> Cv::Matx22f
-    def call: (row: Integer, col: Integer) -> Float
-         | (row: Integer, col: Integer) -> Float
-    def channels: () -> Integer
+                    | (arg_0: Float) -> Cv::Matx22f
     def col: (i: Integer) -> Cv::Matx21f
-    def cols: () -> Integer
     def ddot: (v: Cv::Matx22f) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx21f
     def div: (a: Cv::Matx22f) -> Cv::Matx22f
+    def assign_plus: (arg_0: Cv::Matx22f) -> Cv::Matx22f
+    def assign_minus: (arg_0: Cv::Matx22f) -> Cv::Matx22f
+    def cols: () -> Integer
+    def channels: () -> Integer
     def dot: (v: Cv::Matx22f) -> Float
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx22f) -> TrueClass
     def input_array: () -> Cv::InputArray
     def inspect: () -> String

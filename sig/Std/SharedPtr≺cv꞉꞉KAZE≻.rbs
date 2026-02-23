@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::KAZE) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::KAZE
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉KAZE≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉KAZE≻) -> NilClass
     def use_count: () -> Integer
   end
 end

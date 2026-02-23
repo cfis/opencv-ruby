@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::ORB) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::ORB
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ORB≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ORB≻) -> NilClass
     def use_count: () -> Integer
   end
 end

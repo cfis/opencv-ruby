@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Dnn::GeluLayer) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Dnn::GeluLayer
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GeluLayer≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉GeluLayer≻) -> NilClass
     def use_count: () -> Integer
   end
 end

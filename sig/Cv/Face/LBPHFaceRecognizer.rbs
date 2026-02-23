@@ -1,0 +1,16 @@
+module Cv::Face
+  class LBPHFaceRecognizer
+    def get_grid_x: () -> Integer
+    def get_grid_y: () -> Integer
+    def get_histograms: () -> Std::Vector≺cv꞉꞉Mat≻
+    def get_labels: () -> Cv::Mat
+    def get_neighbors: () -> Integer
+    def get_radius: () -> Integer
+    def get_threshold: () -> Float
+    def set_grid_x: (val: Integer) -> NilClass
+    def set_grid_y: (val: Integer) -> NilClass
+    def set_neighbors: (val: Integer) -> NilClass
+    def set_radius: (val: Integer) -> NilClass
+    def set_threshold: (val: Float) -> NilClass
+  end
+end

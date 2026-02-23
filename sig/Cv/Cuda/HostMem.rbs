@@ -2,19 +2,23 @@ module Cv::Cuda
   class HostMem
     attr_accessor alloc_type: Cv::Cuda::HostMem::AllocType
     attr_accessor cols: Integer
+    attr_accessor data: Rice::Pointer≺unsigned char≻
+    attr_accessor dataend: Rice::Pointer≺unsigned char≻
+    attr_accessor datastart: Rice::Pointer≺unsigned char≻
     attr_accessor flags: Integer
+    attr_accessor refcount: Rice::Pointer≺int≻
     attr_accessor rows: Integer
     attr_accessor step: Integer
 
     def initialize: (alloc_type: Cv::Cuda::HostMem::AllocType) -> NilClass
                | (arr: Cv::InputArray, alloc_type: Cv::Cuda::HostMem::AllocType) -> NilClass
-               | (size: Cv::Size, type: Integer, alloc_type: Cv::Cuda::HostMem::AllocType) -> NilClass
+               | (size: Cv::Size2i, type: Integer, alloc_type: Cv::Cuda::HostMem::AllocType) -> NilClass
                | (rows: Integer, cols: Integer, type: Integer, alloc_type: Cv::Cuda::HostMem::AllocType) -> NilClass
     def assign: (m: Cv::Cuda::HostMem) -> Cv::Cuda::HostMem
     def channels: () -> Integer
     def clone: () -> Cv::Cuda::HostMem
     def continuous?: () -> TrueClass
-    def create: (size: Cv::Size, type: Integer) -> NilClass
+    def create: (size: Cv::Size2i, type: Integer) -> NilClass
            | (rows: Integer, cols: Integer, type: Integer) -> NilClass
     def create_gpu_mat_header: () -> Cv::Cuda::GpuMat
     def create_mat_header: () -> Cv::Mat
@@ -25,7 +29,7 @@ module Cv::Cuda
     def initialize_copy: (m: Cv::Cuda::HostMem) -> NilClass
     def release: () -> NilClass
     def reshape: (cn: Integer, rows: Integer) -> Cv::Cuda::HostMem
-    def size: () -> Cv::Size
+    def size: () -> Cv::Size2i
     def step1: () -> Integer
     def swap: (b: Cv::Cuda::HostMem) -> NilClass
     def type: () -> Integer

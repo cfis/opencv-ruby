@@ -1,0 +1,9 @@
+module Cv::Xfeatures2d
+  class LUCID
+    def get_blur_kernel: () -> Integer
+    def get_default_name: () -> String
+    def get_lucid_kernel: () -> Integer
+    def set_blur_kernel: (blur_kernel: Integer) -> NilClass
+    def set_lucid_kernel: (lucid_kernel: Integer) -> NilClass
+  end
+end

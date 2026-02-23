@@ -2,16 +2,17 @@ module Cv
   class Vec3d
     def []: (i: Integer) -> Float
        | (i: Integer) -> Float
-    def initialize: () -> NilClass
-               | (values: Rice::Pointer≺double≻) -> NilClass
-               | (a: Cv::Matx31d, b: Cv::Matx31d, op: Cv::MatxAddOp) -> NilClass
-               | (v0: Float, v1: Float, v2: Float) -> NilClass
-               | (a: Cv::Matx31d, b: Cv::Matx31d, op: Cv::MatxSubOp) -> NilClass
+       | (i: Integer) -> Float
+       | (i: Integer) -> Float
     def []=: (arg_0: Integer, arg_1: Float) -> NilClass
     def assign: (rhs: Cv::Vec3d) -> Cv::Vec3d
-    def call: (i: Integer) -> Float
-         | (i: Integer) -> Float
-    def count: () -> Integer
+    def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
+               | (values: Rice::Pointer≺double≻) -> NilClass
+               | (v0: Float, v1: Float) -> NilClass
+               | (a: Cv::Matx31d, b: Cv::Matx31d, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx31d, b: Cv::Matx31d, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float) -> NilClass
     def cross: (v: Cv::Vec3d) -> Cv::Vec3d
     def initialize_copy: (v: Cv::Vec3d) -> NilClass
     def inspect: () -> String

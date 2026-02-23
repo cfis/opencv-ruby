@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉dnnSuperres꞉꞉DnnSuperResImpl≻
+    def initialize: (value: Cv::DnnSuperres::DnnSuperResImpl) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::DnnSuperres::DnnSuperResImpl
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnnSuperres꞉꞉DnnSuperResImpl≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

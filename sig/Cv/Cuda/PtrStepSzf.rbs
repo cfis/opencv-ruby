@@ -1,0 +1,12 @@
+module Cv::Cuda
+  class PtrStepSzf
+    attr_accessor cols: Integer
+    attr_accessor rows: Integer
+
+    def initialize: () -> NilClass
+               | (rows_: Integer, cols_: Integer, data_: Rice::Pointer≺float≻, step_: Integer) -> NilClass
+    def call: (pos: Cv::Point2i) -> Float
+         | (pos: Cv::Point2i) -> Float
+    def size: () -> Cv::Size2i
+  end
+end

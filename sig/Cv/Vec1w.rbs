@@ -2,16 +2,15 @@ module Cv
   class Vec1w
     def []: (i: Integer) -> Integer
        | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
     def initialize: () -> NilClass
-               | (v0: Integer) -> NilClass
                | (values: Rice::Pointer≺unsigned short≻) -> NilClass
-               | (a: Cv::Matx11w, b: Cv::Matx11w, op: Cv::MatxAddOp) -> NilClass
-               | (a: Cv::Matx11w, b: Cv::Matx11w, op: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx11w, b: Cv::Matx11w, arg_2: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx11w, b: Cv::Matx11w, arg_2: Cv::MatxSubOp) -> NilClass
+               | (v0: Integer) -> NilClass
     def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
     def assign: (rhs: Cv::Vec1w) -> Cv::Vec1w
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-    def count: () -> Integer
     def initialize_copy: (v: Cv::Vec1w) -> NilClass
     def inspect: () -> String
     def mul: (v: Cv::Vec1w) -> Cv::Vec1w

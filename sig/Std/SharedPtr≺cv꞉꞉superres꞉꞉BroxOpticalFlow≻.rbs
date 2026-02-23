@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉superres꞉꞉BroxOpticalFlow≻
+    def initialize: (value: Cv::Superres::BroxOpticalFlow) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Superres::BroxOpticalFlow
+    def swap: (r: Std::SharedPtr≺cv꞉꞉superres꞉꞉BroxOpticalFlow≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

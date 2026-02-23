@@ -1,20 +1,25 @@
 module Cv::Ocl
   class Context
+    attr_accessor p: Cv::Ocl::Context::Impl
+
     def initialize: () -> NilClass
                | (dtype: Integer) -> NilClass
     def assign: (c: Cv::Ocl::Context) -> Cv::Ocl::Context
            | (c: Cv::Ocl::Context) -> Cv::Ocl::Context
+    def create: (dtype: Integer) -> TrueClass
     def create?: () -> TrueClass
-            | (dtype: Integer) -> TrueClass
     def device: (idx: Integer) -> Cv::Ocl::Device
     def empty?: () -> TrueClass
+    def get_impl: () -> Cv::Ocl::Context::Impl
     def get_open_cl_context_property: (property_id: Integer) -> Rice::Pointer≺void≻
     def get_prog: (prog: Cv::Ocl::ProgramSource, buildopt: String, errmsg: String) -> Cv::Ocl::Program
+    def get_user_context: (type_id: Std::TypeIndex) -> Std::SharedPtr≺cv꞉꞉ocl꞉꞉Context꞉꞉UserContext≻
     def initialize_copy: (c: Cv::Ocl::Context) -> NilClass
     def ndevices: () -> Integer
     def ptr: () -> Rice::Pointer≺void≻
     def release: () -> NilClass
     def set_use_svm: (enabled: TrueClass) -> NilClass
+    def set_user_context: (type_id: Std::TypeIndex, user_context: Std::SharedPtr≺cv꞉꞉ocl꞉꞉Context꞉꞉UserContext≻) -> NilClass
     def unload_prog: (prog: Cv::Ocl::Program) -> NilClass
     def use_svm?: () -> TrueClass
   end

@@ -1,8 +1,9 @@
 module Cv
   class SparseMatIterator2f
+    def assign: (it: Cv::SparseMatIterator2f) -> Cv::SparseMatIterator2f
     def dereference: () -> Cv::Vec2f
     def increment: () -> Cv::SparseMatIterator2f
-              | (: Integer) -> Cv::SparseMatIterator2f
+    def increment_post: (arg_0: Integer) -> Cv::SparseMatIterator2f
     def initialize: () -> NilClass
                | (_m: Cv::SparseMat) -> NilClass
                | (_m: Cv::SparseMat2f) -> NilClass

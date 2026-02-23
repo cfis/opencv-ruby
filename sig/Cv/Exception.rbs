@@ -11,6 +11,6 @@ module Cv
     def format_message: () -> NilClass
     def initialize: () -> NilClass
                | (_code: Integer, _err: String, _func: String, _file: String, _line: Integer) -> NilClass
-    def message: () -> String
+    def what: () -> String
   end
 end

@@ -13,12 +13,14 @@ module Cv
     def /: (arg_0: Integer) -> Cv::Size2w
     def ==: (arg_0: Cv::Size2w) -> TrueClass
     def area: () -> Integer
-    def assign_divide: (arg_0: Integer) -> Cv::Size2w
-    def assign_minus: (arg_0: Cv::Size2w) -> Cv::Size2w
+    def aspect_ratio: () -> Float
+    def assign: (sz: Cv::Size2w) -> Cv::Size2w
+           | (sz: Cv::Size2w) -> Cv::Size2w
     def assign_multiply: (arg_0: Integer) -> Cv::Size2w
     def assign_plus: (arg_0: Cv::Size2w) -> Cv::Size2w
     def empty?: () -> TrueClass
-    def aspect_ratio: () -> Float
+    def assign_minus: (arg_0: Cv::Size2w) -> Cv::Size2w
+    def assign_divide: (arg_0: Integer) -> Cv::Size2w
     def initialize_copy: (sz: Cv::Size2w) -> NilClass
     def inspect: () -> String
     def to_s: () -> String

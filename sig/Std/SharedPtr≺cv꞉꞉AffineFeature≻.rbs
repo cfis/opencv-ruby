@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::AffineFeature) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::AffineFeature
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉AffineFeature≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉AffineFeature≻) -> NilClass
     def use_count: () -> Integer
   end
 end

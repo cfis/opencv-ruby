@@ -1,0 +1,7 @@
+module Cv::Face
+  class FacemarkKazemi
+    def get_faces: (image: Cv::InputArray, faces: Cv::OutputArray) -> TrueClass
+    def set_face_detector: (f: Proc, user_data: Rice::Pointer≺void≻) -> TrueClass
+    def training: (images: Std::Vector≺cv꞉꞉Mat≻, landmarks: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻, configfile: String, scale: Cv::Size2i, model_filename: String) -> TrueClass
+  end
+end

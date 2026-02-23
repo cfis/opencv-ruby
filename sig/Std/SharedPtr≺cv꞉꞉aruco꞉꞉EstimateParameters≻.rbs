@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉aruco꞉꞉EstimateParameters≻
+    def initialize: (value: Cv::Aruco::EstimateParameters) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Aruco::EstimateParameters
+    def swap: (r: Std::SharedPtr≺cv꞉꞉aruco꞉꞉EstimateParameters≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

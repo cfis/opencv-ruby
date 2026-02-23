@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Ml::EM) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Ml::EM
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉ml꞉꞉EM≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ml꞉꞉EM≻) -> NilClass
     def use_count: () -> Integer
   end
 end

@@ -1,0 +1,4 @@
+module Cv::Ogl::Texture2D
+  class Impl
+  end
+end

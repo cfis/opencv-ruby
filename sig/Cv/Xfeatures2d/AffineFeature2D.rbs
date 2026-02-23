@@ -1,0 +1,6 @@
+module Cv::Xfeatures2d
+  class AffineFeature2D
+    def detect: (image: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻, mask: Cv::InputArray) -> NilClass
+    def detect_and_compute: (image: Cv::InputArray, mask: Cv::InputArray, keypoints: Std::Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻, descriptors: Cv::OutputArray, use_provided_keypoints: TrueClass) -> NilClass
+  end
+end

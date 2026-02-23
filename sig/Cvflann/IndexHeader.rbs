@@ -4,6 +4,8 @@ module Cvflann
     attr_accessor data_type: Cvflann::FlannDatatypeT
     attr_accessor index_type: Cvflann::FlannAlgorithmT
     attr_accessor rows: Integer
+    attr_reader signature: String
+    attr_reader version: String
 
     def initialize: () -> NilClass
   end

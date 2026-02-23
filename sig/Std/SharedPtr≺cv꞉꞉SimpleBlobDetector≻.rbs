@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::SimpleBlobDetector) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::SimpleBlobDetector
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉SimpleBlobDetector≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉SimpleBlobDetector≻) -> NilClass
     def use_count: () -> Integer
   end
 end

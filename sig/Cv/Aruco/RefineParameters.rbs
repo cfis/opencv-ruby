@@ -5,7 +5,7 @@ module Cv::Aruco
     attr_accessor min_rep_distance: Float
 
     def initialize: (min_rep_distance: Float, error_correction_rate: Float, check_all_orders: TrueClass) -> NilClass
-    def read_refine_parameters?: (fn: Cv::FileNode) -> TrueClass
-    def write_refine_parameters?: (fs: Cv::FileStorage, name: String) -> TrueClass
+    def read_refine_parameters: (fn: Cv::FileNode) -> TrueClass
+    def write_refine_parameters: (fs: Cv::FileStorage, name: String) -> TrueClass
   end
 end

@@ -1,0 +1,4 @@
+module Cv::Dnn::Accessor
+  class DnnNetAccessor
+  end
+end

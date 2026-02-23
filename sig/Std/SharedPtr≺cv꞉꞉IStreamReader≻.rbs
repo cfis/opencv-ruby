@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉IStreamReader≻
+    def initialize: (value: Cv::IStreamReader) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::IStreamReader
+    def swap: (r: Std::SharedPtr≺cv꞉꞉IStreamReader≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

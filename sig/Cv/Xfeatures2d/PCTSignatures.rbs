@@ -1,0 +1,46 @@
+module Cv::Xfeatures2d
+  class PCTSignatures
+    def compute_signature: (image: Cv::InputArray, signature: Cv::OutputArray) -> NilClass
+    def compute_signatures: (images: Std::Vector≺cv꞉꞉Mat≻, signatures: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
+    def get_cluster_min_size: () -> Integer
+    def get_distance_function: () -> Integer
+    def get_drop_threshold: () -> Float
+    def get_grayscale_bits: () -> Integer
+    def get_init_seed_count: () -> Integer
+    def get_init_seed_indexes: () -> Std::Vector≺int≻
+    def get_iteration_count: () -> Integer
+    def get_joining_distance: () -> Float
+    def get_max_clusters_count: () -> Integer
+    def get_sample_count: () -> Integer
+    def get_sampling_points: () -> Std::Vector≺cv꞉꞉Point_≺float≻≻
+    def get_weight_a: () -> Float
+    def get_weight_b: () -> Float
+    def get_weight_contrast: () -> Float
+    def get_weight_entropy: () -> Float
+    def get_weight_l: () -> Float
+    def get_weight_x: () -> Float
+    def get_weight_y: () -> Float
+    def get_window_radius: () -> Integer
+    def set_cluster_min_size: (cluster_min_size: Integer) -> NilClass
+    def set_distance_function: (distance_function: Integer) -> NilClass
+    def set_drop_threshold: (drop_threshold: Float) -> NilClass
+    def set_grayscale_bits: (grayscale_bits: Integer) -> NilClass
+    def set_init_seed_indexes: (init_seed_indexes: Std::Vector≺int≻) -> NilClass
+    def set_iteration_count: (iteration_count: Integer) -> NilClass
+    def set_joining_distance: (joining_distance: Float) -> NilClass
+    def set_max_clusters_count: (max_clusters_count: Integer) -> NilClass
+    def set_sampling_points: (sampling_points: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
+    def set_translation: (idx: Integer, value: Float) -> NilClass
+    def set_translations: (translations: Std::Vector≺float≻) -> NilClass
+    def set_weight: (idx: Integer, value: Float) -> NilClass
+    def set_weight_a: (weight: Float) -> NilClass
+    def set_weight_b: (weight: Float) -> NilClass
+    def set_weight_contrast: (weight: Float) -> NilClass
+    def set_weight_entropy: (weight: Float) -> NilClass
+    def set_weight_l: (weight: Float) -> NilClass
+    def set_weight_x: (weight: Float) -> NilClass
+    def set_weight_y: (weight: Float) -> NilClass
+    def set_weights: (weights: Std::Vector≺float≻) -> NilClass
+    def set_window_radius: (radius: Integer) -> NilClass
+  end
+end

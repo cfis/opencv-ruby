@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::MergeRobertson) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::MergeRobertson
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉MergeRobertson≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉MergeRobertson≻) -> NilClass
     def use_count: () -> Integer
   end
 end

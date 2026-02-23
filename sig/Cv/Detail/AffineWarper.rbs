@@ -1,10 +1,10 @@
 module Cv::Detail
   class AffineWarper
-    def build_maps: (src_size: Cv::Size, k: Cv::InputArray, h: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect
+    def build_maps: (src_size: Cv::Size2i, k: Cv::InputArray, h: Cv::InputArray, xmap: Cv::OutputArray, ymap: Cv::OutputArray) -> Cv::Rect2i
     def initialize: (scale: Float) -> NilClass
-    def warp: (src: Cv::InputArray, k: Cv::InputArray, h: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point
+    def warp: (src: Cv::InputArray, k: Cv::InputArray, h: Cv::InputArray, interp_mode: Integer, border_mode: Integer, dst: Cv::OutputArray) -> Cv::Point2i
     def warp_point: (pt: Cv::Point2f, k: Cv::InputArray, h: Cv::InputArray) -> Cv::Point2f
     def warp_point_backward: (pt: Cv::Point2f, k: Cv::InputArray, h: Cv::InputArray) -> Cv::Point2f
-    def warp_roi: (src_size: Cv::Size, k: Cv::InputArray, h: Cv::InputArray) -> Cv::Rect
+    def warp_roi: (src_size: Cv::Size2i, k: Cv::InputArray, h: Cv::InputArray) -> Cv::Rect2i
   end
 end

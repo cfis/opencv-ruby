@@ -1,0 +1,22 @@
+module Cv::Plot
+  class Plot2d
+    def render: (_plot_result: Cv::OutputArray) -> NilClass
+    def set_grid_lines_number: (grid_lines_number: Integer) -> NilClass
+    def set_invert_orientation: (_invert_orientation: TrueClass) -> NilClass
+    def set_max_x: (_plot_max_x: Float) -> NilClass
+    def set_max_y: (_plot_max_y: Float) -> NilClass
+    def set_min_x: (_plot_min_x: Float) -> NilClass
+    def set_min_y: (_plot_min_y: Float) -> NilClass
+    def set_need_plot_line: (_need_plot_line: TrueClass) -> NilClass
+    def set_plot_axis_color: (_plot_axis_color: Cv::Scalar) -> NilClass
+    def set_plot_background_color: (_plot_background_color: Cv::Scalar) -> NilClass
+    def set_plot_grid_color: (_plot_grid_color: Cv::Scalar) -> NilClass
+    def set_plot_line_color: (_plot_line_color: Cv::Scalar) -> NilClass
+    def set_plot_line_width: (_plot_line_width: Integer) -> NilClass
+    def set_plot_size: (_plot_size_width: Integer, _plot_size_height: Integer) -> NilClass
+    def set_plot_text_color: (_plot_text_color: Cv::Scalar) -> NilClass
+    def set_point_idx_to_print: (point_idx: Integer) -> NilClass
+    def set_show_grid: (need_show_grid: TrueClass) -> NilClass
+    def set_show_text: (need_show_text: TrueClass) -> NilClass
+  end
+end

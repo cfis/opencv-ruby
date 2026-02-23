@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::QRCodeEncoder) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::QRCodeEncoder
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉QRCodeEncoder≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉QRCodeEncoder≻) -> NilClass
     def use_count: () -> Integer
   end
 end

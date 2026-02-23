@@ -1,0 +1,24 @@
+module Cv::Face::FacemarkLBF
+  class Params
+    attr_accessor bagging_overlap: Float
+    attr_accessor cascade_face: String
+    attr_accessor detect_roi: Cv::Rect2i
+    attr_accessor feats_m: Std::Vector≺int≻
+    attr_accessor init_shape_n: Integer
+    attr_accessor model_filename: String
+    attr_accessor n_landmarks: Integer
+    attr_reader pupils: Rice::Pointer≺vector≺int≻≻
+    attr_accessor radius_m: Std::Vector≺double≻
+    attr_accessor save_model: TrueClass
+    attr_accessor seed: Integer
+    attr_accessor shape_offset: Float
+    attr_accessor stages_n: Integer
+    attr_accessor tree_depth: Integer
+    attr_accessor tree_n: Integer
+    attr_accessor verbose: TrueClass
+
+    def initialize: () -> NilClass
+    def read: (arg_0: Cv::FileNode) -> NilClass
+    def write: (arg_0: Cv::FileStorage) -> NilClass
+  end
+end

@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::VariationalRefinement) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::VariationalRefinement
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉VariationalRefinement≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉VariationalRefinement≻) -> NilClass
     def use_count: () -> Integer
   end
 end

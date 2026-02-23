@@ -1,0 +1,4 @@
+module Cv::Ocl::PlatformInfo
+  class Impl
+  end
+end

@@ -18,32 +18,34 @@ module Cv::Dnn
             | (output_blobs: Cv::OutputArray, out_blob_names: Std::Vector≺string≻) -> NilClass
             | (output_blobs: Std::Vector≺vector≺cv꞉꞉Mat≻≻, out_blob_names: Std::Vector≺string≻) -> NilClass
     def forward_async: (output_name: String) -> Cv::AsyncArray
-    def get_flops: (net_input_shape: Std::Vector≺int≻) -> Integer
-              | (net_input_shapes: Std::Vector≺vector≺int≻≻) -> Integer
+    def get_flops: (net_input_shapes: Std::Vector≺vector≺int≻≻) -> Integer
+              | (net_input_shape: Std::Vector≺int≻) -> Integer
               | (layer_id: Integer, net_input_shapes: Std::Vector≺vector≺int≻≻) -> Integer
               | (layer_id: Integer, net_input_shape: Std::Vector≺int≻) -> Integer
+    def get_impl: () -> Cv::Dnn::Net::Impl
+    def get_impl_ref: () -> Cv::Dnn::Net::Impl
     def get_input_details: (scales: Std::Vector≺float≻, zeropoints: Std::Vector≺int≻) -> NilClass
     def get_layer: (layer_id: Integer) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
-              | (layer_id: Cv::Dnn::Dnn4V20241223::DictValue) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
               | (layer_name: String) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
+              | (layer_id: Cv::Dnn::DictValue) -> Cv::Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻
     def get_layer_id: (layer: String) -> Integer
     def get_layer_inputs: (layer_id: Integer) -> Std::Vector≺cv꞉꞉Ptr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉Layer≻≻
     def get_layer_names: () -> Std::Vector≺string≻
-    def get_layer_shapes: (net_input_shape: Std::Vector≺int≻, layer_id: Integer, in_layer_shapes: Std::Vector≺vector≺int≻≻, out_layer_shapes: Std::Vector≺vector≺int≻≻) -> NilClass
-                     | (net_input_shapes: Std::Vector≺vector≺int≻≻, layer_id: Integer, in_layer_shapes: Std::Vector≺vector≺int≻≻, out_layer_shapes: Std::Vector≺vector≺int≻≻) -> NilClass
+    def get_layer_shapes: (net_input_shapes: Std::Vector≺vector≺int≻≻, layer_id: Integer, in_layer_shapes: Std::Vector≺vector≺int≻≻, out_layer_shapes: Std::Vector≺vector≺int≻≻) -> NilClass
+                     | (net_input_shape: Std::Vector≺int≻, layer_id: Integer, in_layer_shapes: Std::Vector≺vector≺int≻≻, out_layer_shapes: Std::Vector≺vector≺int≻≻) -> NilClass
     def get_layer_types: (layers_types: Std::Vector≺string≻) -> NilClass
     def get_layers_count: (layer_type: String) -> Integer
     def get_layers_shapes: (net_input_shape: Std::Vector≺int≻, layers_ids: Std::Vector≺int≻, in_layers_shapes: Std::Vector≺vector≺vector≺int≻≻≻, out_layers_shapes: Std::Vector≺vector≺vector≺int≻≻≻) -> NilClass
                       | (net_input_shapes: Std::Vector≺vector≺int≻≻, layers_ids: Std::Vector≺int≻, in_layers_shapes: Std::Vector≺vector≺vector≺int≻≻≻, out_layers_shapes: Std::Vector≺vector≺vector≺int≻≻≻) -> NilClass
-    def get_memory_consumption: (net_input_shapes: Std::Vector≺vector≺int≻≻, weights: Integer, blobs: Integer) -> NilClass
-                           | (net_input_shape: Std::Vector≺int≻, weights: Integer, blobs: Integer) -> NilClass
+    def get_memory_consumption: (net_input_shape: Std::Vector≺int≻, weights: Integer, blobs: Integer) -> NilClass
+                           | (net_input_shapes: Std::Vector≺vector≺int≻≻, weights: Integer, blobs: Integer) -> NilClass
                            | (layer_id: Integer, net_input_shape: Std::Vector≺int≻, weights: Integer, blobs: Integer) -> NilClass
-                           | (layer_id: Integer, net_input_shapes: Std::Vector≺vector≺int≻≻, weights: Integer, blobs: Integer) -> NilClass
                            | (net_input_shapes: Std::Vector≺vector≺int≻≻, layer_ids: Std::Vector≺int≻, weights: Std::Vector≺unsigned Int64≻, blobs: Std::Vector≺unsigned Int64≻) -> NilClass
+                           | (layer_id: Integer, net_input_shapes: Std::Vector≺vector≺int≻≻, weights: Integer, blobs: Integer) -> NilClass
                            | (net_input_shape: Std::Vector≺int≻, layer_ids: Std::Vector≺int≻, weights: Std::Vector≺unsigned Int64≻, blobs: Std::Vector≺unsigned Int64≻) -> NilClass
     def get_output_details: (scales: Std::Vector≺float≻, zeropoints: Std::Vector≺int≻) -> NilClass
-    def get_param: (layer: Integer, num_param: Integer) -> Cv::Mat
-              | (layer_name: String, num_param: Integer) -> Cv::Mat
+    def get_param: (layer_name: String, num_param: Integer) -> Cv::Mat
+              | (layer: Integer, num_param: Integer) -> Cv::Mat
     def get_perf_profile: (timings: Std::Vector≺double≻) -> Integer
     def get_unconnected_out_layers: () -> Std::Vector≺int≻
     def get_unconnected_out_layers_names: () -> Std::Vector≺string≻

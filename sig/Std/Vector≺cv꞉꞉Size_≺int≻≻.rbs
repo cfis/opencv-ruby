@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Size_≺int≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Size) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Size
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Size) -> NilClass
+               | (count: Integer, value: Cv::Size2i) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Size2i
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Size2i) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Size_≺int≻≻
-    def delete: (arg_0: Cv::Size) -> Cv::Size
-    def delete_at: (arg_0: Integer) -> Cv::Size
+    def delete: (value: Cv::Size2i) -> Cv::Size2i
+    def delete_at: (pos: Integer) -> Cv::Size2i
     def empty?: () -> TrueClass
     def clear: () -> NilClass
-    def first: () -> Cv::Size
-    def include?: (arg_0: Cv::Size) -> TrueClass
-    def index: (arg_0: Cv::Size) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Size) -> Std::Vector≺cv꞉꞉Size_≺int≻≻
-    def last: () -> Cv::Size
+    def first: () -> Cv::Size2i
+    def include?: (value: Cv::Size2i) -> TrueClass
+    def index: (value: Cv::Size2i) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Size_≺int≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Size2i) -> Std::Vector≺cv꞉꞉Size_≺int≻≻
+    def last: () -> Cv::Size2i
     def max_size: () -> Integer
-    def pop: () -> Cv::Size
-    def push: (arg_0: Cv::Size) -> Std::Vector≺cv꞉꞉Size_≺int≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def pop: () -> Cv::Size2i
+    def push: (value: Cv::Size2i) -> Std::Vector≺cv꞉꞉Size_≺int≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

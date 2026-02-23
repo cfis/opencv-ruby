@@ -1,0 +1,11 @@
+module Std
+  class OStream
+    def bad?: () -> TrueClass
+    def clear: (state: Integer) -> NilClass
+    def eof?: () -> TrueClass
+    def fail?: () -> TrueClass
+    def flush: () -> Std::OStream
+    def good?: () -> TrueClass
+    def write: (value: Integer) -> Std::OStream
+  end
+end

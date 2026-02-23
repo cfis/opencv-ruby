@@ -7,6 +7,7 @@ module Cv
                | (vec: Std::Vector≺bool≻) -> NilClass
                | (val: Float) -> NilClass
                | (d_mat: Cv::Cuda::GpuMat) -> NilClass
+               | (d_mat_array: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> NilClass
                | (buf: Cv::Ogl::Buffer) -> NilClass
                | (cuda_mem: Cv::Cuda::HostMem) -> NilClass
                | (um: Cv::UMat) -> NilClass
@@ -43,7 +44,7 @@ module Cv
                | (arg_0: Std::Vector≺cv꞉꞉Vec≺double‚ 4≻≻) -> NilClass
                | (_flags: Integer, _obj: Rice::Pointer≺void≻) -> NilClass
     def channels: (i: Integer) -> Integer
-    def get_sz: () -> Cv::Size
+    def get_sz: () -> Cv::Size2i
     def gpu_mat?: () -> TrueClass
     def get_obj: () -> Rice::Pointer≺void≻
     def get_flags: () -> Integer
@@ -60,7 +61,6 @@ module Cv
     def get_mat_vector: (mv: Std::Vector≺cv꞉꞉Mat≻) -> NilClass
     def empty?: () -> TrueClass
     def get_mat: (idx: Integer) -> Cv::Mat
-    def get_mat_: (idx: Integer) -> Cv::Mat
     def get_u_mat: (idx: Integer) -> Cv::UMat
     def gpu_mat_vector?: () -> TrueClass
     def kind: () -> Cv::InputArray::KindFlag
@@ -69,8 +69,8 @@ module Cv
     def matx?: () -> TrueClass
     def offset: (i: Integer) -> Integer
     def rows: (i: Integer) -> Integer
-    def same_size?: (arr: Cv::InputArray) -> TrueClass
-    def size: (i: Integer) -> Cv::Size
+    def same_size: (arr: Cv::InputArray) -> TrueClass
+    def size: (i: Integer) -> Cv::Size2i
     def sizend: (sz: Rice::Pointer≺int≻, i: Integer) -> Integer
     def step: (i: Integer) -> Integer
     def submatrix?: (i: Integer) -> TrueClass

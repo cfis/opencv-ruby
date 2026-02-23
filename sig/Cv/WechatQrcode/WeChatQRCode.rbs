@@ -1,0 +1,8 @@
+module Cv::WechatQrcode
+  class WeChatQRCode
+    def detect_and_decode: (img: Cv::InputArray, points: Cv::OutputArray) -> Std::Vector≺string≻
+    def get_scale_factor: () -> Float
+    def initialize: (detector_prototxt_path: String, detector_caffe_model_path: String, super_resolution_prototxt_path: String, super_resolution_caffe_model_path: String) -> NilClass
+    def set_scale_factor: (_scaling_factor: Float) -> NilClass
+  end
+end

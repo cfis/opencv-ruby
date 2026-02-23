@@ -1,0 +1,8 @@
+module Cv::DnnObjdetect
+  class InferBbox
+    attr_accessor detections: Std::Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻
+
+    def filter: (thresh: Float) -> NilClass
+    def initialize: (_delta_bbox: Cv::Mat, _class_scores: Cv::Mat, _conf_scores: Cv::Mat) -> NilClass
+  end
+end

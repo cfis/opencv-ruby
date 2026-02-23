@@ -1,30 +1,30 @@
 module Std
   class Vector≺Cv꞉꞉Vec8i≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Vec8i) -> NilClass
-    def ==: (arg_0: Std::Vector≺Cv꞉꞉Vec8i≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Vec8i
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Vec8i) -> NilClass
+               | (count: Integer, value: Cv::Vec8i) -> NilClass
+    def ==: (other: Std::Vector≺Cv꞉꞉Vec8i≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Vec8i
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Vec8i) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Vec≺int‚ 8≻≻
-    def delete: (arg_0: Cv::Vec8i) -> Cv::Vec8i
-    def delete_at: (arg_0: Integer) -> Cv::Vec8i
+    def delete: (value: Cv::Vec8i) -> Cv::Vec8i
+    def delete_at: (pos: Integer) -> Cv::Vec8i
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Vec8i
-    def include?: (arg_0: Cv::Vec8i) -> TrueClass
-    def index: (arg_0: Cv::Vec8i) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺Cv꞉꞉Vec8i≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Vec8i) -> Std::Vector≺Cv꞉꞉Vec8i≻
+    def include?: (value: Cv::Vec8i) -> TrueClass
+    def index: (value: Cv::Vec8i) -> Integer
+    def initialize_copy: (other: Std::Vector≺Cv꞉꞉Vec8i≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Vec8i) -> Std::Vector≺Cv꞉꞉Vec8i≻
     def last: () -> Cv::Vec8i
     def max_size: () -> Integer
     def pop: () -> Cv::Vec8i
-    def push: (arg_0: Cv::Vec8i) -> Std::Vector≺Cv꞉꞉Vec8i≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Vec8i) -> Std::Vector≺Cv꞉꞉Vec8i≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

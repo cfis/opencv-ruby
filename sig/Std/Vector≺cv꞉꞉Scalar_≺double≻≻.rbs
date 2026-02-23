@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Scalar_≺double≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Scalar) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Scalar_≺double≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Scalar
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Scalar) -> NilClass
+               | (count: Integer, value: Cv::Scalar) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Scalar_≺double≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Scalar
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Scalar) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Scalar_≺double≻≻
-    def delete: (arg_0: Cv::Scalar) -> Cv::Scalar
-    def delete_at: (arg_0: Integer) -> Cv::Scalar
+    def delete: (value: Cv::Scalar) -> Cv::Scalar
+    def delete_at: (pos: Integer) -> Cv::Scalar
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Scalar
-    def include?: (arg_0: Cv::Scalar) -> TrueClass
-    def index: (arg_0: Cv::Scalar) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Scalar_≺double≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Scalar) -> Std::Vector≺cv꞉꞉Scalar_≺double≻≻
+    def include?: (value: Cv::Scalar) -> TrueClass
+    def index: (value: Cv::Scalar) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Scalar_≺double≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Scalar) -> Std::Vector≺cv꞉꞉Scalar_≺double≻≻
     def last: () -> Cv::Scalar
     def max_size: () -> Integer
     def pop: () -> Cv::Scalar
-    def push: (arg_0: Cv::Scalar) -> Std::Vector≺cv꞉꞉Scalar_≺double≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Scalar) -> Std::Vector≺cv꞉꞉Scalar_≺double≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

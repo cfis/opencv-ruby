@@ -1,0 +1,7 @@
+module Cv::Face
+  class MACE
+    def salt: (passphrase: String) -> NilClass
+    def same: (query: Cv::InputArray) -> TrueClass
+    def train: (images: Cv::InputArray) -> NilClass
+  end
+end

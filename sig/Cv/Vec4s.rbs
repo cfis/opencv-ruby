@@ -2,16 +2,18 @@ module Cv
   class Vec4s
     def []: (i: Integer) -> Integer
        | (i: Integer) -> Integer
-    def initialize: () -> NilClass
-               | (values: Rice::Pointer≺short≻) -> NilClass
-               | (a: Cv::Matx41s, b: Cv::Matx41s, op: Cv::MatxSubOp) -> NilClass
-               | (a: Cv::Matx41s, b: Cv::Matx41s, op: Cv::MatxAddOp) -> NilClass
-               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> NilClass
+       | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
     def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
     def assign: (rhs: Cv::Vec4s) -> Cv::Vec4s
-    def call: (i: Integer) -> Integer
-         | (i: Integer) -> Integer
-    def count: () -> Integer
+    def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
+               | (values: Rice::Pointer≺short≻) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (a: Cv::Matx41s, b: Cv::Matx41s, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx41s, b: Cv::Matx41s, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer) -> NilClass
+               | (v0: Integer, v1: Integer, v2: Integer, v3: Integer) -> NilClass
     def initialize_copy: (v: Cv::Vec4s) -> NilClass
     def inspect: () -> String
     def mul: (v: Cv::Vec4s) -> Cv::Vec4s

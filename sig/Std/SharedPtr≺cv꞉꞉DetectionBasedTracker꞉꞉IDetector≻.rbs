@@ -1,9 +1,9 @@
 module Std
   class SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻
-    def initialize: (value: IDetector) -> NilClass
+    def initialize: (value: Cv::DetectionBasedTracker::IDetector) -> NilClass
     def empty?: () -> TrueClass
-    def get: () -> IDetector
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> NilClass
+    def get: () -> Cv::DetectionBasedTracker::IDetector
+    def swap: (r: Std::SharedPtr≺cv꞉꞉DetectionBasedTracker꞉꞉IDetector≻) -> NilClass
     def use_count: () -> Integer
   end
 end

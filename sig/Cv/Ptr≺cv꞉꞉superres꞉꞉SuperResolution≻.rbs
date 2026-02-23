@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉superres꞉꞉SuperResolution≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉superres꞉꞉SuperResolution≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉superres꞉꞉SuperResolution≻) -> NilClass
+               | (ptr: Cv::Superres::SuperResolution) -> NilClass
+               | (value: Cv::Superres::SuperResolution) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉superres꞉꞉SuperResolution≻) -> Cv::Ptr≺cv꞉꞉superres꞉꞉SuperResolution≻
+    def get: () -> Cv::Superres::SuperResolution
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉superres꞉꞉SuperResolution≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

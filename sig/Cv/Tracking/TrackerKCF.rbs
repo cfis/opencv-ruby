@@ -1,0 +1,5 @@
+module Cv::Tracking
+  class TrackerKCF
+    def set_feature_extractor: (callback: Proc, pca_func: TrueClass) -> NilClass
+  end
+end

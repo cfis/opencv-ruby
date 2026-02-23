@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::FeaturesMatcher) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::FeaturesMatcher
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉FeaturesMatcher≻) -> NilClass
     def use_count: () -> Integer
   end
 end

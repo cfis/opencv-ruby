@@ -13,10 +13,10 @@ module Cv
     def radius_match: (query_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, masks: Cv::InputArray, compact_result: TrueClass) -> NilClass
                  | (query_descriptors: Cv::InputArray, train_descriptors: Cv::InputArray, matches: Std::Vector≺vector≺cv꞉꞉DMatch≻≻, max_distance: Float, mask: Cv::InputArray, compact_result: TrueClass) -> NilClass
     def read: (file_name: String) -> NilClass
-         | (: Cv::FileNode) -> NilClass
+         | (arg_0: Cv::FileNode) -> NilClass
     def train: () -> NilClass
     def write: (file_name: String) -> NilClass
-          | (: Cv::FileStorage) -> NilClass
+          | (arg_0: Cv::FileStorage) -> NilClass
           | (fs: Cv::FileStorage, name: String) -> NilClass
           | (fs: Cv::Ptr≺cv꞉꞉FileStorage≻, name: String) -> NilClass
   end

@@ -1,0 +1,8 @@
+module Cv::Face::StandardCollector
+  class PredictResult
+    attr_accessor distance: Float
+    attr_accessor label: Integer
+
+    def initialize: (label_: Integer, distance_: Float) -> NilClass
+  end
+end

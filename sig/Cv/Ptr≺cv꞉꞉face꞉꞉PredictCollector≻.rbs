@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉face꞉꞉PredictCollector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉PredictCollector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉face꞉꞉PredictCollector≻) -> NilClass
+               | (ptr: Cv::Face::PredictCollector) -> NilClass
+               | (value: Cv::Face::PredictCollector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉face꞉꞉PredictCollector≻) -> Cv::Ptr≺cv꞉꞉face꞉꞉PredictCollector≻
+    def get: () -> Cv::Face::PredictCollector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉face꞉꞉PredictCollector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

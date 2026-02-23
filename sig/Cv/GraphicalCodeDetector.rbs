@@ -1,13 +1,13 @@
 module Cv
   class GraphicalCodeDetector
-    def assign: (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
-           | (: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
+    def assign: (arg_0: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
+           | (arg_0: Cv::GraphicalCodeDetector) -> Cv::GraphicalCodeDetector
     def decode: (img: Cv::InputArray, points: Cv::InputArray, straight_code: Cv::OutputArray) -> String
-    def decode_multi?: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, straight_code: Cv::OutputArray) -> TrueClass
-    def detect?: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
+    def decode_multi: (img: Cv::InputArray, points: Cv::InputArray, decoded_info: Std::Vector≺string≻, straight_code: Cv::OutputArray) -> TrueClass
+    def detect: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
     def detect_and_decode: (img: Cv::InputArray, points: Cv::OutputArray, straight_code: Cv::OutputArray) -> String
-    def detect_and_decode_multi?: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, points: Cv::OutputArray, straight_code: Cv::OutputArray) -> TrueClass
-    def detect_multi?: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
-    def initialize_copy: (: Cv::GraphicalCodeDetector) -> NilClass
+    def detect_and_decode_multi: (img: Cv::InputArray, decoded_info: Std::Vector≺string≻, points: Cv::OutputArray, straight_code: Cv::OutputArray) -> TrueClass
+    def detect_multi: (img: Cv::InputArray, points: Cv::OutputArray) -> TrueClass
+    def initialize_copy: (arg_0: Cv::GraphicalCodeDetector) -> NilClass
   end
 end

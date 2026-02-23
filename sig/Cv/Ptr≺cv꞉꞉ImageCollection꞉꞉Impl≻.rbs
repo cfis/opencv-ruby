@@ -1,0 +1,12 @@
+module Cv
+  class Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻
+    def initialize: (o: Std::SharedPtr≺cv꞉꞉ImageCollection꞉꞉Impl≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉ImageCollection꞉꞉Impl≻) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻) -> Cv::Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻
+    def empty?: () -> TrueClass
+    def get: () -> Cv::ImageCollection::Impl
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉ImageCollection꞉꞉Impl≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

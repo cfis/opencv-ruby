@@ -1,16 +1,16 @@
 module Cv
   class AsyncArray
-    def initialize: () -> NilClass
     def _get_impl: () -> Rice::Pointer≺void≻
     def assign: (o: Cv::AsyncArray) -> Cv::AsyncArray
            | (o: Cv::AsyncArray) -> Cv::AsyncArray
     def get: (dst: Cv::OutputArray) -> NilClass
-    def get?: (dst: Cv::OutputArray, timeout_ns: Float) -> TrueClass
-         | (dst: Cv::OutputArray, timeout_ns: Integer) -> TrueClass
+        | (dst: Cv::OutputArray, timeout_ns: Integer) -> TrueClass
+        | (dst: Cv::OutputArray, timeout_ns: Float) -> TrueClass
+    def initialize: () -> NilClass
     def initialize_copy: (o: Cv::AsyncArray) -> NilClass
     def release: () -> NilClass
     def valid?: () -> TrueClass
-    def wait_for?: (timeout_ns: Float) -> TrueClass
-              | (timeout_ns: Integer) -> TrueClass
+    def wait_for: (timeout_ns: Float) -> TrueClass
+             | (timeout_ns: Integer) -> TrueClass
   end
 end

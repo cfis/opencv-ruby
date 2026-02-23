@@ -1,17 +1,17 @@
 module Cv::Dnn
   class BaseConvolutionLayer
-    attr_accessor adjust_pad: Cv::Size
+    attr_accessor adjust_pad: Cv::Size2i
     attr_accessor adjust_pads: Std::Vector≺unsigned Int64≻
-    attr_accessor dilation: Cv::Size
+    attr_accessor dilation: Cv::Size2i
     attr_accessor dilations: Std::Vector≺unsigned Int64≻
-    attr_accessor kernel: Cv::Size
+    attr_accessor kernel: Cv::Size2i
     attr_accessor kernel_size: Std::Vector≺unsigned Int64≻
     attr_accessor num_output: Integer
-    attr_accessor pad: Cv::Size
+    attr_accessor pad: Cv::Size2i
     attr_accessor pad_mode: String
     attr_accessor pads_begin: Std::Vector≺unsigned Int64≻
     attr_accessor pads_end: Std::Vector≺unsigned Int64≻
-    attr_accessor stride: Cv::Size
+    attr_accessor stride: Cv::Size2i
     attr_accessor strides: Std::Vector≺unsigned Int64≻
 
     def initialize: () -> NilClass

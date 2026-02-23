@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Cuda::GpuMat) -> NilClass
-    def []: (arg_0: Integer) -> Cv::Cuda::GpuMat
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Cuda::GpuMat) -> NilClass
+               | (count: Integer, value: Cv::Cuda::GpuMat) -> NilClass
+    def []: (pos: Integer) -> Cv::Cuda::GpuMat
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Cuda::GpuMat) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉cuda꞉꞉GpuMat≻
-    def delete_at: (arg_0: Integer) -> Cv::Cuda::GpuMat
+    def delete_at: (pos: Integer) -> Cv::Cuda::GpuMat
     def empty?: () -> TrueClass
     def first: () -> Cv::Cuda::GpuMat
-    def include?: (arg_0: Cv::Cuda::GpuMat) -> TrueClass
-    def index: (arg_0: Cv::Cuda::GpuMat) -> Integer
-    def delete: (arg_0: Cv::Cuda::GpuMat) -> Cv::Cuda::GpuMat
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Cuda::GpuMat) -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
+    def include?: (value: Cv::Cuda::GpuMat) -> TrueClass
+    def index: (value: Cv::Cuda::GpuMat) -> Integer
+    def delete: (value: Cv::Cuda::GpuMat) -> Cv::Cuda::GpuMat
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Cuda::GpuMat) -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
     def last: () -> Cv::Cuda::GpuMat
     def max_size: () -> Integer
     def pop: () -> Cv::Cuda::GpuMat
-    def push: (arg_0: Cv::Cuda::GpuMat) -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Cuda::GpuMat) -> Std::Vector≺cv꞉꞉cuda꞉꞉GpuMat≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

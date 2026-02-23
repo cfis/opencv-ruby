@@ -2,16 +2,23 @@ module Cv
   class SparseMat1d
     def []: (arg_0: Rice::Pointer≺int≻) -> Float
        | (arg_0: Integer) -> Float
+       | (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
+       | (i0: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
        | (arg_0: Integer, arg_1: Integer) -> Float
+       | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
        | (arg_0: Integer, arg_1: Integer, arg_2: Integer) -> Float
-    def []=: (arg_0: Integer, arg_1: Float) -> Float
-        | (arg_0: Rice::Pointer≺int≻, arg_1: Float) -> Float
+       | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
+    def initialize: (m: Cv::SparseMat) -> NilClass
+               | (m: Cv::Mat) -> NilClass
+               | () -> NilClass
+               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def []=: (arg_0: Rice::Pointer≺int≻, arg_1: Float) -> Float
+        | (arg_0: Integer, arg_1: Float) -> Float
         | (arg_0: Integer, arg_1: Integer, arg_2: Float) -> Float
         | (arg_0: Integer, arg_1: Integer, arg_2: Integer, arg_3: Float) -> Float
-    def initialize: () -> NilClass
-               | (m: Cv::SparseMat) -> NilClass
-               | (m: Cv::Mat) -> NilClass
-               | (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
+    def assign: (m: Cv::SparseMat1d) -> Cv::SparseMat1d
+           | (m: Cv::SparseMat) -> Cv::SparseMat1d
+           | (m: Cv::Mat) -> Cv::SparseMat1d
     def begin: () -> Cv::SparseMatIterator1d
     def clone: () -> Cv::SparseMat1d
     def create: (dims: Integer, _sizes: Rice::Pointer≺int≻) -> NilClass
@@ -19,6 +26,10 @@ module Cv
     def end: () -> Cv::SparseMatIterator1d
     def channels: () -> Integer
     def initialize_copy: (m: Cv::SparseMat1d) -> NilClass
+    def ref: (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
+        | (i0: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
+        | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
+        | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> Float
     def type: () -> Integer
   end
 end

@@ -1,0 +1,23 @@
+module Cv
+  class Vec1l
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+    def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
+               | (values: Rice::Pointer≺Int64≻) -> NilClass
+               | (a: Cv::Matx11l, b: Cv::Matx11l, arg_2: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx11l, b: Cv::Matx11l, arg_2: Cv::MatxSubOp) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Integer) -> NilClass
+    def assign: (rhs: Cv::Vec1l) -> Cv::Vec1l
+    def initialize_copy: (v: Cv::Vec1l) -> NilClass
+    def inspect: () -> String
+            | () -> String
+    def mul: (v: Cv::Vec1l) -> Cv::Vec1l
+    def to_a: () -> Integer
+         | () -> Integer
+    def to_s: () -> String
+         | () -> String
+  end
+end

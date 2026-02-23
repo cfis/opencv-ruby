@@ -1,0 +1,8 @@
+module Std
+  class SharedPtr≺cv꞉꞉ImageCollection꞉꞉Impl≻
+    def empty?: () -> TrueClass
+    def get: () -> Cv::ImageCollection::Impl
+    def swap: (r: Std::SharedPtr≺cv꞉꞉ImageCollection꞉꞉Impl≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

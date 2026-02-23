@@ -1,0 +1,6 @@
+module Cv::Bgsegm
+  class SyntheticSequenceGenerator
+    def get_next_frame: (frame: Cv::OutputArray, gt_mask: Cv::OutputArray) -> NilClass
+    def initialize: (background: Cv::InputArray, object: Cv::InputArray, amplitude: Float, wavelength: Float, wavespeed: Float, objspeed: Float) -> NilClass
+  end
+end

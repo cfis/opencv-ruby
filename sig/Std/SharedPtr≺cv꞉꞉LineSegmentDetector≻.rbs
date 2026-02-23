@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::LineSegmentDetector) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::LineSegmentDetector
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉LineSegmentDetector≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉LineSegmentDetector≻) -> NilClass
     def use_count: () -> Integer
   end
 end

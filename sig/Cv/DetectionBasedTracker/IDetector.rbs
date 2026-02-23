@@ -1,13 +1,13 @@
 module Cv::DetectionBasedTracker
   class IDetector
-    def detect: (image: Cv::Mat, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> void
-    def get_max_object_size: () -> Cv::Size_≺int≻
+    def detect: (image: Cv::Mat, objects: Std::Vector≺cv꞉꞉Rect_≺int≻≻) -> NilClass
+    def get_max_object_size: () -> Cv::Size2i
     def get_min_neighbours: () -> Integer
-    def get_min_object_size: () -> Cv::Size_≺int≻
+    def get_min_object_size: () -> Cv::Size2i
     def get_scale_factor: () -> Float
-    def set_max_object_size: (max: Cv::Size_≺int≻) -> void
-    def set_min_neighbours: (value: Integer) -> void
-    def set_min_object_size: (min: Cv::Size_≺int≻) -> void
-    def set_scale_factor: (value: Float) -> void
+    def set_max_object_size: (max: Cv::Size2i) -> NilClass
+    def set_min_neighbours: (value: Integer) -> NilClass
+    def set_min_object_size: (min: Cv::Size2i) -> NilClass
+    def set_scale_factor: (value: Float) -> NilClass
   end
 end

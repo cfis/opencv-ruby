@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::DnnObjdetect::Object) -> NilClass
+    def []: (pos: Integer) -> Cv::DnnObjdetect::Object
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::DnnObjdetect::Object) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉dnnObjdetect꞉꞉object≻
+    def delete_at: (pos: Integer) -> Cv::DnnObjdetect::Object
+    def empty?: () -> TrueClass
+    def first: () -> Cv::DnnObjdetect::Object
+    def include?: (value: Cv::DnnObjdetect::Object) -> TrueClass
+    def index: (value: Cv::DnnObjdetect::Object) -> Integer
+    def delete: (value: Cv::DnnObjdetect::Object) -> Cv::DnnObjdetect::Object
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::DnnObjdetect::Object) -> Std::Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻
+    def last: () -> Cv::DnnObjdetect::Object
+    def max_size: () -> Integer
+    def pop: () -> Cv::DnnObjdetect::Object
+    def push: (value: Cv::DnnObjdetect::Object) -> Std::Vector≺cv꞉꞉dnnObjdetect꞉꞉object≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

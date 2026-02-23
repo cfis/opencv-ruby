@@ -7,14 +7,16 @@ module Cv
                | (m: Cv::Mat) -> NilClass
                | (dims: Integer, _sizes: Rice::Pointer≺int≻, _type: Integer) -> NilClass
     def addref: () -> NilClass
+    def assign: (m: Cv::Mat) -> Cv::SparseMat
+           | (m: Cv::SparseMat) -> Cv::SparseMat
     def assign_to: (m: Cv::SparseMat, type: Integer) -> NilClass
     def channels: () -> Integer
     def clear: () -> NilClass
     def clone: () -> Cv::SparseMat
     def convert_to: (m: Cv::SparseMat, rtype: Integer, alpha: Float) -> NilClass
                | (m: Cv::Mat, rtype: Integer, alpha: Float, beta: Float) -> NilClass
-    def copy_to: (m: Cv::SparseMat) -> NilClass
-            | (m: Cv::Mat) -> NilClass
+    def copy_to: (m: Cv::Mat) -> NilClass
+            | (m: Cv::SparseMat) -> NilClass
     def create: (dims: Integer, _sizes: Rice::Pointer≺int≻, _type: Integer) -> NilClass
     def depth: () -> Integer
     def dims: () -> Integer
@@ -23,8 +25,8 @@ module Cv
     def erase: (idx: Rice::Pointer≺int≻, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
           | (i0: Integer, i1: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
           | (i0: Integer, i1: Integer, i2: Integer, hashval: Rice::Pointer≺unsigned Int64≻) -> NilClass
-    def hash: (i0: Integer) -> Integer
-         | (idx: Rice::Pointer≺int≻) -> Integer
+    def hash: (idx: Rice::Pointer≺int≻) -> Integer
+         | (i0: Integer) -> Integer
          | (i0: Integer, i1: Integer) -> Integer
          | (i0: Integer, i1: Integer, i2: Integer) -> Integer
     def initialize_copy: (m: Cv::SparseMat) -> NilClass

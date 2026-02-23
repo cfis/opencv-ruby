@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉rapid꞉꞉Rapid≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉rapid꞉꞉Rapid≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉rapid꞉꞉Rapid≻) -> NilClass
+               | (ptr: Cv::Rapid::Rapid) -> NilClass
+               | (value: Cv::Rapid::Rapid) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉rapid꞉꞉Rapid≻) -> Cv::Ptr≺cv꞉꞉rapid꞉꞉Rapid≻
+    def get: () -> Cv::Rapid::Rapid
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉rapid꞉꞉Rapid≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

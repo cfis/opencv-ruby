@@ -1,0 +1,4 @@
+module Cv::Cuda::Stream
+  class Impl
+  end
+end

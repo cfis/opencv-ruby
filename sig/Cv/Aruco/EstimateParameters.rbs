@@ -1,0 +1,9 @@
+module Cv::Aruco
+  class EstimateParameters
+    attr_accessor pattern: Cv::Aruco::PatternPositionType
+    attr_accessor solve_pn_p_method: Integer
+    attr_accessor use_extrinsic_guess: TrueClass
+
+    def initialize: () -> NilClass
+  end
+end

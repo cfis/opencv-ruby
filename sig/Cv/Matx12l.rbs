@@ -1,0 +1,56 @@
+module Cv
+  class Matx12l
+    attr_reader val: String
+
+    def initialize: () -> NilClass
+               | (v0: Integer) -> NilClass
+               | (vals: Rice::Pointer≺Int64≻) -> NilClass
+               | (a: Cv::Matx21l, arg_1: Cv::MatxTOp) -> NilClass
+               | (v0: Integer, v1: Integer) -> NilClass
+               | (a: Cv::Matx12l, b: Cv::Matx12l, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx12l, b: Cv::Matx12l, arg_2: Cv::MatxSubOp) -> NilClass
+               | (a: Cv::Matx12l, b: Cv::Matx12l, arg_2: Cv::MatxMulOp) -> NilClass
+               | (a: Cv::Matx12l, b: Cv::Matx12l, arg_2: Cv::MatxAddOp) -> NilClass
+    def !=: (arg_0: Cv::Matx12l) -> TrueClass
+    def *: (arg_0: Cv::Vec2l) -> Cv::Vec1l
+      | (arg_0: Float) -> Cv::Matx12l
+      | (arg_0: Float) -> Cv::Matx12l
+      | (arg_0: Integer) -> Cv::Matx12l
+    def +: (arg_0: Cv::Matx12l) -> Cv::Matx12l
+    def -: (arg_0: Cv::Matx12l) -> Cv::Matx12l
+    def /: (arg_0: Float) -> Cv::Matx12l
+      | (arg_0: Float) -> Cv::Matx12l
+    def ==: (arg_0: Cv::Matx12l) -> TrueClass
+    def []: (i: Integer) -> Integer
+       | (i: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+       | (row: Integer, col: Integer) -> Integer
+    def _dump_data: () -> Hash
+    def assign_divide: (arg_0: Float) -> Cv::Matx12l
+                  | (arg_0: Float) -> Cv::Matx12l
+    def assign_minus: (arg_0: Cv::Matx12l) -> Cv::Matx12l
+    def assign_multiply: (arg_0: Integer) -> Cv::Matx12l
+                    | (arg_0: Float) -> Cv::Matx12l
+                    | (arg_0: Float) -> Cv::Matx12l
+    def assign_plus: (arg_0: Cv::Matx12l) -> Cv::Matx12l
+    def channels: () -> Integer
+    def col: (i: Integer) -> Cv::Matx11l
+    def ddot: (v: Cv::Matx12l) -> Float
+    def diag: () -> Cv::Matx11l
+    def div: (a: Cv::Matx12l) -> Cv::Matx12l
+    def dot: (v: Cv::Matx12l) -> Integer
+    def each: (proc: Integer) -> Integer
+    def eql?: (arg_0: Cv::Matx12l) -> TrueClass
+    def cols: () -> Integer
+    def input_array: () -> Cv::InputArray
+    def inspect: () -> String
+    def mul: (a: Cv::Matx12l) -> Cv::Matx12l
+    def norm: () -> Float
+         | (arg_0: Integer) -> Float
+    def row: (i: Integer) -> Cv::Matx12l
+    def rows: () -> Integer
+    def shortdim: () -> Integer
+    def t: () -> Cv::Matx21l
+    def trace: () -> Float
+  end
+end

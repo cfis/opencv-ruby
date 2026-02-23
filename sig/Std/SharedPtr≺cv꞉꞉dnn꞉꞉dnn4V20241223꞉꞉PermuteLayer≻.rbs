@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Dnn::PermuteLayer) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Dnn::PermuteLayer
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PermuteLayer≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉dnn꞉꞉dnn4V20241223꞉꞉PermuteLayer≻) -> NilClass
     def use_count: () -> Integer
   end
 end

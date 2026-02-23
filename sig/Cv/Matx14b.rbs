@@ -1,45 +1,49 @@
 module Cv
   class Matx14b
+    attr_reader val: String
+
     def !=: (arg_0: Cv::Matx14b) -> TrueClass
     def *: (arg_0: Float) -> Cv::Matx14b
       | (arg_0: Cv::Vec4b) -> Cv::Vec1b
       | (arg_0: Float) -> Cv::Matx14b
       | (arg_0: Integer) -> Cv::Matx14b
-    def initialize: () -> NilClass
-               | (vals: Rice::Pointer≺unsigned char≻) -> NilClass
+    def initialize: (vals: Rice::Pointer≺unsigned char≻) -> NilClass
+               | (v0: String) -> NilClass
+               | () -> NilClass
+               | (v0: String, v1: String) -> NilClass
+               | (a: Cv::Matx41b, arg_1: Cv::MatxTOp) -> NilClass
+               | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxDivOp) -> NilClass
+               | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxMulOp) -> NilClass
                | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxSubOp) -> NilClass
                | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxAddOp) -> NilClass
+               | (v0: String, v1: String, v2: String) -> NilClass
                | (v0: String, v1: String, v2: String, v3: String) -> NilClass
-               | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxMulOp) -> NilClass
-               | (a: Cv::Matx14b, b: Cv::Matx14b, arg_2: Cv::MatxDivOp) -> NilClass
-               | (a: Cv::Matx41b, arg_1: Cv::MatxTOp) -> NilClass
     def +: (arg_0: Cv::Matx14b) -> Cv::Matx14b
     def -: (arg_0: Cv::Matx14b) -> Cv::Matx14b
     def /: (arg_0: Float) -> Cv::Matx14b
       | (arg_0: Float) -> Cv::Matx14b
     def ==: (arg_0: Cv::Matx14b) -> TrueClass
+    def []: (i: Integer) -> String
+       | (i: Integer) -> String
+       | (row: Integer, col: Integer) -> String
+       | (row: Integer, col: Integer) -> String
     def _dump_data: () -> Hash
     def assign_divide: (arg_0: Float) -> Cv::Matx14b
                   | (arg_0: Float) -> Cv::Matx14b
-    def assign_minus: (arg_0: Cv::Matx14b) -> Cv::Matx14b
-    def assign_multiply: (arg_0: Integer) -> Cv::Matx14b
+    def assign_multiply: (arg_0: Float) -> Cv::Matx14b
+                    | (arg_0: Integer) -> Cv::Matx14b
                     | (arg_0: Float) -> Cv::Matx14b
-                    | (arg_0: Float) -> Cv::Matx14b
-    def assign_plus: (arg_0: Cv::Matx14b) -> Cv::Matx14b
-    def call: (i: Integer) -> String
-         | (i: Integer) -> String
-         | (row: Integer, col: Integer) -> String
-         | (row: Integer, col: Integer) -> String
-    def channels: () -> Integer
     def col: (i: Integer) -> Cv::Matx11b
-    def cols: () -> Integer
     def ddot: (v: Cv::Matx14b) -> Float
-    def determinant: () -> Float
     def diag: () -> Cv::Matx11b
     def div: (a: Cv::Matx14b) -> Cv::Matx14b
-    def dot: (v: Cv::Matx14b) -> String
-    def each: () -> Integer
+    def each: (proc: Integer) -> Integer
     def eql?: (arg_0: Cv::Matx14b) -> TrueClass
+    def channels: () -> Integer
+    def assign_plus: (arg_0: Cv::Matx14b) -> Cv::Matx14b
+    def cols: () -> Integer
+    def dot: (v: Cv::Matx14b) -> String
+    def assign_minus: (arg_0: Cv::Matx14b) -> Cv::Matx14b
     def input_array: () -> Cv::InputArray
     def inspect: () -> String
     def mul: (a: Cv::Matx14b) -> Cv::Matx14b

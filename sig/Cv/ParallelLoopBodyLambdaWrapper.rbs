@@ -1,0 +1,6 @@
+module Cv
+  class ParallelLoopBodyLambdaWrapper
+    def call: (range: Cv::Range) -> NilClass
+    def initialize: (functor: Std::Function≺void❨cv꞉꞉Range const &❩≻) -> NilClass
+  end
+end

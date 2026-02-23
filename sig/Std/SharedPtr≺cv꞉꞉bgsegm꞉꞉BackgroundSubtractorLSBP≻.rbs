@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorLSBP≻
+    def initialize: (value: Cv::Bgsegm::BackgroundSubtractorLSBP) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Bgsegm::BackgroundSubtractorLSBP
+    def swap: (r: Std::SharedPtr≺cv꞉꞉bgsegm꞉꞉BackgroundSubtractorLSBP≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

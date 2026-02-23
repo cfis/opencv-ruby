@@ -1,7 +1,7 @@
 module Cv
   class Subdiv2D
     def initialize: () -> NilClass
-               | (rect: Cv::Rect) -> NilClass
+               | (rect: Cv::Rect2i) -> NilClass
     def edge_dst: (edge: Integer, dstpt: Cv::Point2f) -> Integer
     def edge_org: (edge: Integer, orgpt: Cv::Point2f) -> Integer
     def find_nearest: (pt: Cv::Point2f, nearest_pt: Cv::Point2f) -> Integer
@@ -11,7 +11,7 @@ module Cv
     def get_triangle_list: (triangle_list: Std::Vector≺cv꞉꞉Vec≺float‚ 6≻≻) -> NilClass
     def get_vertex: (vertex: Integer, first_edge: Rice::Pointer≺int≻) -> Cv::Point2f
     def get_voronoi_facet_list: (idx: Std::Vector≺int≻, facet_list: Std::Vector≺vector≺cv꞉꞉Point_≺float≻≻≻, facet_centers: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
-    def init_delaunay: (rect: Cv::Rect) -> NilClass
+    def init_delaunay: (rect: Cv::Rect2i) -> NilClass
     def insert: (ptvec: Std::Vector≺cv꞉꞉Point_≺float≻≻) -> NilClass
            | (pt: Cv::Point2f) -> Integer
     def locate: (pt: Cv::Point2f, edge: Integer, vertex: Integer) -> Integer

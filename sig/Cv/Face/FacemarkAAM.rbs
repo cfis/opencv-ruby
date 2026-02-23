@@ -1,0 +1,5 @@
+module Cv::Face
+  class FacemarkAAM
+    def fit_config: (image: Cv::InputArray, roi: Cv::InputArray, _landmarks: Cv::OutputArray, runtime_params: Std::Vector≺cv꞉꞉face꞉꞉FacemarkAAM꞉꞉Config≻) -> TrueClass
+  end
+end

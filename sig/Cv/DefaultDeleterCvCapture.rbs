@@ -1,0 +1,6 @@
+module Cv
+  class DefaultDeleterCvCapture
+    def call: (obj: CvCapture) -> NilClass
+    def initialize: () -> NilClass
+  end
+end

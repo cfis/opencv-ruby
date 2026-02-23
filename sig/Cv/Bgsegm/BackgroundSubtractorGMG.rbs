@@ -1,0 +1,26 @@
+module Cv::Bgsegm
+  class BackgroundSubtractorGMG
+    def apply: (image: Cv::InputArray, fgmask: Cv::OutputArray, learning_rate: Float) -> NilClass
+    def get_background_image: (background_image: Cv::OutputArray) -> NilClass
+    def get_background_prior: () -> Float
+    def get_decision_threshold: () -> Float
+    def get_default_learning_rate: () -> Float
+    def get_max_features: () -> Integer
+    def get_max_val: () -> Float
+    def get_min_val: () -> Float
+    def get_num_frames: () -> Integer
+    def get_quantization_levels: () -> Integer
+    def get_smoothing_radius: () -> Integer
+    def get_update_background_model?: () -> TrueClass
+    def set_background_prior: (bgprior: Float) -> NilClass
+    def set_decision_threshold: (thresh: Float) -> NilClass
+    def set_default_learning_rate: (lr: Float) -> NilClass
+    def set_max_features: (max_features: Integer) -> NilClass
+    def set_max_val: (val: Float) -> NilClass
+    def set_min_val: (val: Float) -> NilClass
+    def set_num_frames: (nframes: Integer) -> NilClass
+    def set_quantization_levels: (nlevels: Integer) -> NilClass
+    def set_smoothing_radius: (radius: Integer) -> NilClass
+    def set_update_background_model: (update: TrueClass) -> NilClass
+  end
+end

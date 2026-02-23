@@ -1,6 +1,6 @@
 module Cv
   class Tracker
-    def init: (image: Cv::InputArray, bounding_box: Cv::Rect) -> NilClass
-    def update?: (image: Cv::InputArray, bounding_box: Cv::Rect) -> TrueClass
+    def init: (image: Cv::InputArray, bounding_box: Cv::Rect2i) -> NilClass
+    def update: (image: Cv::InputArray, bounding_box: Cv::Rect2i) -> TrueClass
   end
 end

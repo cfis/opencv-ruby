@@ -1,8 +1,8 @@
 module Cv::Dnn
   class MaxUnpoolLayer
-    attr_accessor pool_kernel: Cv::Size
-    attr_accessor pool_pad: Cv::Size
-    attr_accessor pool_stride: Cv::Size
+    attr_accessor pool_kernel: Cv::Size2i
+    attr_accessor pool_pad: Cv::Size2i
+    attr_accessor pool_stride: Cv::Size2i
 
     def initialize: () -> NilClass
   end

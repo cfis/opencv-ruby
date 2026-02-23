@@ -1,0 +1,4 @@
+module Cv::Rapid
+  class GOSTracker
+  end
+end

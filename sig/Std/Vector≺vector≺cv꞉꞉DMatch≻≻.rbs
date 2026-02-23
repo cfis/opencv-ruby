@@ -1,29 +1,29 @@
 module Std
   class Vector≺vector≺cv꞉꞉DMatch≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
-    def []: (arg_0: Integer) -> Std::Vector≺cv꞉꞉DMatch≻
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
+               | (count: Integer, value: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
+    def []: (pos: Integer) -> Std::Vector≺cv꞉꞉DMatch≻
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Std::Vector≺cv꞉꞉DMatch≻) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺vector≺cv꞉꞉DMatch≻≻
-    def delete_at: (arg_0: Integer) -> Std::Vector≺cv꞉꞉DMatch≻
+    def delete_at: (pos: Integer) -> Std::Vector≺cv꞉꞉DMatch≻
     def empty?: () -> TrueClass
     def first: () -> Std::Vector≺cv꞉꞉DMatch≻
-    def include?: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> TrueClass
-    def index: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> Integer
-    def delete: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺cv꞉꞉DMatch≻
-    def initialize_copy: (arg_0: Std::Vector≺vector≺cv꞉꞉DMatch≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺vector≺cv꞉꞉DMatch≻≻
+    def include?: (value: Std::Vector≺cv꞉꞉DMatch≻) -> TrueClass
+    def index: (value: Std::Vector≺cv꞉꞉DMatch≻) -> Integer
+    def delete: (value: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺cv꞉꞉DMatch≻
+    def initialize_copy: (other: Std::Vector≺vector≺cv꞉꞉DMatch≻≻) -> NilClass
+    def insert: (pos: Integer, value: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺vector≺cv꞉꞉DMatch≻≻
     def last: () -> Std::Vector≺cv꞉꞉DMatch≻
     def max_size: () -> Integer
     def pop: () -> Std::Vector≺cv꞉꞉DMatch≻
-    def push: (arg_0: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺vector≺cv꞉꞉DMatch≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Std::Vector≺cv꞉꞉DMatch≻) -> Std::Vector≺vector≺cv꞉꞉DMatch≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

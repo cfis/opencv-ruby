@@ -1,0 +1,14 @@
+module Cv
+  class AsyncPromise
+    def initialize: () -> NilClass
+    def _get_impl: () -> Rice::Pointer≺void≻
+    def assign: (o: Cv::AsyncPromise) -> Cv::AsyncPromise
+           | (o: Cv::AsyncPromise) -> Cv::AsyncPromise
+    def get_array_result: () -> Cv::AsyncArray
+    def initialize_copy: (o: Cv::AsyncPromise) -> NilClass
+    def release: () -> NilClass
+    def set_exception: (exception: Cv::Exception) -> NilClass
+                  | (exception: Std::ExceptionPtr) -> NilClass
+    def set_value: (value: Cv::InputArray) -> NilClass
+  end
+end

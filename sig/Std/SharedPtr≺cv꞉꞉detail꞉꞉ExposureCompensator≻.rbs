@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::Detail::ExposureCompensator) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::Detail::ExposureCompensator
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉detail꞉꞉ExposureCompensator≻) -> NilClass
     def use_count: () -> Integer
   end
 end

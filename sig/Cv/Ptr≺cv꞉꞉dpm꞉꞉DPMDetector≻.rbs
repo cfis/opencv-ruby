@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉dpm꞉꞉DPMDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dpm꞉꞉DPMDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉dpm꞉꞉DPMDetector≻) -> NilClass
+               | (ptr: Cv::Dpm::DPMDetector) -> NilClass
+               | (value: Cv::Dpm::DPMDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉dpm꞉꞉DPMDetector≻) -> Cv::Ptr≺cv꞉꞉dpm꞉꞉DPMDetector≻
+    def get: () -> Cv::Dpm::DPMDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉dpm꞉꞉DPMDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

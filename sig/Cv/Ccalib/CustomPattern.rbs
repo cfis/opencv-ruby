@@ -1,0 +1,22 @@
+module Cv::Ccalib
+  class CustomPattern
+    def calibrate: (object_points: Cv::InputArray, image_points: Cv::InputArray, image_size: Cv::Size2i, camera_matrix: Cv::InputOutputArray, dist_coeffs: Cv::InputOutputArray, rvecs: Cv::OutputArray, tvecs: Cv::OutputArray, flags: Integer, criteria: Cv::TermCriteria) -> Float
+    def create: (pattern: Cv::InputArray, board_size: Cv::Size2f, output: Cv::OutputArray) -> TrueClass
+    def initialize: () -> NilClass
+    def draw_orientation: (image: Cv::InputOutputArray, tvec: Cv::InputArray, rvec: Cv::InputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, axis_length: Float, axis_width: Integer) -> NilClass
+    def find_pattern: (image: Cv::InputArray, matched_features: Cv::OutputArray, pattern_points: Cv::OutputArray, ratio: Float, proj_error: Float, refine_position: TrueClass, out: Cv::OutputArray, h: Cv::OutputArray, pattern_corners: Cv::OutputArray) -> TrueClass
+    def find_rt: (image: Cv::InputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, rvec: Cv::InputOutputArray, tvec: Cv::InputOutputArray, use_extrinsic_guess: TrueClass, flags: Integer) -> TrueClass
+            | (object_points: Cv::InputArray, image_points: Cv::InputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, rvec: Cv::InputOutputArray, tvec: Cv::InputOutputArray, use_extrinsic_guess: TrueClass, flags: Integer) -> TrueClass
+    def find_rt_ransac: (image: Cv::InputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, rvec: Cv::InputOutputArray, tvec: Cv::InputOutputArray, use_extrinsic_guess: TrueClass, iterations_count: Integer, reprojection_error: Float, min_inliers_count: Integer, inliers: Cv::OutputArray, flags: Integer) -> TrueClass
+                   | (object_points: Cv::InputArray, image_points: Cv::InputArray, camera_matrix: Cv::InputArray, dist_coeffs: Cv::InputArray, rvec: Cv::InputOutputArray, tvec: Cv::InputOutputArray, use_extrinsic_guess: TrueClass, iterations_count: Integer, reprojection_error: Float, min_inliers_count: Integer, inliers: Cv::OutputArray, flags: Integer) -> TrueClass
+    def get_descriptor_extractor: () -> Cv::Ptr≺cv꞉꞉Feature2D≻
+    def get_descriptor_matcher: () -> Cv::Ptr≺cv꞉꞉DescriptorMatcher≻
+    def get_feature_detector: () -> Cv::Ptr≺cv꞉꞉Feature2D≻
+    def get_pattern_points: (original_points: Std::Vector≺cv꞉꞉KeyPoint≻) -> NilClass
+    def get_pixel_size: () -> Float
+    def initialized?: () -> TrueClass
+    def set_descriptor_extractor: (extractor: Cv::Ptr≺cv꞉꞉Feature2D≻) -> TrueClass
+    def set_descriptor_matcher: (matcher: Cv::Ptr≺cv꞉꞉DescriptorMatcher≻) -> TrueClass
+    def set_feature_detector: (feature_detector: Cv::Ptr≺cv꞉꞉Feature2D≻) -> TrueClass
+  end
+end

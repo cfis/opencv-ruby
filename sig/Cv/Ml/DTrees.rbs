@@ -11,7 +11,7 @@ module Cv::Ml
     def get_splits: () -> Std::Vector≺cv꞉꞉ml꞉꞉DTrees꞉꞉Split≻
     def get_subsets: () -> Std::Vector≺int≻
     def get_truncate_pruned_tree?: () -> TrueClass
-    def get_use1_se_rule?: () -> TrueClass
+    def get_use_1se_rule?: () -> TrueClass
     def get_use_surrogates?: () -> TrueClass
     def set_cv_folds: (val: Integer) -> NilClass
     def set_max_categories: (val: Integer) -> NilClass
@@ -20,7 +20,7 @@ module Cv::Ml
     def set_priors: (val: Cv::Mat) -> NilClass
     def set_regression_accuracy: (val: Float) -> NilClass
     def set_truncate_pruned_tree: (val: TrueClass) -> NilClass
-    def set_use1_se_rule: (val: TrueClass) -> NilClass
+    def set_use_1se_rule: (val: TrueClass) -> NilClass
     def set_use_surrogates: (val: TrueClass) -> NilClass
   end
 end

@@ -1,9 +1,9 @@
 module Cv::ImageCollection
   class Iterator
-    def ->: () -> Cv::Mat
+    def arrow: () -> Cv::Mat
     def dereference: () -> Cv::Mat
     def increment: () -> Cv::ImageCollection::Iterator
-              | (: Integer) -> Cv::ImageCollection::Iterator
+    def increment_post: (arg_0: Integer) -> Cv::ImageCollection::Iterator
     def initialize: (col: Cv::ImageCollection) -> NilClass
                | (col: Cv::ImageCollection, end: Integer) -> NilClass
   end

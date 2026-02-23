@@ -1,29 +1,29 @@
 module Std
   class Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Detail::MatchesInfo) -> NilClass
-    def []: (arg_0: Integer) -> Cv::Detail::MatchesInfo
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Detail::MatchesInfo) -> NilClass
+               | (count: Integer, value: Cv::Detail::MatchesInfo) -> NilClass
+    def []: (pos: Integer) -> Cv::Detail::MatchesInfo
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Detail::MatchesInfo) -> NilClass
     def capacity: () -> Integer
     def clear: () -> NilClass
     def data: () -> Rice::Pointer≺cv꞉꞉detail꞉꞉MatchesInfo≻
-    def delete_at: (arg_0: Integer) -> Cv::Detail::MatchesInfo
+    def delete_at: (pos: Integer) -> Cv::Detail::MatchesInfo
     def empty?: () -> TrueClass
     def first: () -> Cv::Detail::MatchesInfo
-    def include?: (arg_0: Cv::Detail::MatchesInfo) -> TrueClass
-    def index: (arg_0: Cv::Detail::MatchesInfo) -> Integer
-    def delete: (arg_0: Cv::Detail::MatchesInfo) -> Cv::Detail::MatchesInfo
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Detail::MatchesInfo) -> Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻
+    def include?: (value: Cv::Detail::MatchesInfo) -> TrueClass
+    def index: (value: Cv::Detail::MatchesInfo) -> Integer
+    def delete: (value: Cv::Detail::MatchesInfo) -> Cv::Detail::MatchesInfo
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Detail::MatchesInfo) -> Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻
     def last: () -> Cv::Detail::MatchesInfo
     def max_size: () -> Integer
     def pop: () -> Cv::Detail::MatchesInfo
-    def push: (arg_0: Cv::Detail::MatchesInfo) -> Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Detail::MatchesInfo) -> Std::Vector≺cv꞉꞉detail꞉꞉MatchesInfo≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

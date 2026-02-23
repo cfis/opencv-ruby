@@ -1,30 +1,30 @@
 module Std
   class Vector≺double≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Float) -> NilClass
-    def ==: (arg_0: Std::Vector≺double≻) -> TrueClass
-    def []: (arg_0: Integer) -> Float
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Float) -> NilClass
+               | (count: Integer, value: Float) -> NilClass
+    def ==: (other: Std::Vector≺double≻) -> TrueClass
+    def []: (pos: Integer) -> Float
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Float) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺double≻
-    def delete: (arg_0: Float) -> Float
-    def delete_at: (arg_0: Integer) -> Float
+    def delete: (value: Float) -> Float
+    def delete_at: (pos: Integer) -> Float
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Float
-    def include?: (arg_0: Float) -> TrueClass
-    def index: (arg_0: Float) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺double≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Float) -> Std::Vector≺double≻
+    def include?: (value: Float) -> TrueClass
+    def index: (value: Float) -> Integer
+    def initialize_copy: (other: Std::Vector≺double≻) -> NilClass
+    def insert: (pos: Integer, value: Float) -> Std::Vector≺double≻
     def last: () -> Float
     def max_size: () -> Integer
     def pop: () -> Float
-    def push: (arg_0: Float) -> Std::Vector≺double≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Float) -> Std::Vector≺double≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

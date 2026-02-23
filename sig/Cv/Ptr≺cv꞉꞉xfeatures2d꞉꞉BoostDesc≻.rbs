@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻) -> NilClass
+               | (ptr: Cv::Xfeatures2d::BoostDesc) -> NilClass
+               | (value: Cv::Xfeatures2d::BoostDesc) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻) -> Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻
+    def get: () -> Cv::Xfeatures2d::BoostDesc
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉BoostDesc≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

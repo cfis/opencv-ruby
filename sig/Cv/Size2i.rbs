@@ -1,0 +1,61 @@
+module Cv
+  class Size2i
+    attr_accessor height: Integer
+    attr_accessor width: Integer
+
+    def initialize: () -> NilClass
+               | (pt: Cv::Point2i) -> NilClass
+               | (_width: Integer, _height: Integer) -> NilClass
+               | (_width: Integer, _height: Integer) -> NilClass
+               | () -> NilClass
+               | (pt: Cv::Point2i) -> NilClass
+    def !=: (arg_0: Cv::Size2i) -> TrueClass
+       | (arg_0: Cv::Size2i) -> TrueClass
+       | (arg_0: Cv::Size2i) -> TrueClass
+    def *: (arg_0: Integer) -> Cv::Size2i
+      | (arg_0: Integer) -> Cv::Size2i
+      | (arg_0: Integer) -> Cv::Size2i
+    def +: (arg_0: Cv::Size2i) -> Cv::Size2i
+      | (arg_0: Cv::Size2i) -> Cv::Size2i
+      | (arg_0: Cv::Size2i) -> Cv::Size2i
+    def -: (arg_0: Cv::Size2i) -> Cv::Size2i
+      | (arg_0: Cv::Size2i) -> Cv::Size2i
+      | (arg_0: Cv::Size2i) -> Cv::Size2i
+    def /: (arg_0: Integer) -> Cv::Size2i
+      | (arg_0: Integer) -> Cv::Size2i
+      | (arg_0: Integer) -> Cv::Size2i
+    def ==: (arg_0: Cv::Size2i) -> TrueClass
+       | (arg_0: Cv::Size2i) -> TrueClass
+       | (arg_0: Cv::Size2i) -> TrueClass
+    def area: () -> Integer
+         | () -> Integer
+    def aspect_ratio: () -> Float
+                 | () -> Float
+    def assign: (sz: Cv::Size2i) -> Cv::Size2i
+           | (sz: Cv::Size2i) -> Cv::Size2i
+           | (sz: Cv::Size2i) -> Cv::Size2i
+           | (sz: Cv::Size2i) -> Cv::Size2i
+    def assign_divide: (arg_0: Integer) -> Cv::Size2i
+                  | (arg_0: Integer) -> Cv::Size2i
+                  | (arg_0: Integer) -> Cv::Size2i
+    def assign_minus: (arg_0: Cv::Size2i) -> Cv::Size2i
+                 | (arg_0: Cv::Size2i) -> Cv::Size2i
+                 | (arg_0: Cv::Size2i) -> Cv::Size2i
+    def assign_multiply: (arg_0: Integer) -> Cv::Size2i
+                    | (arg_0: Integer) -> Cv::Size2i
+                    | (arg_0: Integer) -> Cv::Size2i
+    def assign_plus: (arg_0: Cv::Size2i) -> Cv::Size2i
+                | (arg_0: Cv::Size2i) -> Cv::Size2i
+                | (arg_0: Cv::Size2i) -> Cv::Size2i
+    def empty?: () -> TrueClass
+           | () -> TrueClass
+    def initialize_copy: (sz: Cv::Size2i) -> NilClass
+                    | (sz: Cv::Size2i) -> NilClass
+    def inspect: () -> String
+            | () -> String
+            | () -> String
+    def to_s: () -> String
+         | () -> String
+         | () -> String
+  end
+end

@@ -1,0 +1,16 @@
+module Cv::Face
+  class BasicFaceRecognizer
+    def empty?: () -> TrueClass
+    def get_eigen_values: () -> Cv::Mat
+    def get_eigen_vectors: () -> Cv::Mat
+    def get_labels: () -> Cv::Mat
+    def get_mean: () -> Cv::Mat
+    def get_num_components: () -> Integer
+    def get_projections: () -> Std::Vector≺cv꞉꞉Mat≻
+    def get_threshold: () -> Float
+    def read: (fn: Cv::FileNode) -> NilClass
+    def set_num_components: (val: Integer) -> NilClass
+    def set_threshold: (val: Float) -> NilClass
+    def write: (fs: Cv::FileStorage) -> NilClass
+  end
+end

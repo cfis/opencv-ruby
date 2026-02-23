@@ -1,0 +1,9 @@
+module Cv::Xfeatures2d
+  class BriefDescriptorExtractor
+    def get_default_name: () -> String
+    def get_descriptor_size: () -> Integer
+    def get_use_orientation?: () -> TrueClass
+    def set_descriptor_size: (bytes: Integer) -> NilClass
+    def set_use_orientation: (use_orientation: TrueClass) -> NilClass
+  end
+end

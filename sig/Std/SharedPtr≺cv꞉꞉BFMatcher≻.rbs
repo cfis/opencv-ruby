@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::BFMatcher) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::BFMatcher
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉BFMatcher≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉BFMatcher≻) -> NilClass
     def use_count: () -> Integer
   end
 end

@@ -1,0 +1,24 @@
+module Cv
+  class Vec8d
+    def []: (i: Integer) -> Float
+       | (i: Integer) -> Float
+       | (i: Integer) -> Float
+       | (i: Integer) -> Float
+    def initialize: () -> NilClass
+               | (v0: Float) -> NilClass
+               | (values: Rice::Pointer≺double≻) -> NilClass
+               | (v0: Float, v1: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float) -> NilClass
+               | (a: Cv::Matx81d, b: Cv::Matx81d, arg_2: Cv::MatxAddOp) -> NilClass
+               | (a: Cv::Matx81d, b: Cv::Matx81d, arg_2: Cv::MatxSubOp) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float, v6: Float) -> NilClass
+               | (v0: Float, v1: Float, v2: Float, v3: Float, v4: Float, v5: Float, v6: Float, v7: Float) -> NilClass
+    def []=: (arg_0: Integer, arg_1: Float) -> NilClass
+    def assign: (rhs: Cv::Vec8d) -> Cv::Vec8d
+    def initialize_copy: (v: Cv::Vec8d) -> NilClass
+    def mul: (v: Cv::Vec8d) -> Cv::Vec8d
+  end
+end

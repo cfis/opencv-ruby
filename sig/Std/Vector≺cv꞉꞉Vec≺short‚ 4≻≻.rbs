@@ -1,30 +1,30 @@
 module Std
   class Vector≺cv꞉꞉Vec≺short‚ 4≻≻
     def initialize: () -> NilClass
-               | (arg_0: Integer) -> NilClass
+               | (count: Integer) -> NilClass
                | (arg_0: Array) -> NilClass
-               | (arg_0: Integer, arg_1: Cv::Vec4s) -> NilClass
-    def ==: (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> TrueClass
-    def []: (arg_0: Integer) -> Cv::Vec4s
-       | (arg_0: Integer, arg_1: Integer) -> Integer
-    def []=: (arg_0: Integer, arg_1: Cv::Vec4s) -> NilClass
+               | (count: Integer, value: Cv::Vec4s) -> NilClass
+    def ==: (other: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> TrueClass
+    def []: (pos: Integer) -> Cv::Vec4s
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Vec4s) -> NilClass
     def capacity: () -> Integer
     def data: () -> Rice::Pointer≺cv꞉꞉Vec≺short‚ 4≻≻
-    def delete: (arg_0: Cv::Vec4s) -> Cv::Vec4s
-    def delete_at: (arg_0: Integer) -> Cv::Vec4s
+    def delete: (value: Cv::Vec4s) -> Cv::Vec4s
+    def delete_at: (pos: Integer) -> Cv::Vec4s
     def empty?: () -> TrueClass
     def clear: () -> NilClass
     def first: () -> Cv::Vec4s
-    def include?: (arg_0: Cv::Vec4s) -> TrueClass
-    def index: (arg_0: Cv::Vec4s) -> Integer
-    def initialize_copy: (arg_0: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> NilClass
-    def insert: (arg_0: Integer, arg_1: Cv::Vec4s) -> Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻
+    def include?: (value: Cv::Vec4s) -> TrueClass
+    def index: (value: Cv::Vec4s) -> Integer
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Vec4s) -> Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻
     def last: () -> Cv::Vec4s
     def max_size: () -> Integer
     def pop: () -> Cv::Vec4s
-    def push: (arg_0: Cv::Vec4s) -> Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻
-    def reserve: (arg_0: Integer) -> NilClass
-    def resize: (arg_0: Integer) -> NilClass
+    def push: (value: Cv::Vec4s) -> Std::Vector≺cv꞉꞉Vec≺short‚ 4≻≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
     def shrink_to_fit: () -> NilClass
     def size: () -> Integer
     def to_a: () -> Integer

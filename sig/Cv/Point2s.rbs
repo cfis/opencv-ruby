@@ -11,6 +11,7 @@ module Cv
        | (arg_0: Cv::Point2s) -> TrueClass
     def *: (arg_0: Float) -> Cv::Point2s
       | (arg_0: Integer) -> Cv::Point2s
+      | (arg_0: Float) -> Cv::Point2s
       | (arg_0: Integer) -> Cv::Point2s
     def +: (arg_0: Cv::Point2s) -> Cv::Point2s
       | (arg_0: Cv::Point2s) -> Cv::Point2s
@@ -22,13 +23,17 @@ module Cv
       | (arg_0: Float) -> Cv::Point2s
     def ==: (arg_0: Cv::Point2s) -> TrueClass
        | (arg_0: Cv::Point2s) -> TrueClass
-    def assign_divide: (arg_0: Integer) -> Cv::Point2s
-                  | (arg_0: Float) -> Cv::Point2s
-                  | (arg_0: Float) -> Cv::Point2s
+    def assign: (pt: Cv::Point2s) -> Cv::Point2s
+           | (pt: Cv::Point2s) -> Cv::Point2s
+    def assign_divide: (arg_0: Float) -> Cv::Point2s
                   | (arg_0: Integer) -> Cv::Point2s
+                  | (arg_0: Integer) -> Cv::Point2s
+                  | (arg_0: Float) -> Cv::Point2s
     def assign_minus: (arg_0: Cv::Point2s) -> Cv::Point2s
                  | (arg_0: Cv::Point2s) -> Cv::Point2s
     def assign_multiply: (arg_0: Float) -> Cv::Point2s
+                    | (arg_0: Float) -> Cv::Point2s
+                    | (arg_0: Float) -> Cv::Point2s
                     | (arg_0: Float) -> Cv::Point2s
     def assign_plus: (arg_0: Cv::Point2s) -> Cv::Point2s
                 | (arg_0: Cv::Point2s) -> Cv::Point2s
@@ -36,10 +41,14 @@ module Cv
     def ddot: (pt: Cv::Point2s) -> Float
     def dot: (pt: Cv::Point2s) -> Integer
     def initialize_copy: (pt: Cv::Point2s) -> NilClass
-    def inside?: (r: Cv::Rect2s) -> TrueClass
+    def inside: (r: Cv::Rect2s) -> TrueClass
     def inspect: () -> String
+            | () -> String
     def norm: () -> Float
+         | () -> Float
     def to_s: () -> String
+         | () -> String
     def to_vec: () -> Cv::Vec2s
+           | () -> Cv::Vec2s
   end
 end

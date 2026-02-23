@@ -10,6 +10,6 @@ module Cvflann
     def resize: (sz: Integer) -> NilClass
     def set: (index: Integer) -> NilClass
     def size: () -> Integer
-    def test?: (index: Integer) -> TrueClass
+    def test: (index: Integer) -> TrueClass
   end
 end

@@ -5,7 +5,7 @@ module Cv
     def check?: () -> TrueClass
     def initialize: (argc: Integer, argv: Rice::Pointer≺char∗≻, keys: String) -> NilClass
     def get_path_to_application: () -> String
-    def has?: (name: String) -> TrueClass
+    def has: (name: String) -> TrueClass
     def initialize_copy: (parser: Cv::CommandLineParser) -> NilClass
     def print_errors: () -> NilClass
     def print_message: () -> NilClass

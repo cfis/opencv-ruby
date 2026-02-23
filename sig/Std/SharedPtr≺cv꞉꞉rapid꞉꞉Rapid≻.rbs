@@ -1,0 +1,9 @@
+module Std
+  class SharedPtr≺cv꞉꞉rapid꞉꞉Rapid≻
+    def initialize: (value: Cv::Rapid::Rapid) -> NilClass
+    def empty?: () -> TrueClass
+    def get: () -> Cv::Rapid::Rapid
+    def swap: (r: Std::SharedPtr≺cv꞉꞉rapid꞉꞉Rapid≻) -> NilClass
+    def use_count: () -> Integer
+  end
+end

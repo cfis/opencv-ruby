@@ -1,0 +1,11 @@
+module Std
+  class Pair≺int‚ double≻
+    attr_accessor first: Integer
+    attr_accessor second: Float
+
+    def initialize: () -> NilClass
+               | (x: Integer, y: Float) -> NilClass
+    def initialize_copy: (other: Std::Pair≺int‚ double≻) -> NilClass
+    def to_s: () -> String
+  end
+end

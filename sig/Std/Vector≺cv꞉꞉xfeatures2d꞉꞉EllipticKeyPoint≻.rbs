@@ -1,0 +1,32 @@
+module Std
+  class Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+    def initialize: () -> NilClass
+               | (count: Integer) -> NilClass
+               | (arg_0: Array) -> NilClass
+               | (count: Integer, value: Cv::Xfeatures2d::EllipticKeyPoint) -> NilClass
+    def []: (pos: Integer) -> Cv::Xfeatures2d::EllipticKeyPoint
+       | (start: Integer, length: Integer) -> Integer
+    def []=: (pos: Integer, value: Cv::Xfeatures2d::EllipticKeyPoint) -> NilClass
+    def capacity: () -> Integer
+    def clear: () -> NilClass
+    def data: () -> Rice::Pointer≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+    def delete_at: (pos: Integer) -> Cv::Xfeatures2d::EllipticKeyPoint
+    def empty?: () -> TrueClass
+    def first: () -> Cv::Xfeatures2d::EllipticKeyPoint
+    def include?: (value: Cv::Xfeatures2d::EllipticKeyPoint) -> TrueClass
+    def index: (value: Cv::Xfeatures2d::EllipticKeyPoint) -> Integer
+    def delete: (value: Cv::Xfeatures2d::EllipticKeyPoint) -> Cv::Xfeatures2d::EllipticKeyPoint
+    def initialize_copy: (other: Std::Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻) -> NilClass
+    def insert: (pos: Integer, value: Cv::Xfeatures2d::EllipticKeyPoint) -> Std::Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+    def last: () -> Cv::Xfeatures2d::EllipticKeyPoint
+    def max_size: () -> Integer
+    def pop: () -> Cv::Xfeatures2d::EllipticKeyPoint
+    def push: (value: Cv::Xfeatures2d::EllipticKeyPoint) -> Std::Vector≺cv꞉꞉xfeatures2d꞉꞉EllipticKeyPoint≻
+    def reserve: (new_cap: Integer) -> NilClass
+    def resize: (count: Integer) -> NilClass
+    def shrink_to_fit: () -> NilClass
+    def size: () -> Integer
+    def to_a: () -> Integer
+    def to_s: () -> String
+  end
+end

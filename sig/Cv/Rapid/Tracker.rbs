@@ -1,0 +1,6 @@
+module Cv::Rapid
+  class Tracker
+    def clear_state: () -> NilClass
+    def compute: (img: Cv::InputArray, num: Integer, len: Integer, k: Cv::InputArray, rvec: Cv::InputOutputArray, tvec: Cv::InputOutputArray, termcrit: Cv::TermCriteria) -> Float
+  end
+end

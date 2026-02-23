@@ -1,0 +1,9 @@
+module Cvflann
+  class ZeroIteratorUnsignedChar
+    def []: (arg_0: Integer) -> String
+    def assign_plus: (arg_0: Integer) -> Cvflann::ZeroIteratorUnsignedChar
+    def dereference: () -> String
+    def increment: () -> Cvflann::ZeroIteratorUnsignedChar
+    def increment_post: (arg_0: Integer) -> Cvflann::ZeroIteratorUnsignedChar
+  end
+end

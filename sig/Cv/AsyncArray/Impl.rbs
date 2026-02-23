@@ -1,0 +1,4 @@
+module Cv::AsyncArray
+  class Impl
+  end
+end

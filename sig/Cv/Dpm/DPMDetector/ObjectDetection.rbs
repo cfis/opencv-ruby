@@ -1,0 +1,10 @@
+module Cv::Dpm::DPMDetector
+  class ObjectDetection
+    attr_accessor class_id: Integer
+    attr_accessor rect: Cv::Rect2i
+    attr_accessor score: Float
+
+    def initialize: () -> NilClass
+               | (rect: Cv::Rect2i, score: Float, class_id: Integer) -> NilClass
+  end
+end

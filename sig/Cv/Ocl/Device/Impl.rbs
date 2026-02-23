@@ -1,0 +1,4 @@
+module Cv::Ocl::Device
+  class Impl
+  end
+end

@@ -1,0 +1,40 @@
+module Cv
+  class DualQuatf
+    attr_accessor w: Float
+    attr_accessor w_: Float
+    attr_accessor x: Float
+    attr_accessor x_: Float
+    attr_accessor y: Float
+    attr_accessor y_: Float
+    attr_accessor z: Float
+    attr_accessor z_: Float
+
+    def initialize: () -> NilClass
+               | (w: Float, x: Float, y: Float, z: Float, w_: Float, x_: Float, y_: Float, z_: Float) -> NilClass
+               | (q: Cv::Vec8f) -> NilClass
+    def +: (arg_0: Cv::DualQuatf) -> Cv::DualQuatf
+    def -: (arg_0: Cv::DualQuatf) -> Cv::DualQuatf
+    def -@: () -> Cv::DualQuatf
+    def /: (arg_0: Cv::DualQuatf) -> Cv::DualQuatf
+      | (s: Float) -> Cv::DualQuatf
+    def ==: (arg_0: Cv::DualQuatf) -> TrueClass
+    def assign_minus: (arg_0: Cv::DualQuatf) -> Cv::DualQuatf
+    def assign_plus: (arg_0: Cv::DualQuatf) -> Cv::DualQuatf
+    def conjugate: () -> Cv::DualQuatf
+    def dot: (p: Cv::DualQuatf) -> Float
+    def exp: () -> Cv::DualQuatf
+    def get_dual_part: () -> Cv::Quatf
+    def get_real_part: () -> Cv::Quatf
+    def get_rotation: (assume_unit: Cv::QuatAssumeType) -> Cv::Quatf
+    def get_translation: (assume_unit: Cv::QuatAssumeType) -> Cv::Vec3f
+    def inv: (assume_unit: Cv::QuatAssumeType) -> Cv::DualQuatf
+    def log: (assume_unit: Cv::QuatAssumeType) -> Cv::DualQuatf
+    def norm: () -> Cv::DualQuatf
+    def normalize: () -> Cv::DualQuatf
+    def power: (q: Cv::DualQuatf, assume_unit: Cv::QuatAssumeType) -> Cv::DualQuatf
+          | (t: Float, assume_unit: Cv::QuatAssumeType) -> Cv::DualQuatf
+    def to_affine3: (assume_unit: Cv::QuatAssumeType) -> Cv::Affine3f
+    def to_mat: (assume_unit: Cv::QuatAssumeType) -> Cv::Matx44f
+    def to_vec: () -> Cv::Vec8f
+  end
+end

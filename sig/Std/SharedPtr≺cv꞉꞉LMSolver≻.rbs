@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::LMSolver) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::LMSolver
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉LMSolver≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉LMSolver≻) -> NilClass
     def use_count: () -> Integer
   end
 end

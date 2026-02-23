@@ -1,0 +1,6 @@
+module Cv::Face
+  class PredictCollector
+    def collect: (label: Integer, dist: Float) -> TrueClass
+    def init: (size: Integer) -> NilClass
+  end
+end

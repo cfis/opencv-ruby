@@ -1,11 +1,20 @@
 module Cv
   class Scalar
-    def conj: () -> Cv::Scalar
     def initialize: () -> NilClass
-               | (v0: Float) -> NilClass
                | (v0: Float, v1: Float, v2: Float, v3: Float) -> NilClass
+               | (v0: Float) -> NilClass
+    def &: (arg_0: Cv::Mat) -> Cv::MatExpr
+    def +: (arg_0: Cv::MatExpr) -> Cv::MatExpr
+      | (arg_0: Cv::Mat) -> Cv::MatExpr
+    def -: (arg_0: Cv::MatExpr) -> Cv::MatExpr
+      | (arg_0: Cv::Mat) -> Cv::MatExpr
+    def ^: (arg_0: Cv::Mat) -> Cv::MatExpr
+    def assign: (s: Cv::Scalar) -> Cv::Scalar
+           | (s: Cv::Scalar) -> Cv::Scalar
+    def conj: () -> Cv::Scalar
     def initialize_copy: (s: Cv::Scalar) -> NilClass
-    def is_real?: () -> TrueClass
     def mul: (a: Cv::Scalar, scale: Float) -> Cv::Scalar
+    def real?: () -> TrueClass
+    def |: (arg_0: Cv::Mat) -> Cv::MatExpr
   end
 end

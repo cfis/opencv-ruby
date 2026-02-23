@@ -5,12 +5,13 @@ module Cv
 
     def initialize: () -> NilClass
                | (_start: Integer, _end: Integer) -> NilClass
+    def !: () -> TrueClass
     def !=: (arg_0: Cv::Range) -> TrueClass
     def &: (arg_0: Cv::Range) -> Cv::Range
-    def &=: (arg_0: Cv::Range) -> Cv::Range
     def +: (arg_0: Integer) -> Cv::Range
     def -: (arg_0: Integer) -> Cv::Range
     def ==: (arg_0: Cv::Range) -> TrueClass
+    def assign_and: (arg_0: Cv::Range) -> Cv::Range
     def empty?: () -> TrueClass
     def size: () -> Integer
   end

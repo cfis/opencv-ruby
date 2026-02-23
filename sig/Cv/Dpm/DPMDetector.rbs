@@ -1,0 +1,8 @@
+module Cv::Dpm
+  class DPMDetector
+    def detect: (image: Cv::Mat, objects: Std::Vector≺cv꞉꞉dpm꞉꞉DPMDetector꞉꞉ObjectDetection≻) -> NilClass
+    def empty?: () -> TrueClass
+    def get_class_count: () -> Integer
+    def get_class_names: () -> Std::Vector≺string≻
+  end
+end

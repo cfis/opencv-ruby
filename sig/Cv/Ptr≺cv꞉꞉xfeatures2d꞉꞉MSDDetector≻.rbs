@@ -1,0 +1,15 @@
+module Cv
+  class Ptr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻
+    def initialize: () -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻) -> NilClass
+               | (o: Std::SharedPtr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻) -> NilClass
+               | (ptr: Cv::Xfeatures2d::MSDDetector) -> NilClass
+               | (value: Cv::Xfeatures2d::MSDDetector) -> NilClass
+    def assign: (o: Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻) -> Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻
+    def get: () -> Cv::Xfeatures2d::MSDDetector
+    def empty?: () -> TrueClass
+    def initialize_copy: (o: Cv::Ptr≺cv꞉꞉xfeatures2d꞉꞉MSDDetector≻) -> NilClass
+    def release: () -> NilClass
+    def reset: () -> NilClass
+  end
+end

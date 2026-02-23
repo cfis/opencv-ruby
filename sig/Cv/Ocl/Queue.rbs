@@ -4,9 +4,10 @@ module Cv::Ocl
                | (c: Cv::Ocl::Context, d: Cv::Ocl::Device) -> NilClass
     def assign: (q: Cv::Ocl::Queue) -> Cv::Ocl::Queue
            | (q: Cv::Ocl::Queue) -> Cv::Ocl::Queue
-    def create?: (c: Cv::Ocl::Context, d: Cv::Ocl::Device) -> TrueClass
+    def create: (c: Cv::Ocl::Context, d: Cv::Ocl::Device) -> TrueClass
     def empty?: () -> TrueClass
     def finish: () -> NilClass
+    def get_impl: () -> Cv::Ocl::Queue::Impl
     def get_profiling_queue: () -> Cv::Ocl::Queue
     def initialize_copy: (q: Cv::Ocl::Queue) -> NilClass
     def ptr: () -> Rice::Pointer≺void≻

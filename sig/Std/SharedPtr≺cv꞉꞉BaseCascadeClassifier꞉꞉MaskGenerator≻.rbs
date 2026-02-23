@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::BaseCascadeClassifier::MaskGenerator) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::BaseCascadeClassifier::MaskGenerator
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉BaseCascadeClassifier꞉꞉MaskGenerator≻) -> NilClass
     def use_count: () -> Integer
   end
 end

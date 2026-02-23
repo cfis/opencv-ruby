@@ -1,0 +1,6 @@
+module Cv::Xfeatures2d
+  class PCTSignaturesSQFD
+    def compute_quadratic_form_distance: (_signature0: Cv::InputArray, _signature1: Cv::InputArray) -> Float
+    def compute_quadratic_form_distances: (source_signature: Cv::Mat, image_signatures: Std::Vector≺cv꞉꞉Mat≻, distances: Std::Vector≺float≻) -> NilClass
+  end
+end

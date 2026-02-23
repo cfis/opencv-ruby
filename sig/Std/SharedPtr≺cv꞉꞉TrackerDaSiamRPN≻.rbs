@@ -3,7 +3,7 @@ module Std
     def initialize: (value: Cv::TrackerDaSiamRPN) -> NilClass
     def empty?: () -> TrueClass
     def get: () -> Cv::TrackerDaSiamRPN
-    def swap: (arg_0: Std::SharedPtr≺cv꞉꞉TrackerDaSiamRPN≻) -> NilClass
+    def swap: (r: Std::SharedPtr≺cv꞉꞉TrackerDaSiamRPN≻) -> NilClass
     def use_count: () -> Integer
   end
 end

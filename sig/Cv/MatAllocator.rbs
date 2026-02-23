@@ -1,7 +1,7 @@
 module Cv
   class MatAllocator
-    def allocate: (dims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, data: Rice::Pointer≺void≻, step: Rice::Pointer≺unsigned Int64≻, flags: Cv::AccessFlag, usage_flags: Cv::UMatUsageFlags) -> Cv::UMatData
-    def allocate?: (data: Cv::UMatData, accessflags: Cv::AccessFlag, usage_flags: Cv::UMatUsageFlags) -> TrueClass
+    def allocate: (data: Cv::UMatData, accessflags: Cv::AccessFlag, usage_flags: Cv::UMatUsageFlags) -> TrueClass
+             | (dims: Integer, sizes: Rice::Pointer≺int≻, type: Integer, data: Rice::Pointer≺void≻, step: Rice::Pointer≺unsigned Int64≻, flags: Cv::AccessFlag, usage_flags: Cv::UMatUsageFlags) -> Cv::UMatData
     def copy: (srcdata: Cv::UMatData, dstdata: Cv::UMatData, dims: Integer, sz: Rice::Pointer≺unsigned Int64≻, srcofs: Rice::Pointer≺unsigned Int64≻, srcstep: Rice::Pointer≺unsigned Int64≻, dstofs: Rice::Pointer≺unsigned Int64≻, dststep: Rice::Pointer≺unsigned Int64≻, sync: TrueClass) -> NilClass
     def deallocate: (data: Cv::UMatData) -> NilClass
     def download: (data: Cv::UMatData, dst: Rice::Pointer≺void≻, dims: Integer, sz: Rice::Pointer≺unsigned Int64≻, srcofs: Rice::Pointer≺unsigned Int64≻, srcstep: Rice::Pointer≺unsigned Int64≻, dststep: Rice::Pointer≺unsigned Int64≻) -> NilClass

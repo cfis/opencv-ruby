@@ -1,0 +1,15 @@
+module Cv::Xfeatures2d
+  class StarDetector
+    def get_default_name: () -> String
+    def get_line_threshold_binarized: () -> Integer
+    def get_line_threshold_projected: () -> Integer
+    def get_max_size: () -> Integer
+    def get_response_threshold: () -> Integer
+    def get_suppress_nonmax_size: () -> Integer
+    def set_line_threshold_binarized: (_line_threshold_binarized: Integer) -> NilClass
+    def set_line_threshold_projected: (_line_threshold_projected: Integer) -> NilClass
+    def set_max_size: (_max_size: Integer) -> NilClass
+    def set_response_threshold: (_response_threshold: Integer) -> NilClass
+    def set_suppress_nonmax_size: (_suppress_nonmax_size: Integer) -> NilClass
+  end
+end

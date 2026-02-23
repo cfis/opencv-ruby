@@ -1,0 +1,6 @@
+module Cv::Xfeatures2d
+  class TEBLID
+    def get_default_name: () -> String
+    def initialize: () -> NilClass
+  end
+end

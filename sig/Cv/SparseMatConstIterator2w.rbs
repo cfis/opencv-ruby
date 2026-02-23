@@ -1,13 +1,12 @@
 module Cv
   class SparseMatConstIterator2w
-    def !=: (arg_0: Cv::SparseMatConstIterator2w) -> TrueClass
-    def initialize: () -> NilClass
-               | (_m: Cv::SparseMat2w) -> NilClass
-               | (_m: Cv::SparseMat) -> NilClass
-    def ==: (arg_0: Cv::SparseMatConstIterator2w) -> TrueClass
+    def assign: (it: Cv::SparseMatConstIterator2w) -> Cv::SparseMatConstIterator2w
     def dereference: () -> Cv::Vec2w
     def increment: () -> Cv::SparseMatConstIterator2w
-              | (: Integer) -> Cv::SparseMatConstIterator2w
+    def increment_post: (arg_0: Integer) -> Cv::SparseMatConstIterator2w
+    def initialize: () -> NilClass
+               | (_m: Cv::SparseMat) -> NilClass
+               | (_m: Cv::SparseMat2w) -> NilClass
     def initialize_copy: (it: Cv::SparseMatConstIterator2w) -> NilClass
   end
 end

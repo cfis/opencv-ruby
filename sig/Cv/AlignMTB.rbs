@@ -1,6 +1,6 @@
 module Cv
   class AlignMTB
-    def calculate_shift: (img0: Cv::InputArray, img1: Cv::InputArray) -> Cv::Point
+    def calculate_shift: (img0: Cv::InputArray, img1: Cv::InputArray) -> Cv::Point2i
     def compute_bitmaps: (img: Cv::InputArray, tb: Cv::OutputArray, eb: Cv::OutputArray) -> NilClass
     def get_cut?: () -> TrueClass
     def get_exclude_range: () -> Integer
@@ -10,6 +10,6 @@ module Cv
     def set_cut: (value: TrueClass) -> NilClass
     def set_exclude_range: (exclude_range: Integer) -> NilClass
     def set_max_bits: (max_bits: Integer) -> NilClass
-    def shift_mat: (src: Cv::InputArray, dst: Cv::OutputArray, shift: Cv::Point) -> NilClass
+    def shift_mat: (src: Cv::InputArray, dst: Cv::OutputArray, shift: Cv::Point2i) -> NilClass
   end
 end

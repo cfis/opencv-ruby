@@ -1,0 +1,6 @@
+module Cv
+  class IStreamReader
+    def read: (buffer: String, size: Integer) -> Integer
+    def seek: (offset: Integer, origin: Integer) -> Integer
+  end
+end

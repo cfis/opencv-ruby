@@ -53,7 +53,7 @@ skip_symbols:
   - /cv::dnn::.*::BackendNode/
   - CvHaarClassifierCascade
   # Internal enum finalizer not needed in Ruby
-  - cv::Vec::_dummy_enum_finalizer
+  - /_dummy_enum_finalizer/
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

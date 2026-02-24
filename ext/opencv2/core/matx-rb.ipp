@@ -144,7 +144,6 @@ inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module parent, co
 {
   Rice::Data_Type<cv::Vec<_Tp, cn>> klass = Rice::define_class_under<cv::Vec<_Tp, cn>, cv::Matx<_Tp, cn, 1>>(parent, name).
     define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels).
-    define_constant("_dummy_enum_finalizer", (int)cv::Vec<_Tp, cn>::_dummy_enum_finalizer).
     define_constructor(Constructor<cv::Vec<_Tp, cn>>()).
     define_constructor(Constructor<cv::Vec<_Tp, cn>, const _Tp*>(),
       std::conditional_t<std::is_fundamental_v<const _Tp>, ArgBuffer, Arg>("values")).

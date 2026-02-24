@@ -59,6 +59,8 @@ Apply all these updates
 | `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead |
 | `opencv2/core/cuda-rb.cpp`               | Remove default `Stream::Null()` arguments (~lines 332, 472) from `Event::record` and `convert_fp16`. Change `Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())` to just `Arg("stream")`. Add comment: `// Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed` |
 | `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Change template argument from `<long>` to `<int64>`. Add comment: `// Manual fix: use int64 instead of long` |
+| `opencv2/core/types-rb.cpp`              | Remove duplicate `Matx41d` instantiation (~line 115): delete `Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");` — already defined in `matx-rb.cpp` |
+| `opencv2/core/mat.inl-rb.cpp`            | Remove `ptrdiff_t` operator+ with `MatConstIterator` (~line 52): `ptrdiff_t` is not a Rice-wrapped type |
 | `opencv2/core/mat-rb.cpp`                | Rename `MatSize::operator()` from `"call"` to `"to_size"` (~line 327) - returns cv::Size, more descriptive name |
 | `opencv2/videoio-rb.cpp`                 | Rename `VideoCapture::grab` from `"grab?"` to `"grab"` (~line 480) - not a predicate, actually grabs a frame |
 

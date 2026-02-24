@@ -112,7 +112,6 @@ void Init_Core_Types()
 
   rb_cCvTraitsTypeRange.define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
 
-  Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");
   Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");
   Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = Scalar__instantiate<double>(rb_mCv, "Scalar");
 

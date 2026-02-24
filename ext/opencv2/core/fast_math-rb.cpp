@@ -5,7 +5,9 @@ using namespace Rice;
 
 void Init_Core_FastMath()
 {
+#ifdef OPENCV_USE_FASTMATH_BUILTINS // Manual
   Class(rb_cObject).define_constant("OPENCV_USE_FASTMATH_BUILTINS", OPENCV_USE_FASTMATH_BUILTINS);
+#endif // Manual
 
   define_global_function<int(*)(double)>("cv_round", &cvRound,
     Arg("value"));

@@ -12,6 +12,7 @@ First add the following `#include` directives. These are required for compilatio
 |------------------------------------------------------------|--------------------------------------------------------------------------|
 | `opencv2/core/bindings_utils-rb.cpp`                       | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/check-rb.cpp`                                | `<opencv2/core/types.hpp>`                                               |
+| `opencv2/core/cvstd.inl-rb.cpp`                           | `<opencv2/core/core.hpp>`, `<opencv2/core/traits.hpp>`, `<opencv2/core/mat.hpp>`, `<opencv2/core/matx.hpp>` |
 | `opencv2/core/detail/async_promise-rb.cpp`                 | `<opencv2/core.hpp>`, `<opencv2/core/detail/exception_ptr.hpp>`          |
 | `opencv2/core/detail/dispatch_helper.impl-rb.cpp`          | `<opencv2/opencv.hpp>`                                                   |
 | `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"`, `"refinements/mat-iterators.hpp"` |
@@ -120,26 +121,28 @@ Change `"call"` to `"[]"` for `operator()` methods that provide element or ROI a
 
 ## Template Builder Modifications
 
-**NOTE:** Template builder functions (`*_builder`) are located in `.ipp` files, not `.cpp` files. The `.cpp` files include the `.ipp` files and instantiate the templates.
+**NOTE:** Template builder functions (`*_instantiate`) are located in `.ipp` files, not `.cpp` files. The `.cpp` files include the `.ipp` files and instantiate the templates.
 
-The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` require `if constexpr` guards because OpenCV only defines constructors and methods for specific dimensions/types.
+The `Matx_instantiate` and `Vec_instantiate` templates in `opencv2/core/matx-rb.ipp` require `if constexpr` guards because OpenCV only defines constructors and methods for specific dimensions/types.
 
-### `Matx_builder<Data_Type_T, _Tp, m, n>` changes:
+**Builder pattern:** Change `return Rice::define_class_under<...>(parent, name).` to `Rice::Data_Type<...> klass = Rice::define_class_under<...>(parent, name).` to store the class in a variable. Keep non-conditional methods (constants, default constructor, pointer constructor, static functions, always-available methods, operation constructors, val attr) in the fluent chain. Then use `klass.define_constructor(...)` / `klass.template define_method<...>(...)` in `if constexpr` blocks after the chain. Return `klass` at the end.
 
-1. **Dimension-specific constructors** - Wrap each multi-arg constructor in `if constexpr (m * n == N)`:
-   - `m * n == 1`: 1-arg constructor
-   - `m * n == 2`: 2-arg constructor
-   - `m * n == 3`: 3-arg constructor
-   - `m * n == 4`: 4-arg constructor
-   - `m * n == 5`: 5-arg constructor
-   - `m * n == 6`: 6-arg constructor
-   - `m * n == 7`: 7-arg constructor
-   - `m * n == 8`: 8-arg constructor
-   - `m * n == 9`: 9-arg constructor
-   - `m * n == 10`: 10-arg constructor
-   - `m * n == 12`: 12-arg constructor
-   - `m * n == 14`: 14-arg constructor
-   - `m * n == 16`: 16-arg constructor
+### `Matx_instantiate<typename _Tp, int m, int n>` changes:
+
+1. **Dimension-specific constructors** - Move each multi-arg constructor out of the fluent chain and wrap in `if constexpr (m * n >= N)` (OpenCV uses `CV_StaticAssert(channels >= N)` internally):
+   - `m * n >= 1`: 1-arg constructor
+   - `m * n >= 2`: 2-arg constructor
+   - `m * n >= 3`: 3-arg constructor
+   - `m * n >= 4`: 4-arg constructor
+   - `m * n >= 5`: 5-arg constructor
+   - `m * n >= 6`: 6-arg constructor
+   - `m * n >= 7`: 7-arg constructor
+   - `m * n >= 8`: 8-arg constructor
+   - `m * n >= 9`: 9-arg constructor
+   - `m * n >= 10`: 10-arg constructor
+   - `m * n >= 12`: 12-arg constructor
+   - `m * n >= 14`: 14-arg constructor
+   - `m * n >= 16`: 16-arg constructor
 
 2. **Float/double-only methods** - Wrap `inv` and `solve` methods in:
    ```cpp
@@ -153,10 +156,10 @@ The `Matx_builder` and `Vec_builder` templates in `opencv2/core/matx-rb.ipp` req
    if constexpr (m == 1 || n == 1)
    ```
 
-### `Vec_builder<Data_Type_T, _Tp, cn>` changes:
+### `Vec_instantiate<typename _Tp, int cn>` changes:
 
-1. **Channel-specific constructors** - Wrap each multi-arg constructor in `if constexpr (cn == N)`:
-   - `cn == 1` through `cn == 10`, and `cn == 14`
+1. **Channel-specific constructors** - Move each multi-arg constructor out of the fluent chain and wrap in `if constexpr (cn >= N)` (OpenCV uses `CV_StaticAssert(channels >= N)` internally):
+   - `cn >= 1` through `cn >= 10`, and `cn >= 14`
 
 2. **Comment out randu/randn** - Same as Matx, these don't have explicit instantiations:
    ```cpp
@@ -326,7 +329,7 @@ This ensures proper class hierarchies in Ruby.
 
 ## DualQuaternion Linker Fixes
 
-The `opencv2/core/dualquaternion-rb.ipp` file has template builder methods that cause linker errors because OpenCV doesn't provide explicit template instantiations for them. Comment out the following sections in `DualQuat_builder`:
+The `opencv2/core/dualquaternion-rb.ipp` file has template builder methods that cause linker errors because OpenCV doesn't provide explicit template instantiations for them. Comment out the following sections in `DualQuat_instantiate`:
 
 **Lines 59-64** (assign_multiply and operator* methods):
 ```cpp
@@ -356,14 +359,14 @@ The `opencv2/core/dualquaternion-rb.ipp` file has template builder methods that 
 
 The `opencv2/core/mat-rb.ipp` and `opencv2/core/mat-rb.cpp` files have methods that cause linker errors. Comment out the following sections (line numbers are from freshly generated file):
 
-**In `opencv2/core/mat-rb.ipp` - Line 135** (Mat_::zeros with ndims in `Mat__builder`):
+**In `opencv2/core/mat-rb.ipp` - Line 135** (Mat_::zeros with ndims in `Mat__instantiate`):
 ```cpp
 // Commented out - causes linker errors
 // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
 //   Arg("_ndims"), ArgBuffer("_sizes")).
 ```
 
-**In `opencv2/core/mat-rb.ipp` - Line 143** (Mat_::ones with ndims in `Mat__builder`):
+**In `opencv2/core/mat-rb.ipp` - Line 143** (Mat_::ones with ndims in `Mat__instantiate`):
 ```cpp
 // Commented out - causes linker errors
 // template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,

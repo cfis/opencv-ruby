@@ -3,17 +3,17 @@
 
 using namespace Rice;
 template<typename Data_Type_T, typename _Tp>
-inline void V_TypeTraits_builder(Data_Type_T& klass)
+inline void V_TypeTraits_instantiate(Data_Type_T& klass)
 {
 };
 
 template<typename Data_Type_T, typename _Tp>
-inline void V_RegTraits_builder(Data_Type_T& klass)
+inline void V_RegTraits_instantiate(Data_Type_T& klass)
 {
 };
 
 template<typename Data_Type_T, typename T>
-inline void VTraits_builder(Data_Type_T& klass)
+inline void VTraits_instantiate(Data_Type_T& klass)
 {
   klass.template define_singleton_function<>("vlanes", &cv::hal_baseline::simd128_cpp::VTraits<T>::vlanes).
     define_constant("Nlanes", (int)cv::hal_baseline::simd128_cpp::VTraits<T>::nlanes).

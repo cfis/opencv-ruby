@@ -31,7 +31,7 @@ inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module parent
 template<typename T>
 inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::cuda::PtrStep<T>>(parent, name).
+  return Rice::define_class_under<cv::cuda::PtrStep<T>, cv::cuda::DevPtr<T>>(parent, name). // Manual - PtrStep inherits from DevPtr
     define_constructor(Constructor<cv::cuda::PtrStep<T>>()).
     define_constructor(Constructor<cv::cuda::PtrStep<T>, T*, size_t>(),
       std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("step_")).

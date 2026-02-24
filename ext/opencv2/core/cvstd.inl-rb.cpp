@@ -1,3 +1,7 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/core/traits.hpp>
+#include <opencv2/core/mat.hpp>
+#include <opencv2/core/matx.hpp>
 #include <opencv2/core/cvstd.inl.hpp>
 #include "cvstd.inl-rb.hpp"
 

@@ -1,3 +1,4 @@
+#include <opencv2/core/mat.hpp>
 #include <opencv2/core/mat.inl.hpp>
 #include "mat.inl-rb.hpp"
 

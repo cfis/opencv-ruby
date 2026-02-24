@@ -1,3 +1,4 @@
+#include <opencv2/opencv.hpp> // Manual
 #include <opencv2/core/detail/dispatch_helper.impl.hpp>
 #include "dispatch_helper.impl-rb.hpp"
 

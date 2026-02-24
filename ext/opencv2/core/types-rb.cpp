@@ -4,7 +4,6 @@
 using namespace Rice;
 
 #include "matx-rb.ipp"
-#include "matx-rb.ipp"
 #include "types-rb.ipp"
 
 void Init_Core_Types()
@@ -19,7 +18,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
+  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l"); // Manual fix: use int64 instead of long
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -35,7 +34,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
+  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l"); // Manual fix: use int64 instead of long
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
@@ -59,8 +58,10 @@ void Init_Core_Types()
       Arg("point1"), Arg("point2"), Arg("point3")).
     define_method<void(cv::RotatedRect::*)(cv::Point2f[]) const>("points", &cv::RotatedRect::points,
       Arg("pts")).
+#if RUBY_CV_VERSION >= 408
     define_method<void(cv::RotatedRect::*)(std::vector<cv::Point_<float>>&) const>("points", &cv::RotatedRect::points,
       Arg("pts")).
+#endif
     define_method<cv::Rect(cv::RotatedRect::*)() const>("bounding_rect", &cv::RotatedRect::boundingRect).
     define_method<cv::Rect2f(cv::RotatedRect::*)() const>("bounding_rect2f", &cv::RotatedRect::boundingRect2f).
     define_attr("center", &cv::RotatedRect::center).
@@ -226,8 +227,10 @@ void Init_Core_Types()
   rb_mCv.define_module_function<double(*)(const cv::Point_<double>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
+#if RUBY_CV_VERSION >= 407
   rb_mCv.define_module_function<double(*)(const cv::Rect2d&, const cv::Rect2d&)>("rectangle_intersection_area", &cv::rectangleIntersectionArea,
     Arg("a"), Arg("b"));
+#endif
 
   rb_cCvRange.
     define_method("==", [](const cv::Range& self, const cv::Range& other) -> bool

@@ -5,3 +5,4 @@ pkg/
 Gemfile.lock
 
 /lib/3.4
+/lib/4.0

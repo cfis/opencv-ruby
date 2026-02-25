@@ -1,5 +1,7 @@
-# Ruby-bindgen configuration for OpenCV Ruby bindings
-# Usage: ruby-bindgen bindings.yaml
+# ruby-bindgen configuration - Rice C++ bindings for OpenCV
+#
+# Usage:
+#   ruby-bindgen rice-bindings.yaml
 
 # === Output Settings ===
 input: build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4

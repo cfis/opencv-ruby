@@ -1,0 +1,10 @@
+# ruby-bindgen configuration - CMake build files for OpenCV Ruby bindings
+#
+# Usage (must run after rice-bindings.yaml):
+#   ruby-bindgen cmake-bindings.yaml
+
+format: CMake
+output: .
+
+include_dirs:
+  - "."

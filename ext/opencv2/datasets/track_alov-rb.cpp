@@ -1,5 +1,3 @@
-#include <opencv2/core.hpp> // Manual
-#include <opencv2/datasets/dataset.hpp> // Manual
 #include <opencv2/datasets/track_alov.hpp>
 #include "track_alov-rb.hpp"
 
@@ -34,9 +32,9 @@ void Init_Datasets_TrackAlov()
       Arg("id")).
     define_method<bool(cv::datasets::TRACK_alov::*)(cv::Mat&)>("get_next_frame", &cv::datasets::TRACK_alov::getNextFrame,
       Arg("frame")).
-    define_method<std::vector<cv::Point_<float>>(cv::datasets::TRACK_alov::*)()>("get_next_gt", &cv::datasets::TRACK_alov::getNextGT).
+    define_method<std::vector<cv::Point2f>(cv::datasets::TRACK_alov::*)()>("get_next_gt", &cv::datasets::TRACK_alov::getNextGT).
     define_method<bool(cv::datasets::TRACK_alov::*)(cv::Mat&, int, int)>("get_frame", &cv::datasets::TRACK_alov::getFrame,
       Arg("frame"), Arg("dataset_id"), Arg("frame_id")).
-    define_method<std::vector<cv::Point_<float>>(cv::datasets::TRACK_alov::*)(int, int)>("get_gt", &cv::datasets::TRACK_alov::getGT,
+    define_method<std::vector<cv::Point2f>(cv::datasets::TRACK_alov::*)(int, int)>("get_gt", &cv::datasets::TRACK_alov::getGT,
       Arg("dataset_id"), Arg("frame_id"));
 }

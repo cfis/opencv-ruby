@@ -57,7 +57,7 @@ void Init_Stitching_Detail_MotionEstimators()
   rb_mCvDetail.define_module_function<void(*)(std::vector<cv::Mat>&, cv::detail::WaveCorrectKind)>("wave_correct", &cv::detail::waveCorrect,
     Arg("rmats"), Arg("kind"));
 
-  rb_mCvDetail.define_module_function<cv::String(*)(std::vector<std::basic_string<char>>&, std::vector<cv::detail::MatchesInfo>&, float)>("matches_graph_as_string", &cv::detail::matchesGraphAsString,
+  rb_mCvDetail.define_module_function<cv::String(*)(std::vector<cv::String>&, std::vector<cv::detail::MatchesInfo>&, float)>("matches_graph_as_string", &cv::detail::matchesGraphAsString,
     Arg("paths"), Arg("pairwise_matches"), Arg("conf_threshold"));
 
   rb_mCvDetail.define_module_function<std::vector<int>(*)(std::vector<cv::detail::ImageFeatures>&, std::vector<cv::detail::MatchesInfo>&, float)>("leave_biggest_component", &cv::detail::leaveBiggestComponent,

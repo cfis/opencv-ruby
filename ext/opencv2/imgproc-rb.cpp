@@ -546,19 +546,19 @@ void Init_Imgproc()
       Arg("rect")).
     define_method<int(cv::Subdiv2D::*)(cv::Point2f)>("insert", &cv::Subdiv2D::insert,
       Arg("pt")).
-    define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point_<float>>&)>("insert", &cv::Subdiv2D::insert,
+    define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point2f>&)>("insert", &cv::Subdiv2D::insert,
       Arg("ptvec")).
     define_method<int(cv::Subdiv2D::*)(cv::Point2f, int&, int&)>("locate", &cv::Subdiv2D::locate,
       Arg("pt"), Arg("edge"), Arg("vertex")).
     define_method<int(cv::Subdiv2D::*)(cv::Point2f, cv::Point2f*)>("find_nearest", &cv::Subdiv2D::findNearest,
       Arg("pt"), Arg("nearest_pt") = static_cast<cv::Point2f*>(0)).
-    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec<float, 4>>&) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
+    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec4f>&) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
       Arg("edge_list")).
     define_method<void(cv::Subdiv2D::*)(std::vector<int>&) const>("get_leading_edge_list", &cv::Subdiv2D::getLeadingEdgeList,
       Arg("leading_edge_list")).
-    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec<float, 6>>&) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
+    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec6f>&) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
       Arg("triangle_list")).
-    define_method<void(cv::Subdiv2D::*)(const std::vector<int>&, std::vector<std::vector<cv::Point_<float>>>&, std::vector<cv::Point_<float>>&)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
+    define_method<void(cv::Subdiv2D::*)(const std::vector<int>&, std::vector<std::vector<cv::Point2f>>&, std::vector<cv::Point2f>&)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
       Arg("idx"), Arg("facet_list"), Arg("facet_centers")).
     define_method<cv::Point2f(cv::Subdiv2D::*)(int, int*) const>("get_vertex", &cv::Subdiv2D::getVertex,
       Arg("vertex"), ArgBuffer("first_edge") = static_cast<int*>(0)).
@@ -1059,10 +1059,10 @@ void Init_Imgproc()
   rb_mCv.define_module_function<bool(*)(cv::Rect, cv::Point&, cv::Point&)>("clip_line", &cv::clipLine,
     Arg("img_rect"), Arg("pt1"), Arg("pt2"));
 
-  rb_mCv.define_module_function<void(*)(cv::Point, cv::Size, int, int, int, int, std::vector<cv::Point_<int>>&)>("ellipse2_poly", &cv::ellipse2Poly,
+  rb_mCv.define_module_function<void(*)(cv::Point, cv::Size, int, int, int, int, std::vector<cv::Point>&)>("ellipse2_poly", &cv::ellipse2Poly,
     Arg("center"), Arg("axes"), Arg("angle"), Arg("arc_start"), Arg("arc_end"), Arg("delta"), Arg("pts"));
 
-  rb_mCv.define_module_function<void(*)(cv::Point2d, cv::Size2d, int, int, int, int, std::vector<cv::Point_<double>>&)>("ellipse2_poly", &cv::ellipse2Poly,
+  rb_mCv.define_module_function<void(*)(cv::Point2d, cv::Size2d, int, int, int, int, std::vector<cv::Point2d>&)>("ellipse2_poly", &cv::ellipse2Poly,
     Arg("center"), Arg("axes"), Arg("angle"), Arg("arc_start"), Arg("arc_end"), Arg("delta"), Arg("pts"));
 
   rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::String&, cv::Point, int, double, cv::Scalar, int, int, bool)>("put_text", &cv::putText,

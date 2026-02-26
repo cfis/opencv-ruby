@@ -244,11 +244,11 @@ void Init_Calib3d()
     define_value("SYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::SYMMETRIC_GRID).
     define_value("ASYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::ASYMMETRIC_GRID);
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid", &cv::findCirclesGrid,
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid", &cv::findCirclesGrid,
     Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags"), Arg("blob_detector"), Arg("parameters"));
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::Feature2D>&)>("find_circles_grid", &cv::findCirclesGrid,
-    Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags") = static_cast<int>(cv::CALIB_CB_SYMMETRIC_GRID), Arg("blob_detector") = static_cast<const cv::Ptr<cv::Feature2D>&>(cv::SimpleBlobDetector::create()));
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector>&)>("find_circles_grid", &cv::findCirclesGrid,
+    Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags") = static_cast<int>(cv::CALIB_CB_SYMMETRIC_GRID), Arg("blob_detector") = static_cast<const cv::Ptr<cv::FeatureDetector>&>(cv::SimpleBlobDetector::create()));
 
   rb_mCv.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, cv::TermCriteria)>("calibrate_camera", &cv::calibrateCamera,
     Arg("object_points"), Arg("image_points"), Arg("image_size"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvecs"), Arg("tvecs"), Arg("std_deviations_intrinsics"), Arg("std_deviations_extrinsics"), Arg("per_view_errors"), Arg("flags") = static_cast<int>(0), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(

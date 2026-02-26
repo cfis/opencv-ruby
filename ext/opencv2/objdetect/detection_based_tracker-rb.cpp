@@ -20,7 +20,7 @@ void Init_Objdetect_DetectionBasedTracker()
     define_method<const cv::DetectionBasedTracker::Parameters&(cv::DetectionBasedTracker::*)() const>("get_parameters", &cv::DetectionBasedTracker::getParameters).
     define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::Rect>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).
-    define_method<void(cv::DetectionBasedTracker::*)(std::vector<std::pair<cv::Rect_<int>, int>>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
+    define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::DetectionBasedTracker::Object>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).
     define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::DetectionBasedTracker::ExtObject>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result")).

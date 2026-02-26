@@ -122,7 +122,7 @@ void Init_Highgui()
   rb_mCv.define_module_function<cv::Rect(*)(cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
     Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(const cv::String&, cv::InputArray, std::vector<cv::Rect_<int>>&, bool, bool, bool)>("select_ro_is", &cv::selectROIs,
+  rb_mCv.define_module_function<void(*)(const cv::String&, cv::InputArray, std::vector<cv::Rect>&, bool, bool, bool)>("select_ro_is", &cv::selectROIs,
     Arg("window_name"), Arg("img"), Arg("bounding_boxes"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
   rb_mCv.define_module_function<int(*)(const cv::String&, const cv::String&, int*, int, cv::TrackbarCallback, void*)>("create_trackbar", &cv::createTrackbar,

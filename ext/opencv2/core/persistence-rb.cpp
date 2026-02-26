@@ -53,7 +53,7 @@ void Init_Core_Persistence()
       Arg("name"), Arg("val")).
     define_method<void(cv::FileStorage::*)(const cv::String&, const cv::Mat&)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val")).
-    define_method<void(cv::FileStorage::*)(const cv::String&, const std::vector<std::basic_string<char>>&)>("write", &cv::FileStorage::write,
+    define_method<void(cv::FileStorage::*)(const cv::String&, const std::vector<cv::String>&)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val")).
     define_method<void(cv::FileStorage::*)(const cv::String&, const void*, size_t)>("write_raw", &cv::FileStorage::writeRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len")).
@@ -102,7 +102,7 @@ void Init_Core_Persistence()
       Arg("nodename")).
     define_method<cv::FileNode(cv::FileNode::*)(int) const>("[]", &cv::FileNode::operator[],
       Arg("i")).
-    define_method<std::vector<std::basic_string<char>>(cv::FileNode::*)() const>("keys", &cv::FileNode::keys).
+    define_method<std::vector<cv::String>(cv::FileNode::*)() const>("keys", &cv::FileNode::keys).
     define_method<int(cv::FileNode::*)() const>("type", &cv::FileNode::type).
     define_method<bool(cv::FileNode::*)() const>("empty?", &cv::FileNode::empty).
     define_method<bool(cv::FileNode::*)() const>("none?", &cv::FileNode::isNone).

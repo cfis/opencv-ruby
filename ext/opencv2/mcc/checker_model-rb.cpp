@@ -18,7 +18,7 @@ void Init_Mcc_CheckerModel()
     define_singleton_function<cv::Ptr<cv::mcc::CChecker>(*)()>("create", &cv::mcc::CChecker::create).
     define_method<void(cv::mcc::CChecker::*)(cv::mcc::TYPECHART)>("set_target", &cv::mcc::CChecker::setTarget,
       Arg("_target")).
-    define_method<void(cv::mcc::CChecker::*)(std::vector<cv::Point_<float>>)>("set_box", &cv::mcc::CChecker::setBox,
+    define_method<void(cv::mcc::CChecker::*)(std::vector<cv::Point2f>)>("set_box", &cv::mcc::CChecker::setBox,
       Arg("_box")).
     define_method<void(cv::mcc::CChecker::*)(cv::Mat)>("set_charts_rgb", &cv::mcc::CChecker::setChartsRGB,
       Arg("_charts_rgb")).
@@ -29,8 +29,8 @@ void Init_Mcc_CheckerModel()
     define_method<void(cv::mcc::CChecker::*)(cv::Point2f)>("set_center", &cv::mcc::CChecker::setCenter,
       Arg("_center")).
     define_method<cv::mcc::TYPECHART(cv::mcc::CChecker::*)()>("get_target", &cv::mcc::CChecker::getTarget).
-    define_method<std::vector<cv::Point_<float>>(cv::mcc::CChecker::*)()>("get_box", &cv::mcc::CChecker::getBox).
-    define_method<std::vector<cv::Point_<float>>(cv::mcc::CChecker::*)()>("get_color_charts", &cv::mcc::CChecker::getColorCharts).
+    define_method<std::vector<cv::Point2f>(cv::mcc::CChecker::*)()>("get_box", &cv::mcc::CChecker::getBox).
+    define_method<std::vector<cv::Point2f>(cv::mcc::CChecker::*)()>("get_color_charts", &cv::mcc::CChecker::getColorCharts).
     define_method<cv::Mat(cv::mcc::CChecker::*)()>("get_charts_rgb", &cv::mcc::CChecker::getChartsRGB).
     define_method<cv::Mat(cv::mcc::CChecker::*)()>("get_charts_y_cb_cr", &cv::mcc::CChecker::getChartsYCbCr).
     define_method<float(cv::mcc::CChecker::*)()>("get_cost", &cv::mcc::CChecker::getCost).

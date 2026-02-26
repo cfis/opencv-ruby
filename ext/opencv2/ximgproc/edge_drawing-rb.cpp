@@ -16,7 +16,7 @@ void Init_Ximgproc_EdgeDrawing()
       Arg("dst")).
     define_method<void(cv::ximgproc::EdgeDrawing::*)(cv::OutputArray)>("get_gradient_image", &cv::ximgproc::EdgeDrawing::getGradientImage,
       Arg("dst")).
-    define_method<std::vector<std::vector<cv::Point_<int>>>(cv::ximgproc::EdgeDrawing::*)()>("get_segments", &cv::ximgproc::EdgeDrawing::getSegments).
+    define_method<std::vector<std::vector<cv::Point>>(cv::ximgproc::EdgeDrawing::*)()>("get_segments", &cv::ximgproc::EdgeDrawing::getSegments).
     define_method<std::vector<int>(cv::ximgproc::EdgeDrawing::*)() const>("get_segment_indices_of_lines", &cv::ximgproc::EdgeDrawing::getSegmentIndicesOfLines).
     define_method<void(cv::ximgproc::EdgeDrawing::*)(cv::OutputArray)>("detect_lines", &cv::ximgproc::EdgeDrawing::detectLines,
       Arg("lines")).

@@ -28,7 +28,7 @@ void Init_Tracking_TrackingInternals()
       Arg("tracker_feature_type")).
     define_method<bool(cv::detail::tracking::TrackerContribFeatureSet::*)(cv::Ptr<cv::detail::TrackerContribFeature>&)>("add_tracker_feature", &cv::detail::tracking::TrackerContribFeatureSet::addTrackerFeature,
       Arg("feature")).
-    define_method<const std::vector<std::pair<std::basic_string<char>, cv::Ptr<cv::detail::TrackerContribFeature>>>&(cv::detail::tracking::TrackerContribFeatureSet::*)() const>("get_tracker_feature", &cv::detail::tracking::TrackerContribFeatureSet::getTrackerFeature).
+    define_method<const std::vector<std::pair<cv::String, cv::Ptr<cv::detail::TrackerContribFeature>>>&(cv::detail::tracking::TrackerContribFeatureSet::*)() const>("get_tracker_feature", &cv::detail::tracking::TrackerContribFeatureSet::getTrackerFeature).
     define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerContribFeatureSet::*)() const>("get_responses", &cv::detail::tracking::TrackerContribFeatureSet::getResponses);
 
   Rice::Data_Type<cv::detail::TrackerContribSamplerAlgorithm> rb_cCvDetailTrackerContribSamplerAlgorithm = define_class_under<cv::detail::TrackerContribSamplerAlgorithm, cv::detail::TrackerSamplerAlgorithm>(rb_mCvDetailTracking, "TrackerContribSamplerAlgorithm").
@@ -42,7 +42,7 @@ void Init_Tracking_TrackingInternals()
     define_constructor(Constructor<cv::detail::tracking::TrackerContribSampler>()).
     define_method<void(cv::detail::tracking::TrackerContribSampler::*)(const cv::Mat&, cv::Rect)>("sampling", &cv::detail::tracking::TrackerContribSampler::sampling,
       Arg("image"), Arg("bounding_box")).
-    define_method<const std::vector<std::pair<std::basic_string<char>, cv::Ptr<cv::detail::TrackerContribSamplerAlgorithm>>>&(cv::detail::tracking::TrackerContribSampler::*)() const>("get_samplers", &cv::detail::tracking::TrackerContribSampler::getSamplers).
+    define_method<const std::vector<std::pair<cv::String, cv::Ptr<cv::detail::TrackerContribSamplerAlgorithm>>>&(cv::detail::tracking::TrackerContribSampler::*)() const>("get_samplers", &cv::detail::tracking::TrackerContribSampler::getSamplers).
     define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerContribSampler::*)() const>("get_samples", &cv::detail::tracking::TrackerContribSampler::getSamples).
     define_method<bool(cv::detail::tracking::TrackerContribSampler::*)(cv::String)>("add_tracker_sampler_algorithm", &cv::detail::tracking::TrackerContribSampler::addTrackerSamplerAlgorithm,
       Arg("tracker_sampler_algorithm_type")).

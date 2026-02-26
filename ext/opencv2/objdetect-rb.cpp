@@ -14,19 +14,19 @@ void Init_Objdetect()
       Arg("r1"), Arg("r2")).
     define_attr("eps", &cv::SimilarRects::eps);
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, std::vector<int>&, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect>&, std::vector<int>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, int, double, std::vector<int>*, std::vector<double>*)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect>&, int, double, std::vector<int>*, std::vector<double>*)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("group_threshold"), Arg("eps"), Arg("weights"), Arg("level_weights"));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, std::vector<int>&, std::vector<double>&, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect>&, std::vector<int>&, std::vector<double>&, int, double)>("group_rectangles", &cv::groupRectangles,
     Arg("rect_list"), Arg("reject_levels"), Arg("level_weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect_<int>>&, std::vector<double>&, std::vector<double>&, double, cv::Size)>("group_rectangles_meanshift", &cv::groupRectangles_meanshift,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect>&, std::vector<double>&, std::vector<double>&, double, cv::Size)>("group_rectangles_meanshift", &cv::groupRectangles_meanshift,
     Arg("rect_list"), Arg("found_weights"), Arg("found_scales"), Arg("detect_threshold") = static_cast<double>(0.0), Arg("win_det_size") = static_cast<cv::Size>(cv::Size(64, 128)));
 
   rb_mCv.define_constant("CASCADE_DO_CANNY_PRUNING", (int)cv::CASCADE_DO_CANNY_PRUNING);
@@ -38,11 +38,11 @@ void Init_Objdetect()
     define_method<bool(cv::BaseCascadeClassifier::*)() const>("empty?", &cv::BaseCascadeClassifier::empty).
     define_method<bool(cv::BaseCascadeClassifier::*)(const cv::String&)>("load", &cv::BaseCascadeClassifier::load,
       Arg("filename")).
-    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
+    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("scale_factor"), Arg("min_neighbors"), Arg("flags"), Arg("min_size"), Arg("max_size")).
-    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<int>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
+    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<int>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("num_detections"), Arg("scale_factor"), Arg("min_neighbors"), Arg("flags"), Arg("min_size"), Arg("max_size")).
-    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<int>&, std::vector<double>&, double, int, int, cv::Size, cv::Size, bool)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
+    define_method<void(cv::BaseCascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<int>&, std::vector<double>&, double, int, int, cv::Size, cv::Size, bool)>("detect_multi_scale", &cv::BaseCascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("reject_levels"), Arg("level_weights"), Arg("scale_factor"), Arg("min_neighbors"), Arg("flags"), Arg("min_size"), Arg("max_size"), Arg("output_reject_levels")).
     define_method<bool(cv::BaseCascadeClassifier::*)() const>("old_format_cascade?", &cv::BaseCascadeClassifier::isOldFormatCascade).
     define_method<cv::Size(cv::BaseCascadeClassifier::*)() const>("get_original_window_size", &cv::BaseCascadeClassifier::getOriginalWindowSize).
@@ -68,11 +68,11 @@ void Init_Objdetect()
       Arg("filename")).
     define_method<bool(cv::CascadeClassifier::*)(const cv::FileNode&)>("read", &cv::CascadeClassifier::read,
       Arg("node")).
-    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
+    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("scale_factor") = static_cast<double>(1.1), Arg("min_neighbors") = static_cast<int>(3), Arg("flags") = static_cast<int>(0), Arg("min_size") = static_cast<cv::Size>(cv::Size()), Arg("max_size") = static_cast<cv::Size>(cv::Size())).
-    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<int>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
+    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<int>&, double, int, int, cv::Size, cv::Size)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("num_detections"), Arg("scale_factor") = static_cast<double>(1.1), Arg("min_neighbors") = static_cast<int>(3), Arg("flags") = static_cast<int>(0), Arg("min_size") = static_cast<cv::Size>(cv::Size()), Arg("max_size") = static_cast<cv::Size>(cv::Size())).
-    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<int>&, std::vector<double>&, double, int, int, cv::Size, cv::Size, bool)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
+    define_method<void(cv::CascadeClassifier::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<int>&, std::vector<double>&, double, int, int, cv::Size, cv::Size, bool)>("detect_multi_scale", &cv::CascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("reject_levels"), Arg("level_weights"), Arg("scale_factor") = static_cast<double>(1.1), Arg("min_neighbors") = static_cast<int>(3), Arg("flags") = static_cast<int>(0), Arg("min_size") = static_cast<cv::Size>(cv::Size()), Arg("max_size") = static_cast<cv::Size>(cv::Size()), Arg("output_reject_levels") = static_cast<bool>(false)).
     define_method<bool(cv::CascadeClassifier::*)() const>("old_format_cascade?", &cv::CascadeClassifier::isOldFormatCascade).
     define_method<cv::Size(cv::CascadeClassifier::*)() const>("get_original_window_size", &cv::CascadeClassifier::getOriginalWindowSize).
@@ -117,15 +117,15 @@ void Init_Objdetect()
       Arg("filename"), Arg("objname") = static_cast<const cv::String&>(cv::String())).
     define_method<void(cv::HOGDescriptor::*)(cv::HOGDescriptor&) const>("copy_to", &cv::HOGDescriptor::copyTo,
       Arg("c")).
-    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<float>&, cv::Size, cv::Size, const std::vector<cv::Point_<int>>&) const>("compute", &cv::HOGDescriptor::compute,
-      Arg("img"), Arg("descriptors"), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
-    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point_<int>>&, std::vector<double>&, double, cv::Size, cv::Size, const std::vector<cv::Point_<int>>&) const>("detect", &cv::HOGDescriptor::detect,
-      Arg("img"), Arg("found_locations"), Arg("weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
-    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point_<int>>&, double, cv::Size, cv::Size, const std::vector<cv::Point_<int>>&) const>("detect", &cv::HOGDescriptor::detect,
-      Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point_<int>>&>(std::vector<cv::Point>())).
-    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, std::vector<double>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
+    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<float>&, cv::Size, cv::Size, const std::vector<cv::Point>&) const>("compute", &cv::HOGDescriptor::compute,
+      Arg("img"), Arg("descriptors"), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("locations") = static_cast<const std::vector<cv::Point>&>(std::vector<cv::Point>())).
+    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point>&, std::vector<double>&, double, cv::Size, cv::Size, const std::vector<cv::Point>&) const>("detect", &cv::HOGDescriptor::detect,
+      Arg("img"), Arg("found_locations"), Arg("weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point>&>(std::vector<cv::Point>())).
+    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Point>&, double, cv::Size, cv::Size, const std::vector<cv::Point>&) const>("detect", &cv::HOGDescriptor::detect,
+      Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("search_locations") = static_cast<const std::vector<cv::Point>&>(std::vector<cv::Point>())).
+    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect>&, std::vector<double>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
       Arg("img"), Arg("found_locations"), Arg("found_weights"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("scale") = static_cast<double>(1.05), Arg("group_threshold") = static_cast<double>(2.0), Arg("use_meanshift_grouping") = static_cast<bool>(false)).
-    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect_<int>>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
+    define_method<void(cv::HOGDescriptor::*)(cv::InputArray, std::vector<cv::Rect>&, double, cv::Size, cv::Size, double, double, bool) const>("detect_multi_scale", &cv::HOGDescriptor::detectMultiScale,
       Arg("img"), Arg("found_locations"), Arg("hit_threshold") = static_cast<double>(0), Arg("win_stride") = static_cast<cv::Size>(cv::Size()), Arg("padding") = static_cast<cv::Size>(cv::Size()), Arg("scale") = static_cast<double>(1.05), Arg("group_threshold") = static_cast<double>(2.0), Arg("use_meanshift_grouping") = static_cast<bool>(false)).
     define_method<void(cv::HOGDescriptor::*)(cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, cv::Size, cv::Size) const>("compute_gradient", &cv::HOGDescriptor::computeGradient,
       Arg("img"), Arg("grad"), Arg("angle_ofs"), Arg("padding_tl") = static_cast<cv::Size>(cv::Size()), Arg("padding_br") = static_cast<cv::Size>(cv::Size())).

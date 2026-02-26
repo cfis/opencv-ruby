@@ -25,16 +25,16 @@ void Init_Face_FacemarkTrain()
   rb_mCvFace.define_module_function<bool(*)(cv::InputArray, cv::OutputArray, const cv::String&)>("get_faces_haar", &cv::face::getFacesHAAR,
     Arg("image"), Arg("faces"), Arg("face_cascade_name"));
 
-  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<std::basic_string<char>>&, std::vector<std::basic_string<char>>&)>("load_dataset_list", &cv::face::loadDatasetList,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<cv::String>&, std::vector<cv::String>&)>("load_dataset_list", &cv::face::loadDatasetList,
     Arg("image_list"), Arg("annotation_list"), Arg("images"), Arg("annotations"));
 
-  rb_mCvFace.define_module_function<bool(*)(cv::String, std::vector<std::basic_string<char>>&, cv::OutputArray, char, float)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, std::vector<cv::String>&, cv::OutputArray, char, float)>("load_training_data", &cv::face::loadTrainingData,
     Arg("filename"), Arg("images"), Arg("face_points"), Arg("delim") = static_cast<char>(' '), Arg("offset") = static_cast<float>(0.0f));
 
-  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<std::basic_string<char>>&, cv::OutputArray, float)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<cv::String>&, cv::OutputArray, float)>("load_training_data", &cv::face::loadTrainingData,
     Arg("image_list"), Arg("ground_truth"), Arg("images"), Arg("face_points"), Arg("offset") = static_cast<float>(0.0f));
 
-  rb_mCvFace.define_module_function<bool(*)(std::vector<std::basic_string<char>>, std::vector<std::vector<cv::Point_<float>>>&, std::vector<std::basic_string<char>>&)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(std::vector<cv::String>, std::vector<std::vector<cv::Point2f>>&, std::vector<cv::String>&)>("load_training_data", &cv::face::loadTrainingData,
     Arg("filename"), Arg("trainlandmarks"), Arg("trainimages"));
 
   rb_mCvFace.define_module_function<bool(*)(cv::String, cv::OutputArray, float)>("load_face_points", &cv::face::loadFacePoints,

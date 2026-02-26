@@ -1,5 +1,3 @@
-#include <opencv2/core.hpp> // Manual
-#include <opencv2/datasets/dataset.hpp> // Manual
 #include <opencv2/datasets/track_vot.hpp>
 #include "track_vot-rb.hpp"
 
@@ -28,5 +26,5 @@ void Init_Datasets_TrackVot()
       Arg("id")).
     define_method<bool(cv::datasets::TRACK_vot::*)(cv::Mat&)>("get_next_frame", &cv::datasets::TRACK_vot::getNextFrame,
       Arg("frame")).
-    define_method<std::vector<cv::Point_<double>>(cv::datasets::TRACK_vot::*)()>("get_gt", &cv::datasets::TRACK_vot::getGT);
+    define_method<std::vector<cv::Point2d>(cv::datasets::TRACK_vot::*)()>("get_gt", &cv::datasets::TRACK_vot::getGT);
 }

@@ -88,7 +88,7 @@ void Init_Ximgproc_Segmentation()
     define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)(cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy>)>("add_strategy", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::addStrategy,
       Arg("s")).
     define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)()>("clear_strategies", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::clearStrategies).
-    define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)(std::vector<cv::Rect_<int>>&)>("process", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::process,
+    define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)(std::vector<cv::Rect>&)>("process", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::process,
       Arg("rects"));
 
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentation>(*)()>("create_selective_search_segmentation", &cv::ximgproc::segmentation::createSelectiveSearchSegmentation);

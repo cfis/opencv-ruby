@@ -13,7 +13,7 @@ void Init_Stitching_Detail_Blenders()
     define_constructor(Constructor<cv::detail::Blender>()).
     define_singleton_function<cv::Ptr<cv::detail::Blender>(*)(int, bool)>("create_default", &cv::detail::Blender::createDefault,
       Arg("type"), Arg("try_gpu") = static_cast<bool>(false)).
-    define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("prepare", &cv::detail::Blender::prepare,
+    define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point>&, const std::vector<cv::Size>&)>("prepare", &cv::detail::Blender::prepare,
       Arg("corners"), Arg("sizes")).
     define_method<void(cv::detail::Blender::*)(cv::Rect)>("prepare", &cv::detail::Blender::prepare,
       Arg("dst_roi")).
@@ -38,7 +38,7 @@ void Init_Stitching_Detail_Blenders()
       Arg("img"), Arg("mask"), Arg("tl")).
     define_method<void(cv::detail::FeatherBlender::*)(cv::InputOutputArray, cv::InputOutputArray)>("blend", &cv::detail::FeatherBlender::blend,
       Arg("dst"), Arg("dst_mask")).
-    define_method<cv::Rect(cv::detail::FeatherBlender::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
+    define_method<cv::Rect(cv::detail::FeatherBlender::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
       Arg("masks"), Arg("corners"), Arg("weight_maps"));
 
   Rice::Data_Type<cv::detail::MultiBandBlender> rb_cCvDetailMultiBandBlender = define_class_under<cv::detail::MultiBandBlender, cv::detail::Blender>(rb_mCvDetail, "MultiBandBlender").

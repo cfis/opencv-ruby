@@ -15,7 +15,7 @@ void Init_Optflow_SparseMatchingGpc()
     define_constructor(Constructor<cv::optflow::GPCPatchDescriptor>()).
     define_constant("NFeatures", cv::optflow::GPCPatchDescriptor::nFeatures).
     define_attr("feature", &cv::optflow::GPCPatchDescriptor::feature).
-    define_method<double(cv::optflow::GPCPatchDescriptor::*)(const cv::Vec<double, cv::optflow::GPCPatchDescriptor::nFeatures>&) const>("dot", &cv::optflow::GPCPatchDescriptor::dot, // Manual - fully qualify nFeatures
+    define_method<double(cv::optflow::GPCPatchDescriptor::*)(const cv::Vec<double, nFeatures>&) const>("dot", &cv::optflow::GPCPatchDescriptor::dot,
       Arg("coef")).
     define_method<void(cv::optflow::GPCPatchDescriptor::*)()>("mark_as_separated", &cv::optflow::GPCPatchDescriptor::markAsSeparated).
     define_method<bool(cv::optflow::GPCPatchDescriptor::*)() const>("separated?", &cv::optflow::GPCPatchDescriptor::isSeparated);
@@ -25,7 +25,7 @@ void Init_Optflow_SparseMatchingGpc()
     define_attr("ref", &cv::optflow::GPCPatchSample::ref).
     define_attr("pos", &cv::optflow::GPCPatchSample::pos).
     define_attr("neg", &cv::optflow::GPCPatchSample::neg).
-    define_method<void(cv::optflow::GPCPatchSample::*)(bool&, bool&, bool&, const cv::Vec<double, cv::optflow::GPCPatchDescriptor::nFeatures>&, double) const>("get_directions", &cv::optflow::GPCPatchSample::getDirections, // Manual - fully qualify nFeatures
+    define_method<void(cv::optflow::GPCPatchSample::*)(bool&, bool&, bool&, const cv::Vec<double, GPCPatchDescriptor::nFeatures>&, double) const>("get_directions", &cv::optflow::GPCPatchSample::getDirections,
       Arg("refdir"), Arg("posdir"), Arg("negdir"), Arg("coef"), Arg("rhs"));
 
   Enum<cv::optflow::GPCDescType> rb_cCvOptflowGPCDescType = define_enum_under<cv::optflow::GPCDescType>("GPCDescType", rb_mCvOptflow).
@@ -34,7 +34,7 @@ void Init_Optflow_SparseMatchingGpc()
 
   Rice::Data_Type<cv::optflow::GPCTrainingSamples> rb_cCvOptflowGPCTrainingSamples = define_class_under<cv::optflow::GPCTrainingSamples>(rb_mCvOptflow, "GPCTrainingSamples").
     define_constructor(Constructor<cv::optflow::GPCTrainingSamples>()).
-    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, int)>("create", &cv::optflow::GPCTrainingSamples::create,
+    define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<cv::String>&, const std::vector<cv::String>&, const std::vector<cv::String>&, int)>("create", &cv::optflow::GPCTrainingSamples::create,
       Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type")).
     define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>("create", &cv::optflow::GPCTrainingSamples::create,
       Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type")).
@@ -87,7 +87,7 @@ void Init_Optflow_SparseMatchingGpc()
 
   Rice::Data_Type<cv::optflow::GPCDetails> rb_cCvOptflowGPCDetails = define_class_under<cv::optflow::GPCDetails>(rb_mCvOptflow, "GPCDetails").
     define_constructor(Constructor<cv::optflow::GPCDetails>()).
-    define_singleton_function<void(*)(std::vector<std::pair<cv::Point_<int>, cv::Point_<int>>>&)>("drop_outliers", &cv::optflow::GPCDetails::dropOutliers,
+    define_singleton_function<void(*)(std::vector<std::pair<cv::Point2i, cv::Point2i>>&)>("drop_outliers", &cv::optflow::GPCDetails::dropOutliers,
       Arg("corr")).
     define_singleton_function<void(*)(const cv::Mat*, std::vector<cv::optflow::GPCPatchDescriptor>&, const cv::optflow::GPCMatchingParams&, int)>("get_all_descriptors_for_image", &cv::optflow::GPCDetails::getAllDescriptorsForImage,
       Arg("img_ch"), Arg("descr"), Arg("mp"), Arg("type")).

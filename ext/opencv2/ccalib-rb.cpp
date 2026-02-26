@@ -19,14 +19,14 @@ void Init_Ccalib()
     define_method<void(cv::ccalib::CustomPattern::*)(std::vector<cv::KeyPoint>&)>("get_pattern_points", &cv::ccalib::CustomPattern::getPatternPoints,
       Arg("original_points")).
     define_method<double(cv::ccalib::CustomPattern::*)()>("get_pixel_size", &cv::ccalib::CustomPattern::getPixelSize).
-    define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::Feature2D>)>("set_feature_detector", &cv::ccalib::CustomPattern::setFeatureDetector,
+    define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::FeatureDetector>)>("set_feature_detector", &cv::ccalib::CustomPattern::setFeatureDetector,
       Arg("feature_detector")).
-    define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::Feature2D>)>("set_descriptor_extractor", &cv::ccalib::CustomPattern::setDescriptorExtractor,
+    define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::DescriptorExtractor>)>("set_descriptor_extractor", &cv::ccalib::CustomPattern::setDescriptorExtractor,
       Arg("extractor")).
     define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::DescriptorMatcher>)>("set_descriptor_matcher", &cv::ccalib::CustomPattern::setDescriptorMatcher,
       Arg("matcher")).
-    define_method<cv::Ptr<cv::Feature2D>(cv::ccalib::CustomPattern::*)()>("get_feature_detector", &cv::ccalib::CustomPattern::getFeatureDetector).
-    define_method<cv::Ptr<cv::Feature2D>(cv::ccalib::CustomPattern::*)()>("get_descriptor_extractor", &cv::ccalib::CustomPattern::getDescriptorExtractor).
+    define_method<cv::Ptr<cv::FeatureDetector>(cv::ccalib::CustomPattern::*)()>("get_feature_detector", &cv::ccalib::CustomPattern::getFeatureDetector).
+    define_method<cv::Ptr<cv::DescriptorExtractor>(cv::ccalib::CustomPattern::*)()>("get_descriptor_extractor", &cv::ccalib::CustomPattern::getDescriptorExtractor).
     define_method<cv::Ptr<cv::DescriptorMatcher>(cv::ccalib::CustomPattern::*)()>("get_descriptor_matcher", &cv::ccalib::CustomPattern::getDescriptorMatcher).
     define_method<double(cv::ccalib::CustomPattern::*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria)>("calibrate", &cv::ccalib::CustomPattern::calibrate,
       Arg("object_points"), Arg("image_points"), Arg("image_size"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvecs"), Arg("tvecs"), Arg("flags") = static_cast<int>(0), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::COUNT + cv::TermCriteria::Type::EPS, 30, DBL_EPSILON))).

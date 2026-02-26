@@ -32,16 +32,16 @@ void Init_Text_Ocr()
     define_value("OEM_DEFAULT", cv::text::ocr_engine_mode::OEM_DEFAULT);
 
   Rice::Data_Type<cv::text::BaseOCR> rb_cCvTextBaseOCR = define_class_under<cv::text::BaseOCR>(rb_mCvText, "BaseOCR").
-    define_method<void(cv::text::BaseOCR::*)(cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
-      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
-    define_method<void(cv::text::BaseOCR::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0));
+    define_method<void(cv::text::BaseOCR::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
+      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::BaseOCR::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0));
 
   Rice::Data_Type<cv::text::OCRTesseract> rb_cCvTextOCRTesseract = define_class_under<cv::text::OCRTesseract, cv::text::BaseOCR>(rb_mCvText, "OCRTesseract").
-    define_method<void(cv::text::OCRTesseract::*)(cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRTesseract::run,
-      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
-    define_method<void(cv::text::OCRTesseract::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRTesseract::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRTesseract::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRTesseract::run,
+      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRTesseract::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRTesseract::run,
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRTesseract::*)(cv::InputArray, int, int)>("run", &cv::text::OCRTesseract::run,
       Arg("image"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRTesseract::*)(cv::InputArray, cv::InputArray, int, int)>("run", &cv::text::OCRTesseract::run,
@@ -60,10 +60,10 @@ void Init_Text_Ocr()
 
   Rice::Data_Type<cv::text::OCRHMMDecoder> rb_cCvTextOCRHMMDecoder = define_class_under<cv::text::OCRHMMDecoder, cv::text::BaseOCR>(rb_mCvText, "OCRHMMDecoder").
     define_constructor(Constructor<cv::text::OCRHMMDecoder>()).
-    define_method<void(cv::text::OCRHMMDecoder::*)(cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHMMDecoder::run,
-      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
-    define_method<void(cv::text::OCRHMMDecoder::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHMMDecoder::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRHMMDecoder::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHMMDecoder::run,
+      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRHMMDecoder::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHMMDecoder::run,
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRHMMDecoder::*)(cv::InputArray, int, int)>("run", &cv::text::OCRHMMDecoder::run,
       Arg("image"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRHMMDecoder::*)(cv::InputArray, cv::InputArray, int, int)>("run", &cv::text::OCRHMMDecoder::run,
@@ -95,10 +95,10 @@ void Init_Text_Ocr()
 
   Rice::Data_Type<cv::text::OCRBeamSearchDecoder> rb_cCvTextOCRBeamSearchDecoder = define_class_under<cv::text::OCRBeamSearchDecoder, cv::text::BaseOCR>(rb_mCvText, "OCRBeamSearchDecoder").
     define_constructor(Constructor<cv::text::OCRBeamSearchDecoder>()).
-    define_method<void(cv::text::OCRBeamSearchDecoder::*)(cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
-      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
-    define_method<void(cv::text::OCRBeamSearchDecoder::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRBeamSearchDecoder::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
+      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
+    define_method<void(cv::text::OCRBeamSearchDecoder::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRBeamSearchDecoder::*)(cv::InputArray, int, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
       Arg("image"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0)).
     define_method<cv::String(cv::text::OCRBeamSearchDecoder::*)(cv::InputArray, cv::InputArray, int, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
@@ -119,10 +119,10 @@ void Init_Text_Ocr()
     Arg("filename"));
 
   Rice::Data_Type<cv::text::OCRHolisticWordRecognizer> rb_cCvTextOCRHolisticWordRecognizer = define_class_under<cv::text::OCRHolisticWordRecognizer, cv::text::BaseOCR>(rb_mCvText, "OCRHolisticWordRecognizer").
-    define_method<void(cv::text::OCRHolisticWordRecognizer::*)(cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHolisticWordRecognizer::run,
-      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(cv::text::OCR_LEVEL_WORD)).
-    define_method<void(cv::text::OCRHolisticWordRecognizer::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect_<int>>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHolisticWordRecognizer::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect_<int>>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(cv::text::OCR_LEVEL_WORD)).
+    define_method<void(cv::text::OCRHolisticWordRecognizer::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHolisticWordRecognizer::run,
+      Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(cv::text::OCR_LEVEL_WORD)).
+    define_method<void(cv::text::OCRHolisticWordRecognizer::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHolisticWordRecognizer::run,
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(cv::text::OCR_LEVEL_WORD)).
     define_singleton_function<cv::Ptr<cv::text::OCRHolisticWordRecognizer>(*)(const std::string&, const std::string&, const std::string&)>("create", &cv::text::OCRHolisticWordRecognizer::create,
       Arg("arch_filename"), Arg("weights_filename"), Arg("words_filename"));
 }

@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/stereo/descriptor.hpp>
 #include "descriptor-rb.hpp"
 

@@ -103,7 +103,7 @@ inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, cons
       Arg("arg_0")).
     template define_method<_Tp&(cv::Quat<_Tp>::*)(std::size_t)>("[]", &cv::Quat<_Tp>::operator[],
       Arg("n")).
-    define_method("[]=", [](cv::Quat<_Tp>&self, int index, _Tp & value)
+    define_method("[]=", [](cv::Quat<_Tp>&self, int index, _Tp& value)
     {
         self[index] = value;
     }).

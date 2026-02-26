@@ -1,4 +1,3 @@
-#include <opencv2/features2d.hpp> // Manual
 #include <opencv2/xfeatures2d.hpp>
 #include "xfeatures2d-rb.hpp"
 
@@ -241,9 +240,9 @@ void Init_Xfeatures2d()
   Rice::Data_Type<cv::xfeatures2d::PCTSignatures> rb_cCvXfeatures2dPCTSignatures = define_class_under<cv::xfeatures2d::PCTSignatures, cv::Algorithm>(rb_mCvXfeatures2d, "PCTSignatures").
     define_singleton_function<cv::Ptr<cv::xfeatures2d::PCTSignatures>(*)(const int, const int, const int)>("create", &cv::xfeatures2d::PCTSignatures::create,
       Arg("init_sample_count") = static_cast<const int>(2000), Arg("init_seed_count") = static_cast<const int>(400), Arg("point_distribution") = static_cast<const int>(0)).
-    define_singleton_function<cv::Ptr<cv::xfeatures2d::PCTSignatures>(*)(const std::vector<cv::Point_<float>>&, const int)>("create", &cv::xfeatures2d::PCTSignatures::create,
+    define_singleton_function<cv::Ptr<cv::xfeatures2d::PCTSignatures>(*)(const std::vector<cv::Point2f>&, const int)>("create", &cv::xfeatures2d::PCTSignatures::create,
       Arg("init_sampling_points"), Arg("init_seed_count")).
-    define_singleton_function<cv::Ptr<cv::xfeatures2d::PCTSignatures>(*)(const std::vector<cv::Point_<float>>&, const std::vector<int>&)>("create", &cv::xfeatures2d::PCTSignatures::create,
+    define_singleton_function<cv::Ptr<cv::xfeatures2d::PCTSignatures>(*)(const std::vector<cv::Point2f>&, const std::vector<int>&)>("create", &cv::xfeatures2d::PCTSignatures::create,
       Arg("init_sampling_points"), Arg("init_cluster_seed_indexes")).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(cv::InputArray, cv::OutputArray) const>("compute_signature", &cv::xfeatures2d::PCTSignatures::computeSignature,
       Arg("image"), Arg("signature")).
@@ -251,7 +250,7 @@ void Init_Xfeatures2d()
       Arg("images"), Arg("signatures")).
     define_singleton_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, float, int)>("draw_signature", &cv::xfeatures2d::PCTSignatures::drawSignature,
       Arg("source"), Arg("signature"), Arg("result"), Arg("radius_to_shorter_side_ratio") = static_cast<float>(1.0 / 8), Arg("border_thickness") = static_cast<int>(1)).
-    define_singleton_function<void(*)(std::vector<cv::Point_<float>>&, const int, int)>("generate_init_points", &cv::xfeatures2d::PCTSignatures::generateInitPoints,
+    define_singleton_function<void(*)(std::vector<cv::Point2f>&, const int, int)>("generate_init_points", &cv::xfeatures2d::PCTSignatures::generateInitPoints,
       Arg("init_points"), Arg("count"), Arg("point_distribution")).
     define_method<int(cv::xfeatures2d::PCTSignatures::*)() const>("get_sample_count", &cv::xfeatures2d::PCTSignatures::getSampleCount).
     define_method<int(cv::xfeatures2d::PCTSignatures::*)() const>("get_grayscale_bits", &cv::xfeatures2d::PCTSignatures::getGrayscaleBits).
@@ -281,7 +280,7 @@ void Init_Xfeatures2d()
     define_method<float(cv::xfeatures2d::PCTSignatures::*)() const>("get_weight_entropy", &cv::xfeatures2d::PCTSignatures::getWeightEntropy).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(float)>("set_weight_entropy", &cv::xfeatures2d::PCTSignatures::setWeightEntropy,
       Arg("weight")).
-    define_method<std::vector<cv::Point_<float>>(cv::xfeatures2d::PCTSignatures::*)() const>("get_sampling_points", &cv::xfeatures2d::PCTSignatures::getSamplingPoints).
+    define_method<std::vector<cv::Point2f>(cv::xfeatures2d::PCTSignatures::*)() const>("get_sampling_points", &cv::xfeatures2d::PCTSignatures::getSamplingPoints).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(int, float)>("set_weight", &cv::xfeatures2d::PCTSignatures::setWeight,
       Arg("idx"), Arg("value")).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(const std::vector<float>&)>("set_weights", &cv::xfeatures2d::PCTSignatures::setWeights,
@@ -290,7 +289,7 @@ void Init_Xfeatures2d()
       Arg("idx"), Arg("value")).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(const std::vector<float>&)>("set_translations", &cv::xfeatures2d::PCTSignatures::setTranslations,
       Arg("translations")).
-    define_method<void(cv::xfeatures2d::PCTSignatures::*)(std::vector<cv::Point_<float>>)>("set_sampling_points", &cv::xfeatures2d::PCTSignatures::setSamplingPoints,
+    define_method<void(cv::xfeatures2d::PCTSignatures::*)(std::vector<cv::Point2f>)>("set_sampling_points", &cv::xfeatures2d::PCTSignatures::setSamplingPoints,
       Arg("sampling_points")).
     define_method<std::vector<int>(cv::xfeatures2d::PCTSignatures::*)() const>("get_init_seed_indexes", &cv::xfeatures2d::PCTSignatures::getInitSeedIndexes).
     define_method<void(cv::xfeatures2d::PCTSignatures::*)(std::vector<int>)>("set_init_seed_indexes", &cv::xfeatures2d::PCTSignatures::setInitSeedIndexes,
@@ -371,9 +370,9 @@ void Init_Xfeatures2d()
     define_method<cv::String(cv::xfeatures2d::HarrisLaplaceFeatureDetector::*)() const>("get_default_name", &cv::xfeatures2d::HarrisLaplaceFeatureDetector::getDefaultName);
 
   Rice::Data_Type<cv::xfeatures2d::AffineFeature2D> rb_cCvXfeatures2dAffineFeature2D = define_class_under<cv::xfeatures2d::AffineFeature2D, cv::Feature2D>(rb_mCvXfeatures2d, "AffineFeature2D").
-    define_singleton_function<cv::Ptr<cv::xfeatures2d::AffineFeature2D>(*)(cv::Ptr<cv::Feature2D>, cv::Ptr<cv::Feature2D>)>("create", &cv::xfeatures2d::AffineFeature2D::create,
+    define_singleton_function<cv::Ptr<cv::xfeatures2d::AffineFeature2D>(*)(cv::Ptr<cv::FeatureDetector>, cv::Ptr<cv::DescriptorExtractor>)>("create", &cv::xfeatures2d::AffineFeature2D::create,
       Arg("keypoint_detector"), Arg("descriptor_extractor")).
-    define_singleton_function<cv::Ptr<cv::xfeatures2d::AffineFeature2D>(*)(cv::Ptr<cv::Feature2D>)>("create", &cv::xfeatures2d::AffineFeature2D::create,
+    define_singleton_function<cv::Ptr<cv::xfeatures2d::AffineFeature2D>(*)(cv::Ptr<cv::FeatureDetector>)>("create", &cv::xfeatures2d::AffineFeature2D::create,
       Arg("keypoint_detector")).
     define_method<void(cv::xfeatures2d::AffineFeature2D::*)(cv::InputArray, std::vector<cv::xfeatures2d::Elliptic_KeyPoint>&, cv::InputArray)>("detect", &cv::xfeatures2d::AffineFeature2D::detect,
       Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray())).

@@ -86,18 +86,18 @@ void Init_Text_Erfilter()
     define_value("ERGROUPING_ORIENTATION_HORIZ", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_HORIZ).
     define_value("ERGROUPING_ORIENTATION_ANY", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_ANY);
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>>&, std::vector<std::vector<cv::Vec<int, 2>>>&, std::vector<cv::Rect_<int>>&, int, const std::string&, float)>("er_grouping", &cv::text::erGrouping,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>>&, std::vector<std::vector<cv::Vec2i>>&, std::vector<cv::Rect>&, int, const std::string&, float)>("er_grouping", &cv::text::erGrouping,
     Arg("img"), Arg("channels"), Arg("regions"), Arg("groups"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const std::string&>(std::string()), Arg("min_probablity") = static_cast<float>(0.5));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::Point_<int>>>, std::vector<cv::Rect_<int>>&, int, const cv::String&, float)>("er_grouping", &cv::text::erGrouping,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::Point>>, std::vector<cv::Rect>&, int, const cv::String&, float)>("er_grouping", &cv::text::erGrouping,
     Arg("image"), Arg("channel"), Arg("regions"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const cv::String&>(cv::String()), Arg("min_probablity"));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, std::vector<std::vector<cv::Point_<int>>>&, std::vector<std::vector<cv::text::ERStat>>&)>("mse_rs_to_er_stats", &cv::text::MSERsToERStats,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, std::vector<std::vector<cv::Point>>&, std::vector<std::vector<cv::text::ERStat>>&)>("mse_rs_to_er_stats", &cv::text::MSERsToERStats,
     Arg("image"), Arg("contours"), Arg("regions"));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter>&, const cv::Ptr<cv::text::ERFilter>&, std::vector<std::vector<cv::Point_<int>>>&)>("detect_regions", &cv::text::detectRegions,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter>&, const cv::Ptr<cv::text::ERFilter>&, std::vector<std::vector<cv::Point>>&)>("detect_regions", &cv::text::detectRegions,
     Arg("image"), Arg("er_filter1"), Arg("er_filter2"), Arg("regions"));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter>&, const cv::Ptr<cv::text::ERFilter>&, std::vector<cv::Rect_<int>>&, int, const cv::String&, float)>("detect_regions", &cv::text::detectRegions,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter>&, const cv::Ptr<cv::text::ERFilter>&, std::vector<cv::Rect>&, int, const cv::String&, float)>("detect_regions", &cv::text::detectRegions,
     Arg("image"), Arg("er_filter1"), Arg("er_filter2"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const cv::String&>(cv::String()), Arg("min_probability"));
 }

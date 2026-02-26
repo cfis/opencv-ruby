@@ -42,7 +42,7 @@ void Init_Flann_Miniflann()
       Arg("key"), Arg("value")).
     define_method<void(cv::flann::IndexParams::*)(int)>("set_algorithm", &cv::flann::IndexParams::setAlgorithm,
       Arg("value")).
-    define_method<void(cv::flann::IndexParams::*)(std::vector<std::basic_string<char>>&, std::vector<cv::flann::FlannIndexType>&, std::vector<std::basic_string<char>>&, std::vector<double>&) const>("get_all", &cv::flann::IndexParams::getAll,
+    define_method<void(cv::flann::IndexParams::*)(std::vector<cv::String>&, std::vector<cv::flann::FlannIndexType>&, std::vector<cv::String>&, std::vector<double>&) const>("get_all", &cv::flann::IndexParams::getAll,
       Arg("names"), Arg("types"), Arg("str_values"), Arg("num_values")).
     define_attr("params", &cv::flann::IndexParams::params);
 

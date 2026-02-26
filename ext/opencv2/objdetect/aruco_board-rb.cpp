@@ -1,4 +1,3 @@
-#include <opencv2/objdetect/aruco_dictionary.hpp> // Manual
 #include <opencv2/objdetect/aruco_board.hpp>
 #include "aruco_board-rb.hpp"
 
@@ -18,7 +17,7 @@ void Init_Objdetect_ArucoBoard()
     define_constructor(Constructor<cv::aruco::Board, cv::InputArrayOfArrays, const cv::aruco::Dictionary&, cv::InputArray>(),
       Arg("obj_points"), Arg("dictionary"), Arg("ids")).
     define_method<const cv::aruco::Dictionary&(cv::aruco::Board::*)() const>("get_dictionary", &cv::aruco::Board::getDictionary).
-    define_method<const std::vector<std::vector<cv::Point3_<float>>>&(cv::aruco::Board::*)() const>("get_obj_points", &cv::aruco::Board::getObjPoints).
+    define_method<const std::vector<std::vector<cv::Point3f>>&(cv::aruco::Board::*)() const>("get_obj_points", &cv::aruco::Board::getObjPoints).
     define_method<const std::vector<int>&(cv::aruco::Board::*)() const>("get_ids", &cv::aruco::Board::getIds).
     define_method<const cv::Point3f&(cv::aruco::Board::*)() const>("get_right_bottom_corner", &cv::aruco::Board::getRightBottomCorner).
     define_method<void(cv::aruco::Board::*)(cv::InputArrayOfArrays, cv::InputArray, cv::OutputArray, cv::OutputArray) const>("match_image_points", &cv::aruco::Board::matchImagePoints,
@@ -42,7 +41,7 @@ void Init_Objdetect_ArucoBoard()
     define_method<cv::Size(cv::aruco::CharucoBoard::*)() const>("get_chessboard_size", &cv::aruco::CharucoBoard::getChessboardSize).
     define_method<float(cv::aruco::CharucoBoard::*)() const>("get_square_length", &cv::aruco::CharucoBoard::getSquareLength).
     define_method<float(cv::aruco::CharucoBoard::*)() const>("get_marker_length", &cv::aruco::CharucoBoard::getMarkerLength).
-    define_method<std::vector<cv::Point3_<float>>(cv::aruco::CharucoBoard::*)() const>("get_chessboard_corners", &cv::aruco::CharucoBoard::getChessboardCorners).
+    define_method<std::vector<cv::Point3f>(cv::aruco::CharucoBoard::*)() const>("get_chessboard_corners", &cv::aruco::CharucoBoard::getChessboardCorners).
     define_method<std::vector<std::vector<int>>(cv::aruco::CharucoBoard::*)() const>("get_nearest_marker_idx", &cv::aruco::CharucoBoard::getNearestMarkerIdx).
     define_method<std::vector<std::vector<int>>(cv::aruco::CharucoBoard::*)() const>("get_nearest_marker_corners", &cv::aruco::CharucoBoard::getNearestMarkerCorners).
     define_method<bool(cv::aruco::CharucoBoard::*)(cv::InputArray) const>("check_charuco_corners_collinear", &cv::aruco::CharucoBoard::checkCharucoCornersCollinear,

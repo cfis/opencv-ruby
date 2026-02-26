@@ -10,7 +10,7 @@ void Init_Stitching_Detail_SeamFinders()
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
   Rice::Data_Type<cv::detail::SeamFinder> rb_cCvDetailSeamFinder = define_class_under<cv::detail::SeamFinder>(rb_mCvDetail, "SeamFinder").
-    define_method<void(cv::detail::SeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::SeamFinder::find,
+    define_method<void(cv::detail::SeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::SeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks")).
     define_singleton_function<cv::Ptr<cv::detail::SeamFinder>(*)(int)>("create_default", &cv::detail::SeamFinder::createDefault,
       Arg("type"));
@@ -21,18 +21,18 @@ void Init_Stitching_Detail_SeamFinders()
 
   Rice::Data_Type<cv::detail::NoSeamFinder> rb_cCvDetailNoSeamFinder = define_class_under<cv::detail::NoSeamFinder, cv::detail::SeamFinder>(rb_mCvDetail, "NoSeamFinder").
     define_constructor(Constructor<cv::detail::NoSeamFinder>()).
-    define_method<void(cv::detail::NoSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::NoSeamFinder::find,
+    define_method<void(cv::detail::NoSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::NoSeamFinder::find,
       Arg("arg_0"), Arg("arg_1"), Arg("arg_2"));
 
   Rice::Data_Type<cv::detail::PairwiseSeamFinder> rb_cCvDetailPairwiseSeamFinder = define_class_under<cv::detail::PairwiseSeamFinder, cv::detail::SeamFinder>(rb_mCvDetail, "PairwiseSeamFinder").
-    define_method<void(cv::detail::PairwiseSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::PairwiseSeamFinder::find,
+    define_method<void(cv::detail::PairwiseSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::PairwiseSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks"));
 
   Rice::Data_Type<cv::detail::VoronoiSeamFinder> rb_cCvDetailVoronoiSeamFinder = define_class_under<cv::detail::VoronoiSeamFinder, cv::detail::PairwiseSeamFinder>(rb_mCvDetail, "VoronoiSeamFinder").
     define_constructor(Constructor<cv::detail::VoronoiSeamFinder>()).
-    define_method<void(cv::detail::VoronoiSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::VoronoiSeamFinder::find,
+    define_method<void(cv::detail::VoronoiSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::VoronoiSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks")).
-    define_method<void(cv::detail::VoronoiSeamFinder::*)(const std::vector<cv::Size_<int>>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::VoronoiSeamFinder::find,
+    define_method<void(cv::detail::VoronoiSeamFinder::*)(const std::vector<cv::Size>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::VoronoiSeamFinder::find,
       Arg("size"), Arg("corners"), Arg("masks"));
 
   Rice::Data_Type<cv::detail::DpSeamFinder> rb_cCvDetailDpSeamFinder = define_class_under<cv::detail::DpSeamFinder, cv::detail::SeamFinder>(rb_mCvDetail, "DpSeamFinder").
@@ -45,7 +45,7 @@ void Init_Stitching_Detail_SeamFinders()
       Arg("val")).
     define_method<void(cv::detail::DpSeamFinder::*)(cv::String)>("set_cost_function", &cv::detail::DpSeamFinder::setCostFunction,
       Arg("val")).
-    define_method<void(cv::detail::DpSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::DpSeamFinder::find,
+    define_method<void(cv::detail::DpSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::DpSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks"));
 
   Enum<cv::detail::DpSeamFinder::CostFunction> rb_cCvDetailDpSeamFinderCostFunction = define_enum_under<cv::detail::DpSeamFinder::CostFunction>("CostFunction", rb_cCvDetailDpSeamFinder).
@@ -64,7 +64,7 @@ void Init_Stitching_Detail_SeamFinders()
       Arg("cost_type") = static_cast<int>(cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR_GRAD), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f)).
     define_constructor(Constructor<cv::detail::GraphCutSeamFinder, cv::String, float, float>(),
       Arg("cost_type"), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f)).
-    define_method<void(cv::detail::GraphCutSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::GraphCutSeamFinder::find,
+    define_method<void(cv::detail::GraphCutSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::GraphCutSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks"));
 
   Rice::Data_Type<cv::detail::GraphCutSeamFinderGpu> rb_cCvDetailGraphCutSeamFinderGpu = define_class_under<cv::detail::GraphCutSeamFinderGpu, cv::detail::GraphCutSeamFinderBase>(rb_mCvDetail, "GraphCutSeamFinderGpu").

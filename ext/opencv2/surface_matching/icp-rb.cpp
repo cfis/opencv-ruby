@@ -15,7 +15,7 @@ void Init_SurfaceMatching_Icp()
       Arg("iterations"), Arg("tolerence") = static_cast<const float>(0.05f), Arg("rejection_scale") = static_cast<const float>(2.5f), Arg("num_levels") = static_cast<const int>(6), Arg("sample_type") = static_cast<const int>(cv::ppf_match_3d::ICP::ICP_SAMPLING_TYPE_UNIFORM), Arg("num_max_corr") = static_cast<const int>(1)).
     define_method<int(cv::ppf_match_3d::ICP::*)(const cv::Mat&, const cv::Mat&, double&, cv::Matx44d&)>("register_model_to_scene", &cv::ppf_match_3d::ICP::registerModelToScene,
       Arg("src_pc"), Arg("dst_pc"), Arg("residual"), Arg("pose")).
-    define_method<int(cv::ppf_match_3d::ICP::*)(const cv::Mat&, const cv::Mat&, std::vector<cv::Ptr<cv::ppf_match_3d::Pose3D>>&)>("register_model_to_scene", &cv::ppf_match_3d::ICP::registerModelToScene,
+    define_method<int(cv::ppf_match_3d::ICP::*)(const cv::Mat&, const cv::Mat&, std::vector<cv::ppf_match_3d::Pose3DPtr>&)>("register_model_to_scene", &cv::ppf_match_3d::ICP::registerModelToScene,
       Arg("src_pc"), Arg("dst_pc"), Arg("poses"));
 
   rb_cCvPpfMatch3dICP.define_constant("ICP_SAMPLING_TYPE_UNIFORM", (int)cv::ppf_match_3d::ICP::ICP_SAMPLING_TYPE_UNIFORM);

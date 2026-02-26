@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/imgproc/detail/gcgraph.hpp>
 #include "gcgraph-rb.hpp"
 

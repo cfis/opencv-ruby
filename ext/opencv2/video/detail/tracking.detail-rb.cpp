@@ -50,9 +50,9 @@ void Init_Video_Detail_TrackingDetail()
       Arg("height"));
 
   Rice::Data_Type<cv::detail::TrackerStateEstimator> rb_cCvDetailTrackerStateEstimator = define_class_under<cv::detail::TrackerStateEstimator>(rb_mCvDetailTracking, "TrackerStateEstimator").
-    define_method<cv::Ptr<cv::detail::TrackerTargetState>(cv::detail::tracking::TrackerStateEstimator::*)(const std::vector<std::vector<std::pair<cv::Ptr<cv::detail::TrackerTargetState>, float>>>&)>("estimate", &cv::detail::tracking::TrackerStateEstimator::estimate,
+    define_method<cv::Ptr<cv::detail::TrackerTargetState>(cv::detail::tracking::TrackerStateEstimator::*)(const std::vector<cv::detail::tracking::ConfidenceMap>&)>("estimate", &cv::detail::tracking::TrackerStateEstimator::estimate,
       Arg("confidence_maps")).
-    define_method<void(cv::detail::tracking::TrackerStateEstimator::*)(std::vector<std::vector<std::pair<cv::Ptr<cv::detail::TrackerTargetState>, float>>>&)>("update", &cv::detail::tracking::TrackerStateEstimator::update,
+    define_method<void(cv::detail::tracking::TrackerStateEstimator::*)(std::vector<cv::detail::tracking::ConfidenceMap>&)>("update", &cv::detail::tracking::TrackerStateEstimator::update,
       Arg("confidence_maps")).
     define_singleton_function<cv::Ptr<cv::detail::TrackerStateEstimator>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerStateEstimator::create,
       Arg("tracke_state_estimator_type")).
@@ -68,7 +68,7 @@ void Init_Video_Detail_TrackingDetail()
     define_method<void(cv::detail::tracking::TrackerModel::*)(const cv::Ptr<cv::detail::TrackerTargetState>&)>("set_last_target_state", &cv::detail::tracking::TrackerModel::setLastTargetState,
       Arg("last_target_state")).
     define_method<cv::Ptr<cv::detail::TrackerTargetState>(cv::detail::tracking::TrackerModel::*)() const>("get_last_target_state", &cv::detail::tracking::TrackerModel::getLastTargetState).
-    define_method<const std::vector<std::vector<std::pair<cv::Ptr<cv::detail::TrackerTargetState>, float>>>&(cv::detail::tracking::TrackerModel::*)() const>("get_confidence_maps", &cv::detail::tracking::TrackerModel::getConfidenceMaps).
+    define_method<const std::vector<cv::detail::tracking::ConfidenceMap>&(cv::detail::tracking::TrackerModel::*)() const>("get_confidence_maps", &cv::detail::tracking::TrackerModel::getConfidenceMaps).
     define_method<const cv::detail::tracking::ConfidenceMap&(cv::detail::tracking::TrackerModel::*)() const>("get_last_confidence_map", &cv::detail::tracking::TrackerModel::getLastConfidenceMap).
     define_method<cv::Ptr<cv::detail::TrackerStateEstimator>(cv::detail::tracking::TrackerModel::*)() const>("get_tracker_state_estimator", &cv::detail::tracking::TrackerModel::getTrackerStateEstimator);
 

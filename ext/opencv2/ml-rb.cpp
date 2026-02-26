@@ -77,7 +77,7 @@ void Init_Ml()
       Arg("ratio"), Arg("shuffle") = static_cast<bool>(true)).
     define_method<void(cv::ml::TrainData::*)()>("shuffle_train_test", &cv::ml::TrainData::shuffleTrainTest).
     define_method<cv::Mat(cv::ml::TrainData::*)() const>("get_test_samples", &cv::ml::TrainData::getTestSamples).
-    define_method<void(cv::ml::TrainData::*)(std::vector<std::basic_string<char>>&) const>("get_names", &cv::ml::TrainData::getNames,
+    define_method<void(cv::ml::TrainData::*)(std::vector<cv::String>&) const>("get_names", &cv::ml::TrainData::getNames,
       Arg("names")).
     define_singleton_function<cv::Mat(*)(const cv::Mat&, const cv::Mat&)>("get_sub_vector", &cv::ml::TrainData::getSubVector,
       Arg("vec"), Arg("idx")).

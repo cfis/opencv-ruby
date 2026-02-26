@@ -72,9 +72,9 @@ void Init_Videostab_GlobalMotion()
     define_method<void(cv::videostab::KeypointBasedMotionEstimator::*)(cv::videostab::MotionModel)>("set_motion_model", &cv::videostab::KeypointBasedMotionEstimator::setMotionModel,
       Arg("val")).
     define_method<cv::videostab::MotionModel(cv::videostab::KeypointBasedMotionEstimator::*)() const>("motion_model", &cv::videostab::KeypointBasedMotionEstimator::motionModel).
-    define_method<void(cv::videostab::KeypointBasedMotionEstimator::*)(cv::Ptr<cv::Feature2D>)>("set_detector", &cv::videostab::KeypointBasedMotionEstimator::setDetector,
+    define_method<void(cv::videostab::KeypointBasedMotionEstimator::*)(cv::Ptr<cv::FeatureDetector>)>("set_detector", &cv::videostab::KeypointBasedMotionEstimator::setDetector,
       Arg("val")).
-    define_method<cv::Ptr<cv::Feature2D>(cv::videostab::KeypointBasedMotionEstimator::*)() const>("detector", &cv::videostab::KeypointBasedMotionEstimator::detector).
+    define_method<cv::Ptr<cv::FeatureDetector>(cv::videostab::KeypointBasedMotionEstimator::*)() const>("detector", &cv::videostab::KeypointBasedMotionEstimator::detector).
     define_method<void(cv::videostab::KeypointBasedMotionEstimator::*)(cv::Ptr<cv::videostab::ISparseOptFlowEstimator>)>("set_optical_flow_estimator", &cv::videostab::KeypointBasedMotionEstimator::setOpticalFlowEstimator,
       Arg("val")).
     define_method<cv::Ptr<cv::videostab::ISparseOptFlowEstimator>(cv::videostab::KeypointBasedMotionEstimator::*)() const>("optical_flow_estimator", &cv::videostab::KeypointBasedMotionEstimator::opticalFlowEstimator).

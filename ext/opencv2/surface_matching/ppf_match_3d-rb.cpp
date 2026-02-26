@@ -23,10 +23,6 @@ void Init_SurfaceMatching_PpfMatch3d()
       Arg("position_threshold") = static_cast<const double>(-1), Arg("rotation_threshold") = static_cast<const double>(-1), Arg("use_weighted_clustering") = static_cast<const bool>(false)).
     define_method<void(cv::ppf_match_3d::PPF3DDetector::*)(const cv::Mat&)>("train_model", &cv::ppf_match_3d::PPF3DDetector::trainModel,
       Arg("model")).
-    define_method<void(cv::ppf_match_3d::PPF3DDetector::*)(const cv::Mat&, std::vector<cv::Ptr<cv::ppf_match_3d::Pose3D>>&, const double, const double)>("match", &cv::ppf_match_3d::PPF3DDetector::match,
-      Arg("scene"), Arg("results"), Arg("relative_scene_sample_step"), Arg("relative_scene_distance") = static_cast<const double>(0.03)).
-    define_method<void(cv::ppf_match_3d::PPF3DDetector::*)(const cv::FileNode&)>("read", &cv::ppf_match_3d::PPF3DDetector::read,
-      Arg("fn")).
-    define_method<void(cv::ppf_match_3d::PPF3DDetector::*)(cv::FileStorage&) const>("write", &cv::ppf_match_3d::PPF3DDetector::write,
-      Arg("fs"));
+    define_method<void(cv::ppf_match_3d::PPF3DDetector::*)(const cv::Mat&, std::vector<cv::ppf_match_3d::Pose3DPtr>&, const double, const double)>("match", &cv::ppf_match_3d::PPF3DDetector::match,
+      Arg("scene"), Arg("results"), Arg("relative_scene_sample_step"), Arg("relative_scene_distance") = static_cast<const double>(0.03));
 }

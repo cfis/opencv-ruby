@@ -1,16 +1,44 @@
 # Subdirectories
 add_subdirectory ("aruco")
+add_subdirectory ("bioinspired")
+add_subdirectory ("calib3d")
+add_subdirectory ("ccalib")
 add_subdirectory ("core")
+add_subdirectory ("datasets")
 add_subdirectory ("dnn")
 add_subdirectory ("face")
+add_subdirectory ("features2d")
 add_subdirectory ("flann")
-add_subdirectory ("stitching")
-add_subdirectory ("superres")
-add_subdirectory ("video")
-
-if ((${OpenCV_VERSION_MAJOR} EQUAL 4 AND ${OpenCV_VERSION_MINOR} GREATER_EQUAL 8) OR ${OpenCV_VERSION_MAJOR} GREATER_EQUAL 5)
+add_subdirectory ("fuzzy")
+add_subdirectory ("hdf")
+add_subdirectory ("highgui")
+add_subdirectory ("img_hash")
+add_subdirectory ("imgcodecs")
+add_subdirectory ("imgproc")
+add_subdirectory ("line_descriptor")
+add_subdirectory ("mcc")
+add_subdirectory ("ml")
 add_subdirectory ("objdetect")
-endif()
+add_subdirectory ("optflow")
+add_subdirectory ("phase_unwrapping")
+add_subdirectory ("photo")
+add_subdirectory ("reg")
+add_subdirectory ("saliency")
+add_subdirectory ("shape")
+add_subdirectory ("signal")
+add_subdirectory ("stereo")
+add_subdirectory ("stitching")
+add_subdirectory ("structured_light")
+add_subdirectory ("superres")
+add_subdirectory ("surface_matching")
+add_subdirectory ("text")
+add_subdirectory ("tracking")
+add_subdirectory ("video")
+add_subdirectory ("videoio")
+add_subdirectory ("videostab")
+add_subdirectory ("xfeatures2d")
+add_subdirectory ("ximgproc")
+add_subdirectory ("xphoto")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
@@ -21,17 +49,16 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "ccalib-rb.cpp"
     "core-rb.cpp"
     "core_detect-rb.cpp"
-    #"cudaarithm-rb.cpp"
-    #"cudabgsegm-rb.cpp"
-    #"cudacodec-rb.cpp"
-    #cudafeatures2d-rb.cpp"
-    #"cudafilters-rb.cpp"
-    #"cudaimgproc-rb.cpp"
-    #"cudaobjdetect-rb.cpp"
-    #"cudaoptflow-rb.cpp"
-    #"cudastereo-rb.cpp"
-    #"cudawarping-rb.cpp"
-    #"cudev-rb.cpp"
+    "cudaarithm-rb.cpp"
+    "cudabgsegm-rb.cpp"
+    "cudacodec-rb.cpp"
+    "cudafeatures2d-rb.cpp"
+    "cudafilters-rb.cpp"
+    "cudaimgproc-rb.cpp"
+    "cudaobjdetect-rb.cpp"
+    "cudaoptflow-rb.cpp"
+    "cudastereo-rb.cpp"
+    "cudawarping-rb.cpp"
     "cvconfig-rb.cpp"
     "dnn-rb.cpp"
     "dnn_superres-rb.cpp"

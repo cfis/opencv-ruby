@@ -15,7 +15,7 @@ void Init_Optflow_SparseMatchingGpc()
     define_constructor(Constructor<cv::optflow::GPCPatchDescriptor>()).
     define_constant("NFeatures", cv::optflow::GPCPatchDescriptor::nFeatures).
     define_attr("feature", &cv::optflow::GPCPatchDescriptor::feature).
-    define_method<double(cv::optflow::GPCPatchDescriptor::*)(const cv::Vec<double, nFeatures>&) const>("dot", &cv::optflow::GPCPatchDescriptor::dot,
+    define_method<double(cv::optflow::GPCPatchDescriptor::*)(const cv::Vec<double, cv::optflow::GPCPatchDescriptor::nFeatures>&) const>("dot", &cv::optflow::GPCPatchDescriptor::dot, // Manual - fully qualify nFeatures
       Arg("coef")).
     define_method<void(cv::optflow::GPCPatchDescriptor::*)()>("mark_as_separated", &cv::optflow::GPCPatchDescriptor::markAsSeparated).
     define_method<bool(cv::optflow::GPCPatchDescriptor::*)() const>("separated?", &cv::optflow::GPCPatchDescriptor::isSeparated);
@@ -25,7 +25,7 @@ void Init_Optflow_SparseMatchingGpc()
     define_attr("ref", &cv::optflow::GPCPatchSample::ref).
     define_attr("pos", &cv::optflow::GPCPatchSample::pos).
     define_attr("neg", &cv::optflow::GPCPatchSample::neg).
-    define_method<void(cv::optflow::GPCPatchSample::*)(bool&, bool&, bool&, const cv::Vec<double, GPCPatchDescriptor::nFeatures>&, double) const>("get_directions", &cv::optflow::GPCPatchSample::getDirections,
+    define_method<void(cv::optflow::GPCPatchSample::*)(bool&, bool&, bool&, const cv::Vec<double, cv::optflow::GPCPatchDescriptor::nFeatures>&, double) const>("get_directions", &cv::optflow::GPCPatchSample::getDirections, // Manual - fully qualify nFeatures
       Arg("refdir"), Arg("posdir"), Arg("negdir"), Arg("coef"), Arg("rhs"));
 
   Enum<cv::optflow::GPCDescType> rb_cCvOptflowGPCDescType = define_enum_under<cv::optflow::GPCDescType>("GPCDescType", rb_mCvOptflow).

@@ -10,4 +10,5 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "detection_based_tracker-rb.cpp"
     "face-rb.cpp"
     "graphical_code_detector-rb.cpp"
+    "objdetect-rb.cpp"
   )

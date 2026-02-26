@@ -2,8 +2,8 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-    "allocator-rb.cpp"
     "all_indices-rb.cpp"
+    "allocator-rb.cpp"
     "any-rb.cpp"
     "autotuned_index-rb.cpp"
     "composite_index-rb.cpp"
@@ -11,10 +11,10 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "defines-rb.cpp"
     "dist-rb.cpp"
     "dynamic_bitset-rb.cpp"
+    "flann-rb.cpp"
     "flann_base-rb.cpp"
     "general-rb.cpp"
     "ground_truth-rb.cpp"
-    #"hdf5-rb.cpp"
     "heap-rb.cpp"
     "hierarchical_clustering_index-rb.cpp"
     "index_testing-rb.cpp"
@@ -24,6 +24,7 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "linear_index-rb.cpp"
     "logger-rb.cpp"
     "lsh_index-rb.cpp"
+    "lsh_table-rb.cpp"
     "matrix-rb.cpp"
     "miniflann-rb.cpp"
     "nn_index-rb.cpp"

@@ -42,11 +42,15 @@ namespace Rice
 
       if constexpr (!std::is_void_v<T> && is_complete_v<T>)
       {
-        result.
-          define_constructor(Constructor<cv::Ptr<T>>()).
-          define_constructor(Constructor<cv::Ptr<T>, T*>(),
-            Arg("ptr").takeOwnership()).
-          define_constructor(Constructor<Ptr_T, typename Ptr_T::element_type*>(), Arg("value").takeOwnership());
+        // is_abstract_v requires a complete type, so it must be nested inside the is_complete_v check
+        if constexpr (!std::is_abstract_v<T>)
+        {
+          result.
+            define_constructor(Constructor<cv::Ptr<T>>()).
+            define_constructor(Constructor<cv::Ptr<T>, T*>(),
+              Arg("ptr").takeOwnership()).
+            define_constructor(Constructor<Ptr_T, typename Ptr_T::element_type*>(), Arg("value").takeOwnership());
+        }
       }
 
       // Forward methods to wrapped T
@@ -98,7 +102,7 @@ namespace Rice
         }
         else if (rb_typeddata_inherited_p(this->inner_rb_data_type_, requestedType))
         {
-          return this->data_.get();
+          return (void*)this->data_.get();
         }
         else
         {

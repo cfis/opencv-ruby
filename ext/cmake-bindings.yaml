@@ -1,0 +1,19 @@
+# ruby-bindgen configuration - CMake build files for OpenCV Ruby bindings
+#
+# Usage (must run after rice-bindings.yaml):
+#   ruby-bindgen cmake-bindings.yaml
+
+format: CMake
+output: .
+
+# Skip files that exist on disk but shouldn't be compiled
+# (e.g., require libraries not available in all builds)
+skip:
+  - opencv2/core/eigen-rb.cpp
+  - opencv2/core/directx-rb.cpp
+  - opencv2/datasets/track_vot-rb.cpp
+  - opencv2/datasets/track_alov-rb.cpp
+  - opencv2/ml/ml.inl-rb.cpp
+
+include_dirs:
+  - "."

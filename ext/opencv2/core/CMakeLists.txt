@@ -1,10 +1,7 @@
 # Subdirectories
-if(OpenCV_HAS_CUDA)
-  #add_subdirectory ("cuda")
-endif()
 add_subdirectory ("detail")
 add_subdirectory ("hal")
-#add_subdirectory ("parallel")
+add_subdirectory ("parallel")
 add_subdirectory ("utils")
 
 # Sources
@@ -15,17 +12,22 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "bindings_utils-rb.cpp"
     "bufferpool-rb.cpp"
     "check-rb.cpp"
+    "core-rb.cpp"
+    "cuda-rb.cpp"
+    "cuda_stream_accessor-rb.cpp"
+    "cuda_types-rb.cpp"
+    "cv_cpu_dispatch-rb.cpp"
+    "cv_cpu_helper-rb.cpp"
     "cvdef-rb.cpp"
     "cvstd-rb.cpp"
     "cvstd.inl-rb.cpp"
     "cvstd_wrapper-rb.cpp"
-    #"directx-rb.cpp"
     "dualquaternion-rb.cpp"
-    #"eigen-rb.cpp"
     "fast_math-rb.cpp"
     "mat-rb.cpp"
     "mat.inl-rb.cpp"
     "matx-rb.cpp"
+    "matx.inl-rb.cpp"
     "neon_utils-rb.cpp"
     "ocl-rb.cpp"
     "ocl_genbase-rb.cpp"
@@ -38,7 +40,6 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "saturate-rb.cpp"
     "simd_intrinsics-rb.cpp"
     "softfloat-rb.cpp"
-    #"sse_utils-rb.cpp"
     "traits-rb.cpp"
     "types-rb.cpp"
     "utility-rb.cpp"
@@ -46,11 +47,3 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "version-rb.cpp"
     "vsx_utils-rb.cpp"
   )
-
-# CUDA sources (optional)
-if(OpenCV_HAS_CUDA)
-  target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-      "cuda-rb.cpp"
-      "cuda_stream_accessor-rb.cpp"
-      "cuda_types-rb.cpp")
-endif()

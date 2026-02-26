@@ -50,7 +50,6 @@
 #include "opencv2/core/saturate-rb.hpp"
 #include "opencv2/core/simd_intrinsics-rb.hpp"
 #include "opencv2/core/softfloat-rb.hpp"
-#include "opencv2/core/sse_utils-rb.hpp"
 #include "opencv2/core/traits-rb.hpp"
 #include "opencv2/core/types-rb.hpp"
 #include "opencv2/core/utility-rb.hpp"

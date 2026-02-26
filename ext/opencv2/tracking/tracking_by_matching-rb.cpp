@@ -88,7 +88,7 @@ void Init_Tracking_TrackingByMatching()
       Arg("i")).
     define_method<cv::detail::tracking::tbm::TrackedObject&(cv::detail::tracking::tbm::Track::*)(size_t)>("[]", &cv::detail::tracking::tbm::Track::operator[],
       Arg("i")).
-    define_method("[]=", [](cv::detail::tracking::tbm::Track&self, int index, TrackedObject & value)
+    define_method("[]=", [](cv::detail::tracking::tbm::Track&self, int index, cv::detail::tracking::tbm::TrackedObject& value)
     {
         self[index] = value;
     }).
@@ -128,7 +128,7 @@ void Init_Tracking_TrackingByMatching()
       Arg("frame")).
     define_method<bool(cv::detail::tracking::tbm::ITrackerByMatching::*)(size_t) const>("track_forgotten?", &cv::detail::tracking::tbm::ITrackerByMatching::isTrackForgotten,
       Arg("id")).
-    define_method<const std::unordered_map<unsigned long, cv::detail::tbm::Track>&(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("tracks", &cv::detail::tracking::tbm::ITrackerByMatching::tracks).
+    define_method<const std::unordered_map<std::size_t, cv::detail::tbm::Track>&(cv::detail::tracking::tbm::ITrackerByMatching::*)() const>("tracks", &cv::detail::tracking::tbm::ITrackerByMatching::tracks).
     define_method<bool(cv::detail::tracking::tbm::ITrackerByMatching::*)(size_t) const>("track_valid?", &cv::detail::tracking::tbm::ITrackerByMatching::isTrackValid,
       Arg("track_id")).
     define_method<void(cv::detail::tracking::tbm::ITrackerByMatching::*)()>("drop_forgotten_tracks", &cv::detail::tracking::tbm::ITrackerByMatching::dropForgottenTracks).
@@ -137,14 +137,4 @@ void Init_Tracking_TrackingByMatching()
 
   rb_mCvDetailTrackingTbm.define_module_function<cv::Ptr<cv::detail::tbm::ITrackerByMatching>(*)(const cv::detail::tracking::tbm::TrackerParams&)>("create_tracker_by_matching", &cv::detail::tracking::tbm::createTrackerByMatching,
     Arg("params") = static_cast<const cv::detail::tracking::tbm::TrackerParams&>(cv::detail::tracking::tbm::TrackerParams()));
-
-  rb_cCvDetailTbmTrackedObject.
-    define_method("==", [](const cv::detail::tracking::tbm::TrackedObject& self, const cv::detail::tracking::tbm::TrackedObject& other) -> bool
-    {
-      return self == other;
-    }).
-    define_method("!=", [](const cv::detail::tracking::tbm::TrackedObject& self, const cv::detail::tracking::tbm::TrackedObject& other) -> bool
-    {
-      return self != other;
-    });
 }

@@ -264,14 +264,8 @@ void Init_Cudacodec()
     define_attr("first_frame_idx", &cv::cudacodec::VideoReaderInitParams::firstFrameIdx);
 
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::String&, const std::vector<int>&, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", &cv::cudacodec::createVideoReader,
-    Arg("filename"), Arg("source_params") = static_cast<const std::vector<int>&>({}), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
+    Arg("filename"), Arg("source_params") = static_cast<const std::vector<int>&>(std::vector<int>{}), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
 
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::Ptr<cv::cudacodec::RawVideoSource>&, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", &cv::cudacodec::createVideoReader,
     Arg("source"), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
-
-  rb_cCvCudacodecEncoderParams.
-    define_method("==", [](const cv::cudacodec::EncoderParams& self, const cv::cudacodec::EncoderParams& other) -> bool
-    {
-      return self == other;
-    });
 }

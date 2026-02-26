@@ -1,0 +1,122 @@
+# ruby-bindgen configuration - Rice C++ bindings for OpenCV
+#
+# Usage:
+#   ruby-bindgen rice-bindings.yaml
+
+# === Output Settings ===
+input: build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+output: .
+format: Rice
+include: rice_include.hpp
+
+# === File Selection ===
+match:
+  - opencv2/**/*.hpp
+  - opencv2/**/*.h
+
+skip:
+  - opencv2/cudev.hpp
+  - opencv2/core/cuda.inl.hpp
+  - opencv2/core/dualquaternion.inl.hpp
+  - opencv2/core/quaternion.inl.hpp
+  - opencv2/core/hal/hal.hpp
+  - opencv2/core/hal/intrin*.hpp
+  - opencv2/core/hal/msa_macros.h
+  - opencv2/core/hal/simd_utils.impl.hpp
+  - opencv2/core/opencl/**/*
+  - opencv2/core/cuda/**/*
+  - opencv2/core/parallel/backend/**/*
+  - opencv2/core/utils/instrumentation.hpp
+  - opencv2/core/utils/fp_control_utils.hpp
+  - opencv2/core/utils/tls.hpp
+  - opencv2/core/sse_utils.hpp
+  - opencv2/flann/dummy.h
+  - opencv2/imgcodecs/macosx.h
+  - opencv2/imgcodecs/ios.h
+  - opencv2/core/cuda.inl.hpp
+  - opencv2/cudalegacy.hpp
+  - opencv2/cudalegacy/**/*
+  - opencv2/cudaarithm/**/*
+  - opencv2/cudabgsegm/**/*
+  - opencv2/cudacodec/**/*
+  - opencv2/cudafeatures2d/**/*
+  - opencv2/cudafilters/**/*
+  - opencv2/cudaimgproc/**/*
+  - opencv2/cudaobjdetect/**/*
+  - opencv2/cudaoptflow/**/*
+  - opencv2/cudastereo/**/*
+  - opencv2/cudawarping/**/*
+  - opencv2/cudev/**/*
+  - opencv2/**/*_c.h
+  - opencv2/**/legacy/constants_c.h
+  - opencv2/tracking/tracking_legacy.hpp
+  - opencv2/ccalib/omnidir_internal.hpp
+  - opencv2/surface_matching/ppf_helpers.hpp
+  - opencv2/surface_matching/t_hash_int.hpp
+  - opencv2/tracking/feature.hpp
+  - opencv2/tracking/onlineBoosting.hpp
+
+# === Symbol Filtering ===
+export_macros: []
+
+skip_symbols:
+  - cv::ocl::PlatformInfo::versionMajor
+  - cv::ocl::PlatformInfo::versionMinor
+  - cv::ocl::initializeContextFromHandle
+  - cv::ocl::convertTypeStr
+  # OpenCV bug: these methods use double literals that break MSVC template deduction for Quat<float>
+  # asinh/acosh/atanh have the bug, and asin/acos/atan call them internally
+  - cv::Quat::asinh
+  - cv::Quat::acosh
+  - cv::Quat::atanh
+  - cv::Quat::asin
+  - cv::Quat::acos
+  - cv::Quat::atan
+  # Layer backend methods use Ptr<BackendNode> which isn't exported
+  # Use regex to match versioned namespace (cv::dnn::dnn4_vXXXX::Layer)
+  - /cv::dnn::.*::Layer::init.*/
+  - /cv::dnn::.*::Layer::applyHalideScheduler/
+  - /cv::dnn::.*::Layer::tryAttach/
+  # C++ comma initializer idiom that doesn't apply to Ruby
+  - cv::MatCommaInitializer_
+  # BBox is declared but not exported from the DLL
+  - cv::face::FacemarkLBF::BBox
+  # Old C API functions
+  - CvVideoWriter
+  - /cv::dnn::.*::BackendNode/
+  - CvHaarClassifierCascade
+  # Internal enum finalizer not needed in Ruby
+  - /_dummy_enum_finalizer/
+  # Not exported from OpenCV DLL (linker errors)
+  - cv::ppf_match_3d::PPF3DDetector::read
+  - cv::ppf_match_3d::PPF3DDetector::write
+  - cv::detail::tracking::tbm::operator==
+  - cv::detail::tracking::tbm::operator!=
+  - cv::cudacodec::operator==
+
+# === Compiler Toolchain (platform-specific) ===
+clang-cl:
+  libclang: C:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/x64/bin/libclang.dll
+  args:
+    - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.50.35717/include
+    - -IC:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt
+    - -IC:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/Llvm/lib/clang/20/include
+    - -IC:/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+    - -IC:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include
+    - -DCV_EXPORTS=
+    - -DCV_EXPORTS_W=
+    - -include
+    - opencv2/opencv.hpp
+    - -xc++
+
+clang:
+  libclang: /usr/lib64/libclang.so
+  args:
+    - -I/usr/lib/clang/21/include
+    - -I/mnt/c/Source/opencv-ruby/ext/build/msvc-debug/vcpkg_installed/x64-windows/include/opencv4
+    - -I/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include
+    - -DCV_EXPORTS=
+    - -DCV_EXPORTS_W=
+    - -include
+    - opencv2/opencv.hpp
+    - -xc++

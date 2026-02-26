@@ -32,12 +32,28 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/flann/dist-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/dynamic_bitset-rb.cpp`                      | `<vector>`, `<opencv2/core/base.hpp>`                                    |
 | `opencv2/flann/flann_base-rb.cpp`                          | `<opencv2/core/base.hpp>`, `<opencv2/flann/defines.h>`                   |
+| `opencv2/flann/lsh_table-rb.cpp`                           | `<opencv2/core.hpp>`, `<vector>`                                         |
+| `opencv2/imgproc/bindings-rb.cpp`                          | `<opencv2/core/mat.hpp>`, `<opencv2/imgproc.hpp>`                        |
+| `opencv2/imgproc/detail/gcgraph-rb.cpp`                    | `<opencv2/core.hpp>`                                                     |
+| `opencv2/ml/ml.inl-rb.cpp`                                | `<opencv2/core/cvdef.h>`, `<opencv2/core/operations.hpp>`                |
 | `opencv2/flann/ground_truth-rb.cpp`                        | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/heap-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
 | `opencv2/flann/random-rb.cpp`                              | `<opencv2/core.hpp>`                                                     |
 | `opencv2/flann/sampling-rb.cpp`                            | `<opencv2/core/core.hpp>`, `<opencv2/flann/defines.h>`                   |
 | `opencv2/objdetect/aruco_board-rb.cpp`                     | `<opencv2/objdetect/aruco_dictionary.hpp>`                               |
+| `opencv2/stereo/descriptor-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
+| `opencv2/surface_matching/pose_3d-rb.cpp`                  | `<opencv2/core/matx.hpp>`                                                |
+| `opencv2/surface_matching/t_hash_int-rb.cpp`               | `<opencv2/core/hal/interface.h>`                                         |
+| `opencv2/datasets/track_alov-rb.cpp`                        | `<opencv2/core.hpp>`, `<opencv2/datasets/dataset.hpp>`                   |
+| `opencv2/datasets/track_vot-rb.cpp`                         | `<opencv2/core.hpp>`, `<opencv2/datasets/dataset.hpp>`                   |
 | `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
+| `opencv2/cudaimgproc-rb.cpp`                               | `<opencv2/core/mat.hpp>`                                                 |
+
+## Unqualified Identifiers
+
+| File                                          | Fix                                                                                                      |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `opencv2/optflow/sparse_matching_gpc-rb.cpp`  | Fully qualify `nFeatures` → `cv::optflow::GPCPatchDescriptor::nFeatures` in `Vec<double, ...>` templates |
 
 ## DNN Module
 Remove the versioning in the DNN namespace.

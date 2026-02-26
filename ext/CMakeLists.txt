@@ -56,8 +56,9 @@ include(FetchContent)
 
 FetchContent_Declare(
   rice
-  GIT_REPOSITORY https://github.com/ruby-rice/rice.git
-  GIT_TAG 4.11.3
+  #GIT_REPOSITORY https://github.com/ruby-rice/rice.git
+  #GIT_TAG 4.11.3
+  SOURCE_DIR c:/Source/rice
 )
 FetchContent_MakeAvailable(rice)
 

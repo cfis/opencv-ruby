@@ -9,18 +9,17 @@ void Init_Dnn_DnnInl()
 
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
-  Module rb_mCvDnnDnn4V20241223 = define_module_under(rb_mCvDnn, "Dnn4V20241223");
 
-  Data_Type<cv::dnn::dnn4_v20241223::DictValue>().
-    define_method("inspect", [](const cv::dnn::dnn4_v20241223::DictValue& self) -> std::string
+  Data_Type<cv::dnn::DictValue>().
+    define_method("inspect", [](const cv::dnn::DictValue& self) -> std::string
     {
       std::ostringstream stream;
       stream << self;
       return stream.str();
     });
   
-  Data_Type<cv::dnn::dnn4_v20241223::Dict>().
-    define_method("inspect", [](const cv::dnn::dnn4_v20241223::Dict& self) -> std::string
+  Data_Type<cv::dnn::Dict>().
+    define_method("inspect", [](const cv::dnn::Dict& self) -> std::string
     {
       std::ostringstream stream;
       stream << self;

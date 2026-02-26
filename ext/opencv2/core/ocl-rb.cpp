@@ -61,8 +61,10 @@ void Init_Core_Ocl()
     define_method<int(cv::ocl::Device::*)() const>("double_fp_config", &cv::ocl::Device::doubleFPConfig).
     define_method<int(cv::ocl::Device::*)() const>("single_fp_config", &cv::ocl::Device::singleFPConfig).
     define_method<int(cv::ocl::Device::*)() const>("half_fp_config", &cv::ocl::Device::halfFPConfig).
+#if RUBY_CV_VERSION >= 410
     define_method<bool(cv::ocl::Device::*)() const>("has_fp64?", &cv::ocl::Device::hasFP64).
     define_method<bool(cv::ocl::Device::*)() const>("has_fp16?", &cv::ocl::Device::hasFP16).
+#endif
     define_method<bool(cv::ocl::Device::*)() const>("endian_little?", &cv::ocl::Device::endianLittle).
     define_method<bool(cv::ocl::Device::*)() const>("error_correction_support?", &cv::ocl::Device::errorCorrectionSupport).
     define_method<int(cv::ocl::Device::*)() const>("execution_capabilities", &cv::ocl::Device::executionCapabilities).

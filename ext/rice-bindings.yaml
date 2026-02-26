@@ -93,6 +93,8 @@ skip_symbols:
   - cv::detail::tracking::tbm::operator==
   - cv::detail::tracking::tbm::operator!=
   - cv::cudacodec::operator==
+  # Internal omnidir functions not exported from OpenCV DLL
+  - /cv::omnidir::internal::.*/
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

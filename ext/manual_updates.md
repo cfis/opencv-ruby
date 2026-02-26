@@ -49,12 +49,6 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
 | `opencv2/cudaimgproc-rb.cpp`                               | `<opencv2/core/mat.hpp>`                                                 |
 
-## Unqualified Identifiers
-
-| File                                          | Fix                                                                                                      |
-|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| `opencv2/optflow/sparse_matching_gpc-rb.cpp`  | Fully qualify `nFeatures` → `cv::optflow::GPCPatchDescriptor::nFeatures` in `Vec<double, ...>` templates |
-
 ## DNN Module
 Remove the versioning in the DNN namespace.
 

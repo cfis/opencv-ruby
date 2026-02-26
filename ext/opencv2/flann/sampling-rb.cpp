@@ -1,3 +1,5 @@
+#include <opencv2/core/core.hpp> // Manual
+#include <opencv2/flann/defines.h> // Manual
 #include <opencv2/flann/sampling.h>
 #include "sampling-rb.hpp"
 

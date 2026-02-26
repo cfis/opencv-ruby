@@ -13,4 +13,5 @@ target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     "util-rb.cpp"
     "util_inl-rb.cpp"
     "warpers-rb.cpp"
+    "warpers_inl-rb.cpp"
   )

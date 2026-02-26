@@ -1,3 +1,4 @@
+#include <opencv2/core/mat.hpp> // Manual
 #include <opencv2/cudaimgproc.hpp>
 #include "cudaimgproc-rb.hpp"
 
@@ -75,13 +76,13 @@ void Init_Cudaimgproc()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int, cv::cuda::Stream&)>("hist_even", &cv::cuda::histEven,
     Arg("src"), Arg("hist"), Arg("hist_size"), Arg("lower_level"), Arg("upper_level"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, GpuMat[4], int[4], int[4], int[4], cv::cuda::Stream&)>("hist_even", &cv::cuda::histEven,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::cuda::GpuMat[4], int[4], int[4], int[4], cv::cuda::Stream&)>("hist_even", &cv::cuda::histEven,
     Arg("src"), Arg("hist"), Arg("hist_size"), Arg("lower_level"), Arg("upper_level"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream&)>("hist_range", &cv::cuda::histRange,
     Arg("src"), Arg("hist"), Arg("levels"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, GpuMat[4], const GpuMat[4], cv::cuda::Stream&)>("hist_range", &cv::cuda::histRange,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::cuda::GpuMat[4], const cv::cuda::GpuMat[4], cv::cuda::Stream&)>("hist_range", &cv::cuda::histRange,
     Arg("src"), Arg("hist"), Arg("levels"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
   Rice::Data_Type<cv::cuda::CannyEdgeDetector> rb_cCvCudaCannyEdgeDetector = define_class_under<cv::cuda::CannyEdgeDetector, cv::Algorithm>(rb_mCvCuda, "CannyEdgeDetector").

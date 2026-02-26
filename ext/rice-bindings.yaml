@@ -15,15 +15,46 @@ match:
   - opencv2/**/*.h
 
 skip:
+  - opencv2/cudev.hpp
   - opencv2/core/cuda.inl.hpp
   - opencv2/core/dualquaternion.inl.hpp
   - opencv2/core/quaternion.inl.hpp
-  - opencv2/core/hal/intrin*
   - opencv2/core/hal/hal.hpp
+  - opencv2/core/hal/intrin*.hpp
   - opencv2/core/hal/msa_macros.h
   - opencv2/core/hal/simd_utils.impl.hpp
   - opencv2/core/opencl/**/*
-  - opencv2/cudalegacy/**/*.hpp
+  - opencv2/core/cuda/**/*
+  - opencv2/core/parallel/backend/**/*
+  - opencv2/core/utils/instrumentation.hpp
+  - opencv2/core/utils/fp_control_utils.hpp
+  - opencv2/core/utils/tls.hpp
+  - opencv2/core/sse_utils.hpp
+  - opencv2/flann/dummy.h
+  - opencv2/imgcodecs/macosx.h
+  - opencv2/imgcodecs/ios.h
+  - opencv2/core/cuda.inl.hpp
+  - opencv2/cudalegacy.hpp
+  - opencv2/cudalegacy/**/*
+  - opencv2/cudaarithm/**/*
+  - opencv2/cudabgsegm/**/*
+  - opencv2/cudacodec/**/*
+  - opencv2/cudafeatures2d/**/*
+  - opencv2/cudafilters/**/*
+  - opencv2/cudaimgproc/**/*
+  - opencv2/cudaobjdetect/**/*
+  - opencv2/cudaoptflow/**/*
+  - opencv2/cudastereo/**/*
+  - opencv2/cudawarping/**/*
+  - opencv2/cudev/**/*
+  - opencv2/**/*_c.h
+  - opencv2/**/legacy/constants_c.h
+  - opencv2/tracking/tracking_legacy.hpp
+  - opencv2/ccalib/omnidir_internal.hpp
+  - opencv2/surface_matching/ppf_helpers.hpp
+  - opencv2/surface_matching/t_hash_int.hpp
+  - opencv2/tracking/feature.hpp
+  - opencv2/tracking/onlineBoosting.hpp
 
 # === Symbol Filtering ===
 export_macros: []
@@ -56,6 +87,12 @@ skip_symbols:
   - CvHaarClassifierCascade
   # Internal enum finalizer not needed in Ruby
   - /_dummy_enum_finalizer/
+  # Not exported from OpenCV DLL (linker errors)
+  - cv::ppf_match_3d::PPF3DDetector::read
+  - cv::ppf_match_3d::PPF3DDetector::write
+  - cv::detail::tracking::tbm::operator==
+  - cv::detail::tracking::tbm::operator!=
+  - cv::cudacodec::operator==
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

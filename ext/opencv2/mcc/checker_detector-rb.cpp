@@ -32,7 +32,7 @@ void Init_Mcc_CheckerDetector()
     define_attr("min_group_size", &cv::mcc::DetectorParameters::minGroupSize);
 
   Rice::Data_Type<cv::mcc::CCheckerDetector> rb_cCvMccCCheckerDetector = define_class_under<cv::mcc::CCheckerDetector, cv::Algorithm>(rb_mCvMcc, "CCheckerDetector").
-    define_method<bool(cv::mcc::CCheckerDetector::*)(dnn::Net)>("set_net", &cv::mcc::CCheckerDetector::setNet,
+    define_method<bool(cv::mcc::CCheckerDetector::*)(cv::dnn::Net)>("set_net", &cv::mcc::CCheckerDetector::setNet,
       Arg("net")).
     define_method<bool(cv::mcc::CCheckerDetector::*)(cv::InputArray, const cv::mcc::TYPECHART, const std::vector<cv::Rect_<int>>&, const int, bool, const cv::Ptr<cv::mcc::DetectorParameters>&)>("process", &cv::mcc::CCheckerDetector::process,
       Arg("image"), Arg("chart_type"), Arg("regions_of_interest"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters>&>(cv::mcc::DetectorParameters::create())).

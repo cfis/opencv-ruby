@@ -1,4 +1,3 @@
-#include <opencv2/core/matx.hpp> // Manual
 #include <opencv2/surface_matching/pose_3d.hpp>
 #include "pose_3d-rb.hpp"
 

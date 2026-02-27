@@ -90,7 +90,6 @@ void Init_Core_Traits()
   rb_cCvDataTypeDouble.define_constant("Fmt", (int)cv::DataType<double>::fmt);
   rb_cCvDataTypeDouble.define_constant("Type", (int)cv::DataType<double>::type);
 
-#if RUBY_CV_VERSION >= 410
   Rice::Data_Type<cv::DataType<cv::hfloat>> rb_cCvDataTypeHfloat = define_class_under<cv::DataType<cv::hfloat>>(rb_mCv, "DataTypeHfloat").
     define_constructor(Constructor<cv::DataType<cv::hfloat>>());
 
@@ -99,7 +98,6 @@ void Init_Core_Traits()
   rb_cCvDataTypeHfloat.define_constant("Channels", (int)cv::DataType<cv::hfloat>::channels);
   rb_cCvDataTypeHfloat.define_constant("Fmt", (int)cv::DataType<cv::hfloat>::fmt);
   rb_cCvDataTypeHfloat.define_constant("Type", (int)cv::DataType<cv::hfloat>::type);
-#endif
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 

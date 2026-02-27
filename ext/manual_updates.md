@@ -63,7 +63,6 @@ Apply all these updates
 
 | File                                     | Reason                                                                                                                                                                                                                |
 |------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `opencv2/core/matx-rb.cpp`               | Rename Matx types to OpenCV convention: `MatxUnsignedChar##` → `Matx##b`, `MatxShort##` → `Matx##s`, `MatxUnsignedShort##` → `Matx##w`, `MatxInt##` → `Matx##i` (applies to both variable names and Ruby class names) |
 | `opencv2/core/fast_math-rb.cpp`          | Wrap `OPENCV_USE_FASTMATH_BUILTINS` constant in `#ifdef` guard                                                                                                                                                        |
 | `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
 | `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead |
@@ -72,65 +71,6 @@ Apply all these updates
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Matx41d` instantiation (~line 115): delete `Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");` — already defined in `matx-rb.cpp` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Vec4d` instantiation (~line 115): delete `Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");` — already defined in `matx-rb.cpp` |
 | `opencv2/core/mat.inl-rb.cpp`            | Remove `ptrdiff_t` operator+ with `MatConstIterator` (~line 52): `ptrdiff_t` is not a Rice-wrapped type |
-| `opencv2/core/mat-rb.cpp`                | Rename `MatSize::operator()` from `"call"` to `"to_size"` (~line 327) - returns cv::Size, more descriptive name |
-| `opencv2/videoio-rb.cpp`                 | Rename `VideoCapture::grab` from `"grab?"` to `"grab"` (~line 480) - not a predicate, actually grabs a frame |
-
-## Fix Operator()
-
-Change `"call"` to `"[]"` for `operator()` methods that provide element or ROI access. This makes the Ruby API more idiomatic (e.g., `mat[rect]` instead of `mat.call(rect)`).
-
-### `opencv2/core/mat-rb.cpp`
-
-**cv::Mat** (~line 482-488) - ROI access methods:
-- `operator()(cv::Range, cv::Range)` - row/column range
-- `operator()(const cv::Rect&)` - rectangular ROI
-- `operator()(const cv::Range*)` - multi-dimensional ranges
-- `operator()(const std::vector<cv::Range>&)` - vector of ranges
-
-**cv::UMat** (~line 700-706) - ROI access methods (same pattern as Mat):
-- `operator()(cv::Range, cv::Range)`
-- `operator()(const cv::Rect&)`
-- `operator()(const cv::Range*)`
-- `operator()(const std::vector<cv::Range>&)`
-
-**cv::MatExpr** (~line 1055-1057) - ROI access methods:
-- `operator()(const cv::Range&, const cv::Range&)`
-- `operator()(const cv::Rect&)`
-
-### `opencv2/core/mat-rb.ipp`
-
-**Mat_** template (~line 100-108) - ROI access methods:
-- `operator()(const cv::Range&, const cv::Range&)`
-- `operator()(const cv::Rect&)`
-- `operator()(const cv::Range*)`
-- `operator()(const std::vector<cv::Range>&)`
-
-**Mat_** template (~line 114-133) - element access methods:
-- `operator()(const int*)` - N-D access
-- `operator()(int)` - 1D access
-- `operator()(int, int)` - 2D access (row, col)
-- `operator()(int, int, int)` - 3D access
-- `operator()(cv::Point)` - Point access
-
-**SparseMat_** template (~line 177-184) - element access methods:
-- `operator()(int, size_t*)` - 1D access with hashval
-- `operator()(int, int, size_t*)` - 2D access with hashval
-- `operator()(int, int, int, size_t*)` - 3D access with hashval
-- `operator()(const int*, size_t*)` - N-D access with hashval
-
-### `opencv2/core/matx-rb.ipp`
-
-**Matx** template (~line 26-28) - 2D element access:
-- `operator()(int, int) const`
-- `operator()(int, int)` (non-const)
-
-**Matx** template (~line 133-135) - single-index access (for vectors where m==1 or n==1):
-- `operator()(int) const`
-- `operator()(int)` (non-const)
-
-**Vec** template (~line 162-164) - single-index element access:
-- `operator()(int) const`
-- `operator()(int)` (non-const)
 
 ## Template Builder Modifications
 
@@ -557,20 +497,6 @@ When commenting out methods at the end of a fluent chain (like in `dualquaternio
       Arg("arg_0"));  // Changed . to ; because next methods are commented out
     // Commented out - causes linker errors
     // template define_method<...>("assign_divide", ...).
-```
-
-### 2. Semicolon placement in rename comments
-
-When adding comments to renamed lines (like in `matx-rb.cpp`), ensure the semicolon comes before the comment, not at the end.
-
-**Wrong:**
-```cpp
-Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatx21b = Matx_instantiate<...>(rb_mCv, "Matx21b") // Manual - renamed to OpenCV convention;
-```
-
-**Correct:**
-```cpp
-Rice::Data_Type<cv::Matx<unsigned char, 2, 1>> rb_cMatx21b = Matx_instantiate<...>(rb_mCv, "Matx21b"); // Manual - renamed to OpenCV convention
 ```
 
 ## Verification Checklist

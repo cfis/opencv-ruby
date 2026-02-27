@@ -1,7 +1,3 @@
-#include <opencv2/core/core.hpp> // Manual
-#include <opencv2/core/traits.hpp> // Manual
-#include <opencv2/core/mat.hpp> // Manual
-#include <opencv2/core/matx.hpp> // Manual
 #include <opencv2/core/cvstd.inl.hpp>
 #include "cvstd.inl-rb.hpp"
 
@@ -19,7 +15,7 @@ void Init_Core_CvstdInl()
       return stream.str();
     });
   
-  Data_Type<cv::MatND>().
+  Data_Type<cv::Mat>().
     define_method("inspect", [](const cv::Mat& self) -> std::string
     {
       std::ostringstream stream;

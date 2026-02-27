@@ -1,4 +1,3 @@
-#include <opencv2/opencv.hpp> // Manual
 #include <opencv2/core/softfloat.hpp>
 #include "softfloat-rb.hpp"
 

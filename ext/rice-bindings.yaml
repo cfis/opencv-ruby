@@ -56,6 +56,42 @@ skip:
   - opencv2/tracking/feature.hpp
   - opencv2/tracking/onlineBoosting.hpp
 
+# === Name Mappings ===
+# Override generated Ruby names. See manual_updates.md for context.
+rename_methods:
+  # grab is not a predicate — it grabs a frame
+  - from: cv::VideoCapture::grab
+    to: grab
+  # MatSize returns cv::Size, not element access
+  - from: cv::MatSize::operator()
+    to: to_size
+  # operator() provides element/ROI access — Ruby [] is more idiomatic
+  - from: cv::Mat::operator()
+    to: "[]"
+  - from: cv::UMat::operator()
+    to: "[]"
+  - from: cv::MatExpr::operator()
+    to: "[]"
+  - from: cv::Mat_::operator()
+    to: "[]"
+  - from: cv::SparseMat_::operator()
+    to: "[]"
+  - from: cv::Matx::operator()
+    to: "[]"
+  - from: cv::Vec::operator()
+    to: "[]"
+
+rename_types:
+  # OpenCV Matx naming convention (uchar → b, short → s, ushort → w, int → i)
+  - from: /^MatxUnsignedChar(\d+)$/
+    to: Matx\1b
+  - from: /^MatxUnsignedShort(\d+)$/
+    to: Matx\1w
+  - from: /^MatxShort(\d+)$/
+    to: Matx\1s
+  - from: /^MatxInt(\d+)$/
+    to: Matx\1i
+
 # === Symbol Filtering ===
 export_macros: []
 

@@ -1,5 +1,3 @@
-#include <opencv2/core.hpp> // Manual
-#include <opencv2/datasets/dataset.hpp> // Manual
 #include <opencv2/datasets/track_alov.hpp>
 #include "track_alov-rb.hpp"
 

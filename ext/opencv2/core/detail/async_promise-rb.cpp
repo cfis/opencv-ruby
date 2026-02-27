@@ -1,3 +1,5 @@
+#include <opencv2/core.hpp> // Manual
+#include <opencv2/core/detail/exception_ptr.hpp> // Manual
 #include <opencv2/core/detail/async_promise.hpp>
 #include "async_promise-rb.hpp"
 

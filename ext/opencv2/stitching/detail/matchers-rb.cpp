@@ -48,8 +48,10 @@ void Init_Stitching_Detail_Matchers()
     define_method<void(cv::detail::FeaturesMatcher::*)()>("collect_garbage", &cv::detail::FeaturesMatcher::collectGarbage);
 
   Rice::Data_Type<cv::detail::BestOf2NearestMatcher> rb_cCvDetailBestOf2NearestMatcher = define_class_under<cv::detail::BestOf2NearestMatcher, cv::detail::FeaturesMatcher>(rb_mCvDetail, "BestOf2NearestMatcher").
+#if RUBY_CV_VERSION >= 407
     define_constructor(Constructor<cv::detail::BestOf2NearestMatcher, bool, float, int, int, double>(),
       Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6), Arg("matches_confindece_thresh") = static_cast<double>(3.)).
+#endif
     define_method<void(cv::detail::BestOf2NearestMatcher::*)()>("collect_garbage", &cv::detail::BestOf2NearestMatcher::collectGarbage).
     define_singleton_function<cv::Ptr<cv::detail::BestOf2NearestMatcher>(*)(bool, float, int, int, double)>("create", &cv::detail::BestOf2NearestMatcher::create,
       Arg("try_use_gpu") = static_cast<bool>(false), Arg("match_conf") = static_cast<float>(0.3f), Arg("num_matches_thresh1") = static_cast<int>(6), Arg("num_matches_thresh2") = static_cast<int>(6), Arg("matches_confindece_thresh") = static_cast<double>(3.));

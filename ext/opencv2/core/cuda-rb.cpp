@@ -58,10 +58,12 @@ void Init_Core_Cuda()
       Arg("dst")).
     define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst")).
+#if RUBY_CV_VERSION >= 409
     define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("stream")).
     define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("stream")).
+#endif
     define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::InputArray) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("mask")).
     define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, cv::cuda::GpuMat&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
@@ -217,11 +219,13 @@ void Init_Core_Cuda()
   rb_mCvCuda.define_module_function<void(*)(int, int, int, cv::OutputArray)>("ensure_size_is_enough", &cv::cuda::ensureSizeIsEnough,
     Arg("rows"), Arg("cols"), Arg("type"), Arg("arr"));
 
+#if RUBY_CV_VERSION >= 409
   rb_mCvCuda.define_module_function<cv::cuda::GpuMat(*)(int, int, int, size_t, size_t)>("create_gpu_mat_from_cuda_memory", &cv::cuda::createGpuMatFromCudaMemory,
     Arg("rows"), Arg("cols"), Arg("type"), Arg("cuda_memory_address"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP));
 
   rb_mCvCuda.define_module_function<cv::cuda::GpuMat(*)(cv::Size, int, size_t, size_t)>("create_gpu_mat_from_cuda_memory", &cv::cuda::createGpuMatFromCudaMemory,
     Arg("size"), Arg("type"), Arg("cuda_memory_address"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP));
+#endif
 
   Rice::Data_Type<cv::cuda::BufferPool> rb_cCvCudaBufferPool = define_class_under<cv::cuda::BufferPool>(rb_mCvCuda, "BufferPool").
     define_constructor(Constructor<cv::cuda::BufferPool, cv::cuda::Stream&>(),
@@ -315,8 +319,10 @@ void Init_Core_Cuda()
     define_method<void*(cv::cuda::Stream::*)() const>("cuda_ptr", &cv::cuda::Stream::cudaPtr,
       ReturnBuffer());
 
+#if RUBY_CV_VERSION >= 408
   rb_mCvCuda.define_module_function<cv::cuda::Stream(*)(size_t)>("wrap_stream", &cv::cuda::wrapStream,
     Arg("cuda_stream_memory_address"));
+#endif
 
   Rice::Data_Type<cv::cuda::Event> rb_cCvCudaEvent = define_class_under<cv::cuda::Event>(rb_mCvCuda, "Event");
 
@@ -325,8 +331,9 @@ void Init_Core_Cuda()
   rb_cCvCudaEvent.
     define_constructor(Constructor<cv::cuda::Event, const cv::cuda::Event::CreateFlags>(),
       Arg("flags") = static_cast<const cv::cuda::Event::CreateFlags>(cv::cuda::Event::CreateFlags::DEFAULT)).
+    // Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
     define_method<void(cv::cuda::Event::*)(cv::cuda::Stream&)>("record", &cv::cuda::Event::record,
-      Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())).
+      Arg("stream")).
     define_method<bool(cv::cuda::Event::*)() const>("query_if_complete?", &cv::cuda::Event::queryIfComplete).
     define_method<void(cv::cuda::Event::*)()>("wait_for_completion", &cv::cuda::Event::waitForCompletion).
     define_singleton_function<float(*)(const cv::cuda::Event&, const cv::cuda::Event&)>("elapsed_time", &cv::cuda::Event::elapsedTime,
@@ -463,6 +470,7 @@ void Init_Core_Cuda()
   rb_mCvCuda.define_module_function<void(*)(int)>("print_short_cuda_device_info", &cv::cuda::printShortCudaDeviceInfo,
     Arg("device"));
 
+  // Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("convert_fp16", &cv::cuda::convertFp16,
-    Arg("_src"), Arg("_dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+    Arg("_src"), Arg("_dst"), Arg("stream"));
 }

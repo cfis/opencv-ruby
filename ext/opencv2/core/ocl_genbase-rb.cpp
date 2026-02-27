@@ -1,3 +1,4 @@
+#include <opencv2/core/ocl.hpp> // Manual
 #include <opencv2/core/ocl_genbase.hpp>
 #include "ocl_genbase-rb.hpp"
 

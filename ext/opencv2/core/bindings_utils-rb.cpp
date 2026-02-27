@@ -1,3 +1,4 @@
+#include <opencv2/core.hpp> // Manual
 #include <opencv2/core/bindings_utils.hpp>
 #include "bindings_utils-rb.hpp"
 
@@ -27,8 +28,10 @@ void Init_Core_BindingsUtils()
   rb_mCvUtils.define_module_function<cv::String(*)(int)>("dump_int", &cv::utils::dumpInt,
     Arg("argument"));
 
+#if RUBY_CV_VERSION >= 407
   rb_mCvUtils.define_module_function<cv::String(*)(int64)>("dump_int64", &cv::utils::dumpInt64,
     Arg("argument"));
+#endif
 
   rb_mCvUtils.define_module_function<cv::String(*)(size_t)>("dump_size_t", &cv::utils::dumpSizeT,
     Arg("argument"));
@@ -100,6 +103,7 @@ void Init_Core_BindingsUtils()
 
   rb_mCvUtils.define_module_function<cv::AsyncArray(*)()>("test_async_exception", &cv::utils::testAsyncException);
 
+#if RUBY_CV_VERSION >= 407
   rb_mCvUtils.define_module_function<cv::String(*)(const cv::Vec2i)>("dump_vec2i", &cv::utils::dumpVec2i,
     Arg("value") = static_cast<const cv::Vec2i>(cv::Vec2i(42, 24)));
 
@@ -108,7 +112,9 @@ void Init_Core_BindingsUtils()
     define_attr("except", &cv::utils::ClassWithKeywordProperties::except).
     define_constructor(Constructor<cv::utils::ClassWithKeywordProperties, int, int>(),
       Arg("lambda_arg") = static_cast<int>(24), Arg("except_arg") = static_cast<int>(42));
+#endif
 
+#if RUBY_CV_VERSION >= 408
   Rice::Data_Type<cv::utils::FunctionParams> rb_cCvUtilsFunctionParams = define_class_under<cv::utils::FunctionParams>(rb_mCvUtils, "FunctionParams").
     define_constructor(Constructor<cv::utils::FunctionParams>()).
     define_attr("lambda", &cv::utils::FunctionParams::lambda).
@@ -120,6 +126,7 @@ void Init_Core_BindingsUtils()
 
   rb_mCvUtils.define_module_function<cv::String(*)(cv::InputArray, cv::OutputArray, const cv::utils::FunctionParams&)>("copy_mat_and_dump_named_arguments", &cv::utils::copyMatAndDumpNamedArguments,
     Arg("src"), Arg("dst"), Arg("params") = static_cast<const cv::utils::FunctionParams&>(cv::utils::FunctionParams()));
+#endif
 
   Module rb_mCvUtilsNested = define_module_under(rb_mCvUtils, "Nested");
 

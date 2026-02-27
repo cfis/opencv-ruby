@@ -16,6 +16,7 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/detail/async_promise-rb.cpp`                 | `<opencv2/core.hpp>`, `<opencv2/core/detail/exception_ptr.hpp>`          |
 | `opencv2/core/detail/dispatch_helper.impl-rb.cpp`          | `<opencv2/opencv.hpp>`                                                   |
 | `opencv2/core/mat-rb.cpp`                                  | `<opencv2/core/cuda.hpp>`, `<opencv2/core/opengl.hpp>`, `"types-rb.hpp"`, `"refinements/mat-iterators.hpp"` |
+| `opencv2/core/mat.inl-rb.cpp`                              | `<opencv2/core/mat.hpp>`                                                 |
 | `opencv2/core/matx-rb.cpp`                                 | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/ocl_genbase-rb.cpp`                          | `<opencv2/core/ocl.hpp>`                                                 |
 | `opencv2/core/opengl-rb.cpp`                               | `<opencv2/core/cuda.hpp>`                                                |
@@ -428,32 +429,6 @@ Some features are only available in certain OpenCV versions. Wrap them with `#if
 - **Line ~289**: `TrackerNano::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
 - **Line ~303**: `TrackerVit` class (>= 409)
 - **Line ~309**: `TrackerVit::create` with dnn::Net (>= 412, requires HAVE_OPENCV_DNN)
-
-## Refinements Directory
-
-The `ext/refinements` directory contains manual additions to generated classes that are applied after the class is defined. This separates manual code from generated code, making regeneration easier.
-
-### How Refinements Work
-
-1. Each refinements file exports a function that takes a reference to a Rice class
-2. The function adds manual methods (lambdas, includes, etc.) to the class
-3. The function is called from `opencv_ruby-rb.cpp` after the Init function creates the class
-
-### Current Refinements
-
-| File                      | Class       | Additions                                                        |
-|---------------------------|-------------|------------------------------------------------------------------|
-| `mat_refinements.cpp`     | `cv::Mat`   | `[]`, `[]=`, `ptr`, `each` methods with type dispatch            |
-
-### Adding New Refinements
-
-1. Create `ext/refinements/<class>_refinements.hpp` with function declaration
-2. Create `ext/refinements/<class>_refinements.cpp` with implementation
-3. Add source file to `ext/refinements/CMakeLists.txt`
-4. In `opencv_ruby-rb.cpp`:
-   - Add `#include "refinements/<class>_refinements.hpp"`
-   - Add `extern Rice::Class rb_c<ClassName>;` if needed
-   - Call refinements function after the Init function (e.g., `<Class>_refinements(rb_c<ClassName>);`)
 
 ## Final Step: Generate Diff File
 

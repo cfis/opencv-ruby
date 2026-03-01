@@ -94,43 +94,137 @@ rename_types:
 
 # === Symbol Filtering ===
 export_macros: []
+version_macro: RUBY_CV_VERSION
 
-skip_symbols:
-  - cv::ocl::PlatformInfo::versionMajor
-  - cv::ocl::PlatformInfo::versionMinor
-  - cv::ocl::initializeContextFromHandle
-  - cv::ocl::convertTypeStr
-  # OpenCV bug: these methods use double literals that break MSVC template deduction for Quat<float>
-  # asinh/acosh/atanh have the bug, and asin/acos/atan call them internally
-  - cv::Quat::asinh
-  - cv::Quat::acosh
-  - cv::Quat::atanh
-  - cv::Quat::asin
-  - cv::Quat::acos
-  - cv::Quat::atan
-  # Layer backend methods use Ptr<BackendNode> which isn't exported
-  # Use regex to match versioned namespace (cv::dnn::dnn4_vXXXX::Layer)
-  - /cv::dnn::.*::Layer::init.*/
-  - /cv::dnn::.*::Layer::applyHalideScheduler/
-  - /cv::dnn::.*::Layer::tryAttach/
-  # C++ comma initializer idiom that doesn't apply to Ruby
-  - cv::MatCommaInitializer_
-  # BBox is declared but not exported from the DLL
-  - cv::face::FacemarkLBF::BBox
-  # Old C API functions
-  - CvVideoWriter
-  - /cv::dnn::.*::BackendNode/
-  - CvHaarClassifierCascade
-  # Internal enum finalizer not needed in Ruby
-  - /_dummy_enum_finalizer/
-  # Not exported from OpenCV DLL (linker errors)
-  - cv::ppf_match_3d::PPF3DDetector::read
-  - cv::ppf_match_3d::PPF3DDetector::write
-  - cv::detail::tracking::tbm::operator==
-  - cv::detail::tracking::tbm::operator!=
-  - cv::cudacodec::operator==
-  # Internal omnidir functions not exported from OpenCV DLL
-  - /cv::omnidir::internal::.*/
+symbols:
+  skip:
+    # Not available or broken
+    - cv::ocl::PlatformInfo::versionMajor
+    - cv::ocl::PlatformInfo::versionMinor
+    - cv::ocl::initializeContextFromHandle
+    - cv::ocl::convertTypeStr
+    # OpenCV bug: these methods use double literals that break MSVC template deduction for Quat<float>
+    # asinh/acosh/atanh have the bug, and asin/acos/atan call them internally
+    - cv::Quat::asinh
+    - cv::Quat::acosh
+    - cv::Quat::atanh
+    - cv::Quat::asin
+    - cv::Quat::acos
+    - cv::Quat::atan
+    # Layer backend methods use Ptr<BackendNode> which isn't exported
+    # Use regex to match versioned namespace (cv::dnn::dnn4_vXXXX::Layer)
+    - /cv::dnn::.*::Layer::init.*/
+    - /cv::dnn::.*::Layer::applyHalideScheduler/
+    - /cv::dnn::.*::Layer::tryAttach/
+    # C++ comma initializer idiom that doesn't apply to Ruby
+    - cv::MatCommaInitializer_
+    # BBox is declared but not exported from the DLL
+    - cv::face::FacemarkLBF::BBox
+    # Old C API functions
+    - CvVideoWriter
+    - /cv::dnn::.*::BackendNode/
+    - CvHaarClassifierCascade
+    # Internal enum finalizer not needed in Ruby
+    - /_dummy_enum_finalizer/
+    # Not exported from OpenCV DLL (linker errors)
+    - "cv::DualQuat::operator*=(const _Tp)"
+    - "cv::DualQuat::operator/=(const _Tp)"
+    - "cv::Mat_::zeros(int, const int*)"
+    - "cv::Mat_::ones(int, const int*)"
+    - "cv::_OutputArray::_OutputArray(const std::vector<cv::cuda::GpuMat>&)"
+    - "cv::MatConstIterator::MatConstIterator(const cv::Mat*, const int*)"
+    - "cv::SparseMatConstIterator::operator--()"
+    - "cv::SparseMatConstIterator::operator--(int)"
+    - "cv::SparseMatIterator::SparseMatIterator(cv::SparseMat*, const int*)"
+    - cv::ppf_match_3d::PPF3DDetector::read
+    - cv::ppf_match_3d::PPF3DDetector::write
+    - cv::detail::tracking::tbm::operator==
+    - cv::detail::tracking::tbm::operator!=
+    - cv::cudacodec::operator==
+    # Internal omnidir functions not exported from OpenCV DLL
+    - /cv::omnidir::internal::.*/
+
+  versions:
+    # --- 407: OpenCV 4.7+ ---
+    407:
+      # core/bindings_utils-rb.cpp
+      - cv::utils::dumpInt64
+      - cv::utils::dumpVec2i
+      - cv::utils::ClassWithKeywordProperties
+      # core/check-rb.cpp (bool overload only; other overloads are unversioned)
+      - "cv::detail::check_failed_auto(const bool, const bool, const CheckContext &)"
+      - cv::detail::check_failed_true
+      - cv::detail::check_failed_false
+      # core/cvdef-rb.cpp
+      - CV_CPU_NEON_DOTPROD
+      - CpuFeatures::CPU_NEON_DOTPROD
+      # core/types-rb.cpp
+      - cv::rectangleIntersectionArea
+      # stitching/detail/matchers-rb.cpp
+      - "cv::detail::BestOf2NearestMatcher::BestOf2NearestMatcher(bool, float, int, int, double)"
+      # video/tracking-rb.cpp
+      - cv::DISOpticalFlow::PRESET_ULTRAFAST
+      - cv::DISOpticalFlow::PRESET_FAST
+      - cv::DISOpticalFlow::PRESET_MEDIUM
+      - cv::TrackerNano
+
+    # --- 408: OpenCV 4.8+ ---
+    408:
+      # core/bindings_utils-rb.cpp
+      - cv::utils::FunctionParams
+      - cv::utils::copyMatAndDumpNamedArguments
+      # core/cuda-rb.cpp
+      - cv::cuda::wrapStream
+      # core/optim-rb.cpp
+      - cv::SolveLPResult::SOLVELP_LOST
+      # core/types-rb.cpp (vector overload only; array overload is unversioned)
+      - "cv::RotatedRect::points(std::vector<Point2f> &)"
+      # flann/flann_base-rb.cpp
+      - cvflann::FILEScopeGuard
+
+    # --- 409: OpenCV 4.9+ ---
+    409:
+      # core/cuda-rb.cpp (Stream overloads only; other copyTo overloads are unversioned)
+      - "cv::cuda::GpuMat::copyTo(OutputArray, Stream &)"
+      - "cv::cuda::GpuMat::copyTo(GpuMat &, Stream &)"
+      - cv::cuda::createGpuMatFromCudaMemory
+      # core/cvdef-rb.cpp
+      - CV_CPU_NEON_FP16
+      - CV_CPU_NEON_BF16
+      - CV_CPU_LSX
+      - CV_CPU_LASX
+      - CpuFeatures::CPU_NEON_FP16
+      - CpuFeatures::CPU_NEON_BF16
+      - CpuFeatures::CPU_LSX
+      - CpuFeatures::CPU_LASX
+      # video/tracking-rb.cpp
+      - cv::TrackerVit
+
+    # --- 410: OpenCV 4.10+ ---
+    410:
+      # core/cvdef-rb.cpp
+      - CV_MAX_DIM
+      - cv::hfloat
+      - cv::hfloatFromBits
+      # core/ocl-rb.cpp
+      - cv::ocl::Device::hasFP64
+      - cv::ocl::Device::hasFP16
+      # core/saturate-rb.cpp (all hfloat return-type overloads)
+      - /cv::saturate_cast<cv::hfloat>/
+      # core/traits-rb.cpp
+      - cv::DataType<cv::hfloat>
+      # video/tracking-rb.cpp
+      - cv::VariationalRefinement::getEpsilon
+      - cv::VariationalRefinement::setEpsilon
+      - cv::DISOpticalFlow::getVariationalRefinementEpsilon
+      - cv::DISOpticalFlow::setVariationalRefinementEpsilon
+
+    # --- 411: OpenCV 4.11+ ---
+    411:
+      # core/utility-rb.cpp
+      - cv::AlgorithmHint
+      - cv::getDefaultAlgorithmHint
+      - "cv::CommandLineParser::CommandLineParser(int, const char *const[], const String &)"
 
 # === Compiler Toolchain (platform-specific) ===
 clang-cl:

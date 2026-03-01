@@ -7,597 +7,595 @@ void Init_Imgproc()
 {
   Module rb_mCv = define_module("Cv");
 
-  Enum<cv::SpecialFilter> rb_cCvSpecialFilter = define_enum_under<cv::SpecialFilter>("SpecialFilter", rb_mCv).
-    define_value("FILTER_SCHARR", cv::SpecialFilter::FILTER_SCHARR);
-
-  Enum<cv::MorphTypes> rb_cCvMorphTypes = define_enum_under<cv::MorphTypes>("MorphTypes", rb_mCv).
-    define_value("MORPH_ERODE", cv::MorphTypes::MORPH_ERODE).
-    define_value("MORPH_DILATE", cv::MorphTypes::MORPH_DILATE).
-    define_value("MORPH_OPEN", cv::MorphTypes::MORPH_OPEN).
-    define_value("MORPH_CLOSE", cv::MorphTypes::MORPH_CLOSE).
-    define_value("MORPH_GRADIENT", cv::MorphTypes::MORPH_GRADIENT).
-    define_value("MORPH_TOPHAT", cv::MorphTypes::MORPH_TOPHAT).
-    define_value("MORPH_BLACKHAT", cv::MorphTypes::MORPH_BLACKHAT).
-    define_value("MORPH_HITMISS", cv::MorphTypes::MORPH_HITMISS);
-
-  Enum<cv::MorphShapes> rb_cCvMorphShapes = define_enum_under<cv::MorphShapes>("MorphShapes", rb_mCv).
-    define_value("MORPH_RECT", cv::MorphShapes::MORPH_RECT).
-    define_value("MORPH_CROSS", cv::MorphShapes::MORPH_CROSS).
-    define_value("MORPH_ELLIPSE", cv::MorphShapes::MORPH_ELLIPSE);
-
-  Enum<cv::InterpolationFlags> rb_cCvInterpolationFlags = define_enum_under<cv::InterpolationFlags>("InterpolationFlags", rb_mCv).
-    define_value("INTER_NEAREST", cv::InterpolationFlags::INTER_NEAREST).
-    define_value("INTER_LINEAR", cv::InterpolationFlags::INTER_LINEAR).
-    define_value("INTER_CUBIC", cv::InterpolationFlags::INTER_CUBIC).
-    define_value("INTER_AREA", cv::InterpolationFlags::INTER_AREA).
-    define_value("INTER_LANCZOS4", cv::InterpolationFlags::INTER_LANCZOS4).
-    define_value("INTER_LINEAR_EXACT", cv::InterpolationFlags::INTER_LINEAR_EXACT).
-    define_value("INTER_NEAREST_EXACT", cv::InterpolationFlags::INTER_NEAREST_EXACT).
-    define_value("INTER_MAX", cv::InterpolationFlags::INTER_MAX).
-    define_value("WARP_FILL_OUTLIERS", cv::InterpolationFlags::WARP_FILL_OUTLIERS).
-    define_value("WARP_INVERSE_MAP", cv::InterpolationFlags::WARP_INVERSE_MAP).
-    define_value("WARP_RELATIVE_MAP", cv::InterpolationFlags::WARP_RELATIVE_MAP);
-
-  Enum<cv::WarpPolarMode> rb_cCvWarpPolarMode = define_enum_under<cv::WarpPolarMode>("WarpPolarMode", rb_mCv).
-    define_value("WARP_POLAR_LINEAR", cv::WarpPolarMode::WARP_POLAR_LINEAR).
-    define_value("WARP_POLAR_LOG", cv::WarpPolarMode::WARP_POLAR_LOG);
-
-  Enum<cv::InterpolationMasks> rb_cCvInterpolationMasks = define_enum_under<cv::InterpolationMasks>("InterpolationMasks", rb_mCv).
-    define_value("INTER_BITS", cv::InterpolationMasks::INTER_BITS).
-    define_value("INTER_BITS2", cv::InterpolationMasks::INTER_BITS2).
-    define_value("INTER_TAB_SIZE", cv::InterpolationMasks::INTER_TAB_SIZE).
-    define_value("INTER_TAB_SIZE2", cv::InterpolationMasks::INTER_TAB_SIZE2);
-
-  Enum<cv::DistanceTypes> rb_cCvDistanceTypes = define_enum_under<cv::DistanceTypes>("DistanceTypes", rb_mCv).
-    define_value("DIST_USER", cv::DistanceTypes::DIST_USER).
-    define_value("DIST_L1", cv::DistanceTypes::DIST_L1).
-    define_value("DIST_L2", cv::DistanceTypes::DIST_L2).
-    define_value("DIST_C", cv::DistanceTypes::DIST_C).
-    define_value("DIST_L12", cv::DistanceTypes::DIST_L12).
-    define_value("DIST_FAIR", cv::DistanceTypes::DIST_FAIR).
-    define_value("DIST_WELSCH", cv::DistanceTypes::DIST_WELSCH).
-    define_value("DIST_HUBER", cv::DistanceTypes::DIST_HUBER);
-
-  Enum<cv::DistanceTransformMasks> rb_cCvDistanceTransformMasks = define_enum_under<cv::DistanceTransformMasks>("DistanceTransformMasks", rb_mCv).
-    define_value("DIST_MASK_3", cv::DistanceTransformMasks::DIST_MASK_3).
-    define_value("DIST_MASK_5", cv::DistanceTransformMasks::DIST_MASK_5).
-    define_value("DIST_MASK_PRECISE", cv::DistanceTransformMasks::DIST_MASK_PRECISE);
-
-  Enum<cv::ThresholdTypes> rb_cCvThresholdTypes = define_enum_under<cv::ThresholdTypes>("ThresholdTypes", rb_mCv).
-    define_value("THRESH_BINARY", cv::ThresholdTypes::THRESH_BINARY).
-    define_value("THRESH_BINARY_INV", cv::ThresholdTypes::THRESH_BINARY_INV).
-    define_value("THRESH_TRUNC", cv::ThresholdTypes::THRESH_TRUNC).
-    define_value("THRESH_TOZERO", cv::ThresholdTypes::THRESH_TOZERO).
-    define_value("THRESH_TOZERO_INV", cv::ThresholdTypes::THRESH_TOZERO_INV).
-    define_value("THRESH_MASK", cv::ThresholdTypes::THRESH_MASK).
-    define_value("THRESH_OTSU", cv::ThresholdTypes::THRESH_OTSU).
-    define_value("THRESH_TRIANGLE", cv::ThresholdTypes::THRESH_TRIANGLE);
-
-  Enum<cv::AdaptiveThresholdTypes> rb_cCvAdaptiveThresholdTypes = define_enum_under<cv::AdaptiveThresholdTypes>("AdaptiveThresholdTypes", rb_mCv).
-    define_value("ADAPTIVE_THRESH_MEAN_C", cv::AdaptiveThresholdTypes::ADAPTIVE_THRESH_MEAN_C).
-    define_value("ADAPTIVE_THRESH_GAUSSIAN_C", cv::AdaptiveThresholdTypes::ADAPTIVE_THRESH_GAUSSIAN_C);
-
-  Enum<cv::GrabCutClasses> rb_cCvGrabCutClasses = define_enum_under<cv::GrabCutClasses>("GrabCutClasses", rb_mCv).
-    define_value("GC_BGD", cv::GrabCutClasses::GC_BGD).
-    define_value("GC_FGD", cv::GrabCutClasses::GC_FGD).
-    define_value("GC_PR_BGD", cv::GrabCutClasses::GC_PR_BGD).
-    define_value("GC_PR_FGD", cv::GrabCutClasses::GC_PR_FGD);
-
-  Enum<cv::GrabCutModes> rb_cCvGrabCutModes = define_enum_under<cv::GrabCutModes>("GrabCutModes", rb_mCv).
-    define_value("GC_INIT_WITH_RECT", cv::GrabCutModes::GC_INIT_WITH_RECT).
-    define_value("GC_INIT_WITH_MASK", cv::GrabCutModes::GC_INIT_WITH_MASK).
-    define_value("GC_EVAL", cv::GrabCutModes::GC_EVAL).
-    define_value("GC_EVAL_FREEZE_MODEL", cv::GrabCutModes::GC_EVAL_FREEZE_MODEL);
-
-  Enum<cv::DistanceTransformLabelTypes> rb_cCvDistanceTransformLabelTypes = define_enum_under<cv::DistanceTransformLabelTypes>("DistanceTransformLabelTypes", rb_mCv).
-    define_value("DIST_LABEL_CCOMP", cv::DistanceTransformLabelTypes::DIST_LABEL_CCOMP).
-    define_value("DIST_LABEL_PIXEL", cv::DistanceTransformLabelTypes::DIST_LABEL_PIXEL);
-
-  Enum<cv::FloodFillFlags> rb_cCvFloodFillFlags = define_enum_under<cv::FloodFillFlags>("FloodFillFlags", rb_mCv).
-    define_value("FLOODFILL_FIXED_RANGE", cv::FloodFillFlags::FLOODFILL_FIXED_RANGE).
-    define_value("FLOODFILL_MASK_ONLY", cv::FloodFillFlags::FLOODFILL_MASK_ONLY);
-
-  Enum<cv::ConnectedComponentsTypes> rb_cCvConnectedComponentsTypes = define_enum_under<cv::ConnectedComponentsTypes>("ConnectedComponentsTypes", rb_mCv).
-    define_value("CC_STAT_LEFT", cv::ConnectedComponentsTypes::CC_STAT_LEFT).
-    define_value("CC_STAT_TOP", cv::ConnectedComponentsTypes::CC_STAT_TOP).
-    define_value("CC_STAT_WIDTH", cv::ConnectedComponentsTypes::CC_STAT_WIDTH).
-    define_value("CC_STAT_HEIGHT", cv::ConnectedComponentsTypes::CC_STAT_HEIGHT).
-    define_value("CC_STAT_AREA", cv::ConnectedComponentsTypes::CC_STAT_AREA).
-    define_value("CC_STAT_MAX", cv::ConnectedComponentsTypes::CC_STAT_MAX);
-
-  Enum<cv::ConnectedComponentsAlgorithmsTypes> rb_cCvConnectedComponentsAlgorithmsTypes = define_enum_under<cv::ConnectedComponentsAlgorithmsTypes>("ConnectedComponentsAlgorithmsTypes", rb_mCv).
-    define_value("CCL_DEFAULT", cv::ConnectedComponentsAlgorithmsTypes::CCL_DEFAULT).
-    define_value("CCL_WU", cv::ConnectedComponentsAlgorithmsTypes::CCL_WU).
-    define_value("CCL_GRANA", cv::ConnectedComponentsAlgorithmsTypes::CCL_GRANA).
-    define_value("CCL_BOLELLI", cv::ConnectedComponentsAlgorithmsTypes::CCL_BOLELLI).
-    define_value("CCL_SAUF", cv::ConnectedComponentsAlgorithmsTypes::CCL_SAUF).
-    define_value("CCL_BBDT", cv::ConnectedComponentsAlgorithmsTypes::CCL_BBDT).
-    define_value("CCL_SPAGHETTI", cv::ConnectedComponentsAlgorithmsTypes::CCL_SPAGHETTI);
-
-  Enum<cv::RetrievalModes> rb_cCvRetrievalModes = define_enum_under<cv::RetrievalModes>("RetrievalModes", rb_mCv).
-    define_value("RETR_EXTERNAL", cv::RetrievalModes::RETR_EXTERNAL).
-    define_value("RETR_LIST", cv::RetrievalModes::RETR_LIST).
-    define_value("RETR_CCOMP", cv::RetrievalModes::RETR_CCOMP).
-    define_value("RETR_TREE", cv::RetrievalModes::RETR_TREE).
-    define_value("RETR_FLOODFILL", cv::RetrievalModes::RETR_FLOODFILL);
-
-  Enum<cv::ContourApproximationModes> rb_cCvContourApproximationModes = define_enum_under<cv::ContourApproximationModes>("ContourApproximationModes", rb_mCv).
-    define_value("CHAIN_APPROX_NONE", cv::ContourApproximationModes::CHAIN_APPROX_NONE).
-    define_value("CHAIN_APPROX_SIMPLE", cv::ContourApproximationModes::CHAIN_APPROX_SIMPLE).
-    define_value("CHAIN_APPROX_TC89_L1", cv::ContourApproximationModes::CHAIN_APPROX_TC89_L1).
-    define_value("CHAIN_APPROX_TC89_KCOS", cv::ContourApproximationModes::CHAIN_APPROX_TC89_KCOS);
-
-  Enum<cv::ShapeMatchModes> rb_cCvShapeMatchModes = define_enum_under<cv::ShapeMatchModes>("ShapeMatchModes", rb_mCv).
-    define_value("CONTOURS_MATCH_I1", cv::ShapeMatchModes::CONTOURS_MATCH_I1).
-    define_value("CONTOURS_MATCH_I2", cv::ShapeMatchModes::CONTOURS_MATCH_I2).
-    define_value("CONTOURS_MATCH_I3", cv::ShapeMatchModes::CONTOURS_MATCH_I3);
-
-  Enum<cv::HoughModes> rb_cCvHoughModes = define_enum_under<cv::HoughModes>("HoughModes", rb_mCv).
-    define_value("HOUGH_STANDARD", cv::HoughModes::HOUGH_STANDARD).
-    define_value("HOUGH_PROBABILISTIC", cv::HoughModes::HOUGH_PROBABILISTIC).
-    define_value("HOUGH_MULTI_SCALE", cv::HoughModes::HOUGH_MULTI_SCALE).
-    define_value("HOUGH_GRADIENT", cv::HoughModes::HOUGH_GRADIENT).
-    define_value("HOUGH_GRADIENT_ALT", cv::HoughModes::HOUGH_GRADIENT_ALT);
-
-  Enum<cv::LineSegmentDetectorModes> rb_cCvLineSegmentDetectorModes = define_enum_under<cv::LineSegmentDetectorModes>("LineSegmentDetectorModes", rb_mCv).
-    define_value("LSD_REFINE_NONE", cv::LineSegmentDetectorModes::LSD_REFINE_NONE).
-    define_value("LSD_REFINE_STD", cv::LineSegmentDetectorModes::LSD_REFINE_STD).
-    define_value("LSD_REFINE_ADV", cv::LineSegmentDetectorModes::LSD_REFINE_ADV);
-
-  Enum<cv::HistCompMethods> rb_cCvHistCompMethods = define_enum_under<cv::HistCompMethods>("HistCompMethods", rb_mCv).
-    define_value("HISTCMP_CORREL", cv::HistCompMethods::HISTCMP_CORREL).
-    define_value("HISTCMP_CHISQR", cv::HistCompMethods::HISTCMP_CHISQR).
-    define_value("HISTCMP_INTERSECT", cv::HistCompMethods::HISTCMP_INTERSECT).
-    define_value("HISTCMP_BHATTACHARYYA", cv::HistCompMethods::HISTCMP_BHATTACHARYYA).
-    define_value("HISTCMP_HELLINGER", cv::HistCompMethods::HISTCMP_HELLINGER).
-    define_value("HISTCMP_CHISQR_ALT", cv::HistCompMethods::HISTCMP_CHISQR_ALT).
-    define_value("HISTCMP_KL_DIV", cv::HistCompMethods::HISTCMP_KL_DIV);
-
-  Enum<cv::ColorConversionCodes> rb_cCvColorConversionCodes = define_enum_under<cv::ColorConversionCodes>("ColorConversionCodes", rb_mCv).
-    define_value("COLOR_BGR2BGRA", cv::ColorConversionCodes::COLOR_BGR2BGRA).
-    define_value("COLOR_RGB2RGBA", cv::ColorConversionCodes::COLOR_RGB2RGBA).
-    define_value("COLOR_BGRA2BGR", cv::ColorConversionCodes::COLOR_BGRA2BGR).
-    define_value("COLOR_RGBA2RGB", cv::ColorConversionCodes::COLOR_RGBA2RGB).
-    define_value("COLOR_BGR2RGBA", cv::ColorConversionCodes::COLOR_BGR2RGBA).
-    define_value("COLOR_RGB2BGRA", cv::ColorConversionCodes::COLOR_RGB2BGRA).
-    define_value("COLOR_RGBA2BGR", cv::ColorConversionCodes::COLOR_RGBA2BGR).
-    define_value("COLOR_BGRA2RGB", cv::ColorConversionCodes::COLOR_BGRA2RGB).
-    define_value("COLOR_BGR2RGB", cv::ColorConversionCodes::COLOR_BGR2RGB).
-    define_value("COLOR_RGB2BGR", cv::ColorConversionCodes::COLOR_RGB2BGR).
-    define_value("COLOR_BGRA2RGBA", cv::ColorConversionCodes::COLOR_BGRA2RGBA).
-    define_value("COLOR_RGBA2BGRA", cv::ColorConversionCodes::COLOR_RGBA2BGRA).
-    define_value("COLOR_BGR2GRAY", cv::ColorConversionCodes::COLOR_BGR2GRAY).
-    define_value("COLOR_RGB2GRAY", cv::ColorConversionCodes::COLOR_RGB2GRAY).
-    define_value("COLOR_GRAY2BGR", cv::ColorConversionCodes::COLOR_GRAY2BGR).
-    define_value("COLOR_GRAY2RGB", cv::ColorConversionCodes::COLOR_GRAY2RGB).
-    define_value("COLOR_GRAY2BGRA", cv::ColorConversionCodes::COLOR_GRAY2BGRA).
-    define_value("COLOR_GRAY2RGBA", cv::ColorConversionCodes::COLOR_GRAY2RGBA).
-    define_value("COLOR_BGRA2GRAY", cv::ColorConversionCodes::COLOR_BGRA2GRAY).
-    define_value("COLOR_RGBA2GRAY", cv::ColorConversionCodes::COLOR_RGBA2GRAY).
-    define_value("COLOR_BGR2BGR565", cv::ColorConversionCodes::COLOR_BGR2BGR565).
-    define_value("COLOR_RGB2BGR565", cv::ColorConversionCodes::COLOR_RGB2BGR565).
-    define_value("COLOR_BGR5652BGR", cv::ColorConversionCodes::COLOR_BGR5652BGR).
-    define_value("COLOR_BGR5652RGB", cv::ColorConversionCodes::COLOR_BGR5652RGB).
-    define_value("COLOR_BGRA2BGR565", cv::ColorConversionCodes::COLOR_BGRA2BGR565).
-    define_value("COLOR_RGBA2BGR565", cv::ColorConversionCodes::COLOR_RGBA2BGR565).
-    define_value("COLOR_BGR5652BGRA", cv::ColorConversionCodes::COLOR_BGR5652BGRA).
-    define_value("COLOR_BGR5652RGBA", cv::ColorConversionCodes::COLOR_BGR5652RGBA).
-    define_value("COLOR_GRAY2BGR565", cv::ColorConversionCodes::COLOR_GRAY2BGR565).
-    define_value("COLOR_BGR5652GRAY", cv::ColorConversionCodes::COLOR_BGR5652GRAY).
-    define_value("COLOR_BGR2BGR555", cv::ColorConversionCodes::COLOR_BGR2BGR555).
-    define_value("COLOR_RGB2BGR555", cv::ColorConversionCodes::COLOR_RGB2BGR555).
-    define_value("COLOR_BGR5552BGR", cv::ColorConversionCodes::COLOR_BGR5552BGR).
-    define_value("COLOR_BGR5552RGB", cv::ColorConversionCodes::COLOR_BGR5552RGB).
-    define_value("COLOR_BGRA2BGR555", cv::ColorConversionCodes::COLOR_BGRA2BGR555).
-    define_value("COLOR_RGBA2BGR555", cv::ColorConversionCodes::COLOR_RGBA2BGR555).
-    define_value("COLOR_BGR5552BGRA", cv::ColorConversionCodes::COLOR_BGR5552BGRA).
-    define_value("COLOR_BGR5552RGBA", cv::ColorConversionCodes::COLOR_BGR5552RGBA).
-    define_value("COLOR_GRAY2BGR555", cv::ColorConversionCodes::COLOR_GRAY2BGR555).
-    define_value("COLOR_BGR5552GRAY", cv::ColorConversionCodes::COLOR_BGR5552GRAY).
-    define_value("COLOR_BGR2XYZ", cv::ColorConversionCodes::COLOR_BGR2XYZ).
-    define_value("COLOR_RGB2XYZ", cv::ColorConversionCodes::COLOR_RGB2XYZ).
-    define_value("COLOR_XYZ2BGR", cv::ColorConversionCodes::COLOR_XYZ2BGR).
-    define_value("COLOR_XYZ2RGB", cv::ColorConversionCodes::COLOR_XYZ2RGB).
-    define_value("COLOR_BGR2YCrCb", cv::ColorConversionCodes::COLOR_BGR2YCrCb).
-    define_value("COLOR_RGB2YCrCb", cv::ColorConversionCodes::COLOR_RGB2YCrCb).
-    define_value("COLOR_YCrCb2BGR", cv::ColorConversionCodes::COLOR_YCrCb2BGR).
-    define_value("COLOR_YCrCb2RGB", cv::ColorConversionCodes::COLOR_YCrCb2RGB).
-    define_value("COLOR_BGR2HSV", cv::ColorConversionCodes::COLOR_BGR2HSV).
-    define_value("COLOR_RGB2HSV", cv::ColorConversionCodes::COLOR_RGB2HSV).
-    define_value("COLOR_BGR2Lab", cv::ColorConversionCodes::COLOR_BGR2Lab).
-    define_value("COLOR_RGB2Lab", cv::ColorConversionCodes::COLOR_RGB2Lab).
-    define_value("COLOR_BGR2Luv", cv::ColorConversionCodes::COLOR_BGR2Luv).
-    define_value("COLOR_RGB2Luv", cv::ColorConversionCodes::COLOR_RGB2Luv).
-    define_value("COLOR_BGR2HLS", cv::ColorConversionCodes::COLOR_BGR2HLS).
-    define_value("COLOR_RGB2HLS", cv::ColorConversionCodes::COLOR_RGB2HLS).
-    define_value("COLOR_HSV2BGR", cv::ColorConversionCodes::COLOR_HSV2BGR).
-    define_value("COLOR_HSV2RGB", cv::ColorConversionCodes::COLOR_HSV2RGB).
-    define_value("COLOR_Lab2BGR", cv::ColorConversionCodes::COLOR_Lab2BGR).
-    define_value("COLOR_Lab2RGB", cv::ColorConversionCodes::COLOR_Lab2RGB).
-    define_value("COLOR_Luv2BGR", cv::ColorConversionCodes::COLOR_Luv2BGR).
-    define_value("COLOR_Luv2RGB", cv::ColorConversionCodes::COLOR_Luv2RGB).
-    define_value("COLOR_HLS2BGR", cv::ColorConversionCodes::COLOR_HLS2BGR).
-    define_value("COLOR_HLS2RGB", cv::ColorConversionCodes::COLOR_HLS2RGB).
-    define_value("COLOR_BGR2HSV_FULL", cv::ColorConversionCodes::COLOR_BGR2HSV_FULL).
-    define_value("COLOR_RGB2HSV_FULL", cv::ColorConversionCodes::COLOR_RGB2HSV_FULL).
-    define_value("COLOR_BGR2HLS_FULL", cv::ColorConversionCodes::COLOR_BGR2HLS_FULL).
-    define_value("COLOR_RGB2HLS_FULL", cv::ColorConversionCodes::COLOR_RGB2HLS_FULL).
-    define_value("COLOR_HSV2BGR_FULL", cv::ColorConversionCodes::COLOR_HSV2BGR_FULL).
-    define_value("COLOR_HSV2RGB_FULL", cv::ColorConversionCodes::COLOR_HSV2RGB_FULL).
-    define_value("COLOR_HLS2BGR_FULL", cv::ColorConversionCodes::COLOR_HLS2BGR_FULL).
-    define_value("COLOR_HLS2RGB_FULL", cv::ColorConversionCodes::COLOR_HLS2RGB_FULL).
-    define_value("COLOR_LBGR2Lab", cv::ColorConversionCodes::COLOR_LBGR2Lab).
-    define_value("COLOR_LRGB2Lab", cv::ColorConversionCodes::COLOR_LRGB2Lab).
-    define_value("COLOR_LBGR2Luv", cv::ColorConversionCodes::COLOR_LBGR2Luv).
-    define_value("COLOR_LRGB2Luv", cv::ColorConversionCodes::COLOR_LRGB2Luv).
-    define_value("COLOR_Lab2LBGR", cv::ColorConversionCodes::COLOR_Lab2LBGR).
-    define_value("COLOR_Lab2LRGB", cv::ColorConversionCodes::COLOR_Lab2LRGB).
-    define_value("COLOR_Luv2LBGR", cv::ColorConversionCodes::COLOR_Luv2LBGR).
-    define_value("COLOR_Luv2LRGB", cv::ColorConversionCodes::COLOR_Luv2LRGB).
-    define_value("COLOR_BGR2YUV", cv::ColorConversionCodes::COLOR_BGR2YUV).
-    define_value("COLOR_RGB2YUV", cv::ColorConversionCodes::COLOR_RGB2YUV).
-    define_value("COLOR_YUV2BGR", cv::ColorConversionCodes::COLOR_YUV2BGR).
-    define_value("COLOR_YUV2RGB", cv::ColorConversionCodes::COLOR_YUV2RGB).
-    define_value("COLOR_YUV2RGB_NV12", cv::ColorConversionCodes::COLOR_YUV2RGB_NV12).
-    define_value("COLOR_YUV2BGR_NV12", cv::ColorConversionCodes::COLOR_YUV2BGR_NV12).
-    define_value("COLOR_YUV2RGB_NV21", cv::ColorConversionCodes::COLOR_YUV2RGB_NV21).
-    define_value("COLOR_YUV2BGR_NV21", cv::ColorConversionCodes::COLOR_YUV2BGR_NV21).
-    define_value("COLOR_YUV420sp2RGB", cv::ColorConversionCodes::COLOR_YUV420sp2RGB).
-    define_value("COLOR_YUV420sp2BGR", cv::ColorConversionCodes::COLOR_YUV420sp2BGR).
-    define_value("COLOR_YUV2RGBA_NV12", cv::ColorConversionCodes::COLOR_YUV2RGBA_NV12).
-    define_value("COLOR_YUV2BGRA_NV12", cv::ColorConversionCodes::COLOR_YUV2BGRA_NV12).
-    define_value("COLOR_YUV2RGBA_NV21", cv::ColorConversionCodes::COLOR_YUV2RGBA_NV21).
-    define_value("COLOR_YUV2BGRA_NV21", cv::ColorConversionCodes::COLOR_YUV2BGRA_NV21).
-    define_value("COLOR_YUV420sp2RGBA", cv::ColorConversionCodes::COLOR_YUV420sp2RGBA).
-    define_value("COLOR_YUV420sp2BGRA", cv::ColorConversionCodes::COLOR_YUV420sp2BGRA).
-    define_value("COLOR_YUV2RGB_YV12", cv::ColorConversionCodes::COLOR_YUV2RGB_YV12).
-    define_value("COLOR_YUV2BGR_YV12", cv::ColorConversionCodes::COLOR_YUV2BGR_YV12).
-    define_value("COLOR_YUV2RGB_IYUV", cv::ColorConversionCodes::COLOR_YUV2RGB_IYUV).
-    define_value("COLOR_YUV2BGR_IYUV", cv::ColorConversionCodes::COLOR_YUV2BGR_IYUV).
-    define_value("COLOR_YUV2RGB_I420", cv::ColorConversionCodes::COLOR_YUV2RGB_I420).
-    define_value("COLOR_YUV2BGR_I420", cv::ColorConversionCodes::COLOR_YUV2BGR_I420).
-    define_value("COLOR_YUV420p2RGB", cv::ColorConversionCodes::COLOR_YUV420p2RGB).
-    define_value("COLOR_YUV420p2BGR", cv::ColorConversionCodes::COLOR_YUV420p2BGR).
-    define_value("COLOR_YUV2RGBA_YV12", cv::ColorConversionCodes::COLOR_YUV2RGBA_YV12).
-    define_value("COLOR_YUV2BGRA_YV12", cv::ColorConversionCodes::COLOR_YUV2BGRA_YV12).
-    define_value("COLOR_YUV2RGBA_IYUV", cv::ColorConversionCodes::COLOR_YUV2RGBA_IYUV).
-    define_value("COLOR_YUV2BGRA_IYUV", cv::ColorConversionCodes::COLOR_YUV2BGRA_IYUV).
-    define_value("COLOR_YUV2RGBA_I420", cv::ColorConversionCodes::COLOR_YUV2RGBA_I420).
-    define_value("COLOR_YUV2BGRA_I420", cv::ColorConversionCodes::COLOR_YUV2BGRA_I420).
-    define_value("COLOR_YUV420p2RGBA", cv::ColorConversionCodes::COLOR_YUV420p2RGBA).
-    define_value("COLOR_YUV420p2BGRA", cv::ColorConversionCodes::COLOR_YUV420p2BGRA).
-    define_value("COLOR_YUV2GRAY_420", cv::ColorConversionCodes::COLOR_YUV2GRAY_420).
-    define_value("COLOR_YUV2GRAY_NV21", cv::ColorConversionCodes::COLOR_YUV2GRAY_NV21).
-    define_value("COLOR_YUV2GRAY_NV12", cv::ColorConversionCodes::COLOR_YUV2GRAY_NV12).
-    define_value("COLOR_YUV2GRAY_YV12", cv::ColorConversionCodes::COLOR_YUV2GRAY_YV12).
-    define_value("COLOR_YUV2GRAY_IYUV", cv::ColorConversionCodes::COLOR_YUV2GRAY_IYUV).
-    define_value("COLOR_YUV2GRAY_I420", cv::ColorConversionCodes::COLOR_YUV2GRAY_I420).
-    define_value("COLOR_YUV420sp2GRAY", cv::ColorConversionCodes::COLOR_YUV420sp2GRAY).
-    define_value("COLOR_YUV420p2GRAY", cv::ColorConversionCodes::COLOR_YUV420p2GRAY).
-    define_value("COLOR_YUV2RGB_UYVY", cv::ColorConversionCodes::COLOR_YUV2RGB_UYVY).
-    define_value("COLOR_YUV2BGR_UYVY", cv::ColorConversionCodes::COLOR_YUV2BGR_UYVY).
-    define_value("COLOR_YUV2RGB_Y422", cv::ColorConversionCodes::COLOR_YUV2RGB_Y422).
-    define_value("COLOR_YUV2BGR_Y422", cv::ColorConversionCodes::COLOR_YUV2BGR_Y422).
-    define_value("COLOR_YUV2RGB_UYNV", cv::ColorConversionCodes::COLOR_YUV2RGB_UYNV).
-    define_value("COLOR_YUV2BGR_UYNV", cv::ColorConversionCodes::COLOR_YUV2BGR_UYNV).
-    define_value("COLOR_YUV2RGBA_UYVY", cv::ColorConversionCodes::COLOR_YUV2RGBA_UYVY).
-    define_value("COLOR_YUV2BGRA_UYVY", cv::ColorConversionCodes::COLOR_YUV2BGRA_UYVY).
-    define_value("COLOR_YUV2RGBA_Y422", cv::ColorConversionCodes::COLOR_YUV2RGBA_Y422).
-    define_value("COLOR_YUV2BGRA_Y422", cv::ColorConversionCodes::COLOR_YUV2BGRA_Y422).
-    define_value("COLOR_YUV2RGBA_UYNV", cv::ColorConversionCodes::COLOR_YUV2RGBA_UYNV).
-    define_value("COLOR_YUV2BGRA_UYNV", cv::ColorConversionCodes::COLOR_YUV2BGRA_UYNV).
-    define_value("COLOR_YUV2RGB_YUY2", cv::ColorConversionCodes::COLOR_YUV2RGB_YUY2).
-    define_value("COLOR_YUV2BGR_YUY2", cv::ColorConversionCodes::COLOR_YUV2BGR_YUY2).
-    define_value("COLOR_YUV2RGB_YVYU", cv::ColorConversionCodes::COLOR_YUV2RGB_YVYU).
-    define_value("COLOR_YUV2BGR_YVYU", cv::ColorConversionCodes::COLOR_YUV2BGR_YVYU).
-    define_value("COLOR_YUV2RGB_YUYV", cv::ColorConversionCodes::COLOR_YUV2RGB_YUYV).
-    define_value("COLOR_YUV2BGR_YUYV", cv::ColorConversionCodes::COLOR_YUV2BGR_YUYV).
-    define_value("COLOR_YUV2RGB_YUNV", cv::ColorConversionCodes::COLOR_YUV2RGB_YUNV).
-    define_value("COLOR_YUV2BGR_YUNV", cv::ColorConversionCodes::COLOR_YUV2BGR_YUNV).
-    define_value("COLOR_YUV2RGBA_YUY2", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUY2).
-    define_value("COLOR_YUV2BGRA_YUY2", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUY2).
-    define_value("COLOR_YUV2RGBA_YVYU", cv::ColorConversionCodes::COLOR_YUV2RGBA_YVYU).
-    define_value("COLOR_YUV2BGRA_YVYU", cv::ColorConversionCodes::COLOR_YUV2BGRA_YVYU).
-    define_value("COLOR_YUV2RGBA_YUYV", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUYV).
-    define_value("COLOR_YUV2BGRA_YUYV", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUYV).
-    define_value("COLOR_YUV2RGBA_YUNV", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUNV).
-    define_value("COLOR_YUV2BGRA_YUNV", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUNV).
-    define_value("COLOR_YUV2GRAY_UYVY", cv::ColorConversionCodes::COLOR_YUV2GRAY_UYVY).
-    define_value("COLOR_YUV2GRAY_YUY2", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUY2).
-    define_value("COLOR_YUV2GRAY_Y422", cv::ColorConversionCodes::COLOR_YUV2GRAY_Y422).
-    define_value("COLOR_YUV2GRAY_UYNV", cv::ColorConversionCodes::COLOR_YUV2GRAY_UYNV).
-    define_value("COLOR_YUV2GRAY_YVYU", cv::ColorConversionCodes::COLOR_YUV2GRAY_YVYU).
-    define_value("COLOR_YUV2GRAY_YUYV", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUYV).
-    define_value("COLOR_YUV2GRAY_YUNV", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUNV).
-    define_value("COLOR_RGBA2mRGBA", cv::ColorConversionCodes::COLOR_RGBA2mRGBA).
-    define_value("COLOR_mRGBA2RGBA", cv::ColorConversionCodes::COLOR_mRGBA2RGBA).
-    define_value("COLOR_RGB2YUV_I420", cv::ColorConversionCodes::COLOR_RGB2YUV_I420).
-    define_value("COLOR_BGR2YUV_I420", cv::ColorConversionCodes::COLOR_BGR2YUV_I420).
-    define_value("COLOR_RGB2YUV_IYUV", cv::ColorConversionCodes::COLOR_RGB2YUV_IYUV).
-    define_value("COLOR_BGR2YUV_IYUV", cv::ColorConversionCodes::COLOR_BGR2YUV_IYUV).
-    define_value("COLOR_RGBA2YUV_I420", cv::ColorConversionCodes::COLOR_RGBA2YUV_I420).
-    define_value("COLOR_BGRA2YUV_I420", cv::ColorConversionCodes::COLOR_BGRA2YUV_I420).
-    define_value("COLOR_RGBA2YUV_IYUV", cv::ColorConversionCodes::COLOR_RGBA2YUV_IYUV).
-    define_value("COLOR_BGRA2YUV_IYUV", cv::ColorConversionCodes::COLOR_BGRA2YUV_IYUV).
-    define_value("COLOR_RGB2YUV_YV12", cv::ColorConversionCodes::COLOR_RGB2YUV_YV12).
-    define_value("COLOR_BGR2YUV_YV12", cv::ColorConversionCodes::COLOR_BGR2YUV_YV12).
-    define_value("COLOR_RGBA2YUV_YV12", cv::ColorConversionCodes::COLOR_RGBA2YUV_YV12).
-    define_value("COLOR_BGRA2YUV_YV12", cv::ColorConversionCodes::COLOR_BGRA2YUV_YV12).
-    define_value("COLOR_BayerBG2BGR", cv::ColorConversionCodes::COLOR_BayerBG2BGR).
-    define_value("COLOR_BayerGB2BGR", cv::ColorConversionCodes::COLOR_BayerGB2BGR).
-    define_value("COLOR_BayerRG2BGR", cv::ColorConversionCodes::COLOR_BayerRG2BGR).
-    define_value("COLOR_BayerGR2BGR", cv::ColorConversionCodes::COLOR_BayerGR2BGR).
-    define_value("COLOR_BayerRGGB2BGR", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR).
-    define_value("COLOR_BayerGRBG2BGR", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR).
-    define_value("COLOR_BayerBGGR2BGR", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR).
-    define_value("COLOR_BayerGBRG2BGR", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR).
-    define_value("COLOR_BayerRGGB2RGB", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB).
-    define_value("COLOR_BayerGRBG2RGB", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB).
-    define_value("COLOR_BayerBGGR2RGB", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB).
-    define_value("COLOR_BayerGBRG2RGB", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB).
-    define_value("COLOR_BayerBG2RGB", cv::ColorConversionCodes::COLOR_BayerBG2RGB).
-    define_value("COLOR_BayerGB2RGB", cv::ColorConversionCodes::COLOR_BayerGB2RGB).
-    define_value("COLOR_BayerRG2RGB", cv::ColorConversionCodes::COLOR_BayerRG2RGB).
-    define_value("COLOR_BayerGR2RGB", cv::ColorConversionCodes::COLOR_BayerGR2RGB).
-    define_value("COLOR_BayerBG2GRAY", cv::ColorConversionCodes::COLOR_BayerBG2GRAY).
-    define_value("COLOR_BayerGB2GRAY", cv::ColorConversionCodes::COLOR_BayerGB2GRAY).
-    define_value("COLOR_BayerRG2GRAY", cv::ColorConversionCodes::COLOR_BayerRG2GRAY).
-    define_value("COLOR_BayerGR2GRAY", cv::ColorConversionCodes::COLOR_BayerGR2GRAY).
-    define_value("COLOR_BayerRGGB2GRAY", cv::ColorConversionCodes::COLOR_BayerRGGB2GRAY).
-    define_value("COLOR_BayerGRBG2GRAY", cv::ColorConversionCodes::COLOR_BayerGRBG2GRAY).
-    define_value("COLOR_BayerBGGR2GRAY", cv::ColorConversionCodes::COLOR_BayerBGGR2GRAY).
-    define_value("COLOR_BayerGBRG2GRAY", cv::ColorConversionCodes::COLOR_BayerGBRG2GRAY).
-    define_value("COLOR_BayerBG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerBG2BGR_VNG).
-    define_value("COLOR_BayerGB2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGB2BGR_VNG).
-    define_value("COLOR_BayerRG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerRG2BGR_VNG).
-    define_value("COLOR_BayerGR2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGR2BGR_VNG).
-    define_value("COLOR_BayerRGGB2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR_VNG).
-    define_value("COLOR_BayerGRBG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR_VNG).
-    define_value("COLOR_BayerBGGR2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR_VNG).
-    define_value("COLOR_BayerGBRG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR_VNG).
-    define_value("COLOR_BayerRGGB2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB_VNG).
-    define_value("COLOR_BayerGRBG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB_VNG).
-    define_value("COLOR_BayerBGGR2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB_VNG).
-    define_value("COLOR_BayerGBRG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB_VNG).
-    define_value("COLOR_BayerBG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerBG2RGB_VNG).
-    define_value("COLOR_BayerGB2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGB2RGB_VNG).
-    define_value("COLOR_BayerRG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerRG2RGB_VNG).
-    define_value("COLOR_BayerGR2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGR2RGB_VNG).
-    define_value("COLOR_BayerBG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerBG2BGR_EA).
-    define_value("COLOR_BayerGB2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGB2BGR_EA).
-    define_value("COLOR_BayerRG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerRG2BGR_EA).
-    define_value("COLOR_BayerGR2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGR2BGR_EA).
-    define_value("COLOR_BayerRGGB2BGR_EA", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR_EA).
-    define_value("COLOR_BayerGRBG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR_EA).
-    define_value("COLOR_BayerBGGR2BGR_EA", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR_EA).
-    define_value("COLOR_BayerGBRG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR_EA).
-    define_value("COLOR_BayerRGGB2RGB_EA", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB_EA).
-    define_value("COLOR_BayerGRBG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB_EA).
-    define_value("COLOR_BayerBGGR2RGB_EA", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB_EA).
-    define_value("COLOR_BayerGBRG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB_EA).
-    define_value("COLOR_BayerBG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerBG2RGB_EA).
-    define_value("COLOR_BayerGB2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGB2RGB_EA).
-    define_value("COLOR_BayerRG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerRG2RGB_EA).
-    define_value("COLOR_BayerGR2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGR2RGB_EA).
-    define_value("COLOR_BayerBG2BGRA", cv::ColorConversionCodes::COLOR_BayerBG2BGRA).
-    define_value("COLOR_BayerGB2BGRA", cv::ColorConversionCodes::COLOR_BayerGB2BGRA).
-    define_value("COLOR_BayerRG2BGRA", cv::ColorConversionCodes::COLOR_BayerRG2BGRA).
-    define_value("COLOR_BayerGR2BGRA", cv::ColorConversionCodes::COLOR_BayerGR2BGRA).
-    define_value("COLOR_BayerRGGB2BGRA", cv::ColorConversionCodes::COLOR_BayerRGGB2BGRA).
-    define_value("COLOR_BayerGRBG2BGRA", cv::ColorConversionCodes::COLOR_BayerGRBG2BGRA).
-    define_value("COLOR_BayerBGGR2BGRA", cv::ColorConversionCodes::COLOR_BayerBGGR2BGRA).
-    define_value("COLOR_BayerGBRG2BGRA", cv::ColorConversionCodes::COLOR_BayerGBRG2BGRA).
-    define_value("COLOR_BayerRGGB2RGBA", cv::ColorConversionCodes::COLOR_BayerRGGB2RGBA).
-    define_value("COLOR_BayerGRBG2RGBA", cv::ColorConversionCodes::COLOR_BayerGRBG2RGBA).
-    define_value("COLOR_BayerBGGR2RGBA", cv::ColorConversionCodes::COLOR_BayerBGGR2RGBA).
-    define_value("COLOR_BayerGBRG2RGBA", cv::ColorConversionCodes::COLOR_BayerGBRG2RGBA).
-    define_value("COLOR_BayerBG2RGBA", cv::ColorConversionCodes::COLOR_BayerBG2RGBA).
-    define_value("COLOR_BayerGB2RGBA", cv::ColorConversionCodes::COLOR_BayerGB2RGBA).
-    define_value("COLOR_BayerRG2RGBA", cv::ColorConversionCodes::COLOR_BayerRG2RGBA).
-    define_value("COLOR_BayerGR2RGBA", cv::ColorConversionCodes::COLOR_BayerGR2RGBA).
-    define_value("COLOR_RGB2YUV_UYVY", cv::ColorConversionCodes::COLOR_RGB2YUV_UYVY).
-    define_value("COLOR_BGR2YUV_UYVY", cv::ColorConversionCodes::COLOR_BGR2YUV_UYVY).
-    define_value("COLOR_RGB2YUV_Y422", cv::ColorConversionCodes::COLOR_RGB2YUV_Y422).
-    define_value("COLOR_BGR2YUV_Y422", cv::ColorConversionCodes::COLOR_BGR2YUV_Y422).
-    define_value("COLOR_RGB2YUV_UYNV", cv::ColorConversionCodes::COLOR_RGB2YUV_UYNV).
-    define_value("COLOR_BGR2YUV_UYNV", cv::ColorConversionCodes::COLOR_BGR2YUV_UYNV).
-    define_value("COLOR_RGBA2YUV_UYVY", cv::ColorConversionCodes::COLOR_RGBA2YUV_UYVY).
-    define_value("COLOR_BGRA2YUV_UYVY", cv::ColorConversionCodes::COLOR_BGRA2YUV_UYVY).
-    define_value("COLOR_RGBA2YUV_Y422", cv::ColorConversionCodes::COLOR_RGBA2YUV_Y422).
-    define_value("COLOR_BGRA2YUV_Y422", cv::ColorConversionCodes::COLOR_BGRA2YUV_Y422).
-    define_value("COLOR_RGBA2YUV_UYNV", cv::ColorConversionCodes::COLOR_RGBA2YUV_UYNV).
-    define_value("COLOR_BGRA2YUV_UYNV", cv::ColorConversionCodes::COLOR_BGRA2YUV_UYNV).
-    define_value("COLOR_RGB2YUV_YUY2", cv::ColorConversionCodes::COLOR_RGB2YUV_YUY2).
-    define_value("COLOR_BGR2YUV_YUY2", cv::ColorConversionCodes::COLOR_BGR2YUV_YUY2).
-    define_value("COLOR_RGB2YUV_YVYU", cv::ColorConversionCodes::COLOR_RGB2YUV_YVYU).
-    define_value("COLOR_BGR2YUV_YVYU", cv::ColorConversionCodes::COLOR_BGR2YUV_YVYU).
-    define_value("COLOR_RGB2YUV_YUYV", cv::ColorConversionCodes::COLOR_RGB2YUV_YUYV).
-    define_value("COLOR_BGR2YUV_YUYV", cv::ColorConversionCodes::COLOR_BGR2YUV_YUYV).
-    define_value("COLOR_RGB2YUV_YUNV", cv::ColorConversionCodes::COLOR_RGB2YUV_YUNV).
-    define_value("COLOR_BGR2YUV_YUNV", cv::ColorConversionCodes::COLOR_BGR2YUV_YUNV).
-    define_value("COLOR_RGBA2YUV_YUY2", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUY2).
-    define_value("COLOR_BGRA2YUV_YUY2", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUY2).
-    define_value("COLOR_RGBA2YUV_YVYU", cv::ColorConversionCodes::COLOR_RGBA2YUV_YVYU).
-    define_value("COLOR_BGRA2YUV_YVYU", cv::ColorConversionCodes::COLOR_BGRA2YUV_YVYU).
-    define_value("COLOR_RGBA2YUV_YUYV", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUYV).
-    define_value("COLOR_BGRA2YUV_YUYV", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUYV).
-    define_value("COLOR_RGBA2YUV_YUNV", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUNV).
-    define_value("COLOR_BGRA2YUV_YUNV", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUNV).
-    define_value("COLOR_COLORCVT_MAX", cv::ColorConversionCodes::COLOR_COLORCVT_MAX);
-
-  Enum<cv::RectanglesIntersectTypes> rb_cCvRectanglesIntersectTypes = define_enum_under<cv::RectanglesIntersectTypes>("RectanglesIntersectTypes", rb_mCv).
-    define_value("INTERSECT_NONE", cv::RectanglesIntersectTypes::INTERSECT_NONE).
-    define_value("INTERSECT_PARTIAL", cv::RectanglesIntersectTypes::INTERSECT_PARTIAL).
-    define_value("INTERSECT_FULL", cv::RectanglesIntersectTypes::INTERSECT_FULL);
-
-  Enum<cv::LineTypes> rb_cCvLineTypes = define_enum_under<cv::LineTypes>("LineTypes", rb_mCv).
-    define_value("FILLED", cv::LineTypes::FILLED).
-    define_value("LINE_4", cv::LineTypes::LINE_4).
-    define_value("LINE_8", cv::LineTypes::LINE_8).
-    define_value("LINE_AA", cv::LineTypes::LINE_AA);
-
-  Enum<cv::HersheyFonts> rb_cCvHersheyFonts = define_enum_under<cv::HersheyFonts>("HersheyFonts", rb_mCv).
-    define_value("FONT_HERSHEY_SIMPLEX", cv::HersheyFonts::FONT_HERSHEY_SIMPLEX).
-    define_value("FONT_HERSHEY_PLAIN", cv::HersheyFonts::FONT_HERSHEY_PLAIN).
-    define_value("FONT_HERSHEY_DUPLEX", cv::HersheyFonts::FONT_HERSHEY_DUPLEX).
-    define_value("FONT_HERSHEY_COMPLEX", cv::HersheyFonts::FONT_HERSHEY_COMPLEX).
-    define_value("FONT_HERSHEY_TRIPLEX", cv::HersheyFonts::FONT_HERSHEY_TRIPLEX).
-    define_value("FONT_HERSHEY_COMPLEX_SMALL", cv::HersheyFonts::FONT_HERSHEY_COMPLEX_SMALL).
-    define_value("FONT_HERSHEY_SCRIPT_SIMPLEX", cv::HersheyFonts::FONT_HERSHEY_SCRIPT_SIMPLEX).
-    define_value("FONT_HERSHEY_SCRIPT_COMPLEX", cv::HersheyFonts::FONT_HERSHEY_SCRIPT_COMPLEX).
-    define_value("FONT_ITALIC", cv::HersheyFonts::FONT_ITALIC);
-
-  Enum<cv::MarkerTypes> rb_cCvMarkerTypes = define_enum_under<cv::MarkerTypes>("MarkerTypes", rb_mCv).
-    define_value("MARKER_CROSS", cv::MarkerTypes::MARKER_CROSS).
-    define_value("MARKER_TILTED_CROSS", cv::MarkerTypes::MARKER_TILTED_CROSS).
-    define_value("MARKER_STAR", cv::MarkerTypes::MARKER_STAR).
-    define_value("MARKER_DIAMOND", cv::MarkerTypes::MARKER_DIAMOND).
-    define_value("MARKER_SQUARE", cv::MarkerTypes::MARKER_SQUARE).
-    define_value("MARKER_TRIANGLE_UP", cv::MarkerTypes::MARKER_TRIANGLE_UP).
-    define_value("MARKER_TRIANGLE_DOWN", cv::MarkerTypes::MARKER_TRIANGLE_DOWN);
-
-  Rice::Data_Type<cv::GeneralizedHough> rb_cCvGeneralizedHough = define_class_under<cv::GeneralizedHough, cv::Algorithm>(rb_mCv, "GeneralizedHough").
-    define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::Point)>("set_template", &cv::GeneralizedHough::setTemplate,
-      Arg("templ"), Arg("templ_center") = static_cast<cv::Point>(cv::Point(-1, -1))).
-    define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::Point)>("set_template", &cv::GeneralizedHough::setTemplate,
-      Arg("edges"), Arg("dx"), Arg("dy"), Arg("templ_center") = static_cast<cv::Point>(cv::Point(-1, -1))).
-    define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::GeneralizedHough::detect,
-      Arg("image"), Arg("positions"), Arg("votes") = static_cast<cv::OutputArray>(cv::noArray())).
-    define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::GeneralizedHough::detect,
-      Arg("edges"), Arg("dx"), Arg("dy"), Arg("positions"), Arg("votes") = static_cast<cv::OutputArray>(cv::noArray())).
-    define_method<void(cv::GeneralizedHough::*)(int)>("set_canny_low_thresh", &cv::GeneralizedHough::setCannyLowThresh,
-      Arg("canny_low_thresh")).
-    define_method<int(cv::GeneralizedHough::*)() const>("get_canny_low_thresh", &cv::GeneralizedHough::getCannyLowThresh).
-    define_method<void(cv::GeneralizedHough::*)(int)>("set_canny_high_thresh", &cv::GeneralizedHough::setCannyHighThresh,
-      Arg("canny_high_thresh")).
-    define_method<int(cv::GeneralizedHough::*)() const>("get_canny_high_thresh", &cv::GeneralizedHough::getCannyHighThresh).
-    define_method<void(cv::GeneralizedHough::*)(double)>("set_min_dist", &cv::GeneralizedHough::setMinDist,
-      Arg("min_dist")).
-    define_method<double(cv::GeneralizedHough::*)() const>("get_min_dist", &cv::GeneralizedHough::getMinDist).
-    define_method<void(cv::GeneralizedHough::*)(double)>("set_dp", &cv::GeneralizedHough::setDp,
-      Arg("dp")).
-    define_method<double(cv::GeneralizedHough::*)() const>("get_dp", &cv::GeneralizedHough::getDp).
-    define_method<void(cv::GeneralizedHough::*)(int)>("set_max_buffer_size", &cv::GeneralizedHough::setMaxBufferSize,
-      Arg("max_buffer_size")).
-    define_method<int(cv::GeneralizedHough::*)() const>("get_max_buffer_size", &cv::GeneralizedHough::getMaxBufferSize);
-
-  Rice::Data_Type<cv::GeneralizedHoughBallard> rb_cCvGeneralizedHoughBallard = define_class_under<cv::GeneralizedHoughBallard, cv::GeneralizedHough>(rb_mCv, "GeneralizedHoughBallard").
-    define_method<void(cv::GeneralizedHoughBallard::*)(int)>("set_levels", &cv::GeneralizedHoughBallard::setLevels,
-      Arg("levels")).
-    define_method<int(cv::GeneralizedHoughBallard::*)() const>("get_levels", &cv::GeneralizedHoughBallard::getLevels).
-    define_method<void(cv::GeneralizedHoughBallard::*)(int)>("set_votes_threshold", &cv::GeneralizedHoughBallard::setVotesThreshold,
-      Arg("votes_threshold")).
-    define_method<int(cv::GeneralizedHoughBallard::*)() const>("get_votes_threshold", &cv::GeneralizedHoughBallard::getVotesThreshold);
-
-  Rice::Data_Type<cv::GeneralizedHoughGuil> rb_cCvGeneralizedHoughGuil = define_class_under<cv::GeneralizedHoughGuil, cv::GeneralizedHough>(rb_mCv, "GeneralizedHoughGuil").
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_xi", &cv::GeneralizedHoughGuil::setXi,
-      Arg("xi")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_xi", &cv::GeneralizedHoughGuil::getXi).
-    define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_levels", &cv::GeneralizedHoughGuil::setLevels,
-      Arg("levels")).
-    define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_levels", &cv::GeneralizedHoughGuil::getLevels).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_angle_epsilon", &cv::GeneralizedHoughGuil::setAngleEpsilon,
-      Arg("angle_epsilon")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_angle_epsilon", &cv::GeneralizedHoughGuil::getAngleEpsilon).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_min_angle", &cv::GeneralizedHoughGuil::setMinAngle,
-      Arg("min_angle")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_min_angle", &cv::GeneralizedHoughGuil::getMinAngle).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_max_angle", &cv::GeneralizedHoughGuil::setMaxAngle,
-      Arg("max_angle")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_max_angle", &cv::GeneralizedHoughGuil::getMaxAngle).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_angle_step", &cv::GeneralizedHoughGuil::setAngleStep,
-      Arg("angle_step")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_angle_step", &cv::GeneralizedHoughGuil::getAngleStep).
-    define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_angle_thresh", &cv::GeneralizedHoughGuil::setAngleThresh,
-      Arg("angle_thresh")).
-    define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_angle_thresh", &cv::GeneralizedHoughGuil::getAngleThresh).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_min_scale", &cv::GeneralizedHoughGuil::setMinScale,
-      Arg("min_scale")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_min_scale", &cv::GeneralizedHoughGuil::getMinScale).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_max_scale", &cv::GeneralizedHoughGuil::setMaxScale,
-      Arg("max_scale")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_max_scale", &cv::GeneralizedHoughGuil::getMaxScale).
-    define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_scale_step", &cv::GeneralizedHoughGuil::setScaleStep,
-      Arg("scale_step")).
-    define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_scale_step", &cv::GeneralizedHoughGuil::getScaleStep).
-    define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_scale_thresh", &cv::GeneralizedHoughGuil::setScaleThresh,
-      Arg("scale_thresh")).
-    define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_scale_thresh", &cv::GeneralizedHoughGuil::getScaleThresh).
-    define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_pos_thresh", &cv::GeneralizedHoughGuil::setPosThresh,
-      Arg("pos_thresh")).
-    define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_pos_thresh", &cv::GeneralizedHoughGuil::getPosThresh);
-
-  Rice::Data_Type<cv::CLAHE> rb_cCvCLAHE = define_class_under<cv::CLAHE, cv::Algorithm>(rb_mCv, "CLAHE").
-    define_method<void(cv::CLAHE::*)(cv::InputArray, cv::OutputArray)>("apply", &cv::CLAHE::apply,
-      Arg("src"), Arg("dst")).
-    define_method<void(cv::CLAHE::*)(double)>("set_clip_limit", &cv::CLAHE::setClipLimit,
-      Arg("clip_limit")).
-    define_method<double(cv::CLAHE::*)() const>("get_clip_limit", &cv::CLAHE::getClipLimit).
-    define_method<void(cv::CLAHE::*)(cv::Size)>("set_tiles_grid_size", &cv::CLAHE::setTilesGridSize,
-      Arg("tile_grid_size")).
-    define_method<cv::Size(cv::CLAHE::*)() const>("get_tiles_grid_size", &cv::CLAHE::getTilesGridSize).
-    define_method<void(cv::CLAHE::*)()>("collect_garbage", &cv::CLAHE::collectGarbage);
-
-  Rice::Data_Type<cv::Subdiv2D> rb_cCvSubdiv2D = define_class_under<cv::Subdiv2D>(rb_mCv, "Subdiv2D").
-    define_constructor(Constructor<cv::Subdiv2D>()).
-    define_constructor(Constructor<cv::Subdiv2D, cv::Rect>(),
-      Arg("rect")).
-    define_method<void(cv::Subdiv2D::*)(cv::Rect)>("init_delaunay", &cv::Subdiv2D::initDelaunay,
-      Arg("rect")).
-    define_method<int(cv::Subdiv2D::*)(cv::Point2f)>("insert", &cv::Subdiv2D::insert,
-      Arg("pt")).
-    define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point2f>&)>("insert", &cv::Subdiv2D::insert,
-      Arg("ptvec")).
-    define_method<int(cv::Subdiv2D::*)(cv::Point2f, int&, int&)>("locate", &cv::Subdiv2D::locate,
-      Arg("pt"), Arg("edge"), Arg("vertex")).
-    define_method<int(cv::Subdiv2D::*)(cv::Point2f, cv::Point2f*)>("find_nearest", &cv::Subdiv2D::findNearest,
-      Arg("pt"), Arg("nearest_pt") = static_cast<cv::Point2f*>(0)).
-    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec4f>&) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
-      Arg("edge_list")).
-    define_method<void(cv::Subdiv2D::*)(std::vector<int>&) const>("get_leading_edge_list", &cv::Subdiv2D::getLeadingEdgeList,
-      Arg("leading_edge_list")).
-    define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec6f>&) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
-      Arg("triangle_list")).
-    define_method<void(cv::Subdiv2D::*)(const std::vector<int>&, std::vector<std::vector<cv::Point2f>>&, std::vector<cv::Point2f>&)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
-      Arg("idx"), Arg("facet_list"), Arg("facet_centers")).
-    define_method<cv::Point2f(cv::Subdiv2D::*)(int, int*) const>("get_vertex", &cv::Subdiv2D::getVertex,
-      Arg("vertex"), ArgBuffer("first_edge") = static_cast<int*>(0)).
-    define_method<int(cv::Subdiv2D::*)(int, int) const>("get_edge", &cv::Subdiv2D::getEdge,
-      Arg("edge"), Arg("next_edge_type")).
-    define_method<int(cv::Subdiv2D::*)(int) const>("next_edge", &cv::Subdiv2D::nextEdge,
-      Arg("edge")).
-    define_method<int(cv::Subdiv2D::*)(int, int) const>("rotate_edge", &cv::Subdiv2D::rotateEdge,
-      Arg("edge"), Arg("rotate")).
-    define_method<int(cv::Subdiv2D::*)(int) const>("sym_edge", &cv::Subdiv2D::symEdge,
-      Arg("edge")).
-    define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_org", &cv::Subdiv2D::edgeOrg,
-      Arg("edge"), Arg("orgpt") = static_cast<cv::Point2f*>(0)).
-    define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_dst", &cv::Subdiv2D::edgeDst,
-      Arg("edge"), Arg("dstpt") = static_cast<cv::Point2f*>(0));
-
-  rb_cCvSubdiv2D.define_constant("PTLOC_ERROR", (int)cv::Subdiv2D::PTLOC_ERROR);
-  rb_cCvSubdiv2D.define_constant("PTLOC_OUTSIDE_RECT", (int)cv::Subdiv2D::PTLOC_OUTSIDE_RECT);
-  rb_cCvSubdiv2D.define_constant("PTLOC_INSIDE", (int)cv::Subdiv2D::PTLOC_INSIDE);
-  rb_cCvSubdiv2D.define_constant("PTLOC_VERTEX", (int)cv::Subdiv2D::PTLOC_VERTEX);
-  rb_cCvSubdiv2D.define_constant("PTLOC_ON_EDGE", (int)cv::Subdiv2D::PTLOC_ON_EDGE);
-
-  rb_cCvSubdiv2D.define_constant("NEXT_AROUND_ORG", (int)cv::Subdiv2D::NEXT_AROUND_ORG);
-  rb_cCvSubdiv2D.define_constant("NEXT_AROUND_DST", (int)cv::Subdiv2D::NEXT_AROUND_DST);
-  rb_cCvSubdiv2D.define_constant("PREV_AROUND_ORG", (int)cv::Subdiv2D::PREV_AROUND_ORG);
-  rb_cCvSubdiv2D.define_constant("PREV_AROUND_DST", (int)cv::Subdiv2D::PREV_AROUND_DST);
-  rb_cCvSubdiv2D.define_constant("NEXT_AROUND_LEFT", (int)cv::Subdiv2D::NEXT_AROUND_LEFT);
-  rb_cCvSubdiv2D.define_constant("NEXT_AROUND_RIGHT", (int)cv::Subdiv2D::NEXT_AROUND_RIGHT);
-  rb_cCvSubdiv2D.define_constant("PREV_AROUND_LEFT", (int)cv::Subdiv2D::PREV_AROUND_LEFT);
-  rb_cCvSubdiv2D.define_constant("PREV_AROUND_RIGHT", (int)cv::Subdiv2D::PREV_AROUND_RIGHT);
-
-  Rice::Data_Type<cv::LineSegmentDetector> rb_cCvLineSegmentDetector = define_class_under<cv::LineSegmentDetector, cv::Algorithm>(rb_mCv, "LineSegmentDetector").
-    define_method<void(cv::LineSegmentDetector::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::LineSegmentDetector::detect,
-      Arg("image"), Arg("lines"), Arg("width") = static_cast<cv::OutputArray>(cv::noArray()), Arg("prec") = static_cast<cv::OutputArray>(cv::noArray()), Arg("nfa") = static_cast<cv::OutputArray>(cv::noArray())).
-    define_method<void(cv::LineSegmentDetector::*)(cv::InputOutputArray, cv::InputArray)>("draw_segments", &cv::LineSegmentDetector::drawSegments,
-      Arg("image"), Arg("lines")).
-    define_method<int(cv::LineSegmentDetector::*)(const cv::Size&, cv::InputArray, cv::InputArray, cv::InputOutputArray)>("compare_segments", &cv::LineSegmentDetector::compareSegments,
-      Arg("size"), Arg("lines1"), Arg("lines2"), Arg("image") = static_cast<cv::InputOutputArray>(cv::noArray()));
-
+  Enum<cv::SpecialFilter> rb_cCvSpecialFilter = define_enum_under<cv::SpecialFilter>("SpecialFilter", rb_mCv)
+    .define_value("FILTER_SCHARR", cv::SpecialFilter::FILTER_SCHARR)
+    ;
+  Enum<cv::MorphTypes> rb_cCvMorphTypes = define_enum_under<cv::MorphTypes>("MorphTypes", rb_mCv)
+    .define_value("MORPH_ERODE", cv::MorphTypes::MORPH_ERODE)
+    .define_value("MORPH_DILATE", cv::MorphTypes::MORPH_DILATE)
+    .define_value("MORPH_OPEN", cv::MorphTypes::MORPH_OPEN)
+    .define_value("MORPH_CLOSE", cv::MorphTypes::MORPH_CLOSE)
+    .define_value("MORPH_GRADIENT", cv::MorphTypes::MORPH_GRADIENT)
+    .define_value("MORPH_TOPHAT", cv::MorphTypes::MORPH_TOPHAT)
+    .define_value("MORPH_BLACKHAT", cv::MorphTypes::MORPH_BLACKHAT)
+    .define_value("MORPH_HITMISS", cv::MorphTypes::MORPH_HITMISS)
+    ;
+  Enum<cv::MorphShapes> rb_cCvMorphShapes = define_enum_under<cv::MorphShapes>("MorphShapes", rb_mCv)
+    .define_value("MORPH_RECT", cv::MorphShapes::MORPH_RECT)
+    .define_value("MORPH_CROSS", cv::MorphShapes::MORPH_CROSS)
+    .define_value("MORPH_ELLIPSE", cv::MorphShapes::MORPH_ELLIPSE)
+    ;
+  Enum<cv::InterpolationFlags> rb_cCvInterpolationFlags = define_enum_under<cv::InterpolationFlags>("InterpolationFlags", rb_mCv)
+    .define_value("INTER_NEAREST", cv::InterpolationFlags::INTER_NEAREST)
+    .define_value("INTER_LINEAR", cv::InterpolationFlags::INTER_LINEAR)
+    .define_value("INTER_CUBIC", cv::InterpolationFlags::INTER_CUBIC)
+    .define_value("INTER_AREA", cv::InterpolationFlags::INTER_AREA)
+    .define_value("INTER_LANCZOS4", cv::InterpolationFlags::INTER_LANCZOS4)
+    .define_value("INTER_LINEAR_EXACT", cv::InterpolationFlags::INTER_LINEAR_EXACT)
+    .define_value("INTER_NEAREST_EXACT", cv::InterpolationFlags::INTER_NEAREST_EXACT)
+    .define_value("INTER_MAX", cv::InterpolationFlags::INTER_MAX)
+    .define_value("WARP_FILL_OUTLIERS", cv::InterpolationFlags::WARP_FILL_OUTLIERS)
+    .define_value("WARP_INVERSE_MAP", cv::InterpolationFlags::WARP_INVERSE_MAP)
+    .define_value("WARP_RELATIVE_MAP", cv::InterpolationFlags::WARP_RELATIVE_MAP)
+    ;
+  Enum<cv::WarpPolarMode> rb_cCvWarpPolarMode = define_enum_under<cv::WarpPolarMode>("WarpPolarMode", rb_mCv)
+    .define_value("WARP_POLAR_LINEAR", cv::WarpPolarMode::WARP_POLAR_LINEAR)
+    .define_value("WARP_POLAR_LOG", cv::WarpPolarMode::WARP_POLAR_LOG)
+    ;
+  Enum<cv::InterpolationMasks> rb_cCvInterpolationMasks = define_enum_under<cv::InterpolationMasks>("InterpolationMasks", rb_mCv)
+    .define_value("INTER_BITS", cv::InterpolationMasks::INTER_BITS)
+    .define_value("INTER_BITS2", cv::InterpolationMasks::INTER_BITS2)
+    .define_value("INTER_TAB_SIZE", cv::InterpolationMasks::INTER_TAB_SIZE)
+    .define_value("INTER_TAB_SIZE2", cv::InterpolationMasks::INTER_TAB_SIZE2)
+    ;
+  Enum<cv::DistanceTypes> rb_cCvDistanceTypes = define_enum_under<cv::DistanceTypes>("DistanceTypes", rb_mCv)
+    .define_value("DIST_USER", cv::DistanceTypes::DIST_USER)
+    .define_value("DIST_L1", cv::DistanceTypes::DIST_L1)
+    .define_value("DIST_L2", cv::DistanceTypes::DIST_L2)
+    .define_value("DIST_C", cv::DistanceTypes::DIST_C)
+    .define_value("DIST_L12", cv::DistanceTypes::DIST_L12)
+    .define_value("DIST_FAIR", cv::DistanceTypes::DIST_FAIR)
+    .define_value("DIST_WELSCH", cv::DistanceTypes::DIST_WELSCH)
+    .define_value("DIST_HUBER", cv::DistanceTypes::DIST_HUBER)
+    ;
+  Enum<cv::DistanceTransformMasks> rb_cCvDistanceTransformMasks = define_enum_under<cv::DistanceTransformMasks>("DistanceTransformMasks", rb_mCv)
+    .define_value("DIST_MASK_3", cv::DistanceTransformMasks::DIST_MASK_3)
+    .define_value("DIST_MASK_5", cv::DistanceTransformMasks::DIST_MASK_5)
+    .define_value("DIST_MASK_PRECISE", cv::DistanceTransformMasks::DIST_MASK_PRECISE)
+    ;
+  Enum<cv::ThresholdTypes> rb_cCvThresholdTypes = define_enum_under<cv::ThresholdTypes>("ThresholdTypes", rb_mCv)
+    .define_value("THRESH_BINARY", cv::ThresholdTypes::THRESH_BINARY)
+    .define_value("THRESH_BINARY_INV", cv::ThresholdTypes::THRESH_BINARY_INV)
+    .define_value("THRESH_TRUNC", cv::ThresholdTypes::THRESH_TRUNC)
+    .define_value("THRESH_TOZERO", cv::ThresholdTypes::THRESH_TOZERO)
+    .define_value("THRESH_TOZERO_INV", cv::ThresholdTypes::THRESH_TOZERO_INV)
+    .define_value("THRESH_MASK", cv::ThresholdTypes::THRESH_MASK)
+    .define_value("THRESH_OTSU", cv::ThresholdTypes::THRESH_OTSU)
+    .define_value("THRESH_TRIANGLE", cv::ThresholdTypes::THRESH_TRIANGLE)
+    ;
+  Enum<cv::AdaptiveThresholdTypes> rb_cCvAdaptiveThresholdTypes = define_enum_under<cv::AdaptiveThresholdTypes>("AdaptiveThresholdTypes", rb_mCv)
+    .define_value("ADAPTIVE_THRESH_MEAN_C", cv::AdaptiveThresholdTypes::ADAPTIVE_THRESH_MEAN_C)
+    .define_value("ADAPTIVE_THRESH_GAUSSIAN_C", cv::AdaptiveThresholdTypes::ADAPTIVE_THRESH_GAUSSIAN_C)
+    ;
+  Enum<cv::GrabCutClasses> rb_cCvGrabCutClasses = define_enum_under<cv::GrabCutClasses>("GrabCutClasses", rb_mCv)
+    .define_value("GC_BGD", cv::GrabCutClasses::GC_BGD)
+    .define_value("GC_FGD", cv::GrabCutClasses::GC_FGD)
+    .define_value("GC_PR_BGD", cv::GrabCutClasses::GC_PR_BGD)
+    .define_value("GC_PR_FGD", cv::GrabCutClasses::GC_PR_FGD)
+    ;
+  Enum<cv::GrabCutModes> rb_cCvGrabCutModes = define_enum_under<cv::GrabCutModes>("GrabCutModes", rb_mCv)
+    .define_value("GC_INIT_WITH_RECT", cv::GrabCutModes::GC_INIT_WITH_RECT)
+    .define_value("GC_INIT_WITH_MASK", cv::GrabCutModes::GC_INIT_WITH_MASK)
+    .define_value("GC_EVAL", cv::GrabCutModes::GC_EVAL)
+    .define_value("GC_EVAL_FREEZE_MODEL", cv::GrabCutModes::GC_EVAL_FREEZE_MODEL)
+    ;
+  Enum<cv::DistanceTransformLabelTypes> rb_cCvDistanceTransformLabelTypes = define_enum_under<cv::DistanceTransformLabelTypes>("DistanceTransformLabelTypes", rb_mCv)
+    .define_value("DIST_LABEL_CCOMP", cv::DistanceTransformLabelTypes::DIST_LABEL_CCOMP)
+    .define_value("DIST_LABEL_PIXEL", cv::DistanceTransformLabelTypes::DIST_LABEL_PIXEL)
+    ;
+  Enum<cv::FloodFillFlags> rb_cCvFloodFillFlags = define_enum_under<cv::FloodFillFlags>("FloodFillFlags", rb_mCv)
+    .define_value("FLOODFILL_FIXED_RANGE", cv::FloodFillFlags::FLOODFILL_FIXED_RANGE)
+    .define_value("FLOODFILL_MASK_ONLY", cv::FloodFillFlags::FLOODFILL_MASK_ONLY)
+    ;
+  Enum<cv::ConnectedComponentsTypes> rb_cCvConnectedComponentsTypes = define_enum_under<cv::ConnectedComponentsTypes>("ConnectedComponentsTypes", rb_mCv)
+    .define_value("CC_STAT_LEFT", cv::ConnectedComponentsTypes::CC_STAT_LEFT)
+    .define_value("CC_STAT_TOP", cv::ConnectedComponentsTypes::CC_STAT_TOP)
+    .define_value("CC_STAT_WIDTH", cv::ConnectedComponentsTypes::CC_STAT_WIDTH)
+    .define_value("CC_STAT_HEIGHT", cv::ConnectedComponentsTypes::CC_STAT_HEIGHT)
+    .define_value("CC_STAT_AREA", cv::ConnectedComponentsTypes::CC_STAT_AREA)
+    .define_value("CC_STAT_MAX", cv::ConnectedComponentsTypes::CC_STAT_MAX)
+    ;
+  Enum<cv::ConnectedComponentsAlgorithmsTypes> rb_cCvConnectedComponentsAlgorithmsTypes = define_enum_under<cv::ConnectedComponentsAlgorithmsTypes>("ConnectedComponentsAlgorithmsTypes", rb_mCv)
+    .define_value("CCL_DEFAULT", cv::ConnectedComponentsAlgorithmsTypes::CCL_DEFAULT)
+    .define_value("CCL_WU", cv::ConnectedComponentsAlgorithmsTypes::CCL_WU)
+    .define_value("CCL_GRANA", cv::ConnectedComponentsAlgorithmsTypes::CCL_GRANA)
+    .define_value("CCL_BOLELLI", cv::ConnectedComponentsAlgorithmsTypes::CCL_BOLELLI)
+    .define_value("CCL_SAUF", cv::ConnectedComponentsAlgorithmsTypes::CCL_SAUF)
+    .define_value("CCL_BBDT", cv::ConnectedComponentsAlgorithmsTypes::CCL_BBDT)
+    .define_value("CCL_SPAGHETTI", cv::ConnectedComponentsAlgorithmsTypes::CCL_SPAGHETTI)
+    ;
+  Enum<cv::RetrievalModes> rb_cCvRetrievalModes = define_enum_under<cv::RetrievalModes>("RetrievalModes", rb_mCv)
+    .define_value("RETR_EXTERNAL", cv::RetrievalModes::RETR_EXTERNAL)
+    .define_value("RETR_LIST", cv::RetrievalModes::RETR_LIST)
+    .define_value("RETR_CCOMP", cv::RetrievalModes::RETR_CCOMP)
+    .define_value("RETR_TREE", cv::RetrievalModes::RETR_TREE)
+    .define_value("RETR_FLOODFILL", cv::RetrievalModes::RETR_FLOODFILL)
+    ;
+  Enum<cv::ContourApproximationModes> rb_cCvContourApproximationModes = define_enum_under<cv::ContourApproximationModes>("ContourApproximationModes", rb_mCv)
+    .define_value("CHAIN_APPROX_NONE", cv::ContourApproximationModes::CHAIN_APPROX_NONE)
+    .define_value("CHAIN_APPROX_SIMPLE", cv::ContourApproximationModes::CHAIN_APPROX_SIMPLE)
+    .define_value("CHAIN_APPROX_TC89_L1", cv::ContourApproximationModes::CHAIN_APPROX_TC89_L1)
+    .define_value("CHAIN_APPROX_TC89_KCOS", cv::ContourApproximationModes::CHAIN_APPROX_TC89_KCOS)
+    ;
+  Enum<cv::ShapeMatchModes> rb_cCvShapeMatchModes = define_enum_under<cv::ShapeMatchModes>("ShapeMatchModes", rb_mCv)
+    .define_value("CONTOURS_MATCH_I1", cv::ShapeMatchModes::CONTOURS_MATCH_I1)
+    .define_value("CONTOURS_MATCH_I2", cv::ShapeMatchModes::CONTOURS_MATCH_I2)
+    .define_value("CONTOURS_MATCH_I3", cv::ShapeMatchModes::CONTOURS_MATCH_I3)
+    ;
+  Enum<cv::HoughModes> rb_cCvHoughModes = define_enum_under<cv::HoughModes>("HoughModes", rb_mCv)
+    .define_value("HOUGH_STANDARD", cv::HoughModes::HOUGH_STANDARD)
+    .define_value("HOUGH_PROBABILISTIC", cv::HoughModes::HOUGH_PROBABILISTIC)
+    .define_value("HOUGH_MULTI_SCALE", cv::HoughModes::HOUGH_MULTI_SCALE)
+    .define_value("HOUGH_GRADIENT", cv::HoughModes::HOUGH_GRADIENT)
+    .define_value("HOUGH_GRADIENT_ALT", cv::HoughModes::HOUGH_GRADIENT_ALT)
+    ;
+  Enum<cv::LineSegmentDetectorModes> rb_cCvLineSegmentDetectorModes = define_enum_under<cv::LineSegmentDetectorModes>("LineSegmentDetectorModes", rb_mCv)
+    .define_value("LSD_REFINE_NONE", cv::LineSegmentDetectorModes::LSD_REFINE_NONE)
+    .define_value("LSD_REFINE_STD", cv::LineSegmentDetectorModes::LSD_REFINE_STD)
+    .define_value("LSD_REFINE_ADV", cv::LineSegmentDetectorModes::LSD_REFINE_ADV)
+    ;
+  Enum<cv::HistCompMethods> rb_cCvHistCompMethods = define_enum_under<cv::HistCompMethods>("HistCompMethods", rb_mCv)
+    .define_value("HISTCMP_CORREL", cv::HistCompMethods::HISTCMP_CORREL)
+    .define_value("HISTCMP_CHISQR", cv::HistCompMethods::HISTCMP_CHISQR)
+    .define_value("HISTCMP_INTERSECT", cv::HistCompMethods::HISTCMP_INTERSECT)
+    .define_value("HISTCMP_BHATTACHARYYA", cv::HistCompMethods::HISTCMP_BHATTACHARYYA)
+    .define_value("HISTCMP_HELLINGER", cv::HistCompMethods::HISTCMP_HELLINGER)
+    .define_value("HISTCMP_CHISQR_ALT", cv::HistCompMethods::HISTCMP_CHISQR_ALT)
+    .define_value("HISTCMP_KL_DIV", cv::HistCompMethods::HISTCMP_KL_DIV)
+    ;
+  Enum<cv::ColorConversionCodes> rb_cCvColorConversionCodes = define_enum_under<cv::ColorConversionCodes>("ColorConversionCodes", rb_mCv)
+    .define_value("COLOR_BGR2BGRA", cv::ColorConversionCodes::COLOR_BGR2BGRA)
+    .define_value("COLOR_RGB2RGBA", cv::ColorConversionCodes::COLOR_RGB2RGBA)
+    .define_value("COLOR_BGRA2BGR", cv::ColorConversionCodes::COLOR_BGRA2BGR)
+    .define_value("COLOR_RGBA2RGB", cv::ColorConversionCodes::COLOR_RGBA2RGB)
+    .define_value("COLOR_BGR2RGBA", cv::ColorConversionCodes::COLOR_BGR2RGBA)
+    .define_value("COLOR_RGB2BGRA", cv::ColorConversionCodes::COLOR_RGB2BGRA)
+    .define_value("COLOR_RGBA2BGR", cv::ColorConversionCodes::COLOR_RGBA2BGR)
+    .define_value("COLOR_BGRA2RGB", cv::ColorConversionCodes::COLOR_BGRA2RGB)
+    .define_value("COLOR_BGR2RGB", cv::ColorConversionCodes::COLOR_BGR2RGB)
+    .define_value("COLOR_RGB2BGR", cv::ColorConversionCodes::COLOR_RGB2BGR)
+    .define_value("COLOR_BGRA2RGBA", cv::ColorConversionCodes::COLOR_BGRA2RGBA)
+    .define_value("COLOR_RGBA2BGRA", cv::ColorConversionCodes::COLOR_RGBA2BGRA)
+    .define_value("COLOR_BGR2GRAY", cv::ColorConversionCodes::COLOR_BGR2GRAY)
+    .define_value("COLOR_RGB2GRAY", cv::ColorConversionCodes::COLOR_RGB2GRAY)
+    .define_value("COLOR_GRAY2BGR", cv::ColorConversionCodes::COLOR_GRAY2BGR)
+    .define_value("COLOR_GRAY2RGB", cv::ColorConversionCodes::COLOR_GRAY2RGB)
+    .define_value("COLOR_GRAY2BGRA", cv::ColorConversionCodes::COLOR_GRAY2BGRA)
+    .define_value("COLOR_GRAY2RGBA", cv::ColorConversionCodes::COLOR_GRAY2RGBA)
+    .define_value("COLOR_BGRA2GRAY", cv::ColorConversionCodes::COLOR_BGRA2GRAY)
+    .define_value("COLOR_RGBA2GRAY", cv::ColorConversionCodes::COLOR_RGBA2GRAY)
+    .define_value("COLOR_BGR2BGR565", cv::ColorConversionCodes::COLOR_BGR2BGR565)
+    .define_value("COLOR_RGB2BGR565", cv::ColorConversionCodes::COLOR_RGB2BGR565)
+    .define_value("COLOR_BGR5652BGR", cv::ColorConversionCodes::COLOR_BGR5652BGR)
+    .define_value("COLOR_BGR5652RGB", cv::ColorConversionCodes::COLOR_BGR5652RGB)
+    .define_value("COLOR_BGRA2BGR565", cv::ColorConversionCodes::COLOR_BGRA2BGR565)
+    .define_value("COLOR_RGBA2BGR565", cv::ColorConversionCodes::COLOR_RGBA2BGR565)
+    .define_value("COLOR_BGR5652BGRA", cv::ColorConversionCodes::COLOR_BGR5652BGRA)
+    .define_value("COLOR_BGR5652RGBA", cv::ColorConversionCodes::COLOR_BGR5652RGBA)
+    .define_value("COLOR_GRAY2BGR565", cv::ColorConversionCodes::COLOR_GRAY2BGR565)
+    .define_value("COLOR_BGR5652GRAY", cv::ColorConversionCodes::COLOR_BGR5652GRAY)
+    .define_value("COLOR_BGR2BGR555", cv::ColorConversionCodes::COLOR_BGR2BGR555)
+    .define_value("COLOR_RGB2BGR555", cv::ColorConversionCodes::COLOR_RGB2BGR555)
+    .define_value("COLOR_BGR5552BGR", cv::ColorConversionCodes::COLOR_BGR5552BGR)
+    .define_value("COLOR_BGR5552RGB", cv::ColorConversionCodes::COLOR_BGR5552RGB)
+    .define_value("COLOR_BGRA2BGR555", cv::ColorConversionCodes::COLOR_BGRA2BGR555)
+    .define_value("COLOR_RGBA2BGR555", cv::ColorConversionCodes::COLOR_RGBA2BGR555)
+    .define_value("COLOR_BGR5552BGRA", cv::ColorConversionCodes::COLOR_BGR5552BGRA)
+    .define_value("COLOR_BGR5552RGBA", cv::ColorConversionCodes::COLOR_BGR5552RGBA)
+    .define_value("COLOR_GRAY2BGR555", cv::ColorConversionCodes::COLOR_GRAY2BGR555)
+    .define_value("COLOR_BGR5552GRAY", cv::ColorConversionCodes::COLOR_BGR5552GRAY)
+    .define_value("COLOR_BGR2XYZ", cv::ColorConversionCodes::COLOR_BGR2XYZ)
+    .define_value("COLOR_RGB2XYZ", cv::ColorConversionCodes::COLOR_RGB2XYZ)
+    .define_value("COLOR_XYZ2BGR", cv::ColorConversionCodes::COLOR_XYZ2BGR)
+    .define_value("COLOR_XYZ2RGB", cv::ColorConversionCodes::COLOR_XYZ2RGB)
+    .define_value("COLOR_BGR2YCrCb", cv::ColorConversionCodes::COLOR_BGR2YCrCb)
+    .define_value("COLOR_RGB2YCrCb", cv::ColorConversionCodes::COLOR_RGB2YCrCb)
+    .define_value("COLOR_YCrCb2BGR", cv::ColorConversionCodes::COLOR_YCrCb2BGR)
+    .define_value("COLOR_YCrCb2RGB", cv::ColorConversionCodes::COLOR_YCrCb2RGB)
+    .define_value("COLOR_BGR2HSV", cv::ColorConversionCodes::COLOR_BGR2HSV)
+    .define_value("COLOR_RGB2HSV", cv::ColorConversionCodes::COLOR_RGB2HSV)
+    .define_value("COLOR_BGR2Lab", cv::ColorConversionCodes::COLOR_BGR2Lab)
+    .define_value("COLOR_RGB2Lab", cv::ColorConversionCodes::COLOR_RGB2Lab)
+    .define_value("COLOR_BGR2Luv", cv::ColorConversionCodes::COLOR_BGR2Luv)
+    .define_value("COLOR_RGB2Luv", cv::ColorConversionCodes::COLOR_RGB2Luv)
+    .define_value("COLOR_BGR2HLS", cv::ColorConversionCodes::COLOR_BGR2HLS)
+    .define_value("COLOR_RGB2HLS", cv::ColorConversionCodes::COLOR_RGB2HLS)
+    .define_value("COLOR_HSV2BGR", cv::ColorConversionCodes::COLOR_HSV2BGR)
+    .define_value("COLOR_HSV2RGB", cv::ColorConversionCodes::COLOR_HSV2RGB)
+    .define_value("COLOR_Lab2BGR", cv::ColorConversionCodes::COLOR_Lab2BGR)
+    .define_value("COLOR_Lab2RGB", cv::ColorConversionCodes::COLOR_Lab2RGB)
+    .define_value("COLOR_Luv2BGR", cv::ColorConversionCodes::COLOR_Luv2BGR)
+    .define_value("COLOR_Luv2RGB", cv::ColorConversionCodes::COLOR_Luv2RGB)
+    .define_value("COLOR_HLS2BGR", cv::ColorConversionCodes::COLOR_HLS2BGR)
+    .define_value("COLOR_HLS2RGB", cv::ColorConversionCodes::COLOR_HLS2RGB)
+    .define_value("COLOR_BGR2HSV_FULL", cv::ColorConversionCodes::COLOR_BGR2HSV_FULL)
+    .define_value("COLOR_RGB2HSV_FULL", cv::ColorConversionCodes::COLOR_RGB2HSV_FULL)
+    .define_value("COLOR_BGR2HLS_FULL", cv::ColorConversionCodes::COLOR_BGR2HLS_FULL)
+    .define_value("COLOR_RGB2HLS_FULL", cv::ColorConversionCodes::COLOR_RGB2HLS_FULL)
+    .define_value("COLOR_HSV2BGR_FULL", cv::ColorConversionCodes::COLOR_HSV2BGR_FULL)
+    .define_value("COLOR_HSV2RGB_FULL", cv::ColorConversionCodes::COLOR_HSV2RGB_FULL)
+    .define_value("COLOR_HLS2BGR_FULL", cv::ColorConversionCodes::COLOR_HLS2BGR_FULL)
+    .define_value("COLOR_HLS2RGB_FULL", cv::ColorConversionCodes::COLOR_HLS2RGB_FULL)
+    .define_value("COLOR_LBGR2Lab", cv::ColorConversionCodes::COLOR_LBGR2Lab)
+    .define_value("COLOR_LRGB2Lab", cv::ColorConversionCodes::COLOR_LRGB2Lab)
+    .define_value("COLOR_LBGR2Luv", cv::ColorConversionCodes::COLOR_LBGR2Luv)
+    .define_value("COLOR_LRGB2Luv", cv::ColorConversionCodes::COLOR_LRGB2Luv)
+    .define_value("COLOR_Lab2LBGR", cv::ColorConversionCodes::COLOR_Lab2LBGR)
+    .define_value("COLOR_Lab2LRGB", cv::ColorConversionCodes::COLOR_Lab2LRGB)
+    .define_value("COLOR_Luv2LBGR", cv::ColorConversionCodes::COLOR_Luv2LBGR)
+    .define_value("COLOR_Luv2LRGB", cv::ColorConversionCodes::COLOR_Luv2LRGB)
+    .define_value("COLOR_BGR2YUV", cv::ColorConversionCodes::COLOR_BGR2YUV)
+    .define_value("COLOR_RGB2YUV", cv::ColorConversionCodes::COLOR_RGB2YUV)
+    .define_value("COLOR_YUV2BGR", cv::ColorConversionCodes::COLOR_YUV2BGR)
+    .define_value("COLOR_YUV2RGB", cv::ColorConversionCodes::COLOR_YUV2RGB)
+    .define_value("COLOR_YUV2RGB_NV12", cv::ColorConversionCodes::COLOR_YUV2RGB_NV12)
+    .define_value("COLOR_YUV2BGR_NV12", cv::ColorConversionCodes::COLOR_YUV2BGR_NV12)
+    .define_value("COLOR_YUV2RGB_NV21", cv::ColorConversionCodes::COLOR_YUV2RGB_NV21)
+    .define_value("COLOR_YUV2BGR_NV21", cv::ColorConversionCodes::COLOR_YUV2BGR_NV21)
+    .define_value("COLOR_YUV420sp2RGB", cv::ColorConversionCodes::COLOR_YUV420sp2RGB)
+    .define_value("COLOR_YUV420sp2BGR", cv::ColorConversionCodes::COLOR_YUV420sp2BGR)
+    .define_value("COLOR_YUV2RGBA_NV12", cv::ColorConversionCodes::COLOR_YUV2RGBA_NV12)
+    .define_value("COLOR_YUV2BGRA_NV12", cv::ColorConversionCodes::COLOR_YUV2BGRA_NV12)
+    .define_value("COLOR_YUV2RGBA_NV21", cv::ColorConversionCodes::COLOR_YUV2RGBA_NV21)
+    .define_value("COLOR_YUV2BGRA_NV21", cv::ColorConversionCodes::COLOR_YUV2BGRA_NV21)
+    .define_value("COLOR_YUV420sp2RGBA", cv::ColorConversionCodes::COLOR_YUV420sp2RGBA)
+    .define_value("COLOR_YUV420sp2BGRA", cv::ColorConversionCodes::COLOR_YUV420sp2BGRA)
+    .define_value("COLOR_YUV2RGB_YV12", cv::ColorConversionCodes::COLOR_YUV2RGB_YV12)
+    .define_value("COLOR_YUV2BGR_YV12", cv::ColorConversionCodes::COLOR_YUV2BGR_YV12)
+    .define_value("COLOR_YUV2RGB_IYUV", cv::ColorConversionCodes::COLOR_YUV2RGB_IYUV)
+    .define_value("COLOR_YUV2BGR_IYUV", cv::ColorConversionCodes::COLOR_YUV2BGR_IYUV)
+    .define_value("COLOR_YUV2RGB_I420", cv::ColorConversionCodes::COLOR_YUV2RGB_I420)
+    .define_value("COLOR_YUV2BGR_I420", cv::ColorConversionCodes::COLOR_YUV2BGR_I420)
+    .define_value("COLOR_YUV420p2RGB", cv::ColorConversionCodes::COLOR_YUV420p2RGB)
+    .define_value("COLOR_YUV420p2BGR", cv::ColorConversionCodes::COLOR_YUV420p2BGR)
+    .define_value("COLOR_YUV2RGBA_YV12", cv::ColorConversionCodes::COLOR_YUV2RGBA_YV12)
+    .define_value("COLOR_YUV2BGRA_YV12", cv::ColorConversionCodes::COLOR_YUV2BGRA_YV12)
+    .define_value("COLOR_YUV2RGBA_IYUV", cv::ColorConversionCodes::COLOR_YUV2RGBA_IYUV)
+    .define_value("COLOR_YUV2BGRA_IYUV", cv::ColorConversionCodes::COLOR_YUV2BGRA_IYUV)
+    .define_value("COLOR_YUV2RGBA_I420", cv::ColorConversionCodes::COLOR_YUV2RGBA_I420)
+    .define_value("COLOR_YUV2BGRA_I420", cv::ColorConversionCodes::COLOR_YUV2BGRA_I420)
+    .define_value("COLOR_YUV420p2RGBA", cv::ColorConversionCodes::COLOR_YUV420p2RGBA)
+    .define_value("COLOR_YUV420p2BGRA", cv::ColorConversionCodes::COLOR_YUV420p2BGRA)
+    .define_value("COLOR_YUV2GRAY_420", cv::ColorConversionCodes::COLOR_YUV2GRAY_420)
+    .define_value("COLOR_YUV2GRAY_NV21", cv::ColorConversionCodes::COLOR_YUV2GRAY_NV21)
+    .define_value("COLOR_YUV2GRAY_NV12", cv::ColorConversionCodes::COLOR_YUV2GRAY_NV12)
+    .define_value("COLOR_YUV2GRAY_YV12", cv::ColorConversionCodes::COLOR_YUV2GRAY_YV12)
+    .define_value("COLOR_YUV2GRAY_IYUV", cv::ColorConversionCodes::COLOR_YUV2GRAY_IYUV)
+    .define_value("COLOR_YUV2GRAY_I420", cv::ColorConversionCodes::COLOR_YUV2GRAY_I420)
+    .define_value("COLOR_YUV420sp2GRAY", cv::ColorConversionCodes::COLOR_YUV420sp2GRAY)
+    .define_value("COLOR_YUV420p2GRAY", cv::ColorConversionCodes::COLOR_YUV420p2GRAY)
+    .define_value("COLOR_YUV2RGB_UYVY", cv::ColorConversionCodes::COLOR_YUV2RGB_UYVY)
+    .define_value("COLOR_YUV2BGR_UYVY", cv::ColorConversionCodes::COLOR_YUV2BGR_UYVY)
+    .define_value("COLOR_YUV2RGB_Y422", cv::ColorConversionCodes::COLOR_YUV2RGB_Y422)
+    .define_value("COLOR_YUV2BGR_Y422", cv::ColorConversionCodes::COLOR_YUV2BGR_Y422)
+    .define_value("COLOR_YUV2RGB_UYNV", cv::ColorConversionCodes::COLOR_YUV2RGB_UYNV)
+    .define_value("COLOR_YUV2BGR_UYNV", cv::ColorConversionCodes::COLOR_YUV2BGR_UYNV)
+    .define_value("COLOR_YUV2RGBA_UYVY", cv::ColorConversionCodes::COLOR_YUV2RGBA_UYVY)
+    .define_value("COLOR_YUV2BGRA_UYVY", cv::ColorConversionCodes::COLOR_YUV2BGRA_UYVY)
+    .define_value("COLOR_YUV2RGBA_Y422", cv::ColorConversionCodes::COLOR_YUV2RGBA_Y422)
+    .define_value("COLOR_YUV2BGRA_Y422", cv::ColorConversionCodes::COLOR_YUV2BGRA_Y422)
+    .define_value("COLOR_YUV2RGBA_UYNV", cv::ColorConversionCodes::COLOR_YUV2RGBA_UYNV)
+    .define_value("COLOR_YUV2BGRA_UYNV", cv::ColorConversionCodes::COLOR_YUV2BGRA_UYNV)
+    .define_value("COLOR_YUV2RGB_YUY2", cv::ColorConversionCodes::COLOR_YUV2RGB_YUY2)
+    .define_value("COLOR_YUV2BGR_YUY2", cv::ColorConversionCodes::COLOR_YUV2BGR_YUY2)
+    .define_value("COLOR_YUV2RGB_YVYU", cv::ColorConversionCodes::COLOR_YUV2RGB_YVYU)
+    .define_value("COLOR_YUV2BGR_YVYU", cv::ColorConversionCodes::COLOR_YUV2BGR_YVYU)
+    .define_value("COLOR_YUV2RGB_YUYV", cv::ColorConversionCodes::COLOR_YUV2RGB_YUYV)
+    .define_value("COLOR_YUV2BGR_YUYV", cv::ColorConversionCodes::COLOR_YUV2BGR_YUYV)
+    .define_value("COLOR_YUV2RGB_YUNV", cv::ColorConversionCodes::COLOR_YUV2RGB_YUNV)
+    .define_value("COLOR_YUV2BGR_YUNV", cv::ColorConversionCodes::COLOR_YUV2BGR_YUNV)
+    .define_value("COLOR_YUV2RGBA_YUY2", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUY2)
+    .define_value("COLOR_YUV2BGRA_YUY2", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUY2)
+    .define_value("COLOR_YUV2RGBA_YVYU", cv::ColorConversionCodes::COLOR_YUV2RGBA_YVYU)
+    .define_value("COLOR_YUV2BGRA_YVYU", cv::ColorConversionCodes::COLOR_YUV2BGRA_YVYU)
+    .define_value("COLOR_YUV2RGBA_YUYV", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUYV)
+    .define_value("COLOR_YUV2BGRA_YUYV", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUYV)
+    .define_value("COLOR_YUV2RGBA_YUNV", cv::ColorConversionCodes::COLOR_YUV2RGBA_YUNV)
+    .define_value("COLOR_YUV2BGRA_YUNV", cv::ColorConversionCodes::COLOR_YUV2BGRA_YUNV)
+    .define_value("COLOR_YUV2GRAY_UYVY", cv::ColorConversionCodes::COLOR_YUV2GRAY_UYVY)
+    .define_value("COLOR_YUV2GRAY_YUY2", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUY2)
+    .define_value("COLOR_YUV2GRAY_Y422", cv::ColorConversionCodes::COLOR_YUV2GRAY_Y422)
+    .define_value("COLOR_YUV2GRAY_UYNV", cv::ColorConversionCodes::COLOR_YUV2GRAY_UYNV)
+    .define_value("COLOR_YUV2GRAY_YVYU", cv::ColorConversionCodes::COLOR_YUV2GRAY_YVYU)
+    .define_value("COLOR_YUV2GRAY_YUYV", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUYV)
+    .define_value("COLOR_YUV2GRAY_YUNV", cv::ColorConversionCodes::COLOR_YUV2GRAY_YUNV)
+    .define_value("COLOR_RGBA2mRGBA", cv::ColorConversionCodes::COLOR_RGBA2mRGBA)
+    .define_value("COLOR_mRGBA2RGBA", cv::ColorConversionCodes::COLOR_mRGBA2RGBA)
+    .define_value("COLOR_RGB2YUV_I420", cv::ColorConversionCodes::COLOR_RGB2YUV_I420)
+    .define_value("COLOR_BGR2YUV_I420", cv::ColorConversionCodes::COLOR_BGR2YUV_I420)
+    .define_value("COLOR_RGB2YUV_IYUV", cv::ColorConversionCodes::COLOR_RGB2YUV_IYUV)
+    .define_value("COLOR_BGR2YUV_IYUV", cv::ColorConversionCodes::COLOR_BGR2YUV_IYUV)
+    .define_value("COLOR_RGBA2YUV_I420", cv::ColorConversionCodes::COLOR_RGBA2YUV_I420)
+    .define_value("COLOR_BGRA2YUV_I420", cv::ColorConversionCodes::COLOR_BGRA2YUV_I420)
+    .define_value("COLOR_RGBA2YUV_IYUV", cv::ColorConversionCodes::COLOR_RGBA2YUV_IYUV)
+    .define_value("COLOR_BGRA2YUV_IYUV", cv::ColorConversionCodes::COLOR_BGRA2YUV_IYUV)
+    .define_value("COLOR_RGB2YUV_YV12", cv::ColorConversionCodes::COLOR_RGB2YUV_YV12)
+    .define_value("COLOR_BGR2YUV_YV12", cv::ColorConversionCodes::COLOR_BGR2YUV_YV12)
+    .define_value("COLOR_RGBA2YUV_YV12", cv::ColorConversionCodes::COLOR_RGBA2YUV_YV12)
+    .define_value("COLOR_BGRA2YUV_YV12", cv::ColorConversionCodes::COLOR_BGRA2YUV_YV12)
+    .define_value("COLOR_BayerBG2BGR", cv::ColorConversionCodes::COLOR_BayerBG2BGR)
+    .define_value("COLOR_BayerGB2BGR", cv::ColorConversionCodes::COLOR_BayerGB2BGR)
+    .define_value("COLOR_BayerRG2BGR", cv::ColorConversionCodes::COLOR_BayerRG2BGR)
+    .define_value("COLOR_BayerGR2BGR", cv::ColorConversionCodes::COLOR_BayerGR2BGR)
+    .define_value("COLOR_BayerRGGB2BGR", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR)
+    .define_value("COLOR_BayerGRBG2BGR", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR)
+    .define_value("COLOR_BayerBGGR2BGR", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR)
+    .define_value("COLOR_BayerGBRG2BGR", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR)
+    .define_value("COLOR_BayerRGGB2RGB", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB)
+    .define_value("COLOR_BayerGRBG2RGB", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB)
+    .define_value("COLOR_BayerBGGR2RGB", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB)
+    .define_value("COLOR_BayerGBRG2RGB", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB)
+    .define_value("COLOR_BayerBG2RGB", cv::ColorConversionCodes::COLOR_BayerBG2RGB)
+    .define_value("COLOR_BayerGB2RGB", cv::ColorConversionCodes::COLOR_BayerGB2RGB)
+    .define_value("COLOR_BayerRG2RGB", cv::ColorConversionCodes::COLOR_BayerRG2RGB)
+    .define_value("COLOR_BayerGR2RGB", cv::ColorConversionCodes::COLOR_BayerGR2RGB)
+    .define_value("COLOR_BayerBG2GRAY", cv::ColorConversionCodes::COLOR_BayerBG2GRAY)
+    .define_value("COLOR_BayerGB2GRAY", cv::ColorConversionCodes::COLOR_BayerGB2GRAY)
+    .define_value("COLOR_BayerRG2GRAY", cv::ColorConversionCodes::COLOR_BayerRG2GRAY)
+    .define_value("COLOR_BayerGR2GRAY", cv::ColorConversionCodes::COLOR_BayerGR2GRAY)
+    .define_value("COLOR_BayerRGGB2GRAY", cv::ColorConversionCodes::COLOR_BayerRGGB2GRAY)
+    .define_value("COLOR_BayerGRBG2GRAY", cv::ColorConversionCodes::COLOR_BayerGRBG2GRAY)
+    .define_value("COLOR_BayerBGGR2GRAY", cv::ColorConversionCodes::COLOR_BayerBGGR2GRAY)
+    .define_value("COLOR_BayerGBRG2GRAY", cv::ColorConversionCodes::COLOR_BayerGBRG2GRAY)
+    .define_value("COLOR_BayerBG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerBG2BGR_VNG)
+    .define_value("COLOR_BayerGB2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGB2BGR_VNG)
+    .define_value("COLOR_BayerRG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerRG2BGR_VNG)
+    .define_value("COLOR_BayerGR2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGR2BGR_VNG)
+    .define_value("COLOR_BayerRGGB2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR_VNG)
+    .define_value("COLOR_BayerGRBG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR_VNG)
+    .define_value("COLOR_BayerBGGR2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR_VNG)
+    .define_value("COLOR_BayerGBRG2BGR_VNG", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR_VNG)
+    .define_value("COLOR_BayerRGGB2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB_VNG)
+    .define_value("COLOR_BayerGRBG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB_VNG)
+    .define_value("COLOR_BayerBGGR2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB_VNG)
+    .define_value("COLOR_BayerGBRG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB_VNG)
+    .define_value("COLOR_BayerBG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerBG2RGB_VNG)
+    .define_value("COLOR_BayerGB2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGB2RGB_VNG)
+    .define_value("COLOR_BayerRG2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerRG2RGB_VNG)
+    .define_value("COLOR_BayerGR2RGB_VNG", cv::ColorConversionCodes::COLOR_BayerGR2RGB_VNG)
+    .define_value("COLOR_BayerBG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerBG2BGR_EA)
+    .define_value("COLOR_BayerGB2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGB2BGR_EA)
+    .define_value("COLOR_BayerRG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerRG2BGR_EA)
+    .define_value("COLOR_BayerGR2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGR2BGR_EA)
+    .define_value("COLOR_BayerRGGB2BGR_EA", cv::ColorConversionCodes::COLOR_BayerRGGB2BGR_EA)
+    .define_value("COLOR_BayerGRBG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGRBG2BGR_EA)
+    .define_value("COLOR_BayerBGGR2BGR_EA", cv::ColorConversionCodes::COLOR_BayerBGGR2BGR_EA)
+    .define_value("COLOR_BayerGBRG2BGR_EA", cv::ColorConversionCodes::COLOR_BayerGBRG2BGR_EA)
+    .define_value("COLOR_BayerRGGB2RGB_EA", cv::ColorConversionCodes::COLOR_BayerRGGB2RGB_EA)
+    .define_value("COLOR_BayerGRBG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGRBG2RGB_EA)
+    .define_value("COLOR_BayerBGGR2RGB_EA", cv::ColorConversionCodes::COLOR_BayerBGGR2RGB_EA)
+    .define_value("COLOR_BayerGBRG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGBRG2RGB_EA)
+    .define_value("COLOR_BayerBG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerBG2RGB_EA)
+    .define_value("COLOR_BayerGB2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGB2RGB_EA)
+    .define_value("COLOR_BayerRG2RGB_EA", cv::ColorConversionCodes::COLOR_BayerRG2RGB_EA)
+    .define_value("COLOR_BayerGR2RGB_EA", cv::ColorConversionCodes::COLOR_BayerGR2RGB_EA)
+    .define_value("COLOR_BayerBG2BGRA", cv::ColorConversionCodes::COLOR_BayerBG2BGRA)
+    .define_value("COLOR_BayerGB2BGRA", cv::ColorConversionCodes::COLOR_BayerGB2BGRA)
+    .define_value("COLOR_BayerRG2BGRA", cv::ColorConversionCodes::COLOR_BayerRG2BGRA)
+    .define_value("COLOR_BayerGR2BGRA", cv::ColorConversionCodes::COLOR_BayerGR2BGRA)
+    .define_value("COLOR_BayerRGGB2BGRA", cv::ColorConversionCodes::COLOR_BayerRGGB2BGRA)
+    .define_value("COLOR_BayerGRBG2BGRA", cv::ColorConversionCodes::COLOR_BayerGRBG2BGRA)
+    .define_value("COLOR_BayerBGGR2BGRA", cv::ColorConversionCodes::COLOR_BayerBGGR2BGRA)
+    .define_value("COLOR_BayerGBRG2BGRA", cv::ColorConversionCodes::COLOR_BayerGBRG2BGRA)
+    .define_value("COLOR_BayerRGGB2RGBA", cv::ColorConversionCodes::COLOR_BayerRGGB2RGBA)
+    .define_value("COLOR_BayerGRBG2RGBA", cv::ColorConversionCodes::COLOR_BayerGRBG2RGBA)
+    .define_value("COLOR_BayerBGGR2RGBA", cv::ColorConversionCodes::COLOR_BayerBGGR2RGBA)
+    .define_value("COLOR_BayerGBRG2RGBA", cv::ColorConversionCodes::COLOR_BayerGBRG2RGBA)
+    .define_value("COLOR_BayerBG2RGBA", cv::ColorConversionCodes::COLOR_BayerBG2RGBA)
+    .define_value("COLOR_BayerGB2RGBA", cv::ColorConversionCodes::COLOR_BayerGB2RGBA)
+    .define_value("COLOR_BayerRG2RGBA", cv::ColorConversionCodes::COLOR_BayerRG2RGBA)
+    .define_value("COLOR_BayerGR2RGBA", cv::ColorConversionCodes::COLOR_BayerGR2RGBA)
+    .define_value("COLOR_RGB2YUV_UYVY", cv::ColorConversionCodes::COLOR_RGB2YUV_UYVY)
+    .define_value("COLOR_BGR2YUV_UYVY", cv::ColorConversionCodes::COLOR_BGR2YUV_UYVY)
+    .define_value("COLOR_RGB2YUV_Y422", cv::ColorConversionCodes::COLOR_RGB2YUV_Y422)
+    .define_value("COLOR_BGR2YUV_Y422", cv::ColorConversionCodes::COLOR_BGR2YUV_Y422)
+    .define_value("COLOR_RGB2YUV_UYNV", cv::ColorConversionCodes::COLOR_RGB2YUV_UYNV)
+    .define_value("COLOR_BGR2YUV_UYNV", cv::ColorConversionCodes::COLOR_BGR2YUV_UYNV)
+    .define_value("COLOR_RGBA2YUV_UYVY", cv::ColorConversionCodes::COLOR_RGBA2YUV_UYVY)
+    .define_value("COLOR_BGRA2YUV_UYVY", cv::ColorConversionCodes::COLOR_BGRA2YUV_UYVY)
+    .define_value("COLOR_RGBA2YUV_Y422", cv::ColorConversionCodes::COLOR_RGBA2YUV_Y422)
+    .define_value("COLOR_BGRA2YUV_Y422", cv::ColorConversionCodes::COLOR_BGRA2YUV_Y422)
+    .define_value("COLOR_RGBA2YUV_UYNV", cv::ColorConversionCodes::COLOR_RGBA2YUV_UYNV)
+    .define_value("COLOR_BGRA2YUV_UYNV", cv::ColorConversionCodes::COLOR_BGRA2YUV_UYNV)
+    .define_value("COLOR_RGB2YUV_YUY2", cv::ColorConversionCodes::COLOR_RGB2YUV_YUY2)
+    .define_value("COLOR_BGR2YUV_YUY2", cv::ColorConversionCodes::COLOR_BGR2YUV_YUY2)
+    .define_value("COLOR_RGB2YUV_YVYU", cv::ColorConversionCodes::COLOR_RGB2YUV_YVYU)
+    .define_value("COLOR_BGR2YUV_YVYU", cv::ColorConversionCodes::COLOR_BGR2YUV_YVYU)
+    .define_value("COLOR_RGB2YUV_YUYV", cv::ColorConversionCodes::COLOR_RGB2YUV_YUYV)
+    .define_value("COLOR_BGR2YUV_YUYV", cv::ColorConversionCodes::COLOR_BGR2YUV_YUYV)
+    .define_value("COLOR_RGB2YUV_YUNV", cv::ColorConversionCodes::COLOR_RGB2YUV_YUNV)
+    .define_value("COLOR_BGR2YUV_YUNV", cv::ColorConversionCodes::COLOR_BGR2YUV_YUNV)
+    .define_value("COLOR_RGBA2YUV_YUY2", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUY2)
+    .define_value("COLOR_BGRA2YUV_YUY2", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUY2)
+    .define_value("COLOR_RGBA2YUV_YVYU", cv::ColorConversionCodes::COLOR_RGBA2YUV_YVYU)
+    .define_value("COLOR_BGRA2YUV_YVYU", cv::ColorConversionCodes::COLOR_BGRA2YUV_YVYU)
+    .define_value("COLOR_RGBA2YUV_YUYV", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUYV)
+    .define_value("COLOR_BGRA2YUV_YUYV", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUYV)
+    .define_value("COLOR_RGBA2YUV_YUNV", cv::ColorConversionCodes::COLOR_RGBA2YUV_YUNV)
+    .define_value("COLOR_BGRA2YUV_YUNV", cv::ColorConversionCodes::COLOR_BGRA2YUV_YUNV)
+    .define_value("COLOR_COLORCVT_MAX", cv::ColorConversionCodes::COLOR_COLORCVT_MAX)
+    ;
+  Enum<cv::RectanglesIntersectTypes> rb_cCvRectanglesIntersectTypes = define_enum_under<cv::RectanglesIntersectTypes>("RectanglesIntersectTypes", rb_mCv)
+    .define_value("INTERSECT_NONE", cv::RectanglesIntersectTypes::INTERSECT_NONE)
+    .define_value("INTERSECT_PARTIAL", cv::RectanglesIntersectTypes::INTERSECT_PARTIAL)
+    .define_value("INTERSECT_FULL", cv::RectanglesIntersectTypes::INTERSECT_FULL)
+    ;
+  Enum<cv::LineTypes> rb_cCvLineTypes = define_enum_under<cv::LineTypes>("LineTypes", rb_mCv)
+    .define_value("FILLED", cv::LineTypes::FILLED)
+    .define_value("LINE_4", cv::LineTypes::LINE_4)
+    .define_value("LINE_8", cv::LineTypes::LINE_8)
+    .define_value("LINE_AA", cv::LineTypes::LINE_AA)
+    ;
+  Enum<cv::HersheyFonts> rb_cCvHersheyFonts = define_enum_under<cv::HersheyFonts>("HersheyFonts", rb_mCv)
+    .define_value("FONT_HERSHEY_SIMPLEX", cv::HersheyFonts::FONT_HERSHEY_SIMPLEX)
+    .define_value("FONT_HERSHEY_PLAIN", cv::HersheyFonts::FONT_HERSHEY_PLAIN)
+    .define_value("FONT_HERSHEY_DUPLEX", cv::HersheyFonts::FONT_HERSHEY_DUPLEX)
+    .define_value("FONT_HERSHEY_COMPLEX", cv::HersheyFonts::FONT_HERSHEY_COMPLEX)
+    .define_value("FONT_HERSHEY_TRIPLEX", cv::HersheyFonts::FONT_HERSHEY_TRIPLEX)
+    .define_value("FONT_HERSHEY_COMPLEX_SMALL", cv::HersheyFonts::FONT_HERSHEY_COMPLEX_SMALL)
+    .define_value("FONT_HERSHEY_SCRIPT_SIMPLEX", cv::HersheyFonts::FONT_HERSHEY_SCRIPT_SIMPLEX)
+    .define_value("FONT_HERSHEY_SCRIPT_COMPLEX", cv::HersheyFonts::FONT_HERSHEY_SCRIPT_COMPLEX)
+    .define_value("FONT_ITALIC", cv::HersheyFonts::FONT_ITALIC)
+    ;
+  Enum<cv::MarkerTypes> rb_cCvMarkerTypes = define_enum_under<cv::MarkerTypes>("MarkerTypes", rb_mCv)
+    .define_value("MARKER_CROSS", cv::MarkerTypes::MARKER_CROSS)
+    .define_value("MARKER_TILTED_CROSS", cv::MarkerTypes::MARKER_TILTED_CROSS)
+    .define_value("MARKER_STAR", cv::MarkerTypes::MARKER_STAR)
+    .define_value("MARKER_DIAMOND", cv::MarkerTypes::MARKER_DIAMOND)
+    .define_value("MARKER_SQUARE", cv::MarkerTypes::MARKER_SQUARE)
+    .define_value("MARKER_TRIANGLE_UP", cv::MarkerTypes::MARKER_TRIANGLE_UP)
+    .define_value("MARKER_TRIANGLE_DOWN", cv::MarkerTypes::MARKER_TRIANGLE_DOWN)
+    ;
+  Rice::Data_Type<cv::GeneralizedHough> rb_cCvGeneralizedHough = define_class_under<cv::GeneralizedHough, cv::Algorithm>(rb_mCv, "GeneralizedHough")
+    .define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::Point)>("set_template", &cv::GeneralizedHough::setTemplate,
+      Arg("templ"), Arg("templ_center") = static_cast<cv::Point>(cv::Point(-1, -1)))
+    .define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::Point)>("set_template", &cv::GeneralizedHough::setTemplate,
+      Arg("edges"), Arg("dx"), Arg("dy"), Arg("templ_center") = static_cast<cv::Point>(cv::Point(-1, -1)))
+    .define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::GeneralizedHough::detect,
+      Arg("image"), Arg("positions"), Arg("votes") = static_cast<cv::OutputArray>(cv::noArray()))
+    .define_method<void(cv::GeneralizedHough::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::GeneralizedHough::detect,
+      Arg("edges"), Arg("dx"), Arg("dy"), Arg("positions"), Arg("votes") = static_cast<cv::OutputArray>(cv::noArray()))
+    .define_method<void(cv::GeneralizedHough::*)(int)>("set_canny_low_thresh", &cv::GeneralizedHough::setCannyLowThresh,
+      Arg("canny_low_thresh"))
+    .define_method<int(cv::GeneralizedHough::*)() const>("get_canny_low_thresh", &cv::GeneralizedHough::getCannyLowThresh)
+    .define_method<void(cv::GeneralizedHough::*)(int)>("set_canny_high_thresh", &cv::GeneralizedHough::setCannyHighThresh,
+      Arg("canny_high_thresh"))
+    .define_method<int(cv::GeneralizedHough::*)() const>("get_canny_high_thresh", &cv::GeneralizedHough::getCannyHighThresh)
+    .define_method<void(cv::GeneralizedHough::*)(double)>("set_min_dist", &cv::GeneralizedHough::setMinDist,
+      Arg("min_dist"))
+    .define_method<double(cv::GeneralizedHough::*)() const>("get_min_dist", &cv::GeneralizedHough::getMinDist)
+    .define_method<void(cv::GeneralizedHough::*)(double)>("set_dp", &cv::GeneralizedHough::setDp,
+      Arg("dp"))
+    .define_method<double(cv::GeneralizedHough::*)() const>("get_dp", &cv::GeneralizedHough::getDp)
+    .define_method<void(cv::GeneralizedHough::*)(int)>("set_max_buffer_size", &cv::GeneralizedHough::setMaxBufferSize,
+      Arg("max_buffer_size"))
+    .define_method<int(cv::GeneralizedHough::*)() const>("get_max_buffer_size", &cv::GeneralizedHough::getMaxBufferSize)
+    ;
+  Rice::Data_Type<cv::GeneralizedHoughBallard> rb_cCvGeneralizedHoughBallard = define_class_under<cv::GeneralizedHoughBallard, cv::GeneralizedHough>(rb_mCv, "GeneralizedHoughBallard")
+    .define_method<void(cv::GeneralizedHoughBallard::*)(int)>("set_levels", &cv::GeneralizedHoughBallard::setLevels,
+      Arg("levels"))
+    .define_method<int(cv::GeneralizedHoughBallard::*)() const>("get_levels", &cv::GeneralizedHoughBallard::getLevels)
+    .define_method<void(cv::GeneralizedHoughBallard::*)(int)>("set_votes_threshold", &cv::GeneralizedHoughBallard::setVotesThreshold,
+      Arg("votes_threshold"))
+    .define_method<int(cv::GeneralizedHoughBallard::*)() const>("get_votes_threshold", &cv::GeneralizedHoughBallard::getVotesThreshold)
+    ;
+  Rice::Data_Type<cv::GeneralizedHoughGuil> rb_cCvGeneralizedHoughGuil = define_class_under<cv::GeneralizedHoughGuil, cv::GeneralizedHough>(rb_mCv, "GeneralizedHoughGuil")
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_xi", &cv::GeneralizedHoughGuil::setXi,
+      Arg("xi"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_xi", &cv::GeneralizedHoughGuil::getXi)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_levels", &cv::GeneralizedHoughGuil::setLevels,
+      Arg("levels"))
+    .define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_levels", &cv::GeneralizedHoughGuil::getLevels)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_angle_epsilon", &cv::GeneralizedHoughGuil::setAngleEpsilon,
+      Arg("angle_epsilon"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_angle_epsilon", &cv::GeneralizedHoughGuil::getAngleEpsilon)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_min_angle", &cv::GeneralizedHoughGuil::setMinAngle,
+      Arg("min_angle"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_min_angle", &cv::GeneralizedHoughGuil::getMinAngle)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_max_angle", &cv::GeneralizedHoughGuil::setMaxAngle,
+      Arg("max_angle"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_max_angle", &cv::GeneralizedHoughGuil::getMaxAngle)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_angle_step", &cv::GeneralizedHoughGuil::setAngleStep,
+      Arg("angle_step"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_angle_step", &cv::GeneralizedHoughGuil::getAngleStep)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_angle_thresh", &cv::GeneralizedHoughGuil::setAngleThresh,
+      Arg("angle_thresh"))
+    .define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_angle_thresh", &cv::GeneralizedHoughGuil::getAngleThresh)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_min_scale", &cv::GeneralizedHoughGuil::setMinScale,
+      Arg("min_scale"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_min_scale", &cv::GeneralizedHoughGuil::getMinScale)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_max_scale", &cv::GeneralizedHoughGuil::setMaxScale,
+      Arg("max_scale"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_max_scale", &cv::GeneralizedHoughGuil::getMaxScale)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(double)>("set_scale_step", &cv::GeneralizedHoughGuil::setScaleStep,
+      Arg("scale_step"))
+    .define_method<double(cv::GeneralizedHoughGuil::*)() const>("get_scale_step", &cv::GeneralizedHoughGuil::getScaleStep)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_scale_thresh", &cv::GeneralizedHoughGuil::setScaleThresh,
+      Arg("scale_thresh"))
+    .define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_scale_thresh", &cv::GeneralizedHoughGuil::getScaleThresh)
+    .define_method<void(cv::GeneralizedHoughGuil::*)(int)>("set_pos_thresh", &cv::GeneralizedHoughGuil::setPosThresh,
+      Arg("pos_thresh"))
+    .define_method<int(cv::GeneralizedHoughGuil::*)() const>("get_pos_thresh", &cv::GeneralizedHoughGuil::getPosThresh)
+    ;
+  Rice::Data_Type<cv::CLAHE> rb_cCvCLAHE = define_class_under<cv::CLAHE, cv::Algorithm>(rb_mCv, "Clahe")
+    .define_method<void(cv::CLAHE::*)(cv::InputArray, cv::OutputArray)>("apply", &cv::CLAHE::apply,
+      Arg("src"), Arg("dst"))
+    .define_method<void(cv::CLAHE::*)(double)>("set_clip_limit", &cv::CLAHE::setClipLimit,
+      Arg("clip_limit"))
+    .define_method<double(cv::CLAHE::*)() const>("get_clip_limit", &cv::CLAHE::getClipLimit)
+    .define_method<void(cv::CLAHE::*)(cv::Size)>("set_tiles_grid_size", &cv::CLAHE::setTilesGridSize,
+      Arg("tile_grid_size"))
+    .define_method<cv::Size(cv::CLAHE::*)() const>("get_tiles_grid_size", &cv::CLAHE::getTilesGridSize)
+    .define_method<void(cv::CLAHE::*)()>("collect_garbage", &cv::CLAHE::collectGarbage)
+    ;
+  Rice::Data_Type<cv::Subdiv2D> rb_cCvSubdiv2D = define_class_under<cv::Subdiv2D>(rb_mCv, "Subdiv2D")
+    .define_constructor(Constructor<cv::Subdiv2D>())
+    .define_constructor(Constructor<cv::Subdiv2D, cv::Rect>(),
+      Arg("rect"))
+    .define_method<void(cv::Subdiv2D::*)(cv::Rect)>("init_delaunay", &cv::Subdiv2D::initDelaunay,
+      Arg("rect"))
+    .define_method<int(cv::Subdiv2D::*)(cv::Point2f)>("insert", &cv::Subdiv2D::insert,
+      Arg("pt"))
+    .define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point2f>&)>("insert", &cv::Subdiv2D::insert,
+      Arg("ptvec"))
+    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, int&, int&)>("locate", &cv::Subdiv2D::locate,
+      Arg("pt"), Arg("edge"), Arg("vertex"))
+    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, cv::Point2f*)>("find_nearest", &cv::Subdiv2D::findNearest,
+      Arg("pt"), Arg("nearest_pt") = static_cast<cv::Point2f*>(0))
+    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec4f>&) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
+      Arg("edge_list"))
+    .define_method<void(cv::Subdiv2D::*)(std::vector<int>&) const>("get_leading_edge_list", &cv::Subdiv2D::getLeadingEdgeList,
+      Arg("leading_edge_list"))
+    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec6f>&) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
+      Arg("triangle_list"))
+    .define_method<void(cv::Subdiv2D::*)(const std::vector<int>&, std::vector<std::vector<cv::Point2f>>&, std::vector<cv::Point2f>&)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
+      Arg("idx"), Arg("facet_list"), Arg("facet_centers"))
+    .define_method<cv::Point2f(cv::Subdiv2D::*)(int, int*) const>("get_vertex", &cv::Subdiv2D::getVertex,
+      Arg("vertex"), ArgBuffer("first_edge") = static_cast<int*>(0))
+    .define_method<int(cv::Subdiv2D::*)(int, int) const>("get_edge", &cv::Subdiv2D::getEdge,
+      Arg("edge"), Arg("next_edge_type"))
+    .define_method<int(cv::Subdiv2D::*)(int) const>("next_edge", &cv::Subdiv2D::nextEdge,
+      Arg("edge"))
+    .define_method<int(cv::Subdiv2D::*)(int, int) const>("rotate_edge", &cv::Subdiv2D::rotateEdge,
+      Arg("edge"), Arg("rotate"))
+    .define_method<int(cv::Subdiv2D::*)(int) const>("sym_edge", &cv::Subdiv2D::symEdge,
+      Arg("edge"))
+    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_org", &cv::Subdiv2D::edgeOrg,
+      Arg("edge"), Arg("orgpt") = static_cast<cv::Point2f*>(0))
+    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_dst", &cv::Subdiv2D::edgeDst,
+      Arg("edge"), Arg("dstpt") = static_cast<cv::Point2f*>(0))
+    .define_constant("PTLOC_ERROR", (int)cv::Subdiv2D::PTLOC_ERROR)
+    .define_constant("PTLOC_OUTSIDE_RECT", (int)cv::Subdiv2D::PTLOC_OUTSIDE_RECT)
+    .define_constant("PTLOC_INSIDE", (int)cv::Subdiv2D::PTLOC_INSIDE)
+    .define_constant("PTLOC_VERTEX", (int)cv::Subdiv2D::PTLOC_VERTEX)
+    .define_constant("PTLOC_ON_EDGE", (int)cv::Subdiv2D::PTLOC_ON_EDGE)
+    .define_constant("NEXT_AROUND_ORG", (int)cv::Subdiv2D::NEXT_AROUND_ORG)
+    .define_constant("NEXT_AROUND_DST", (int)cv::Subdiv2D::NEXT_AROUND_DST)
+    .define_constant("PREV_AROUND_ORG", (int)cv::Subdiv2D::PREV_AROUND_ORG)
+    .define_constant("PREV_AROUND_DST", (int)cv::Subdiv2D::PREV_AROUND_DST)
+    .define_constant("NEXT_AROUND_LEFT", (int)cv::Subdiv2D::NEXT_AROUND_LEFT)
+    .define_constant("NEXT_AROUND_RIGHT", (int)cv::Subdiv2D::NEXT_AROUND_RIGHT)
+    .define_constant("PREV_AROUND_LEFT", (int)cv::Subdiv2D::PREV_AROUND_LEFT)
+    .define_constant("PREV_AROUND_RIGHT", (int)cv::Subdiv2D::PREV_AROUND_RIGHT)
+    ;
+  Rice::Data_Type<cv::LineSegmentDetector> rb_cCvLineSegmentDetector = define_class_under<cv::LineSegmentDetector, cv::Algorithm>(rb_mCv, "LineSegmentDetector")
+    .define_method<void(cv::LineSegmentDetector::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray)>("detect", &cv::LineSegmentDetector::detect,
+      Arg("image"), Arg("lines"), Arg("width") = static_cast<cv::OutputArray>(cv::noArray()), Arg("prec") = static_cast<cv::OutputArray>(cv::noArray()), Arg("nfa") = static_cast<cv::OutputArray>(cv::noArray()))
+    .define_method<void(cv::LineSegmentDetector::*)(cv::InputOutputArray, cv::InputArray)>("draw_segments", &cv::LineSegmentDetector::drawSegments,
+      Arg("image"), Arg("lines"))
+    .define_method<int(cv::LineSegmentDetector::*)(const cv::Size&, cv::InputArray, cv::InputArray, cv::InputOutputArray)>("compare_segments", &cv::LineSegmentDetector::compareSegments,
+      Arg("size"), Arg("lines1"), Arg("lines2"), Arg("image") = static_cast<cv::InputOutputArray>(cv::noArray()))
+    ;
   rb_mCv.define_module_function<cv::Ptr<cv::LineSegmentDetector>(*)(int, double, double, double, double, double, double, int)>("create_line_segment_detector", &cv::createLineSegmentDetector,
     Arg("refine") = static_cast<int>(cv::LSD_REFINE_STD), Arg("scale") = static_cast<double>(0.8), Arg("sigma_scale") = static_cast<double>(0.6), Arg("quant") = static_cast<double>(2.0), Arg("ang_th") = static_cast<double>(22.5), Arg("log_eps") = static_cast<double>(0), Arg("density_th") = static_cast<double>(0.7), Arg("n_bins") = static_cast<int>(1024));
 
@@ -876,14 +874,14 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(const cv::Moments&, cv::OutputArray)>("hu_moments", &cv::HuMoments,
     Arg("m"), Arg("hu"));
 
-  Enum<cv::TemplateMatchModes> rb_cCvTemplateMatchModes = define_enum_under<cv::TemplateMatchModes>("TemplateMatchModes", rb_mCv).
-    define_value("TM_SQDIFF", cv::TemplateMatchModes::TM_SQDIFF).
-    define_value("TM_SQDIFF_NORMED", cv::TemplateMatchModes::TM_SQDIFF_NORMED).
-    define_value("TM_CCORR", cv::TemplateMatchModes::TM_CCORR).
-    define_value("TM_CCORR_NORMED", cv::TemplateMatchModes::TM_CCORR_NORMED).
-    define_value("TM_CCOEFF", cv::TemplateMatchModes::TM_CCOEFF).
-    define_value("TM_CCOEFF_NORMED", cv::TemplateMatchModes::TM_CCOEFF_NORMED);
-
+  Enum<cv::TemplateMatchModes> rb_cCvTemplateMatchModes = define_enum_under<cv::TemplateMatchModes>("TemplateMatchModes", rb_mCv)
+    .define_value("TM_SQDIFF", cv::TemplateMatchModes::TM_SQDIFF)
+    .define_value("TM_SQDIFF_NORMED", cv::TemplateMatchModes::TM_SQDIFF_NORMED)
+    .define_value("TM_CCORR", cv::TemplateMatchModes::TM_CCORR)
+    .define_value("TM_CCORR_NORMED", cv::TemplateMatchModes::TM_CCORR_NORMED)
+    .define_value("TM_CCOEFF", cv::TemplateMatchModes::TM_CCOEFF)
+    .define_value("TM_CCOEFF_NORMED", cv::TemplateMatchModes::TM_CCOEFF_NORMED)
+    ;
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::InputArray)>("match_template", &cv::matchTemplate,
     Arg("image"), Arg("templ"), Arg("result"), Arg("method"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
@@ -975,30 +973,30 @@ void Init_Imgproc()
 
   rb_mCv.define_module_function<cv::Ptr<cv::GeneralizedHoughGuil>(*)()>("create_generalized_hough_guil", &cv::createGeneralizedHoughGuil);
 
-  Enum<cv::ColormapTypes> rb_cCvColormapTypes = define_enum_under<cv::ColormapTypes>("ColormapTypes", rb_mCv).
-    define_value("COLORMAP_AUTUMN", cv::ColormapTypes::COLORMAP_AUTUMN).
-    define_value("COLORMAP_BONE", cv::ColormapTypes::COLORMAP_BONE).
-    define_value("COLORMAP_JET", cv::ColormapTypes::COLORMAP_JET).
-    define_value("COLORMAP_WINTER", cv::ColormapTypes::COLORMAP_WINTER).
-    define_value("COLORMAP_RAINBOW", cv::ColormapTypes::COLORMAP_RAINBOW).
-    define_value("COLORMAP_OCEAN", cv::ColormapTypes::COLORMAP_OCEAN).
-    define_value("COLORMAP_SUMMER", cv::ColormapTypes::COLORMAP_SUMMER).
-    define_value("COLORMAP_SPRING", cv::ColormapTypes::COLORMAP_SPRING).
-    define_value("COLORMAP_COOL", cv::ColormapTypes::COLORMAP_COOL).
-    define_value("COLORMAP_HSV", cv::ColormapTypes::COLORMAP_HSV).
-    define_value("COLORMAP_PINK", cv::ColormapTypes::COLORMAP_PINK).
-    define_value("COLORMAP_HOT", cv::ColormapTypes::COLORMAP_HOT).
-    define_value("COLORMAP_PARULA", cv::ColormapTypes::COLORMAP_PARULA).
-    define_value("COLORMAP_MAGMA", cv::ColormapTypes::COLORMAP_MAGMA).
-    define_value("COLORMAP_INFERNO", cv::ColormapTypes::COLORMAP_INFERNO).
-    define_value("COLORMAP_PLASMA", cv::ColormapTypes::COLORMAP_PLASMA).
-    define_value("COLORMAP_VIRIDIS", cv::ColormapTypes::COLORMAP_VIRIDIS).
-    define_value("COLORMAP_CIVIDIS", cv::ColormapTypes::COLORMAP_CIVIDIS).
-    define_value("COLORMAP_TWILIGHT", cv::ColormapTypes::COLORMAP_TWILIGHT).
-    define_value("COLORMAP_TWILIGHT_SHIFTED", cv::ColormapTypes::COLORMAP_TWILIGHT_SHIFTED).
-    define_value("COLORMAP_TURBO", cv::ColormapTypes::COLORMAP_TURBO).
-    define_value("COLORMAP_DEEPGREEN", cv::ColormapTypes::COLORMAP_DEEPGREEN);
-
+  Enum<cv::ColormapTypes> rb_cCvColormapTypes = define_enum_under<cv::ColormapTypes>("ColormapTypes", rb_mCv)
+    .define_value("COLORMAP_AUTUMN", cv::ColormapTypes::COLORMAP_AUTUMN)
+    .define_value("COLORMAP_BONE", cv::ColormapTypes::COLORMAP_BONE)
+    .define_value("COLORMAP_JET", cv::ColormapTypes::COLORMAP_JET)
+    .define_value("COLORMAP_WINTER", cv::ColormapTypes::COLORMAP_WINTER)
+    .define_value("COLORMAP_RAINBOW", cv::ColormapTypes::COLORMAP_RAINBOW)
+    .define_value("COLORMAP_OCEAN", cv::ColormapTypes::COLORMAP_OCEAN)
+    .define_value("COLORMAP_SUMMER", cv::ColormapTypes::COLORMAP_SUMMER)
+    .define_value("COLORMAP_SPRING", cv::ColormapTypes::COLORMAP_SPRING)
+    .define_value("COLORMAP_COOL", cv::ColormapTypes::COLORMAP_COOL)
+    .define_value("COLORMAP_HSV", cv::ColormapTypes::COLORMAP_HSV)
+    .define_value("COLORMAP_PINK", cv::ColormapTypes::COLORMAP_PINK)
+    .define_value("COLORMAP_HOT", cv::ColormapTypes::COLORMAP_HOT)
+    .define_value("COLORMAP_PARULA", cv::ColormapTypes::COLORMAP_PARULA)
+    .define_value("COLORMAP_MAGMA", cv::ColormapTypes::COLORMAP_MAGMA)
+    .define_value("COLORMAP_INFERNO", cv::ColormapTypes::COLORMAP_INFERNO)
+    .define_value("COLORMAP_PLASMA", cv::ColormapTypes::COLORMAP_PLASMA)
+    .define_value("COLORMAP_VIRIDIS", cv::ColormapTypes::COLORMAP_VIRIDIS)
+    .define_value("COLORMAP_CIVIDIS", cv::ColormapTypes::COLORMAP_CIVIDIS)
+    .define_value("COLORMAP_TWILIGHT", cv::ColormapTypes::COLORMAP_TWILIGHT)
+    .define_value("COLORMAP_TWILIGHT_SHIFTED", cv::ColormapTypes::COLORMAP_TWILIGHT_SHIFTED)
+    .define_value("COLORMAP_TURBO", cv::ColormapTypes::COLORMAP_TURBO)
+    .define_value("COLORMAP_DEEPGREEN", cv::ColormapTypes::COLORMAP_DEEPGREEN)
+    ;
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("apply_color_map", &cv::applyColorMap,
     Arg("src"), Arg("dst"), Arg("colormap"));
 
@@ -1074,35 +1072,36 @@ void Init_Imgproc()
   rb_mCv.define_module_function<double(*)(const int, const int, const int)>("get_font_scale_from_height", &cv::getFontScaleFromHeight,
     Arg("font_face"), Arg("pixel_height"), Arg("thickness") = static_cast<const int>(1));
 
-  Rice::Data_Type<cv::LineIterator> rb_cCvLineIterator = define_class_under<cv::LineIterator>(rb_mCv, "LineIterator").
-    define_constructor(Constructor<cv::LineIterator, const cv::Mat&, cv::Point, cv::Point, int, bool>(),
-      Arg("img"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false)).
-    define_constructor(Constructor<cv::LineIterator, cv::Point, cv::Point, int, bool>(),
-      Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false)).
-    define_constructor(Constructor<cv::LineIterator, cv::Size, cv::Point, cv::Point, int, bool>(),
-      Arg("bounding_area_size"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false)).
-    define_constructor(Constructor<cv::LineIterator, cv::Rect, cv::Point, cv::Point, int, bool>(),
-      Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false)).
-    define_method<void(cv::LineIterator::*)(const cv::Mat*, cv::Rect, cv::Point, cv::Point, int, bool)>("init", &cv::LineIterator::init,
-      Arg("img"), Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity"), Arg("left_to_right")).
-    define_method<uchar*(cv::LineIterator::*)()>("dereference", &cv::LineIterator::operator*,
-      ReturnBuffer()).
-    define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++).
-    define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment_post", &cv::LineIterator::operator++,
-      Arg("arg_0")).
-    define_method<cv::Point(cv::LineIterator::*)() const>("pos", &cv::LineIterator::pos).
-    define_attr("ptr", &cv::LineIterator::ptr).
-    define_attr("ptr0", &cv::LineIterator::ptr0).
-    define_attr("step", &cv::LineIterator::step).
-    define_attr("elem_size", &cv::LineIterator::elemSize).
-    define_attr("err", &cv::LineIterator::err).
-    define_attr("count", &cv::LineIterator::count).
-    define_attr("minus_delta", &cv::LineIterator::minusDelta).
-    define_attr("plus_delta", &cv::LineIterator::plusDelta).
-    define_attr("minus_step", &cv::LineIterator::minusStep).
-    define_attr("plus_step", &cv::LineIterator::plusStep).
-    define_attr("minus_shift", &cv::LineIterator::minusShift).
-    define_attr("plus_shift", &cv::LineIterator::plusShift).
-    define_attr("p", &cv::LineIterator::p).
-    define_attr("ptmode", &cv::LineIterator::ptmode);
+  Rice::Data_Type<cv::LineIterator> rb_cCvLineIterator = define_class_under<cv::LineIterator>(rb_mCv, "LineIterator")
+    .define_constructor(Constructor<cv::LineIterator, const cv::Mat&, cv::Point, cv::Point, int, bool>(),
+      Arg("img"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
+    .define_constructor(Constructor<cv::LineIterator, cv::Point, cv::Point, int, bool>(),
+      Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
+    .define_constructor(Constructor<cv::LineIterator, cv::Size, cv::Point, cv::Point, int, bool>(),
+      Arg("bounding_area_size"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
+    .define_constructor(Constructor<cv::LineIterator, cv::Rect, cv::Point, cv::Point, int, bool>(),
+      Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
+    .define_method<void(cv::LineIterator::*)(const cv::Mat*, cv::Rect, cv::Point, cv::Point, int, bool)>("init", &cv::LineIterator::init,
+      Arg("img"), Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity"), Arg("left_to_right"))
+    .define_method<uchar*(cv::LineIterator::*)()>("dereference", &cv::LineIterator::operator*,
+      ReturnBuffer())
+    .define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++)
+    .define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment_post", &cv::LineIterator::operator++,
+      Arg("arg_0"))
+    .define_method<cv::Point(cv::LineIterator::*)() const>("pos", &cv::LineIterator::pos)
+    .define_attr("ptr", &cv::LineIterator::ptr)
+    .define_attr("ptr0", &cv::LineIterator::ptr0)
+    .define_attr("step", &cv::LineIterator::step)
+    .define_attr("elem_size", &cv::LineIterator::elemSize)
+    .define_attr("err", &cv::LineIterator::err)
+    .define_attr("count", &cv::LineIterator::count)
+    .define_attr("minus_delta", &cv::LineIterator::minusDelta)
+    .define_attr("plus_delta", &cv::LineIterator::plusDelta)
+    .define_attr("minus_step", &cv::LineIterator::minusStep)
+    .define_attr("plus_step", &cv::LineIterator::plusStep)
+    .define_attr("minus_shift", &cv::LineIterator::minusShift)
+    .define_attr("plus_shift", &cv::LineIterator::plusShift)
+    .define_attr("p", &cv::LineIterator::p)
+    .define_attr("ptmode", &cv::LineIterator::ptmode)
+    ;
 }

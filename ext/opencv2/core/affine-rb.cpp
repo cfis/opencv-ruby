@@ -15,23 +15,25 @@ void Init_Core_Affine()
 
   Module rb_mCvTraits = define_module_under(rb_mCv, "Traits");
 
-  rb_cAffine3f.
-    define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
+  rb_cAffine3f
+    .define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
     {
       return self * other;
-    }).
-    define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
+    })
+    .define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
     {
       return self * other;
-    });
+    })
+    ;
   
-  rb_cAffine3d.
-    define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
+  rb_cAffine3d
+    .define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
     {
       return self * other;
-    }).
-    define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
+    })
+    .define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
     {
       return self * other;
-    });
+    })
+    ;
 }

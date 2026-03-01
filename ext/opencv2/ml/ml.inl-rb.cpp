@@ -1,5 +1,3 @@
-#include <opencv2/core/cvdef.h> // Manual
-#include <opencv2/core/operations.hpp> // Manual
 #include <opencv2/ml/ml.inl.hpp>
 #include "ml.inl-rb.hpp"
 

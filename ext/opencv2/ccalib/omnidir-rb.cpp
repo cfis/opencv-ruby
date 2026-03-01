@@ -18,15 +18,12 @@ void Init_Ccalib_Omnidir()
   rb_mCvOmnidir.define_constant("CALIB_FIX_XI", (int)cv::omnidir::CALIB_FIX_XI);
   rb_mCvOmnidir.define_constant("CALIB_FIX_GAMMA", (int)cv::omnidir::CALIB_FIX_GAMMA);
   rb_mCvOmnidir.define_constant("CALIB_FIX_CENTER", (int)cv::omnidir::CALIB_FIX_CENTER);
-
   rb_mCvOmnidir.define_constant("RECTIFY_PERSPECTIVE", (int)cv::omnidir::RECTIFY_PERSPECTIVE);
   rb_mCvOmnidir.define_constant("RECTIFY_CYLINDRICAL", (int)cv::omnidir::RECTIFY_CYLINDRICAL);
   rb_mCvOmnidir.define_constant("RECTIFY_LONGLATI", (int)cv::omnidir::RECTIFY_LONGLATI);
   rb_mCvOmnidir.define_constant("RECTIFY_STEREOGRAPHIC", (int)cv::omnidir::RECTIFY_STEREOGRAPHIC);
-
   rb_mCvOmnidir.define_constant("XYZRGB", (int)cv::omnidir::XYZRGB);
   rb_mCvOmnidir.define_constant("XYZ", (int)cv::omnidir::XYZ);
-
   rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
     Arg("object_points"), Arg("image_points"), Arg("rvec"), Arg("tvec"), Arg("k"), Arg("xi"), Arg("d"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 

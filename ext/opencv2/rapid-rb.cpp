@@ -33,20 +33,21 @@ void Init_Rapid()
   rb_mCvRapid.define_module_function<float(*)(cv::InputArray, int, int, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, double*)>("rapid", &cv::rapid::rapid,
     Arg("img"), Arg("num"), Arg("len"), Arg("pts3d"), Arg("tris"), Arg("k"), Arg("rvec"), Arg("tvec"), ArgBuffer("rmsd") = static_cast<double*>(0));
 
-  Rice::Data_Type<cv::rapid::Tracker> rb_cCvRapidTracker = define_class_under<cv::rapid::Tracker, cv::Algorithm>(rb_mCvRapid, "Tracker").
-    define_method<float(cv::rapid::Tracker::*)(cv::InputArray, int, int, cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, const cv::TermCriteria&)>("compute", &cv::rapid::Tracker::compute,
-      Arg("img"), Arg("num"), Arg("len"), Arg("k"), Arg("rvec"), Arg("tvec"), Arg("termcrit") = static_cast<const cv::TermCriteria&>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER | cv::TermCriteria::Type::EPS, 5, 1.5))).
-    define_method<void(cv::rapid::Tracker::*)()>("clear_state", &cv::rapid::Tracker::clearState);
-
-  Rice::Data_Type<cv::rapid::Rapid> rb_cCvRapidRapid = define_class_under<cv::rapid::Rapid, cv::rapid::Tracker>(rb_mCvRapid, "Rapid").
-    define_singleton_function<cv::Ptr<cv::rapid::Rapid>(*)(cv::InputArray, cv::InputArray)>("create", &cv::rapid::Rapid::create,
-      Arg("pts3d"), Arg("tris"));
-
-  Rice::Data_Type<cv::rapid::OLSTracker> rb_cCvRapidOLSTracker = define_class_under<cv::rapid::OLSTracker, cv::rapid::Tracker>(rb_mCvRapid, "OLSTracker").
-    define_singleton_function<cv::Ptr<cv::rapid::OLSTracker>(*)(cv::InputArray, cv::InputArray, int, uchar)>("create", &cv::rapid::OLSTracker::create,
-      Arg("pts3d"), Arg("tris"), Arg("hist_bins") = static_cast<int>(8), Arg("sobel_thesh") = static_cast<uchar>(10));
-
-  Rice::Data_Type<cv::rapid::GOSTracker> rb_cCvRapidGOSTracker = define_class_under<cv::rapid::GOSTracker, cv::rapid::Tracker>(rb_mCvRapid, "GOSTracker").
-    define_singleton_function<cv::Ptr<cv::rapid::OLSTracker>(*)(cv::InputArray, cv::InputArray, int, uchar)>("create", &cv::rapid::GOSTracker::create,
-      Arg("pts3d"), Arg("tris"), Arg("hist_bins") = static_cast<int>(4), Arg("sobel_thesh") = static_cast<uchar>(10));
+  Rice::Data_Type<cv::rapid::Tracker> rb_cCvRapidTracker = define_class_under<cv::rapid::Tracker, cv::Algorithm>(rb_mCvRapid, "Tracker")
+    .define_method<float(cv::rapid::Tracker::*)(cv::InputArray, int, int, cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, const cv::TermCriteria&)>("compute", &cv::rapid::Tracker::compute,
+      Arg("img"), Arg("num"), Arg("len"), Arg("k"), Arg("rvec"), Arg("tvec"), Arg("termcrit") = static_cast<const cv::TermCriteria&>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER | cv::TermCriteria::Type::EPS, 5, 1.5)))
+    .define_method<void(cv::rapid::Tracker::*)()>("clear_state", &cv::rapid::Tracker::clearState)
+    ;
+  Rice::Data_Type<cv::rapid::Rapid> rb_cCvRapidRapid = define_class_under<cv::rapid::Rapid, cv::rapid::Tracker>(rb_mCvRapid, "Rapid")
+    .define_singleton_function<cv::Ptr<cv::rapid::Rapid>(*)(cv::InputArray, cv::InputArray)>("create", &cv::rapid::Rapid::create,
+      Arg("pts3d"), Arg("tris"))
+    ;
+  Rice::Data_Type<cv::rapid::OLSTracker> rb_cCvRapidOLSTracker = define_class_under<cv::rapid::OLSTracker, cv::rapid::Tracker>(rb_mCvRapid, "OLSTracker")
+    .define_singleton_function<cv::Ptr<cv::rapid::OLSTracker>(*)(cv::InputArray, cv::InputArray, int, uchar)>("create", &cv::rapid::OLSTracker::create,
+      Arg("pts3d"), Arg("tris"), Arg("hist_bins") = static_cast<int>(8), Arg("sobel_thesh") = static_cast<uchar>(10))
+    ;
+  Rice::Data_Type<cv::rapid::GOSTracker> rb_cCvRapidGOSTracker = define_class_under<cv::rapid::GOSTracker, cv::rapid::Tracker>(rb_mCvRapid, "GOSTracker")
+    .define_singleton_function<cv::Ptr<cv::rapid::OLSTracker>(*)(cv::InputArray, cv::InputArray, int, uchar)>("create", &cv::rapid::GOSTracker::create,
+      Arg("pts3d"), Arg("tris"), Arg("hist_bins") = static_cast<int>(4), Arg("sobel_thesh") = static_cast<uchar>(10))
+    ;
 }

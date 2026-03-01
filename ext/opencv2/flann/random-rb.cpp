@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/flann/random.h>
 #include "random-rb.hpp"
 
@@ -19,10 +18,11 @@ void Init_Flann_Random()
   rb_mCvflann.define_module_function<int(*)(int, int)>("rand_int", &cvflann::rand_int,
     Arg("high") = static_cast<int>(RAND_MAX), Arg("low") = static_cast<int>(0));
 
-  Rice::Data_Type<cvflann::UniqueRandom> rb_cCvflannUniqueRandom = define_class_under<cvflann::UniqueRandom>(rb_mCvflann, "UniqueRandom").
-    define_constructor(Constructor<cvflann::UniqueRandom, int>(),
-      Arg("n")).
-    define_method<void(cvflann::UniqueRandom::*)(int)>("init", &cvflann::UniqueRandom::init,
-      Arg("n")).
-    define_method<int(cvflann::UniqueRandom::*)()>("next", &cvflann::UniqueRandom::next);
+  Rice::Data_Type<cvflann::UniqueRandom> rb_cCvflannUniqueRandom = define_class_under<cvflann::UniqueRandom>(rb_mCvflann, "UniqueRandom")
+    .define_constructor(Constructor<cvflann::UniqueRandom, int>(),
+      Arg("n"))
+    .define_method<void(cvflann::UniqueRandom::*)(int)>("init", &cvflann::UniqueRandom::init,
+      Arg("n"))
+    .define_method<int(cvflann::UniqueRandom::*)()>("next", &cvflann::UniqueRandom::next)
+    ;
 }

@@ -9,7 +9,8 @@ void Init_Videostab_FastMarching()
 
   Module rb_mCvVideostab = define_module_under(rb_mCv, "Videostab");
 
-  Rice::Data_Type<cv::videostab::FastMarchingMethod> rb_cCvVideostabFastMarchingMethod = define_class_under<cv::videostab::FastMarchingMethod>(rb_mCvVideostab, "FastMarchingMethod").
-    define_constructor(Constructor<cv::videostab::FastMarchingMethod>()).
-    define_method<cv::Mat(cv::videostab::FastMarchingMethod::*)() const>("distance_map", &cv::videostab::FastMarchingMethod::distanceMap);
+  Rice::Data_Type<cv::videostab::FastMarchingMethod> rb_cCvVideostabFastMarchingMethod = define_class_under<cv::videostab::FastMarchingMethod>(rb_mCvVideostab, "FastMarchingMethod")
+    .define_constructor(Constructor<cv::videostab::FastMarchingMethod>())
+    .define_method<cv::Mat(cv::videostab::FastMarchingMethod::*)() const>("distance_map", &cv::videostab::FastMarchingMethod::distanceMap)
+    ;
 }

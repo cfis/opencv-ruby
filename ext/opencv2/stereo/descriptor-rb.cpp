@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/stereo/descriptor.hpp>
 #include "descriptor-rb.hpp"
 
@@ -17,7 +16,6 @@ void Init_Stereo_Descriptor()
   rb_mCvStereo.define_constant("CV_MODIFIED_CENSUS_TRANSFORM", (int)cv::stereo::CV_MODIFIED_CENSUS_TRANSFORM);
   rb_mCvStereo.define_constant("CV_MEAN_VARIATION", (int)cv::stereo::CV_MEAN_VARIATION);
   rb_mCvStereo.define_constant("CV_STAR_KERNEL", (int)cv::stereo::CV_STAR_KERNEL);
-
   rb_mCvStereo.define_module_function<void(*)(const cv::Mat&, const cv::Mat&, int, cv::Mat&, cv::Mat&, const int)>("census_transform", &cv::stereo::censusTransform,
     Arg("image1"), Arg("image2"), Arg("kernel_size"), Arg("dist1"), Arg("dist2"), Arg("type"));
 

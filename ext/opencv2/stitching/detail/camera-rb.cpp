@@ -9,17 +9,18 @@ void Init_Stitching_Detail_Camera()
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  Rice::Data_Type<cv::detail::CameraParams> rb_cCvDetailCameraParams = define_class_under<cv::detail::CameraParams>(rb_mCvDetail, "CameraParams").
-    define_constructor(Constructor<cv::detail::CameraParams>()).
-    define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams&>(),
-      Arg("other")).
-    define_method<cv::detail::CameraParams&(cv::detail::CameraParams::*)(const cv::detail::CameraParams&)>("assign", &cv::detail::CameraParams::operator=,
-      Arg("other")).
-    define_method<cv::Mat(cv::detail::CameraParams::*)() const>("k", &cv::detail::CameraParams::K).
-    define_attr("focal", &cv::detail::CameraParams::focal).
-    define_attr("aspect", &cv::detail::CameraParams::aspect).
-    define_attr("ppx", &cv::detail::CameraParams::ppx).
-    define_attr("ppy", &cv::detail::CameraParams::ppy).
-    define_attr("r", &cv::detail::CameraParams::R).
-    define_attr("t", &cv::detail::CameraParams::t);
+  Rice::Data_Type<cv::detail::CameraParams> rb_cCvDetailCameraParams = define_class_under<cv::detail::CameraParams>(rb_mCvDetail, "CameraParams")
+    .define_constructor(Constructor<cv::detail::CameraParams>())
+    .define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams&>(),
+      Arg("other"))
+    .define_method<cv::detail::CameraParams&(cv::detail::CameraParams::*)(const cv::detail::CameraParams&)>("assign", &cv::detail::CameraParams::operator=,
+      Arg("other"))
+    .define_method<cv::Mat(cv::detail::CameraParams::*)() const>("k", &cv::detail::CameraParams::K)
+    .define_attr("focal", &cv::detail::CameraParams::focal)
+    .define_attr("aspect", &cv::detail::CameraParams::aspect)
+    .define_attr("ppx", &cv::detail::CameraParams::ppx)
+    .define_attr("ppy", &cv::detail::CameraParams::ppy)
+    .define_attr("r", &cv::detail::CameraParams::R)
+    .define_attr("t", &cv::detail::CameraParams::t)
+    ;
 }

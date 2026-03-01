@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/core/utils/logger.hpp>
 #include "logger-rb.hpp"
 
@@ -36,7 +35,8 @@ void Init_Core_Utils_Logger()
   rb_mCvUtilsLoggingInternal.define_module_function<void(*)(cv::utils::logging::LogLevel, const char*, const char*, int, const char*, const char*)>("write_log_message_ex", &cv::utils::logging::internal::writeLogMessageEx,
     Arg("log_level"), Arg("tag"), Arg("file"), Arg("line"), Arg("func"), Arg("message"));
 
-  Rice::Data_Type<cv::utils::logging::LogTagAuto> rb_cCvUtilsLoggingLogTagAuto = define_class_under<cv::utils::logging::LogTagAuto, cv::utils::logging::LogTag>(rb_mCvUtilsLogging, "LogTagAuto").
-    define_constructor(Constructor<cv::utils::logging::LogTagAuto, const char*, cv::utils::logging::LogLevel>(),
-      Arg("_name"), Arg("_level"));
+  Rice::Data_Type<cv::utils::logging::LogTagAuto> rb_cCvUtilsLoggingLogTagAuto = define_class_under<cv::utils::logging::LogTagAuto, cv::utils::logging::LogTag>(rb_mCvUtilsLogging, "LogTagAuto")
+    .define_constructor(Constructor<cv::utils::logging::LogTagAuto, const char*, cv::utils::logging::LogLevel>(),
+      Arg("_name"), Arg("_level"))
+    ;
 }

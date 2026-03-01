@@ -1,5 +1,3 @@
-#include <opencv2/core.hpp> // Manual
-#include <vector> // Manual
 #include <opencv2/flann/lsh_table.h>
 #include "lsh_table-rb.hpp"
 
@@ -15,22 +13,23 @@ void Init_Flann_LshTable()
 
   Module rb_mCvflannLsh = define_module_under(rb_mCvflann, "Lsh");
 
-  Rice::Data_Type<cvflann::lsh::LshStats> rb_cCvflannLshLshStats = define_class_under<cvflann::lsh::LshStats>(rb_mCvflannLsh, "LshStats").
-    define_constructor(Constructor<cvflann::lsh::LshStats>()).
-    define_attr("bucket_sizes_", &cvflann::lsh::LshStats::bucket_sizes_).
-    define_attr("n_buckets_", &cvflann::lsh::LshStats::n_buckets_).
-    define_attr("bucket_size_mean_", &cvflann::lsh::LshStats::bucket_size_mean_).
-    define_attr("bucket_size_median_", &cvflann::lsh::LshStats::bucket_size_median_).
-    define_attr("bucket_size_min_", &cvflann::lsh::LshStats::bucket_size_min_).
-    define_attr("bucket_size_max_", &cvflann::lsh::LshStats::bucket_size_max_).
-    define_attr("bucket_size_std_dev", &cvflann::lsh::LshStats::bucket_size_std_dev).
-    define_attr("size_histogram_", &cvflann::lsh::LshStats::size_histogram_);
-
-  rb_cCvflannLshLshStats.
-    define_method("inspect", [](const cvflann::lsh::LshStats& self) -> std::string
+  Rice::Data_Type<cvflann::lsh::LshStats> rb_cCvflannLshLshStats = define_class_under<cvflann::lsh::LshStats>(rb_mCvflannLsh, "LshStats")
+    .define_constructor(Constructor<cvflann::lsh::LshStats>())
+    .define_attr("bucket_sizes_", &cvflann::lsh::LshStats::bucket_sizes_)
+    .define_attr("n_buckets_", &cvflann::lsh::LshStats::n_buckets_)
+    .define_attr("bucket_size_mean_", &cvflann::lsh::LshStats::bucket_size_mean_)
+    .define_attr("bucket_size_median_", &cvflann::lsh::LshStats::bucket_size_median_)
+    .define_attr("bucket_size_min_", &cvflann::lsh::LshStats::bucket_size_min_)
+    .define_attr("bucket_size_max_", &cvflann::lsh::LshStats::bucket_size_max_)
+    .define_attr("bucket_size_std_dev", &cvflann::lsh::LshStats::bucket_size_std_dev)
+    .define_attr("size_histogram_", &cvflann::lsh::LshStats::size_histogram_)
+    ;
+  rb_cCvflannLshLshStats
+    .define_method("inspect", [](const cvflann::lsh::LshStats& self) -> std::string
     {
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    });
+    })
+    ;
 }

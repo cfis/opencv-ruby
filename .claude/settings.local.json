@@ -6,7 +6,12 @@
       "WebFetch(domain:zensical.org)",
       "Bash(cd:*)",
       "Bash(grep:*)",
-      "Bash(echo === Directory: $dir ===:*)"
+      "Bash(echo === Directory: $dir ===:*)",
+      "Bash(perl:*)",
+      "Bash(ls:*)",
+      "Bash(done)",
+      "Bash(xargs sed:*)",
+      "Bash(bundle exec:*)"
     ]
   }
 }

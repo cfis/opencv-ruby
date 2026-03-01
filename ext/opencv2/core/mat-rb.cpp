@@ -137,9 +137,8 @@ void Init_Core_Mat()
       Arg("vec")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::GpuMat&>(),
       Arg("d_mat")).
-    // Commented out - causes linker errors
-    // define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
-    //   Arg("d_mat")).
+    define_constructor(Constructor<cv::_OutputArray, std::vector<cv::cuda::GpuMat>&>(),
+      Arg("d_mat")).
     define_constructor(Constructor<cv::_OutputArray, cv::ogl::Buffer&>(),
       Arg("buf")).
     define_constructor(Constructor<cv::_OutputArray, cv::cuda::HostMem&>(),
@@ -894,7 +893,7 @@ void Init_Core_Mat()
       Arg("_m"), Arg("_pt")).
     // Linker error - no explicit template instantiation
     // define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("_idx")).
+    //   Arg("_m"), Arg("_idx")).
     define_constructor(Constructor<cv::MatConstIterator, const cv::MatConstIterator&>(),
       Arg("it")).
     define_method<cv::MatConstIterator&(cv::MatConstIterator::*)(const cv::MatConstIterator&)>("assign", &cv::MatConstIterator::operator=,
@@ -954,7 +953,7 @@ void Init_Core_Mat()
       Arg("_m")).
     // Linker error - no explicit template instantiation
     // define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
-    //   Arg("_m"), ArgBuffer("idx")).
+    //   Arg("_m"), Arg("idx")).
     define_constructor(Constructor<cv::SparseMatIterator, const cv::SparseMatIterator&>(),
       Arg("it")).
     define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,

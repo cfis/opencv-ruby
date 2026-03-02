@@ -21,8 +21,7 @@ void Init_Ximgproc_FourierDescriptors()
     .define_method<void(cv::ximgproc::ContourFitting::*)(int)>("set_fd_size", &cv::ximgproc::ContourFitting::setFDSize,
       Arg("n"))
     .define_method<int(cv::ximgproc::ContourFitting::*)()>("get_ctr_size", &cv::ximgproc::ContourFitting::getCtrSize)
-    .define_method<int(cv::ximgproc::ContourFitting::*)()>("get_fd_size", &cv::ximgproc::ContourFitting::getFDSize)
-    ;
+    .define_method<int(cv::ximgproc::ContourFitting::*)()>("get_fd_size", &cv::ximgproc::ContourFitting::getFDSize);
   rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int)>("fourier_descriptor", &cv::ximgproc::fourierDescriptor,
     Arg("src"), Arg("dst"), Arg("nb_elt") = static_cast<int>(-1), Arg("nb_fd") = static_cast<int>(-1));
 

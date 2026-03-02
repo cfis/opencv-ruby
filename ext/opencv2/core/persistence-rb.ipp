@@ -5,8 +5,7 @@ inline Rice::Data_Type<cv::internal::VecWriterProxy<_Tp, numflag>> VecWriterProx
     .define_constructor(Constructor<cv::internal::VecWriterProxy<_Tp, numflag>, cv::FileStorage*>(),
       Arg("_fs"))
     .template define_method<void(cv::internal::VecWriterProxy<_Tp, numflag>::*)(const std::vector<_Tp>&) const>("call", &cv::internal::VecWriterProxy<_Tp, numflag>::operator(),
-      Arg("vec"))
-    ;
+      Arg("vec"));
 }
 
 template<typename _Tp, int numflag>
@@ -16,7 +15,6 @@ inline Rice::Data_Type<cv::internal::VecReaderProxy<_Tp, numflag>> VecReaderProx
     .define_constructor(Constructor<cv::internal::VecReaderProxy<_Tp, numflag>, cv::FileNodeIterator*>(),
       Arg("_it"))
     .template define_method<void(cv::internal::VecReaderProxy<_Tp, numflag>::*)(std::vector<_Tp>&, size_t) const>("call", &cv::internal::VecReaderProxy<_Tp, numflag>::operator(),
-      Arg("vec"), Arg("count"))
-    ;
+      Arg("vec"), Arg("count"));
 }
 

@@ -11,11 +11,9 @@ void Init_Core_Quaternion()
 
   Enum<cv::QuatAssumeType> rb_cCvQuatAssumeType = define_enum_under<cv::QuatAssumeType>("QuatAssumeType", rb_mCv)
     .define_value("QUAT_ASSUME_NOT_UNIT", cv::QuatAssumeType::QUAT_ASSUME_NOT_UNIT)
-    .define_value("QUAT_ASSUME_UNIT", cv::QuatAssumeType::QUAT_ASSUME_UNIT)
-    ;
+    .define_value("QUAT_ASSUME_UNIT", cv::QuatAssumeType::QUAT_ASSUME_UNIT);
   Rice::Data_Type<cv::QuatEnum> rb_cCvQuatEnum = define_class_under<cv::QuatEnum>(rb_mCv, "QuatEnum")
-    .define_constructor(Constructor<cv::QuatEnum>())
-    ;
+    .define_constructor(Constructor<cv::QuatEnum>());
   Enum<cv::QuatEnum::EulerAnglesType> rb_cCvQuatEnumEulerAnglesType = define_enum_under<cv::QuatEnum::EulerAnglesType>("EulerAnglesType", rb_cCvQuatEnum)
     .define_value("INT_XYZ", cv::QuatEnum::EulerAnglesType::INT_XYZ)
     .define_value("INT_XZY", cv::QuatEnum::EulerAnglesType::INT_XZY)
@@ -41,8 +39,7 @@ void Init_Core_Quaternion()
     .define_value("EXT_YZY", cv::QuatEnum::EulerAnglesType::EXT_YZY)
     .define_value("EXT_ZXZ", cv::QuatEnum::EulerAnglesType::EXT_ZXZ)
     .define_value("EXT_ZYZ", cv::QuatEnum::EulerAnglesType::EXT_ZYZ)
-    .define_value("EULER_ANGLES_MAX_VALUE", cv::QuatEnum::EulerAnglesType::EULER_ANGLES_MAX_VALUE)
-    ;
+    .define_value("EULER_ANGLES_MAX_VALUE", cv::QuatEnum::EulerAnglesType::EULER_ANGLES_MAX_VALUE);
   Rice::Data_Type<cv::Quat<double>> quatd = Quat_instantiate<double>(rb_mCv, "Quatd");
 
   Rice::Data_Type<cv::Quat<float>> quatf = Quat_instantiate<float>(rb_mCv, "Quatf");

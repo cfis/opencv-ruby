@@ -12,38 +12,31 @@ void Init_Core_Matx()
   Rice::Data_Type<cv::Matx_AddOp> rb_cCvMatxAddOp = define_class_under<cv::Matx_AddOp>(rb_mCv, "MatxAddOp")
     .define_constructor(Constructor<cv::Matx_AddOp>())
     .define_constructor(Constructor<cv::Matx_AddOp, const cv::Matx_AddOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_SubOp> rb_cCvMatxSubOp = define_class_under<cv::Matx_SubOp>(rb_mCv, "MatxSubOp")
     .define_constructor(Constructor<cv::Matx_SubOp>())
     .define_constructor(Constructor<cv::Matx_SubOp, const cv::Matx_SubOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_ScaleOp> rb_cCvMatxScaleOp = define_class_under<cv::Matx_ScaleOp>(rb_mCv, "MatxScaleOp")
     .define_constructor(Constructor<cv::Matx_ScaleOp>())
     .define_constructor(Constructor<cv::Matx_ScaleOp, const cv::Matx_ScaleOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_MulOp> rb_cCvMatxMulOp = define_class_under<cv::Matx_MulOp>(rb_mCv, "MatxMulOp")
     .define_constructor(Constructor<cv::Matx_MulOp>())
     .define_constructor(Constructor<cv::Matx_MulOp, const cv::Matx_MulOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_DivOp> rb_cCvMatxDivOp = define_class_under<cv::Matx_DivOp>(rb_mCv, "MatxDivOp")
     .define_constructor(Constructor<cv::Matx_DivOp>())
     .define_constructor(Constructor<cv::Matx_DivOp, const cv::Matx_DivOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_MatMulOp> rb_cCvMatxMatMulOp = define_class_under<cv::Matx_MatMulOp>(rb_mCv, "MatxMatMulOp")
     .define_constructor(Constructor<cv::Matx_MatMulOp>())
     .define_constructor(Constructor<cv::Matx_MatMulOp, const cv::Matx_MatMulOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx_TOp> rb_cCvMatxTOp = define_class_under<cv::Matx_TOp>(rb_mCv, "MatxTOp")
     .define_constructor(Constructor<cv::Matx_TOp>())
     .define_constructor(Constructor<cv::Matx_TOp, const cv::Matx_TOp&>(),
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
   Rice::Data_Type<cv::Matx<float, 1, 2>> rb_cMatx12f = Matx_instantiate<float, 1, 2>(rb_mCv, "Matx12f");
 
   Rice::Data_Type<cv::Matx<double, 1, 2>> rb_cMatx12d = Matx_instantiate<double, 1, 2>(rb_mCv, "Matx12d");

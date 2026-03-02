@@ -17,8 +17,7 @@ inline Rice::Data_Type<cv::Allocator<_Tp>> Allocator_instantiate(Rice::Module pa
       Arg("p"), Arg("v"))
     .template define_method<void(cv::Allocator<_Tp>::*)(typename cv::Allocator<_Tp>::pointer)>("destroy", &cv::Allocator<_Tp>::destroy,
       Arg("p"))
-    .template define_method<typename cv::Allocator<_Tp>::size_type(cv::Allocator<_Tp>::*)() const>("max_size", &cv::Allocator<_Tp>::max_size)
-    ;
+    .template define_method<typename cv::Allocator<_Tp>::size_type(cv::Allocator<_Tp>::*)() const>("max_size", &cv::Allocator<_Tp>::max_size);
 }
 
 template<typename U>

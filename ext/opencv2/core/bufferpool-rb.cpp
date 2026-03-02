@@ -12,6 +12,5 @@ void Init_Core_Bufferpool()
     .define_method<size_t(cv::BufferPoolController::*)() const>("get_max_reserved_size", &cv::BufferPoolController::getMaxReservedSize)
     .define_method<void(cv::BufferPoolController::*)(size_t)>("set_max_reserved_size", &cv::BufferPoolController::setMaxReservedSize,
       Arg("size"))
-    .define_method<void(cv::BufferPoolController::*)()>("free_all_reserved_buffers", &cv::BufferPoolController::freeAllReservedBuffers)
-    ;
+    .define_method<void(cv::BufferPoolController::*)()>("free_all_reserved_buffers", &cv::BufferPoolController::freeAllReservedBuffers);
 }

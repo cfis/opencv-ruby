@@ -23,8 +23,7 @@ void Init_Stitching_Detail_Blenders()
       Arg("dst"), Arg("dst_mask"))
     .define_constant("NO", (int)cv::detail::Blender::NO)
     .define_constant("FEATHER", (int)cv::detail::Blender::FEATHER)
-    .define_constant("MULTI_BAND", (int)cv::detail::Blender::MULTI_BAND)
-    ;
+    .define_constant("MULTI_BAND", (int)cv::detail::Blender::MULTI_BAND);
   Rice::Data_Type<cv::detail::FeatherBlender> rb_cCvDetailFeatherBlender = define_class_under<cv::detail::FeatherBlender, cv::detail::Blender>(rb_mCvDetail, "FeatherBlender")
     .define_constructor(Constructor<cv::detail::FeatherBlender, float>(),
       Arg("sharpness") = static_cast<float>(0.02f))
@@ -38,8 +37,7 @@ void Init_Stitching_Detail_Blenders()
     .define_method<void(cv::detail::FeatherBlender::*)(cv::InputOutputArray, cv::InputOutputArray)>("blend", &cv::detail::FeatherBlender::blend,
       Arg("dst"), Arg("dst_mask"))
     .define_method<cv::Rect(cv::detail::FeatherBlender::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
-      Arg("masks"), Arg("corners"), Arg("weight_maps"))
-    ;
+      Arg("masks"), Arg("corners"), Arg("weight_maps"));
   Rice::Data_Type<cv::detail::MultiBandBlender> rb_cCvDetailMultiBandBlender = define_class_under<cv::detail::MultiBandBlender, cv::detail::Blender>(rb_mCvDetail, "MultiBandBlender")
     .define_constructor(Constructor<cv::detail::MultiBandBlender, int, int, int>(),
       Arg("try_gpu") = static_cast<int>(false), Arg("num_bands") = static_cast<int>(5), Arg("weight_type") = static_cast<int>(CV_32F))
@@ -51,8 +49,7 @@ void Init_Stitching_Detail_Blenders()
     .define_method<void(cv::detail::MultiBandBlender::*)(cv::InputArray, cv::InputArray, cv::Point)>("feed", &cv::detail::MultiBandBlender::feed,
       Arg("img"), Arg("mask"), Arg("tl"))
     .define_method<void(cv::detail::MultiBandBlender::*)(cv::InputOutputArray, cv::InputOutputArray)>("blend", &cv::detail::MultiBandBlender::blend,
-      Arg("dst"), Arg("dst_mask"))
-    ;
+      Arg("dst"), Arg("dst_mask"));
   rb_mCvDetail.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray)>("normalize_using_weight_map", &cv::detail::normalizeUsingWeightMap,
     Arg("weight"), Arg("src"));
 

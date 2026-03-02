@@ -19,6 +19,5 @@ void Init_Face_Mace()
     .define_singleton_function<cv::Ptr<cv::face::MACE>(*)(const cv::String&, const cv::String&)>("load", &cv::face::MACE::load,
       Arg("filename"), Arg("objname") = static_cast<const cv::String&>(cv::String()))
     .define_singleton_function<cv::Ptr<cv::face::MACE>(*)(int)>("create", &cv::face::MACE::create,
-      Arg("imgsize") = static_cast<int>(64))
-    ;
+      Arg("imgsize") = static_cast<int>(64));
 }

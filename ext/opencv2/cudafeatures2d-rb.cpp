@@ -48,8 +48,7 @@ void Init_Cudafeatures2d()
     .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, float, const std::vector<cv::cuda::GpuMat>&, cv::cuda::Stream&)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
       Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
     .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, bool)>("radius_match_convert", &cv::cuda::DescriptorMatcher::radiusMatchConvert,
-      Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false))
-    ;
+      Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false));
   Rice::Data_Type<cv::cuda::Feature2DAsync> rb_cCvCudaFeature2DAsync = define_class_under<cv::cuda::Feature2DAsync, cv::Feature2D>(rb_mCvCuda, "Feature2DAsync")
     .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream&)>("detect_async", &cv::cuda::Feature2DAsync::detectAsync,
       Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
@@ -58,8 +57,7 @@ void Init_Cudafeatures2d()
     .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream&)>("detect_and_compute_async", &cv::cuda::Feature2DAsync::detectAndComputeAsync,
       Arg("image"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
     .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, std::vector<cv::KeyPoint>&)>("convert", &cv::cuda::Feature2DAsync::convert,
-      Arg("gpu_keypoints"), Arg("keypoints"))
-    ;
+      Arg("gpu_keypoints"), Arg("keypoints"));
   Rice::Data_Type<cv::cuda::FastFeatureDetector> rb_cCvCudaFastFeatureDetector = define_class_under<cv::cuda::FastFeatureDetector, cv::cuda::Feature2DAsync>(rb_mCvCuda, "FastFeatureDetector")
     .define_constant("LOCATION_ROW", cv::cuda::FastFeatureDetector::LOCATION_ROW)
     .define_constant("RESPONSE_ROW", cv::cuda::FastFeatureDetector::RESPONSE_ROW)
@@ -71,8 +69,7 @@ void Init_Cudafeatures2d()
       Arg("threshold"))
     .define_method<void(cv::cuda::FastFeatureDetector::*)(int)>("set_max_num_points", &cv::cuda::FastFeatureDetector::setMaxNumPoints,
       Arg("max_npoints"))
-    .define_method<int(cv::cuda::FastFeatureDetector::*)() const>("get_max_num_points", &cv::cuda::FastFeatureDetector::getMaxNumPoints)
-    ;
+    .define_method<int(cv::cuda::FastFeatureDetector::*)() const>("get_max_num_points", &cv::cuda::FastFeatureDetector::getMaxNumPoints);
   Rice::Data_Type<cv::cuda::ORB> rb_cCvCudaORB = define_class_under<cv::cuda::ORB, cv::cuda::Feature2DAsync>(rb_mCvCuda, "Orb")
     .define_constant("X_ROW", cv::cuda::ORB::X_ROW)
     .define_constant("Y_ROW", cv::cuda::ORB::Y_ROW)
@@ -112,6 +109,5 @@ void Init_Cudafeatures2d()
     .define_method<int(cv::cuda::ORB::*)() const>("get_fast_threshold", &cv::cuda::ORB::getFastThreshold)
     .define_method<void(cv::cuda::ORB::*)(bool)>("set_blur_for_descriptor", &cv::cuda::ORB::setBlurForDescriptor,
       Arg("blur_for_descriptor"))
-    .define_method<bool(cv::cuda::ORB::*)() const>("get_blur_for_descriptor?", &cv::cuda::ORB::getBlurForDescriptor)
-    ;
+    .define_method<bool(cv::cuda::ORB::*)() const>("get_blur_for_descriptor?", &cv::cuda::ORB::getBlurForDescriptor);
 }

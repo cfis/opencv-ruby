@@ -49,6 +49,5 @@ void Init_Plot()
     .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray)>("create", &cv::plot::Plot2d::create,
       Arg("data"))
     .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray, cv::InputArray)>("create", &cv::plot::Plot2d::create,
-      Arg("data_x"), Arg("data_y"))
-    ;
+      Arg("data_x"), Arg("data_y"));
 }

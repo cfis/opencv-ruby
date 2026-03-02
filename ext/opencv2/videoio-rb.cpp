@@ -44,8 +44,7 @@ void Init_Videoio()
     .define_value("CAP_INTEL_MFX", cv::VideoCaptureAPIs::CAP_INTEL_MFX)
     .define_value("CAP_XINE", cv::VideoCaptureAPIs::CAP_XINE)
     .define_value("CAP_UEYE", cv::VideoCaptureAPIs::CAP_UEYE)
-    .define_value("CAP_OBSENSOR", cv::VideoCaptureAPIs::CAP_OBSENSOR)
-    ;
+    .define_value("CAP_OBSENSOR", cv::VideoCaptureAPIs::CAP_OBSENSOR);
   Enum<cv::VideoCaptureProperties> rb_cCvVideoCaptureProperties = define_enum_under<cv::VideoCaptureProperties>("VideoCaptureProperties", rb_mCv)
     .define_value("CAP_PROP_POS_MSEC", cv::VideoCaptureProperties::CAP_PROP_POS_MSEC)
     .define_value("CAP_PROP_POS_FRAMES", cv::VideoCaptureProperties::CAP_PROP_POS_FRAMES)
@@ -119,8 +118,7 @@ void Init_Videoio()
     .define_value("CAP_PROP_N_THREADS", cv::VideoCaptureProperties::CAP_PROP_N_THREADS)
     .define_value("CAP_PROP_PTS", cv::VideoCaptureProperties::CAP_PROP_PTS)
     .define_value("CAP_PROP_DTS_DELAY", cv::VideoCaptureProperties::CAP_PROP_DTS_DELAY)
-    .define_value("CV__CAP_PROP_LATEST", cv::VideoCaptureProperties::CV__CAP_PROP_LATEST)
-    ;
+    .define_value("CV__CAP_PROP_LATEST", cv::VideoCaptureProperties::CV__CAP_PROP_LATEST);
   Enum<cv::VideoWriterProperties> rb_cCvVideoWriterProperties = define_enum_under<cv::VideoWriterProperties>("VideoWriterProperties", rb_mCv)
     .define_value("VIDEOWRITER_PROP_QUALITY", cv::VideoWriterProperties::VIDEOWRITER_PROP_QUALITY)
     .define_value("VIDEOWRITER_PROP_FRAMEBYTES", cv::VideoWriterProperties::VIDEOWRITER_PROP_FRAMEBYTES)
@@ -135,15 +133,13 @@ void Init_Videoio()
     .define_value("VIDEOWRITER_PROP_KEY_FLAG", cv::VideoWriterProperties::VIDEOWRITER_PROP_KEY_FLAG)
     .define_value("VIDEOWRITER_PROP_PTS", cv::VideoWriterProperties::VIDEOWRITER_PROP_PTS)
     .define_value("VIDEOWRITER_PROP_DTS_DELAY", cv::VideoWriterProperties::VIDEOWRITER_PROP_DTS_DELAY)
-    .define_value("CV__VIDEOWRITER_PROP_LATEST", cv::VideoWriterProperties::CV__VIDEOWRITER_PROP_LATEST)
-    ;
+    .define_value("CV__VIDEOWRITER_PROP_LATEST", cv::VideoWriterProperties::CV__VIDEOWRITER_PROP_LATEST);
   Enum<cv::VideoAccelerationType> rb_cCvVideoAccelerationType = define_enum_under<cv::VideoAccelerationType>("VideoAccelerationType", rb_mCv)
     .define_value("VIDEO_ACCELERATION_NONE", cv::VideoAccelerationType::VIDEO_ACCELERATION_NONE)
     .define_value("VIDEO_ACCELERATION_ANY", cv::VideoAccelerationType::VIDEO_ACCELERATION_ANY)
     .define_value("VIDEO_ACCELERATION_D3D11", cv::VideoAccelerationType::VIDEO_ACCELERATION_D3D11)
     .define_value("VIDEO_ACCELERATION_VAAPI", cv::VideoAccelerationType::VIDEO_ACCELERATION_VAAPI)
-    .define_value("VIDEO_ACCELERATION_MFX", cv::VideoAccelerationType::VIDEO_ACCELERATION_MFX)
-    ;
+    .define_value("VIDEO_ACCELERATION_MFX", cv::VideoAccelerationType::VIDEO_ACCELERATION_MFX);
   rb_mCv.define_constant("CAP_PROP_DC1394_OFF", (int)cv::CAP_PROP_DC1394_OFF);
   rb_mCv.define_constant("CAP_PROP_DC1394_MODE_MANUAL", (int)cv::CAP_PROP_DC1394_MODE_MANUAL);
   rb_mCv.define_constant("CAP_PROP_DC1394_MODE_AUTO", (int)cv::CAP_PROP_DC1394_MODE_AUTO);
@@ -405,26 +401,22 @@ void Init_Videoio()
   Enum<cv::VideoCaptureOBSensorDataType> rb_cCvVideoCaptureOBSensorDataType = define_enum_under<cv::VideoCaptureOBSensorDataType>("VideoCaptureOBSensorDataType", rb_mCv)
     .define_value("CAP_OBSENSOR_DEPTH_MAP", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_DEPTH_MAP)
     .define_value("CAP_OBSENSOR_BGR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_BGR_IMAGE)
-    .define_value("CAP_OBSENSOR_IR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_IR_IMAGE)
-    ;
+    .define_value("CAP_OBSENSOR_IR_IMAGE", cv::VideoCaptureOBSensorDataType::CAP_OBSENSOR_IR_IMAGE);
   Enum<cv::VideoCaptureOBSensorGenerators> rb_cCvVideoCaptureOBSensorGenerators = define_enum_under<cv::VideoCaptureOBSensorGenerators>("VideoCaptureOBSensorGenerators", rb_mCv)
     .define_value("CAP_OBSENSOR_DEPTH_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_DEPTH_GENERATOR)
     .define_value("CAP_OBSENSOR_IMAGE_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_IMAGE_GENERATOR)
     .define_value("CAP_OBSENSOR_IR_GENERATOR", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_IR_GENERATOR)
-    .define_value("CAP_OBSENSOR_GENERATORS_MASK", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_GENERATORS_MASK)
-    ;
+    .define_value("CAP_OBSENSOR_GENERATORS_MASK", cv::VideoCaptureOBSensorGenerators::CAP_OBSENSOR_GENERATORS_MASK);
   Enum<cv::VideoCaptureOBSensorProperties> rb_cCvVideoCaptureOBSensorProperties = define_enum_under<cv::VideoCaptureOBSensorProperties>("VideoCaptureOBSensorProperties", rb_mCv)
     .define_value("CAP_PROP_OBSENSOR_INTRINSIC_FX", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_FX)
     .define_value("CAP_PROP_OBSENSOR_INTRINSIC_FY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_FY)
     .define_value("CAP_PROP_OBSENSOR_INTRINSIC_CX", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CX)
-    .define_value("CAP_PROP_OBSENSOR_INTRINSIC_CY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CY)
-    ;
+    .define_value("CAP_PROP_OBSENSOR_INTRINSIC_CY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CY);
   Rice::Data_Type<cv::IStreamReader> rb_cCvIStreamReader = define_class_under<cv::IStreamReader>(rb_mCv, "IStreamReader")
     .define_method<long long(cv::IStreamReader::*)(char*, long long)>("read", &cv::IStreamReader::read,
       Arg("buffer"), Arg("size"))
     .define_method<long long(cv::IStreamReader::*)(long long, int)>("seek", &cv::IStreamReader::seek,
-      Arg("offset"), Arg("origin"))
-    ;
+      Arg("offset"), Arg("origin"));
   Rice::Data_Type<cv::IVideoCapture> rb_cCvIVideoCapture = define_class_under<cv::IVideoCapture>(rb_mCv, "IVideoCapture");
   Module rb_mCvInternal = define_module_under(rb_mCv, "Internal");
 
@@ -471,8 +463,7 @@ void Init_Videoio()
       Arg("enable"))
     .define_method<bool(cv::VideoCapture::*)() const>("get_exception_mode?", &cv::VideoCapture::getExceptionMode)
     .define_singleton_function<bool(*)(const std::vector<cv::VideoCapture>&, std::vector<int>&, int64)>("wait_any", &cv::VideoCapture::waitAny,
-      Arg("streams"), Arg("ready_index"), Arg("timeout_ns") = static_cast<int64>(0))
-    ;
+      Arg("streams"), Arg("ready_index"), Arg("timeout_ns") = static_cast<int64>(0));
   Rice::Data_Type<cv::IVideoWriter> rb_cCvIVideoWriter = define_class_under<cv::IVideoWriter>(rb_mCv, "IVideoWriter");
   Rice::Data_Type<cv::VideoWriter> rb_cCvVideoWriter = define_class_under<cv::VideoWriter>(rb_mCv, "VideoWriter")
     .define_constructor(Constructor<cv::VideoWriter>())
@@ -506,11 +497,9 @@ void Init_Videoio()
       Arg("prop_id"))
     .define_singleton_function<int(*)(char, char, char, char)>("fourcc", &cv::VideoWriter::fourcc,
       Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"))
-    .define_method<cv::String(cv::VideoWriter::*)() const>("get_backend_name", &cv::VideoWriter::getBackendName)
-    ;
+    .define_method<cv::String(cv::VideoWriter::*)() const>("get_backend_name", &cv::VideoWriter::getBackendName);
   Rice::Data_Type<cv::DefaultDeleter<CvCapture>> rb_cCvDefaultDeleterCvCapture = define_class_under<cv::DefaultDeleter<CvCapture>>(rb_mCv, "DefaultDeleterCvCapture")
     .define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>())
     .define_method<void(cv::DefaultDeleter<CvCapture>::*)(CvCapture*) const>("call", &cv::DefaultDeleter<CvCapture>::operator(),
-      Arg("obj"))
-    ;
+      Arg("obj"));
 }

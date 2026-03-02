@@ -149,6 +149,5 @@ void Init_Core_Operations()
     .define_method("assign_xor", [](const cv::Mat& self, const cv::Scalar& other) -> const cv::Mat&
     {
       return self ^= other;
-    })
-    ;
+    });
 }

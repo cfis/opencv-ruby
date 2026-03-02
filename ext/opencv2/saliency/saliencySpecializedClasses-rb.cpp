@@ -23,14 +23,12 @@ void Init_Saliency_SaliencySpecializedClasses()
       Arg("val"))
     .define_method<int(cv::saliency::StaticSaliencySpectralResidual::*)() const>("get_image_height", &cv::saliency::StaticSaliencySpectralResidual::getImageHeight)
     .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(int)>("set_image_height", &cv::saliency::StaticSaliencySpectralResidual::setImageHeight,
-      Arg("val"))
-    ;
+      Arg("val"));
   Rice::Data_Type<cv::saliency::StaticSaliencyFineGrained> rb_cCvSaliencyStaticSaliencyFineGrained = define_class_under<cv::saliency::StaticSaliencyFineGrained, cv::saliency::StaticSaliency>(rb_mCvSaliency, "StaticSaliencyFineGrained")
     .define_constructor(Constructor<cv::saliency::StaticSaliencyFineGrained>())
     .define_singleton_function<cv::Ptr<cv::saliency::StaticSaliencyFineGrained>(*)()>("create", &cv::saliency::StaticSaliencyFineGrained::create)
     .define_method<bool(cv::saliency::StaticSaliencyFineGrained::*)(cv::InputArray, cv::OutputArray)>("compute_saliency", &cv::saliency::StaticSaliencyFineGrained::computeSaliency,
-      Arg("image"), Arg("saliency_map"))
-    ;
+      Arg("image"), Arg("saliency_map"));
   Rice::Data_Type<cv::saliency::MotionSaliencyBinWangApr2014> rb_cCvSaliencyMotionSaliencyBinWangApr2014 = define_class_under<cv::saliency::MotionSaliencyBinWangApr2014, cv::saliency::MotionSaliency>(rb_mCvSaliency, "MotionSaliencyBinWangApr2014")
     .define_constructor(Constructor<cv::saliency::MotionSaliencyBinWangApr2014>())
     .define_singleton_function<cv::Ptr<cv::saliency::MotionSaliencyBinWangApr2014>(*)()>("create", &cv::saliency::MotionSaliencyBinWangApr2014::create)
@@ -44,8 +42,7 @@ void Init_Saliency_SaliencySpecializedClasses()
       Arg("val"))
     .define_method<int(cv::saliency::MotionSaliencyBinWangApr2014::*)() const>("get_image_height", &cv::saliency::MotionSaliencyBinWangApr2014::getImageHeight)
     .define_method<void(cv::saliency::MotionSaliencyBinWangApr2014::*)(int)>("set_image_height", &cv::saliency::MotionSaliencyBinWangApr2014::setImageHeight,
-      Arg("val"))
-    ;
+      Arg("val"));
   Rice::Data_Type<cv::saliency::ObjectnessBING> rb_cCvSaliencyObjectnessBING = define_class_under<cv::saliency::ObjectnessBING, cv::saliency::Objectness>(rb_mCvSaliency, "ObjectnessBING")
     .define_constructor(Constructor<cv::saliency::ObjectnessBING>())
     .define_singleton_function<cv::Ptr<cv::saliency::ObjectnessBING>(*)()>("create", &cv::saliency::ObjectnessBING::create)
@@ -66,6 +63,5 @@ void Init_Saliency_SaliencySpecializedClasses()
       Arg("val"))
     .define_method<int(cv::saliency::ObjectnessBING::*)() const>("get_w", &cv::saliency::ObjectnessBING::getW)
     .define_method<void(cv::saliency::ObjectnessBING::*)(int)>("set_w", &cv::saliency::ObjectnessBING::setW,
-      Arg("val"))
-    ;
+      Arg("val"));
 }

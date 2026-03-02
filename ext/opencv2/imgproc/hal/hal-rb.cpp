@@ -11,16 +11,13 @@ void Init_Imgproc_Hal_Hal()
 
   Rice::Data_Type<cv::hal::Filter2D> rb_cCvHalFilter2D = define_class_under<cv::hal::Filter2D>(rb_mCvHal, "Filter2D")
     .define_method<void(cv::hal::Filter2D::*)(uchar*, size_t, uchar*, size_t, int, int, int, int, int, int)>("apply", &cv::hal::Filter2D::apply,
-      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"))
-    ;
+      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"));
   Rice::Data_Type<cv::hal::SepFilter2D> rb_cCvHalSepFilter2D = define_class_under<cv::hal::SepFilter2D>(rb_mCvHal, "SepFilter2D")
     .define_method<void(cv::hal::SepFilter2D::*)(uchar*, size_t, uchar*, size_t, int, int, int, int, int, int)>("apply", &cv::hal::SepFilter2D::apply,
-      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"))
-    ;
+      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"));
   Rice::Data_Type<cv::hal::Morph> rb_cCvHalMorph = define_class_under<cv::hal::Morph>(rb_mCvHal, "Morph")
     .define_method<void(cv::hal::Morph::*)(uchar*, size_t, uchar*, size_t, int, int, int, int, int, int, int, int, int, int)>("apply", &cv::hal::Morph::apply,
-      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"), Arg("arg_10"), Arg("arg_11"), Arg("arg_12"), Arg("arg_13"))
-    ;
+      ArgBuffer("arg_0"), Arg("arg_1"), ArgBuffer("arg_2"), Arg("arg_3"), Arg("arg_4"), Arg("arg_5"), Arg("arg_6"), Arg("arg_7"), Arg("arg_8"), Arg("arg_9"), Arg("arg_10"), Arg("arg_11"), Arg("arg_12"), Arg("arg_13"));
   rb_mCvHal.define_module_function<void(*)(int, int, int, uchar*, size_t, uchar*, size_t, int, int, int, int, int, int, uchar*, size_t, int, int, int, int, double, int, bool)>("filter_2d", &cv::hal::filter2D,
     Arg("stype"), Arg("dtype"), Arg("kernel_type"), ArgBuffer("src_data"), Arg("src_step"), ArgBuffer("dst_data"), Arg("dst_step"), Arg("width"), Arg("height"), Arg("full_width"), Arg("full_height"), Arg("offset_x"), Arg("offset_y"), ArgBuffer("kernel_data"), Arg("kernel_step"), Arg("kernel_width"), Arg("kernel_height"), Arg("anchor_x"), Arg("anchor_y"), Arg("delta"), Arg("border_type"), Arg("is_submatrix"));
 

@@ -19,6 +19,5 @@ void Init_Features2d_Hal_Interface()
     .define_attr("angle", &cvhalKeyPoint::angle)
     .define_attr("response", &cvhalKeyPoint::response)
     .define_attr("octave", &cvhalKeyPoint::octave)
-    .define_attr("class_id", &cvhalKeyPoint::class_id)
-    ;
+    .define_attr("class_id", &cvhalKeyPoint::class_id);
 }

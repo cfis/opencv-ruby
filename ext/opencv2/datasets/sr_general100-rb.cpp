@@ -11,11 +11,9 @@ void Init_Datasets_SrGeneral100()
 
   Rice::Data_Type<cv::datasets::SR_general100Obj> rb_cCvDatasetsSRGeneral100Obj = define_class_under<cv::datasets::SR_general100Obj, cv::datasets::Object>(rb_mCvDatasets, "SRGeneral100Obj")
     .define_constructor(Constructor<cv::datasets::SR_general100Obj>())
-    .define_attr("image_name", &cv::datasets::SR_general100Obj::imageName)
-    ;
+    .define_attr("image_name", &cv::datasets::SR_general100Obj::imageName);
   Rice::Data_Type<cv::datasets::SR_general100> rb_cCvDatasetsSRGeneral100 = define_class_under<cv::datasets::SR_general100, cv::datasets::Dataset>(rb_mCvDatasets, "SRGeneral100")
     .define_method<void(cv::datasets::SR_general100::*)(const std::string&)>("load", &cv::datasets::SR_general100::load,
       Arg("path"))
-    .define_singleton_function<cv::Ptr<cv::datasets::SR_general100>(*)()>("create", &cv::datasets::SR_general100::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::datasets::SR_general100>(*)()>("create", &cv::datasets::SR_general100::create);
 }

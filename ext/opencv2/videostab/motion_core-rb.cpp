@@ -17,8 +17,7 @@ void Init_Videostab_MotionCore()
     .define_value("MM_SIMILARITY", cv::videostab::MotionModel::MM_SIMILARITY)
     .define_value("MM_AFFINE", cv::videostab::MotionModel::MM_AFFINE)
     .define_value("MM_HOMOGRAPHY", cv::videostab::MotionModel::MM_HOMOGRAPHY)
-    .define_value("MM_UNKNOWN", cv::videostab::MotionModel::MM_UNKNOWN)
-    ;
+    .define_value("MM_UNKNOWN", cv::videostab::MotionModel::MM_UNKNOWN);
   Rice::Data_Type<cv::videostab::RansacParams> rb_cCvVideostabRansacParams = define_class_under<cv::videostab::RansacParams>(rb_mCvVideostab, "RansacParams")
     .define_attr("size", &cv::videostab::RansacParams::size)
     .define_attr("thresh", &cv::videostab::RansacParams::thresh)
@@ -29,6 +28,5 @@ void Init_Videostab_MotionCore()
       Arg("size"), Arg("thresh"), Arg("eps"), Arg("prob"))
     .define_method<int(cv::videostab::RansacParams::*)() const>("niters", &cv::videostab::RansacParams::niters)
     .define_singleton_function<cv::videostab::RansacParams(*)(cv::videostab::MotionModel)>("default2d_motion", &cv::videostab::RansacParams::default2dMotion,
-      Arg("model"))
-    ;
+      Arg("model"));
 }

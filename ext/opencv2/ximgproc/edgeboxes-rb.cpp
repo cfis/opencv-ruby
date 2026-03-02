@@ -15,8 +15,7 @@ void Init_Ximgproc_Edgeboxes()
     .define_attr("y", &cv::ximgproc::Box::y)
     .define_attr("w", &cv::ximgproc::Box::w)
     .define_attr("h", &cv::ximgproc::Box::h)
-    .define_attr("score", &cv::ximgproc::Box::score)
-    ;
+    .define_attr("score", &cv::ximgproc::Box::score);
   Rice::Data_Type<cv::ximgproc::EdgeBoxes> rb_cCvXimgprocEdgeBoxes = define_class_under<cv::ximgproc::EdgeBoxes, cv::Algorithm>(rb_mCvXimgproc, "EdgeBoxes")
     .define_method<void(cv::ximgproc::EdgeBoxes::*)(cv::InputArray, cv::InputArray, std::vector<cv::Rect>&, cv::OutputArray)>("get_bounding_boxes", &cv::ximgproc::EdgeBoxes::getBoundingBoxes,
       Arg("edge_map"), Arg("orientation_map"), Arg("boxes"), Arg("scores") = static_cast<cv::OutputArray>(cv::noArray()))
@@ -55,8 +54,7 @@ void Init_Ximgproc_Edgeboxes()
       Arg("value"))
     .define_method<float(cv::ximgproc::EdgeBoxes::*)() const>("get_kappa", &cv::ximgproc::EdgeBoxes::getKappa)
     .define_method<void(cv::ximgproc::EdgeBoxes::*)(float)>("set_kappa", &cv::ximgproc::EdgeBoxes::setKappa,
-      Arg("value"))
-    ;
+      Arg("value"));
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::EdgeBoxes>(*)(float, float, float, float, int, float, float, float, float, float, float, float)>("create_edge_boxes", &cv::ximgproc::createEdgeBoxes,
     Arg("alpha") = static_cast<float>(0.65f), Arg("beta") = static_cast<float>(0.75f), Arg("eta") = static_cast<float>(1), Arg("min_score") = static_cast<float>(0.01f), Arg("max_boxes") = static_cast<int>(10000), Arg("edge_min_mag") = static_cast<float>(0.1f), Arg("edge_merge_thr") = static_cast<float>(0.5f), Arg("cluster_min_mag") = static_cast<float>(0.5f), Arg("max_aspect_ratio") = static_cast<float>(3), Arg("min_box_area") = static_cast<float>(1000), Arg("gamma") = static_cast<float>(2), Arg("kappa") = static_cast<float>(1.5f));
 }

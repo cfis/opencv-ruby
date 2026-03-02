@@ -19,22 +19,18 @@ void Init_Datasets_GrSkig()
     .define_value("cross", cv::datasets::actionType::cross)
     .define_value("comehere", cv::datasets::actionType::comehere)
     .define_value("turnaround", cv::datasets::actionType::turnaround)
-    .define_value("pat", cv::datasets::actionType::pat)
-    ;
+    .define_value("pat", cv::datasets::actionType::pat);
   Enum<cv::datasets::poseType> rb_cCvDatasetsPoseType = define_enum_under<cv::datasets::poseType>("PoseType", rb_mCvDatasets)
     .define_value("fist", cv::datasets::poseType::fist)
     .define_value("index", cv::datasets::poseType::index)
-    .define_value("flat", cv::datasets::poseType::flat)
-    ;
+    .define_value("flat", cv::datasets::poseType::flat);
   Enum<cv::datasets::illuminationType> rb_cCvDatasetsIlluminationType = define_enum_under<cv::datasets::illuminationType>("IlluminationType", rb_mCvDatasets)
     .define_value("light", cv::datasets::illuminationType::light)
-    .define_value("dark", cv::datasets::illuminationType::dark)
-    ;
+    .define_value("dark", cv::datasets::illuminationType::dark);
   Enum<cv::datasets::backgroundType> rb_cCvDatasetsBackgroundType = define_enum_under<cv::datasets::backgroundType>("BackgroundType", rb_mCvDatasets)
     .define_value("woodenBoard", cv::datasets::backgroundType::woodenBoard)
     .define_value("whitePaper", cv::datasets::backgroundType::whitePaper)
-    .define_value("paperWithCharacters", cv::datasets::backgroundType::paperWithCharacters)
-    ;
+    .define_value("paperWithCharacters", cv::datasets::backgroundType::paperWithCharacters);
   Rice::Data_Type<cv::datasets::GR_skigObj> rb_cCvDatasetsGRSkigObj = define_class_under<cv::datasets::GR_skigObj, cv::datasets::Object>(rb_mCvDatasets, "GRSkigObj")
     .define_constructor(Constructor<cv::datasets::GR_skigObj>())
     .define_attr("rgb", &cv::datasets::GR_skigObj::rgb)
@@ -43,11 +39,9 @@ void Init_Datasets_GrSkig()
     .define_attr("background", &cv::datasets::GR_skigObj::background)
     .define_attr("illumination", &cv::datasets::GR_skigObj::illumination)
     .define_attr("pose", &cv::datasets::GR_skigObj::pose)
-    .define_attr("type", &cv::datasets::GR_skigObj::type)
-    ;
+    .define_attr("type", &cv::datasets::GR_skigObj::type);
   Rice::Data_Type<cv::datasets::GR_skig> rb_cCvDatasetsGRSkig = define_class_under<cv::datasets::GR_skig, cv::datasets::Dataset>(rb_mCvDatasets, "GRSkig")
     .define_method<void(cv::datasets::GR_skig::*)(const std::string&)>("load", &cv::datasets::GR_skig::load,
       Arg("path"))
-    .define_singleton_function<cv::Ptr<cv::datasets::GR_skig>(*)()>("create", &cv::datasets::GR_skig::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::datasets::GR_skig>(*)()>("create", &cv::datasets::GR_skig::create);
 }

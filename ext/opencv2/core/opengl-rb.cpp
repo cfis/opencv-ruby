@@ -64,19 +64,16 @@ void Init_Core_Opengl()
     .define_method<int(cv::ogl::Buffer::*)() const>("channels", &cv::ogl::Buffer::channels)
     .define_method<int(cv::ogl::Buffer::*)() const>("elem_size", &cv::ogl::Buffer::elemSize)
     .define_method<int(cv::ogl::Buffer::*)() const>("elem_size1", &cv::ogl::Buffer::elemSize1)
-    .define_method<unsigned int(cv::ogl::Buffer::*)() const>("buf_id", &cv::ogl::Buffer::bufId)
-    ;
+    .define_method<unsigned int(cv::ogl::Buffer::*)() const>("buf_id", &cv::ogl::Buffer::bufId);
   Enum<cv::ogl::Buffer::Target> rb_cCvOglBufferTarget = define_enum_under<cv::ogl::Buffer::Target>("Target", rb_cCvOglBuffer)
     .define_value("ARRAY_BUFFER", cv::ogl::Buffer::Target::ARRAY_BUFFER)
     .define_value("ELEMENT_ARRAY_BUFFER", cv::ogl::Buffer::Target::ELEMENT_ARRAY_BUFFER)
     .define_value("PIXEL_PACK_BUFFER", cv::ogl::Buffer::Target::PIXEL_PACK_BUFFER)
-    .define_value("PIXEL_UNPACK_BUFFER", cv::ogl::Buffer::Target::PIXEL_UNPACK_BUFFER)
-    ;
+    .define_value("PIXEL_UNPACK_BUFFER", cv::ogl::Buffer::Target::PIXEL_UNPACK_BUFFER);
   Enum<cv::ogl::Buffer::Access> rb_cCvOglBufferAccess = define_enum_under<cv::ogl::Buffer::Access>("Access", rb_cCvOglBuffer)
     .define_value("READ_ONLY", cv::ogl::Buffer::Access::READ_ONLY)
     .define_value("WRITE_ONLY", cv::ogl::Buffer::Access::WRITE_ONLY)
-    .define_value("READ_WRITE", cv::ogl::Buffer::Access::READ_WRITE)
-    ;
+    .define_value("READ_WRITE", cv::ogl::Buffer::Access::READ_WRITE);
   Rice::Data_Type<cv::ogl::Texture2D> rb_cCvOglTexture2D = define_class_under<cv::ogl::Texture2D>(rb_mCvOgl, "Texture2D");
 
   Rice::Data_Type<cv::ogl::Texture2D::Impl> rb_cCvOglTexture2DImpl = define_class_under<cv::ogl::Texture2D::Impl>(rb_cCvOglTexture2D, "Impl");
@@ -110,14 +107,12 @@ void Init_Core_Opengl()
     .define_method<cv::Size(cv::ogl::Texture2D::*)() const>("size", &cv::ogl::Texture2D::size)
     .define_method<bool(cv::ogl::Texture2D::*)() const>("empty?", &cv::ogl::Texture2D::empty)
     .define_method<cv::ogl::Texture2D::Format(cv::ogl::Texture2D::*)() const>("format", &cv::ogl::Texture2D::format)
-    .define_method<unsigned int(cv::ogl::Texture2D::*)() const>("tex_id", &cv::ogl::Texture2D::texId)
-    ;
+    .define_method<unsigned int(cv::ogl::Texture2D::*)() const>("tex_id", &cv::ogl::Texture2D::texId);
   Enum<cv::ogl::Texture2D::Format> rb_cCvOglTexture2DFormat = define_enum_under<cv::ogl::Texture2D::Format>("Format", rb_cCvOglTexture2D)
     .define_value("NONE", cv::ogl::Texture2D::Format::NONE)
     .define_value("DEPTH_COMPONENT", cv::ogl::Texture2D::Format::DEPTH_COMPONENT)
     .define_value("RGB", cv::ogl::Texture2D::Format::RGB)
-    .define_value("RGBA", cv::ogl::Texture2D::Format::RGBA)
-    ;
+    .define_value("RGBA", cv::ogl::Texture2D::Format::RGBA);
   Rice::Data_Type<cv::ogl::Arrays> rb_cCvOglArrays = define_class_under<cv::ogl::Arrays>(rb_mCvOgl, "Arrays")
     .define_constructor(Constructor<cv::ogl::Arrays>())
     .define_method<void(cv::ogl::Arrays::*)(cv::InputArray)>("set_vertex_array", &cv::ogl::Arrays::setVertexArray,
@@ -137,8 +132,7 @@ void Init_Core_Opengl()
       Arg("flag"))
     .define_method<void(cv::ogl::Arrays::*)() const>("bind", &cv::ogl::Arrays::bind)
     .define_method<int(cv::ogl::Arrays::*)() const>("size", &cv::ogl::Arrays::size)
-    .define_method<bool(cv::ogl::Arrays::*)() const>("empty?", &cv::ogl::Arrays::empty)
-    ;
+    .define_method<bool(cv::ogl::Arrays::*)() const>("empty?", &cv::ogl::Arrays::empty);
   Enum<cv::ogl::RenderModes> rb_cCvOglRenderModes = define_enum_under<cv::ogl::RenderModes>("RenderModes", rb_mCvOgl)
     .define_value("POINTS", cv::ogl::RenderModes::POINTS)
     .define_value("LINES", cv::ogl::RenderModes::LINES)
@@ -149,8 +143,7 @@ void Init_Core_Opengl()
     .define_value("TRIANGLE_FAN", cv::ogl::RenderModes::TRIANGLE_FAN)
     .define_value("QUADS", cv::ogl::RenderModes::QUADS)
     .define_value("QUAD_STRIP", cv::ogl::RenderModes::QUAD_STRIP)
-    .define_value("POLYGON", cv::ogl::RenderModes::POLYGON)
-    ;
+    .define_value("POLYGON", cv::ogl::RenderModes::POLYGON);
   rb_mCvOgl.define_module_function<void(*)(const cv::ogl::Texture2D&, cv::Rect_<double>, cv::Rect_<double>)>("render", &cv::ogl::render,
     Arg("tex"), Arg("wnd_rect") = static_cast<cv::Rect_<double>>(cv::Rect_<double>(0.0, 0.0, 1.0, 1.0)), Arg("tex_rect") = static_cast<cv::Rect_<double>>(cv::Rect_<double>(0.0, 0.0, 1.0, 1.0)));
 

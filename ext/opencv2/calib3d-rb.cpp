@@ -27,8 +27,7 @@ void Init_Calib3d()
     .define_value("SOLVEPNP_IPPE", cv::SolvePnPMethod::SOLVEPNP_IPPE)
     .define_value("SOLVEPNP_IPPE_SQUARE", cv::SolvePnPMethod::SOLVEPNP_IPPE_SQUARE)
     .define_value("SOLVEPNP_SQPNP", cv::SolvePnPMethod::SOLVEPNP_SQPNP)
-    .define_value("SOLVEPNP_MAX_COUNT", cv::SolvePnPMethod::SOLVEPNP_MAX_COUNT)
-    ;
+    .define_value("SOLVEPNP_MAX_COUNT", cv::SolvePnPMethod::SOLVEPNP_MAX_COUNT);
   rb_mCv.define_constant("CALIB_CB_ADAPTIVE_THRESH", (int)cv::CALIB_CB_ADAPTIVE_THRESH);
   rb_mCv.define_constant("CALIB_CB_NORMALIZE_IMAGE", (int)cv::CALIB_CB_NORMALIZE_IMAGE);
   rb_mCv.define_constant("CALIB_CB_FILTER_QUADS", (int)cv::CALIB_CB_FILTER_QUADS);
@@ -74,42 +73,35 @@ void Init_Calib3d()
     .define_value("CALIB_HAND_EYE_PARK", cv::HandEyeCalibrationMethod::CALIB_HAND_EYE_PARK)
     .define_value("CALIB_HAND_EYE_HORAUD", cv::HandEyeCalibrationMethod::CALIB_HAND_EYE_HORAUD)
     .define_value("CALIB_HAND_EYE_ANDREFF", cv::HandEyeCalibrationMethod::CALIB_HAND_EYE_ANDREFF)
-    .define_value("CALIB_HAND_EYE_DANIILIDIS", cv::HandEyeCalibrationMethod::CALIB_HAND_EYE_DANIILIDIS)
-    ;
+    .define_value("CALIB_HAND_EYE_DANIILIDIS", cv::HandEyeCalibrationMethod::CALIB_HAND_EYE_DANIILIDIS);
   Enum<cv::RobotWorldHandEyeCalibrationMethod> rb_cCvRobotWorldHandEyeCalibrationMethod = define_enum_under<cv::RobotWorldHandEyeCalibrationMethod>("RobotWorldHandEyeCalibrationMethod", rb_mCv)
     .define_value("CALIB_ROBOT_WORLD_HAND_EYE_SHAH", cv::RobotWorldHandEyeCalibrationMethod::CALIB_ROBOT_WORLD_HAND_EYE_SHAH)
-    .define_value("CALIB_ROBOT_WORLD_HAND_EYE_LI", cv::RobotWorldHandEyeCalibrationMethod::CALIB_ROBOT_WORLD_HAND_EYE_LI)
-    ;
+    .define_value("CALIB_ROBOT_WORLD_HAND_EYE_LI", cv::RobotWorldHandEyeCalibrationMethod::CALIB_ROBOT_WORLD_HAND_EYE_LI);
   Enum<cv::SamplingMethod> rb_cCvSamplingMethod = define_enum_under<cv::SamplingMethod>("SamplingMethod", rb_mCv)
     .define_value("SAMPLING_UNIFORM", cv::SamplingMethod::SAMPLING_UNIFORM)
     .define_value("SAMPLING_PROGRESSIVE_NAPSAC", cv::SamplingMethod::SAMPLING_PROGRESSIVE_NAPSAC)
     .define_value("SAMPLING_NAPSAC", cv::SamplingMethod::SAMPLING_NAPSAC)
-    .define_value("SAMPLING_PROSAC", cv::SamplingMethod::SAMPLING_PROSAC)
-    ;
+    .define_value("SAMPLING_PROSAC", cv::SamplingMethod::SAMPLING_PROSAC);
   Enum<cv::LocalOptimMethod> rb_cCvLocalOptimMethod = define_enum_under<cv::LocalOptimMethod>("LocalOptimMethod", rb_mCv)
     .define_value("LOCAL_OPTIM_NULL", cv::LocalOptimMethod::LOCAL_OPTIM_NULL)
     .define_value("LOCAL_OPTIM_INNER_LO", cv::LocalOptimMethod::LOCAL_OPTIM_INNER_LO)
     .define_value("LOCAL_OPTIM_INNER_AND_ITER_LO", cv::LocalOptimMethod::LOCAL_OPTIM_INNER_AND_ITER_LO)
     .define_value("LOCAL_OPTIM_GC", cv::LocalOptimMethod::LOCAL_OPTIM_GC)
-    .define_value("LOCAL_OPTIM_SIGMA", cv::LocalOptimMethod::LOCAL_OPTIM_SIGMA)
-    ;
+    .define_value("LOCAL_OPTIM_SIGMA", cv::LocalOptimMethod::LOCAL_OPTIM_SIGMA);
   Enum<cv::ScoreMethod> rb_cCvScoreMethod = define_enum_under<cv::ScoreMethod>("ScoreMethod", rb_mCv)
     .define_value("SCORE_METHOD_RANSAC", cv::ScoreMethod::SCORE_METHOD_RANSAC)
     .define_value("SCORE_METHOD_MSAC", cv::ScoreMethod::SCORE_METHOD_MSAC)
     .define_value("SCORE_METHOD_MAGSAC", cv::ScoreMethod::SCORE_METHOD_MAGSAC)
-    .define_value("SCORE_METHOD_LMEDS", cv::ScoreMethod::SCORE_METHOD_LMEDS)
-    ;
+    .define_value("SCORE_METHOD_LMEDS", cv::ScoreMethod::SCORE_METHOD_LMEDS);
   Enum<cv::NeighborSearchMethod> rb_cCvNeighborSearchMethod = define_enum_under<cv::NeighborSearchMethod>("NeighborSearchMethod", rb_mCv)
     .define_value("NEIGH_FLANN_KNN", cv::NeighborSearchMethod::NEIGH_FLANN_KNN)
     .define_value("NEIGH_GRID", cv::NeighborSearchMethod::NEIGH_GRID)
-    .define_value("NEIGH_FLANN_RADIUS", cv::NeighborSearchMethod::NEIGH_FLANN_RADIUS)
-    ;
+    .define_value("NEIGH_FLANN_RADIUS", cv::NeighborSearchMethod::NEIGH_FLANN_RADIUS);
   Enum<cv::PolishingMethod> rb_cCvPolishingMethod = define_enum_under<cv::PolishingMethod>("PolishingMethod", rb_mCv)
     .define_value("NONE_POLISHER", cv::PolishingMethod::NONE_POLISHER)
     .define_value("LSQ_POLISHER", cv::PolishingMethod::LSQ_POLISHER)
     .define_value("MAGSAC", cv::PolishingMethod::MAGSAC)
-    .define_value("COV_POLISHER", cv::PolishingMethod::COV_POLISHER)
-    ;
+    .define_value("COV_POLISHER", cv::PolishingMethod::COV_POLISHER);
   Rice::Data_Type<cv::UsacParams> rb_cCvUsacParams = define_class_under<cv::UsacParams>(rb_mCv, "UsacParams")
     .define_constructor(Constructor<cv::UsacParams>())
     .define_attr("confidence", &cv::UsacParams::confidence)
@@ -124,8 +116,7 @@ void Init_Calib3d()
     .define_attr("score", &cv::UsacParams::score)
     .define_attr("threshold", &cv::UsacParams::threshold)
     .define_attr("final_polisher", &cv::UsacParams::final_polisher)
-    .define_attr("final_polisher_iterations", &cv::UsacParams::final_polisher_iterations)
-    ;
+    .define_attr("final_polisher_iterations", &cv::UsacParams::final_polisher_iterations);
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray)>("rodrigues", &cv::Rodrigues,
     Arg("src"), Arg("dst"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
@@ -138,12 +129,10 @@ void Init_Calib3d()
     .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int)>("create", &cv::LMSolver::create,
       Arg("cb"), Arg("max_iters"))
     .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int, double)>("create", &cv::LMSolver::create,
-      Arg("cb"), Arg("max_iters"), Arg("eps"))
-    ;
+      Arg("cb"), Arg("max_iters"), Arg("eps"));
   Rice::Data_Type<cv::LMSolver::Callback> rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback")
     .define_method<bool(cv::LMSolver::Callback::*)(cv::InputArray, cv::OutputArray, cv::OutputArray) const>("compute", &cv::LMSolver::Callback::compute,
-      Arg("param"), Arg("err"), Arg("j"))
-    ;
+      Arg("param"), Arg("err"), Arg("j"));
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, int, double, cv::OutputArray, const int, const double)>("find_homography", &cv::findHomography,
     Arg("src_points"), Arg("dst_points"), Arg("method") = static_cast<int>(0), Arg("ransac_reproj_threshold") = static_cast<double>(3), Arg("mask") = static_cast<cv::OutputArray>(cv::noArray()), Arg("max_iters") = static_cast<const int>(2000), Arg("confidence") = static_cast<const double>(0.995));
 
@@ -233,12 +222,10 @@ void Init_Calib3d()
     .define_attr("min_rng_edge_switch_dist", &cv::CirclesGridFinderParameters::minRNGEdgeSwitchDist)
     .define_attr("grid_type", &cv::CirclesGridFinderParameters::gridType)
     .define_attr("square_size", &cv::CirclesGridFinderParameters::squareSize)
-    .define_attr("max_rectified_distance", &cv::CirclesGridFinderParameters::maxRectifiedDistance)
-    ;
+    .define_attr("max_rectified_distance", &cv::CirclesGridFinderParameters::maxRectifiedDistance);
   Enum<cv::CirclesGridFinderParameters::GridType> rb_cCvCirclesGridFinderParametersGridType = define_enum_under<cv::CirclesGridFinderParameters::GridType>("GridType", rb_cCvCirclesGridFinderParameters)
     .define_value("SYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::SYMMETRIC_GRID)
-    .define_value("ASYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::ASYMMETRIC_GRID)
-    ;
+    .define_value("ASYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::ASYMMETRIC_GRID);
   rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid", &cv::findCirclesGrid,
     Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags"), Arg("blob_detector"), Arg("parameters"));
 
@@ -415,8 +402,7 @@ void Init_Calib3d()
     .define_method<void(cv::StereoMatcher::*)(int)>("set_disp12_max_diff", &cv::StereoMatcher::setDisp12MaxDiff,
       Arg("disp12_max_diff"))
     .define_constant("DISP_SHIFT", (int)cv::StereoMatcher::DISP_SHIFT)
-    .define_constant("DISP_SCALE", (int)cv::StereoMatcher::DISP_SCALE)
-    ;
+    .define_constant("DISP_SCALE", (int)cv::StereoMatcher::DISP_SCALE);
   Rice::Data_Type<cv::StereoBM> rb_cCvStereoBM = define_class_under<cv::StereoBM, cv::StereoMatcher>(rb_mCv, "StereoBM")
     .define_method<int(cv::StereoBM::*)() const>("get_pre_filter_type", &cv::StereoBM::getPreFilterType)
     .define_method<void(cv::StereoBM::*)(int)>("set_pre_filter_type", &cv::StereoBM::setPreFilterType,
@@ -445,8 +431,7 @@ void Init_Calib3d()
     .define_singleton_function<cv::Ptr<cv::StereoBM>(*)(int, int)>("create", &cv::StereoBM::create,
       Arg("num_disparities") = static_cast<int>(0), Arg("block_size") = static_cast<int>(21))
     .define_constant("PREFILTER_NORMALIZED_RESPONSE", (int)cv::StereoBM::PREFILTER_NORMALIZED_RESPONSE)
-    .define_constant("PREFILTER_XSOBEL", (int)cv::StereoBM::PREFILTER_XSOBEL)
-    ;
+    .define_constant("PREFILTER_XSOBEL", (int)cv::StereoBM::PREFILTER_XSOBEL);
   Rice::Data_Type<cv::StereoSGBM> rb_cCvStereoSGBM = define_class_under<cv::StereoSGBM, cv::StereoMatcher>(rb_mCv, "StereoSGBM")
     .define_method<int(cv::StereoSGBM::*)() const>("get_pre_filter_cap", &cv::StereoSGBM::getPreFilterCap)
     .define_method<void(cv::StereoSGBM::*)(int)>("set_pre_filter_cap", &cv::StereoSGBM::setPreFilterCap,
@@ -468,12 +453,10 @@ void Init_Calib3d()
     .define_constant("MODE_SGBM", (int)cv::StereoSGBM::MODE_SGBM)
     .define_constant("MODE_HH", (int)cv::StereoSGBM::MODE_HH)
     .define_constant("MODE_SGBM_3WAY", (int)cv::StereoSGBM::MODE_SGBM_3WAY)
-    .define_constant("MODE_HH4", (int)cv::StereoSGBM::MODE_HH4)
-    ;
+    .define_constant("MODE_HH4", (int)cv::StereoSGBM::MODE_HH4);
   Enum<cv::UndistortTypes> rb_cCvUndistortTypes = define_enum_under<cv::UndistortTypes>("UndistortTypes", rb_mCv)
     .define_value("PROJ_SPHERICAL_ORTHO", cv::UndistortTypes::PROJ_SPHERICAL_ORTHO)
-    .define_value("PROJ_SPHERICAL_EQRECT", cv::UndistortTypes::PROJ_SPHERICAL_EQRECT)
-    ;
+    .define_value("PROJ_SPHERICAL_EQRECT", cv::UndistortTypes::PROJ_SPHERICAL_EQRECT);
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray)>("undistort", &cv::undistort,
     Arg("src"), Arg("dst"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("new_camera_matrix") = static_cast<cv::InputArray>(cv::noArray()));
 

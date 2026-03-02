@@ -11,6 +11,5 @@ void Init_Flann_Logger()
     .define_singleton_function<void(*)(int)>("set_level", &cvflann::Logger::setLevel,
       Arg("level"))
     .define_singleton_function<void(*)(const char*)>("set_destination", &cvflann::Logger::setDestination,
-      Arg("name"))
-    ;
+      Arg("name"));
 }

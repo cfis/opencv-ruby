@@ -46,15 +46,13 @@ void Init_Core_MatInl()
     .define_method("-", [](const cv::MatConstIterator& self, ptrdiff_t other) -> cv::MatConstIterator
     {
       return self - other;
-    })
-    ;
+    });
   
   Data_Type<ptrdiff_t>()
     .define_method("+", [](ptrdiff_t self, const cv::MatConstIterator& other) -> cv::MatConstIterator
     {
       return self + other;
-    })
-    ;
+    });
   
   Data_Type<cv::SparseMatConstIterator>()
     .define_method("==", [](const cv::SparseMatConstIterator& self, const cv::SparseMatConstIterator& other) -> bool
@@ -64,8 +62,7 @@ void Init_Core_MatInl()
     .define_method("!=", [](const cv::SparseMatConstIterator& self, const cv::SparseMatConstIterator& other) -> bool
     {
       return self != other;
-    })
-    ;
+    });
   
   Data_Type<cv::Mat>()
     .define_method("assign_plus", [](cv::Mat& self, const cv::MatExpr& other) -> cv::Mat&
@@ -103,6 +100,5 @@ void Init_Core_MatInl()
     .define_method("assign_divide", [](const cv::Mat& self, const cv::MatExpr& other) -> const cv::Mat&
     {
       return self /= other;
-    })
-    ;
+    });
 }

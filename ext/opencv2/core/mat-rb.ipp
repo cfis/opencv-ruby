@@ -133,8 +133,7 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
     .template define_method<cv::Mat_<_Tp>&(cv::Mat_<_Tp>::*)(cv::Mat&&)>("assign", &cv::Mat_<_Tp>::operator=,
       Arg("m"))
     .define_constructor(Constructor<cv::Mat_<_Tp>, cv::MatExpr&&>(),
-      Arg("e"))
-    ;
+      Arg("e"));
 }
 
 template<typename _Tp>
@@ -179,8 +178,7 @@ inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module 
     .template define_method<_Tp(cv::SparseMat_<_Tp>::*)(const int*, size_t*) const>("[]", &cv::SparseMat_<_Tp>::operator(),
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0))
     .template define_iterator<cv::SparseMatIterator_<_Tp>(cv::SparseMat_<_Tp>::*)()>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each")
-    .template define_iterator<cv::SparseMatConstIterator_<_Tp>(cv::SparseMat_<_Tp>::*)() const>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each_const")
-    ;
+    .template define_iterator<cv::SparseMatConstIterator_<_Tp>(cv::SparseMat_<_Tp>::*)() const>(&cv::SparseMat_<_Tp>::begin, &cv::SparseMat_<_Tp>::end, "each_const");
 }
 
 template<typename _Tp>
@@ -213,8 +211,7 @@ inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate
     .template define_method<cv::MatConstIterator_<_Tp>&(cv::MatConstIterator_<_Tp>::*)()>("increment", &cv::MatConstIterator_<_Tp>::operator++)
     .template define_method<cv::MatConstIterator_<_Tp>(cv::MatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::MatConstIterator_<_Tp>::operator++,
       Arg("arg_0"))
-    .template define_method<cv::Point(cv::MatConstIterator_<_Tp>::*)() const>("pos", &cv::MatConstIterator_<_Tp>::pos)
-    ;
+    .template define_method<cv::Point(cv::MatConstIterator_<_Tp>::*)() const>("pos", &cv::MatConstIterator_<_Tp>::pos);
 }
 
 template<typename _Tp>
@@ -246,8 +243,7 @@ inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Mod
       Arg("arg_0"))
     .template define_method<cv::MatIterator_<_Tp>&(cv::MatIterator_<_Tp>::*)()>("increment", &cv::MatIterator_<_Tp>::operator++)
     .template define_method<cv::MatIterator_<_Tp>(cv::MatIterator_<_Tp>::*)(int)>("increment_post", &cv::MatIterator_<_Tp>::operator++,
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
 }
 
 template<typename _Tp>
@@ -266,8 +262,7 @@ inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator_
     .template define_method<const _Tp&(cv::SparseMatConstIterator_<_Tp>::*)() const>("dereference", &cv::SparseMatConstIterator_<_Tp>::operator*)
     .template define_method<cv::SparseMatConstIterator_<_Tp>&(cv::SparseMatConstIterator_<_Tp>::*)()>("increment", &cv::SparseMatConstIterator_<_Tp>::operator++)
     .template define_method<cv::SparseMatConstIterator_<_Tp>(cv::SparseMatConstIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatConstIterator_<_Tp>::operator++,
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
 }
 
 template<typename _Tp>
@@ -286,7 +281,6 @@ inline Rice::Data_Type<cv::SparseMatIterator_<_Tp>> SparseMatIterator__instantia
     .template define_method<_Tp&(cv::SparseMatIterator_<_Tp>::*)() const>("dereference", &cv::SparseMatIterator_<_Tp>::operator*)
     .template define_method<cv::SparseMatIterator_<_Tp>&(cv::SparseMatIterator_<_Tp>::*)()>("increment", &cv::SparseMatIterator_<_Tp>::operator++)
     .template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatIterator_<_Tp>::operator++,
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
 }
 

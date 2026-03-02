@@ -13,6 +13,5 @@ void Init_Reg_Mappergradproj()
     .define_constructor(Constructor<cv::reg::MapperGradProj>())
     .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradProj::*)(cv::InputArray, cv::InputArray, cv::Ptr<cv::reg::Map>) const>("calculate", &cv::reg::MapperGradProj::calculate,
       Arg("img1"), Arg("img2"), Arg("init") = static_cast<cv::Ptr<cv::reg::Map>>(cv::Ptr<cv::reg::Map>()))
-    .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradProj::*)() const>("get_map", &cv::reg::MapperGradProj::getMap)
-    ;
+    .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradProj::*)() const>("get_map", &cv::reg::MapperGradProj::getMap);
 }

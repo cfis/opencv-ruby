@@ -31,8 +31,7 @@ void Init_Stereo()
     .define_method<void(cv::stereo::StereoMatcher::*)(int)>("set_disp12_max_diff", &cv::stereo::StereoMatcher::setDisp12MaxDiff,
       Arg("disp12_max_diff"))
     .define_constant("DISP_SHIFT", (int)cv::stereo::StereoMatcher::DISP_SHIFT)
-    .define_constant("DISP_SCALE", (int)cv::stereo::StereoMatcher::DISP_SCALE)
-    ;
+    .define_constant("DISP_SCALE", (int)cv::stereo::StereoMatcher::DISP_SCALE);
   rb_mCvStereo.define_constant("CV_SPECKLE_REMOVAL_ALGORITHM", (int)cv::stereo::CV_SPECKLE_REMOVAL_ALGORITHM);
   rb_mCvStereo.define_constant("CV_SPECKLE_REMOVAL_AVG_ALGORITHM", (int)cv::stereo::CV_SPECKLE_REMOVAL_AVG_ALGORITHM);
   rb_mCvStereo.define_constant("CV_QUADRATIC_INTERPOLATION", (int)cv::stereo::CV_QUADRATIC_INTERPOLATION);
@@ -74,8 +73,7 @@ void Init_Stereo()
     .define_singleton_function<cv::Ptr<cv::stereo::StereoBinaryBM>(*)(int, int)>("create", &cv::stereo::StereoBinaryBM::create,
       Arg("num_disparities") = static_cast<int>(0), Arg("block_size") = static_cast<int>(9))
     .define_constant("PREFILTER_NORMALIZED_RESPONSE", (int)cv::stereo::StereoBinaryBM::PREFILTER_NORMALIZED_RESPONSE)
-    .define_constant("PREFILTER_XSOBEL", (int)cv::stereo::StereoBinaryBM::PREFILTER_XSOBEL)
-    ;
+    .define_constant("PREFILTER_XSOBEL", (int)cv::stereo::StereoBinaryBM::PREFILTER_XSOBEL);
   Rice::Data_Type<cv::stereo::StereoBinarySGBM> rb_cCvStereoStereoBinarySGBM = define_class_under<cv::stereo::StereoBinarySGBM, cv::stereo::StereoMatcher>(rb_mCvStereo, "StereoBinarySGBM")
     .define_method<int(cv::stereo::StereoBinarySGBM::*)() const>("get_pre_filter_cap", &cv::stereo::StereoBinarySGBM::getPreFilterCap)
     .define_method<void(cv::stereo::StereoBinarySGBM::*)(int)>("set_pre_filter_cap", &cv::stereo::StereoBinarySGBM::setPreFilterCap,
@@ -104,6 +102,5 @@ void Init_Stereo()
     .define_singleton_function<cv::Ptr<cv::stereo::StereoBinarySGBM>(*)(int, int, int, int, int, int, int, int, int, int, int)>("create", &cv::stereo::StereoBinarySGBM::create,
       Arg("min_disparity"), Arg("num_disparities"), Arg("block_size"), Arg("p1") = static_cast<int>(100), Arg("p2") = static_cast<int>(1000), Arg("disp12_max_diff") = static_cast<int>(1), Arg("pre_filter_cap") = static_cast<int>(0), Arg("uniqueness_ratio") = static_cast<int>(5), Arg("speckle_window_size") = static_cast<int>(400), Arg("speckle_range") = static_cast<int>(200), Arg("mode") = static_cast<int>(cv::stereo::StereoBinarySGBM::MODE_SGBM))
     .define_constant("MODE_SGBM", (int)cv::stereo::StereoBinarySGBM::MODE_SGBM)
-    .define_constant("MODE_HH", (int)cv::stereo::StereoBinarySGBM::MODE_HH)
-    ;
+    .define_constant("MODE_HH", (int)cv::stereo::StereoBinarySGBM::MODE_HH);
 }

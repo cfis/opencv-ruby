@@ -15,8 +15,7 @@ void Init_Stereo_QuasiDenseStereo()
     .define_attr("corr", &cv::stereo::MatchQuasiDense::corr)
     .define_constructor(Constructor<cv::stereo::MatchQuasiDense>())
     .define_method<bool(cv::stereo::MatchQuasiDense::*)(const cv::stereo::MatchQuasiDense&) const>("<", &cv::stereo::MatchQuasiDense::operator<,
-      Arg("rhs"))
-    ;
+      Arg("rhs"));
   Rice::Data_Type<cv::stereo::PropagationParameters> rb_cCvStereoPropagationParameters = define_class_under<cv::stereo::PropagationParameters>(rb_mCvStereo, "PropagationParameters")
     .define_constructor(Constructor<cv::stereo::PropagationParameters>())
     .define_attr("corr_win_size_x", &cv::stereo::PropagationParameters::corrWinSizeX)
@@ -33,8 +32,7 @@ void Init_Stereo_QuasiDenseStereo()
     .define_attr("lk_term_param2", &cv::stereo::PropagationParameters::lkTermParam2)
     .define_attr("gft_quality_thres", &cv::stereo::PropagationParameters::gftQualityThres)
     .define_attr("gft_min_seperation_dist", &cv::stereo::PropagationParameters::gftMinSeperationDist)
-    .define_attr("gft_max_num_features", &cv::stereo::PropagationParameters::gftMaxNumFeatures)
-    ;
+    .define_attr("gft_max_num_features", &cv::stereo::PropagationParameters::gftMaxNumFeatures);
   Rice::Data_Type<cv::stereo::QuasiDenseStereo> rb_cCvStereoQuasiDenseStereo = define_class_under<cv::stereo::QuasiDenseStereo>(rb_mCvStereo, "QuasiDenseStereo")
     .define_method<int(cv::stereo::QuasiDenseStereo::*)(cv::String)>("load_parameters", &cv::stereo::QuasiDenseStereo::loadParameters,
       Arg("filepath"))
@@ -51,6 +49,5 @@ void Init_Stereo_QuasiDenseStereo()
     .define_method<cv::Mat(cv::stereo::QuasiDenseStereo::*)()>("get_disparity", &cv::stereo::QuasiDenseStereo::getDisparity)
     .define_singleton_function<cv::Ptr<cv::stereo::QuasiDenseStereo>(*)(cv::Size, cv::String)>("create", &cv::stereo::QuasiDenseStereo::create,
       Arg("mono_img_size"), Arg("param_filepath") = static_cast<cv::String>(cv::String()))
-    .define_attr("param", &cv::stereo::QuasiDenseStereo::Param)
-    ;
+    .define_attr("param", &cv::stereo::QuasiDenseStereo::Param);
 }

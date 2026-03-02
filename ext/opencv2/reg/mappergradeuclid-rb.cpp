@@ -13,6 +13,5 @@ void Init_Reg_Mappergradeuclid()
     .define_constructor(Constructor<cv::reg::MapperGradEuclid>())
     .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradEuclid::*)(cv::InputArray, cv::InputArray, cv::Ptr<cv::reg::Map>) const>("calculate", &cv::reg::MapperGradEuclid::calculate,
       Arg("img1"), Arg("img2"), Arg("init") = static_cast<cv::Ptr<cv::reg::Map>>(cv::Ptr<cv::reg::Map>()))
-    .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradEuclid::*)() const>("get_map", &cv::reg::MapperGradEuclid::getMap)
-    ;
+    .define_method<cv::Ptr<cv::reg::Map>(cv::reg::MapperGradEuclid::*)() const>("get_map", &cv::reg::MapperGradEuclid::getMap);
 }

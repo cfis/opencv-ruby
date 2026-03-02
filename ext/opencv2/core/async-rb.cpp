@@ -32,6 +32,5 @@ void Init_Core_Async()
     .define_method<cv::AsyncArray&(cv::AsyncArray::*)(cv::AsyncArray&&) noexcept>("assign", &cv::AsyncArray::operator=,
       Arg("o"))
     .define_method<void*(cv::AsyncArray::*)() const noexcept>("_get_impl", &cv::AsyncArray::_getImpl,
-      ReturnBuffer())
-    ;
+      ReturnBuffer());
 }

@@ -18,6 +18,5 @@ void Init_Reg_Map()
     .define_method<void(cv::reg::Map::*)(cv::Ptr<cv::reg::Map>)>("compose", &cv::reg::Map::compose,
       Arg("map"))
     .define_method<void(cv::reg::Map::*)(double)>("scale", &cv::reg::Map::scale,
-      Arg("factor"))
-    ;
+      Arg("factor"));
 }

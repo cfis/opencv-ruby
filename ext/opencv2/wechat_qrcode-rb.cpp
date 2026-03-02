@@ -16,6 +16,5 @@ void Init_WechatQrcode()
       Arg("img"), Arg("points") = static_cast<cv::OutputArrayOfArrays>(cv::noArray()))
     .define_method<void(cv::wechat_qrcode::WeChatQRCode::*)(float)>("set_scale_factor", &cv::wechat_qrcode::WeChatQRCode::setScaleFactor,
       Arg("_scaling_factor"))
-    .define_method<float(cv::wechat_qrcode::WeChatQRCode::*)()>("get_scale_factor", &cv::wechat_qrcode::WeChatQRCode::getScaleFactor)
-    ;
+    .define_method<float(cv::wechat_qrcode::WeChatQRCode::*)()>("get_scale_factor", &cv::wechat_qrcode::WeChatQRCode::getScaleFactor);
 }

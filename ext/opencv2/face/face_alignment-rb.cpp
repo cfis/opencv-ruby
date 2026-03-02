@@ -17,8 +17,7 @@ void Init_Face_FaceAlignment()
     .define_method<bool(cv::face::FacemarkKazemi::*)(bool (*)(cv::InputArray, cv::OutputArray, void*), void*)>("set_face_detector", &cv::face::FacemarkKazemi::setFaceDetector,
       Arg("f"), ArgBuffer("user_data"))
     .define_method<bool(cv::face::FacemarkKazemi::*)(cv::InputArray, cv::OutputArray)>("get_faces", &cv::face::FacemarkKazemi::getFaces,
-      Arg("image"), Arg("faces"))
-    ;
+      Arg("image"), Arg("faces"));
   Rice::Data_Type<cv::face::FacemarkKazemi::Params> rb_cCvFaceFacemarkKazemiParams = define_class_under<cv::face::FacemarkKazemi::Params>(rb_cCvFaceFacemarkKazemi, "Params")
     .define_constructor(Constructor<cv::face::FacemarkKazemi::Params>())
     .define_attr("cascade_depth", &cv::face::FacemarkKazemi::Params::cascade_depth)
@@ -29,6 +28,5 @@ void Init_Face_FaceAlignment()
     .define_attr("num_test_coordinates", &cv::face::FacemarkKazemi::Params::num_test_coordinates)
     .define_attr("lambda", &cv::face::FacemarkKazemi::Params::lambda)
     .define_attr("num_test_splits", &cv::face::FacemarkKazemi::Params::num_test_splits)
-    .define_attr("configfile", &cv::face::FacemarkKazemi::Params::configfile)
-    ;
+    .define_attr("configfile", &cv::face::FacemarkKazemi::Params::configfile);
 }

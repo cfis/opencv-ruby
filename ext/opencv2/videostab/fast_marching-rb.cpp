@@ -11,6 +11,5 @@ void Init_Videostab_FastMarching()
 
   Rice::Data_Type<cv::videostab::FastMarchingMethod> rb_cCvVideostabFastMarchingMethod = define_class_under<cv::videostab::FastMarchingMethod>(rb_mCvVideostab, "FastMarchingMethod")
     .define_constructor(Constructor<cv::videostab::FastMarchingMethod>())
-    .define_method<cv::Mat(cv::videostab::FastMarchingMethod::*)() const>("distance_map", &cv::videostab::FastMarchingMethod::distanceMap)
-    ;
+    .define_method<cv::Mat(cv::videostab::FastMarchingMethod::*)() const>("distance_map", &cv::videostab::FastMarchingMethod::distanceMap);
 }

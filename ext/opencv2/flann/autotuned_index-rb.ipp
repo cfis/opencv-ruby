@@ -21,7 +21,6 @@ inline Rice::Data_Type<cvflann::AutotunedIndex<Distance>> AutotunedIndex_instant
     .template define_method<size_t(cvflann::AutotunedIndex<Distance>::*)() const>("size", &cvflann::AutotunedIndex<Distance>::size)
     .template define_method<size_t(cvflann::AutotunedIndex<Distance>::*)() const>("veclen", &cvflann::AutotunedIndex<Distance>::veclen)
     .template define_method<int(cvflann::AutotunedIndex<Distance>::*)() const>("used_memory", &cvflann::AutotunedIndex<Distance>::usedMemory)
-    .template define_method<cvflann::flann_algorithm_t(cvflann::AutotunedIndex<Distance>::*)() const>("get_type", &cvflann::AutotunedIndex<Distance>::getType)
-    ;
+    .template define_method<cvflann::flann_algorithm_t(cvflann::AutotunedIndex<Distance>::*)() const>("get_type", &cvflann::AutotunedIndex<Distance>::getType);
 }
 

@@ -26,6 +26,5 @@ void Init_Flann_DynamicBitset()
       Arg("index"))
     .define_method<size_t(cvflann::DynamicBitset::*)() const>("size", &cvflann::DynamicBitset::size)
     .define_method<bool(cvflann::DynamicBitset::*)(size_t) const>("test", &cvflann::DynamicBitset::test,
-      Arg("index"))
-    ;
+      Arg("index"));
 }

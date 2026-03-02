@@ -49,8 +49,7 @@ void Init_Xfeatures2d_Cuda()
     .define_attr("mask_sum", &cv::cuda::SURF_CUDA::maskSum)
     .define_attr("det", &cv::cuda::SURF_CUDA::det)
     .define_attr("trace", &cv::cuda::SURF_CUDA::trace)
-    .define_attr("max_pos_buffer", &cv::cuda::SURF_CUDA::maxPosBuffer)
-    ;
+    .define_attr("max_pos_buffer", &cv::cuda::SURF_CUDA::maxPosBuffer);
   Enum<cv::cuda::SURF_CUDA::KeypointLayout> rb_cCvCudaSURFCUDAKeypointLayout = define_enum_under<cv::cuda::SURF_CUDA::KeypointLayout>("KeypointLayout", rb_cCvCudaSURFCUDA)
     .define_value("X_ROW", cv::cuda::SURF_CUDA::KeypointLayout::X_ROW)
     .define_value("Y_ROW", cv::cuda::SURF_CUDA::KeypointLayout::Y_ROW)
@@ -59,6 +58,5 @@ void Init_Xfeatures2d_Cuda()
     .define_value("SIZE_ROW", cv::cuda::SURF_CUDA::KeypointLayout::SIZE_ROW)
     .define_value("ANGLE_ROW", cv::cuda::SURF_CUDA::KeypointLayout::ANGLE_ROW)
     .define_value("HESSIAN_ROW", cv::cuda::SURF_CUDA::KeypointLayout::HESSIAN_ROW)
-    .define_value("ROWS_COUNT", cv::cuda::SURF_CUDA::KeypointLayout::ROWS_COUNT)
-    ;
+    .define_value("ROWS_COUNT", cv::cuda::SURF_CUDA::KeypointLayout::ROWS_COUNT);
 }

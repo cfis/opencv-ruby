@@ -38,7 +38,6 @@ inline Rice::Data_Type<cv::Affine3<T>> Affine3_instantiate(Rice::Module parent, 
       Arg("t"))
     .template define_method<cv::Affine3<T>(cv::Affine3<T>::*)(const cv::Affine3<T>&) const>("concatenate", &cv::Affine3<T>::concatenate,
       Arg("affine"))
-    .define_attr("matrix", &cv::Affine3<T>::matrix)
-    ;
+    .define_attr("matrix", &cv::Affine3<T>::matrix);
 }
 

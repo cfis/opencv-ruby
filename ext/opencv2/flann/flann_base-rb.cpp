@@ -14,12 +14,10 @@ void Init_Flann_FlannBase()
 
   Rice::Data_Type<cvflann::SavedIndexParams> rb_cCvflannSavedIndexParams = define_class_under<cvflann::SavedIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "SavedIndexParams")
     .define_constructor(Constructor<cvflann::SavedIndexParams, cv::String>(),
-      Arg("filename"))
-    ;
+      Arg("filename"));
   #if RUBY_CV_VERSION >= 408
   Rice::Data_Type<cvflann::FILEScopeGuard> rb_cCvflannFILEScopeGuard = define_class_under<cvflann::FILEScopeGuard>(rb_mCvflann, "FILEScopeGuard")
     .define_constructor(Constructor<cvflann::FILEScopeGuard, FILE*>(),
-      Arg("file"))
-    ;
+      Arg("file"));
   #endif
 }

@@ -22,8 +22,7 @@ void Init_Ximgproc_Segmentation()
     .define_method<float(cv::ximgproc::segmentation::GraphSegmentation::*)()>("get_k", &cv::ximgproc::segmentation::GraphSegmentation::getK)
     .define_method<void(cv::ximgproc::segmentation::GraphSegmentation::*)(int)>("set_min_size", &cv::ximgproc::segmentation::GraphSegmentation::setMinSize,
       Arg("min_size"))
-    .define_method<int(cv::ximgproc::segmentation::GraphSegmentation::*)()>("get_min_size", &cv::ximgproc::segmentation::GraphSegmentation::getMinSize)
-    ;
+    .define_method<int(cv::ximgproc::segmentation::GraphSegmentation::*)()>("get_min_size", &cv::ximgproc::segmentation::GraphSegmentation::getMinSize);
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::GraphSegmentation>(*)(double, float, int)>("create_graph_segmentation", &cv::ximgproc::segmentation::createGraphSegmentation,
     Arg("sigma") = static_cast<double>(0.5), Arg("k") = static_cast<float>(300), Arg("min_size") = static_cast<int>(100));
 
@@ -33,8 +32,7 @@ void Init_Ximgproc_Segmentation()
     .define_method<float(cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::*)(int, int)>("get", &cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::get,
       Arg("r1"), Arg("r2"))
     .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::*)(int, int)>("merge", &cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy::merge,
-      Arg("r1"), Arg("r2"))
-    ;
+      Arg("r1"), Arg("r2"));
   Rice::Data_Type<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyColor> rb_cCvXimgprocSegmentationSelectiveSearchSegmentationStrategyColor = define_class_under<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyColor, cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy>(rb_mCvXimgprocSegmentation, "SelectiveSearchSegmentationStrategyColor");
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyColor>(*)()>("create_selective_search_segmentation_strategy_color", &cv::ximgproc::segmentation::createSelectiveSearchSegmentationStrategyColor);
 
@@ -50,8 +48,7 @@ void Init_Ximgproc_Segmentation()
   Rice::Data_Type<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple> rb_cCvXimgprocSegmentationSelectiveSearchSegmentationStrategyMultiple = define_class_under<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple, cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy>(rb_mCvXimgprocSegmentation, "SelectiveSearchSegmentationStrategyMultiple")
     .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::*)(cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy>, float)>("add_strategy", &cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::addStrategy,
       Arg("g"), Arg("weight"))
-    .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::*)()>("clear_strategies", &cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::clearStrategies)
-    ;
+    .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::*)()>("clear_strategies", &cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple::clearStrategies);
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple>(*)()>("create_selective_search_segmentation_strategy_multiple", &cv::ximgproc::segmentation::createSelectiveSearchSegmentationStrategyMultiple);
 
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategyMultiple>(*)(cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentationStrategy>)>("create_selective_search_segmentation_strategy_multiple", &cv::ximgproc::segmentation::createSelectiveSearchSegmentationStrategyMultiple,
@@ -85,7 +82,6 @@ void Init_Ximgproc_Segmentation()
       Arg("s"))
     .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)()>("clear_strategies", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::clearStrategies)
     .define_method<void(cv::ximgproc::segmentation::SelectiveSearchSegmentation::*)(std::vector<cv::Rect>&)>("process", &cv::ximgproc::segmentation::SelectiveSearchSegmentation::process,
-      Arg("rects"))
-    ;
+      Arg("rects"));
   rb_mCvXimgprocSegmentation.define_module_function<cv::Ptr<cv::ximgproc::segmentation::SelectiveSearchSegmentation>(*)()>("create_selective_search_segmentation", &cv::ximgproc::segmentation::createSelectiveSearchSegmentation);
 }

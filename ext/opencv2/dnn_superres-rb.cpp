@@ -29,6 +29,5 @@ void Init_DnnSuperres()
     .define_method<void(cv::dnn_superres::DnnSuperResImpl::*)(cv::InputArray, std::vector<cv::Mat>&, const std::vector<int>&, const std::vector<cv::String>&)>("upsample_multioutput", &cv::dnn_superres::DnnSuperResImpl::upsampleMultioutput,
       Arg("img"), Arg("imgs_new"), Arg("scale_factors"), Arg("node_names"))
     .define_method<int(cv::dnn_superres::DnnSuperResImpl::*)()>("get_scale", &cv::dnn_superres::DnnSuperResImpl::getScale)
-    .define_method<cv::String(cv::dnn_superres::DnnSuperResImpl::*)()>("get_algorithm", &cv::dnn_superres::DnnSuperResImpl::getAlgorithm)
-    ;
+    .define_method<cv::String(cv::dnn_superres::DnnSuperResImpl::*)()>("get_algorithm", &cv::dnn_superres::DnnSuperResImpl::getAlgorithm);
 }

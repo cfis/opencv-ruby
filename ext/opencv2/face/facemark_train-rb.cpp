@@ -17,8 +17,7 @@ void Init_Face_FacemarkTrain()
     .define_attr("max_size", &cv::face::CParams::maxSize)
     .define_constructor(Constructor<cv::face::CParams, cv::String, double, int, cv::Size, cv::Size>(),
       Arg("cascade_model"), Arg("sf") = static_cast<double>(1.1), Arg("min_n") = static_cast<int>(3), Arg("min_sz") = static_cast<cv::Size>(cv::Size(30, 30)), Arg("max_sz") = static_cast<cv::Size>(cv::Size()))
-    .define_attr("face_cascade", &cv::face::CParams::face_cascade)
-    ;
+    .define_attr("face_cascade", &cv::face::CParams::face_cascade);
   rb_mCvFace.define_module_function<bool(*)(cv::InputArray, cv::OutputArray, cv::face::CParams*)>("get_faces", &cv::face::getFaces,
     Arg("image"), Arg("faces"), Arg("params"));
 
@@ -53,6 +52,5 @@ void Init_Face_FacemarkTrain()
     .define_method<bool(cv::face::FacemarkTrain::*)(cv::InputArray, cv::OutputArray)>("get_faces", &cv::face::FacemarkTrain::getFaces,
       Arg("image"), Arg("faces"))
     .define_method<bool(cv::face::FacemarkTrain::*)(void*)>("get_data", &cv::face::FacemarkTrain::getData,
-      ArgBuffer("items") = static_cast<void*>(0))
-    ;
+      ArgBuffer("items") = static_cast<void*>(0));
 }

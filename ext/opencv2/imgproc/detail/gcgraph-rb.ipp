@@ -14,7 +14,6 @@ inline Rice::Data_Type<cv::detail::GCGraph<TWeight>> GCGraph_instantiate(Rice::M
       Arg("i"), Arg("source_w"), Arg("sink_w"))
     .template define_method<TWeight(cv::detail::GCGraph<TWeight>::*)()>("max_flow", &cv::detail::GCGraph<TWeight>::maxFlow)
     .template define_method<bool(cv::detail::GCGraph<TWeight>::*)(int)>("in_source_segment", &cv::detail::GCGraph<TWeight>::inSourceSegment,
-      Arg("i"))
-    ;
+      Arg("i"));
 }
 

@@ -15,21 +15,18 @@ void Init_Shape_HistCost()
     .define_method<int(cv::HistogramCostExtractor::*)() const>("get_n_dummies", &cv::HistogramCostExtractor::getNDummies)
     .define_method<void(cv::HistogramCostExtractor::*)(float)>("set_default_cost", &cv::HistogramCostExtractor::setDefaultCost,
       Arg("default_cost"))
-    .define_method<float(cv::HistogramCostExtractor::*)() const>("get_default_cost", &cv::HistogramCostExtractor::getDefaultCost)
-    ;
+    .define_method<float(cv::HistogramCostExtractor::*)() const>("get_default_cost", &cv::HistogramCostExtractor::getDefaultCost);
   Rice::Data_Type<cv::NormHistogramCostExtractor> rb_cCvNormHistogramCostExtractor = define_class_under<cv::NormHistogramCostExtractor, cv::HistogramCostExtractor>(rb_mCv, "NormHistogramCostExtractor")
     .define_method<void(cv::NormHistogramCostExtractor::*)(int)>("set_norm_flag", &cv::NormHistogramCostExtractor::setNormFlag,
       Arg("flag"))
-    .define_method<int(cv::NormHistogramCostExtractor::*)() const>("get_norm_flag", &cv::NormHistogramCostExtractor::getNormFlag)
-    ;
+    .define_method<int(cv::NormHistogramCostExtractor::*)() const>("get_norm_flag", &cv::NormHistogramCostExtractor::getNormFlag);
   rb_mCv.define_module_function<cv::Ptr<cv::HistogramCostExtractor>(*)(int, int, float)>("create_norm_histogram_cost_extractor", &cv::createNormHistogramCostExtractor,
     Arg("flag") = static_cast<int>(cv::DIST_L2), Arg("n_dummies") = static_cast<int>(25), Arg("default_cost") = static_cast<float>(0.2f));
 
   Rice::Data_Type<cv::EMDHistogramCostExtractor> rb_cCvEMDHistogramCostExtractor = define_class_under<cv::EMDHistogramCostExtractor, cv::HistogramCostExtractor>(rb_mCv, "EMDHistogramCostExtractor")
     .define_method<void(cv::EMDHistogramCostExtractor::*)(int)>("set_norm_flag", &cv::EMDHistogramCostExtractor::setNormFlag,
       Arg("flag"))
-    .define_method<int(cv::EMDHistogramCostExtractor::*)() const>("get_norm_flag", &cv::EMDHistogramCostExtractor::getNormFlag)
-    ;
+    .define_method<int(cv::EMDHistogramCostExtractor::*)() const>("get_norm_flag", &cv::EMDHistogramCostExtractor::getNormFlag);
   rb_mCv.define_module_function<cv::Ptr<cv::HistogramCostExtractor>(*)(int, int, float)>("create_emd_histogram_cost_extractor", &cv::createEMDHistogramCostExtractor,
     Arg("flag") = static_cast<int>(cv::DIST_L2), Arg("n_dummies") = static_cast<int>(25), Arg("default_cost") = static_cast<float>(0.2f));
 

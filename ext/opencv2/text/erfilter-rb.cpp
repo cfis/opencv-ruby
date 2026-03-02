@@ -33,8 +33,7 @@ void Init_Text_Erfilter()
     .define_attr("prev", &cv::text::ERStat::prev)
     .define_attr("local_maxima", &cv::text::ERStat::local_maxima)
     .define_attr("max_probability_ancestor", &cv::text::ERStat::max_probability_ancestor)
-    .define_attr("min_probability_ancestor", &cv::text::ERStat::min_probability_ancestor)
-    ;
+    .define_attr("min_probability_ancestor", &cv::text::ERStat::min_probability_ancestor);
   Rice::Data_Type<cv::text::ERFilter> rb_cCvTextERFilter = define_class_under<cv::text::ERFilter, cv::Algorithm>(rb_mCvText, "ERFilter")
     .define_method<void(cv::text::ERFilter::*)(cv::InputArray, std::vector<cv::text::ERStat>&)>("run", &cv::text::ERFilter::run,
       Arg("image"), Arg("regions"))
@@ -52,12 +51,10 @@ void Init_Text_Erfilter()
       Arg("min_probability_diff"))
     .define_method<void(cv::text::ERFilter::*)(bool)>("set_non_max_suppression", &cv::text::ERFilter::setNonMaxSuppression,
       Arg("non_max_suppression"))
-    .define_method<int(cv::text::ERFilter::*)() const>("get_num_rejected", &cv::text::ERFilter::getNumRejected)
-    ;
+    .define_method<int(cv::text::ERFilter::*)() const>("get_num_rejected", &cv::text::ERFilter::getNumRejected);
   Rice::Data_Type<cv::text::ERFilter::Callback> rb_cCvTextERFilterCallback = define_class_under<cv::text::ERFilter::Callback>(rb_cCvTextERFilter, "Callback")
     .define_method<double(cv::text::ERFilter::Callback::*)(const cv::text::ERStat&)>("eval", &cv::text::ERFilter::Callback::eval,
-      Arg("stat"))
-    ;
+      Arg("stat"));
   rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback>&, int, float, float, float, bool, float)>("create_er_filter_nm1", &cv::text::createERFilterNM1,
     Arg("cb"), Arg("threshold_delta") = static_cast<int>(1), Arg("min_area"), Arg("max_area"), Arg("min_probability"), Arg("non_max_suppression") = static_cast<bool>(true), Arg("min_probability_diff"));
 
@@ -83,8 +80,7 @@ void Init_Text_Erfilter()
 
   Enum<cv::text::erGrouping_Modes> rb_cCvTextErGroupingModes = define_enum_under<cv::text::erGrouping_Modes>("ErGroupingModes", rb_mCvText)
     .define_value("ERGROUPING_ORIENTATION_HORIZ", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_HORIZ)
-    .define_value("ERGROUPING_ORIENTATION_ANY", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_ANY)
-    ;
+    .define_value("ERGROUPING_ORIENTATION_ANY", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_ANY);
   rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>>&, std::vector<std::vector<cv::Vec2i>>&, std::vector<cv::Rect>&, int, const std::string&, float)>("er_grouping", &cv::text::erGrouping,
     Arg("img"), Arg("channels"), Arg("regions"), Arg("groups"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const std::string&>(std::string()), Arg("min_probablity") = static_cast<float>(0.5));
 

@@ -157,6 +157,7 @@ void Init_Core_Cvdef()
     #if RUBY_CV_VERSION >= 407
     .define_value("CPU_NEON_DOTPROD", CpuFeatures::CPU_NEON_DOTPROD)
     #endif
+
     #if RUBY_CV_VERSION >= 409
     .define_value("CPU_NEON_FP16", CpuFeatures::CPU_NEON_FP16)
     .define_value("CPU_NEON_BF16", CpuFeatures::CPU_NEON_BF16)
@@ -168,7 +169,6 @@ void Init_Core_Cvdef()
     .define_attr("i", &Cv16suf::i)
 
     .define_attr("u", &Cv16suf::u)
-
     ;
 
   Class cv32suf = define_class<Cv32suf>("Cv32suf")
@@ -177,7 +177,6 @@ void Init_Core_Cvdef()
     .define_attr("u", &Cv32suf::u)
 
     .define_attr("f", &Cv32suf::f)
-
     ;
 
   Class cv64suf = define_class<Cv64suf>("Cv64suf")
@@ -186,7 +185,6 @@ void Init_Core_Cvdef()
     .define_attr("u", &Cv64suf::u)
 
     .define_attr("f", &Cv64suf::f)
-
     ;
 
   Module rb_mCv = define_module("Cv");
@@ -199,12 +197,12 @@ void Init_Core_Cvdef()
     .define_method("to_f32", [](const cv::hfloat& self) -> float
     {
       return self;
-    })
-    ;
+    });
   rb_mCv.define_module_function<cv::hfloat(*)(ushort)>("hfloat_from_bits", &cv::hfloatFromBits,
     Arg("w"));
 
   #endif
+
   define_global_function<int(*)(char, char, char, char)>("cv_fourcc", &CV_FOURCC,
     Arg("c1"), Arg("c2"), Arg("c3"), Arg("c4"));
 
@@ -212,6 +210,7 @@ void Init_Core_Cvdef()
   Class(rb_cObject).define_constant("CV_CPU_NEON_DOTPROD", CV_CPU_NEON_DOTPROD);
 
   #endif
+
   #if RUBY_CV_VERSION >= 409
   Class(rb_cObject).define_constant("CV_CPU_NEON_FP16", CV_CPU_NEON_FP16);
 
@@ -222,6 +221,7 @@ void Init_Core_Cvdef()
   Class(rb_cObject).define_constant("CV_CPU_LASX", CV_CPU_LASX);
 
   #endif
+
   #if RUBY_CV_VERSION >= 410
   Class(rb_cObject).define_constant("CV_MAX_DIM", CV_MAX_DIM);
 

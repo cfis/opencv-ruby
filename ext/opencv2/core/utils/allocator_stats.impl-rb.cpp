@@ -19,6 +19,5 @@ void Init_Core_Utils_AllocatorStatsImpl()
     .define_method<void(cv::utils::AllocatorStatistics::*)(size_t)>("on_allocate", &cv::utils::AllocatorStatistics::onAllocate,
       Arg("sz"))
     .define_method<void(cv::utils::AllocatorStatistics::*)(size_t)>("on_free", &cv::utils::AllocatorStatistics::onFree,
-      Arg("sz"))
-    ;
+      Arg("sz"));
 }

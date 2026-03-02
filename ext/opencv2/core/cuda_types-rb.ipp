@@ -15,8 +15,7 @@ inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module pare
     .define_method("to_const_ptr", [](const cv::cuda::DevPtr<T>& self) -> const T*
     {
       return self;
-    })
-    ;
+    });
 }
 
 template<typename T>
@@ -26,8 +25,7 @@ inline Rice::Data_Type<cv::cuda::PtrSz<T>> PtrSz_instantiate(Rice::Module parent
     .define_constructor(Constructor<cv::cuda::PtrSz<T>>())
     .define_constructor(Constructor<cv::cuda::PtrSz<T>, T*, size_t>(),
       std::conditional_t<std::is_fundamental_v<T>, ArgBuffer, Arg>("data_"), Arg("size_"))
-    .define_attr("size", &cv::cuda::PtrSz<T>::size)
-    ;
+    .define_attr("size", &cv::cuda::PtrSz<T>::size);
 }
 
 template<typename T>
@@ -45,8 +43,7 @@ inline Rice::Data_Type<cv::cuda::PtrStep<T>> PtrStep_instantiate(Rice::Module pa
     .template define_method<T&(cv::cuda::PtrStep<T>::*)(int, int)>("call", &cv::cuda::PtrStep<T>::operator(),
       Arg("y"), Arg("x"))
     .template define_method<const T&(cv::cuda::PtrStep<T>::*)(int, int) const>("call", &cv::cuda::PtrStep<T>::operator(),
-      Arg("y"), Arg("x"))
-    ;
+      Arg("y"), Arg("x"));
 }
 
 template<typename T>
@@ -62,7 +59,6 @@ inline Rice::Data_Type<cv::cuda::PtrStepSz<T>> PtrStepSz_instantiate(Rice::Modul
     .template define_method<T&(cv::cuda::PtrStepSz<T>::*)(const cv::Point&)>("call", &cv::cuda::PtrStepSz<T>::operator(),
       Arg("pos"))
     .template define_method<const T&(cv::cuda::PtrStepSz<T>::*)(const cv::Point&) const>("call", &cv::cuda::PtrStepSz<T>::operator(),
-      Arg("pos"))
-    ;
+      Arg("pos"));
 }
 

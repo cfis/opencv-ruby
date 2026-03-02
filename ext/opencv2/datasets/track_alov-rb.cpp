@@ -13,8 +13,7 @@ void Init_Datasets_TrackAlov()
     .define_constructor(Constructor<cv::datasets::TRACK_alovObj>())
     .define_attr("id", &cv::datasets::TRACK_alovObj::id)
     .define_attr("image_path", &cv::datasets::TRACK_alovObj::imagePath)
-    .define_attr("gtbb", &cv::datasets::TRACK_alovObj::gtbb)
-    ;
+    .define_attr("gtbb", &cv::datasets::TRACK_alovObj::gtbb);
   rb_mCvDatasets.define_constant("SectionNames", cv::datasets::sectionNames);
 
   rb_mCvDatasets.define_constant("SectionSizes", cv::datasets::sectionSizes);
@@ -36,6 +35,5 @@ void Init_Datasets_TrackAlov()
     .define_method<bool(cv::datasets::TRACK_alov::*)(cv::Mat&, int, int)>("get_frame", &cv::datasets::TRACK_alov::getFrame,
       Arg("frame"), Arg("dataset_id"), Arg("frame_id"))
     .define_method<std::vector<cv::Point2f>(cv::datasets::TRACK_alov::*)(int, int)>("get_gt", &cv::datasets::TRACK_alov::getGT,
-      Arg("dataset_id"), Arg("frame_id"))
-    ;
+      Arg("dataset_id"), Arg("frame_id"));
 }

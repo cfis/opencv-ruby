@@ -25,6 +25,5 @@ void Init_Reg_Mapaffine()
       Arg("lin_tr"))
     .define_method<const cv::Vec<double, 2>&(cv::reg::MapAffine::*)() const>("get_shift", &cv::reg::MapAffine::getShift)
     .define_method<void(cv::reg::MapAffine::*)(cv::OutputArray) const>("get_shift", &cv::reg::MapAffine::getShift,
-      Arg("shift"))
-    ;
+      Arg("shift"));
 }

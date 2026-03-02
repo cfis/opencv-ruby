@@ -85,16 +85,13 @@ void Init_Stitching()
     .define_method<std::vector<int>(cv::Stitcher::*)() const>("component", &cv::Stitcher::component)
     .define_method<std::vector<cv::detail::CameraParams>(cv::Stitcher::*)() const>("cameras", &cv::Stitcher::cameras)
     .define_method<double(cv::Stitcher::*)() const>("work_scale", &cv::Stitcher::workScale)
-    .define_method<cv::UMat(cv::Stitcher::*)() const>("result_mask", &cv::Stitcher::resultMask)
-    ;
+    .define_method<cv::UMat(cv::Stitcher::*)() const>("result_mask", &cv::Stitcher::resultMask);
   Enum<cv::Stitcher::Status> rb_cCvStitcherStatus = define_enum_under<cv::Stitcher::Status>("Status", rb_cCvStitcher)
     .define_value("OK", cv::Stitcher::Status::OK)
     .define_value("ERR_NEED_MORE_IMGS", cv::Stitcher::Status::ERR_NEED_MORE_IMGS)
     .define_value("ERR_HOMOGRAPHY_EST_FAIL", cv::Stitcher::Status::ERR_HOMOGRAPHY_EST_FAIL)
-    .define_value("ERR_CAMERA_PARAMS_ADJUST_FAIL", cv::Stitcher::Status::ERR_CAMERA_PARAMS_ADJUST_FAIL)
-    ;
+    .define_value("ERR_CAMERA_PARAMS_ADJUST_FAIL", cv::Stitcher::Status::ERR_CAMERA_PARAMS_ADJUST_FAIL);
   Enum<cv::Stitcher::Mode> rb_cCvStitcherMode = define_enum_under<cv::Stitcher::Mode>("Mode", rb_cCvStitcher)
     .define_value("PANORAMA", cv::Stitcher::Mode::PANORAMA)
-    .define_value("SCANS", cv::Stitcher::Mode::SCANS)
-    ;
+    .define_value("SCANS", cv::Stitcher::Mode::SCANS);
 }

@@ -23,8 +23,7 @@ void Init_Flann_Defines()
     .define_value("COMPOSITE", cvflann::flann_algorithm_t::COMPOSITE)
     .define_value("KDTREE_SINGLE", cvflann::flann_algorithm_t::KDTREE_SINGLE)
     .define_value("SAVED", cvflann::flann_algorithm_t::SAVED)
-    .define_value("AUTOTUNED", cvflann::flann_algorithm_t::AUTOTUNED)
-    ;
+    .define_value("AUTOTUNED", cvflann::flann_algorithm_t::AUTOTUNED);
   Enum<cvflann::flann_centers_init_t> rb_cCvflannFlannCentersInitT = define_enum_under<cvflann::flann_centers_init_t>("FlannCentersInitT", rb_mCvflann)
     .define_value("FLANN_CENTERS_RANDOM", cvflann::flann_centers_init_t::FLANN_CENTERS_RANDOM)
     .define_value("FLANN_CENTERS_GONZALES", cvflann::flann_centers_init_t::FLANN_CENTERS_GONZALES)
@@ -32,15 +31,13 @@ void Init_Flann_Defines()
     .define_value("FLANN_CENTERS_GROUPWISE", cvflann::flann_centers_init_t::FLANN_CENTERS_GROUPWISE)
     .define_value("CENTERS_RANDOM", cvflann::flann_centers_init_t::CENTERS_RANDOM)
     .define_value("CENTERS_GONZALES", cvflann::flann_centers_init_t::CENTERS_GONZALES)
-    .define_value("CENTERS_KMEANSPP", cvflann::flann_centers_init_t::CENTERS_KMEANSPP)
-    ;
+    .define_value("CENTERS_KMEANSPP", cvflann::flann_centers_init_t::CENTERS_KMEANSPP);
   Enum<cvflann::flann_log_level_t> rb_cCvflannFlannLogLevelT = define_enum_under<cvflann::flann_log_level_t>("FlannLogLevelT", rb_mCvflann)
     .define_value("FLANN_LOG_NONE", cvflann::flann_log_level_t::FLANN_LOG_NONE)
     .define_value("FLANN_LOG_FATAL", cvflann::flann_log_level_t::FLANN_LOG_FATAL)
     .define_value("FLANN_LOG_ERROR", cvflann::flann_log_level_t::FLANN_LOG_ERROR)
     .define_value("FLANN_LOG_WARN", cvflann::flann_log_level_t::FLANN_LOG_WARN)
-    .define_value("FLANN_LOG_INFO", cvflann::flann_log_level_t::FLANN_LOG_INFO)
-    ;
+    .define_value("FLANN_LOG_INFO", cvflann::flann_log_level_t::FLANN_LOG_INFO);
   Enum<cvflann::flann_distance_t> rb_cCvflannFlannDistanceT = define_enum_under<cvflann::flann_distance_t>("FlannDistanceT", rb_mCvflann)
     .define_value("FLANN_DIST_EUCLIDEAN", cvflann::flann_distance_t::FLANN_DIST_EUCLIDEAN)
     .define_value("FLANN_DIST_L2", cvflann::flann_distance_t::FLANN_DIST_L2)
@@ -64,8 +61,7 @@ void Init_Flann_Defines()
     .define_value("HELLINGER", cvflann::flann_distance_t::HELLINGER)
     .define_value("CS", cvflann::flann_distance_t::CS)
     .define_value("KL", cvflann::flann_distance_t::KL)
-    .define_value("KULLBACK_LEIBLER", cvflann::flann_distance_t::KULLBACK_LEIBLER)
-    ;
+    .define_value("KULLBACK_LEIBLER", cvflann::flann_distance_t::KULLBACK_LEIBLER);
   Enum<cvflann::flann_datatype_t> rb_cCvflannFlannDatatypeT = define_enum_under<cvflann::flann_datatype_t>("FlannDatatypeT", rb_mCvflann)
     .define_value("FLANN_INT8", cvflann::flann_datatype_t::FLANN_INT8)
     .define_value("FLANN_INT16", cvflann::flann_datatype_t::FLANN_INT16)
@@ -76,8 +72,7 @@ void Init_Flann_Defines()
     .define_value("FLANN_UINT32", cvflann::flann_datatype_t::FLANN_UINT32)
     .define_value("FLANN_UINT64", cvflann::flann_datatype_t::FLANN_UINT64)
     .define_value("FLANN_FLOAT32", cvflann::flann_datatype_t::FLANN_FLOAT32)
-    .define_value("FLANN_FLOAT64", cvflann::flann_datatype_t::FLANN_FLOAT64)
-    ;
+    .define_value("FLANN_FLOAT64", cvflann::flann_datatype_t::FLANN_FLOAT64);
   rb_mCvflann.define_constant("FLANN_CHECKS_UNLIMITED", (int)cvflann::FLANN_CHECKS_UNLIMITED);
   rb_mCvflann.define_constant("FLANN_CHECKS_AUTOTUNED", (int)cvflann::FLANN_CHECKS_AUTOTUNED);
 }

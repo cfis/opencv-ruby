@@ -12,6 +12,5 @@ void Init_Flann_Timer()
     .define_constructor(Constructor<cvflann::StartStopTimer>())
     .define_method<void(cvflann::StartStopTimer::*)()>("start", &cvflann::StartStopTimer::start)
     .define_method<void(cvflann::StartStopTimer::*)()>("stop", &cvflann::StartStopTimer::stop)
-    .define_method<void(cvflann::StartStopTimer::*)()>("reset", &cvflann::StartStopTimer::reset)
-    ;
+    .define_method<void(cvflann::StartStopTimer::*)()>("reset", &cvflann::StartStopTimer::reset);
 }

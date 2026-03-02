@@ -57,8 +57,7 @@ void Init_Cudaobjdetect()
     .define_method<void(cv::cuda::HOG::*)(cv::InputArray, std::vector<cv::Rect>&)>("detect_multi_scale_without_conf", &cv::cuda::HOG::detectMultiScaleWithoutConf,
       Arg("img"), Arg("found_locations"))
     .define_method<void(cv::cuda::HOG::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("compute", &cv::cuda::HOG::compute,
-      Arg("img"), Arg("descriptors"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    ;
+      Arg("img"), Arg("descriptors"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
   Rice::Data_Type<cv::cuda::CascadeClassifier> rb_cCvCudaCascadeClassifier = define_class_under<cv::cuda::CascadeClassifier, cv::Algorithm>(rb_mCvCuda, "CascadeClassifier")
     .define_singleton_function<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::String&)>("create", &cv::cuda::CascadeClassifier::create,
       Arg("filename"))
@@ -86,6 +85,5 @@ void Init_Cudaobjdetect()
     .define_method<void(cv::cuda::CascadeClassifier::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("detect_multi_scale", &cv::cuda::CascadeClassifier::detectMultiScale,
       Arg("image"), Arg("objects"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
     .define_method<void(cv::cuda::CascadeClassifier::*)(cv::OutputArray, std::vector<cv::Rect>&)>("convert", &cv::cuda::CascadeClassifier::convert,
-      Arg("gpu_objects"), Arg("objects"))
-    ;
+      Arg("gpu_objects"), Arg("objects"));
 }

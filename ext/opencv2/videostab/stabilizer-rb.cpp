@@ -39,16 +39,14 @@ void Init_Videostab_Stabilizer()
     .define_method<int(cv::videostab::StabilizerBase::*)() const>("border_mode", &cv::videostab::StabilizerBase::borderMode)
     .define_method<void(cv::videostab::StabilizerBase::*)(cv::Ptr<cv::videostab::InpainterBase>)>("set_inpainter", &cv::videostab::StabilizerBase::setInpainter,
       Arg("val"))
-    .define_method<cv::Ptr<cv::videostab::InpainterBase>(cv::videostab::StabilizerBase::*)() const>("inpainter", &cv::videostab::StabilizerBase::inpainter)
-    ;
+    .define_method<cv::Ptr<cv::videostab::InpainterBase>(cv::videostab::StabilizerBase::*)() const>("inpainter", &cv::videostab::StabilizerBase::inpainter);
   Rice::Data_Type<cv::videostab::OnePassStabilizer> rb_cCvVideostabOnePassStabilizer = define_class_under<cv::videostab::OnePassStabilizer, cv::videostab::StabilizerBase>(rb_mCvVideostab, "OnePassStabilizer")
     .define_constructor(Constructor<cv::videostab::OnePassStabilizer>())
     .define_method<void(cv::videostab::OnePassStabilizer::*)(cv::Ptr<cv::videostab::MotionFilterBase>)>("set_motion_filter", &cv::videostab::OnePassStabilizer::setMotionFilter,
       Arg("val"))
     .define_method<cv::Ptr<cv::videostab::MotionFilterBase>(cv::videostab::OnePassStabilizer::*)() const>("motion_filter", &cv::videostab::OnePassStabilizer::motionFilter)
     .define_method<void(cv::videostab::OnePassStabilizer::*)()>("reset", &cv::videostab::OnePassStabilizer::reset)
-    .define_method<cv::Mat(cv::videostab::OnePassStabilizer::*)()>("next_frame", &cv::videostab::OnePassStabilizer::nextFrame)
-    ;
+    .define_method<cv::Mat(cv::videostab::OnePassStabilizer::*)()>("next_frame", &cv::videostab::OnePassStabilizer::nextFrame);
   Rice::Data_Type<cv::videostab::TwoPassStabilizer> rb_cCvVideostabTwoPassStabilizer = define_class_under<cv::videostab::TwoPassStabilizer, cv::videostab::StabilizerBase>(rb_mCvVideostab, "TwoPassStabilizer")
     .define_constructor(Constructor<cv::videostab::TwoPassStabilizer>())
     .define_method<void(cv::videostab::TwoPassStabilizer::*)(cv::Ptr<cv::videostab::IMotionStabilizer>)>("set_motion_stabilizer", &cv::videostab::TwoPassStabilizer::setMotionStabilizer,
@@ -61,6 +59,5 @@ void Init_Videostab_Stabilizer()
       Arg("val"))
     .define_method<bool(cv::videostab::TwoPassStabilizer::*)() const>("must_estimate_trima_ratio?", &cv::videostab::TwoPassStabilizer::mustEstimateTrimaRatio)
     .define_method<void(cv::videostab::TwoPassStabilizer::*)()>("reset", &cv::videostab::TwoPassStabilizer::reset)
-    .define_method<cv::Mat(cv::videostab::TwoPassStabilizer::*)()>("next_frame", &cv::videostab::TwoPassStabilizer::nextFrame)
-    ;
+    .define_method<cv::Mat(cv::videostab::TwoPassStabilizer::*)()>("next_frame", &cv::videostab::TwoPassStabilizer::nextFrame);
 }

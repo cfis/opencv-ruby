@@ -17,13 +17,11 @@ void Init_CoreDetect()
     .define_attr("ymax", &cv::dnn_objdetect::object::ymax)
     .define_attr("class_idx", &cv::dnn_objdetect::object::class_idx)
     .define_attr("label_name", &cv::dnn_objdetect::object::label_name)
-    .define_attr("class_prob", &cv::dnn_objdetect::object::class_prob)
-    ;
+    .define_attr("class_prob", &cv::dnn_objdetect::object::class_prob);
   Rice::Data_Type<cv::dnn_objdetect::InferBbox> rb_cCvDnnObjdetectInferBbox = define_class_under<cv::dnn_objdetect::InferBbox>(rb_mCvDnnObjdetect, "InferBbox")
     .define_constructor(Constructor<cv::dnn_objdetect::InferBbox, cv::Mat, cv::Mat, cv::Mat>(),
       Arg("_delta_bbox"), Arg("_class_scores"), Arg("_conf_scores"))
     .define_method<void(cv::dnn_objdetect::InferBbox::*)(double)>("filter", &cv::dnn_objdetect::InferBbox::filter,
       Arg("thresh") = static_cast<double>(0.8))
-    .define_attr("detections", &cv::dnn_objdetect::InferBbox::detections)
-    ;
+    .define_attr("detections", &cv::dnn_objdetect::InferBbox::detections);
 }

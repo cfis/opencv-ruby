@@ -19,7 +19,6 @@ inline Rice::Data_Type<cvflann::KDTreeIndex<Distance>> KDTreeIndex_instantiate(R
     .template define_method<int(cvflann::KDTreeIndex<Distance>::*)() const>("used_memory", &cvflann::KDTreeIndex<Distance>::usedMemory)
     .template define_method<void(cvflann::KDTreeIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::KDTreeIndex<Distance>::DistanceType>&, const typename cvflann::KDTreeIndex<Distance>::ElementType*, const cvflann::SearchParams&)>("find_neighbors", &cvflann::KDTreeIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"))
-    .template define_method<cvflann::IndexParams(cvflann::KDTreeIndex<Distance>::*)() const>("get_parameters", &cvflann::KDTreeIndex<Distance>::getParameters)
-    ;
+    .template define_method<cvflann::IndexParams(cvflann::KDTreeIndex<Distance>::*)() const>("get_parameters", &cvflann::KDTreeIndex<Distance>::getParameters);
 }
 

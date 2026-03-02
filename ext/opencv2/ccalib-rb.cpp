@@ -39,6 +39,5 @@ void Init_Ccalib()
     .define_method<bool(cv::ccalib::CustomPattern::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, bool, int, float, int, cv::OutputArray, int)>("find_rt_ransac", &cv::ccalib::CustomPattern::findRtRANSAC,
       Arg("image"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvec"), Arg("tvec"), Arg("use_extrinsic_guess") = static_cast<bool>(false), Arg("iterations_count") = static_cast<int>(100), Arg("reprojection_error") = static_cast<float>(8.0), Arg("min_inliers_count") = static_cast<int>(100), Arg("inliers") = static_cast<cv::OutputArray>(cv::noArray()), Arg("flags") = static_cast<int>(cv::SOLVEPNP_ITERATIVE))
     .define_method<void(cv::ccalib::CustomPattern::*)(cv::InputOutputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, int)>("draw_orientation", &cv::ccalib::CustomPattern::drawOrientation,
-      Arg("image"), Arg("tvec"), Arg("rvec"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("axis_length") = static_cast<double>(3), Arg("axis_width") = static_cast<int>(2))
-    ;
+      Arg("image"), Arg("tvec"), Arg("rvec"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("axis_length") = static_cast<double>(3), Arg("axis_width") = static_cast<int>(2));
 }

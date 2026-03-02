@@ -21,12 +21,10 @@ void Init_Ccalib_Randpattern()
     .define_method<std::vector<cv::Mat>(cv::randpattern::RandomPatternCornerFinder::*)(cv::Mat)>("compute_object_image_points_for_single", &cv::randpattern::RandomPatternCornerFinder::computeObjectImagePointsForSingle,
       Arg("input_image"))
     .define_method<const std::vector<cv::Mat>&(cv::randpattern::RandomPatternCornerFinder::*)()>("get_object_points", &cv::randpattern::RandomPatternCornerFinder::getObjectPoints)
-    .define_method<const std::vector<cv::Mat>&(cv::randpattern::RandomPatternCornerFinder::*)()>("get_image_points", &cv::randpattern::RandomPatternCornerFinder::getImagePoints)
-    ;
+    .define_method<const std::vector<cv::Mat>&(cv::randpattern::RandomPatternCornerFinder::*)()>("get_image_points", &cv::randpattern::RandomPatternCornerFinder::getImagePoints);
   Rice::Data_Type<cv::randpattern::RandomPatternGenerator> rb_cCvRandpatternRandomPatternGenerator = define_class_under<cv::randpattern::RandomPatternGenerator>(rb_mCvRandpattern, "RandomPatternGenerator")
     .define_constructor(Constructor<cv::randpattern::RandomPatternGenerator, int, int>(),
       Arg("image_width"), Arg("image_height"))
     .define_method<void(cv::randpattern::RandomPatternGenerator::*)()>("generate_pattern", &cv::randpattern::RandomPatternGenerator::generatePattern)
-    .define_method<cv::Mat(cv::randpattern::RandomPatternGenerator::*)()>("get_pattern", &cv::randpattern::RandomPatternGenerator::getPattern)
-    ;
+    .define_method<cv::Mat(cv::randpattern::RandomPatternGenerator::*)()>("get_pattern", &cv::randpattern::RandomPatternGenerator::getPattern);
 }

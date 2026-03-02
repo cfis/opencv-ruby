@@ -13,8 +13,7 @@ void Init_Tracking()
     .define_singleton_function<cv::Ptr<cv::TrackerCSRT>(*)(const cv::tracking::TrackerCSRT::Params&)>("create", &cv::tracking::TrackerCSRT::create,
       Arg("parameters") = static_cast<const cv::tracking::TrackerCSRT::Params&>(cv::tracking::TrackerCSRT::Params()))
     .define_method<void(cv::tracking::TrackerCSRT::*)(cv::InputArray)>("set_initial_mask", &cv::tracking::TrackerCSRT::setInitialMask,
-      Arg("mask"))
-    ;
+      Arg("mask"));
   Rice::Data_Type<cv::TrackerCSRT::Params> rb_cCvTrackerCSRTParams = define_class_under<cv::TrackerCSRT::Params>(rb_cCvTrackerCSRT, "Params")
     .define_constructor(Constructor<cv::tracking::TrackerCSRT::Params>())
     .define_attr("use_hog", &cv::tracking::TrackerCSRT::Params::use_hog)
@@ -43,14 +42,12 @@ void Init_Tracking()
     .define_attr("scale_model_max_area", &cv::tracking::TrackerCSRT::Params::scale_model_max_area)
     .define_attr("scale_lr", &cv::tracking::TrackerCSRT::Params::scale_lr)
     .define_attr("scale_step", &cv::tracking::TrackerCSRT::Params::scale_step)
-    .define_attr("psr_threshold", &cv::tracking::TrackerCSRT::Params::psr_threshold)
-    ;
+    .define_attr("psr_threshold", &cv::tracking::TrackerCSRT::Params::psr_threshold);
   Rice::Data_Type<cv::TrackerKCF> rb_cCvTrackerKCF = define_class_under<cv::TrackerKCF, cv::Tracker>(rb_mCvTracking, "TrackerKCF")
     .define_singleton_function<cv::Ptr<cv::TrackerKCF>(*)(const cv::tracking::TrackerKCF::Params&)>("create", &cv::tracking::TrackerKCF::create,
       Arg("parameters") = static_cast<const cv::tracking::TrackerKCF::Params&>(cv::tracking::TrackerKCF::Params()))
     .define_method<void(cv::tracking::TrackerKCF::*)(cv::tracking::TrackerKCF::FeatureExtractorCallbackFN, bool)>("set_feature_extractor", &cv::tracking::TrackerKCF::setFeatureExtractor,
-      Arg("callback"), Arg("pca_func") = static_cast<bool>(false))
-    ;
+      Arg("callback"), Arg("pca_func") = static_cast<bool>(false));
   Rice::Data_Type<cv::TrackerKCF::Params> rb_cCvTrackerKCFParams = define_class_under<cv::TrackerKCF::Params>(rb_cCvTrackerKCF, "Params")
     .define_constructor(Constructor<cv::tracking::TrackerKCF::Params>())
     .define_attr("detect_thresh", &cv::tracking::TrackerKCF::Params::detect_thresh)
@@ -66,11 +63,9 @@ void Init_Tracking()
     .define_attr("max_patch_size", &cv::tracking::TrackerKCF::Params::max_patch_size)
     .define_attr("compressed_size", &cv::tracking::TrackerKCF::Params::compressed_size)
     .define_attr("desc_pca", &cv::tracking::TrackerKCF::Params::desc_pca)
-    .define_attr("desc_npca", &cv::tracking::TrackerKCF::Params::desc_npca)
-    ;
+    .define_attr("desc_npca", &cv::tracking::TrackerKCF::Params::desc_npca);
   Enum<cv::tracking::TrackerKCF::MODE> rb_cCvTrackerKCFMODE = define_enum_under<cv::tracking::TrackerKCF::MODE>("Mode", rb_cCvTrackerKCF)
     .define_value("GRAY", cv::tracking::TrackerKCF::MODE::GRAY)
     .define_value("CN", cv::tracking::TrackerKCF::MODE::CN)
-    .define_value("CUSTOM", cv::tracking::TrackerKCF::MODE::CUSTOM)
-    ;
+    .define_value("CUSTOM", cv::tracking::TrackerKCF::MODE::CUSTOM);
 }

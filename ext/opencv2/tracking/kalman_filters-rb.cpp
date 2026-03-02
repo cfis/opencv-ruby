@@ -21,14 +21,12 @@ void Init_Tracking_KalmanFilters()
     .define_method<cv::Mat(cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::*)() const>("get_process_noise_cov", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::getProcessNoiseCov)
     .define_method<cv::Mat(cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::*)() const>("get_measurement_noise_cov", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::getMeasurementNoiseCov)
     .define_method<cv::Mat(cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::*)() const>("get_error_cov", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::getErrorCov)
-    .define_method<cv::Mat(cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::*)() const>("get_state", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::getState)
-    ;
+    .define_method<cv::Mat(cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::*)() const>("get_state", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilter::getState);
   Rice::Data_Type<cv::detail::UkfSystemModel> rb_cCvDetailUkfSystemModel = define_class_under<cv::detail::UkfSystemModel>(rb_mCvDetailTrackingKalmanFilters, "UkfSystemModel")
     .define_method<void(cv::detail::tracking::kalman_filters::UkfSystemModel::*)(const cv::Mat&, const cv::Mat&, const cv::Mat&, cv::Mat&)>("state_conversion_function", &cv::detail::tracking::kalman_filters::UkfSystemModel::stateConversionFunction,
       Arg("x_k"), Arg("u_k"), Arg("v_k"), Arg("x_kplus1"))
     .define_method<void(cv::detail::tracking::kalman_filters::UkfSystemModel::*)(const cv::Mat&, const cv::Mat&, cv::Mat&)>("measurement_function", &cv::detail::tracking::kalman_filters::UkfSystemModel::measurementFunction,
-      Arg("x_k"), Arg("n_k"), Arg("z_k"))
-    ;
+      Arg("x_k"), Arg("n_k"), Arg("z_k"));
   Rice::Data_Type<cv::detail::UnscentedKalmanFilterParams> rb_cCvDetailUnscentedKalmanFilterParams = define_class_under<cv::detail::UnscentedKalmanFilterParams>(rb_mCvDetailTrackingKalmanFilters, "UnscentedKalmanFilterParams")
     .define_attr("dp", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams::DP)
     .define_attr("mp", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams::MP)
@@ -46,15 +44,13 @@ void Init_Tracking_KalmanFilters()
     .define_constructor(Constructor<cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams, int, int, int, double, double, cv::Ptr<cv::detail::UkfSystemModel>, int>(),
       Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F))
     .define_method<void(cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams::*)(int, int, int, double, double, cv::Ptr<cv::detail::UkfSystemModel>, int)>("init", &cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams::init,
-      Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F))
-    ;
+      Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F));
   Rice::Data_Type<cv::detail::AugmentedUnscentedKalmanFilterParams> rb_cCvDetailAugmentedUnscentedKalmanFilterParams = define_class_under<cv::detail::AugmentedUnscentedKalmanFilterParams, cv::detail::UnscentedKalmanFilterParams>(rb_mCvDetailTrackingKalmanFilters, "AugmentedUnscentedKalmanFilterParams")
     .define_constructor(Constructor<cv::detail::tracking::kalman_filters::AugmentedUnscentedKalmanFilterParams>())
     .define_constructor(Constructor<cv::detail::tracking::kalman_filters::AugmentedUnscentedKalmanFilterParams, int, int, int, double, double, cv::Ptr<cv::detail::UkfSystemModel>, int>(),
       Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F))
     .define_method<void(cv::detail::tracking::kalman_filters::AugmentedUnscentedKalmanFilterParams::*)(int, int, int, double, double, cv::Ptr<cv::detail::UkfSystemModel>, int)>("init", &cv::detail::tracking::kalman_filters::AugmentedUnscentedKalmanFilterParams::init,
-      Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F))
-    ;
+      Arg("dp"), Arg("mp"), Arg("cp"), Arg("process_noise_cov_diag"), Arg("measurement_noise_cov_diag"), Arg("dynamical_system"), Arg("type") = static_cast<int>(CV_64F));
   rb_mCvDetailTrackingKalmanFilters.define_module_function<cv::Ptr<cv::detail::UnscentedKalmanFilter>(*)(const cv::detail::tracking::kalman_filters::UnscentedKalmanFilterParams&)>("create_unscented_kalman_filter", &cv::detail::tracking::kalman_filters::createUnscentedKalmanFilter,
     Arg("params"));
 

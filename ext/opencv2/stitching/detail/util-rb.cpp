@@ -19,8 +19,7 @@ void Init_Stitching_Detail_Util()
     .define_method<int(cv::detail::DisjointSets::*)(int, int)>("merge_sets", &cv::detail::DisjointSets::mergeSets,
       Arg("set1"), Arg("set2"))
     .define_attr("parent", &cv::detail::DisjointSets::parent)
-    .define_attr("size", &cv::detail::DisjointSets::size)
-    ;
+    .define_attr("size", &cv::detail::DisjointSets::size);
   Rice::Data_Type<cv::detail::GraphEdge> rb_cCvDetailGraphEdge = define_class_under<cv::detail::GraphEdge>(rb_mCvDetail, "GraphEdge")
     .define_constructor(Constructor<cv::detail::GraphEdge, int, int, float>(),
       Arg("from"), Arg("to"), Arg("weight"))
@@ -30,8 +29,7 @@ void Init_Stitching_Detail_Util()
       Arg("other"))
     .define_attr("from", &cv::detail::GraphEdge::from)
     .define_attr("to", &cv::detail::GraphEdge::to)
-    .define_attr("weight", &cv::detail::GraphEdge::weight)
-    ;
+    .define_attr("weight", &cv::detail::GraphEdge::weight);
   Rice::Data_Type<cv::detail::Graph> rb_cCvDetailGraph = define_class_under<cv::detail::Graph>(rb_mCvDetail, "Graph")
     .define_constructor(Constructor<cv::detail::Graph, int>(),
       Arg("num_vertices") = static_cast<int>(0))
@@ -39,8 +37,7 @@ void Init_Stitching_Detail_Util()
       Arg("num_vertices"))
     .define_method<int(cv::detail::Graph::*)() const>("num_vertices", &cv::detail::Graph::numVertices)
     .define_method<void(cv::detail::Graph::*)(int, int, float)>("add_edge", &cv::detail::Graph::addEdge,
-      Arg("from"), Arg("to"), Arg("weight"))
-    ;
+      Arg("from"), Arg("to"), Arg("weight"));
   rb_mCvDetail.define_module_function<bool(*)(cv::Point, cv::Point, cv::Size, cv::Size, cv::Rect&)>("overlap_roi", &cv::detail::overlapRoi,
     Arg("tl1"), Arg("tl2"), Arg("sz1"), Arg("sz2"), Arg("roi"));
 

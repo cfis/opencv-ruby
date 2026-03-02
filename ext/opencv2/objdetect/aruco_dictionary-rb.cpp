@@ -29,8 +29,7 @@ void Init_Objdetect_ArucoDictionary()
     .define_singleton_function<cv::Mat(*)(const cv::Mat&)>("get_byte_list_from_bits", &cv::aruco::Dictionary::getByteListFromBits,
       Arg("bits"))
     .define_singleton_function<cv::Mat(*)(const cv::Mat&, int)>("get_bits_from_byte_list", &cv::aruco::Dictionary::getBitsFromByteList,
-      Arg("byte_list"), Arg("marker_size"))
-    ;
+      Arg("byte_list"), Arg("marker_size"));
   Enum<cv::aruco::PredefinedDictionaryType> rb_cCvArucoPredefinedDictionaryType = define_enum_under<cv::aruco::PredefinedDictionaryType>("PredefinedDictionaryType", rb_mCvAruco)
     .define_value("DICT_4X4_50", cv::aruco::PredefinedDictionaryType::DICT_4X4_50)
     .define_value("DICT_4X4_100", cv::aruco::PredefinedDictionaryType::DICT_4X4_100)
@@ -53,8 +52,7 @@ void Init_Objdetect_ArucoDictionary()
     .define_value("DICT_APRILTAG_25h9", cv::aruco::PredefinedDictionaryType::DICT_APRILTAG_25h9)
     .define_value("DICT_APRILTAG_36h10", cv::aruco::PredefinedDictionaryType::DICT_APRILTAG_36h10)
     .define_value("DICT_APRILTAG_36h11", cv::aruco::PredefinedDictionaryType::DICT_APRILTAG_36h11)
-    .define_value("DICT_ARUCO_MIP_36h12", cv::aruco::PredefinedDictionaryType::DICT_ARUCO_MIP_36h12)
-    ;
+    .define_value("DICT_ARUCO_MIP_36h12", cv::aruco::PredefinedDictionaryType::DICT_ARUCO_MIP_36h12);
   rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(cv::aruco::PredefinedDictionaryType)>("get_predefined_dictionary", &cv::aruco::getPredefinedDictionary,
     Arg("name"));
 

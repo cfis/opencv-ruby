@@ -72,16 +72,13 @@ void Init_Core_Types()
     .define_constructor(Constructor<cv::DataType<cv::RotatedRect>>())
     .define_constant("Generic_type", (int)cv::DataType<cv::RotatedRect>::generic_type)
     .define_constant("Channels", (int)cv::DataType<cv::RotatedRect>::channels)
-    .define_constant("Fmt", (int)cv::DataType<cv::RotatedRect>::fmt)
-    ;
+    .define_constant("Fmt", (int)cv::DataType<cv::RotatedRect>::fmt);
   Rice::Data_Type<cv::traits::Depth<cv::RotatedRect>> rb_cCvTraitsDepthRotatedRect = define_class_under<cv::traits::Depth<cv::RotatedRect>>(rb_mCvTraits, "DepthRotatedRect")
     .define_constructor(Constructor<cv::traits::Depth<cv::RotatedRect>>())
-    .define_constant("Value", (int)cv::traits::Depth<cv::RotatedRect>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Depth<cv::RotatedRect>::value);
   Rice::Data_Type<cv::traits::Type<cv::RotatedRect>> rb_cCvTraitsTypeRotatedRect = define_class_under<cv::traits::Type<cv::RotatedRect>>(rb_mCvTraits, "TypeRotatedRect")
     .define_constructor(Constructor<cv::traits::Type<cv::RotatedRect>>())
-    .define_constant("Value", (int)cv::traits::Type<cv::RotatedRect>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Type<cv::RotatedRect>::value);
   Rice::Data_Type<cv::Range> rb_cCvRange = define_class_under<cv::Range>(rb_mCv, "Range")
     .define_constructor(Constructor<cv::Range>())
     .define_constructor(Constructor<cv::Range, int, int>(),
@@ -90,22 +87,18 @@ void Init_Core_Types()
     .define_method<bool(cv::Range::*)() const>("empty?", &cv::Range::empty)
     .define_singleton_function<cv::Range(*)()>("all", &cv::Range::all)
     .define_attr("start", &cv::Range::start)
-    .define_attr("end", &cv::Range::end)
-    ;
+    .define_attr("end", &cv::Range::end);
   Rice::Data_Type<cv::DataType<cv::Range>> rb_cCvDataTypeRange = define_class_under<cv::DataType<cv::Range>>(rb_mCv, "DataTypeRange")
     .define_constructor(Constructor<cv::DataType<cv::Range>>())
     .define_constant("Generic_type", (int)cv::DataType<cv::Range>::generic_type)
     .define_constant("Channels", (int)cv::DataType<cv::Range>::channels)
-    .define_constant("Fmt", (int)cv::DataType<cv::Range>::fmt)
-    ;
+    .define_constant("Fmt", (int)cv::DataType<cv::Range>::fmt);
   Rice::Data_Type<cv::traits::Depth<cv::Range>> rb_cCvTraitsDepthRange = define_class_under<cv::traits::Depth<cv::Range>>(rb_mCvTraits, "DepthRange")
     .define_constructor(Constructor<cv::traits::Depth<cv::Range>>())
-    .define_constant("Value", (int)cv::traits::Depth<cv::Range>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Depth<cv::Range>::value);
   Rice::Data_Type<cv::traits::Type<cv::Range>> rb_cCvTraitsTypeRange = define_class_under<cv::traits::Type<cv::Range>>(rb_mCvTraits, "TypeRange")
     .define_constructor(Constructor<cv::traits::Type<cv::Range>>())
-    .define_constant("Value", (int)cv::traits::Type<cv::Range>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Type<cv::Range>::value);
   Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");
   Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");
   Rice::Data_Type<cv::Scalar_<double>> rb_cScalar = Scalar__instantiate<double>(rb_mCv, "Scalar");
@@ -128,8 +121,7 @@ void Init_Core_Types()
     .define_attr("angle", &cv::KeyPoint::angle)
     .define_attr("response", &cv::KeyPoint::response)
     .define_attr("octave", &cv::KeyPoint::octave)
-    .define_attr("class_id", &cv::KeyPoint::class_id)
-    ;
+    .define_attr("class_id", &cv::KeyPoint::class_id);
   Rice::Data_Type<cv::DMatch> rb_cCvDMatch = define_class_under<cv::DMatch>(rb_mCv, "DMatch")
     .define_constructor(Constructor<cv::DMatch>())
     .define_constructor(Constructor<cv::DMatch, int, int, float>(),
@@ -141,8 +133,7 @@ void Init_Core_Types()
     .define_attr("img_idx", &cv::DMatch::imgIdx)
     .define_attr("distance", &cv::DMatch::distance)
     .define_method<bool(cv::DMatch::*)(const cv::DMatch&) const>("<", &cv::DMatch::operator<,
-      Arg("m"))
-    ;
+      Arg("m"));
   Rice::Data_Type<cv::TermCriteria> rb_cCvTermCriteria = define_class_under<cv::TermCriteria>(rb_mCv, "TermCriteria")
     .define_constructor(Constructor<cv::TermCriteria>())
     .define_constructor(Constructor<cv::TermCriteria, int, int, double>(),
@@ -150,13 +141,11 @@ void Init_Core_Types()
     .define_method<bool(cv::TermCriteria::*)() const>("valid?", &cv::TermCriteria::isValid)
     .define_attr("type", &cv::TermCriteria::type)
     .define_attr("max_count", &cv::TermCriteria::maxCount)
-    .define_attr("epsilon", &cv::TermCriteria::epsilon)
-    ;
+    .define_attr("epsilon", &cv::TermCriteria::epsilon);
   Enum<cv::TermCriteria::Type> rb_cCvTermCriteriaType = define_enum_under<cv::TermCriteria::Type>("Type", rb_cCvTermCriteria)
     .define_value("COUNT", cv::TermCriteria::Type::COUNT)
     .define_value("MAX_ITER", cv::TermCriteria::Type::MAX_ITER)
-    .define_value("EPS", cv::TermCriteria::Type::EPS)
-    ;
+    .define_value("EPS", cv::TermCriteria::Type::EPS);
   Rice::Data_Type<cv::Moments> rb_cCvMoments = define_class_under<cv::Moments>(rb_mCv, "Moments")
     .define_constructor(Constructor<cv::Moments>())
     .define_constructor(Constructor<cv::Moments, double, double, double, double, double, double, double, double, double, double>(),
@@ -184,22 +173,18 @@ void Init_Core_Types()
     .define_attr("nu30", &cv::Moments::nu30)
     .define_attr("nu21", &cv::Moments::nu21)
     .define_attr("nu12", &cv::Moments::nu12)
-    .define_attr("nu03", &cv::Moments::nu03)
-    ;
+    .define_attr("nu03", &cv::Moments::nu03);
   Rice::Data_Type<cv::DataType<cv::Moments>> rb_cCvDataTypeMoments = define_class_under<cv::DataType<cv::Moments>>(rb_mCv, "DataTypeMoments")
     .define_constructor(Constructor<cv::DataType<cv::Moments>>())
     .define_constant("Generic_type", (int)cv::DataType<cv::Moments>::generic_type)
     .define_constant("Channels", (int)cv::DataType<cv::Moments>::channels)
-    .define_constant("Fmt", (int)cv::DataType<cv::Moments>::fmt)
-    ;
+    .define_constant("Fmt", (int)cv::DataType<cv::Moments>::fmt);
   Rice::Data_Type<cv::traits::Depth<cv::Moments>> rb_cCvTraitsDepthMoments = define_class_under<cv::traits::Depth<cv::Moments>>(rb_mCvTraits, "DepthMoments")
     .define_constructor(Constructor<cv::traits::Depth<cv::Moments>>())
-    .define_constant("Value", (int)cv::traits::Depth<cv::Moments>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Depth<cv::Moments>::value);
   Rice::Data_Type<cv::traits::Type<cv::Moments>> rb_cCvTraitsTypeMoments = define_class_under<cv::traits::Type<cv::Moments>>(rb_mCvTraits, "TypeMoments")
     .define_constructor(Constructor<cv::traits::Type<cv::Moments>>())
-    .define_constant("Value", (int)cv::traits::Type<cv::Moments>::value)
-    ;
+    .define_constant("Value", (int)cv::traits::Type<cv::Moments>::value);
   rb_mCv.define_module_function<int(*)(const cv::Point_<int>&)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
@@ -223,6 +208,7 @@ void Init_Core_Types()
     Arg("a"), Arg("b"));
 
   #endif
+
   rb_cCvRange
     .define_method("==", [](const cv::Range& self, const cv::Range& other) -> bool
     {
@@ -252,13 +238,11 @@ void Init_Core_Types()
     .define_method("-", [](const cv::Range& self, int other) -> cv::Range
     {
       return self - other;
-    })
-    ;
+    });
   
   Data_Type<cv::Matx<double, 4, 4>>()
     .define_method("*", [](const cv::Matx<double, 4, 4>& self, const cv::Scalar& other) -> cv::Scalar
     {
       return self * other;
-    })
-    ;
+    });
 }

@@ -21,8 +21,7 @@ void Init_Xphoto_Tonemap()
       Arg("sigma_space"))
     .define_method<float(cv::xphoto::TonemapDurand::*)() const>("get_sigma_color", &cv::xphoto::TonemapDurand::getSigmaColor)
     .define_method<void(cv::xphoto::TonemapDurand::*)(float)>("set_sigma_color", &cv::xphoto::TonemapDurand::setSigmaColor,
-      Arg("sigma_color"))
-    ;
+      Arg("sigma_color"));
   rb_mCvXphoto.define_module_function<cv::Ptr<cv::xphoto::TonemapDurand>(*)(float, float, float, float, float)>("create_tonemap_durand", &cv::xphoto::createTonemapDurand,
     Arg("gamma") = static_cast<float>(1.0f), Arg("contrast") = static_cast<float>(4.0f), Arg("saturation") = static_cast<float>(1.0f), Arg("sigma_color") = static_cast<float>(2.0f), Arg("sigma_space") = static_cast<float>(2.0f));
 }

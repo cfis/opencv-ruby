@@ -23,6 +23,5 @@ void Init_Flann_Random()
       Arg("n"))
     .define_method<void(cvflann::UniqueRandom::*)(int)>("init", &cvflann::UniqueRandom::init,
       Arg("n"))
-    .define_method<int(cvflann::UniqueRandom::*)()>("next", &cvflann::UniqueRandom::next)
-    ;
+    .define_method<int(cvflann::UniqueRandom::*)()>("next", &cvflann::UniqueRandom::next);
 }

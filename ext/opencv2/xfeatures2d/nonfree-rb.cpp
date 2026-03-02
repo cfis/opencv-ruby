@@ -27,6 +27,5 @@ void Init_Xfeatures2d_Nonfree()
     .define_method<void(cv::xfeatures2d::SURF::*)(bool)>("set_upright", &cv::xfeatures2d::SURF::setUpright,
       Arg("upright"))
     .define_method<bool(cv::xfeatures2d::SURF::*)() const>("get_upright?", &cv::xfeatures2d::SURF::getUpright)
-    .define_method<cv::String(cv::xfeatures2d::SURF::*)() const>("get_default_name", &cv::xfeatures2d::SURF::getDefaultName)
-    ;
+    .define_method<cv::String(cv::xfeatures2d::SURF::*)() const>("get_default_name", &cv::xfeatures2d::SURF::getDefaultName);
 }

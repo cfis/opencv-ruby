@@ -13,8 +13,7 @@ void Init_Objdetect_ArucoDetector()
     .define_value("CORNER_REFINE_NONE", cv::aruco::CornerRefineMethod::CORNER_REFINE_NONE)
     .define_value("CORNER_REFINE_SUBPIX", cv::aruco::CornerRefineMethod::CORNER_REFINE_SUBPIX)
     .define_value("CORNER_REFINE_CONTOUR", cv::aruco::CornerRefineMethod::CORNER_REFINE_CONTOUR)
-    .define_value("CORNER_REFINE_APRILTAG", cv::aruco::CornerRefineMethod::CORNER_REFINE_APRILTAG)
-    ;
+    .define_value("CORNER_REFINE_APRILTAG", cv::aruco::CornerRefineMethod::CORNER_REFINE_APRILTAG);
   Rice::Data_Type<cv::aruco::DetectorParameters> rb_cCvArucoDetectorParameters = define_class_under<cv::aruco::DetectorParameters>(rb_mCvAruco, "DetectorParameters")
     .define_constructor(Constructor<cv::aruco::DetectorParameters>())
     .define_method<bool(cv::aruco::DetectorParameters::*)(const cv::FileNode&)>("read_detector_parameters", &cv::aruco::DetectorParameters::readDetectorParameters,
@@ -54,8 +53,7 @@ void Init_Objdetect_ArucoDetector()
     .define_attr("detect_inverted_marker", &cv::aruco::DetectorParameters::detectInvertedMarker)
     .define_attr("use_aruco3_detection", &cv::aruco::DetectorParameters::useAruco3Detection)
     .define_attr("min_side_length_canonical_img", &cv::aruco::DetectorParameters::minSideLengthCanonicalImg)
-    .define_attr("min_marker_length_ratio_original_img", &cv::aruco::DetectorParameters::minMarkerLengthRatioOriginalImg)
-    ;
+    .define_attr("min_marker_length_ratio_original_img", &cv::aruco::DetectorParameters::minMarkerLengthRatioOriginalImg);
   Rice::Data_Type<cv::aruco::RefineParameters> rb_cCvArucoRefineParameters = define_class_under<cv::aruco::RefineParameters>(rb_mCvAruco, "RefineParameters")
     .define_constructor(Constructor<cv::aruco::RefineParameters, float, float, bool>(),
       Arg("min_rep_distance") = static_cast<float>(10.f), Arg("error_correction_rate") = static_cast<float>(3.f), Arg("check_all_orders") = static_cast<bool>(true))
@@ -65,8 +63,7 @@ void Init_Objdetect_ArucoDetector()
       Arg("fs"), Arg("name") = static_cast<const cv::String&>(cv::String()))
     .define_attr("min_rep_distance", &cv::aruco::RefineParameters::minRepDistance)
     .define_attr("error_correction_rate", &cv::aruco::RefineParameters::errorCorrectionRate)
-    .define_attr("check_all_orders", &cv::aruco::RefineParameters::checkAllOrders)
-    ;
+    .define_attr("check_all_orders", &cv::aruco::RefineParameters::checkAllOrders);
   Rice::Data_Type<cv::aruco::ArucoDetector> rb_cCvArucoArucoDetector = define_class_under<cv::aruco::ArucoDetector, cv::Algorithm>(rb_mCvAruco, "ArucoDetector")
     .define_constructor(Constructor<cv::aruco::ArucoDetector, const cv::aruco::Dictionary&, const cv::aruco::DetectorParameters&, const cv::aruco::RefineParameters&>(),
       Arg("dictionary") = static_cast<const cv::aruco::Dictionary&>(cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_50)), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters&>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters&>(cv::aruco::RefineParameters()))
@@ -88,8 +85,7 @@ void Init_Objdetect_ArucoDetector()
     .define_method<void(cv::aruco::ArucoDetector::*)(cv::FileStorage&, const cv::String&)>("write", &cv::aruco::ArucoDetector::write,
       Arg("fs"), Arg("name"))
     .define_method<void(cv::aruco::ArucoDetector::*)(const cv::FileNode&)>("read", &cv::aruco::ArucoDetector::read,
-      Arg("fn"))
-    ;
+      Arg("fn"));
   rb_mCvAruco.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, cv::InputArray, cv::Scalar)>("draw_detected_markers", &cv::aruco::drawDetectedMarkers,
     Arg("image"), Arg("corners"), Arg("ids") = static_cast<cv::InputArray>(cv::noArray()), Arg("border_color") = static_cast<cv::Scalar>(cv::Scalar(0, 255, 0)));
 

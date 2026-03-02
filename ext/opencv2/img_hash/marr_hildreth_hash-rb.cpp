@@ -15,8 +15,7 @@ void Init_ImgHash_MarrHildrethHash()
     .define_method<void(cv::img_hash::MarrHildrethHash::*)(float, float)>("set_kernel_param", &cv::img_hash::MarrHildrethHash::setKernelParam,
       Arg("alpha"), Arg("scale"))
     .define_singleton_function<cv::Ptr<cv::img_hash::MarrHildrethHash>(*)(float, float)>("create", &cv::img_hash::MarrHildrethHash::create,
-      Arg("alpha") = static_cast<float>(2.0f), Arg("scale") = static_cast<float>(1.0f))
-    ;
+      Arg("alpha") = static_cast<float>(2.0f), Arg("scale") = static_cast<float>(1.0f));
   rb_mCvImgHash.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float)>("marr_hildreth_hash", &cv::img_hash::marrHildrethHash,
     Arg("input_arr"), Arg("output_arr"), Arg("alpha") = static_cast<float>(2.0f), Arg("scale") = static_cast<float>(1.0f));
 }

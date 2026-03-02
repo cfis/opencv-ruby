@@ -13,11 +13,9 @@ void Init_Datasets_ArHmdb()
     .define_constructor(Constructor<cv::datasets::AR_hmdbObj>())
     .define_attr("id", &cv::datasets::AR_hmdbObj::id)
     .define_attr("name", &cv::datasets::AR_hmdbObj::name)
-    .define_attr("video_name", &cv::datasets::AR_hmdbObj::videoName)
-    ;
+    .define_attr("video_name", &cv::datasets::AR_hmdbObj::videoName);
   Rice::Data_Type<cv::datasets::AR_hmdb> rb_cCvDatasetsARHmdb = define_class_under<cv::datasets::AR_hmdb, cv::datasets::Dataset>(rb_mCvDatasets, "ARHmdb")
     .define_method<void(cv::datasets::AR_hmdb::*)(const std::string&)>("load", &cv::datasets::AR_hmdb::load,
       Arg("path"))
-    .define_singleton_function<cv::Ptr<cv::datasets::AR_hmdb>(*)()>("create", &cv::datasets::AR_hmdb::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::datasets::AR_hmdb>(*)()>("create", &cv::datasets::AR_hmdb::create);
 }

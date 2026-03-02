@@ -22,20 +22,17 @@ void Init_Text_Ocr()
     .define_value("PSM_SINGLE_LINE", cv::text::page_seg_mode::PSM_SINGLE_LINE)
     .define_value("PSM_SINGLE_WORD", cv::text::page_seg_mode::PSM_SINGLE_WORD)
     .define_value("PSM_CIRCLE_WORD", cv::text::page_seg_mode::PSM_CIRCLE_WORD)
-    .define_value("PSM_SINGLE_CHAR", cv::text::page_seg_mode::PSM_SINGLE_CHAR)
-    ;
+    .define_value("PSM_SINGLE_CHAR", cv::text::page_seg_mode::PSM_SINGLE_CHAR);
   Enum<cv::text::ocr_engine_mode> rb_cCvTextOcrEngineMode = define_enum_under<cv::text::ocr_engine_mode>("OcrEngineMode", rb_mCvText)
     .define_value("OEM_TESSERACT_ONLY", cv::text::ocr_engine_mode::OEM_TESSERACT_ONLY)
     .define_value("OEM_CUBE_ONLY", cv::text::ocr_engine_mode::OEM_CUBE_ONLY)
     .define_value("OEM_TESSERACT_CUBE_COMBINED", cv::text::ocr_engine_mode::OEM_TESSERACT_CUBE_COMBINED)
-    .define_value("OEM_DEFAULT", cv::text::ocr_engine_mode::OEM_DEFAULT)
-    ;
+    .define_value("OEM_DEFAULT", cv::text::ocr_engine_mode::OEM_DEFAULT);
   Rice::Data_Type<cv::text::BaseOCR> rb_cCvTextBaseOCR = define_class_under<cv::text::BaseOCR>(rb_mCvText, "BaseOCR")
     .define_method<void(cv::text::BaseOCR::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
       Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0))
     .define_method<void(cv::text::BaseOCR::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::BaseOCR::run,
-      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0))
-    ;
+      Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0));
   Rice::Data_Type<cv::text::OCRTesseract> rb_cCvTextOCRTesseract = define_class_under<cv::text::OCRTesseract, cv::text::BaseOCR>(rb_mCvText, "OCRTesseract")
     .define_method<void(cv::text::OCRTesseract::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRTesseract::run,
       Arg("image"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(0))
@@ -48,15 +45,12 @@ void Init_Text_Ocr()
     .define_method<void(cv::text::OCRTesseract::*)(const cv::String&)>("set_white_list", &cv::text::OCRTesseract::setWhiteList,
       Arg("char_whitelist"))
     .define_singleton_function<cv::Ptr<cv::text::OCRTesseract>(*)(const char*, const char*, const char*, int, int)>("create", &cv::text::OCRTesseract::create,
-      Arg("datapath") = static_cast<const char*>(NULL), Arg("language") = static_cast<const char*>(NULL), Arg("char_whitelist") = static_cast<const char*>(NULL), Arg("oem") = static_cast<int>(cv::text::OEM_DEFAULT), Arg("psmode") = static_cast<int>(cv::text::PSM_AUTO))
-    ;
+      Arg("datapath") = static_cast<const char*>(NULL), Arg("language") = static_cast<const char*>(NULL), Arg("char_whitelist") = static_cast<const char*>(NULL), Arg("oem") = static_cast<int>(cv::text::OEM_DEFAULT), Arg("psmode") = static_cast<int>(cv::text::PSM_AUTO));
   Enum<cv::text::decoder_mode> rb_cCvTextDecoderMode = define_enum_under<cv::text::decoder_mode>("DecoderMode", rb_mCvText)
-    .define_value("OCR_DECODER_VITERBI", cv::text::decoder_mode::OCR_DECODER_VITERBI)
-    ;
+    .define_value("OCR_DECODER_VITERBI", cv::text::decoder_mode::OCR_DECODER_VITERBI);
   Enum<cv::text::classifier_type> rb_cCvTextClassifierType = define_enum_under<cv::text::classifier_type>("ClassifierType", rb_mCvText)
     .define_value("OCR_KNN_CLASSIFIER", cv::text::classifier_type::OCR_KNN_CLASSIFIER)
-    .define_value("OCR_CNN_CLASSIFIER", cv::text::classifier_type::OCR_CNN_CLASSIFIER)
-    ;
+    .define_value("OCR_CNN_CLASSIFIER", cv::text::classifier_type::OCR_CNN_CLASSIFIER);
   Rice::Data_Type<cv::text::OCRHMMDecoder> rb_cCvTextOCRHMMDecoder = define_class_under<cv::text::OCRHMMDecoder, cv::text::BaseOCR>(rb_mCvText, "OCRHMMDecoder")
     .define_constructor(Constructor<cv::text::OCRHMMDecoder>())
     .define_method<void(cv::text::OCRHMMDecoder::*)(cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHMMDecoder::run,
@@ -70,13 +64,11 @@ void Init_Text_Ocr()
     .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>, const cv::String&, cv::InputArray, cv::InputArray, int)>("create", &cv::text::OCRHMMDecoder::create,
       Arg("classifier"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<int>(cv::text::OCR_DECODER_VITERBI))
     .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::String&, const cv::String&, cv::InputArray, cv::InputArray, int, int)>("create", &cv::text::OCRHMMDecoder::create,
-      Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<int>(cv::text::OCR_DECODER_VITERBI), Arg("classifier") = static_cast<int>(cv::text::OCR_KNN_CLASSIFIER))
-    ;
+      Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<int>(cv::text::OCR_DECODER_VITERBI), Arg("classifier") = static_cast<int>(cv::text::OCR_KNN_CLASSIFIER));
   Rice::Data_Type<cv::text::OCRHMMDecoder::ClassifierCallback> rb_cCvTextOCRHMMDecoderClassifierCallback = define_class_under<cv::text::OCRHMMDecoder::ClassifierCallback>(rb_cCvTextOCRHMMDecoder, "ClassifierCallback")
     .define_constructor(Constructor<cv::text::OCRHMMDecoder::ClassifierCallback>())
     .define_method<void(cv::text::OCRHMMDecoder::ClassifierCallback::*)(cv::InputArray, std::vector<int>&, std::vector<double>&)>("eval", &cv::text::OCRHMMDecoder::ClassifierCallback::eval,
-      Arg("image"), Arg("out_class"), Arg("out_confidence"))
-    ;
+      Arg("image"), Arg("out_class"), Arg("out_confidence"));
   rb_mCvText.define_module_function<cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>(*)(const cv::String&)>("load_ocrhmm_classifier_nm", &cv::text::loadOCRHMMClassifierNM,
     Arg("filename"));
 
@@ -105,15 +97,13 @@ void Init_Text_Ocr()
     .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::Ptr<cv::text::OCRBeamSearchDecoder::ClassifierCallback>, const std::string&, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", &cv::text::OCRBeamSearchDecoder::create,
       Arg("classifier"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<cv::text::decoder_mode>(cv::text::OCR_DECODER_VITERBI), Arg("beam_size") = static_cast<int>(500))
     .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::String&, const cv::String&, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", &cv::text::OCRBeamSearchDecoder::create,
-      Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<cv::text::decoder_mode>(cv::text::OCR_DECODER_VITERBI), Arg("beam_size") = static_cast<int>(500))
-    ;
+      Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<cv::text::decoder_mode>(cv::text::OCR_DECODER_VITERBI), Arg("beam_size") = static_cast<int>(500));
   Rice::Data_Type<cv::text::OCRBeamSearchDecoder::ClassifierCallback> rb_cCvTextOCRBeamSearchDecoderClassifierCallback = define_class_under<cv::text::OCRBeamSearchDecoder::ClassifierCallback>(rb_cCvTextOCRBeamSearchDecoder, "ClassifierCallback")
     .define_constructor(Constructor<cv::text::OCRBeamSearchDecoder::ClassifierCallback>())
     .define_method<void(cv::text::OCRBeamSearchDecoder::ClassifierCallback::*)(cv::InputArray, std::vector<std::vector<double>>&, std::vector<int>&)>("eval", &cv::text::OCRBeamSearchDecoder::ClassifierCallback::eval,
       Arg("image"), Arg("recognition_probabilities"), Arg("oversegmentation"))
     .define_method<int(cv::text::OCRBeamSearchDecoder::ClassifierCallback::*)()>("get_window_size", &cv::text::OCRBeamSearchDecoder::ClassifierCallback::getWindowSize)
-    .define_method<int(cv::text::OCRBeamSearchDecoder::ClassifierCallback::*)()>("get_step_size", &cv::text::OCRBeamSearchDecoder::ClassifierCallback::getStepSize)
-    ;
+    .define_method<int(cv::text::OCRBeamSearchDecoder::ClassifierCallback::*)()>("get_step_size", &cv::text::OCRBeamSearchDecoder::ClassifierCallback::getStepSize);
   rb_mCvText.define_module_function<cv::Ptr<cv::text::OCRBeamSearchDecoder::ClassifierCallback>(*)(const cv::String&)>("load_ocr_beam_search_classifier_cnn", &cv::text::loadOCRBeamSearchClassifierCNN,
     Arg("filename"));
 
@@ -123,6 +113,5 @@ void Init_Text_Ocr()
     .define_method<void(cv::text::OCRHolisticWordRecognizer::*)(cv::Mat&, cv::Mat&, std::string&, std::vector<cv::Rect>*, std::vector<std::string>*, std::vector<float>*, int)>("run", &cv::text::OCRHolisticWordRecognizer::run,
       Arg("image"), Arg("mask"), Arg("output_text"), Arg("component_rects") = static_cast<std::vector<cv::Rect>*>(NULL), Arg("component_texts") = static_cast<std::vector<std::string>*>(NULL), Arg("component_confidences") = static_cast<std::vector<float>*>(NULL), Arg("component_level") = static_cast<int>(cv::text::OCR_LEVEL_WORD))
     .define_singleton_function<cv::Ptr<cv::text::OCRHolisticWordRecognizer>(*)(const std::string&, const std::string&, const std::string&)>("create", &cv::text::OCRHolisticWordRecognizer::create,
-      Arg("arch_filename"), Arg("weights_filename"), Arg("words_filename"))
-    ;
+      Arg("arch_filename"), Arg("weights_filename"), Arg("words_filename"));
 }

@@ -3,7 +3,6 @@ inline Rice::Data_Type<cvflann::index_creator<KDTreeCapability, VectorSpace, Dis
 {
   return Rice::define_class_under<cvflann::index_creator<KDTreeCapability, VectorSpace, Distance>>(parent, name)
     .template define_singleton_function<cvflann::NNIndex<Distance>*(*)(const Matrix<typename Distance::ElementType>&, const cvflann::IndexParams&, const Distance&)>("create", &cvflann::index_creator<KDTreeCapability, VectorSpace, Distance>::create,
-      Arg("dataset"), Arg("params"), Arg("distance"))
-    ;
+      Arg("dataset"), Arg("params"), Arg("distance"));
 }
 

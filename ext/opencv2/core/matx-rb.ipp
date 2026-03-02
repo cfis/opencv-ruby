@@ -82,8 +82,7 @@ inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent
       Arg("a"), Arg("b"), Arg("arg_2"))
     .define_constructor(Constructor<cv::Matx<_Tp, m, n>, const cv::Matx<_Tp, n, m>&, cv::Matx_TOp>(),
       Arg("a"), Arg("arg_1"))
-    .define_attr("val", &cv::Matx<_Tp, m, n>::val, Rice::AttrAccess::Read)
-    ;
+    .define_attr("val", &cv::Matx<_Tp, m, n>::val, Rice::AttrAccess::Read);
 }
 
 template<typename _Tp, int cn>
@@ -149,7 +148,6 @@ inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module parent, co
     .define_constructor(Constructor<cv::Vec<_Tp, cn>, const cv::Matx<_Tp, cn, 1>&, const cv::Matx<_Tp, cn, 1>&, cv::Matx_AddOp>(),
       Arg("a"), Arg("b"), Arg("arg_2"))
     .define_constructor(Constructor<cv::Vec<_Tp, cn>, const cv::Matx<_Tp, cn, 1>&, const cv::Matx<_Tp, cn, 1>&, cv::Matx_SubOp>(),
-      Arg("a"), Arg("b"), Arg("arg_2"))
-    ;
+      Arg("a"), Arg("b"), Arg("arg_2"));
 }
 

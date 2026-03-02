@@ -176,8 +176,7 @@ void Init_Cudaarithm()
 
   Rice::Data_Type<cv::cuda::LookUpTable> rb_cCvCudaLookUpTable = define_class_under<cv::cuda::LookUpTable, cv::Algorithm>(rb_mCvCuda, "LookUpTable")
     .define_method<void(cv::cuda::LookUpTable::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("transform", &cv::cuda::LookUpTable::transform,
-      Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    ;
+      Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::LookUpTable>(*)(cv::InputArray)>("create_look_up_table", &cv::cuda::createLookUpTable,
     Arg("lut"));
 
@@ -273,15 +272,13 @@ void Init_Cudaarithm()
 
   Rice::Data_Type<cv::cuda::DFT> rb_cCvCudaDFT = define_class_under<cv::cuda::DFT, cv::Algorithm>(rb_mCvCuda, "Dft")
     .define_method<void(cv::cuda::DFT::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("compute", &cv::cuda::DFT::compute,
-      Arg("image"), Arg("result"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    ;
+      Arg("image"), Arg("result"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::DFT>(*)(cv::Size, int)>("create_dft", &cv::cuda::createDFT,
     Arg("dft_size"), Arg("flags"));
 
   Rice::Data_Type<cv::cuda::Convolution> rb_cCvCudaConvolution = define_class_under<cv::cuda::Convolution, cv::Algorithm>(rb_mCvCuda, "Convolution")
     .define_method<void(cv::cuda::Convolution::*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream&)>("convolve", &cv::cuda::Convolution::convolve,
-      Arg("image"), Arg("templ"), Arg("result"), Arg("ccorr") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    ;
+      Arg("image"), Arg("templ"), Arg("result"), Arg("ccorr") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Convolution>(*)(cv::Size)>("create_convolution", &cv::cuda::createConvolution,
     Arg("user_block_size") = static_cast<cv::Size>(cv::Size()));
 }

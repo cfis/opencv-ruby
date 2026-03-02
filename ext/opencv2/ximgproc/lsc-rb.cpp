@@ -18,8 +18,7 @@ void Init_Ximgproc_Lsc()
     .define_method<void(cv::ximgproc::SuperpixelLSC::*)(cv::OutputArray, bool) const>("get_label_contour_mask", &cv::ximgproc::SuperpixelLSC::getLabelContourMask,
       Arg("image"), Arg("thick_line") = static_cast<bool>(true))
     .define_method<void(cv::ximgproc::SuperpixelLSC::*)(int)>("enforce_label_connectivity", &cv::ximgproc::SuperpixelLSC::enforceLabelConnectivity,
-      Arg("min_element_size") = static_cast<int>(25))
-    ;
+      Arg("min_element_size") = static_cast<int>(25));
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::SuperpixelLSC>(*)(cv::InputArray, int, float)>("create_superpixel_lsc", &cv::ximgproc::createSuperpixelLSC,
     Arg("image"), Arg("region_size") = static_cast<int>(10), Arg("ratio") = static_cast<float>(0.075f));
 }

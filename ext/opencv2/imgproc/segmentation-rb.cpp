@@ -31,6 +31,5 @@ void Init_Imgproc_Segmentation()
       Arg("source_pt"))
     .define_method<void(cv::segmentation::IntelligentScissorsMB::*)(const cv::Point&, cv::OutputArray, bool) const>("get_contour", &cv::segmentation::IntelligentScissorsMB::getContour,
       Arg("target_pt"), Arg("contour"), Arg("backward") = static_cast<bool>(false))
-    .define_method<cv::segmentation::IntelligentScissorsMB::Impl*(cv::segmentation::IntelligentScissorsMB::*)() const>("get_impl", &cv::segmentation::IntelligentScissorsMB::getImpl)
-    ;
+    .define_method<cv::segmentation::IntelligentScissorsMB::Impl*(cv::segmentation::IntelligentScissorsMB::*)() const>("get_impl", &cv::segmentation::IntelligentScissorsMB::getImpl);
 }

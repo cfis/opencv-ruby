@@ -3,8 +3,7 @@ inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_an
 {
   return Rice::define_class_under<cvflann::anyimpl::typed_base_any_policy<T>>(parent, name)
     .template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size)
-    .template define_method<const std::type_info&(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("type", &cvflann::anyimpl::typed_base_any_policy<T>::type)
-    ;
+    .template define_method<const std::type_info&(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("type", &cvflann::anyimpl::typed_base_any_policy<T>::type);
 }
 
 template<typename T>
@@ -24,8 +23,7 @@ inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_i
     .template define_method<const void*(cvflann::anyimpl::small_any_policy<T>::*)(void* const*)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
     .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::small_any_policy<T>::print,
-      Arg("out"), ArgBuffer("src"))
-    ;
+      Arg("out"), ArgBuffer("src"));
 }
 
 template<typename T>
@@ -45,8 +43,7 @@ inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_insta
     .template define_method<const void*(cvflann::anyimpl::big_any_policy<T>::*)(void* const*)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
     .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(std::ostream&, void* const*)>("print", &cvflann::anyimpl::big_any_policy<T>::print,
-      Arg("out"), ArgBuffer("src"))
-    ;
+      Arg("out"), ArgBuffer("src"));
 }
 
 template<typename T>
@@ -59,7 +56,6 @@ template<typename T>
 inline Rice::Data_Type<cvflann::anyimpl::SinglePolicy<T>> SinglePolicy_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::anyimpl::SinglePolicy<T>>(parent, name)
-    .template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy)
-    ;
+    .template define_singleton_function<cvflann::anyimpl::base_any_policy*(*)()>("get_policy", &cvflann::anyimpl::SinglePolicy<T>::get_policy);
 }
 

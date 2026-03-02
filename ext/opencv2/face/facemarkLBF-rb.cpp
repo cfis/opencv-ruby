@@ -11,8 +11,7 @@ void Init_Face_FacemarkLBF()
 
   Rice::Data_Type<cv::face::FacemarkLBF> rb_cCvFaceFacemarkLBF = define_class_under<cv::face::FacemarkLBF, cv::face::FacemarkTrain>(rb_mCvFace, "FacemarkLBF")
     .define_singleton_function<cv::Ptr<cv::face::FacemarkLBF>(*)(const cv::face::FacemarkLBF::Params&)>("create", &cv::face::FacemarkLBF::create,
-      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params&>(cv::face::FacemarkLBF::Params()))
-    ;
+      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params&>(cv::face::FacemarkLBF::Params()));
   Rice::Data_Type<cv::face::FacemarkLBF::Params> rb_cCvFaceFacemarkLBFParams = define_class_under<cv::face::FacemarkLBF::Params>(rb_cCvFaceFacemarkLBF, "Params")
     .define_constructor(Constructor<cv::face::FacemarkLBF::Params>())
     .define_attr("shape_offset", &cv::face::FacemarkLBF::Params::shape_offset)
@@ -34,6 +33,5 @@ void Init_Face_FacemarkLBF()
     .define_method<void(cv::face::FacemarkLBF::Params::*)(const cv::FileNode&)>("read", &cv::face::FacemarkLBF::Params::read,
       Arg("arg_0"))
     .define_method<void(cv::face::FacemarkLBF::Params::*)(cv::FileStorage&) const>("write", &cv::face::FacemarkLBF::Params::write,
-      Arg("arg_0"))
-    ;
+      Arg("arg_0"));
 }

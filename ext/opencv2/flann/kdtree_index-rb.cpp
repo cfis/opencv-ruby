@@ -11,6 +11,5 @@ void Init_Flann_KdtreeIndex()
 
   Rice::Data_Type<cvflann::KDTreeIndexParams> rb_cCvflannKDTreeIndexParams = define_class_under<cvflann::KDTreeIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "KDTreeIndexParams")
     .define_constructor(Constructor<cvflann::KDTreeIndexParams, int>(),
-      Arg("trees") = static_cast<int>(4))
-    ;
+      Arg("trees") = static_cast<int>(4));
 }

@@ -150,14 +150,12 @@ void Init_Core_Cuda()
     .define_method<bool(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat*, int, int, size_t)>("allocate", &cv::cuda::GpuMat::Allocator::allocate,
       Arg("mat"), Arg("rows"), Arg("cols"), Arg("elem_size"))
     .define_method<void(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat*)>("free", &cv::cuda::GpuMat::Allocator::free,
-      Arg("mat"))
-    ;
+      Arg("mat"));
   Rice::Data_Type<cv::cuda::GpuData> rb_cCvCudaGpuData = define_class_under<cv::cuda::GpuData>(rb_mCvCuda, "GpuData")
     .define_constructor(Constructor<cv::cuda::GpuData, size_t>(),
       Arg("_size"))
     .define_attr("data", &cv::cuda::GpuData::data)
-    .define_attr("size", &cv::cuda::GpuData::size)
-    ;
+    .define_attr("size", &cv::cuda::GpuData::size);
   Rice::Data_Type<cv::cuda::GpuMatND> rb_cCvCudaGpuMatND = define_class_under<cv::cuda::GpuMatND>(rb_mCvCuda, "GpuMatND")
     .define_constructor(Constructor<cv::cuda::GpuMatND>())
     .define_constructor(Constructor<cv::cuda::GpuMatND, cv::cuda::GpuMatND::SizeArray, int>(),
@@ -211,8 +209,7 @@ void Init_Core_Cuda()
     .define_attr("flags", &cv::cuda::GpuMatND::flags)
     .define_attr("dims", &cv::cuda::GpuMatND::dims)
     .define_attr("size", &cv::cuda::GpuMatND::size)
-    .define_attr("step", &cv::cuda::GpuMatND::step)
-    ;
+    .define_attr("step", &cv::cuda::GpuMatND::step);
   rb_mCvCuda.define_module_function<void(*)(int, int, int, cv::OutputArray)>("create_continuous", &cv::cuda::createContinuous,
     Arg("rows"), Arg("cols"), Arg("type"), Arg("arr"));
 
@@ -226,8 +223,7 @@ void Init_Core_Cuda()
       Arg("rows"), Arg("cols"), Arg("type"))
     .define_method<cv::cuda::GpuMat(cv::cuda::BufferPool::*)(cv::Size, int)>("get_buffer", &cv::cuda::BufferPool::getBuffer,
       Arg("size"), Arg("type"))
-    .define_method<cv::Ptr<cv::cuda::GpuMat::Allocator>(cv::cuda::BufferPool::*)() const>("get_allocator", &cv::cuda::BufferPool::getAllocator)
-    ;
+    .define_method<cv::Ptr<cv::cuda::GpuMat::Allocator>(cv::cuda::BufferPool::*)() const>("get_allocator", &cv::cuda::BufferPool::getAllocator);
   rb_mCvCuda.define_module_function<void(*)(bool)>("set_buffer_pool_usage", &cv::cuda::setBufferPoolUsage,
     Arg("on"));
 
@@ -278,13 +274,11 @@ void Init_Core_Cuda()
     .define_attr("refcount", &cv::cuda::HostMem::refcount)
     .define_attr("datastart", &cv::cuda::HostMem::datastart)
     .define_attr("dataend", &cv::cuda::HostMem::dataend)
-    .define_attr("alloc_type", &cv::cuda::HostMem::alloc_type)
-    ;
+    .define_attr("alloc_type", &cv::cuda::HostMem::alloc_type);
   Enum<cv::cuda::HostMem::AllocType> rb_cCvCudaHostMemAllocType = define_enum_under<cv::cuda::HostMem::AllocType>("AllocType", rb_cCvCudaHostMem)
     .define_value("PAGE_LOCKED", cv::cuda::HostMem::AllocType::PAGE_LOCKED)
     .define_value("SHARED", cv::cuda::HostMem::AllocType::SHARED)
-    .define_value("WRITE_COMBINED", cv::cuda::HostMem::AllocType::WRITE_COMBINED)
-    ;
+    .define_value("WRITE_COMBINED", cv::cuda::HostMem::AllocType::WRITE_COMBINED);
   rb_mCvCuda.define_module_function<void(*)(cv::Mat&)>("register_page_locked", &cv::cuda::registerPageLocked,
     Arg("m"));
 
@@ -309,8 +303,7 @@ void Init_Core_Cuda()
       Arg("callback"), ArgBuffer("user_data"))
     .define_singleton_function<cv::cuda::Stream&(*)()>("null", &cv::cuda::Stream::Null)
     .define_method<void*(cv::cuda::Stream::*)() const>("cuda_ptr", &cv::cuda::Stream::cudaPtr,
-      ReturnBuffer())
-    ;
+      ReturnBuffer());
   Rice::Data_Type<cv::cuda::Event> rb_cCvCudaEvent = define_class_under<cv::cuda::Event>(rb_mCvCuda, "Event");
 
   Rice::Data_Type<cv::cuda::Event::Impl> rb_cCvCudaEventImpl = define_class_under<cv::cuda::Event::Impl>(rb_cCvCudaEvent, "Impl");
@@ -323,14 +316,12 @@ void Init_Core_Cuda()
     .define_method<bool(cv::cuda::Event::*)() const>("query_if_complete?", &cv::cuda::Event::queryIfComplete)
     .define_method<void(cv::cuda::Event::*)()>("wait_for_completion", &cv::cuda::Event::waitForCompletion)
     .define_singleton_function<float(*)(const cv::cuda::Event&, const cv::cuda::Event&)>("elapsed_time", &cv::cuda::Event::elapsedTime,
-      Arg("start"), Arg("end"))
-    ;
+      Arg("start"), Arg("end"));
   Enum<cv::cuda::Event::CreateFlags> rb_cCvCudaEventCreateFlags = define_enum_under<cv::cuda::Event::CreateFlags>("CreateFlags", rb_cCvCudaEvent)
     .define_value("DEFAULT", cv::cuda::Event::CreateFlags::DEFAULT)
     .define_value("BLOCKING_SYNC", cv::cuda::Event::CreateFlags::BLOCKING_SYNC)
     .define_value("DISABLE_TIMING", cv::cuda::Event::CreateFlags::DISABLE_TIMING)
-    .define_value("INTERPROCESS", cv::cuda::Event::CreateFlags::INTERPROCESS)
-    ;
+    .define_value("INTERPROCESS", cv::cuda::Event::CreateFlags::INTERPROCESS);
   rb_mCvCuda.define_module_function<int(*)()>("get_cuda_enabled_device_count", &cv::cuda::getCudaEnabledDeviceCount);
 
   rb_mCvCuda.define_module_function<void(*)(int)>("set_device", &cv::cuda::setDevice,
@@ -355,8 +346,7 @@ void Init_Core_Cuda()
     .define_value("SHARED_ATOMICS", cv::cuda::FeatureSet::SHARED_ATOMICS)
     .define_value("NATIVE_DOUBLE", cv::cuda::FeatureSet::NATIVE_DOUBLE)
     .define_value("WARP_SHUFFLE_FUNCTIONS", cv::cuda::FeatureSet::WARP_SHUFFLE_FUNCTIONS)
-    .define_value("DYNAMIC_PARALLELISM", cv::cuda::FeatureSet::DYNAMIC_PARALLELISM)
-    ;
+    .define_value("DYNAMIC_PARALLELISM", cv::cuda::FeatureSet::DYNAMIC_PARALLELISM);
   rb_mCvCuda.define_module_function<bool(*)(cv::cuda::FeatureSet)>("device_supports", &cv::cuda::deviceSupports,
     Arg("feature_set"));
 
@@ -377,8 +367,7 @@ void Init_Core_Cuda()
     .define_singleton_function<bool(*)(int, int)>("has_equal_or_greater_ptx", &cv::cuda::TargetArchs::hasEqualOrGreaterPtx,
       Arg("major"), Arg("minor"))
     .define_singleton_function<bool(*)(int, int)>("has_equal_or_greater_bin", &cv::cuda::TargetArchs::hasEqualOrGreaterBin,
-      Arg("major"), Arg("minor"))
-    ;
+      Arg("major"), Arg("minor"));
   Rice::Data_Type<cv::cuda::DeviceInfo> rb_cCvCudaDeviceInfo = define_class_under<cv::cuda::DeviceInfo>(rb_mCvCuda, "DeviceInfo")
     .define_constructor(Constructor<cv::cuda::DeviceInfo>())
     .define_constructor(Constructor<cv::cuda::DeviceInfo, int>(),
@@ -442,14 +431,12 @@ void Init_Core_Cuda()
     .define_method<size_t(cv::cuda::DeviceInfo::*)() const>("total_memory", &cv::cuda::DeviceInfo::totalMemory)
     .define_method<bool(cv::cuda::DeviceInfo::*)(cv::cuda::FeatureSet) const>("supports", &cv::cuda::DeviceInfo::supports,
       Arg("feature_set"))
-    .define_method<bool(cv::cuda::DeviceInfo::*)() const>("compatible?", &cv::cuda::DeviceInfo::isCompatible)
-    ;
+    .define_method<bool(cv::cuda::DeviceInfo::*)() const>("compatible?", &cv::cuda::DeviceInfo::isCompatible);
   Enum<cv::cuda::DeviceInfo::ComputeMode> rb_cCvCudaDeviceInfoComputeMode = define_enum_under<cv::cuda::DeviceInfo::ComputeMode>("ComputeMode", rb_cCvCudaDeviceInfo)
     .define_value("ComputeModeDefault", cv::cuda::DeviceInfo::ComputeMode::ComputeModeDefault)
     .define_value("ComputeModeExclusive", cv::cuda::DeviceInfo::ComputeMode::ComputeModeExclusive)
     .define_value("ComputeModeProhibited", cv::cuda::DeviceInfo::ComputeMode::ComputeModeProhibited)
-    .define_value("ComputeModeExclusiveProcess", cv::cuda::DeviceInfo::ComputeMode::ComputeModeExclusiveProcess)
-    ;
+    .define_value("ComputeModeExclusiveProcess", cv::cuda::DeviceInfo::ComputeMode::ComputeModeExclusiveProcess);
   rb_mCvCuda.define_module_function<void(*)(int)>("print_cuda_device_info", &cv::cuda::printCudaDeviceInfo,
     Arg("device"));
 
@@ -464,6 +451,7 @@ void Init_Core_Cuda()
     Arg("cuda_stream_memory_address"));
 
   #endif
+
   #if RUBY_CV_VERSION >= 409
   rb_mCvCuda.define_module_function<cv::cuda::GpuMat(*)(int, int, int, size_t, size_t)>("create_gpu_mat_from_cuda_memory", &cv::cuda::createGpuMatFromCudaMemory,
     Arg("rows"), Arg("cols"), Arg("type"), Arg("cuda_memory_address"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP));

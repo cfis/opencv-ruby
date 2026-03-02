@@ -11,6 +11,5 @@ void Init_PhaseUnwrapping_PhaseUnwrapping()
 
   Rice::Data_Type<cv::phase_unwrapping::PhaseUnwrapping> rb_cCvPhaseUnwrappingPhaseUnwrapping = define_class_under<cv::phase_unwrapping::PhaseUnwrapping, cv::Algorithm>(rb_mCvPhaseUnwrapping, "PhaseUnwrapping")
     .define_method<void(cv::phase_unwrapping::PhaseUnwrapping::*)(cv::InputArray, cv::OutputArray, cv::InputArray)>("unwrap_phase_map", &cv::phase_unwrapping::PhaseUnwrapping::unwrapPhaseMap,
-      Arg("wrapped_phase_map"), Arg("unwrapped_phase_map"), Arg("shadow_mask") = static_cast<cv::InputArray>(cv::noArray()))
-    ;
+      Arg("wrapped_phase_map"), Arg("unwrapped_phase_map"), Arg("shadow_mask") = static_cast<cv::InputArray>(cv::noArray()));
 }

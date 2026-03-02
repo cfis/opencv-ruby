@@ -18,6 +18,5 @@ void Init_SurfaceMatching_Icp()
     .define_method<int(cv::ppf_match_3d::ICP::*)(const cv::Mat&, const cv::Mat&, std::vector<cv::ppf_match_3d::Pose3DPtr>&)>("register_model_to_scene", &cv::ppf_match_3d::ICP::registerModelToScene,
       Arg("src_pc"), Arg("dst_pc"), Arg("poses"))
     .define_constant("ICP_SAMPLING_TYPE_UNIFORM", (int)cv::ppf_match_3d::ICP::ICP_SAMPLING_TYPE_UNIFORM)
-    .define_constant("ICP_SAMPLING_TYPE_GELFAND", (int)cv::ppf_match_3d::ICP::ICP_SAMPLING_TYPE_GELFAND)
-    ;
+    .define_constant("ICP_SAMPLING_TYPE_GELFAND", (int)cv::ppf_match_3d::ICP::ICP_SAMPLING_TYPE_GELFAND);
 }

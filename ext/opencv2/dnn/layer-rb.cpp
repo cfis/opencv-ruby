@@ -19,6 +19,5 @@ void Init_Dnn_Layer()
     .define_singleton_function<bool(*)(const std::string&)>("layer_registered?", &cv::dnn::dnn4_v20241223::LayerFactory::isLayerRegistered,
       Arg("type"))
     .define_singleton_function<cv::Ptr<cv::dnn::dnn4_v20241223::Layer>(*)(const cv::String&, cv::dnn::dnn4_v20241223::LayerParams&)>("create_layer_instance", &cv::dnn::dnn4_v20241223::LayerFactory::createLayerInstance,
-      Arg("type"), Arg("params"))
-    ;
+      Arg("type"), Arg("params"));
 }

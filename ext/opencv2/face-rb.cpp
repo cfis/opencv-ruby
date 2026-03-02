@@ -37,6 +37,5 @@ void Init_Face()
       Arg("str"))
     .define_method<double(cv::face::FaceRecognizer::*)() const>("get_threshold", &cv::face::FaceRecognizer::getThreshold)
     .define_method<void(cv::face::FaceRecognizer::*)(double)>("set_threshold", &cv::face::FaceRecognizer::setThreshold,
-      Arg("val"))
-    ;
+      Arg("val"));
 }

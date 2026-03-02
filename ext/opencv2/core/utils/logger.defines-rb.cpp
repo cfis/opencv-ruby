@@ -33,6 +33,5 @@ void Init_Core_Utils_LoggerDefines()
     .define_value("LOG_LEVEL_INFO", cv::utils::logging::LogLevel::LOG_LEVEL_INFO)
     .define_value("LOG_LEVEL_DEBUG", cv::utils::logging::LogLevel::LOG_LEVEL_DEBUG)
     .define_value("LOG_LEVEL_VERBOSE", cv::utils::logging::LogLevel::LOG_LEVEL_VERBOSE)
-    .define_value("ENUM_LOG_LEVEL_FORCE_INT", cv::utils::logging::LogLevel::ENUM_LOG_LEVEL_FORCE_INT)
-    ;
+    .define_value("ENUM_LOG_LEVEL_FORCE_INT", cv::utils::logging::LogLevel::ENUM_LOG_LEVEL_FORCE_INT);
 }

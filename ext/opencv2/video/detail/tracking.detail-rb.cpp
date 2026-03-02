@@ -13,8 +13,7 @@ void Init_Video_Detail_TrackingDetail()
 
   Rice::Data_Type<cv::detail::TrackerFeature> rb_cCvDetailTrackerFeature = define_class_under<cv::detail::TrackerFeature>(rb_mCvDetailTracking, "TrackerFeature")
     .define_method<void(cv::detail::tracking::TrackerFeature::*)(const std::vector<cv::Mat>&, cv::Mat&)>("compute", &cv::detail::tracking::TrackerFeature::compute,
-      Arg("images"), Arg("response"))
-    ;
+      Arg("images"), Arg("response"));
   Rice::Data_Type<cv::detail::TrackerFeatureSet> rb_cCvDetailTrackerFeatureSet = define_class_under<cv::detail::TrackerFeatureSet>(rb_mCvDetailTracking, "TrackerFeatureSet")
     .define_constructor(Constructor<cv::detail::tracking::TrackerFeatureSet>())
     .define_method<void(cv::detail::tracking::TrackerFeatureSet::*)(const std::vector<cv::Mat>&)>("extraction", &cv::detail::tracking::TrackerFeatureSet::extraction,
@@ -22,12 +21,10 @@ void Init_Video_Detail_TrackingDetail()
     .define_method<bool(cv::detail::tracking::TrackerFeatureSet::*)(const cv::Ptr<cv::detail::TrackerFeature>&)>("add_tracker_feature", &cv::detail::tracking::TrackerFeatureSet::addTrackerFeature,
       Arg("feature"))
     .define_method<const std::vector<cv::Ptr<cv::detail::TrackerFeature>>&(cv::detail::tracking::TrackerFeatureSet::*)() const>("get_tracker_features", &cv::detail::tracking::TrackerFeatureSet::getTrackerFeatures)
-    .define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerFeatureSet::*)() const>("get_responses", &cv::detail::tracking::TrackerFeatureSet::getResponses)
-    ;
+    .define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerFeatureSet::*)() const>("get_responses", &cv::detail::tracking::TrackerFeatureSet::getResponses);
   Rice::Data_Type<cv::detail::TrackerSamplerAlgorithm> rb_cCvDetailTrackerSamplerAlgorithm = define_class_under<cv::detail::TrackerSamplerAlgorithm>(rb_mCvDetailTracking, "TrackerSamplerAlgorithm")
     .define_method<bool(cv::detail::tracking::TrackerSamplerAlgorithm::*)(const cv::Mat&, const cv::Rect&, std::vector<cv::Mat>&)>("sampling", &cv::detail::tracking::TrackerSamplerAlgorithm::sampling,
-      Arg("image"), Arg("bounding_box"), Arg("sample"))
-    ;
+      Arg("image"), Arg("bounding_box"), Arg("sample"));
   Rice::Data_Type<cv::detail::TrackerSampler> rb_cCvDetailTrackerSampler = define_class_under<cv::detail::TrackerSampler>(rb_mCvDetailTracking, "TrackerSampler")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSampler>())
     .define_method<void(cv::detail::tracking::TrackerSampler::*)(const cv::Mat&, cv::Rect)>("sampling", &cv::detail::tracking::TrackerSampler::sampling,
@@ -35,8 +32,7 @@ void Init_Video_Detail_TrackingDetail()
     .define_method<const std::vector<cv::Ptr<cv::detail::TrackerSamplerAlgorithm>>&(cv::detail::tracking::TrackerSampler::*)() const>("get_samplers", &cv::detail::tracking::TrackerSampler::getSamplers)
     .define_method<const std::vector<cv::Mat>&(cv::detail::tracking::TrackerSampler::*)() const>("get_samples", &cv::detail::tracking::TrackerSampler::getSamples)
     .define_method<bool(cv::detail::tracking::TrackerSampler::*)(const cv::Ptr<cv::detail::TrackerSamplerAlgorithm>&)>("add_tracker_sampler_algorithm", &cv::detail::tracking::TrackerSampler::addTrackerSamplerAlgorithm,
-      Arg("sampler"))
-    ;
+      Arg("sampler"));
   Rice::Data_Type<cv::detail::TrackerTargetState> rb_cCvDetailTrackerTargetState = define_class_under<cv::detail::TrackerTargetState>(rb_mCvDetailTracking, "TrackerTargetState")
     .define_constructor(Constructor<cv::detail::tracking::TrackerTargetState>())
     .define_method<cv::Point2f(cv::detail::tracking::TrackerTargetState::*)() const>("get_target_position", &cv::detail::tracking::TrackerTargetState::getTargetPosition)
@@ -47,8 +43,7 @@ void Init_Video_Detail_TrackingDetail()
       Arg("width"))
     .define_method<int(cv::detail::tracking::TrackerTargetState::*)() const>("get_target_height", &cv::detail::tracking::TrackerTargetState::getTargetHeight)
     .define_method<void(cv::detail::tracking::TrackerTargetState::*)(int)>("set_target_height", &cv::detail::tracking::TrackerTargetState::setTargetHeight,
-      Arg("height"))
-    ;
+      Arg("height"));
   Rice::Data_Type<cv::detail::TrackerStateEstimator> rb_cCvDetailTrackerStateEstimator = define_class_under<cv::detail::TrackerStateEstimator>(rb_mCvDetailTracking, "TrackerStateEstimator")
     .define_method<cv::Ptr<cv::detail::TrackerTargetState>(cv::detail::tracking::TrackerStateEstimator::*)(const std::vector<cv::detail::tracking::ConfidenceMap>&)>("estimate", &cv::detail::tracking::TrackerStateEstimator::estimate,
       Arg("confidence_maps"))
@@ -56,8 +51,7 @@ void Init_Video_Detail_TrackingDetail()
       Arg("confidence_maps"))
     .define_singleton_function<cv::Ptr<cv::detail::TrackerStateEstimator>(*)(const cv::String&)>("create", &cv::detail::tracking::TrackerStateEstimator::create,
       Arg("tracke_state_estimator_type"))
-    .define_method<cv::String(cv::detail::tracking::TrackerStateEstimator::*)() const>("get_class_name", &cv::detail::tracking::TrackerStateEstimator::getClassName)
-    ;
+    .define_method<cv::String(cv::detail::tracking::TrackerStateEstimator::*)() const>("get_class_name", &cv::detail::tracking::TrackerStateEstimator::getClassName);
   Rice::Data_Type<cv::detail::TrackerModel> rb_cCvDetailTrackerModel = define_class_under<cv::detail::TrackerModel>(rb_mCvDetailTracking, "TrackerModel")
     .define_method<bool(cv::detail::tracking::TrackerModel::*)(cv::Ptr<cv::detail::TrackerStateEstimator>)>("set_tracker_state_estimator", &cv::detail::tracking::TrackerModel::setTrackerStateEstimator,
       Arg("tracker_state_estimator"))
@@ -70,16 +64,14 @@ void Init_Video_Detail_TrackingDetail()
     .define_method<cv::Ptr<cv::detail::TrackerTargetState>(cv::detail::tracking::TrackerModel::*)() const>("get_last_target_state", &cv::detail::tracking::TrackerModel::getLastTargetState)
     .define_method<const std::vector<cv::detail::tracking::ConfidenceMap>&(cv::detail::tracking::TrackerModel::*)() const>("get_confidence_maps", &cv::detail::tracking::TrackerModel::getConfidenceMaps)
     .define_method<const cv::detail::tracking::ConfidenceMap&(cv::detail::tracking::TrackerModel::*)() const>("get_last_confidence_map", &cv::detail::tracking::TrackerModel::getLastConfidenceMap)
-    .define_method<cv::Ptr<cv::detail::TrackerStateEstimator>(cv::detail::tracking::TrackerModel::*)() const>("get_tracker_state_estimator", &cv::detail::tracking::TrackerModel::getTrackerStateEstimator)
-    ;
+    .define_method<cv::Ptr<cv::detail::TrackerStateEstimator>(cv::detail::tracking::TrackerModel::*)() const>("get_tracker_state_estimator", &cv::detail::tracking::TrackerModel::getTrackerStateEstimator);
   Rice::Data_Type<cv::detail::TrackerSamplerCSC> rb_cCvDetailTrackerSamplerCSC = define_class_under<cv::detail::TrackerSamplerCSC, cv::detail::TrackerSamplerAlgorithm>(rb_mCvDetailTracking, "TrackerSamplerCSC")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerCSC, const cv::detail::tracking::TrackerSamplerCSC::Params&>(),
       Arg("parameters") = static_cast<const cv::detail::tracking::TrackerSamplerCSC::Params&>(cv::detail::tracking::TrackerSamplerCSC::Params()))
     .define_method<void(cv::detail::tracking::TrackerSamplerCSC::*)(int)>("set_mode", &cv::detail::tracking::TrackerSamplerCSC::setMode,
       Arg("sampling_mode"))
     .define_method<bool(cv::detail::tracking::TrackerSamplerCSC::*)(const cv::Mat&, const cv::Rect&, std::vector<cv::Mat>&)>("sampling", &cv::detail::tracking::TrackerSamplerCSC::sampling,
-      Arg("image"), Arg("bounding_box"), Arg("sample"))
-    ;
+      Arg("image"), Arg("bounding_box"), Arg("sample"));
   Rice::Data_Type<cv::detail::TrackerSamplerCSC::Params> rb_cCvDetailTrackerSamplerCSCParams = define_class_under<cv::detail::TrackerSamplerCSC::Params>(rb_cCvDetailTrackerSamplerCSC, "Params")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerCSC::Params>())
     .define_attr("init_in_rad", &cv::detail::tracking::TrackerSamplerCSC::Params::initInRad)
@@ -87,13 +79,11 @@ void Init_Video_Detail_TrackingDetail()
     .define_attr("search_win_size", &cv::detail::tracking::TrackerSamplerCSC::Params::searchWinSize)
     .define_attr("init_max_neg_num", &cv::detail::tracking::TrackerSamplerCSC::Params::initMaxNegNum)
     .define_attr("track_max_pos_num", &cv::detail::tracking::TrackerSamplerCSC::Params::trackMaxPosNum)
-    .define_attr("track_max_neg_num", &cv::detail::tracking::TrackerSamplerCSC::Params::trackMaxNegNum)
-    ;
+    .define_attr("track_max_neg_num", &cv::detail::tracking::TrackerSamplerCSC::Params::trackMaxNegNum);
   Enum<cv::detail::tracking::TrackerSamplerCSC::MODE> rb_cCvDetailTrackerSamplerCSCMODE = define_enum_under<cv::detail::tracking::TrackerSamplerCSC::MODE>("Mode", rb_cCvDetailTrackerSamplerCSC)
     .define_value("MODE_INIT_POS", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_INIT_POS)
     .define_value("MODE_INIT_NEG", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_INIT_NEG)
     .define_value("MODE_TRACK_POS", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_TRACK_POS)
     .define_value("MODE_TRACK_NEG", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_TRACK_NEG)
-    .define_value("MODE_DETECT", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_DETECT)
-    ;
+    .define_value("MODE_DETECT", cv::detail::tracking::TrackerSamplerCSC::MODE::MODE_DETECT);
 }

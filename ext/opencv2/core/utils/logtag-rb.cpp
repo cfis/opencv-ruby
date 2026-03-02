@@ -15,6 +15,5 @@ void Init_Core_Utils_Logtag()
     .define_attr("name", &cv::utils::logging::LogTag::name)
     .define_attr("level", &cv::utils::logging::LogTag::level)
     .define_constructor(Constructor<cv::utils::logging::LogTag, const char*, cv::utils::logging::LogLevel>(),
-      Arg("_name"), Arg("_level"))
-    ;
+      Arg("_name"), Arg("_level"));
 }

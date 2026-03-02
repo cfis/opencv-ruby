@@ -11,17 +11,14 @@ void Init_Mcc_Ccm()
 
   Enum<cv::ccm::CCM_TYPE> rb_cCvCcmCCMTYPE = define_enum_under<cv::ccm::CCM_TYPE>("CcmType", rb_mCvCcm)
     .define_value("CCM_3x3", cv::ccm::CCM_TYPE::CCM_3x3)
-    .define_value("CCM_4x3", cv::ccm::CCM_TYPE::CCM_4x3)
-    ;
+    .define_value("CCM_4x3", cv::ccm::CCM_TYPE::CCM_4x3);
   Enum<cv::ccm::INITIAL_METHOD_TYPE> rb_cCvCcmINITIALMETHODTYPE = define_enum_under<cv::ccm::INITIAL_METHOD_TYPE>("InitialMethodType", rb_mCvCcm)
     .define_value("INITIAL_METHOD_WHITE_BALANCE", cv::ccm::INITIAL_METHOD_TYPE::INITIAL_METHOD_WHITE_BALANCE)
-    .define_value("INITIAL_METHOD_LEAST_SQUARE", cv::ccm::INITIAL_METHOD_TYPE::INITIAL_METHOD_LEAST_SQUARE)
-    ;
+    .define_value("INITIAL_METHOD_LEAST_SQUARE", cv::ccm::INITIAL_METHOD_TYPE::INITIAL_METHOD_LEAST_SQUARE);
   Enum<cv::ccm::CONST_COLOR> rb_cCvCcmCONSTCOLOR = define_enum_under<cv::ccm::CONST_COLOR>("ConstColor", rb_mCvCcm)
     .define_value("COLORCHECKER_Macbeth", cv::ccm::CONST_COLOR::COLORCHECKER_Macbeth)
     .define_value("COLORCHECKER_Vinyl", cv::ccm::CONST_COLOR::COLORCHECKER_Vinyl)
-    .define_value("COLORCHECKER_DigitalSG", cv::ccm::CONST_COLOR::COLORCHECKER_DigitalSG)
-    ;
+    .define_value("COLORCHECKER_DigitalSG", cv::ccm::CONST_COLOR::COLORCHECKER_DigitalSG);
   Enum<cv::ccm::COLOR_SPACE> rb_cCvCcmCOLORSPACE = define_enum_under<cv::ccm::COLOR_SPACE>("ColorSpace", rb_mCvCcm)
     .define_value("COLOR_SPACE_sRGB", cv::ccm::COLOR_SPACE::COLOR_SPACE_sRGB)
     .define_value("COLOR_SPACE_sRGBL", cv::ccm::COLOR_SPACE::COLOR_SPACE_sRGBL)
@@ -62,16 +59,14 @@ void Init_Mcc_Ccm()
     .define_value("COLOR_SPACE_Lab_D75_2", cv::ccm::COLOR_SPACE::COLOR_SPACE_Lab_D75_2)
     .define_value("COLOR_SPACE_Lab_D75_10", cv::ccm::COLOR_SPACE::COLOR_SPACE_Lab_D75_10)
     .define_value("COLOR_SPACE_Lab_E_2", cv::ccm::COLOR_SPACE::COLOR_SPACE_Lab_E_2)
-    .define_value("COLOR_SPACE_Lab_E_10", cv::ccm::COLOR_SPACE::COLOR_SPACE_Lab_E_10)
-    ;
+    .define_value("COLOR_SPACE_Lab_E_10", cv::ccm::COLOR_SPACE::COLOR_SPACE_Lab_E_10);
   Enum<cv::ccm::LINEAR_TYPE> rb_cCvCcmLINEARTYPE = define_enum_under<cv::ccm::LINEAR_TYPE>("LinearType", rb_mCvCcm)
     .define_value("LINEARIZATION_IDENTITY", cv::ccm::LINEAR_TYPE::LINEARIZATION_IDENTITY)
     .define_value("LINEARIZATION_GAMMA", cv::ccm::LINEAR_TYPE::LINEARIZATION_GAMMA)
     .define_value("LINEARIZATION_COLORPOLYFIT", cv::ccm::LINEAR_TYPE::LINEARIZATION_COLORPOLYFIT)
     .define_value("LINEARIZATION_COLORLOGPOLYFIT", cv::ccm::LINEAR_TYPE::LINEARIZATION_COLORLOGPOLYFIT)
     .define_value("LINEARIZATION_GRAYPOLYFIT", cv::ccm::LINEAR_TYPE::LINEARIZATION_GRAYPOLYFIT)
-    .define_value("LINEARIZATION_GRAYLOGPOLYFIT", cv::ccm::LINEAR_TYPE::LINEARIZATION_GRAYLOGPOLYFIT)
-    ;
+    .define_value("LINEARIZATION_GRAYLOGPOLYFIT", cv::ccm::LINEAR_TYPE::LINEARIZATION_GRAYLOGPOLYFIT);
   Enum<cv::ccm::DISTANCE_TYPE> rb_cCvCcmDISTANCETYPE = define_enum_under<cv::ccm::DISTANCE_TYPE>("DistanceType", rb_mCvCcm)
     .define_value("DISTANCE_CIE76", cv::ccm::DISTANCE_TYPE::DISTANCE_CIE76)
     .define_value("DISTANCE_CIE94_GRAPHIC_ARTS", cv::ccm::DISTANCE_TYPE::DISTANCE_CIE94_GRAPHIC_ARTS)
@@ -80,8 +75,7 @@ void Init_Mcc_Ccm()
     .define_value("DISTANCE_CMC_1TO1", cv::ccm::DISTANCE_TYPE::DISTANCE_CMC_1TO1)
     .define_value("DISTANCE_CMC_2TO1", cv::ccm::DISTANCE_TYPE::DISTANCE_CMC_2TO1)
     .define_value("DISTANCE_RGB", cv::ccm::DISTANCE_TYPE::DISTANCE_RGB)
-    .define_value("DISTANCE_RGBL", cv::ccm::DISTANCE_TYPE::DISTANCE_RGBL)
-    ;
+    .define_value("DISTANCE_RGBL", cv::ccm::DISTANCE_TYPE::DISTANCE_RGBL);
   Rice::Data_Type<cv::ccm::ColorCorrectionModel> rb_cCvCcmColorCorrectionModel = define_class_under<cv::ccm::ColorCorrectionModel>(rb_mCvCcm, "ColorCorrectionModel");
 
   Rice::Data_Type<cv::ccm::ColorCorrectionModel::Impl> rb_cCvCcmColorCorrectionModelImpl = define_class_under<cv::ccm::ColorCorrectionModel::Impl>(rb_cCvCcmColorCorrectionModel, "Impl");
@@ -125,6 +119,5 @@ void Init_Mcc_Ccm()
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_mask", &cv::ccm::ColorCorrectionModel::getMask)
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_weights", &cv::ccm::ColorCorrectionModel::getWeights)
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)(const cv::Mat&, bool)>("infer", &cv::ccm::ColorCorrectionModel::infer,
-      Arg("img"), Arg("islinear") = static_cast<bool>(false))
-    ;
+      Arg("img"), Arg("islinear") = static_cast<bool>(false));
 }

@@ -24,8 +24,7 @@ void Init_Ximgproc_EdgeDrawing()
       Arg("ellipses"))
     .define_attr("params", &cv::ximgproc::EdgeDrawing::params)
     .define_method<void(cv::ximgproc::EdgeDrawing::*)(const cv::ximgproc::EdgeDrawing::Params&)>("set_params", &cv::ximgproc::EdgeDrawing::setParams,
-      Arg("parameters"))
-    ;
+      Arg("parameters"));
   Rice::Data_Type<cv::ximgproc::EdgeDrawing::Params> rb_cCvXimgprocEdgeDrawingParams = define_class_under<cv::ximgproc::EdgeDrawing::Params>(rb_cCvXimgprocEdgeDrawing, "Params")
     .define_constructor(Constructor<cv::ximgproc::EdgeDrawing::Params>())
     .define_attr("p_fmode", &cv::ximgproc::EdgeDrawing::Params::PFmode)
@@ -44,13 +43,11 @@ void Init_Ximgproc_EdgeDrawing()
     .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(const cv::FileNode&)>("read", &cv::ximgproc::EdgeDrawing::Params::read,
       Arg("fn"))
     .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(cv::FileStorage&) const>("write", &cv::ximgproc::EdgeDrawing::Params::write,
-      Arg("fs"))
-    ;
+      Arg("fs"));
   Enum<cv::ximgproc::EdgeDrawing::GradientOperator> rb_cCvXimgprocEdgeDrawingGradientOperator = define_enum_under<cv::ximgproc::EdgeDrawing::GradientOperator>("GradientOperator", rb_cCvXimgprocEdgeDrawing)
     .define_value("PREWITT", cv::ximgproc::EdgeDrawing::GradientOperator::PREWITT)
     .define_value("SOBEL", cv::ximgproc::EdgeDrawing::GradientOperator::SOBEL)
     .define_value("SCHARR", cv::ximgproc::EdgeDrawing::GradientOperator::SCHARR)
-    .define_value("LSD", cv::ximgproc::EdgeDrawing::GradientOperator::LSD)
-    ;
+    .define_value("LSD", cv::ximgproc::EdgeDrawing::GradientOperator::LSD);
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::EdgeDrawing>(*)()>("create_edge_drawing", &cv::ximgproc::createEdgeDrawing);
 }

@@ -37,6 +37,5 @@ void Init_Core_Utils_Logger()
 
   Rice::Data_Type<cv::utils::logging::LogTagAuto> rb_cCvUtilsLoggingLogTagAuto = define_class_under<cv::utils::logging::LogTagAuto, cv::utils::logging::LogTag>(rb_mCvUtilsLogging, "LogTagAuto")
     .define_constructor(Constructor<cv::utils::logging::LogTagAuto, const char*, cv::utils::logging::LogLevel>(),
-      Arg("_name"), Arg("_level"))
-    ;
+      Arg("_name"), Arg("_level"));
 }

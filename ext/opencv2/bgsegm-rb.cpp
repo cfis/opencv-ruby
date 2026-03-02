@@ -21,8 +21,7 @@ void Init_Bgsegm()
       Arg("background_ratio"))
     .define_method<double(cv::bgsegm::BackgroundSubtractorMOG::*)() const>("get_noise_sigma", &cv::bgsegm::BackgroundSubtractorMOG::getNoiseSigma)
     .define_method<void(cv::bgsegm::BackgroundSubtractorMOG::*)(double)>("set_noise_sigma", &cv::bgsegm::BackgroundSubtractorMOG::setNoiseSigma,
-      Arg("noise_sigma"))
-    ;
+      Arg("noise_sigma"));
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::BackgroundSubtractorMOG>(*)(int, int, double, double)>("create_background_subtractor_mog", &cv::bgsegm::createBackgroundSubtractorMOG,
     Arg("history") = static_cast<int>(200), Arg("nmixtures") = static_cast<int>(5), Arg("background_ratio") = static_cast<double>(0.7), Arg("noise_sigma") = static_cast<double>(0));
 
@@ -60,8 +59,7 @@ void Init_Bgsegm()
       Arg("val"))
     .define_method<double(cv::bgsegm::BackgroundSubtractorGMG::*)() const>("get_max_val", &cv::bgsegm::BackgroundSubtractorGMG::getMaxVal)
     .define_method<void(cv::bgsegm::BackgroundSubtractorGMG::*)(double)>("set_max_val", &cv::bgsegm::BackgroundSubtractorGMG::setMaxVal,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::BackgroundSubtractorGMG>(*)(int, double)>("create_background_subtractor_gmg", &cv::bgsegm::createBackgroundSubtractorGMG,
     Arg("initialization_frames") = static_cast<int>(120), Arg("decision_threshold") = static_cast<double>(0.8));
 
@@ -81,27 +79,23 @@ void Init_Bgsegm()
       Arg("value"))
     .define_method<bool(cv::bgsegm::BackgroundSubtractorCNT::*)() const>("get_is_parallel?", &cv::bgsegm::BackgroundSubtractorCNT::getIsParallel)
     .define_method<void(cv::bgsegm::BackgroundSubtractorCNT::*)(bool)>("set_is_parallel", &cv::bgsegm::BackgroundSubtractorCNT::setIsParallel,
-      Arg("value"))
-    ;
+      Arg("value"));
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::BackgroundSubtractorCNT>(*)(int, bool, int, bool)>("create_background_subtractor_cnt", &cv::bgsegm::createBackgroundSubtractorCNT,
     Arg("min_pixel_stability") = static_cast<int>(15), Arg("use_history") = static_cast<bool>(true), Arg("max_pixel_stability"), Arg("is_parallel") = static_cast<bool>(true));
 
   Enum<cv::bgsegm::LSBPCameraMotionCompensation> rb_cCvBgsegmLSBPCameraMotionCompensation = define_enum_under<cv::bgsegm::LSBPCameraMotionCompensation>("LSBPCameraMotionCompensation", rb_mCvBgsegm)
     .define_value("LSBP_CAMERA_MOTION_COMPENSATION_NONE", cv::bgsegm::LSBPCameraMotionCompensation::LSBP_CAMERA_MOTION_COMPENSATION_NONE)
-    .define_value("LSBP_CAMERA_MOTION_COMPENSATION_LK", cv::bgsegm::LSBPCameraMotionCompensation::LSBP_CAMERA_MOTION_COMPENSATION_LK)
-    ;
+    .define_value("LSBP_CAMERA_MOTION_COMPENSATION_LK", cv::bgsegm::LSBPCameraMotionCompensation::LSBP_CAMERA_MOTION_COMPENSATION_LK);
   Rice::Data_Type<cv::bgsegm::BackgroundSubtractorGSOC> rb_cCvBgsegmBackgroundSubtractorGSOC = define_class_under<cv::bgsegm::BackgroundSubtractorGSOC, cv::BackgroundSubtractor>(rb_mCvBgsegm, "BackgroundSubtractorGSOC")
     .define_method<void(cv::bgsegm::BackgroundSubtractorGSOC::*)(cv::InputArray, cv::OutputArray, double)>("apply", &cv::bgsegm::BackgroundSubtractorGSOC::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1))
     .define_method<void(cv::bgsegm::BackgroundSubtractorGSOC::*)(cv::OutputArray) const>("get_background_image", &cv::bgsegm::BackgroundSubtractorGSOC::getBackgroundImage,
-      Arg("background_image"))
-    ;
+      Arg("background_image"));
   Rice::Data_Type<cv::bgsegm::BackgroundSubtractorLSBP> rb_cCvBgsegmBackgroundSubtractorLSBP = define_class_under<cv::bgsegm::BackgroundSubtractorLSBP, cv::BackgroundSubtractor>(rb_mCvBgsegm, "BackgroundSubtractorLSBP")
     .define_method<void(cv::bgsegm::BackgroundSubtractorLSBP::*)(cv::InputArray, cv::OutputArray, double)>("apply", &cv::bgsegm::BackgroundSubtractorLSBP::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate") = static_cast<double>(-1))
     .define_method<void(cv::bgsegm::BackgroundSubtractorLSBP::*)(cv::OutputArray) const>("get_background_image", &cv::bgsegm::BackgroundSubtractorLSBP::getBackgroundImage,
-      Arg("background_image"))
-    ;
+      Arg("background_image"));
   Rice::Data_Type<cv::bgsegm::BackgroundSubtractorLSBPDesc> rb_cCvBgsegmBackgroundSubtractorLSBPDesc = define_class_under<cv::bgsegm::BackgroundSubtractorLSBPDesc>(rb_mCvBgsegm, "BackgroundSubtractorLSBPDesc")
     .define_constructor(Constructor<cv::bgsegm::BackgroundSubtractorLSBPDesc>())
     .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&)>("calc_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::calcLocalSVDValues,
@@ -109,8 +103,7 @@ void Init_Bgsegm()
     .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&, const cv::Point2i*)>("compute_from_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::computeFromLocalSVDValues,
       Arg("desc"), Arg("local_svd_values"), Arg("lsbp_sample_points"))
     .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&, const cv::Point2i*)>("compute", &cv::bgsegm::BackgroundSubtractorLSBPDesc::compute,
-      Arg("desc"), Arg("frame"), Arg("lsbp_sample_points"))
-    ;
+      Arg("desc"), Arg("frame"), Arg("lsbp_sample_points"));
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::BackgroundSubtractorGSOC>(*)(int, int, float, float, int, float, float, float, float, float, float)>("create_background_subtractor_gsoc", &cv::bgsegm::createBackgroundSubtractorGSOC,
     Arg("mc") = static_cast<int>(cv::bgsegm::LSBP_CAMERA_MOTION_COMPENSATION_NONE), Arg("n_samples") = static_cast<int>(20), Arg("replace_rate") = static_cast<float>(0.003f), Arg("propagation_rate") = static_cast<float>(0.01f), Arg("hits_threshold") = static_cast<int>(32), Arg("alpha") = static_cast<float>(0.01f), Arg("beta") = static_cast<float>(0.0022f), Arg("blinking_supression_decay") = static_cast<float>(0.1f), Arg("blinking_supression_multiplier") = static_cast<float>(0.1f), Arg("noise_removal_threshold_fac_bg") = static_cast<float>(0.0004f), Arg("noise_removal_threshold_fac_fg") = static_cast<float>(0.0008f));
 
@@ -121,8 +114,7 @@ void Init_Bgsegm()
     .define_constructor(Constructor<cv::bgsegm::SyntheticSequenceGenerator, cv::InputArray, cv::InputArray, double, double, double, double>(),
       Arg("background"), Arg("object"), Arg("amplitude"), Arg("wavelength"), Arg("wavespeed"), Arg("objspeed"))
     .define_method<void(cv::bgsegm::SyntheticSequenceGenerator::*)(cv::OutputArray, cv::OutputArray)>("get_next_frame", &cv::bgsegm::SyntheticSequenceGenerator::getNextFrame,
-      Arg("frame"), Arg("gt_mask"))
-    ;
+      Arg("frame"), Arg("gt_mask"));
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::SyntheticSequenceGenerator>(*)(cv::InputArray, cv::InputArray, double, double, double, double)>("create_synthetic_sequence_generator", &cv::bgsegm::createSyntheticSequenceGenerator,
     Arg("background"), Arg("object"), Arg("amplitude") = static_cast<double>(2.0), Arg("wavelength") = static_cast<double>(20.0), Arg("wavespeed") = static_cast<double>(0.2), Arg("objspeed") = static_cast<double>(6.0));
 }

@@ -12,8 +12,7 @@ void Init_Superres_OpticalFlow()
   Rice::Data_Type<cv::superres::DenseOpticalFlowExt> rb_cCvSuperresDenseOpticalFlowExt = define_class_under<cv::superres::DenseOpticalFlowExt, cv::Algorithm>(rb_mCvSuperres, "DenseOpticalFlowExt")
     .define_method<void(cv::superres::DenseOpticalFlowExt::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("calc", &cv::superres::DenseOpticalFlowExt::calc,
       Arg("frame0"), Arg("frame1"), Arg("flow1"), Arg("flow2") = static_cast<cv::OutputArray>(cv::noArray()))
-    .define_method<void(cv::superres::DenseOpticalFlowExt::*)()>("collect_garbage", &cv::superres::DenseOpticalFlowExt::collectGarbage)
-    ;
+    .define_method<void(cv::superres::DenseOpticalFlowExt::*)()>("collect_garbage", &cv::superres::DenseOpticalFlowExt::collectGarbage);
   Rice::Data_Type<cv::superres::FarnebackOpticalFlow> rb_cCvSuperresFarnebackOpticalFlow = define_class_under<cv::superres::FarnebackOpticalFlow, cv::superres::DenseOpticalFlowExt>(rb_mCvSuperres, "FarnebackOpticalFlow")
     .define_method<double(cv::superres::FarnebackOpticalFlow::*)() const>("get_pyr_scale", &cv::superres::FarnebackOpticalFlow::getPyrScale)
     .define_method<void(cv::superres::FarnebackOpticalFlow::*)(double)>("set_pyr_scale", &cv::superres::FarnebackOpticalFlow::setPyrScale,
@@ -35,8 +34,7 @@ void Init_Superres_OpticalFlow()
       Arg("val"))
     .define_method<int(cv::superres::FarnebackOpticalFlow::*)() const>("get_flags", &cv::superres::FarnebackOpticalFlow::getFlags)
     .define_method<void(cv::superres::FarnebackOpticalFlow::*)(int)>("set_flags", &cv::superres::FarnebackOpticalFlow::setFlags,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FarnebackOpticalFlow>(*)()>("create_opt_flow_farneback", &cv::superres::createOptFlow_Farneback);
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FarnebackOpticalFlow>(*)()>("create_opt_flow_farneback_cuda", &cv::superres::createOptFlow_Farneback_CUDA);
@@ -65,8 +63,7 @@ void Init_Superres_OpticalFlow()
       Arg("val"))
     .define_method<bool(cv::superres::DualTVL1OpticalFlow::*)() const>("get_use_initial_flow?", &cv::superres::DualTVL1OpticalFlow::getUseInitialFlow)
     .define_method<void(cv::superres::DualTVL1OpticalFlow::*)(bool)>("set_use_initial_flow", &cv::superres::DualTVL1OpticalFlow::setUseInitialFlow,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::DualTVL1OpticalFlow>(*)()>("create_opt_flow_dual_tvl1", &cv::superres::createOptFlow_DualTVL1);
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::DualTVL1OpticalFlow>(*)()>("create_opt_flow_dual_tvl1_cuda", &cv::superres::createOptFlow_DualTVL1_CUDA);
@@ -89,8 +86,7 @@ void Init_Superres_OpticalFlow()
       Arg("val"))
     .define_method<int(cv::superres::BroxOpticalFlow::*)() const>("get_solver_iterations", &cv::superres::BroxOpticalFlow::getSolverIterations)
     .define_method<void(cv::superres::BroxOpticalFlow::*)(int)>("set_solver_iterations", &cv::superres::BroxOpticalFlow::setSolverIterations,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::BroxOpticalFlow>(*)()>("create_opt_flow_brox_cuda", &cv::superres::createOptFlow_Brox_CUDA);
 
   Rice::Data_Type<cv::superres::PyrLKOpticalFlow> rb_cCvSuperresPyrLKOpticalFlow = define_class_under<cv::superres::PyrLKOpticalFlow, cv::superres::DenseOpticalFlowExt>(rb_mCvSuperres, "PyrLKOpticalFlow")
@@ -102,7 +98,6 @@ void Init_Superres_OpticalFlow()
       Arg("val"))
     .define_method<int(cv::superres::PyrLKOpticalFlow::*)() const>("get_iterations", &cv::superres::PyrLKOpticalFlow::getIterations)
     .define_method<void(cv::superres::PyrLKOpticalFlow::*)(int)>("set_iterations", &cv::superres::PyrLKOpticalFlow::setIterations,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::PyrLKOpticalFlow>(*)()>("create_opt_flow_pyr_lk_cuda", &cv::superres::createOptFlow_PyrLK_CUDA);
 }

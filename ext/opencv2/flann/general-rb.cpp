@@ -11,6 +11,5 @@ void Init_Flann_General()
     .define_constructor(Constructor<cvflann::FLANNException, const char*>(),
       Arg("message"))
     .define_constructor(Constructor<cvflann::FLANNException, const cv::String&>(),
-      Arg("message"))
-    ;
+      Arg("message"));
 }

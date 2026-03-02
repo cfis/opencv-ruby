@@ -15,6 +15,5 @@ void Init_Face_Bif()
     .define_method<void(cv::face::BIF::*)(cv::InputArray, cv::OutputArray) const>("compute", &cv::face::BIF::compute,
       Arg("image"), Arg("features"))
     .define_singleton_function<cv::Ptr<cv::face::BIF>(*)(int, int)>("create", &cv::face::BIF::create,
-      Arg("num_bands") = static_cast<int>(8), Arg("num_rotations") = static_cast<int>(12))
-    ;
+      Arg("num_bands") = static_cast<int>(8), Arg("num_rotations") = static_cast<int>(12));
 }

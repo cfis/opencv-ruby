@@ -22,14 +22,12 @@ void Init_Flann_LshTable()
     .define_attr("bucket_size_min_", &cvflann::lsh::LshStats::bucket_size_min_)
     .define_attr("bucket_size_max_", &cvflann::lsh::LshStats::bucket_size_max_)
     .define_attr("bucket_size_std_dev", &cvflann::lsh::LshStats::bucket_size_std_dev)
-    .define_attr("size_histogram_", &cvflann::lsh::LshStats::size_histogram_)
-    ;
+    .define_attr("size_histogram_", &cvflann::lsh::LshStats::size_histogram_);
   rb_cCvflannLshLshStats
     .define_method("inspect", [](const cvflann::lsh::LshStats& self) -> std::string
     {
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
 }

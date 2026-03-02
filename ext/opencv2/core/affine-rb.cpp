@@ -23,8 +23,7 @@ void Init_Core_Affine()
     .define_method("*", [](const cv::Affine3f& self, const cv::Vec3f& other) -> cv::Vec3f
     {
       return self * other;
-    })
-    ;
+    });
   
   rb_cAffine3d
     .define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
@@ -34,6 +33,5 @@ void Init_Core_Affine()
     .define_method("*", [](const cv::Affine3d& self, const cv::Vec3d& other) -> cv::Vec3d
     {
       return self * other;
-    })
-    ;
+    });
 }

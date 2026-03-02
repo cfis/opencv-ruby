@@ -64,7 +64,6 @@ void Init_Optflow()
     .define_method<void(cv::optflow::DualTVL1OpticalFlow::*)(int)>("set_median_filtering", &cv::optflow::DualTVL1OpticalFlow::setMedianFiltering,
       Arg("val"))
     .define_singleton_function<cv::Ptr<cv::optflow::DualTVL1OpticalFlow>(*)(double, double, double, int, int, double, int, int, double, double, int, bool)>("create", &cv::optflow::DualTVL1OpticalFlow::create,
-      Arg("tau") = static_cast<double>(0.25), Arg("lambda") = static_cast<double>(0.15), Arg("theta") = static_cast<double>(0.3), Arg("nscales") = static_cast<int>(5), Arg("warps") = static_cast<int>(5), Arg("epsilon") = static_cast<double>(0.01), Arg("innner_iterations") = static_cast<int>(30), Arg("outer_iterations") = static_cast<int>(10), Arg("scale_step") = static_cast<double>(0.8), Arg("gamma") = static_cast<double>(0.0), Arg("median_filtering") = static_cast<int>(5), Arg("use_initial_flow") = static_cast<bool>(false))
-    ;
+      Arg("tau") = static_cast<double>(0.25), Arg("lambda") = static_cast<double>(0.15), Arg("theta") = static_cast<double>(0.3), Arg("nscales") = static_cast<int>(5), Arg("warps") = static_cast<int>(5), Arg("epsilon") = static_cast<double>(0.01), Arg("innner_iterations") = static_cast<int>(30), Arg("outer_iterations") = static_cast<int>(10), Arg("scale_step") = static_cast<double>(0.8), Arg("gamma") = static_cast<double>(0.0), Arg("median_filtering") = static_cast<int>(5), Arg("use_initial_flow") = static_cast<bool>(false));
   rb_mCvOptflow.define_module_function<cv::Ptr<cv::optflow::DualTVL1OpticalFlow>(*)()>("create_opt_flow_dual_tvl1", &cv::optflow::createOptFlow_DualTVL1);
 }

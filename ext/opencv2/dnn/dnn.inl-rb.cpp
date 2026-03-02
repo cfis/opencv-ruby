@@ -17,8 +17,7 @@ void Init_Dnn_DnnInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
   
   Data_Type<cv::dnn::dnn4_v20241223::Dict>()
     .define_method("inspect", [](const cv::dnn::dnn4_v20241223::Dict& self) -> std::string
@@ -26,6 +25,5 @@ void Init_Dnn_DnnInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
 }

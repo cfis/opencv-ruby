@@ -23,8 +23,7 @@ void Init_Dnn_Dnn()
     .define_value("DNN_BACKEND_CUDA", cv::dnn::dnn4_v20241223::Backend::DNN_BACKEND_CUDA)
     .define_value("DNN_BACKEND_WEBNN", cv::dnn::dnn4_v20241223::Backend::DNN_BACKEND_WEBNN)
     .define_value("DNN_BACKEND_TIMVX", cv::dnn::dnn4_v20241223::Backend::DNN_BACKEND_TIMVX)
-    .define_value("DNN_BACKEND_CANN", cv::dnn::dnn4_v20241223::Backend::DNN_BACKEND_CANN)
-    ;
+    .define_value("DNN_BACKEND_CANN", cv::dnn::dnn4_v20241223::Backend::DNN_BACKEND_CANN);
   Enum<cv::dnn::dnn4_v20241223::Target> rb_cCvDnnDnn4V20241223Target = define_enum_under<cv::dnn::dnn4_v20241223::Target>("Target", rb_mCvDnnDnn4V20241223)
     .define_value("DNN_TARGET_CPU", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_CPU)
     .define_value("DNN_TARGET_OPENCL", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_OPENCL)
@@ -36,8 +35,7 @@ void Init_Dnn_Dnn()
     .define_value("DNN_TARGET_CUDA_FP16", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_CUDA_FP16)
     .define_value("DNN_TARGET_HDDL", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_HDDL)
     .define_value("DNN_TARGET_NPU", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_NPU)
-    .define_value("DNN_TARGET_CPU_FP16", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_CPU_FP16)
-    ;
+    .define_value("DNN_TARGET_CPU_FP16", cv::dnn::dnn4_v20241223::Target::DNN_TARGET_CPU_FP16);
   Enum<cv::dnn::dnn4_v20241223::DataLayout> rb_cCvDnnDnn4V20241223DataLayout = define_enum_under<cv::dnn::dnn4_v20241223::DataLayout>("DataLayout", rb_mCvDnnDnn4V20241223)
     .define_value("DNN_LAYOUT_UNKNOWN", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_UNKNOWN)
     .define_value("DNN_LAYOUT_ND", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_ND)
@@ -45,8 +43,7 @@ void Init_Dnn_Dnn()
     .define_value("DNN_LAYOUT_NCDHW", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_NCDHW)
     .define_value("DNN_LAYOUT_NHWC", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_NHWC)
     .define_value("DNN_LAYOUT_NDHWC", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_NDHWC)
-    .define_value("DNN_LAYOUT_PLANAR", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_PLANAR)
-    ;
+    .define_value("DNN_LAYOUT_PLANAR", cv::dnn::dnn4_v20241223::DataLayout::DNN_LAYOUT_PLANAR);
   rb_mCvDnnDnn4V20241223.define_module_function<std::vector<std::pair<cv::dnn::dnn4_v20241223::Backend, cv::dnn::dnn4_v20241223::Target>>(*)()>("get_available_backends", &cv::dnn::dnn4_v20241223::getAvailableBackends);
 
   rb_mCvDnnDnn4V20241223.define_module_function<std::vector<cv::dnn::dnn4_v20241223::Target>(*)(cv::dnn::dnn4_v20241223::Backend)>("get_available_targets", &cv::dnn::dnn4_v20241223::getAvailableTargets,
@@ -59,14 +56,12 @@ void Init_Dnn_Dnn()
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::LayerParams>())
     .define_attr("blobs", &cv::dnn::dnn4_v20241223::LayerParams::blobs)
     .define_attr("name", &cv::dnn::dnn4_v20241223::LayerParams::name)
-    .define_attr("type", &cv::dnn::dnn4_v20241223::LayerParams::type)
-    ;
+    .define_attr("type", &cv::dnn::dnn4_v20241223::LayerParams::type);
   Rice::Data_Type<cv::dnn::dnn4_v20241223::BackendWrapper> rb_cCvDnnDnn4V20241223BackendWrapper = define_class_under<cv::dnn::dnn4_v20241223::BackendWrapper>(rb_mCvDnnDnn4V20241223, "BackendWrapper")
     .define_method<void(cv::dnn::dnn4_v20241223::BackendWrapper::*)()>("copy_to_host", &cv::dnn::dnn4_v20241223::BackendWrapper::copyToHost)
     .define_method<void(cv::dnn::dnn4_v20241223::BackendWrapper::*)()>("set_host_dirty", &cv::dnn::dnn4_v20241223::BackendWrapper::setHostDirty)
     .define_attr("backend_id", &cv::dnn::dnn4_v20241223::BackendWrapper::backendId)
-    .define_attr("target_id", &cv::dnn::dnn4_v20241223::BackendWrapper::targetId)
-    ;
+    .define_attr("target_id", &cv::dnn::dnn4_v20241223::BackendWrapper::targetId);
   Rice::Data_Type<cv::dnn::dnn4_v20241223::ActivationLayer> rb_cCvDnnDnn4V20241223ActivationLayer = define_class_under<cv::dnn::dnn4_v20241223::ActivationLayer>(rb_mCvDnnDnn4V20241223, "ActivationLayer");
   Rice::Data_Type<cv::dnn::dnn4_v20241223::Layer> rb_cCvDnnDnn4V20241223Layer = define_class_under<cv::dnn::dnn4_v20241223::Layer, cv::Algorithm>(rb_mCvDnnDnn4V20241223, "Layer")
     .define_attr("blobs", &cv::dnn::dnn4_v20241223::Layer::blobs)
@@ -106,8 +101,7 @@ void Init_Dnn_Dnn()
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::Layer, const cv::dnn::dnn4_v20241223::LayerParams&>(),
       Arg("params"))
     .define_method<void(cv::dnn::dnn4_v20241223::Layer::*)(const cv::dnn::dnn4_v20241223::LayerParams&)>("set_params_from", &cv::dnn::dnn4_v20241223::Layer::setParamsFrom,
-      Arg("params"))
-    ;
+      Arg("params"));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::Net> rb_cCvDnnDnn4V20241223Net = define_class_under<cv::dnn::dnn4_v20241223::Net>(rb_mCvDnnDnn4V20241223, "Net");
 
   Rice::Data_Type<cv::dnn::dnn4_v20241223::Net::Impl> rb_cCvDnnDnn4V20241223NetImpl = define_class_under<cv::dnn::dnn4_v20241223::Net::Impl>(rb_cCvDnnDnn4V20241223Net, "Impl");
@@ -228,8 +222,7 @@ void Init_Dnn_Dnn()
     .define_method<int64(cv::dnn::dnn4_v20241223::Net::*)(std::vector<double>&)>("get_perf_profile", &cv::dnn::dnn4_v20241223::Net::getPerfProfile,
       Arg("timings"))
     .define_method<cv::dnn::dnn4_v20241223::Net::Impl*(cv::dnn::dnn4_v20241223::Net::*)() const>("get_impl", &cv::dnn::dnn4_v20241223::Net::getImpl)
-    .define_method<cv::dnn::dnn4_v20241223::Net::Impl&(cv::dnn::dnn4_v20241223::Net::*)() const>("get_impl_ref", &cv::dnn::dnn4_v20241223::Net::getImplRef)
-    ;
+    .define_method<cv::dnn::dnn4_v20241223::Net::Impl&(cv::dnn::dnn4_v20241223::Net::*)() const>("get_impl_ref", &cv::dnn::dnn4_v20241223::Net::getImplRef);
   rb_mCvDnnDnn4V20241223.define_module_function<cv::dnn::dnn4_v20241223::Net(*)(const cv::String&, const cv::String&)>("read_net_from_darknet", &cv::dnn::dnn4_v20241223::readNetFromDarknet,
     Arg("cfg_file"), Arg("darknet_model") = static_cast<const cv::String&>(cv::String()));
 
@@ -314,8 +307,7 @@ void Init_Dnn_Dnn()
   Enum<cv::dnn::dnn4_v20241223::ImagePaddingMode> rb_cCvDnnDnn4V20241223ImagePaddingMode = define_enum_under<cv::dnn::dnn4_v20241223::ImagePaddingMode>("ImagePaddingMode", rb_mCvDnnDnn4V20241223)
     .define_value("DNN_PMODE_NULL", cv::dnn::dnn4_v20241223::ImagePaddingMode::DNN_PMODE_NULL)
     .define_value("DNN_PMODE_CROP_CENTER", cv::dnn::dnn4_v20241223::ImagePaddingMode::DNN_PMODE_CROP_CENTER)
-    .define_value("DNN_PMODE_LETTERBOX", cv::dnn::dnn4_v20241223::ImagePaddingMode::DNN_PMODE_LETTERBOX)
-    ;
+    .define_value("DNN_PMODE_LETTERBOX", cv::dnn::dnn4_v20241223::ImagePaddingMode::DNN_PMODE_LETTERBOX);
   Rice::Data_Type<cv::dnn::dnn4_v20241223::Image2BlobParams> rb_cCvDnnDnn4V20241223Image2BlobParams = define_class_under<cv::dnn::dnn4_v20241223::Image2BlobParams>(rb_mCvDnnDnn4V20241223, "Image2BlobParams")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::Image2BlobParams>())
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::Image2BlobParams, const cv::Scalar&, const cv::Size&, const cv::Scalar&, bool, int, cv::dnn::dnn4_v20241223::DataLayout, cv::dnn::dnn4_v20241223::ImagePaddingMode, cv::Scalar>(),
@@ -331,8 +323,7 @@ void Init_Dnn_Dnn()
     .define_method<cv::Rect(cv::dnn::dnn4_v20241223::Image2BlobParams::*)(const cv::Rect&, const cv::Size&)>("blob_rect_to_image_rect", &cv::dnn::dnn4_v20241223::Image2BlobParams::blobRectToImageRect,
       Arg("r_blob"), Arg("size"))
     .define_method<void(cv::dnn::dnn4_v20241223::Image2BlobParams::*)(const std::vector<cv::Rect>&, std::vector<cv::Rect>&, const cv::Size&)>("blob_rects_to_image_rects", &cv::dnn::dnn4_v20241223::Image2BlobParams::blobRectsToImageRects,
-      Arg("r_blob"), Arg("r_img"), Arg("size"))
-    ;
+      Arg("r_blob"), Arg("r_img"), Arg("size"));
   rb_mCvDnnDnn4V20241223.define_module_function<cv::Mat(*)(cv::InputArray, const cv::dnn::dnn4_v20241223::Image2BlobParams&)>("blob_from_image_with_params", &cv::dnn::dnn4_v20241223::blobFromImageWithParams,
     Arg("image"), Arg("param") = static_cast<const cv::dnn::dnn4_v20241223::Image2BlobParams&>(cv::dnn::dnn4_v20241223::Image2BlobParams()));
 
@@ -371,8 +362,7 @@ void Init_Dnn_Dnn()
 
   Enum<cv::dnn::dnn4_v20241223::SoftNMSMethod> rb_cCvDnnDnn4V20241223SoftNMSMethod = define_enum_under<cv::dnn::dnn4_v20241223::SoftNMSMethod>("SoftNMSMethod", rb_mCvDnnDnn4V20241223)
     .define_value("SOFTNMS_LINEAR", cv::dnn::dnn4_v20241223::SoftNMSMethod::SOFTNMS_LINEAR)
-    .define_value("SOFTNMS_GAUSSIAN", cv::dnn::dnn4_v20241223::SoftNMSMethod::SOFTNMS_GAUSSIAN)
-    ;
+    .define_value("SOFTNMS_GAUSSIAN", cv::dnn::dnn4_v20241223::SoftNMSMethod::SOFTNMS_GAUSSIAN);
   rb_mCvDnnDnn4V20241223.define_module_function<void(*)(const std::vector<cv::Rect>&, const std::vector<float>&, std::vector<float>&, const float, const float, std::vector<int>&, size_t, const float, cv::dnn::dnn4_v20241223::SoftNMSMethod)>("soft_nms_boxes", &cv::dnn::dnn4_v20241223::softNMSBoxes,
     Arg("bboxes"), Arg("scores"), Arg("updated_scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("top_k") = static_cast<size_t>(0), Arg("sigma") = static_cast<const float>(0.5), Arg("method") = static_cast<cv::dnn::dnn4_v20241223::SoftNMSMethod>(cv::dnn::dnn4_v20241223::SoftNMSMethod::SOFTNMS_GAUSSIAN));
 
@@ -416,8 +406,7 @@ void Init_Dnn_Dnn()
     .define_method<cv::dnn::dnn4_v20241223::Model&(cv::dnn::dnn4_v20241223::Model::*)(bool)>("enable_winograd", &cv::dnn::dnn4_v20241223::Model::enableWinograd,
       Arg("use_winograd"))
     .define_method<cv::dnn::dnn4_v20241223::Model::Impl*(cv::dnn::dnn4_v20241223::Model::*)() const>("get_impl", &cv::dnn::dnn4_v20241223::Model::getImpl)
-    .define_method<cv::dnn::dnn4_v20241223::Model::Impl&(cv::dnn::dnn4_v20241223::Model::*)() const>("get_impl_ref", &cv::dnn::dnn4_v20241223::Model::getImplRef)
-    ;
+    .define_method<cv::dnn::dnn4_v20241223::Model::Impl&(cv::dnn::dnn4_v20241223::Model::*)() const>("get_impl_ref", &cv::dnn::dnn4_v20241223::Model::getImplRef);
   Rice::Data_Type<cv::dnn::dnn4_v20241223::ClassificationModel> rb_cCvDnnDnn4V20241223ClassificationModel = define_class_under<cv::dnn::dnn4_v20241223::ClassificationModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "ClassificationModel")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::ClassificationModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>(""))
@@ -429,24 +418,21 @@ void Init_Dnn_Dnn()
     .define_method<std::pair<int, float>(cv::dnn::dnn4_v20241223::ClassificationModel::*)(cv::InputArray)>("classify", &cv::dnn::dnn4_v20241223::ClassificationModel::classify,
       Arg("frame"))
     .define_method<void(cv::dnn::dnn4_v20241223::ClassificationModel::*)(cv::InputArray, int&, float&)>("classify", &cv::dnn::dnn4_v20241223::ClassificationModel::classify,
-      Arg("frame"), Arg("class_id"), Arg("conf"))
-    ;
+      Arg("frame"), Arg("class_id"), Arg("conf"));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::KeypointsModel> rb_cCvDnnDnn4V20241223KeypointsModel = define_class_under<cv::dnn::dnn4_v20241223::KeypointsModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "KeypointsModel")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::KeypointsModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>(""))
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::KeypointsModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network"))
     .define_method<std::vector<cv::Point2f>(cv::dnn::dnn4_v20241223::KeypointsModel::*)(cv::InputArray, float)>("estimate", &cv::dnn::dnn4_v20241223::KeypointsModel::estimate,
-      Arg("frame"), Arg("thresh") = static_cast<float>(0.5))
-    ;
+      Arg("frame"), Arg("thresh") = static_cast<float>(0.5));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::SegmentationModel> rb_cCvDnnDnn4V20241223SegmentationModel = define_class_under<cv::dnn::dnn4_v20241223::SegmentationModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "SegmentationModel")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::SegmentationModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>(""))
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::SegmentationModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network"))
     .define_method<void(cv::dnn::dnn4_v20241223::SegmentationModel::*)(cv::InputArray, cv::OutputArray)>("segment", &cv::dnn::dnn4_v20241223::SegmentationModel::segment,
-      Arg("frame"), Arg("mask"))
-    ;
+      Arg("frame"), Arg("mask"));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::DetectionModel> rb_cCvDnnDnn4V20241223DetectionModel = define_class_under<cv::dnn::dnn4_v20241223::DetectionModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "DetectionModel")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::DetectionModel, const cv::String&, const cv::String&>(),
       Arg("model"), Arg("config") = static_cast<const cv::String&>(""))
@@ -456,8 +442,7 @@ void Init_Dnn_Dnn()
       Arg("value"))
     .define_method<bool(cv::dnn::dnn4_v20241223::DetectionModel::*)()>("get_nms_across_classes?", &cv::dnn::dnn4_v20241223::DetectionModel::getNmsAcrossClasses)
     .define_method<void(cv::dnn::dnn4_v20241223::DetectionModel::*)(cv::InputArray, std::vector<int>&, std::vector<float>&, std::vector<cv::Rect>&, float, float)>("detect", &cv::dnn::dnn4_v20241223::DetectionModel::detect,
-      Arg("frame"), Arg("class_ids"), Arg("confidences"), Arg("boxes"), Arg("conf_threshold") = static_cast<float>(0.5f), Arg("nms_threshold") = static_cast<float>(0.0f))
-    ;
+      Arg("frame"), Arg("class_ids"), Arg("confidences"), Arg("boxes"), Arg("conf_threshold") = static_cast<float>(0.5f), Arg("nms_threshold") = static_cast<float>(0.0f));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::TextRecognitionModel> rb_cCvDnnDnn4V20241223TextRecognitionModel = define_class_under<cv::dnn::dnn4_v20241223::TextRecognitionModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "TextRecognitionModel")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::TextRecognitionModel, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network"))
@@ -474,8 +459,7 @@ void Init_Dnn_Dnn()
     .define_method<std::string(cv::dnn::dnn4_v20241223::TextRecognitionModel::*)(cv::InputArray) const>("recognize", &cv::dnn::dnn4_v20241223::TextRecognitionModel::recognize,
       Arg("frame"))
     .define_method<void(cv::dnn::dnn4_v20241223::TextRecognitionModel::*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::string>&) const>("recognize", &cv::dnn::dnn4_v20241223::TextRecognitionModel::recognize,
-      Arg("frame"), Arg("roi_rects"), Arg("results"))
-    ;
+      Arg("frame"), Arg("roi_rects"), Arg("results"));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::TextDetectionModel> rb_cCvDnnDnn4V20241223TextDetectionModel = define_class_under<cv::dnn::dnn4_v20241223::TextDetectionModel, cv::dnn::dnn4_v20241223::Model>(rb_mCvDnnDnn4V20241223, "TextDetectionModel")
     .define_method<void(cv::dnn::dnn4_v20241223::TextDetectionModel::*)(cv::InputArray, std::vector<std::vector<cv::Point>>&, std::vector<float>&) const>("detect", &cv::dnn::dnn4_v20241223::TextDetectionModel::detect,
       Arg("frame"), Arg("detections"), Arg("confidences"))
@@ -484,8 +468,7 @@ void Init_Dnn_Dnn()
     .define_method<void(cv::dnn::dnn4_v20241223::TextDetectionModel::*)(cv::InputArray, std::vector<cv::RotatedRect>&, std::vector<float>&) const>("detect_text_rectangles", &cv::dnn::dnn4_v20241223::TextDetectionModel::detectTextRectangles,
       Arg("frame"), Arg("detections"), Arg("confidences"))
     .define_method<void(cv::dnn::dnn4_v20241223::TextDetectionModel::*)(cv::InputArray, std::vector<cv::RotatedRect>&) const>("detect_text_rectangles", &cv::dnn::dnn4_v20241223::TextDetectionModel::detectTextRectangles,
-      Arg("frame"), Arg("detections"))
-    ;
+      Arg("frame"), Arg("detections"));
   Rice::Data_Type<cv::dnn::dnn4_v20241223::TextDetectionModel_EAST> rb_cCvDnnDnn4V20241223TextDetectionModelEAST = define_class_under<cv::dnn::dnn4_v20241223::TextDetectionModel_EAST, cv::dnn::dnn4_v20241223::TextDetectionModel>(rb_mCvDnnDnn4V20241223, "TextDetectionModelEAST")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::TextDetectionModel_EAST, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network"))
@@ -496,8 +479,7 @@ void Init_Dnn_Dnn()
     .define_method<float(cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::*)() const>("get_confidence_threshold", &cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::getConfidenceThreshold)
     .define_method<cv::dnn::dnn4_v20241223::TextDetectionModel_EAST&(cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::*)(float)>("set_nms_threshold", &cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::setNMSThreshold,
       Arg("nms_threshold"))
-    .define_method<float(cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::*)() const>("get_nms_threshold", &cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::getNMSThreshold)
-    ;
+    .define_method<float(cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::*)() const>("get_nms_threshold", &cv::dnn::dnn4_v20241223::TextDetectionModel_EAST::getNMSThreshold);
   Rice::Data_Type<cv::dnn::dnn4_v20241223::TextDetectionModel_DB> rb_cCvDnnDnn4V20241223TextDetectionModelDB = define_class_under<cv::dnn::dnn4_v20241223::TextDetectionModel_DB, cv::dnn::dnn4_v20241223::TextDetectionModel>(rb_mCvDnnDnn4V20241223, "TextDetectionModelDB")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::TextDetectionModel_DB, const cv::dnn::dnn4_v20241223::Net&>(),
       Arg("network"))
@@ -514,6 +496,5 @@ void Init_Dnn_Dnn()
     .define_method<double(cv::dnn::dnn4_v20241223::TextDetectionModel_DB::*)() const>("get_unclip_ratio", &cv::dnn::dnn4_v20241223::TextDetectionModel_DB::getUnclipRatio)
     .define_method<cv::dnn::dnn4_v20241223::TextDetectionModel_DB&(cv::dnn::dnn4_v20241223::TextDetectionModel_DB::*)(int)>("set_max_candidates", &cv::dnn::dnn4_v20241223::TextDetectionModel_DB::setMaxCandidates,
       Arg("max_candidates"))
-    .define_method<int(cv::dnn::dnn4_v20241223::TextDetectionModel_DB::*)() const>("get_max_candidates", &cv::dnn::dnn4_v20241223::TextDetectionModel_DB::getMaxCandidates)
-    ;
+    .define_method<int(cv::dnn::dnn4_v20241223::TextDetectionModel_DB::*)() const>("get_max_candidates", &cv::dnn::dnn4_v20241223::TextDetectionModel_DB::getMaxCandidates);
 }

@@ -7,8 +7,7 @@ inline Rice::Data_Type<cv::Complex<_Tp>> Complex_instantiate(Rice::Module parent
       Arg("_re"), Arg("_im") = static_cast<_Tp>(0))
     .template define_method<cv::Complex<_Tp>(cv::Complex<_Tp>::*)() const>("conj", &cv::Complex<_Tp>::conj)
     .define_attr("re", &cv::Complex<_Tp>::re)
-    .define_attr("im", &cv::Complex<_Tp>::im)
-    ;
+    .define_attr("im", &cv::Complex<_Tp>::im);
 }
 
 template<typename _Tp>
@@ -37,8 +36,7 @@ inline Rice::Data_Type<cv::Point_<_Tp>> Point__instantiate(Rice::Module parent, 
     .template define_method<bool(cv::Point_<_Tp>::*)(const cv::Rect_<_Tp>&) const>("inside", &cv::Point_<_Tp>::inside,
       Arg("r"))
     .define_attr("x", &cv::Point_<_Tp>::x)
-    .define_attr("y", &cv::Point_<_Tp>::y)
-    ;
+    .define_attr("y", &cv::Point_<_Tp>::y);
 }
 
 template<typename _Tp>
@@ -66,8 +64,7 @@ inline Rice::Data_Type<cv::Point3_<_Tp>> Point3__instantiate(Rice::Module parent
       Arg("pt"))
     .define_attr("x", &cv::Point3_<_Tp>::x)
     .define_attr("y", &cv::Point3_<_Tp>::y)
-    .define_attr("z", &cv::Point3_<_Tp>::z)
-    ;
+    .define_attr("z", &cv::Point3_<_Tp>::z);
 }
 
 template<typename _Tp>
@@ -89,8 +86,7 @@ inline Rice::Data_Type<cv::Size_<_Tp>> Size__instantiate(Rice::Module parent, co
     .template define_method<double(cv::Size_<_Tp>::*)() const>("aspect_ratio", &cv::Size_<_Tp>::aspectRatio)
     .template define_method<bool(cv::Size_<_Tp>::*)() const>("empty?", &cv::Size_<_Tp>::empty)
     .define_attr("width", &cv::Size_<_Tp>::width)
-    .define_attr("height", &cv::Size_<_Tp>::height)
-    ;
+    .define_attr("height", &cv::Size_<_Tp>::height);
 }
 
 template<typename _Tp>
@@ -118,8 +114,7 @@ inline Rice::Data_Type<cv::Rect_<_Tp>> Rect__instantiate(Rice::Module parent, co
     .define_attr("x", &cv::Rect_<_Tp>::x)
     .define_attr("y", &cv::Rect_<_Tp>::y)
     .define_attr("width", &cv::Rect_<_Tp>::width)
-    .define_attr("height", &cv::Rect_<_Tp>::height)
-    ;
+    .define_attr("height", &cv::Rect_<_Tp>::height);
 }
 
 template<typename _Tp>
@@ -142,7 +137,6 @@ inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent
     .template define_method<cv::Scalar_<_Tp>(cv::Scalar_<_Tp>::*)(const cv::Scalar_<_Tp>&, double) const>("mul", &cv::Scalar_<_Tp>::mul,
       Arg("a"), Arg("scale") = static_cast<double>(1))
     .template define_method<cv::Scalar_<_Tp>(cv::Scalar_<_Tp>::*)() const>("conj", &cv::Scalar_<_Tp>::conj)
-    .template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal)
-    ;
+    .template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal);
 }
 

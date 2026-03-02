@@ -11,11 +11,9 @@ void Init_Datasets_HpeParse()
 
   Rice::Data_Type<cv::datasets::HPE_parseObj> rb_cCvDatasetsHPEParseObj = define_class_under<cv::datasets::HPE_parseObj, cv::datasets::Object>(rb_mCvDatasets, "HPEParseObj")
     .define_constructor(Constructor<cv::datasets::HPE_parseObj>())
-    .define_attr("name", &cv::datasets::HPE_parseObj::name)
-    ;
+    .define_attr("name", &cv::datasets::HPE_parseObj::name);
   Rice::Data_Type<cv::datasets::HPE_parse> rb_cCvDatasetsHPEParse = define_class_under<cv::datasets::HPE_parse, cv::datasets::Dataset>(rb_mCvDatasets, "HPEParse")
     .define_method<void(cv::datasets::HPE_parse::*)(const std::string&)>("load", &cv::datasets::HPE_parse::load,
       Arg("path"))
-    .define_singleton_function<cv::Ptr<cv::datasets::HPE_parse>(*)()>("create", &cv::datasets::HPE_parse::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::datasets::HPE_parse>(*)()>("create", &cv::datasets::HPE_parse::create);
 }

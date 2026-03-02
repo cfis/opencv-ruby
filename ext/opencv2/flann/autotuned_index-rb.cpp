@@ -11,6 +11,5 @@ void Init_Flann_AutotunedIndex()
 
   Rice::Data_Type<cvflann::AutotunedIndexParams> rb_cCvflannAutotunedIndexParams = define_class_under<cvflann::AutotunedIndexParams, std::map<std::basic_string<char>, cvflann::any>>(rb_mCvflann, "AutotunedIndexParams")
     .define_constructor(Constructor<cvflann::AutotunedIndexParams, float, float, float, float>(),
-      Arg("target_precision") = static_cast<float>(0.8), Arg("build_weight") = static_cast<float>(0.01), Arg("memory_weight") = static_cast<float>(0), Arg("sample_fraction") = static_cast<float>(0.1))
-    ;
+      Arg("target_precision") = static_cast<float>(0.8), Arg("build_weight") = static_cast<float>(0.01), Arg("memory_weight") = static_cast<float>(0), Arg("sample_fraction") = static_cast<float>(0.1));
 }

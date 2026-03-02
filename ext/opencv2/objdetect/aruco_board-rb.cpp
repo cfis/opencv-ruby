@@ -23,15 +23,13 @@ void Init_Objdetect_ArucoBoard()
     .define_method<void(cv::aruco::Board::*)(cv::InputArrayOfArrays, cv::InputArray, cv::OutputArray, cv::OutputArray) const>("match_image_points", &cv::aruco::Board::matchImagePoints,
       Arg("detected_corners"), Arg("detected_ids"), Arg("obj_points"), Arg("img_points"))
     .define_method<void(cv::aruco::Board::*)(cv::Size, cv::OutputArray, int, int) const>("generate_image", &cv::aruco::Board::generateImage,
-      Arg("out_size"), Arg("img"), Arg("margin_size") = static_cast<int>(0), Arg("border_bits") = static_cast<int>(1))
-    ;
+      Arg("out_size"), Arg("img"), Arg("margin_size") = static_cast<int>(0), Arg("border_bits") = static_cast<int>(1));
   Rice::Data_Type<cv::aruco::GridBoard> rb_cCvArucoGridBoard = define_class_under<cv::aruco::GridBoard, cv::aruco::Board>(rb_mCvAruco, "GridBoard")
     .define_constructor(Constructor<cv::aruco::GridBoard, const cv::Size&, float, float, const cv::aruco::Dictionary&, cv::InputArray>(),
       Arg("size"), Arg("marker_length"), Arg("marker_separation"), Arg("dictionary"), Arg("ids") = static_cast<cv::InputArray>(cv::noArray()))
     .define_method<cv::Size(cv::aruco::GridBoard::*)() const>("get_grid_size", &cv::aruco::GridBoard::getGridSize)
     .define_method<float(cv::aruco::GridBoard::*)() const>("get_marker_length", &cv::aruco::GridBoard::getMarkerLength)
-    .define_method<float(cv::aruco::GridBoard::*)() const>("get_marker_separation", &cv::aruco::GridBoard::getMarkerSeparation)
-    ;
+    .define_method<float(cv::aruco::GridBoard::*)() const>("get_marker_separation", &cv::aruco::GridBoard::getMarkerSeparation);
   Rice::Data_Type<cv::aruco::CharucoBoard> rb_cCvArucoCharucoBoard = define_class_under<cv::aruco::CharucoBoard, cv::aruco::Board>(rb_mCvAruco, "CharucoBoard")
     .define_constructor(Constructor<cv::aruco::CharucoBoard, const cv::Size&, float, float, const cv::aruco::Dictionary&, cv::InputArray>(),
       Arg("size"), Arg("square_length"), Arg("marker_length"), Arg("dictionary"), Arg("ids") = static_cast<cv::InputArray>(cv::noArray()))
@@ -45,6 +43,5 @@ void Init_Objdetect_ArucoBoard()
     .define_method<std::vector<std::vector<int>>(cv::aruco::CharucoBoard::*)() const>("get_nearest_marker_idx", &cv::aruco::CharucoBoard::getNearestMarkerIdx)
     .define_method<std::vector<std::vector<int>>(cv::aruco::CharucoBoard::*)() const>("get_nearest_marker_corners", &cv::aruco::CharucoBoard::getNearestMarkerCorners)
     .define_method<bool(cv::aruco::CharucoBoard::*)(cv::InputArray) const>("check_charuco_corners_collinear", &cv::aruco::CharucoBoard::checkCharucoCornersCollinear,
-      Arg("charuco_ids"))
-    ;
+      Arg("charuco_ids"));
 }

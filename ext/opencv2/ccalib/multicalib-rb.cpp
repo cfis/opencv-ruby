@@ -19,21 +19,18 @@ void Init_Ccalib_Multicalib()
     .define_method<void(cv::multicalib::MultiCameraCalibration::*)(const std::string&)>("write_parameters", &cv::multicalib::MultiCameraCalibration::writeParameters,
       Arg("filename"))
     .define_constant("PINHOLE", (int)cv::multicalib::MultiCameraCalibration::PINHOLE)
-    .define_constant("OMNIDIRECTIONAL", (int)cv::multicalib::MultiCameraCalibration::OMNIDIRECTIONAL)
-    ;
+    .define_constant("OMNIDIRECTIONAL", (int)cv::multicalib::MultiCameraCalibration::OMNIDIRECTIONAL);
   Rice::Data_Type<cv::multicalib::MultiCameraCalibration::edge> rb_cCvMulticalibMultiCameraCalibrationEdge = define_class_under<cv::multicalib::MultiCameraCalibration::edge>(rb_cCvMulticalibMultiCameraCalibration, "Edge")
     .define_attr("camera_vertex", &cv::multicalib::MultiCameraCalibration::edge::cameraVertex)
     .define_attr("photo_vertex", &cv::multicalib::MultiCameraCalibration::edge::photoVertex)
     .define_attr("photo_index", &cv::multicalib::MultiCameraCalibration::edge::photoIndex)
     .define_attr("transform", &cv::multicalib::MultiCameraCalibration::edge::transform)
     .define_constructor(Constructor<cv::multicalib::MultiCameraCalibration::edge, int, int, int, cv::Mat>(),
-      Arg("cv"), Arg("pv"), Arg("pi"), Arg("trans"))
-    ;
+      Arg("cv"), Arg("pv"), Arg("pi"), Arg("trans"));
   Rice::Data_Type<cv::multicalib::MultiCameraCalibration::vertex> rb_cCvMulticalibMultiCameraCalibrationVertex = define_class_under<cv::multicalib::MultiCameraCalibration::vertex>(rb_cCvMulticalibMultiCameraCalibration, "Vertex")
     .define_attr("pose", &cv::multicalib::MultiCameraCalibration::vertex::pose)
     .define_attr("timestamp", &cv::multicalib::MultiCameraCalibration::vertex::timestamp)
     .define_constructor(Constructor<cv::multicalib::MultiCameraCalibration::vertex, cv::Mat, int>(),
       Arg("po"), Arg("ts"))
-    .define_constructor(Constructor<cv::multicalib::MultiCameraCalibration::vertex>())
-    ;
+    .define_constructor(Constructor<cv::multicalib::MultiCameraCalibration::vertex>());
 }

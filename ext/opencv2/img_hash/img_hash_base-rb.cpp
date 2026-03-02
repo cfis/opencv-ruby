@@ -17,6 +17,5 @@ void Init_ImgHash_ImgHashBase()
     .define_method<void(cv::img_hash::ImgHashBase::*)(cv::InputArray, cv::OutputArray)>("compute", &cv::img_hash::ImgHashBase::compute,
       Arg("input_arr"), Arg("output_arr"))
     .define_method<double(cv::img_hash::ImgHashBase::*)(cv::InputArray, cv::InputArray) const>("compare", &cv::img_hash::ImgHashBase::compare,
-      Arg("hash_one"), Arg("hash_two"))
-    ;
+      Arg("hash_one"), Arg("hash_two"));
 }

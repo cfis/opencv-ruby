@@ -13,8 +13,7 @@ void Init_Flann_Params()
     .define_constructor(Constructor<cvflann::SearchParams, int, float, bool, bool>(),
       Arg("checks"), Arg("eps"), Arg("sorted"), Arg("explore_all_trees"))
     .define_method<void(cvflann::SearchParams::*)(int, float, bool, bool)>("init", &cvflann::SearchParams::init,
-      Arg("checks") = static_cast<int>(32), Arg("eps") = static_cast<float>(0), Arg("sorted") = static_cast<bool>(true), Arg("explore_all_trees") = static_cast<bool>(false))
-    ;
+      Arg("checks") = static_cast<int>(32), Arg("eps") = static_cast<float>(0), Arg("sorted") = static_cast<bool>(true), Arg("explore_all_trees") = static_cast<bool>(false));
   rb_mCvflann.define_module_function<void(*)(const cvflann::IndexParams&, std::ostream&)>("print_params", &cvflann::print_params,
     Arg("params"), Arg("stream"));
 

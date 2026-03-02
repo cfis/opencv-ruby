@@ -22,6 +22,5 @@ void Init_Core_OclGenbase()
     .define_method("to_program_source", [](const cv::ocl::internal::ProgramEntry& self) -> cv::ocl::ProgramSource&
     {
       return self;
-    })
-    ;
+    });
 }

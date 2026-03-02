@@ -11,9 +11,7 @@ void Init_Videostab_Log()
 
   Rice::Data_Type<cv::videostab::ILog> rb_cCvVideostabILog = define_class_under<cv::videostab::ILog>(rb_mCvVideostab, "ILog");
   Rice::Data_Type<cv::videostab::NullLog> rb_cCvVideostabNullLog = define_class_under<cv::videostab::NullLog, cv::videostab::ILog>(rb_mCvVideostab, "NullLog")
-    .define_constructor(Constructor<cv::videostab::NullLog>())
-    ;
+    .define_constructor(Constructor<cv::videostab::NullLog>());
   Rice::Data_Type<cv::videostab::LogToStdout> rb_cCvVideostabLogToStdout = define_class_under<cv::videostab::LogToStdout, cv::videostab::ILog>(rb_mCvVideostab, "LogToStdout")
-    .define_constructor(Constructor<cv::videostab::LogToStdout>())
-    ;
+    .define_constructor(Constructor<cv::videostab::LogToStdout>());
 }

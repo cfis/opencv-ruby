@@ -25,13 +25,11 @@ void Init_Objdetect_DetectionBasedTracker()
     .define_method<void(cv::DetectionBasedTracker::*)(std::vector<cv::DetectionBasedTracker::ExtObject>&) const>("get_objects", &cv::DetectionBasedTracker::getObjects,
       Arg("result"))
     .define_method<int(cv::DetectionBasedTracker::*)(const cv::Rect&)>("add_object", &cv::DetectionBasedTracker::addObject,
-      Arg("location"))
-    ;
+      Arg("location"));
   Rice::Data_Type<cv::DetectionBasedTracker::Parameters> rb_cCvDetectionBasedTrackerParameters = define_class_under<cv::DetectionBasedTracker::Parameters>(rb_cCvDetectionBasedTracker, "Parameters")
     .define_attr("max_track_lifetime", &cv::DetectionBasedTracker::Parameters::maxTrackLifetime)
     .define_attr("min_detection_period", &cv::DetectionBasedTracker::Parameters::minDetectionPeriod)
-    .define_constructor(Constructor<cv::DetectionBasedTracker::Parameters>())
-    ;
+    .define_constructor(Constructor<cv::DetectionBasedTracker::Parameters>());
   Rice::Data_Type<cv::DetectionBasedTracker::IDetector> rb_cCvDetectionBasedTrackerIDetector = define_class_under<cv::DetectionBasedTracker::IDetector>(rb_cCvDetectionBasedTracker, "IDetector")
     .define_method<void(cv::DetectionBasedTracker::IDetector::*)(const cv::Mat&, std::vector<cv::Rect>&)>("detect", &cv::DetectionBasedTracker::IDetector::detect,
       Arg("image"), Arg("objects"))
@@ -46,19 +44,16 @@ void Init_Objdetect_DetectionBasedTracker()
       Arg("value"))
     .define_method<int(cv::DetectionBasedTracker::IDetector::*)()>("get_min_neighbours", &cv::DetectionBasedTracker::IDetector::getMinNeighbours)
     .define_method<void(cv::DetectionBasedTracker::IDetector::*)(int)>("set_min_neighbours", &cv::DetectionBasedTracker::IDetector::setMinNeighbours,
-      Arg("value"))
-    ;
+      Arg("value"));
   Rice::Data_Type<cv::DetectionBasedTracker::ExtObject> rb_cCvDetectionBasedTrackerExtObject = define_class_under<cv::DetectionBasedTracker::ExtObject>(rb_cCvDetectionBasedTracker, "ExtObject")
     .define_attr("id", &cv::DetectionBasedTracker::ExtObject::id)
     .define_attr("location", &cv::DetectionBasedTracker::ExtObject::location)
     .define_attr("status", &cv::DetectionBasedTracker::ExtObject::status)
     .define_constructor(Constructor<cv::DetectionBasedTracker::ExtObject, int, cv::Rect, cv::DetectionBasedTracker::ObjectStatus>(),
-      Arg("_id"), Arg("_location"), Arg("_status"))
-    ;
+      Arg("_id"), Arg("_location"), Arg("_status"));
   Enum<cv::DetectionBasedTracker::ObjectStatus> rb_cCvDetectionBasedTrackerObjectStatus = define_enum_under<cv::DetectionBasedTracker::ObjectStatus>("ObjectStatus", rb_cCvDetectionBasedTracker)
     .define_value("DETECTED_NOT_SHOWN_YET", cv::DetectionBasedTracker::ObjectStatus::DETECTED_NOT_SHOWN_YET)
     .define_value("DETECTED", cv::DetectionBasedTracker::ObjectStatus::DETECTED)
     .define_value("DETECTED_TEMPORARY_LOST", cv::DetectionBasedTracker::ObjectStatus::DETECTED_TEMPORARY_LOST)
-    .define_value("WRONG_OBJECT", cv::DetectionBasedTracker::ObjectStatus::WRONG_OBJECT)
-    ;
+    .define_value("WRONG_OBJECT", cv::DetectionBasedTracker::ObjectStatus::WRONG_OBJECT);
 }

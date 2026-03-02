@@ -2,14 +2,13 @@ template<typename C, typename Ret, typename Args>
 inline Rice::Data_Type<cv::sfinae::has_parenthesis_operator<C, Ret, Args>> has_parenthesis_operator_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::sfinae::has_parenthesis_operator<C, Ret, Args>>(parent, name)
-    .define_constant("Value", cv::sfinae::has_parenthesis_operator<C, Ret, Args>::value)
-    ;
+    .define_constant("Value", cv::sfinae::has_parenthesis_operator<C, Ret, Args>::value);
 }
 
-template<typename T, typename >
-inline Rice::Data_Type<cv::has_custom_delete<T, >> has_custom_delete_instantiate(Rice::Module parent, const char* name)
+template<typename T>
+inline Rice::Data_Type<cv::has_custom_delete<T>> has_custom_delete_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::has_custom_delete<T, >>(parent, name);
+  return Rice::define_class_under<cv::has_custom_delete<T>>(parent, name);
 }
 
 template<typename T>
@@ -35,7 +34,6 @@ inline Rice::Data_Type<cv::Ptr<T>> Ptr_instantiate(Rice::Module parent, const ch
     {
       return self;
     })
-    .template define_method<bool(cv::Ptr<T>::*)() const>("empty?", &cv::Ptr<T>::empty)
-    ;
+    .template define_method<bool(cv::Ptr<T>::*)() const>("empty?", &cv::Ptr<T>::empty);
 }
 

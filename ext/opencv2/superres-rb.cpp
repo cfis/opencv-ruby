@@ -12,8 +12,7 @@ void Init_Superres()
   Rice::Data_Type<cv::superres::FrameSource> rb_cCvSuperresFrameSource = define_class_under<cv::superres::FrameSource>(rb_mCvSuperres, "FrameSource")
     .define_method<void(cv::superres::FrameSource::*)(cv::OutputArray)>("next_frame", &cv::superres::FrameSource::nextFrame,
       Arg("frame"))
-    .define_method<void(cv::superres::FrameSource::*)()>("reset", &cv::superres::FrameSource::reset)
-    ;
+    .define_method<void(cv::superres::FrameSource::*)()>("reset", &cv::superres::FrameSource::reset);
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)()>("create_frame_source_empty", &cv::superres::createFrameSource_Empty);
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(const cv::String&)>("create_frame_source_video", &cv::superres::createFrameSource_Video,
@@ -61,8 +60,7 @@ void Init_Superres()
       Arg("val"))
     .define_method<cv::Ptr<cv::superres::DenseOpticalFlowExt>(cv::superres::SuperResolution::*)() const>("get_optical_flow", &cv::superres::SuperResolution::getOpticalFlow)
     .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::DenseOpticalFlowExt>&)>("set_optical_flow", &cv::superres::SuperResolution::setOpticalFlow,
-      Arg("val"))
-    ;
+      Arg("val"));
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::SuperResolution>(*)()>("create_super_resolution_btvl1", &cv::superres::createSuperResolution_BTVL1);
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::SuperResolution>(*)()>("create_super_resolution_btvl1_cuda", &cv::superres::createSuperResolution_BTVL1_CUDA);

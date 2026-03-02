@@ -9,8 +9,7 @@ void Init_Shape_ShapeDistance()
 
   Rice::Data_Type<cv::ShapeDistanceExtractor> rb_cCvShapeDistanceExtractor = define_class_under<cv::ShapeDistanceExtractor, cv::Algorithm>(rb_mCv, "ShapeDistanceExtractor")
     .define_method<float(cv::ShapeDistanceExtractor::*)(cv::InputArray, cv::InputArray)>("compute_distance", &cv::ShapeDistanceExtractor::computeDistance,
-      Arg("contour1"), Arg("contour2"))
-    ;
+      Arg("contour1"), Arg("contour2"));
   Rice::Data_Type<cv::ShapeContextDistanceExtractor> rb_cCvShapeContextDistanceExtractor = define_class_under<cv::ShapeContextDistanceExtractor, cv::ShapeDistanceExtractor>(rb_mCv, "ShapeContextDistanceExtractor")
     .define_method<void(cv::ShapeContextDistanceExtractor::*)(int)>("set_angular_bins", &cv::ShapeContextDistanceExtractor::setAngularBins,
       Arg("n_angular_bins"))
@@ -51,8 +50,7 @@ void Init_Shape_ShapeDistance()
     .define_method<float(cv::ShapeContextDistanceExtractor::*)() const>("get_std_dev", &cv::ShapeContextDistanceExtractor::getStdDev)
     .define_method<void(cv::ShapeContextDistanceExtractor::*)(cv::Ptr<cv::ShapeTransformer>)>("set_transform_algorithm", &cv::ShapeContextDistanceExtractor::setTransformAlgorithm,
       Arg("transformer"))
-    .define_method<cv::Ptr<cv::ShapeTransformer>(cv::ShapeContextDistanceExtractor::*)() const>("get_transform_algorithm", &cv::ShapeContextDistanceExtractor::getTransformAlgorithm)
-    ;
+    .define_method<cv::Ptr<cv::ShapeTransformer>(cv::ShapeContextDistanceExtractor::*)() const>("get_transform_algorithm", &cv::ShapeContextDistanceExtractor::getTransformAlgorithm);
   rb_mCv.define_module_function<cv::Ptr<cv::ShapeContextDistanceExtractor>(*)(int, int, float, float, int, const cv::Ptr<cv::HistogramCostExtractor>&, const cv::Ptr<cv::ShapeTransformer>&)>("create_shape_context_distance_extractor", &cv::createShapeContextDistanceExtractor,
     Arg("n_angular_bins") = static_cast<int>(12), Arg("n_radial_bins") = static_cast<int>(4), Arg("inner_radius") = static_cast<float>(0.2f), Arg("outer_radius") = static_cast<float>(2), Arg("iterations") = static_cast<int>(3), Arg("comparer") = static_cast<const cv::Ptr<cv::HistogramCostExtractor>&>(cv::createChiHistogramCostExtractor()), Arg("transformer") = static_cast<const cv::Ptr<cv::ShapeTransformer>&>(cv::createThinPlateSplineShapeTransformer()));
 
@@ -62,8 +60,7 @@ void Init_Shape_ShapeDistance()
     .define_method<int(cv::HausdorffDistanceExtractor::*)() const>("get_distance_flag", &cv::HausdorffDistanceExtractor::getDistanceFlag)
     .define_method<void(cv::HausdorffDistanceExtractor::*)(float)>("set_rank_proportion", &cv::HausdorffDistanceExtractor::setRankProportion,
       Arg("rank_proportion"))
-    .define_method<float(cv::HausdorffDistanceExtractor::*)() const>("get_rank_proportion", &cv::HausdorffDistanceExtractor::getRankProportion)
-    ;
+    .define_method<float(cv::HausdorffDistanceExtractor::*)() const>("get_rank_proportion", &cv::HausdorffDistanceExtractor::getRankProportion);
   rb_mCv.define_module_function<cv::Ptr<cv::HausdorffDistanceExtractor>(*)(int, float)>("create_hausdorff_distance_extractor", &cv::createHausdorffDistanceExtractor,
     Arg("distance_flag") = static_cast<int>(cv::NORM_L2), Arg("rank_prop") = static_cast<float>(0.6f));
 }

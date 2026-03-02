@@ -13,8 +13,7 @@ void Init_Core_CvstdInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
   
   Data_Type<cv::Mat>()
     .define_method("inspect", [](const cv::Mat& self) -> std::string
@@ -22,8 +21,7 @@ void Init_Core_CvstdInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
   
   Data_Type<cv::UMat>()
     .define_method("inspect", [](const cv::UMat& self) -> std::string
@@ -31,8 +29,7 @@ void Init_Core_CvstdInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
   
   Data_Type<cv::MatSize>()
     .define_method("inspect", [](const cv::MatSize& self) -> std::string
@@ -40,8 +37,7 @@ void Init_Core_CvstdInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
   
   Data_Type<cv::Range>()
     .define_method("inspect", [](cv::Range& self) -> std::string
@@ -49,6 +45,5 @@ void Init_Core_CvstdInl()
       std::ostringstream stream;
       stream << self;
       return stream.str();
-    })
-    ;
+    });
 }

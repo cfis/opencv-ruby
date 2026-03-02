@@ -15,8 +15,7 @@ void Init_Dnn_ShapeUtils()
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::_Range, const cv::Range&>(),
       Arg("r"))
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::_Range, int, int>(),
-      Arg("start_"), Arg("size_") = static_cast<int>(1))
-    ;
+      Arg("start_"), Arg("size_") = static_cast<int>(1));
   rb_mCvDnnDnn4V20241223.define_module_function<cv::Mat(*)(const cv::Mat&, const cv::dnn::dnn4_v20241223::_Range&)>("slice", &cv::dnn::dnn4_v20241223::slice,
     Arg("m"), Arg("r0"));
 

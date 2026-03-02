@@ -18,8 +18,7 @@ void Init_Bioinspired_Transientareassegmentationmodule()
     .define_attr("neighborhood_energy_temporal_constant", &cv::bioinspired::SegmentationParameters::neighborhoodEnergy_temporalConstant)
     .define_attr("neighborhood_energy_spatial_constant", &cv::bioinspired::SegmentationParameters::neighborhoodEnergy_spatialConstant)
     .define_attr("context_energy_temporal_constant", &cv::bioinspired::SegmentationParameters::contextEnergy_temporalConstant)
-    .define_attr("context_energy_spatial_constant", &cv::bioinspired::SegmentationParameters::contextEnergy_spatialConstant)
-    ;
+    .define_attr("context_energy_spatial_constant", &cv::bioinspired::SegmentationParameters::contextEnergy_spatialConstant);
   Rice::Data_Type<cv::bioinspired::TransientAreasSegmentationModule> rb_cCvBioinspiredTransientAreasSegmentationModule = define_class_under<cv::bioinspired::TransientAreasSegmentationModule, cv::Algorithm>(rb_mCvBioinspired, "TransientAreasSegmentationModule")
     .define_method<cv::Size(cv::bioinspired::TransientAreasSegmentationModule::*)()>("get_size", &cv::bioinspired::TransientAreasSegmentationModule::getSize)
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::String, const bool)>("setup", &cv::bioinspired::TransientAreasSegmentationModule::setup,
@@ -40,6 +39,5 @@ void Init_Bioinspired_Transientareassegmentationmodule()
       Arg("transient_areas"))
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)()>("clear_all_buffers", &cv::bioinspired::TransientAreasSegmentationModule::clearAllBuffers)
     .define_singleton_function<cv::Ptr<cv::bioinspired::TransientAreasSegmentationModule>(*)(cv::Size)>("create", &cv::bioinspired::TransientAreasSegmentationModule::create,
-      Arg("input_size"))
-    ;
+      Arg("input_size"));
 }

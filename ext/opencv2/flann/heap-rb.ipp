@@ -3,8 +3,7 @@ inline Rice::Data_Type<cvflann::greater<T>> greater_instantiate(Rice::Module par
 {
   return Rice::define_class_under<cvflann::greater<T>>(parent, name)
     .template define_method<bool(cvflann::greater<T>::*)(const T&, const T&) const>("call", &cvflann::greater<T>::operator(),
-      Arg("x"), Arg("y"))
-    ;
+      Arg("x"), Arg("y"));
 }
 
 template<typename T>
@@ -24,7 +23,6 @@ inline Rice::Data_Type<cvflann::Heap<T>> Heap_instantiate(Rice::Module parent, c
     .template define_method<void(cvflann::Heap<T>::*)(T)>("insert", &cvflann::Heap<T>::insert,
       Arg("value"))
     .template define_method<bool(cvflann::Heap<T>::*)(T&)>("pop_min", &cvflann::Heap<T>::popMin,
-      Arg("value"))
-    ;
+      Arg("value"));
 }
 

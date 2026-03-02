@@ -13,7 +13,6 @@ inline Rice::Data_Type<cvflann::lsh::LshTable<ElementType>> LshTable_instantiate
       Arg("key"))
     .template define_method<size_t(cvflann::lsh::LshTable<ElementType>::*)(const ElementType*) const>("get_key", &cvflann::lsh::LshTable<ElementType>::getKey,
       std::conditional_t<std::is_fundamental_v<const ElementType>, ArgBuffer, Arg>("arg_0"))
-    .template define_method<cvflann::lsh::LshStats(cvflann::lsh::LshTable<ElementType>::*)() const>("get_stats", &cvflann::lsh::LshTable<ElementType>::getStats)
-    ;
+    .template define_method<cvflann::lsh::LshStats(cvflann::lsh::LshTable<ElementType>::*)() const>("get_stats", &cvflann::lsh::LshTable<ElementType>::getStats);
 }
 

@@ -93,8 +93,7 @@ void Init_Hdf_Hdf5()
     .define_constant("H5_NONE", (int)cv::hdf::HDF5::H5_NONE)
     .define_constant("H5_GETDIMS", (int)cv::hdf::HDF5::H5_GETDIMS)
     .define_constant("H5_GETMAXDIMS", (int)cv::hdf::HDF5::H5_GETMAXDIMS)
-    .define_constant("H5_GETCHUNKDIMS", (int)cv::hdf::HDF5::H5_GETCHUNKDIMS)
-    ;
+    .define_constant("H5_GETCHUNKDIMS", (int)cv::hdf::HDF5::H5_GETCHUNKDIMS);
   rb_mCvHdf.define_module_function<cv::Ptr<cv::hdf::HDF5>(*)(const cv::String&)>("open", &cv::hdf::open,
     Arg("hdf5_filename"));
 }

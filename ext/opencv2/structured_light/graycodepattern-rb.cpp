@@ -22,11 +22,9 @@ void Init_StructuredLight_Graycodepattern()
     .define_method<void(cv::structured_light::GrayCodePattern::*)(cv::InputOutputArray, cv::InputOutputArray) const>("get_images_for_shadow_masks", &cv::structured_light::GrayCodePattern::getImagesForShadowMasks,
       Arg("black_image"), Arg("white_image"))
     .define_method<bool(cv::structured_light::GrayCodePattern::*)(cv::InputArrayOfArrays, int, int, cv::Point&) const>("get_proj_pixel", &cv::structured_light::GrayCodePattern::getProjPixel,
-      Arg("pattern_images"), Arg("x"), Arg("y"), Arg("proj_pix"))
-    ;
+      Arg("pattern_images"), Arg("x"), Arg("y"), Arg("proj_pix"));
   Rice::Data_Type<cv::structured_light::GrayCodePattern::Params> rb_cCvStructuredLightGrayCodePatternParams = define_class_under<cv::structured_light::GrayCodePattern::Params>(rb_cCvStructuredLightGrayCodePattern, "Params")
     .define_constructor(Constructor<cv::structured_light::GrayCodePattern::Params>())
     .define_attr("width", &cv::structured_light::GrayCodePattern::Params::width)
-    .define_attr("height", &cv::structured_light::GrayCodePattern::Params::height)
-    ;
+    .define_attr("height", &cv::structured_light::GrayCodePattern::Params::height);
 }

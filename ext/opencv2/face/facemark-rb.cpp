@@ -13,8 +13,7 @@ void Init_Face_Facemark()
     .define_method<void(cv::face::Facemark::*)(cv::String)>("load_model", &cv::face::Facemark::loadModel,
       Arg("model"))
     .define_method<bool(cv::face::Facemark::*)(cv::InputArray, cv::InputArray, cv::OutputArrayOfArrays)>("fit", &cv::face::Facemark::fit,
-      Arg("image"), Arg("faces"), Arg("landmarks"))
-    ;
+      Arg("image"), Arg("faces"), Arg("landmarks"));
   rb_mCvFace.define_module_function<cv::Ptr<cv::face::Facemark>(*)()>("create_facemark_aam", &cv::face::createFacemarkAAM);
 
   rb_mCvFace.define_module_function<cv::Ptr<cv::face::Facemark>(*)()>("create_facemark_lbf", &cv::face::createFacemarkLBF);

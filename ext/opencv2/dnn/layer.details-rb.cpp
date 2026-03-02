@@ -15,6 +15,5 @@ void Init_Dnn_LayerDetails()
 
   Rice::Data_Type<cv::dnn::dnn4_v20241223::details::_LayerStaticRegisterer> rb_cCvDnnDnn4V20241223DetailsLayerStaticRegisterer = define_class_under<cv::dnn::dnn4_v20241223::details::_LayerStaticRegisterer>(rb_mCvDnnDnn4V20241223Details, "LayerStaticRegisterer")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::details::_LayerStaticRegisterer, const cv::String&, cv::dnn::dnn4_v20241223::LayerFactory::Constructor>(),
-      Arg("layer_type"), Arg("layer_constructor"))
-    ;
+      Arg("layer_type"), Arg("layer_constructor"));
 }

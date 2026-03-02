@@ -12,16 +12,13 @@ void Init_Ml()
   Enum<cv::ml::VariableTypes> rb_cCvMlVariableTypes = define_enum_under<cv::ml::VariableTypes>("VariableTypes", rb_mCvMl)
     .define_value("VAR_NUMERICAL", cv::ml::VariableTypes::VAR_NUMERICAL)
     .define_value("VAR_ORDERED", cv::ml::VariableTypes::VAR_ORDERED)
-    .define_value("VAR_CATEGORICAL", cv::ml::VariableTypes::VAR_CATEGORICAL)
-    ;
+    .define_value("VAR_CATEGORICAL", cv::ml::VariableTypes::VAR_CATEGORICAL);
   Enum<cv::ml::ErrorTypes> rb_cCvMlErrorTypes = define_enum_under<cv::ml::ErrorTypes>("ErrorTypes", rb_mCvMl)
     .define_value("TEST_ERROR", cv::ml::ErrorTypes::TEST_ERROR)
-    .define_value("TRAIN_ERROR", cv::ml::ErrorTypes::TRAIN_ERROR)
-    ;
+    .define_value("TRAIN_ERROR", cv::ml::ErrorTypes::TRAIN_ERROR);
   Enum<cv::ml::SampleTypes> rb_cCvMlSampleTypes = define_enum_under<cv::ml::SampleTypes>("SampleTypes", rb_mCvMl)
     .define_value("ROW_SAMPLE", cv::ml::SampleTypes::ROW_SAMPLE)
-    .define_value("COL_SAMPLE", cv::ml::SampleTypes::COL_SAMPLE)
-    ;
+    .define_value("COL_SAMPLE", cv::ml::SampleTypes::COL_SAMPLE);
   Rice::Data_Type<cv::ml::ParamGrid> rb_cCvMlParamGrid = define_class_under<cv::ml::ParamGrid>(rb_mCvMl, "ParamGrid")
     .define_constructor(Constructor<cv::ml::ParamGrid>())
     .define_constructor(Constructor<cv::ml::ParamGrid, double, double, double>(),
@@ -30,8 +27,7 @@ void Init_Ml()
     .define_attr("max_val", &cv::ml::ParamGrid::maxVal)
     .define_attr("log_step", &cv::ml::ParamGrid::logStep)
     .define_singleton_function<cv::Ptr<cv::ml::ParamGrid>(*)(double, double, double)>("create", &cv::ml::ParamGrid::create,
-      Arg("min_val") = static_cast<double>(0.), Arg("max_val") = static_cast<double>(0.), Arg("logstep") = static_cast<double>(1.))
-    ;
+      Arg("min_val") = static_cast<double>(0.), Arg("max_val") = static_cast<double>(0.), Arg("logstep") = static_cast<double>(1.));
   Rice::Data_Type<cv::ml::TrainData> rb_cCvMlTrainData = define_class_under<cv::ml::TrainData>(rb_mCvMl, "TrainData")
     .define_singleton_function<float(*)()>("missing_value", &cv::ml::TrainData::missingValue)
     .define_method<int(cv::ml::TrainData::*)() const>("get_layout", &cv::ml::TrainData::getLayout)
@@ -86,8 +82,7 @@ void Init_Ml()
     .define_singleton_function<cv::Ptr<cv::ml::TrainData>(*)(const cv::String&, int, int, int, const cv::String&, char, char)>("load_from_csv", &cv::ml::TrainData::loadFromCSV,
       Arg("filename"), Arg("header_line_count"), Arg("response_start_idx") = static_cast<int>(-1), Arg("response_end_idx") = static_cast<int>(-1), Arg("var_type_spec") = static_cast<const cv::String&>(cv::String()), Arg("delimiter") = static_cast<char>(','), Arg("missch") = static_cast<char>('?'))
     .define_singleton_function<cv::Ptr<cv::ml::TrainData>(*)(cv::InputArray, int, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray)>("create", &cv::ml::TrainData::create,
-      Arg("samples"), Arg("layout"), Arg("responses"), Arg("var_idx") = static_cast<cv::InputArray>(cv::noArray()), Arg("sample_idx") = static_cast<cv::InputArray>(cv::noArray()), Arg("sample_weights") = static_cast<cv::InputArray>(cv::noArray()), Arg("var_type") = static_cast<cv::InputArray>(cv::noArray()))
-    ;
+      Arg("samples"), Arg("layout"), Arg("responses"), Arg("var_idx") = static_cast<cv::InputArray>(cv::noArray()), Arg("sample_idx") = static_cast<cv::InputArray>(cv::noArray()), Arg("sample_weights") = static_cast<cv::InputArray>(cv::noArray()), Arg("var_type") = static_cast<cv::InputArray>(cv::noArray()));
   Rice::Data_Type<cv::ml::StatModel> rb_cCvMlStatModel = define_class_under<cv::ml::StatModel, cv::Algorithm>(rb_mCvMl, "StatModel")
     .define_method<int(cv::ml::StatModel::*)() const>("get_var_count", &cv::ml::StatModel::getVarCount)
     .define_method<bool(cv::ml::StatModel::*)() const>("empty?", &cv::ml::StatModel::empty)
@@ -100,21 +95,18 @@ void Init_Ml()
     .define_method<float(cv::ml::StatModel::*)(const cv::Ptr<cv::ml::TrainData>&, bool, cv::OutputArray) const>("calc_error", &cv::ml::StatModel::calcError,
       Arg("data"), Arg("test"), Arg("resp"))
     .define_method<float(cv::ml::StatModel::*)(cv::InputArray, cv::OutputArray, int) const>("predict", &cv::ml::StatModel::predict,
-      Arg("samples"), Arg("results") = static_cast<cv::OutputArray>(cv::noArray()), Arg("flags") = static_cast<int>(0))
-    ;
+      Arg("samples"), Arg("results") = static_cast<cv::OutputArray>(cv::noArray()), Arg("flags") = static_cast<int>(0));
   Enum<cv::ml::StatModel::Flags> rb_cCvMlStatModelFlags = define_enum_under<cv::ml::StatModel::Flags>("Flags", rb_cCvMlStatModel)
     .define_value("UPDATE_MODEL", cv::ml::StatModel::Flags::UPDATE_MODEL)
     .define_value("RAW_OUTPUT", cv::ml::StatModel::Flags::RAW_OUTPUT)
     .define_value("COMPRESSED_INPUT", cv::ml::StatModel::Flags::COMPRESSED_INPUT)
-    .define_value("PREPROCESSED_INPUT", cv::ml::StatModel::Flags::PREPROCESSED_INPUT)
-    ;
+    .define_value("PREPROCESSED_INPUT", cv::ml::StatModel::Flags::PREPROCESSED_INPUT);
   Rice::Data_Type<cv::ml::NormalBayesClassifier> rb_cCvMlNormalBayesClassifier = define_class_under<cv::ml::NormalBayesClassifier, cv::ml::StatModel>(rb_mCvMl, "NormalBayesClassifier")
     .define_method<float(cv::ml::NormalBayesClassifier::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, int) const>("predict_prob", &cv::ml::NormalBayesClassifier::predictProb,
       Arg("inputs"), Arg("outputs"), Arg("output_probs"), Arg("flags") = static_cast<int>(0))
     .define_singleton_function<cv::Ptr<cv::ml::NormalBayesClassifier>(*)()>("create", &cv::ml::NormalBayesClassifier::create)
     .define_singleton_function<cv::Ptr<cv::ml::NormalBayesClassifier>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::NormalBayesClassifier::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()))
-    ;
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
   Rice::Data_Type<cv::ml::KNearest> rb_cCvMlKNearest = define_class_under<cv::ml::KNearest, cv::ml::StatModel>(rb_mCvMl, "KNearest")
     .define_method<int(cv::ml::KNearest::*)() const>("get_default_k", &cv::ml::KNearest::getDefaultK)
     .define_method<void(cv::ml::KNearest::*)(int)>("set_default_k", &cv::ml::KNearest::setDefaultK,
@@ -132,12 +124,10 @@ void Init_Ml()
       Arg("samples"), Arg("k"), Arg("results"), Arg("neighbor_responses") = static_cast<cv::OutputArray>(cv::noArray()), Arg("dist") = static_cast<cv::OutputArray>(cv::noArray()))
     .define_singleton_function<cv::Ptr<cv::ml::KNearest>(*)()>("create", &cv::ml::KNearest::create)
     .define_singleton_function<cv::Ptr<cv::ml::KNearest>(*)(const cv::String&)>("load", &cv::ml::KNearest::load,
-      Arg("filepath"))
-    ;
+      Arg("filepath"));
   Enum<cv::ml::KNearest::Types> rb_cCvMlKNearestTypes = define_enum_under<cv::ml::KNearest::Types>("Types", rb_cCvMlKNearest)
     .define_value("BRUTE_FORCE", cv::ml::KNearest::Types::BRUTE_FORCE)
-    .define_value("KDTREE", cv::ml::KNearest::Types::KDTREE)
-    ;
+    .define_value("KDTREE", cv::ml::KNearest::Types::KDTREE);
   Rice::Data_Type<cv::ml::SVM> rb_cCvMlSVM = define_class_under<cv::ml::SVM, cv::ml::StatModel>(rb_mCvMl, "Svm")
     .define_method<int(cv::ml::SVM::*)() const>("get_type", &cv::ml::SVM::getType)
     .define_method<void(cv::ml::SVM::*)(int)>("set_type", &cv::ml::SVM::setType,
@@ -185,20 +175,17 @@ void Init_Ml()
       Arg("param_id"))
     .define_singleton_function<cv::Ptr<cv::ml::SVM>(*)()>("create", &cv::ml::SVM::create)
     .define_singleton_function<cv::Ptr<cv::ml::SVM>(*)(const cv::String&)>("load", &cv::ml::SVM::load,
-      Arg("filepath"))
-    ;
+      Arg("filepath"));
   Rice::Data_Type<cv::ml::SVM::Kernel> rb_cCvMlSVMKernel = define_class_under<cv::ml::SVM::Kernel, cv::Algorithm>(rb_cCvMlSVM, "Kernel")
     .define_method<int(cv::ml::SVM::Kernel::*)() const>("get_type", &cv::ml::SVM::Kernel::getType)
     .define_method<void(cv::ml::SVM::Kernel::*)(int, int, const float*, const float*, float*)>("calc", &cv::ml::SVM::Kernel::calc,
-      Arg("vcount"), Arg("n"), ArgBuffer("vecs"), ArgBuffer("another"), ArgBuffer("results"))
-    ;
+      Arg("vcount"), Arg("n"), ArgBuffer("vecs"), ArgBuffer("another"), ArgBuffer("results"));
   Enum<cv::ml::SVM::Types> rb_cCvMlSVMTypes = define_enum_under<cv::ml::SVM::Types>("Types", rb_cCvMlSVM)
     .define_value("C_SVC", cv::ml::SVM::Types::C_SVC)
     .define_value("NU_SVC", cv::ml::SVM::Types::NU_SVC)
     .define_value("ONE_CLASS", cv::ml::SVM::Types::ONE_CLASS)
     .define_value("EPS_SVR", cv::ml::SVM::Types::EPS_SVR)
-    .define_value("NU_SVR", cv::ml::SVM::Types::NU_SVR)
-    ;
+    .define_value("NU_SVR", cv::ml::SVM::Types::NU_SVR);
   Enum<cv::ml::SVM::KernelTypes> rb_cCvMlSVMKernelTypes = define_enum_under<cv::ml::SVM::KernelTypes>("KernelTypes", rb_cCvMlSVM)
     .define_value("CUSTOM", cv::ml::SVM::KernelTypes::CUSTOM)
     .define_value("LINEAR", cv::ml::SVM::KernelTypes::LINEAR)
@@ -206,16 +193,14 @@ void Init_Ml()
     .define_value("RBF", cv::ml::SVM::KernelTypes::RBF)
     .define_value("SIGMOID", cv::ml::SVM::KernelTypes::SIGMOID)
     .define_value("CHI2", cv::ml::SVM::KernelTypes::CHI2)
-    .define_value("INTER", cv::ml::SVM::KernelTypes::INTER)
-    ;
+    .define_value("INTER", cv::ml::SVM::KernelTypes::INTER);
   Enum<cv::ml::SVM::ParamTypes> rb_cCvMlSVMParamTypes = define_enum_under<cv::ml::SVM::ParamTypes>("ParamTypes", rb_cCvMlSVM)
     .define_value("C", cv::ml::SVM::ParamTypes::C)
     .define_value("GAMMA", cv::ml::SVM::ParamTypes::GAMMA)
     .define_value("P", cv::ml::SVM::ParamTypes::P)
     .define_value("NU", cv::ml::SVM::ParamTypes::NU)
     .define_value("COEF", cv::ml::SVM::ParamTypes::COEF)
-    .define_value("DEGREE", cv::ml::SVM::ParamTypes::DEGREE)
-    ;
+    .define_value("DEGREE", cv::ml::SVM::ParamTypes::DEGREE);
   Rice::Data_Type<cv::ml::EM> rb_cCvMlEM = define_class_under<cv::ml::EM, cv::ml::StatModel>(rb_mCvMl, "Em")
     .define_method<int(cv::ml::EM::*)() const>("get_clusters_number", &cv::ml::EM::getClustersNumber)
     .define_method<void(cv::ml::EM::*)(int)>("set_clusters_number", &cv::ml::EM::setClustersNumber,
@@ -247,14 +232,12 @@ void Init_Ml()
     .define_constant("DEFAULT_MAX_ITERS", (int)cv::ml::EM::DEFAULT_MAX_ITERS)
     .define_constant("START_E_STEP", (int)cv::ml::EM::START_E_STEP)
     .define_constant("START_M_STEP", (int)cv::ml::EM::START_M_STEP)
-    .define_constant("START_AUTO_STEP", (int)cv::ml::EM::START_AUTO_STEP)
-    ;
+    .define_constant("START_AUTO_STEP", (int)cv::ml::EM::START_AUTO_STEP);
   Enum<cv::ml::EM::Types> rb_cCvMlEMTypes = define_enum_under<cv::ml::EM::Types>("Types", rb_cCvMlEM)
     .define_value("COV_MAT_SPHERICAL", cv::ml::EM::Types::COV_MAT_SPHERICAL)
     .define_value("COV_MAT_DIAGONAL", cv::ml::EM::Types::COV_MAT_DIAGONAL)
     .define_value("COV_MAT_GENERIC", cv::ml::EM::Types::COV_MAT_GENERIC)
-    .define_value("COV_MAT_DEFAULT", cv::ml::EM::Types::COV_MAT_DEFAULT)
-    ;
+    .define_value("COV_MAT_DEFAULT", cv::ml::EM::Types::COV_MAT_DEFAULT);
   Rice::Data_Type<cv::ml::DTrees> rb_cCvMlDTrees = define_class_under<cv::ml::DTrees, cv::ml::StatModel>(rb_mCvMl, "DTrees")
     .define_method<int(cv::ml::DTrees::*)() const>("get_max_categories", &cv::ml::DTrees::getMaxCategories)
     .define_method<void(cv::ml::DTrees::*)(int)>("set_max_categories", &cv::ml::DTrees::setMaxCategories,
@@ -289,8 +272,7 @@ void Init_Ml()
     .define_method<const std::vector<int>&(cv::ml::DTrees::*)() const>("get_subsets", &cv::ml::DTrees::getSubsets)
     .define_singleton_function<cv::Ptr<cv::ml::DTrees>(*)()>("create", &cv::ml::DTrees::create)
     .define_singleton_function<cv::Ptr<cv::ml::DTrees>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::DTrees::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()))
-    ;
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
   Rice::Data_Type<cv::ml::DTrees::Node> rb_cCvMlDTreesNode = define_class_under<cv::ml::DTrees::Node>(rb_cCvMlDTrees, "Node")
     .define_constructor(Constructor<cv::ml::DTrees::Node>())
     .define_attr("value", &cv::ml::DTrees::Node::value)
@@ -299,8 +281,7 @@ void Init_Ml()
     .define_attr("left", &cv::ml::DTrees::Node::left)
     .define_attr("right", &cv::ml::DTrees::Node::right)
     .define_attr("default_dir", &cv::ml::DTrees::Node::defaultDir)
-    .define_attr("split", &cv::ml::DTrees::Node::split)
-    ;
+    .define_attr("split", &cv::ml::DTrees::Node::split);
   Rice::Data_Type<cv::ml::DTrees::Split> rb_cCvMlDTreesSplit = define_class_under<cv::ml::DTrees::Split>(rb_cCvMlDTrees, "Split")
     .define_constructor(Constructor<cv::ml::DTrees::Split>())
     .define_attr("var_idx", &cv::ml::DTrees::Split::varIdx)
@@ -308,14 +289,12 @@ void Init_Ml()
     .define_attr("quality", &cv::ml::DTrees::Split::quality)
     .define_attr("next", &cv::ml::DTrees::Split::next)
     .define_attr("c", &cv::ml::DTrees::Split::c)
-    .define_attr("subset_ofs", &cv::ml::DTrees::Split::subsetOfs)
-    ;
+    .define_attr("subset_ofs", &cv::ml::DTrees::Split::subsetOfs);
   Enum<cv::ml::DTrees::Flags> rb_cCvMlDTreesFlags = define_enum_under<cv::ml::DTrees::Flags>("Flags", rb_cCvMlDTrees)
     .define_value("PREDICT_AUTO", cv::ml::DTrees::Flags::PREDICT_AUTO)
     .define_value("PREDICT_SUM", cv::ml::DTrees::Flags::PREDICT_SUM)
     .define_value("PREDICT_MAX_VOTE", cv::ml::DTrees::Flags::PREDICT_MAX_VOTE)
-    .define_value("PREDICT_MASK", cv::ml::DTrees::Flags::PREDICT_MASK)
-    ;
+    .define_value("PREDICT_MASK", cv::ml::DTrees::Flags::PREDICT_MASK);
   Rice::Data_Type<cv::ml::RTrees> rb_cCvMlRTrees = define_class_under<cv::ml::RTrees, cv::ml::DTrees>(rb_mCvMl, "RTrees")
     .define_method<bool(cv::ml::RTrees::*)() const>("get_calculate_var_importance?", &cv::ml::RTrees::getCalculateVarImportance)
     .define_method<void(cv::ml::RTrees::*)(bool)>("set_calculate_var_importance", &cv::ml::RTrees::setCalculateVarImportance,
@@ -332,8 +311,7 @@ void Init_Ml()
     .define_method<double(cv::ml::RTrees::*)() const>("get_oob_error", &cv::ml::RTrees::getOOBError)
     .define_singleton_function<cv::Ptr<cv::ml::RTrees>(*)()>("create", &cv::ml::RTrees::create)
     .define_singleton_function<cv::Ptr<cv::ml::RTrees>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::RTrees::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()))
-    ;
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
   Rice::Data_Type<cv::ml::Boost> rb_cCvMlBoost = define_class_under<cv::ml::Boost, cv::ml::DTrees>(rb_mCvMl, "Boost")
     .define_method<int(cv::ml::Boost::*)() const>("get_boost_type", &cv::ml::Boost::getBoostType)
     .define_method<void(cv::ml::Boost::*)(int)>("set_boost_type", &cv::ml::Boost::setBoostType,
@@ -346,14 +324,12 @@ void Init_Ml()
       Arg("val"))
     .define_singleton_function<cv::Ptr<cv::ml::Boost>(*)()>("create", &cv::ml::Boost::create)
     .define_singleton_function<cv::Ptr<cv::ml::Boost>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::Boost::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()))
-    ;
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
   Enum<cv::ml::Boost::Types> rb_cCvMlBoostTypes = define_enum_under<cv::ml::Boost::Types>("Types", rb_cCvMlBoost)
     .define_value("DISCRETE", cv::ml::Boost::Types::DISCRETE)
     .define_value("REAL", cv::ml::Boost::Types::REAL)
     .define_value("LOGIT", cv::ml::Boost::Types::LOGIT)
-    .define_value("GENTLE", cv::ml::Boost::Types::GENTLE)
-    ;
+    .define_value("GENTLE", cv::ml::Boost::Types::GENTLE);
   Rice::Data_Type<cv::ml::ANN_MLP> rb_cCvMlANNMLP = define_class_under<cv::ml::ANN_MLP, cv::ml::StatModel>(rb_mCvMl, "AnnMlp")
     .define_method<void(cv::ml::ANN_MLP::*)(int, double, double)>("set_train_method", &cv::ml::ANN_MLP::setTrainMethod,
       Arg("method"), Arg("param1") = static_cast<double>(0), Arg("param2") = static_cast<double>(0))
@@ -405,25 +381,21 @@ void Init_Ml()
       Arg("layer_idx"))
     .define_singleton_function<cv::Ptr<cv::ml::ANN_MLP>(*)()>("create", &cv::ml::ANN_MLP::create)
     .define_singleton_function<cv::Ptr<cv::ml::ANN_MLP>(*)(const cv::String&)>("load", &cv::ml::ANN_MLP::load,
-      Arg("filepath"))
-    ;
+      Arg("filepath"));
   Enum<cv::ml::ANN_MLP::TrainingMethods> rb_cCvMlANNMLPTrainingMethods = define_enum_under<cv::ml::ANN_MLP::TrainingMethods>("TrainingMethods", rb_cCvMlANNMLP)
     .define_value("BACKPROP", cv::ml::ANN_MLP::TrainingMethods::BACKPROP)
     .define_value("RPROP", cv::ml::ANN_MLP::TrainingMethods::RPROP)
-    .define_value("ANNEAL", cv::ml::ANN_MLP::TrainingMethods::ANNEAL)
-    ;
+    .define_value("ANNEAL", cv::ml::ANN_MLP::TrainingMethods::ANNEAL);
   Enum<cv::ml::ANN_MLP::ActivationFunctions> rb_cCvMlANNMLPActivationFunctions = define_enum_under<cv::ml::ANN_MLP::ActivationFunctions>("ActivationFunctions", rb_cCvMlANNMLP)
     .define_value("IDENTITY", cv::ml::ANN_MLP::ActivationFunctions::IDENTITY)
     .define_value("SIGMOID_SYM", cv::ml::ANN_MLP::ActivationFunctions::SIGMOID_SYM)
     .define_value("GAUSSIAN", cv::ml::ANN_MLP::ActivationFunctions::GAUSSIAN)
     .define_value("RELU", cv::ml::ANN_MLP::ActivationFunctions::RELU)
-    .define_value("LEAKYRELU", cv::ml::ANN_MLP::ActivationFunctions::LEAKYRELU)
-    ;
+    .define_value("LEAKYRELU", cv::ml::ANN_MLP::ActivationFunctions::LEAKYRELU);
   Enum<cv::ml::ANN_MLP::TrainFlags> rb_cCvMlANNMLPTrainFlags = define_enum_under<cv::ml::ANN_MLP::TrainFlags>("TrainFlags", rb_cCvMlANNMLP)
     .define_value("UPDATE_WEIGHTS", cv::ml::ANN_MLP::TrainFlags::UPDATE_WEIGHTS)
     .define_value("NO_INPUT_SCALE", cv::ml::ANN_MLP::TrainFlags::NO_INPUT_SCALE)
-    .define_value("NO_OUTPUT_SCALE", cv::ml::ANN_MLP::TrainFlags::NO_OUTPUT_SCALE)
-    ;
+    .define_value("NO_OUTPUT_SCALE", cv::ml::ANN_MLP::TrainFlags::NO_OUTPUT_SCALE);
   Rice::Data_Type<cv::ml::LogisticRegression> rb_cCvMlLogisticRegression = define_class_under<cv::ml::LogisticRegression, cv::ml::StatModel>(rb_mCvMl, "LogisticRegression")
     .define_method<double(cv::ml::LogisticRegression::*)() const>("get_learning_rate", &cv::ml::LogisticRegression::getLearningRate)
     .define_method<void(cv::ml::LogisticRegression::*)(double)>("set_learning_rate", &cv::ml::LogisticRegression::setLearningRate,
@@ -448,17 +420,14 @@ void Init_Ml()
     .define_method<cv::Mat(cv::ml::LogisticRegression::*)() const>("get_learnt_thetas", &cv::ml::LogisticRegression::get_learnt_thetas)
     .define_singleton_function<cv::Ptr<cv::ml::LogisticRegression>(*)()>("create", &cv::ml::LogisticRegression::create)
     .define_singleton_function<cv::Ptr<cv::ml::LogisticRegression>(*)(const cv::String&, const cv::String&)>("load", &cv::ml::LogisticRegression::load,
-      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()))
-    ;
+      Arg("filepath"), Arg("node_name") = static_cast<const cv::String&>(cv::String()));
   Enum<cv::ml::LogisticRegression::RegKinds> rb_cCvMlLogisticRegressionRegKinds = define_enum_under<cv::ml::LogisticRegression::RegKinds>("RegKinds", rb_cCvMlLogisticRegression)
     .define_value("REG_DISABLE", cv::ml::LogisticRegression::RegKinds::REG_DISABLE)
     .define_value("REG_L1", cv::ml::LogisticRegression::RegKinds::REG_L1)
-    .define_value("REG_L2", cv::ml::LogisticRegression::RegKinds::REG_L2)
-    ;
+    .define_value("REG_L2", cv::ml::LogisticRegression::RegKinds::REG_L2);
   Enum<cv::ml::LogisticRegression::Methods> rb_cCvMlLogisticRegressionMethods = define_enum_under<cv::ml::LogisticRegression::Methods>("Methods", rb_cCvMlLogisticRegression)
     .define_value("BATCH", cv::ml::LogisticRegression::Methods::BATCH)
-    .define_value("MINI_BATCH", cv::ml::LogisticRegression::Methods::MINI_BATCH)
-    ;
+    .define_value("MINI_BATCH", cv::ml::LogisticRegression::Methods::MINI_BATCH);
   Rice::Data_Type<cv::ml::SVMSGD> rb_cCvMlSVMSGD = define_class_under<cv::ml::SVMSGD, cv::ml::StatModel>(rb_mCvMl, "Svmsgd")
     .define_method<cv::Mat(cv::ml::SVMSGD::*)()>("get_weights", &cv::ml::SVMSGD::getWeights)
     .define_method<float(cv::ml::SVMSGD::*)()>("get_shift", &cv::ml::SVMSGD::getShift)
@@ -484,16 +453,13 @@ void Init_Ml()
       Arg("step_decreasing_power"))
     .define_method<cv::TermCriteria(cv::ml::SVMSGD::*)() const>("get_term_criteria", &cv::ml::SVMSGD::getTermCriteria)
     .define_method<void(cv::ml::SVMSGD::*)(const cv::TermCriteria&)>("set_term_criteria", &cv::ml::SVMSGD::setTermCriteria,
-      Arg("val"))
-    ;
+      Arg("val"));
   Enum<cv::ml::SVMSGD::SvmsgdType> rb_cCvMlSVMSGDSvmsgdType = define_enum_under<cv::ml::SVMSGD::SvmsgdType>("SvmsgdType", rb_cCvMlSVMSGD)
     .define_value("SGD", cv::ml::SVMSGD::SvmsgdType::SGD)
-    .define_value("ASGD", cv::ml::SVMSGD::SvmsgdType::ASGD)
-    ;
+    .define_value("ASGD", cv::ml::SVMSGD::SvmsgdType::ASGD);
   Enum<cv::ml::SVMSGD::MarginType> rb_cCvMlSVMSGDMarginType = define_enum_under<cv::ml::SVMSGD::MarginType>("MarginType", rb_cCvMlSVMSGD)
     .define_value("SOFT_MARGIN", cv::ml::SVMSGD::MarginType::SOFT_MARGIN)
-    .define_value("HARD_MARGIN", cv::ml::SVMSGD::MarginType::HARD_MARGIN)
-    ;
+    .define_value("HARD_MARGIN", cv::ml::SVMSGD::MarginType::HARD_MARGIN);
   rb_mCvMl.define_module_function<void(*)(cv::InputArray, cv::InputArray, int, cv::OutputArray)>("rand_mv_normal", &cv::ml::randMVNormal,
     Arg("mean"), Arg("cov"), Arg("nsamples"), Arg("samples"));
 

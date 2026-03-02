@@ -23,6 +23,5 @@ void Init_Reg_Mapprojec()
     .define_method<const cv::Matx<double, 3, 3>&(cv::reg::MapProjec::*)() const>("get_proj_tr", &cv::reg::MapProjec::getProjTr)
     .define_method<void(cv::reg::MapProjec::*)(cv::OutputArray) const>("get_proj_tr", &cv::reg::MapProjec::getProjTr,
       Arg("proj_tr"))
-    .define_method<void(cv::reg::MapProjec::*)()>("normalize", &cv::reg::MapProjec::normalize)
-    ;
+    .define_method<void(cv::reg::MapProjec::*)()>("normalize", &cv::reg::MapProjec::normalize);
 }

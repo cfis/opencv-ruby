@@ -13,8 +13,7 @@ void Init_Face_PredictCollector()
     .define_method<void(cv::face::PredictCollector::*)(size_t)>("init", &cv::face::PredictCollector::init,
       Arg("size"))
     .define_method<bool(cv::face::PredictCollector::*)(int, double)>("collect", &cv::face::PredictCollector::collect,
-      Arg("label"), Arg("dist"))
-    ;
+      Arg("label"), Arg("dist"));
   Rice::Data_Type<cv::face::StandardCollector> rb_cCvFaceStandardCollector = define_class_under<cv::face::StandardCollector, cv::face::PredictCollector>(rb_mCvFace, "StandardCollector")
     .define_constructor(Constructor<cv::face::StandardCollector, double>(),
       Arg("threshold_") = static_cast<double>(DBL_MAX))
@@ -28,12 +27,10 @@ void Init_Face_PredictCollector()
       Arg("sorted") = static_cast<bool>(false))
     .define_method<std::map<int, double>(cv::face::StandardCollector::*)() const>("get_results_map", &cv::face::StandardCollector::getResultsMap)
     .define_singleton_function<cv::Ptr<cv::face::StandardCollector>(*)(double)>("create", &cv::face::StandardCollector::create,
-      Arg("threshold") = static_cast<double>(DBL_MAX))
-    ;
+      Arg("threshold") = static_cast<double>(DBL_MAX));
   Rice::Data_Type<cv::face::StandardCollector::PredictResult> rb_cCvFaceStandardCollectorPredictResult = define_class_under<cv::face::StandardCollector::PredictResult>(rb_cCvFaceStandardCollector, "PredictResult")
     .define_attr("label", &cv::face::StandardCollector::PredictResult::label)
     .define_attr("distance", &cv::face::StandardCollector::PredictResult::distance)
     .define_constructor(Constructor<cv::face::StandardCollector::PredictResult, int, double>(),
-      Arg("label_") = static_cast<int>(-1), Arg("distance_") = static_cast<double>(DBL_MAX))
-    ;
+      Arg("label_") = static_cast<int>(-1), Arg("distance_") = static_cast<double>(DBL_MAX));
 }

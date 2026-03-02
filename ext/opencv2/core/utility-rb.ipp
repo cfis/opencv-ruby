@@ -24,8 +24,7 @@ inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(R
     .define_method("to_const_ptr", [](const cv::AutoBuffer<_Tp, fixed_size>& self) -> const _Tp*
     {
       return self;
-    })
-    ;
+    });
 }
 
 template<typename OBJECT>
@@ -45,7 +44,6 @@ inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module parent, c
     .template define_method<int(cv::Node<OBJECT>::*)()>("get_depth", &cv::Node<OBJECT>::getDepth)
     .define_attr("m_payload", &cv::Node<OBJECT>::m_payload)
     .define_attr("m_p_parent", &cv::Node<OBJECT>::m_pParent)
-    .define_attr("m_childs", &cv::Node<OBJECT>::m_childs)
-    ;
+    .define_attr("m_childs", &cv::Node<OBJECT>::m_childs);
 }
 

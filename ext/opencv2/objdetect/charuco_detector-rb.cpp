@@ -14,8 +14,7 @@ void Init_Objdetect_CharucoDetector()
     .define_attr("camera_matrix", &cv::aruco::CharucoParameters::cameraMatrix)
     .define_attr("dist_coeffs", &cv::aruco::CharucoParameters::distCoeffs)
     .define_attr("min_markers", &cv::aruco::CharucoParameters::minMarkers)
-    .define_attr("try_refine_markers", &cv::aruco::CharucoParameters::tryRefineMarkers)
-    ;
+    .define_attr("try_refine_markers", &cv::aruco::CharucoParameters::tryRefineMarkers);
   Rice::Data_Type<cv::aruco::CharucoDetector> rb_cCvArucoCharucoDetector = define_class_under<cv::aruco::CharucoDetector, cv::Algorithm>(rb_mCvAruco, "CharucoDetector")
     .define_constructor(Constructor<cv::aruco::CharucoDetector, const cv::aruco::CharucoBoard&, const cv::aruco::CharucoParameters&, const cv::aruco::DetectorParameters&, const cv::aruco::RefineParameters&>(),
       Arg("board"), Arg("charuco_params") = static_cast<const cv::aruco::CharucoParameters&>(cv::aruco::CharucoParameters()), Arg("detector_params") = static_cast<const cv::aruco::DetectorParameters&>(cv::aruco::DetectorParameters()), Arg("refine_params") = static_cast<const cv::aruco::RefineParameters&>(cv::aruco::RefineParameters()))
@@ -34,8 +33,7 @@ void Init_Objdetect_CharucoDetector()
     .define_method<void(cv::aruco::CharucoDetector::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::InputOutputArrayOfArrays, cv::InputOutputArray) const>("detect_board", &cv::aruco::CharucoDetector::detectBoard,
       Arg("image"), Arg("charuco_corners"), Arg("charuco_ids"), Arg("marker_corners") = static_cast<cv::InputOutputArrayOfArrays>(cv::noArray()), Arg("marker_ids") = static_cast<cv::InputOutputArray>(cv::noArray()))
     .define_method<void(cv::aruco::CharucoDetector::*)(cv::InputArray, cv::OutputArrayOfArrays, cv::OutputArray, cv::InputOutputArrayOfArrays, cv::InputOutputArray) const>("detect_diamonds", &cv::aruco::CharucoDetector::detectDiamonds,
-      Arg("image"), Arg("diamond_corners"), Arg("diamond_ids"), Arg("marker_corners") = static_cast<cv::InputOutputArrayOfArrays>(cv::noArray()), Arg("marker_ids") = static_cast<cv::InputOutputArray>(cv::noArray()))
-    ;
+      Arg("image"), Arg("diamond_corners"), Arg("diamond_ids"), Arg("marker_corners") = static_cast<cv::InputOutputArrayOfArrays>(cv::noArray()), Arg("marker_ids") = static_cast<cv::InputOutputArray>(cv::noArray()));
   rb_mCvAruco.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, cv::InputArray, cv::Scalar)>("draw_detected_corners_charuco", &cv::aruco::drawDetectedCornersCharuco,
     Arg("image"), Arg("charuco_corners"), Arg("charuco_ids") = static_cast<cv::InputArray>(cv::noArray()), Arg("corner_color") = static_cast<cv::Scalar>(cv::Scalar(255, 0, 0)));
 

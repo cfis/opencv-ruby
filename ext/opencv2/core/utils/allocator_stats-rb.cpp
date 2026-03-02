@@ -14,6 +14,5 @@ void Init_Core_Utils_AllocatorStats()
     .define_method<uint64_t(cv::utils::AllocatorStatisticsInterface::*)() const>("get_total_usage", &cv::utils::AllocatorStatisticsInterface::getTotalUsage)
     .define_method<uint64_t(cv::utils::AllocatorStatisticsInterface::*)() const>("get_number_of_allocations", &cv::utils::AllocatorStatisticsInterface::getNumberOfAllocations)
     .define_method<uint64_t(cv::utils::AllocatorStatisticsInterface::*)() const>("get_peak_usage", &cv::utils::AllocatorStatisticsInterface::getPeakUsage)
-    .define_method<void(cv::utils::AllocatorStatisticsInterface::*)()>("reset_peak_usage", &cv::utils::AllocatorStatisticsInterface::resetPeakUsage)
-    ;
+    .define_method<void(cv::utils::AllocatorStatisticsInterface::*)()>("reset_peak_usage", &cv::utils::AllocatorStatisticsInterface::resetPeakUsage);
 }

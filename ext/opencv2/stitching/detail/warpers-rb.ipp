@@ -16,7 +16,6 @@ inline Rice::Data_Type<cv::detail::RotationWarperBase<P>> RotationWarperBase_ins
       Arg("src_size"), Arg("k"), Arg("r"))
     .template define_method<float(cv::detail::RotationWarperBase<P>::*)() const>("get_scale", &cv::detail::RotationWarperBase<P>::getScale)
     .template define_method<void(cv::detail::RotationWarperBase<P>::*)(float)>("set_scale", &cv::detail::RotationWarperBase<P>::setScale,
-      Arg("val"))
-    ;
+      Arg("val"));
 }
 

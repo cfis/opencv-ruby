@@ -10,8 +10,7 @@ void Init_Datasets_Dataset()
   Module rb_mCvDatasets = define_module_under(rb_mCv, "Datasets");
 
   Rice::Data_Type<cv::datasets::Object> rb_cCvDatasetsObject = define_class_under<cv::datasets::Object>(rb_mCvDatasets, "Object")
-    .define_constructor(Constructor<cv::datasets::Object>())
-    ;
+    .define_constructor(Constructor<cv::datasets::Object>());
   Rice::Data_Type<cv::datasets::Dataset> rb_cCvDatasetsDataset = define_class_under<cv::datasets::Dataset>(rb_mCvDatasets, "Dataset")
     .define_method<void(cv::datasets::Dataset::*)(const std::string&)>("load", &cv::datasets::Dataset::load,
       Arg("path"))
@@ -21,6 +20,5 @@ void Init_Datasets_Dataset()
       Arg("split_num") = static_cast<int>(0))
     .define_method<std::vector<cv::Ptr<cv::datasets::Object>>&(cv::datasets::Dataset::*)(int)>("get_validation", &cv::datasets::Dataset::getValidation,
       Arg("split_num") = static_cast<int>(0))
-    .define_method<int(cv::datasets::Dataset::*)() const>("get_num_splits", &cv::datasets::Dataset::getNumSplits)
-    ;
+    .define_method<int(cv::datasets::Dataset::*)() const>("get_num_splits", &cv::datasets::Dataset::getNumSplits);
 }

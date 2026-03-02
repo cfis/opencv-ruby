@@ -15,8 +15,7 @@ void Init_Highgui()
     .define_value("WINDOW_FREERATIO", cv::WindowFlags::WINDOW_FREERATIO)
     .define_value("WINDOW_KEEPRATIO", cv::WindowFlags::WINDOW_KEEPRATIO)
     .define_value("WINDOW_GUI_EXPANDED", cv::WindowFlags::WINDOW_GUI_EXPANDED)
-    .define_value("WINDOW_GUI_NORMAL", cv::WindowFlags::WINDOW_GUI_NORMAL)
-    ;
+    .define_value("WINDOW_GUI_NORMAL", cv::WindowFlags::WINDOW_GUI_NORMAL);
   Enum<cv::WindowPropertyFlags> rb_cCvWindowPropertyFlags = define_enum_under<cv::WindowPropertyFlags>("WindowPropertyFlags", rb_mCv)
     .define_value("WND_PROP_FULLSCREEN", cv::WindowPropertyFlags::WND_PROP_FULLSCREEN)
     .define_value("WND_PROP_AUTOSIZE", cv::WindowPropertyFlags::WND_PROP_AUTOSIZE)
@@ -24,8 +23,7 @@ void Init_Highgui()
     .define_value("WND_PROP_OPENGL", cv::WindowPropertyFlags::WND_PROP_OPENGL)
     .define_value("WND_PROP_VISIBLE", cv::WindowPropertyFlags::WND_PROP_VISIBLE)
     .define_value("WND_PROP_TOPMOST", cv::WindowPropertyFlags::WND_PROP_TOPMOST)
-    .define_value("WND_PROP_VSYNC", cv::WindowPropertyFlags::WND_PROP_VSYNC)
-    ;
+    .define_value("WND_PROP_VSYNC", cv::WindowPropertyFlags::WND_PROP_VSYNC);
   Enum<cv::MouseEventTypes> rb_cCvMouseEventTypes = define_enum_under<cv::MouseEventTypes>("MouseEventTypes", rb_mCv)
     .define_value("EVENT_MOUSEMOVE", cv::MouseEventTypes::EVENT_MOUSEMOVE)
     .define_value("EVENT_LBUTTONDOWN", cv::MouseEventTypes::EVENT_LBUTTONDOWN)
@@ -38,34 +36,29 @@ void Init_Highgui()
     .define_value("EVENT_RBUTTONDBLCLK", cv::MouseEventTypes::EVENT_RBUTTONDBLCLK)
     .define_value("EVENT_MBUTTONDBLCLK", cv::MouseEventTypes::EVENT_MBUTTONDBLCLK)
     .define_value("EVENT_MOUSEWHEEL", cv::MouseEventTypes::EVENT_MOUSEWHEEL)
-    .define_value("EVENT_MOUSEHWHEEL", cv::MouseEventTypes::EVENT_MOUSEHWHEEL)
-    ;
+    .define_value("EVENT_MOUSEHWHEEL", cv::MouseEventTypes::EVENT_MOUSEHWHEEL);
   Enum<cv::MouseEventFlags> rb_cCvMouseEventFlags = define_enum_under<cv::MouseEventFlags>("MouseEventFlags", rb_mCv)
     .define_value("EVENT_FLAG_LBUTTON", cv::MouseEventFlags::EVENT_FLAG_LBUTTON)
     .define_value("EVENT_FLAG_RBUTTON", cv::MouseEventFlags::EVENT_FLAG_RBUTTON)
     .define_value("EVENT_FLAG_MBUTTON", cv::MouseEventFlags::EVENT_FLAG_MBUTTON)
     .define_value("EVENT_FLAG_CTRLKEY", cv::MouseEventFlags::EVENT_FLAG_CTRLKEY)
     .define_value("EVENT_FLAG_SHIFTKEY", cv::MouseEventFlags::EVENT_FLAG_SHIFTKEY)
-    .define_value("EVENT_FLAG_ALTKEY", cv::MouseEventFlags::EVENT_FLAG_ALTKEY)
-    ;
+    .define_value("EVENT_FLAG_ALTKEY", cv::MouseEventFlags::EVENT_FLAG_ALTKEY);
   Enum<cv::QtFontWeights> rb_cCvQtFontWeights = define_enum_under<cv::QtFontWeights>("QtFontWeights", rb_mCv)
     .define_value("QT_FONT_LIGHT", cv::QtFontWeights::QT_FONT_LIGHT)
     .define_value("QT_FONT_NORMAL", cv::QtFontWeights::QT_FONT_NORMAL)
     .define_value("QT_FONT_DEMIBOLD", cv::QtFontWeights::QT_FONT_DEMIBOLD)
     .define_value("QT_FONT_BOLD", cv::QtFontWeights::QT_FONT_BOLD)
-    .define_value("QT_FONT_BLACK", cv::QtFontWeights::QT_FONT_BLACK)
-    ;
+    .define_value("QT_FONT_BLACK", cv::QtFontWeights::QT_FONT_BLACK);
   Enum<cv::QtFontStyles> rb_cCvQtFontStyles = define_enum_under<cv::QtFontStyles>("QtFontStyles", rb_mCv)
     .define_value("QT_STYLE_NORMAL", cv::QtFontStyles::QT_STYLE_NORMAL)
     .define_value("QT_STYLE_ITALIC", cv::QtFontStyles::QT_STYLE_ITALIC)
-    .define_value("QT_STYLE_OBLIQUE", cv::QtFontStyles::QT_STYLE_OBLIQUE)
-    ;
+    .define_value("QT_STYLE_OBLIQUE", cv::QtFontStyles::QT_STYLE_OBLIQUE);
   Enum<cv::QtButtonTypes> rb_cCvQtButtonTypes = define_enum_under<cv::QtButtonTypes>("QtButtonTypes", rb_mCv)
     .define_value("QT_PUSH_BUTTON", cv::QtButtonTypes::QT_PUSH_BUTTON)
     .define_value("QT_CHECKBOX", cv::QtButtonTypes::QT_CHECKBOX)
     .define_value("QT_RADIOBOX", cv::QtButtonTypes::QT_RADIOBOX)
-    .define_value("QT_NEW_BUTTONBAR", cv::QtButtonTypes::QT_NEW_BUTTONBAR)
-    ;
+    .define_value("QT_NEW_BUTTONBAR", cv::QtButtonTypes::QT_NEW_BUTTONBAR);
   rb_mCv.define_module_function<void(*)(const cv::String&, int)>("named_window", &cv::namedWindow,
     Arg("winname"), Arg("flags") = static_cast<int>(cv::WINDOW_AUTOSIZE));
 
@@ -165,8 +158,7 @@ void Init_Highgui()
     .define_attr("shear", &cv::QtFont::shear)
     .define_attr("thickness", &cv::QtFont::thickness)
     .define_attr("dx", &cv::QtFont::dx)
-    .define_attr("line_type", &cv::QtFont::line_type)
-    ;
+    .define_attr("line_type", &cv::QtFont::line_type);
   rb_mCv.define_module_function<cv::QtFont(*)(const cv::String&, int, cv::Scalar, int, int, int)>("font_qt", &cv::fontQt,
     Arg("name_font"), Arg("point_size") = static_cast<int>(-1), Arg("color") = static_cast<cv::Scalar>(cv::Scalar::all(0)), Arg("weight") = static_cast<int>(cv::QT_FONT_NORMAL), Arg("style") = static_cast<int>(cv::QT_STYLE_NORMAL), Arg("spacing") = static_cast<int>(0));
 

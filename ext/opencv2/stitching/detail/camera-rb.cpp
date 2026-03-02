@@ -21,6 +21,5 @@ void Init_Stitching_Detail_Camera()
     .define_attr("ppx", &cv::detail::CameraParams::ppx)
     .define_attr("ppy", &cv::detail::CameraParams::ppy)
     .define_attr("r", &cv::detail::CameraParams::R)
-    .define_attr("t", &cv::detail::CameraParams::t)
-    ;
+    .define_attr("t", &cv::detail::CameraParams::t);
 }

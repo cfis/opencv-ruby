@@ -44,8 +44,7 @@ void Init_SurfaceMatching_Pose3d()
     .define_attr("pose", &cv::ppf_match_3d::Pose3D::pose)
     .define_attr("angle", &cv::ppf_match_3d::Pose3D::angle)
     .define_attr("t", &cv::ppf_match_3d::Pose3D::t)
-    .define_attr("q", &cv::ppf_match_3d::Pose3D::q)
-    ;
+    .define_attr("q", &cv::ppf_match_3d::Pose3D::q);
   Rice::Data_Type<cv::ppf_match_3d::PoseCluster3D> rb_cCvPpfMatch3dPoseCluster3D = define_class_under<cv::ppf_match_3d::PoseCluster3D>(rb_mCvPpfMatch3d, "PoseCluster3D")
     .define_constructor(Constructor<cv::ppf_match_3d::PoseCluster3D>())
     .define_constructor(Constructor<cv::ppf_match_3d::PoseCluster3D, cv::ppf_match_3d::Pose3DPtr>(),
@@ -64,6 +63,5 @@ void Init_SurfaceMatching_Pose3d()
       Arg("file_name"))
     .define_attr("pose_list", &cv::ppf_match_3d::PoseCluster3D::poseList)
     .define_attr("num_votes", &cv::ppf_match_3d::PoseCluster3D::numVotes)
-    .define_attr("id", &cv::ppf_match_3d::PoseCluster3D::id)
-    ;
+    .define_attr("id", &cv::ppf_match_3d::PoseCluster3D::id);
 }

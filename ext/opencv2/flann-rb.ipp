@@ -22,8 +22,7 @@ inline Rice::Data_Type<cv::flann::GenericIndex<Distance>> GenericIndex_instantia
       Arg("filename"))
     .template define_method<int(cv::flann::GenericIndex<Distance>::*)() const>("veclen", &cv::flann::GenericIndex<Distance>::veclen)
     .template define_method<int(cv::flann::GenericIndex<Distance>::*)() const>("size", &cv::flann::GenericIndex<Distance>::size)
-    .template define_method<::cvflann::IndexParams(cv::flann::GenericIndex<Distance>::*)()>("get_parameters", &cv::flann::GenericIndex<Distance>::getParameters)
-    ;
+    .template define_method<::cvflann::IndexParams(cv::flann::GenericIndex<Distance>::*)()>("get_parameters", &cv::flann::GenericIndex<Distance>::getParameters);
 }
 
 template<typename T>

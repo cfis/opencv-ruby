@@ -18,6 +18,5 @@ void Init_Xobjdetect()
       Arg("pos_samples"), Arg("neg_imgs"))
     .define_method<void(cv::xobjdetect::WBDetector::*)(const cv::Mat&, std::vector<cv::Rect>&, std::vector<double>&)>("detect", &cv::xobjdetect::WBDetector::detect,
       Arg("img"), Arg("bboxes"), Arg("confidences"))
-    .define_singleton_function<cv::Ptr<cv::xobjdetect::WBDetector>(*)()>("create", &cv::xobjdetect::WBDetector::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::xobjdetect::WBDetector>(*)()>("create", &cv::xobjdetect::WBDetector::create);
 }

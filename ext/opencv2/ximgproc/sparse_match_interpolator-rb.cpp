@@ -11,8 +11,7 @@ void Init_Ximgproc_SparseMatchInterpolator()
 
   Rice::Data_Type<cv::ximgproc::SparseMatchInterpolator> rb_cCvXimgprocSparseMatchInterpolator = define_class_under<cv::ximgproc::SparseMatchInterpolator, cv::Algorithm>(rb_mCvXimgproc, "SparseMatchInterpolator")
     .define_method<void(cv::ximgproc::SparseMatchInterpolator::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("interpolate", &cv::ximgproc::SparseMatchInterpolator::interpolate,
-      Arg("from_image"), Arg("from_points"), Arg("to_image"), Arg("to_points"), Arg("dense_flow"))
-    ;
+      Arg("from_image"), Arg("from_points"), Arg("to_image"), Arg("to_points"), Arg("dense_flow"));
   Rice::Data_Type<cv::ximgproc::EdgeAwareInterpolator> rb_cCvXimgprocEdgeAwareInterpolator = define_class_under<cv::ximgproc::EdgeAwareInterpolator, cv::ximgproc::SparseMatchInterpolator>(rb_mCvXimgproc, "EdgeAwareInterpolator")
     .define_method<void(cv::ximgproc::EdgeAwareInterpolator::*)(const cv::Mat&)>("set_cost_map", &cv::ximgproc::EdgeAwareInterpolator::setCostMap,
       Arg("_cost_map"))
@@ -33,8 +32,7 @@ void Init_Ximgproc_SparseMatchInterpolator()
     .define_method<float(cv::ximgproc::EdgeAwareInterpolator::*)()>("get_fgs_lambda", &cv::ximgproc::EdgeAwareInterpolator::getFGSLambda)
     .define_method<void(cv::ximgproc::EdgeAwareInterpolator::*)(float)>("set_fgs_sigma", &cv::ximgproc::EdgeAwareInterpolator::setFGSSigma,
       Arg("_sigma"))
-    .define_method<float(cv::ximgproc::EdgeAwareInterpolator::*)()>("get_fgs_sigma", &cv::ximgproc::EdgeAwareInterpolator::getFGSSigma)
-    ;
+    .define_method<float(cv::ximgproc::EdgeAwareInterpolator::*)()>("get_fgs_sigma", &cv::ximgproc::EdgeAwareInterpolator::getFGSSigma);
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::EdgeAwareInterpolator>(*)()>("create_edge_aware_interpolator", &cv::ximgproc::createEdgeAwareInterpolator);
 
   Rice::Data_Type<cv::ximgproc::RICInterpolator> rb_cCvXimgprocRICInterpolator = define_class_under<cv::ximgproc::RICInterpolator, cv::ximgproc::SparseMatchInterpolator>(rb_mCvXimgproc, "RICInterpolator")
@@ -78,7 +76,6 @@ void Init_Ximgproc_SparseMatchInterpolator()
     .define_method<float(cv::ximgproc::RICInterpolator::*)() const>("get_fgs_lambda", &cv::ximgproc::RICInterpolator::getFGSLambda)
     .define_method<void(cv::ximgproc::RICInterpolator::*)(float)>("set_fgs_sigma", &cv::ximgproc::RICInterpolator::setFGSSigma,
       Arg("sigma") = static_cast<float>(1.5f))
-    .define_method<float(cv::ximgproc::RICInterpolator::*)() const>("get_fgs_sigma", &cv::ximgproc::RICInterpolator::getFGSSigma)
-    ;
+    .define_method<float(cv::ximgproc::RICInterpolator::*)() const>("get_fgs_sigma", &cv::ximgproc::RICInterpolator::getFGSSigma);
   rb_mCvXimgproc.define_module_function<cv::Ptr<cv::ximgproc::RICInterpolator>(*)()>("create_ric_interpolator", &cv::ximgproc::createRICInterpolator);
 }

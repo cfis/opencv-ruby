@@ -26,6 +26,5 @@ void Init_Objdetect_Barcode()
       Arg("sizes"))
     .define_method<double(cv::barcode::BarcodeDetector::*)() const>("get_gradient_threshold", &cv::barcode::BarcodeDetector::getGradientThreshold)
     .define_method<cv::barcode::BarcodeDetector&(cv::barcode::BarcodeDetector::*)(double)>("set_gradient_threshold", &cv::barcode::BarcodeDetector::setGradientThreshold,
-      Arg("thresh"))
-    ;
+      Arg("thresh"));
 }

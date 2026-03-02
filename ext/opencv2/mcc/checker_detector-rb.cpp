@@ -29,8 +29,7 @@ void Init_Mcc_CheckerDetector()
     .define_attr("min_inter_contour_distance", &cv::mcc::DetectorParameters::minInterContourDistance)
     .define_attr("min_inter_checker_distance", &cv::mcc::DetectorParameters::minInterCheckerDistance)
     .define_attr("min_image_size", &cv::mcc::DetectorParameters::minImageSize)
-    .define_attr("min_group_size", &cv::mcc::DetectorParameters::minGroupSize)
-    ;
+    .define_attr("min_group_size", &cv::mcc::DetectorParameters::minGroupSize);
   Rice::Data_Type<cv::mcc::CCheckerDetector> rb_cCvMccCCheckerDetector = define_class_under<cv::mcc::CCheckerDetector, cv::Algorithm>(rb_mCvMcc, "CCheckerDetector")
     .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::dnn::Net)>("set_net", &cv::mcc::CCheckerDetector::setNet,
       Arg("net"))
@@ -40,6 +39,5 @@ void Init_Mcc_CheckerDetector()
       Arg("image"), Arg("chart_type"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters>&>(cv::mcc::DetectorParameters::create()))
     .define_method<cv::Ptr<cv::mcc::CChecker>(cv::mcc::CCheckerDetector::*)()>("get_best_color_checker", &cv::mcc::CCheckerDetector::getBestColorChecker)
     .define_method<std::vector<cv::Ptr<cv::mcc::CChecker>>(cv::mcc::CCheckerDetector::*)()>("get_list_color_checker", &cv::mcc::CCheckerDetector::getListColorChecker)
-    .define_singleton_function<cv::Ptr<cv::mcc::CCheckerDetector>(*)()>("create", &cv::mcc::CCheckerDetector::create)
-    ;
+    .define_singleton_function<cv::Ptr<cv::mcc::CCheckerDetector>(*)()>("create", &cv::mcc::CCheckerDetector::create);
 }

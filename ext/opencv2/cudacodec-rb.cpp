@@ -27,8 +27,7 @@ void Init_Cudacodec()
     .define_value("Uncompressed_YV12", cv::cudacodec::Codec::Uncompressed_YV12)
     .define_value("Uncompressed_NV12", cv::cudacodec::Codec::Uncompressed_NV12)
     .define_value("Uncompressed_YUYV", cv::cudacodec::Codec::Uncompressed_YUYV)
-    .define_value("Uncompressed_UYVY", cv::cudacodec::Codec::Uncompressed_UYVY)
-    ;
+    .define_value("Uncompressed_UYVY", cv::cudacodec::Codec::Uncompressed_UYVY);
   Enum<cv::cudacodec::ColorFormat> rb_cCvCudacodecColorFormat = define_enum_under<cv::cudacodec::ColorFormat>("ColorFormat", rb_mCvCudacodec)
     .define_value("UNDEFINED", cv::cudacodec::ColorFormat::UNDEFINED)
     .define_value("BGRA", cv::cudacodec::ColorFormat::BGRA)
@@ -44,18 +43,15 @@ void Init_Cudacodec()
     .define_value("NV_AYUV", cv::cudacodec::ColorFormat::NV_AYUV)
     .define_value("NV_YUV420_10BIT", cv::cudacodec::ColorFormat::NV_YUV420_10BIT)
     .define_value("NV_YUV444_10BIT", cv::cudacodec::ColorFormat::NV_YUV444_10BIT)
-    .define_value("PROP_NOT_SUPPORTED", cv::cudacodec::ColorFormat::PROP_NOT_SUPPORTED)
-    ;
+    .define_value("PROP_NOT_SUPPORTED", cv::cudacodec::ColorFormat::PROP_NOT_SUPPORTED);
   Enum<cv::cudacodec::EncodeParamsRcMode> rb_cCvCudacodecEncodeParamsRcMode = define_enum_under<cv::cudacodec::EncodeParamsRcMode>("EncodeParamsRcMode", rb_mCvCudacodec)
     .define_value("ENC_PARAMS_RC_CONSTQP", cv::cudacodec::EncodeParamsRcMode::ENC_PARAMS_RC_CONSTQP)
     .define_value("ENC_PARAMS_RC_VBR", cv::cudacodec::EncodeParamsRcMode::ENC_PARAMS_RC_VBR)
-    .define_value("ENC_PARAMS_RC_CBR", cv::cudacodec::EncodeParamsRcMode::ENC_PARAMS_RC_CBR)
-    ;
+    .define_value("ENC_PARAMS_RC_CBR", cv::cudacodec::EncodeParamsRcMode::ENC_PARAMS_RC_CBR);
   Enum<cv::cudacodec::EncodeMultiPass> rb_cCvCudacodecEncodeMultiPass = define_enum_under<cv::cudacodec::EncodeMultiPass>("EncodeMultiPass", rb_mCvCudacodec)
     .define_value("ENC_MULTI_PASS_DISABLED", cv::cudacodec::EncodeMultiPass::ENC_MULTI_PASS_DISABLED)
     .define_value("ENC_TWO_PASS_QUARTER_RESOLUTION", cv::cudacodec::EncodeMultiPass::ENC_TWO_PASS_QUARTER_RESOLUTION)
-    .define_value("ENC_TWO_PASS_FULL_RESOLUTION", cv::cudacodec::EncodeMultiPass::ENC_TWO_PASS_FULL_RESOLUTION)
-    ;
+    .define_value("ENC_TWO_PASS_FULL_RESOLUTION", cv::cudacodec::EncodeMultiPass::ENC_TWO_PASS_FULL_RESOLUTION);
   Enum<cv::cudacodec::EncodeProfile> rb_cCvCudacodecEncodeProfile = define_enum_under<cv::cudacodec::EncodeProfile>("EncodeProfile", rb_mCvCudacodec)
     .define_value("ENC_CODEC_PROFILE_AUTOSELECT", cv::cudacodec::EncodeProfile::ENC_CODEC_PROFILE_AUTOSELECT)
     .define_value("ENC_H264_PROFILE_BASELINE", cv::cudacodec::EncodeProfile::ENC_H264_PROFILE_BASELINE)
@@ -67,8 +63,7 @@ void Init_Cudacodec()
     .define_value("ENC_H264_PROFILE_CONSTRAINED_HIGH", cv::cudacodec::EncodeProfile::ENC_H264_PROFILE_CONSTRAINED_HIGH)
     .define_value("ENC_HEVC_PROFILE_MAIN", cv::cudacodec::EncodeProfile::ENC_HEVC_PROFILE_MAIN)
     .define_value("ENC_HEVC_PROFILE_MAIN10", cv::cudacodec::EncodeProfile::ENC_HEVC_PROFILE_MAIN10)
-    .define_value("ENC_HEVC_PROFILE_FREXT", cv::cudacodec::EncodeProfile::ENC_HEVC_PROFILE_FREXT)
-    ;
+    .define_value("ENC_HEVC_PROFILE_FREXT", cv::cudacodec::EncodeProfile::ENC_HEVC_PROFILE_FREXT);
   Enum<cv::cudacodec::EncodePreset> rb_cCvCudacodecEncodePreset = define_enum_under<cv::cudacodec::EncodePreset>("EncodePreset", rb_mCvCudacodec)
     .define_value("ENC_PRESET_P1", cv::cudacodec::EncodePreset::ENC_PRESET_P1)
     .define_value("ENC_PRESET_P2", cv::cudacodec::EncodePreset::ENC_PRESET_P2)
@@ -76,22 +71,19 @@ void Init_Cudacodec()
     .define_value("ENC_PRESET_P4", cv::cudacodec::EncodePreset::ENC_PRESET_P4)
     .define_value("ENC_PRESET_P5", cv::cudacodec::EncodePreset::ENC_PRESET_P5)
     .define_value("ENC_PRESET_P6", cv::cudacodec::EncodePreset::ENC_PRESET_P6)
-    .define_value("ENC_PRESET_P7", cv::cudacodec::EncodePreset::ENC_PRESET_P7)
-    ;
+    .define_value("ENC_PRESET_P7", cv::cudacodec::EncodePreset::ENC_PRESET_P7);
   Enum<cv::cudacodec::EncodeTuningInfo> rb_cCvCudacodecEncodeTuningInfo = define_enum_under<cv::cudacodec::EncodeTuningInfo>("EncodeTuningInfo", rb_mCvCudacodec)
     .define_value("ENC_TUNING_INFO_UNDEFINED", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_UNDEFINED)
     .define_value("ENC_TUNING_INFO_HIGH_QUALITY", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_HIGH_QUALITY)
     .define_value("ENC_TUNING_INFO_LOW_LATENCY", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_LOW_LATENCY)
     .define_value("ENC_TUNING_INFO_ULTRA_LOW_LATENCY", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_ULTRA_LOW_LATENCY)
     .define_value("ENC_TUNING_INFO_LOSSLESS", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_LOSSLESS)
-    .define_value("ENC_TUNING_INFO_COUNT", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_COUNT)
-    ;
+    .define_value("ENC_TUNING_INFO_COUNT", cv::cudacodec::EncodeTuningInfo::ENC_TUNING_INFO_COUNT);
   Rice::Data_Type<cv::cudacodec::EncodeQp> rb_cCvCudacodecEncodeQp = define_class_under<cv::cudacodec::EncodeQp>(rb_mCvCudacodec, "EncodeQp")
     .define_constructor(Constructor<cv::cudacodec::EncodeQp>())
     .define_attr("qp_inter_p", &cv::cudacodec::EncodeQp::qpInterP)
     .define_attr("qp_inter_b", &cv::cudacodec::EncodeQp::qpInterB)
-    .define_attr("qp_intra", &cv::cudacodec::EncodeQp::qpIntra)
-    ;
+    .define_attr("qp_intra", &cv::cudacodec::EncodeQp::qpIntra);
   Rice::Data_Type<cv::cudacodec::EncoderParams> rb_cCvCudacodecEncoderParams = define_class_under<cv::cudacodec::EncoderParams>(rb_mCvCudacodec, "EncoderParams")
     .define_constructor(Constructor<cv::cudacodec::EncoderParams>())
     .define_attr("nv_preset", &cv::cudacodec::EncoderParams::nvPreset)
@@ -104,21 +96,18 @@ void Init_Cudacodec()
     .define_attr("max_bit_rate", &cv::cudacodec::EncoderParams::maxBitRate)
     .define_attr("target_quality", &cv::cudacodec::EncoderParams::targetQuality)
     .define_attr("gop_length", &cv::cudacodec::EncoderParams::gopLength)
-    .define_attr("idr_period", &cv::cudacodec::EncoderParams::idrPeriod)
-    ;
+    .define_attr("idr_period", &cv::cudacodec::EncoderParams::idrPeriod);
   Rice::Data_Type<cv::cudacodec::EncoderCallback> rb_cCvCudacodecEncoderCallback = define_class_under<cv::cudacodec::EncoderCallback>(rb_mCvCudacodec, "EncoderCallback")
     .define_method<void(cv::cudacodec::EncoderCallback::*)(const std::vector<std::vector<uint8_t>>&, const std::vector<uint64_t>&)>("on_encoded", &cv::cudacodec::EncoderCallback::onEncoded,
       Arg("v_packet"), Arg("pts"))
     .define_method<bool(cv::cudacodec::EncoderCallback::*)(const int)>("set_frame_interval_p", &cv::cudacodec::EncoderCallback::setFrameIntervalP,
       Arg("frame_interval_p"))
-    .define_method<void(cv::cudacodec::EncoderCallback::*)()>("on_encoding_finished", &cv::cudacodec::EncoderCallback::onEncodingFinished)
-    ;
+    .define_method<void(cv::cudacodec::EncoderCallback::*)()>("on_encoding_finished", &cv::cudacodec::EncoderCallback::onEncodingFinished);
   Rice::Data_Type<cv::cudacodec::VideoWriter> rb_cCvCudacodecVideoWriter = define_class_under<cv::cudacodec::VideoWriter>(rb_mCvCudacodec, "VideoWriter")
     .define_method<void(cv::cudacodec::VideoWriter::*)(cv::InputArray)>("write", &cv::cudacodec::VideoWriter::write,
       Arg("frame"))
     .define_method<cv::cudacodec::EncoderParams(cv::cudacodec::VideoWriter::*)() const>("get_encoder_params", &cv::cudacodec::VideoWriter::getEncoderParams)
-    .define_method<void(cv::cudacodec::VideoWriter::*)()>("release", &cv::cudacodec::VideoWriter::release)
-    ;
+    .define_method<void(cv::cudacodec::VideoWriter::*)()>("release", &cv::cudacodec::VideoWriter::release);
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String&, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream&)>("create_video_writer", &cv::cudacodec::createVideoWriter,
     Arg("file_name"), Arg("frame_size"), Arg("codec") = static_cast<const cv::cudacodec::Codec>(cv::cudacodec::H264), Arg("fps") = static_cast<const double>(25.0), Arg("color_format") = static_cast<const cv::cudacodec::ColorFormat>(cv::cudacodec::BGR), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
@@ -130,13 +119,11 @@ void Init_Cudacodec()
     .define_value("YUV420", cv::cudacodec::ChromaFormat::YUV420)
     .define_value("YUV422", cv::cudacodec::ChromaFormat::YUV422)
     .define_value("YUV444", cv::cudacodec::ChromaFormat::YUV444)
-    .define_value("NumFormats", cv::cudacodec::ChromaFormat::NumFormats)
-    ;
+    .define_value("NumFormats", cv::cudacodec::ChromaFormat::NumFormats);
   Enum<cv::cudacodec::DeinterlaceMode> rb_cCvCudacodecDeinterlaceMode = define_enum_under<cv::cudacodec::DeinterlaceMode>("DeinterlaceMode", rb_mCvCudacodec)
     .define_value("Weave", cv::cudacodec::DeinterlaceMode::Weave)
     .define_value("Bob", cv::cudacodec::DeinterlaceMode::Bob)
-    .define_value("Adaptive", cv::cudacodec::DeinterlaceMode::Adaptive)
-    ;
+    .define_value("Adaptive", cv::cudacodec::DeinterlaceMode::Adaptive);
   Enum<cv::cudacodec::ColorSpaceStandard> rb_cCvCudacodecColorSpaceStandard = define_enum_under<cv::cudacodec::ColorSpaceStandard>("ColorSpaceStandard", rb_mCvCudacodec)
     .define_value("BT709", cv::cudacodec::ColorSpaceStandard::BT709)
     .define_value("Unspecified", cv::cudacodec::ColorSpaceStandard::Unspecified)
@@ -147,19 +134,16 @@ void Init_Cudacodec()
     .define_value("SMPTE240M", cv::cudacodec::ColorSpaceStandard::SMPTE240M)
     .define_value("YCgCo", cv::cudacodec::ColorSpaceStandard::YCgCo)
     .define_value("BT2020", cv::cudacodec::ColorSpaceStandard::BT2020)
-    .define_value("BT2020C", cv::cudacodec::ColorSpaceStandard::BT2020C)
-    ;
+    .define_value("BT2020C", cv::cudacodec::ColorSpaceStandard::BT2020C);
   Enum<cv::cudacodec::SurfaceFormat> rb_cCvCudacodecSurfaceFormat = define_enum_under<cv::cudacodec::SurfaceFormat>("SurfaceFormat", rb_mCvCudacodec)
     .define_value("SF_NV12", cv::cudacodec::SurfaceFormat::SF_NV12)
     .define_value("SF_P016", cv::cudacodec::SurfaceFormat::SF_P016)
     .define_value("SF_YUV444", cv::cudacodec::SurfaceFormat::SF_YUV444)
-    .define_value("SF_YUV444_16Bit", cv::cudacodec::SurfaceFormat::SF_YUV444_16Bit)
-    ;
+    .define_value("SF_YUV444_16Bit", cv::cudacodec::SurfaceFormat::SF_YUV444_16Bit);
   Enum<cv::cudacodec::BitDepth> rb_cCvCudacodecBitDepth = define_enum_under<cv::cudacodec::BitDepth>("BitDepth", rb_mCvCudacodec)
     .define_value("EIGHT", cv::cudacodec::BitDepth::EIGHT)
     .define_value("SIXTEEN", cv::cudacodec::BitDepth::SIXTEEN)
-    .define_value("UNCHANGED", cv::cudacodec::BitDepth::UNCHANGED)
-    ;
+    .define_value("UNCHANGED", cv::cudacodec::BitDepth::UNCHANGED);
   rb_mCvCudacodec.define_module_function<void(*)(const cv::cuda::GpuMat&, cv::Mat&)>("map_hist", &cv::cudacodec::MapHist,
     Arg("hist"), Arg("hist_full"));
 
@@ -188,12 +172,10 @@ void Init_Cudacodec()
     .define_attr("color_space_standard", &cv::cudacodec::FormatInfo::colorSpaceStandard)
     .define_attr("enable_histogram", &cv::cudacodec::FormatInfo::enableHistogram)
     .define_attr("n_counter_bit_depth", &cv::cudacodec::FormatInfo::nCounterBitDepth)
-    .define_attr("n_max_histogram_bins", &cv::cudacodec::FormatInfo::nMaxHistogramBins)
-    ;
+    .define_attr("n_max_histogram_bins", &cv::cudacodec::FormatInfo::nMaxHistogramBins);
   Rice::Data_Type<cv::cudacodec::NVSurfaceToColorConverter> rb_cCvCudacodecNVSurfaceToColorConverter = define_class_under<cv::cudacodec::NVSurfaceToColorConverter>(rb_mCvCudacodec, "NVSurfaceToColorConverter")
     .define_method<bool(cv::cudacodec::NVSurfaceToColorConverter::*)(cv::InputArray, cv::OutputArray, const cv::cudacodec::SurfaceFormat, const cv::cudacodec::ColorFormat, const cv::cudacodec::BitDepth, const bool, const bool, cv::cuda::Stream&)>("convert", &cv::cudacodec::NVSurfaceToColorConverter::convert,
-      Arg("yuv"), Arg("color"), Arg("surface_format"), Arg("output_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::UNCHANGED), Arg("planar") = static_cast<const bool>(false), Arg("video_full_range_flag") = static_cast<const bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    ;
+      Arg("yuv"), Arg("color"), Arg("surface_format"), Arg("output_format"), Arg("bit_depth") = static_cast<const cv::cudacodec::BitDepth>(cv::cudacodec::UNCHANGED), Arg("planar") = static_cast<const bool>(false), Arg("video_full_range_flag") = static_cast<const bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::NVSurfaceToColorConverter>(*)(const cv::cudacodec::ColorSpaceStandard, const bool)>("create_nv_surface_to_color_converter", &cv::cudacodec::createNVSurfaceToColorConverter,
     Arg("color_space"), Arg("video_full_range_flag") = static_cast<const bool>(false));
 
@@ -209,8 +191,7 @@ void Init_Cudacodec()
     .define_value("PROP_ALLOW_FRAME_DROP", cv::cudacodec::VideoReaderProps::PROP_ALLOW_FRAME_DROP)
     .define_value("PROP_BIT_DEPTH", cv::cudacodec::VideoReaderProps::PROP_BIT_DEPTH)
     .define_value("PROP_PLANAR", cv::cudacodec::VideoReaderProps::PROP_PLANAR)
-    .define_value("PROP_NOT_SUPPORTED", cv::cudacodec::VideoReaderProps::PROP_NOT_SUPPORTED)
-    ;
+    .define_value("PROP_NOT_SUPPORTED", cv::cudacodec::VideoReaderProps::PROP_NOT_SUPPORTED);
   Rice::Data_Type<cv::cudacodec::VideoReader> rb_cCvCudacodecVideoReader = define_class_under<cv::cudacodec::VideoReader>(rb_mCvCudacodec, "VideoReader")
     .define_method<bool(cv::cudacodec::VideoReader::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("next_frame", &cv::cudacodec::VideoReader::nextFrame,
       Arg("frame"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
@@ -236,8 +217,7 @@ void Init_Cudacodec()
     .define_method<bool(cv::cudacodec::VideoReader::*)(const cv::cudacodec::VideoReaderProps, double&, double) const>("get_video_reader_props", &cv::cudacodec::VideoReader::getVideoReaderProps,
       Arg("property_id"), Arg("property_val_out"), Arg("property_val_in") = static_cast<double>(0))
     .define_method<bool(cv::cudacodec::VideoReader::*)(const int, double&) const>("get", &cv::cudacodec::VideoReader::get,
-      Arg("property_id"), Arg("property_val"))
-    ;
+      Arg("property_id"), Arg("property_val"));
   Rice::Data_Type<cv::cudacodec::RawVideoSource> rb_cCvCudacodecRawVideoSource = define_class_under<cv::cudacodec::RawVideoSource>(rb_mCvCudacodec, "RawVideoSource")
     .define_method<bool(cv::cudacodec::RawVideoSource::*)(unsigned char**, size_t*)>("get_next_packet", &cv::cudacodec::RawVideoSource::getNextPacket,
       ArgBuffer("data"), ArgBuffer("size"))
@@ -249,8 +229,7 @@ void Init_Cudacodec()
       Arg("extra_data"))
     .define_method<bool(cv::cudacodec::RawVideoSource::*)(const int, double&) const>("get", &cv::cudacodec::RawVideoSource::get,
       Arg("property_id"), Arg("property_val"))
-    .define_method<int(cv::cudacodec::RawVideoSource::*)() const>("get_first_frame_idx", &cv::cudacodec::RawVideoSource::getFirstFrameIdx)
-    ;
+    .define_method<int(cv::cudacodec::RawVideoSource::*)() const>("get_first_frame_idx", &cv::cudacodec::RawVideoSource::getFirstFrameIdx);
   Rice::Data_Type<cv::cudacodec::VideoReaderInitParams> rb_cCvCudacodecVideoReaderInitParams = define_class_under<cv::cudacodec::VideoReaderInitParams>(rb_mCvCudacodec, "VideoReaderInitParams")
     .define_constructor(Constructor<cv::cudacodec::VideoReaderInitParams>())
     .define_attr("udp_source", &cv::cudacodec::VideoReaderInitParams::udpSource)
@@ -261,8 +240,7 @@ void Init_Cudacodec()
     .define_attr("src_roi", &cv::cudacodec::VideoReaderInitParams::srcRoi)
     .define_attr("target_roi", &cv::cudacodec::VideoReaderInitParams::targetRoi)
     .define_attr("enable_histogram", &cv::cudacodec::VideoReaderInitParams::enableHistogram)
-    .define_attr("first_frame_idx", &cv::cudacodec::VideoReaderInitParams::firstFrameIdx)
-    ;
+    .define_attr("first_frame_idx", &cv::cudacodec::VideoReaderInitParams::firstFrameIdx);
   rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::String&, const std::vector<int>&, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", &cv::cudacodec::createVideoReader,
     Arg("filename"), Arg("source_params") = static_cast<const std::vector<int>&>(std::vector<int>{}), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
 

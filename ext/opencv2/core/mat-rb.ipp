@@ -80,14 +80,10 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
       Arg("rows"), Arg("cols"))
     .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("zeros", &cv::Mat_<_Tp>::zeros,
       Arg("size"))
-    .template define_singleton_function<cv::MatExpr(*)(int, const int*)>("zeros", &cv::Mat_<_Tp>::zeros,
-      Arg("_ndims"), ArgBuffer("_sizes"))
     .template define_singleton_function<cv::MatExpr(*)(int, int)>("ones", &cv::Mat_<_Tp>::ones,
       Arg("rows"), Arg("cols"))
     .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("ones", &cv::Mat_<_Tp>::ones,
       Arg("size"))
-    .template define_singleton_function<cv::MatExpr(*)(int, const int*)>("ones", &cv::Mat_<_Tp>::ones,
-      Arg("_ndims"), ArgBuffer("_sizes"))
     .template define_singleton_function<cv::MatExpr(*)(int, int)>("eye", &cv::Mat_<_Tp>::eye,
       Arg("rows"), Arg("cols"))
     .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("eye", &cv::Mat_<_Tp>::eye,

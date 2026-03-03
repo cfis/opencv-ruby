@@ -146,8 +146,6 @@ void Init_Core_Mat()
       Arg("vec"))
     .define_constructor(Constructor<cv::_OutputArray, const cv::cuda::GpuMat&>(),
       Arg("d_mat"))
-    .define_constructor(Constructor<cv::_OutputArray, const std::vector<cv::cuda::GpuMat>&>(),
-      Arg("d_mat"))
     .define_constructor(Constructor<cv::_OutputArray, const cv::ogl::Buffer&>(),
       Arg("buf"))
     .define_constructor(Constructor<cv::_OutputArray, const cv::cuda::HostMem&>(),
@@ -864,8 +862,6 @@ void Init_Core_Mat()
       Arg("_m"), Arg("_row"), Arg("_col") = static_cast<int>(0))
     .define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, cv::Point>(),
       Arg("_m"), Arg("_pt"))
-    .define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*, const int*>(),
-      Arg("_m"), ArgBuffer("_idx"))
     .define_constructor(Constructor<cv::MatConstIterator, const cv::MatConstIterator&>(),
       Arg("it"))
     .define_method<cv::MatConstIterator&(cv::MatConstIterator::*)(const cv::MatConstIterator&)>("assign", &cv::MatConstIterator::operator=,
@@ -917,8 +913,6 @@ void Init_Core_Mat()
     .define_constructor(Constructor<cv::SparseMatIterator>())
     .define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
       Arg("_m"))
-    .define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*, const int*>(),
-      Arg("_m"), ArgBuffer("idx"))
     .define_constructor(Constructor<cv::SparseMatIterator, const cv::SparseMatIterator&>(),
       Arg("it"))
     .define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)(const cv::SparseMatIterator&)>("assign", &cv::SparseMatIterator::operator=,

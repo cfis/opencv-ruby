@@ -24,6 +24,7 @@ void Init_Core_Check()
     .define_value("TEST_GE", cv::detail::TestOp::TEST_GE)
     .define_value("TEST_GT", cv::detail::TestOp::TEST_GT)
     .define_value("CV__LAST_TEST_OP", cv::detail::TestOp::CV__LAST_TEST_OP);
+
   Rice::Data_Type<cv::detail::CheckContext> rb_cCvDetailCheckContext = define_class_under<cv::detail::CheckContext>(rb_mCvDetail, "CheckContext")
     .define_constructor(Constructor<cv::detail::CheckContext>())
     .define_attr("func", &cv::detail::CheckContext::func)
@@ -33,6 +34,7 @@ void Init_Core_Check()
     .define_attr("message", &cv::detail::CheckContext::message)
     .define_attr("p1_str", &cv::detail::CheckContext::p1_str)
     .define_attr("p2_str", &cv::detail::CheckContext::p2_str);
+
   rb_mCvDetail.define_module_function<void(*)(const int, const int, const cv::detail::CheckContext&)>("check_failed_auto", &cv::detail::check_failed_auto,
     Arg("v1"), Arg("v2"), Arg("ctx"));
 
@@ -85,6 +87,7 @@ void Init_Core_Check()
     Arg("v"), Arg("ctx"));
 
   #if RUBY_CV_VERSION >= 407
+
   rb_mCvDetail.define_module_function<void(*)(const bool, const bool, const cv::detail::CheckContext&)>("check_failed_auto", &cv::detail::check_failed_auto,
     Arg("v1"), Arg("v2"), Arg("ctx"));
 

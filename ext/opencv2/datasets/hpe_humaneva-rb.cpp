@@ -18,9 +18,11 @@ void Init_Datasets_HpeHumaneva()
     .define_attr("ofs", &cv::datasets::HPE_humanevaObj::ofs)
     .define_attr("file_name", &cv::datasets::HPE_humanevaObj::fileName)
     .define_attr("image_names", &cv::datasets::HPE_humanevaObj::imageNames);
+
   Enum<cv::datasets::datasetType> rb_cCvDatasetsDatasetType = define_enum_under<cv::datasets::datasetType>("DatasetType", rb_mCvDatasets)
     .define_value("humaneva_1", cv::datasets::datasetType::humaneva_1)
     .define_value("humaneva_2", cv::datasets::datasetType::humaneva_2);
+
   Rice::Data_Type<cv::datasets::HPE_humaneva> rb_cCvDatasetsHPEHumaneva = define_class_under<cv::datasets::HPE_humaneva, cv::datasets::Dataset>(rb_mCvDatasets, "HPEHumaneva")
     .define_method<void(cv::datasets::HPE_humaneva::*)(const std::string&)>("load", &cv::datasets::HPE_humaneva::load,
       Arg("path"))

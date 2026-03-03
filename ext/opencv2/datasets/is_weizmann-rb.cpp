@@ -15,6 +15,7 @@ void Init_Datasets_IsWeizmann()
     .define_attr("src_bw", &cv::datasets::IS_weizmannObj::srcBw)
     .define_attr("src_color", &cv::datasets::IS_weizmannObj::srcColor)
     .define_attr("human_seg", &cv::datasets::IS_weizmannObj::humanSeg);
+
   Rice::Data_Type<cv::datasets::IS_weizmann> rb_cCvDatasetsISWeizmann = define_class_under<cv::datasets::IS_weizmann, cv::datasets::Dataset>(rb_mCvDatasets, "ISWeizmann")
     .define_method<void(cv::datasets::IS_weizmann::*)(const std::string&)>("load", &cv::datasets::IS_weizmann::load,
       Arg("path"))

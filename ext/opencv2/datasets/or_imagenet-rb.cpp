@@ -13,6 +13,7 @@ void Init_Datasets_OrImagenet()
     .define_constructor(Constructor<cv::datasets::OR_imagenetObj>())
     .define_attr("id", &cv::datasets::OR_imagenetObj::id)
     .define_attr("image", &cv::datasets::OR_imagenetObj::image);
+
   Rice::Data_Type<cv::datasets::OR_imagenet> rb_cCvDatasetsORImagenet = define_class_under<cv::datasets::OR_imagenet, cv::datasets::Dataset>(rb_mCvDatasets, "ORImagenet")
     .define_method<void(cv::datasets::OR_imagenet::*)(const std::string&)>("load", &cv::datasets::OR_imagenet::load,
       Arg("path"))

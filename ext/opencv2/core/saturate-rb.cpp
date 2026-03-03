@@ -158,6 +158,7 @@ void Init_Core_Saturate()
     Arg("v"));
 
   #if RUBY_CV_VERSION >= 410
+
   rb_mCv.define_module_function<cv::hfloat(*)(uchar)>("saturate_cast", &cv::saturate_cast,
     Arg("v"));
 

@@ -6,12 +6,19 @@ using namespace Rice;
 void Init_Core_Directx()
 {
   Rice::Data_Type<ID3D11Device> rb_cID3D11Device = define_class<ID3D11Device>("ID3D11Device");
+
   Rice::Data_Type<ID3D11Texture2D> rb_cID3D11Texture2D = define_class<ID3D11Texture2D>("ID3D11Texture2D");
+
   Rice::Data_Type<ID3D10Device> rb_cID3D10Device = define_class<ID3D10Device>("ID3D10Device");
+
   Rice::Data_Type<ID3D10Texture2D> rb_cID3D10Texture2D = define_class<ID3D10Texture2D>("ID3D10Texture2D");
+
   Rice::Data_Type<IDirect3DDevice9> rb_cIDirect3DDevice9 = define_class<IDirect3DDevice9>("IDirect3DDevice9");
+
   Rice::Data_Type<IDirect3DDevice9Ex> rb_cIDirect3DDevice9Ex = define_class<IDirect3DDevice9Ex>("IDirect3DDevice9Ex");
+
   Rice::Data_Type<IDirect3DSurface9> rb_cIDirect3DSurface9 = define_class<IDirect3DSurface9>("IDirect3DSurface9");
+
   Module rb_mCv = define_module("Cv");
 
   Module rb_mCvDirectx = define_module_under(rb_mCv, "Directx");

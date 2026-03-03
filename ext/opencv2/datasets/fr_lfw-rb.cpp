@@ -14,6 +14,7 @@ void Init_Datasets_FrLfw()
     .define_attr("image1", &cv::datasets::FR_lfwObj::image1)
     .define_attr("image2", &cv::datasets::FR_lfwObj::image2)
     .define_attr("same", &cv::datasets::FR_lfwObj::same);
+
   Rice::Data_Type<cv::datasets::FR_lfw> rb_cCvDatasetsFRLfw = define_class_under<cv::datasets::FR_lfw, cv::datasets::Dataset>(rb_mCvDatasets, "FRLfw")
     .define_method<void(cv::datasets::FR_lfw::*)(const std::string&)>("load", &cv::datasets::FR_lfw::load,
       Arg("path"))

@@ -17,6 +17,7 @@ void Init_Dpm()
     .define_method<size_t(cv::dpm::DPMDetector::*)() const>("get_class_count", &cv::dpm::DPMDetector::getClassCount)
     .define_singleton_function<cv::Ptr<cv::dpm::DPMDetector>(*)(const std::vector<std::string>&, const std::vector<std::string>&)>("create", &cv::dpm::DPMDetector::create,
       Arg("filenames"), Arg("class_names") = static_cast<const std::vector<std::string>&>(std::vector<std::string>()));
+
   Rice::Data_Type<cv::dpm::DPMDetector::ObjectDetection> rb_cCvDpmDPMDetectorObjectDetection = define_class_under<cv::dpm::DPMDetector::ObjectDetection>(rb_cCvDpmDPMDetector, "ObjectDetection")
     .define_constructor(Constructor<cv::dpm::DPMDetector::ObjectDetection>())
     .define_constructor(Constructor<cv::dpm::DPMDetector::ObjectDetection, const cv::Rect&, float, int>(),

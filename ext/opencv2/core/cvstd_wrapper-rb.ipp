@@ -36,4 +36,3 @@ inline Rice::Data_Type<cv::Ptr<T>> Ptr_instantiate(Rice::Module parent, const ch
     })
     .template define_method<bool(cv::Ptr<T>::*)() const>("empty?", &cv::Ptr<T>::empty);
 }
-

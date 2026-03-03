@@ -51,4 +51,3 @@ inline Rice::Data_Type<cv::traits::SafeFmt<T, available>> SafeFmt_instantiate(Ri
 {
   return Rice::define_class_under<cv::traits::SafeFmt<T, available>>(parent, name);
 }
-

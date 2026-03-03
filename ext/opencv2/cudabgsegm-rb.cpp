@@ -28,6 +28,7 @@ void Init_Cudabgsegm()
     .define_method<double(cv::cuda::BackgroundSubtractorMOG::*)() const>("get_noise_sigma", &cv::cuda::BackgroundSubtractorMOG::getNoiseSigma)
     .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(double)>("set_noise_sigma", &cv::cuda::BackgroundSubtractorMOG::setNoiseSigma,
       Arg("noise_sigma"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::BackgroundSubtractorMOG>(*)(int, int, double, double)>("create_background_subtractor_mog", &cv::cuda::createBackgroundSubtractorMOG,
     Arg("history") = static_cast<int>(200), Arg("nmixtures") = static_cast<int>(5), Arg("background_ratio") = static_cast<double>(0.7), Arg("noise_sigma") = static_cast<double>(0));
 
@@ -38,6 +39,7 @@ void Init_Cudabgsegm()
       Arg("background_image"), Arg("stream"))
     .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
       Arg("background_image"), Arg("stream"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::BackgroundSubtractorMOG2>(*)(int, double, bool)>("create_background_subtractor_mog2", &cv::cuda::createBackgroundSubtractorMOG2,
     Arg("history") = static_cast<int>(500), Arg("var_threshold") = static_cast<double>(16), Arg("detect_shadows") = static_cast<bool>(true));
 }

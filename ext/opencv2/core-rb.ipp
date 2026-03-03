@@ -3,4 +3,3 @@ inline Rice::Data_Type<cv::ParamType<_Tp, _EnumTp>> ParamType_instantiate(Rice::
 {
   return Rice::define_class_under<cv::ParamType<_Tp, _EnumTp>>(parent, name);
 }
-

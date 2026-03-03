@@ -26,7 +26,6 @@ void Init_Core_Persistence()
   Rice::Data_Type<cv::FileStorage> rb_cCvFileStorage = define_class_under<cv::FileStorage>(rb_mCv, "FileStorage");
 
   Rice::Data_Type<cv::FileStorage::Impl> rb_cCvFileStorageImpl = define_class_under<cv::FileStorage::Impl>(rb_cCvFileStorage, "Impl");
-
   rb_cCvFileStorage
     .define_constructor(Constructor<cv::FileStorage>())
     .define_constructor(Constructor<cv::FileStorage, const cv::String&, int, const cv::String&>(),
@@ -68,6 +67,7 @@ void Init_Core_Persistence()
     .define_attr("state", &cv::FileStorage::state)
     .define_attr("elname", &cv::FileStorage::elname)
     .define_attr("p", &cv::FileStorage::p);
+
   Enum<cv::FileStorage::Mode> rb_cCvFileStorageMode = define_enum_under<cv::FileStorage::Mode>("Mode", rb_cCvFileStorage)
     .define_value("READ", cv::FileStorage::Mode::READ)
     .define_value("WRITE", cv::FileStorage::Mode::WRITE)
@@ -80,11 +80,13 @@ void Init_Core_Persistence()
     .define_value("FORMAT_JSON", cv::FileStorage::Mode::FORMAT_JSON)
     .define_value("BASE64", cv::FileStorage::Mode::BASE64)
     .define_value("WRITE_BASE64", cv::FileStorage::Mode::WRITE_BASE64);
+
   Enum<cv::FileStorage::State> rb_cCvFileStorageState = define_enum_under<cv::FileStorage::State>("State", rb_cCvFileStorage)
     .define_value("UNDEFINED", cv::FileStorage::State::UNDEFINED)
     .define_value("VALUE_EXPECTED", cv::FileStorage::State::VALUE_EXPECTED)
     .define_value("NAME_EXPECTED", cv::FileStorage::State::NAME_EXPECTED)
     .define_value("INSIDE_MAP", cv::FileStorage::State::INSIDE_MAP);
+
   Rice::Data_Type<cv::FileNode> rb_cCvFileNode = define_class_under<cv::FileNode>(rb_mCv, "FileNode")
     .define_constructor(Constructor<cv::FileNode>())
     .define_constructor(Constructor<cv::FileNode, const cv::FileStorage*, size_t, size_t>(),
@@ -172,6 +174,7 @@ void Init_Core_Persistence()
     .define_constant("UNIFORM", (int)cv::FileNode::UNIFORM)
     .define_constant("EMPTY", (int)cv::FileNode::EMPTY)
     .define_constant("NAMED", (int)cv::FileNode::NAMED);
+
   Rice::detail::protect(rb_alias, rb_cCvFileNode, rb_intern("each"), rb_intern("each_const"));
 
   Rice::Data_Type<cv::FileNodeIterator> rb_cCvFileNodeIterator = define_class_under<cv::FileNodeIterator>(rb_mCv, "FileNodeIterator")
@@ -193,6 +196,7 @@ void Init_Core_Persistence()
     .define_method<size_t(cv::FileNodeIterator::*)() const>("remaining", &cv::FileNodeIterator::remaining)
     .define_method<bool(cv::FileNodeIterator::*)(const cv::FileNodeIterator&) const>("equal_to", &cv::FileNodeIterator::equalTo,
       Arg("it"));
+
   rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, int)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
@@ -276,6 +280,7 @@ void Init_Core_Persistence()
   Rice::Data_Type<cv::internal::WriteStructContext> rb_cCvInternalWriteStructContext = define_class_under<cv::internal::WriteStructContext>(rb_mCvInternal, "WriteStructContext")
     .define_constructor(Constructor<cv::internal::WriteStructContext, cv::FileStorage&, const cv::String&, int, const cv::String&>(),
       Arg("_fs"), Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String&>(cv::String()));
+
   rb_mCv.define_module_function<void(*)(cv::FileStorage&, const int&)>("write", &cv::write,
     Arg("fs"), Arg("value"));
 

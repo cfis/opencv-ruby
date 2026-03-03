@@ -18,6 +18,7 @@ void Init_CoreDetect()
     .define_attr("class_idx", &cv::dnn_objdetect::object::class_idx)
     .define_attr("label_name", &cv::dnn_objdetect::object::label_name)
     .define_attr("class_prob", &cv::dnn_objdetect::object::class_prob);
+
   Rice::Data_Type<cv::dnn_objdetect::InferBbox> rb_cCvDnnObjdetectInferBbox = define_class_under<cv::dnn_objdetect::InferBbox>(rb_mCvDnnObjdetect, "InferBbox")
     .define_constructor(Constructor<cv::dnn_objdetect::InferBbox, cv::Mat, cv::Mat, cv::Mat>(),
       Arg("_delta_bbox"), Arg("_class_scores"), Arg("_conf_scores"))

@@ -9,7 +9,7 @@ void Init_Face_Bif()
 
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
-  Rice::Data_Type<cv::face::BIF> rb_cCvFaceBIF = define_class_under<cv::face::BIF, cv::Algorithm>(rb_mCvFace, "Bif")
+  Rice::Data_Type<cv::face::BIF> rb_cCvFaceBIF = define_class_under<cv::face::BIF, cv::Algorithm>(rb_mCvFace, "BIF")
     .define_method<int(cv::face::BIF::*)() const>("get_num_bands", &cv::face::BIF::getNumBands)
     .define_method<int(cv::face::BIF::*)() const>("get_num_rotations", &cv::face::BIF::getNumRotations)
     .define_method<void(cv::face::BIF::*)(cv::InputArray, cv::OutputArray) const>("compute", &cv::face::BIF::compute,

@@ -10,7 +10,6 @@ void Init_Core_Async()
   Rice::Data_Type<cv::AsyncArray> rb_cCvAsyncArray = define_class_under<cv::AsyncArray>(rb_mCv, "AsyncArray");
 
   Rice::Data_Type<cv::AsyncArray::Impl> rb_cCvAsyncArrayImpl = define_class_under<cv::AsyncArray::Impl>(rb_cCvAsyncArray, "Impl");
-
   rb_cCvAsyncArray
     .define_constructor(Constructor<cv::AsyncArray>())
     .define_constructor(Constructor<cv::AsyncArray, const cv::AsyncArray&>(),

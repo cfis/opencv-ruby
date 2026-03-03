@@ -17,12 +17,14 @@ void Init_Datasets_MsmEpfl()
     .define_attr("mat4", &cv::datasets::cameraParam::mat4, Rice::AttrAccess::Read)
     .define_attr("image_width", &cv::datasets::cameraParam::imageWidth)
     .define_attr("image_height", &cv::datasets::cameraParam::imageHeight);
+
   Rice::Data_Type<cv::datasets::MSM_epflObj> rb_cCvDatasetsMSMEpflObj = define_class_under<cv::datasets::MSM_epflObj, cv::datasets::Object>(rb_mCvDatasets, "MSMEpflObj")
     .define_constructor(Constructor<cv::datasets::MSM_epflObj>())
     .define_attr("image_name", &cv::datasets::MSM_epflObj::imageName)
     .define_attr("bounding", &cv::datasets::MSM_epflObj::bounding)
     .define_attr("p", &cv::datasets::MSM_epflObj::p)
     .define_attr("camera", &cv::datasets::MSM_epflObj::camera);
+
   Rice::Data_Type<cv::datasets::MSM_epfl> rb_cCvDatasetsMSMEpfl = define_class_under<cv::datasets::MSM_epfl, cv::datasets::Dataset>(rb_mCvDatasets, "MSMEpfl")
     .define_method<void(cv::datasets::MSM_epfl::*)(const std::string&)>("load", &cv::datasets::MSM_epfl::load,
       Arg("path"))

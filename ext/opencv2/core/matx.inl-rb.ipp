@@ -25,4 +25,3 @@ inline Rice::Data_Type<cv::VecCommaInitializer<_Tp, m>> VecCommaInitializer_inst
       Arg("_vec"))
     .template define_method<cv::Vec<_Tp, m>(cv::VecCommaInitializer<_Tp, m>::*)() const>("dereference", &cv::VecCommaInitializer<_Tp, m>::operator*);
 }
-

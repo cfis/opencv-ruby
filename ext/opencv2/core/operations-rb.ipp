@@ -13,4 +13,3 @@ inline Rice::Data_Type<cv::internal::Matx_FastSolveOp<_Tp, m, l, n>> Matx_FastSo
     .template define_method<bool(cv::internal::Matx_FastSolveOp<_Tp, m, l, n>::*)(const cv::Matx<_Tp, m, l>&, const cv::Matx<_Tp, m, n>&, cv::Matx<_Tp, l, n>&, int) const>("call", &cv::internal::Matx_FastSolveOp<_Tp, m, l, n>::operator(),
       Arg("a"), Arg("b"), Arg("x"), Arg("method"));
 }
-

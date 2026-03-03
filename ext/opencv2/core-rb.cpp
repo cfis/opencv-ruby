@@ -21,6 +21,7 @@ void Init_Core()
     .define_attr("func", &cv::Exception::func)
     .define_attr("file", &cv::Exception::file)
     .define_attr("line", &cv::Exception::line);
+
   rb_mCv.define_module_function<void(*)(const cv::Exception&)>("error", &cv::error,
     Arg("exc"));
 
@@ -29,6 +30,7 @@ void Init_Core()
     .define_value("SORT_EVERY_COLUMN", cv::SortFlags::SORT_EVERY_COLUMN)
     .define_value("SORT_ASCENDING", cv::SortFlags::SORT_ASCENDING)
     .define_value("SORT_DESCENDING", cv::SortFlags::SORT_DESCENDING);
+
   Enum<cv::CovarFlags> rb_cCvCovarFlags = define_enum_under<cv::CovarFlags>("CovarFlags", rb_mCv)
     .define_value("COVAR_SCRAMBLED", cv::CovarFlags::COVAR_SCRAMBLED)
     .define_value("COVAR_NORMAL", cv::CovarFlags::COVAR_NORMAL)
@@ -36,12 +38,14 @@ void Init_Core()
     .define_value("COVAR_SCALE", cv::CovarFlags::COVAR_SCALE)
     .define_value("COVAR_ROWS", cv::CovarFlags::COVAR_ROWS)
     .define_value("COVAR_COLS", cv::CovarFlags::COVAR_COLS);
+
   Enum<cv::ReduceTypes> rb_cCvReduceTypes = define_enum_under<cv::ReduceTypes>("ReduceTypes", rb_mCv)
     .define_value("REDUCE_SUM", cv::ReduceTypes::REDUCE_SUM)
     .define_value("REDUCE_AVG", cv::ReduceTypes::REDUCE_AVG)
     .define_value("REDUCE_MAX", cv::ReduceTypes::REDUCE_MAX)
     .define_value("REDUCE_MIN", cv::ReduceTypes::REDUCE_MIN)
     .define_value("REDUCE_SUM2", cv::ReduceTypes::REDUCE_SUM2);
+
   rb_mCv.define_module_function<void(*)(cv::Mat&, cv::Mat&)>("swap", &cv::swap,
     Arg("a"), Arg("b"));
 
@@ -181,6 +185,7 @@ void Init_Core()
     .define_value("ROTATE_90_CLOCKWISE", cv::RotateFlags::ROTATE_90_CLOCKWISE)
     .define_value("ROTATE_180", cv::RotateFlags::ROTATE_180)
     .define_value("ROTATE_90_COUNTERCLOCKWISE", cv::RotateFlags::ROTATE_90_COUNTERCLOCKWISE);
+
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("rotate", &cv::rotate,
     Arg("src"), Arg("dst"), Arg("rotate_code"));
 
@@ -399,7 +404,7 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputOutputArray, double, cv::RNG*)>("rand_shuffle", &cv::randShuffle,
     Arg("dst"), Arg("iter_factor") = static_cast<double>(1.), Arg("rng") = static_cast<cv::RNG*>(0));
 
-  Rice::Data_Type<cv::PCA> rb_cCvPCA = define_class_under<cv::PCA>(rb_mCv, "Pca")
+  Rice::Data_Type<cv::PCA> rb_cCvPCA = define_class_under<cv::PCA>(rb_mCv, "PCA")
     .define_constructor(Constructor<cv::PCA>())
     .define_constructor(Constructor<cv::PCA, cv::InputArray, cv::InputArray, int, int>(),
       Arg("data"), Arg("mean"), Arg("flags"), Arg("max_components") = static_cast<int>(0))
@@ -424,11 +429,13 @@ void Init_Core()
     .define_attr("eigenvectors", &cv::PCA::eigenvectors)
     .define_attr("eigenvalues", &cv::PCA::eigenvalues)
     .define_attr("mean", &cv::PCA::mean);
+
   Enum<cv::PCA::Flags> rb_cCvPCAFlags = define_enum_under<cv::PCA::Flags>("Flags", rb_cCvPCA)
     .define_value("DATA_AS_ROW", cv::PCA::Flags::DATA_AS_ROW)
     .define_value("DATA_AS_COL", cv::PCA::Flags::DATA_AS_COL)
     .define_value("USE_AVG", cv::PCA::Flags::USE_AVG);
-  Rice::Data_Type<cv::LDA> rb_cCvLDA = define_class_under<cv::LDA>(rb_mCv, "Lda")
+
+  Rice::Data_Type<cv::LDA> rb_cCvLDA = define_class_under<cv::LDA>(rb_mCv, "LDA")
     .define_constructor(Constructor<cv::LDA, int>(),
       Arg("num_components") = static_cast<int>(0))
     .define_constructor(Constructor<cv::LDA, cv::InputArrayOfArrays, cv::InputArray, int>(),
@@ -453,7 +460,8 @@ void Init_Core()
       Arg("w"), Arg("mean"), Arg("src"))
     .define_singleton_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::InputArray)>("subspace_reconstruct", &cv::LDA::subspaceReconstruct,
       Arg("w"), Arg("mean"), Arg("src"));
-  Rice::Data_Type<cv::SVD> rb_cCvSVD = define_class_under<cv::SVD>(rb_mCv, "Svd")
+
+  Rice::Data_Type<cv::SVD> rb_cCvSVD = define_class_under<cv::SVD>(rb_mCv, "SVD")
     .define_constructor(Constructor<cv::SVD>())
     .define_constructor(Constructor<cv::SVD, cv::InputArray, int>(),
       Arg("src"), Arg("flags") = static_cast<int>(0))
@@ -472,11 +480,13 @@ void Init_Core()
     .define_attr("u", &cv::SVD::u)
     .define_attr("w", &cv::SVD::w)
     .define_attr("vt", &cv::SVD::vt);
+
   Enum<cv::SVD::Flags> rb_cCvSVDFlags = define_enum_under<cv::SVD::Flags>("Flags", rb_cCvSVD)
     .define_value("MODIFY_A", cv::SVD::Flags::MODIFY_A)
     .define_value("NO_UV", cv::SVD::Flags::NO_UV)
     .define_value("FULL_UV", cv::SVD::Flags::FULL_UV);
-  Rice::Data_Type<cv::RNG> rb_cCvRNG = define_class_under<cv::RNG>(rb_mCv, "Rng")
+
+  Rice::Data_Type<cv::RNG> rb_cCvRNG = define_class_under<cv::RNG>(rb_mCv, "RNG")
     .define_constructor(Constructor<cv::RNG>())
     .define_constructor(Constructor<cv::RNG, uint64>(),
       Arg("state"))
@@ -531,6 +541,7 @@ void Init_Core()
       Arg("other"))
     .define_constant("UNIFORM", (int)cv::RNG::UNIFORM)
     .define_constant("NORMAL", (int)cv::RNG::NORMAL);
+
   Rice::Data_Type<cv::RNG_MT19937> rb_cCvRNGMT19937 = define_class_under<cv::RNG_MT19937>(rb_mCv, "RngMt19937")
     .define_constructor(Constructor<cv::RNG_MT19937>())
     .define_constructor(Constructor<cv::RNG_MT19937, unsigned int>(),
@@ -563,16 +574,19 @@ void Init_Core()
       Arg("a"), Arg("b"))
     .define_method<double(cv::RNG_MT19937::*)(double, double)>("uniform", &cv::RNG_MT19937::uniform,
       Arg("a"), Arg("b"));
+
   Enum<cv::KmeansFlags> rb_cCvKmeansFlags = define_enum_under<cv::KmeansFlags>("KmeansFlags", rb_mCv)
     .define_value("KMEANS_RANDOM_CENTERS", cv::KmeansFlags::KMEANS_RANDOM_CENTERS)
     .define_value("KMEANS_PP_CENTERS", cv::KmeansFlags::KMEANS_PP_CENTERS)
     .define_value("KMEANS_USE_INITIAL_LABELS", cv::KmeansFlags::KMEANS_USE_INITIAL_LABELS);
+
   rb_mCv.define_module_function<double(*)(cv::InputArray, int, cv::InputOutputArray, cv::TermCriteria, int, int, cv::OutputArray)>("kmeans", &cv::kmeans,
     Arg("data"), Arg("k"), Arg("best_labels"), Arg("criteria"), Arg("attempts"), Arg("flags"), Arg("centers") = static_cast<cv::OutputArray>(cv::noArray()));
 
   Rice::Data_Type<cv::Formatted> rb_cCvFormatted = define_class_under<cv::Formatted>(rb_mCv, "Formatted")
     .define_method<const char*(cv::Formatted::*)()>("next", &cv::Formatted::next)
     .define_method<void(cv::Formatted::*)()>("reset", &cv::Formatted::reset);
+
   Rice::Data_Type<cv::Formatter> rb_cCvFormatter = define_class_under<cv::Formatter>(rb_mCv, "Formatter")
     .define_method<cv::Ptr<cv::Formatted>(cv::Formatter::*)(const cv::Mat&) const>("format", &cv::Formatter::format,
       Arg("mtx"))
@@ -586,6 +600,7 @@ void Init_Core()
       Arg("ml") = static_cast<bool>(true))
     .define_singleton_function<cv::Ptr<cv::Formatter>(*)(cv::Formatter::FormatType)>("get", &cv::Formatter::get,
       Arg("fmt") = static_cast<cv::Formatter::FormatType>(cv::Formatter::FormatType::FMT_DEFAULT));
+
   Enum<cv::Formatter::FormatType> rb_cCvFormatterFormatType = define_enum_under<cv::Formatter::FormatType>("FormatType", rb_cCvFormatter)
     .define_value("FMT_DEFAULT", cv::Formatter::FormatType::FMT_DEFAULT)
     .define_value("FMT_MATLAB", cv::Formatter::FormatType::FMT_MATLAB)
@@ -593,6 +608,7 @@ void Init_Core()
     .define_value("FMT_PYTHON", cv::Formatter::FormatType::FMT_PYTHON)
     .define_value("FMT_NUMPY", cv::Formatter::FormatType::FMT_NUMPY)
     .define_value("FMT_C", cv::Formatter::FormatType::FMT_C);
+
   Rice::Data_Type<cv::Algorithm> rb_cCvAlgorithm = define_class_under<cv::Algorithm>(rb_mCv, "Algorithm")
     .define_constructor(Constructor<cv::Algorithm>())
     .define_method<void(cv::Algorithm::*)()>("clear", &cv::Algorithm::clear)
@@ -608,6 +624,7 @@ void Init_Core()
     .define_method<void(cv::Algorithm::*)(const cv::String&) const>("save", &cv::Algorithm::save,
       Arg("filename"))
     .define_method<cv::String(cv::Algorithm::*)() const>("get_default_name", &cv::Algorithm::getDefaultName);
+
   Enum<cv::Param> rb_cCvParam = define_enum_under<cv::Param>("Param", rb_mCv)
     .define_value("INT", cv::Param::INT)
     .define_value("BOOLEAN", cv::Param::BOOLEAN)
@@ -621,39 +638,51 @@ void Init_Core()
     .define_value("UINT64", cv::Param::UINT64)
     .define_value("UCHAR", cv::Param::UCHAR)
     .define_value("SCALAR", cv::Param::SCALAR);
+
   Rice::Data_Type<cv::ParamType<bool>> rb_cCvParamTypeBool = define_class_under<cv::ParamType<bool>>(rb_mCv, "ParamTypeBool")
     .define_constructor(Constructor<cv::ParamType<bool>>())
     .define_constant("Type", cv::ParamType<bool>::type);
+
   Rice::Data_Type<cv::ParamType<int>> rb_cCvParamTypeInt = define_class_under<cv::ParamType<int>>(rb_mCv, "ParamTypeInt")
     .define_constructor(Constructor<cv::ParamType<int>>())
     .define_constant("Type", cv::ParamType<int>::type);
+
   Rice::Data_Type<cv::ParamType<double>> rb_cCvParamTypeDouble = define_class_under<cv::ParamType<double>>(rb_mCv, "ParamTypeDouble")
     .define_constructor(Constructor<cv::ParamType<double>>())
     .define_constant("Type", cv::ParamType<double>::type);
+
   Rice::Data_Type<cv::ParamType<cv::String>> rb_cCvParamTypeString = define_class_under<cv::ParamType<cv::String>>(rb_mCv, "ParamTypeString")
     .define_constructor(Constructor<cv::ParamType<cv::String>>())
     .define_constant("Type", cv::ParamType<cv::String>::type);
+
   Rice::Data_Type<cv::ParamType<cv::Mat>> rb_cCvParamTypeMat = define_class_under<cv::ParamType<cv::Mat>>(rb_mCv, "ParamTypeMat")
     .define_constructor(Constructor<cv::ParamType<cv::Mat>>())
     .define_constant("Type", cv::ParamType<cv::Mat>::type);
+
   Rice::Data_Type<cv::ParamType<std::vector<cv::Mat>>> rb_cCvParamTypeStdVectorMat = define_class_under<cv::ParamType<std::vector<cv::Mat>>>(rb_mCv, "VectorMat")
     .define_constructor(Constructor<cv::ParamType<std::vector<cv::Mat>>>())
     .define_constant("Type", cv::ParamType<std::vector<cv::Mat>>::type);
+
   Rice::Data_Type<cv::ParamType<cv::Algorithm>> rb_cCvParamTypeAlgorithm = define_class_under<cv::ParamType<cv::Algorithm>>(rb_mCv, "ParamTypeAlgorithm")
     .define_constructor(Constructor<cv::ParamType<cv::Algorithm>>())
     .define_constant("Type", cv::ParamType<cv::Algorithm>::type);
+
   Rice::Data_Type<cv::ParamType<float>> rb_cCvParamTypeFloat = define_class_under<cv::ParamType<float>>(rb_mCv, "ParamTypeFloat")
     .define_constructor(Constructor<cv::ParamType<float>>())
     .define_constant("Type", cv::ParamType<float>::type);
+
   Rice::Data_Type<cv::ParamType<unsigned int>> rb_cCvParamTypeUnsignedInt = define_class_under<cv::ParamType<unsigned int>>(rb_mCv, "ParamTypeUnsignedInt")
     .define_constructor(Constructor<cv::ParamType<unsigned int>>())
     .define_constant("Type", cv::ParamType<unsigned int>::type);
+
   Rice::Data_Type<cv::ParamType<uint64>> rb_cCvParamTypeUint64 = define_class_under<cv::ParamType<uint64>>(rb_mCv, "ParamTypeUint64")
     .define_constructor(Constructor<cv::ParamType<uint64>>())
     .define_constant("Type", cv::ParamType<uint64>::type);
+
   Rice::Data_Type<cv::ParamType<uchar>> rb_cCvParamTypeUchar = define_class_under<cv::ParamType<uchar>>(rb_mCv, "ParamTypeUchar")
     .define_constructor(Constructor<cv::ParamType<uchar>>())
     .define_constant("Type", cv::ParamType<uchar>::type);
+
   Rice::Data_Type<cv::ParamType<cv::Scalar>> rb_cCvParamTypeScalar = define_class_under<cv::ParamType<cv::Scalar>>(rb_mCv, "ParamTypeScalar")
     .define_constructor(Constructor<cv::ParamType<cv::Scalar>>())
     .define_constant("Type", cv::ParamType<cv::Scalar>::type);

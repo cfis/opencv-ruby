@@ -279,4 +279,3 @@ inline Rice::Data_Type<cv::SparseMatIterator_<_Tp>> SparseMatIterator__instantia
     .template define_method<cv::SparseMatIterator_<_Tp>(cv::SparseMatIterator_<_Tp>::*)(int)>("increment_post", &cv::SparseMatIterator_<_Tp>::operator++,
       Arg("arg_0"));
 }
-

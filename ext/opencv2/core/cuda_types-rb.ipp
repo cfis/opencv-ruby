@@ -61,4 +61,3 @@ inline Rice::Data_Type<cv::cuda::PtrStepSz<T>> PtrStepSz_instantiate(Rice::Modul
     .template define_method<const T&(cv::cuda::PtrStepSz<T>::*)(const cv::Point&) const>("call", &cv::cuda::PtrStepSz<T>::operator(),
       Arg("pos"));
 }
-

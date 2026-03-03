@@ -46,4 +46,3 @@ inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module parent, c
     .define_attr("m_p_parent", &cv::Node<OBJECT>::m_pParent)
     .define_attr("m_childs", &cv::Node<OBJECT>::m_childs);
 }
-

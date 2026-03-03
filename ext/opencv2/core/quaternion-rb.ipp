@@ -116,4 +116,3 @@ inline Rice::Data_Type<cv::Quat<_Tp>> Quat_instantiate(Rice::Module parent, cons
     .define_attr("y", &cv::Quat<_Tp>::y)
     .define_attr("z", &cv::Quat<_Tp>::z);
 }
-

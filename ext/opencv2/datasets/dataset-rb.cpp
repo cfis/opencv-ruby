@@ -11,6 +11,7 @@ void Init_Datasets_Dataset()
 
   Rice::Data_Type<cv::datasets::Object> rb_cCvDatasetsObject = define_class_under<cv::datasets::Object>(rb_mCvDatasets, "Object")
     .define_constructor(Constructor<cv::datasets::Object>());
+
   Rice::Data_Type<cv::datasets::Dataset> rb_cCvDatasetsDataset = define_class_under<cv::datasets::Dataset>(rb_mCvDatasets, "Dataset")
     .define_method<void(cv::datasets::Dataset::*)(const std::string&)>("load", &cv::datasets::Dataset::load,
       Arg("path"))

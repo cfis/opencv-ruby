@@ -65,6 +65,7 @@ void Init_Core_Base()
     .define_value("OpenCLDoubleNotSupported", cv::Error::Code::OpenCLDoubleNotSupported)
     .define_value("OpenCLInitError", cv::Error::Code::OpenCLInitError)
     .define_value("OpenCLNoAMDBlasFft", cv::Error::Code::OpenCLNoAMDBlasFft);
+
   Enum<cv::DecompTypes> rb_cCvDecompTypes = define_enum_under<cv::DecompTypes>("DecompTypes", rb_mCv)
     .define_value("DECOMP_LU", cv::DecompTypes::DECOMP_LU)
     .define_value("DECOMP_SVD", cv::DecompTypes::DECOMP_SVD)
@@ -72,6 +73,7 @@ void Init_Core_Base()
     .define_value("DECOMP_CHOLESKY", cv::DecompTypes::DECOMP_CHOLESKY)
     .define_value("DECOMP_QR", cv::DecompTypes::DECOMP_QR)
     .define_value("DECOMP_NORMAL", cv::DecompTypes::DECOMP_NORMAL);
+
   Enum<cv::NormTypes> rb_cCvNormTypes = define_enum_under<cv::NormTypes>("NormTypes", rb_mCv)
     .define_value("NORM_INF", cv::NormTypes::NORM_INF)
     .define_value("NORM_L1", cv::NormTypes::NORM_L1)
@@ -82,6 +84,7 @@ void Init_Core_Base()
     .define_value("NORM_TYPE_MASK", cv::NormTypes::NORM_TYPE_MASK)
     .define_value("NORM_RELATIVE", cv::NormTypes::NORM_RELATIVE)
     .define_value("NORM_MINMAX", cv::NormTypes::NORM_MINMAX);
+
   Enum<cv::CmpTypes> rb_cCvCmpTypes = define_enum_under<cv::CmpTypes>("CmpTypes", rb_mCv)
     .define_value("CMP_EQ", cv::CmpTypes::CMP_EQ)
     .define_value("CMP_GT", cv::CmpTypes::CMP_GT)
@@ -89,10 +92,12 @@ void Init_Core_Base()
     .define_value("CMP_LT", cv::CmpTypes::CMP_LT)
     .define_value("CMP_LE", cv::CmpTypes::CMP_LE)
     .define_value("CMP_NE", cv::CmpTypes::CMP_NE);
+
   Enum<cv::GemmFlags> rb_cCvGemmFlags = define_enum_under<cv::GemmFlags>("GemmFlags", rb_mCv)
     .define_value("GEMM_1_T", cv::GemmFlags::GEMM_1_T)
     .define_value("GEMM_2_T", cv::GemmFlags::GEMM_2_T)
     .define_value("GEMM_3_T", cv::GemmFlags::GEMM_3_T);
+
   Enum<cv::DftFlags> rb_cCvDftFlags = define_enum_under<cv::DftFlags>("DftFlags", rb_mCv)
     .define_value("DFT_INVERSE", cv::DftFlags::DFT_INVERSE)
     .define_value("DFT_SCALE", cv::DftFlags::DFT_SCALE)
@@ -102,6 +107,7 @@ void Init_Core_Base()
     .define_value("DFT_COMPLEX_INPUT", cv::DftFlags::DFT_COMPLEX_INPUT)
     .define_value("DCT_INVERSE", cv::DftFlags::DCT_INVERSE)
     .define_value("DCT_ROWS", cv::DftFlags::DCT_ROWS);
+
   Enum<cv::BorderTypes> rb_cCvBorderTypes = define_enum_under<cv::BorderTypes>("BorderTypes", rb_mCv)
     .define_value("BORDER_CONSTANT", cv::BorderTypes::BORDER_CONSTANT)
     .define_value("BORDER_REPLICATE", cv::BorderTypes::BORDER_REPLICATE)
@@ -112,6 +118,7 @@ void Init_Core_Base()
     .define_value("BORDER_REFLECT101", cv::BorderTypes::BORDER_REFLECT101)
     .define_value("BORDER_DEFAULT", cv::BorderTypes::BORDER_DEFAULT)
     .define_value("BORDER_ISOLATED", cv::BorderTypes::BORDER_ISOLATED);
+
   rb_mCv.define_module_function<void(*)(int, const cv::String&, const char*, const char*, int)>("error", &cv::error,
     Arg("code"), Arg("err"), Arg("func"), Arg("file"), Arg("line"));
 
@@ -123,6 +130,7 @@ void Init_Core_Base()
     .define_constant("NormType", cv::Hamming::normType)
     .define_method<cv::Hamming::ResultType(cv::Hamming::*)(const unsigned char*, const unsigned char*, int) const>("call", &cv::Hamming::operator(),
       ArgBuffer("a"), ArgBuffer("b"), Arg("size"));
+
   rb_mCv.define_module_function<int(*)(uchar)>("cv_abs", &cv::cv_abs,
     Arg("x"));
 
@@ -168,8 +176,11 @@ void Init_Core_Base()
   Module rb_mCvOgl = define_module_under(rb_mCv, "Ogl");
 
   Rice::Data_Type<cv::ogl::Buffer> rb_cCvOglBuffer = define_class_under<cv::ogl::Buffer>(rb_mCvOgl, "Buffer");
+
   Rice::Data_Type<cv::ogl::Texture2D> rb_cCvOglTexture2D = define_class_under<cv::ogl::Texture2D>(rb_mCvOgl, "Texture2D");
+
   Rice::Data_Type<cv::ogl::Arrays> rb_cCvOglArrays = define_class_under<cv::ogl::Arrays>(rb_mCvOgl, "Arrays");
+
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Module rb_mCvCudev = define_module_under(rb_mCv, "Cudev");

@@ -139,4 +139,3 @@ inline Rice::Data_Type<cv::Scalar_<_Tp>> Scalar__instantiate(Rice::Module parent
     .template define_method<cv::Scalar_<_Tp>(cv::Scalar_<_Tp>::*)() const>("conj", &cv::Scalar_<_Tp>::conj)
     .template define_method<bool(cv::Scalar_<_Tp>::*)() const>("real?", &cv::Scalar_<_Tp>::isReal);
 }
-

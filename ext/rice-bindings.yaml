@@ -17,6 +17,7 @@ match:
 skip:
   - opencv2/cudev.hpp
   - opencv2/core/cuda.inl.hpp
+  - opencv2/core/eigen.hpp
   - opencv2/core/dualquaternion.inl.hpp
   - opencv2/core/quaternion.inl.hpp
   - opencv2/core/hal/hal.hpp
@@ -94,7 +95,7 @@ rename_types:
 
 # === Symbol Filtering ===
 export_macros: []
-version_macro: RUBY_CV_VERSION
+version_check: RUBY_CV_VERSION
 
 symbols:
   skip:

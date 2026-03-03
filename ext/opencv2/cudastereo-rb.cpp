@@ -12,6 +12,7 @@ void Init_Cudastereo()
   Rice::Data_Type<cv::cuda::StereoBM> rb_cCvCudaStereoBM = define_class_under<cv::cuda::StereoBM, cv::StereoBM>(rb_mCvCuda, "StereoBM")
     .define_method<void(cv::cuda::StereoBM::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("compute", &cv::cuda::StereoBM::compute,
       Arg("left"), Arg("right"), Arg("disparity"), Arg("stream"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::StereoBM>(*)(int, int)>("create_stereo_bm", &cv::cuda::createStereoBM,
     Arg("num_disparities") = static_cast<int>(64), Arg("block_size") = static_cast<int>(19));
 
@@ -43,6 +44,7 @@ void Init_Cudastereo()
       Arg("msg_type"))
     .define_singleton_function<void(*)(int, int, int&, int&, int&)>("estimate_recommended_params", &cv::cuda::StereoBeliefPropagation::estimateRecommendedParams,
       Arg("width"), Arg("height"), Arg("ndisp"), Arg("iters"), Arg("levels"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::StereoBeliefPropagation>(*)(int, int, int, int)>("create_stereo_belief_propagation", &cv::cuda::createStereoBeliefPropagation,
     Arg("ndisp") = static_cast<int>(64), Arg("iters") = static_cast<int>(5), Arg("levels") = static_cast<int>(5), Arg("msg_type") = static_cast<int>(CV_32F));
 
@@ -55,6 +57,7 @@ void Init_Cudastereo()
       Arg("use_local_init_data_cost"))
     .define_singleton_function<void(*)(int, int, int&, int&, int&, int&)>("estimate_recommended_params", &cv::cuda::StereoConstantSpaceBP::estimateRecommendedParams,
       Arg("width"), Arg("height"), Arg("ndisp"), Arg("iters"), Arg("levels"), Arg("nr_plane"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::StereoConstantSpaceBP>(*)(int, int, int, int, int)>("create_stereo_constant_space_bp", &cv::cuda::createStereoConstantSpaceBP,
     Arg("ndisp") = static_cast<int>(128), Arg("iters") = static_cast<int>(8), Arg("levels") = static_cast<int>(4), Arg("nr_plane") = static_cast<int>(4), Arg("msg_type") = static_cast<int>(CV_32F));
 
@@ -63,6 +66,7 @@ void Init_Cudastereo()
       Arg("left"), Arg("right"), Arg("disparity"))
     .define_method<void(cv::cuda::StereoSGM::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("compute", &cv::cuda::StereoSGM::compute,
       Arg("left"), Arg("right"), Arg("disparity"), Arg("stream"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::StereoSGM>(*)(int, int, int, int, int, int)>("create_stereo_sgm", &cv::cuda::createStereoSGM,
     Arg("min_disparity") = static_cast<int>(0), Arg("num_disparities") = static_cast<int>(128), Arg("p1") = static_cast<int>(10), Arg("p2") = static_cast<int>(120), Arg("uniqueness_ratio") = static_cast<int>(5), Arg("mode") = static_cast<int>(cv::StereoSGBM::MODE_HH4));
 
@@ -87,6 +91,7 @@ void Init_Cudastereo()
     .define_method<double(cv::cuda::DisparityBilateralFilter::*)() const>("get_sigma_range", &cv::cuda::DisparityBilateralFilter::getSigmaRange)
     .define_method<void(cv::cuda::DisparityBilateralFilter::*)(double)>("set_sigma_range", &cv::cuda::DisparityBilateralFilter::setSigmaRange,
       Arg("sigma_range"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::DisparityBilateralFilter>(*)(int, int, int)>("create_disparity_bilateral_filter", &cv::cuda::createDisparityBilateralFilter,
     Arg("ndisp") = static_cast<int>(64), Arg("radius") = static_cast<int>(3), Arg("iters") = static_cast<int>(1));
 

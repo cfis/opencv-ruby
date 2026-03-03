@@ -40,6 +40,7 @@ void Init_Dnn_Dict()
       Arg("idx") = static_cast<int>(-1))
     .define_method<cv::dnn::dnn4_v20241223::DictValue&(cv::dnn::dnn4_v20241223::DictValue::*)(const cv::dnn::dnn4_v20241223::DictValue&)>("assign", &cv::dnn::dnn4_v20241223::DictValue::operator=,
       Arg("r"));
+
   Rice::Data_Type<cv::dnn::dnn4_v20241223::Dict> rb_cCvDnnDnn4V20241223Dict = define_class_under<cv::dnn::dnn4_v20241223::Dict>(rb_mCvDnnDnn4V20241223, "Dict")
     .define_constructor(Constructor<cv::dnn::dnn4_v20241223::Dict>())
     .define_method<bool(cv::dnn::dnn4_v20241223::Dict::*)(const cv::String&) const>("has", &cv::dnn::dnn4_v20241223::Dict::has,
@@ -53,5 +54,6 @@ void Init_Dnn_Dict()
     .define_method<void(cv::dnn::dnn4_v20241223::Dict::*)(const cv::String&)>("erase", &cv::dnn::dnn4_v20241223::Dict::erase,
       Arg("key"))
     .define_iterator<std::map<cv::String, cv::dnn::dnn4_v20241223::DictValue>::const_iterator(cv::dnn::dnn4_v20241223::Dict::*)() const>(&cv::dnn::dnn4_v20241223::Dict::begin, &cv::dnn::dnn4_v20241223::Dict::end, "each_const");
+
   Rice::detail::protect(rb_alias, rb_cCvDnnDnn4V20241223Dict, rb_intern("each"), rb_intern("each_const"));
 }

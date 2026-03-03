@@ -25,4 +25,3 @@ inline Rice::Data_Type<cv::Allocator::rebind<U>> rebind_instantiate(Rice::Module
 {
   return Rice::define_class_under<cv::Allocator::rebind<U>>(parent, name);
 }
-

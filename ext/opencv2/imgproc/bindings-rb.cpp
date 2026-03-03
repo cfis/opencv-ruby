@@ -1,3 +1,5 @@
+#include <opencv2/core/mat.hpp> // Manual
+#include <opencv2/imgproc.hpp> // Manual
 #include <opencv2/imgproc/bindings.hpp>
 #include "bindings-rb.hpp"
 

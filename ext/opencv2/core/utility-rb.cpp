@@ -59,6 +59,7 @@ void Init_Core_Utility()
     .define_method<double(cv::TickMeter::*)() const>("get_avg_time_sec", &cv::TickMeter::getAvgTimeSec)
     .define_method<double(cv::TickMeter::*)() const>("get_avg_time_milli", &cv::TickMeter::getAvgTimeMilli)
     .define_method<void(cv::TickMeter::*)()>("reset", &cv::TickMeter::reset);
+
   rb_mCv.define_module_function<int64(*)()>("get_cpu_tick_count", &cv::getCPUTickCount);
 
   rb_mCv.define_module_function<bool(*)(int)>("check_hardware_support", &cv::checkHardwareSupport,
@@ -97,11 +98,13 @@ void Init_Core_Utility()
   Rice::Data_Type<cv::ParallelLoopBody> rb_cCvParallelLoopBody = define_class_under<cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBody")
     .define_method<void(cv::ParallelLoopBody::*)(const cv::Range&) const>("call", &cv::ParallelLoopBody::operator(),
       Arg("range"));
+
   Rice::Data_Type<cv::ParallelLoopBodyLambdaWrapper> rb_cCvParallelLoopBodyLambdaWrapper = define_class_under<cv::ParallelLoopBodyLambdaWrapper, cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBodyLambdaWrapper")
     .define_constructor(Constructor<cv::ParallelLoopBodyLambdaWrapper, std::function<void (const cv::Range &)>>(),
       Arg("functor"))
     .define_method<void(cv::ParallelLoopBodyLambdaWrapper::*)(const cv::Range&) const>("call", &cv::ParallelLoopBodyLambdaWrapper::operator(),
       Arg("range"));
+
   Rice::Data_Type<cv::CommandLineParser> rb_cCvCommandLineParser = define_class_under<cv::CommandLineParser>(rb_mCv, "CommandLineParser")
     .define_constructor(Constructor<cv::CommandLineParser, const cv::CommandLineParser&>(),
       Arg("parser"))
@@ -120,6 +123,7 @@ void Init_Core_Utility()
       Arg("argc"), Arg("argv"), Arg("keys"))
     #endif
     ;
+
   Module rb_mCvSamples = define_module_under(rb_mCv, "Samples");
 
   rb_mCvSamples.define_module_function<cv::String(*)(const cv::String&, bool, bool)>("find_file", &cv::samples::findFile,
@@ -142,10 +146,12 @@ void Init_Core_Utility()
   rb_mCvUtils.define_module_function<int(*)()>("get_thread_id", &cv::utils::getThreadID);
 
   #if RUBY_CV_VERSION >= 411
+
   Enum<cv::AlgorithmHint> rb_cCvAlgorithmHint = define_enum_under<cv::AlgorithmHint>("AlgorithmHint", rb_mCv)
     .define_value("ALGO_HINT_DEFAULT", cv::AlgorithmHint::ALGO_HINT_DEFAULT)
     .define_value("ALGO_HINT_ACCURATE", cv::AlgorithmHint::ALGO_HINT_ACCURATE)
     .define_value("ALGO_HINT_APPROX", cv::AlgorithmHint::ALGO_HINT_APPROX);
+
   rb_mCv.define_module_function<cv::AlgorithmHint(*)()>("get_default_algorithm_hint", &cv::getDefaultAlgorithmHint);
 
   #endif

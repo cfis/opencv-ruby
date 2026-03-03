@@ -1,3 +1,4 @@
+#include <opencv2/core.hpp> // Manual
 #include <opencv2/flann/random.h>
 #include "random-rb.hpp"
 

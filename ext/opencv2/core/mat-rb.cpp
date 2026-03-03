@@ -15,6 +15,7 @@ void Init_Core_Mat()
     .define_value("ACCESS_RW", cv::AccessFlag::ACCESS_RW)
     .define_value("ACCESS_MASK", cv::AccessFlag::ACCESS_MASK)
     .define_value("ACCESS_FAST", cv::AccessFlag::ACCESS_FAST);
+
   Rice::Data_Type<cv::_InputArray> rb_cCvInputArray = define_class_under<cv::_InputArray>(rb_mCv, "InputArray")
     .define_constructor(Constructor<cv::_InputArray>())
     .define_constructor(Constructor<cv::_InputArray, int, void*>(),
@@ -99,6 +100,7 @@ void Init_Core_Mat()
     .define_method<bool(cv::_InputArray::*)() const>("vector?", &cv::_InputArray::isVector)
     .define_method<bool(cv::_InputArray::*)() const>("gpu_mat?", &cv::_InputArray::isGpuMat)
     .define_method<bool(cv::_InputArray::*)() const>("gpu_mat_vector?", &cv::_InputArray::isGpuMatVector);
+
   Enum<cv::_InputArray::KindFlag> rb_cCvInputArrayKindFlag = define_enum_under<cv::_InputArray::KindFlag>("KindFlag", rb_cCvInputArray)
     .define_value("KIND_SHIFT", cv::_InputArray::KindFlag::KIND_SHIFT)
     .define_value("FIXED_TYPE", cv::_InputArray::KindFlag::FIXED_TYPE)
@@ -120,6 +122,7 @@ void Init_Core_Mat()
     .define_value("STD_VECTOR_CUDA_GPU_MAT", cv::_InputArray::KindFlag::STD_VECTOR_CUDA_GPU_MAT)
     .define_value("STD_ARRAY", cv::_InputArray::KindFlag::STD_ARRAY)
     .define_value("STD_ARRAY_MAT", cv::_InputArray::KindFlag::STD_ARRAY_MAT);
+
   Rice::Data_Type<cv::_OutputArray> rb_cCvOutputArray = define_class_under<cv::_OutputArray, cv::_InputArray>(rb_mCv, "OutputArray")
     .define_constructor(Constructor<cv::_OutputArray>())
     .define_constructor(Constructor<cv::_OutputArray, int, void*>(),
@@ -189,6 +192,7 @@ void Init_Core_Mat()
       Arg("u"))
     .define_method<void(cv::_OutputArray::*)(cv::Mat&) const>("move", &cv::_OutputArray::move,
       Arg("m"));
+
   Enum<cv::_OutputArray::DepthMask> rb_cCvOutputArrayDepthMask = define_enum_under<cv::_OutputArray::DepthMask>("DepthMask", rb_cCvOutputArray)
     .define_value("DEPTH_MASK_8U", cv::_OutputArray::DepthMask::DEPTH_MASK_8U)
     .define_value("DEPTH_MASK_8S", cv::_OutputArray::DepthMask::DEPTH_MASK_8S)
@@ -202,6 +206,7 @@ void Init_Core_Mat()
     .define_value("DEPTH_MASK_ALL_BUT_8S", cv::_OutputArray::DepthMask::DEPTH_MASK_ALL_BUT_8S)
     .define_value("DEPTH_MASK_ALL_16F", cv::_OutputArray::DepthMask::DEPTH_MASK_ALL_16F)
     .define_value("DEPTH_MASK_FLT", cv::_OutputArray::DepthMask::DEPTH_MASK_FLT);
+
   Rice::Data_Type<cv::_InputOutputArray> rb_cCvInputOutputArray = define_class_under<cv::_InputOutputArray, cv::_OutputArray>(rb_mCv, "InputOutputArray")
     .define_constructor(Constructor<cv::_InputOutputArray>())
     .define_constructor(Constructor<cv::_InputOutputArray, int, void*>(),
@@ -236,6 +241,7 @@ void Init_Core_Mat()
       Arg("m"))
     .define_constructor(Constructor<cv::_InputOutputArray, const std::vector<cv::UMat>&>(),
       Arg("vec"));
+
   rb_mCv.define_module_function<cv::InputOutputArray(*)()>("no_array", &cv::noArray);
 
   Enum<cv::UMatUsageFlags> rb_cCvUMatUsageFlags = define_enum_under<cv::UMatUsageFlags>("UMatUsageFlags", rb_mCv)
@@ -244,6 +250,7 @@ void Init_Core_Mat()
     .define_value("USAGE_ALLOCATE_DEVICE_MEMORY", cv::UMatUsageFlags::USAGE_ALLOCATE_DEVICE_MEMORY)
     .define_value("USAGE_ALLOCATE_SHARED_MEMORY", cv::UMatUsageFlags::USAGE_ALLOCATE_SHARED_MEMORY)
     .define_value("__UMAT_USAGE_FLAGS_32BIT", cv::UMatUsageFlags::__UMAT_USAGE_FLAGS_32BIT);
+
   Rice::Data_Type<cv::MatAllocator> rb_cCvMatAllocator = define_class_under<cv::MatAllocator>(rb_mCv, "MatAllocator")
     .define_method<cv::UMatData*(cv::MatAllocator::*)(int, const int*, int, void*, size_t*, cv::AccessFlag, cv::UMatUsageFlags) const>("allocate", &cv::MatAllocator::allocate,
       Arg("dims"), ArgBuffer("sizes"), Arg("type"), ArgBuffer("data"), ArgBuffer("step"), Arg("flags"), Arg("usage_flags"))
@@ -263,6 +270,7 @@ void Init_Core_Mat()
       Arg("srcdata"), Arg("dstdata"), Arg("dims"), Arg("sz"), Arg("srcofs"), Arg("srcstep"), Arg("dstofs"), Arg("dststep"), Arg("sync"))
     .define_method<cv::BufferPoolController*(cv::MatAllocator::*)(const char*) const>("get_buffer_pool_controller", &cv::MatAllocator::getBufferPoolController,
       Arg("id") = static_cast<const char*>(NULL));
+
   Rice::Data_Type<cv::UMatData> rb_cCvUMatData = define_class_under<cv::UMatData>(rb_mCv, "UMatData")
     .define_constructor(Constructor<cv::UMatData, const cv::MatAllocator*>(),
       Arg("allocator"))
@@ -294,6 +302,7 @@ void Init_Core_Mat()
     .define_attr("mapcount", &cv::UMatData::mapcount)
     .define_attr("original_u_mat_data", &cv::UMatData::originalUMatData)
     .define_attr("allocator_context", &cv::UMatData::allocatorContext);
+
   Enum<cv::UMatData::MemoryFlag> rb_cCvUMatDataMemoryFlag = define_enum_under<cv::UMatData::MemoryFlag>("MemoryFlag", rb_cCvUMatData)
     .define_value("COPY_ON_MAP", cv::UMatData::MemoryFlag::COPY_ON_MAP)
     .define_value("HOST_COPY_OBSOLETE", cv::UMatData::MemoryFlag::HOST_COPY_OBSOLETE)
@@ -303,6 +312,7 @@ void Init_Core_Mat()
     .define_value("USER_ALLOCATED", cv::UMatData::MemoryFlag::USER_ALLOCATED)
     .define_value("DEVICE_MEM_MAPPED", cv::UMatData::MemoryFlag::DEVICE_MEM_MAPPED)
     .define_value("ASYNC_CLEANUP", cv::UMatData::MemoryFlag::ASYNC_CLEANUP);
+
   Rice::Data_Type<cv::MatSize> rb_cCvMatSize = define_class_under<cv::MatSize>(rb_mCv, "MatSize")
     .define_constructor(Constructor<cv::MatSize, int*>(),
       ArgBuffer("_p"))
@@ -325,6 +335,7 @@ void Init_Core_Mat()
     .define_method<bool(cv::MatSize::*)(const cv::MatSize&) const noexcept>("!=", &cv::MatSize::operator!=,
       Arg("sz"))
     .define_attr("p", &cv::MatSize::p);
+
   Rice::Data_Type<cv::MatStep> rb_cCvMatStep = define_class_under<cv::MatStep>(rb_mCv, "MatStep")
     .define_constructor(Constructor<cv::MatStep>())
     .define_constructor(Constructor<cv::MatStep, size_t>(),
@@ -345,6 +356,7 @@ void Init_Core_Mat()
       Arg("s"))
     .define_attr("p", &cv::MatStep::p)
     .define_attr("buf", &cv::MatStep::buf, Rice::AttrAccess::Read);
+
   Rice::Data_Type<cv::Mat> rb_cCvMat = define_class_under<cv::Mat>(rb_mCv, "Mat")
     .define_constructor(Constructor<cv::Mat>())
     .define_constructor(Constructor<cv::Mat, int, int, int>(),
@@ -543,6 +555,7 @@ void Init_Core_Mat()
     .define_constant("MAGIC_MASK", (int)cv::Mat::MAGIC_MASK)
     .define_constant("TYPE_MASK", (int)cv::Mat::TYPE_MASK)
     .define_constant("DEPTH_MASK", (int)cv::Mat::DEPTH_MASK);
+
   Rice::Data_Type<cv::Mat_<uchar>> rb_cMat1b = Mat__instantiate<unsigned char>(rb_mCv, "Mat1b");
 
   Rice::Data_Type<cv::Mat_<cv::Vec2b>> rb_cMat2b = Mat__instantiate<cv::Vec<unsigned char, 2>>(rb_mCv, "Mat2b");
@@ -757,6 +770,7 @@ void Init_Core_Mat()
     .define_constant("MAGIC_MASK", (int)cv::UMat::MAGIC_MASK)
     .define_constant("TYPE_MASK", (int)cv::UMat::TYPE_MASK)
     .define_constant("DEPTH_MASK", (int)cv::UMat::DEPTH_MASK);
+
   Rice::Data_Type<cv::SparseMat> rb_cCvSparseMat = define_class_under<cv::SparseMat>(rb_mCv, "SparseMat")
     .define_constructor(Constructor<cv::SparseMat>())
     .define_constructor(Constructor<cv::SparseMat, int, const int*, int>(),
@@ -836,6 +850,7 @@ void Init_Core_Mat()
     .define_constant("MAX_DIM", (int)cv::SparseMat::MAX_DIM)
     .define_constant("HASH_SCALE", (int)cv::SparseMat::HASH_SCALE)
     .define_constant("HASH_BIT", (int)cv::SparseMat::HASH_BIT);
+
   Rice::Data_Type<cv::SparseMat::Hdr> rb_cCvSparseMatHdr = define_class_under<cv::SparseMat::Hdr>(rb_cCvSparseMat, "Hdr")
     .define_constructor(Constructor<cv::SparseMat::Hdr, int, const int*, int>(),
       Arg("_dims"), ArgBuffer("_sizes"), Arg("_type"))
@@ -849,11 +864,13 @@ void Init_Core_Mat()
     .define_attr("pool", &cv::SparseMat::Hdr::pool)
     .define_attr("hashtab", &cv::SparseMat::Hdr::hashtab)
     .define_attr("size", &cv::SparseMat::Hdr::size, Rice::AttrAccess::Read);
+
   Rice::Data_Type<cv::SparseMat::Node> rb_cCvSparseMatNode = define_class_under<cv::SparseMat::Node>(rb_cCvSparseMat, "Node")
     .define_constructor(Constructor<cv::SparseMat::Node>())
     .define_attr("hashval", &cv::SparseMat::Node::hashval)
     .define_attr("next", &cv::SparseMat::Node::next)
     .define_attr("idx", &cv::SparseMat::Node::idx, Rice::AttrAccess::Read);
+
   Rice::Data_Type<cv::MatConstIterator> rb_cCvMatConstIterator = define_class_under<cv::MatConstIterator>(rb_mCv, "MatConstIterator")
     .define_constructor(Constructor<cv::MatConstIterator>())
     .define_constructor(Constructor<cv::MatConstIterator, const cv::Mat*>(),
@@ -893,6 +910,7 @@ void Init_Core_Mat()
     .define_attr("ptr", &cv::MatConstIterator::ptr)
     .define_attr("slice_start", &cv::MatConstIterator::sliceStart)
     .define_attr("slice_end", &cv::MatConstIterator::sliceEnd);
+
   Rice::Data_Type<cv::SparseMatConstIterator> rb_cCvSparseMatConstIterator = define_class_under<cv::SparseMatConstIterator>(rb_mCv, "SparseMatConstIterator")
     .define_constructor(Constructor<cv::SparseMatConstIterator>())
     .define_constructor(Constructor<cv::SparseMatConstIterator, const cv::SparseMat*>(),
@@ -909,6 +927,7 @@ void Init_Core_Mat()
     .define_attr("m", &cv::SparseMatConstIterator::m)
     .define_attr("hashidx", &cv::SparseMatConstIterator::hashidx)
     .define_attr("ptr", &cv::SparseMatConstIterator::ptr);
+
   Rice::Data_Type<cv::SparseMatIterator> rb_cCvSparseMatIterator = define_class_under<cv::SparseMatIterator, cv::SparseMatConstIterator>(rb_mCv, "SparseMatIterator")
     .define_constructor(Constructor<cv::SparseMatIterator>())
     .define_constructor(Constructor<cv::SparseMatIterator, cv::SparseMat*>(),
@@ -921,6 +940,7 @@ void Init_Core_Mat()
     .define_method<cv::SparseMatIterator&(cv::SparseMatIterator::*)()>("increment", &cv::SparseMatIterator::operator++)
     .define_method<cv::SparseMatIterator(cv::SparseMatIterator::*)(int)>("increment_post", &cv::SparseMatIterator::operator++,
       Arg("arg_0"));
+
   Rice::Data_Type<cv::NAryMatIterator> rb_cCvNAryMatIterator = define_class_under<cv::NAryMatIterator>(rb_mCv, "NAryMatIterator")
     .define_constructor(Constructor<cv::NAryMatIterator>())
     .define_constructor(Constructor<cv::NAryMatIterator, const cv::Mat**, uchar**, int>(),
@@ -938,6 +958,7 @@ void Init_Core_Mat()
     .define_attr("narrays", &cv::NAryMatIterator::narrays)
     .define_attr("nplanes", &cv::NAryMatIterator::nplanes)
     .define_attr("size", &cv::NAryMatIterator::size);
+
   Rice::Data_Type<cv::MatOp> rb_cCvMatOp = define_class_under<cv::MatOp>(rb_mCv, "MatOp")
     .define_method<bool(cv::MatOp::*)(const cv::MatExpr&) const>("element_wise", &cv::MatOp::elementWise,
       Arg("expr"))
@@ -989,6 +1010,7 @@ void Init_Core_Mat()
       Arg("expr"))
     .define_method<int(cv::MatOp::*)(const cv::MatExpr&) const>("type", &cv::MatOp::type,
       Arg("expr"));
+
   Rice::Data_Type<cv::MatExpr> rb_cCvMatExpr = define_class_under<cv::MatExpr>(rb_mCv, "MatExpr")
     .define_constructor(Constructor<cv::MatExpr>())
     .define_constructor(Constructor<cv::MatExpr, const cv::Mat&>(),
@@ -1032,6 +1054,7 @@ void Init_Core_Mat()
     .define_attr("alpha", &cv::MatExpr::alpha)
     .define_attr("beta", &cv::MatExpr::beta)
     .define_attr("s", &cv::MatExpr::s);
+
   rb_mCv.define_module_function<cv::MatExpr(*)(const cv::Mat&, const cv::Mat&)>("min", &cv::min,
     Arg("a"), Arg("b"));
 

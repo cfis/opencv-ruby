@@ -13,6 +13,7 @@ void Init_Datasets_OrMnist()
     .define_constructor(Constructor<cv::datasets::OR_mnistObj>())
     .define_attr("label", &cv::datasets::OR_mnistObj::label)
     .define_attr("image", &cv::datasets::OR_mnistObj::image);
+
   Rice::Data_Type<cv::datasets::OR_mnist> rb_cCvDatasetsORMnist = define_class_under<cv::datasets::OR_mnist, cv::datasets::Dataset>(rb_mCvDatasets, "ORMnist")
     .define_method<void(cv::datasets::OR_mnist::*)(const std::string&)>("load", &cv::datasets::OR_mnist::load,
       Arg("path"))

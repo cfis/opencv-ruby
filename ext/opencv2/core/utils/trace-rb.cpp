@@ -20,7 +20,6 @@ void Init_Core_Utils_Trace()
   Rice::Data_Type<cv::utils::trace::details::Region::LocationExtraData> rb_cCvUtilsTraceDetailsRegionLocationExtraData = define_class_under<cv::utils::trace::details::Region::LocationExtraData>(rb_cCvUtilsTraceDetailsRegion, "LocationExtraData");
 
   Rice::Data_Type<cv::utils::trace::details::Region::Impl> rb_cCvUtilsTraceDetailsRegionImpl = define_class_under<cv::utils::trace::details::Region::Impl>(rb_cCvUtilsTraceDetailsRegion, "Impl");
-
   rb_cCvUtilsTraceDetailsRegion
     .define_constructor(Constructor<cv::utils::trace::details::Region, const cv::utils::trace::details::Region::LocationStaticStorage&>(),
       Arg("location"))
@@ -28,6 +27,7 @@ void Init_Core_Utils_Trace()
     .define_attr("impl_flags", &cv::utils::trace::details::Region::implFlags)
     .define_method<bool(cv::utils::trace::details::Region::*)() const>("active?", &cv::utils::trace::details::Region::isActive)
     .define_method<void(cv::utils::trace::details::Region::*)()>("destroy", &cv::utils::trace::details::Region::destroy);
+
   Rice::Data_Type<cv::utils::trace::details::Region::LocationStaticStorage> rb_cCvUtilsTraceDetailsRegionLocationStaticStorage = define_class_under<cv::utils::trace::details::Region::LocationStaticStorage>(rb_cCvUtilsTraceDetailsRegion, "LocationStaticStorage")
     .define_constructor(Constructor<cv::utils::trace::details::Region::LocationStaticStorage>())
     .define_attr("pp_extra", &cv::utils::trace::details::Region::LocationStaticStorage::ppExtra)
@@ -35,6 +35,7 @@ void Init_Core_Utils_Trace()
     .define_attr("filename", &cv::utils::trace::details::Region::LocationStaticStorage::filename)
     .define_attr("line", &cv::utils::trace::details::Region::LocationStaticStorage::line)
     .define_attr("flags", &cv::utils::trace::details::Region::LocationStaticStorage::flags);
+
   Enum<cv::utils::trace::details::RegionLocationFlag> rb_cCvUtilsTraceDetailsRegionLocationFlag = define_enum_under<cv::utils::trace::details::RegionLocationFlag>("RegionLocationFlag", rb_mCvUtilsTraceDetails)
     .define_value("REGION_FLAG_FUNCTION", cv::utils::trace::details::RegionLocationFlag::REGION_FLAG_FUNCTION)
     .define_value("REGION_FLAG_APP_CODE", cv::utils::trace::details::RegionLocationFlag::REGION_FLAG_APP_CODE)
@@ -46,15 +47,16 @@ void Init_Core_Utils_Trace()
     .define_value("REGION_FLAG_REGION_FORCE", cv::utils::trace::details::RegionLocationFlag::REGION_FLAG_REGION_FORCE)
     .define_value("REGION_FLAG_REGION_NEXT", cv::utils::trace::details::RegionLocationFlag::REGION_FLAG_REGION_NEXT)
     .define_value("ENUM_REGION_FLAG_FORCE_INT", cv::utils::trace::details::RegionLocationFlag::ENUM_REGION_FLAG_FORCE_INT);
+
   Rice::Data_Type<cv::utils::trace::details::TraceArg> rb_cCvUtilsTraceDetailsTraceArg = define_class_under<cv::utils::trace::details::TraceArg>(rb_mCvUtilsTraceDetails, "TraceArg");
 
   Rice::Data_Type<cv::utils::trace::details::TraceArg::ExtraData> rb_cCvUtilsTraceDetailsTraceArgExtraData = define_class_under<cv::utils::trace::details::TraceArg::ExtraData>(rb_cCvUtilsTraceDetailsTraceArg, "ExtraData");
-
   rb_cCvUtilsTraceDetailsTraceArg
     .define_constructor(Constructor<cv::utils::trace::details::TraceArg>())
     .define_attr("pp_extra", &cv::utils::trace::details::TraceArg::ppExtra)
     .define_attr("name", &cv::utils::trace::details::TraceArg::name)
     .define_attr("flags", &cv::utils::trace::details::TraceArg::flags);
+
   rb_mCvUtilsTraceDetails.define_module_function<void(*)(const cv::utils::trace::details::TraceArg&, const char*)>("trace_arg", &cv::utils::trace::details::traceArg,
     Arg("arg"), Arg("value"));
 

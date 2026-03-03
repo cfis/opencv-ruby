@@ -17,6 +17,7 @@ void Init_Core_Parallel_ParallelBackend()
     .define_method<int(cv::parallel::ParallelForAPI::*)(int)>("set_num_threads", &cv::parallel::ParallelForAPI::setNumThreads,
       Arg("n_threads"))
     .define_method<const char*(cv::parallel::ParallelForAPI::*)() const>("get_name", &cv::parallel::ParallelForAPI::getName);
+
   rb_mCvParallel.define_module_function<void(*)(const std::shared_ptr<cv::parallel::ParallelForAPI>&, bool)>("set_parallel_for_backend", &cv::parallel::setParallelForBackend,
     Arg("api"), Arg("propagate_num_threads") = static_cast<bool>(true));
 

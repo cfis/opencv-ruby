@@ -10,6 +10,7 @@ void Init_Core_OclGenbase()
   Module rb_mCvOcl = define_module_under(rb_mCv, "Ocl");
 
   Rice::Data_Type<cv::ocl::ProgramSource> rb_cCvOclProgramSource = define_class_under<cv::ocl::ProgramSource>(rb_mCvOcl, "ProgramSource");
+
   Module rb_mCvOclInternal = define_module_under(rb_mCvOcl, "Internal");
 
   Rice::Data_Type<cv::ocl::internal::ProgramEntry> rb_cCvOclInternalProgramEntry = define_class_under<cv::ocl::internal::ProgramEntry>(rb_mCvOclInternal, "ProgramEntry")

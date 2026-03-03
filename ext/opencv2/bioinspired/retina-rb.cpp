@@ -10,12 +10,16 @@ void Init_Bioinspired_Retina()
   Module rb_mCvBioinspired = define_module_under(rb_mCv, "Bioinspired");
 
   rb_mCvBioinspired.define_constant("RETINA_COLOR_RANDOM", (int)cv::bioinspired::RETINA_COLOR_RANDOM);
+
   rb_mCvBioinspired.define_constant("RETINA_COLOR_DIAGONAL", (int)cv::bioinspired::RETINA_COLOR_DIAGONAL);
+
   rb_mCvBioinspired.define_constant("RETINA_COLOR_BAYER", (int)cv::bioinspired::RETINA_COLOR_BAYER);
+
   Rice::Data_Type<cv::bioinspired::RetinaParameters> rb_cCvBioinspiredRetinaParameters = define_class_under<cv::bioinspired::RetinaParameters>(rb_mCvBioinspired, "RetinaParameters")
     .define_constructor(Constructor<cv::bioinspired::RetinaParameters>())
     .define_attr("op_land_ipl_parvo", &cv::bioinspired::RetinaParameters::OPLandIplParvo)
     .define_attr("ipl_magno", &cv::bioinspired::RetinaParameters::IplMagno);
+
   Rice::Data_Type<cv::bioinspired::RetinaParameters::OPLandIplParvoParameters> rb_cCvBioinspiredRetinaParametersOPLandIplParvoParameters = define_class_under<cv::bioinspired::RetinaParameters::OPLandIplParvoParameters>(rb_cCvBioinspiredRetinaParameters, "OPLandIplParvoParameters")
     .define_constructor(Constructor<cv::bioinspired::RetinaParameters::OPLandIplParvoParameters>())
     .define_attr("color_mode", &cv::bioinspired::RetinaParameters::OPLandIplParvoParameters::colorMode)
@@ -27,6 +31,7 @@ void Init_Bioinspired_Retina()
     .define_attr("hcells_temporal_constant", &cv::bioinspired::RetinaParameters::OPLandIplParvoParameters::hcellsTemporalConstant)
     .define_attr("hcells_spatial_constant", &cv::bioinspired::RetinaParameters::OPLandIplParvoParameters::hcellsSpatialConstant)
     .define_attr("ganglion_cells_sensitivity", &cv::bioinspired::RetinaParameters::OPLandIplParvoParameters::ganglionCellsSensitivity);
+
   Rice::Data_Type<cv::bioinspired::RetinaParameters::IplMagnoParameters> rb_cCvBioinspiredRetinaParametersIplMagnoParameters = define_class_under<cv::bioinspired::RetinaParameters::IplMagnoParameters>(rb_cCvBioinspiredRetinaParameters, "IplMagnoParameters")
     .define_constructor(Constructor<cv::bioinspired::RetinaParameters::IplMagnoParameters>())
     .define_attr("normalise_output", &cv::bioinspired::RetinaParameters::IplMagnoParameters::normaliseOutput)
@@ -37,6 +42,7 @@ void Init_Bioinspired_Retina()
     .define_attr("v0_compression_parameter", &cv::bioinspired::RetinaParameters::IplMagnoParameters::V0CompressionParameter)
     .define_attr("local_adaptintegration_tau", &cv::bioinspired::RetinaParameters::IplMagnoParameters::localAdaptintegration_tau)
     .define_attr("local_adaptintegration_k", &cv::bioinspired::RetinaParameters::IplMagnoParameters::localAdaptintegration_k);
+
   Rice::Data_Type<cv::bioinspired::Retina> rb_cCvBioinspiredRetina = define_class_under<cv::bioinspired::Retina, cv::Algorithm>(rb_mCvBioinspired, "Retina")
     .define_method<cv::Size(cv::bioinspired::Retina::*)()>("get_input_size", &cv::bioinspired::Retina::getInputSize)
     .define_method<cv::Size(cv::bioinspired::Retina::*)()>("get_output_size", &cv::bioinspired::Retina::getOutputSize)

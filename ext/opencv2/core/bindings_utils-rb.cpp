@@ -110,16 +110,19 @@ void Init_Core_BindingsUtils()
     .define_singleton_function<std::string(*)()>("original_name", &cv::utils::nested::OriginalClassName::originalName)
     .define_singleton_function<cv::Ptr<cv::utils::nested::OriginalClassName>(*)(const cv::utils::nested::OriginalClassName::Params&)>("create", &cv::utils::nested::OriginalClassName::create,
       Arg("params") = static_cast<const cv::utils::nested::OriginalClassName::Params&>(cv::utils::nested::OriginalClassName::Params()));
+
   Rice::Data_Type<cv::utils::nested::OriginalClassName::Params> rb_cCvUtilsNestedOriginalClassNameParams = define_class_under<cv::utils::nested::OriginalClassName::Params>(rb_cCvUtilsNestedOriginalClassName, "Params")
     .define_attr("int_value", &cv::utils::nested::OriginalClassName::Params::int_value)
     .define_attr("float_value", &cv::utils::nested::OriginalClassName::Params::float_value)
     .define_constructor(Constructor<cv::utils::nested::OriginalClassName::Params, int, float>(),
       Arg("int_param") = static_cast<int>(123), Arg("float_param") = static_cast<float>(3.5f));
+
   Module rb_mCvUtilsFs = define_module_under(rb_mCvUtils, "Fs");
 
   rb_mCvUtilsFs.define_module_function<cv::String(*)()>("get_cache_directory_for_downloads", &cv::utils::fs::getCacheDirectoryForDownloads);
 
   #if RUBY_CV_VERSION >= 407
+
   rb_mCvUtils.define_module_function<cv::String(*)(int64)>("dump_int64", &cv::utils::dumpInt64,
     Arg("argument"));
 
@@ -131,9 +134,11 @@ void Init_Core_BindingsUtils()
     .define_attr("except", &cv::utils::ClassWithKeywordProperties::except)
     .define_constructor(Constructor<cv::utils::ClassWithKeywordProperties, int, int>(),
       Arg("lambda_arg") = static_cast<int>(24), Arg("except_arg") = static_cast<int>(42));
+
   #endif
 
   #if RUBY_CV_VERSION >= 408
+
   Rice::Data_Type<cv::utils::FunctionParams> rb_cCvUtilsFunctionParams = define_class_under<cv::utils::FunctionParams>(rb_mCvUtils, "FunctionParams")
     .define_constructor(Constructor<cv::utils::FunctionParams>())
     .define_attr("lambda", &cv::utils::FunctionParams::lambda)
@@ -142,6 +147,7 @@ void Init_Core_BindingsUtils()
       Arg("value"))
     .define_method<cv::utils::FunctionParams&(cv::utils::FunctionParams::*)(float) noexcept>("set_sigma", &cv::utils::FunctionParams::setSigma,
       Arg("value"));
+
   rb_mCvUtils.define_module_function<cv::String(*)(cv::InputArray, cv::OutputArray, const cv::utils::FunctionParams&)>("copy_mat_and_dump_named_arguments", &cv::utils::copyMatAndDumpNamedArguments,
     Arg("src"), Arg("dst"), Arg("params") = static_cast<const cv::utils::FunctionParams&>(cv::utils::FunctionParams()));
 

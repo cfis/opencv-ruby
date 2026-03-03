@@ -13,6 +13,7 @@ void Init_Datasets_TrChars()
     .define_constructor(Constructor<cv::datasets::TR_charsObj>())
     .define_attr("img_name", &cv::datasets::TR_charsObj::imgName)
     .define_attr("label", &cv::datasets::TR_charsObj::label);
+
   Rice::Data_Type<cv::datasets::TR_chars> rb_cCvDatasetsTRChars = define_class_under<cv::datasets::TR_chars, cv::datasets::Dataset>(rb_mCvDatasets, "TRChars")
     .define_method<void(cv::datasets::TR_chars::*)(const std::string&)>("load", &cv::datasets::TR_chars::load,
       Arg("path"))

@@ -25,6 +25,7 @@ void Init_Cudaimgproc()
     .define_value("COLOR_BayerGB2GRAY_MHT", cv::cuda::DemosaicTypes::COLOR_BayerGB2GRAY_MHT)
     .define_value("COLOR_BayerRG2GRAY_MHT", cv::cuda::DemosaicTypes::COLOR_BayerRG2GRAY_MHT)
     .define_value("COLOR_BayerGR2GRAY_MHT", cv::cuda::DemosaicTypes::COLOR_BayerGR2GRAY_MHT);
+
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, cv::cuda::Stream&)>("demosaicing", &cv::cuda::demosaicing,
     Arg("src"), Arg("dst"), Arg("code"), Arg("dcn") = static_cast<int>(-1), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
@@ -48,6 +49,7 @@ void Init_Cudaimgproc()
     .define_value("ALPHA_XOR_PREMUL", cv::cuda::AlphaCompTypes::ALPHA_XOR_PREMUL)
     .define_value("ALPHA_PLUS_PREMUL", cv::cuda::AlphaCompTypes::ALPHA_PLUS_PREMUL)
     .define_value("ALPHA_PREMUL", cv::cuda::AlphaCompTypes::ALPHA_PREMUL);
+
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::cuda::Stream&)>("alpha_comp", &cv::cuda::alphaComp,
     Arg("img1"), Arg("img2"), Arg("dst"), Arg("alpha_op"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
@@ -60,9 +62,10 @@ void Init_Cudaimgproc()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("equalize_hist", &cv::cuda::equalizeHist,
     Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
 
-  Rice::Data_Type<cv::cuda::CLAHE> rb_cCvCudaCLAHE = define_class_under<cv::cuda::CLAHE, cv::CLAHE>(rb_mCvCuda, "Clahe")
+  Rice::Data_Type<cv::cuda::CLAHE> rb_cCvCudaCLAHE = define_class_under<cv::cuda::CLAHE, cv::CLAHE>(rb_mCvCuda, "CLAHE")
     .define_method<void(cv::cuda::CLAHE::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("apply", &cv::cuda::CLAHE::apply,
       Arg("src"), Arg("dst"), Arg("stream"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::CLAHE>(*)(double, cv::Size)>("create_clahe", &cv::cuda::createCLAHE,
     Arg("clip_limit") = static_cast<double>(40.0), Arg("tile_grid_size") = static_cast<cv::Size>(cv::Size(8, 8)));
 
@@ -98,6 +101,7 @@ void Init_Cudaimgproc()
     .define_method<void(cv::cuda::CannyEdgeDetector::*)(bool)>("set_l2_gradient", &cv::cuda::CannyEdgeDetector::setL2Gradient,
       Arg("l2gradient"))
     .define_method<bool(cv::cuda::CannyEdgeDetector::*)() const>("get_l2_gradient?", &cv::cuda::CannyEdgeDetector::getL2Gradient);
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::CannyEdgeDetector>(*)(double, double, int, bool)>("create_canny_edge_detector", &cv::cuda::createCannyEdgeDetector,
     Arg("low_thresh"), Arg("high_thresh"), Arg("apperture_size") = static_cast<int>(3), Arg("l2gradient") = static_cast<bool>(false));
 
@@ -121,6 +125,7 @@ void Init_Cudaimgproc()
     .define_method<void(cv::cuda::HoughLinesDetector::*)(int)>("set_max_lines", &cv::cuda::HoughLinesDetector::setMaxLines,
       Arg("max_lines"))
     .define_method<int(cv::cuda::HoughLinesDetector::*)() const>("get_max_lines", &cv::cuda::HoughLinesDetector::getMaxLines);
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::HoughLinesDetector>(*)(float, float, int, bool, int)>("create_hough_lines_detector", &cv::cuda::createHoughLinesDetector,
     Arg("rho"), Arg("theta"), Arg("threshold"), Arg("do_sort") = static_cast<bool>(false), Arg("max_lines") = static_cast<int>(4096));
 
@@ -145,6 +150,7 @@ void Init_Cudaimgproc()
     .define_method<void(cv::cuda::HoughSegmentDetector::*)(int)>("set_threshold", &cv::cuda::HoughSegmentDetector::setThreshold,
       Arg("threshold"))
     .define_method<int(cv::cuda::HoughSegmentDetector::*)() const>("get_threshold", &cv::cuda::HoughSegmentDetector::getThreshold);
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::HoughSegmentDetector>(*)(float, float, int, int, int, int)>("create_hough_segment_detector", &cv::cuda::createHoughSegmentDetector,
     Arg("rho"), Arg("theta"), Arg("min_line_length"), Arg("max_line_gap"), Arg("max_lines") = static_cast<int>(4096), Arg("threshold") = static_cast<int>(-1));
 
@@ -172,6 +178,7 @@ void Init_Cudaimgproc()
     .define_method<void(cv::cuda::HoughCirclesDetector::*)(int)>("set_max_circles", &cv::cuda::HoughCirclesDetector::setMaxCircles,
       Arg("max_circles"))
     .define_method<int(cv::cuda::HoughCirclesDetector::*)() const>("get_max_circles", &cv::cuda::HoughCirclesDetector::getMaxCircles);
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::HoughCirclesDetector>(*)(float, float, int, int, int, int, int)>("create_hough_circles_detector", &cv::cuda::createHoughCirclesDetector,
     Arg("dp"), Arg("min_dist"), Arg("canny_threshold"), Arg("votes_threshold"), Arg("min_radius"), Arg("max_radius"), Arg("max_circles") = static_cast<int>(4096));
 
@@ -182,6 +189,7 @@ void Init_Cudaimgproc()
   Rice::Data_Type<cv::cuda::CornernessCriteria> rb_cCvCudaCornernessCriteria = define_class_under<cv::cuda::CornernessCriteria, cv::Algorithm>(rb_mCvCuda, "CornernessCriteria")
     .define_method<void(cv::cuda::CornernessCriteria::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("compute", &cv::cuda::CornernessCriteria::compute,
       Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::CornernessCriteria>(*)(int, int, int, double, int)>("create_harris_corner", &cv::cuda::createHarrisCorner,
     Arg("src_type"), Arg("block_size"), Arg("ksize"), Arg("k"), Arg("border_type") = static_cast<int>(cv::BORDER_REFLECT101));
 
@@ -195,6 +203,7 @@ void Init_Cudaimgproc()
       Arg("max_corners"))
     .define_method<void(cv::cuda::CornersDetector::*)(double)>("set_min_distance", &cv::cuda::CornersDetector::setMinDistance,
       Arg("min_distance"));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::CornersDetector>(*)(int, int, double, double, int, bool, double)>("create_good_features_to_track_detector", &cv::cuda::createGoodFeaturesToTrackDetector,
     Arg("src_type"), Arg("max_corners") = static_cast<int>(1000), Arg("quality_level") = static_cast<double>(0.01), Arg("min_distance") = static_cast<double>(0.0), Arg("block_size") = static_cast<int>(3), Arg("use_harris_detector") = static_cast<bool>(false), Arg("harris_k") = static_cast<double>(0.04));
 
@@ -210,6 +219,7 @@ void Init_Cudaimgproc()
   Rice::Data_Type<cv::cuda::TemplateMatching> rb_cCvCudaTemplateMatching = define_class_under<cv::cuda::TemplateMatching, cv::Algorithm>(rb_mCvCuda, "TemplateMatching")
     .define_method<void(cv::cuda::TemplateMatching::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("match", &cv::cuda::TemplateMatching::match,
       Arg("image"), Arg("templ"), Arg("result"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::TemplateMatching>(*)(int, int, cv::Size)>("create_template_matching", &cv::cuda::createTemplateMatching,
     Arg("src_type"), Arg("method"), Arg("user_block_size") = static_cast<cv::Size>(cv::Size()));
 
@@ -222,6 +232,7 @@ void Init_Cudaimgproc()
   Enum<cv::cuda::ConnectedComponentsAlgorithmsTypes> rb_cCvCudaConnectedComponentsAlgorithmsTypes = define_enum_under<cv::cuda::ConnectedComponentsAlgorithmsTypes>("ConnectedComponentsAlgorithmsTypes", rb_mCvCuda)
     .define_value("CCL_DEFAULT", cv::cuda::ConnectedComponentsAlgorithmsTypes::CCL_DEFAULT)
     .define_value("CCL_BKE", cv::cuda::ConnectedComponentsAlgorithmsTypes::CCL_BKE);
+
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, cv::cuda::ConnectedComponentsAlgorithmsTypes)>("connected_components", &cv::cuda::connectedComponents,
     Arg("image"), Arg("labels"), Arg("connectivity"), Arg("ltype"), Arg("ccltype"));
 
@@ -232,6 +243,7 @@ void Init_Cudaimgproc()
     .define_value("FIRST_ORDER_MOMENTS", cv::cuda::MomentsOrder::FIRST_ORDER_MOMENTS)
     .define_value("SECOND_ORDER_MOMENTS", cv::cuda::MomentsOrder::SECOND_ORDER_MOMENTS)
     .define_value("THIRD_ORDER_MOMENTS", cv::cuda::MomentsOrder::THIRD_ORDER_MOMENTS);
+
   rb_mCvCuda.define_module_function<int(*)(const cv::cuda::MomentsOrder)>("num_moments", &cv::cuda::numMoments,
     Arg("order"));
 

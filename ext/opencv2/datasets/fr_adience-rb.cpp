@@ -13,6 +13,7 @@ void Init_Datasets_FrAdience()
     .define_value("male", cv::datasets::genderType::male)
     .define_value("female", cv::datasets::genderType::female)
     .define_value("none", cv::datasets::genderType::none);
+
   Rice::Data_Type<cv::datasets::FR_adienceObj> rb_cCvDatasetsFRAdienceObj = define_class_under<cv::datasets::FR_adienceObj, cv::datasets::Object>(rb_mCvDatasets, "FRAdienceObj")
     .define_constructor(Constructor<cv::datasets::FR_adienceObj>())
     .define_attr("user_id", &cv::datasets::FR_adienceObj::user_id)
@@ -27,6 +28,7 @@ void Init_Datasets_FrAdience()
     .define_attr("tilt_ang", &cv::datasets::FR_adienceObj::tilt_ang)
     .define_attr("fiducial_yaw_angle", &cv::datasets::FR_adienceObj::fiducial_yaw_angle)
     .define_attr("fiducial_score", &cv::datasets::FR_adienceObj::fiducial_score);
+
   Rice::Data_Type<cv::datasets::FR_adience> rb_cCvDatasetsFRAdience = define_class_under<cv::datasets::FR_adience, cv::datasets::Dataset>(rb_mCvDatasets, "FRAdience")
     .define_method<void(cv::datasets::FR_adience::*)(const std::string&)>("load", &cv::datasets::FR_adience::load,
       Arg("path"))

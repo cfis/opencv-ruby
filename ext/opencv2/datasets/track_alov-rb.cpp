@@ -14,6 +14,7 @@ void Init_Datasets_TrackAlov()
     .define_attr("id", &cv::datasets::TRACK_alovObj::id)
     .define_attr("image_path", &cv::datasets::TRACK_alovObj::imagePath)
     .define_attr("gtbb", &cv::datasets::TRACK_alovObj::gtbb);
+
   rb_mCvDatasets.define_constant("SectionNames", cv::datasets::sectionNames);
 
   rb_mCvDatasets.define_constant("SectionSizes", cv::datasets::sectionSizes);

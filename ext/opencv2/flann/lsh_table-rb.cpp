@@ -1,3 +1,5 @@
+#include <opencv2/core.hpp> // Manual
+#include <vector> // Manual
 #include <opencv2/flann/lsh_table.h>
 #include "lsh_table-rb.hpp"
 

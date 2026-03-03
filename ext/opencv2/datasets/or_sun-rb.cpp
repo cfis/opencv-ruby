@@ -13,6 +13,7 @@ void Init_Datasets_OrSun()
     .define_constructor(Constructor<cv::datasets::OR_sunObj>())
     .define_attr("label", &cv::datasets::OR_sunObj::label)
     .define_attr("name", &cv::datasets::OR_sunObj::name);
+
   Rice::Data_Type<cv::datasets::OR_sun> rb_cCvDatasetsORSun = define_class_under<cv::datasets::OR_sun, cv::datasets::Dataset>(rb_mCvDatasets, "ORSun")
     .define_method<void(cv::datasets::OR_sun::*)(const std::string&)>("load", &cv::datasets::OR_sun::load,
       Arg("path"))

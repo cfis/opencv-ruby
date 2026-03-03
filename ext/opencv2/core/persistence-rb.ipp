@@ -17,4 +17,3 @@ inline Rice::Data_Type<cv::internal::VecReaderProxy<_Tp, numflag>> VecReaderProx
     .template define_method<void(cv::internal::VecReaderProxy<_Tp, numflag>::*)(std::vector<_Tp>&, size_t) const>("call", &cv::internal::VecReaderProxy<_Tp, numflag>::operator(),
       Arg("vec"), Arg("count"));
 }
-

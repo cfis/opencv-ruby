@@ -12,6 +12,7 @@ void Init_Datasets_SrBsds()
   Rice::Data_Type<cv::datasets::SR_bsdsObj> rb_cCvDatasetsSRBsdsObj = define_class_under<cv::datasets::SR_bsdsObj, cv::datasets::Object>(rb_mCvDatasets, "SRBsdsObj")
     .define_constructor(Constructor<cv::datasets::SR_bsdsObj>())
     .define_attr("image_name", &cv::datasets::SR_bsdsObj::imageName);
+
   Rice::Data_Type<cv::datasets::SR_bsds> rb_cCvDatasetsSRBsds = define_class_under<cv::datasets::SR_bsds, cv::datasets::Dataset>(rb_mCvDatasets, "SRBsds")
     .define_method<void(cv::datasets::SR_bsds::*)(const std::string&)>("load", &cv::datasets::SR_bsds::load,
       Arg("path"))

@@ -18,6 +18,7 @@ void Init_Face_FaceAlignment()
       Arg("f"), ArgBuffer("user_data"))
     .define_method<bool(cv::face::FacemarkKazemi::*)(cv::InputArray, cv::OutputArray)>("get_faces", &cv::face::FacemarkKazemi::getFaces,
       Arg("image"), Arg("faces"));
+
   Rice::Data_Type<cv::face::FacemarkKazemi::Params> rb_cCvFaceFacemarkKazemiParams = define_class_under<cv::face::FacemarkKazemi::Params>(rb_cCvFaceFacemarkKazemi, "Params")
     .define_constructor(Constructor<cv::face::FacemarkKazemi::Params>())
     .define_attr("cascade_depth", &cv::face::FacemarkKazemi::Params::cascade_depth)

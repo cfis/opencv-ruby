@@ -79,4 +79,3 @@ inline Rice::Data_Type<cv::DualQuat<_Tp>> DualQuat_instantiate(Rice::Module pare
     .template define_method<cv::DualQuat<_Tp>&(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp>&)>("assign_divide", &cv::DualQuat<_Tp>::operator/=,
       Arg("arg_0"));
 }
-

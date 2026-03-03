@@ -15,6 +15,7 @@ void Init_Core_CudaStreamAccessor()
       Arg("stream"))
     .define_singleton_function<cv::cuda::Stream(*)(cudaStream_t)>("wrap_stream", &cv::cuda::StreamAccessor::wrapStream,
       Arg("stream"));
+
   Rice::Data_Type<cv::cuda::EventAccessor> rb_cCvCudaEventAccessor = define_class_under<cv::cuda::EventAccessor>(rb_mCvCuda, "EventAccessor")
     .define_constructor(Constructor<cv::cuda::EventAccessor>())
     .define_singleton_function<cudaEvent_t(*)(const cv::cuda::Event&)>("get_event", &cv::cuda::EventAccessor::getEvent,

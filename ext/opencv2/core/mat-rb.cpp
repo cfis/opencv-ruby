@@ -1,4 +1,8 @@
+#include <opencv2/core/cuda.hpp> // Manual
+#include <opencv2/core/opengl.hpp> // Manual
 #include <opencv2/core/mat.hpp>
+#include "types-rb.hpp" // Manual
+#include "refinements/mat-iterators.hpp" // Manual
 #include "mat-rb.hpp"
 
 using namespace Rice;
@@ -832,8 +836,8 @@ void Init_Core_Mat()
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t*>(0))
     .define_method<void(cv::SparseMat::*)(const int*, size_t*)>("erase", &cv::SparseMat::erase,
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t*>(0))
-    .define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each")
-    .define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const")
+    // .define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each") // SparseMatIterator doesn't dereference like standard iterators
+    // .define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const") // SparseMatIterator doesn't dereference like standard iterators
     .define_method<cv::SparseMat::Node*(cv::SparseMat::*)(size_t)>("node", &cv::SparseMat::node,
       Arg("nidx"))
     .define_method<const cv::SparseMat::Node*(cv::SparseMat::*)(size_t) const>("node", &cv::SparseMat::node,

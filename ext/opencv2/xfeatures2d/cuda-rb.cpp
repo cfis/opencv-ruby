@@ -9,7 +9,7 @@ void Init_Xfeatures2d_Cuda()
 
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
-  Rice::Data_Type<cv::cuda::SURF_CUDA> rb_cCvCudaSURFCUDA = define_class_under<cv::cuda::SURF_CUDA>(rb_mCvCuda, "SurfCuda")
+  Rice::Data_Type<cv::cuda::SURF_CUDA> rb_cCvCudaSURFCUDA = define_class_under<cv::cuda::SURF_CUDA>(rb_mCvCuda, "SURF_CUDA")
     .define_constructor(Constructor<cv::cuda::SURF_CUDA>())
     .define_constructor(Constructor<cv::cuda::SURF_CUDA, double, int, int, bool, float, bool>(),
       Arg("_hessian_threshold"), Arg("_n_octaves") = static_cast<int>(4), Arg("_n_octave_layers") = static_cast<int>(2), Arg("_extended") = static_cast<bool>(false), Arg("_keypoints_ratio") = static_cast<float>(0.01f), Arg("_upright") = static_cast<bool>(false))
@@ -50,6 +50,7 @@ void Init_Xfeatures2d_Cuda()
     .define_attr("det", &cv::cuda::SURF_CUDA::det)
     .define_attr("trace", &cv::cuda::SURF_CUDA::trace)
     .define_attr("max_pos_buffer", &cv::cuda::SURF_CUDA::maxPosBuffer);
+
   Enum<cv::cuda::SURF_CUDA::KeypointLayout> rb_cCvCudaSURFCUDAKeypointLayout = define_enum_under<cv::cuda::SURF_CUDA::KeypointLayout>("KeypointLayout", rb_cCvCudaSURFCUDA)
     .define_value("X_ROW", cv::cuda::SURF_CUDA::KeypointLayout::X_ROW)
     .define_value("Y_ROW", cv::cuda::SURF_CUDA::KeypointLayout::Y_ROW)

@@ -92,6 +92,36 @@ rename_types:
     to: Matx\1s
   - from: /^MatxInt(\d+)$/
     to: Matx\1i
+  - from: RNG_MT19937
+    to: RNG_MT19937
+  - from: BRISK
+    to: BRISK
+  - from: MSER
+    to: MSER
+  - from: KAZE
+    to: KAZE
+  - from: AKAZE
+    to: AKAZE
+  - from: ORB
+    to: ORB
+  - from: SIFT
+    to: SIFT
+  - from: CLAHE
+    to: CLAHE
+  - from: ANN_MLP
+    to: ANN_MLP
+  - from: SVM
+    to: SVM
+  - from: EM
+    to: EM
+  - from: SVMSGD
+    to: SVMSGD
+  - from: MACE
+    to: MACE
+  - from: HDF5
+    to: HDF5
+  - from: SURF_CUDA
+    to: SURF_CUDA
 
 # === Symbol Filtering ===
 export_macros: []

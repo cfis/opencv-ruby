@@ -30,4 +30,3 @@ inline Rice::Data_Type<cv::L1<T>> L1_instantiate(Rice::Module parent, const char
     .template define_method<typename cv::L1<T>::ResultType(cv::L1<T>::*)(const T*, const T*, int) const>("call", &cv::L1<T>::operator(),
       std::conditional_t<std::is_fundamental_v<const T>, ArgBuffer, Arg>("a"), std::conditional_t<std::is_fundamental_v<const T>, ArgBuffer, Arg>("b"), Arg("size"));
 }
-

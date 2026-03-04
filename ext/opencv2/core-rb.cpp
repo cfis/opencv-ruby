@@ -542,7 +542,7 @@ void Init_Core()
     .define_constant("UNIFORM", (int)cv::RNG::UNIFORM)
     .define_constant("NORMAL", (int)cv::RNG::NORMAL);
 
-  Rice::Data_Type<cv::RNG_MT19937> rb_cCvRNGMT19937 = define_class_under<cv::RNG_MT19937>(rb_mCv, "RngMt19937")
+  Rice::Data_Type<cv::RNG_MT19937> rb_cCvRNGMT19937 = define_class_under<cv::RNG_MT19937>(rb_mCv, "RNG_MT19937")
     .define_constructor(Constructor<cv::RNG_MT19937>())
     .define_constructor(Constructor<cv::RNG_MT19937, unsigned int>(),
       Arg("s"))

@@ -22,11 +22,13 @@ Bindings are generated using ruby-bindgen from `/mnt/c/Source/ruby-bindgen`. The
 cd /mnt/c/Source/ruby-bindgen
 
 # 1. Generate Rice C++ source files
-bundle exec ruby -Ilib bin/ruby-bindgen /mnt/c/Source/opencv-ruby/ext/rice-bindings.yaml
+time bundle exec ruby -Ilib bin/ruby-bindgen /mnt/c/Source/opencv-ruby/ext/rice-bindings.yaml
 
 # 2. Generate CMake build files (must run after Rice generation)
-bundle exec ruby -Ilib bin/ruby-bindgen /mnt/c/Source/opencv-ruby/ext/cmake-bindings.yaml
+time bundle exec ruby -Ilib bin/ruby-bindgen /mnt/c/Source/opencv-ruby/ext/cmake-bindings.yaml
 ```
+
+**IMPORTANT:** Always use `time` and ensure the timing output is visible to the user (not truncated). If output is long, capture timing separately, e.g. pipe main output to `tail` or redirect stdout so the `time` result is not lost.
 
 ### After Regeneration
 
@@ -50,6 +52,10 @@ git diff -- ext/ ':(exclude)ext/manual_updates.md' > ext/manual_updates.diff
 - **NEVER use `git checkout` to restore files in ext/.** The generated branch contains freshly generated code. Checking out from main or other branches will overwrite it and require full regeneration.
 - **Include order matters.** OpenCV/system headers go before the primary header; local project headers go after. Mark manual includes with `// Manual` comment.
 - **Verify every change.** After editing a file, re-read it to confirm changes are present before moving on.
+
+## Commits
+
+Do not add a `Co-Authored-By` line to commit messages.
 
 ## Building
 

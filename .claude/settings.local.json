@@ -11,7 +11,8 @@
       "Bash(ls:*)",
       "Bash(done)",
       "Bash(xargs sed:*)",
-      "Bash(bundle exec:*)"
+      "Bash(bundle exec:*)",
+      "Bash(do sed:*)"
     ]
   }
 }

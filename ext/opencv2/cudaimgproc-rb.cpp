@@ -1,3 +1,4 @@
+#include <opencv2/core/mat.hpp> // Manual
 #include <opencv2/cudaimgproc.hpp>
 #include "cudaimgproc-rb.hpp"
 

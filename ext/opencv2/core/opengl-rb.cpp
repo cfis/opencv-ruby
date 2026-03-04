@@ -1,3 +1,4 @@
+#include <opencv2/core/cuda.hpp> // Manual
 #include <opencv2/core/opengl.hpp>
 #include "opengl-rb.hpp"
 

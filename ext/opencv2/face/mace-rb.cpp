@@ -9,7 +9,7 @@ void Init_Face_Mace()
 
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
-  Rice::Data_Type<cv::face::MACE> rb_cCvFaceMACE = define_class_under<cv::face::MACE, cv::Algorithm>(rb_mCvFace, "Mace")
+  Rice::Data_Type<cv::face::MACE> rb_cCvFaceMACE = define_class_under<cv::face::MACE, cv::Algorithm>(rb_mCvFace, "MACE")
     .define_method<void(cv::face::MACE::*)(const cv::String&)>("salt", &cv::face::MACE::salt,
       Arg("passphrase"))
     .define_method<void(cv::face::MACE::*)(cv::InputArrayOfArrays)>("train", &cv::face::MACE::train,

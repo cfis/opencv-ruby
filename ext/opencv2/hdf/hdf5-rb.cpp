@@ -9,7 +9,7 @@ void Init_Hdf_Hdf5()
 
   Module rb_mCvHdf = define_module_under(rb_mCv, "Hdf");
 
-  Rice::Data_Type<cv::hdf::HDF5> rb_cCvHdfHDF5 = define_class_under<cv::hdf::HDF5>(rb_mCvHdf, "Hdf5")
+  Rice::Data_Type<cv::hdf::HDF5> rb_cCvHdfHDF5 = define_class_under<cv::hdf::HDF5>(rb_mCvHdf, "HDF5")
     .define_method<void(cv::hdf::HDF5::*)()>("close", &cv::hdf::HDF5::close)
     .define_method<void(cv::hdf::HDF5::*)(const cv::String&)>("grcreate", &cv::hdf::HDF5::grcreate,
       Arg("grlabel"))
@@ -94,6 +94,7 @@ void Init_Hdf_Hdf5()
     .define_constant("H5_GETDIMS", (int)cv::hdf::HDF5::H5_GETDIMS)
     .define_constant("H5_GETMAXDIMS", (int)cv::hdf::HDF5::H5_GETMAXDIMS)
     .define_constant("H5_GETCHUNKDIMS", (int)cv::hdf::HDF5::H5_GETCHUNKDIMS);
+
   rb_mCvHdf.define_module_function<cv::Ptr<cv::hdf::HDF5>(*)(const cv::String&)>("open", &cv::hdf::open,
     Arg("hdf5_filename"));
 }

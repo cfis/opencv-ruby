@@ -1,4 +1,3 @@
-#include <opencv2/core/base.hpp> // Manual
 #include <opencv2/core/utils/trace.hpp>
 #include "trace-rb.hpp"
 

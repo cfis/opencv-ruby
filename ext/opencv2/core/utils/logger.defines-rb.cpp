@@ -1,4 +1,3 @@
-#include <opencv2/opencv.hpp> // Manual
 #include <opencv2/core/utils/logger.defines.hpp>
 #include "logger.defines-rb.hpp"
 

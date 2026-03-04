@@ -59,7 +59,25 @@ Do not add a `Co-Authored-By` line to commit messages.
 
 ## Building
 
-The project uses CMake for building the C++ extension. OpenCV is managed via vcpkg.
+The project uses CMake with presets for building the C++ extension. OpenCV is managed via vcpkg on Windows.
+
+```bash
+cd ext
+
+# Configure
+cmake --preset linux-debug    # or linux-release, msvc-debug, etc.
+
+# Build
+cmake --build --preset linux-debug
+```
+
+The built extension is placed in `lib/` (Linux/macOS) or `lib/<ruby-version>/` (Windows). See `docs/cmake-build.md` for full details.
+
+## Testing
+
+```bash
+bundle exec rake test
+```
 
 ## ruby-bindgen Configuration
 

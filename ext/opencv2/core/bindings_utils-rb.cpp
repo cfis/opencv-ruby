@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/core/bindings_utils.hpp>
 #include "bindings_utils-rb.hpp"
 

@@ -1,4 +1,3 @@
-#include <opencv2/core/types.hpp> // Manual
 #include <opencv2/core/check.hpp>
 #include "check-rb.hpp"
 

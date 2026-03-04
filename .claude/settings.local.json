@@ -12,7 +12,9 @@
       "Bash(done)",
       "Bash(xargs sed:*)",
       "Bash(bundle exec:*)",
-      "Bash(do sed:*)"
+      "Bash(do sed:*)",
+      "Bash(cmake:*)",
+      "Bash(c++:*)"
     ]
   }
 }

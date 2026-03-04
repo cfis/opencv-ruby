@@ -1,4 +1,3 @@
-#include <opencv2/core.hpp> // Manual
 #include <opencv2/core/matx.hpp>
 #include "matx-rb.hpp"
 

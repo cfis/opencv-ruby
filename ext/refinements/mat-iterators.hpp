@@ -56,13 +56,13 @@ template<typename T>
 void mat_iterate(cv::Mat* mat)
 {
   // The iterator returns references - we do NOT want to create a copy
-  detail::To_Ruby<T&> toRuby;
+  Rice::detail::To_Ruby<T&> toRuby;
 
   auto it = mat->begin<T>();
   auto end = mat->end<T>();
 
   for (; it != end; ++it)
   {
-    detail::protect(rb_yield, toRuby.convert(*it));
+    Rice::detail::protect(rb_yield, toRuby.convert(*it));
   }
 }

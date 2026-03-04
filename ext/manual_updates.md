@@ -49,6 +49,8 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/datasets/track_vot-rb.cpp`                         | `<opencv2/core.hpp>`, `<opencv2/datasets/dataset.hpp>`                   |
 | `opencv2/xfeatures2d-rb.cpp`                               | `<opencv2/features2d.hpp>`                                               |
 | `opencv2/cudaimgproc-rb.cpp`                               | `<opencv2/core/mat.hpp>`                                                 |
+| `opencv2/core/bufferpool-rb.cpp`                           | `<cstddef>`                                                              |
+| `opencv2/core/utils/logtag-rb.cpp`                         | `<climits>`                                                              |
 
 ## DNN Module
 Remove the versioning in the DNN namespace.

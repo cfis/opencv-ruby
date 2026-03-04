@@ -1,3 +1,4 @@
+#include <climits> // Manual
 #include <opencv2/core/utils/logtag.hpp>
 #include "logtag-rb.hpp"
 

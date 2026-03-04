@@ -1,3 +1,4 @@
+#include <opencv2/core/mat.hpp> // Manual
 #include <opencv2/core/mat.inl.hpp>
 #include "mat.inl-rb.hpp"
 
@@ -48,11 +49,7 @@ void Init_Core_MatInl()
       return self - other;
     });
   
-  Data_Type<ptrdiff_t>()
-    .define_method("+", [](ptrdiff_t self, const cv::MatConstIterator& other) -> cv::MatConstIterator
-    {
-      return self + other;
-    });
+  // Manual: Removed ptrdiff_t operator+ with MatConstIterator — ptrdiff_t is not a Rice-wrapped type
   
   Data_Type<cv::SparseMatConstIterator>()
     .define_method("==", [](const cv::SparseMatConstIterator& self, const cv::SparseMatConstIterator& other) -> bool

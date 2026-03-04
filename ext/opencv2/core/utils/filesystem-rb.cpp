@@ -1,3 +1,4 @@
+#include <opencv2/core/core.hpp> // Manual
 #include <opencv2/core/utils/filesystem.hpp>
 #include "filesystem-rb.hpp"
 

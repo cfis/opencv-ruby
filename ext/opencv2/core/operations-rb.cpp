@@ -1,4 +1,6 @@
+#include <opencv2/core/core.hpp> // Manual
 #include <opencv2/core/operations.hpp>
+#include "mat-rb.hpp" // Manual
 #include "operations-rb.hpp"
 
 using namespace Rice;

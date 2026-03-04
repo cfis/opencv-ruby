@@ -1,3 +1,4 @@
+#include <cstddef> // Manual
 #include <opencv2/core/bufferpool.hpp>
 #include "bufferpool-rb.hpp"
 

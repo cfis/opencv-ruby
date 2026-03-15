@@ -3,7 +3,7 @@
 template<typename _Tp>
 inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::Mat_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::Mat_<_Tp>, cv::Mat>(parent, name)
     .define_constructor(Constructor<cv::Mat_<_Tp>>())
     .define_constructor(Constructor<cv::Mat_<_Tp>, int, int>(),
       Arg("_rows"), Arg("_cols"))
@@ -137,7 +137,7 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::SparseMat_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::SparseMat_<_Tp>, cv::SparseMat>(parent, name)
     .define_constructor(Constructor<cv::SparseMat_<_Tp>>())
     .define_constructor(Constructor<cv::SparseMat_<_Tp>, int, const int*>(),
       Arg("dims"), ArgBuffer("_sizes"))
@@ -182,7 +182,7 @@ inline Rice::Data_Type<cv::SparseMat_<_Tp>> SparseMat__instantiate(Rice::Module 
 template<typename _Tp>
 inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::MatConstIterator_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::MatConstIterator_<_Tp>, cv::MatConstIterator>(parent, name)
     .define_constructor(Constructor<cv::MatConstIterator_<_Tp>>())
     .define_constructor(Constructor<cv::MatConstIterator_<_Tp>, const cv::Mat_<_Tp>*>(),
       Arg("_m"))
@@ -215,7 +215,7 @@ inline Rice::Data_Type<cv::MatConstIterator_<_Tp>> MatConstIterator__instantiate
 template<typename _Tp>
 inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::MatIterator_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::MatIterator_<_Tp>, cv::MatConstIterator_<_Tp>>(parent, name)
     .define_constructor(Constructor<cv::MatIterator_<_Tp>>())
     .define_constructor(Constructor<cv::MatIterator_<_Tp>, cv::Mat_<_Tp>*>(),
       Arg("_m"))
@@ -247,7 +247,7 @@ inline Rice::Data_Type<cv::MatIterator_<_Tp>> MatIterator__instantiate(Rice::Mod
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::SparseMatConstIterator_<_Tp>, cv::SparseMatConstIterator>(parent, name)
     .define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>>())
     .define_constructor(Constructor<cv::SparseMatConstIterator_<_Tp>, const cv::SparseMat_<_Tp>*>(),
       Arg("_m"))
@@ -266,7 +266,7 @@ inline Rice::Data_Type<cv::SparseMatConstIterator_<_Tp>> SparseMatConstIterator_
 template<typename _Tp>
 inline Rice::Data_Type<cv::SparseMatIterator_<_Tp>> SparseMatIterator__instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::SparseMatIterator_<_Tp>>(parent, name)
+  return Rice::define_class_under<cv::SparseMatIterator_<_Tp>, cv::SparseMatConstIterator_<_Tp>>(parent, name)
     .define_constructor(Constructor<cv::SparseMatIterator_<_Tp>>())
     .define_constructor(Constructor<cv::SparseMatIterator_<_Tp>, cv::SparseMat_<_Tp>*>(),
       Arg("_m"))

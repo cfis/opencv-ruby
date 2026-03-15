@@ -30,15 +30,15 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/utils/logger-rb.cpp`                         | `<opencv2/core.hpp>`                                                     |
 | `opencv2/core/utils/logger.defines-rb.cpp`                 | `<opencv2/opencv.hpp>`                                                   |
 | `opencv2/core/utils/trace-rb.cpp`                          | `<opencv2/core/base.hpp>`                                                |
-| `opencv2/flann/dist-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
-| `opencv2/flann/dynamic_bitset-rb.cpp`                      | `<vector>`, `<opencv2/core/base.hpp>`                                    |
+| `opencv2/flann/dist-rb.cpp`                                | `<opencv2/core.hpp>`                                                     |
+| `opencv2/flann/dynamic_bitset-rb.cpp`                      | `<opencv2/core.hpp>`                                                     |
 | `opencv2/flann/flann_base-rb.cpp`                          | `<opencv2/core/base.hpp>`, `<opencv2/flann/defines.h>`                   |
 | `opencv2/flann/lsh_table-rb.cpp`                           | `<opencv2/core.hpp>`, `<vector>`                                         |
 | `opencv2/imgproc/bindings-rb.cpp`                          | `<opencv2/core/mat.hpp>`, `<opencv2/imgproc.hpp>`                        |
 | `opencv2/imgproc/detail/gcgraph-rb.cpp`                    | `<opencv2/core.hpp>`                                                     |
 | `opencv2/ml/ml.inl-rb.cpp`                                | `<opencv2/core/cvdef.h>`, `<opencv2/core/operations.hpp>`                |
-| `opencv2/flann/ground_truth-rb.cpp`                        | `<opencv2/core/base.hpp>`                                                |
-| `opencv2/flann/heap-rb.cpp`                                | `<opencv2/core/base.hpp>`                                                |
+| `opencv2/flann/ground_truth-rb.cpp`                        | `<vector>`, `<opencv2/core.hpp>`                                         |
+| `opencv2/flann/heap-rb.cpp`                                | `<opencv2/core.hpp>`                                                     |
 | `opencv2/flann/random-rb.cpp`                              | `<opencv2/core.hpp>`                                                     |
 | `opencv2/flann/sampling-rb.cpp`                            | `<opencv2/core/core.hpp>`, `<opencv2/flann/defines.h>`                   |
 | `opencv2/objdetect/aruco_board-rb.cpp`                     | `<opencv2/objdetect/aruco_dictionary.hpp>`                               |
@@ -73,7 +73,12 @@ Apply all these updates
 | `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Change template argument from `<long>` to `<int64>`. Add comment: `// Manual fix: use int64 instead of long` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Matx41d` instantiation (~line 115): delete `Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");` — already defined in `matx-rb.cpp` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Vec4d` instantiation (~line 115): delete `Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");` — already defined in `matx-rb.cpp` |
-| `opencv2/core/mat.inl-rb.cpp`            | Remove `ptrdiff_t` operator+ with `MatConstIterator` (~line 52): `ptrdiff_t` is not a Rice-wrapped type |
+| ~~`opencv2/core/mat.inl-rb.cpp`~~        | **Fixed in ruby-bindgen** — was: Remove `ptrdiff_t` operator+ with `MatConstIterator` (`ptrdiff_t` is not a Rice-wrapped type) |
+| `opencv2/core/CMakeLists.txt`            | Move `cuda_stream_accessor-rb.cpp` into `if(OpenCV_HAS_CUDA)` conditional block — requires CUDA runtime headers |
+| ~~`opencv2/flann/all_indices-rb.ipp`~~   | **Fixed in ruby-bindgen** — was: Qualify `Matrix` → `cvflann::Matrix` (GCC 15 `-Wtemplate-body`) |
+| ~~`opencv2/flann/flann_base-rb.ipp`~~    | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `Index::Distance()` (GCC 15 `-Wtemplate-body`) |
+| ~~`opencv2/flann/autotuned_index-rb.ipp`~~ | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `AutotunedIndex::Distance()` (GCC 15 `-Wtemplate-body`) |
+| ~~`opencv2/flann/composite_index-rb.ipp`~~ | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `CompositeIndex::Distance()` (GCC 15 `-Wtemplate-body`) |
 
 ## Template Builder Modifications
 

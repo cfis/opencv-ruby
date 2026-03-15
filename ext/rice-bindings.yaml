@@ -57,77 +57,76 @@ skip:
   - opencv2/tracking/feature.hpp
   - opencv2/tracking/onlineBoosting.hpp
 
-# === Name Mappings ===
-# Override generated Ruby names. See manual_updates.md for context.
-rename_methods:
-  # grab is not a predicate — it grabs a frame
-  - from: cv::VideoCapture::grab
-    to: grab
-  # MatSize returns cv::Size, not element access
-  - from: cv::MatSize::operator()
-    to: to_size
-  # operator() provides element/ROI access — Ruby [] is more idiomatic
-  - from: cv::Mat::operator()
-    to: "[]"
-  - from: cv::UMat::operator()
-    to: "[]"
-  - from: cv::MatExpr::operator()
-    to: "[]"
-  - from: cv::Mat_::operator()
-    to: "[]"
-  - from: cv::SparseMat_::operator()
-    to: "[]"
-  - from: cv::Matx::operator()
-    to: "[]"
-  - from: cv::Vec::operator()
-    to: "[]"
-
-rename_types:
-  # OpenCV Matx naming convention (uchar → b, short → s, ushort → w, int → i)
-  - from: /^MatxUnsignedChar(\d+)$/
-    to: Matx\1b
-  - from: /^MatxUnsignedShort(\d+)$/
-    to: Matx\1w
-  - from: /^MatxShort(\d+)$/
-    to: Matx\1s
-  - from: /^MatxInt(\d+)$/
-    to: Matx\1i
-  - from: RNG_MT19937
-    to: RNG_MT19937
-  - from: BRISK
-    to: BRISK
-  - from: MSER
-    to: MSER
-  - from: KAZE
-    to: KAZE
-  - from: AKAZE
-    to: AKAZE
-  - from: ORB
-    to: ORB
-  - from: SIFT
-    to: SIFT
-  - from: CLAHE
-    to: CLAHE
-  - from: ANN_MLP
-    to: ANN_MLP
-  - from: SVM
-    to: SVM
-  - from: EM
-    to: EM
-  - from: SVMSGD
-    to: SVMSGD
-  - from: MACE
-    to: MACE
-  - from: HDF5
-    to: HDF5
-  - from: SURF_CUDA
-    to: SURF_CUDA
-
 # === Symbol Filtering ===
 export_macros: []
 version_check: RUBY_CV_VERSION
 
 symbols:
+  # === Name Mappings ===
+  # Override generated Ruby names. See manual_updates.md for context.
+  rename_methods:
+    # grab is not a predicate — it grabs a frame
+    - from: cv::VideoCapture::grab
+      to: grab
+    # MatSize returns cv::Size, not element access
+    - from: cv::MatSize::operator()
+      to: to_size
+    # operator() provides element/ROI access — Ruby [] is more idiomatic
+    - from: cv::Mat::operator()
+      to: "[]"
+    - from: cv::UMat::operator()
+      to: "[]"
+    - from: cv::MatExpr::operator()
+      to: "[]"
+    - from: cv::Mat_::operator()
+      to: "[]"
+    - from: cv::SparseMat_::operator()
+      to: "[]"
+    - from: cv::Matx::operator()
+      to: "[]"
+    - from: cv::Vec::operator()
+      to: "[]"
+
+  rename_types:
+    # OpenCV Matx naming convention (uchar → b, short → s, ushort → w, int → i)
+    - from: /^MatxUnsignedChar(\d+)$/
+      to: Matx\1b
+    - from: /^MatxUnsignedShort(\d+)$/
+      to: Matx\1w
+    - from: /^MatxShort(\d+)$/
+      to: Matx\1s
+    - from: /^MatxInt(\d+)$/
+      to: Matx\1i
+    - from: RNG_MT19937
+      to: RNG_MT19937
+    - from: BRISK
+      to: BRISK
+    - from: MSER
+      to: MSER
+    - from: KAZE
+      to: KAZE
+    - from: AKAZE
+      to: AKAZE
+    - from: ORB
+      to: ORB
+    - from: SIFT
+      to: SIFT
+    - from: CLAHE
+      to: CLAHE
+    - from: ANN_MLP
+      to: ANN_MLP
+    - from: SVM
+      to: SVM
+    - from: EM
+      to: EM
+    - from: SVMSGD
+      to: SVMSGD
+    - from: MACE
+      to: MACE
+    - from: HDF5
+      to: HDF5
+    - from: SURF_CUDA
+      to: SURF_CUDA
   skip:
     # Not available or broken
     - cv::ocl::PlatformInfo::versionMajor

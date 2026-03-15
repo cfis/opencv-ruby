@@ -166,6 +166,7 @@ symbols:
     - "cv::SparseMatConstIterator::operator--()"
     - "cv::SparseMatConstIterator::operator--(int)"
     - "cv::SparseMatIterator::SparseMatIterator(cv::SparseMat*, const int*)"
+    - cv::ocl::Kernel::run_
     - cv::ppf_match_3d::PPF3DDetector::read
     - cv::ppf_match_3d::PPF3DDetector::write
     - cv::detail::tracking::tbm::operator==

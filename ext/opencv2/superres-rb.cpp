@@ -27,7 +27,7 @@ void Init_Superres()
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(int)>("create_frame_source_camera", &cv::superres::createFrameSource_Camera,
     Arg("device_id") = static_cast<int>(0));
 
-  Rice::Data_Type<cv::superres::SuperResolution> rb_cCvSuperresSuperResolution = define_class_under<cv::superres::SuperResolution, cv::Algorithm>(rb_mCvSuperres, "SuperResolution")
+  Rice::Data_Type<cv::superres::SuperResolution> rb_cCvSuperresSuperResolution = define_class_under<cv::superres::SuperResolution, cv::superres::FrameSource>(rb_mCvSuperres, "SuperResolution")
     .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::FrameSource>&)>("set_input", &cv::superres::SuperResolution::setInput,
       Arg("frame_source"))
     .define_method<void(cv::superres::SuperResolution::*)(cv::OutputArray)>("next_frame", &cv::superres::SuperResolution::nextFrame,

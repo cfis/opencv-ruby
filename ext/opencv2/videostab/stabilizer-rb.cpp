@@ -43,7 +43,7 @@ void Init_Videostab_Stabilizer()
       Arg("val"))
     .define_method<cv::Ptr<cv::videostab::InpainterBase>(cv::videostab::StabilizerBase::*)() const>("inpainter", &cv::videostab::StabilizerBase::inpainter);
 
-  Rice::Data_Type<cv::videostab::OnePassStabilizer> rb_cCvVideostabOnePassStabilizer = define_class_under<cv::videostab::OnePassStabilizer, cv::videostab::StabilizerBase>(rb_mCvVideostab, "OnePassStabilizer")
+  Rice::Data_Type<cv::videostab::OnePassStabilizer> rb_cCvVideostabOnePassStabilizer = define_class_under<cv::videostab::OnePassStabilizer, cv::videostab::IFrameSource>(rb_mCvVideostab, "OnePassStabilizer")
     .define_constructor(Constructor<cv::videostab::OnePassStabilizer>())
     .define_method<void(cv::videostab::OnePassStabilizer::*)(cv::Ptr<cv::videostab::MotionFilterBase>)>("set_motion_filter", &cv::videostab::OnePassStabilizer::setMotionFilter,
       Arg("val"))
@@ -51,7 +51,7 @@ void Init_Videostab_Stabilizer()
     .define_method<void(cv::videostab::OnePassStabilizer::*)()>("reset", &cv::videostab::OnePassStabilizer::reset)
     .define_method<cv::Mat(cv::videostab::OnePassStabilizer::*)()>("next_frame", &cv::videostab::OnePassStabilizer::nextFrame);
 
-  Rice::Data_Type<cv::videostab::TwoPassStabilizer> rb_cCvVideostabTwoPassStabilizer = define_class_under<cv::videostab::TwoPassStabilizer, cv::videostab::StabilizerBase>(rb_mCvVideostab, "TwoPassStabilizer")
+  Rice::Data_Type<cv::videostab::TwoPassStabilizer> rb_cCvVideostabTwoPassStabilizer = define_class_under<cv::videostab::TwoPassStabilizer, cv::videostab::IFrameSource>(rb_mCvVideostab, "TwoPassStabilizer")
     .define_constructor(Constructor<cv::videostab::TwoPassStabilizer>())
     .define_method<void(cv::videostab::TwoPassStabilizer::*)(cv::Ptr<cv::videostab::IMotionStabilizer>)>("set_motion_stabilizer", &cv::videostab::TwoPassStabilizer::setMotionStabilizer,
       Arg("val"))

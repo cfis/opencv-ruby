@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::HierarchicalClusteringIndex<Distance>> HierarchicalClusteringIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::HierarchicalClusteringIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::HierarchicalClusteringIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::Matrix<typename cvflann::HierarchicalClusteringIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("index_params") = static_cast<const cvflann::IndexParams&>(cvflann::HierarchicalClusteringIndexParams()), Arg("d") = static_cast<Distance>(Distance()))
     .define_constructor(Constructor<cvflann::HierarchicalClusteringIndex<Distance>, const cvflann::HierarchicalClusteringIndex<Distance>&>(),

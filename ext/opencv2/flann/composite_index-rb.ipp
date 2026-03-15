@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::CompositeIndex<Distance>> CompositeIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::CompositeIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::CompositeIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::Matrix<typename cvflann::CompositeIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::CompositeIndexParams()), Arg("d") = static_cast<Distance>(Distance()))
     .define_constructor(Constructor<cvflann::CompositeIndex<Distance>, const cvflann::CompositeIndex<Distance>&>(),

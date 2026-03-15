@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::LshIndex<Distance>> LshIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::LshIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::LshIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::Matrix<typename cvflann::LshIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::LshIndexParams()), Arg("d") = static_cast<Distance>(Distance()))
     .define_constructor(Constructor<cvflann::LshIndex<Distance>, const cvflann::LshIndex<Distance>&>(),

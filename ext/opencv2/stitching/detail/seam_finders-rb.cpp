@@ -60,7 +60,7 @@ void Init_Stitching_Detail_SeamFinders()
     .define_value("COST_COLOR", cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR)
     .define_value("COST_COLOR_GRAD", cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR_GRAD);
 
-  Rice::Data_Type<cv::detail::GraphCutSeamFinder> rb_cCvDetailGraphCutSeamFinder = define_class_under<cv::detail::GraphCutSeamFinder, cv::detail::GraphCutSeamFinderBase>(rb_mCvDetail, "GraphCutSeamFinder")
+  Rice::Data_Type<cv::detail::GraphCutSeamFinder> rb_cCvDetailGraphCutSeamFinder = define_class_under<cv::detail::GraphCutSeamFinder, cv::detail::SeamFinder>(rb_mCvDetail, "GraphCutSeamFinder")
     .define_constructor(Constructor<cv::detail::GraphCutSeamFinder, int, float, float>(),
       Arg("cost_type") = static_cast<int>(cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR_GRAD), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f))
     .define_constructor(Constructor<cv::detail::GraphCutSeamFinder, cv::String, float, float>(),
@@ -68,7 +68,7 @@ void Init_Stitching_Detail_SeamFinders()
     .define_method<void(cv::detail::GraphCutSeamFinder::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("find", &cv::detail::GraphCutSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks"));
 
-  Rice::Data_Type<cv::detail::GraphCutSeamFinderGpu> rb_cCvDetailGraphCutSeamFinderGpu = define_class_under<cv::detail::GraphCutSeamFinderGpu, cv::detail::GraphCutSeamFinderBase>(rb_mCvDetail, "GraphCutSeamFinderGpu")
+  Rice::Data_Type<cv::detail::GraphCutSeamFinderGpu> rb_cCvDetailGraphCutSeamFinderGpu = define_class_under<cv::detail::GraphCutSeamFinderGpu, cv::detail::PairwiseSeamFinder>(rb_mCvDetail, "GraphCutSeamFinderGpu")
     .define_constructor(Constructor<cv::detail::GraphCutSeamFinderGpu, int, float, float>(),
       Arg("cost_type") = static_cast<int>(cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR_GRAD), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f))
     .define_method<void(cv::detail::GraphCutSeamFinderGpu::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point>&, std::vector<cv::UMat>&)>("find", &cv::detail::GraphCutSeamFinderGpu::find,

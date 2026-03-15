@@ -26,7 +26,7 @@ inline Rice::Data_Type<cvflann::ResultSet<DistanceType>> ResultSet_instantiate(R
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::KNNSimpleResultSet<DistanceType>> KNNSimpleResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KNNSimpleResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::KNNSimpleResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNSimpleResultSet<DistanceType>, int>(),
       Arg("capacity_"))
     .template define_method<void(cvflann::KNNSimpleResultSet<DistanceType>::*)(int*, DistanceType*)>("init", &cvflann::KNNSimpleResultSet<DistanceType>::init,
@@ -41,7 +41,7 @@ inline Rice::Data_Type<cvflann::KNNSimpleResultSet<DistanceType>> KNNSimpleResul
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::KNNResultSet<DistanceType>> KNNResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KNNResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::KNNResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNResultSet<DistanceType>, int>(),
       Arg("capacity_"))
     .template define_method<void(cvflann::KNNResultSet<DistanceType>::*)(int*, DistanceType*)>("init", &cvflann::KNNResultSet<DistanceType>::init,
@@ -56,7 +56,7 @@ inline Rice::Data_Type<cvflann::KNNResultSet<DistanceType>> KNNResultSet_instant
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::RadiusResultSet<DistanceType>> RadiusResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::RadiusResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::RadiusResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::RadiusResultSet<DistanceType>, DistanceType, int*, DistanceType*, int>(),
       Arg("radius_"), ArgBuffer("indices_"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dists_"), Arg("capacity_"))
     .template define_method<void(cvflann::RadiusResultSet<DistanceType>::*)()>("init", &cvflann::RadiusResultSet<DistanceType>::init)
@@ -70,7 +70,7 @@ inline Rice::Data_Type<cvflann::RadiusResultSet<DistanceType>> RadiusResultSet_i
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::UniqueResultSet<DistanceType>> UniqueResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::UniqueResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::UniqueResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::UniqueResultSet<DistanceType>>())
     .template define_method<bool(cvflann::UniqueResultSet<DistanceType>::*)() const>("full?", &cvflann::UniqueResultSet<DistanceType>::full)
     .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)()>("clear", &cvflann::UniqueResultSet<DistanceType>::clear)
@@ -85,7 +85,7 @@ inline Rice::Data_Type<cvflann::UniqueResultSet<DistanceType>> UniqueResultSet_i
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::KNNUniqueResultSet<DistanceType>> KNNUniqueResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KNNUniqueResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::KNNUniqueResultSet<DistanceType>, cvflann::UniqueResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNUniqueResultSet<DistanceType>, unsigned int>(),
       Arg("capacity"))
     .template define_method<void(cvflann::KNNUniqueResultSet<DistanceType>::*)(DistanceType, int)>("add_point", &cvflann::KNNUniqueResultSet<DistanceType>::addPoint,
@@ -96,7 +96,7 @@ inline Rice::Data_Type<cvflann::KNNUniqueResultSet<DistanceType>> KNNUniqueResul
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::RadiusUniqueResultSet<DistanceType>> RadiusUniqueResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::RadiusUniqueResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::RadiusUniqueResultSet<DistanceType>, cvflann::UniqueResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::RadiusUniqueResultSet<DistanceType>, DistanceType>(),
       Arg("radius"))
     .template define_method<void(cvflann::RadiusUniqueResultSet<DistanceType>::*)(DistanceType, int)>("add_point", &cvflann::RadiusUniqueResultSet<DistanceType>::addPoint,
@@ -109,7 +109,7 @@ inline Rice::Data_Type<cvflann::RadiusUniqueResultSet<DistanceType>> RadiusUniqu
 template<typename DistanceType>
 inline Rice::Data_Type<cvflann::KNNRadiusUniqueResultSet<DistanceType>> KNNRadiusUniqueResultSet_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KNNRadiusUniqueResultSet<DistanceType>>(parent, name)
+  return Rice::define_class_under<cvflann::KNNRadiusUniqueResultSet<DistanceType>, cvflann::KNNUniqueResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNRadiusUniqueResultSet<DistanceType>, unsigned int, DistanceType>(),
       Arg("capacity"), Arg("radius"))
     .template define_method<void(cvflann::KNNRadiusUniqueResultSet<DistanceType>::*)()>("clear", &cvflann::KNNRadiusUniqueResultSet<DistanceType>::clear);

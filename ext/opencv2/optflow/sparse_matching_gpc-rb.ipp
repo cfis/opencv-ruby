@@ -3,7 +3,7 @@
 template<int T>
 inline Rice::Data_Type<cv::optflow::GPCForest<T>> GPCForest_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::optflow::GPCForest<T>>(parent, name)
+  return Rice::define_class_under<cv::optflow::GPCForest<T>, cv::Algorithm>(parent, name)
     .template define_method<void(cv::optflow::GPCForest<T>::*)(cv::optflow::GPCTrainingSamples&, const cv::optflow::GPCTrainingParams)>("train", &cv::optflow::GPCForest<T>::train,
       Arg("samples"), Arg("params") = static_cast<const cv::optflow::GPCTrainingParams>(cv::optflow::GPCTrainingParams()))
     .template define_method<void(cv::optflow::GPCForest<T>::*)(const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, const std::vector<std::basic_string<char>>&, const cv::optflow::GPCTrainingParams)>("train", &cv::optflow::GPCForest<T>::train,

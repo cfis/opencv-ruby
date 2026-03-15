@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KMeansIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::KMeansIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_attr("choose_centers", &cvflann::KMeansIndex<Distance>::chooseCenters)
     .template define_method<void(cvflann::KMeansIndex<Distance>::*)(int, int*, int, int*, int&)>("choose_centers_random", &cvflann::KMeansIndex<Distance>::chooseCentersRandom,
       Arg("k"), ArgBuffer("indices"), Arg("indices_length"), ArgBuffer("centers"), Arg("centers_length"))
@@ -38,7 +38,7 @@ inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(R
 template<typename CentersContainerType>
 inline Rice::Data_Type<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>> KMeansDistanceComputer_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>>(parent, name)
+  return Rice::define_class_under<cvflann::KMeansIndex::KMeansDistanceComputer<CentersContainerType>, cv::ParallelLoopBody>(parent, name)
     .define_constructor(Constructor<cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>, Distance, const cvflann::Matrix<ElementType>&, const int, const int*, const CentersContainerType&, const size_t, std::vector<int>&, std::vector<DistanceType>&>(),
       Arg("_distance"), Arg("_dataset"), Arg("_branching"), ArgBuffer("_indices"), Arg("_dcenters"), Arg("_veclen"), Arg("_new_centroids"), Arg("_sq_dists"))
     .template define_method<void(cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::*)(const cv::Range&) const>("call", &cvflann::KMeansIndex<Distance>::KMeansDistanceComputer<CentersContainerType>::operator(),

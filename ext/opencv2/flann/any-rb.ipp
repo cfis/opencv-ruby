@@ -3,7 +3,7 @@
 template<typename T>
 inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_any_policy_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::anyimpl::typed_base_any_policy<T>>(parent, name)
+  return Rice::define_class_under<cvflann::anyimpl::typed_base_any_policy<T>, cvflann::anyimpl::base_any_policy>(parent, name)
     .template define_method<::size_t(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("get_size", &cvflann::anyimpl::typed_base_any_policy<T>::get_size)
     .template define_method<const std::type_info&(cvflann::anyimpl::typed_base_any_policy<T>::*)()>("type", &cvflann::anyimpl::typed_base_any_policy<T>::type);
 }
@@ -11,7 +11,7 @@ inline Rice::Data_Type<cvflann::anyimpl::typed_base_any_policy<T>> typed_base_an
 template<typename T>
 inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::anyimpl::small_any_policy<T>>(parent, name)
+  return Rice::define_class_under<cvflann::anyimpl::small_any_policy<T>, cvflann::anyimpl::typed_base_any_policy<T>>(parent, name)
     .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::small_any_policy<T>::static_delete,
       ArgBuffer("arg_0"))
     .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::small_any_policy<T>::copy_from_value,
@@ -31,7 +31,7 @@ inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_i
 template<typename T>
 inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::anyimpl::big_any_policy<T>>(parent, name)
+  return Rice::define_class_under<cvflann::anyimpl::big_any_policy<T>, cvflann::anyimpl::typed_base_any_policy<T>>(parent, name)
     .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void**)>("static_delete", &cvflann::anyimpl::big_any_policy<T>::static_delete,
       ArgBuffer("x"))
     .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(const void*, void**)>("copy_from_value", &cvflann::anyimpl::big_any_policy<T>::copy_from_value,

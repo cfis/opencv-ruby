@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::AutotunedIndex<Distance>> AutotunedIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::AutotunedIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::AutotunedIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::Matrix<typename cvflann::AutotunedIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::AutotunedIndexParams()), Arg("d") = static_cast<Distance>(Distance()))
     .define_constructor(Constructor<cvflann::AutotunedIndex<Distance>, const cvflann::AutotunedIndex<Distance>&>(),

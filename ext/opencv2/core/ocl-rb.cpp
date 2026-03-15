@@ -325,8 +325,6 @@ void Init_Core_Ocl()
       Arg("i"), Arg("arg"))
     .define_method<bool(cv::ocl::Kernel::*)(int, size_t[], size_t[], bool, const cv::ocl::Queue&)>("run", &cv::ocl::Kernel::run,
       Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue()))
-    .define_method<bool(cv::ocl::Kernel::*)(int, size_t[], size_t[], bool, const cv::ocl::Queue&)>("run_", &cv::ocl::Kernel::run_,
-      Arg("dims"), Arg("globalsize"), Arg("localsize"), Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue()))
     .define_method<bool(cv::ocl::Kernel::*)(bool, const cv::ocl::Queue&)>("run_task", &cv::ocl::Kernel::runTask,
       Arg("sync"), Arg("q") = static_cast<const cv::ocl::Queue&>(cv::ocl::Queue()))
     .define_method<int64(cv::ocl::Kernel::*)(int, size_t[], size_t[], const cv::ocl::Queue&)>("run_profiling", &cv::ocl::Kernel::runProfiling,

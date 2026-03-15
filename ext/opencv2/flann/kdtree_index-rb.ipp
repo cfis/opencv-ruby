@@ -3,7 +3,7 @@
 template<typename Distance>
 inline Rice::Data_Type<cvflann::KDTreeIndex<Distance>> KDTreeIndex_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cvflann::KDTreeIndex<Distance>>(parent, name)
+  return Rice::define_class_under<cvflann::KDTreeIndex<Distance>, cvflann::NNIndex<Distance>>(parent, name)
     .define_constructor(Constructor<cvflann::KDTreeIndex<Distance>, const cvflann::Matrix<typename cvflann::KDTreeIndex<Distance>::ElementType>&, const cvflann::IndexParams&, Distance>(),
       Arg("input_data"), Arg("params") = static_cast<const cvflann::IndexParams&>(cvflann::KDTreeIndexParams()), Arg("d") = static_cast<Distance>(Distance()))
     .define_constructor(Constructor<cvflann::KDTreeIndex<Distance>, const cvflann::KDTreeIndex<Distance>&>(),

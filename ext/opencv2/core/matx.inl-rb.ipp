@@ -22,7 +22,7 @@ inline Rice::Data_Type<cv::MatxCommaInitializer<_Tp, m, n>> MatxCommaInitializer
 template<typename _Tp, int m>
 inline Rice::Data_Type<cv::VecCommaInitializer<_Tp, m>> VecCommaInitializer_instantiate(Rice::Module parent, const char* name)
 {
-  return Rice::define_class_under<cv::VecCommaInitializer<_Tp, m>>(parent, name)
+  return Rice::define_class_under<cv::VecCommaInitializer<_Tp, m>, cv::MatxCommaInitializer<_Tp, m, 1>>(parent, name)
     .define_constructor(Constructor<cv::VecCommaInitializer<_Tp, m>, cv::Vec<_Tp, m>*>(),
       Arg("_vec"))
     .template define_method<cv::Vec<_Tp, m>(cv::VecCommaInitializer<_Tp, m>::*)() const>("dereference", &cv::VecCommaInitializer<_Tp, m>::operator*);

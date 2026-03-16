@@ -396,7 +396,7 @@ class Calib3dTest < OpenCVTestCase
     mtx_r = Cv::Mat.new
     mtx_q = Cv::Mat.new
 
-    result = Cv::rq_decomp3x3(src.input_array, mtx_r.output_array, mtx_q.output_array)
+    Cv::rq_decomp3x3(src.input_array, mtx_r.output_array, mtx_q.output_array)
 
     assert_equal(3, mtx_r.rows)
     assert_equal(3, mtx_r.cols)

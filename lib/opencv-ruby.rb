@@ -6,7 +6,7 @@ if RUBY_PLATFORM =~ /mingw|mswin/
   ENV["PATH"] = "#{path}#{File::PATH_SEPARATOR}#{cuda_path}#{File::PATH_SEPARATOR}#{ENV["PATH"]}"
   begin
     require "#{major}.#{minor}/opencv_ruby.so"
-  rescue LoadError => e
+  rescue LoadError
     require "opencv_ruby"
   end
 else

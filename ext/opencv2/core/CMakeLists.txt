@@ -16,7 +16,6 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "check-rb.cpp"
     "core-rb.cpp"
     "cuda-rb.cpp"
-    "cuda_stream_accessor-rb.cpp"
     "cuda_types-rb.cpp"
     "cv_cpu_dispatch-rb.cpp"
     "cv_cpu_helper-rb.cpp"
@@ -49,3 +48,9 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "version-rb.cpp"
     "vsx_utils-rb.cpp"
   )
+
+if(OpenCV_HAS_CUDA)
+  target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+      "cuda_stream_accessor-rb.cpp"
+    )
+endif()

@@ -50,7 +50,7 @@ void Init_Bioinspired_Retina()
     .define_method<cv::Size(cv::bioinspired::Retina::*)()>("get_output_size", &cv::bioinspired::Retina::getOutputSize)
     .define_method<void(cv::bioinspired::Retina::*)(cv::String, const bool)>("setup", &cv::bioinspired::Retina::setup,
       Arg("retina_parameter_file") = static_cast<cv::String>(""), Arg("apply_default_setup_on_failure") = static_cast<const bool>(true))
-    .define_method<void(cv::bioinspired::Retina::*)(cv::FileStorage&, const bool)>("setup", &cv::bioinspired::Retina::setup,
+    .define_method<void(cv::bioinspired::Retina::*)(cv::FileStorage &, const bool)>("setup", &cv::bioinspired::Retina::setup,
       Arg("fs"), Arg("apply_default_setup_on_failure") = static_cast<const bool>(true))
     .define_method<void(cv::bioinspired::Retina::*)(cv::bioinspired::RetinaParameters)>("setup", &cv::bioinspired::Retina::setup,
       Arg("new_parameters"))
@@ -58,7 +58,7 @@ void Init_Bioinspired_Retina()
     .define_method<cv::String(cv::bioinspired::Retina::*)()>("print_setup", &cv::bioinspired::Retina::printSetup)
     .define_method<void(cv::bioinspired::Retina::*)(cv::String) const>("write", &cv::bioinspired::Retina::write,
       Arg("fs"))
-    .define_method<void(cv::bioinspired::Retina::*)(cv::FileStorage&) const>("write", &cv::bioinspired::Retina::write,
+    .define_method<void(cv::bioinspired::Retina::*)(cv::FileStorage &) const>("write", &cv::bioinspired::Retina::write,
       Arg("fs"))
     .define_method<void(cv::bioinspired::Retina::*)(const bool, const bool, const float, const float, const float, const float, const float, const float, const float)>("setup_op_land_ipl_parvo_channel", &cv::bioinspired::Retina::setupOPLandIPLParvoChannel,
       Arg("color_mode") = static_cast<const bool>(true), Arg("normalise_output") = static_cast<const bool>(true), Arg("photoreceptors_local_adaptation_sensitivity") = static_cast<const float>(0.7f), Arg("photoreceptors_temporal_constant") = static_cast<const float>(0.5f), Arg("photoreceptors_spatial_constant") = static_cast<const float>(0.53f), Arg("horizontal_cells_gain") = static_cast<const float>(0.f), Arg("hcells_temporal_constant") = static_cast<const float>(1.f), Arg("hcells_spatial_constant") = static_cast<const float>(7.f), Arg("ganglion_cells_sensitivity") = static_cast<const float>(0.7f))

@@ -16,6 +16,6 @@ void Init_Flann_Matrix()
     .define_attr("cols", &cvflann::UntypedMatrix::cols)
     .define_attr("data", &cvflann::UntypedMatrix::data)
     .define_attr("type", &cvflann::UntypedMatrix::type)
-    .define_constructor(Constructor<cvflann::UntypedMatrix, void*, long, long>(),
+    .define_constructor(Constructor<cvflann::UntypedMatrix, void *, long, long>(),
       ArgBuffer("data_"), Arg("rows_"), Arg("cols_"));
 }

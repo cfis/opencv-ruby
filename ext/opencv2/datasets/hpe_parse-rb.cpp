@@ -16,7 +16,7 @@ void Init_Datasets_HpeParse()
     .define_attr("name", &cv::datasets::HPE_parseObj::name);
 
   Rice::Data_Type<cv::datasets::HPE_parse> rb_cCvDatasetsHPEParse = define_class_under<cv::datasets::HPE_parse, cv::datasets::Dataset>(rb_mCvDatasets, "HPEParse")
-    .define_method<void(cv::datasets::HPE_parse::*)(const std::string&)>("load", &cv::datasets::HPE_parse::load,
+    .define_method<void(cv::datasets::HPE_parse::*)(const std::string &)>("load", &cv::datasets::HPE_parse::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::HPE_parse>(*)()>("create", &cv::datasets::HPE_parse::create);
 }

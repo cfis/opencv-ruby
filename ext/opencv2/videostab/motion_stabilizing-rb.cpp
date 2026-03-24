@@ -12,7 +12,7 @@ void Init_Videostab_MotionStabilizing()
   Module rb_mCvVideostab = define_module_under(rb_mCv, "Videostab");
 
   Rice::Data_Type<cv::videostab::IMotionStabilizer> rb_cCvVideostabIMotionStabilizer = define_class_under<cv::videostab::IMotionStabilizer>(rb_mCvVideostab, "IMotionStabilizer")
-    .define_method<void(cv::videostab::IMotionStabilizer::*)(int, const std::vector<cv::Mat>&, const cv::Range&, cv::Mat*)>("stabilize", &cv::videostab::IMotionStabilizer::stabilize,
+    .define_method<void(cv::videostab::IMotionStabilizer::*)(int, const std::vector<cv::Mat> &, const cv::Range &, cv::Mat *)>("stabilize", &cv::videostab::IMotionStabilizer::stabilize,
       Arg("size"), Arg("motions"), Arg("range"), Arg("stabilization_motions"));
 
   Rice::Data_Type<cv::videostab::MotionStabilizationPipeline> rb_cCvVideostabMotionStabilizationPipeline = define_class_under<cv::videostab::MotionStabilizationPipeline, cv::videostab::IMotionStabilizer>(rb_mCvVideostab, "MotionStabilizationPipeline")
@@ -20,13 +20,13 @@ void Init_Videostab_MotionStabilizing()
     .define_method<void(cv::videostab::MotionStabilizationPipeline::*)(cv::Ptr<cv::videostab::IMotionStabilizer>)>("push_back", &cv::videostab::MotionStabilizationPipeline::pushBack,
       Arg("stabilizer"))
     .define_method<bool(cv::videostab::MotionStabilizationPipeline::*)() const>("empty?", &cv::videostab::MotionStabilizationPipeline::empty)
-    .define_method<void(cv::videostab::MotionStabilizationPipeline::*)(int, const std::vector<cv::Mat>&, const cv::Range&, cv::Mat*)>("stabilize", &cv::videostab::MotionStabilizationPipeline::stabilize,
+    .define_method<void(cv::videostab::MotionStabilizationPipeline::*)(int, const std::vector<cv::Mat> &, const cv::Range &, cv::Mat *)>("stabilize", &cv::videostab::MotionStabilizationPipeline::stabilize,
       Arg("size"), Arg("motions"), Arg("range"), Arg("stabilization_motions"));
 
   Rice::Data_Type<cv::videostab::MotionFilterBase> rb_cCvVideostabMotionFilterBase = define_class_under<cv::videostab::MotionFilterBase, cv::videostab::IMotionStabilizer>(rb_mCvVideostab, "MotionFilterBase")
-    .define_method<cv::Mat(cv::videostab::MotionFilterBase::*)(int, const std::vector<cv::Mat>&, const cv::Range&)>("stabilize", &cv::videostab::MotionFilterBase::stabilize,
+    .define_method<cv::Mat(cv::videostab::MotionFilterBase::*)(int, const std::vector<cv::Mat> &, const cv::Range &)>("stabilize", &cv::videostab::MotionFilterBase::stabilize,
       Arg("idx"), Arg("motions"), Arg("range"))
-    .define_method<void(cv::videostab::MotionFilterBase::*)(int, const std::vector<cv::Mat>&, const cv::Range&, cv::Mat*)>("stabilize", &cv::videostab::MotionFilterBase::stabilize,
+    .define_method<void(cv::videostab::MotionFilterBase::*)(int, const std::vector<cv::Mat> &, const cv::Range &, cv::Mat *)>("stabilize", &cv::videostab::MotionFilterBase::stabilize,
       Arg("size"), Arg("motions"), Arg("range"), Arg("stabilization_motions"));
 
   Rice::Data_Type<cv::videostab::GaussianMotionFilter> rb_cCvVideostabGaussianMotionFilter = define_class_under<cv::videostab::GaussianMotionFilter, cv::videostab::MotionFilterBase>(rb_mCvVideostab, "GaussianMotionFilter")
@@ -36,7 +36,7 @@ void Init_Videostab_MotionStabilizing()
       Arg("radius"), Arg("stdev") = static_cast<float>(-1.f))
     .define_method<int(cv::videostab::GaussianMotionFilter::*)() const>("radius", &cv::videostab::GaussianMotionFilter::radius)
     .define_method<float(cv::videostab::GaussianMotionFilter::*)() const>("stdev", &cv::videostab::GaussianMotionFilter::stdev)
-    .define_method<cv::Mat(cv::videostab::GaussianMotionFilter::*)(int, const std::vector<cv::Mat>&, const cv::Range&)>("stabilize", &cv::videostab::GaussianMotionFilter::stabilize,
+    .define_method<cv::Mat(cv::videostab::GaussianMotionFilter::*)(int, const std::vector<cv::Mat> &, const cv::Range &)>("stabilize", &cv::videostab::GaussianMotionFilter::stabilize,
       Arg("idx"), Arg("motions"), Arg("range"));
 
   Rice::Data_Type<cv::videostab::LpMotionStabilizer> rb_cCvVideostabLpMotionStabilizer = define_class_under<cv::videostab::LpMotionStabilizer, cv::videostab::IMotionStabilizer>(rb_mCvVideostab, "LpMotionStabilizer")
@@ -63,12 +63,12 @@ void Init_Videostab_MotionStabilizing()
     .define_method<void(cv::videostab::LpMotionStabilizer::*)(float)>("set_weight4", &cv::videostab::LpMotionStabilizer::setWeight4,
       Arg("val"))
     .define_method<float(cv::videostab::LpMotionStabilizer::*)() const>("weight4", &cv::videostab::LpMotionStabilizer::weight4)
-    .define_method<void(cv::videostab::LpMotionStabilizer::*)(int, const std::vector<cv::Mat>&, const cv::Range&, cv::Mat*)>("stabilize", &cv::videostab::LpMotionStabilizer::stabilize,
+    .define_method<void(cv::videostab::LpMotionStabilizer::*)(int, const std::vector<cv::Mat> &, const cv::Range &, cv::Mat *)>("stabilize", &cv::videostab::LpMotionStabilizer::stabilize,
       Arg("size"), Arg("motions"), Arg("range"), Arg("stabilization_motions"));
 
-  rb_mCvVideostab.define_module_function<cv::Mat(*)(const cv::Mat&, cv::Size, float)>("ensure_inclusion_constraint", &cv::videostab::ensureInclusionConstraint,
+  rb_mCvVideostab.define_module_function<cv::Mat(*)(const cv::Mat &, cv::Size, float)>("ensure_inclusion_constraint", &cv::videostab::ensureInclusionConstraint,
     Arg("m"), Arg("size"), Arg("trim_ratio"));
 
-  rb_mCvVideostab.define_module_function<float(*)(const cv::Mat&, cv::Size)>("estimate_optimal_trim_ratio", &cv::videostab::estimateOptimalTrimRatio,
+  rb_mCvVideostab.define_module_function<float(*)(const cv::Mat &, cv::Size)>("estimate_optimal_trim_ratio", &cv::videostab::estimateOptimalTrimRatio,
     Arg("m"), Arg("size"));
 }

@@ -15,7 +15,7 @@ void Init_Stitching_Detail_Blenders()
     .define_constructor(Constructor<cv::detail::Blender>())
     .define_singleton_function<cv::Ptr<cv::detail::Blender>(*)(int, bool)>("create_default", &cv::detail::Blender::createDefault,
       Arg("type"), Arg("try_gpu") = static_cast<bool>(false))
-    .define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("prepare", &cv::detail::Blender::prepare,
+    .define_method<void(cv::detail::Blender::*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("prepare", &cv::detail::Blender::prepare,
       Arg("corners"), Arg("sizes"))
     .define_method<void(cv::detail::Blender::*)(cv::Rect)>("prepare", &cv::detail::Blender::prepare,
       Arg("dst_roi"))
@@ -39,7 +39,7 @@ void Init_Stitching_Detail_Blenders()
       Arg("img"), Arg("mask"), Arg("tl"))
     .define_method<void(cv::detail::FeatherBlender::*)(cv::InputOutputArray, cv::InputOutputArray)>("blend", &cv::detail::FeatherBlender::blend,
       Arg("dst"), Arg("dst_mask"))
-    .define_method<cv::Rect(cv::detail::FeatherBlender::*)(const std::vector<cv::UMat>&, const std::vector<cv::Point_<int>>&, std::vector<cv::UMat>&)>("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
+    .define_method<cv::Rect(cv::detail::FeatherBlender::*)(const std::vector<cv::UMat> &, const std::vector<cv::Point> &, std::vector<cv::UMat> &)>("create_weight_maps", &cv::detail::FeatherBlender::createWeightMaps,
       Arg("masks"), Arg("corners"), Arg("weight_maps"));
 
   Rice::Data_Type<cv::detail::MultiBandBlender> rb_cCvDetailMultiBandBlender = define_class_under<cv::detail::MultiBandBlender, cv::detail::Blender>(rb_mCvDetail, "MultiBandBlender")
@@ -61,15 +61,15 @@ void Init_Stitching_Detail_Blenders()
   rb_mCvDetail.define_module_function<void(*)(cv::InputArray, float, cv::InputOutputArray)>("create_weight_map", &cv::detail::createWeightMap,
     Arg("mask"), Arg("sharpness"), Arg("weight"));
 
-  rb_mCvDetail.define_module_function<void(*)(cv::InputArray, int, std::vector<cv::UMat>&)>("create_laplace_pyr", &cv::detail::createLaplacePyr,
+  rb_mCvDetail.define_module_function<void(*)(cv::InputArray, int, std::vector<cv::UMat> &)>("create_laplace_pyr", &cv::detail::createLaplacePyr,
     Arg("img"), Arg("num_levels"), Arg("pyr"));
 
-  rb_mCvDetail.define_module_function<void(*)(cv::InputArray, int, std::vector<cv::UMat>&)>("create_laplace_pyr_gpu", &cv::detail::createLaplacePyrGpu,
+  rb_mCvDetail.define_module_function<void(*)(cv::InputArray, int, std::vector<cv::UMat> &)>("create_laplace_pyr_gpu", &cv::detail::createLaplacePyrGpu,
     Arg("img"), Arg("num_levels"), Arg("pyr"));
 
-  rb_mCvDetail.define_module_function<void(*)(std::vector<cv::UMat>&)>("restore_image_from_laplace_pyr", &cv::detail::restoreImageFromLaplacePyr,
+  rb_mCvDetail.define_module_function<void(*)(std::vector<cv::UMat> &)>("restore_image_from_laplace_pyr", &cv::detail::restoreImageFromLaplacePyr,
     Arg("pyr"));
 
-  rb_mCvDetail.define_module_function<void(*)(std::vector<cv::UMat>&)>("restore_image_from_laplace_pyr_gpu", &cv::detail::restoreImageFromLaplacePyrGpu,
+  rb_mCvDetail.define_module_function<void(*)(std::vector<cv::UMat> &)>("restore_image_from_laplace_pyr_gpu", &cv::detail::restoreImageFromLaplacePyrGpu,
     Arg("pyr"));
 }

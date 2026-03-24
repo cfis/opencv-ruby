@@ -4,9 +4,9 @@ template<typename P>
 inline Rice::Data_Type<cv::detail::RotationWarperBase<P>> RotationWarperBase_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cv::detail::RotationWarperBase<P>, cv::detail::RotationWarper>(parent, name)
-    .template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarperBase<P>::warpPoint,
+    .template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarperBase<P>::warpPoint,
       Arg("pt"), Arg("k"), Arg("r"))
-    .template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::RotationWarperBase<P>::warpPointBackward,
+    .template define_method<cv::Point2f(cv::detail::RotationWarperBase<P>::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::RotationWarperBase<P>::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r"))
     .template define_method<cv::Rect(cv::detail::RotationWarperBase<P>::*)(cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("build_maps", &cv::detail::RotationWarperBase<P>::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))

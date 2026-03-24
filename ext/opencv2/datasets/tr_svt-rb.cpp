@@ -26,7 +26,7 @@ void Init_Datasets_TrSvt()
     .define_attr("tags", &cv::datasets::TR_svtObj::tags);
 
   Rice::Data_Type<cv::datasets::TR_svt> rb_cCvDatasetsTRSvt = define_class_under<cv::datasets::TR_svt, cv::datasets::Dataset>(rb_mCvDatasets, "TRSvt")
-    .define_method<void(cv::datasets::TR_svt::*)(const std::string&)>("load", &cv::datasets::TR_svt::load,
+    .define_method<void(cv::datasets::TR_svt::*)(const std::string &)>("load", &cv::datasets::TR_svt::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::TR_svt>(*)()>("create", &cv::datasets::TR_svt::create);
 }

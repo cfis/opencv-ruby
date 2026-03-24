@@ -22,7 +22,7 @@ void Init_Reg_Mapshift()
       Arg("map"))
     .define_method<void(cv::reg::MapShift::*)(double)>("scale", &cv::reg::MapShift::scale,
       Arg("factor"))
-    .define_method<const cv::Vec<double, 2>&(cv::reg::MapShift::*)() const>("get_shift", &cv::reg::MapShift::getShift)
+    .define_method<const cv::Vec<double, 2> &(cv::reg::MapShift::*)() const>("get_shift", &cv::reg::MapShift::getShift)
     .define_method<void(cv::reg::MapShift::*)(cv::OutputArray) const>("get_shift", &cv::reg::MapShift::getShift,
       Arg("shift"));
 }

@@ -548,22 +548,22 @@ void Init_Imgproc()
       Arg("rect"))
     .define_method<int(cv::Subdiv2D::*)(cv::Point2f)>("insert", &cv::Subdiv2D::insert,
       Arg("pt"))
-    .define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point_<float>>&)>("insert", &cv::Subdiv2D::insert,
+    .define_method<void(cv::Subdiv2D::*)(const std::vector<cv::Point2f> &)>("insert", &cv::Subdiv2D::insert,
       Arg("ptvec"))
-    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, int&, int&)>("locate", &cv::Subdiv2D::locate,
+    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, int &, int &)>("locate", &cv::Subdiv2D::locate,
       Arg("pt"), Arg("edge"), Arg("vertex"))
-    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, cv::Point2f*)>("find_nearest", &cv::Subdiv2D::findNearest,
-      Arg("pt"), Arg("nearest_pt") = static_cast<cv::Point2f*>(0))
-    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec<float, 4>>&) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
+    .define_method<int(cv::Subdiv2D::*)(cv::Point2f, cv::Point2f *)>("find_nearest", &cv::Subdiv2D::findNearest,
+      Arg("pt"), Arg("nearest_pt") = static_cast<cv::Point2f *>(0))
+    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec4f> &) const>("get_edge_list", &cv::Subdiv2D::getEdgeList,
       Arg("edge_list"))
-    .define_method<void(cv::Subdiv2D::*)(std::vector<int>&) const>("get_leading_edge_list", &cv::Subdiv2D::getLeadingEdgeList,
+    .define_method<void(cv::Subdiv2D::*)(std::vector<int> &) const>("get_leading_edge_list", &cv::Subdiv2D::getLeadingEdgeList,
       Arg("leading_edge_list"))
-    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec<float, 6>>&) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
+    .define_method<void(cv::Subdiv2D::*)(std::vector<cv::Vec6f> &) const>("get_triangle_list", &cv::Subdiv2D::getTriangleList,
       Arg("triangle_list"))
-    .define_method<void(cv::Subdiv2D::*)(const std::vector<int>&, std::vector<std::vector<cv::Point_<float>>>&, std::vector<cv::Point_<float>>&)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
+    .define_method<void(cv::Subdiv2D::*)(const std::vector<int> &, std::vector<std::vector<cv::Point2f>> &, std::vector<cv::Point2f> &)>("get_voronoi_facet_list", &cv::Subdiv2D::getVoronoiFacetList,
       Arg("idx"), Arg("facet_list"), Arg("facet_centers"))
-    .define_method<cv::Point2f(cv::Subdiv2D::*)(int, int*) const>("get_vertex", &cv::Subdiv2D::getVertex,
-      Arg("vertex"), ArgBuffer("first_edge") = static_cast<int*>(0))
+    .define_method<cv::Point2f(cv::Subdiv2D::*)(int, int *) const>("get_vertex", &cv::Subdiv2D::getVertex,
+      Arg("vertex"), ArgBuffer("first_edge") = static_cast<int *>(0))
     .define_method<int(cv::Subdiv2D::*)(int, int) const>("get_edge", &cv::Subdiv2D::getEdge,
       Arg("edge"), Arg("next_edge_type"))
     .define_method<int(cv::Subdiv2D::*)(int) const>("next_edge", &cv::Subdiv2D::nextEdge,
@@ -572,10 +572,10 @@ void Init_Imgproc()
       Arg("edge"), Arg("rotate"))
     .define_method<int(cv::Subdiv2D::*)(int) const>("sym_edge", &cv::Subdiv2D::symEdge,
       Arg("edge"))
-    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_org", &cv::Subdiv2D::edgeOrg,
-      Arg("edge"), Arg("orgpt") = static_cast<cv::Point2f*>(0))
-    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f*) const>("edge_dst", &cv::Subdiv2D::edgeDst,
-      Arg("edge"), Arg("dstpt") = static_cast<cv::Point2f*>(0))
+    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f *) const>("edge_org", &cv::Subdiv2D::edgeOrg,
+      Arg("edge"), Arg("orgpt") = static_cast<cv::Point2f *>(0))
+    .define_method<int(cv::Subdiv2D::*)(int, cv::Point2f *) const>("edge_dst", &cv::Subdiv2D::edgeDst,
+      Arg("edge"), Arg("dstpt") = static_cast<cv::Point2f *>(0))
     .define_constant("PTLOC_ERROR", (int)cv::Subdiv2D::PTLOC_ERROR)
     .define_constant("PTLOC_OUTSIDE_RECT", (int)cv::Subdiv2D::PTLOC_OUTSIDE_RECT)
     .define_constant("PTLOC_INSIDE", (int)cv::Subdiv2D::PTLOC_INSIDE)
@@ -595,7 +595,7 @@ void Init_Imgproc()
       Arg("image"), Arg("lines"), Arg("width") = static_cast<cv::OutputArray>(cv::noArray()), Arg("prec") = static_cast<cv::OutputArray>(cv::noArray()), Arg("nfa") = static_cast<cv::OutputArray>(cv::noArray()))
     .define_method<void(cv::LineSegmentDetector::*)(cv::InputOutputArray, cv::InputArray)>("draw_segments", &cv::LineSegmentDetector::drawSegments,
       Arg("image"), Arg("lines"))
-    .define_method<int(cv::LineSegmentDetector::*)(const cv::Size&, cv::InputArray, cv::InputArray, cv::InputOutputArray)>("compare_segments", &cv::LineSegmentDetector::compareSegments,
+    .define_method<int(cv::LineSegmentDetector::*)(const cv::Size &, cv::InputArray, cv::InputArray, cv::InputOutputArray)>("compare_segments", &cv::LineSegmentDetector::compareSegments,
       Arg("size"), Arg("lines1"), Arg("lines2"), Arg("image") = static_cast<cv::InputOutputArray>(cv::noArray()));
 
   rb_mCv.define_module_function<cv::Ptr<cv::LineSegmentDetector>(*)(int, double, double, double, double, double, double, int)>("create_line_segment_detector", &cv::createLineSegmentDetector,
@@ -696,26 +696,26 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, double, double, double, double, int, int)>("hough_circles", &cv::HoughCircles,
     Arg("image"), Arg("circles"), Arg("method"), Arg("dp"), Arg("min_dist"), Arg("param1") = static_cast<double>(100), Arg("param2") = static_cast<double>(100), Arg("min_radius") = static_cast<int>(0), Arg("max_radius") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Point, int, int, const cv::Scalar&)>("erode", &cv::erode,
-    Arg("src"), Arg("dst"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::morphologyDefaultBorderValue()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Point, int, int, const cv::Scalar &)>("erode", &cv::erode,
+    Arg("src"), Arg("dst"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::morphologyDefaultBorderValue()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Point, int, int, const cv::Scalar&)>("dilate", &cv::dilate,
-    Arg("src"), Arg("dst"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::morphologyDefaultBorderValue()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Point, int, int, const cv::Scalar &)>("dilate", &cv::dilate,
+    Arg("src"), Arg("dst"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::morphologyDefaultBorderValue()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, cv::InputArray, cv::Point, int, int, const cv::Scalar&)>("morphology_ex", &cv::morphologyEx,
-    Arg("src"), Arg("dst"), Arg("op"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::morphologyDefaultBorderValue()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, cv::InputArray, cv::Point, int, int, const cv::Scalar &)>("morphology_ex", &cv::morphologyEx,
+    Arg("src"), Arg("dst"), Arg("op"), Arg("kernel"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1,-1)), Arg("iterations") = static_cast<int>(1), Arg("border_type") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::morphologyDefaultBorderValue()));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::Size, double, double, int)>("resize", &cv::resize,
     Arg("src"), Arg("dst"), Arg("dsize"), Arg("fx") = static_cast<double>(0), Arg("fy") = static_cast<double>(0), Arg("interpolation") = static_cast<int>(cv::INTER_LINEAR));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Size, int, int, const cv::Scalar&)>("warp_affine", &cv::warpAffine,
-    Arg("src"), Arg("dst"), Arg("m"), Arg("dsize"), Arg("flags") = static_cast<int>(cv::INTER_LINEAR), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::Scalar()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Size, int, int, const cv::Scalar &)>("warp_affine", &cv::warpAffine,
+    Arg("src"), Arg("dst"), Arg("m"), Arg("dsize"), Arg("flags") = static_cast<int>(cv::INTER_LINEAR), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::Scalar()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Size, int, int, const cv::Scalar&)>("warp_perspective", &cv::warpPerspective,
-    Arg("src"), Arg("dst"), Arg("m"), Arg("dsize"), Arg("flags") = static_cast<int>(cv::INTER_LINEAR), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::Scalar()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::Size, int, int, const cv::Scalar &)>("warp_perspective", &cv::warpPerspective,
+    Arg("src"), Arg("dst"), Arg("m"), Arg("dsize"), Arg("flags") = static_cast<int>(cv::INTER_LINEAR), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::Scalar()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, int, int, const cv::Scalar&)>("remap", &cv::remap,
-    Arg("src"), Arg("dst"), Arg("map1"), Arg("map2"), Arg("interpolation"), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar&>(cv::Scalar()));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, int, int, const cv::Scalar &)>("remap", &cv::remap,
+    Arg("src"), Arg("dst"), Arg("map1"), Arg("map2"), Arg("interpolation"), Arg("border_mode") = static_cast<int>(cv::BORDER_CONSTANT), Arg("border_value") = static_cast<const cv::Scalar &>(cv::Scalar()));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, int, bool)>("convert_maps", &cv::convertMaps,
     Arg("map1"), Arg("map2"), Arg("dstmap1"), Arg("dstmap2"), Arg("dstmap1type"), Arg("nninterpolation") = static_cast<bool>(false));
@@ -777,8 +777,8 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, double, cv::InputArray)>("accumulate_weighted", &cv::accumulateWeighted,
     Arg("src"), Arg("dst"), Arg("alpha"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<cv::Point2d(*)(cv::InputArray, cv::InputArray, cv::InputArray, double*)>("phase_correlate", &cv::phaseCorrelate,
-    Arg("src1"), Arg("src2"), Arg("window") = static_cast<cv::InputArray>(cv::noArray()), ArgBuffer("response") = static_cast<double*>(0));
+  rb_mCv.define_module_function<cv::Point2d(*)(cv::InputArray, cv::InputArray, cv::InputArray, double *)>("phase_correlate", &cv::phaseCorrelate,
+    Arg("src1"), Arg("src2"), Arg("window") = static_cast<cv::InputArray>(cv::noArray()), ArgBuffer("response") = static_cast<double *>(0));
 
   rb_mCv.define_module_function<void(*)(cv::OutputArray, cv::Size, int)>("create_hanning_window", &cv::createHanningWindow,
     Arg("dst"), Arg("win_size"), Arg("type"));
@@ -792,37 +792,37 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, double, int, int, int, double)>("adaptive_threshold", &cv::adaptiveThreshold,
     Arg("src"), Arg("dst"), Arg("max_value"), Arg("adaptive_method"), Arg("threshold_type"), Arg("block_size"), Arg("c"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Size&, int)>("pyr_down", &cv::pyrDown,
-    Arg("src"), Arg("dst"), Arg("dstsize") = static_cast<const cv::Size&>(cv::Size()), Arg("border_type") = static_cast<int>(cv::BORDER_DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Size &, int)>("pyr_down", &cv::pyrDown,
+    Arg("src"), Arg("dst"), Arg("dstsize") = static_cast<const cv::Size &>(cv::Size()), Arg("border_type") = static_cast<int>(cv::BORDER_DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Size&, int)>("pyr_up", &cv::pyrUp,
-    Arg("src"), Arg("dst"), Arg("dstsize") = static_cast<const cv::Size&>(cv::Size()), Arg("border_type") = static_cast<int>(cv::BORDER_DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Size &, int)>("pyr_up", &cv::pyrUp,
+    Arg("src"), Arg("dst"), Arg("dstsize") = static_cast<const cv::Size &>(cv::Size()), Arg("border_type") = static_cast<int>(cv::BORDER_DEFAULT));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArrayOfArrays, int, int)>("build_pyramid", &cv::buildPyramid,
     Arg("src"), Arg("dst"), Arg("maxlevel"), Arg("border_type") = static_cast<int>(cv::BORDER_DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat*, int, const int*, cv::InputArray, cv::OutputArray, int, const int*, const float**, bool, bool)>("calc_hist", &cv::calcHist,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, const int *, cv::InputArray, cv::OutputArray, int, const int *, const float **, bool, bool)>("calc_hist", &cv::calcHist,
     Arg("images"), Arg("nimages"), ArgBuffer("channels"), Arg("mask"), Arg("hist"), Arg("dims"), ArgBuffer("hist_size"), ArgBuffer("ranges"), Arg("uniform") = static_cast<bool>(true), Arg("accumulate") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat*, int, const int*, cv::InputArray, cv::SparseMat&, int, const int*, const float**, bool, bool)>("calc_hist", &cv::calcHist,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, const int *, cv::InputArray, cv::SparseMat &, int, const int *, const float **, bool, bool)>("calc_hist", &cv::calcHist,
     Arg("images"), Arg("nimages"), ArgBuffer("channels"), Arg("mask"), Arg("hist"), Arg("dims"), ArgBuffer("hist_size"), ArgBuffer("ranges"), Arg("uniform") = static_cast<bool>(true), Arg("accumulate") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, const std::vector<int>&, cv::InputArray, cv::OutputArray, const std::vector<int>&, const std::vector<float>&, bool)>("calc_hist", &cv::calcHist,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, const std::vector<int> &, cv::InputArray, cv::OutputArray, const std::vector<int> &, const std::vector<float> &, bool)>("calc_hist", &cv::calcHist,
     Arg("images"), Arg("channels"), Arg("mask"), Arg("hist"), Arg("hist_size"), Arg("ranges"), Arg("accumulate") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat*, int, const int*, cv::InputArray, cv::OutputArray, const float**, double, bool)>("calc_back_project", &cv::calcBackProject,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, const int *, cv::InputArray, cv::OutputArray, const float **, double, bool)>("calc_back_project", &cv::calcBackProject,
     Arg("images"), Arg("nimages"), ArgBuffer("channels"), Arg("hist"), Arg("back_project"), ArgBuffer("ranges"), Arg("scale") = static_cast<double>(1), Arg("uniform") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat*, int, const int*, const cv::SparseMat&, cv::OutputArray, const float**, double, bool)>("calc_back_project", &cv::calcBackProject,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, const int *, const cv::SparseMat &, cv::OutputArray, const float **, double, bool)>("calc_back_project", &cv::calcBackProject,
     Arg("images"), Arg("nimages"), ArgBuffer("channels"), Arg("hist"), Arg("back_project"), ArgBuffer("ranges"), Arg("scale") = static_cast<double>(1), Arg("uniform") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, const std::vector<int>&, cv::InputArray, cv::OutputArray, const std::vector<float>&, double)>("calc_back_project", &cv::calcBackProject,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, const std::vector<int> &, cv::InputArray, cv::OutputArray, const std::vector<float> &, double)>("calc_back_project", &cv::calcBackProject,
     Arg("images"), Arg("channels"), Arg("hist"), Arg("dst"), Arg("ranges"), Arg("scale"));
 
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, int)>("compare_hist", &cv::compareHist,
     Arg("h1"), Arg("h2"), Arg("method"));
 
-  rb_mCv.define_module_function<double(*)(const cv::SparseMat&, const cv::SparseMat&, int)>("compare_hist", &cv::compareHist,
+  rb_mCv.define_module_function<double(*)(const cv::SparseMat &, const cv::SparseMat &, int)>("compare_hist", &cv::compareHist,
     Arg("h1"), Arg("h2"), Arg("method"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray)>("equalize_hist", &cv::equalizeHist,
@@ -831,8 +831,8 @@ void Init_Imgproc()
   rb_mCv.define_module_function<cv::Ptr<cv::CLAHE>(*)(double, cv::Size)>("create_clahe", &cv::createCLAHE,
     Arg("clip_limit") = static_cast<double>(40.0), Arg("tile_grid_size") = static_cast<cv::Size>(cv::Size(8, 8)));
 
-  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, int, cv::InputArray, float*, cv::OutputArray)>("emd", &cv::EMD,
-    Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), ArgBuffer("lower_bound") = static_cast<float*>(0), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
+  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, int, cv::InputArray, float *, cv::OutputArray)>("emd", &cv::EMD,
+    Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), ArgBuffer("lower_bound") = static_cast<float *>(0), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
 
   rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, int, cv::InputArray, cv::Ptr<float>, cv::OutputArray)>("wrapper_emd", &cv::wrapperEMD,
     Arg("signature1"), Arg("signature2"), Arg("dist_type"), Arg("cost") = static_cast<cv::InputArray>(cv::noArray()), Arg("lower_bound") = static_cast<cv::Ptr<float>>(cv::Ptr<float>()), Arg("flow") = static_cast<cv::OutputArray>(cv::noArray()));
@@ -852,11 +852,11 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int)>("distance_transform", &cv::distanceTransform,
     Arg("src"), Arg("dst"), Arg("distance_type"), Arg("mask_size"), Arg("dst_type") = static_cast<int>(CV_32F));
 
-  rb_mCv.define_module_function<int(*)(cv::InputOutputArray, cv::InputOutputArray, cv::Point, cv::Scalar, cv::Rect*, cv::Scalar, cv::Scalar, int)>("flood_fill", &cv::floodFill,
-    Arg("image"), Arg("mask"), Arg("seed_point"), Arg("new_val"), Arg("rect") = static_cast<cv::Rect*>(0), Arg("lo_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("up_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("flags") = static_cast<int>(4));
+  rb_mCv.define_module_function<int(*)(cv::InputOutputArray, cv::InputOutputArray, cv::Point, cv::Scalar, cv::Rect *, cv::Scalar, cv::Scalar, int)>("flood_fill", &cv::floodFill,
+    Arg("image"), Arg("mask"), Arg("seed_point"), Arg("new_val"), Arg("rect") = static_cast<cv::Rect *>(0), Arg("lo_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("up_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("flags") = static_cast<int>(4));
 
-  rb_mCv.define_module_function<int(*)(cv::InputOutputArray, cv::Point, cv::Scalar, cv::Rect*, cv::Scalar, cv::Scalar, int)>("flood_fill", &cv::floodFill,
-    Arg("image"), Arg("seed_point"), Arg("new_val"), Arg("rect") = static_cast<cv::Rect*>(0), Arg("lo_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("up_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("flags") = static_cast<int>(4));
+  rb_mCv.define_module_function<int(*)(cv::InputOutputArray, cv::Point, cv::Scalar, cv::Rect *, cv::Scalar, cv::Scalar, int)>("flood_fill", &cv::floodFill,
+    Arg("image"), Arg("seed_point"), Arg("new_val"), Arg("rect") = static_cast<cv::Rect *>(0), Arg("lo_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("up_diff") = static_cast<cv::Scalar>(cv::Scalar()), Arg("flags") = static_cast<int>(4));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("blend_linear", &cv::blendLinear,
     Arg("src1"), Arg("src2"), Arg("weights1"), Arg("weights2"), Arg("dst"));
@@ -873,10 +873,10 @@ void Init_Imgproc()
   rb_mCv.define_module_function<cv::Moments(*)(cv::InputArray, bool)>("moments", &cv::moments,
     Arg("array"), Arg("binary_image") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<void(*)(const cv::Moments&, double[7])>("hu_moments", &cv::HuMoments,
+  rb_mCv.define_module_function<void(*)(const cv::Moments &, double[7])>("hu_moments", &cv::HuMoments,
     Arg("moments"), Arg("hu"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Moments&, cv::OutputArray)>("hu_moments", &cv::HuMoments,
+  rb_mCv.define_module_function<void(*)(const cv::Moments &, cv::OutputArray)>("hu_moments", &cv::HuMoments,
     Arg("m"), Arg("hu"));
 
   Enum<cv::TemplateMatchModes> rb_cCvTemplateMatchModes = define_enum_under<cv::TemplateMatchModes>("TemplateMatchModes", rb_mCv)
@@ -935,7 +935,7 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::RotatedRect, cv::OutputArray)>("box_points", &cv::boxPoints,
     Arg("box"), Arg("points"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::Point2f&, float&)>("min_enclosing_circle", &cv::minEnclosingCircle,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::Point2f &, float &)>("min_enclosing_circle", &cv::minEnclosingCircle,
     Arg("points"), Arg("center"), Arg("radius"));
 
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::OutputArray)>("min_enclosing_triangle", &cv::minEnclosingTriangle,
@@ -971,7 +971,7 @@ void Init_Imgproc()
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::Point2f, bool)>("point_polygon_test", &cv::pointPolygonTest,
     Arg("contour"), Arg("pt"), Arg("measure_dist"));
 
-  rb_mCv.define_module_function<int(*)(const cv::RotatedRect&, const cv::RotatedRect&, cv::OutputArray)>("rotated_rectangle_intersection", &cv::rotatedRectangleIntersection,
+  rb_mCv.define_module_function<int(*)(const cv::RotatedRect &, const cv::RotatedRect &, cv::OutputArray)>("rotated_rectangle_intersection", &cv::rotatedRectangleIntersection,
     Arg("rect1"), Arg("rect2"), Arg("intersecting_region"));
 
   rb_mCv.define_module_function<cv::Ptr<cv::GeneralizedHoughBallard>(*)()>("create_generalized_hough_ballard", &cv::createGeneralizedHoughBallard);
@@ -1008,77 +1008,77 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray)>("apply_color_map", &cv::applyColorMap,
     Arg("src"), Arg("dst"), Arg("user_color"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar&, int, int, int)>("line", &cv::line,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar &, int, int, int)>("line", &cv::line,
     Arg("img"), Arg("pt1"), Arg("pt2"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar&, int, int, int, double)>("arrowed_line", &cv::arrowedLine,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar &, int, int, int, double)>("arrowed_line", &cv::arrowedLine,
     Arg("img"), Arg("pt1"), Arg("pt2"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(8), Arg("shift") = static_cast<int>(0), Arg("tip_length") = static_cast<double>(0.1));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar&, int, int, int)>("rectangle", &cv::rectangle,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Point, const cv::Scalar &, int, int, int)>("rectangle", &cv::rectangle,
     Arg("img"), Arg("pt1"), Arg("pt2"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Rect, const cv::Scalar&, int, int, int)>("rectangle", &cv::rectangle,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Rect, const cv::Scalar &, int, int, int)>("rectangle", &cv::rectangle,
     Arg("img"), Arg("rec"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, int, const cv::Scalar&, int, int, int)>("circle", &cv::circle,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, int, const cv::Scalar &, int, int, int)>("circle", &cv::circle,
     Arg("img"), Arg("center"), Arg("radius"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Size, double, double, double, const cv::Scalar&, int, int, int)>("ellipse", &cv::ellipse,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, cv::Size, double, double, double, const cv::Scalar &, int, int, int)>("ellipse", &cv::ellipse,
     Arg("img"), Arg("center"), Arg("axes"), Arg("angle"), Arg("start_angle"), Arg("end_angle"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::RotatedRect&, const cv::Scalar&, int, int)>("ellipse", &cv::ellipse,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::RotatedRect &, const cv::Scalar &, int, int)>("ellipse", &cv::ellipse,
     Arg("img"), Arg("box"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, const cv::Scalar&, int, int, int, int)>("draw_marker", &cv::drawMarker,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::Point, const cv::Scalar &, int, int, int, int)>("draw_marker", &cv::drawMarker,
     Arg("img"), Arg("position"), Arg("color"), Arg("marker_type") = static_cast<int>(cv::MARKER_CROSS), Arg("marker_size") = static_cast<int>(20), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(8));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, const cv::Scalar&, int, int)>("fill_convex_poly", &cv::fillConvexPoly,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, const cv::Scalar &, int, int)>("fill_convex_poly", &cv::fillConvexPoly,
     Arg("img"), Arg("points"), Arg("color"), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point*, int, const cv::Scalar&, int, int)>("fill_convex_poly", &cv::fillConvexPoly,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point *, int, const cv::Scalar &, int, int)>("fill_convex_poly", &cv::fillConvexPoly,
     Arg("img"), Arg("pts"), Arg("npts"), Arg("color"), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, const cv::Scalar&, int, int, cv::Point)>("fill_poly", &cv::fillPoly,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, const cv::Scalar &, int, int, cv::Point)>("fill_poly", &cv::fillPoly,
     Arg("img"), Arg("pts"), Arg("color"), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0), Arg("offset") = static_cast<cv::Point>(cv::Point()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point**, const int*, int, const cv::Scalar&, int, int, cv::Point)>("fill_poly", &cv::fillPoly,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point **, const int *, int, const cv::Scalar &, int, int, cv::Point)>("fill_poly", &cv::fillPoly,
     Arg("img"), ArgBuffer("pts"), ArgBuffer("npts"), Arg("ncontours"), Arg("color"), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0), Arg("offset") = static_cast<cv::Point>(cv::Point()));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, bool, const cv::Scalar&, int, int, int)>("polylines", &cv::polylines,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, bool, const cv::Scalar &, int, int, int)>("polylines", &cv::polylines,
     Arg("img"), Arg("pts"), Arg("is_closed"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point* const*, const int*, int, bool, const cv::Scalar&, int, int, int)>("polylines", &cv::polylines,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point *const *, const int *, int, bool, const cv::Scalar &, int, int, int)>("polylines", &cv::polylines,
     Arg("img"), ArgBuffer("pts"), ArgBuffer("npts"), Arg("ncontours"), Arg("is_closed"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, int, const cv::Scalar&, int, int, cv::InputArray, int, cv::Point)>("draw_contours", &cv::drawContours,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, int, const cv::Scalar &, int, int, cv::InputArray, int, cv::Point)>("draw_contours", &cv::drawContours,
     Arg("image"), Arg("contours"), Arg("contour_idx"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("hierarchy") = static_cast<cv::InputArray>(cv::noArray()), Arg("max_level") = static_cast<int>(INT_MAX), Arg("offset") = static_cast<cv::Point>(cv::Point()));
 
-  rb_mCv.define_module_function<bool(*)(cv::Size, cv::Point&, cv::Point&)>("clip_line", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Size, cv::Point &, cv::Point &)>("clip_line", &cv::clipLine,
     Arg("img_size"), Arg("pt1"), Arg("pt2"));
 
-  rb_mCv.define_module_function<bool(*)(cv::Size2l, cv::Point2l&, cv::Point2l&)>("clip_line", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Size2l, cv::Point2l &, cv::Point2l &)>("clip_line", &cv::clipLine,
     Arg("img_size"), Arg("pt1"), Arg("pt2"));
 
-  rb_mCv.define_module_function<bool(*)(cv::Rect, cv::Point&, cv::Point&)>("clip_line", &cv::clipLine,
+  rb_mCv.define_module_function<bool(*)(cv::Rect, cv::Point &, cv::Point &)>("clip_line", &cv::clipLine,
     Arg("img_rect"), Arg("pt1"), Arg("pt2"));
 
-  rb_mCv.define_module_function<void(*)(cv::Point, cv::Size, int, int, int, int, std::vector<cv::Point_<int>>&)>("ellipse2_poly", &cv::ellipse2Poly,
+  rb_mCv.define_module_function<void(*)(cv::Point, cv::Size, int, int, int, int, std::vector<cv::Point> &)>("ellipse2_poly", &cv::ellipse2Poly,
     Arg("center"), Arg("axes"), Arg("angle"), Arg("arc_start"), Arg("arc_end"), Arg("delta"), Arg("pts"));
 
-  rb_mCv.define_module_function<void(*)(cv::Point2d, cv::Size2d, int, int, int, int, std::vector<cv::Point_<double>>&)>("ellipse2_poly", &cv::ellipse2Poly,
+  rb_mCv.define_module_function<void(*)(cv::Point2d, cv::Size2d, int, int, int, int, std::vector<cv::Point2d> &)>("ellipse2_poly", &cv::ellipse2Poly,
     Arg("center"), Arg("axes"), Arg("angle"), Arg("arc_start"), Arg("arc_end"), Arg("delta"), Arg("pts"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::String&, cv::Point, int, double, cv::Scalar, int, int, bool)>("put_text", &cv::putText,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::String &, cv::Point, int, double, cv::Scalar, int, int, bool)>("put_text", &cv::putText,
     Arg("img"), Arg("text"), Arg("org"), Arg("font_face"), Arg("font_scale"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("bottom_left_origin") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<cv::Size(*)(const cv::String&, int, double, int, int*)>("get_text_size", &cv::getTextSize,
+  rb_mCv.define_module_function<cv::Size(*)(const cv::String &, int, double, int, int *)>("get_text_size", &cv::getTextSize,
     Arg("text"), Arg("font_face"), Arg("font_scale"), Arg("thickness"), ArgBuffer("base_line"));
 
   rb_mCv.define_module_function<double(*)(const int, const int, const int)>("get_font_scale_from_height", &cv::getFontScaleFromHeight,
     Arg("font_face"), Arg("pixel_height"), Arg("thickness") = static_cast<const int>(1));
 
   Rice::Data_Type<cv::LineIterator> rb_cCvLineIterator = define_class_under<cv::LineIterator>(rb_mCv, "LineIterator")
-    .define_constructor(Constructor<cv::LineIterator, const cv::Mat&, cv::Point, cv::Point, int, bool>(),
+    .define_constructor(Constructor<cv::LineIterator, const cv::Mat &, cv::Point, cv::Point, int, bool>(),
       Arg("img"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
     .define_constructor(Constructor<cv::LineIterator, cv::Point, cv::Point, int, bool>(),
       Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
@@ -1086,11 +1086,11 @@ void Init_Imgproc()
       Arg("bounding_area_size"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
     .define_constructor(Constructor<cv::LineIterator, cv::Rect, cv::Point, cv::Point, int, bool>(),
       Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity") = static_cast<int>(8), Arg("left_to_right") = static_cast<bool>(false))
-    .define_method<void(cv::LineIterator::*)(const cv::Mat*, cv::Rect, cv::Point, cv::Point, int, bool)>("init", &cv::LineIterator::init,
+    .define_method<void(cv::LineIterator::*)(const cv::Mat *, cv::Rect, cv::Point, cv::Point, int, bool)>("init", &cv::LineIterator::init,
       Arg("img"), Arg("bounding_area_rect"), Arg("pt1"), Arg("pt2"), Arg("connectivity"), Arg("left_to_right"))
-    .define_method<uchar*(cv::LineIterator::*)()>("dereference", &cv::LineIterator::operator*,
+    .define_method<uchar *(cv::LineIterator::*)()>("dereference", &cv::LineIterator::operator*,
       ReturnBuffer())
-    .define_method<cv::LineIterator&(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++)
+    .define_method<cv::LineIterator &(cv::LineIterator::*)()>("increment", &cv::LineIterator::operator++)
     .define_method<cv::LineIterator(cv::LineIterator::*)(int)>("increment_post", &cv::LineIterator::operator++,
       Arg("arg_0"))
     .define_method<cv::Point(cv::LineIterator::*)() const>("pos", &cv::LineIterator::pos)

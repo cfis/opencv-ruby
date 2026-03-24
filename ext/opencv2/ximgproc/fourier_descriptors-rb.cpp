@@ -14,9 +14,9 @@ void Init_Ximgproc_FourierDescriptors()
   Rice::Data_Type<cv::ximgproc::ContourFitting> rb_cCvXimgprocContourFitting = define_class_under<cv::ximgproc::ContourFitting, cv::Algorithm>(rb_mCvXimgproc, "ContourFitting")
     .define_constructor(Constructor<cv::ximgproc::ContourFitting, int, int>(),
       Arg("ctr") = static_cast<int>(1024), Arg("fd") = static_cast<int>(16))
-    .define_method<void(cv::ximgproc::ContourFitting::*)(cv::InputArray, cv::InputArray, cv::OutputArray, double*, bool)>("estimate_transformation", &cv::ximgproc::ContourFitting::estimateTransformation,
-      Arg("src"), Arg("dst"), Arg("alpha_phi_st"), ArgBuffer("dist") = static_cast<double*>(0), Arg("fd_contour") = static_cast<bool>(false))
-    .define_method<void(cv::ximgproc::ContourFitting::*)(cv::InputArray, cv::InputArray, cv::OutputArray, double&, bool)>("estimate_transformation", &cv::ximgproc::ContourFitting::estimateTransformation,
+    .define_method<void(cv::ximgproc::ContourFitting::*)(cv::InputArray, cv::InputArray, cv::OutputArray, double *, bool)>("estimate_transformation", &cv::ximgproc::ContourFitting::estimateTransformation,
+      Arg("src"), Arg("dst"), Arg("alpha_phi_st"), ArgBuffer("dist") = static_cast<double *>(0), Arg("fd_contour") = static_cast<bool>(false))
+    .define_method<void(cv::ximgproc::ContourFitting::*)(cv::InputArray, cv::InputArray, cv::OutputArray, double &, bool)>("estimate_transformation", &cv::ximgproc::ContourFitting::estimateTransformation,
       Arg("src"), Arg("dst"), Arg("alpha_phi_st"), Arg("dist"), Arg("fd_contour") = static_cast<bool>(false))
     .define_method<void(cv::ximgproc::ContourFitting::*)(int)>("set_ctr_size", &cv::ximgproc::ContourFitting::setCtrSize,
       Arg("n"))

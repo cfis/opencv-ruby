@@ -39,6 +39,6 @@ void Init_Ximgproc_FastHoughTransform()
   rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int, int)>("fast_hough_transform", &cv::ximgproc::FastHoughTransform,
     Arg("src"), Arg("dst"), Arg("dst_mat_depth"), Arg("angle_range") = static_cast<int>(cv::ximgproc::ARO_315_135), Arg("op") = static_cast<int>(cv::ximgproc::FHT_ADD), Arg("make_skew") = static_cast<int>(cv::ximgproc::HDO_DESKEW));
 
-  rb_mCvXimgproc.define_module_function<cv::Vec4i(*)(const cv::Point&, cv::InputArray, int, int, int)>("hough_point2_line", &cv::ximgproc::HoughPoint2Line,
+  rb_mCvXimgproc.define_module_function<cv::Vec4i(*)(const cv::Point &, cv::InputArray, int, int, int)>("hough_point2_line", &cv::ximgproc::HoughPoint2Line,
     Arg("hough_point"), Arg("src_img_info"), Arg("angle_range") = static_cast<int>(cv::ximgproc::ARO_315_135), Arg("make_skew") = static_cast<int>(cv::ximgproc::HDO_DESKEW), Arg("rules") = static_cast<int>(cv::ximgproc::RO_IGNORE_BORDERS));
 }

@@ -28,7 +28,7 @@ void Init_Datasets_MsmEpfl()
     .define_attr("camera", &cv::datasets::MSM_epflObj::camera);
 
   Rice::Data_Type<cv::datasets::MSM_epfl> rb_cCvDatasetsMSMEpfl = define_class_under<cv::datasets::MSM_epfl, cv::datasets::Dataset>(rb_mCvDatasets, "MSMEpfl")
-    .define_method<void(cv::datasets::MSM_epfl::*)(const std::string&)>("load", &cv::datasets::MSM_epfl::load,
+    .define_method<void(cv::datasets::MSM_epfl::*)(const std::string &)>("load", &cv::datasets::MSM_epfl::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::MSM_epfl>(*)()>("create", &cv::datasets::MSM_epfl::create);
 }

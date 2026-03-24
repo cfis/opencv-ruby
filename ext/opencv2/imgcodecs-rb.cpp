@@ -179,52 +179,52 @@ void Init_Imgcodecs()
     .define_constructor(Constructor<cv::Animation, int, cv::Scalar>(),
       Arg("loop_count") = static_cast<int>(0), Arg("bg_color") = static_cast<cv::Scalar>(cv::Scalar()));
 
-  rb_mCv.define_module_function<cv::Mat(*)(const cv::String&, int)>("imread", &cv::imread,
+  rb_mCv.define_module_function<cv::Mat(*)(const cv::String &, int)>("imread", &cv::imread,
     Arg("filename"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
 
-  rb_mCv.define_module_function<void(*)(const cv::String&, cv::OutputArray, int)>("imread", &cv::imread,
+  rb_mCv.define_module_function<void(*)(const cv::String &, cv::OutputArray, int)>("imread", &cv::imread,
     Arg("filename"), Arg("dst"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, std::vector<cv::Mat>&, int)>("imreadmulti", &cv::imreadmulti,
+  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int)>("imreadmulti", &cv::imreadmulti,
     Arg("filename"), Arg("mats"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, std::vector<cv::Mat>&, int, int, int)>("imreadmulti", &cv::imreadmulti,
+  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int, int, int)>("imreadmulti", &cv::imreadmulti,
     Arg("filename"), Arg("mats"), Arg("start"), Arg("count"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, cv::Animation&, int, int)>("imreadanimation", &cv::imreadanimation,
+  rb_mCv.define_module_function<bool(*)(const cv::String &, cv::Animation &, int, int)>("imreadanimation", &cv::imreadanimation,
     Arg("filename"), Arg("animation"), Arg("start") = static_cast<int>(0), Arg("count") = static_cast<int>(INT16_MAX));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, const cv::Animation&, const std::vector<int>&)>("imwriteanimation", &cv::imwriteanimation,
-    Arg("filename"), Arg("animation"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+  rb_mCv.define_module_function<bool(*)(const cv::String &, const cv::Animation &, const std::vector<int> &)>("imwriteanimation", &cv::imwriteanimation,
+    Arg("filename"), Arg("animation"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
-  rb_mCv.define_module_function<size_t(*)(const cv::String&, int)>("imcount", &cv::imcount,
+  rb_mCv.define_module_function<size_t(*)(const cv::String &, int)>("imcount", &cv::imcount,
     Arg("filename"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, cv::InputArray, const std::vector<int>&)>("imwrite", &cv::imwrite,
-    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+  rb_mCv.define_module_function<bool(*)(const cv::String &, cv::InputArray, const std::vector<int> &)>("imwrite", &cv::imwrite,
+    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, cv::InputArrayOfArrays, const std::vector<int>&)>("imwritemulti", &cv::imwritemulti,
-    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+  rb_mCv.define_module_function<bool(*)(const cv::String &, cv::InputArrayOfArrays, const std::vector<int> &)>("imwritemulti", &cv::imwritemulti,
+    Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int)>("imdecode", &cv::imdecode,
     Arg("buf"), Arg("flags"));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int, cv::Mat*)>("imdecode", &cv::imdecode,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int, cv::Mat *)>("imdecode", &cv::imdecode,
     Arg("buf"), Arg("flags"), Arg("dst"));
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, int, std::vector<cv::Mat>&, const cv::Range&)>("imdecodemulti", &cv::imdecodemulti,
-    Arg("buf"), Arg("flags"), Arg("mats"), Arg("range") = static_cast<const cv::Range&>(cv::Range::all()));
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, int, std::vector<cv::Mat> &, const cv::Range &)>("imdecodemulti", &cv::imdecodemulti,
+    Arg("buf"), Arg("flags"), Arg("mats"), Arg("range") = static_cast<const cv::Range &>(cv::Range::all()));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, cv::InputArray, std::vector<uchar>&, const std::vector<int>&)>("imencode", &cv::imencode,
-    Arg("ext"), Arg("img"), Arg("buf"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+  rb_mCv.define_module_function<bool(*)(const cv::String &, cv::InputArray, std::vector<uchar> &, const std::vector<int> &)>("imencode", &cv::imencode,
+    Arg("ext"), Arg("img"), Arg("buf"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&, cv::InputArrayOfArrays, std::vector<uchar>&, const std::vector<int>&)>("imencodemulti", &cv::imencodemulti,
-    Arg("ext"), Arg("imgs"), Arg("buf"), Arg("params") = static_cast<const std::vector<int>&>(std::vector<int>()));
+  rb_mCv.define_module_function<bool(*)(const cv::String &, cv::InputArrayOfArrays, std::vector<uchar> &, const std::vector<int> &)>("imencodemulti", &cv::imencodemulti,
+    Arg("ext"), Arg("imgs"), Arg("buf"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&)>("have_image_reader", &cv::haveImageReader,
+  rb_mCv.define_module_function<bool(*)(const cv::String &)>("have_image_reader", &cv::haveImageReader,
     Arg("filename"));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String&)>("have_image_writer", &cv::haveImageWriter,
+  rb_mCv.define_module_function<bool(*)(const cv::String &)>("have_image_writer", &cv::haveImageWriter,
     Arg("filename"));
 
   Rice::Data_Type<cv::ImageCollection> rb_cCvImageCollection = define_class_under<cv::ImageCollection>(rb_mCv, "ImageCollection");
@@ -232,14 +232,14 @@ void Init_Imgcodecs()
   Rice::Data_Type<cv::ImageCollection::Impl> rb_cCvImageCollectionImpl = define_class_under<cv::ImageCollection::Impl>(rb_cCvImageCollection, "Impl");
   rb_cCvImageCollection
     .define_constructor(Constructor<cv::ImageCollection>())
-    .define_constructor(Constructor<cv::ImageCollection, const cv::String&, int>(),
+    .define_constructor(Constructor<cv::ImageCollection, const cv::String &, int>(),
       Arg("filename"), Arg("flags"))
-    .define_method<void(cv::ImageCollection::*)(const cv::String&, int)>("init", &cv::ImageCollection::init,
+    .define_method<void(cv::ImageCollection::*)(const cv::String &, int)>("init", &cv::ImageCollection::init,
       Arg("img"), Arg("flags"))
     .define_method<size_t(cv::ImageCollection::*)() const>("size", &cv::ImageCollection::size)
-    .define_method<const cv::Mat&(cv::ImageCollection::*)(int)>("at", &cv::ImageCollection::at,
+    .define_method<const cv::Mat &(cv::ImageCollection::*)(int)>("at", &cv::ImageCollection::at,
       Arg("index"))
-    .define_method<const cv::Mat&(cv::ImageCollection::*)(int)>("[]", &cv::ImageCollection::operator[],
+    .define_method<const cv::Mat &(cv::ImageCollection::*)(int)>("[]", &cv::ImageCollection::operator[],
       Arg("index"))
     .define_method<void(cv::ImageCollection::*)(int)>("release_cache", &cv::ImageCollection::releaseCache,
       Arg("index"))
@@ -247,13 +247,13 @@ void Init_Imgcodecs()
     .define_method<cv::Ptr<cv::ImageCollection::Impl>(cv::ImageCollection::*)()>("get_impl", &cv::ImageCollection::getImpl);
 
   Rice::Data_Type<cv::ImageCollection::iterator> rb_cCvImageCollectionIterator = define_class_under<cv::ImageCollection::iterator>(rb_cCvImageCollection, "Iterator")
-    .define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection*>(),
+    .define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection *>(),
       Arg("col"))
-    .define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection*, int>(),
+    .define_constructor(Constructor<cv::ImageCollection::iterator, cv::ImageCollection *, int>(),
       Arg("col"), Arg("end"))
-    .define_method<cv::Mat&(cv::ImageCollection::iterator::*)()>("dereference", &cv::ImageCollection::iterator::operator*)
-    .define_method<cv::Mat*(cv::ImageCollection::iterator::*)()>("arrow", &cv::ImageCollection::iterator::operator->)
-    .define_method<cv::ImageCollection::iterator&(cv::ImageCollection::iterator::*)()>("increment", &cv::ImageCollection::iterator::operator++)
+    .define_method<cv::Mat &(cv::ImageCollection::iterator::*)()>("dereference", &cv::ImageCollection::iterator::operator*)
+    .define_method<cv::Mat *(cv::ImageCollection::iterator::*)()>("arrow", &cv::ImageCollection::iterator::operator->)
+    .define_method<cv::ImageCollection::iterator &(cv::ImageCollection::iterator::*)()>("increment", &cv::ImageCollection::iterator::operator++)
     .define_method<cv::ImageCollection::iterator(cv::ImageCollection::iterator::*)(int)>("increment_post", &cv::ImageCollection::iterator::operator++,
       Arg("arg_0"));
 }

@@ -106,11 +106,11 @@ void Init_Bgsegm()
 
   Rice::Data_Type<cv::bgsegm::BackgroundSubtractorLSBPDesc> rb_cCvBgsegmBackgroundSubtractorLSBPDesc = define_class_under<cv::bgsegm::BackgroundSubtractorLSBPDesc>(rb_mCvBgsegm, "BackgroundSubtractorLSBPDesc")
     .define_constructor(Constructor<cv::bgsegm::BackgroundSubtractorLSBPDesc>())
-    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&)>("calc_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::calcLocalSVDValues,
+    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat &)>("calc_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::calcLocalSVDValues,
       Arg("local_svd_values"), Arg("frame"))
-    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&, const cv::Point2i*)>("compute_from_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::computeFromLocalSVDValues,
+    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat &, const cv::Point2i *)>("compute_from_local_svd_values", &cv::bgsegm::BackgroundSubtractorLSBPDesc::computeFromLocalSVDValues,
       Arg("desc"), Arg("local_svd_values"), Arg("lsbp_sample_points"))
-    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat&, const cv::Point2i*)>("compute", &cv::bgsegm::BackgroundSubtractorLSBPDesc::compute,
+    .define_singleton_function<void(*)(cv::OutputArray, const cv::Mat &, const cv::Point2i *)>("compute", &cv::bgsegm::BackgroundSubtractorLSBPDesc::compute,
       Arg("desc"), Arg("frame"), Arg("lsbp_sample_points"));
 
   rb_mCvBgsegm.define_module_function<cv::Ptr<cv::bgsegm::BackgroundSubtractorGSOC>(*)(int, int, float, float, int, float, float, float, float, float, float)>("create_background_subtractor_gsoc", &cv::bgsegm::createBackgroundSubtractorGSOC,

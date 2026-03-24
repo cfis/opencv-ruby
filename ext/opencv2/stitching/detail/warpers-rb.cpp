@@ -14,9 +14,9 @@ void Init_Stitching_Detail_Warpers()
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
   Rice::Data_Type<cv::detail::RotationWarper> rb_cCvDetailRotationWarper = define_class_under<cv::detail::RotationWarper>(rb_mCvDetail, "RotationWarper")
-    .define_method<cv::Point2f(cv::detail::RotationWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarper::warpPoint,
+    .define_method<cv::Point2f(cv::detail::RotationWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::RotationWarper::warpPoint,
       Arg("pt"), Arg("k"), Arg("r"))
-    .define_method<cv::Point2f(cv::detail::RotationWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::RotationWarper::warpPointBackward,
+    .define_method<cv::Point2f(cv::detail::RotationWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::RotationWarper::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r"))
     .define_method<cv::Rect(cv::detail::RotationWarper::*)(cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("build_maps", &cv::detail::RotationWarper::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
@@ -43,22 +43,22 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::PlaneProjector> rb_cCvDetailPlaneProjector = define_class_under<cv::detail::PlaneProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "PlaneProjector")
     .define_constructor(Constructor<cv::detail::PlaneProjector>())
-    .define_method<void(cv::detail::PlaneProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::PlaneProjector::mapForward,
+    .define_method<void(cv::detail::PlaneProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::PlaneProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::PlaneProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PlaneProjector::mapBackward,
+    .define_method<void(cv::detail::PlaneProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::PlaneProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlaneProjector>> rb_cRotationWarperBasePlaneProjector = RotationWarperBase_instantiate<cv::detail::PlaneProjector>(rb_mCvDetail, "RotationWarperBasePlaneProjector");
   Rice::Data_Type<cv::detail::PlaneWarper> rb_cCvDetailPlaneWarper = define_class_under<cv::detail::PlaneWarper, cv::detail::RotationWarperBase<cv::detail::PlaneProjector>>(rb_mCvDetail, "PlaneWarper")
     .define_constructor(Constructor<cv::detail::PlaneWarper, float>(),
       Arg("scale") = static_cast<float>(1.f))
-    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::PlaneWarper::warpPoint,
+    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::PlaneWarper::warpPoint,
       Arg("pt"), Arg("k"), Arg("r"))
-    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::PlaneWarper::warpPoint,
+    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::PlaneWarper::warpPoint,
       Arg("pt"), Arg("k"), Arg("r"), Arg("t"))
-    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::PlaneWarper::warpPointBackward,
+    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::PlaneWarper::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r"))
-    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::PlaneWarper::warpPointBackward,
+    .define_method<cv::Point2f(cv::detail::PlaneWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::PlaneWarper::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r"), Arg("t"))
     .define_method<cv::Rect(cv::detail::PlaneWarper::*)(cv::Size, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("build_maps", &cv::detail::PlaneWarper::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("t"), Arg("xmap"), Arg("ymap"))
@@ -76,9 +76,9 @@ void Init_Stitching_Detail_Warpers()
   Rice::Data_Type<cv::detail::AffineWarper> rb_cCvDetailAffineWarper = define_class_under<cv::detail::AffineWarper, cv::detail::PlaneWarper>(rb_mCvDetail, "AffineWarper")
     .define_constructor(Constructor<cv::detail::AffineWarper, float>(),
       Arg("scale") = static_cast<float>(1.f))
-    .define_method<cv::Point2f(cv::detail::AffineWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::AffineWarper::warpPoint,
+    .define_method<cv::Point2f(cv::detail::AffineWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point", &cv::detail::AffineWarper::warpPoint,
       Arg("pt"), Arg("k"), Arg("h"))
-    .define_method<cv::Point2f(cv::detail::AffineWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::AffineWarper::warpPointBackward,
+    .define_method<cv::Point2f(cv::detail::AffineWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::detail::AffineWarper::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("h"))
     .define_method<cv::Rect(cv::detail::AffineWarper::*)(cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("build_maps", &cv::detail::AffineWarper::buildMaps,
       Arg("src_size"), Arg("k"), Arg("h"), Arg("xmap"), Arg("ymap"))
@@ -89,9 +89,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::SphericalProjector> rb_cCvDetailSphericalProjector = define_class_under<cv::detail::SphericalProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "SphericalProjector")
     .define_constructor(Constructor<cv::detail::SphericalProjector>())
-    .define_method<void(cv::detail::SphericalProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::SphericalProjector::mapForward,
+    .define_method<void(cv::detail::SphericalProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::SphericalProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::SphericalProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::SphericalProjector::mapBackward,
+    .define_method<void(cv::detail::SphericalProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::SphericalProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalProjector>> rb_cRotationWarperBaseSphericalProjector = RotationWarperBase_instantiate<cv::detail::SphericalProjector>(rb_mCvDetail, "RotationWarperBaseSphericalProjector");
@@ -105,9 +105,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::CylindricalProjector> rb_cCvDetailCylindricalProjector = define_class_under<cv::detail::CylindricalProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "CylindricalProjector")
     .define_constructor(Constructor<cv::detail::CylindricalProjector>())
-    .define_method<void(cv::detail::CylindricalProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::CylindricalProjector::mapForward,
+    .define_method<void(cv::detail::CylindricalProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::CylindricalProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::CylindricalProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CylindricalProjector::mapBackward,
+    .define_method<void(cv::detail::CylindricalProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::CylindricalProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalProjector>> rb_cRotationWarperBaseCylindricalProjector = RotationWarperBase_instantiate<cv::detail::CylindricalProjector>(rb_mCvDetail, "RotationWarperBaseCylindricalProjector");
@@ -121,9 +121,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::FisheyeProjector> rb_cCvDetailFisheyeProjector = define_class_under<cv::detail::FisheyeProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "FisheyeProjector")
     .define_constructor(Constructor<cv::detail::FisheyeProjector>())
-    .define_method<void(cv::detail::FisheyeProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::FisheyeProjector::mapForward,
+    .define_method<void(cv::detail::FisheyeProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::FisheyeProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::FisheyeProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::FisheyeProjector::mapBackward,
+    .define_method<void(cv::detail::FisheyeProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::FisheyeProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::FisheyeProjector>> rb_cRotationWarperBaseFisheyeProjector = RotationWarperBase_instantiate<cv::detail::FisheyeProjector>(rb_mCvDetail, "RotationWarperBaseFisheyeProjector");
@@ -133,9 +133,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::StereographicProjector> rb_cCvDetailStereographicProjector = define_class_under<cv::detail::StereographicProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "StereographicProjector")
     .define_constructor(Constructor<cv::detail::StereographicProjector>())
-    .define_method<void(cv::detail::StereographicProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::StereographicProjector::mapForward,
+    .define_method<void(cv::detail::StereographicProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::StereographicProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::StereographicProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::StereographicProjector::mapBackward,
+    .define_method<void(cv::detail::StereographicProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::StereographicProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::StereographicProjector>> rb_cRotationWarperBaseStereographicProjector = RotationWarperBase_instantiate<cv::detail::StereographicProjector>(rb_mCvDetail, "RotationWarperBaseStereographicProjector");
@@ -147,9 +147,9 @@ void Init_Stitching_Detail_Warpers()
     .define_constructor(Constructor<cv::detail::CompressedRectilinearProjector>())
     .define_attr("a", &cv::detail::CompressedRectilinearProjector::a)
     .define_attr("b", &cv::detail::CompressedRectilinearProjector::b)
-    .define_method<void(cv::detail::CompressedRectilinearProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::CompressedRectilinearProjector::mapForward,
+    .define_method<void(cv::detail::CompressedRectilinearProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::CompressedRectilinearProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::CompressedRectilinearProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CompressedRectilinearProjector::mapBackward,
+    .define_method<void(cv::detail::CompressedRectilinearProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::CompressedRectilinearProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearProjector>> rb_cRotationWarperBaseCompressedRectilinearProjector = RotationWarperBase_instantiate<cv::detail::CompressedRectilinearProjector>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearProjector");
@@ -161,9 +161,9 @@ void Init_Stitching_Detail_Warpers()
     .define_constructor(Constructor<cv::detail::CompressedRectilinearPortraitProjector>())
     .define_attr("a", &cv::detail::CompressedRectilinearPortraitProjector::a)
     .define_attr("b", &cv::detail::CompressedRectilinearPortraitProjector::b)
-    .define_method<void(cv::detail::CompressedRectilinearPortraitProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::CompressedRectilinearPortraitProjector::mapForward,
+    .define_method<void(cv::detail::CompressedRectilinearPortraitProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::CompressedRectilinearPortraitProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::CompressedRectilinearPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CompressedRectilinearPortraitProjector::mapBackward,
+    .define_method<void(cv::detail::CompressedRectilinearPortraitProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::CompressedRectilinearPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CompressedRectilinearPortraitProjector>> rb_cRotationWarperBaseCompressedRectilinearPortraitProjector = RotationWarperBase_instantiate<cv::detail::CompressedRectilinearPortraitProjector>(rb_mCvDetail, "RotationWarperBaseCompressedRectilinearPortraitProjector");
@@ -175,9 +175,9 @@ void Init_Stitching_Detail_Warpers()
     .define_constructor(Constructor<cv::detail::PaniniProjector>())
     .define_attr("a", &cv::detail::PaniniProjector::a)
     .define_attr("b", &cv::detail::PaniniProjector::b)
-    .define_method<void(cv::detail::PaniniProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::PaniniProjector::mapForward,
+    .define_method<void(cv::detail::PaniniProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::PaniniProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::PaniniProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PaniniProjector::mapBackward,
+    .define_method<void(cv::detail::PaniniProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::PaniniProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniProjector>> rb_cRotationWarperBasePaniniProjector = RotationWarperBase_instantiate<cv::detail::PaniniProjector>(rb_mCvDetail, "RotationWarperBasePaniniProjector");
@@ -189,9 +189,9 @@ void Init_Stitching_Detail_Warpers()
     .define_constructor(Constructor<cv::detail::PaniniPortraitProjector>())
     .define_attr("a", &cv::detail::PaniniPortraitProjector::a)
     .define_attr("b", &cv::detail::PaniniPortraitProjector::b)
-    .define_method<void(cv::detail::PaniniPortraitProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::PaniniPortraitProjector::mapForward,
+    .define_method<void(cv::detail::PaniniPortraitProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::PaniniPortraitProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::PaniniPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PaniniPortraitProjector::mapBackward,
+    .define_method<void(cv::detail::PaniniPortraitProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::PaniniPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PaniniPortraitProjector>> rb_cRotationWarperBasePaniniPortraitProjector = RotationWarperBase_instantiate<cv::detail::PaniniPortraitProjector>(rb_mCvDetail, "RotationWarperBasePaniniPortraitProjector");
@@ -201,9 +201,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::MercatorProjector> rb_cCvDetailMercatorProjector = define_class_under<cv::detail::MercatorProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "MercatorProjector")
     .define_constructor(Constructor<cv::detail::MercatorProjector>())
-    .define_method<void(cv::detail::MercatorProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::MercatorProjector::mapForward,
+    .define_method<void(cv::detail::MercatorProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::MercatorProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::MercatorProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::MercatorProjector::mapBackward,
+    .define_method<void(cv::detail::MercatorProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::MercatorProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::MercatorProjector>> rb_cRotationWarperBaseMercatorProjector = RotationWarperBase_instantiate<cv::detail::MercatorProjector>(rb_mCvDetail, "RotationWarperBaseMercatorProjector");
@@ -213,9 +213,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::TransverseMercatorProjector> rb_cCvDetailTransverseMercatorProjector = define_class_under<cv::detail::TransverseMercatorProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "TransverseMercatorProjector")
     .define_constructor(Constructor<cv::detail::TransverseMercatorProjector>())
-    .define_method<void(cv::detail::TransverseMercatorProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::TransverseMercatorProjector::mapForward,
+    .define_method<void(cv::detail::TransverseMercatorProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::TransverseMercatorProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::TransverseMercatorProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::TransverseMercatorProjector::mapBackward,
+    .define_method<void(cv::detail::TransverseMercatorProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::TransverseMercatorProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::TransverseMercatorProjector>> rb_cRotationWarperBaseTransverseMercatorProjector = RotationWarperBase_instantiate<cv::detail::TransverseMercatorProjector>(rb_mCvDetail, "RotationWarperBaseTransverseMercatorProjector");
@@ -234,13 +234,13 @@ void Init_Stitching_Detail_Warpers()
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"))
     .define_method<cv::Point(cv::detail::PlaneWarperGpu::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, int, cv::OutputArray)>("warp", &cv::detail::PlaneWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("t"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"))
-    .define_method<cv::Rect(cv::detail::PlaneWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("build_maps", &cv::detail::PlaneWarperGpu::buildMaps,
+    .define_method<cv::Rect(cv::detail::PlaneWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("build_maps", &cv::detail::PlaneWarperGpu::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
-    .define_method<cv::Rect(cv::detail::PlaneWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::InputArray, cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("build_maps", &cv::detail::PlaneWarperGpu::buildMaps,
+    .define_method<cv::Rect(cv::detail::PlaneWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::InputArray, cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("build_maps", &cv::detail::PlaneWarperGpu::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("t"), Arg("xmap"), Arg("ymap"))
-    .define_method<cv::Point(cv::detail::PlaneWarperGpu::*)(const cv::cuda::GpuMat&, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat&)>("warp", &cv::detail::PlaneWarperGpu::warp,
+    .define_method<cv::Point(cv::detail::PlaneWarperGpu::*)(const cv::cuda::GpuMat &, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat &)>("warp", &cv::detail::PlaneWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"))
-    .define_method<cv::Point(cv::detail::PlaneWarperGpu::*)(const cv::cuda::GpuMat&, cv::InputArray, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat&)>("warp", &cv::detail::PlaneWarperGpu::warp,
+    .define_method<cv::Point(cv::detail::PlaneWarperGpu::*)(const cv::cuda::GpuMat &, cv::InputArray, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat &)>("warp", &cv::detail::PlaneWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("t"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"));
 
   Rice::Data_Type<cv::detail::SphericalWarperGpu> rb_cCvDetailSphericalWarperGpu = define_class_under<cv::detail::SphericalWarperGpu, cv::detail::SphericalWarper>(rb_mCvDetail, "SphericalWarperGpu")
@@ -250,9 +250,9 @@ void Init_Stitching_Detail_Warpers()
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
     .define_method<cv::Point(cv::detail::SphericalWarperGpu::*)(cv::InputArray, cv::InputArray, cv::InputArray, int, int, cv::OutputArray)>("warp", &cv::detail::SphericalWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"))
-    .define_method<cv::Rect(cv::detail::SphericalWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("build_maps", &cv::detail::SphericalWarperGpu::buildMaps,
+    .define_method<cv::Rect(cv::detail::SphericalWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("build_maps", &cv::detail::SphericalWarperGpu::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
-    .define_method<cv::Point(cv::detail::SphericalWarperGpu::*)(const cv::cuda::GpuMat&, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat&)>("warp", &cv::detail::SphericalWarperGpu::warp,
+    .define_method<cv::Point(cv::detail::SphericalWarperGpu::*)(const cv::cuda::GpuMat &, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat &)>("warp", &cv::detail::SphericalWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"));
 
   Rice::Data_Type<cv::detail::CylindricalWarperGpu> rb_cCvDetailCylindricalWarperGpu = define_class_under<cv::detail::CylindricalWarperGpu, cv::detail::CylindricalWarper>(rb_mCvDetail, "CylindricalWarperGpu")
@@ -262,16 +262,16 @@ void Init_Stitching_Detail_Warpers()
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
     .define_method<cv::Point(cv::detail::CylindricalWarperGpu::*)(cv::InputArray, cv::InputArray, cv::InputArray, int, int, cv::OutputArray)>("warp", &cv::detail::CylindricalWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"))
-    .define_method<cv::Rect(cv::detail::CylindricalWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("build_maps", &cv::detail::CylindricalWarperGpu::buildMaps,
+    .define_method<cv::Rect(cv::detail::CylindricalWarperGpu::*)(cv::Size, cv::InputArray, cv::InputArray, cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("build_maps", &cv::detail::CylindricalWarperGpu::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))
-    .define_method<cv::Point(cv::detail::CylindricalWarperGpu::*)(const cv::cuda::GpuMat&, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat&)>("warp", &cv::detail::CylindricalWarperGpu::warp,
+    .define_method<cv::Point(cv::detail::CylindricalWarperGpu::*)(const cv::cuda::GpuMat &, cv::InputArray, cv::InputArray, int, int, cv::cuda::GpuMat &)>("warp", &cv::detail::CylindricalWarperGpu::warp,
       Arg("src"), Arg("k"), Arg("r"), Arg("interp_mode"), Arg("border_mode"), Arg("dst"));
 
   Rice::Data_Type<cv::detail::SphericalPortraitProjector> rb_cCvDetailSphericalPortraitProjector = define_class_under<cv::detail::SphericalPortraitProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "SphericalPortraitProjector")
     .define_constructor(Constructor<cv::detail::SphericalPortraitProjector>())
-    .define_method<void(cv::detail::SphericalPortraitProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::SphericalPortraitProjector::mapForward,
+    .define_method<void(cv::detail::SphericalPortraitProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::SphericalPortraitProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::SphericalPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::SphericalPortraitProjector::mapBackward,
+    .define_method<void(cv::detail::SphericalPortraitProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::SphericalPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::SphericalPortraitProjector>> rb_cRotationWarperBaseSphericalPortraitProjector = RotationWarperBase_instantiate<cv::detail::SphericalPortraitProjector>(rb_mCvDetail, "RotationWarperBaseSphericalPortraitProjector");
@@ -281,9 +281,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::CylindricalPortraitProjector> rb_cCvDetailCylindricalPortraitProjector = define_class_under<cv::detail::CylindricalPortraitProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "CylindricalPortraitProjector")
     .define_constructor(Constructor<cv::detail::CylindricalPortraitProjector>())
-    .define_method<void(cv::detail::CylindricalPortraitProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::CylindricalPortraitProjector::mapForward,
+    .define_method<void(cv::detail::CylindricalPortraitProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::CylindricalPortraitProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::CylindricalPortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::CylindricalPortraitProjector::mapBackward,
+    .define_method<void(cv::detail::CylindricalPortraitProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::CylindricalPortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::CylindricalPortraitProjector>> rb_cRotationWarperBaseCylindricalPortraitProjector = RotationWarperBase_instantiate<cv::detail::CylindricalPortraitProjector>(rb_mCvDetail, "RotationWarperBaseCylindricalPortraitProjector");
@@ -293,9 +293,9 @@ void Init_Stitching_Detail_Warpers()
 
   Rice::Data_Type<cv::detail::PlanePortraitProjector> rb_cCvDetailPlanePortraitProjector = define_class_under<cv::detail::PlanePortraitProjector, cv::detail::ProjectorBase>(rb_mCvDetail, "PlanePortraitProjector")
     .define_constructor(Constructor<cv::detail::PlanePortraitProjector>())
-    .define_method<void(cv::detail::PlanePortraitProjector::*)(float, float, float&, float&)>("map_forward", &cv::detail::PlanePortraitProjector::mapForward,
+    .define_method<void(cv::detail::PlanePortraitProjector::*)(float, float, float &, float &)>("map_forward", &cv::detail::PlanePortraitProjector::mapForward,
       Arg("x"), Arg("y"), Arg("u"), Arg("v"))
-    .define_method<void(cv::detail::PlanePortraitProjector::*)(float, float, float&, float&)>("map_backward", &cv::detail::PlanePortraitProjector::mapBackward,
+    .define_method<void(cv::detail::PlanePortraitProjector::*)(float, float, float &, float &)>("map_backward", &cv::detail::PlanePortraitProjector::mapBackward,
       Arg("u"), Arg("v"), Arg("x"), Arg("y"));
 
   Rice::Data_Type<cv::detail::RotationWarperBase<cv::detail::PlanePortraitProjector>> rb_cRotationWarperBasePlanePortraitProjector = RotationWarperBase_instantiate<cv::detail::PlanePortraitProjector>(rb_mCvDetail, "RotationWarperBasePlanePortraitProjector");

@@ -36,7 +36,7 @@ void Init_Datasets_OrPascal()
     .define_attr("objects", &cv::datasets::OR_pascalObj::objects);
 
   Rice::Data_Type<cv::datasets::OR_pascal> rb_cCvDatasetsORPascal = define_class_under<cv::datasets::OR_pascal, cv::datasets::Dataset>(rb_mCvDatasets, "ORPascal")
-    .define_method<void(cv::datasets::OR_pascal::*)(const std::string&)>("load", &cv::datasets::OR_pascal::load,
+    .define_method<void(cv::datasets::OR_pascal::*)(const std::string &)>("load", &cv::datasets::OR_pascal::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::OR_pascal>(*)()>("create", &cv::datasets::OR_pascal::create);
 }

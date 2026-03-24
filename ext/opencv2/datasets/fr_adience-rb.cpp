@@ -32,7 +32,7 @@ void Init_Datasets_FrAdience()
     .define_attr("fiducial_score", &cv::datasets::FR_adienceObj::fiducial_score);
 
   Rice::Data_Type<cv::datasets::FR_adience> rb_cCvDatasetsFRAdience = define_class_under<cv::datasets::FR_adience, cv::datasets::Dataset>(rb_mCvDatasets, "FRAdience")
-    .define_method<void(cv::datasets::FR_adience::*)(const std::string&)>("load", &cv::datasets::FR_adience::load,
+    .define_method<void(cv::datasets::FR_adience::*)(const std::string &)>("load", &cv::datasets::FR_adience::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::FR_adience>(*)()>("create", &cv::datasets::FR_adience::create)
     .define_attr("paths", &cv::datasets::FR_adience::paths);

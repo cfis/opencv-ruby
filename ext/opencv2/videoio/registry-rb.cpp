@@ -30,15 +30,15 @@ void Init_Videoio_Registry()
   rb_mCvVideoioRegistry.define_module_function<bool(*)(cv::VideoCaptureAPIs)>("backend_built_in?", &cv::videoio_registry::isBackendBuiltIn,
     Arg("api"));
 
-  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int&, int&)>("get_camera_backend_plugin_version", &cv::videoio_registry::getCameraBackendPluginVersion,
+  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int &, int &)>("get_camera_backend_plugin_version", &cv::videoio_registry::getCameraBackendPluginVersion,
     Arg("api"), Arg("version_abi"), Arg("version_api"));
 
-  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int&, int&)>("get_stream_backend_plugin_version", &cv::videoio_registry::getStreamBackendPluginVersion,
+  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int &, int &)>("get_stream_backend_plugin_version", &cv::videoio_registry::getStreamBackendPluginVersion,
     Arg("api"), Arg("version_abi"), Arg("version_api"));
 
-  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int&, int&)>("get_stream_buffered_backend_plugin_version", &cv::videoio_registry::getStreamBufferedBackendPluginVersion,
+  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int &, int &)>("get_stream_buffered_backend_plugin_version", &cv::videoio_registry::getStreamBufferedBackendPluginVersion,
     Arg("api"), Arg("version_abi"), Arg("version_api"));
 
-  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int&, int&)>("get_writer_backend_plugin_version", &cv::videoio_registry::getWriterBackendPluginVersion,
+  rb_mCvVideoioRegistry.define_module_function<std::string(*)(cv::VideoCaptureAPIs, int &, int &)>("get_writer_backend_plugin_version", &cv::videoio_registry::getWriterBackendPluginVersion,
     Arg("api"), Arg("version_abi"), Arg("version_api"));
 }

@@ -16,7 +16,7 @@ void Init_Ximgproc_SparseMatchInterpolator()
       Arg("from_image"), Arg("from_points"), Arg("to_image"), Arg("to_points"), Arg("dense_flow"));
 
   Rice::Data_Type<cv::ximgproc::EdgeAwareInterpolator> rb_cCvXimgprocEdgeAwareInterpolator = define_class_under<cv::ximgproc::EdgeAwareInterpolator, cv::ximgproc::SparseMatchInterpolator>(rb_mCvXimgproc, "EdgeAwareInterpolator")
-    .define_method<void(cv::ximgproc::EdgeAwareInterpolator::*)(const cv::Mat&)>("set_cost_map", &cv::ximgproc::EdgeAwareInterpolator::setCostMap,
+    .define_method<void(cv::ximgproc::EdgeAwareInterpolator::*)(const cv::Mat &)>("set_cost_map", &cv::ximgproc::EdgeAwareInterpolator::setCostMap,
       Arg("_cost_map"))
     .define_method<void(cv::ximgproc::EdgeAwareInterpolator::*)(int)>("set_k", &cv::ximgproc::EdgeAwareInterpolator::setK,
       Arg("_k"))
@@ -43,7 +43,7 @@ void Init_Ximgproc_SparseMatchInterpolator()
     .define_method<void(cv::ximgproc::RICInterpolator::*)(int)>("set_k", &cv::ximgproc::RICInterpolator::setK,
       Arg("k") = static_cast<int>(32))
     .define_method<int(cv::ximgproc::RICInterpolator::*)() const>("get_k", &cv::ximgproc::RICInterpolator::getK)
-    .define_method<void(cv::ximgproc::RICInterpolator::*)(const cv::Mat&)>("set_cost_map", &cv::ximgproc::RICInterpolator::setCostMap,
+    .define_method<void(cv::ximgproc::RICInterpolator::*)(const cv::Mat &)>("set_cost_map", &cv::ximgproc::RICInterpolator::setCostMap,
       Arg("cost_map"))
     .define_method<void(cv::ximgproc::RICInterpolator::*)(int)>("set_superpixel_size", &cv::ximgproc::RICInterpolator::setSuperpixelSize,
       Arg("sp_size") = static_cast<int>(15))

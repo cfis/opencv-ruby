@@ -187,9 +187,9 @@ void Init_Calib3d()
     .define_method<void(cv::LMSolver::*)(int)>("set_max_iters", &cv::LMSolver::setMaxIters,
       Arg("max_iters"))
     .define_method<int(cv::LMSolver::*)() const>("get_max_iters", &cv::LMSolver::getMaxIters)
-    .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int)>("create", &cv::LMSolver::create,
+    .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback> &, int)>("create", &cv::LMSolver::create,
       Arg("cb"), Arg("max_iters"))
-    .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback>&, int, double)>("create", &cv::LMSolver::create,
+    .define_singleton_function<cv::Ptr<cv::LMSolver>(*)(const cv::Ptr<cv::LMSolver::Callback> &, int, double)>("create", &cv::LMSolver::create,
       Arg("cb"), Arg("max_iters"), Arg("eps"));
 
   Rice::Data_Type<cv::LMSolver::Callback> rb_cCvLMSolverCallback = define_class_under<cv::LMSolver::Callback>(rb_cCvLMSolver, "Callback")
@@ -202,7 +202,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, double)>("find_homography", &cv::findHomography,
     Arg("src_points"), Arg("dst_points"), Arg("mask"), Arg("method") = static_cast<int>(0), Arg("ransac_reproj_threshold") = static_cast<double>(3));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams&)>("find_homography", &cv::findHomography,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams &)>("find_homography", &cv::findHomography,
     Arg("src_points"), Arg("dst_points"), Arg("mask"), Arg("params"));
 
   rb_mCv.define_module_function<cv::Vec3d(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray)>("rq_decomp3x3", &cv::RQDecomp3x3,
@@ -226,8 +226,8 @@ void Init_Calib3d()
   rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, int, float, double, cv::OutputArray, int)>("solve_pn_p_ransac", &cv::solvePnPRansac,
     Arg("object_points"), Arg("image_points"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvec"), Arg("tvec"), Arg("use_extrinsic_guess") = static_cast<bool>(false), Arg("iterations_count") = static_cast<int>(100), Arg("reprojection_error") = static_cast<float>(8.0), Arg("confidence") = static_cast<double>(0.99), Arg("inliers") = static_cast<cv::OutputArray>(cv::noArray()), Arg("flags") = static_cast<int>(cv::SOLVEPNP_ITERATIVE));
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, const cv::UsacParams&)>("solve_pn_p_ransac", &cv::solvePnPRansac,
-    Arg("object_points"), Arg("image_points"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvec"), Arg("tvec"), Arg("inliers"), Arg("params") = static_cast<const cv::UsacParams&>(cv::UsacParams()));
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, const cv::UsacParams &)>("solve_pn_p_ransac", &cv::solvePnPRansac,
+    Arg("object_points"), Arg("image_points"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvec"), Arg("tvec"), Arg("inliers"), Arg("params") = static_cast<const cv::UsacParams &>(cv::UsacParams()));
 
   rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int)>("solve_p3p", &cv::solveP3P,
     Arg("object_points"), Arg("image_points"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvecs"), Arg("tvecs"), Arg("flags"));
@@ -291,11 +291,11 @@ void Init_Calib3d()
     .define_value("SYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::SYMMETRIC_GRID)
     .define_value("ASYMMETRIC_GRID", cv::CirclesGridFinderParameters::GridType::ASYMMETRIC_GRID);
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector>&, const cv::CirclesGridFinderParameters&)>("find_circles_grid", &cv::findCirclesGrid,
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector> &, const cv::CirclesGridFinderParameters &)>("find_circles_grid", &cv::findCirclesGrid,
     Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags"), Arg("blob_detector"), Arg("parameters"));
 
-  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector>&)>("find_circles_grid", &cv::findCirclesGrid,
-    Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags") = static_cast<int>(cv::CALIB_CB_SYMMETRIC_GRID), Arg("blob_detector") = static_cast<const cv::Ptr<cv::FeatureDetector>&>(cv::SimpleBlobDetector::create()));
+  rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::Size, cv::OutputArray, int, const cv::Ptr<cv::FeatureDetector> &)>("find_circles_grid", &cv::findCirclesGrid,
+    Arg("image"), Arg("pattern_size"), Arg("centers"), Arg("flags") = static_cast<int>(cv::CALIB_CB_SYMMETRIC_GRID), Arg("blob_detector") = static_cast<const cv::Ptr<cv::FeatureDetector> &>(cv::SimpleBlobDetector::create()));
 
   rb_mCv.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, cv::TermCriteria)>("calibrate_camera", &cv::calibrateCamera,
     Arg("object_points"), Arg("image_points"), Arg("image_size"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvecs"), Arg("tvecs"), Arg("std_deviations_intrinsics"), Arg("std_deviations_extrinsics"), Arg("per_view_errors"), Arg("flags") = static_cast<int>(0), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(
@@ -313,7 +313,7 @@ void Init_Calib3d()
     Arg("object_points"), Arg("image_points"), Arg("image_size"), Arg("i_fixed_point"), Arg("camera_matrix"), Arg("dist_coeffs"), Arg("rvecs"), Arg("tvecs"), Arg("new_obj_points"), Arg("flags") = static_cast<int>(0), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(
                                           cv::TermCriteria::Type::COUNT + cv::TermCriteria::Type::EPS, 30, DBL_EPSILON)));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::Size, double, double, double&, double&, double&, cv::Point2d&, double&)>("calibration_matrix_values", &cv::calibrationMatrixValues,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::Size, double, double, double &, double &, double &, cv::Point2d &, double &)>("calibration_matrix_values", &cv::calibrationMatrixValues,
     Arg("camera_matrix"), Arg("image_size"), Arg("aperture_width"), Arg("aperture_height"), Arg("fovx"), Arg("fovy"), Arg("focal_length"), Arg("principal_point"), Arg("aspect_ratio"));
 
   rb_mCv.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, cv::OutputArray, int, cv::TermCriteria)>("stereo_calibrate", &cv::stereoCalibrate,
@@ -325,17 +325,17 @@ void Init_Calib3d()
   rb_mCv.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, cv::TermCriteria)>("stereo_calibrate", &cv::stereoCalibrate,
     Arg("object_points"), Arg("image_points1"), Arg("image_points2"), Arg("camera_matrix1"), Arg("dist_coeffs1"), Arg("camera_matrix2"), Arg("dist_coeffs2"), Arg("image_size"), Arg("r"), Arg("t"), Arg("e"), Arg("f"), Arg("per_view_errors"), Arg("flags") = static_cast<int>(cv::CALIB_FIX_INTRINSIC), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::COUNT+cv::TermCriteria::Type::EPS, 30, 1e-6)));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, double, cv::Size, cv::Rect*, cv::Rect*)>("stereo_rectify", &cv::stereoRectify,
-    Arg("camera_matrix1"), Arg("dist_coeffs1"), Arg("camera_matrix2"), Arg("dist_coeffs2"), Arg("image_size"), Arg("r"), Arg("t"), Arg("r1"), Arg("r2"), Arg("p1"), Arg("p2"), Arg("q"), Arg("flags") = static_cast<int>(cv::CALIB_ZERO_DISPARITY), Arg("alpha") = static_cast<double>(-1), Arg("new_image_size") = static_cast<cv::Size>(cv::Size()), Arg("valid_pix_roi1") = static_cast<cv::Rect*>(0), Arg("valid_pix_roi2") = static_cast<cv::Rect*>(0));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, double, cv::Size, cv::Rect *, cv::Rect *)>("stereo_rectify", &cv::stereoRectify,
+    Arg("camera_matrix1"), Arg("dist_coeffs1"), Arg("camera_matrix2"), Arg("dist_coeffs2"), Arg("image_size"), Arg("r"), Arg("t"), Arg("r1"), Arg("r2"), Arg("p1"), Arg("p2"), Arg("q"), Arg("flags") = static_cast<int>(cv::CALIB_ZERO_DISPARITY), Arg("alpha") = static_cast<double>(-1), Arg("new_image_size") = static_cast<cv::Size>(cv::Size()), Arg("valid_pix_roi1") = static_cast<cv::Rect *>(0), Arg("valid_pix_roi2") = static_cast<cv::Rect *>(0));
 
   rb_mCv.define_module_function<bool(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::Size, cv::OutputArray, cv::OutputArray, double)>("stereo_rectify_uncalibrated", &cv::stereoRectifyUncalibrated,
     Arg("points1"), Arg("points2"), Arg("f"), Arg("img_size"), Arg("h1"), Arg("h2"), Arg("threshold") = static_cast<double>(5));
 
-  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, double, cv::Size, cv::Rect*, cv::Rect*, int)>("rectify3_collinear", &cv::rectify3Collinear,
+  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, double, cv::Size, cv::Rect *, cv::Rect *, int)>("rectify3_collinear", &cv::rectify3Collinear,
     Arg("camera_matrix1"), Arg("dist_coeffs1"), Arg("camera_matrix2"), Arg("dist_coeffs2"), Arg("camera_matrix3"), Arg("dist_coeffs3"), Arg("imgpt1"), Arg("imgpt3"), Arg("image_size"), Arg("r12"), Arg("t12"), Arg("r13"), Arg("t13"), Arg("r1"), Arg("r2"), Arg("r3"), Arg("p1"), Arg("p2"), Arg("p3"), Arg("q"), Arg("alpha"), Arg("new_img_size"), Arg("roi1"), Arg("roi2"), Arg("flags"));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::Size, double, cv::Size, cv::Rect*, bool)>("get_optimal_new_camera_matrix", &cv::getOptimalNewCameraMatrix,
-    Arg("camera_matrix"), Arg("dist_coeffs"), Arg("image_size"), Arg("alpha"), Arg("new_img_size") = static_cast<cv::Size>(cv::Size()), Arg("valid_pix_roi") = static_cast<cv::Rect*>(0), Arg("center_principal_point") = static_cast<bool>(false));
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::Size, double, cv::Size, cv::Rect *, bool)>("get_optimal_new_camera_matrix", &cv::getOptimalNewCameraMatrix,
+    Arg("camera_matrix"), Arg("dist_coeffs"), Arg("image_size"), Arg("alpha"), Arg("new_img_size") = static_cast<cv::Size>(cv::Size()), Arg("valid_pix_roi") = static_cast<cv::Rect *>(0), Arg("center_principal_point") = static_cast<bool>(false));
 
   rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::OutputArray, cv::OutputArray, cv::HandEyeCalibrationMethod)>("calibrate_hand_eye", &cv::calibrateHandEye,
     Arg("r_gripper2base"), Arg("t_gripper2base"), Arg("r_target2cam"), Arg("t_target2cam"), Arg("r_cam2gripper"), Arg("t_cam2gripper"), Arg("method") = static_cast<cv::HandEyeCalibrationMethod>(cv::CALIB_HAND_EYE_TSAI));
@@ -361,7 +361,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, double, double)>("find_fundamental_mat", &cv::findFundamentalMat,
     Arg("points1"), Arg("points2"), Arg("mask"), Arg("method") = static_cast<int>(cv::FM_RANSAC), Arg("ransac_reproj_threshold") = static_cast<double>(3.), Arg("confidence") = static_cast<double>(0.99));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams&)>("find_fundamental_mat", &cv::findFundamentalMat,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams &)>("find_fundamental_mat", &cv::findFundamentalMat,
     Arg("points1"), Arg("points2"), Arg("mask"), Arg("params"));
 
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::InputArray, int, double, double, int, cv::OutputArray)>("find_essential_mat", &cv::findEssentialMat,
@@ -379,7 +379,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, double, double, cv::OutputArray)>("find_essential_mat", &cv::findEssentialMat,
     Arg("points1"), Arg("points2"), Arg("camera_matrix1"), Arg("dist_coeffs1"), Arg("camera_matrix2"), Arg("dist_coeffs2"), Arg("method") = static_cast<int>(cv::RANSAC), Arg("prob") = static_cast<double>(0.999), Arg("threshold") = static_cast<double>(1.0), Arg("mask") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams&)>("find_essential_mat", &cv::findEssentialMat,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams &)>("find_essential_mat", &cv::findEssentialMat,
     Arg("points1"), Arg("points2"), Arg("camera_matrix1"), Arg("camera_matrix2"), Arg("dist_coeff1"), Arg("dist_coeff2"), Arg("mask"), Arg("params"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray)>("decompose_essential_mat", &cv::decomposeEssentialMat,
@@ -424,8 +424,8 @@ void Init_Calib3d()
   rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, double, double)>("estimate_affine_3d", &cv::estimateAffine3D,
     Arg("src"), Arg("dst"), Arg("out"), Arg("inliers"), Arg("ransac_threshold") = static_cast<double>(3), Arg("confidence") = static_cast<double>(0.99));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, double*, bool)>("estimate_affine_3d", &cv::estimateAffine3D,
-    Arg("src"), Arg("dst"), ArgBuffer("scale") = static_cast<double*>(nullptr), Arg("force_rotation") = static_cast<bool>(true));
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, double *, bool)>("estimate_affine_3d", &cv::estimateAffine3D,
+    Arg("src"), Arg("dst"), ArgBuffer("scale") = static_cast<double *>(nullptr), Arg("force_rotation") = static_cast<bool>(true));
 
   rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, double, double)>("estimate_translation_3d", &cv::estimateTranslation3D,
     Arg("src"), Arg("dst"), Arg("out"), Arg("inliers"), Arg("ransac_threshold") = static_cast<double>(3), Arg("confidence") = static_cast<double>(0.99));
@@ -433,7 +433,7 @@ void Init_Calib3d()
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, double, size_t, double, size_t)>("estimate_affine_2d", &cv::estimateAffine2D,
     Arg("from"), Arg("to"), Arg("inliers") = static_cast<cv::OutputArray>(cv::noArray()), Arg("method") = static_cast<int>(cv::RANSAC), Arg("ransac_reproj_threshold") = static_cast<double>(3), Arg("max_iters") = static_cast<size_t>(2000), Arg("confidence") = static_cast<double>(0.99), Arg("refine_iters") = static_cast<size_t>(10));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams&)>("estimate_affine_2d", &cv::estimateAffine2D,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const cv::UsacParams &)>("estimate_affine_2d", &cv::estimateAffine2D,
     Arg("pts1"), Arg("pts2"), Arg("inliers"), Arg("params"));
 
   rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, double, size_t, double, size_t)>("estimate_affine_partial_2d", &cv::estimateAffinePartial2D,
@@ -532,11 +532,11 @@ void Init_Calib3d()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::Size, int, cv::OutputArray, cv::OutputArray)>("init_undistort_rectify_map", &cv::initUndistortRectifyMap,
     Arg("camera_matrix"), Arg("dist_coeffs"), Arg("r"), Arg("new_camera_matrix"), Arg("size"), Arg("m1type"), Arg("map1"), Arg("map2"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size&, int, cv::OutputArray, cv::OutputArray)>("init_inverse_rectification_map", &cv::initInverseRectificationMap,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size &, int, cv::OutputArray, cv::OutputArray)>("init_inverse_rectification_map", &cv::initInverseRectificationMap,
     Arg("camera_matrix"), Arg("dist_coeffs"), Arg("r"), Arg("new_camera_matrix"), Arg("size"), Arg("m1type"), Arg("map1"), Arg("map2"));
 
-  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, cv::Size, int, int, cv::OutputArray, cv::OutputArray, cv::UndistortTypes, double)>("init_wide_angle_proj_map", &cv::initWideAngleProjMap,
-    Arg("camera_matrix"), Arg("dist_coeffs"), Arg("image_size"), Arg("dest_image_width"), Arg("m1type"), Arg("map1"), Arg("map2"), Arg("proj_type") = static_cast<cv::UndistortTypes>(cv::PROJ_SPHERICAL_EQRECT), Arg("alpha") = static_cast<double>(0));
+  rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, cv::Size, int, int, cv::OutputArray, cv::OutputArray, enum cv::UndistortTypes, double)>("init_wide_angle_proj_map", &cv::initWideAngleProjMap,
+    Arg("camera_matrix"), Arg("dist_coeffs"), Arg("image_size"), Arg("dest_image_width"), Arg("m1type"), Arg("map1"), Arg("map2"), Arg("proj_type") = static_cast<enum cv::UndistortTypes>(cv::PROJ_SPHERICAL_EQRECT), Arg("alpha") = static_cast<double>(0));
 
   rb_mCv.define_module_function<float(*)(cv::InputArray, cv::InputArray, cv::Size, int, int, cv::OutputArray, cv::OutputArray, int, double)>("init_wide_angle_proj_map", &cv::initWideAngleProjMap,
     Arg("camera_matrix"), Arg("dist_coeffs"), Arg("image_size"), Arg("dest_image_width"), Arg("m1type"), Arg("map1"), Arg("map2"), Arg("proj_type"), Arg("alpha") = static_cast<double>(0));
@@ -580,7 +580,7 @@ void Init_Calib3d()
 
   rb_mCvFisheye.define_constant("CALIB_FIX_FOCAL_LENGTH", (int)cv::fisheye::CALIB_FIX_FOCAL_LENGTH);
 
-  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d&, cv::InputArray, cv::InputArray, double, cv::OutputArray)>("project_points", &cv::fisheye::projectPoints,
+  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d &, cv::InputArray, cv::InputArray, double, cv::OutputArray)>("project_points", &cv::fisheye::projectPoints,
     Arg("object_points"), Arg("image_points"), Arg("affine"), Arg("k"), Arg("d"), Arg("alpha") = static_cast<double>(0), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
   rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::OutputArray)>("project_points", &cv::fisheye::projectPoints,
@@ -595,20 +595,20 @@ void Init_Calib3d()
   rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::TermCriteria)>("undistort_points", &cv::fisheye::undistortPoints,
     Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("r") = static_cast<cv::InputArray>(cv::noArray()), Arg("p") = static_cast<cv::InputArray>(cv::noArray()), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER + cv::TermCriteria::Type::EPS, 10, 1e-8)));
 
-  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size&, int, cv::OutputArray, cv::OutputArray)>("init_undistort_rectify_map", &cv::fisheye::initUndistortRectifyMap,
+  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size &, int, cv::OutputArray, cv::OutputArray)>("init_undistort_rectify_map", &cv::fisheye::initUndistortRectifyMap,
     Arg("k"), Arg("d"), Arg("r"), Arg("p"), Arg("size"), Arg("m1type"), Arg("map1"), Arg("map2"));
 
-  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size&)>("undistort_image", &cv::fisheye::undistortImage,
-    Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("new_size") = static_cast<const cv::Size&>(cv::Size()));
+  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size &)>("undistort_image", &cv::fisheye::undistortImage,
+    Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("new_size") = static_cast<const cv::Size &>(cv::Size()));
 
-  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, const cv::Size&, cv::InputArray, cv::OutputArray, double, const cv::Size&, double)>("estimate_new_camera_matrix_for_undistort_rectify", &cv::fisheye::estimateNewCameraMatrixForUndistortRectify,
-    Arg("k"), Arg("d"), Arg("image_size"), Arg("r"), Arg("p"), Arg("balance") = static_cast<double>(0.0), Arg("new_size") = static_cast<const cv::Size&>(cv::Size()), Arg("fov_scale") = static_cast<double>(1.0));
+  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, const cv::Size &, cv::InputArray, cv::OutputArray, double, const cv::Size &, double)>("estimate_new_camera_matrix_for_undistort_rectify", &cv::fisheye::estimateNewCameraMatrixForUndistortRectify,
+    Arg("k"), Arg("d"), Arg("image_size"), Arg("r"), Arg("p"), Arg("balance") = static_cast<double>(0.0), Arg("new_size") = static_cast<const cv::Size &>(cv::Size()), Arg("fov_scale") = static_cast<double>(1.0));
 
-  rb_mCvFisheye.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, const cv::Size&, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria)>("calibrate", &cv::fisheye::calibrate,
+  rb_mCvFisheye.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, const cv::Size &, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria)>("calibrate", &cv::fisheye::calibrate,
     Arg("object_points"), Arg("image_points"), Arg("image_size"), Arg("k"), Arg("d"), Arg("rvecs"), Arg("tvecs"), Arg("flags") = static_cast<int>(0), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::COUNT + cv::TermCriteria::Type::EPS, 100, DBL_EPSILON)));
 
-  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size&, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, const cv::Size&, double, double)>("stereo_rectify", &cv::fisheye::stereoRectify,
-    Arg("k1"), Arg("d1"), Arg("k2"), Arg("d2"), Arg("image_size"), Arg("r"), Arg("tvec"), Arg("r1"), Arg("r2"), Arg("p1"), Arg("p2"), Arg("q"), Arg("flags"), Arg("new_image_size") = static_cast<const cv::Size&>(cv::Size()), Arg("balance") = static_cast<double>(0.0), Arg("fov_scale") = static_cast<double>(1.0));
+  rb_mCvFisheye.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size &, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int, const cv::Size &, double, double)>("stereo_rectify", &cv::fisheye::stereoRectify,
+    Arg("k1"), Arg("d1"), Arg("k2"), Arg("d2"), Arg("image_size"), Arg("r"), Arg("tvec"), Arg("r1"), Arg("r2"), Arg("p1"), Arg("p2"), Arg("q"), Arg("flags"), Arg("new_image_size") = static_cast<const cv::Size &>(cv::Size()), Arg("balance") = static_cast<double>(0.0), Arg("fov_scale") = static_cast<double>(1.0));
 
   rb_mCvFisheye.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::Size, cv::OutputArray, cv::OutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria)>("stereo_calibrate", &cv::fisheye::stereoCalibrate,
     Arg("object_points"), Arg("image_points1"), Arg("image_points2"), Arg("k1"), Arg("d1"), Arg("k2"), Arg("d2"), Arg("image_size"), Arg("r"), Arg("t"), Arg("rvecs"), Arg("tvecs"), Arg("flags") = static_cast<int>(cv::fisheye::CALIB_FIX_INTRINSIC), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::COUNT + cv::TermCriteria::Type::EPS, 100, DBL_EPSILON)));

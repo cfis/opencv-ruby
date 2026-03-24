@@ -18,14 +18,14 @@ void Init_Ximgproc_EdgeDrawing()
       Arg("dst"))
     .define_method<void(cv::ximgproc::EdgeDrawing::*)(cv::OutputArray)>("get_gradient_image", &cv::ximgproc::EdgeDrawing::getGradientImage,
       Arg("dst"))
-    .define_method<std::vector<std::vector<cv::Point_<int>>>(cv::ximgproc::EdgeDrawing::*)()>("get_segments", &cv::ximgproc::EdgeDrawing::getSegments)
+    .define_method<std::vector<std::vector<cv::Point>>(cv::ximgproc::EdgeDrawing::*)()>("get_segments", &cv::ximgproc::EdgeDrawing::getSegments)
     .define_method<std::vector<int>(cv::ximgproc::EdgeDrawing::*)() const>("get_segment_indices_of_lines", &cv::ximgproc::EdgeDrawing::getSegmentIndicesOfLines)
     .define_method<void(cv::ximgproc::EdgeDrawing::*)(cv::OutputArray)>("detect_lines", &cv::ximgproc::EdgeDrawing::detectLines,
       Arg("lines"))
     .define_method<void(cv::ximgproc::EdgeDrawing::*)(cv::OutputArray)>("detect_ellipses", &cv::ximgproc::EdgeDrawing::detectEllipses,
       Arg("ellipses"))
     .define_attr("params", &cv::ximgproc::EdgeDrawing::params)
-    .define_method<void(cv::ximgproc::EdgeDrawing::*)(const cv::ximgproc::EdgeDrawing::Params&)>("set_params", &cv::ximgproc::EdgeDrawing::setParams,
+    .define_method<void(cv::ximgproc::EdgeDrawing::*)(const cv::ximgproc::EdgeDrawing::Params &)>("set_params", &cv::ximgproc::EdgeDrawing::setParams,
       Arg("parameters"));
 
   Rice::Data_Type<cv::ximgproc::EdgeDrawing::Params> rb_cCvXimgprocEdgeDrawingParams = define_class_under<cv::ximgproc::EdgeDrawing::Params>(rb_cCvXimgprocEdgeDrawing, "Params")
@@ -43,9 +43,9 @@ void Init_Ximgproc_EdgeDrawing()
     .define_attr("max_distance_between_two_lines", &cv::ximgproc::EdgeDrawing::Params::MaxDistanceBetweenTwoLines)
     .define_attr("line_fit_error_threshold", &cv::ximgproc::EdgeDrawing::Params::LineFitErrorThreshold)
     .define_attr("max_error_threshold", &cv::ximgproc::EdgeDrawing::Params::MaxErrorThreshold)
-    .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(const cv::FileNode&)>("read", &cv::ximgproc::EdgeDrawing::Params::read,
+    .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(const cv::FileNode &)>("read", &cv::ximgproc::EdgeDrawing::Params::read,
       Arg("fn"))
-    .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(cv::FileStorage&) const>("write", &cv::ximgproc::EdgeDrawing::Params::write,
+    .define_method<void(cv::ximgproc::EdgeDrawing::Params::*)(cv::FileStorage &) const>("write", &cv::ximgproc::EdgeDrawing::Params::write,
       Arg("fs"));
 
   Enum<cv::ximgproc::EdgeDrawing::GradientOperator> rb_cCvXimgprocEdgeDrawingGradientOperator = define_enum_under<cv::ximgproc::EdgeDrawing::GradientOperator>("GradientOperator", rb_cCvXimgprocEdgeDrawing)

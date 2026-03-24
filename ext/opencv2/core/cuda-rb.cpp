@@ -12,91 +12,91 @@ void Init_Core_Cuda()
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Rice::Data_Type<cv::cuda::GpuMat> rb_cCvCudaGpuMat = define_class_under<cv::cuda::GpuMat>(rb_mCvCuda, "GpuMat")
-    .define_singleton_function<cv::cuda::GpuMat::Allocator*(*)()>("default_allocator", &cv::cuda::GpuMat::defaultAllocator)
-    .define_singleton_function<void(*)(cv::cuda::GpuMat::Allocator*)>("set_default_allocator", &cv::cuda::GpuMat::setDefaultAllocator,
+    .define_singleton_function<cv::cuda::GpuMat::Allocator *(*)()>("default_allocator", &cv::cuda::GpuMat::defaultAllocator)
+    .define_singleton_function<void(*)(cv::cuda::GpuMat::Allocator *)>("set_default_allocator", &cv::cuda::GpuMat::setDefaultAllocator,
       Arg("allocator"))
-    .define_singleton_function<cv::cuda::GpuMat::Allocator*(*)()>("get_std_allocator", &cv::cuda::GpuMat::getStdAllocator)
-    .define_constructor(Constructor<cv::cuda::GpuMat, cv::cuda::GpuMat::Allocator*>(),
-      Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, cv::cuda::GpuMat::Allocator*>(),
-      Arg("rows"), Arg("cols"), Arg("type"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, cv::cuda::GpuMat::Allocator*>(),
-      Arg("size"), Arg("type"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, cv::Scalar, cv::cuda::GpuMat::Allocator*>(),
-      Arg("rows"), Arg("cols"), Arg("type"), Arg("s"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, cv::Scalar, cv::cuda::GpuMat::Allocator*>(),
-      Arg("size"), Arg("type"), Arg("s"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat&>(),
+    .define_singleton_function<cv::cuda::GpuMat::Allocator *(*)()>("get_std_allocator", &cv::cuda::GpuMat::getStdAllocator)
+    .define_constructor(Constructor<cv::cuda::GpuMat, cv::cuda::GpuMat::Allocator *>(),
+      Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, cv::cuda::GpuMat::Allocator *>(),
+      Arg("rows"), Arg("cols"), Arg("type"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, cv::cuda::GpuMat::Allocator *>(),
+      Arg("size"), Arg("type"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, cv::Scalar, cv::cuda::GpuMat::Allocator *>(),
+      Arg("rows"), Arg("cols"), Arg("type"), Arg("s"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, cv::Scalar, cv::cuda::GpuMat::Allocator *>(),
+      Arg("size"), Arg("type"), Arg("s"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat &>(),
       Arg("m"))
-    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, void*, size_t>(),
+    .define_constructor(Constructor<cv::cuda::GpuMat, int, int, int, void *, size_t>(),
       Arg("rows"), Arg("cols"), Arg("type"), ArgBuffer("data"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP))
-    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, void*, size_t>(),
+    .define_constructor(Constructor<cv::cuda::GpuMat, cv::Size, int, void *, size_t>(),
       Arg("size"), Arg("type"), ArgBuffer("data"), Arg("step") = static_cast<size_t>(cv::Mat::AUTO_STEP))
-    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat&, cv::Range, cv::Range>(),
+    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat &, cv::Range, cv::Range>(),
       Arg("m"), Arg("row_range"), Arg("col_range"))
-    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat&, cv::Rect>(),
+    .define_constructor(Constructor<cv::cuda::GpuMat, const cv::cuda::GpuMat &, cv::Rect>(),
       Arg("m"), Arg("roi"))
-    .define_constructor(Constructor<cv::cuda::GpuMat, cv::InputArray, cv::cuda::GpuMat::Allocator*>(),
-      Arg("arr"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator*>(cv::cuda::GpuMat::defaultAllocator()))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(const cv::cuda::GpuMat&)>("assign", &cv::cuda::GpuMat::operator=,
+    .define_constructor(Constructor<cv::cuda::GpuMat, cv::InputArray, cv::cuda::GpuMat::Allocator *>(),
+      Arg("arr"), Arg("allocator") = static_cast<cv::cuda::GpuMat::Allocator *>(cv::cuda::GpuMat::defaultAllocator()))
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(const cv::cuda::GpuMat &)>("assign", &cv::cuda::GpuMat::operator=,
       Arg("m"))
     .define_method<void(cv::cuda::GpuMat::*)(int, int, int)>("create", &cv::cuda::GpuMat::create,
       Arg("rows"), Arg("cols"), Arg("type"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::Size, int)>("create", &cv::cuda::GpuMat::create,
       Arg("size"), Arg("type"))
     .define_method<void(cv::cuda::GpuMat::*)()>("release", &cv::cuda::GpuMat::release)
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&)>("swap", &cv::cuda::GpuMat::swap,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &)>("swap", &cv::cuda::GpuMat::swap,
       Arg("mat"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::InputArray)>("upload", &cv::cuda::GpuMat::upload,
       Arg("arr"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::InputArray, cv::cuda::Stream&)>("upload", &cv::cuda::GpuMat::upload,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::InputArray, cv::cuda::Stream &)>("upload", &cv::cuda::GpuMat::upload,
       Arg("arr"), Arg("stream"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray) const>("download", &cv::cuda::GpuMat::download,
       Arg("dst"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::cuda::Stream&) const>("download", &cv::cuda::GpuMat::download,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::cuda::Stream &) const>("download", &cv::cuda::GpuMat::download,
       Arg("dst"), Arg("stream"))
     .define_method<cv::cuda::GpuMat(cv::cuda::GpuMat::*)() const>("clone", &cv::cuda::GpuMat::clone)
     .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::InputArray) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("mask"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, cv::cuda::GpuMat&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, cv::cuda::GpuMat &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("mask"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::InputArray, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::InputArray, cv::cuda::Stream &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("mask"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, cv::cuda::GpuMat&, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, cv::cuda::GpuMat &, cv::cuda::Stream &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("mask"), Arg("stream"))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(cv::Scalar)>("set_to", &cv::cuda::GpuMat::setTo,
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(cv::Scalar)>("set_to", &cv::cuda::GpuMat::setTo,
       Arg("s"))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(cv::Scalar, cv::cuda::Stream&)>("set_to", &cv::cuda::GpuMat::setTo,
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(cv::Scalar, cv::cuda::Stream &)>("set_to", &cv::cuda::GpuMat::setTo,
       Arg("s"), Arg("stream"))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(cv::Scalar, cv::InputArray)>("set_to", &cv::cuda::GpuMat::setTo,
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(cv::Scalar, cv::InputArray)>("set_to", &cv::cuda::GpuMat::setTo,
       Arg("s"), Arg("mask"))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(cv::Scalar, cv::InputArray, cv::cuda::Stream&)>("set_to", &cv::cuda::GpuMat::setTo,
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(cv::Scalar, cv::InputArray, cv::cuda::Stream &)>("set_to", &cv::cuda::GpuMat::setTo,
       Arg("s"), Arg("mask"), Arg("stream"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, cv::cuda::Stream &) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, int, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, int, cv::cuda::Stream &) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("stream"))
     .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, double, double) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("beta") = static_cast<double>(0.0))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, int, double, double) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, int, double, double) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("alpha") = static_cast<double>(1.0), Arg("beta") = static_cast<double>(0.0))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, double, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, double, cv::cuda::Stream &) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, double, double, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, int, double, double, cv::cuda::Stream &) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("beta"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, int, double, double, cv::cuda::Stream&) const>("convert_to", &cv::cuda::GpuMat::convertTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, int, double, double, cv::cuda::Stream &) const>("convert_to", &cv::cuda::GpuMat::convertTo,
       Arg("dst"), Arg("rtype"), Arg("alpha"), Arg("beta"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, int) const>("assign_to", &cv::cuda::GpuMat::assignTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, int) const>("assign_to", &cv::cuda::GpuMat::assignTo,
       Arg("m"), Arg("type") = static_cast<int>(-1))
-    .define_method<uchar*(cv::cuda::GpuMat::*)(int)>("ptr", &cv::cuda::GpuMat::ptr,
+    .define_method<uchar *(cv::cuda::GpuMat::*)(int)>("ptr", &cv::cuda::GpuMat::ptr,
       Arg("y") = static_cast<int>(0), ReturnBuffer())
-    .define_method<const uchar*(cv::cuda::GpuMat::*)(int) const>("ptr", &cv::cuda::GpuMat::ptr,
+    .define_method<const uchar *(cv::cuda::GpuMat::*)(int) const>("ptr", &cv::cuda::GpuMat::ptr,
       Arg("y") = static_cast<int>(0), ReturnBuffer())
     .define_method<cv::cuda::GpuMat(cv::cuda::GpuMat::*)(int) const>("row", &cv::cuda::GpuMat::row,
       Arg("y"))
@@ -116,9 +116,9 @@ void Init_Core_Cuda()
       Arg("roi"))
     .define_method<cv::cuda::GpuMat(cv::cuda::GpuMat::*)(int, int) const>("reshape", &cv::cuda::GpuMat::reshape,
       Arg("cn"), Arg("rows") = static_cast<int>(0))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::Size&, cv::Point&) const>("locate_roi", &cv::cuda::GpuMat::locateROI,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::Size &, cv::Point &) const>("locate_roi", &cv::cuda::GpuMat::locateROI,
       Arg("whole_size"), Arg("ofs"))
-    .define_method<cv::cuda::GpuMat&(cv::cuda::GpuMat::*)(int, int, int, int)>("adjust_roi", &cv::cuda::GpuMat::adjustROI,
+    .define_method<cv::cuda::GpuMat &(cv::cuda::GpuMat::*)(int, int, int, int)>("adjust_roi", &cv::cuda::GpuMat::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright"))
     .define_method<bool(cv::cuda::GpuMat::*)() const>("continuous?", &cv::cuda::GpuMat::isContinuous)
     .define_method<size_t(cv::cuda::GpuMat::*)() const>("elem_size", &cv::cuda::GpuMat::elemSize)
@@ -129,7 +129,7 @@ void Init_Core_Cuda()
     .define_method<size_t(cv::cuda::GpuMat::*)() const>("step1", &cv::cuda::GpuMat::step1)
     .define_method<cv::Size(cv::cuda::GpuMat::*)() const>("size", &cv::cuda::GpuMat::size)
     .define_method<bool(cv::cuda::GpuMat::*)() const>("empty?", &cv::cuda::GpuMat::empty)
-    .define_method<void*(cv::cuda::GpuMat::*)() const>("cuda_ptr", &cv::cuda::GpuMat::cudaPtr,
+    .define_method<void *(cv::cuda::GpuMat::*)() const>("cuda_ptr", &cv::cuda::GpuMat::cudaPtr,
       ReturnBuffer())
     .define_method<void(cv::cuda::GpuMat::*)()>("update_continuity_flag", &cv::cuda::GpuMat::updateContinuityFlag)
     .define_attr("flags", &cv::cuda::GpuMat::flags)
@@ -142,17 +142,17 @@ void Init_Core_Cuda()
     .define_attr("dataend", &cv::cuda::GpuMat::dataend)
     .define_attr("allocator", &cv::cuda::GpuMat::allocator)
     #if RUBY_CV_VERSION >= 409
-    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::OutputArray, cv::cuda::Stream &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("stream"))
-    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat&, cv::cuda::Stream&) const>("copy_to", &cv::cuda::GpuMat::copyTo,
+    .define_method<void(cv::cuda::GpuMat::*)(cv::cuda::GpuMat &, cv::cuda::Stream &) const>("copy_to", &cv::cuda::GpuMat::copyTo,
       Arg("dst"), Arg("stream"))
     #endif
     ;
 
   Rice::Data_Type<cv::cuda::GpuMat::Allocator> rb_cCvCudaGpuMatAllocator = define_class_under<cv::cuda::GpuMat::Allocator>(rb_cCvCudaGpuMat, "Allocator")
-    .define_method<bool(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat*, int, int, size_t)>("allocate", &cv::cuda::GpuMat::Allocator::allocate,
+    .define_method<bool(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat *, int, int, size_t)>("allocate", &cv::cuda::GpuMat::Allocator::allocate,
       Arg("mat"), Arg("rows"), Arg("cols"), Arg("elem_size"))
-    .define_method<void(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat*)>("free", &cv::cuda::GpuMat::Allocator::free,
+    .define_method<void(cv::cuda::GpuMat::Allocator::*)(cv::cuda::GpuMat *)>("free", &cv::cuda::GpuMat::Allocator::free,
       Arg("mat"));
 
   Rice::Data_Type<cv::cuda::GpuData> rb_cCvCudaGpuData = define_class_under<cv::cuda::GpuData>(rb_mCvCuda, "GpuData")
@@ -165,17 +165,17 @@ void Init_Core_Cuda()
     .define_constructor(Constructor<cv::cuda::GpuMatND>())
     .define_constructor(Constructor<cv::cuda::GpuMatND, cv::cuda::GpuMatND::SizeArray, int>(),
       Arg("size"), Arg("type"))
-    .define_constructor(Constructor<cv::cuda::GpuMatND, cv::cuda::GpuMatND::SizeArray, int, void*, cv::cuda::GpuMatND::StepArray>(),
+    .define_constructor(Constructor<cv::cuda::GpuMatND, cv::cuda::GpuMatND::SizeArray, int, void *, cv::cuda::GpuMatND::StepArray>(),
       Arg("size"), Arg("type"), ArgBuffer("data"), Arg("step") = static_cast<cv::cuda::GpuMatND::StepArray>(cv::cuda::GpuMatND::StepArray()))
     .define_method<void(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND::SizeArray, int)>("create", &cv::cuda::GpuMatND::create,
       Arg("size"), Arg("type"))
     .define_method<void(cv::cuda::GpuMatND::*)()>("release", &cv::cuda::GpuMatND::release)
-    .define_method<void(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND&) noexcept>("swap", &cv::cuda::GpuMatND::swap,
+    .define_method<void(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND &) noexcept>("swap", &cv::cuda::GpuMatND::swap,
       Arg("m"))
     .define_method<cv::cuda::GpuMatND(cv::cuda::GpuMatND::*)() const>("clone", &cv::cuda::GpuMatND::clone)
-    .define_method<cv::cuda::GpuMatND(cv::cuda::GpuMatND::*)(cv::cuda::Stream&) const>("clone", &cv::cuda::GpuMatND::clone,
+    .define_method<cv::cuda::GpuMatND(cv::cuda::GpuMatND::*)(cv::cuda::Stream &) const>("clone", &cv::cuda::GpuMatND::clone,
       Arg("stream"))
-    .define_method<cv::cuda::GpuMatND(cv::cuda::GpuMatND::*)(const std::vector<cv::Range>&) const>("call", &cv::cuda::GpuMatND::operator(),
+    .define_method<cv::cuda::GpuMatND(cv::cuda::GpuMatND::*)(const std::vector<cv::Range> &) const>("call", &cv::cuda::GpuMatND::operator(),
       Arg("ranges"))
     .define_method<cv::cuda::GpuMat(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND::IndexArray, cv::Range, cv::Range) const>("create_gpu_mat_header", &cv::cuda::GpuMatND::createGpuMatHeader,
       Arg("idx"), Arg("row_range"), Arg("col_range"))
@@ -186,19 +186,19 @@ void Init_Core_Cuda()
     {
       return self;
     })
-    .define_constructor(Constructor<cv::cuda::GpuMatND, const cv::cuda::GpuMatND&>(),
+    .define_constructor(Constructor<cv::cuda::GpuMatND, const cv::cuda::GpuMatND &>(),
       Arg("arg_0"))
-    .define_method<cv::cuda::GpuMatND&(cv::cuda::GpuMatND::*)(const cv::cuda::GpuMatND&)>("assign", &cv::cuda::GpuMatND::operator=,
+    .define_method<cv::cuda::GpuMatND &(cv::cuda::GpuMatND::*)(const cv::cuda::GpuMatND &)>("assign", &cv::cuda::GpuMatND::operator=,
       Arg("arg_0"))
-    .define_method<cv::cuda::GpuMatND&(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND&&)>("assign", &cv::cuda::GpuMatND::operator=,
+    .define_method<cv::cuda::GpuMatND &(cv::cuda::GpuMatND::*)(cv::cuda::GpuMatND &&)>("assign", &cv::cuda::GpuMatND::operator=,
       Arg("arg_0"))
     .define_method<void(cv::cuda::GpuMatND::*)(cv::InputArray)>("upload", &cv::cuda::GpuMatND::upload,
       Arg("src"))
-    .define_method<void(cv::cuda::GpuMatND::*)(cv::InputArray, cv::cuda::Stream&)>("upload", &cv::cuda::GpuMatND::upload,
+    .define_method<void(cv::cuda::GpuMatND::*)(cv::InputArray, cv::cuda::Stream &)>("upload", &cv::cuda::GpuMatND::upload,
       Arg("src"), Arg("stream"))
     .define_method<void(cv::cuda::GpuMatND::*)(cv::OutputArray) const>("download", &cv::cuda::GpuMatND::download,
       Arg("dst"))
-    .define_method<void(cv::cuda::GpuMatND::*)(cv::OutputArray, cv::cuda::Stream&) const>("download", &cv::cuda::GpuMatND::download,
+    .define_method<void(cv::cuda::GpuMatND::*)(cv::OutputArray, cv::cuda::Stream &) const>("download", &cv::cuda::GpuMatND::download,
       Arg("dst"), Arg("stream"))
     .define_method<bool(cv::cuda::GpuMatND::*)() const>("continuous?", &cv::cuda::GpuMatND::isContinuous)
     .define_method<bool(cv::cuda::GpuMatND::*)() const>("submatrix?", &cv::cuda::GpuMatND::isSubmatrix)
@@ -206,7 +206,7 @@ void Init_Core_Cuda()
     .define_method<size_t(cv::cuda::GpuMatND::*)() const>("elem_size1", &cv::cuda::GpuMatND::elemSize1)
     .define_method<bool(cv::cuda::GpuMatND::*)() const>("empty?", &cv::cuda::GpuMatND::empty)
     .define_method<bool(cv::cuda::GpuMatND::*)() const>("external?", &cv::cuda::GpuMatND::external)
-    .define_method<uchar*(cv::cuda::GpuMatND::*)() const>("get_device_ptr", &cv::cuda::GpuMatND::getDevicePtr,
+    .define_method<uchar *(cv::cuda::GpuMatND::*)() const>("get_device_ptr", &cv::cuda::GpuMatND::getDevicePtr,
       ReturnBuffer())
     .define_method<size_t(cv::cuda::GpuMatND::*)() const>("total", &cv::cuda::GpuMatND::total)
     .define_method<size_t(cv::cuda::GpuMatND::*)() const>("total_mem_size", &cv::cuda::GpuMatND::totalMemSize)
@@ -223,7 +223,7 @@ void Init_Core_Cuda()
     Arg("rows"), Arg("cols"), Arg("type"), Arg("arr"));
 
   Rice::Data_Type<cv::cuda::BufferPool> rb_cCvCudaBufferPool = define_class_under<cv::cuda::BufferPool>(rb_mCvCuda, "BufferPool")
-    .define_constructor(Constructor<cv::cuda::BufferPool, cv::cuda::Stream&>(),
+    .define_constructor(Constructor<cv::cuda::BufferPool, cv::cuda::Stream &>(),
       Arg("stream"))
     .define_method<cv::cuda::GpuMat(cv::cuda::BufferPool::*)(int, int, int)>("get_buffer", &cv::cuda::BufferPool::getBuffer,
       Arg("rows"), Arg("cols"), Arg("type"))
@@ -238,11 +238,11 @@ void Init_Core_Cuda()
     Arg("device_id"), Arg("stack_size"), Arg("stack_count"));
 
   Rice::Data_Type<cv::cuda::HostMem> rb_cCvCudaHostMem = define_class_under<cv::cuda::HostMem>(rb_mCvCuda, "HostMem")
-    .define_singleton_function<cv::MatAllocator*(*)(cv::cuda::HostMem::AllocType)>("get_allocator", &cv::cuda::HostMem::getAllocator,
+    .define_singleton_function<cv::MatAllocator *(*)(cv::cuda::HostMem::AllocType)>("get_allocator", &cv::cuda::HostMem::getAllocator,
       Arg("alloc_type") = static_cast<cv::cuda::HostMem::AllocType>(cv::cuda::HostMem::AllocType::PAGE_LOCKED))
     .define_constructor(Constructor<cv::cuda::HostMem, cv::cuda::HostMem::AllocType>(),
       Arg("alloc_type") = static_cast<cv::cuda::HostMem::AllocType>(cv::cuda::HostMem::AllocType::PAGE_LOCKED))
-    .define_constructor(Constructor<cv::cuda::HostMem, const cv::cuda::HostMem&>(),
+    .define_constructor(Constructor<cv::cuda::HostMem, const cv::cuda::HostMem &>(),
       Arg("m"))
     .define_constructor(Constructor<cv::cuda::HostMem, int, int, int, cv::cuda::HostMem::AllocType>(),
       Arg("rows"), Arg("cols"), Arg("type"), Arg("alloc_type") = static_cast<cv::cuda::HostMem::AllocType>(cv::cuda::HostMem::AllocType::PAGE_LOCKED))
@@ -250,9 +250,9 @@ void Init_Core_Cuda()
       Arg("size"), Arg("type"), Arg("alloc_type") = static_cast<cv::cuda::HostMem::AllocType>(cv::cuda::HostMem::AllocType::PAGE_LOCKED))
     .define_constructor(Constructor<cv::cuda::HostMem, cv::InputArray, cv::cuda::HostMem::AllocType>(),
       Arg("arr"), Arg("alloc_type") = static_cast<cv::cuda::HostMem::AllocType>(cv::cuda::HostMem::AllocType::PAGE_LOCKED))
-    .define_method<cv::cuda::HostMem&(cv::cuda::HostMem::*)(const cv::cuda::HostMem&)>("assign", &cv::cuda::HostMem::operator=,
+    .define_method<cv::cuda::HostMem &(cv::cuda::HostMem::*)(const cv::cuda::HostMem &)>("assign", &cv::cuda::HostMem::operator=,
       Arg("m"))
-    .define_method<void(cv::cuda::HostMem::*)(cv::cuda::HostMem&)>("swap", &cv::cuda::HostMem::swap,
+    .define_method<void(cv::cuda::HostMem::*)(cv::cuda::HostMem &)>("swap", &cv::cuda::HostMem::swap,
       Arg("b"))
     .define_method<cv::cuda::HostMem(cv::cuda::HostMem::*)() const>("clone", &cv::cuda::HostMem::clone)
     .define_method<void(cv::cuda::HostMem::*)(int, int, int)>("create", &cv::cuda::HostMem::create,
@@ -288,10 +288,10 @@ void Init_Core_Cuda()
     .define_value("SHARED", cv::cuda::HostMem::AllocType::SHARED)
     .define_value("WRITE_COMBINED", cv::cuda::HostMem::AllocType::WRITE_COMBINED);
 
-  rb_mCvCuda.define_module_function<void(*)(cv::Mat&)>("register_page_locked", &cv::cuda::registerPageLocked,
+  rb_mCvCuda.define_module_function<void(*)(cv::Mat &)>("register_page_locked", &cv::cuda::registerPageLocked,
     Arg("m"));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::Mat&)>("unregister_page_locked", &cv::cuda::unregisterPageLocked,
+  rb_mCvCuda.define_module_function<void(*)(cv::Mat &)>("unregister_page_locked", &cv::cuda::unregisterPageLocked,
     Arg("m"));
 
   Rice::Data_Type<cv::cuda::Stream> rb_cCvCudaStream = define_class_under<cv::cuda::Stream>(rb_mCvCuda, "Stream");
@@ -299,18 +299,18 @@ void Init_Core_Cuda()
   Rice::Data_Type<cv::cuda::Stream::Impl> rb_cCvCudaStreamImpl = define_class_under<cv::cuda::Stream::Impl>(rb_cCvCudaStream, "Impl");
   rb_cCvCudaStream
     .define_constructor(Constructor<cv::cuda::Stream>())
-    .define_constructor(Constructor<cv::cuda::Stream, const cv::Ptr<cv::cuda::GpuMat::Allocator>&>(),
+    .define_constructor(Constructor<cv::cuda::Stream, const cv::Ptr<cv::cuda::GpuMat::Allocator> &>(),
       Arg("allocator"))
     .define_constructor(Constructor<cv::cuda::Stream, const size_t>(),
       Arg("cuda_flags"))
     .define_method<bool(cv::cuda::Stream::*)() const>("query_if_complete?", &cv::cuda::Stream::queryIfComplete)
     .define_method<void(cv::cuda::Stream::*)()>("wait_for_completion", &cv::cuda::Stream::waitForCompletion)
-    .define_method<void(cv::cuda::Stream::*)(const cv::cuda::Event&)>("wait_event", &cv::cuda::Stream::waitEvent,
+    .define_method<void(cv::cuda::Stream::*)(const cv::cuda::Event &)>("wait_event", &cv::cuda::Stream::waitEvent,
       Arg("event"))
-    .define_method<void(cv::cuda::Stream::*)(cv::cuda::Stream::StreamCallback, void*)>("enqueue_host_callback", &cv::cuda::Stream::enqueueHostCallback,
+    .define_method<void(cv::cuda::Stream::*)(cv::cuda::Stream::StreamCallback, void *)>("enqueue_host_callback", &cv::cuda::Stream::enqueueHostCallback,
       Arg("callback"), ArgBuffer("user_data"))
-    .define_singleton_function<cv::cuda::Stream&(*)()>("null", &cv::cuda::Stream::Null)
-    .define_method<void*(cv::cuda::Stream::*)() const>("cuda_ptr", &cv::cuda::Stream::cudaPtr,
+    .define_singleton_function<cv::cuda::Stream &(*)()>("null", &cv::cuda::Stream::Null)
+    .define_method<void *(cv::cuda::Stream::*)() const>("cuda_ptr", &cv::cuda::Stream::cudaPtr,
       ReturnBuffer());
 
   Rice::Data_Type<cv::cuda::Event> rb_cCvCudaEvent = define_class_under<cv::cuda::Event>(rb_mCvCuda, "Event");
@@ -319,11 +319,11 @@ void Init_Core_Cuda()
   rb_cCvCudaEvent
     .define_constructor(Constructor<cv::cuda::Event, const cv::cuda::Event::CreateFlags>(),
       Arg("flags") = static_cast<const cv::cuda::Event::CreateFlags>(cv::cuda::Event::CreateFlags::DEFAULT))
-    .define_method<void(cv::cuda::Event::*)(cv::cuda::Stream&)>("record", &cv::cuda::Event::record,
-      Arg("stream")) // Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
+    .define_method<void(cv::cuda::Event::*)(cv::cuda::Stream &)>("record", &cv::cuda::Event::record,
+      Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
     .define_method<bool(cv::cuda::Event::*)() const>("query_if_complete?", &cv::cuda::Event::queryIfComplete)
     .define_method<void(cv::cuda::Event::*)()>("wait_for_completion", &cv::cuda::Event::waitForCompletion)
-    .define_singleton_function<float(*)(const cv::cuda::Event&, const cv::cuda::Event&)>("elapsed_time", &cv::cuda::Event::elapsedTime,
+    .define_singleton_function<float(*)(const cv::cuda::Event &, const cv::cuda::Event &)>("elapsed_time", &cv::cuda::Event::elapsedTime,
       Arg("start"), Arg("end"));
 
   Enum<cv::cuda::Event::CreateFlags> rb_cCvCudaEventCreateFlags = define_enum_under<cv::cuda::Event::CreateFlags>("CreateFlags", rb_cCvCudaEvent)
@@ -385,7 +385,7 @@ void Init_Core_Cuda()
     .define_constructor(Constructor<cv::cuda::DeviceInfo, int>(),
       Arg("device_id"))
     .define_method<int(cv::cuda::DeviceInfo::*)() const>("device_id", &cv::cuda::DeviceInfo::deviceID)
-    .define_method<const char*(cv::cuda::DeviceInfo::*)() const>("name", &cv::cuda::DeviceInfo::name)
+    .define_method<const char *(cv::cuda::DeviceInfo::*)() const>("name", &cv::cuda::DeviceInfo::name)
     .define_method<size_t(cv::cuda::DeviceInfo::*)() const>("total_global_mem", &cv::cuda::DeviceInfo::totalGlobalMem)
     .define_method<size_t(cv::cuda::DeviceInfo::*)() const>("shared_mem_per_block", &cv::cuda::DeviceInfo::sharedMemPerBlock)
     .define_method<int(cv::cuda::DeviceInfo::*)() const>("regs_per_block", &cv::cuda::DeviceInfo::regsPerBlock)
@@ -437,7 +437,7 @@ void Init_Core_Cuda()
     .define_method<int(cv::cuda::DeviceInfo::*)() const>("memory_bus_width", &cv::cuda::DeviceInfo::memoryBusWidth)
     .define_method<int(cv::cuda::DeviceInfo::*)() const>("l2_cache_size", &cv::cuda::DeviceInfo::l2CacheSize)
     .define_method<int(cv::cuda::DeviceInfo::*)() const>("max_threads_per_multi_processor", &cv::cuda::DeviceInfo::maxThreadsPerMultiProcessor)
-    .define_method<void(cv::cuda::DeviceInfo::*)(size_t&, size_t&) const>("query_memory", &cv::cuda::DeviceInfo::queryMemory,
+    .define_method<void(cv::cuda::DeviceInfo::*)(size_t &, size_t &) const>("query_memory", &cv::cuda::DeviceInfo::queryMemory,
       Arg("total_memory"), Arg("free_memory"))
     .define_method<size_t(cv::cuda::DeviceInfo::*)() const>("free_memory", &cv::cuda::DeviceInfo::freeMemory)
     .define_method<size_t(cv::cuda::DeviceInfo::*)() const>("total_memory", &cv::cuda::DeviceInfo::totalMemory)
@@ -457,8 +457,8 @@ void Init_Core_Cuda()
   rb_mCvCuda.define_module_function<void(*)(int)>("print_short_cuda_device_info", &cv::cuda::printShortCudaDeviceInfo,
     Arg("device"));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("convert_fp16", &cv::cuda::convertFp16,
-    Arg("_src"), Arg("_dst"), Arg("stream")); // Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("convert_fp16", &cv::cuda::convertFp16,
+    Arg("_src"), Arg("_dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   #if RUBY_CV_VERSION >= 408
 

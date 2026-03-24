@@ -55,8 +55,8 @@ void Init_Shape_ShapeDistance()
       Arg("transformer"))
     .define_method<cv::Ptr<cv::ShapeTransformer>(cv::ShapeContextDistanceExtractor::*)() const>("get_transform_algorithm", &cv::ShapeContextDistanceExtractor::getTransformAlgorithm);
 
-  rb_mCv.define_module_function<cv::Ptr<cv::ShapeContextDistanceExtractor>(*)(int, int, float, float, int, const cv::Ptr<cv::HistogramCostExtractor>&, const cv::Ptr<cv::ShapeTransformer>&)>("create_shape_context_distance_extractor", &cv::createShapeContextDistanceExtractor,
-    Arg("n_angular_bins") = static_cast<int>(12), Arg("n_radial_bins") = static_cast<int>(4), Arg("inner_radius") = static_cast<float>(0.2f), Arg("outer_radius") = static_cast<float>(2), Arg("iterations") = static_cast<int>(3), Arg("comparer") = static_cast<const cv::Ptr<cv::HistogramCostExtractor>&>(cv::createChiHistogramCostExtractor()), Arg("transformer") = static_cast<const cv::Ptr<cv::ShapeTransformer>&>(cv::createThinPlateSplineShapeTransformer()));
+  rb_mCv.define_module_function<cv::Ptr<cv::ShapeContextDistanceExtractor>(*)(int, int, float, float, int, const cv::Ptr<cv::HistogramCostExtractor> &, const cv::Ptr<cv::ShapeTransformer> &)>("create_shape_context_distance_extractor", &cv::createShapeContextDistanceExtractor,
+    Arg("n_angular_bins") = static_cast<int>(12), Arg("n_radial_bins") = static_cast<int>(4), Arg("inner_radius") = static_cast<float>(0.2f), Arg("outer_radius") = static_cast<float>(2), Arg("iterations") = static_cast<int>(3), Arg("comparer") = static_cast<const cv::Ptr<cv::HistogramCostExtractor> &>(cv::createChiHistogramCostExtractor()), Arg("transformer") = static_cast<const cv::Ptr<cv::ShapeTransformer> &>(cv::createThinPlateSplineShapeTransformer()));
 
   Rice::Data_Type<cv::HausdorffDistanceExtractor> rb_cCvHausdorffDistanceExtractor = define_class_under<cv::HausdorffDistanceExtractor, cv::ShapeDistanceExtractor>(rb_mCv, "HausdorffDistanceExtractor")
     .define_method<void(cv::HausdorffDistanceExtractor::*)(int)>("set_distance_flag", &cv::HausdorffDistanceExtractor::setDistanceFlag,

@@ -16,7 +16,7 @@ void Init_Datasets_SrDiv2k()
     .define_attr("image_name", &cv::datasets::SR_div2kObj::imageName);
 
   Rice::Data_Type<cv::datasets::SR_div2k> rb_cCvDatasetsSRDiv2k = define_class_under<cv::datasets::SR_div2k, cv::datasets::Dataset>(rb_mCvDatasets, "SRDiv2k")
-    .define_method<void(cv::datasets::SR_div2k::*)(const std::string&)>("load", &cv::datasets::SR_div2k::load,
+    .define_method<void(cv::datasets::SR_div2k::*)(const std::string &)>("load", &cv::datasets::SR_div2k::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::SR_div2k>(*)()>("create", &cv::datasets::SR_div2k::create);
 }

@@ -20,7 +20,7 @@ void Init_Ximgproc_Edgeboxes()
     .define_attr("score", &cv::ximgproc::Box::score);
 
   Rice::Data_Type<cv::ximgproc::EdgeBoxes> rb_cCvXimgprocEdgeBoxes = define_class_under<cv::ximgproc::EdgeBoxes, cv::Algorithm>(rb_mCvXimgproc, "EdgeBoxes")
-    .define_method<void(cv::ximgproc::EdgeBoxes::*)(cv::InputArray, cv::InputArray, std::vector<cv::Rect_<int>>&, cv::OutputArray)>("get_bounding_boxes", &cv::ximgproc::EdgeBoxes::getBoundingBoxes,
+    .define_method<void(cv::ximgproc::EdgeBoxes::*)(cv::InputArray, cv::InputArray, std::vector<cv::Rect> &, cv::OutputArray)>("get_bounding_boxes", &cv::ximgproc::EdgeBoxes::getBoundingBoxes,
       Arg("edge_map"), Arg("orientation_map"), Arg("boxes"), Arg("scores") = static_cast<cv::OutputArray>(cv::noArray()))
     .define_method<float(cv::ximgproc::EdgeBoxes::*)() const>("get_alpha", &cv::ximgproc::EdgeBoxes::getAlpha)
     .define_method<void(cv::ximgproc::EdgeBoxes::*)(float)>("set_alpha", &cv::ximgproc::EdgeBoxes::setAlpha,

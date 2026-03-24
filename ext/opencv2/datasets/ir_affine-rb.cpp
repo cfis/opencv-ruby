@@ -17,7 +17,7 @@ void Init_Datasets_IrAffine()
     .define_attr("mat", &cv::datasets::IR_affineObj::mat);
 
   Rice::Data_Type<cv::datasets::IR_affine> rb_cCvDatasetsIRAffine = define_class_under<cv::datasets::IR_affine, cv::datasets::Dataset>(rb_mCvDatasets, "IRAffine")
-    .define_method<void(cv::datasets::IR_affine::*)(const std::string&)>("load", &cv::datasets::IR_affine::load,
+    .define_method<void(cv::datasets::IR_affine::*)(const std::string &)>("load", &cv::datasets::IR_affine::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::IR_affine>(*)()>("create", &cv::datasets::IR_affine::create);
 }

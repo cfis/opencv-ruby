@@ -681,7 +681,7 @@ void Init_Videoio()
     .define_value("CAP_PROP_OBSENSOR_INTRINSIC_CY", cv::VideoCaptureOBSensorProperties::CAP_PROP_OBSENSOR_INTRINSIC_CY);
 
   Rice::Data_Type<cv::IStreamReader> rb_cCvIStreamReader = define_class_under<cv::IStreamReader>(rb_mCv, "IStreamReader")
-    .define_method<long long(cv::IStreamReader::*)(char*, long long)>("read", &cv::IStreamReader::read,
+    .define_method<long long(cv::IStreamReader::*)(char *, long long)>("read", &cv::IStreamReader::read,
       Arg("buffer"), Arg("size"))
     .define_method<long long(cv::IStreamReader::*)(long long, int)>("seek", &cv::IStreamReader::seek,
       Arg("offset"), Arg("origin"));
@@ -694,34 +694,34 @@ void Init_Videoio()
 
   Rice::Data_Type<cv::VideoCapture> rb_cCvVideoCapture = define_class_under<cv::VideoCapture>(rb_mCv, "VideoCapture")
     .define_constructor(Constructor<cv::VideoCapture>())
-    .define_constructor(Constructor<cv::VideoCapture, const cv::String&, int>(),
+    .define_constructor(Constructor<cv::VideoCapture, const cv::String &, int>(),
       Arg("filename"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY))
-    .define_constructor(Constructor<cv::VideoCapture, const cv::String&, int, const std::vector<int>&>(),
+    .define_constructor(Constructor<cv::VideoCapture, const cv::String &, int, const std::vector<int> &>(),
       Arg("filename"), Arg("api_preference"), Arg("params"))
     .define_constructor(Constructor<cv::VideoCapture, int, int>(),
       Arg("index"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY))
-    .define_constructor(Constructor<cv::VideoCapture, int, int, const std::vector<int>&>(),
+    .define_constructor(Constructor<cv::VideoCapture, int, int, const std::vector<int> &>(),
       Arg("index"), Arg("api_preference"), Arg("params"))
-    .define_constructor(Constructor<cv::VideoCapture, const cv::Ptr<cv::IStreamReader>&, int, const std::vector<int>&>(),
+    .define_constructor(Constructor<cv::VideoCapture, const cv::Ptr<cv::IStreamReader> &, int, const std::vector<int> &>(),
       Arg("source"), Arg("api_preference"), Arg("params"))
-    .define_method<bool(cv::VideoCapture::*)(const cv::String&, int)>("open", &cv::VideoCapture::open,
+    .define_method<bool(cv::VideoCapture::*)(const cv::String &, int)>("open", &cv::VideoCapture::open,
       Arg("filename"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY))
-    .define_method<bool(cv::VideoCapture::*)(const cv::String&, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
+    .define_method<bool(cv::VideoCapture::*)(const cv::String &, int, const std::vector<int> &)>("open", &cv::VideoCapture::open,
       Arg("filename"), Arg("api_preference"), Arg("params"))
     .define_method<bool(cv::VideoCapture::*)(int, int)>("open", &cv::VideoCapture::open,
       Arg("index"), Arg("api_preference") = static_cast<int>(cv::CAP_ANY))
-    .define_method<bool(cv::VideoCapture::*)(int, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
+    .define_method<bool(cv::VideoCapture::*)(int, int, const std::vector<int> &)>("open", &cv::VideoCapture::open,
       Arg("index"), Arg("api_preference"), Arg("params"))
-    .define_method<bool(cv::VideoCapture::*)(const cv::Ptr<cv::IStreamReader>&, int, const std::vector<int>&)>("open", &cv::VideoCapture::open,
+    .define_method<bool(cv::VideoCapture::*)(const cv::Ptr<cv::IStreamReader> &, int, const std::vector<int> &)>("open", &cv::VideoCapture::open,
       Arg("source"), Arg("api_preference"), Arg("params"))
     .define_method<bool(cv::VideoCapture::*)() const>("opened?", &cv::VideoCapture::isOpened)
     .define_method<void(cv::VideoCapture::*)()>("release", &cv::VideoCapture::release)
     .define_method<bool(cv::VideoCapture::*)()>("grab", &cv::VideoCapture::grab)
     .define_method<bool(cv::VideoCapture::*)(cv::OutputArray, int)>("retrieve", &cv::VideoCapture::retrieve,
       Arg("image"), Arg("flag") = static_cast<int>(0))
-    .define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::Mat&)>(">>", &cv::VideoCapture::operator>>,
+    .define_method<cv::VideoCapture &(cv::VideoCapture::*)(cv::Mat &)>(">>", &cv::VideoCapture::operator>>,
       Arg("image"))
-    .define_method<cv::VideoCapture&(cv::VideoCapture::*)(cv::UMat&)>(">>", &cv::VideoCapture::operator>>,
+    .define_method<cv::VideoCapture &(cv::VideoCapture::*)(cv::UMat &)>(">>", &cv::VideoCapture::operator>>,
       Arg("image"))
     .define_method<bool(cv::VideoCapture::*)(cv::OutputArray)>("read", &cv::VideoCapture::read,
       Arg("image"))
@@ -733,34 +733,34 @@ void Init_Videoio()
     .define_method<void(cv::VideoCapture::*)(bool)>("set_exception_mode", &cv::VideoCapture::setExceptionMode,
       Arg("enable"))
     .define_method<bool(cv::VideoCapture::*)() const>("get_exception_mode?", &cv::VideoCapture::getExceptionMode)
-    .define_singleton_function<bool(*)(const std::vector<cv::VideoCapture>&, std::vector<int>&, int64)>("wait_any", &cv::VideoCapture::waitAny,
+    .define_singleton_function<bool(*)(const std::vector<cv::VideoCapture> &, std::vector<int> &, int64)>("wait_any", &cv::VideoCapture::waitAny,
       Arg("streams"), Arg("ready_index"), Arg("timeout_ns") = static_cast<int64>(0));
 
   Rice::Data_Type<cv::IVideoWriter> rb_cCvIVideoWriter = define_class_under<cv::IVideoWriter>(rb_mCv, "IVideoWriter");
 
   Rice::Data_Type<cv::VideoWriter> rb_cCvVideoWriter = define_class_under<cv::VideoWriter>(rb_mCv, "VideoWriter")
     .define_constructor(Constructor<cv::VideoWriter>())
-    .define_constructor(Constructor<cv::VideoWriter, const cv::String&, int, double, cv::Size, bool>(),
+    .define_constructor(Constructor<cv::VideoWriter, const cv::String &, int, double, cv::Size, bool>(),
       Arg("filename"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("is_color") = static_cast<bool>(true))
-    .define_constructor(Constructor<cv::VideoWriter, const cv::String&, int, int, double, cv::Size, bool>(),
+    .define_constructor(Constructor<cv::VideoWriter, const cv::String &, int, int, double, cv::Size, bool>(),
       Arg("filename"), Arg("api_preference"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("is_color") = static_cast<bool>(true))
-    .define_constructor(Constructor<cv::VideoWriter, const cv::String&, int, double, const cv::Size&, const std::vector<int>&>(),
+    .define_constructor(Constructor<cv::VideoWriter, const cv::String &, int, double, const cv::Size &, const std::vector<int> &>(),
       Arg("filename"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params"))
-    .define_constructor(Constructor<cv::VideoWriter, const cv::String&, int, int, double, const cv::Size&, const std::vector<int>&>(),
+    .define_constructor(Constructor<cv::VideoWriter, const cv::String &, int, int, double, const cv::Size &, const std::vector<int> &>(),
       Arg("filename"), Arg("api_preference"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params"))
-    .define_method<bool(cv::VideoWriter::*)(const cv::String&, int, double, cv::Size, bool)>("open", &cv::VideoWriter::open,
+    .define_method<bool(cv::VideoWriter::*)(const cv::String &, int, double, cv::Size, bool)>("open", &cv::VideoWriter::open,
       Arg("filename"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("is_color") = static_cast<bool>(true))
-    .define_method<bool(cv::VideoWriter::*)(const cv::String&, int, int, double, cv::Size, bool)>("open", &cv::VideoWriter::open,
+    .define_method<bool(cv::VideoWriter::*)(const cv::String &, int, int, double, cv::Size, bool)>("open", &cv::VideoWriter::open,
       Arg("filename"), Arg("api_preference"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("is_color") = static_cast<bool>(true))
-    .define_method<bool(cv::VideoWriter::*)(const cv::String&, int, double, const cv::Size&, const std::vector<int>&)>("open", &cv::VideoWriter::open,
+    .define_method<bool(cv::VideoWriter::*)(const cv::String &, int, double, const cv::Size &, const std::vector<int> &)>("open", &cv::VideoWriter::open,
       Arg("filename"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params"))
-    .define_method<bool(cv::VideoWriter::*)(const cv::String&, int, int, double, const cv::Size&, const std::vector<int>&)>("open", &cv::VideoWriter::open,
+    .define_method<bool(cv::VideoWriter::*)(const cv::String &, int, int, double, const cv::Size &, const std::vector<int> &)>("open", &cv::VideoWriter::open,
       Arg("filename"), Arg("api_preference"), Arg("fourcc"), Arg("fps"), Arg("frame_size"), Arg("params"))
     .define_method<bool(cv::VideoWriter::*)() const>("opened?", &cv::VideoWriter::isOpened)
     .define_method<void(cv::VideoWriter::*)()>("release", &cv::VideoWriter::release)
-    .define_method<cv::VideoWriter&(cv::VideoWriter::*)(const cv::Mat&)>("<<", &cv::VideoWriter::operator<<,
+    .define_method<cv::VideoWriter &(cv::VideoWriter::*)(const cv::Mat &)>("<<", &cv::VideoWriter::operator<<,
       Arg("image"))
-    .define_method<cv::VideoWriter&(cv::VideoWriter::*)(const cv::UMat&)>("<<", &cv::VideoWriter::operator<<,
+    .define_method<cv::VideoWriter &(cv::VideoWriter::*)(const cv::UMat &)>("<<", &cv::VideoWriter::operator<<,
       Arg("image"))
     .define_method<void(cv::VideoWriter::*)(cv::InputArray)>("write", &cv::VideoWriter::write,
       Arg("image"))
@@ -774,6 +774,6 @@ void Init_Videoio()
 
   Rice::Data_Type<cv::DefaultDeleter<CvCapture>> rb_cCvDefaultDeleterCvCapture = define_class_under<cv::DefaultDeleter<CvCapture>>(rb_mCv, "DefaultDeleterCvCapture")
     .define_constructor(Constructor<cv::DefaultDeleter<CvCapture>>())
-    .define_method<void(cv::DefaultDeleter<CvCapture>::*)(CvCapture*) const>("call", &cv::DefaultDeleter<CvCapture>::operator(),
+    .define_method<void(cv::DefaultDeleter<CvCapture>::*)(CvCapture *) const>("call", &cv::DefaultDeleter<CvCapture>::operator(),
       Arg("obj"));
 }

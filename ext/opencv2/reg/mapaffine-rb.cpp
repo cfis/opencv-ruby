@@ -22,10 +22,10 @@ void Init_Reg_Mapaffine()
       Arg("map"))
     .define_method<void(cv::reg::MapAffine::*)(double)>("scale", &cv::reg::MapAffine::scale,
       Arg("factor"))
-    .define_method<const cv::Matx<double, 2, 2>&(cv::reg::MapAffine::*)() const>("get_lin_tr", &cv::reg::MapAffine::getLinTr)
+    .define_method<const cv::Matx<double, 2, 2> &(cv::reg::MapAffine::*)() const>("get_lin_tr", &cv::reg::MapAffine::getLinTr)
     .define_method<void(cv::reg::MapAffine::*)(cv::OutputArray) const>("get_lin_tr", &cv::reg::MapAffine::getLinTr,
       Arg("lin_tr"))
-    .define_method<const cv::Vec<double, 2>&(cv::reg::MapAffine::*)() const>("get_shift", &cv::reg::MapAffine::getShift)
+    .define_method<const cv::Vec<double, 2> &(cv::reg::MapAffine::*)() const>("get_shift", &cv::reg::MapAffine::getShift)
     .define_method<void(cv::reg::MapAffine::*)(cv::OutputArray) const>("get_shift", &cv::reg::MapAffine::getShift,
       Arg("shift"));
 }

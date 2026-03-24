@@ -25,7 +25,7 @@ void Init_Datasets_SlamKitti()
     .define_attr("poses_array", &cv::datasets::SLAM_kittiObj::posesArray);
 
   Rice::Data_Type<cv::datasets::SLAM_kitti> rb_cCvDatasetsSLAMKitti = define_class_under<cv::datasets::SLAM_kitti, cv::datasets::Dataset>(rb_mCvDatasets, "SLAMKitti")
-    .define_method<void(cv::datasets::SLAM_kitti::*)(const std::string&)>("load", &cv::datasets::SLAM_kitti::load,
+    .define_method<void(cv::datasets::SLAM_kitti::*)(const std::string &)>("load", &cv::datasets::SLAM_kitti::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::SLAM_kitti>(*)()>("create", &cv::datasets::SLAM_kitti::create);
 }

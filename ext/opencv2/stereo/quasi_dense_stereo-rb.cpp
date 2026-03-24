@@ -16,7 +16,7 @@ void Init_Stereo_QuasiDenseStereo()
     .define_attr("p1", &cv::stereo::MatchQuasiDense::p1)
     .define_attr("corr", &cv::stereo::MatchQuasiDense::corr)
     .define_constructor(Constructor<cv::stereo::MatchQuasiDense>())
-    .define_method<bool(cv::stereo::MatchQuasiDense::*)(const cv::stereo::MatchQuasiDense&) const>("<", &cv::stereo::MatchQuasiDense::operator<,
+    .define_method<bool(cv::stereo::MatchQuasiDense::*)(const cv::stereo::MatchQuasiDense &) const>("<", &cv::stereo::MatchQuasiDense::operator<,
       Arg("rhs"));
 
   Rice::Data_Type<cv::stereo::PropagationParameters> rb_cCvStereoPropagationParameters = define_class_under<cv::stereo::PropagationParameters>(rb_mCvStereo, "PropagationParameters")
@@ -42,11 +42,11 @@ void Init_Stereo_QuasiDenseStereo()
       Arg("filepath"))
     .define_method<int(cv::stereo::QuasiDenseStereo::*)(cv::String)>("save_parameters", &cv::stereo::QuasiDenseStereo::saveParameters,
       Arg("filepath"))
-    .define_method<void(cv::stereo::QuasiDenseStereo::*)(std::vector<cv::stereo::MatchQuasiDense>&)>("get_sparse_matches", &cv::stereo::QuasiDenseStereo::getSparseMatches,
+    .define_method<void(cv::stereo::QuasiDenseStereo::*)(std::vector<cv::stereo::MatchQuasiDense> &)>("get_sparse_matches", &cv::stereo::QuasiDenseStereo::getSparseMatches,
       Arg("s_matches"))
-    .define_method<void(cv::stereo::QuasiDenseStereo::*)(std::vector<cv::stereo::MatchQuasiDense>&)>("get_dense_matches", &cv::stereo::QuasiDenseStereo::getDenseMatches,
+    .define_method<void(cv::stereo::QuasiDenseStereo::*)(std::vector<cv::stereo::MatchQuasiDense> &)>("get_dense_matches", &cv::stereo::QuasiDenseStereo::getDenseMatches,
       Arg("dense_matches"))
-    .define_method<void(cv::stereo::QuasiDenseStereo::*)(const cv::Mat&, const cv::Mat&)>("process", &cv::stereo::QuasiDenseStereo::process,
+    .define_method<void(cv::stereo::QuasiDenseStereo::*)(const cv::Mat &, const cv::Mat &)>("process", &cv::stereo::QuasiDenseStereo::process,
       Arg("img_left"), Arg("img_right"))
     .define_method<cv::Point2f(cv::stereo::QuasiDenseStereo::*)(const int, const int)>("get_match", &cv::stereo::QuasiDenseStereo::getMatch,
       Arg("x"), Arg("y"))

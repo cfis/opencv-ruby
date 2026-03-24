@@ -27,7 +27,7 @@ void Init_Datasets_TrIcdar()
     .define_attr("words", &cv::datasets::TR_icdarObj::words);
 
   Rice::Data_Type<cv::datasets::TR_icdar> rb_cCvDatasetsTRIcdar = define_class_under<cv::datasets::TR_icdar, cv::datasets::Dataset>(rb_mCvDatasets, "TRIcdar")
-    .define_method<void(cv::datasets::TR_icdar::*)(const std::string&)>("load", &cv::datasets::TR_icdar::load,
+    .define_method<void(cv::datasets::TR_icdar::*)(const std::string &)>("load", &cv::datasets::TR_icdar::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::TR_icdar>(*)()>("create", &cv::datasets::TR_icdar::create);
 }

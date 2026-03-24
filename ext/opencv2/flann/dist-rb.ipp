@@ -13,10 +13,10 @@ inline Rice::Data_Type<cvflann::ZeroIterator<T>> ZeroIterator_instantiate(Rice::
     .template define_method<T(cvflann::ZeroIterator<T>::*)()>("dereference", &cvflann::ZeroIterator<T>::operator*)
     .template define_method<T(cvflann::ZeroIterator<T>::*)(int)>("[]", &cvflann::ZeroIterator<T>::operator[],
       Arg("arg_0"))
-    .template define_method<const cvflann::ZeroIterator<T>&(cvflann::ZeroIterator<T>::*)()>("increment", &cvflann::ZeroIterator<T>::operator++)
+    .template define_method<const cvflann::ZeroIterator<T> &(cvflann::ZeroIterator<T>::*)()>("increment", &cvflann::ZeroIterator<T>::operator++)
     .template define_method<cvflann::ZeroIterator<T>(cvflann::ZeroIterator<T>::*)(int)>("increment_post", &cvflann::ZeroIterator<T>::operator++,
       Arg("arg_0"))
-    .template define_method<cvflann::ZeroIterator<T>&(cvflann::ZeroIterator<T>::*)(int)>("assign_plus", &cvflann::ZeroIterator<T>::operator+=,
+    .template define_method<cvflann::ZeroIterator<T> &(cvflann::ZeroIterator<T>::*)(int)>("assign_plus", &cvflann::ZeroIterator<T>::operator+=,
       Arg("arg_0"));
 }
 

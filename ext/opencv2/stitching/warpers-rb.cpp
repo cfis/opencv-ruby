@@ -13,9 +13,9 @@ void Init_Stitching_Warpers()
     .define_constructor(Constructor<cv::PyRotationWarper, cv::String, float>(),
       Arg("type"), Arg("scale"))
     .define_constructor(Constructor<cv::PyRotationWarper>())
-    .define_method<cv::Point2f(cv::PyRotationWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point", &cv::PyRotationWarper::warpPoint,
+    .define_method<cv::Point2f(cv::PyRotationWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point", &cv::PyRotationWarper::warpPoint,
       Arg("pt"), Arg("k"), Arg("r"))
-    .define_method<cv::Point2f(cv::PyRotationWarper::*)(const cv::Point2f&, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::PyRotationWarper::warpPointBackward,
+    .define_method<cv::Point2f(cv::PyRotationWarper::*)(const cv::Point2f &, cv::InputArray, cv::InputArray)>("warp_point_backward", &cv::PyRotationWarper::warpPointBackward,
       Arg("pt"), Arg("k"), Arg("r"))
     .define_method<cv::Rect(cv::PyRotationWarper::*)(cv::Size, cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("build_maps", &cv::PyRotationWarper::buildMaps,
       Arg("src_size"), Arg("k"), Arg("r"), Arg("xmap"), Arg("ymap"))

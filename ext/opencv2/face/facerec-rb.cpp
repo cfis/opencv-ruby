@@ -23,9 +23,9 @@ void Init_Face_Facerec()
     .define_method<cv::Mat(cv::face::BasicFaceRecognizer::*)() const>("get_eigen_values", &cv::face::BasicFaceRecognizer::getEigenValues)
     .define_method<cv::Mat(cv::face::BasicFaceRecognizer::*)() const>("get_eigen_vectors", &cv::face::BasicFaceRecognizer::getEigenVectors)
     .define_method<cv::Mat(cv::face::BasicFaceRecognizer::*)() const>("get_mean", &cv::face::BasicFaceRecognizer::getMean)
-    .define_method<void(cv::face::BasicFaceRecognizer::*)(const cv::FileNode&)>("read", &cv::face::BasicFaceRecognizer::read,
+    .define_method<void(cv::face::BasicFaceRecognizer::*)(const cv::FileNode &)>("read", &cv::face::BasicFaceRecognizer::read,
       Arg("fn"))
-    .define_method<void(cv::face::BasicFaceRecognizer::*)(cv::FileStorage&) const>("write", &cv::face::BasicFaceRecognizer::write,
+    .define_method<void(cv::face::BasicFaceRecognizer::*)(cv::FileStorage &) const>("write", &cv::face::BasicFaceRecognizer::write,
       Arg("fs"))
     .define_method<bool(cv::face::BasicFaceRecognizer::*)() const>("empty?", &cv::face::BasicFaceRecognizer::empty);
 

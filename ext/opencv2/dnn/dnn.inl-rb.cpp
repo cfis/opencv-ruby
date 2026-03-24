@@ -12,7 +12,7 @@ void Init_Dnn_DnnInl()
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
   Data_Type<cv::dnn::DictValue>()
-    .define_method("inspect", [](const cv::dnn::DictValue& self) -> std::string
+    .define_method("inspect", [](const cv::dnn::DictValue & self) -> std::string
     {
       std::ostringstream stream;
       stream << self;
@@ -20,7 +20,7 @@ void Init_Dnn_DnnInl()
     });
   
   Data_Type<cv::dnn::Dict>()
-    .define_method("inspect", [](const cv::dnn::Dict& self) -> std::string
+    .define_method("inspect", [](const cv::dnn::Dict & self) -> std::string
     {
       std::ostringstream stream;
       stream << self;

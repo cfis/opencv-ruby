@@ -5,6 +5,7 @@
 
 using namespace Rice;
 
+#include "base-rb.ipp"
 #include "matx-rb.ipp"
 #include "types-rb.ipp"
 
@@ -20,7 +21,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l"); // Manual fix: use int64 instead of long
+  Rice::Data_Type<cv::Point_<long>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -36,7 +37,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l"); // Manual fix: use int64 instead of long
+  Rice::Data_Type<cv::Size_<long>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
@@ -54,9 +55,9 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::RotatedRect> rb_cCvRotatedRect = define_class_under<cv::RotatedRect>(rb_mCv, "RotatedRect")
     .define_constructor(Constructor<cv::RotatedRect>())
-    .define_constructor(Constructor<cv::RotatedRect, const cv::Point2f&, const cv::Size2f&, float>(),
+    .define_constructor(Constructor<cv::RotatedRect, const cv::Point2f &, const cv::Size2f &, float>(),
       Arg("center"), Arg("size"), Arg("angle"))
-    .define_constructor(Constructor<cv::RotatedRect, const cv::Point2f&, const cv::Point2f&, const cv::Point2f&>(),
+    .define_constructor(Constructor<cv::RotatedRect, const cv::Point2f &, const cv::Point2f &, const cv::Point2f &>(),
       Arg("point1"), Arg("point2"), Arg("point3"))
     .define_method<void(cv::RotatedRect::*)(cv::Point2f[]) const>("points", &cv::RotatedRect::points,
       Arg("pts"))
@@ -66,7 +67,7 @@ void Init_Core_Types()
     .define_attr("size", &cv::RotatedRect::size)
     .define_attr("angle", &cv::RotatedRect::angle)
     #if RUBY_CV_VERSION >= 408
-    .define_method<void(cv::RotatedRect::*)(std::vector<cv::Point_<float>>&) const>("points", &cv::RotatedRect::points,
+    .define_method<void(cv::RotatedRect::*)(std::vector<cv::Point2f> &) const>("points", &cv::RotatedRect::points,
       Arg("pts"))
     #endif
     ;
@@ -118,11 +119,11 @@ void Init_Core_Types()
     .define_constructor(Constructor<cv::KeyPoint, float, float, float, float, float, int, int>(),
       Arg("x"), Arg("y"), Arg("size"), Arg("angle") = static_cast<float>(-1), Arg("response") = static_cast<float>(0), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1))
     .define_method<size_t(cv::KeyPoint::*)() const>("hash", &cv::KeyPoint::hash)
-    .define_singleton_function<void(*)(const std::vector<cv::KeyPoint>&, std::vector<cv::Point_<float>>&, const std::vector<int>&)>("convert", &cv::KeyPoint::convert,
-      Arg("keypoints"), Arg("points2f"), Arg("keypoint_indexes") = static_cast<const std::vector<int>&>(std::vector<int>()))
-    .define_singleton_function<void(*)(const std::vector<cv::Point_<float>>&, std::vector<cv::KeyPoint>&, float, float, int, int)>("convert", &cv::KeyPoint::convert,
+    .define_singleton_function<void(*)(const std::vector<cv::KeyPoint> &, std::vector<cv::Point2f> &, const std::vector<int> &)>("convert", &cv::KeyPoint::convert,
+      Arg("keypoints"), Arg("points2f"), Arg("keypoint_indexes") = static_cast<const std::vector<int> &>(std::vector<int>()))
+    .define_singleton_function<void(*)(const std::vector<cv::Point2f> &, std::vector<cv::KeyPoint> &, float, float, int, int)>("convert", &cv::KeyPoint::convert,
       Arg("points2f"), Arg("keypoints"), Arg("size") = static_cast<float>(1), Arg("response") = static_cast<float>(1), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1))
-    .define_singleton_function<float(*)(const cv::KeyPoint&, const cv::KeyPoint&)>("overlap", &cv::KeyPoint::overlap,
+    .define_singleton_function<float(*)(const cv::KeyPoint &, const cv::KeyPoint &)>("overlap", &cv::KeyPoint::overlap,
       Arg("kp1"), Arg("kp2"))
     .define_attr("pt", &cv::KeyPoint::pt)
     .define_attr("size", &cv::KeyPoint::size)
@@ -141,7 +142,7 @@ void Init_Core_Types()
     .define_attr("train_idx", &cv::DMatch::trainIdx)
     .define_attr("img_idx", &cv::DMatch::imgIdx)
     .define_attr("distance", &cv::DMatch::distance)
-    .define_method<bool(cv::DMatch::*)(const cv::DMatch&) const>("<", &cv::DMatch::operator<,
+    .define_method<bool(cv::DMatch::*)(const cv::DMatch &) const>("<", &cv::DMatch::operator<,
       Arg("m"));
 
   Rice::Data_Type<cv::TermCriteria> rb_cCvTermCriteria = define_class_under<cv::TermCriteria>(rb_mCv, "TermCriteria")
@@ -201,64 +202,64 @@ void Init_Core_Types()
     .define_constructor(Constructor<cv::traits::Type<cv::Moments>>())
     .define_constant("Value", (int)cv::traits::Type<cv::Moments>::value);
 
-  rb_mCv.define_module_function<int(*)(const cv::Point_<int>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<int(*)(const cv::Point_<int> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-  rb_mCv.define_module_function<int64(*)(const cv::Point_<int64>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<int64(*)(const cv::Point_<int64> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-  rb_mCv.define_module_function<float(*)(const cv::Point_<float>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<float(*)(const cv::Point_<float> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<int>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<int> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<float>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<float> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<double>&)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<double> &)>("norm_l2_sqr", &cv::normL2Sqr,
     Arg("pt"));
 
   #if RUBY_CV_VERSION >= 407
 
-  rb_mCv.define_module_function<double(*)(const cv::Rect2d&, const cv::Rect2d&)>("rectangle_intersection_area", &cv::rectangleIntersectionArea,
+  rb_mCv.define_module_function<double(*)(const cv::Rect2d &, const cv::Rect2d &)>("rectangle_intersection_area", &cv::rectangleIntersectionArea,
     Arg("a"), Arg("b"));
 
   #endif
 
   rb_cCvRange
-    .define_method("==", [](const cv::Range& self, const cv::Range& other) -> bool
+    .define_method("==", [](const cv::Range & self, const cv::Range & other) -> bool
     {
       return self == other;
     })
-    .define_method("!=", [](const cv::Range& self, const cv::Range& other) -> bool
+    .define_method("!=", [](const cv::Range & self, const cv::Range & other) -> bool
     {
       return self != other;
     })
-    .define_method("!", [](const cv::Range& self) -> bool
+    .define_method("!", [](const cv::Range & self) -> bool
     {
       return !self;
     })
-    .define_method("&", [](const cv::Range& self, const cv::Range& other) -> cv::Range
+    .define_method("&", [](const cv::Range & self, const cv::Range & other) -> cv::Range
     {
       return self & other;
     })
-    .define_method("assign_and", [](cv::Range& self, const cv::Range& other) -> cv::Range&
+    .define_method("assign_and", [](cv::Range & self, const cv::Range & other) -> cv::Range &
     {
       self &= other;
       return self;
     })
-    .define_method("+", [](const cv::Range& self, int other) -> cv::Range
+    .define_method("+", [](const cv::Range & self, int other) -> cv::Range
     {
       return self + other;
     })
-    .define_method("-", [](const cv::Range& self, int other) -> cv::Range
+    .define_method("-", [](const cv::Range & self, int other) -> cv::Range
     {
       return self - other;
     });
   
   Data_Type<cv::Matx<double, 4, 4>>()
-    .define_method("*", [](const cv::Matx<double, 4, 4>& self, const cv::Scalar& other) -> cv::Scalar
+    .define_method("*", [](const cv::Matx<double, 4, 4> & self, const cv::Scalar & other) -> cv::Scalar
     {
       return self * other;
     });

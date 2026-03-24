@@ -48,7 +48,7 @@ void Init_Datasets_GrSkig()
     .define_attr("type", &cv::datasets::GR_skigObj::type);
 
   Rice::Data_Type<cv::datasets::GR_skig> rb_cCvDatasetsGRSkig = define_class_under<cv::datasets::GR_skig, cv::datasets::Dataset>(rb_mCvDatasets, "GRSkig")
-    .define_method<void(cv::datasets::GR_skig::*)(const std::string&)>("load", &cv::datasets::GR_skig::load,
+    .define_method<void(cv::datasets::GR_skig::*)(const std::string &)>("load", &cv::datasets::GR_skig::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::GR_skig>(*)()>("create", &cv::datasets::GR_skig::create);
 }

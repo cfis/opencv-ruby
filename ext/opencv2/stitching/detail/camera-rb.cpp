@@ -13,9 +13,9 @@ void Init_Stitching_Detail_Camera()
 
   Rice::Data_Type<cv::detail::CameraParams> rb_cCvDetailCameraParams = define_class_under<cv::detail::CameraParams>(rb_mCvDetail, "CameraParams")
     .define_constructor(Constructor<cv::detail::CameraParams>())
-    .define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams&>(),
+    .define_constructor(Constructor<cv::detail::CameraParams, const cv::detail::CameraParams &>(),
       Arg("other"))
-    .define_method<cv::detail::CameraParams&(cv::detail::CameraParams::*)(const cv::detail::CameraParams&)>("assign", &cv::detail::CameraParams::operator=,
+    .define_method<cv::detail::CameraParams &(cv::detail::CameraParams::*)(const cv::detail::CameraParams &)>("assign", &cv::detail::CameraParams::operator=,
       Arg("other"))
     .define_method<cv::Mat(cv::detail::CameraParams::*)() const>("k", &cv::detail::CameraParams::K)
     .define_attr("focal", &cv::detail::CameraParams::focal)

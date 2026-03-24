@@ -7,9 +7,9 @@ inline Rice::Data_Type<cvflann::BranchStruct<T, DistanceType>> BranchStruct_inst
     .define_attr("node", &cvflann::BranchStruct<T, DistanceType>::node)
     .define_attr("mindist", &cvflann::BranchStruct<T, DistanceType>::mindist)
     .define_constructor(Constructor<cvflann::BranchStruct<T, DistanceType>>())
-    .define_constructor(Constructor<cvflann::BranchStruct<T, DistanceType>, const T&, DistanceType>(),
+    .define_constructor(Constructor<cvflann::BranchStruct<T, DistanceType>, const T &, DistanceType>(),
       Arg("a_node"), Arg("dist"))
-    .template define_method<bool(cvflann::BranchStruct<T, DistanceType>::*)(const cvflann::BranchStruct<T, DistanceType>&) const>("<", &cvflann::BranchStruct<T, DistanceType>::operator<,
+    .template define_method<bool(cvflann::BranchStruct<T, DistanceType>::*)(const cvflann::BranchStruct<T, DistanceType> &) const>("<", &cvflann::BranchStruct<T, DistanceType>::operator<,
       Arg("rhs"));
 }
 
@@ -29,7 +29,7 @@ inline Rice::Data_Type<cvflann::KNNSimpleResultSet<DistanceType>> KNNSimpleResul
   return Rice::define_class_under<cvflann::KNNSimpleResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNSimpleResultSet<DistanceType>, int>(),
       Arg("capacity_"))
-    .template define_method<void(cvflann::KNNSimpleResultSet<DistanceType>::*)(int*, DistanceType*)>("init", &cvflann::KNNSimpleResultSet<DistanceType>::init,
+    .template define_method<void(cvflann::KNNSimpleResultSet<DistanceType>::*)(int *, DistanceType *)>("init", &cvflann::KNNSimpleResultSet<DistanceType>::init,
       ArgBuffer("indices_"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dists_"))
     .template define_method<size_t(cvflann::KNNSimpleResultSet<DistanceType>::*)() const>("size", &cvflann::KNNSimpleResultSet<DistanceType>::size)
     .template define_method<bool(cvflann::KNNSimpleResultSet<DistanceType>::*)() const>("full?", &cvflann::KNNSimpleResultSet<DistanceType>::full)
@@ -44,7 +44,7 @@ inline Rice::Data_Type<cvflann::KNNResultSet<DistanceType>> KNNResultSet_instant
   return Rice::define_class_under<cvflann::KNNResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
     .define_constructor(Constructor<cvflann::KNNResultSet<DistanceType>, int>(),
       Arg("capacity_"))
-    .template define_method<void(cvflann::KNNResultSet<DistanceType>::*)(int*, DistanceType*)>("init", &cvflann::KNNResultSet<DistanceType>::init,
+    .template define_method<void(cvflann::KNNResultSet<DistanceType>::*)(int *, DistanceType *)>("init", &cvflann::KNNResultSet<DistanceType>::init,
       ArgBuffer("indices_"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dists_"))
     .template define_method<size_t(cvflann::KNNResultSet<DistanceType>::*)() const>("size", &cvflann::KNNResultSet<DistanceType>::size)
     .template define_method<bool(cvflann::KNNResultSet<DistanceType>::*)() const>("full?", &cvflann::KNNResultSet<DistanceType>::full)
@@ -57,7 +57,7 @@ template<typename DistanceType>
 inline Rice::Data_Type<cvflann::RadiusResultSet<DistanceType>> RadiusResultSet_instantiate(Rice::Module parent, const char* name)
 {
   return Rice::define_class_under<cvflann::RadiusResultSet<DistanceType>, cvflann::ResultSet<DistanceType>>(parent, name)
-    .define_constructor(Constructor<cvflann::RadiusResultSet<DistanceType>, DistanceType, int*, DistanceType*, int>(),
+    .define_constructor(Constructor<cvflann::RadiusResultSet<DistanceType>, DistanceType, int *, DistanceType *, int>(),
       Arg("radius_"), ArgBuffer("indices_"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dists_"), Arg("capacity_"))
     .template define_method<void(cvflann::RadiusResultSet<DistanceType>::*)()>("init", &cvflann::RadiusResultSet<DistanceType>::init)
     .template define_method<size_t(cvflann::RadiusResultSet<DistanceType>::*)() const>("size", &cvflann::RadiusResultSet<DistanceType>::size)
@@ -74,9 +74,9 @@ inline Rice::Data_Type<cvflann::UniqueResultSet<DistanceType>> UniqueResultSet_i
     .define_constructor(Constructor<cvflann::UniqueResultSet<DistanceType>>())
     .template define_method<bool(cvflann::UniqueResultSet<DistanceType>::*)() const>("full?", &cvflann::UniqueResultSet<DistanceType>::full)
     .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)()>("clear", &cvflann::UniqueResultSet<DistanceType>::clear)
-    .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)(int*, DistanceType*, int) const>("copy", &cvflann::UniqueResultSet<DistanceType>::copy,
+    .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)(int *, DistanceType *, int) const>("copy", &cvflann::UniqueResultSet<DistanceType>::copy,
       ArgBuffer("indices"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dist"), Arg("n_neighbors") = static_cast<int>(-1))
-    .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)(int*, DistanceType*, int) const>("sort_and_copy", &cvflann::UniqueResultSet<DistanceType>::sortAndCopy,
+    .template define_method<void(cvflann::UniqueResultSet<DistanceType>::*)(int *, DistanceType *, int) const>("sort_and_copy", &cvflann::UniqueResultSet<DistanceType>::sortAndCopy,
       ArgBuffer("indices"), std::conditional_t<std::is_fundamental_v<DistanceType>, ArgBuffer, Arg>("dist"), Arg("n_neighbors") = static_cast<int>(-1))
     .template define_method<size_t(cvflann::UniqueResultSet<DistanceType>::*)() const>("size", &cvflann::UniqueResultSet<DistanceType>::size)
     .template define_method<DistanceType(cvflann::UniqueResultSet<DistanceType>::*)() const>("worst_dist", &cvflann::UniqueResultSet<DistanceType>::worstDist);

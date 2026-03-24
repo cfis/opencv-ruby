@@ -23,7 +23,7 @@ void Init_Datasets_SlamTumindoor()
     .define_attr("type", &cv::datasets::SLAM_tumindoorObj::type);
 
   Rice::Data_Type<cv::datasets::SLAM_tumindoor> rb_cCvDatasetsSLAMTumindoor = define_class_under<cv::datasets::SLAM_tumindoor, cv::datasets::Dataset>(rb_mCvDatasets, "SLAMTumindoor")
-    .define_method<void(cv::datasets::SLAM_tumindoor::*)(const std::string&)>("load", &cv::datasets::SLAM_tumindoor::load,
+    .define_method<void(cv::datasets::SLAM_tumindoor::*)(const std::string &)>("load", &cv::datasets::SLAM_tumindoor::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::SLAM_tumindoor>(*)()>("create", &cv::datasets::SLAM_tumindoor::create);
 }

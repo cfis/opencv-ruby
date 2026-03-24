@@ -22,7 +22,7 @@ void Init_ImgHash_RadialVarianceHash()
       Arg("value"))
     .define_method<std::vector<double>(cv::img_hash::RadialVarianceHash::*)()>("get_features", &cv::img_hash::RadialVarianceHash::getFeatures)
     .define_method<cv::Mat(cv::img_hash::RadialVarianceHash::*)()>("get_hash", &cv::img_hash::RadialVarianceHash::getHash)
-    .define_method<cv::Mat(cv::img_hash::RadialVarianceHash::*)(const cv::Mat&)>("get_pix_per_line", &cv::img_hash::RadialVarianceHash::getPixPerLine,
+    .define_method<cv::Mat(cv::img_hash::RadialVarianceHash::*)(const cv::Mat &)>("get_pix_per_line", &cv::img_hash::RadialVarianceHash::getPixPerLine,
       Arg("input"))
     .define_method<cv::Mat(cv::img_hash::RadialVarianceHash::*)()>("get_projection", &cv::img_hash::RadialVarianceHash::getProjection);
 

@@ -27,7 +27,7 @@ void Init_Dnn_Utils_InferenceEngine()
 
   rb_mCvDnn.define_module_function<cv::String(*)()>("get_inference_engine_backend_type", &cv::dnn::getInferenceEngineBackendType);
 
-  rb_mCvDnn.define_module_function<cv::String(*)(const cv::String&)>("set_inference_engine_backend_type", &cv::dnn::setInferenceEngineBackendType,
+  rb_mCvDnn.define_module_function<cv::String(*)(const cv::String &)>("set_inference_engine_backend_type", &cv::dnn::setInferenceEngineBackendType,
     Arg("new_backend_type"));
 
   rb_mCvDnn.define_module_function<void(*)()>("reset_myriad_device", &cv::dnn::resetMyriadDevice);

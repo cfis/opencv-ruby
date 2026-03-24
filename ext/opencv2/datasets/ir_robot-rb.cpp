@@ -21,7 +21,7 @@ void Init_Datasets_IrRobot()
     .define_attr("pos", &cv::datasets::IR_robotObj::pos);
 
   Rice::Data_Type<cv::datasets::IR_robot> rb_cCvDatasetsIRRobot = define_class_under<cv::datasets::IR_robot, cv::datasets::Dataset>(rb_mCvDatasets, "IRRobot")
-    .define_method<void(cv::datasets::IR_robot::*)(const std::string&)>("load", &cv::datasets::IR_robot::load,
+    .define_method<void(cv::datasets::IR_robot::*)(const std::string &)>("load", &cv::datasets::IR_robot::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::IR_robot>(*)()>("create", &cv::datasets::IR_robot::create);
 }

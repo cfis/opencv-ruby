@@ -17,7 +17,7 @@ void Init_Datasets_TrChars()
     .define_attr("label", &cv::datasets::TR_charsObj::label);
 
   Rice::Data_Type<cv::datasets::TR_chars> rb_cCvDatasetsTRChars = define_class_under<cv::datasets::TR_chars, cv::datasets::Dataset>(rb_mCvDatasets, "TRChars")
-    .define_method<void(cv::datasets::TR_chars::*)(const std::string&)>("load", &cv::datasets::TR_chars::load,
+    .define_method<void(cv::datasets::TR_chars::*)(const std::string &)>("load", &cv::datasets::TR_chars::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::TR_chars>(*)()>("create", &cv::datasets::TR_chars::create);
 }

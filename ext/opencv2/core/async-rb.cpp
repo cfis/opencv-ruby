@@ -14,9 +14,9 @@ void Init_Core_Async()
   Rice::Data_Type<cv::AsyncArray::Impl> rb_cCvAsyncArrayImpl = define_class_under<cv::AsyncArray::Impl>(rb_cCvAsyncArray, "Impl");
   rb_cCvAsyncArray
     .define_constructor(Constructor<cv::AsyncArray>())
-    .define_constructor(Constructor<cv::AsyncArray, const cv::AsyncArray&>(),
+    .define_constructor(Constructor<cv::AsyncArray, const cv::AsyncArray &>(),
       Arg("o"))
-    .define_method<cv::AsyncArray&(cv::AsyncArray::*)(const cv::AsyncArray&) noexcept>("assign", &cv::AsyncArray::operator=,
+    .define_method<cv::AsyncArray &(cv::AsyncArray::*)(const cv::AsyncArray &) noexcept>("assign", &cv::AsyncArray::operator=,
       Arg("o"))
     .define_method<void(cv::AsyncArray::*)() noexcept>("release", &cv::AsyncArray::release)
     .define_method<void(cv::AsyncArray::*)(cv::OutputArray) const>("get", &cv::AsyncArray::get,
@@ -30,8 +30,8 @@ void Init_Core_Async()
     .define_method<bool(cv::AsyncArray::*)(double) const>("wait_for", &cv::AsyncArray::wait_for,
       Arg("timeout_ns"))
     .define_method<bool(cv::AsyncArray::*)() const noexcept>("valid?", &cv::AsyncArray::valid)
-    .define_method<cv::AsyncArray&(cv::AsyncArray::*)(cv::AsyncArray&&) noexcept>("assign", &cv::AsyncArray::operator=,
+    .define_method<cv::AsyncArray &(cv::AsyncArray::*)(cv::AsyncArray &&) noexcept>("assign", &cv::AsyncArray::operator=,
       Arg("o"))
-    .define_method<void*(cv::AsyncArray::*)() const noexcept>("_get_impl", &cv::AsyncArray::_getImpl,
+    .define_method<void *(cv::AsyncArray::*)() const noexcept>("_get_impl", &cv::AsyncArray::_getImpl,
       ReturnBuffer());
 }

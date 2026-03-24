@@ -17,7 +17,7 @@ void Init_Datasets_OrImagenet()
     .define_attr("image", &cv::datasets::OR_imagenetObj::image);
 
   Rice::Data_Type<cv::datasets::OR_imagenet> rb_cCvDatasetsORImagenet = define_class_under<cv::datasets::OR_imagenet, cv::datasets::Dataset>(rb_mCvDatasets, "ORImagenet")
-    .define_method<void(cv::datasets::OR_imagenet::*)(const std::string&)>("load", &cv::datasets::OR_imagenet::load,
+    .define_method<void(cv::datasets::OR_imagenet::*)(const std::string &)>("load", &cv::datasets::OR_imagenet::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::OR_imagenet>(*)()>("create", &cv::datasets::OR_imagenet::create);
 }

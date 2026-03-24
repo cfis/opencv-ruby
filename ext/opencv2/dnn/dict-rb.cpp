@@ -12,7 +12,7 @@ void Init_Dnn_Dict()
   Module rb_mCvDnn = define_module_under(rb_mCv, "Dnn");
 
   Rice::Data_Type<cv::dnn::DictValue> rb_cCvDnnDictValue = define_class_under<cv::dnn::DictValue>(rb_mCvDnn, "DictValue")
-    .define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue&>(),
+    .define_constructor(Constructor<cv::dnn::DictValue, const cv::dnn::DictValue &>(),
       Arg("r"))
     .define_constructor(Constructor<cv::dnn::DictValue, bool>(),
       Arg("i"))
@@ -24,9 +24,9 @@ void Init_Dnn_Dict()
       Arg("p"))
     .define_constructor(Constructor<cv::dnn::DictValue, double>(),
       Arg("p"))
-    .define_constructor(Constructor<cv::dnn::DictValue, const cv::String&>(),
+    .define_constructor(Constructor<cv::dnn::DictValue, const cv::String &>(),
       Arg("s"))
-    .define_constructor(Constructor<cv::dnn::DictValue, const char*>(),
+    .define_constructor(Constructor<cv::dnn::DictValue, const char *>(),
       Arg("s"))
     .define_method<int(cv::dnn::DictValue::*)() const>("size", &cv::dnn::DictValue::size)
     .define_method<bool(cv::dnn::DictValue::*)() const>("int?", &cv::dnn::DictValue::isInt)
@@ -38,22 +38,22 @@ void Init_Dnn_Dict()
       Arg("idx") = static_cast<int>(-1))
     .define_method<cv::String(cv::dnn::DictValue::*)(int) const>("get_string_value", &cv::dnn::DictValue::getStringValue,
       Arg("idx") = static_cast<int>(-1))
-    .define_method<cv::dnn::DictValue&(cv::dnn::DictValue::*)(const cv::dnn::DictValue&)>("assign", &cv::dnn::DictValue::operator=,
+    .define_method<cv::dnn::DictValue &(cv::dnn::DictValue::*)(const cv::dnn::DictValue &)>("assign", &cv::dnn::DictValue::operator=,
       Arg("r"));
 
   Rice::Data_Type<cv::dnn::Dict> rb_cCvDnnDict = define_class_under<cv::dnn::Dict>(rb_mCvDnn, "Dict")
     .define_constructor(Constructor<cv::dnn::Dict>())
-    .define_method<bool(cv::dnn::Dict::*)(const cv::String&) const>("has", &cv::dnn::Dict::has,
+    .define_method<bool(cv::dnn::Dict::*)(const cv::String &) const>("has", &cv::dnn::Dict::has,
       Arg("key"))
-    .define_method<cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&)>("ptr", &cv::dnn::Dict::ptr,
+    .define_method<cv::dnn::DictValue *(cv::dnn::Dict::*)(const cv::String &)>("ptr", &cv::dnn::Dict::ptr,
       Arg("key"))
-    .define_method<const cv::dnn::DictValue*(cv::dnn::Dict::*)(const cv::String&) const>("ptr", &cv::dnn::Dict::ptr,
+    .define_method<const cv::dnn::DictValue *(cv::dnn::Dict::*)(const cv::String &) const>("ptr", &cv::dnn::Dict::ptr,
       Arg("key"))
-    .define_method<const cv::dnn::DictValue&(cv::dnn::Dict::*)(const cv::String&) const>("get", &cv::dnn::Dict::get,
+    .define_method<const cv::dnn::DictValue &(cv::dnn::Dict::*)(const cv::String &) const>("get", &cv::dnn::Dict::get,
       Arg("key"))
-    .define_method<void(cv::dnn::Dict::*)(const cv::String&)>("erase", &cv::dnn::Dict::erase,
+    .define_method<void(cv::dnn::Dict::*)(const cv::String &)>("erase", &cv::dnn::Dict::erase,
       Arg("key"))
-    .define_iterator<std::map<cv::String, cv::dnn::DictValue>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
+    .define_iterator<std::map<std::basic_string<char, std::char_traits<char>, std::allocator<char>>, cv::dnn::DictValue, std::less<std::basic_string<char, std::char_traits<char>, std::allocator<char>>>, std::allocator<std::pair<const std::basic_string<char, std::char_traits<char>, std::allocator<char>>, cv::dnn::DictValue>>>::const_iterator(cv::dnn::Dict::*)() const>(&cv::dnn::Dict::begin, &cv::dnn::Dict::end, "each_const");
 
   Rice::detail::protect(rb_alias, rb_cCvDnnDict, rb_intern("each"), rb_intern("each_const"));
 }

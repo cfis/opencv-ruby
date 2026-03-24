@@ -46,7 +46,7 @@ void Init_Datasets_GrChalearn()
     .define_attr("skeletons", &cv::datasets::GR_chalearnObj::skeletons);
 
   Rice::Data_Type<cv::datasets::GR_chalearn> rb_cCvDatasetsGRChalearn = define_class_under<cv::datasets::GR_chalearn, cv::datasets::Dataset>(rb_mCvDatasets, "GRChalearn")
-    .define_method<void(cv::datasets::GR_chalearn::*)(const std::string&)>("load", &cv::datasets::GR_chalearn::load,
+    .define_method<void(cv::datasets::GR_chalearn::*)(const std::string &)>("load", &cv::datasets::GR_chalearn::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::GR_chalearn>(*)()>("create", &cv::datasets::GR_chalearn::create);
 }

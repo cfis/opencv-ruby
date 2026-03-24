@@ -20,6 +20,6 @@ void Init_Optflow_Motempl()
   rb_mCvMotempl.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputArray, double, double)>("calc_global_orientation", &cv::motempl::calcGlobalOrientation,
     Arg("orientation"), Arg("mask"), Arg("mhi"), Arg("timestamp"), Arg("duration"));
 
-  rb_mCvMotempl.define_module_function<void(*)(cv::InputArray, cv::OutputArray, std::vector<cv::Rect_<int>>&, double, double)>("segment_motion", &cv::motempl::segmentMotion,
+  rb_mCvMotempl.define_module_function<void(*)(cv::InputArray, cv::OutputArray, std::vector<cv::Rect> &, double, double)>("segment_motion", &cv::motempl::segmentMotion,
     Arg("mhi"), Arg("segmask"), Arg("bounding_rects"), Arg("timestamp"), Arg("seg_thresh"));
 }

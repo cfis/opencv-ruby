@@ -26,7 +26,7 @@ void Init_Bioinspired_Transientareassegmentationmodule()
     .define_method<cv::Size(cv::bioinspired::TransientAreasSegmentationModule::*)()>("get_size", &cv::bioinspired::TransientAreasSegmentationModule::getSize)
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::String, const bool)>("setup", &cv::bioinspired::TransientAreasSegmentationModule::setup,
       Arg("segmentation_parameter_file") = static_cast<cv::String>(""), Arg("apply_default_setup_on_failure") = static_cast<const bool>(true))
-    .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::FileStorage&, const bool)>("setup", &cv::bioinspired::TransientAreasSegmentationModule::setup,
+    .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::FileStorage &, const bool)>("setup", &cv::bioinspired::TransientAreasSegmentationModule::setup,
       Arg("fs"), Arg("apply_default_setup_on_failure") = static_cast<const bool>(true))
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::bioinspired::SegmentationParameters)>("setup", &cv::bioinspired::TransientAreasSegmentationModule::setup,
       Arg("new_parameters"))
@@ -34,7 +34,7 @@ void Init_Bioinspired_Transientareassegmentationmodule()
     .define_method<cv::String(cv::bioinspired::TransientAreasSegmentationModule::*)()>("print_setup", &cv::bioinspired::TransientAreasSegmentationModule::printSetup)
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::String) const>("write", &cv::bioinspired::TransientAreasSegmentationModule::write,
       Arg("fs"))
-    .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::FileStorage&) const>("write", &cv::bioinspired::TransientAreasSegmentationModule::write,
+    .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::FileStorage &) const>("write", &cv::bioinspired::TransientAreasSegmentationModule::write,
       Arg("fs"))
     .define_method<void(cv::bioinspired::TransientAreasSegmentationModule::*)(cv::InputArray, const int)>("run", &cv::bioinspired::TransientAreasSegmentationModule::run,
       Arg("input_to_segment"), Arg("channel_index") = static_cast<const int>(0))

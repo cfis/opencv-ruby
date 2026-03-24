@@ -18,24 +18,24 @@ void Init_Videostab_Inpainting()
     .define_method<void(cv::videostab::InpainterBase::*)(cv::videostab::MotionModel)>("set_motion_model", &cv::videostab::InpainterBase::setMotionModel,
       Arg("val"))
     .define_method<cv::videostab::MotionModel(cv::videostab::InpainterBase::*)() const>("motion_model", &cv::videostab::InpainterBase::motionModel)
-    .define_method<void(cv::videostab::InpainterBase::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::InpainterBase::inpaint,
+    .define_method<void(cv::videostab::InpainterBase::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::InpainterBase::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"))
-    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat>&)>("set_frames", &cv::videostab::InpainterBase::setFrames,
+    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat> &)>("set_frames", &cv::videostab::InpainterBase::setFrames,
       Arg("val"))
-    .define_method<const std::vector<cv::Mat>&(cv::videostab::InpainterBase::*)() const>("frames", &cv::videostab::InpainterBase::frames)
-    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat>&)>("set_motions", &cv::videostab::InpainterBase::setMotions,
+    .define_method<const std::vector<cv::Mat> &(cv::videostab::InpainterBase::*)() const>("frames", &cv::videostab::InpainterBase::frames)
+    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat> &)>("set_motions", &cv::videostab::InpainterBase::setMotions,
       Arg("val"))
-    .define_method<const std::vector<cv::Mat>&(cv::videostab::InpainterBase::*)() const>("motions", &cv::videostab::InpainterBase::motions)
-    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat>&)>("set_stabilized_frames", &cv::videostab::InpainterBase::setStabilizedFrames,
+    .define_method<const std::vector<cv::Mat> &(cv::videostab::InpainterBase::*)() const>("motions", &cv::videostab::InpainterBase::motions)
+    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat> &)>("set_stabilized_frames", &cv::videostab::InpainterBase::setStabilizedFrames,
       Arg("val"))
-    .define_method<const std::vector<cv::Mat>&(cv::videostab::InpainterBase::*)() const>("stabilized_frames", &cv::videostab::InpainterBase::stabilizedFrames)
-    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat>&)>("set_stabilization_motions", &cv::videostab::InpainterBase::setStabilizationMotions,
+    .define_method<const std::vector<cv::Mat> &(cv::videostab::InpainterBase::*)() const>("stabilized_frames", &cv::videostab::InpainterBase::stabilizedFrames)
+    .define_method<void(cv::videostab::InpainterBase::*)(const std::vector<cv::Mat> &)>("set_stabilization_motions", &cv::videostab::InpainterBase::setStabilizationMotions,
       Arg("val"))
-    .define_method<const std::vector<cv::Mat>&(cv::videostab::InpainterBase::*)() const>("stabilization_motions", &cv::videostab::InpainterBase::stabilizationMotions);
+    .define_method<const std::vector<cv::Mat> &(cv::videostab::InpainterBase::*)() const>("stabilization_motions", &cv::videostab::InpainterBase::stabilizationMotions);
 
   Rice::Data_Type<cv::videostab::NullInpainter> rb_cCvVideostabNullInpainter = define_class_under<cv::videostab::NullInpainter, cv::videostab::InpainterBase>(rb_mCvVideostab, "NullInpainter")
     .define_constructor(Constructor<cv::videostab::NullInpainter>())
-    .define_method<void(cv::videostab::NullInpainter::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::NullInpainter::inpaint,
+    .define_method<void(cv::videostab::NullInpainter::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::NullInpainter::inpaint,
       Arg("arg_0"), Arg("arg_1"), Arg("arg_2"));
 
   Rice::Data_Type<cv::videostab::InpaintingPipeline> rb_cCvVideostabInpaintingPipeline = define_class_under<cv::videostab::InpaintingPipeline, cv::videostab::InpainterBase>(rb_mCvVideostab, "InpaintingPipeline")
@@ -47,15 +47,15 @@ void Init_Videostab_Inpainting()
       Arg("val"))
     .define_method<void(cv::videostab::InpaintingPipeline::*)(cv::videostab::MotionModel)>("set_motion_model", &cv::videostab::InpaintingPipeline::setMotionModel,
       Arg("val"))
-    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat>&)>("set_frames", &cv::videostab::InpaintingPipeline::setFrames,
+    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat> &)>("set_frames", &cv::videostab::InpaintingPipeline::setFrames,
       Arg("val"))
-    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat>&)>("set_motions", &cv::videostab::InpaintingPipeline::setMotions,
+    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat> &)>("set_motions", &cv::videostab::InpaintingPipeline::setMotions,
       Arg("val"))
-    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat>&)>("set_stabilized_frames", &cv::videostab::InpaintingPipeline::setStabilizedFrames,
+    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat> &)>("set_stabilized_frames", &cv::videostab::InpaintingPipeline::setStabilizedFrames,
       Arg("val"))
-    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat>&)>("set_stabilization_motions", &cv::videostab::InpaintingPipeline::setStabilizationMotions,
+    .define_method<void(cv::videostab::InpaintingPipeline::*)(const std::vector<cv::Mat> &)>("set_stabilization_motions", &cv::videostab::InpaintingPipeline::setStabilizationMotions,
       Arg("val"))
-    .define_method<void(cv::videostab::InpaintingPipeline::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::InpaintingPipeline::inpaint,
+    .define_method<void(cv::videostab::InpaintingPipeline::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::InpaintingPipeline::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"));
 
   Rice::Data_Type<cv::videostab::ConsistentMosaicInpainter> rb_cCvVideostabConsistentMosaicInpainter = define_class_under<cv::videostab::ConsistentMosaicInpainter, cv::videostab::InpainterBase>(rb_mCvVideostab, "ConsistentMosaicInpainter")
@@ -63,7 +63,7 @@ void Init_Videostab_Inpainting()
     .define_method<void(cv::videostab::ConsistentMosaicInpainter::*)(float)>("set_stdev_thresh", &cv::videostab::ConsistentMosaicInpainter::setStdevThresh,
       Arg("val"))
     .define_method<float(cv::videostab::ConsistentMosaicInpainter::*)() const>("stdev_thresh", &cv::videostab::ConsistentMosaicInpainter::stdevThresh)
-    .define_method<void(cv::videostab::ConsistentMosaicInpainter::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::ConsistentMosaicInpainter::inpaint,
+    .define_method<void(cv::videostab::ConsistentMosaicInpainter::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::ConsistentMosaicInpainter::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"));
 
   Rice::Data_Type<cv::videostab::MotionInpainter> rb_cCvVideostabMotionInpainter = define_class_under<cv::videostab::MotionInpainter, cv::videostab::InpainterBase>(rb_mCvVideostab, "MotionInpainter")
@@ -80,23 +80,23 @@ void Init_Videostab_Inpainting()
     .define_method<void(cv::videostab::MotionInpainter::*)(int)>("set_border_mode", &cv::videostab::MotionInpainter::setBorderMode,
       Arg("val"))
     .define_method<int(cv::videostab::MotionInpainter::*)() const>("border_mode", &cv::videostab::MotionInpainter::borderMode)
-    .define_method<void(cv::videostab::MotionInpainter::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::MotionInpainter::inpaint,
+    .define_method<void(cv::videostab::MotionInpainter::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::MotionInpainter::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"));
 
   Rice::Data_Type<cv::videostab::ColorAverageInpainter> rb_cCvVideostabColorAverageInpainter = define_class_under<cv::videostab::ColorAverageInpainter, cv::videostab::InpainterBase>(rb_mCvVideostab, "ColorAverageInpainter")
     .define_constructor(Constructor<cv::videostab::ColorAverageInpainter>())
-    .define_method<void(cv::videostab::ColorAverageInpainter::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::ColorAverageInpainter::inpaint,
+    .define_method<void(cv::videostab::ColorAverageInpainter::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::ColorAverageInpainter::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"));
 
   Rice::Data_Type<cv::videostab::ColorInpainter> rb_cCvVideostabColorInpainter = define_class_under<cv::videostab::ColorInpainter, cv::videostab::InpainterBase>(rb_mCvVideostab, "ColorInpainter")
     .define_constructor(Constructor<cv::videostab::ColorInpainter, int, double>(),
       Arg("method") = static_cast<int>(cv::INPAINT_TELEA), Arg("radius") = static_cast<double>(2.))
-    .define_method<void(cv::videostab::ColorInpainter::*)(int, cv::Mat&, cv::Mat&)>("inpaint", &cv::videostab::ColorInpainter::inpaint,
+    .define_method<void(cv::videostab::ColorInpainter::*)(int, cv::Mat &, cv::Mat &)>("inpaint", &cv::videostab::ColorInpainter::inpaint,
       Arg("idx"), Arg("frame"), Arg("mask"));
 
-  rb_mCvVideostab.define_module_function<void(*)(const cv::Mat&, const cv::Mat&, const cv::Mat&, float, const cv::Mat&, const cv::Mat&, cv::Mat&)>("calc_flow_mask", &cv::videostab::calcFlowMask,
+  rb_mCvVideostab.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, const cv::Mat &, float, const cv::Mat &, const cv::Mat &, cv::Mat &)>("calc_flow_mask", &cv::videostab::calcFlowMask,
     Arg("flow_x"), Arg("flow_y"), Arg("errors"), Arg("max_error"), Arg("mask0"), Arg("mask1"), Arg("flow_mask"));
 
-  rb_mCvVideostab.define_module_function<void(*)(const cv::Mat&, const cv::Mat&, const cv::Mat&, const cv::Mat&, const cv::Mat&, float, cv::Mat&, cv::Mat&)>("complete_frame_according_to_flow", &cv::videostab::completeFrameAccordingToFlow,
+  rb_mCvVideostab.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &, float, cv::Mat &, cv::Mat &)>("complete_frame_according_to_flow", &cv::videostab::completeFrameAccordingToFlow,
     Arg("flow_mask"), Arg("flow_x"), Arg("flow_y"), Arg("frame1"), Arg("mask1"), Arg("dist_thresh"), Arg("frame0"), Arg("mask0"));
 }

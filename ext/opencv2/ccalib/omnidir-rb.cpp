@@ -44,29 +44,29 @@ void Init_Ccalib_Omnidir()
   rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
     Arg("object_points"), Arg("image_points"), Arg("rvec"), Arg("tvec"), Arg("k"), Arg("xi"), Arg("d"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d&, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d &, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
     Arg("object_points"), Arg("image_points"), Arg("affine"), Arg("k"), Arg("xi"), Arg("d"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
   rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray)>("undistort_points", &cv::omnidir::undistortPoints,
     Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("xi"), Arg("r"));
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size&, int, cv::OutputArray, cv::OutputArray, int)>("init_undistort_rectify_map", &cv::omnidir::initUndistortRectifyMap,
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, const cv::Size &, int, cv::OutputArray, cv::OutputArray, int)>("init_undistort_rectify_map", &cv::omnidir::initUndistortRectifyMap,
     Arg("k"), Arg("d"), Arg("xi"), Arg("r"), Arg("p"), Arg("size"), Arg("m1type"), Arg("map1"), Arg("map2"), Arg("flags"));
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, cv::InputArray, const cv::Size&, cv::InputArray)>("undistort_image", &cv::omnidir::undistortImage,
-    Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("xi"), Arg("flags"), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("new_size") = static_cast<const cv::Size&>(cv::Size()), Arg("r") = static_cast<cv::InputArray>(cv::Mat::eye(3, 3, CV_64F)));
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, cv::InputArray, const cv::Size &, cv::InputArray)>("undistort_image", &cv::omnidir::undistortImage,
+    Arg("distorted"), Arg("undistorted"), Arg("k"), Arg("d"), Arg("xi"), Arg("flags"), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("new_size") = static_cast<const cv::Size &>(cv::Size()), Arg("r") = static_cast<cv::InputArray>(cv::Mat::eye(3, 3, CV_64F)));
 
   rb_mCvOmnidir.define_module_function<double(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::Size, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria, cv::OutputArray)>("calibrate", &cv::omnidir::calibrate,
     Arg("object_points"), Arg("image_points"), Arg("size"), Arg("k"), Arg("xi"), Arg("d"), Arg("rvecs"), Arg("tvecs"), Arg("flags"), Arg("criteria"), Arg("idx") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_mCvOmnidir.define_module_function<double(*)(cv::InputOutputArrayOfArrays, cv::InputOutputArrayOfArrays, cv::InputOutputArrayOfArrays, const cv::Size&, const cv::Size&, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria, cv::OutputArray)>("stereo_calibrate", &cv::omnidir::stereoCalibrate,
+  rb_mCvOmnidir.define_module_function<double(*)(cv::InputOutputArrayOfArrays, cv::InputOutputArrayOfArrays, cv::InputOutputArrayOfArrays, const cv::Size &, const cv::Size &, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, cv::OutputArrayOfArrays, cv::OutputArrayOfArrays, int, cv::TermCriteria, cv::OutputArray)>("stereo_calibrate", &cv::omnidir::stereoCalibrate,
     Arg("object_points"), Arg("image_points1"), Arg("image_points2"), Arg("image_size1"), Arg("image_size2"), Arg("k1"), Arg("xi1"), Arg("d1"), Arg("k2"), Arg("xi2"), Arg("d2"), Arg("rvec"), Arg("tvec"), Arg("rvecs_l"), Arg("tvecs_l"), Arg("flags"), Arg("criteria"), Arg("idx") = static_cast<cv::OutputArray>(cv::noArray()));
 
   rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray)>("stereo_rectify", &cv::omnidir::stereoRectify,
     Arg("r"), Arg("t"), Arg("r1"), Arg("r2"));
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, int, int, cv::OutputArray, cv::OutputArray, cv::OutputArray, const cv::Size&, cv::InputArray, cv::OutputArray, int)>("stereo_reconstruct", &cv::omnidir::stereoReconstruct,
-    Arg("image1"), Arg("image2"), Arg("k1"), Arg("d1"), Arg("xi1"), Arg("k2"), Arg("d2"), Arg("xi2"), Arg("r"), Arg("t"), Arg("flag"), Arg("num_disparities"), Arg("sad_window_size"), Arg("disparity"), Arg("image1_rec"), Arg("image2_rec"), Arg("new_size") = static_cast<const cv::Size&>(cv::Size()), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("point_cloud") = static_cast<cv::OutputArray>(cv::noArray()), Arg("point_type") = static_cast<int>(cv::omnidir::XYZRGB));
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, int, int, int, cv::OutputArray, cv::OutputArray, cv::OutputArray, const cv::Size &, cv::InputArray, cv::OutputArray, int)>("stereo_reconstruct", &cv::omnidir::stereoReconstruct,
+    Arg("image1"), Arg("image2"), Arg("k1"), Arg("d1"), Arg("xi1"), Arg("k2"), Arg("d2"), Arg("xi2"), Arg("r"), Arg("t"), Arg("flag"), Arg("num_disparities"), Arg("sad_window_size"), Arg("disparity"), Arg("image1_rec"), Arg("image2_rec"), Arg("new_size") = static_cast<const cv::Size &>(cv::Size()), Arg("knew") = static_cast<cv::InputArray>(cv::noArray()), Arg("point_cloud") = static_cast<cv::OutputArray>(cv::noArray()), Arg("point_type") = static_cast<int>(cv::omnidir::XYZRGB));
 
   Module rb_mCvOmnidirInternal = define_module_under(rb_mCvOmnidir, "Internal");
 }

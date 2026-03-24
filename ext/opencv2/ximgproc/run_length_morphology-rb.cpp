@@ -25,13 +25,13 @@ void Init_Ximgproc_RunLengthMorphology()
   rb_mCvXimgprocRl.define_module_function<cv::Mat(*)(int, cv::Size)>("get_structuring_element", &cv::ximgproc::rl::getStructuringElement,
     Arg("shape"), Arg("ksize"));
 
-  rb_mCvXimgprocRl.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, const cv::Scalar&)>("paint", &cv::ximgproc::rl::paint,
+  rb_mCvXimgprocRl.define_module_function<void(*)(cv::InputOutputArray, cv::InputArray, const cv::Scalar &)>("paint", &cv::ximgproc::rl::paint,
     Arg("image"), Arg("rl_src"), Arg("value"));
 
   rb_mCvXimgprocRl.define_module_function<bool(*)(cv::InputArray)>("rl_morphology_possible?", &cv::ximgproc::rl::isRLMorphologyPossible,
     Arg("rl_structuring_element"));
 
-  rb_mCvXimgprocRl.define_module_function<void(*)(const std::vector<cv::Point3i>&, cv::OutputArray, cv::Size)>("create_rle_image", &cv::ximgproc::rl::createRLEImage,
+  rb_mCvXimgprocRl.define_module_function<void(*)(const std::vector<cv::Point3i> &, cv::OutputArray, cv::Size)>("create_rle_image", &cv::ximgproc::rl::createRLEImage,
     Arg("runs"), Arg("res"), Arg("size") = static_cast<cv::Size>(cv::Size(0, 0)));
 
   rb_mCvXimgprocRl.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, cv::InputArray, bool, cv::Point)>("morphology_ex", &cv::ximgproc::rl::morphologyEx,

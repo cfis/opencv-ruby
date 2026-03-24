@@ -12,11 +12,11 @@ void Init_Optflow_Pcaflow()
   Module rb_mCvOptflow = define_module_under(rb_mCv, "Optflow");
 
   Rice::Data_Type<cv::optflow::PCAPrior> rb_cCvOptflowPCAPrior = define_class_under<cv::optflow::PCAPrior>(rb_mCvOptflow, "PCAPrior")
-    .define_constructor(Constructor<cv::optflow::PCAPrior, const char*>(),
+    .define_constructor(Constructor<cv::optflow::PCAPrior, const char *>(),
       Arg("path_to_prior"))
     .define_method<int(cv::optflow::PCAPrior::*)() const>("get_padding", &cv::optflow::PCAPrior::getPadding)
     .define_method<int(cv::optflow::PCAPrior::*)() const>("get_basis_size", &cv::optflow::PCAPrior::getBasisSize)
-    .define_method<void(cv::optflow::PCAPrior::*)(float*, float*, float*, float*) const>("fill_constraints", &cv::optflow::PCAPrior::fillConstraints,
+    .define_method<void(cv::optflow::PCAPrior::*)(float *, float *, float *, float *) const>("fill_constraints", &cv::optflow::PCAPrior::fillConstraints,
       ArgBuffer("a1"), ArgBuffer("a2"), ArgBuffer("b1"), ArgBuffer("b2"));
 
   Rice::Data_Type<cv::optflow::OpticalFlowPCAFlow> rb_cCvOptflowOpticalFlowPCAFlow = define_class_under<cv::optflow::OpticalFlowPCAFlow, cv::DenseOpticalFlow>(rb_mCvOptflow, "OpticalFlowPCAFlow")

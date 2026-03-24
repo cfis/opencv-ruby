@@ -21,7 +21,7 @@ void Init_Videostab_FrameSource()
     .define_method<cv::Mat(cv::videostab::NullFrameSource::*)()>("next_frame", &cv::videostab::NullFrameSource::nextFrame);
 
   Rice::Data_Type<cv::videostab::VideoFileSource> rb_cCvVideostabVideoFileSource = define_class_under<cv::videostab::VideoFileSource, cv::videostab::IFrameSource>(rb_mCvVideostab, "VideoFileSource")
-    .define_constructor(Constructor<cv::videostab::VideoFileSource, const cv::String&, bool>(),
+    .define_constructor(Constructor<cv::videostab::VideoFileSource, const cv::String &, bool>(),
       Arg("path"), Arg("volatile_frame") = static_cast<bool>(false))
     .define_method<void(cv::videostab::VideoFileSource::*)()>("reset", &cv::videostab::VideoFileSource::reset)
     .define_method<cv::Mat(cv::videostab::VideoFileSource::*)()>("next_frame", &cv::videostab::VideoFileSource::nextFrame)
@@ -31,7 +31,7 @@ void Init_Videostab_FrameSource()
     .define_method<double(cv::videostab::VideoFileSource::*)()>("fps", &cv::videostab::VideoFileSource::fps);
 
   Rice::Data_Type<cv::videostab::MaskFrameSource> rb_cCvVideostabMaskFrameSource = define_class_under<cv::videostab::MaskFrameSource, cv::videostab::IFrameSource>(rb_mCvVideostab, "MaskFrameSource")
-    .define_constructor(Constructor<cv::videostab::MaskFrameSource, const cv::Ptr<cv::videostab::IFrameSource>&>(),
+    .define_constructor(Constructor<cv::videostab::MaskFrameSource, const cv::Ptr<cv::videostab::IFrameSource> &>(),
       Arg("source"))
     .define_method<void(cv::videostab::MaskFrameSource::*)()>("reset", &cv::videostab::MaskFrameSource::reset)
     .define_method<cv::Mat(cv::videostab::MaskFrameSource::*)()>("next_frame", &cv::videostab::MaskFrameSource::nextFrame)

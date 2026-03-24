@@ -13,57 +13,57 @@ void Init_Features2d()
 
   Rice::Data_Type<cv::KeyPointsFilter> rb_cCvKeyPointsFilter = define_class_under<cv::KeyPointsFilter>(rb_mCv, "KeyPointsFilter")
     .define_constructor(Constructor<cv::KeyPointsFilter>())
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&, cv::Size, int)>("run_by_image_border", &cv::KeyPointsFilter::runByImageBorder,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &, cv::Size, int)>("run_by_image_border", &cv::KeyPointsFilter::runByImageBorder,
       Arg("keypoints"), Arg("image_size"), Arg("border_size"))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&, float, float)>("run_by_keypoint_size", &cv::KeyPointsFilter::runByKeypointSize,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &, float, float)>("run_by_keypoint_size", &cv::KeyPointsFilter::runByKeypointSize,
       Arg("keypoints"), Arg("min_size"), Arg("max_size") = static_cast<float>(FLT_MAX))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&, const cv::Mat&)>("run_by_pixels_mask", &cv::KeyPointsFilter::runByPixelsMask,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &, const cv::Mat &)>("run_by_pixels_mask", &cv::KeyPointsFilter::runByPixelsMask,
       Arg("keypoints"), Arg("mask"))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&, std::vector<std::vector<cv::Point_<int>>>&, const cv::Mat&)>("run_by_pixels_mask2_vector_point", &cv::KeyPointsFilter::runByPixelsMask2VectorPoint,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &, std::vector<std::vector<cv::Point>> &, const cv::Mat &)>("run_by_pixels_mask2_vector_point", &cv::KeyPointsFilter::runByPixelsMask2VectorPoint,
       Arg("keypoints"), Arg("remove_from"), Arg("mask"))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&)>("remove_duplicated", &cv::KeyPointsFilter::removeDuplicated,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &)>("remove_duplicated", &cv::KeyPointsFilter::removeDuplicated,
       Arg("keypoints"))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&)>("remove_duplicated_sorted", &cv::KeyPointsFilter::removeDuplicatedSorted,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &)>("remove_duplicated_sorted", &cv::KeyPointsFilter::removeDuplicatedSorted,
       Arg("keypoints"))
-    .define_singleton_function<void(*)(std::vector<cv::KeyPoint>&, int)>("retain_best", &cv::KeyPointsFilter::retainBest,
+    .define_singleton_function<void(*)(std::vector<cv::KeyPoint> &, int)>("retain_best", &cv::KeyPointsFilter::retainBest,
       Arg("keypoints"), Arg("npoints"));
 
   Rice::Data_Type<cv::Feature2D> rb_cCvFeature2D = define_class_under<cv::Feature2D, cv::Algorithm>(rb_mCv, "Feature2D")
     .define_constructor(Constructor<cv::Feature2D>())
-    .define_method<void(cv::Feature2D::*)(cv::InputArray, std::vector<cv::KeyPoint>&, cv::InputArray)>("detect", &cv::Feature2D::detect,
+    .define_method<void(cv::Feature2D::*)(cv::InputArray, std::vector<cv::KeyPoint> &, cv::InputArray)>("detect", &cv::Feature2D::detect,
       Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()))
-    .define_method<void(cv::Feature2D::*)(cv::InputArrayOfArrays, std::vector<std::vector<cv::KeyPoint>>&, cv::InputArrayOfArrays)>("detect", &cv::Feature2D::detect,
+    .define_method<void(cv::Feature2D::*)(cv::InputArrayOfArrays, std::vector<std::vector<cv::KeyPoint>> &, cv::InputArrayOfArrays)>("detect", &cv::Feature2D::detect,
       Arg("images"), Arg("keypoints"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()))
-    .define_method<void(cv::Feature2D::*)(cv::InputArray, std::vector<cv::KeyPoint>&, cv::OutputArray)>("compute", &cv::Feature2D::compute,
+    .define_method<void(cv::Feature2D::*)(cv::InputArray, std::vector<cv::KeyPoint> &, cv::OutputArray)>("compute", &cv::Feature2D::compute,
       Arg("image"), Arg("keypoints"), Arg("descriptors"))
-    .define_method<void(cv::Feature2D::*)(cv::InputArrayOfArrays, std::vector<std::vector<cv::KeyPoint>>&, cv::OutputArrayOfArrays)>("compute", &cv::Feature2D::compute,
+    .define_method<void(cv::Feature2D::*)(cv::InputArrayOfArrays, std::vector<std::vector<cv::KeyPoint>> &, cv::OutputArrayOfArrays)>("compute", &cv::Feature2D::compute,
       Arg("images"), Arg("keypoints"), Arg("descriptors"))
-    .define_method<void(cv::Feature2D::*)(cv::InputArray, cv::InputArray, std::vector<cv::KeyPoint>&, cv::OutputArray, bool)>("detect_and_compute", &cv::Feature2D::detectAndCompute,
+    .define_method<void(cv::Feature2D::*)(cv::InputArray, cv::InputArray, std::vector<cv::KeyPoint> &, cv::OutputArray, bool)>("detect_and_compute", &cv::Feature2D::detectAndCompute,
       Arg("image"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false))
     .define_method<int(cv::Feature2D::*)() const>("descriptor_size", &cv::Feature2D::descriptorSize)
     .define_method<int(cv::Feature2D::*)() const>("descriptor_type", &cv::Feature2D::descriptorType)
     .define_method<int(cv::Feature2D::*)() const>("default_norm", &cv::Feature2D::defaultNorm)
-    .define_method<void(cv::Feature2D::*)(const cv::String&) const>("write", &cv::Feature2D::write,
+    .define_method<void(cv::Feature2D::*)(const cv::String &) const>("write", &cv::Feature2D::write,
       Arg("file_name"))
-    .define_method<void(cv::Feature2D::*)(const cv::String&)>("read", &cv::Feature2D::read,
+    .define_method<void(cv::Feature2D::*)(const cv::String &)>("read", &cv::Feature2D::read,
       Arg("file_name"))
-    .define_method<void(cv::Feature2D::*)(cv::FileStorage&) const>("write", &cv::Feature2D::write,
+    .define_method<void(cv::Feature2D::*)(cv::FileStorage &) const>("write", &cv::Feature2D::write,
       Arg("arg_0"))
-    .define_method<void(cv::Feature2D::*)(const cv::FileNode&)>("read", &cv::Feature2D::read,
+    .define_method<void(cv::Feature2D::*)(const cv::FileNode &)>("read", &cv::Feature2D::read,
       Arg("arg_0"))
     .define_method<bool(cv::Feature2D::*)() const>("empty?", &cv::Feature2D::empty)
     .define_method<cv::String(cv::Feature2D::*)() const>("get_default_name", &cv::Feature2D::getDefaultName)
-    .define_method<void(cv::Feature2D::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::Feature2D::write,
+    .define_method<void(cv::Feature2D::*)(cv::FileStorage &, const cv::String &) const>("write", &cv::Feature2D::write,
       Arg("fs"), Arg("name"))
-    .define_method<void(cv::Feature2D::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::Feature2D::write,
+    .define_method<void(cv::Feature2D::*)(const cv::Ptr<cv::FileStorage> &, const cv::String &) const>("write", &cv::Feature2D::write,
       Arg("fs"), Arg("name"));
 
   Rice::Data_Type<cv::AffineFeature> rb_cCvAffineFeature = define_class_under<cv::AffineFeature, cv::Feature2D>(rb_mCv, "AffineFeature")
-    .define_singleton_function<cv::Ptr<cv::AffineFeature>(*)(const cv::Ptr<cv::Feature2D>&, int, int, float, float)>("create", &cv::AffineFeature::create,
+    .define_singleton_function<cv::Ptr<cv::AffineFeature>(*)(const cv::Ptr<cv::Feature2D> &, int, int, float, float)>("create", &cv::AffineFeature::create,
       Arg("backend"), Arg("max_tilt") = static_cast<int>(5), Arg("min_tilt") = static_cast<int>(0), Arg("tilt_step") = static_cast<float>(1.4142135623730951f), Arg("rotate_step_base") = static_cast<float>(72))
-    .define_method<void(cv::AffineFeature::*)(const std::vector<float>&, const std::vector<float>&)>("set_view_params", &cv::AffineFeature::setViewParams,
+    .define_method<void(cv::AffineFeature::*)(const std::vector<float> &, const std::vector<float> &)>("set_view_params", &cv::AffineFeature::setViewParams,
       Arg("tilts"), Arg("rolls"))
-    .define_method<void(cv::AffineFeature::*)(std::vector<float>&, std::vector<float>&) const>("get_view_params", &cv::AffineFeature::getViewParams,
+    .define_method<void(cv::AffineFeature::*)(std::vector<float> &, std::vector<float> &) const>("get_view_params", &cv::AffineFeature::getViewParams,
       Arg("tilts"), Arg("rolls"))
     .define_method<cv::String(cv::AffineFeature::*)() const>("get_default_name", &cv::AffineFeature::getDefaultName);
 
@@ -92,10 +92,10 @@ void Init_Features2d()
   Rice::Data_Type<cv::BRISK> rb_cCvBRISK = define_class_under<cv::BRISK, cv::Feature2D>(rb_mCv, "BRISK")
     .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", &cv::BRISK::create,
       Arg("thresh") = static_cast<int>(30), Arg("octaves") = static_cast<int>(3), Arg("pattern_scale") = static_cast<float>(1.0f))
-    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>()))
-    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float>&, const std::vector<int>&, float, float, const std::vector<int>&)>("create", &cv::BRISK::create,
-      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int>&>(std::vector<int>()))
+    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", &cv::BRISK::create,
+      Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>()))
+    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", &cv::BRISK::create,
+      Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>()))
     .define_method<cv::String(cv::BRISK::*)() const>("get_default_name", &cv::BRISK::getDefaultName)
     .define_method<void(cv::BRISK::*)(int)>("set_threshold", &cv::BRISK::setThreshold,
       Arg("threshold"))
@@ -147,7 +147,7 @@ void Init_Features2d()
   Rice::Data_Type<cv::MSER> rb_cCvMSER = define_class_under<cv::MSER, cv::Feature2D>(rb_mCv, "MSER")
     .define_singleton_function<cv::Ptr<cv::MSER>(*)(int, int, int, double, double, int, double, double, int)>("create", &cv::MSER::create,
       Arg("delta") = static_cast<int>(5), Arg("min_area") = static_cast<int>(60), Arg("max_area") = static_cast<int>(14400), Arg("max_variation") = static_cast<double>(0.25), Arg("min_diversity") = static_cast<double>(.2), Arg("max_evolution") = static_cast<int>(200), Arg("area_threshold") = static_cast<double>(1.01), Arg("min_margin") = static_cast<double>(0.003), Arg("edge_blur_size") = static_cast<int>(5))
-    .define_method<void(cv::MSER::*)(cv::InputArray, std::vector<std::vector<cv::Point_<int>>>&, std::vector<cv::Rect_<int>>&)>("detect_regions", &cv::MSER::detectRegions,
+    .define_method<void(cv::MSER::*)(cv::InputArray, std::vector<std::vector<cv::Point>> &, std::vector<cv::Rect> &)>("detect_regions", &cv::MSER::detectRegions,
       Arg("image"), Arg("msers"), Arg("bboxes"))
     .define_method<void(cv::MSER::*)(int)>("set_delta", &cv::MSER::setDelta,
       Arg("delta"))
@@ -203,10 +203,10 @@ void Init_Features2d()
     .define_value("TYPE_7_12", cv::FastFeatureDetector::DetectorType::TYPE_7_12)
     .define_value("TYPE_9_16", cv::FastFeatureDetector::DetectorType::TYPE_9_16);
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool)>("fast", &cv::FAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("fast", &cv::FAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool, cv::FastFeatureDetector::DetectorType)>("fast", &cv::FAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::FastFeatureDetector::DetectorType)>("fast", &cv::FAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::AgastFeatureDetector> rb_cCvAgastFeatureDetector = define_class_under<cv::AgastFeatureDetector, cv::Feature2D>(rb_mCv, "AgastFeatureDetector")
@@ -231,10 +231,10 @@ void Init_Features2d()
     .define_value("AGAST_7_12s", cv::AgastFeatureDetector::DetectorType::AGAST_7_12s)
     .define_value("OAST_9_16", cv::AgastFeatureDetector::DetectorType::OAST_9_16);
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool)>("agast", &cv::AGAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("agast", &cv::AGAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint>&, int, bool, cv::AgastFeatureDetector::DetectorType)>("agast", &cv::AGAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::AgastFeatureDetector::DetectorType)>("agast", &cv::AGAST,
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::GFTTDetector> rb_cCvGFTTDetector = define_class_under<cv::GFTTDetector, cv::Feature2D>(rb_mCv, "GFTTDetector")
@@ -266,13 +266,13 @@ void Init_Features2d()
     .define_method<cv::String(cv::GFTTDetector::*)() const>("get_default_name", &cv::GFTTDetector::getDefaultName);
 
   Rice::Data_Type<cv::SimpleBlobDetector> rb_cCvSimpleBlobDetector = define_class_under<cv::SimpleBlobDetector, cv::Feature2D>(rb_mCv, "SimpleBlobDetector")
-    .define_singleton_function<cv::Ptr<cv::SimpleBlobDetector>(*)(const cv::SimpleBlobDetector::Params&)>("create", &cv::SimpleBlobDetector::create,
-      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params&>(cv::SimpleBlobDetector::Params()))
-    .define_method<void(cv::SimpleBlobDetector::*)(const cv::SimpleBlobDetector::Params&)>("set_params", &cv::SimpleBlobDetector::setParams,
+    .define_singleton_function<cv::Ptr<cv::SimpleBlobDetector>(*)(const cv::SimpleBlobDetector::Params &)>("create", &cv::SimpleBlobDetector::create,
+      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params &>(cv::SimpleBlobDetector::Paramsrams()))
+    .define_method<void(cv::SimpleBlobDetector::*)(const cv::SimpleBlobDetector::Params &)>("set_params", &cv::SimpleBlobDetector::setParams,
       Arg("params"))
     .define_method<cv::SimpleBlobDetector::Params(cv::SimpleBlobDetector::*)() const>("get_params", &cv::SimpleBlobDetector::getParams)
     .define_method<cv::String(cv::SimpleBlobDetector::*)() const>("get_default_name", &cv::SimpleBlobDetector::getDefaultName)
-    .define_method<const std::vector<std::vector<cv::Point>>&(cv::SimpleBlobDetector::*)() const>("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours);
+    .define_method<const std::vector<std::vector<cv::Point>> &(cv::SimpleBlobDetector::*)() const>("get_blob_contours", &cv::SimpleBlobDetector::getBlobContours);
 
   Rice::Data_Type<cv::SimpleBlobDetector::Params> rb_cCvSimpleBlobDetectorParams = define_class_under<cv::SimpleBlobDetector::Params>(rb_cCvSimpleBlobDetector, "Params")
     .define_constructor(Constructor<cv::SimpleBlobDetector::Params>())
@@ -296,9 +296,9 @@ void Init_Features2d()
     .define_attr("min_convexity", &cv::SimpleBlobDetector::Params::minConvexity)
     .define_attr("max_convexity", &cv::SimpleBlobDetector::Params::maxConvexity)
     .define_attr("collect_contours", &cv::SimpleBlobDetector::Params::collectContours)
-    .define_method<void(cv::SimpleBlobDetector::Params::*)(const cv::FileNode&)>("read", &cv::SimpleBlobDetector::Params::read,
+    .define_method<void(cv::SimpleBlobDetector::Params::*)(const cv::FileNode &)>("read", &cv::SimpleBlobDetector::Params::read,
       Arg("fn"))
-    .define_method<void(cv::SimpleBlobDetector::Params::*)(cv::FileStorage&) const>("write", &cv::SimpleBlobDetector::Params::write,
+    .define_method<void(cv::SimpleBlobDetector::Params::*)(cv::FileStorage &) const>("write", &cv::SimpleBlobDetector::Params::write,
       Arg("fs"));
 
   Rice::Data_Type<cv::KAZE> rb_cCvKAZE = define_class_under<cv::KAZE, cv::Feature2D>(rb_mCv, "KAZE")
@@ -380,40 +380,40 @@ void Init_Features2d()
   Rice::Data_Type<cv::DescriptorMatcher> rb_cCvDescriptorMatcher = define_class_under<cv::DescriptorMatcher, cv::Algorithm>(rb_mCv, "DescriptorMatcher")
     .define_method<void(cv::DescriptorMatcher::*)(cv::InputArrayOfArrays)>("add", &cv::DescriptorMatcher::add,
       Arg("descriptors"))
-    .define_method<const std::vector<cv::Mat>&(cv::DescriptorMatcher::*)() const>("get_train_descriptors", &cv::DescriptorMatcher::getTrainDescriptors)
+    .define_method<const std::vector<cv::Mat> &(cv::DescriptorMatcher::*)() const>("get_train_descriptors", &cv::DescriptorMatcher::getTrainDescriptors)
     .define_method<void(cv::DescriptorMatcher::*)()>("clear", &cv::DescriptorMatcher::clear)
     .define_method<bool(cv::DescriptorMatcher::*)() const>("empty?", &cv::DescriptorMatcher::empty)
     .define_method<bool(cv::DescriptorMatcher::*)() const>("mask_supported?", &cv::DescriptorMatcher::isMaskSupported)
     .define_method<void(cv::DescriptorMatcher::*)()>("train", &cv::DescriptorMatcher::train)
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<cv::DMatch>&, cv::InputArray) const>("match", &cv::DescriptorMatcher::match,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<cv::DMatch> &, cv::InputArray) const>("match", &cv::DescriptorMatcher::match,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>>&, int, cv::InputArray, bool) const>("knn_match", &cv::DescriptorMatcher::knnMatch,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>> &, int, cv::InputArray, bool) const>("knn_match", &cv::DescriptorMatcher::knnMatch,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>>&, float, cv::InputArray, bool) const>("radius_match", &cv::DescriptorMatcher::radiusMatch,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>> &, float, cv::InputArray, bool) const>("radius_match", &cv::DescriptorMatcher::radiusMatch,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch>&, cv::InputArrayOfArrays)>("match", &cv::DescriptorMatcher::match,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch> &, cv::InputArrayOfArrays)>("match", &cv::DescriptorMatcher::match,
       Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, int, cv::InputArrayOfArrays, bool)>("knn_match", &cv::DescriptorMatcher::knnMatch,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, int, cv::InputArrayOfArrays, bool)>("knn_match", &cv::DescriptorMatcher::knnMatch,
       Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, float, cv::InputArrayOfArrays, bool)>("radius_match", &cv::DescriptorMatcher::radiusMatch,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, float, cv::InputArrayOfArrays, bool)>("radius_match", &cv::DescriptorMatcher::radiusMatch,
       Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::DescriptorMatcher::*)(const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+    .define_method<void(cv::DescriptorMatcher::*)(const cv::String &) const>("write", &cv::DescriptorMatcher::write,
       Arg("file_name"))
-    .define_method<void(cv::DescriptorMatcher::*)(const cv::String&)>("read", &cv::DescriptorMatcher::read,
+    .define_method<void(cv::DescriptorMatcher::*)(const cv::String &)>("read", &cv::DescriptorMatcher::read,
       Arg("file_name"))
-    .define_method<void(cv::DescriptorMatcher::*)(const cv::FileNode&)>("read", &cv::DescriptorMatcher::read,
+    .define_method<void(cv::DescriptorMatcher::*)(const cv::FileNode &)>("read", &cv::DescriptorMatcher::read,
       Arg("arg_0"))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&) const>("write", &cv::DescriptorMatcher::write,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage &) const>("write", &cv::DescriptorMatcher::write,
       Arg("arg_0"))
     .define_method<cv::Ptr<cv::DescriptorMatcher>(cv::DescriptorMatcher::*)(bool) const>("clone", &cv::DescriptorMatcher::clone,
       Arg("empty_train_data") = static_cast<bool>(false))
-    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String&)>("create", &cv::DescriptorMatcher::create,
+    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String &)>("create", &cv::DescriptorMatcher::create,
       Arg("descriptor_matcher_type"))
-    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType&)>("create", &cv::DescriptorMatcher::create,
+    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType &)>("create", &cv::DescriptorMatcher::create,
       Arg("matcher_type"))
-    .define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+    .define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage &, const cv::String &) const>("write", &cv::DescriptorMatcher::write,
       Arg("fs"), Arg("name"))
-    .define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage>&, const cv::String&) const>("write", &cv::DescriptorMatcher::write,
+    .define_method<void(cv::DescriptorMatcher::*)(const cv::Ptr<cv::FileStorage> &, const cv::String &) const>("write", &cv::DescriptorMatcher::write,
       Arg("fs"), Arg("name"));
 
   Enum<cv::DescriptorMatcher::MatcherType> rb_cCvDescriptorMatcherMatcherType = define_enum_under<cv::DescriptorMatcher::MatcherType>("MatcherType", rb_cCvDescriptorMatcher)
@@ -434,14 +434,14 @@ void Init_Features2d()
       Arg("empty_train_data") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::FlannBasedMatcher> rb_cCvFlannBasedMatcher = define_class_under<cv::FlannBasedMatcher, cv::DescriptorMatcher>(rb_mCv, "FlannBasedMatcher")
-    .define_constructor(Constructor<cv::FlannBasedMatcher, const cv::Ptr<cv::flann::IndexParams>&, const cv::Ptr<cv::flann::SearchParams>&>(),
-      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams>&>(cv::makePtr<cv::flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams>&>(cv::makePtr<cv::flann::SearchParams>()))
+    .define_constructor(Constructor<cv::FlannBasedMatcher, const cv::Ptr<cv::flann::IndexParams> &, const cv::Ptr<cv::flann::SearchParams> &>(),
+      Arg("index_params") = static_cast<const cv::Ptr<cv::flann::IndexParams> &>(cv::makePtr<cv::flann::KDTreeIndexParams>()), Arg("search_params") = static_cast<const cv::Ptr<cv::flann::SearchParams> &>(cv::makePtr<cv::flann::SearchParams>()))
     .define_method<void(cv::FlannBasedMatcher::*)(cv::InputArrayOfArrays)>("add", &cv::FlannBasedMatcher::add,
       Arg("descriptors"))
     .define_method<void(cv::FlannBasedMatcher::*)()>("clear", &cv::FlannBasedMatcher::clear)
-    .define_method<void(cv::FlannBasedMatcher::*)(const cv::FileNode&)>("read", &cv::FlannBasedMatcher::read,
+    .define_method<void(cv::FlannBasedMatcher::*)(const cv::FileNode &)>("read", &cv::FlannBasedMatcher::read,
       Arg("arg_0"))
-    .define_method<void(cv::FlannBasedMatcher::*)(cv::FileStorage&) const>("write", &cv::FlannBasedMatcher::write,
+    .define_method<void(cv::FlannBasedMatcher::*)(cv::FileStorage &) const>("write", &cv::FlannBasedMatcher::write,
       Arg("arg_0"))
     .define_method<void(cv::FlannBasedMatcher::*)()>("train", &cv::FlannBasedMatcher::train)
     .define_method<bool(cv::FlannBasedMatcher::*)() const>("mask_supported?", &cv::FlannBasedMatcher::isMaskSupported)
@@ -455,60 +455,60 @@ void Init_Features2d()
     .define_value("NOT_DRAW_SINGLE_POINTS", cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS)
     .define_value("DRAW_RICH_KEYPOINTS", cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputOutputArray, const cv::Scalar&, cv::DrawMatchesFlags)>("draw_keypoints", &cv::drawKeypoints,
-    Arg("image"), Arg("keypoints"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputOutputArray, const cv::Scalar &, cv::DrawMatchesFlags)>("draw_keypoints", &cv::drawKeypoints,
+    Arg("image"), Arg("keypoints"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<cv::DMatch>&, cv::InputOutputArray, const cv::Scalar&, const cv::Scalar&, const std::vector<char>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char>&>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<cv::DMatch>&, cv::InputOutputArray, const int, const cv::Scalar&, const cv::Scalar&, const std::vector<char>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("matches_thickness"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char>&>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const int, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("matches_thickness"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint>&, cv::InputArray, const std::vector<cv::KeyPoint>&, const std::vector<std::vector<cv::DMatch>>&, cv::InputOutputArray, const cv::Scalar&, const cv::Scalar&, const std::vector<std::vector<char>>&, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
-    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar&>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<std::vector<char>>&>(std::vector<std::vector<char> >()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<std::vector<cv::DMatch>> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<std::vector<char>> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+    Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<std::vector<char>> &>(std::vector<std::vector<char> >()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat&, const cv::Mat&, const cv::Mat&, std::vector<cv::KeyPoint>*, std::vector<cv::KeyPoint>*, float&, int&, const cv::Ptr<cv::FeatureDetector>&)>("evaluate_feature_detector", &cv::evaluateFeatureDetector,
-    Arg("img1"), Arg("img2"), Arg("h1to2"), Arg("keypoints1"), Arg("keypoints2"), Arg("repeatability"), Arg("corresp_count"), Arg("fdetector") = static_cast<const cv::Ptr<cv::FeatureDetector>&>(cv::Ptr<cv::FeatureDetector>()));
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, const cv::Mat &, std::vector<cv::KeyPoint> *, std::vector<cv::KeyPoint> *, float &, int &, const cv::Ptr<cv::FeatureDetector> &)>("evaluate_feature_detector", &cv::evaluateFeatureDetector,
+    Arg("img1"), Arg("img2"), Arg("h1to2"), Arg("keypoints1"), Arg("keypoints2"), Arg("repeatability"), Arg("corresp_count"), Arg("fdetector") = static_cast<const cv::Ptr<cv::FeatureDetector> &>(cv::Ptr<cv::FeatureDetector>()));
 
-  rb_mCv.define_module_function<void(*)(const std::vector<std::vector<cv::DMatch>>&, const std::vector<std::vector<uchar>>&, std::vector<cv::Point_<float>>&)>("compute_recall_precision_curve", &cv::computeRecallPrecisionCurve,
+  rb_mCv.define_module_function<void(*)(const std::vector<std::vector<cv::DMatch>> &, const std::vector<std::vector<uchar>> &, std::vector<cv::Point2f> &)>("compute_recall_precision_curve", &cv::computeRecallPrecisionCurve,
     Arg("matches1to2"), Arg("correct_matches1to2_mask"), Arg("recall_precision_curve"));
 
-  rb_mCv.define_module_function<float(*)(const std::vector<cv::Point_<float>>&, float)>("get_recall", &cv::getRecall,
+  rb_mCv.define_module_function<float(*)(const std::vector<cv::Point2f> &, float)>("get_recall", &cv::getRecall,
     Arg("recall_precision_curve"), Arg("l_precision"));
 
-  rb_mCv.define_module_function<int(*)(const std::vector<cv::Point_<float>>&, float)>("get_nearest_point", &cv::getNearestPoint,
+  rb_mCv.define_module_function<int(*)(const std::vector<cv::Point2f> &, float)>("get_nearest_point", &cv::getNearestPoint,
     Arg("recall_precision_curve"), Arg("l_precision"));
 
   Rice::Data_Type<cv::BOWTrainer> rb_cCvBOWTrainer = define_class_under<cv::BOWTrainer>(rb_mCv, "BOWTrainer")
-    .define_method<void(cv::BOWTrainer::*)(const cv::Mat&)>("add", &cv::BOWTrainer::add,
+    .define_method<void(cv::BOWTrainer::*)(const cv::Mat &)>("add", &cv::BOWTrainer::add,
       Arg("descriptors"))
-    .define_method<const std::vector<cv::Mat>&(cv::BOWTrainer::*)() const>("get_descriptors", &cv::BOWTrainer::getDescriptors)
+    .define_method<const std::vector<cv::Mat> &(cv::BOWTrainer::*)() const>("get_descriptors", &cv::BOWTrainer::getDescriptors)
     .define_method<int(cv::BOWTrainer::*)() const>("descriptors_count", &cv::BOWTrainer::descriptorsCount)
     .define_method<void(cv::BOWTrainer::*)()>("clear", &cv::BOWTrainer::clear)
     .define_method<cv::Mat(cv::BOWTrainer::*)() const>("cluster", &cv::BOWTrainer::cluster)
-    .define_method<cv::Mat(cv::BOWTrainer::*)(const cv::Mat&) const>("cluster", &cv::BOWTrainer::cluster,
+    .define_method<cv::Mat(cv::BOWTrainer::*)(const cv::Mat &) const>("cluster", &cv::BOWTrainer::cluster,
       Arg("descriptors"));
 
   Rice::Data_Type<cv::BOWKMeansTrainer> rb_cCvBOWKMeansTrainer = define_class_under<cv::BOWKMeansTrainer, cv::BOWTrainer>(rb_mCv, "BOWKMeansTrainer")
-    .define_constructor(Constructor<cv::BOWKMeansTrainer, int, const cv::TermCriteria&, int, int>(),
-      Arg("cluster_count"), Arg("termcrit") = static_cast<const cv::TermCriteria&>(cv::TermCriteria()), Arg("attempts") = static_cast<int>(3), Arg("flags") = static_cast<int>(cv::KMEANS_PP_CENTERS))
+    .define_constructor(Constructor<cv::BOWKMeansTrainer, int, const cv::TermCriteria &, int, int>(),
+      Arg("cluster_count"), Arg("termcrit") = static_cast<const cv::TermCriteria &>(cv::TermCriteria()), Arg("attempts") = static_cast<int>(3), Arg("flags") = static_cast<int>(cv::KMEANS_PP_CENTERS))
     .define_method<cv::Mat(cv::BOWKMeansTrainer::*)() const>("cluster", &cv::BOWKMeansTrainer::cluster)
-    .define_method<cv::Mat(cv::BOWKMeansTrainer::*)(const cv::Mat&) const>("cluster", &cv::BOWKMeansTrainer::cluster,
+    .define_method<cv::Mat(cv::BOWKMeansTrainer::*)(const cv::Mat &) const>("cluster", &cv::BOWKMeansTrainer::cluster,
       Arg("descriptors"));
 
   Rice::Data_Type<cv::BOWImgDescriptorExtractor> rb_cCvBOWImgDescriptorExtractor = define_class_under<cv::BOWImgDescriptorExtractor>(rb_mCv, "BOWImgDescriptorExtractor")
-    .define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::Feature2D>&, const cv::Ptr<cv::DescriptorMatcher>&>(),
+    .define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::Feature2D> &, const cv::Ptr<cv::DescriptorMatcher> &>(),
       Arg("dextractor"), Arg("dmatcher"))
-    .define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::DescriptorMatcher>&>(),
+    .define_constructor(Constructor<cv::BOWImgDescriptorExtractor, const cv::Ptr<cv::DescriptorMatcher> &>(),
       Arg("dmatcher"))
-    .define_method<void(cv::BOWImgDescriptorExtractor::*)(const cv::Mat&)>("set_vocabulary", &cv::BOWImgDescriptorExtractor::setVocabulary,
+    .define_method<void(cv::BOWImgDescriptorExtractor::*)(const cv::Mat &)>("set_vocabulary", &cv::BOWImgDescriptorExtractor::setVocabulary,
       Arg("vocabulary"))
-    .define_method<const cv::Mat&(cv::BOWImgDescriptorExtractor::*)() const>("get_vocabulary", &cv::BOWImgDescriptorExtractor::getVocabulary)
-    .define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, std::vector<cv::KeyPoint>&, cv::OutputArray, std::vector<std::vector<int>>*, cv::Mat*)>("compute", &cv::BOWImgDescriptorExtractor::compute,
-      Arg("image"), Arg("keypoints"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>>*>(0), Arg("descriptors") = static_cast<cv::Mat*>(0))
-    .define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, cv::OutputArray, std::vector<std::vector<int>>*)>("compute", &cv::BOWImgDescriptorExtractor::compute,
-      Arg("keypoint_descriptors"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>>*>(0))
-    .define_method<void(cv::BOWImgDescriptorExtractor::*)(const cv::Mat&, std::vector<cv::KeyPoint>&, cv::Mat&)>("compute2", &cv::BOWImgDescriptorExtractor::compute2,
+    .define_method<const cv::Mat &(cv::BOWImgDescriptorExtractor::*)() const>("get_vocabulary", &cv::BOWImgDescriptorExtractor::getVocabulary)
+    .define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, std::vector<cv::KeyPoint> &, cv::OutputArray, std::vector<std::vector<int>> *, cv::Mat *)>("compute", &cv::BOWImgDescriptorExtractor::compute,
+      Arg("image"), Arg("keypoints"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>> *>(0), Arg("descriptors") = static_cast<cv::Mat *>(0))
+    .define_method<void(cv::BOWImgDescriptorExtractor::*)(cv::InputArray, cv::OutputArray, std::vector<std::vector<int>> *)>("compute", &cv::BOWImgDescriptorExtractor::compute,
+      Arg("keypoint_descriptors"), Arg("img_descriptor"), Arg("point_idxs_of_clusters") = static_cast<std::vector<std::vector<int>> *>(0))
+    .define_method<void(cv::BOWImgDescriptorExtractor::*)(const cv::Mat &, std::vector<cv::KeyPoint> &, cv::Mat &)>("compute2", &cv::BOWImgDescriptorExtractor::compute2,
       Arg("image"), Arg("keypoints"), Arg("img_descriptor"))
     .define_method<int(cv::BOWImgDescriptorExtractor::*)() const>("descriptor_size", &cv::BOWImgDescriptorExtractor::descriptorSize)
     .define_method<int(cv::BOWImgDescriptorExtractor::*)() const>("descriptor_type", &cv::BOWImgDescriptorExtractor::descriptorType);

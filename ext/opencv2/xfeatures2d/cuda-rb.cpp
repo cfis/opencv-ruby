@@ -19,25 +19,25 @@ void Init_Xfeatures2d_Cuda()
       Arg("_hessian_threshold"), Arg("_n_octaves") = static_cast<int>(4), Arg("_n_octave_layers") = static_cast<int>(2), Arg("_extended") = static_cast<bool>(false), Arg("_keypoints_ratio") = static_cast<float>(0.01f), Arg("_upright") = static_cast<bool>(false))
     .define_method<int(cv::cuda::SURF_CUDA::*)() const>("descriptor_size", &cv::cuda::SURF_CUDA::descriptorSize)
     .define_method<int(cv::cuda::SURF_CUDA::*)() const>("default_norm", &cv::cuda::SURF_CUDA::defaultNorm)
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const std::vector<cv::KeyPoint>&, cv::cuda::GpuMat&)>("upload_keypoints", &cv::cuda::SURF_CUDA::uploadKeypoints,
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const std::vector<cv::KeyPoint> &, cv::cuda::GpuMat &)>("upload_keypoints", &cv::cuda::SURF_CUDA::uploadKeypoints,
       Arg("keypoints"), Arg("keypoints_gpu"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, std::vector<cv::KeyPoint>&)>("download_keypoints", &cv::cuda::SURF_CUDA::downloadKeypoints,
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, std::vector<cv::KeyPoint> &)>("download_keypoints", &cv::cuda::SURF_CUDA::downloadKeypoints,
       Arg("keypoints_gpu"), Arg("keypoints"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, std::vector<float>&)>("download_descriptors", &cv::cuda::SURF_CUDA::downloadDescriptors,
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, std::vector<float> &)>("download_descriptors", &cv::cuda::SURF_CUDA::downloadDescriptors,
       Arg("descriptors_gpu"), Arg("descriptors"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("call", &cv::cuda::SURF_CUDA::operator(),
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("call", &cv::cuda::SURF_CUDA::operator(),
       Arg("img"), Arg("mask"), Arg("keypoints"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, cv::cuda::GpuMat&, cv::cuda::GpuMat&, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, cv::cuda::GpuMat &, cv::cuda::GpuMat &, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
       Arg("img"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, cv::cuda::GpuMat&)>("detect", &cv::cuda::SURF_CUDA::detect,
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("detect", &cv::cuda::SURF_CUDA::detect,
       Arg("img"), Arg("mask"), Arg("keypoints"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, std::vector<cv::KeyPoint>&)>("call", &cv::cuda::SURF_CUDA::operator(),
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, std::vector<cv::KeyPoint> &)>("call", &cv::cuda::SURF_CUDA::operator(),
       Arg("img"), Arg("mask"), Arg("keypoints"))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, std::vector<cv::KeyPoint>&, cv::cuda::GpuMat&, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, std::vector<cv::KeyPoint> &, cv::cuda::GpuMat &, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
       Arg("img"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, cv::cuda::GpuMat&, cv::cuda::GpuMat&, bool)>("detect_with_descriptors", &cv::cuda::SURF_CUDA::detectWithDescriptors,
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, cv::cuda::GpuMat &, cv::cuda::GpuMat &, bool)>("detect_with_descriptors", &cv::cuda::SURF_CUDA::detectWithDescriptors,
       Arg("img"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat&, const cv::cuda::GpuMat&, std::vector<cv::KeyPoint>&, std::vector<float>&, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
+    .define_method<void(cv::cuda::SURF_CUDA::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, std::vector<cv::KeyPoint> &, std::vector<float> &, bool)>("call", &cv::cuda::SURF_CUDA::operator(),
       Arg("img"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false))
     .define_method<void(cv::cuda::SURF_CUDA::*)()>("release_memory", &cv::cuda::SURF_CUDA::releaseMemory)
     .define_attr("hessian_threshold", &cv::cuda::SURF_CUDA::hessianThreshold)

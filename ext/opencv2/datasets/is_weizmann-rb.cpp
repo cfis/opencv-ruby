@@ -19,7 +19,7 @@ void Init_Datasets_IsWeizmann()
     .define_attr("human_seg", &cv::datasets::IS_weizmannObj::humanSeg);
 
   Rice::Data_Type<cv::datasets::IS_weizmann> rb_cCvDatasetsISWeizmann = define_class_under<cv::datasets::IS_weizmann, cv::datasets::Dataset>(rb_mCvDatasets, "ISWeizmann")
-    .define_method<void(cv::datasets::IS_weizmann::*)(const std::string&)>("load", &cv::datasets::IS_weizmann::load,
+    .define_method<void(cv::datasets::IS_weizmann::*)(const std::string &)>("load", &cv::datasets::IS_weizmann::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::IS_weizmann>(*)()>("create", &cv::datasets::IS_weizmann::create);
 }

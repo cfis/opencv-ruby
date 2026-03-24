@@ -15,51 +15,51 @@ void Init_Cudafeatures2d()
     .define_singleton_function<cv::Ptr<cv::cuda::DescriptorMatcher>(*)(int)>("create_bf_matcher", &cv::cuda::DescriptorMatcher::createBFMatcher,
       Arg("norm_type") = static_cast<int>(cv::NORM_L2))
     .define_method<bool(cv::cuda::DescriptorMatcher::*)() const>("mask_supported?", &cv::cuda::DescriptorMatcher::isMaskSupported)
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(const std::vector<cv::cuda::GpuMat>&)>("add", &cv::cuda::DescriptorMatcher::add,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(const std::vector<cv::cuda::GpuMat> &)>("add", &cv::cuda::DescriptorMatcher::add,
       Arg("descriptors"))
-    .define_method<const std::vector<cv::cuda::GpuMat>&(cv::cuda::DescriptorMatcher::*)() const>("get_train_descriptors", &cv::cuda::DescriptorMatcher::getTrainDescriptors)
+    .define_method<const std::vector<cv::cuda::GpuMat> &(cv::cuda::DescriptorMatcher::*)() const>("get_train_descriptors", &cv::cuda::DescriptorMatcher::getTrainDescriptors)
     .define_method<void(cv::cuda::DescriptorMatcher::*)()>("clear", &cv::cuda::DescriptorMatcher::clear)
     .define_method<bool(cv::cuda::DescriptorMatcher::*)() const>("empty?", &cv::cuda::DescriptorMatcher::empty)
     .define_method<void(cv::cuda::DescriptorMatcher::*)()>("train", &cv::cuda::DescriptorMatcher::train)
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<cv::DMatch>&, cv::InputArray)>("match", &cv::cuda::DescriptorMatcher::match,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<cv::DMatch> &, cv::InputArray)>("match", &cv::cuda::DescriptorMatcher::match,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch>&, const std::vector<cv::cuda::GpuMat>&)>("match", &cv::cuda::DescriptorMatcher::match,
-      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream&)>("match_async", &cv::cuda::DescriptorMatcher::matchAsync,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, const std::vector<cv::cuda::GpuMat>&, cv::cuda::Stream&)>("match_async", &cv::cuda::DescriptorMatcher::matchAsync,
-      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch>&)>("match_convert", &cv::cuda::DescriptorMatcher::matchConvert,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch> &, const std::vector<cv::cuda::GpuMat> &)>("match", &cv::cuda::DescriptorMatcher::match,
+      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("match_async", &cv::cuda::DescriptorMatcher::matchAsync,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, const std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>("match_async", &cv::cuda::DescriptorMatcher::matchAsync,
+      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<cv::DMatch> &)>("match_convert", &cv::cuda::DescriptorMatcher::matchConvert,
       Arg("gpu_matches"), Arg("matches"))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>>&, int, cv::InputArray, bool)>("knn_match", &cv::cuda::DescriptorMatcher::knnMatch,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>> &, int, cv::InputArray, bool)>("knn_match", &cv::cuda::DescriptorMatcher::knnMatch,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, int, const std::vector<cv::cuda::GpuMat>&, bool)>("knn_match", &cv::cuda::DescriptorMatcher::knnMatch,
-      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::InputArray, cv::cuda::Stream&)>("knn_match_async", &cv::cuda::DescriptorMatcher::knnMatchAsync,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, int, const std::vector<cv::cuda::GpuMat>&, cv::cuda::Stream&)>("knn_match_async", &cv::cuda::DescriptorMatcher::knnMatchAsync,
-      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, bool)>("knn_match_convert", &cv::cuda::DescriptorMatcher::knnMatchConvert,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, int, const std::vector<cv::cuda::GpuMat> &, bool)>("knn_match", &cv::cuda::DescriptorMatcher::knnMatch,
+      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::InputArray, cv::cuda::Stream &)>("knn_match_async", &cv::cuda::DescriptorMatcher::knnMatchAsync,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, int, const std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>("knn_match_async", &cv::cuda::DescriptorMatcher::knnMatchAsync,
+      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, bool)>("knn_match_convert", &cv::cuda::DescriptorMatcher::knnMatchConvert,
       Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>>&, float, cv::InputArray, bool)>("radius_match", &cv::cuda::DescriptorMatcher::radiusMatch,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::DMatch>> &, float, cv::InputArray, bool)>("radius_match", &cv::cuda::DescriptorMatcher::radiusMatch,
       Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, float, const std::vector<cv::cuda::GpuMat>&, bool)>("radius_match", &cv::cuda::DescriptorMatcher::radiusMatch,
-      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, float, cv::InputArray, cv::cuda::Stream&)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, float, const std::vector<cv::cuda::GpuMat>&, cv::cuda::Stream&)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
-      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat>&>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>>&, bool)>("radius_match_convert", &cv::cuda::DescriptorMatcher::radiusMatchConvert,
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, float, const std::vector<cv::cuda::GpuMat> &, bool)>("radius_match", &cv::cuda::DescriptorMatcher::radiusMatch,
+      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::InputArray, cv::OutputArray, float, cv::InputArray, cv::cuda::Stream &)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, cv::OutputArray, float, const std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>("radius_match_async", &cv::cuda::DescriptorMatcher::radiusMatchAsync,
+      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::cuda::GpuMat> &>(std::vector<cv::cuda::GpuMat>()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::DescriptorMatcher::*)(cv::InputArray, std::vector<std::vector<cv::DMatch>> &, bool)>("radius_match_convert", &cv::cuda::DescriptorMatcher::radiusMatchConvert,
       Arg("gpu_matches"), Arg("matches"), Arg("compact_result") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::cuda::Feature2DAsync> rb_cCvCudaFeature2DAsync = define_class_under<cv::cuda::Feature2DAsync, cv::Feature2D>(rb_mCvCuda, "Feature2DAsync")
-    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream&)>("detect_async", &cv::cuda::Feature2DAsync::detectAsync,
-      Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::cuda::Stream&)>("compute_async", &cv::cuda::Feature2DAsync::computeAsync,
-      Arg("image"), Arg("keypoints"), Arg("descriptors"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream&)>("detect_and_compute_async", &cv::cuda::Feature2DAsync::detectAndComputeAsync,
-      Arg("image"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()))
-    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, std::vector<cv::KeyPoint>&)>("convert", &cv::cuda::Feature2DAsync::convert,
+    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("detect_async", &cv::cuda::Feature2DAsync::detectAsync,
+      Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::cuda::Stream &)>("compute_async", &cv::cuda::Feature2DAsync::computeAsync,
+      Arg("image"), Arg("keypoints"), Arg("descriptors"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("detect_and_compute_async", &cv::cuda::Feature2DAsync::detectAndComputeAsync,
+      Arg("image"), Arg("mask"), Arg("keypoints"), Arg("descriptors"), Arg("use_provided_keypoints") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()))
+    .define_method<void(cv::cuda::Feature2DAsync::*)(cv::InputArray, std::vector<cv::KeyPoint> &)>("convert", &cv::cuda::Feature2DAsync::convert,
       Arg("gpu_keypoints"), Arg("keypoints"));
 
   Rice::Data_Type<cv::cuda::FastFeatureDetector> rb_cCvCudaFastFeatureDetector = define_class_under<cv::cuda::FastFeatureDetector, cv::cuda::Feature2DAsync>(rb_mCvCuda, "FastFeatureDetector")

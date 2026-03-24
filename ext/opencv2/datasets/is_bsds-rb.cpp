@@ -16,7 +16,7 @@ void Init_Datasets_IsBsds()
     .define_attr("name", &cv::datasets::IS_bsdsObj::name);
 
   Rice::Data_Type<cv::datasets::IS_bsds> rb_cCvDatasetsISBsds = define_class_under<cv::datasets::IS_bsds, cv::datasets::Dataset>(rb_mCvDatasets, "ISBsds")
-    .define_method<void(cv::datasets::IS_bsds::*)(const std::string&)>("load", &cv::datasets::IS_bsds::load,
+    .define_method<void(cv::datasets::IS_bsds::*)(const std::string &)>("load", &cv::datasets::IS_bsds::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::IS_bsds>(*)()>("create", &cv::datasets::IS_bsds::create);
 }

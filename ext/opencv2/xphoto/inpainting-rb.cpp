@@ -16,6 +16,6 @@ void Init_Xphoto_Inpainting()
     .define_value("INPAINT_FSR_BEST", cv::xphoto::InpaintTypes::INPAINT_FSR_BEST)
     .define_value("INPAINT_FSR_FAST", cv::xphoto::InpaintTypes::INPAINT_FSR_FAST);
 
-  rb_mCvXphoto.define_module_function<void(*)(const cv::Mat&, const cv::Mat&, cv::Mat&, const int)>("inpaint", &cv::xphoto::inpaint,
+  rb_mCvXphoto.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &, const int)>("inpaint", &cv::xphoto::inpaint,
     Arg("src"), Arg("mask"), Arg("dst"), Arg("algorithm_type"));
 }

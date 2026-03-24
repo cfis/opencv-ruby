@@ -12,8 +12,8 @@ void Init_Cudafilters()
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Rice::Data_Type<cv::cuda::Filter> rb_cCvCudaFilter = define_class_under<cv::cuda::Filter, cv::Algorithm>(rb_mCvCuda, "Filter")
-    .define_method<void(cv::cuda::Filter::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream&)>("apply", &cv::cuda::Filter::apply,
-      Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null()));
+    .define_method<void(cv::cuda::Filter::*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("apply", &cv::cuda::Filter::apply,
+      Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::Filter>(*)(int, int, cv::Size, cv::Point, int, cv::Scalar)>("create_box_filter", &cv::cuda::createBoxFilter,
     Arg("src_type"), Arg("dst_type"), Arg("ksize"), Arg("anchor") = static_cast<cv::Point>(cv::Point(-1, -1)), Arg("border_mode") = static_cast<int>(cv::BORDER_DEFAULT), Arg("border_val") = static_cast<cv::Scalar>(cv::Scalar::all(0)));

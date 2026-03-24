@@ -26,7 +26,7 @@ void Init_Datasets_HpeHumaneva()
     .define_value("humaneva_2", cv::datasets::datasetType::humaneva_2);
 
   Rice::Data_Type<cv::datasets::HPE_humaneva> rb_cCvDatasetsHPEHumaneva = define_class_under<cv::datasets::HPE_humaneva, cv::datasets::Dataset>(rb_mCvDatasets, "HPEHumaneva")
-    .define_method<void(cv::datasets::HPE_humaneva::*)(const std::string&)>("load", &cv::datasets::HPE_humaneva::load,
+    .define_method<void(cv::datasets::HPE_humaneva::*)(const std::string &)>("load", &cv::datasets::HPE_humaneva::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::HPE_humaneva>(*)(int)>("create", &cv::datasets::HPE_humaneva::create,
       Arg("num") = static_cast<int>(cv::datasets::humaneva_1));

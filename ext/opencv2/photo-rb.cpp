@@ -19,7 +19,7 @@ void Init_Photo()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, int, int)>("fast_nl_means_denoising", &cv::fastNlMeansDenoising,
     Arg("src"), Arg("dst"), Arg("h") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const std::vector<float>&, int, int, int)>("fast_nl_means_denoising", &cv::fastNlMeansDenoising,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising", &cv::fastNlMeansDenoising,
     Arg("src"), Arg("dst"), Arg("h"), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21), Arg("norm_type") = static_cast<int>(cv::NORM_L2));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float, int, int)>("fast_nl_means_denoising_colored", &cv::fastNlMeansDenoisingColored,
@@ -28,13 +28,13 @@ void Init_Photo()
   rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, int, int)>("fast_nl_means_denoising_multi", &cv::fastNlMeansDenoisingMulti,
     Arg("src_imgs"), Arg("dst"), Arg("img_to_denoise_index"), Arg("temporal_window_size"), Arg("h") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, const std::vector<float>&, int, int, int)>("fast_nl_means_denoising_multi", &cv::fastNlMeansDenoisingMulti,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising_multi", &cv::fastNlMeansDenoisingMulti,
     Arg("src_imgs"), Arg("dst"), Arg("img_to_denoise_index"), Arg("temporal_window_size"), Arg("h"), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21), Arg("norm_type") = static_cast<int>(cv::NORM_L2));
 
   rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, float, int, int)>("fast_nl_means_denoising_colored_multi", &cv::fastNlMeansDenoisingColoredMulti,
     Arg("src_imgs"), Arg("dst"), Arg("img_to_denoise_index"), Arg("temporal_window_size"), Arg("h") = static_cast<float>(3), Arg("h_color") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(const std::vector<cv::Mat>&, cv::Mat&, double, int)>("denoise_tvl1", &cv::denoise_TVL1,
+  rb_mCv.define_module_function<void(*)(const std::vector<cv::Mat> &, cv::Mat &, double, int)>("denoise_tvl1", &cv::denoise_TVL1,
     Arg("observations"), Arg("result"), Arg("lambda") = static_cast<double>(1.0), Arg("niters") = static_cast<int>(30));
 
   rb_mCv.define_constant("LDR_SIZE", (int)cv::LDR_SIZE);
@@ -86,13 +86,13 @@ void Init_Photo()
     Arg("gamma") = static_cast<float>(1.0f), Arg("scale") = static_cast<float>(0.7f), Arg("saturation") = static_cast<float>(1.0f));
 
   Rice::Data_Type<cv::AlignExposures> rb_cCvAlignExposures = define_class_under<cv::AlignExposures, cv::Algorithm>(rb_mCv, "AlignExposures")
-    .define_method<void(cv::AlignExposures::*)(cv::InputArrayOfArrays, std::vector<cv::Mat>&, cv::InputArray, cv::InputArray)>("process", &cv::AlignExposures::process,
+    .define_method<void(cv::AlignExposures::*)(cv::InputArrayOfArrays, std::vector<cv::Mat> &, cv::InputArray, cv::InputArray)>("process", &cv::AlignExposures::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response"));
 
   Rice::Data_Type<cv::AlignMTB> rb_cCvAlignMTB = define_class_under<cv::AlignMTB, cv::AlignExposures>(rb_mCv, "AlignMTB")
-    .define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat>&, cv::InputArray, cv::InputArray)>("process", &cv::AlignMTB::process,
+    .define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat> &, cv::InputArray, cv::InputArray)>("process", &cv::AlignMTB::process,
       Arg("src"), Arg("dst"), Arg("times"), Arg("response"))
-    .define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat>&)>("process", &cv::AlignMTB::process,
+    .define_method<void(cv::AlignMTB::*)(cv::InputArrayOfArrays, std::vector<cv::Mat> &)>("process", &cv::AlignMTB::process,
       Arg("src"), Arg("dst"))
     .define_method<cv::Point(cv::AlignMTB::*)(cv::InputArray, cv::InputArray)>("calculate_shift", &cv::AlignMTB::calculateShift,
       Arg("img0"), Arg("img1"))

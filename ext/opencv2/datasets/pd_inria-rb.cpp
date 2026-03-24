@@ -25,7 +25,7 @@ void Init_Datasets_PdInria()
     .define_attr("bndboxes", &cv::datasets::PD_inriaObj::bndboxes);
 
   Rice::Data_Type<cv::datasets::PD_inria> rb_cCvDatasetsPDInria = define_class_under<cv::datasets::PD_inria, cv::datasets::Dataset>(rb_mCvDatasets, "PDInria")
-    .define_method<void(cv::datasets::PD_inria::*)(const std::string&)>("load", &cv::datasets::PD_inria::load,
+    .define_method<void(cv::datasets::PD_inria::*)(const std::string &)>("load", &cv::datasets::PD_inria::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::PD_inria>(*)()>("create", &cv::datasets::PD_inria::create);
 }

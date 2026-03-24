@@ -12,11 +12,11 @@ void Init_Cudabgsegm()
   Module rb_mCvCuda = define_module_under(rb_mCv, "Cuda");
 
   Rice::Data_Type<cv::cuda::BackgroundSubtractorMOG> rb_cCvCudaBackgroundSubtractorMOG = define_class_under<cv::cuda::BackgroundSubtractorMOG, cv::BackgroundSubtractor>(rb_mCvCuda, "BackgroundSubtractorMOG")
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::InputArray, cv::OutputArray, double, cv::cuda::Stream&)>("apply", &cv::cuda::BackgroundSubtractorMOG::apply,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::InputArray, cv::OutputArray, double, cv::cuda::Stream &)>("apply", &cv::cuda::BackgroundSubtractorMOG::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate"), Arg("stream"))
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::OutputArray, cv::cuda::Stream&) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::OutputArray, cv::cuda::Stream &) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
       Arg("background_image"), Arg("stream"))
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(cv::cuda::GpuMat &, cv::cuda::Stream &)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG::getBackgroundImage,
       Arg("background_image"), Arg("stream"))
     .define_method<int(cv::cuda::BackgroundSubtractorMOG::*)() const>("get_history", &cv::cuda::BackgroundSubtractorMOG::getHistory)
     .define_method<void(cv::cuda::BackgroundSubtractorMOG::*)(int)>("set_history", &cv::cuda::BackgroundSubtractorMOG::setHistory,
@@ -35,11 +35,11 @@ void Init_Cudabgsegm()
     Arg("history") = static_cast<int>(200), Arg("nmixtures") = static_cast<int>(5), Arg("background_ratio") = static_cast<double>(0.7), Arg("noise_sigma") = static_cast<double>(0));
 
   Rice::Data_Type<cv::cuda::BackgroundSubtractorMOG2> rb_cCvCudaBackgroundSubtractorMOG2 = define_class_under<cv::cuda::BackgroundSubtractorMOG2, cv::BackgroundSubtractorMOG2>(rb_mCvCuda, "BackgroundSubtractorMOG2")
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::InputArray, cv::OutputArray, double, cv::cuda::Stream&)>("apply", &cv::cuda::BackgroundSubtractorMOG2::apply,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::InputArray, cv::OutputArray, double, cv::cuda::Stream &)>("apply", &cv::cuda::BackgroundSubtractorMOG2::apply,
       Arg("image"), Arg("fgmask"), Arg("learning_rate"), Arg("stream"))
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::OutputArray, cv::cuda::Stream&) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::OutputArray, cv::cuda::Stream &) const>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
       Arg("background_image"), Arg("stream"))
-    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::cuda::GpuMat&, cv::cuda::Stream&)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
+    .define_method<void(cv::cuda::BackgroundSubtractorMOG2::*)(cv::cuda::GpuMat &, cv::cuda::Stream &)>("get_background_image", &cv::cuda::BackgroundSubtractorMOG2::getBackgroundImage,
       Arg("background_image"), Arg("stream"));
 
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::BackgroundSubtractorMOG2>(*)(int, double, bool)>("create_background_subtractor_mog2", &cv::cuda::createBackgroundSubtractorMOG2,

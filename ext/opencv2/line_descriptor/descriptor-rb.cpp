@@ -39,8 +39,8 @@ void Init_LineDescriptor_Descriptor()
     .define_constructor(Constructor<cv::line_descriptor::KeyLine>());
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor> rb_cCvLineDescriptorBinaryDescriptor = define_class_under<cv::line_descriptor::BinaryDescriptor, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptor")
-    .define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor, const cv::line_descriptor::BinaryDescriptor::Params&>(),
-      Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params&>(cv::line_descriptor::BinaryDescriptor::Params()))
+    .define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor, const cv::line_descriptor::BinaryDescriptor::Params &>(),
+      Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params &>(cv::line_descriptor::BinaryDescriptor::ParamsaryDescriptor::Params()))
     .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor)
     .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor,
       Arg("parameters"))
@@ -53,22 +53,22 @@ void Init_LineDescriptor_Descriptor()
     .define_method<int(cv::line_descriptor::BinaryDescriptor::*)()>("get_reduction_ratio", &cv::line_descriptor::BinaryDescriptor::getReductionRatio)
     .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(int)>("set_reduction_ratio", &cv::line_descriptor::BinaryDescriptor::setReductionRatio,
       Arg("r_ratio"))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::FileNode&)>("read", &cv::line_descriptor::BinaryDescriptor::read,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::FileNode &)>("read", &cv::line_descriptor::BinaryDescriptor::read,
       Arg("fn"))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(cv::FileStorage&) const>("write", &cv::line_descriptor::BinaryDescriptor::write,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(cv::FileStorage &) const>("write", &cv::line_descriptor::BinaryDescriptor::write,
       Arg("fs"))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::Mat&, std::vector<cv::line_descriptor::KeyLine>&, const cv::Mat&)>("detect", &cv::line_descriptor::BinaryDescriptor::detect,
-      Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat()))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const std::vector<cv::Mat>&, std::vector<std::vector<cv::line_descriptor::KeyLine>>&, const std::vector<cv::Mat>&) const>("detect", &cv::line_descriptor::BinaryDescriptor::detect,
-      Arg("images"), Arg("keylines"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::Mat&, std::vector<cv::line_descriptor::KeyLine>&, cv::Mat&, bool) const>("compute", &cv::line_descriptor::BinaryDescriptor::compute,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::Mat &, std::vector<cv::line_descriptor::KeyLine> &, const cv::Mat &)>("detect", &cv::line_descriptor::BinaryDescriptor::detect,
+      Arg("image"), Arg("keypoints"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()))
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const std::vector<cv::Mat> &, std::vector<std::vector<cv::line_descriptor::KeyLine>> &, const std::vector<cv::Mat> &) const>("detect", &cv::line_descriptor::BinaryDescriptor::detect,
+      Arg("images"), Arg("keylines"), Arg("masks") = static_cast<const std::vector<cv::Mat> &>(std::vector<cv::Mat>()))
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const cv::Mat &, std::vector<cv::line_descriptor::KeyLine> &, cv::Mat &, bool) const>("compute", &cv::line_descriptor::BinaryDescriptor::compute,
       Arg("image"), Arg("keylines"), Arg("descriptors"), Arg("return_float_descr") = static_cast<bool>(false))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const std::vector<cv::Mat>&, std::vector<std::vector<cv::line_descriptor::KeyLine>>&, std::vector<cv::Mat>&, bool) const>("compute", &cv::line_descriptor::BinaryDescriptor::compute,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(const std::vector<cv::Mat> &, std::vector<std::vector<cv::line_descriptor::KeyLine>> &, std::vector<cv::Mat> &, bool) const>("compute", &cv::line_descriptor::BinaryDescriptor::compute,
       Arg("images"), Arg("keylines"), Arg("descriptors"), Arg("return_float_descr") = static_cast<bool>(false))
     .define_method<int(cv::line_descriptor::BinaryDescriptor::*)() const>("descriptor_size", &cv::line_descriptor::BinaryDescriptor::descriptorSize)
     .define_method<int(cv::line_descriptor::BinaryDescriptor::*)() const>("descriptor_type", &cv::line_descriptor::BinaryDescriptor::descriptorType)
     .define_method<int(cv::line_descriptor::BinaryDescriptor::*)() const>("default_norm", &cv::line_descriptor::BinaryDescriptor::defaultNorm)
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(cv::InputArray, cv::InputArray, std::vector<cv::line_descriptor::KeyLine>&, cv::OutputArray, bool, bool) const>("call", &cv::line_descriptor::BinaryDescriptor::operator(),
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(cv::InputArray, cv::InputArray, std::vector<cv::line_descriptor::KeyLine> &, cv::OutputArray, bool, bool) const>("call", &cv::line_descriptor::BinaryDescriptor::operator(),
       Arg("image"), Arg("mask"), Arg("keylines"), Arg("descriptors"), Arg("use_provided_key_lines") = static_cast<bool>(false), Arg("return_float_descr") = static_cast<bool>(false));
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor::Params> rb_cCvLineDescriptorBinaryDescriptorParams = define_class_under<cv::line_descriptor::BinaryDescriptor::Params>(rb_cCvLineDescriptorBinaryDescriptor, "Params")
@@ -77,9 +77,9 @@ void Init_LineDescriptor_Descriptor()
     .define_attr("width_of_band_", &cv::line_descriptor::BinaryDescriptor::Params::widthOfBand_)
     .define_attr("reduction_ratio", &cv::line_descriptor::BinaryDescriptor::Params::reductionRatio)
     .define_attr("ksize_", &cv::line_descriptor::BinaryDescriptor::Params::ksize_)
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::Params::*)(const cv::FileNode&)>("read", &cv::line_descriptor::BinaryDescriptor::Params::read,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::Params::*)(const cv::FileNode &)>("read", &cv::line_descriptor::BinaryDescriptor::Params::read,
       Arg("fn"))
-    .define_method<void(cv::line_descriptor::BinaryDescriptor::Params::*)(cv::FileStorage&) const>("write", &cv::line_descriptor::BinaryDescriptor::Params::write,
+    .define_method<void(cv::line_descriptor::BinaryDescriptor::Params::*)(cv::FileStorage &) const>("write", &cv::line_descriptor::BinaryDescriptor::Params::write,
       Arg("fs"));
 
   Rice::Data_Type<cv::line_descriptor::LSDParam> rb_cCvLineDescriptorLSDParam = define_class_under<cv::line_descriptor::LSDParam>(rb_mCvLineDescriptor, "LSDParam")
@@ -99,25 +99,25 @@ void Init_LineDescriptor_Descriptor()
     .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector)
     .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector,
       Arg("params"))
-    .define_method<void(cv::line_descriptor::LSDDetector::*)(const cv::Mat&, std::vector<cv::line_descriptor::KeyLine>&, int, int, const cv::Mat&)>("detect", &cv::line_descriptor::LSDDetector::detect,
-      Arg("image"), Arg("keypoints"), Arg("scale"), Arg("num_octaves"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat()))
-    .define_method<void(cv::line_descriptor::LSDDetector::*)(const std::vector<cv::Mat>&, std::vector<std::vector<cv::line_descriptor::KeyLine>>&, int, int, const std::vector<cv::Mat>&) const>("detect", &cv::line_descriptor::LSDDetector::detect,
-      Arg("images"), Arg("keylines"), Arg("scale"), Arg("num_octaves"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()));
+    .define_method<void(cv::line_descriptor::LSDDetector::*)(const cv::Mat &, std::vector<cv::line_descriptor::KeyLine> &, int, int, const cv::Mat &)>("detect", &cv::line_descriptor::LSDDetector::detect,
+      Arg("image"), Arg("keypoints"), Arg("scale"), Arg("num_octaves"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()))
+    .define_method<void(cv::line_descriptor::LSDDetector::*)(const std::vector<cv::Mat> &, std::vector<std::vector<cv::line_descriptor::KeyLine>> &, int, int, const std::vector<cv::Mat> &) const>("detect", &cv::line_descriptor::LSDDetector::detect,
+      Arg("images"), Arg("keylines"), Arg("scale"), Arg("num_octaves"), Arg("masks") = static_cast<const std::vector<cv::Mat> &>(std::vector<cv::Mat>()));
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptorMatcher> rb_cCvLineDescriptorBinaryDescriptorMatcher = define_class_under<cv::line_descriptor::BinaryDescriptorMatcher, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptorMatcher")
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, const cv::Mat&, std::vector<cv::DMatch>&, const cv::Mat&) const>("match", &cv::line_descriptor::BinaryDescriptorMatcher::match,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat()))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, std::vector<cv::DMatch>&, const std::vector<cv::Mat>&)>("match", &cv::line_descriptor::BinaryDescriptorMatcher::match,
-      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, const cv::Mat&, std::vector<std::vector<cv::DMatch>>&, int, const cv::Mat&, bool) const>("knn_match", &cv::line_descriptor::BinaryDescriptorMatcher::knnMatch,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, std::vector<std::vector<cv::DMatch>>&, int, const std::vector<cv::Mat>&, bool)>("knn_match", &cv::line_descriptor::BinaryDescriptorMatcher::knnMatch,
-      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, const cv::Mat&, std::vector<std::vector<cv::DMatch>>&, float, const cv::Mat&, bool) const>("radius_match", &cv::line_descriptor::BinaryDescriptorMatcher::radiusMatch,
-      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<const cv::Mat&>(cv::Mat()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat&, std::vector<std::vector<cv::DMatch>>&, float, const std::vector<cv::Mat>&, bool)>("radius_match", &cv::line_descriptor::BinaryDescriptorMatcher::radiusMatch,
-      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::Mat>&>(std::vector<cv::Mat>()), Arg("compact_result") = static_cast<bool>(false))
-    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const std::vector<cv::Mat>&)>("add", &cv::line_descriptor::BinaryDescriptorMatcher::add,
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, const cv::Mat &, std::vector<cv::DMatch> &, const cv::Mat &) const>("match", &cv::line_descriptor::BinaryDescriptorMatcher::match,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, std::vector<cv::DMatch> &, const std::vector<cv::Mat> &)>("match", &cv::line_descriptor::BinaryDescriptorMatcher::match,
+      Arg("query_descriptors"), Arg("matches"), Arg("masks") = static_cast<const std::vector<cv::Mat> &>(std::vector<cv::Mat>()))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, const cv::Mat &, std::vector<std::vector<cv::DMatch>> &, int, const cv::Mat &, bool) const>("knn_match", &cv::line_descriptor::BinaryDescriptorMatcher::knnMatch,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("k"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, std::vector<std::vector<cv::DMatch>> &, int, const std::vector<cv::Mat> &, bool)>("knn_match", &cv::line_descriptor::BinaryDescriptorMatcher::knnMatch,
+      Arg("query_descriptors"), Arg("matches"), Arg("k"), Arg("masks") = static_cast<const std::vector<cv::Mat> &>(std::vector<cv::Mat>()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, const cv::Mat &, std::vector<std::vector<cv::DMatch>> &, float, const cv::Mat &, bool) const>("radius_match", &cv::line_descriptor::BinaryDescriptorMatcher::radiusMatch,
+      Arg("query_descriptors"), Arg("train_descriptors"), Arg("matches"), Arg("max_distance"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const cv::Mat &, std::vector<std::vector<cv::DMatch>> &, float, const std::vector<cv::Mat> &, bool)>("radius_match", &cv::line_descriptor::BinaryDescriptorMatcher::radiusMatch,
+      Arg("query_descriptors"), Arg("matches"), Arg("max_distance"), Arg("masks") = static_cast<const std::vector<cv::Mat> &>(std::vector<cv::Mat>()), Arg("compact_result") = static_cast<bool>(false))
+    .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)(const std::vector<cv::Mat> &)>("add", &cv::line_descriptor::BinaryDescriptorMatcher::add,
       Arg("descriptors"))
     .define_method<void(cv::line_descriptor::BinaryDescriptorMatcher::*)()>("train", &cv::line_descriptor::BinaryDescriptorMatcher::train)
     .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptorMatcher>(*)()>("create_binary_descriptor_matcher", &cv::line_descriptor::BinaryDescriptorMatcher::createBinaryDescriptorMatcher)
@@ -130,9 +130,9 @@ void Init_LineDescriptor_Descriptor()
     .define_constant("DRAW_OVER_OUTIMG", (int)cv::line_descriptor::DrawLinesMatchesFlags::DRAW_OVER_OUTIMG)
     .define_constant("NOT_DRAW_SINGLE_LINES", (int)cv::line_descriptor::DrawLinesMatchesFlags::NOT_DRAW_SINGLE_LINES);
 
-  rb_mCvLineDescriptor.define_module_function<void(*)(const cv::Mat&, const std::vector<cv::line_descriptor::KeyLine>&, const cv::Mat&, const std::vector<cv::line_descriptor::KeyLine>&, const std::vector<cv::DMatch>&, cv::Mat&, const cv::Scalar&, const cv::Scalar&, const std::vector<char>&, int)>("draw_line_matches", &cv::line_descriptor::drawLineMatches,
-    Arg("img1"), Arg("keylines1"), Arg("img2"), Arg("keylines2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar&>(cv::Scalar::all( -1 )), Arg("single_line_color") = static_cast<const cv::Scalar&>(cv::Scalar::all( -1 )), Arg("matches_mask") = static_cast<const std::vector<char>&>(std::vector<char>()), Arg("flags") = static_cast<int>(cv::line_descriptor::DrawLinesMatchesFlags::DEFAULT));
+  rb_mCvLineDescriptor.define_module_function<void(*)(const cv::Mat &, const std::vector<cv::line_descriptor::KeyLine> &, const cv::Mat &, const std::vector<cv::line_descriptor::KeyLine> &, const std::vector<cv::DMatch> &, cv::Mat &, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, int)>("draw_line_matches", &cv::line_descriptor::drawLineMatches,
+    Arg("img1"), Arg("keylines1"), Arg("img2"), Arg("keylines2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all( -1 )), Arg("single_line_color") = static_cast<const cv::Scalar &>(cv::Scalar::all( -1 )), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<int>(cv::line_descriptor::DrawLinesMatchesFlags::DEFAULT));
 
-  rb_mCvLineDescriptor.define_module_function<void(*)(const cv::Mat&, const std::vector<cv::line_descriptor::KeyLine>&, cv::Mat&, const cv::Scalar&, int)>("draw_keylines", &cv::line_descriptor::drawKeylines,
-    Arg("image"), Arg("keylines"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar&>(cv::Scalar::all( -1 )), Arg("flags") = static_cast<int>(cv::line_descriptor::DrawLinesMatchesFlags::DEFAULT));
+  rb_mCvLineDescriptor.define_module_function<void(*)(const cv::Mat &, const std::vector<cv::line_descriptor::KeyLine> &, cv::Mat &, const cv::Scalar &, int)>("draw_keylines", &cv::line_descriptor::drawKeylines,
+    Arg("image"), Arg("keylines"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar &>(cv::Scalar::all( -1 )), Arg("flags") = static_cast<int>(cv::line_descriptor::DrawLinesMatchesFlags::DEFAULT));
 }

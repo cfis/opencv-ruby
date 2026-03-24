@@ -18,17 +18,17 @@ void Init_Superres()
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)()>("create_frame_source_empty", &cv::superres::createFrameSource_Empty);
 
-  rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(const cv::String&)>("create_frame_source_video", &cv::superres::createFrameSource_Video,
+  rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(const cv::String &)>("create_frame_source_video", &cv::superres::createFrameSource_Video,
     Arg("file_name"));
 
-  rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(const cv::String&)>("create_frame_source_video_cuda", &cv::superres::createFrameSource_Video_CUDA,
+  rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(const cv::String &)>("create_frame_source_video_cuda", &cv::superres::createFrameSource_Video_CUDA,
     Arg("file_name"));
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::FrameSource>(*)(int)>("create_frame_source_camera", &cv::superres::createFrameSource_Camera,
     Arg("device_id") = static_cast<int>(0));
 
-  Rice::Data_Type<cv::superres::SuperResolution> rb_cCvSuperresSuperResolution = define_class_under<cv::superres::SuperResolution, cv::superres::FrameSource>(rb_mCvSuperres, "SuperResolution")
-    .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::FrameSource>&)>("set_input", &cv::superres::SuperResolution::setInput,
+  Rice::Data_Type<cv::superres::SuperResolution> rb_cCvSuperresSuperResolution = define_class_under<cv::superres::SuperResolution, cv::Algorithm>(rb_mCvSuperres, "SuperResolution")
+    .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::FrameSource> &)>("set_input", &cv::superres::SuperResolution::setInput,
       Arg("frame_source"))
     .define_method<void(cv::superres::SuperResolution::*)(cv::OutputArray)>("next_frame", &cv::superres::SuperResolution::nextFrame,
       Arg("frame"))
@@ -62,7 +62,7 @@ void Init_Superres()
     .define_method<void(cv::superres::SuperResolution::*)(int)>("set_temporal_area_radius", &cv::superres::SuperResolution::setTemporalAreaRadius,
       Arg("val"))
     .define_method<cv::Ptr<cv::superres::DenseOpticalFlowExt>(cv::superres::SuperResolution::*)() const>("get_optical_flow", &cv::superres::SuperResolution::getOpticalFlow)
-    .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::DenseOpticalFlowExt>&)>("set_optical_flow", &cv::superres::SuperResolution::setOpticalFlow,
+    .define_method<void(cv::superres::SuperResolution::*)(const cv::Ptr<cv::superres::DenseOpticalFlowExt> &)>("set_optical_flow", &cv::superres::SuperResolution::setOpticalFlow,
       Arg("val"));
 
   rb_mCvSuperres.define_module_function<cv::Ptr<cv::superres::SuperResolution>(*)()>("create_super_resolution_btvl1", &cv::superres::createSuperResolution_BTVL1);

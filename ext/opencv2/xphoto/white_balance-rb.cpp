@@ -54,8 +54,8 @@ void Init_Xphoto_WhiteBalance()
     .define_method<void(cv::xphoto::LearningBasedWB::*)(int)>("set_hist_bin_num", &cv::xphoto::LearningBasedWB::setHistBinNum,
       Arg("val"));
 
-  rb_mCvXphoto.define_module_function<cv::Ptr<cv::xphoto::LearningBasedWB>(*)(const cv::String&)>("create_learning_based_wb", &cv::xphoto::createLearningBasedWB,
-    Arg("path_to_model") = static_cast<const cv::String&>(cv::String()));
+  rb_mCvXphoto.define_module_function<cv::Ptr<cv::xphoto::LearningBasedWB>(*)(const cv::String &)>("create_learning_based_wb", &cv::xphoto::createLearningBasedWB,
+    Arg("path_to_model") = static_cast<const cv::String &>(cv::String()));
 
   rb_mCvXphoto.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float, float)>("apply_channel_gains", &cv::xphoto::applyChannelGains,
     Arg("src"), Arg("dst"), Arg("gain_b"), Arg("gain_g"), Arg("gain_r"));

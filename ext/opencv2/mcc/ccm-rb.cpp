@@ -88,11 +88,11 @@ void Init_Mcc_Ccm()
 
   Rice::Data_Type<cv::ccm::ColorCorrectionModel::Impl> rb_cCvCcmColorCorrectionModelImpl = define_class_under<cv::ccm::ColorCorrectionModel::Impl>(rb_cCvCcmColorCorrectionModel, "Impl");
   rb_cCvCcmColorCorrectionModel
-    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat&, cv::ccm::CONST_COLOR>(),
+    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat &, cv::ccm::CONST_COLOR>(),
       Arg("src"), Arg("constcolor"))
-    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat&, cv::Mat, cv::ccm::COLOR_SPACE>(),
+    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat &, cv::Mat, cv::ccm::COLOR_SPACE>(),
       Arg("src"), Arg("colors"), Arg("ref_cs"))
-    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat&, cv::Mat, cv::ccm::COLOR_SPACE, cv::Mat>(),
+    .define_constructor(Constructor<cv::ccm::ColorCorrectionModel, const cv::Mat &, cv::Mat, cv::ccm::COLOR_SPACE, cv::Mat>(),
       Arg("src"), Arg("colors"), Arg("ref_cs"), Arg("colored"))
     .define_method<void(cv::ccm::ColorCorrectionModel::*)(cv::ccm::COLOR_SPACE)>("set_color_space", &cv::ccm::ColorCorrectionModel::setColorSpace,
       Arg("cs"))
@@ -102,21 +102,21 @@ void Init_Mcc_Ccm()
       Arg("distance"))
     .define_method<void(cv::ccm::ColorCorrectionModel::*)(cv::ccm::LINEAR_TYPE)>("set_linear", &cv::ccm::ColorCorrectionModel::setLinear,
       Arg("linear_type"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double&)>("set_linear_gamma", &cv::ccm::ColorCorrectionModel::setLinearGamma,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double &)>("set_linear_gamma", &cv::ccm::ColorCorrectionModel::setLinearGamma,
       Arg("gamma"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const int&)>("set_linear_degree", &cv::ccm::ColorCorrectionModel::setLinearDegree,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const int &)>("set_linear_degree", &cv::ccm::ColorCorrectionModel::setLinearDegree,
       Arg("deg"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double&, const double&)>("set_saturated_threshold", &cv::ccm::ColorCorrectionModel::setSaturatedThreshold,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double &, const double &)>("set_saturated_threshold", &cv::ccm::ColorCorrectionModel::setSaturatedThreshold,
       Arg("lower"), Arg("upper"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const cv::Mat&)>("set_weights_list", &cv::ccm::ColorCorrectionModel::setWeightsList,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const cv::Mat &)>("set_weights_list", &cv::ccm::ColorCorrectionModel::setWeightsList,
       Arg("weights_list"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double&)>("set_weight_coeff", &cv::ccm::ColorCorrectionModel::setWeightCoeff,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double &)>("set_weight_coeff", &cv::ccm::ColorCorrectionModel::setWeightCoeff,
       Arg("weights_coeff"))
     .define_method<void(cv::ccm::ColorCorrectionModel::*)(cv::ccm::INITIAL_METHOD_TYPE)>("set_initial_method", &cv::ccm::ColorCorrectionModel::setInitialMethod,
       Arg("initial_method_type"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const int&)>("set_max_count", &cv::ccm::ColorCorrectionModel::setMaxCount,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const int &)>("set_max_count", &cv::ccm::ColorCorrectionModel::setMaxCount,
       Arg("max_count"))
-    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double&)>("set_epsilon", &cv::ccm::ColorCorrectionModel::setEpsilon,
+    .define_method<void(cv::ccm::ColorCorrectionModel::*)(const double &)>("set_epsilon", &cv::ccm::ColorCorrectionModel::setEpsilon,
       Arg("epsilon"))
     .define_method<void(cv::ccm::ColorCorrectionModel::*)()>("run", &cv::ccm::ColorCorrectionModel::run)
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_ccm", &cv::ccm::ColorCorrectionModel::getCCM)
@@ -125,6 +125,6 @@ void Init_Mcc_Ccm()
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_dst_rgbl", &cv::ccm::ColorCorrectionModel::get_dst_rgbl)
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_mask", &cv::ccm::ColorCorrectionModel::getMask)
     .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)() const>("get_weights", &cv::ccm::ColorCorrectionModel::getWeights)
-    .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)(const cv::Mat&, bool)>("infer", &cv::ccm::ColorCorrectionModel::infer,
+    .define_method<cv::Mat(cv::ccm::ColorCorrectionModel::*)(const cv::Mat &, bool)>("infer", &cv::ccm::ColorCorrectionModel::infer,
       Arg("img"), Arg("islinear") = static_cast<bool>(false));
 }

@@ -10,5 +10,5 @@ inline Rice::Data_Type<cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCre
       Arg("id"))
     .template define_method<ObjectCreator(cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::*)(UniqueIdType)>("create", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::create,
       Arg("id"))
-    .template define_singleton_function<typename cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::ThisClass&(*)()>("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
+    .template define_singleton_function<typename cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::ThisClass &(*)()>("instance", &cvflann::ObjectFactory<BaseClass, UniqueIdType, ObjectCreator>::instance);
 }

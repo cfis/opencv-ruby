@@ -17,7 +17,7 @@ void Init_Datasets_OrMnist()
     .define_attr("image", &cv::datasets::OR_mnistObj::image);
 
   Rice::Data_Type<cv::datasets::OR_mnist> rb_cCvDatasetsORMnist = define_class_under<cv::datasets::OR_mnist, cv::datasets::Dataset>(rb_mCvDatasets, "ORMnist")
-    .define_method<void(cv::datasets::OR_mnist::*)(const std::string&)>("load", &cv::datasets::OR_mnist::load,
+    .define_method<void(cv::datasets::OR_mnist::*)(const std::string &)>("load", &cv::datasets::OR_mnist::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::OR_mnist>(*)()>("create", &cv::datasets::OR_mnist::create);
 }

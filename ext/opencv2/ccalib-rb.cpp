@@ -18,7 +18,7 @@ void Init_Ccalib()
     .define_method<bool(cv::ccalib::CustomPattern::*)(cv::InputArray, cv::OutputArray, cv::OutputArray, const double, const double, const bool, cv::OutputArray, cv::OutputArray, cv::OutputArray)>("find_pattern", &cv::ccalib::CustomPattern::findPattern,
       Arg("image"), Arg("matched_features"), Arg("pattern_points"), Arg("ratio") = static_cast<const double>(0.7), Arg("proj_error") = static_cast<const double>(8.0), Arg("refine_position") = static_cast<const bool>(false), Arg("out") = static_cast<cv::OutputArray>(cv::noArray()), Arg("h") = static_cast<cv::OutputArray>(cv::noArray()), Arg("pattern_corners") = static_cast<cv::OutputArray>(cv::noArray()))
     .define_method<bool(cv::ccalib::CustomPattern::*)()>("initialized?", &cv::ccalib::CustomPattern::isInitialized)
-    .define_method<void(cv::ccalib::CustomPattern::*)(std::vector<cv::KeyPoint>&)>("get_pattern_points", &cv::ccalib::CustomPattern::getPatternPoints,
+    .define_method<void(cv::ccalib::CustomPattern::*)(std::vector<cv::KeyPoint> &)>("get_pattern_points", &cv::ccalib::CustomPattern::getPatternPoints,
       Arg("original_points"))
     .define_method<double(cv::ccalib::CustomPattern::*)()>("get_pixel_size", &cv::ccalib::CustomPattern::getPixelSize)
     .define_method<bool(cv::ccalib::CustomPattern::*)(cv::Ptr<cv::FeatureDetector>)>("set_feature_detector", &cv::ccalib::CustomPattern::setFeatureDetector,

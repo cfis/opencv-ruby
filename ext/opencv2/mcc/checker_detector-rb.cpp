@@ -36,10 +36,10 @@ void Init_Mcc_CheckerDetector()
   Rice::Data_Type<cv::mcc::CCheckerDetector> rb_cCvMccCCheckerDetector = define_class_under<cv::mcc::CCheckerDetector, cv::Algorithm>(rb_mCvMcc, "CCheckerDetector")
     .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::dnn::Net)>("set_net", &cv::mcc::CCheckerDetector::setNet,
       Arg("net"))
-    .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::InputArray, const cv::mcc::TYPECHART, const std::vector<cv::Rect_<int>>&, const int, bool, const cv::Ptr<cv::mcc::DetectorParameters>&)>("process", &cv::mcc::CCheckerDetector::process,
-      Arg("image"), Arg("chart_type"), Arg("regions_of_interest"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters>&>(cv::mcc::DetectorParameters::create()))
-    .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::InputArray, const cv::mcc::TYPECHART, const int, bool, const cv::Ptr<cv::mcc::DetectorParameters>&)>("process", &cv::mcc::CCheckerDetector::process,
-      Arg("image"), Arg("chart_type"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters>&>(cv::mcc::DetectorParameters::create()))
+    .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::InputArray, const cv::mcc::TYPECHART, const std::vector<cv::Rect> &, const int, bool, const cv::Ptr<cv::mcc::DetectorParameters> &)>("process", &cv::mcc::CCheckerDetector::process,
+      Arg("image"), Arg("chart_type"), Arg("regions_of_interest"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters> &>(cv::mcc::DetectorParameters::create()))
+    .define_method<bool(cv::mcc::CCheckerDetector::*)(cv::InputArray, const cv::mcc::TYPECHART, const int, bool, const cv::Ptr<cv::mcc::DetectorParameters> &)>("process", &cv::mcc::CCheckerDetector::process,
+      Arg("image"), Arg("chart_type"), Arg("nc") = static_cast<const int>(1), Arg("use_net") = static_cast<bool>(false), Arg("params") = static_cast<const cv::Ptr<cv::mcc::DetectorParameters> &>(cv::mcc::DetectorParameters::create()))
     .define_method<cv::Ptr<cv::mcc::CChecker>(cv::mcc::CCheckerDetector::*)()>("get_best_color_checker", &cv::mcc::CCheckerDetector::getBestColorChecker)
     .define_method<std::vector<cv::Ptr<cv::mcc::CChecker>>(cv::mcc::CCheckerDetector::*)()>("get_list_color_checker", &cv::mcc::CCheckerDetector::getListColorChecker)
     .define_singleton_function<cv::Ptr<cv::mcc::CCheckerDetector>(*)()>("create", &cv::mcc::CCheckerDetector::create);

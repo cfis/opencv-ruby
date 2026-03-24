@@ -19,7 +19,7 @@ void Init_StructuredLight_Sinusoidalpattern()
 
   Rice::Data_Type<cv::structured_light::SinusoidalPattern> rb_cCvStructuredLightSinusoidalPattern = define_class_under<cv::structured_light::SinusoidalPattern, cv::structured_light::StructuredLightPattern>(rb_mCvStructuredLight, "SinusoidalPattern")
     .define_singleton_function<cv::Ptr<cv::structured_light::SinusoidalPattern>(*)(cv::Ptr<cv::structured_light::SinusoidalPattern::Params>)>("create", &cv::structured_light::SinusoidalPattern::create,
-      Arg("parameters") = static_cast<cv::Ptr<cv::structured_light::SinusoidalPattern::Params>>(cv::makePtr<cv::structured_light::SinusoidalPattern::Params>()))
+      Arg("parameters") = static_cast<cv::Ptr<cv::structured_light::SinusoidalPattern::Params>>(cv::makePtr<cv::structured_light::SinusoidalPattern::ParamsusoidalPattern::Params>()))
     .define_method<void(cv::structured_light::SinusoidalPattern::*)(cv::InputArrayOfArrays, cv::OutputArray, cv::OutputArray, cv::InputArray)>("compute_phase_map", &cv::structured_light::SinusoidalPattern::computePhaseMap,
       Arg("pattern_images"), Arg("wrapped_phase_map"), Arg("shadow_mask") = static_cast<cv::OutputArray>(cv::noArray()), Arg("fundamental") = static_cast<cv::InputArray>(cv::noArray()))
     .define_method<void(cv::structured_light::SinusoidalPattern::*)(cv::InputArray, cv::OutputArray, cv::Size, cv::InputArray)>("unwrap_phase_map", &cv::structured_light::SinusoidalPattern::unwrapPhaseMap,

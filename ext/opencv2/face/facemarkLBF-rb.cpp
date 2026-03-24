@@ -12,8 +12,8 @@ void Init_Face_FacemarkLBF()
   Module rb_mCvFace = define_module_under(rb_mCv, "Face");
 
   Rice::Data_Type<cv::face::FacemarkLBF> rb_cCvFaceFacemarkLBF = define_class_under<cv::face::FacemarkLBF, cv::face::FacemarkTrain>(rb_mCvFace, "FacemarkLBF")
-    .define_singleton_function<cv::Ptr<cv::face::FacemarkLBF>(*)(const cv::face::FacemarkLBF::Params&)>("create", &cv::face::FacemarkLBF::create,
-      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params&>(cv::face::FacemarkLBF::Params()));
+    .define_singleton_function<cv::Ptr<cv::face::FacemarkLBF>(*)(const cv::face::FacemarkLBF::Params &)>("create", &cv::face::FacemarkLBF::create,
+      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params &>(cv::face::FacemarkLBF::ParamsBF::Params()));
 
   Rice::Data_Type<cv::face::FacemarkLBF::Params> rb_cCvFaceFacemarkLBFParams = define_class_under<cv::face::FacemarkLBF::Params>(rb_cCvFaceFacemarkLBF, "Params")
     .define_constructor(Constructor<cv::face::FacemarkLBF::Params>())
@@ -33,8 +33,8 @@ void Init_Face_FacemarkLBF()
     .define_attr("radius_m", &cv::face::FacemarkLBF::Params::radius_m)
     .define_attr("pupils", &cv::face::FacemarkLBF::Params::pupils, Rice::AttrAccess::Read)
     .define_attr("detect_roi", &cv::face::FacemarkLBF::Params::detectROI)
-    .define_method<void(cv::face::FacemarkLBF::Params::*)(const cv::FileNode&)>("read", &cv::face::FacemarkLBF::Params::read,
+    .define_method<void(cv::face::FacemarkLBF::Params::*)(const cv::FileNode &)>("read", &cv::face::FacemarkLBF::Params::read,
       Arg("arg_0"))
-    .define_method<void(cv::face::FacemarkLBF::Params::*)(cv::FileStorage&) const>("write", &cv::face::FacemarkLBF::Params::write,
+    .define_method<void(cv::face::FacemarkLBF::Params::*)(cv::FileStorage &) const>("write", &cv::face::FacemarkLBF::Params::write,
       Arg("arg_0"));
 }

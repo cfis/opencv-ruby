@@ -30,40 +30,40 @@ void Init_Core_Persistence()
   Rice::Data_Type<cv::FileStorage::Impl> rb_cCvFileStorageImpl = define_class_under<cv::FileStorage::Impl>(rb_cCvFileStorage, "Impl");
   rb_cCvFileStorage
     .define_constructor(Constructor<cv::FileStorage>())
-    .define_constructor(Constructor<cv::FileStorage, const cv::String&, int, const cv::String&>(),
-      Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String&>(cv::String()))
-    .define_method<bool(cv::FileStorage::*)(const cv::String&, int, const cv::String&)>("open", &cv::FileStorage::open,
-      Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String&>(cv::String()))
+    .define_constructor(Constructor<cv::FileStorage, const cv::String &, int, const cv::String &>(),
+      Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String &>(cv::String()))
+    .define_method<bool(cv::FileStorage::*)(const cv::String &, int, const cv::String &)>("open", &cv::FileStorage::open,
+      Arg("filename"), Arg("flags"), Arg("encoding") = static_cast<const cv::String &>(cv::String()))
     .define_method<bool(cv::FileStorage::*)() const>("opened?", &cv::FileStorage::isOpened)
     .define_method<void(cv::FileStorage::*)()>("release", &cv::FileStorage::release)
     .define_method<cv::String(cv::FileStorage::*)()>("release_and_get_string", &cv::FileStorage::releaseAndGetString)
     .define_method<cv::FileNode(cv::FileStorage::*)() const>("get_first_top_level_node", &cv::FileStorage::getFirstTopLevelNode)
     .define_method<cv::FileNode(cv::FileStorage::*)(int) const>("root", &cv::FileStorage::root,
       Arg("streamidx") = static_cast<int>(0))
-    .define_method<cv::FileNode(cv::FileStorage::*)(const cv::String&) const>("[]", &cv::FileStorage::operator[],
+    .define_method<cv::FileNode(cv::FileStorage::*)(const cv::String &) const>("[]", &cv::FileStorage::operator[],
       Arg("nodename"))
-    .define_method<cv::FileNode(cv::FileStorage::*)(const char*) const>("[]", &cv::FileStorage::operator[],
+    .define_method<cv::FileNode(cv::FileStorage::*)(const char *) const>("[]", &cv::FileStorage::operator[],
       Arg("nodename"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, int)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, int)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, int64_t)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, int64_t)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, double)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, double)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, const cv::String&)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, const cv::String &)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, const cv::Mat&)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, const cv::Mat &)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, const std::vector<std::basic_string<char>>&)>("write", &cv::FileStorage::write,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, const std::vector<cv::String> &)>("write", &cv::FileStorage::write,
       Arg("name"), Arg("val"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, const void*, size_t)>("write_raw", &cv::FileStorage::writeRaw,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, const void *, size_t)>("write_raw", &cv::FileStorage::writeRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len"))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, bool)>("write_comment", &cv::FileStorage::writeComment,
+    .define_method<void(cv::FileStorage::*)(const cv::String &, bool)>("write_comment", &cv::FileStorage::writeComment,
       Arg("comment"), Arg("append") = static_cast<bool>(false))
-    .define_method<void(cv::FileStorage::*)(const cv::String&, int, const cv::String&)>("start_write_struct", &cv::FileStorage::startWriteStruct,
-      Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String&>(cv::String()))
+    .define_method<void(cv::FileStorage::*)(const cv::String &, int, const cv::String &)>("start_write_struct", &cv::FileStorage::startWriteStruct,
+      Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String &>(cv::String()))
     .define_method<void(cv::FileStorage::*)()>("end_write_struct", &cv::FileStorage::endWriteStruct)
-    .define_singleton_function<cv::String(*)(const cv::String&)>("get_default_object_name", &cv::FileStorage::getDefaultObjectName,
+    .define_singleton_function<cv::String(*)(const cv::String &)>("get_default_object_name", &cv::FileStorage::getDefaultObjectName,
       Arg("filename"))
     .define_method<int(cv::FileStorage::*)() const>("get_format", &cv::FileStorage::getFormat)
     .define_attr("state", &cv::FileStorage::state)
@@ -91,19 +91,19 @@ void Init_Core_Persistence()
 
   Rice::Data_Type<cv::FileNode> rb_cCvFileNode = define_class_under<cv::FileNode>(rb_mCv, "FileNode")
     .define_constructor(Constructor<cv::FileNode>())
-    .define_constructor(Constructor<cv::FileNode, const cv::FileStorage*, size_t, size_t>(),
+    .define_constructor(Constructor<cv::FileNode, const cv::FileStorage *, size_t, size_t>(),
       Arg("fs"), Arg("block_idx"), Arg("ofs"))
-    .define_constructor(Constructor<cv::FileNode, const cv::FileNode&>(),
+    .define_constructor(Constructor<cv::FileNode, const cv::FileNode &>(),
       Arg("node"))
-    .define_method<cv::FileNode&(cv::FileNode::*)(const cv::FileNode&)>("assign", &cv::FileNode::operator=,
+    .define_method<cv::FileNode &(cv::FileNode::*)(const cv::FileNode &)>("assign", &cv::FileNode::operator=,
       Arg("node"))
-    .define_method<cv::FileNode(cv::FileNode::*)(const cv::String&) const>("[]", &cv::FileNode::operator[],
+    .define_method<cv::FileNode(cv::FileNode::*)(const cv::String &) const>("[]", &cv::FileNode::operator[],
       Arg("nodename"))
-    .define_method<cv::FileNode(cv::FileNode::*)(const char*) const>("[]", &cv::FileNode::operator[],
+    .define_method<cv::FileNode(cv::FileNode::*)(const char *) const>("[]", &cv::FileNode::operator[],
       Arg("nodename"))
     .define_method<cv::FileNode(cv::FileNode::*)(int) const>("[]", &cv::FileNode::operator[],
       Arg("i"))
-    .define_method<std::vector<std::basic_string<char>>(cv::FileNode::*)() const>("keys", &cv::FileNode::keys)
+    .define_method<std::vector<cv::String>(cv::FileNode::*)() const>("keys", &cv::FileNode::keys)
     .define_method<int(cv::FileNode::*)() const>("type", &cv::FileNode::type)
     .define_method<bool(cv::FileNode::*)() const>("empty?", &cv::FileNode::empty)
     .define_method<bool(cv::FileNode::*)() const>("none?", &cv::FileNode::isNone)
@@ -146,19 +146,19 @@ void Init_Core_Persistence()
       Arg("flags"))
     .define_singleton_function<bool(*)(int)>("flow?", &cv::FileNode::isFlow,
       Arg("flags"))
-    .define_method<uchar*(cv::FileNode::*)()>("ptr", &cv::FileNode::ptr,
+    .define_method<uchar *(cv::FileNode::*)()>("ptr", &cv::FileNode::ptr,
       ReturnBuffer())
-    .define_method<const uchar*(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr,
+    .define_method<const uchar *(cv::FileNode::*)() const>("ptr", &cv::FileNode::ptr,
       ReturnBuffer())
     .define_iterator<cv::FileNodeIterator(cv::FileNode::*)() const>(&cv::FileNode::begin, &cv::FileNode::end, "each_const")
-    .define_method<void(cv::FileNode::*)(const cv::String&, void*, size_t) const>("read_raw", &cv::FileNode::readRaw,
+    .define_method<void(cv::FileNode::*)(const cv::String &, void *, size_t) const>("read_raw", &cv::FileNode::readRaw,
       Arg("fmt"), ArgBuffer("vec"), Arg("len"))
-    .define_method<void(cv::FileNode::*)(int, const void*, int)>("set_value", &cv::FileNode::setValue,
+    .define_method<void(cv::FileNode::*)(int, const void *, int)>("set_value", &cv::FileNode::setValue,
       Arg("type"), ArgBuffer("value"), Arg("len") = static_cast<int>(-1))
     .define_method<double(cv::FileNode::*)() const>("real", &cv::FileNode::real)
     .define_method<std::string(cv::FileNode::*)() const>("string", &cv::FileNode::string)
     .define_method<cv::Mat(cv::FileNode::*)() const>("mat", &cv::FileNode::mat)
-    .define_constructor(Constructor<cv::FileNode, cv::FileStorage::Impl*, size_t, size_t>(),
+    .define_constructor(Constructor<cv::FileNode, cv::FileStorage::Impl *, size_t, size_t>(),
       Arg("fs"), Arg("block_idx"), Arg("ofs"))
     .define_attr("fs", &cv::FileNode::fs)
     .define_attr("block_idx", &cv::FileNode::blockIdx)
@@ -181,214 +181,214 @@ void Init_Core_Persistence()
 
   Rice::Data_Type<cv::FileNodeIterator> rb_cCvFileNodeIterator = define_class_under<cv::FileNodeIterator>(rb_mCv, "FileNodeIterator")
     .define_constructor(Constructor<cv::FileNodeIterator>())
-    .define_constructor(Constructor<cv::FileNodeIterator, const cv::FileNode&, bool>(),
+    .define_constructor(Constructor<cv::FileNodeIterator, const cv::FileNode &, bool>(),
       Arg("node"), Arg("seek_end"))
-    .define_constructor(Constructor<cv::FileNodeIterator, const cv::FileNodeIterator&>(),
+    .define_constructor(Constructor<cv::FileNodeIterator, const cv::FileNodeIterator &>(),
       Arg("it"))
-    .define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)(const cv::FileNodeIterator&)>("assign", &cv::FileNodeIterator::operator=,
+    .define_method<cv::FileNodeIterator &(cv::FileNodeIterator::*)(const cv::FileNodeIterator &)>("assign", &cv::FileNodeIterator::operator=,
       Arg("it"))
     .define_method<cv::FileNode(cv::FileNodeIterator::*)() const>("dereference", &cv::FileNodeIterator::operator*)
-    .define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)()>("increment", &cv::FileNodeIterator::operator++)
+    .define_method<cv::FileNodeIterator &(cv::FileNodeIterator::*)()>("increment", &cv::FileNodeIterator::operator++)
     .define_method<cv::FileNodeIterator(cv::FileNodeIterator::*)(int)>("increment_post", &cv::FileNodeIterator::operator++,
       Arg("arg_0"))
-    .define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)(int)>("assign_plus", &cv::FileNodeIterator::operator+=,
+    .define_method<cv::FileNodeIterator &(cv::FileNodeIterator::*)(int)>("assign_plus", &cv::FileNodeIterator::operator+=,
       Arg("ofs"))
-    .define_method<cv::FileNodeIterator&(cv::FileNodeIterator::*)(const cv::String&, void*, size_t)>("read_raw", &cv::FileNodeIterator::readRaw,
-      Arg("fmt"), ArgBuffer("vec"), Arg("len"))
+    .define_method<cv::FileNodeIterator &(cv::FileNodeIterator::*)(const cv::String &, void *, size_t)>("read_raw", &cv::FileNodeIterator::readRaw,
+      Arg("fmt"), ArgBuffer("vec"), Arg("len") = static_cast<size_t>((size_t)INT_MAX))
     .define_method<size_t(cv::FileNodeIterator::*)() const>("remaining", &cv::FileNodeIterator::remaining)
-    .define_method<bool(cv::FileNodeIterator::*)(const cv::FileNodeIterator&) const>("equal_to", &cv::FileNodeIterator::equalTo,
+    .define_method<bool(cv::FileNodeIterator::*)(const cv::FileNodeIterator &) const>("equal_to", &cv::FileNodeIterator::equalTo,
       Arg("it"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, int)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, int)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, int64_t)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, int64_t)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, float)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, float)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, double)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, double)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::String&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::String &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::Mat&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::Mat &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::SparseMat&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::SparseMat &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const std::vector<cv::KeyPoint>&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const std::vector<cv::KeyPoint> &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const std::vector<cv::DMatch>&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const std::vector<cv::DMatch> &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, int)>("write_scalar", &cv::writeScalar,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, int)>("write_scalar", &cv::writeScalar,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, int64_t)>("write_scalar", &cv::writeScalar,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, int64_t)>("write_scalar", &cv::writeScalar,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, float)>("write_scalar", &cv::writeScalar,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, float)>("write_scalar", &cv::writeScalar,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, double)>("write_scalar", &cv::writeScalar,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, double)>("write_scalar", &cv::writeScalar,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&)>("write_scalar", &cv::writeScalar,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &)>("write_scalar", &cv::writeScalar,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, int&, int)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, int &, int)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, int64_t&, int64_t)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, int64_t &, int64_t)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, float&, float)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, float &, float)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, double&, double)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, double &, double)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, std::string&, const std::string&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, std::string &, const std::string &)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, cv::Mat&, const cv::Mat&)>("read", &cv::read,
-    Arg("node"), Arg("mat"), Arg("default_mat") = static_cast<const cv::Mat&>(cv::Mat()));
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, cv::Mat &, const cv::Mat &)>("read", &cv::read,
+    Arg("node"), Arg("mat"), Arg("default_mat") = static_cast<const cv::Mat &>(cv::Mat()));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, cv::SparseMat&, const cv::SparseMat&)>("read", &cv::read,
-    Arg("node"), Arg("mat"), Arg("default_mat") = static_cast<const cv::SparseMat&>(cv::SparseMat()));
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, cv::SparseMat &, const cv::SparseMat &)>("read", &cv::read,
+    Arg("node"), Arg("mat"), Arg("default_mat") = static_cast<const cv::SparseMat &>(cv::SparseMat()));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, std::vector<cv::KeyPoint>&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, std::vector<cv::KeyPoint> &)>("read", &cv::read,
     Arg("node"), Arg("keypoints"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, std::vector<cv::DMatch>&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, std::vector<cv::DMatch> &)>("read", &cv::read,
     Arg("node"), Arg("matches"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, cv::KeyPoint&, const cv::KeyPoint&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, cv::KeyPoint &, const cv::KeyPoint &)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, cv::DMatch&, const cv::DMatch&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, cv::DMatch &, const cv::DMatch &)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, cv::Range&, const cv::Range&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, cv::Range &, const cv::Range &)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
   Module rb_mCvInternal = define_module_under(rb_mCv, "Internal");
 
   Rice::Data_Type<cv::internal::WriteStructContext> rb_cCvInternalWriteStructContext = define_class_under<cv::internal::WriteStructContext>(rb_mCvInternal, "WriteStructContext")
-    .define_constructor(Constructor<cv::internal::WriteStructContext, cv::FileStorage&, const cv::String&, int, const cv::String&>(),
-      Arg("_fs"), Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String&>(cv::String()));
+    .define_constructor(Constructor<cv::internal::WriteStructContext, cv::FileStorage &, const cv::String &, int, const cv::String &>(),
+      Arg("_fs"), Arg("name"), Arg("flags"), Arg("type_name") = static_cast<const cv::String &>(cv::String()));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const int&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const int &)>("write", &cv::write,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const float&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const float &)>("write", &cv::write,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const double&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const double &)>("write", &cv::write,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &)>("write", &cv::write,
     Arg("fs"), Arg("value"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::Range&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::Range &)>("write", &cv::write,
     Arg("fs"), Arg("r"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::Range&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::Range &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("r"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::KeyPoint&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::KeyPoint &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("kpt"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::String&, const cv::DMatch&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::String &, const cv::DMatch &)>("write", &cv::write,
     Arg("fs"), Arg("name"), Arg("m"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::KeyPoint&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::KeyPoint &)>("write", &cv::write,
     Arg("fs"), Arg("kpt"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const cv::DMatch&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const cv::DMatch &)>("write", &cv::write,
     Arg("fs"), Arg("m"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const std::vector<cv::KeyPoint>&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const std::vector<cv::KeyPoint> &)>("write", &cv::write,
     Arg("fs"), Arg("vec"));
 
-  rb_mCv.define_module_function<void(*)(cv::FileStorage&, const std::vector<cv::DMatch>&)>("write", &cv::write,
+  rb_mCv.define_module_function<void(*)(cv::FileStorage &, const std::vector<cv::DMatch> &)>("write", &cv::write,
     Arg("fs"), Arg("vec"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, bool&, bool)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, bool &, bool)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, uchar&, uchar)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, uchar &, uchar)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, schar&, schar)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, schar &, schar)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, ushort&, ushort)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, ushort &, ushort)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, short&, short)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, short &, short)>("read", &cv::read,
     Arg("node"), Arg("value"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, std::vector<cv::KeyPoint>&, const std::vector<cv::KeyPoint>&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, std::vector<cv::KeyPoint> &, const std::vector<cv::KeyPoint> &)>("read", &cv::read,
     Arg("node"), Arg("vec"), Arg("default_value"));
 
-  rb_mCv.define_module_function<void(*)(const cv::FileNode&, std::vector<cv::DMatch>&, const std::vector<cv::DMatch>&)>("read", &cv::read,
+  rb_mCv.define_module_function<void(*)(const cv::FileNode &, std::vector<cv::DMatch> &, const std::vector<cv::DMatch> &)>("read", &cv::read,
     Arg("node"), Arg("vec"), Arg("default_value"));
 
   rb_cCvFileStorage
-    .define_method("<<", [](cv::FileStorage& self, const cv::String& other) -> cv::FileStorage&
+    .define_method("<<", [](cv::FileStorage & self, const cv::String & other) -> cv::FileStorage &
     {
       self << other;
       return self;
     })
-    .define_method("<<", [](cv::FileStorage& self, const char* other) -> cv::FileStorage&
+    .define_method("<<", [](cv::FileStorage & self, const char * other) -> cv::FileStorage &
     {
       self << other;
       return self;
     })
-    .define_method("<<", [](cv::FileStorage& self, char* other) -> cv::FileStorage&
+    .define_method("<<", [](cv::FileStorage & self, char * other) -> cv::FileStorage &
     {
       self << other;
       return self;
     });
   
   rb_cCvFileNode
-    .define_method(">>", [](const cv::FileNode& self, cv::KeyPoint& other) -> void
+    .define_method(">>", [](const cv::FileNode & self, cv::KeyPoint & other) -> void
     {
       self >> other;
     })
-    .define_method(">>", [](const cv::FileNode& self, std::vector<cv::KeyPoint>& other) -> void
+    .define_method(">>", [](const cv::FileNode & self, std::vector<cv::KeyPoint> & other) -> void
     {
       self >> other;
     })
-    .define_method(">>", [](const cv::FileNode& self, std::vector<cv::DMatch>& other) -> void
+    .define_method(">>", [](const cv::FileNode & self, std::vector<cv::DMatch> & other) -> void
     {
       self >> other;
     })
-    .define_method(">>", [](const cv::FileNode& self, cv::DMatch& other) -> void
+    .define_method(">>", [](const cv::FileNode & self, cv::DMatch & other) -> void
     {
       self >> other;
     });
   
   rb_cCvFileNodeIterator
-    .define_method("==", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+    .define_method("==", [](const cv::FileNodeIterator & self, const cv::FileNodeIterator & other) -> bool
     {
       return self == other;
     })
-    .define_method("!=", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+    .define_method("!=", [](const cv::FileNodeIterator & self, const cv::FileNodeIterator & other) -> bool
     {
       return self != other;
     })
-    .define_method("-", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> ptrdiff_t
+    .define_method("-", [](const cv::FileNodeIterator & self, const cv::FileNodeIterator & other) -> ptrdiff_t
     {
       return self - other;
     })
-    .define_method("<", [](const cv::FileNodeIterator& self, const cv::FileNodeIterator& other) -> bool
+    .define_method("<", [](const cv::FileNodeIterator & self, const cv::FileNodeIterator & other) -> bool
     {
       return self < other;
     });

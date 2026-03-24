@@ -43,8 +43,8 @@ void Init_Stitching()
     .define_method<cv::Ptr<cv::detail::FeaturesMatcher>(cv::Stitcher::*)() const>("features_matcher", &cv::Stitcher::featuresMatcher)
     .define_method<void(cv::Stitcher::*)(cv::Ptr<cv::detail::FeaturesMatcher>)>("set_features_matcher", &cv::Stitcher::setFeaturesMatcher,
       Arg("features_matcher"))
-    .define_method<const cv::UMat&(cv::Stitcher::*)() const>("matching_mask", &cv::Stitcher::matchingMask)
-    .define_method<void(cv::Stitcher::*)(const cv::UMat&)>("set_matching_mask", &cv::Stitcher::setMatchingMask,
+    .define_method<const cv::UMat &(cv::Stitcher::*)() const>("matching_mask", &cv::Stitcher::matchingMask)
+    .define_method<void(cv::Stitcher::*)(const cv::UMat &)>("set_matching_mask", &cv::Stitcher::setMatchingMask,
       Arg("mask"))
     .define_method<cv::Ptr<cv::detail::BundleAdjusterBase>(cv::Stitcher::*)()>("bundle_adjuster", &cv::Stitcher::bundleAdjuster)
     .define_method<const cv::Ptr<cv::detail::BundleAdjusterBase>(cv::Stitcher::*)() const>("bundle_adjuster", &cv::Stitcher::bundleAdjuster)
@@ -72,9 +72,9 @@ void Init_Stitching()
       Arg("b"))
     .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays)>("estimate_transform", &cv::Stitcher::estimateTransform,
       Arg("images"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()))
-    .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::InputArrayOfArrays, const std::vector<cv::detail::CameraParams>&, const std::vector<int>&)>("set_transform", &cv::Stitcher::setTransform,
+    .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::InputArrayOfArrays, const std::vector<cv::detail::CameraParams> &, const std::vector<int> &)>("set_transform", &cv::Stitcher::setTransform,
       Arg("images"), Arg("cameras"), Arg("component"))
-    .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::InputArrayOfArrays, const std::vector<cv::detail::CameraParams>&)>("set_transform", &cv::Stitcher::setTransform,
+    .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::InputArrayOfArrays, const std::vector<cv::detail::CameraParams> &)>("set_transform", &cv::Stitcher::setTransform,
       Arg("images"), Arg("cameras"))
     .define_method<cv::Stitcher::Status(cv::Stitcher::*)(cv::OutputArray)>("compose_panorama", &cv::Stitcher::composePanorama,
       Arg("pano"))

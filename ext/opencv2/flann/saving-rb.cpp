@@ -54,6 +54,6 @@ void Init_Flann_Saving()
     .define_attr("rows", &cvflann::IndexHeader::rows)
     .define_attr("cols", &cvflann::IndexHeader::cols);
 
-  rb_mCvflann.define_module_function<cvflann::IndexHeader(*)(FILE*)>("load_header", &cvflann::load_header,
+  rb_mCvflann.define_module_function<cvflann::IndexHeader(*)(FILE *)>("load_header", &cvflann::load_header,
     Arg("stream"));
 }

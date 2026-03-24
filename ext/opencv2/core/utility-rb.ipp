@@ -7,9 +7,9 @@ inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(R
     .define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>>())
     .define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, size_t>(),
       Arg("_size"))
-    .define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, const cv::AutoBuffer<_Tp, fixed_size>&>(),
+    .define_constructor(Constructor<cv::AutoBuffer<_Tp, fixed_size>, const cv::AutoBuffer<_Tp, fixed_size> &>(),
       Arg("buf"))
-    .template define_method<cv::AutoBuffer<_Tp, fixed_size>&(cv::AutoBuffer<_Tp, fixed_size>::*)(const cv::AutoBuffer<_Tp, fixed_size>&)>("assign", &cv::AutoBuffer<_Tp, fixed_size>::operator=,
+    .template define_method<cv::AutoBuffer<_Tp, fixed_size> &(cv::AutoBuffer<_Tp, fixed_size>::*)(const cv::AutoBuffer<_Tp, fixed_size> &)>("assign", &cv::AutoBuffer<_Tp, fixed_size>::operator=,
       Arg("buf"))
     .template define_method<void(cv::AutoBuffer<_Tp, fixed_size>::*)(size_t)>("allocate", &cv::AutoBuffer<_Tp, fixed_size>::allocate,
       Arg("_size"))
@@ -17,13 +17,13 @@ inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(R
     .template define_method<void(cv::AutoBuffer<_Tp, fixed_size>::*)(size_t)>("resize", &cv::AutoBuffer<_Tp, fixed_size>::resize,
       Arg("_size"))
     .template define_method<size_t(cv::AutoBuffer<_Tp, fixed_size>::*)() const>("size", &cv::AutoBuffer<_Tp, fixed_size>::size)
-    .template define_method<_Tp*(cv::AutoBuffer<_Tp, fixed_size>::*)()>("data", &cv::AutoBuffer<_Tp, fixed_size>::data)
-    .template define_method<const _Tp*(cv::AutoBuffer<_Tp, fixed_size>::*)() const>("data", &cv::AutoBuffer<_Tp, fixed_size>::data)
-    .define_method("to_ptr", [](cv::AutoBuffer<_Tp, fixed_size>& self) -> _Tp*
+    .template define_method<_Tp *(cv::AutoBuffer<_Tp, fixed_size>::*)()>("data", &cv::AutoBuffer<_Tp, fixed_size>::data)
+    .template define_method<const _Tp *(cv::AutoBuffer<_Tp, fixed_size>::*)() const>("data", &cv::AutoBuffer<_Tp, fixed_size>::data)
+    .define_method("to_ptr", [](cv::AutoBuffer<_Tp, fixed_size>& self) -> _Tp *
     {
       return self;
     })
-    .define_method("to_const_ptr", [](const cv::AutoBuffer<_Tp, fixed_size>& self) -> const _Tp*
+    .define_method("to_const_ptr", [](const cv::AutoBuffer<_Tp, fixed_size>& self) -> const _Tp *
     {
       return self;
     });
@@ -34,13 +34,13 @@ inline Rice::Data_Type<cv::Node<OBJECT>> Node_instantiate(Rice::Module parent, c
 {
   return Rice::define_class_under<cv::Node<OBJECT>>(parent, name)
     .define_constructor(Constructor<cv::Node<OBJECT>>())
-    .define_constructor(Constructor<cv::Node<OBJECT>, OBJECT&>(),
+    .define_constructor(Constructor<cv::Node<OBJECT>, OBJECT &>(),
       Arg("payload"))
-    .template define_method<cv::Node<OBJECT>*(cv::Node<OBJECT>::*)(OBJECT&) const>("find_child", &cv::Node<OBJECT>::findChild,
+    .template define_method<cv::Node<OBJECT> *(cv::Node<OBJECT>::*)(OBJECT &) const>("find_child", &cv::Node<OBJECT>::findChild,
       Arg("payload"))
-    .template define_method<int(cv::Node<OBJECT>::*)(cv::Node<OBJECT>*) const>("find_child", &cv::Node<OBJECT>::findChild,
+    .template define_method<int(cv::Node<OBJECT>::*)(cv::Node<OBJECT> *) const>("find_child", &cv::Node<OBJECT>::findChild,
       Arg("p_node"))
-    .template define_method<void(cv::Node<OBJECT>::*)(cv::Node<OBJECT>*)>("add_child", &cv::Node<OBJECT>::addChild,
+    .template define_method<void(cv::Node<OBJECT>::*)(cv::Node<OBJECT> *)>("add_child", &cv::Node<OBJECT>::addChild,
       Arg("p_node"))
     .template define_method<void(cv::Node<OBJECT>::*)()>("remove_childs", &cv::Node<OBJECT>::removeChilds)
     .template define_method<int(cv::Node<OBJECT>::*)()>("get_depth", &cv::Node<OBJECT>::getDepth)

@@ -18,6 +18,6 @@ void Init_Flann_Allocator()
     .define_attr("wasted_memory", &cvflann::PooledAllocator::wastedMemory)
     .define_constructor(Constructor<cvflann::PooledAllocator, int>(),
       Arg("block_size") = static_cast<int>(cvflann::BLOCKSIZE))
-    .define_method<void*(cvflann::PooledAllocator::*)(int)>("allocate_memory", &cvflann::PooledAllocator::allocateMemory,
+    .define_method<void *(cvflann::PooledAllocator::*)(int)>("allocate_memory", &cvflann::PooledAllocator::allocateMemory,
       Arg("size"), ReturnBuffer());
 }

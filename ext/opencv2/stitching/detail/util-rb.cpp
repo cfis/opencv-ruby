@@ -26,9 +26,9 @@ void Init_Stitching_Detail_Util()
   Rice::Data_Type<cv::detail::GraphEdge> rb_cCvDetailGraphEdge = define_class_under<cv::detail::GraphEdge>(rb_mCvDetail, "GraphEdge")
     .define_constructor(Constructor<cv::detail::GraphEdge, int, int, float>(),
       Arg("from"), Arg("to"), Arg("weight"))
-    .define_method<bool(cv::detail::GraphEdge::*)(const cv::detail::GraphEdge&) const>("<", &cv::detail::GraphEdge::operator<,
+    .define_method<bool(cv::detail::GraphEdge::*)(const cv::detail::GraphEdge &) const>("<", &cv::detail::GraphEdge::operator<,
       Arg("other"))
-    .define_method<bool(cv::detail::GraphEdge::*)(const cv::detail::GraphEdge&) const>(">", &cv::detail::GraphEdge::operator>,
+    .define_method<bool(cv::detail::GraphEdge::*)(const cv::detail::GraphEdge &) const>(">", &cv::detail::GraphEdge::operator>,
       Arg("other"))
     .define_attr("from", &cv::detail::GraphEdge::from)
     .define_attr("to", &cv::detail::GraphEdge::to)
@@ -43,23 +43,23 @@ void Init_Stitching_Detail_Util()
     .define_method<void(cv::detail::Graph::*)(int, int, float)>("add_edge", &cv::detail::Graph::addEdge,
       Arg("from"), Arg("to"), Arg("weight"));
 
-  rb_mCvDetail.define_module_function<bool(*)(cv::Point, cv::Point, cv::Size, cv::Size, cv::Rect&)>("overlap_roi", &cv::detail::overlapRoi,
+  rb_mCvDetail.define_module_function<bool(*)(cv::Point, cv::Point, cv::Size, cv::Size, cv::Rect &)>("overlap_roi", &cv::detail::overlapRoi,
     Arg("tl1"), Arg("tl2"), Arg("sz1"), Arg("sz2"), Arg("roi"));
 
-  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::UMat>&)>("result_roi", &cv::detail::resultRoi,
+  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::UMat> &)>("result_roi", &cv::detail::resultRoi,
     Arg("corners"), Arg("images"));
 
-  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("result_roi", &cv::detail::resultRoi,
+  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("result_roi", &cv::detail::resultRoi,
     Arg("corners"), Arg("sizes"));
 
-  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point_<int>>&, const std::vector<cv::Size_<int>>&)>("result_roi_intersection", &cv::detail::resultRoiIntersection,
+  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("result_roi_intersection", &cv::detail::resultRoiIntersection,
     Arg("corners"), Arg("sizes"));
 
-  rb_mCvDetail.define_module_function<cv::Point(*)(const std::vector<cv::Point_<int>>&)>("result_tl", &cv::detail::resultTl,
+  rb_mCvDetail.define_module_function<cv::Point(*)(const std::vector<cv::Point> &)>("result_tl", &cv::detail::resultTl,
     Arg("corners"));
 
-  rb_mCvDetail.define_module_function<void(*)(int, int, std::vector<int>&)>("select_random_subset", &cv::detail::selectRandomSubset,
+  rb_mCvDetail.define_module_function<void(*)(int, int, std::vector<int> &)>("select_random_subset", &cv::detail::selectRandomSubset,
     Arg("count"), Arg("size"), Arg("subset"));
 
-  rb_mCvDetail.define_module_function<int&(*)()>("stitching_log_level", &cv::detail::stitchingLogLevel);
+  rb_mCvDetail.define_module_function<int &(*)()>("stitching_log_level", &cv::detail::stitchingLogLevel);
 }

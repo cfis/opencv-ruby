@@ -17,7 +17,7 @@ void Init_Datasets_ArSports()
     .define_attr("labels", &cv::datasets::AR_sportsObj::labels);
 
   Rice::Data_Type<cv::datasets::AR_sports> rb_cCvDatasetsARSports = define_class_under<cv::datasets::AR_sports, cv::datasets::Dataset>(rb_mCvDatasets, "ARSports")
-    .define_method<void(cv::datasets::AR_sports::*)(const std::string&)>("load", &cv::datasets::AR_sports::load,
+    .define_method<void(cv::datasets::AR_sports::*)(const std::string &)>("load", &cv::datasets::AR_sports::load,
       Arg("path"))
     .define_singleton_function<cv::Ptr<cv::datasets::AR_sports>(*)()>("create", &cv::datasets::AR_sports::create);
 }

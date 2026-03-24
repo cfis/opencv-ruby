@@ -16,9 +16,9 @@ void Init_Saliency_SaliencySpecializedClasses()
     .define_singleton_function<cv::Ptr<cv::saliency::StaticSaliencySpectralResidual>(*)()>("create", &cv::saliency::StaticSaliencySpectralResidual::create)
     .define_method<bool(cv::saliency::StaticSaliencySpectralResidual::*)(cv::InputArray, cv::OutputArray)>("compute_saliency", &cv::saliency::StaticSaliencySpectralResidual::computeSaliency,
       Arg("image"), Arg("saliency_map"))
-    .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(const cv::FileNode&)>("read", &cv::saliency::StaticSaliencySpectralResidual::read,
+    .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(const cv::FileNode &)>("read", &cv::saliency::StaticSaliencySpectralResidual::read,
       Arg("fn"))
-    .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(cv::FileStorage&) const>("write", &cv::saliency::StaticSaliencySpectralResidual::write,
+    .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(cv::FileStorage &) const>("write", &cv::saliency::StaticSaliencySpectralResidual::write,
       Arg("fs"))
     .define_method<int(cv::saliency::StaticSaliencySpectralResidual::*)() const>("get_image_width", &cv::saliency::StaticSaliencySpectralResidual::getImageWidth)
     .define_method<void(cv::saliency::StaticSaliencySpectralResidual::*)(int)>("set_image_width", &cv::saliency::StaticSaliencySpectralResidual::setImageWidth,
@@ -56,9 +56,9 @@ void Init_Saliency_SaliencySpecializedClasses()
     .define_method<void(cv::saliency::ObjectnessBING::*)()>("read", &cv::saliency::ObjectnessBING::read)
     .define_method<void(cv::saliency::ObjectnessBING::*)() const>("write", &cv::saliency::ObjectnessBING::write)
     .define_method<std::vector<float>(cv::saliency::ObjectnessBING::*)()>("getobjectness_values", &cv::saliency::ObjectnessBING::getobjectnessValues)
-    .define_method<void(cv::saliency::ObjectnessBING::*)(const cv::String&)>("set_training_path", &cv::saliency::ObjectnessBING::setTrainingPath,
+    .define_method<void(cv::saliency::ObjectnessBING::*)(const cv::String &)>("set_training_path", &cv::saliency::ObjectnessBING::setTrainingPath,
       Arg("training_path"))
-    .define_method<void(cv::saliency::ObjectnessBING::*)(const cv::String&)>("set_bb_res_dir", &cv::saliency::ObjectnessBING::setBBResDir,
+    .define_method<void(cv::saliency::ObjectnessBING::*)(const cv::String &)>("set_bb_res_dir", &cv::saliency::ObjectnessBING::setBBResDir,
       Arg("results_dir"))
     .define_method<double(cv::saliency::ObjectnessBING::*)() const>("get_base", &cv::saliency::ObjectnessBING::getBase)
     .define_method<void(cv::saliency::ObjectnessBING::*)(double)>("set_base", &cv::saliency::ObjectnessBING::setBase,

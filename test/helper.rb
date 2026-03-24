@@ -2,6 +2,12 @@
 # To make testing/debugging easier test within this source tree versus an installed gem
 require 'bundler/setup'
 
+# Coverage tracking — run with RICE_COVERAGE=1 to generate coverage/index.html
+if ENV['RICE_COVERAGE']
+  require 'rice/coverage'
+  Rice::Coverage.start
+end
+
 # Now load code
 require 'digest'
 require 'opencv-ruby'

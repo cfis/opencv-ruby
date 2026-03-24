@@ -103,4 +103,89 @@ class MatxTest < OpenCVTestCase
     vec7 = matx.solve(vec1, Cv::DecompTypes::DECOMP_NORMAL)
     assert_equal(expected, vec7.to_a)
   end
+
+  def test_ddot
+    m1 = Cv::Matx33f.all(1.0)
+    m2 = Cv::Matx33f.all(2.0)
+    result = m1.ddot(m2)
+    assert_in_delta(18.0, result, 0.001)
+  end
+
+  def test_mul
+    m1 = Cv::Matx33f.all(2.0)
+    m2 = Cv::Matx33f.all(3.0)
+    result = m1.mul(m2)
+    assert_in_delta(6.0, result[0, 0], 0.001)
+  end
+
+  def test_div
+    m1 = Cv::Matx33f.all(6.0)
+    m2 = Cv::Matx33f.all(2.0)
+    result = m1.div(m2)
+    assert_in_delta(3.0, result[0, 0], 0.001)
+  end
+
+  def test_inv
+    m = Cv::Matx33f.new(1.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 4.0)
+    inv = m.inv
+    assert_in_delta(1.0, inv[0, 0], 0.001)
+    assert_in_delta(0.5, inv[1, 1], 0.001)
+    assert_in_delta(0.25, inv[2, 2], 0.001)
+  end
+
+  def test_arithmetic
+    m1 = Cv::Matx33f.all(3.0)
+    m2 = Cv::Matx33f.all(2.0)
+
+    sum = m1 + m2
+    assert_in_delta(5.0, sum[0, 0], 0.001)
+
+    diff = m1 - m2
+    assert_in_delta(1.0, diff[0, 0], 0.001)
+  end
+
+  def test_scalar_multiply
+    m = Cv::Matx33f.all(3.0)
+    result = m * 2.0
+    assert_in_delta(6.0, result[0, 0], 0.001)
+  end
+
+  def test_equality
+    m1 = Cv::Matx33f.eye
+    m2 = Cv::Matx33f.eye
+    m3 = Cv::Matx33f.ones
+    assert_equal(m1, m2)
+    refute_equal(m1, m3)
+  end
+
+  def test_val
+    m = Cv::Matx22f.new(1.0, 2.0, 3.0, 4.0)
+    val = m.val
+    assert_equal(4, val.size)
+  end
+
+  def test_constructors_various_sizes
+    m22 = Cv::Matx22f.new(1.0, 2.0, 3.0, 4.0)
+    assert_in_delta(1.0, m22[0, 0], 0.001)
+    assert_in_delta(4.0, m22[1, 1], 0.001)
+
+    m44 = Cv::Matx44f.new(1.0, 0.0, 0.0, 0.0,
+                           0.0, 2.0, 0.0, 0.0,
+                           0.0, 0.0, 3.0, 0.0,
+                           0.0, 0.0, 0.0, 4.0)
+    assert_in_delta(4.0, m44[3, 3], 0.001)
+  end
+
+  def test_vector_single_index
+    m = Cv::Matx31f.new(1.0, 2.0, 3.0)
+    assert_in_delta(1.0, m[0], 0.001)
+    assert_in_delta(2.0, m[1], 0.001)
+    assert_in_delta(3.0, m[2], 0.001)
+  end
+
+  def test_input_array
+    m = Cv::Matx33f.eye
+    ia = m.input_array
+    assert_instance_of(Cv::InputArray, ia)
+  end
 end

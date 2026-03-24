@@ -225,4 +225,58 @@ class VecTest < OpenCVTestCase
     assert_equal("<Cv::Vec4i:[10, 20, 30, 40]>", Cv::Vec4i.new(10, 20, 30, 40).to_s)
     assert_equal("<Cv::Vec4f:[0.1, 0.2, 0.3, 0.4]>", Cv::Vec4f.new(0.1, 0.2, 0.3, 0.4).to_s)
   end
+
+  def test_cross
+    v1 = Cv::Vec3f.new(1.0, 0.0, 0.0)
+    v2 = Cv::Vec3f.new(0.0, 1.0, 0.0)
+    result = v1.cross(v2)
+    assert_in_delta(0.0, result[0], 0.001)
+    assert_in_delta(0.0, result[1], 0.001)
+    assert_in_delta(1.0, result[2], 0.001)
+  end
+
+  def test_conj
+    v = Cv::Vec2f.new(3.0, 4.0)
+    c = v.conj
+    assert_in_delta(3.0, c[0], 0.001)
+    assert_in_delta(-4.0, c[1], 0.001)
+  end
+
+  def test_zeros
+    v = Cv::Vec3f.zeros
+    assert_in_delta(0.0, v[0], 0.001)
+    assert_in_delta(0.0, v[1], 0.001)
+    assert_in_delta(0.0, v[2], 0.001)
+  end
+
+  def test_mul
+    v1 = Cv::Vec3f.new(1.0, 2.0, 3.0)
+    v2 = Cv::Vec3f.new(4.0, 5.0, 6.0)
+    result = v1.mul(v2)
+    assert_in_delta(4.0, result[0], 0.001)
+    assert_in_delta(10.0, result[1], 0.001)
+    assert_in_delta(18.0, result[2], 0.001)
+  end
+
+  def test_different_sizes
+    v2 = Cv::Vec2f.new(1.0, 2.0)
+    assert_equal(2, v2.to_a.size)
+
+    v4 = Cv::Vec4f.new(1.0, 2.0, 3.0, 4.0)
+    assert_equal(4, v4.to_a.size)
+
+    v6 = Cv::Vec6f.new(1.0, 2.0, 3.0, 4.0, 5.0, 6.0)
+    assert_equal(6, v6.to_a.size)
+  end
+
+  def test_integer_types
+    vs = Cv::Vec2s.new(100, 200)
+    assert_equal(100, vs[0])
+
+    vw = Cv::Vec2w.new(1000, 2000)
+    assert_equal(1000, vw[0])
+
+    vi = Cv::Vec2i.new(100000, 200000)
+    assert_equal(100000, vi[0])
+  end
 end

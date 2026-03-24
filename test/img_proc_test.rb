@@ -854,4 +854,67 @@ class ImgProcTest < OpenCVTestCase
     mat1 = mat.watershed(marker)
     assert_equal('ee6bec03296039c8df1899d3edc4684e', hash_img(mat1))
   end
+
+  def test_cvt_color_bgr2hsv
+    color = Cv::Mat.new(100, 100, CV_8UC3)
+    Cv.randu(color.input_output_array, Cv::Scalar.new(0, 0, 0).input_array, Cv::Scalar.new(255, 255, 255).input_array)
+    result = Cv::Mat.new
+    Cv.cvt_color(color.input_array, result.output_array, Cv::ColorConversionCodes::COLOR_BGR2HSV.to_i)
+    assert_equal(3, result.channels)
+    assert_equal(color.rows, result.rows)
+  end
+
+  def test_scharr
+    gray = Cv::Mat.new(100, 100, CV_8UC1)
+    Cv.randu(gray.input_output_array, Cv::Scalar.new(0).input_array, Cv::Scalar.new(255).input_array)
+    result = Cv::Mat.new
+    Cv.scharr(gray.input_array, result.output_array, CV_16S, 1, 0)
+    assert_equal(gray.rows, result.rows)
+  end
+
+  def test_line
+    img = Cv::Mat.new(200, 200, CV_8UC3)
+    img.set_to(Cv::Scalar.new(0, 0, 0).input_array)
+    Cv.line(img.input_output_array, Cv::Point2i.new(10, 10), Cv::Point2i.new(190, 190), Cv::Scalar.new(0, 255, 0), thickness: 2)
+    assert_equal(200, img.rows)
+  end
+
+  def test_ellipse
+    img = Cv::Mat.new(200, 200, CV_8UC3)
+    img.set_to(Cv::Scalar.new(0, 0, 0).input_array)
+    Cv.ellipse(img.input_output_array, Cv::Point2i.new(100, 100), Cv::Size2i.new(50, 30), 0.0, 0.0, 360.0, Cv::Scalar.new(0, 0, 255))
+    assert_equal(200, img.rows)
+  end
+
+  def test_put_text
+    img = Cv::Mat.new(200, 400, CV_8UC3)
+    img.set_to(Cv::Scalar.new(0, 0, 0).input_array)
+    Cv.put_text(img.input_output_array, "Hello", Cv::Point2i.new(50, 100),
+                Cv::HersheyFonts::FONT_HERSHEY_SIMPLEX.to_i, 1.0, Cv::Scalar.new(255, 255, 255))
+    assert_equal(200, img.rows)
+  end
+
+  def test_get_text_size
+    base_line = Rice::Buffer≺int≻.new(0)
+    size = Cv.get_text_size("Hello", Cv::HersheyFonts::FONT_HERSHEY_SIMPLEX.to_i, 1.0, 1, base_line.data)
+    assert(size.width > 0)
+    assert(size.height > 0)
+  end
+
+  def test_box_filter
+    gray = Cv::Mat.new(100, 100, CV_8UC1)
+    Cv.randu(gray.input_output_array, Cv::Scalar.new(0).input_array, Cv::Scalar.new(255).input_array)
+    result = Cv::Mat.new
+    Cv.box_filter(gray.input_array, result.output_array, -1, Cv::Size2i.new(3, 3))
+    assert_equal(gray.rows, result.rows)
+  end
+
+  def test_resize_by_factor
+    gray = Cv::Mat.new(100, 100, CV_8UC1)
+    Cv.randu(gray.input_output_array, Cv::Scalar.new(0).input_array, Cv::Scalar.new(255).input_array)
+    result = Cv::Mat.new
+    Cv.resize(gray.input_array, result.output_array, Cv::Size2i.new(0, 0), fx: 0.5, fy: 0.5)
+    assert_equal(50, result.rows)
+    assert_equal(50, result.cols)
+  end
 end

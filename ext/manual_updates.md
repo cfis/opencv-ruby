@@ -52,33 +52,18 @@ First add the following `#include` directives. These are required for compilatio
 | `opencv2/core/bufferpool-rb.cpp`                           | `<cstddef>`                                                              |
 | `opencv2/core/utils/logtag-rb.cpp`                         | `<climits>`                                                              |
 
-## DNN Module
-Remove the versioning in the DNN namespace.
-
-| File                                     | Reason                                                                                                                                                                                                                |
-|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `opencv2/dnn/*.cpp`, `opencv2/dnn/*.hpp` | Remove inline namespace version suffix: replace `::dnn4_v\d+` with empty string (e.g., `cv::dnn::dnn4_v20241223` → `cv::dnn`)                                                                                         |
-| `opencv2/dnn/*.cpp`, `opencv2/dnn/*.hpp` | Remove version from variable names: replace `Dnn4V\d+` with empty string (e.g., `rb_cCvDnnDnn4V20241223Layer` → `rb_cCvDnnLayer`)                                                                                     |
-| `opencv2/dnn/*.cpp`                      | Delete empty module definition line: `Module rb_mCvDnn = define_module_under(rb_mCvDnn, "");`                                                                                                                         |
-
 ## Additional Updates
 Apply all these updates
 
 | File                                     | Reason                                                                                                                                                                                                                |
 |------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `opencv2/core/fast_math-rb.cpp`          | Wrap `OPENCV_USE_FASTMATH_BUILTINS` constant in `#ifdef` guard                                                                                                                                                        |
-| `opencv2/dnn/version-rb.cpp`             | Add `#define CV_DNN_DONT_ADD_INLINE_NS` on line 1 before includes                                                                                                                                                     |
 | `opencv2/core/mat-rb.cpp`                | Comment out SparseMat `define_iterator` calls - SparseMatIterator doesn't dereference like standard iterators, use SparseMat__Refinements instead |
-| `opencv2/core/cuda-rb.cpp`               | Remove default `Stream::Null()` arguments (~lines 332, 472) from `Event::record` and `convert_fp16`. Change `Arg("stream") = static_cast<cv::cuda::Stream&>(cv::cuda::Stream::Null())` to just `Arg("stream")`. Add comment: `// Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed` |
+| `opencv2/core/cuda-rb.cpp`               | Remove default `Stream::Null()` arguments (~lines 323, 461) from `Event::record` and `convert_fp16`. Change `Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null())` to just `Arg("stream")`. Add comment: `// Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed` |
 | `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Change template argument from `<long>` to `<int64>`. Add comment: `// Manual fix: use int64 instead of long` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Matx41d` instantiation (~line 115): delete `Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");` — already defined in `matx-rb.cpp` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Vec4d` instantiation (~line 115): delete `Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");` — already defined in `matx-rb.cpp` |
-| ~~`opencv2/core/mat.inl-rb.cpp`~~        | **Fixed in ruby-bindgen** — was: Remove `ptrdiff_t` operator+ with `MatConstIterator` (`ptrdiff_t` is not a Rice-wrapped type) |
 | `opencv2/core/CMakeLists.txt`            | Move `cuda_stream_accessor-rb.cpp` into `if(OpenCV_HAS_CUDA)` conditional block — requires CUDA runtime headers |
-| ~~`opencv2/flann/all_indices-rb.ipp`~~   | **Fixed in ruby-bindgen** — was: Qualify `Matrix` → `cvflann::Matrix` (GCC 15 `-Wtemplate-body`) |
-| ~~`opencv2/flann/flann_base-rb.ipp`~~    | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `Index::Distance()` (GCC 15 `-Wtemplate-body`) |
-| ~~`opencv2/flann/autotuned_index-rb.ipp`~~ | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `AutotunedIndex::Distance()` (GCC 15 `-Wtemplate-body`) |
-| ~~`opencv2/flann/composite_index-rb.ipp`~~ | **Fixed in ruby-bindgen** — was: Qualify `ElementType` and `CompositeIndex::Distance()` (GCC 15 `-Wtemplate-body`) |
 
 ## Template Builder Modifications
 
@@ -155,10 +140,6 @@ OpenCV's Matx and Vec are C++ templates. While the template definitions exist in
 - Constructors: Only for dimensions that match element count (e.g., 4-arg constructor only for 4-element matrices)
 
 The `if constexpr` guards ensure we only define Ruby bindings for methods that have actual implementations in the OpenCV library.
-
-## ~~Class Inheritance Fixes~~
-
-**Fixed in ruby-bindgen** — All class inheritance relationships (Vec→Matx, Scalar_→Vec, Mat_→Mat, PtrStep→DevPtr, PtrStepSz→PtrStep, SparseMat_→SparseMat, MatConstIterator_→MatConstIterator, MatIterator_→MatConstIterator_, SparseMatConstIterator_→SparseMatConstIterator, SparseMatIterator_→SparseMatConstIterator_) are now generated automatically with correct parent class specifications.
 
 ## Final Step: Generate Diff File
 

@@ -267,7 +267,7 @@ void Init_Features2d()
 
   Rice::Data_Type<cv::SimpleBlobDetector> rb_cCvSimpleBlobDetector = define_class_under<cv::SimpleBlobDetector, cv::Feature2D>(rb_mCv, "SimpleBlobDetector")
     .define_singleton_function<cv::Ptr<cv::SimpleBlobDetector>(*)(const cv::SimpleBlobDetector::Params &)>("create", &cv::SimpleBlobDetector::create,
-      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params &>(cv::SimpleBlobDetector::Paramsrams()))
+      Arg("parameters") = static_cast<const cv::SimpleBlobDetector::Params &>(cv::SimpleBlobDetector::Params()))
     .define_method<void(cv::SimpleBlobDetector::*)(const cv::SimpleBlobDetector::Params &)>("set_params", &cv::SimpleBlobDetector::setParams,
       Arg("params"))
     .define_method<cv::SimpleBlobDetector::Params(cv::SimpleBlobDetector::*)() const>("get_params", &cv::SimpleBlobDetector::getParams)

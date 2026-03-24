@@ -33,11 +33,11 @@ void Init_Core_Optim()
     .define_method<void(cv::DownhillSolver::*)(cv::InputArray)>("set_init_step", &cv::DownhillSolver::setInitStep,
       Arg("step"))
     .define_singleton_function<cv::Ptr<cv::DownhillSolver>(*)(const cv::Ptr<cv::MinProblemSolver::Function> &, cv::InputArray, cv::TermCriteria)>("create", &cv::DownhillSolver::create,
-      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::MinProblemSolver::Functiontion>()), Arg("init_step") = static_cast<cv::InputArray>(cv::Mat_<double>(1,1,0.0)), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER+cv::TermCriteria::Type::EPS,5000,0.000001)));
+      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::MinProblemSolver::Function>()), Arg("init_step") = static_cast<cv::InputArray>(cv::Mat_<double>(1,1,0.0)), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER+cv::TermCriteria::Type::EPS,5000,0.000001)));
 
   Rice::Data_Type<cv::ConjGradSolver> rb_cCvConjGradSolver = define_class_under<cv::ConjGradSolver, cv::MinProblemSolver>(rb_mCv, "ConjGradSolver")
     .define_singleton_function<cv::Ptr<cv::ConjGradSolver>(*)(const cv::Ptr<cv::MinProblemSolver::Function> &, cv::TermCriteria)>("create", &cv::ConjGradSolver::create,
-      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::MinProblemSolver::Functiontion>()), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER+cv::TermCriteria::Type::EPS,5000,0.000001)));
+      Arg("f") = static_cast<const cv::Ptr<cv::MinProblemSolver::Function> &>(cv::Ptr<cv::MinProblemSolver::Function>()), Arg("termcrit") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::MAX_ITER+cv::TermCriteria::Type::EPS,5000,0.000001)));
 
   Enum<cv::SolveLPResult> rb_cCvSolveLPResult = define_enum_under<cv::SolveLPResult>("SolveLPResult", rb_mCv)
     .define_value("SOLVELP_UNBOUNDED", cv::SolveLPResult::SOLVELP_UNBOUNDED)

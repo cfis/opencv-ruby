@@ -18,6 +18,6 @@ inline Rice::Data_Type<cvflann::NNIndex<Distance>> NNIndex_instantiate(Rice::Mod
     .template define_method<int(cvflann::NNIndex<Distance>::*)() const>("used_memory", &cvflann::NNIndex<Distance>::usedMemory)
     .template define_method<cvflann::flann_algorithm_t(cvflann::NNIndex<Distance>::*)() const>("get_type", &cvflann::NNIndex<Distance>::getType)
     .template define_method<cvflann::IndexParams(cvflann::NNIndex<Distance>::*)() const>("get_parameters", &cvflann::NNIndex<Distance>::getParameters)
-    .template define_method<void(cvflann::NNIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::NNIndex<Distance>::DistanceType> &, const cvflann::NNIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::NNIndex<Distance>::findNeighbors,
+    .template define_method<void(cvflann::NNIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::NNIndex<Distance>::DistanceType> &, const typename cvflann::NNIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::NNIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }

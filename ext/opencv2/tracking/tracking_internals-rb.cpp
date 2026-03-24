@@ -76,7 +76,7 @@ void Init_Tracking_TrackingInternals()
 
   Rice::Data_Type<cv::detail::TrackerContribSamplerCSC> rb_cCvDetailTrackerContribSamplerCSC = define_class_under<cv::detail::TrackerContribSamplerCSC, cv::detail::TrackerContribSamplerAlgorithm>(rb_mCvDetail, "TrackerContribSamplerCSC")
     .define_constructor(Constructor<cv::detail::tracking::TrackerContribSamplerCSC, const cv::detail::TrackerContribSamplerCSC::Params &>(),
-      Arg("parameters") = static_cast<const cv::detail::TrackerContribSamplerCSC::Params &>(cv::detail::tracking::TrackerContribSamplerCSC::ParamstribSamplerCSC::Params()))
+      Arg("parameters") = static_cast<const cv::detail::TrackerContribSamplerCSC::Params &>(cv::detail::tracking::TrackerContribSamplerCSC::Params()))
     .define_method<void(cv::detail::tracking::TrackerContribSamplerCSC::*)(int)>("set_mode", &cv::detail::tracking::TrackerContribSamplerCSC::setMode,
       Arg("sampling_mode"))
     .define_constant("MODE_INIT_POS", (int)cv::detail::tracking::TrackerContribSamplerCSC::MODE_INIT_POS)
@@ -96,7 +96,7 @@ void Init_Tracking_TrackingInternals()
 
   Rice::Data_Type<cv::detail::TrackerSamplerCS> rb_cCvDetailTrackerSamplerCS = define_class_under<cv::detail::TrackerSamplerCS, cv::detail::TrackerContribSamplerAlgorithm>(rb_mCvDetail, "TrackerSamplerCS")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerCS, const cv::detail::TrackerSamplerCS::Params &>(),
-      Arg("parameters") = static_cast<const cv::detail::TrackerSamplerCS::Params &>(cv::detail::tracking::TrackerSamplerCS::ParamsackerSamplerCS::Params()))
+      Arg("parameters") = static_cast<const cv::detail::TrackerSamplerCS::Params &>(cv::detail::tracking::TrackerSamplerCS::Params()))
     .define_method<void(cv::detail::tracking::TrackerSamplerCS::*)(int)>("set_mode", &cv::detail::tracking::TrackerSamplerCS::setMode,
       Arg("sampling_mode"))
     .define_method<bool(cv::detail::tracking::TrackerSamplerCS::*)(const cv::Mat &, cv::Rect, std::vector<cv::Mat> &)>("sampling_impl", &cv::detail::tracking::TrackerSamplerCS::samplingImpl,
@@ -113,7 +113,7 @@ void Init_Tracking_TrackingInternals()
 
   Rice::Data_Type<cv::detail::TrackerSamplerPF> rb_cCvDetailTrackerSamplerPF = define_class_under<cv::detail::TrackerSamplerPF, cv::detail::TrackerContribSamplerAlgorithm>(rb_mCvDetail, "TrackerSamplerPF")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerPF, const cv::Mat &, const cv::detail::TrackerSamplerPF::Params &>(),
-      Arg("chosen_rect"), Arg("parameters") = static_cast<const cv::detail::TrackerSamplerPF::Params &>(cv::detail::tracking::TrackerSamplerPF::ParamsackerSamplerPF::Params()));
+      Arg("chosen_rect"), Arg("parameters") = static_cast<const cv::detail::TrackerSamplerPF::Params &>(cv::detail::tracking::TrackerSamplerPF::Params()));
 
   Rice::Data_Type<cv::detail::TrackerSamplerPF::Params> rb_cCvDetailTrackerSamplerPFParams = define_class_under<cv::detail::TrackerSamplerPF::Params>(rb_cCvDetailTrackerSamplerPF, "Params")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerPF::Params>())
@@ -135,7 +135,7 @@ void Init_Tracking_TrackingInternals()
 
   Rice::Data_Type<cv::detail::TrackerContribFeatureHAAR> rb_cCvDetailTrackerContribFeatureHAAR = define_class_under<cv::detail::TrackerContribFeatureHAAR, cv::detail::TrackerContribFeature>(rb_mCvDetail, "TrackerContribFeatureHAAR")
     .define_constructor(Constructor<cv::detail::tracking::TrackerContribFeatureHAAR, const cv::detail::TrackerContribFeatureHAAR::Params &>(),
-      Arg("parameters") = static_cast<const cv::detail::TrackerContribFeatureHAAR::Params &>(cv::detail::tracking::TrackerContribFeatureHAAR::ParamsribFeatureHAAR::Params()))
+      Arg("parameters") = static_cast<const cv::detail::TrackerContribFeatureHAAR::Params &>(cv::detail::tracking::TrackerContribFeatureHAAR::Params()))
     .define_method<bool(cv::detail::tracking::TrackerContribFeatureHAAR::*)(const std::vector<int>, const std::vector<cv::Mat> &, cv::Mat &)>("extract_selected", &cv::detail::tracking::TrackerContribFeatureHAAR::extractSelected,
       Arg("sel_features"), Arg("images"), Arg("response"))
     .define_method<void(cv::detail::tracking::TrackerContribFeatureHAAR::*)(cv::Mat &, int)>("selection", &cv::detail::tracking::TrackerContribFeatureHAAR::selection,

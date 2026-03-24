@@ -16,15 +16,15 @@ inline Rice::Data_Type<cvflann::anyimpl::small_any_policy<T>> small_any_policy_i
       ArgBuffer("arg_0"))
     .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(const void *, void **)>("copy_from_value", &cvflann::anyimpl::small_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void *const *, void **)>("clone", &cvflann::anyimpl::small_any_policy<T>::clone,
+    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void *const*, void **)>("clone", &cvflann::anyimpl::small_any_policy<T>::clone,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void *const *, void **)>("move", &cvflann::anyimpl::small_any_policy<T>::move,
+    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(void *const*, void **)>("move", &cvflann::anyimpl::small_any_policy<T>::move,
       ArgBuffer("src"), ArgBuffer("dest"))
     .template define_method<void *(cvflann::anyimpl::small_any_policy<T>::*)(void **)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
-    .template define_method<const void *(cvflann::anyimpl::small_any_policy<T>::*)(void *const *)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
+    .template define_method<const void *(cvflann::anyimpl::small_any_policy<T>::*)(void *const*)>("get_value", &cvflann::anyimpl::small_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
-    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(std::ostream &, void *const *)>("print", &cvflann::anyimpl::small_any_policy<T>::print,
+    .template define_method<void(cvflann::anyimpl::small_any_policy<T>::*)(std::ostream &, void *const*)>("print", &cvflann::anyimpl::small_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
 }
 
@@ -36,15 +36,15 @@ inline Rice::Data_Type<cvflann::anyimpl::big_any_policy<T>> big_any_policy_insta
       ArgBuffer("x"))
     .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(const void *, void **)>("copy_from_value", &cvflann::anyimpl::big_any_policy<T>::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void *const *, void **)>("clone", &cvflann::anyimpl::big_any_policy<T>::clone,
+    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void *const*, void **)>("clone", &cvflann::anyimpl::big_any_policy<T>::clone,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void *const *, void **)>("move", &cvflann::anyimpl::big_any_policy<T>::move,
+    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(void *const*, void **)>("move", &cvflann::anyimpl::big_any_policy<T>::move,
       ArgBuffer("src"), ArgBuffer("dest"))
     .template define_method<void *(cvflann::anyimpl::big_any_policy<T>::*)(void **)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
-    .template define_method<const void *(cvflann::anyimpl::big_any_policy<T>::*)(void *const *)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
+    .template define_method<const void *(cvflann::anyimpl::big_any_policy<T>::*)(void *const*)>("get_value", &cvflann::anyimpl::big_any_policy<T>::get_value,
       ArgBuffer("src"), ReturnBuffer())
-    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(std::ostream &, void *const *)>("print", &cvflann::anyimpl::big_any_policy<T>::print,
+    .template define_method<void(cvflann::anyimpl::big_any_policy<T>::*)(std::ostream &, void *const*)>("print", &cvflann::anyimpl::big_any_policy<T>::print,
       Arg("out"), ArgBuffer("src"));
 }
 

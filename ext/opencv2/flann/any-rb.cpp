@@ -27,17 +27,17 @@ void Init_Flann_Any()
       ArgBuffer("x"))
     .define_method<void(cvflann::anyimpl::base_any_policy::*)(const void *, void **)>("copy_from_value", &cvflann::anyimpl::base_any_policy::copy_from_value,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .define_method<void(cvflann::anyimpl::base_any_policy::*)(void *const *, void **)>("clone", &cvflann::anyimpl::base_any_policy::clone,
+    .define_method<void(cvflann::anyimpl::base_any_policy::*)(void *const*, void **)>("clone", &cvflann::anyimpl::base_any_policy::clone,
       ArgBuffer("src"), ArgBuffer("dest"))
-    .define_method<void(cvflann::anyimpl::base_any_policy::*)(void *const *, void **)>("move", &cvflann::anyimpl::base_any_policy::move,
+    .define_method<void(cvflann::anyimpl::base_any_policy::*)(void *const*, void **)>("move", &cvflann::anyimpl::base_any_policy::move,
       ArgBuffer("src"), ArgBuffer("dest"))
     .define_method<void *(cvflann::anyimpl::base_any_policy::*)(void **)>("get_value", &cvflann::anyimpl::base_any_policy::get_value,
       ArgBuffer("src"), ReturnBuffer())
-    .define_method<const void *(cvflann::anyimpl::base_any_policy::*)(void *const *)>("get_value", &cvflann::anyimpl::base_any_policy::get_value,
+    .define_method<const void *(cvflann::anyimpl::base_any_policy::*)(void *const*)>("get_value", &cvflann::anyimpl::base_any_policy::get_value,
       ArgBuffer("src"), ReturnBuffer())
     .define_method<size_t(cvflann::anyimpl::base_any_policy::*)()>("get_size", &cvflann::anyimpl::base_any_policy::get_size)
     .define_method<const std::type_info &(cvflann::anyimpl::base_any_policy::*)()>("type", &cvflann::anyimpl::base_any_policy::type)
-    .define_method<void(cvflann::anyimpl::base_any_policy::*)(std::ostream &, void *const *)>("print", &cvflann::anyimpl::base_any_policy::print,
+    .define_method<void(cvflann::anyimpl::base_any_policy::*)(std::ostream &, void *const*)>("print", &cvflann::anyimpl::base_any_policy::print,
       Arg("out"), ArgBuffer("src"));
 
   Rice::Data_Type<cvflann::anyimpl::any> rb_cCvflannAnyimplAny = define_class_under<cvflann::anyimpl::any>(rb_mCvflannAnyimpl, "Any");

@@ -13,7 +13,7 @@ inline Rice::Data_Type<cv::Affine3<T>> Affine3_instantiate(Rice::Module parent, 
       Arg("rvec"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3 &>(cv::Affine3<T>::Vec3::all(0)))
     .define_constructor(Constructor<cv::Affine3<T>, const cv::Mat &, const typename cv::Affine3<T>::Vec3 &>(),
       Arg("data"), Arg("t") = static_cast<const typename cv::Affine3<T>::Vec3 &>(cv::Affine3<T>::Vec3::all(0)))
-    .define_constructor(Constructor<cv::Affine3<T>, const cv::Affine3<float>::float_type *>(),
+    .define_constructor(Constructor<cv::Affine3<T>, const typename cv::Affine3<T>::float_type *>(),
       Arg("vals"))
     .template define_singleton_function<cv::Affine3<T>(*)()>("identity", &cv::Affine3<T>::Identity)
     .template define_method<void(cv::Affine3<T>::*)(const typename cv::Affine3<T>::Mat3 &)>("rotation", &cv::Affine3<T>::rotation,

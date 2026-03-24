@@ -168,7 +168,7 @@ void Init_Objdetect()
 
   Rice::Data_Type<cv::QRCodeEncoder> rb_cCvQRCodeEncoder = define_class_under<cv::QRCodeEncoder>(rb_mCv, "QRCodeEncoder")
     .define_singleton_function<cv::Ptr<cv::QRCodeEncoder>(*)(const cv::QRCodeEncoder::Params &)>("create", &cv::QRCodeEncoder::create,
-      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params &>(cv::QRCodeEncoder::Paramsrams()))
+      Arg("parameters") = static_cast<const cv::QRCodeEncoder::Params &>(cv::QRCodeEncoder::Params()))
     .define_method<void(cv::QRCodeEncoder::*)(const cv::String &, cv::OutputArray)>("encode", &cv::QRCodeEncoder::encode,
       Arg("encoded_info"), Arg("qrcode"))
     .define_method<void(cv::QRCodeEncoder::*)(const cv::String &, cv::OutputArrayOfArrays)>("encode_structured_append", &cv::QRCodeEncoder::encodeStructuredAppend,

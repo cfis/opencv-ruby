@@ -13,7 +13,7 @@ void Init_Face_FacemarkLBF()
 
   Rice::Data_Type<cv::face::FacemarkLBF> rb_cCvFaceFacemarkLBF = define_class_under<cv::face::FacemarkLBF, cv::face::FacemarkTrain>(rb_mCvFace, "FacemarkLBF")
     .define_singleton_function<cv::Ptr<cv::face::FacemarkLBF>(*)(const cv::face::FacemarkLBF::Params &)>("create", &cv::face::FacemarkLBF::create,
-      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params &>(cv::face::FacemarkLBF::ParamsBF::Params()));
+      Arg("parameters") = static_cast<const cv::face::FacemarkLBF::Params &>(cv::face::FacemarkLBF::Params()));
 
   Rice::Data_Type<cv::face::FacemarkLBF::Params> rb_cCvFaceFacemarkLBFParams = define_class_under<cv::face::FacemarkLBF::Params>(rb_cCvFaceFacemarkLBF, "Params")
     .define_constructor(Constructor<cv::face::FacemarkLBF::Params>())

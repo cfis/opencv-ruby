@@ -22,6 +22,6 @@ inline Rice::Data_Type<cvflann::Index<Distance>> Index_instantiate(Rice::Module 
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params"))
     .template define_method<int(cvflann::Index<Distance>::*)(const cvflann::Matrix<typename cvflann::Index<Distance>::ElementType> &, cvflann::Matrix<int> &, cvflann::Matrix<typename cvflann::Index<Distance>::DistanceType> &, float, const cvflann::SearchParams &)>("radius_search", &cvflann::Index<Distance>::radiusSearch,
       Arg("query"), Arg("indices"), Arg("dists"), Arg("radius"), Arg("params"))
-    .template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<typename cvflann::Index<Distance>::DistanceType> &, const cvflann::Index<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
+    .template define_method<void(cvflann::Index<Distance>::*)(cvflann::ResultSet<typename cvflann::Index<Distance>::DistanceType> &, const typename cvflann::Index<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::Index<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }

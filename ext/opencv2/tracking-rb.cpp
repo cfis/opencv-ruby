@@ -11,7 +11,7 @@ void Init_Tracking()
 
   Rice::Data_Type<cv::TrackerCSRT> rb_cCvTrackerCSRT = define_class_under<cv::TrackerCSRT, cv::Tracker>(rb_mCv, "TrackerCSRT")
     .define_singleton_function<cv::Ptr<cv::TrackerCSRT>(*)(const cv::TrackerCSRT::Params &)>("create", &cv::tracking::TrackerCSRT::create,
-      Arg("parameters") = static_cast<const cv::TrackerCSRT::Params &>(cv::tracking::TrackerCSRT::ParamserCSRT::Params()))
+      Arg("parameters") = static_cast<const cv::TrackerCSRT::Params &>(cv::tracking::TrackerCSRT::Params()))
     .define_method<void(cv::tracking::TrackerCSRT::*)(cv::InputArray)>("set_initial_mask", &cv::tracking::TrackerCSRT::setInitialMask,
       Arg("mask"));
 
@@ -47,7 +47,7 @@ void Init_Tracking()
 
   Rice::Data_Type<cv::TrackerKCF> rb_cCvTrackerKCF = define_class_under<cv::TrackerKCF, cv::Tracker>(rb_mCv, "TrackerKCF")
     .define_singleton_function<cv::Ptr<cv::TrackerKCF>(*)(const cv::TrackerKCF::Params &)>("create", &cv::tracking::TrackerKCF::create,
-      Arg("parameters") = static_cast<const cv::TrackerKCF::Params &>(cv::tracking::TrackerKCF::ParamskerKCF::Params()))
+      Arg("parameters") = static_cast<const cv::TrackerKCF::Params &>(cv::tracking::TrackerKCF::Params()))
     .define_method<void(cv::tracking::TrackerKCF::*)(cv::TrackerKCF::FeatureExtractorCallbackFN, bool)>("set_feature_extractor", &cv::tracking::TrackerKCF::setFeatureExtractor,
       Arg("callback"), Arg("pca_func") = static_cast<bool>(false));
 

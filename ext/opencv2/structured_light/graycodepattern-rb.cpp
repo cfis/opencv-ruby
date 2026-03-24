@@ -13,7 +13,7 @@ void Init_StructuredLight_Graycodepattern()
 
   Rice::Data_Type<cv::structured_light::GrayCodePattern> rb_cCvStructuredLightGrayCodePattern = define_class_under<cv::structured_light::GrayCodePattern, cv::structured_light::StructuredLightPattern>(rb_mCvStructuredLight, "GrayCodePattern")
     .define_singleton_function<cv::Ptr<cv::structured_light::GrayCodePattern>(*)(const cv::structured_light::GrayCodePattern::Params &)>("create", &cv::structured_light::GrayCodePattern::create,
-      Arg("parameters") = static_cast<const cv::structured_light::GrayCodePattern::Params &>(cv::structured_light::GrayCodePattern::ParamsrayCodePattern::Params()))
+      Arg("parameters") = static_cast<const cv::structured_light::GrayCodePattern::Params &>(cv::structured_light::GrayCodePattern::Params()))
     .define_singleton_function<cv::Ptr<cv::structured_light::GrayCodePattern>(*)(int, int)>("create", &cv::structured_light::GrayCodePattern::create,
       Arg("width"), Arg("height"))
     .define_method<size_t(cv::structured_light::GrayCodePattern::*)() const>("get_number_of_pattern_images", &cv::structured_light::GrayCodePattern::getNumberOfPatternImages)

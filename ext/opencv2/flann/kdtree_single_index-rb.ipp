@@ -22,6 +22,6 @@ inline Rice::Data_Type<cvflann::KDTreeSingleIndex<Distance>> KDTreeSingleIndex_i
     .template define_method<void(cvflann::KDTreeSingleIndex<Distance>::*)(const cvflann::Matrix<typename cvflann::KDTreeSingleIndex<Distance>::ElementType> &, cvflann::Matrix<int> &, cvflann::Matrix<typename cvflann::KDTreeSingleIndex<Distance>::DistanceType> &, int, const cvflann::SearchParams &)>("knn_search", &cvflann::KDTreeSingleIndex<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params"))
     .template define_method<cvflann::IndexParams(cvflann::KDTreeSingleIndex<Distance>::*)() const>("get_parameters", &cvflann::KDTreeSingleIndex<Distance>::getParameters)
-    .template define_method<void(cvflann::KDTreeSingleIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::KDTreeSingleIndex<Distance>::DistanceType> &, const cvflann::KDTreeSingleIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
+    .template define_method<void(cvflann::KDTreeSingleIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::KDTreeSingleIndex<Distance>::DistanceType> &, const typename cvflann::KDTreeSingleIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::KDTreeSingleIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"));
 }

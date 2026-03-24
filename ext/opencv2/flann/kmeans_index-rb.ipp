@@ -28,7 +28,7 @@ inline Rice::Data_Type<cvflann::KMeansIndex<Distance>> KMeansIndex_instantiate(R
       Arg("stream"))
     .template define_method<void(cvflann::KMeansIndex<Distance>::*)(FILE *)>("load_index", &cvflann::KMeansIndex<Distance>::loadIndex,
       Arg("stream"))
-    .template define_method<void(cvflann::KMeansIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::KMeansIndex<Distance>::DistanceType> &, const cvflann::KMeansIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::KMeansIndex<Distance>::findNeighbors,
+    .template define_method<void(cvflann::KMeansIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::KMeansIndex<Distance>::DistanceType> &, const typename cvflann::KMeansIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::KMeansIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("search_params"))
     .template define_method<int(cvflann::KMeansIndex<Distance>::*)(cvflann::Matrix<typename cvflann::KMeansIndex<Distance>::CentersType> &)>("get_cluster_centers", &cvflann::KMeansIndex<Distance>::getClusterCenters,
       Arg("centers"))

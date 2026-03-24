@@ -190,7 +190,7 @@ void Init_Highgui()
   rb_mCv.define_module_function<void(*)(const cv::String &)>("load_window_parameters", &cv::loadWindowParameters,
     Arg("window_name"));
 
-  rb_mCv.define_module_function<int(*)(int (*)(int, char **), int, char *[])>("start_loop", &cv::startLoop,
+  rb_mCv.define_module_function<int(*)(int (*)(int, char *[]), int, char *[])>("start_loop", &cv::startLoop,
     Arg("pt2_func"), Arg("argc"), Arg("argv"));
 
   rb_mCv.define_module_function<void(*)()>("stop_loop", &cv::stopLoop);

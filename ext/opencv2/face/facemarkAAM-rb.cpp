@@ -15,7 +15,7 @@ void Init_Face_FacemarkAAM()
     .define_method<bool(cv::face::FacemarkAAM::*)(cv::InputArray, cv::InputArray, cv::OutputArrayOfArrays, const std::vector<cv::face::FacemarkAAM::Config> &)>("fit_config", &cv::face::FacemarkAAM::fitConfig,
       Arg("image"), Arg("roi"), Arg("_landmarks"), Arg("runtime_params"))
     .define_singleton_function<cv::Ptr<cv::face::FacemarkAAM>(*)(const cv::face::FacemarkAAM::Params &)>("create", &cv::face::FacemarkAAM::create,
-      Arg("parameters") = static_cast<const cv::face::FacemarkAAM::Params &>(cv::face::FacemarkAAM::ParamsAM::Params()));
+      Arg("parameters") = static_cast<const cv::face::FacemarkAAM::Params &>(cv::face::FacemarkAAM::Params()));
 
   Rice::Data_Type<cv::face::FacemarkAAM::Params> rb_cCvFaceFacemarkAAMParams = define_class_under<cv::face::FacemarkAAM::Params>(rb_cCvFaceFacemarkAAM, "Params")
     .define_constructor(Constructor<cv::face::FacemarkAAM::Params>())

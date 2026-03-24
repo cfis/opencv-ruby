@@ -1047,7 +1047,7 @@ void Init_Imgproc()
   rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, bool, const cv::Scalar &, int, int, int)>("polylines", &cv::polylines,
     Arg("img"), Arg("pts"), Arg("is_closed"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point *const *, const int *, int, bool, const cv::Scalar &, int, int, int)>("polylines", &cv::polylines,
+  rb_mCv.define_module_function<void(*)(cv::InputOutputArray, const cv::Point *const*, const int *, int, bool, const cv::Scalar &, int, int, int)>("polylines", &cv::polylines,
     Arg("img"), ArgBuffer("pts"), ArgBuffer("npts"), Arg("ncontours"), Arg("is_closed"), Arg("color"), Arg("thickness") = static_cast<int>(1), Arg("line_type") = static_cast<int>(cv::LINE_8), Arg("shift") = static_cast<int>(0));
 
   rb_mCv.define_module_function<void(*)(cv::InputOutputArray, cv::InputArrayOfArrays, int, const cv::Scalar &, int, int, cv::InputArray, int, cv::Point)>("draw_contours", &cv::drawContours,

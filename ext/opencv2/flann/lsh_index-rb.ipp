@@ -22,6 +22,6 @@ inline Rice::Data_Type<cvflann::LshIndex<Distance>> LshIndex_instantiate(Rice::M
     .template define_method<cvflann::IndexParams(cvflann::LshIndex<Distance>::*)() const>("get_parameters", &cvflann::LshIndex<Distance>::getParameters)
     .template define_method<void(cvflann::LshIndex<Distance>::*)(const cvflann::Matrix<typename cvflann::LshIndex<Distance>::ElementType> &, cvflann::Matrix<int> &, cvflann::Matrix<typename cvflann::LshIndex<Distance>::DistanceType> &, int, const cvflann::SearchParams &)>("knn_search", &cvflann::LshIndex<Distance>::knnSearch,
       Arg("queries"), Arg("indices"), Arg("dists"), Arg("knn"), Arg("params"))
-    .template define_method<void(cvflann::LshIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::LshIndex<Distance>::DistanceType> &, const cvflann::LshIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
+    .template define_method<void(cvflann::LshIndex<Distance>::*)(cvflann::ResultSet<typename cvflann::LshIndex<Distance>::DistanceType> &, const typename cvflann::LshIndex<Distance>::ElementType *, const cvflann::SearchParams &)>("find_neighbors", &cvflann::LshIndex<Distance>::findNeighbors,
       Arg("result"), Arg("vec"), Arg("arg_2"));
 }

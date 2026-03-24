@@ -74,7 +74,7 @@ void Init_Video_Detail_TrackingDetail()
 
   Rice::Data_Type<cv::detail::TrackerSamplerCSC> rb_cCvDetailTrackerSamplerCSC = define_class_under<cv::detail::TrackerSamplerCSC, cv::detail::TrackerSamplerAlgorithm>(rb_mCvDetail, "TrackerSamplerCSC")
     .define_constructor(Constructor<cv::detail::tracking::TrackerSamplerCSC, const cv::detail::TrackerSamplerCSC::Params &>(),
-      Arg("parameters") = static_cast<const cv::detail::TrackerSamplerCSC::Params &>(cv::detail::tracking::TrackerSamplerCSC::ParamsckerSamplerCSC::Params()))
+      Arg("parameters") = static_cast<const cv::detail::TrackerSamplerCSC::Params &>(cv::detail::tracking::TrackerSamplerCSC::Params()))
     .define_method<void(cv::detail::tracking::TrackerSamplerCSC::*)(int)>("set_mode", &cv::detail::tracking::TrackerSamplerCSC::setMode,
       Arg("sampling_mode"))
     .define_method<bool(cv::detail::tracking::TrackerSamplerCSC::*)(const cv::Mat &, const cv::Rect &, std::vector<cv::Mat> &)>("sampling", &cv::detail::tracking::TrackerSamplerCSC::sampling,

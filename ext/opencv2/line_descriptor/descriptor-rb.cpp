@@ -40,7 +40,7 @@ void Init_LineDescriptor_Descriptor()
 
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor> rb_cCvLineDescriptorBinaryDescriptor = define_class_under<cv::line_descriptor::BinaryDescriptor, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptor")
     .define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor, const cv::line_descriptor::BinaryDescriptor::Params &>(),
-      Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params &>(cv::line_descriptor::BinaryDescriptor::ParamsaryDescriptor::Params()))
+      Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params &>(cv::line_descriptor::BinaryDescriptor::Params()))
     .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor)
     .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor,
       Arg("parameters"))

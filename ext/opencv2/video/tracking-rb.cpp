@@ -218,7 +218,7 @@ void Init_Video_Tracking()
 
   Rice::Data_Type<cv::TrackerMIL> rb_cCvTrackerMIL = define_class_under<cv::TrackerMIL, cv::Tracker>(rb_mCv, "TrackerMIL")
     .define_singleton_function<cv::Ptr<cv::TrackerMIL>(*)(const cv::TrackerMIL::Params &)>("create", &cv::TrackerMIL::create,
-      Arg("parameters") = static_cast<const cv::TrackerMIL::Params &>(cv::TrackerMIL::Paramsrams()));
+      Arg("parameters") = static_cast<const cv::TrackerMIL::Params &>(cv::TrackerMIL::Params()));
 
   Rice::Data_Type<cv::TrackerMIL::Params> rb_cCvTrackerMILParams = define_class_under<cv::TrackerMIL::Params>(rb_cCvTrackerMIL, "Params")
     .define_constructor(Constructor<cv::TrackerMIL::Params>())
@@ -232,7 +232,7 @@ void Init_Video_Tracking()
 
   Rice::Data_Type<cv::TrackerGOTURN> rb_cCvTrackerGOTURN = define_class_under<cv::TrackerGOTURN, cv::Tracker>(rb_mCv, "TrackerGOTURN")
     .define_singleton_function<cv::Ptr<cv::TrackerGOTURN>(*)(const cv::TrackerGOTURN::Params &)>("create", &cv::TrackerGOTURN::create,
-      Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params &>(cv::TrackerGOTURN::Paramsrams()));
+      Arg("parameters") = static_cast<const cv::TrackerGOTURN::Params &>(cv::TrackerGOTURN::Params()));
 
   Rice::Data_Type<cv::TrackerGOTURN::Params> rb_cCvTrackerGOTURNParams = define_class_under<cv::TrackerGOTURN::Params>(rb_cCvTrackerGOTURN, "Params")
     .define_constructor(Constructor<cv::TrackerGOTURN::Params>())
@@ -241,7 +241,7 @@ void Init_Video_Tracking()
 
   Rice::Data_Type<cv::TrackerDaSiamRPN> rb_cCvTrackerDaSiamRPN = define_class_under<cv::TrackerDaSiamRPN, cv::Tracker>(rb_mCv, "TrackerDaSiamRPN")
     .define_singleton_function<cv::Ptr<cv::TrackerDaSiamRPN>(*)(const cv::TrackerDaSiamRPN::Params &)>("create", &cv::TrackerDaSiamRPN::create,
-      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params &>(cv::TrackerDaSiamRPN::Paramsrams()))
+      Arg("parameters") = static_cast<const cv::TrackerDaSiamRPN::Params &>(cv::TrackerDaSiamRPN::Params()))
     .define_method<float(cv::TrackerDaSiamRPN::*)()>("get_tracking_score", &cv::TrackerDaSiamRPN::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerDaSiamRPN::Params> rb_cCvTrackerDaSiamRPNParams = define_class_under<cv::TrackerDaSiamRPN::Params>(rb_cCvTrackerDaSiamRPN, "Params")
@@ -256,7 +256,7 @@ void Init_Video_Tracking()
 
   Rice::Data_Type<cv::TrackerNano> rb_cCvTrackerNano = define_class_under<cv::TrackerNano, cv::Tracker>(rb_mCv, "TrackerNano")
     .define_singleton_function<cv::Ptr<cv::TrackerNano>(*)(const cv::TrackerNano::Params &)>("create", &cv::TrackerNano::create,
-      Arg("parameters") = static_cast<const cv::TrackerNano::Params &>(cv::TrackerNano::Paramsrams()))
+      Arg("parameters") = static_cast<const cv::TrackerNano::Params &>(cv::TrackerNano::Params()))
     .define_method<float(cv::TrackerNano::*)()>("get_tracking_score", &cv::TrackerNano::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerNano::Params> rb_cCvTrackerNanoParams = define_class_under<cv::TrackerNano::Params>(rb_cCvTrackerNano, "Params")
@@ -272,7 +272,7 @@ void Init_Video_Tracking()
 
   Rice::Data_Type<cv::TrackerVit> rb_cCvTrackerVit = define_class_under<cv::TrackerVit, cv::Tracker>(rb_mCv, "TrackerVit")
     .define_singleton_function<cv::Ptr<cv::TrackerVit>(*)(const cv::TrackerVit::Params &)>("create", &cv::TrackerVit::create,
-      Arg("parameters") = static_cast<const cv::TrackerVit::Params &>(cv::TrackerVit::Paramsrams()))
+      Arg("parameters") = static_cast<const cv::TrackerVit::Params &>(cv::TrackerVit::Params()))
     .define_method<float(cv::TrackerVit::*)()>("get_tracking_score", &cv::TrackerVit::getTrackingScore);
 
   Rice::Data_Type<cv::TrackerVit::Params> rb_cCvTrackerVitParams = define_class_under<cv::TrackerVit::Params>(rb_cCvTrackerVit, "Params")

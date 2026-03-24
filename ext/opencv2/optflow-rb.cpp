@@ -11,10 +11,10 @@ void Init_Optflow()
 
   Module rb_mCvOptflow = define_module_under(rb_mCv, "Optflow");
 
-  rb_mCvOptflow.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int)>("calc_optical_flow_sf", &cv::optflow::calcOpticalFlowSF,
+  rb_mCvOptflow.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int)>("calc_optical_flow_sf", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int)>(&cv::optflow::calcOpticalFlowSF),
     Arg("from"), Arg("to"), Arg("flow"), Arg("layers"), Arg("averaging_block_size"), Arg("max_flow"));
 
-  rb_mCvOptflow.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int, double, double, int, double, double, double, int, double, double, double)>("calc_optical_flow_sf", &cv::optflow::calcOpticalFlowSF,
+  rb_mCvOptflow.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int, double, double, int, double, double, double, int, double, double, double)>("calc_optical_flow_sf", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int, double, double, int, double, double, double, int, double, double, double)>(&cv::optflow::calcOpticalFlowSF),
     Arg("from"), Arg("to"), Arg("flow"), Arg("layers"), Arg("averaging_block_size"), Arg("max_flow"), Arg("sigma_dist"), Arg("sigma_color"), Arg("postprocess_window"), Arg("sigma_dist_fix"), Arg("sigma_color_fix"), Arg("occ_thr"), Arg("upscale_averaging_radius"), Arg("upscale_sigma_dist"), Arg("upscale_sigma_color"), Arg("speed_up_thr"));
 
   rb_mCvOptflow.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, float, bool, float, float)>("calc_optical_flow_sparse_to_dense", &cv::optflow::calcOpticalFlowSparseToDense,

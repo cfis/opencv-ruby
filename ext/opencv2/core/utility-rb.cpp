@@ -77,16 +77,16 @@ void Init_Core_Utility()
   rb_mCv.define_module_function<size_t(*)(size_t, int)>("align_size", &cv::alignSize,
     Arg("sz"), Arg("n"));
 
-  rb_mCv.define_module_function<int(*)(int, unsigned int)>("div_up", &cv::divUp,
+  rb_mCv.define_module_function<int(*)(int, unsigned int)>("div_up", static_cast<int(*)(int, unsigned int)>(&cv::divUp),
     Arg("a"), Arg("b"));
 
-  rb_mCv.define_module_function<size_t(*)(size_t, unsigned int)>("div_up", &cv::divUp,
+  rb_mCv.define_module_function<size_t(*)(size_t, unsigned int)>("div_up", static_cast<size_t(*)(size_t, unsigned int)>(&cv::divUp),
     Arg("a"), Arg("b"));
 
-  rb_mCv.define_module_function<int(*)(int, unsigned int)>("round_up", &cv::roundUp,
+  rb_mCv.define_module_function<int(*)(int, unsigned int)>("round_up", static_cast<int(*)(int, unsigned int)>(&cv::roundUp),
     Arg("a"), Arg("b"));
 
-  rb_mCv.define_module_function<size_t(*)(size_t, unsigned int)>("round_up", &cv::roundUp,
+  rb_mCv.define_module_function<size_t(*)(size_t, unsigned int)>("round_up", static_cast<size_t(*)(size_t, unsigned int)>(&cv::roundUp),
     Arg("a"), Arg("b"));
 
   rb_mCv.define_module_function<void(*)(bool)>("set_use_optimized", &cv::setUseOptimized,
@@ -101,7 +101,7 @@ void Init_Core_Utility()
     .define_method<void(cv::ParallelLoopBody::*)(const cv::Range &) const>("call", &cv::ParallelLoopBody::operator(),
       Arg("range"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Range &, const cv::ParallelLoopBody &, double)>("parallel_for_", &cv::parallel_for_,
+  rb_mCv.define_module_function<void(*)(const cv::Range &, const cv::ParallelLoopBody &, double)>("parallel_for_", static_cast<void(*)(const cv::Range &, const cv::ParallelLoopBody &, double)>(&cv::parallel_for_),
     Arg("range"), Arg("body"), Arg("nstripes") = static_cast<double>(-1.));
 
   Rice::Data_Type<cv::ParallelLoopBodyLambdaWrapper> rb_cCvParallelLoopBodyLambdaWrapper = define_class_under<cv::ParallelLoopBodyLambdaWrapper, cv::ParallelLoopBody>(rb_mCv, "ParallelLoopBodyLambdaWrapper")
@@ -110,7 +110,7 @@ void Init_Core_Utility()
     .define_method<void(cv::ParallelLoopBodyLambdaWrapper::*)(const cv::Range &) const>("call", &cv::ParallelLoopBodyLambdaWrapper::operator(),
       Arg("range"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Range &, std::function<void (const cv::Range &)>, double)>("parallel_for_", &cv::parallel_for_,
+  rb_mCv.define_module_function<void(*)(const cv::Range &, std::function<void (const cv::Range &)>, double)>("parallel_for_", static_cast<void(*)(const cv::Range &, std::function<void (const cv::Range &)>, double)>(&cv::parallel_for_),
     Arg("range"), Arg("functor"), Arg("nstripes") = static_cast<double>(-1.));
 
   Rice::Data_Type<cv::CommandLineParser> rb_cCvCommandLineParser = define_class_under<cv::CommandLineParser>(rb_mCv, "CommandLineParser")
@@ -137,10 +137,10 @@ void Init_Core_Utility()
   rb_mCvSamples.define_module_function<cv::String(*)(const cv::String &, bool, bool)>("find_file", &cv::samples::findFile,
     Arg("relative_path"), Arg("required") = static_cast<bool>(true), Arg("silent_mode") = static_cast<bool>(false));
 
-  rb_mCvSamples.define_module_function<cv::String(*)(const cv::String &, bool)>("find_file_or_keep", &cv::samples::findFileOrKeep,
+  rb_mCvSamples.define_module_function<cv::String(*)(const cv::String &, bool)>("find_file_or_keep", static_cast<cv::String(*)(const cv::String &, bool)>(&cv::samples::findFileOrKeep),
     Arg("relative_path"), Arg("silent_mode") = static_cast<bool>(false));
 
-  rb_mCvSamples.define_module_function<cv::String(*)(const cv::String &, bool)>("find_file_or_keep", &cv::samples::findFileOrKeep,
+  rb_mCvSamples.define_module_function<cv::String(*)(const cv::String &, bool)>("find_file_or_keep", static_cast<cv::String(*)(const cv::String &, bool)>(&cv::samples::findFileOrKeep),
     Arg("relative_path"), Arg("silent_mode"));
 
   rb_mCvSamples.define_module_function<void(*)(const cv::String &)>("add_samples_data_search_path", &cv::samples::addSamplesDataSearchPath,

@@ -62,9 +62,9 @@ void Init_Cudaobjdetect()
       Arg("img"), Arg("descriptors"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   Rice::Data_Type<cv::cuda::CascadeClassifier> rb_cCvCudaCascadeClassifier = define_class_under<cv::cuda::CascadeClassifier, cv::Algorithm>(rb_mCvCuda, "CascadeClassifier")
-    .define_singleton_function<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::String &)>("create", &cv::cuda::CascadeClassifier::create,
+    .define_singleton_function<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::String &)>("create", static_cast<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::String &)>(&cv::cuda::CascadeClassifier::create),
       Arg("filename"))
-    .define_singleton_function<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::FileStorage &)>("create", &cv::cuda::CascadeClassifier::create,
+    .define_singleton_function<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::FileStorage &)>("create", static_cast<cv::Ptr<cv::cuda::CascadeClassifier>(*)(const cv::FileStorage &)>(&cv::cuda::CascadeClassifier::create),
       Arg("file"))
     .define_method<void(cv::cuda::CascadeClassifier::*)(cv::Size)>("set_max_object_size", &cv::cuda::CascadeClassifier::setMaxObjectSize,
       Arg("max_object_size"))

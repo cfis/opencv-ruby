@@ -11,9 +11,9 @@ void Init_Ximgproc_Peilin()
 
   Module rb_mCvXimgproc = define_module_under(rb_mCv, "Ximgproc");
 
-  rb_mCvXimgproc.define_module_function<cv::Matx23d(*)(cv::InputArray)>("pei_lin_normalization", &cv::ximgproc::PeiLinNormalization,
+  rb_mCvXimgproc.define_module_function<cv::Matx23d(*)(cv::InputArray)>("pei_lin_normalization", static_cast<cv::Matx23d(*)(cv::InputArray)>(&cv::ximgproc::PeiLinNormalization),
     Arg("i"));
 
-  rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray)>("pei_lin_normalization", &cv::ximgproc::PeiLinNormalization,
+  rb_mCvXimgproc.define_module_function<void(*)(cv::InputArray, cv::OutputArray)>("pei_lin_normalization", static_cast<void(*)(cv::InputArray, cv::OutputArray)>(&cv::ximgproc::PeiLinNormalization),
     Arg("i"), Arg("t"));
 }

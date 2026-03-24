@@ -98,13 +98,13 @@ void Init_Imgproc_Hal_Hal()
   rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, uchar *, size_t, int, int, int, int, bool, bool, bool)>("cvt_labto_bgr", &cv::hal::cvtLabtoBGR,
     ArgBuffer("src_data"), Arg("src_step"), ArgBuffer("dst_data"), Arg("dst_step"), Arg("width"), Arg("height"), Arg("depth"), Arg("dcn"), Arg("swap_blue"), Arg("is_lab"), Arg("srgb"));
 
-  rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", &cv::hal::cvtTwoPlaneYUVtoBGR,
+  rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", static_cast<void(*)(const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>(&cv::hal::cvtTwoPlaneYUVtoBGR),
     ArgBuffer("src_data"), Arg("src_step"), ArgBuffer("dst_data"), Arg("dst_step"), Arg("dst_width"), Arg("dst_height"), Arg("dcn"), Arg("swap_blue"), Arg("u_idx"), Arg("hint") = static_cast<cv::AlgorithmHint>(cv::ALGO_HINT_DEFAULT));
 
-  rb_mCvHal.define_module_function<void(*)(const uchar *, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", &cv::hal::cvtTwoPlaneYUVtoBGR,
+  rb_mCvHal.define_module_function<void(*)(const uchar *, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", static_cast<void(*)(const uchar *, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>(&cv::hal::cvtTwoPlaneYUVtoBGR),
     ArgBuffer("y_data"), ArgBuffer("uv_data"), Arg("src_step"), ArgBuffer("dst_data"), Arg("dst_step"), Arg("dst_width"), Arg("dst_height"), Arg("dcn"), Arg("swap_blue"), Arg("u_idx"), Arg("hint") = static_cast<cv::AlgorithmHint>(cv::ALGO_HINT_DEFAULT));
 
-  rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", &cv::hal::cvtTwoPlaneYUVtoBGR,
+  rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_two_plane_yu_vto_bgr", static_cast<void(*)(const uchar *, size_t, const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>(&cv::hal::cvtTwoPlaneYUVtoBGR),
     ArgBuffer("y_data"), Arg("y_step"), ArgBuffer("uv_data"), Arg("uv_step"), ArgBuffer("dst_data"), Arg("dst_step"), Arg("dst_width"), Arg("dst_height"), Arg("dcn"), Arg("swap_blue"), Arg("u_idx"), Arg("hint") = static_cast<cv::AlgorithmHint>(cv::ALGO_HINT_DEFAULT));
 
   rb_mCvHal.define_module_function<void(*)(const uchar *, size_t, uchar *, size_t, int, int, int, bool, int, cv::AlgorithmHint)>("cvt_three_plane_yu_vto_bgr", &cv::hal::cvtThreePlaneYUVtoBGR,

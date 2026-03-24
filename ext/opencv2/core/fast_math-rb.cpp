@@ -7,46 +7,44 @@ using namespace Rice;
 
 void Init_Core_FastMath()
 {
-#ifdef OPENCV_USE_FASTMATH_BUILTINS
-  Class(rb_cObject).define_constant("OPENCV_USE_FASTMATH_BUILTINS", (int)OPENCV_USE_FASTMATH_BUILTINS);
-#endif
+  Class(rb_cObject).define_constant("OPENCV_USE_FASTMATH_BUILTINS", OPENCV_USE_FASTMATH_BUILTINS);
 
-  define_global_function<int(*)(double)>("cv_round", &cvRound,
+  define_global_function<int(*)(double)>("cv_round", static_cast<int(*)(double)>(&cvRound),
     Arg("value"));
 
-  define_global_function<int(*)(double)>("cv_floor", &cvFloor,
+  define_global_function<int(*)(double)>("cv_floor", static_cast<int(*)(double)>(&cvFloor),
     Arg("value"));
 
-  define_global_function<int(*)(double)>("cv_ceil", &cvCeil,
+  define_global_function<int(*)(double)>("cv_ceil", static_cast<int(*)(double)>(&cvCeil),
     Arg("value"));
 
-  define_global_function<int(*)(double)>("cv_is_na_n", &cvIsNaN,
+  define_global_function<int(*)(double)>("cv_is_na_n", static_cast<int(*)(double)>(&cvIsNaN),
     Arg("value"));
 
-  define_global_function<int(*)(double)>("cv_is_inf", &cvIsInf,
+  define_global_function<int(*)(double)>("cv_is_inf", static_cast<int(*)(double)>(&cvIsInf),
     Arg("value"));
 
-  define_global_function<int(*)(float)>("cv_round", &cvRound,
+  define_global_function<int(*)(float)>("cv_round", static_cast<int(*)(float)>(&cvRound),
     Arg("value"));
 
-  define_global_function<int(*)(int)>("cv_round", &cvRound,
+  define_global_function<int(*)(int)>("cv_round", static_cast<int(*)(int)>(&cvRound),
     Arg("value"));
 
-  define_global_function<int(*)(float)>("cv_floor", &cvFloor,
+  define_global_function<int(*)(float)>("cv_floor", static_cast<int(*)(float)>(&cvFloor),
     Arg("value"));
 
-  define_global_function<int(*)(int)>("cv_floor", &cvFloor,
+  define_global_function<int(*)(int)>("cv_floor", static_cast<int(*)(int)>(&cvFloor),
     Arg("value"));
 
-  define_global_function<int(*)(float)>("cv_ceil", &cvCeil,
+  define_global_function<int(*)(float)>("cv_ceil", static_cast<int(*)(float)>(&cvCeil),
     Arg("value"));
 
-  define_global_function<int(*)(int)>("cv_ceil", &cvCeil,
+  define_global_function<int(*)(int)>("cv_ceil", static_cast<int(*)(int)>(&cvCeil),
     Arg("value"));
 
-  define_global_function<int(*)(float)>("cv_is_na_n", &cvIsNaN,
+  define_global_function<int(*)(float)>("cv_is_na_n", static_cast<int(*)(float)>(&cvIsNaN),
     Arg("value"));
 
-  define_global_function<int(*)(float)>("cv_is_inf", &cvIsInf,
+  define_global_function<int(*)(float)>("cv_is_inf", static_cast<int(*)(float)>(&cvIsInf),
     Arg("value"));
 }

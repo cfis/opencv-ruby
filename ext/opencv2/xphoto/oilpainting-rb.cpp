@@ -11,9 +11,9 @@ void Init_Xphoto_Oilpainting()
 
   Module rb_mCvXphoto = define_module_under(rb_mCv, "Xphoto");
 
-  rb_mCvXphoto.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int)>("oil_painting", &cv::xphoto::oilPainting,
+  rb_mCvXphoto.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int)>("oil_painting", static_cast<void(*)(cv::InputArray, cv::OutputArray, int, int, int)>(&cv::xphoto::oilPainting),
     Arg("src"), Arg("dst"), Arg("size"), Arg("dyn_ratio"), Arg("code"));
 
-  rb_mCvXphoto.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int)>("oil_painting", &cv::xphoto::oilPainting,
+  rb_mCvXphoto.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int)>("oil_painting", static_cast<void(*)(cv::InputArray, cv::OutputArray, int, int)>(&cv::xphoto::oilPainting),
     Arg("src"), Arg("dst"), Arg("size"), Arg("dyn_ratio"));
 }

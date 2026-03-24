@@ -48,10 +48,10 @@ void Init_Core()
     .define_value("REDUCE_MIN", cv::ReduceTypes::REDUCE_MIN)
     .define_value("REDUCE_SUM2", cv::ReduceTypes::REDUCE_SUM2);
 
-  rb_mCv.define_module_function<void(*)(cv::Mat &, cv::Mat &)>("swap", &cv::swap,
+  rb_mCv.define_module_function<void(*)(cv::Mat &, cv::Mat &)>("swap", static_cast<void(*)(cv::Mat &, cv::Mat &)>(&cv::swap),
     Arg("a"), Arg("b"));
 
-  rb_mCv.define_module_function<void(*)(cv::UMat &, cv::UMat &)>("swap", &cv::swap,
+  rb_mCv.define_module_function<void(*)(cv::UMat &, cv::UMat &)>("swap", static_cast<void(*)(cv::UMat &, cv::UMat &)>(&cv::swap),
     Arg("a"), Arg("b"));
 
   rb_mCv.define_module_function<int(*)(int, int, int)>("border_interpolate", &cv::borderInterpolate,
@@ -69,10 +69,10 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double, int)>("multiply", &cv::multiply,
     Arg("src1"), Arg("src2"), Arg("dst"), Arg("scale") = static_cast<double>(1), Arg("dtype") = static_cast<int>(-1));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double, int)>("divide", &cv::divide,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double, int)>("divide", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double, int)>(&cv::divide),
     Arg("src1"), Arg("src2"), Arg("dst"), Arg("scale") = static_cast<double>(1), Arg("dtype") = static_cast<int>(-1));
 
-  rb_mCv.define_module_function<void(*)(double, cv::InputArray, cv::OutputArray, int)>("divide", &cv::divide,
+  rb_mCv.define_module_function<void(*)(double, cv::InputArray, cv::OutputArray, int)>("divide", static_cast<void(*)(double, cv::InputArray, cv::OutputArray, int)>(&cv::divide),
     Arg("scale"), Arg("src2"), Arg("dst"), Arg("dtype") = static_cast<int>(-1));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, double, cv::InputArray, cv::OutputArray)>("scale_add", &cv::scaleAdd,
@@ -108,13 +108,13 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::InputArray)>("mean_std_dev", &cv::meanStdDev,
     Arg("src"), Arg("mean"), Arg("stddev"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<double(*)(cv::InputArray, int, cv::InputArray)>("norm", &cv::norm,
+  rb_mCv.define_module_function<double(*)(cv::InputArray, int, cv::InputArray)>("norm", static_cast<double(*)(cv::InputArray, int, cv::InputArray)>(&cv::norm),
     Arg("src1"), Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, int, cv::InputArray)>("norm", &cv::norm,
+  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, int, cv::InputArray)>("norm", static_cast<double(*)(cv::InputArray, cv::InputArray, int, cv::InputArray)>(&cv::norm),
     Arg("src1"), Arg("src2"), Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<double(*)(const cv::SparseMat &, int)>("norm", &cv::norm,
+  rb_mCv.define_module_function<double(*)(const cv::SparseMat &, int)>("norm", static_cast<double(*)(const cv::SparseMat &, int)>(&cv::norm),
     Arg("src"), Arg("norm_type"));
 
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, double)>("psnr", &cv::PSNR,
@@ -123,13 +123,13 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::OutputArray, int, int, cv::InputArray, int, bool)>("batch_distance", &cv::batchDistance,
     Arg("src1"), Arg("src2"), Arg("dist"), Arg("dtype"), Arg("nidx"), Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("k") = static_cast<int>(0), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("update") = static_cast<int>(0), Arg("crosscheck") = static_cast<bool>(false));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, double, double, int, int, cv::InputArray)>("normalize", &cv::normalize,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, double, double, int, int, cv::InputArray)>("normalize", static_cast<void(*)(cv::InputArray, cv::InputOutputArray, double, double, int, int, cv::InputArray)>(&cv::normalize),
     Arg("src"), Arg("dst"), Arg("alpha") = static_cast<double>(1), Arg("beta") = static_cast<double>(0), Arg("norm_type") = static_cast<int>(cv::NORM_L2), Arg("dtype") = static_cast<int>(-1), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<void(*)(const cv::SparseMat &, cv::SparseMat &, double, int)>("normalize", &cv::normalize,
+  rb_mCv.define_module_function<void(*)(const cv::SparseMat &, cv::SparseMat &, double, int)>("normalize", static_cast<void(*)(const cv::SparseMat &, cv::SparseMat &, double, int)>(&cv::normalize),
     Arg("src"), Arg("dst"), Arg("alpha"), Arg("norm_type"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, double *, double *, cv::Point *, cv::Point *, cv::InputArray)>("min_max_loc", &cv::minMaxLoc,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, double *, double *, cv::Point *, cv::Point *, cv::InputArray)>("min_max_loc", static_cast<void(*)(cv::InputArray, double *, double *, cv::Point *, cv::Point *, cv::InputArray)>(&cv::minMaxLoc),
     Arg("src"), ArgBuffer("min_val"), ArgBuffer("max_val") = static_cast<double *>(0), Arg("min_loc") = static_cast<cv::Point *>(0), Arg("max_loc") = static_cast<cv::Point *>(0), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, bool)>("reduce_arg_min", &cv::reduceArgMin,
@@ -141,31 +141,31 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, double *, double *, int *, int *, cv::InputArray)>("min_max_idx", &cv::minMaxIdx,
     Arg("src"), ArgBuffer("min_val"), ArgBuffer("max_val") = static_cast<double *>(0), ArgBuffer("min_idx") = static_cast<int *>(0), ArgBuffer("max_idx") = static_cast<int *>(0), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<void(*)(const cv::SparseMat &, double *, double *, int *, int *)>("min_max_loc", &cv::minMaxLoc,
+  rb_mCv.define_module_function<void(*)(const cv::SparseMat &, double *, double *, int *, int *)>("min_max_loc", static_cast<void(*)(const cv::SparseMat &, double *, double *, int *, int *)>(&cv::minMaxLoc),
     Arg("a"), ArgBuffer("min_val"), ArgBuffer("max_val"), ArgBuffer("min_idx") = static_cast<int *>(0), ArgBuffer("max_idx") = static_cast<int *>(0));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int)>("reduce", &cv::reduce,
     Arg("src"), Arg("dst"), Arg("dim"), Arg("rtype"), Arg("dtype") = static_cast<int>(-1));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("merge", &cv::merge,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("merge", static_cast<void(*)(const cv::Mat *, size_t, cv::OutputArray)>(&cv::merge),
     Arg("mv"), Arg("count"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("merge", &cv::merge,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("merge", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>(&cv::merge),
     Arg("mv"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat &, cv::Mat *)>("split", &cv::split,
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, cv::Mat *)>("split", static_cast<void(*)(const cv::Mat &, cv::Mat *)>(&cv::split),
     Arg("src"), Arg("mvbegin"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArrayOfArrays)>("split", &cv::split,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArrayOfArrays)>("split", static_cast<void(*)(cv::InputArray, cv::OutputArrayOfArrays)>(&cv::split),
     Arg("m"), Arg("mv"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::Mat *, size_t, const int *, size_t)>("mix_channels", &cv::mixChannels,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::Mat *, size_t, const int *, size_t)>("mix_channels", static_cast<void(*)(const cv::Mat *, size_t, cv::Mat *, size_t, const int *, size_t)>(&cv::mixChannels),
     Arg("src"), Arg("nsrcs"), Arg("dst"), Arg("ndsts"), ArgBuffer("from_to"), Arg("npairs"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const int *, size_t)>("mix_channels", &cv::mixChannels,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const int *, size_t)>("mix_channels", static_cast<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const int *, size_t)>(&cv::mixChannels),
     Arg("src"), Arg("dst"), ArgBuffer("from_to"), Arg("npairs"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const std::vector<int> &)>("mix_channels", &cv::mixChannels,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const std::vector<int> &)>("mix_channels", static_cast<void(*)(cv::InputArrayOfArrays, cv::InputOutputArrayOfArrays, const std::vector<int> &)>(&cv::mixChannels),
     Arg("src"), Arg("dst"), Arg("from_to"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("extract_channel", &cv::extractChannel,
@@ -191,28 +191,28 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int)>("rotate", &cv::rotate,
     Arg("src"), Arg("dst"), Arg("rotate_code"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, int, int, cv::OutputArray)>("repeat", &cv::repeat,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, int, int, cv::OutputArray)>("repeat", static_cast<void(*)(cv::InputArray, int, int, cv::OutputArray)>(&cv::repeat),
     Arg("src"), Arg("ny"), Arg("nx"), Arg("dst"));
 
-  rb_mCv.define_module_function<cv::Mat(*)(const cv::Mat &, int, int)>("repeat", &cv::repeat,
+  rb_mCv.define_module_function<cv::Mat(*)(const cv::Mat &, int, int)>("repeat", static_cast<cv::Mat(*)(const cv::Mat &, int, int)>(&cv::repeat),
     Arg("src"), Arg("ny"), Arg("nx"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("hconcat", &cv::hconcat,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("hconcat", static_cast<void(*)(const cv::Mat *, size_t, cv::OutputArray)>(&cv::hconcat),
     Arg("src"), Arg("nsrc"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("hconcat", &cv::hconcat,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("hconcat", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::hconcat),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("hconcat", &cv::hconcat,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("hconcat", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>(&cv::hconcat),
     Arg("src"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("vconcat", &cv::vconcat,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, size_t, cv::OutputArray)>("vconcat", static_cast<void(*)(const cv::Mat *, size_t, cv::OutputArray)>(&cv::vconcat),
     Arg("src"), Arg("nsrc"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("vconcat", &cv::vconcat,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("vconcat", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::vconcat),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("vconcat", &cv::vconcat,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>("vconcat", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray)>(&cv::vconcat),
     Arg("src"), Arg("dst"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::InputArray)>("bitwise_and", &cv::bitwise_and,
@@ -239,22 +239,22 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int)>("compare", &cv::compare,
     Arg("src1"), Arg("src2"), Arg("dst"), Arg("cmpop"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("min", &cv::min,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("min", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::min),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>("min", &cv::min,
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>("min", static_cast<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>(&cv::min),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>("min", &cv::min,
+  rb_mCv.define_module_function<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>("min", static_cast<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>(&cv::min),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("max", &cv::max,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("max", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::max),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>("max", &cv::max,
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>("max", static_cast<void(*)(const cv::Mat &, const cv::Mat &, cv::Mat &)>(&cv::max),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
-  rb_mCv.define_module_function<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>("max", &cv::max,
+  rb_mCv.define_module_function<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>("max", static_cast<void(*)(const cv::UMat &, const cv::UMat &, cv::UMat &)>(&cv::max),
     Arg("src1"), Arg("src2"), Arg("dst"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray)>("sqrt", &cv::sqrt,
@@ -341,22 +341,22 @@ void Init_Core()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray)>("eigen_non_symmetric", &cv::eigenNonSymmetric,
     Arg("src"), Arg("eigenvalues"), Arg("eigenvectors"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, cv::Mat &, cv::Mat &, int, int)>("calc_covar_matrix", &cv::calcCovarMatrix,
+  rb_mCv.define_module_function<void(*)(const cv::Mat *, int, cv::Mat &, cv::Mat &, int, int)>("calc_covar_matrix", static_cast<void(*)(const cv::Mat *, int, cv::Mat &, cv::Mat &, int, int)>(&cv::calcCovarMatrix),
     Arg("samples"), Arg("nsamples"), Arg("covar"), Arg("mean"), Arg("flags"), Arg("ctype") = static_cast<int>(CV_64F));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputOutputArray, int, int)>("calc_covar_matrix", &cv::calcCovarMatrix,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputOutputArray, int, int)>("calc_covar_matrix", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::InputOutputArray, int, int)>(&cv::calcCovarMatrix),
     Arg("samples"), Arg("covar"), Arg("mean"), Arg("flags"), Arg("ctype") = static_cast<int>(CV_64F));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, int)>("pca_compute", &cv::PCACompute,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, int)>("pca_compute", static_cast<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, int)>(&cv::PCACompute),
     Arg("data"), Arg("mean"), Arg("eigenvectors"), Arg("max_components") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, int)>("pca_compute", &cv::PCACompute,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, int)>("pca_compute", static_cast<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, int)>(&cv::PCACompute),
     Arg("data"), Arg("mean"), Arg("eigenvectors"), Arg("eigenvalues"), Arg("max_components") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, double)>("pca_compute", &cv::PCACompute,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, double)>("pca_compute", static_cast<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, double)>(&cv::PCACompute),
     Arg("data"), Arg("mean"), Arg("eigenvectors"), Arg("retained_variance"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, double)>("pca_compute", &cv::PCACompute,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, double)>("pca_compute", static_cast<void(*)(cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray, double)>(&cv::PCACompute),
     Arg("data"), Arg("mean"), Arg("eigenvectors"), Arg("eigenvalues"), Arg("retained_variance"));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("pca_project", &cv::PCAProject,
@@ -469,11 +469,11 @@ void Init_Core()
       Arg("src"), Arg("flags") = static_cast<int>(0))
     .define_method<cv::SVD &(cv::SVD::*)(cv::InputArray, int)>("call", &cv::SVD::operator(),
       Arg("src"), Arg("flags") = static_cast<int>(0))
-    .define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int)>("compute", &cv::SVD::compute,
+    .define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int)>("compute", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::OutputArray, int)>(&cv::SVD::compute),
       Arg("src"), Arg("w"), Arg("u"), Arg("vt"), Arg("flags") = static_cast<int>(0))
-    .define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, int)>("compute", &cv::SVD::compute,
+    .define_singleton_function<void(*)(cv::InputArray, cv::OutputArray, int)>("compute", static_cast<void(*)(cv::InputArray, cv::OutputArray, int)>(&cv::SVD::compute),
       Arg("src"), Arg("w"), Arg("flags") = static_cast<int>(0))
-    .define_singleton_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("back_subst", &cv::SVD::backSubst,
+    .define_singleton_function<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>("back_subst", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::SVD::backSubst),
       Arg("w"), Arg("u"), Arg("vt"), Arg("rhs"), Arg("dst"))
     .define_singleton_function<void(*)(cv::InputArray, cv::OutputArray)>("solve_z", &cv::SVD::solveZ,
       Arg("src"), Arg("dst"))

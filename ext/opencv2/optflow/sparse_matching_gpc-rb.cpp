@@ -36,9 +36,9 @@ void Init_Optflow_SparseMatchingGpc()
 
   Rice::Data_Type<cv::optflow::GPCTrainingSamples> rb_cCvOptflowGPCTrainingSamples = define_class_under<cv::optflow::GPCTrainingSamples>(rb_mCvOptflow, "GPCTrainingSamples")
     .define_constructor(Constructor<cv::optflow::GPCTrainingSamples>())
-    .define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<cv::String> &, const std::vector<cv::String> &, const std::vector<cv::String> &, int)>("create", &cv::optflow::GPCTrainingSamples::create,
+    .define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<cv::String> &, const std::vector<cv::String> &, const std::vector<cv::String> &, int)>("create", static_cast<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(const std::vector<cv::String> &, const std::vector<cv::String> &, const std::vector<cv::String> &, int)>(&cv::optflow::GPCTrainingSamples::create),
       Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type"))
-    .define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>("create", &cv::optflow::GPCTrainingSamples::create,
+    .define_singleton_function<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>("create", static_cast<cv::Ptr<cv::optflow::GPCTrainingSamples>(*)(cv::InputArrayOfArrays, cv::InputArrayOfArrays, cv::InputArrayOfArrays, int)>(&cv::optflow::GPCTrainingSamples::create),
       Arg("images_from"), Arg("images_to"), Arg("gt"), Arg("descriptor_type"))
     .define_method<size_t(cv::optflow::GPCTrainingSamples::*)() const>("size", &cv::optflow::GPCTrainingSamples::size)
     .define_method<int(cv::optflow::GPCTrainingSamples::*)() const>("type", &cv::optflow::GPCTrainingSamples::type)

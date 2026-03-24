@@ -11,16 +11,16 @@ void Init_Core_Cvstd()
 {
   Module rb_mCv = define_module("Cv");
 
-  rb_mCv.define_module_function<uchar(*)(uchar)>("abs", &cv::abs,
+  rb_mCv.define_module_function<uchar(*)(uchar)>("abs", static_cast<uchar(*)(uchar)>(&cv::abs),
     Arg("a"));
 
-  rb_mCv.define_module_function<ushort(*)(ushort)>("abs", &cv::abs,
+  rb_mCv.define_module_function<ushort(*)(ushort)>("abs", static_cast<ushort(*)(ushort)>(&cv::abs),
     Arg("a"));
 
-  rb_mCv.define_module_function<unsigned int(*)(unsigned int)>("abs", &cv::abs,
+  rb_mCv.define_module_function<unsigned int(*)(unsigned int)>("abs", static_cast<unsigned int(*)(unsigned int)>(&cv::abs),
     Arg("a"));
 
-  rb_mCv.define_module_function<uint64(*)(uint64)>("abs", &cv::abs,
+  rb_mCv.define_module_function<uint64(*)(uint64)>("abs", static_cast<uint64(*)(uint64)>(&cv::abs),
     Arg("a"));
 
   rb_mCv.define_module_function<void *(*)(size_t)>("fast_malloc", &cv::fastMalloc,

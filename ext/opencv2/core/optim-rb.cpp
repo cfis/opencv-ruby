@@ -49,9 +49,9 @@ void Init_Core_Optim()
     #endif
     ;
 
-  rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double)>("solve_lp", &cv::solveLP,
+  rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double)>("solve_lp", static_cast<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double)>(&cv::solveLP),
     Arg("func"), Arg("constr"), Arg("z"), Arg("constr_eps"));
 
-  rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("solve_lp", &cv::solveLP,
+  rb_mCv.define_module_function<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>("solve_lp", static_cast<int(*)(cv::InputArray, cv::InputArray, cv::OutputArray)>(&cv::solveLP),
     Arg("func"), Arg("constr"), Arg("z"));
 }

@@ -62,9 +62,6 @@ void Init_Dnn_Dnn()
     .define_attr("name", &cv::dnn::LayerParams::name)
     .define_attr("type", &cv::dnn::LayerParams::type);
 
-  Rice::Data_Type<cv::dnn::BackendNode> rb_cCvDnnBackendNode = define_class_under<cv::dnn::BackendNode>(rb_mCvDnn, "BackendNode")
-    .define_attr("backend_id", &cv::dnn::BackendNode::backendId);
-
   Rice::Data_Type<cv::dnn::BackendWrapper> rb_cCvDnnBackendWrapper = define_class_under<cv::dnn::BackendWrapper>(rb_mCvDnn, "BackendWrapper")
     .define_method<void(cv::dnn::BackendWrapper::*)()>("copy_to_host", &cv::dnn::BackendWrapper::copyToHost)
     .define_method<void(cv::dnn::BackendWrapper::*)()>("set_host_dirty", &cv::dnn::BackendWrapper::setHostDirty)
@@ -89,14 +86,6 @@ void Init_Dnn_Dnn()
       Arg("output_name"))
     .define_method<bool(cv::dnn::Layer::*)(int)>("support_backend", &cv::dnn::Layer::supportBackend,
       Arg("backend_id"))
-    .define_method<cv::Ptr<cv::dnn::BackendNode>(cv::dnn::Layer::*)(const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &)>("init_halide", &cv::dnn::Layer::initHalide,
-      Arg("inputs"))
-    .define_method<cv::Ptr<cv::dnn::BackendNode>(cv::dnn::Layer::*)(const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &, std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &)>("init_vk_com", &cv::dnn::Layer::initVkCom,
-      Arg("inputs"), Arg("outputs"))
-    .define_method<cv::Ptr<cv::dnn::BackendNode>(cv::dnn::Layer::*)(void *, const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &, const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &)>("init_cuda", &cv::dnn::Layer::initCUDA,
-      ArgBuffer("context"), Arg("inputs"), Arg("outputs"))
-    .define_method<cv::Ptr<cv::dnn::BackendNode>(cv::dnn::Layer::*)(void *, const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &, const std::vector<cv::Ptr<cv::dnn::BackendWrapper>> &, bool)>("init_tim_vx", &cv::dnn::Layer::initTimVX,
-      ArgBuffer("tim_vx_info"), Arg("inputs_wrapper"), Arg("outputs_wrapper"), Arg("is_last"))
     .define_method<bool(cv::dnn::Layer::*)(const cv::Ptr<cv::dnn::ActivationLayer> &)>("set_activation", &cv::dnn::Layer::setActivation,
       Arg("layer"))
     .define_method<bool(cv::dnn::Layer::*)(cv::Ptr<cv::dnn::Layer> &)>("try_fuse", &cv::dnn::Layer::tryFuse,
@@ -126,11 +115,11 @@ void Init_Dnn_Dnn()
   Rice::Data_Type<cv::dnn::Net::Impl> rb_cCvDnnNetImpl = define_class_under<cv::dnn::Net::Impl>(rb_cCvDnnNet, "Impl");
   rb_cCvDnnNet
     .define_constructor(Constructor<cv::dnn::Net>())
-    .define_singleton_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_from_model_optimizer", &cv::dnn::Net::readFromModelOptimizer,
+    .define_singleton_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_from_model_optimizer", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &)>(&cv::dnn::Net::readFromModelOptimizer),
       Arg("xml"), Arg("bin"))
-    .define_singleton_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_from_model_optimizer", &cv::dnn::Net::readFromModelOptimizer,
+    .define_singleton_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_from_model_optimizer", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::Net::readFromModelOptimizer),
       Arg("buffer_model_config"), Arg("buffer_weights"))
-    .define_singleton_function<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>("read_from_model_optimizer", &cv::dnn::Net::readFromModelOptimizer,
+    .define_singleton_function<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>("read_from_model_optimizer", static_cast<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>(&cv::dnn::Net::readFromModelOptimizer),
       ArgBuffer("buffer_model_config_ptr"), Arg("buffer_model_config_size"), ArgBuffer("buffer_weights_ptr"), Arg("buffer_weights_size"))
     .define_method<bool(cv::dnn::Net::*)() const>("empty?", &cv::dnn::Net::empty)
     .define_method<cv::String(cv::dnn::Net::*)()>("dump", &cv::dnn::Net::dump)
@@ -242,85 +231,85 @@ void Init_Dnn_Dnn()
     .define_method<cv::dnn::Net::Impl *(cv::dnn::Net::*)() const>("get_impl", &cv::dnn::Net::getImpl)
     .define_method<cv::dnn::Net::Impl &(cv::dnn::Net::*)() const>("get_impl_ref", &cv::dnn::Net::getImplRef);
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_darknet", &cv::dnn::readNetFromDarknet,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_darknet", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &)>(&cv::dnn::readNetFromDarknet),
     Arg("cfg_file"), Arg("darknet_model") = static_cast<const cv::String &>(cv::String()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_darknet", &cv::dnn::readNetFromDarknet,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_darknet", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::readNetFromDarknet),
     Arg("buffer_cfg"), Arg("buffer_model") = static_cast<const std::vector<uchar> &>(std::vector<uchar>()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_darknet", &cv::dnn::readNetFromDarknet,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_darknet", static_cast<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>(&cv::dnn::readNetFromDarknet),
     Arg("buffer_cfg"), Arg("len_cfg"), Arg("buffer_model") = static_cast<const char *>(NULL), Arg("len_model") = static_cast<size_t>(0));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_caffe", &cv::dnn::readNetFromCaffe,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_caffe", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &)>(&cv::dnn::readNetFromCaffe),
     Arg("prototxt"), Arg("caffe_model") = static_cast<const cv::String &>(cv::String()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_caffe", &cv::dnn::readNetFromCaffe,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_caffe", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::readNetFromCaffe),
     Arg("buffer_proto"), Arg("buffer_model") = static_cast<const std::vector<uchar> &>(std::vector<uchar>()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_caffe", &cv::dnn::readNetFromCaffe,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_caffe", static_cast<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>(&cv::dnn::readNetFromCaffe),
     Arg("buffer_proto"), Arg("len_proto"), Arg("buffer_model") = static_cast<const char *>(NULL), Arg("len_model") = static_cast<size_t>(0));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_tensorflow", &cv::dnn::readNetFromTensorflow,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_tensorflow", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &)>(&cv::dnn::readNetFromTensorflow),
     Arg("model"), Arg("config") = static_cast<const cv::String &>(cv::String()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_tensorflow", &cv::dnn::readNetFromTensorflow,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_tensorflow", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::readNetFromTensorflow),
     Arg("buffer_model"), Arg("buffer_config") = static_cast<const std::vector<uchar> &>(std::vector<uchar>()));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_tensorflow", &cv::dnn::readNetFromTensorflow,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>("read_net_from_tensorflow", static_cast<cv::dnn::Net(*)(const char *, size_t, const char *, size_t)>(&cv::dnn::readNetFromTensorflow),
     Arg("buffer_model"), Arg("len_model"), Arg("buffer_config") = static_cast<const char *>(NULL), Arg("len_config") = static_cast<size_t>(0));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &)>("read_net_from_tf_lite", &cv::dnn::readNetFromTFLite,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &)>("read_net_from_tf_lite", static_cast<cv::dnn::Net(*)(const cv::String &)>(&cv::dnn::readNetFromTFLite),
     Arg("model"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &)>("read_net_from_tf_lite", &cv::dnn::readNetFromTFLite,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &)>("read_net_from_tf_lite", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &)>(&cv::dnn::readNetFromTFLite),
     Arg("buffer_model"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t)>("read_net_from_tf_lite", &cv::dnn::readNetFromTFLite,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t)>("read_net_from_tf_lite", static_cast<cv::dnn::Net(*)(const char *, size_t)>(&cv::dnn::readNetFromTFLite),
     Arg("buffer_model"), Arg("len_model"));
 
   rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, bool, bool)>("read_net_from_torch", &cv::dnn::readNetFromTorch,
     Arg("model"), Arg("is_binary") = static_cast<bool>(true), Arg("evaluate") = static_cast<bool>(true));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &, const cv::String &)>("read_net", &cv::dnn::readNet,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &, const cv::String &)>("read_net", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &, const cv::String &)>(&cv::dnn::readNet),
     Arg("model"), Arg("config") = static_cast<const cv::String &>(""), Arg("framework") = static_cast<const cv::String &>(""));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const std::vector<uchar> &, const std::vector<uchar> &)>("read_net", &cv::dnn::readNet,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const std::vector<uchar> &, const std::vector<uchar> &)>("read_net", static_cast<cv::dnn::Net(*)(const cv::String &, const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::readNet),
     Arg("framework"), Arg("buffer_model"), Arg("buffer_config") = static_cast<const std::vector<uchar> &>(std::vector<uchar>()));
 
   rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::String &, bool)>("read_torch_blob", &cv::dnn::readTorchBlob,
     Arg("filename"), Arg("is_binary") = static_cast<bool>(true));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_model_optimizer", &cv::dnn::readNetFromModelOptimizer,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &, const cv::String &)>("read_net_from_model_optimizer", static_cast<cv::dnn::Net(*)(const cv::String &, const cv::String &)>(&cv::dnn::readNetFromModelOptimizer),
     Arg("xml"), Arg("bin") = static_cast<const cv::String &>(""));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_model_optimizer", &cv::dnn::readNetFromModelOptimizer,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>("read_net_from_model_optimizer", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &, const std::vector<uchar> &)>(&cv::dnn::readNetFromModelOptimizer),
     Arg("buffer_model_config"), Arg("buffer_weights"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>("read_net_from_model_optimizer", &cv::dnn::readNetFromModelOptimizer,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>("read_net_from_model_optimizer", static_cast<cv::dnn::Net(*)(const uchar *, size_t, const uchar *, size_t)>(&cv::dnn::readNetFromModelOptimizer),
     ArgBuffer("buffer_model_config_ptr"), Arg("buffer_model_config_size"), ArgBuffer("buffer_weights_ptr"), Arg("buffer_weights_size"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &)>("read_net_from_onnx", &cv::dnn::readNetFromONNX,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const cv::String &)>("read_net_from_onnx", static_cast<cv::dnn::Net(*)(const cv::String &)>(&cv::dnn::readNetFromONNX),
     Arg("onnx_file"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t)>("read_net_from_onnx", &cv::dnn::readNetFromONNX,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const char *, size_t)>("read_net_from_onnx", static_cast<cv::dnn::Net(*)(const char *, size_t)>(&cv::dnn::readNetFromONNX),
     Arg("buffer"), Arg("size_buffer"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &)>("read_net_from_onnx", &cv::dnn::readNetFromONNX,
+  rb_mCvDnn.define_module_function<cv::dnn::Net(*)(const std::vector<uchar> &)>("read_net_from_onnx", static_cast<cv::dnn::Net(*)(const std::vector<uchar> &)>(&cv::dnn::readNetFromONNX),
     Arg("buffer"));
 
   rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::String &)>("read_tensor_from_onnx", &cv::dnn::readTensorFromONNX,
     Arg("path"));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>("blob_from_image", &cv::dnn::blobFromImage,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>("blob_from_image", static_cast<cv::Mat(*)(cv::InputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>(&cv::dnn::blobFromImage),
     Arg("image"), Arg("scalefactor") = static_cast<double>(1.0), Arg("size") = static_cast<const cv::Size &>(cv::Size()), Arg("mean") = static_cast<const cv::Scalar &>(cv::Scalar()), Arg("swap_rb") = static_cast<bool>(false), Arg("crop") = static_cast<bool>(false), Arg("ddepth") = static_cast<int>(CV_32F));
 
-  rb_mCvDnn.define_module_function<void(*)(cv::InputArray, cv::OutputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>("blob_from_image", &cv::dnn::blobFromImage,
+  rb_mCvDnn.define_module_function<void(*)(cv::InputArray, cv::OutputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>("blob_from_image", static_cast<void(*)(cv::InputArray, cv::OutputArray, double, const cv::Size &, const cv::Scalar &, bool, bool, int)>(&cv::dnn::blobFromImage),
     Arg("image"), Arg("blob"), Arg("scalefactor") = static_cast<double>(1.0), Arg("size") = static_cast<const cv::Size &>(cv::Size()), Arg("mean") = static_cast<const cv::Scalar &>(cv::Scalar()), Arg("swap_rb") = static_cast<bool>(false), Arg("crop") = static_cast<bool>(false), Arg("ddepth") = static_cast<int>(CV_32F));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArrayOfArrays, double, cv::Size, const cv::Scalar &, bool, bool, int)>("blob_from_images", &cv::dnn::blobFromImages,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArrayOfArrays, double, cv::Size, const cv::Scalar &, bool, bool, int)>("blob_from_images", static_cast<cv::Mat(*)(cv::InputArrayOfArrays, double, cv::Size, const cv::Scalar &, bool, bool, int)>(&cv::dnn::blobFromImages),
     Arg("images"), Arg("scalefactor") = static_cast<double>(1.0), Arg("size") = static_cast<cv::Size>(cv::Size()), Arg("mean") = static_cast<const cv::Scalar &>(cv::Scalar()), Arg("swap_rb") = static_cast<bool>(false), Arg("crop") = static_cast<bool>(false), Arg("ddepth") = static_cast<int>(CV_32F));
 
-  rb_mCvDnn.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, double, cv::Size, const cv::Scalar &, bool, bool, int)>("blob_from_images", &cv::dnn::blobFromImages,
+  rb_mCvDnn.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, double, cv::Size, const cv::Scalar &, bool, bool, int)>("blob_from_images", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray, double, cv::Size, const cv::Scalar &, bool, bool, int)>(&cv::dnn::blobFromImages),
     Arg("images"), Arg("blob"), Arg("scalefactor") = static_cast<double>(1.0), Arg("size") = static_cast<cv::Size>(cv::Size()), Arg("mean") = static_cast<const cv::Scalar &>(cv::Scalar()), Arg("swap_rb") = static_cast<bool>(false), Arg("crop") = static_cast<bool>(false), Arg("ddepth") = static_cast<int>(CV_32F));
 
   Enum<cv::dnn::ImagePaddingMode> rb_cCvDnnImagePaddingMode = define_enum_under<cv::dnn::ImagePaddingMode>("ImagePaddingMode", rb_mCvDnn)
@@ -345,16 +334,16 @@ void Init_Dnn_Dnn()
     .define_method<void(cv::dnn::Image2BlobParams::*)(const std::vector<cv::Rect> &, std::vector<cv::Rect> &, const cv::Size &)>("blob_rects_to_image_rects", &cv::dnn::Image2BlobParams::blobRectsToImageRects,
       Arg("r_blob"), Arg("r_img"), Arg("size"));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArray, const cv::dnn::Image2BlobParams &)>("blob_from_image_with_params", &cv::dnn::blobFromImageWithParams,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArray, const cv::dnn::Image2BlobParams &)>("blob_from_image_with_params", static_cast<cv::Mat(*)(cv::InputArray, const cv::dnn::Image2BlobParams &)>(&cv::dnn::blobFromImageWithParams),
     Arg("image"), Arg("param") = static_cast<const cv::dnn::Image2BlobParams &>(cv::dnn::Image2BlobParams()));
 
-  rb_mCvDnn.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::dnn::Image2BlobParams &)>("blob_from_image_with_params", &cv::dnn::blobFromImageWithParams,
+  rb_mCvDnn.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::dnn::Image2BlobParams &)>("blob_from_image_with_params", static_cast<void(*)(cv::InputArray, cv::OutputArray, const cv::dnn::Image2BlobParams &)>(&cv::dnn::blobFromImageWithParams),
     Arg("image"), Arg("blob"), Arg("param") = static_cast<const cv::dnn::Image2BlobParams &>(cv::dnn::Image2BlobParams()));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArrayOfArrays, const cv::dnn::Image2BlobParams &)>("blob_from_images_with_params", &cv::dnn::blobFromImagesWithParams,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(cv::InputArrayOfArrays, const cv::dnn::Image2BlobParams &)>("blob_from_images_with_params", static_cast<cv::Mat(*)(cv::InputArrayOfArrays, const cv::dnn::Image2BlobParams &)>(&cv::dnn::blobFromImagesWithParams),
     Arg("images"), Arg("param") = static_cast<const cv::dnn::Image2BlobParams &>(cv::dnn::Image2BlobParams()));
 
-  rb_mCvDnn.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, const cv::dnn::Image2BlobParams &)>("blob_from_images_with_params", &cv::dnn::blobFromImagesWithParams,
+  rb_mCvDnn.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, const cv::dnn::Image2BlobParams &)>("blob_from_images_with_params", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray, const cv::dnn::Image2BlobParams &)>(&cv::dnn::blobFromImagesWithParams),
     Arg("images"), Arg("blob"), Arg("param") = static_cast<const cv::dnn::Image2BlobParams &>(cv::dnn::Image2BlobParams()));
 
   rb_mCvDnn.define_module_function<void(*)(const cv::Mat &, cv::OutputArrayOfArrays)>("images_from_blob", &cv::dnn::imagesFromBlob,
@@ -366,19 +355,19 @@ void Init_Dnn_Dnn()
   rb_mCvDnn.define_module_function<void(*)(const cv::String &, const cv::String &)>("write_text_graph", &cv::dnn::writeTextGraph,
     Arg("model"), Arg("output"));
 
-  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", &cv::dnn::NMSBoxes,
+  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", static_cast<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>(&cv::dnn::NMSBoxes),
     Arg("bboxes"), Arg("scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("eta") = static_cast<const float>(1.f), Arg("top_k") = static_cast<const int>(0));
 
-  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", &cv::dnn::NMSBoxes,
+  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", static_cast<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>(&cv::dnn::NMSBoxes),
     Arg("bboxes"), Arg("scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("eta") = static_cast<const float>(1.f), Arg("top_k") = static_cast<const int>(0));
 
-  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::RotatedRect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", &cv::dnn::NMSBoxes,
+  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::RotatedRect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes", static_cast<void(*)(const std::vector<cv::RotatedRect> &, const std::vector<float> &, const float, const float, std::vector<int> &, const float, const int)>(&cv::dnn::NMSBoxes),
     Arg("bboxes"), Arg("scores"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("eta") = static_cast<const float>(1.f), Arg("top_k") = static_cast<const int>(0));
 
-  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes_batched", &cv::dnn::NMSBoxesBatched,
+  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes_batched", static_cast<void(*)(const std::vector<cv::Rect> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>(&cv::dnn::NMSBoxesBatched),
     Arg("bboxes"), Arg("scores"), Arg("class_ids"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("eta") = static_cast<const float>(1.f), Arg("top_k") = static_cast<const int>(0));
 
-  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes_batched", &cv::dnn::NMSBoxesBatched,
+  rb_mCvDnn.define_module_function<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>("nms_boxes_batched", static_cast<void(*)(const std::vector<cv::Rect2d> &, const std::vector<float> &, const std::vector<int> &, const float, const float, std::vector<int> &, const float, const int)>(&cv::dnn::NMSBoxesBatched),
     Arg("bboxes"), Arg("scores"), Arg("class_ids"), Arg("score_threshold"), Arg("nms_threshold"), Arg("indices"), Arg("eta") = static_cast<const float>(1.f), Arg("top_k") = static_cast<const int>(0));
 
   Enum<cv::dnn::SoftNMSMethod> rb_cCvDnnSoftNMSMethod = define_enum_under<cv::dnn::SoftNMSMethod>("SoftNMSMethod", rb_mCvDnn)

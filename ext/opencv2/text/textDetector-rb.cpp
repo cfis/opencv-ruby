@@ -18,8 +18,8 @@ void Init_Text_TextDetector()
   Rice::Data_Type<cv::text::TextDetectorCNN> rb_cCvTextTextDetectorCNN = define_class_under<cv::text::TextDetectorCNN, cv::text::TextDetector>(rb_mCvText, "TextDetectorCNN")
     .define_method<void(cv::text::TextDetectorCNN::*)(cv::InputArray, std::vector<cv::Rect> &, std::vector<float> &)>("detect", &cv::text::TextDetectorCNN::detect,
       Arg("input_image"), Arg("bbox"), Arg("confidence"))
-    .define_singleton_function<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &, std::vector<cv::Size>)>("create", &cv::text::TextDetectorCNN::create,
+    .define_singleton_function<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &, std::vector<cv::Size>)>("create", static_cast<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &, std::vector<cv::Size>)>(&cv::text::TextDetectorCNN::create),
       Arg("model_arch_filename"), Arg("model_weights_filename"), Arg("detection_sizes"))
-    .define_singleton_function<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &)>("create", &cv::text::TextDetectorCNN::create,
+    .define_singleton_function<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &)>("create", static_cast<cv::Ptr<cv::text::TextDetectorCNN>(*)(const cv::String &, const cv::String &)>(&cv::text::TextDetectorCNN::create),
       Arg("model_arch_filename"), Arg("model_weights_filename"));
 }

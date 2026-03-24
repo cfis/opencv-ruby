@@ -78,17 +78,17 @@ inline Rice::Data_Type<cv::Mat_<_Tp>> Mat__instantiate(Rice::Module parent, cons
       Arg("i") = static_cast<int>(0))
     .template define_method<size_t(cv::Mat_<_Tp>::*)(int) const>("step_t", &cv::Mat_<_Tp>::stepT,
       Arg("i") = static_cast<int>(0))
-    .template define_singleton_function<cv::MatExpr(*)(int, int)>("zeros", &cv::Mat_<_Tp>::zeros,
+    .template define_singleton_function<cv::MatExpr(*)(int, int)>("zeros", static_cast<cv::MatExpr(*)(int, int)>(&cv::Mat_<_Tp>::zeros),
       Arg("rows"), Arg("cols"))
-    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("zeros", &cv::Mat_<_Tp>::zeros,
+    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("zeros", static_cast<cv::MatExpr(*)(cv::Size)>(&cv::Mat_<_Tp>::zeros),
       Arg("size"))
-    .template define_singleton_function<cv::MatExpr(*)(int, int)>("ones", &cv::Mat_<_Tp>::ones,
+    .template define_singleton_function<cv::MatExpr(*)(int, int)>("ones", static_cast<cv::MatExpr(*)(int, int)>(&cv::Mat_<_Tp>::ones),
       Arg("rows"), Arg("cols"))
-    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("ones", &cv::Mat_<_Tp>::ones,
+    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("ones", static_cast<cv::MatExpr(*)(cv::Size)>(&cv::Mat_<_Tp>::ones),
       Arg("size"))
-    .template define_singleton_function<cv::MatExpr(*)(int, int)>("eye", &cv::Mat_<_Tp>::eye,
+    .template define_singleton_function<cv::MatExpr(*)(int, int)>("eye", static_cast<cv::MatExpr(*)(int, int)>(&cv::Mat_<_Tp>::eye),
       Arg("rows"), Arg("cols"))
-    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("eye", &cv::Mat_<_Tp>::eye,
+    .template define_singleton_function<cv::MatExpr(*)(cv::Size)>("eye", static_cast<cv::MatExpr(*)(cv::Size)>(&cv::Mat_<_Tp>::eye),
       Arg("size"))
     .template define_method<cv::Mat_<_Tp> &(cv::Mat_<_Tp>::*)(int, int, int, int)>("adjust_roi", &cv::Mat_<_Tp>::adjustROI,
       Arg("dtop"), Arg("dbottom"), Arg("dleft"), Arg("dright"))

@@ -68,9 +68,9 @@ void Init_Features2d()
     .define_method<cv::String(cv::AffineFeature::*)() const>("get_default_name", &cv::AffineFeature::getDefaultName);
 
   Rice::Data_Type<cv::SIFT> rb_cCvSIFT = define_class_under<cv::SIFT, cv::Feature2D>(rb_mCv, "SIFT")
-    .define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", &cv::SIFT::create,
+    .define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>("create", static_cast<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, bool)>(&cv::SIFT::create),
       Arg("nfeatures") = static_cast<int>(0), Arg("n_octave_layers") = static_cast<int>(3), Arg("contrast_threshold") = static_cast<double>(0.04), Arg("edge_threshold") = static_cast<double>(10), Arg("sigma") = static_cast<double>(1.6), Arg("enable_precise_upscale") = static_cast<bool>(false))
-    .define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", &cv::SIFT::create,
+    .define_singleton_function<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>("create", static_cast<cv::Ptr<cv::SIFT>(*)(int, int, double, double, double, int, bool)>(&cv::SIFT::create),
       Arg("nfeatures"), Arg("n_octave_layers"), Arg("contrast_threshold"), Arg("edge_threshold"), Arg("sigma"), Arg("descriptor_type"), Arg("enable_precise_upscale") = static_cast<bool>(false))
     .define_method<cv::String(cv::SIFT::*)() const>("get_default_name", &cv::SIFT::getDefaultName)
     .define_method<void(cv::SIFT::*)(int)>("set_n_features", &cv::SIFT::setNFeatures,
@@ -90,11 +90,11 @@ void Init_Features2d()
     .define_method<double(cv::SIFT::*)() const>("get_sigma", &cv::SIFT::getSigma);
 
   Rice::Data_Type<cv::BRISK> rb_cCvBRISK = define_class_under<cv::BRISK, cv::Feature2D>(rb_mCv, "BRISK")
-    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", &cv::BRISK::create,
+    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, float)>("create", static_cast<cv::Ptr<cv::BRISK>(*)(int, int, float)>(&cv::BRISK::create),
       Arg("thresh") = static_cast<int>(30), Arg("octaves") = static_cast<int>(3), Arg("pattern_scale") = static_cast<float>(1.0f))
-    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", &cv::BRISK::create,
+    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", static_cast<cv::Ptr<cv::BRISK>(*)(const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>(&cv::BRISK::create),
       Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>()))
-    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", &cv::BRISK::create,
+    .define_singleton_function<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>("create", static_cast<cv::Ptr<cv::BRISK>(*)(int, int, const std::vector<float> &, const std::vector<int> &, float, float, const std::vector<int> &)>(&cv::BRISK::create),
       Arg("thresh"), Arg("octaves"), Arg("radius_list"), Arg("number_list"), Arg("d_max") = static_cast<float>(5.85f), Arg("d_min") = static_cast<float>(8.2f), Arg("index_change") = static_cast<const std::vector<int> &>(std::vector<int>()))
     .define_method<cv::String(cv::BRISK::*)() const>("get_default_name", &cv::BRISK::getDefaultName)
     .define_method<void(cv::BRISK::*)(int)>("set_threshold", &cv::BRISK::setThreshold,
@@ -203,10 +203,10 @@ void Init_Features2d()
     .define_value("TYPE_7_12", cv::FastFeatureDetector::DetectorType::TYPE_7_12)
     .define_value("TYPE_9_16", cv::FastFeatureDetector::DetectorType::TYPE_9_16);
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("fast", &cv::FAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("fast", static_cast<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>(&cv::FAST),
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::FastFeatureDetector::DetectorType)>("fast", &cv::FAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::FastFeatureDetector::DetectorType)>("fast", static_cast<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::FastFeatureDetector::DetectorType)>(&cv::FAST),
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::AgastFeatureDetector> rb_cCvAgastFeatureDetector = define_class_under<cv::AgastFeatureDetector, cv::Feature2D>(rb_mCv, "AgastFeatureDetector")
@@ -231,16 +231,16 @@ void Init_Features2d()
     .define_value("AGAST_7_12s", cv::AgastFeatureDetector::DetectorType::AGAST_7_12s)
     .define_value("OAST_9_16", cv::AgastFeatureDetector::DetectorType::OAST_9_16);
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("agast", &cv::AGAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>("agast", static_cast<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool)>(&cv::AGAST),
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::AgastFeatureDetector::DetectorType)>("agast", &cv::AGAST,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::AgastFeatureDetector::DetectorType)>("agast", static_cast<void(*)(cv::InputArray, std::vector<cv::KeyPoint> &, int, bool, cv::AgastFeatureDetector::DetectorType)>(&cv::AGAST),
     Arg("image"), Arg("keypoints"), Arg("threshold"), Arg("nonmax_suppression"), Arg("type"));
 
   Rice::Data_Type<cv::GFTTDetector> rb_cCvGFTTDetector = define_class_under<cv::GFTTDetector, cv::Feature2D>(rb_mCv, "GFTTDetector")
-    .define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, bool, double)>("create", &cv::GFTTDetector::create,
+    .define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, bool, double)>("create", static_cast<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, bool, double)>(&cv::GFTTDetector::create),
       Arg("max_corners") = static_cast<int>(1000), Arg("quality_level") = static_cast<double>(0.01), Arg("min_distance") = static_cast<double>(1), Arg("block_size") = static_cast<int>(3), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04))
-    .define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>("create", &cv::GFTTDetector::create,
+    .define_singleton_function<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>("create", static_cast<cv::Ptr<cv::GFTTDetector>(*)(int, double, double, int, int, bool, double)>(&cv::GFTTDetector::create),
       Arg("max_corners"), Arg("quality_level"), Arg("min_distance"), Arg("block_size"), Arg("gradiant_size"), Arg("use_harris_detector") = static_cast<bool>(false), Arg("k") = static_cast<double>(0.04))
     .define_method<void(cv::GFTTDetector::*)(int)>("set_max_features", &cv::GFTTDetector::setMaxFeatures,
       Arg("max_features"))
@@ -407,9 +407,9 @@ void Init_Features2d()
       Arg("arg_0"))
     .define_method<cv::Ptr<cv::DescriptorMatcher>(cv::DescriptorMatcher::*)(bool) const>("clone", &cv::DescriptorMatcher::clone,
       Arg("empty_train_data") = static_cast<bool>(false))
-    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String &)>("create", &cv::DescriptorMatcher::create,
+    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String &)>("create", static_cast<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::String &)>(&cv::DescriptorMatcher::create),
       Arg("descriptor_matcher_type"))
-    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType &)>("create", &cv::DescriptorMatcher::create,
+    .define_singleton_function<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType &)>("create", static_cast<cv::Ptr<cv::DescriptorMatcher>(*)(const cv::DescriptorMatcher::MatcherType &)>(&cv::DescriptorMatcher::create),
       Arg("matcher_type"))
     .define_method<void(cv::DescriptorMatcher::*)(cv::FileStorage &, const cv::String &) const>("write", &cv::DescriptorMatcher::write,
       Arg("fs"), Arg("name"))
@@ -458,13 +458,13 @@ void Init_Features2d()
   rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputOutputArray, const cv::Scalar &, cv::DrawMatchesFlags)>("draw_keypoints", &cv::drawKeypoints,
     Arg("image"), Arg("keypoints"), Arg("out_image"), Arg("color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", static_cast<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>(&cv::drawMatches),
     Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const int, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const int, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>("draw_matches", static_cast<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<cv::DMatch> &, cv::InputOutputArray, const int, const cv::Scalar &, const cv::Scalar &, const std::vector<char> &, cv::DrawMatchesFlags)>(&cv::drawMatches),
     Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("matches_thickness"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<char> &>(std::vector<char>()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<std::vector<cv::DMatch>> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<std::vector<char>> &, cv::DrawMatchesFlags)>("draw_matches", &cv::drawMatches,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<std::vector<cv::DMatch>> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<std::vector<char>> &, cv::DrawMatchesFlags)>("draw_matches", static_cast<void(*)(cv::InputArray, const std::vector<cv::KeyPoint> &, cv::InputArray, const std::vector<cv::KeyPoint> &, const std::vector<std::vector<cv::DMatch>> &, cv::InputOutputArray, const cv::Scalar &, const cv::Scalar &, const std::vector<std::vector<char>> &, cv::DrawMatchesFlags)>(&cv::drawMatches),
     Arg("img1"), Arg("keypoints1"), Arg("img2"), Arg("keypoints2"), Arg("matches1to2"), Arg("out_img"), Arg("match_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("single_point_color") = static_cast<const cv::Scalar &>(cv::Scalar::all(-1)), Arg("matches_mask") = static_cast<const std::vector<std::vector<char>> &>(std::vector<std::vector<char> >()), Arg("flags") = static_cast<cv::DrawMatchesFlags>(cv::DrawMatchesFlags::DEFAULT));
 
   rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::Mat &, const cv::Mat &, std::vector<cv::KeyPoint> *, std::vector<cv::KeyPoint> *, float &, int &, const cv::Ptr<cv::FeatureDetector> &)>("evaluate_feature_detector", &cv::evaluateFeatureDetector,

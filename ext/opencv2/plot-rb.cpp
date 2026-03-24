@@ -48,8 +48,8 @@ void Init_Plot()
       Arg("point_idx"))
     .define_method<void(cv::plot::Plot2d::*)(cv::OutputArray)>("render", &cv::plot::Plot2d::render,
       Arg("_plot_result"))
-    .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray)>("create", &cv::plot::Plot2d::create,
+    .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray)>("create", static_cast<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray)>(&cv::plot::Plot2d::create),
       Arg("data"))
-    .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray, cv::InputArray)>("create", &cv::plot::Plot2d::create,
+    .define_singleton_function<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray, cv::InputArray)>("create", static_cast<cv::Ptr<cv::plot::Plot2d>(*)(cv::InputArray, cv::InputArray)>(&cv::plot::Plot2d::create),
       Arg("data_x"), Arg("data_y"));
 }

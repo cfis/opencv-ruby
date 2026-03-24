@@ -19,10 +19,10 @@ void Init_Stitching_Detail_Matchers()
     .define_attr("descriptors", &cv::detail::ImageFeatures::descriptors)
     .define_method<std::vector<cv::KeyPoint>(cv::detail::ImageFeatures::*)()>("get_keypoints", &cv::detail::ImageFeatures::getKeypoints);
 
-  rb_mCvDetail.define_module_function<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArrayOfArrays, std::vector<cv::detail::ImageFeatures> &, cv::InputArrayOfArrays)>("compute_image_features", &cv::detail::computeImageFeatures,
+  rb_mCvDetail.define_module_function<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArrayOfArrays, std::vector<cv::detail::ImageFeatures> &, cv::InputArrayOfArrays)>("compute_image_features", static_cast<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArrayOfArrays, std::vector<cv::detail::ImageFeatures> &, cv::InputArrayOfArrays)>(&cv::detail::computeImageFeatures),
     Arg("features_finder"), Arg("images"), Arg("features"), Arg("masks") = static_cast<cv::InputArrayOfArrays>(cv::noArray()));
 
-  rb_mCvDetail.define_module_function<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArray, cv::detail::ImageFeatures &, cv::InputArray)>("compute_image_features", &cv::detail::computeImageFeatures,
+  rb_mCvDetail.define_module_function<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArray, cv::detail::ImageFeatures &, cv::InputArray)>("compute_image_features", static_cast<void(*)(const cv::Ptr<cv::Feature2D> &, cv::InputArray, cv::detail::ImageFeatures &, cv::InputArray)>(&cv::detail::computeImageFeatures),
     Arg("features_finder"), Arg("image"), Arg("features"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
   Rice::Data_Type<cv::detail::MatchesInfo> rb_cCvDetailMatchesInfo = define_class_under<cv::detail::MatchesInfo>(rb_mCvDetail, "MatchesInfo")

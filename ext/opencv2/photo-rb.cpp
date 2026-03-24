@@ -16,19 +16,19 @@ void Init_Photo()
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, double, int)>("inpaint", &cv::inpaint,
     Arg("src"), Arg("inpaint_mask"), Arg("dst"), Arg("inpaint_radius"), Arg("flags"));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, int, int)>("fast_nl_means_denoising", &cv::fastNlMeansDenoising,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, int, int)>("fast_nl_means_denoising", static_cast<void(*)(cv::InputArray, cv::OutputArray, float, int, int)>(&cv::fastNlMeansDenoising),
     Arg("src"), Arg("dst"), Arg("h") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising", &cv::fastNlMeansDenoising,
+  rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising", static_cast<void(*)(cv::InputArray, cv::OutputArray, const std::vector<float> &, int, int, int)>(&cv::fastNlMeansDenoising),
     Arg("src"), Arg("dst"), Arg("h"), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21), Arg("norm_type") = static_cast<int>(cv::NORM_L2));
 
   rb_mCv.define_module_function<void(*)(cv::InputArray, cv::OutputArray, float, float, int, int)>("fast_nl_means_denoising_colored", &cv::fastNlMeansDenoisingColored,
     Arg("src"), Arg("dst"), Arg("h") = static_cast<float>(3), Arg("h_color") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, int, int)>("fast_nl_means_denoising_multi", &cv::fastNlMeansDenoisingMulti,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, int, int)>("fast_nl_means_denoising_multi", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, int, int)>(&cv::fastNlMeansDenoisingMulti),
     Arg("src_imgs"), Arg("dst"), Arg("img_to_denoise_index"), Arg("temporal_window_size"), Arg("h") = static_cast<float>(3), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21));
 
-  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising_multi", &cv::fastNlMeansDenoisingMulti,
+  rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, const std::vector<float> &, int, int, int)>("fast_nl_means_denoising_multi", static_cast<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, const std::vector<float> &, int, int, int)>(&cv::fastNlMeansDenoisingMulti),
     Arg("src_imgs"), Arg("dst"), Arg("img_to_denoise_index"), Arg("temporal_window_size"), Arg("h"), Arg("template_window_size") = static_cast<int>(7), Arg("search_window_size") = static_cast<int>(21), Arg("norm_type") = static_cast<int>(cv::NORM_L2));
 
   rb_mCv.define_module_function<void(*)(cv::InputArrayOfArrays, cv::OutputArray, int, int, float, float, int, int)>("fast_nl_means_denoising_colored_multi", &cv::fastNlMeansDenoisingColoredMulti,

@@ -57,10 +57,10 @@ void Init_Objdetect_ArucoDictionary()
     .define_value("DICT_APRILTAG_36h11", cv::aruco::PredefinedDictionaryType::DICT_APRILTAG_36h11)
     .define_value("DICT_ARUCO_MIP_36h12", cv::aruco::PredefinedDictionaryType::DICT_ARUCO_MIP_36h12);
 
-  rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(cv::aruco::PredefinedDictionaryType)>("get_predefined_dictionary", &cv::aruco::getPredefinedDictionary,
+  rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(cv::aruco::PredefinedDictionaryType)>("get_predefined_dictionary", static_cast<cv::aruco::Dictionary(*)(cv::aruco::PredefinedDictionaryType)>(&cv::aruco::getPredefinedDictionary),
     Arg("name"));
 
-  rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(int)>("get_predefined_dictionary", &cv::aruco::getPredefinedDictionary,
+  rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(int)>("get_predefined_dictionary", static_cast<cv::aruco::Dictionary(*)(int)>(&cv::aruco::getPredefinedDictionary),
     Arg("dict"));
 
   rb_mCvAruco.define_module_function<cv::aruco::Dictionary(*)(int, int, const cv::aruco::Dictionary &, int)>("extend_dictionary", &cv::aruco::extendDictionary,

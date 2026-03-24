@@ -133,46 +133,46 @@ void Init_Core_Base()
     .define_method<cv::Hamming::ResultType(cv::Hamming::*)(const unsigned char *, const unsigned char *, int) const>("call", &cv::Hamming::operator(),
       ArgBuffer("a"), ArgBuffer("b"), Arg("size"));
 
-  rb_mCv.define_module_function<int(*)(uchar)>("cv_abs", &cv::cv_abs,
+  rb_mCv.define_module_function<int(*)(uchar)>("cv_abs", static_cast<int(*)(uchar)>(&cv::cv_abs),
     Arg("x"));
 
-  rb_mCv.define_module_function<int(*)(schar)>("cv_abs", &cv::cv_abs,
+  rb_mCv.define_module_function<int(*)(schar)>("cv_abs", static_cast<int(*)(schar)>(&cv::cv_abs),
     Arg("x"));
 
-  rb_mCv.define_module_function<int(*)(ushort)>("cv_abs", &cv::cv_abs,
+  rb_mCv.define_module_function<int(*)(ushort)>("cv_abs", static_cast<int(*)(ushort)>(&cv::cv_abs),
     Arg("x"));
 
-  rb_mCv.define_module_function<int(*)(short)>("cv_abs", &cv::cv_abs,
+  rb_mCv.define_module_function<int(*)(short)>("cv_abs", static_cast<int(*)(short)>(&cv::cv_abs),
     Arg("x"));
 
-  rb_mCv.define_module_function<float(*)(const float *, const float *, int)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<float(*)(const float *, const float *, int)>("norm_l2_sqr", static_cast<float(*)(const float *, const float *, int)>(&cv::normL2Sqr),
     ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
-  rb_mCv.define_module_function<float(*)(const float *, const float *, int)>("norm_l1", &cv::normL1,
+  rb_mCv.define_module_function<float(*)(const float *, const float *, int)>("norm_l1", static_cast<float(*)(const float *, const float *, int)>(&cv::normL1),
     ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
-  rb_mCv.define_module_function<int(*)(const uchar *, const uchar *, int)>("norm_l1", &cv::normL1,
+  rb_mCv.define_module_function<int(*)(const uchar *, const uchar *, int)>("norm_l1", static_cast<int(*)(const uchar *, const uchar *, int)>(&cv::normL1),
     ArgBuffer("a"), ArgBuffer("b"), Arg("n"));
 
-  rb_mCv.define_module_function<float(*)(float)>("cube_root", &cv::cubeRoot,
+  rb_mCv.define_module_function<float(*)(float)>("cube_root", static_cast<float(*)(float)>(&cv::cubeRoot),
     Arg("val"));
 
-  rb_mCv.define_module_function<double(*)(double)>("cube_root", &cv::cubeRoot,
+  rb_mCv.define_module_function<double(*)(double)>("cube_root", static_cast<double(*)(double)>(&cv::cubeRoot),
     Arg("val"));
 
   rb_mCv.define_module_function<float(*)(float, float)>("fast_atan2", &cv::fastAtan2,
     Arg("y"), Arg("x"));
 
-  rb_mCv.define_module_function<int(*)(float *, size_t, int, float *, size_t, int)>("lu", &cv::LU,
+  rb_mCv.define_module_function<int(*)(float *, size_t, int, float *, size_t, int)>("lu", static_cast<int(*)(float *, size_t, int, float *, size_t, int)>(&cv::LU),
     ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<int(*)(double *, size_t, int, double *, size_t, int)>("lu", &cv::LU,
+  rb_mCv.define_module_function<int(*)(double *, size_t, int, double *, size_t, int)>("lu", static_cast<int(*)(double *, size_t, int, double *, size_t, int)>(&cv::LU),
     ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<bool(*)(float *, size_t, int, float *, size_t, int)>("cholesky", &cv::Cholesky,
+  rb_mCv.define_module_function<bool(*)(float *, size_t, int, float *, size_t, int)>("cholesky", static_cast<bool(*)(float *, size_t, int, float *, size_t, int)>(&cv::Cholesky),
     ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
-  rb_mCv.define_module_function<bool(*)(double *, size_t, int, double *, size_t, int)>("cholesky", &cv::Cholesky,
+  rb_mCv.define_module_function<bool(*)(double *, size_t, int, double *, size_t, int)>("cholesky", static_cast<bool(*)(double *, size_t, int, double *, size_t, int)>(&cv::Cholesky),
     ArgBuffer("a"), Arg("astep"), Arg("m"), ArgBuffer("b"), Arg("bstep"), Arg("n"));
 
   Module rb_mCvOgl = define_module_under(rb_mCv, "Ogl");

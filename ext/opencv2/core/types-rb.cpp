@@ -5,7 +5,6 @@
 
 using namespace Rice;
 
-#include "base-rb.ipp"
 #include "matx-rb.ipp"
 #include "types-rb.ipp"
 
@@ -21,7 +20,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l");
+  Rice::Data_Type<cv::Point_<long>> rb_cPoint2l = Point__instantiate<long>(rb_mCv, "Point2l");
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -37,7 +36,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l");
+  Rice::Data_Type<cv::Size_<long>> rb_cSize2l = Size__instantiate<long>(rb_mCv, "Size2l");
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 
@@ -119,9 +118,9 @@ void Init_Core_Types()
     .define_constructor(Constructor<cv::KeyPoint, float, float, float, float, float, int, int>(),
       Arg("x"), Arg("y"), Arg("size"), Arg("angle") = static_cast<float>(-1), Arg("response") = static_cast<float>(0), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1))
     .define_method<size_t(cv::KeyPoint::*)() const>("hash", &cv::KeyPoint::hash)
-    .define_singleton_function<void(*)(const std::vector<cv::KeyPoint> &, std::vector<cv::Point2f> &, const std::vector<int> &)>("convert", &cv::KeyPoint::convert,
+    .define_singleton_function<void(*)(const std::vector<cv::KeyPoint> &, std::vector<cv::Point2f> &, const std::vector<int> &)>("convert", static_cast<void(*)(const std::vector<cv::KeyPoint> &, std::vector<cv::Point2f> &, const std::vector<int> &)>(&cv::KeyPoint::convert),
       Arg("keypoints"), Arg("points2f"), Arg("keypoint_indexes") = static_cast<const std::vector<int> &>(std::vector<int>()))
-    .define_singleton_function<void(*)(const std::vector<cv::Point2f> &, std::vector<cv::KeyPoint> &, float, float, int, int)>("convert", &cv::KeyPoint::convert,
+    .define_singleton_function<void(*)(const std::vector<cv::Point2f> &, std::vector<cv::KeyPoint> &, float, float, int, int)>("convert", static_cast<void(*)(const std::vector<cv::Point2f> &, std::vector<cv::KeyPoint> &, float, float, int, int)>(&cv::KeyPoint::convert),
       Arg("points2f"), Arg("keypoints"), Arg("size") = static_cast<float>(1), Arg("response") = static_cast<float>(1), Arg("octave") = static_cast<int>(0), Arg("class_id") = static_cast<int>(-1))
     .define_singleton_function<float(*)(const cv::KeyPoint &, const cv::KeyPoint &)>("overlap", &cv::KeyPoint::overlap,
       Arg("kp1"), Arg("kp2"))
@@ -202,22 +201,22 @@ void Init_Core_Types()
     .define_constructor(Constructor<cv::traits::Type<cv::Moments>>())
     .define_constant("Value", (int)cv::traits::Type<cv::Moments>::value);
 
-  rb_mCv.define_module_function<int(*)(const cv::Point_<int> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<int(*)(const cv::Point_<int> &)>("norm_l2_sqr", static_cast<int(*)(const cv::Point_<int> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
-  rb_mCv.define_module_function<int64(*)(const cv::Point_<int64> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<int64(*)(const cv::Point_<int64> &)>("norm_l2_sqr", static_cast<int64(*)(const cv::Point_<int64> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
-  rb_mCv.define_module_function<float(*)(const cv::Point_<float> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<float(*)(const cv::Point_<float> &)>("norm_l2_sqr", static_cast<float(*)(const cv::Point_<float> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<int> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<int> &)>("norm_l2_sqr", static_cast<double(*)(const cv::Point_<int> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<float> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<float> &)>("norm_l2_sqr", static_cast<double(*)(const cv::Point_<float> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
-  rb_mCv.define_module_function<double(*)(const cv::Point_<double> &)>("norm_l2_sqr", &cv::normL2Sqr,
+  rb_mCv.define_module_function<double(*)(const cv::Point_<double> &)>("norm_l2_sqr", static_cast<double(*)(const cv::Point_<double> &)>(&cv::normL2Sqr),
     Arg("pt"));
 
   #if RUBY_CV_VERSION >= 407

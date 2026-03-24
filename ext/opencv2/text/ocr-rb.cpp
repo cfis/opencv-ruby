@@ -71,9 +71,9 @@ void Init_Text_Ocr()
       Arg("image"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0))
     .define_method<cv::String(cv::text::OCRHMMDecoder::*)(cv::InputArray, cv::InputArray, int, int)>("run", &cv::text::OCRHMMDecoder::run,
       Arg("image"), Arg("mask"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0))
-    .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>, const cv::String &, cv::InputArray, cv::InputArray, int)>("create", &cv::text::OCRHMMDecoder::create,
+    .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>, const cv::String &, cv::InputArray, cv::InputArray, int)>("create", static_cast<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>, const cv::String &, cv::InputArray, cv::InputArray, int)>(&cv::text::OCRHMMDecoder::create),
       Arg("classifier"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<int>(cv::text::OCR_DECODER_VITERBI))
-    .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, int, int)>("create", &cv::text::OCRHMMDecoder::create,
+    .define_singleton_function<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, int, int)>("create", static_cast<cv::Ptr<cv::text::OCRHMMDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, int, int)>(&cv::text::OCRHMMDecoder::create),
       Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<int>(cv::text::OCR_DECODER_VITERBI), Arg("classifier") = static_cast<int>(cv::text::OCR_KNN_CLASSIFIER));
 
   Rice::Data_Type<cv::text::OCRHMMDecoder::ClassifierCallback> rb_cCvTextOCRHMMDecoderClassifierCallback = define_class_under<cv::text::OCRHMMDecoder::ClassifierCallback>(rb_cCvTextOCRHMMDecoder, "ClassifierCallback")
@@ -90,10 +90,10 @@ void Init_Text_Ocr()
   rb_mCvText.define_module_function<cv::Ptr<cv::text::OCRHMMDecoder::ClassifierCallback>(*)(const cv::String &, int)>("load_ocrhmm_classifier", &cv::text::loadOCRHMMClassifier,
     Arg("filename"), Arg("classifier"));
 
-  rb_mCvText.define_module_function<void(*)(std::string &, std::vector<std::string> &, cv::OutputArray)>("create_ocrhmm_transitions_table", &cv::text::createOCRHMMTransitionsTable,
+  rb_mCvText.define_module_function<void(*)(std::string &, std::vector<std::string> &, cv::OutputArray)>("create_ocrhmm_transitions_table", static_cast<void(*)(std::string &, std::vector<std::string> &, cv::OutputArray)>(&cv::text::createOCRHMMTransitionsTable),
     Arg("vocabulary"), Arg("lexicon"), Arg("transition_probabilities_table"));
 
-  rb_mCvText.define_module_function<cv::Mat(*)(const cv::String &, std::vector<cv::String> &)>("create_ocrhmm_transitions_table", &cv::text::createOCRHMMTransitionsTable,
+  rb_mCvText.define_module_function<cv::Mat(*)(const cv::String &, std::vector<cv::String> &)>("create_ocrhmm_transitions_table", static_cast<cv::Mat(*)(const cv::String &, std::vector<cv::String> &)>(&cv::text::createOCRHMMTransitionsTable),
     Arg("vocabulary"), Arg("lexicon"));
 
   Rice::Data_Type<cv::text::OCRBeamSearchDecoder> rb_cCvTextOCRBeamSearchDecoder = define_class_under<cv::text::OCRBeamSearchDecoder, cv::text::BaseOCR>(rb_mCvText, "OCRBeamSearchDecoder")
@@ -106,9 +106,9 @@ void Init_Text_Ocr()
       Arg("image"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0))
     .define_method<cv::String(cv::text::OCRBeamSearchDecoder::*)(cv::InputArray, cv::InputArray, int, int)>("run", &cv::text::OCRBeamSearchDecoder::run,
       Arg("image"), Arg("mask"), Arg("min_confidence"), Arg("component_level") = static_cast<int>(0))
-    .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::Ptr<cv::text::OCRBeamSearchDecoder::ClassifierCallback>, const std::string &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", &cv::text::OCRBeamSearchDecoder::create,
+    .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::Ptr<cv::text::OCRBeamSearchDecoder::ClassifierCallback>, const std::string &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", static_cast<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::Ptr<cv::text::OCRBeamSearchDecoder::ClassifierCallback>, const std::string &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>(&cv::text::OCRBeamSearchDecoder::create),
       Arg("classifier"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<cv::text::decoder_mode>(cv::text::OCR_DECODER_VITERBI), Arg("beam_size") = static_cast<int>(500))
-    .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", &cv::text::OCRBeamSearchDecoder::create,
+    .define_singleton_function<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>("create", static_cast<cv::Ptr<cv::text::OCRBeamSearchDecoder>(*)(const cv::String &, const cv::String &, cv::InputArray, cv::InputArray, cv::text::decoder_mode, int)>(&cv::text::OCRBeamSearchDecoder::create),
       Arg("filename"), Arg("vocabulary"), Arg("transition_probabilities_table"), Arg("emission_probabilities_table"), Arg("mode") = static_cast<cv::text::decoder_mode>(cv::text::OCR_DECODER_VITERBI), Arg("beam_size") = static_cast<int>(500));
 
   Rice::Data_Type<cv::text::OCRBeamSearchDecoder::ClassifierCallback> rb_cCvTextOCRBeamSearchDecoderClassifierCallback = define_class_under<cv::text::OCRBeamSearchDecoder::ClassifierCallback>(rb_cCvTextOCRBeamSearchDecoder, "ClassifierCallback")

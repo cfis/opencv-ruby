@@ -11,21 +11,21 @@ void Init_Stitching_Detail_UtilInl()
 
   Module rb_mCvDetail = define_module_under(rb_mCv, "Detail");
 
-  rb_mCvDetail.define_module_function<float(*)(const cv::Point3f &)>("norm_l2", &cv::detail::normL2,
+  rb_mCvDetail.define_module_function<float(*)(const cv::Point3f &)>("norm_l2", static_cast<float(*)(const cv::Point3f &)>(&cv::detail::normL2),
     Arg("a"));
 
-  rb_mCvDetail.define_module_function<float(*)(const cv::Point3f &, const cv::Point3f &)>("norm_l2", &cv::detail::normL2,
+  rb_mCvDetail.define_module_function<float(*)(const cv::Point3f &, const cv::Point3f &)>("norm_l2", static_cast<float(*)(const cv::Point3f &, const cv::Point3f &)>(&cv::detail::normL2),
     Arg("a"), Arg("b"));
 
   rb_mCvDetail.define_module_function<double(*)(const cv::Mat &)>("norm_l2sq", &cv::detail::normL2sq,
     Arg("r"));
 
-  rb_mCvDetail.define_module_function<int(*)(int)>("sqr", &cv::detail::sqr,
+  rb_mCvDetail.define_module_function<int(*)(int)>("sqr", static_cast<int(*)(int)>(&cv::detail::sqr),
     Arg("x"));
 
-  rb_mCvDetail.define_module_function<float(*)(float)>("sqr", &cv::detail::sqr,
+  rb_mCvDetail.define_module_function<float(*)(float)>("sqr", static_cast<float(*)(float)>(&cv::detail::sqr),
     Arg("x"));
 
-  rb_mCvDetail.define_module_function<double(*)(double)>("sqr", &cv::detail::sqr,
+  rb_mCvDetail.define_module_function<double(*)(double)>("sqr", static_cast<double(*)(double)>(&cv::detail::sqr),
     Arg("x"));
 }

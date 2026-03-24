@@ -17,49 +17,49 @@ void Init_Dnn_ShapeUtils()
     .define_constructor(Constructor<cv::dnn::_Range, int, int>(),
       Arg("start_"), Arg("size_") = static_cast<int>(1));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &)>("slice", &cv::dnn::slice,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &)>("slice", static_cast<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &)>(&cv::dnn::slice),
     Arg("m"), Arg("r0"));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", &cv::dnn::slice,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", static_cast<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &)>(&cv::dnn::slice),
     Arg("m"), Arg("r0"), Arg("r1"));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", &cv::dnn::slice,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", static_cast<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>(&cv::dnn::slice),
     Arg("m"), Arg("r0"), Arg("r1"), Arg("r2"));
 
-  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", &cv::dnn::slice,
+  rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>("slice", static_cast<cv::Mat(*)(const cv::Mat &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &, const cv::dnn::_Range &)>(&cv::dnn::slice),
     Arg("m"), Arg("r0"), Arg("r1"), Arg("r2"), Arg("r3"));
 
   rb_mCvDnn.define_module_function<cv::Mat(*)(const cv::Mat &, int, int)>("get_plane", &cv::dnn::getPlane,
     Arg("m"), Arg("n"), Arg("cn"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const int *, const int)>("shape", &cv::dnn::shape,
+  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const int *, const int)>("shape", static_cast<cv::dnn::MatShape(*)(const int *, const int)>(&cv::dnn::shape),
     ArgBuffer("dims"), Arg("n"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::Mat &)>("shape", &cv::dnn::shape,
+  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::Mat &)>("shape", static_cast<cv::dnn::MatShape(*)(const cv::Mat &)>(&cv::dnn::shape),
     Arg("mat"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::MatSize &)>("shape", &cv::dnn::shape,
+  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::MatSize &)>("shape", static_cast<cv::dnn::MatShape(*)(const cv::MatSize &)>(&cv::dnn::shape),
     Arg("sz"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::UMat &)>("shape", &cv::dnn::shape,
+  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::UMat &)>("shape", static_cast<cv::dnn::MatShape(*)(const cv::UMat &)>(&cv::dnn::shape),
     Arg("mat"));
 
-  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(int, int, int, int)>("shape", &cv::dnn::shape,
+  rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(int, int, int, int)>("shape", static_cast<cv::dnn::MatShape(*)(int, int, int, int)>(&cv::dnn::shape),
     Arg("a0"), Arg("a1") = static_cast<int>(-1), Arg("a2") = static_cast<int>(-1), Arg("a3") = static_cast<int>(-1));
 
-  rb_mCvDnn.define_module_function<int(*)(const cv::dnn::MatShape &, int, int)>("total", &cv::dnn::total,
+  rb_mCvDnn.define_module_function<int(*)(const cv::dnn::MatShape &, int, int)>("total", static_cast<int(*)(const cv::dnn::MatShape &, int, int)>(&cv::dnn::total),
     Arg("shape"), Arg("start") = static_cast<int>(-1), Arg("end") = static_cast<int>(-1));
 
-  rb_mCvDnn.define_module_function<int(*)(const cv::Mat &, int, int)>("total", &cv::dnn::total,
+  rb_mCvDnn.define_module_function<int(*)(const cv::Mat &, int, int)>("total", static_cast<int(*)(const cv::Mat &, int, int)>(&cv::dnn::total),
     Arg("mat"), Arg("start") = static_cast<int>(-1), Arg("end") = static_cast<int>(-1));
 
   rb_mCvDnn.define_module_function<cv::dnn::MatShape(*)(const cv::dnn::MatShape &, const cv::dnn::MatShape &)>("concat", &cv::dnn::concat,
     Arg("a"), Arg("b"));
 
-  rb_mCvDnn.define_module_function<int(*)(int, int)>("normalize_axis", &cv::dnn::normalize_axis,
+  rb_mCvDnn.define_module_function<int(*)(int, int)>("normalize_axis", static_cast<int(*)(int, int)>(&cv::dnn::normalize_axis),
     Arg("axis"), Arg("dims"));
 
-  rb_mCvDnn.define_module_function<int(*)(int, const cv::dnn::MatShape &)>("normalize_axis", &cv::dnn::normalize_axis,
+  rb_mCvDnn.define_module_function<int(*)(int, const cv::dnn::MatShape &)>("normalize_axis", static_cast<int(*)(int, const cv::dnn::MatShape &)>(&cv::dnn::normalize_axis),
     Arg("axis"), Arg("shape"));
 
   rb_mCvDnn.define_module_function<cv::Range(*)(const cv::Range &, int)>("normalize_axis_range", &cv::dnn::normalize_axis_range,

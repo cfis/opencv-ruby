@@ -30,13 +30,13 @@ void Init_Face_FacemarkTrain()
   rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<cv::String> &, std::vector<cv::String> &)>("load_dataset_list", &cv::face::loadDatasetList,
     Arg("image_list"), Arg("annotation_list"), Arg("images"), Arg("annotations"));
 
-  rb_mCvFace.define_module_function<bool(*)(cv::String, std::vector<cv::String> &, cv::OutputArray, char, float)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, std::vector<cv::String> &, cv::OutputArray, char, float)>("load_training_data", static_cast<bool(*)(cv::String, std::vector<cv::String> &, cv::OutputArray, char, float)>(&cv::face::loadTrainingData),
     Arg("filename"), Arg("images"), Arg("face_points"), Arg("delim") = static_cast<char>(' '), Arg("offset") = static_cast<float>(0.0f));
 
-  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<cv::String> &, cv::OutputArray, float)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(cv::String, cv::String, std::vector<cv::String> &, cv::OutputArray, float)>("load_training_data", static_cast<bool(*)(cv::String, cv::String, std::vector<cv::String> &, cv::OutputArray, float)>(&cv::face::loadTrainingData),
     Arg("image_list"), Arg("ground_truth"), Arg("images"), Arg("face_points"), Arg("offset") = static_cast<float>(0.0f));
 
-  rb_mCvFace.define_module_function<bool(*)(std::vector<cv::String>, std::vector<std::vector<cv::Point2f>> &, std::vector<cv::String> &)>("load_training_data", &cv::face::loadTrainingData,
+  rb_mCvFace.define_module_function<bool(*)(std::vector<cv::String>, std::vector<std::vector<cv::Point2f>> &, std::vector<cv::String> &)>("load_training_data", static_cast<bool(*)(std::vector<cv::String>, std::vector<std::vector<cv::Point2f>> &, std::vector<cv::String> &)>(&cv::face::loadTrainingData),
     Arg("filename"), Arg("trainlandmarks"), Arg("trainimages"));
 
   rb_mCvFace.define_module_function<bool(*)(cv::String, cv::OutputArray, float)>("load_face_points", &cv::face::loadFacePoints,

@@ -86,16 +86,16 @@ void Init_Cudaarithm()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("bitwise_xor_with_scalar", &cv::cuda::bitwise_xor_with_scalar,
     Arg("src1"), Arg("src2"), Arg("dst"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>("rshift", &cv::cuda::rshift,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>("rshift", static_cast<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::rshift),
     Arg("src"), Arg("val"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>("rshift", &cv::cuda::rshift,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>("rshift", static_cast<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::rshift),
     Arg("src"), Arg("val"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>("lshift", &cv::cuda::lshift,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>("lshift", static_cast<void(*)(cv::InputArray, cv::Scalar_<int>, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::lshift),
     Arg("src"), Arg("val"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>("lshift", &cv::cuda::lshift,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>("lshift", static_cast<void(*)(cv::InputArray, cv::Scalar, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::lshift),
     Arg("src"), Arg("val"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("min", &cv::cuda::min,
@@ -122,52 +122,52 @@ void Init_Cudaarithm()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, const cv::Scalar &, const cv::Scalar &, cv::OutputArray, cv::cuda::Stream &)>("in_range", &cv::cuda::inRange,
     Arg("src"), Arg("lowerb"), Arg("upperb"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude", &cv::cuda::magnitude,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::magnitude),
     Arg("xy"), Arg("magnitude"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude_sqr", &cv::cuda::magnitudeSqr,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude_sqr", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::magnitudeSqr),
     Arg("xy"), Arg("magnitude"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude", &cv::cuda::magnitude,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::magnitude),
     Arg("x"), Arg("y"), Arg("magnitude"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude_sqr", &cv::cuda::magnitudeSqr,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("magnitude_sqr", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::magnitudeSqr),
     Arg("x"), Arg("y"), Arg("magnitude"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("phase", &cv::cuda::phase,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("phase", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::phase),
     Arg("x"), Arg("y"), Arg("angle"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("phase", &cv::cuda::phase,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("phase", static_cast<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::phase),
     Arg("xy"), Arg("angle"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", &cv::cuda::cartToPolar,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::cartToPolar),
     Arg("x"), Arg("y"), Arg("magnitude"), Arg("angle"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", &cv::cuda::cartToPolar,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::cartToPolar),
     Arg("xy"), Arg("magnitude"), Arg("angle"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", &cv::cuda::cartToPolar,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("cart_to_polar", static_cast<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::cartToPolar),
     Arg("xy"), Arg("magnitude_angle"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", &cv::cuda::polarToCart,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::polarToCart),
     Arg("magnitude"), Arg("angle"), Arg("x"), Arg("y"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", &cv::cuda::polarToCart,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::polarToCart),
     Arg("magnitude"), Arg("angle"), Arg("xy"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", &cv::cuda::polarToCart,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>("polar_to_cart", static_cast<void(*)(cv::InputArray, cv::OutputArray, bool, cv::cuda::Stream &)>(&cv::cuda::polarToCart),
     Arg("magnitude_angle"), Arg("xy"), Arg("angle_in_degrees") = static_cast<bool>(false), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(const cv::cuda::GpuMat *, size_t, cv::OutputArray, cv::cuda::Stream &)>("merge", &cv::cuda::merge,
+  rb_mCvCuda.define_module_function<void(*)(const cv::cuda::GpuMat *, size_t, cv::OutputArray, cv::cuda::Stream &)>("merge", static_cast<void(*)(const cv::cuda::GpuMat *, size_t, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::merge),
     Arg("src"), Arg("n"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(const std::vector<cv::cuda::GpuMat> &, cv::OutputArray, cv::cuda::Stream &)>("merge", &cv::cuda::merge,
+  rb_mCvCuda.define_module_function<void(*)(const std::vector<cv::cuda::GpuMat> &, cv::OutputArray, cv::cuda::Stream &)>("merge", static_cast<void(*)(const std::vector<cv::cuda::GpuMat> &, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::merge),
     Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::cuda::GpuMat *, cv::cuda::Stream &)>("split", &cv::cuda::split,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::cuda::GpuMat *, cv::cuda::Stream &)>("split", static_cast<void(*)(cv::InputArray, cv::cuda::GpuMat *, cv::cuda::Stream &)>(&cv::cuda::split),
     Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>("split", &cv::cuda::split,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>("split", static_cast<void(*)(cv::InputArray, std::vector<cv::cuda::GpuMat> &, cv::cuda::Stream &)>(&cv::cuda::split),
     Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("transpose", &cv::cuda::transpose,
@@ -186,13 +186,13 @@ void Init_Cudaarithm()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int, int, int, cv::Scalar, cv::cuda::Stream &)>("copy_make_border", &cv::cuda::copyMakeBorder,
     Arg("src"), Arg("dst"), Arg("top"), Arg("bottom"), Arg("left"), Arg("right"), Arg("border_type"), Arg("value") = static_cast<cv::Scalar>(cv::Scalar()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<double(*)(cv::InputArray, int, cv::InputArray)>("norm", &cv::cuda::norm,
+  rb_mCvCuda.define_module_function<double(*)(cv::InputArray, int, cv::InputArray)>("norm", static_cast<double(*)(cv::InputArray, int, cv::InputArray)>(&cv::cuda::norm),
     Arg("src1"), Arg("norm_type"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, cv::InputArray, cv::cuda::Stream &)>("calc_norm", &cv::cuda::calcNorm,
     Arg("src"), Arg("dst"), Arg("norm_type"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<double(*)(cv::InputArray, cv::InputArray, int)>("norm", &cv::cuda::norm,
+  rb_mCvCuda.define_module_function<double(*)(cv::InputArray, cv::InputArray, int)>("norm", static_cast<double(*)(cv::InputArray, cv::InputArray, int)>(&cv::cuda::norm),
     Arg("src1"), Arg("src2"), Arg("norm_type") = static_cast<int>(cv::NORM_L2));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, cv::cuda::Stream &)>("calc_norm_diff", &cv::cuda::calcNormDiff,
@@ -228,25 +228,25 @@ void Init_Cudaarithm()
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("find_min_max_loc", &cv::cuda::findMinMaxLoc,
     Arg("src"), Arg("min_max_vals"), Arg("loc"), Arg("mask") = static_cast<cv::InputArray>(cv::noArray()), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<int(*)(cv::InputArray)>("count_non_zero", &cv::cuda::countNonZero,
+  rb_mCvCuda.define_module_function<int(*)(cv::InputArray)>("count_non_zero", static_cast<int(*)(cv::InputArray)>(&cv::cuda::countNonZero),
     Arg("src"));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("count_non_zero", &cv::cuda::countNonZero,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("count_non_zero", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::countNonZero),
     Arg("src"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, int, int, cv::cuda::Stream &)>("reduce", &cv::cuda::reduce,
     Arg("mtx"), Arg("vec"), Arg("dim"), Arg("reduce_op"), Arg("dtype") = static_cast<int>(-1), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("mean_std_dev", &cv::cuda::meanStdDev,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>("mean_std_dev", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::cuda::Stream &)>(&cv::cuda::meanStdDev),
     Arg("src"), Arg("dst"), Arg("mask"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("mean_std_dev", &cv::cuda::meanStdDev,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("mean_std_dev", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>(&cv::cuda::meanStdDev),
     Arg("mtx"), Arg("dst"), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &, cv::InputArray)>("mean_std_dev", &cv::cuda::meanStdDev,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &, cv::InputArray)>("mean_std_dev", static_cast<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &, cv::InputArray)>(&cv::cuda::meanStdDev),
     Arg("src"), Arg("mean"), Arg("stddev"), Arg("mask"));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &)>("mean_std_dev", &cv::cuda::meanStdDev,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &)>("mean_std_dev", static_cast<void(*)(cv::InputArray, cv::Scalar &, cv::Scalar &)>(&cv::cuda::meanStdDev),
     Arg("mtx"), Arg("mean"), Arg("stddev"));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, cv::Rect, cv::cuda::Stream &)>("rect_std_dev", &cv::cuda::rectStdDev,

@@ -85,8 +85,8 @@ void Init_Bioinspired_Retina()
       Arg("activate"))
     .define_method<void(cv::bioinspired::Retina::*)(const bool)>("activate_contours_processing", &cv::bioinspired::Retina::activateContoursProcessing,
       Arg("activate"))
-    .define_singleton_function<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size)>("create", &cv::bioinspired::Retina::create,
+    .define_singleton_function<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size)>("create", static_cast<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size)>(&cv::bioinspired::Retina::create),
       Arg("input_size"))
-    .define_singleton_function<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size, const bool, int, const bool, const float, const float)>("create", &cv::bioinspired::Retina::create,
+    .define_singleton_function<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size, const bool, int, const bool, const float, const float)>("create", static_cast<cv::Ptr<cv::bioinspired::Retina>(*)(cv::Size, const bool, int, const bool, const float, const float)>(&cv::bioinspired::Retina::create),
       Arg("input_size"), Arg("color_mode"), Arg("color_sampling_method") = static_cast<int>(cv::bioinspired::RETINA_COLOR_BAYER), Arg("use_retina_log_sampling") = static_cast<const bool>(false), Arg("reduction_factor") = static_cast<const float>(1.0f), Arg("sampling_strength") = static_cast<const float>(10.0f));
 }

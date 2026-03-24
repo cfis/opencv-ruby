@@ -121,10 +121,10 @@ void Init_Cudacodec()
     .define_method<cv::cudacodec::EncoderParams(cv::cudacodec::VideoWriter::*)() const>("get_encoder_params", &cv::cudacodec::VideoWriter::getEncoderParams)
     .define_method<void(cv::cudacodec::VideoWriter::*)()>("release", &cv::cudacodec::VideoWriter::release);
 
-  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>("create_video_writer", &cv::cudacodec::createVideoWriter,
+  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>("create_video_writer", static_cast<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>(&cv::cudacodec::createVideoWriter),
     Arg("file_name"), Arg("frame_size"), Arg("codec") = static_cast<const cv::cudacodec::Codec>(cv::cudacodec::H264), Arg("fps") = static_cast<const double>(25.0), Arg("color_format") = static_cast<const cv::cudacodec::ColorFormat>(cv::cudacodec::BGR), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, const cv::cudacodec::EncoderParams &, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>("create_video_writer", &cv::cudacodec::createVideoWriter,
+  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, const cv::cudacodec::EncoderParams &, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>("create_video_writer", static_cast<cv::Ptr<cv::cudacodec::VideoWriter>(*)(const cv::String &, const cv::Size, const cv::cudacodec::Codec, const double, const cv::cudacodec::ColorFormat, const cv::cudacodec::EncoderParams &, cv::Ptr<cv::cudacodec::EncoderCallback>, const cv::cuda::Stream &)>(&cv::cudacodec::createVideoWriter),
     Arg("file_name"), Arg("frame_size"), Arg("codec"), Arg("fps"), Arg("color_format"), Arg("params"), Arg("encoder_callback") = static_cast<cv::Ptr<cv::cudacodec::EncoderCallback>>(0), Arg("stream") = static_cast<const cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   Enum<cv::cudacodec::ChromaFormat> rb_cCvCudacodecChromaFormat = define_enum_under<cv::cudacodec::ChromaFormat>("ChromaFormat", rb_mCvCudacodec)
@@ -265,9 +265,9 @@ void Init_Cudacodec()
     .define_attr("enable_histogram", &cv::cudacodec::VideoReaderInitParams::enableHistogram)
     .define_attr("first_frame_idx", &cv::cudacodec::VideoReaderInitParams::firstFrameIdx);
 
-  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::String &, const std::vector<int> &, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", &cv::cudacodec::createVideoReader,
+  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::String &, const std::vector<int> &, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", static_cast<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::String &, const std::vector<int> &, const cv::cudacodec::VideoReaderInitParams)>(&cv::cudacodec::createVideoReader),
     Arg("filename"), Arg("source_params") = static_cast<const std::vector<int> &>(std::vector<int>{}), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
 
-  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::Ptr<cv::cudacodec::RawVideoSource> &, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", &cv::cudacodec::createVideoReader,
+  rb_mCvCudacodec.define_module_function<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::Ptr<cv::cudacodec::RawVideoSource> &, const cv::cudacodec::VideoReaderInitParams)>("create_video_reader", static_cast<cv::Ptr<cv::cudacodec::VideoReader>(*)(const cv::Ptr<cv::cudacodec::RawVideoSource> &, const cv::cudacodec::VideoReaderInitParams)>(&cv::cudacodec::createVideoReader),
     Arg("source"), Arg("params") = static_cast<const cv::cudacodec::VideoReaderInitParams>(cv::cudacodec::VideoReaderInitParams()));
 }

@@ -192,7 +192,7 @@ void Init_Core_Ocl()
       ArgBuffer("context"))
     .define_singleton_function<cv::ocl::Context(*)(const cv::ocl::Device &)>("from_device", &cv::ocl::Context::fromDevice,
       Arg("device"))
-    .define_singleton_function<cv::ocl::Context(*)(const std::string &)>("create", &cv::ocl::Context::create,
+    .define_singleton_function<cv::ocl::Context(*)(const std::string &)>("create", static_cast<cv::ocl::Context(*)(const std::string &)>(&cv::ocl::Context::create),
       Arg("configuration"))
     .define_method<void(cv::ocl::Context::*)()>("release", &cv::ocl::Context::release)
     .define_method<void(cv::ocl::Context::*)(std::type_index, const std::shared_ptr<cv::ocl::Context::UserContext> &)>("set_user_context", &cv::ocl::Context::setUserContext,
@@ -279,7 +279,7 @@ void Init_Core_Ocl()
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1))
     .define_singleton_function<cv::ocl::KernelArg(*)(const cv::UMat &, int, int)>("write_only_no_size", &cv::ocl::KernelArg::WriteOnlyNoSize,
       Arg("m"), Arg("wscale") = static_cast<int>(1), Arg("iwscale") = static_cast<int>(1))
-    .define_singleton_function<cv::ocl::KernelArg(*)(const cv::Mat &)>("constant", &cv::ocl::KernelArg::Constant,
+    .define_singleton_function<cv::ocl::KernelArg(*)(const cv::Mat &)>("constant", static_cast<cv::ocl::KernelArg(*)(const cv::Mat &)>(&cv::ocl::KernelArg::Constant),
       Arg("m"))
     .define_attr("flags", &cv::ocl::KernelArg::flags)
     .define_attr("m", &cv::ocl::KernelArg::m)
@@ -490,11 +490,11 @@ void Init_Core_Ocl()
     .define_method<cv::ocl::OpenCLExecutionContext(cv::ocl::OpenCLExecutionContext::*)(const cv::ocl::Queue &) const>("clone_with_new_queue", &cv::ocl::OpenCLExecutionContext::cloneWithNewQueue,
       Arg("q"))
     .define_method<cv::ocl::OpenCLExecutionContext(cv::ocl::OpenCLExecutionContext::*)() const>("clone_with_new_queue", &cv::ocl::OpenCLExecutionContext::cloneWithNewQueue)
-    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const std::string &, void *, void *, void *)>("create", &cv::ocl::OpenCLExecutionContext::create,
+    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const std::string &, void *, void *, void *)>("create", static_cast<cv::ocl::OpenCLExecutionContext(*)(const std::string &, void *, void *, void *)>(&cv::ocl::OpenCLExecutionContext::create),
       Arg("platform_name"), ArgBuffer("platform_id"), ArgBuffer("context"), ArgBuffer("device_id"))
-    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &, const cv::ocl::Queue &)>("create", &cv::ocl::OpenCLExecutionContext::create,
+    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &, const cv::ocl::Queue &)>("create", static_cast<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &, const cv::ocl::Queue &)>(&cv::ocl::OpenCLExecutionContext::create),
       Arg("context"), Arg("device"), Arg("queue"))
-    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &)>("create", &cv::ocl::OpenCLExecutionContext::create,
+    .define_singleton_function<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &)>("create", static_cast<cv::ocl::OpenCLExecutionContext(*)(const cv::ocl::Context &, const cv::ocl::Device &)>(&cv::ocl::OpenCLExecutionContext::create),
       Arg("context"), Arg("device"))
     .define_method<bool(cv::ocl::OpenCLExecutionContext::*)() const>("empty?", &cv::ocl::OpenCLExecutionContext::empty)
     .define_method<void(cv::ocl::OpenCLExecutionContext::*)()>("release", &cv::ocl::OpenCLExecutionContext::release);

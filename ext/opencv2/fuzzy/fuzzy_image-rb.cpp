@@ -11,10 +11,10 @@ void Init_Fuzzy_FuzzyImage()
 
   Module rb_mCvFt = define_module_under(rb_mCv, "Ft");
 
-  rb_mCvFt.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const int)>("create_kernel", &cv::ft::createKernel,
+  rb_mCvFt.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const int)>("create_kernel", static_cast<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, const int)>(&cv::ft::createKernel),
     Arg("a"), Arg("b"), Arg("kernel"), Arg("chn"));
 
-  rb_mCvFt.define_module_function<void(*)(int, int, cv::OutputArray, const int)>("create_kernel", &cv::ft::createKernel,
+  rb_mCvFt.define_module_function<void(*)(int, int, cv::OutputArray, const int)>("create_kernel", static_cast<void(*)(int, int, cv::OutputArray, const int)>(&cv::ft::createKernel),
     Arg("function"), Arg("radius"), Arg("kernel"), Arg("chn"));
 
   rb_mCvFt.define_module_function<void(*)(cv::InputArray, cv::InputArray, cv::OutputArray, int, int, int)>("inpaint", &cv::ft::inpaint,

@@ -41,8 +41,8 @@ void Init_LineDescriptor_Descriptor()
   Rice::Data_Type<cv::line_descriptor::BinaryDescriptor> rb_cCvLineDescriptorBinaryDescriptor = define_class_under<cv::line_descriptor::BinaryDescriptor, cv::Algorithm>(rb_mCvLineDescriptor, "BinaryDescriptor")
     .define_constructor(Constructor<cv::line_descriptor::BinaryDescriptor, const cv::line_descriptor::BinaryDescriptor::Params &>(),
       Arg("parameters") = static_cast<const cv::line_descriptor::BinaryDescriptor::Params &>(cv::line_descriptor::BinaryDescriptor::Params()))
-    .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor)
-    .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", &cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor,
+    .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>("create_binary_descriptor", static_cast<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)()>(&cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor))
+    .define_singleton_function<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>("create_binary_descriptor", static_cast<cv::Ptr<cv::line_descriptor::BinaryDescriptor>(*)(cv::line_descriptor::BinaryDescriptor::Params)>(&cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor),
       Arg("parameters"))
     .define_method<int(cv::line_descriptor::BinaryDescriptor::*)()>("get_num_of_octaves", &cv::line_descriptor::BinaryDescriptor::getNumOfOctaves)
     .define_method<void(cv::line_descriptor::BinaryDescriptor::*)(int)>("set_num_of_octaves", &cv::line_descriptor::BinaryDescriptor::setNumOfOctaves,
@@ -96,8 +96,8 @@ void Init_LineDescriptor_Descriptor()
     .define_constructor(Constructor<cv::line_descriptor::LSDDetector>())
     .define_constructor(Constructor<cv::line_descriptor::LSDDetector, cv::line_descriptor::LSDParam>(),
       Arg("_params"))
-    .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector)
-    .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>("create_lsd_detector", &cv::line_descriptor::LSDDetector::createLSDDetector,
+    .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>("create_lsd_detector", static_cast<cv::Ptr<cv::line_descriptor::LSDDetector>(*)()>(&cv::line_descriptor::LSDDetector::createLSDDetector))
+    .define_singleton_function<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>("create_lsd_detector", static_cast<cv::Ptr<cv::line_descriptor::LSDDetector>(*)(cv::line_descriptor::LSDParam)>(&cv::line_descriptor::LSDDetector::createLSDDetector),
       Arg("params"))
     .define_method<void(cv::line_descriptor::LSDDetector::*)(const cv::Mat &, std::vector<cv::line_descriptor::KeyLine> &, int, int, const cv::Mat &)>("detect", &cv::line_descriptor::LSDDetector::detect,
       Arg("image"), Arg("keypoints"), Arg("scale"), Arg("num_octaves"), Arg("mask") = static_cast<const cv::Mat &>(cv::Mat()))

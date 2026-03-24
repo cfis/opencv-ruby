@@ -88,13 +88,13 @@ void Init_Highgui()
 
   rb_mCv.define_module_function<int(*)()>("poll_key", &cv::pollKey);
 
-  rb_mCv.define_module_function<void(*)(const cv::String &, cv::InputArray)>("imshow", &cv::imshow,
+  rb_mCv.define_module_function<void(*)(const cv::String &, cv::InputArray)>("imshow", static_cast<void(*)(const cv::String &, cv::InputArray)>(&cv::imshow),
     Arg("winname"), Arg("mat"));
 
-  rb_mCv.define_module_function<void(*)(const cv::String &, int, int)>("resize_window", &cv::resizeWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String &, int, int)>("resize_window", static_cast<void(*)(const cv::String &, int, int)>(&cv::resizeWindow),
     Arg("winname"), Arg("width"), Arg("height"));
 
-  rb_mCv.define_module_function<void(*)(const cv::String &, const cv::Size &)>("resize_window", &cv::resizeWindow,
+  rb_mCv.define_module_function<void(*)(const cv::String &, const cv::Size &)>("resize_window", static_cast<void(*)(const cv::String &, const cv::Size &)>(&cv::resizeWindow),
     Arg("winname"), Arg("size"));
 
   rb_mCv.define_module_function<void(*)(const cv::String &, int, int)>("move_window", &cv::moveWindow,
@@ -118,10 +118,10 @@ void Init_Highgui()
   rb_mCv.define_module_function<int(*)(int)>("get_mouse_wheel_delta", &cv::getMouseWheelDelta,
     Arg("flags"));
 
-  rb_mCv.define_module_function<cv::Rect(*)(const cv::String &, cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
+  rb_mCv.define_module_function<cv::Rect(*)(const cv::String &, cv::InputArray, bool, bool, bool)>("select_roi", static_cast<cv::Rect(*)(const cv::String &, cv::InputArray, bool, bool, bool)>(&cv::selectROI),
     Arg("window_name"), Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
-  rb_mCv.define_module_function<cv::Rect(*)(cv::InputArray, bool, bool, bool)>("select_roi", &cv::selectROI,
+  rb_mCv.define_module_function<cv::Rect(*)(cv::InputArray, bool, bool, bool)>("select_roi", static_cast<cv::Rect(*)(cv::InputArray, bool, bool, bool)>(&cv::selectROI),
     Arg("img"), Arg("show_crosshair") = static_cast<bool>(true), Arg("from_center") = static_cast<bool>(false), Arg("print_notice") = static_cast<bool>(true));
 
   rb_mCv.define_module_function<void(*)(const cv::String &, cv::InputArray, std::vector<cv::Rect> &, bool, bool, bool)>("select_ro_is", &cv::selectROIs,
@@ -142,7 +142,7 @@ void Init_Highgui()
   rb_mCv.define_module_function<void(*)(const cv::String &, const cv::String &, int)>("set_trackbar_min", &cv::setTrackbarMin,
     Arg("trackbarname"), Arg("winname"), Arg("minval"));
 
-  rb_mCv.define_module_function<void(*)(const cv::String &, const cv::ogl::Texture2D &)>("imshow", &cv::imshow,
+  rb_mCv.define_module_function<void(*)(const cv::String &, const cv::ogl::Texture2D &)>("imshow", static_cast<void(*)(const cv::String &, const cv::ogl::Texture2D &)>(&cv::imshow),
     Arg("winname"), Arg("tex"));
 
   rb_mCv.define_module_function<void(*)(const cv::String &, cv::OpenGlDrawCallback, void *)>("set_open_gl_draw_callback", &cv::setOpenGlDrawCallback,
@@ -172,10 +172,10 @@ void Init_Highgui()
   rb_mCv.define_module_function<cv::QtFont(*)(const cv::String &, int, cv::Scalar, int, int, int)>("font_qt", &cv::fontQt,
     Arg("name_font"), Arg("point_size") = static_cast<int>(-1), Arg("color") = static_cast<cv::Scalar>(cv::Scalar::all(0)), Arg("weight") = static_cast<int>(cv::QT_FONT_NORMAL), Arg("style") = static_cast<int>(cv::QT_STYLE_NORMAL), Arg("spacing") = static_cast<int>(0));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::QtFont &)>("add_text", &cv::addText,
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::QtFont &)>("add_text", static_cast<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::QtFont &)>(&cv::addText),
     Arg("img"), Arg("text"), Arg("org"), Arg("font"));
 
-  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::String &, int, cv::Scalar, int, int, int)>("add_text", &cv::addText,
+  rb_mCv.define_module_function<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::String &, int, cv::Scalar, int, int, int)>("add_text", static_cast<void(*)(const cv::Mat &, const cv::String &, cv::Point, const cv::String &, int, cv::Scalar, int, int, int)>(&cv::addText),
     Arg("img"), Arg("text"), Arg("org"), Arg("name_font"), Arg("point_size") = static_cast<int>(-1), Arg("color") = static_cast<cv::Scalar>(cv::Scalar::all(0)), Arg("weight") = static_cast<int>(cv::QT_FONT_NORMAL), Arg("style") = static_cast<int>(cv::QT_STYLE_NORMAL), Arg("spacing") = static_cast<int>(0));
 
   rb_mCv.define_module_function<void(*)(const cv::String &, const cv::String &, int)>("display_overlay", &cv::displayOverlay,

@@ -41,10 +41,10 @@ void Init_Video_Tracking()
   rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputArray)>("compute_ecc", &cv::computeECC,
     Arg("template_image"), Arg("input_image"), Arg("input_mask") = static_cast<cv::InputArray>(cv::noArray()));
 
-  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray, int)>("find_transform_ecc", &cv::findTransformECC,
+  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray, int)>("find_transform_ecc", static_cast<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray, int)>(&cv::findTransformECC),
     Arg("template_image"), Arg("input_image"), Arg("warp_matrix"), Arg("motion_type"), Arg("criteria"), Arg("input_mask"), Arg("gauss_filt_size"));
 
-  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray)>("find_transform_ecc", &cv::findTransformECC,
+  rb_mCv.define_module_function<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray)>("find_transform_ecc", static_cast<double(*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, int, cv::TermCriteria, cv::InputArray)>(&cv::findTransformECC),
     Arg("template_image"), Arg("input_image"), Arg("warp_matrix"), Arg("motion_type") = static_cast<int>(cv::MOTION_AFFINE), Arg("criteria") = static_cast<cv::TermCriteria>(cv::TermCriteria(cv::TermCriteria::Type::COUNT+cv::TermCriteria::Type::EPS, 50, 0.001)), Arg("input_mask") = static_cast<cv::InputArray>(cv::noArray()));
 
   Rice::Data_Type<cv::KalmanFilter> rb_cCvKalmanFilter = define_class_under<cv::KalmanFilter>(rb_mCv, "KalmanFilter")

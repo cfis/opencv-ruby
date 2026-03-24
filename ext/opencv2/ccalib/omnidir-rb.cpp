@@ -41,10 +41,10 @@ void Init_Ccalib_Omnidir()
 
   rb_mCvOmnidir.define_constant("XYZ", (int)cv::omnidir::XYZ);
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, double, cv::InputArray, cv::OutputArray)>(&cv::omnidir::projectPoints),
     Arg("object_points"), Arg("image_points"), Arg("rvec"), Arg("tvec"), Arg("k"), Arg("xi"), Arg("d"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
-  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d &, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", &cv::omnidir::projectPoints,
+  rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d &, cv::InputArray, double, cv::InputArray, cv::OutputArray)>("project_points", static_cast<void(*)(cv::InputArray, cv::OutputArray, const cv::Affine3d &, cv::InputArray, double, cv::InputArray, cv::OutputArray)>(&cv::omnidir::projectPoints),
     Arg("object_points"), Arg("image_points"), Arg("affine"), Arg("k"), Arg("xi"), Arg("d"), Arg("jacobian") = static_cast<cv::OutputArray>(cv::noArray()));
 
   rb_mCvOmnidir.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, cv::InputArray, cv::InputArray, cv::InputArray)>("undistort_points", &cv::omnidir::undistortPoints,

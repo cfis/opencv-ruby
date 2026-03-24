@@ -57,7 +57,7 @@ inline Rice::Data_Type<cv::DualQuat<_Tp>> DualQuat_instantiate(Rice::Module pare
       Arg("q1"), Arg("q2"), Arg("t"), Arg("direct_change") = static_cast<bool>(true), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT))
     .template define_singleton_function<cv::DualQuat<_Tp>(*)(const cv::DualQuat<_Tp> &, const cv::DualQuat<_Tp> &, const _Tp, cv::QuatAssumeType)>("dqblend", &cv::DualQuat<_Tp>::dqblend,
       Arg("q1"), Arg("q2"), Arg("t"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT))
-    .template define_singleton_function<cv::DualQuat<_Tp>(*)(cv::InputArray, cv::InputArray, cv::QuatAssumeType)>("gdqblend", &cv::DualQuat<_Tp>::gdqblend,
+    .template define_singleton_function<cv::DualQuat<_Tp>(*)(cv::InputArray, cv::InputArray, cv::QuatAssumeType)>("gdqblend", static_cast<cv::DualQuat<_Tp>(*)(cv::InputArray, cv::InputArray, cv::QuatAssumeType)>(&cv::DualQuat<_Tp>::gdqblend),
       Arg("dualquat"), Arg("weights"), Arg("assume_unit") = static_cast<cv::QuatAssumeType>(cv::QUAT_ASSUME_NOT_UNIT))
     .template define_method<cv::DualQuat<_Tp>(cv::DualQuat<_Tp>::*)() const>("-@", &cv::DualQuat<_Tp>::operator-)
     .template define_method<bool(cv::DualQuat<_Tp>::*)(const cv::DualQuat<_Tp> &) const>("==", &cv::DualQuat<_Tp>::operator==,

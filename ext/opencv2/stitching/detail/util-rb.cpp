@@ -46,10 +46,10 @@ void Init_Stitching_Detail_Util()
   rb_mCvDetail.define_module_function<bool(*)(cv::Point, cv::Point, cv::Size, cv::Size, cv::Rect &)>("overlap_roi", &cv::detail::overlapRoi,
     Arg("tl1"), Arg("tl2"), Arg("sz1"), Arg("sz2"), Arg("roi"));
 
-  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::UMat> &)>("result_roi", &cv::detail::resultRoi,
+  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::UMat> &)>("result_roi", static_cast<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::UMat> &)>(&cv::detail::resultRoi),
     Arg("corners"), Arg("images"));
 
-  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("result_roi", &cv::detail::resultRoi,
+  rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("result_roi", static_cast<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>(&cv::detail::resultRoi),
     Arg("corners"), Arg("sizes"));
 
   rb_mCvDetail.define_module_function<cv::Rect(*)(const std::vector<cv::Point> &, const std::vector<cv::Size> &)>("result_roi_intersection", &cv::detail::resultRoiIntersection,

@@ -179,16 +179,16 @@ void Init_Imgcodecs()
     .define_constructor(Constructor<cv::Animation, int, cv::Scalar>(),
       Arg("loop_count") = static_cast<int>(0), Arg("bg_color") = static_cast<cv::Scalar>(cv::Scalar()));
 
-  rb_mCv.define_module_function<cv::Mat(*)(const cv::String &, int)>("imread", &cv::imread,
+  rb_mCv.define_module_function<cv::Mat(*)(const cv::String &, int)>("imread", static_cast<cv::Mat(*)(const cv::String &, int)>(&cv::imread),
     Arg("filename"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
 
-  rb_mCv.define_module_function<void(*)(const cv::String &, cv::OutputArray, int)>("imread", &cv::imread,
+  rb_mCv.define_module_function<void(*)(const cv::String &, cv::OutputArray, int)>("imread", static_cast<void(*)(const cv::String &, cv::OutputArray, int)>(&cv::imread),
     Arg("filename"), Arg("dst"), Arg("flags") = static_cast<int>(cv::IMREAD_COLOR_BGR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int)>("imreadmulti", &cv::imreadmulti,
+  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int)>("imreadmulti", static_cast<bool(*)(const cv::String &, std::vector<cv::Mat> &, int)>(&cv::imreadmulti),
     Arg("filename"), Arg("mats"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
 
-  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int, int, int)>("imreadmulti", &cv::imreadmulti,
+  rb_mCv.define_module_function<bool(*)(const cv::String &, std::vector<cv::Mat> &, int, int, int)>("imreadmulti", static_cast<bool(*)(const cv::String &, std::vector<cv::Mat> &, int, int, int)>(&cv::imreadmulti),
     Arg("filename"), Arg("mats"), Arg("start"), Arg("count"), Arg("flags") = static_cast<int>(cv::IMREAD_ANYCOLOR));
 
   rb_mCv.define_module_function<bool(*)(const cv::String &, cv::Animation &, int, int)>("imreadanimation", &cv::imreadanimation,
@@ -206,10 +206,10 @@ void Init_Imgcodecs()
   rb_mCv.define_module_function<bool(*)(const cv::String &, cv::InputArrayOfArrays, const std::vector<int> &)>("imwritemulti", &cv::imwritemulti,
     Arg("filename"), Arg("img"), Arg("params") = static_cast<const std::vector<int> &>(std::vector<int>()));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int)>("imdecode", &cv::imdecode,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int)>("imdecode", static_cast<cv::Mat(*)(cv::InputArray, int)>(&cv::imdecode),
     Arg("buf"), Arg("flags"));
 
-  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int, cv::Mat *)>("imdecode", &cv::imdecode,
+  rb_mCv.define_module_function<cv::Mat(*)(cv::InputArray, int, cv::Mat *)>("imdecode", static_cast<cv::Mat(*)(cv::InputArray, int, cv::Mat *)>(&cv::imdecode),
     Arg("buf"), Arg("flags"), Arg("dst"));
 
   rb_mCv.define_module_function<bool(*)(cv::InputArray, int, std::vector<cv::Mat> &, const cv::Range &)>("imdecodemulti", &cv::imdecodemulti,

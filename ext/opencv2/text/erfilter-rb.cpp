@@ -60,16 +60,16 @@ void Init_Text_Erfilter()
     .define_method<double(cv::text::ERFilter::Callback::*)(const cv::text::ERStat &)>("eval", &cv::text::ERFilter::Callback::eval,
       Arg("stat"));
 
-  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, int, float, float, float, bool, float)>("create_er_filter_nm1", &cv::text::createERFilterNM1,
+  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, int, float, float, float, bool, float)>("create_er_filter_nm1", static_cast<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, int, float, float, float, bool, float)>(&cv::text::createERFilterNM1),
     Arg("cb"), Arg("threshold_delta") = static_cast<int>(1), Arg("min_area") = static_cast<float>((float)0.00025), Arg("max_area") = static_cast<float>((float)0.13), Arg("min_probability") = static_cast<float>((float)0.4), Arg("non_max_suppression") = static_cast<bool>(true), Arg("min_probability_diff") = static_cast<float>((float)0.1));
 
-  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, float)>("create_er_filter_nm2", &cv::text::createERFilterNM2,
+  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, float)>("create_er_filter_nm2", static_cast<cv::Ptr<cv::text::ERFilter>(*)(const cv::Ptr<cv::text::ERFilter::Callback> &, float)>(&cv::text::createERFilterNM2),
     Arg("cb"), Arg("min_probability") = static_cast<float>((float)0.3));
 
-  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, int, float, float, float, bool, float)>("create_er_filter_nm1", &cv::text::createERFilterNM1,
+  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, int, float, float, float, bool, float)>("create_er_filter_nm1", static_cast<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, int, float, float, float, bool, float)>(&cv::text::createERFilterNM1),
     Arg("filename"), Arg("threshold_delta") = static_cast<int>(1), Arg("min_area") = static_cast<float>((float)0.00025), Arg("max_area") = static_cast<float>((float)0.13), Arg("min_probability") = static_cast<float>((float)0.4), Arg("non_max_suppression") = static_cast<bool>(true), Arg("min_probability_diff") = static_cast<float>((float)0.1));
 
-  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, float)>("create_er_filter_nm2", &cv::text::createERFilterNM2,
+  rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, float)>("create_er_filter_nm2", static_cast<cv::Ptr<cv::text::ERFilter>(*)(const cv::String &, float)>(&cv::text::createERFilterNM2),
     Arg("filename"), Arg("min_probability") = static_cast<float>((float)0.3));
 
   rb_mCvText.define_module_function<cv::Ptr<cv::text::ERFilter::Callback>(*)(const cv::String &)>("load_classifier_nm1", &cv::text::loadClassifierNM1,
@@ -89,18 +89,18 @@ void Init_Text_Erfilter()
     .define_value("ERGROUPING_ORIENTATION_HORIZ", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_HORIZ)
     .define_value("ERGROUPING_ORIENTATION_ANY", cv::text::erGrouping_Modes::ERGROUPING_ORIENTATION_ANY);
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>> &, std::vector<std::vector<cv::Vec2i>> &, std::vector<cv::Rect> &, int, const std::string &, float)>("er_grouping", &cv::text::erGrouping,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>> &, std::vector<std::vector<cv::Vec2i>> &, std::vector<cv::Rect> &, int, const std::string &, float)>("er_grouping", static_cast<void(*)(cv::InputArray, cv::InputArrayOfArrays, std::vector<std::vector<cv::text::ERStat>> &, std::vector<std::vector<cv::Vec2i>> &, std::vector<cv::Rect> &, int, const std::string &, float)>(&cv::text::erGrouping),
     Arg("img"), Arg("channels"), Arg("regions"), Arg("groups"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const std::string &>(std::string()), Arg("min_probablity") = static_cast<float>(0.5));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::Point>>, std::vector<cv::Rect> &, int, const cv::String &, float)>("er_grouping", &cv::text::erGrouping,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::Point>>, std::vector<cv::Rect> &, int, const cv::String &, float)>("er_grouping", static_cast<void(*)(cv::InputArray, cv::InputArray, std::vector<std::vector<cv::Point>>, std::vector<cv::Rect> &, int, const cv::String &, float)>(&cv::text::erGrouping),
     Arg("image"), Arg("channel"), Arg("regions"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const cv::String &>(cv::String()), Arg("min_probablity") = static_cast<float>((float)0.5));
 
   rb_mCvText.define_module_function<void(*)(cv::InputArray, std::vector<std::vector<cv::Point>> &, std::vector<std::vector<cv::text::ERStat>> &)>("mse_rs_to_er_stats", &cv::text::MSERsToERStats,
     Arg("image"), Arg("contours"), Arg("regions"));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<std::vector<cv::Point>> &)>("detect_regions", &cv::text::detectRegions,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<std::vector<cv::Point>> &)>("detect_regions", static_cast<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<std::vector<cv::Point>> &)>(&cv::text::detectRegions),
     Arg("image"), Arg("er_filter1"), Arg("er_filter2"), Arg("regions"));
 
-  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<cv::Rect> &, int, const cv::String &, float)>("detect_regions", &cv::text::detectRegions,
+  rb_mCvText.define_module_function<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<cv::Rect> &, int, const cv::String &, float)>("detect_regions", static_cast<void(*)(cv::InputArray, const cv::Ptr<cv::text::ERFilter> &, const cv::Ptr<cv::text::ERFilter> &, std::vector<cv::Rect> &, int, const cv::String &, float)>(&cv::text::detectRegions),
     Arg("image"), Arg("er_filter1"), Arg("er_filter2"), Arg("groups_rects"), Arg("method") = static_cast<int>(cv::text::ERGROUPING_ORIENTATION_HORIZ), Arg("filename") = static_cast<const cv::String &>(cv::String()), Arg("min_probability") = static_cast<float>((float)0.5));
 }

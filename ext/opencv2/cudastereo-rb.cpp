@@ -97,10 +97,10 @@ void Init_Cudastereo()
   rb_mCvCuda.define_module_function<cv::Ptr<cv::cuda::DisparityBilateralFilter>(*)(int, int, int)>("create_disparity_bilateral_filter", &cv::cuda::createDisparityBilateralFilter,
     Arg("ndisp") = static_cast<int>(64), Arg("radius") = static_cast<int>(3), Arg("iters") = static_cast<int>(1));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, int, cv::cuda::Stream &)>("reproject_image_to_3d", &cv::cuda::reprojectImageTo3D,
+  rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, int, cv::cuda::Stream &)>("reproject_image_to_3d", static_cast<void(*)(cv::InputArray, cv::OutputArray, cv::InputArray, int, cv::cuda::Stream &)>(&cv::cuda::reprojectImageTo3D),
     Arg("disp"), Arg("xyzw"), Arg("q"), Arg("dst_cn") = static_cast<int>(4), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
-  rb_mCvCuda.define_module_function<void(*)(cv::cuda::GpuMat, cv::cuda::GpuMat &, cv::Mat, int, cv::cuda::Stream &)>("reproject_image_to_3d", &cv::cuda::reprojectImageTo3D,
+  rb_mCvCuda.define_module_function<void(*)(cv::cuda::GpuMat, cv::cuda::GpuMat &, cv::Mat, int, cv::cuda::Stream &)>("reproject_image_to_3d", static_cast<void(*)(cv::cuda::GpuMat, cv::cuda::GpuMat &, cv::Mat, int, cv::cuda::Stream &)>(&cv::cuda::reprojectImageTo3D),
     Arg("disp"), Arg("xyzw"), Arg("q"), Arg("dst_cn") = static_cast<int>(4), Arg("stream") = static_cast<cv::cuda::Stream &>(cv::cuda::Stream::Null()));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, int, cv::cuda::Stream &)>("draw_color_disp", &cv::cuda::drawColorDisp,

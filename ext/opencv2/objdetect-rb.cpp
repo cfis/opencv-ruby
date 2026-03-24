@@ -16,16 +16,16 @@ void Init_Objdetect()
       Arg("r1"), Arg("r2"))
     .define_attr("eps", &cv::SimilarRects::eps);
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, int, double)>("group_rectangles", static_cast<void(*)(std::vector<cv::Rect> &, int, double)>(&cv::groupRectangles),
     Arg("rect_list"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, std::vector<int> &, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, std::vector<int> &, int, double)>("group_rectangles", static_cast<void(*)(std::vector<cv::Rect> &, std::vector<int> &, int, double)>(&cv::groupRectangles),
     Arg("rect_list"), Arg("weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, int, double, std::vector<int> *, std::vector<double> *)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, int, double, std::vector<int> *, std::vector<double> *)>("group_rectangles", static_cast<void(*)(std::vector<cv::Rect> &, int, double, std::vector<int> *, std::vector<double> *)>(&cv::groupRectangles),
     Arg("rect_list"), Arg("group_threshold"), Arg("eps"), Arg("weights"), Arg("level_weights"));
 
-  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, std::vector<int> &, std::vector<double> &, int, double)>("group_rectangles", &cv::groupRectangles,
+  rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, std::vector<int> &, std::vector<double> &, int, double)>("group_rectangles", static_cast<void(*)(std::vector<cv::Rect> &, std::vector<int> &, std::vector<double> &, int, double)>(&cv::groupRectangles),
     Arg("rect_list"), Arg("reject_levels"), Arg("level_weights"), Arg("group_threshold"), Arg("eps") = static_cast<double>(0.2));
 
   rb_mCv.define_module_function<void(*)(std::vector<cv::Rect> &, std::vector<double> &, std::vector<double> &, double, cv::Size)>("group_rectangles_meanshift", &cv::groupRectangles_meanshift,

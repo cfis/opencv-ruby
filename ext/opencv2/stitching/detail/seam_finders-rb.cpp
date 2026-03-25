@@ -67,12 +67,4 @@ void Init_Stitching_Detail_SeamFinders()
       Arg("cost_type"), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f))
     .define_method<void(cv::detail::GraphCutSeamFinder::*)(const std::vector<cv::UMat> &, const std::vector<cv::Point> &, std::vector<cv::UMat> &)>("find", &cv::detail::GraphCutSeamFinder::find,
       Arg("src"), Arg("corners"), Arg("masks"));
-
-  Rice::Data_Type<cv::detail::GraphCutSeamFinderGpu> rb_cCvDetailGraphCutSeamFinderGpu = define_class_under<cv::detail::GraphCutSeamFinderGpu, cv::detail::GraphCutSeamFinderBase>(rb_mCvDetail, "GraphCutSeamFinderGpu")
-    .define_constructor(Constructor<cv::detail::GraphCutSeamFinderGpu, int, float, float>(),
-      Arg("cost_type") = static_cast<int>(cv::detail::GraphCutSeamFinderBase::CostType::COST_COLOR_GRAD), Arg("terminal_cost") = static_cast<float>(10000.f), Arg("bad_region_penalty") = static_cast<float>(1000.f))
-    .define_method<void(cv::detail::GraphCutSeamFinderGpu::*)(const std::vector<cv::UMat> &, const std::vector<cv::Point> &, std::vector<cv::UMat> &)>("find", &cv::detail::GraphCutSeamFinderGpu::find,
-      Arg("src"), Arg("corners"), Arg("masks"))
-    .define_method<void(cv::detail::GraphCutSeamFinderGpu::*)(size_t, size_t, cv::Rect)>("find_in_pair", &cv::detail::GraphCutSeamFinderGpu::findInPair,
-      Arg("first"), Arg("second"), Arg("roi"));
 }

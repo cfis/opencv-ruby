@@ -130,6 +130,8 @@ symbols:
       to: SURF_CUDA
   skip:
     # Not available or broken
+    # Legacy CUDA stitching seam finder is intentionally unsupported
+    - cv::detail::GraphCutSeamFinderGpu
     - cv::ocl::PlatformInfo::versionMajor
     - cv::ocl::PlatformInfo::versionMinor
     - cv::ocl::initializeContextFromHandle

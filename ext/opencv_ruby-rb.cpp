@@ -367,7 +367,6 @@ void Init_opencv_ruby()
     Init_Flann_ResultSet();
     Init_Flann_Sampling();
     Init_Flann_Saving();
-    Init_Flann_SimplexDownhill();
     Init_Flann_Timer();
 
     // Face (order matters due to inheritance)

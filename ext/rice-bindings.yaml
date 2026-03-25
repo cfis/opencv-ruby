@@ -144,6 +144,8 @@ symbols:
     - cv::Quat::asin
     - cv::Quat::acos
     - cv::Quat::atan
+    # DNN backend internals are not exported from the shared library
+    - cv::dnn::BackendWrapper
     # Layer backend methods use Ptr<BackendNode> which isn't exported
     # Use regex to match versioned namespace (cv::dnn::dnn4_vXXXX::Layer)
     - /cv::dnn::.*::Layer::init.*/

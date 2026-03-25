@@ -21,9 +21,3 @@ inline Rice::Data_Type<cv::Allocator<_Tp>> Allocator_instantiate(Rice::Module pa
       Arg("p"))
     .template define_method<typename cv::Allocator<_Tp>::size_type(cv::Allocator<_Tp>::*)() const>("max_size", &cv::Allocator<_Tp>::max_size);
 }
-
-template<typename U>
-inline Rice::Data_Type<cv::Allocator::rebind<U>> rebind_instantiate(Rice::Module parent, const char* name)
-{
-  return Rice::define_class_under<cv::Allocator::rebind<U>>(parent, name);
-}

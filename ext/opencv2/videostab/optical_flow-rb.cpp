@@ -33,6 +33,8 @@ void Init_Videostab_OpticalFlow()
     .define_method<void(cv::videostab::SparsePyrLkOptFlowEstimator::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray)>("run", &cv::videostab::SparsePyrLkOptFlowEstimator::run,
       Arg("frame0"), Arg("frame1"), Arg("points0"), Arg("points1"), Arg("status"), Arg("errors"));
 
+#ifdef HAVE_OPENCV_CUDAOPTFLOW
+  // Manual - videostab GPU optical flow estimators are only declared when cudaoptflow is available.
   Rice::Data_Type<cv::videostab::SparsePyrLkOptFlowEstimatorGpu> rb_cCvVideostabSparsePyrLkOptFlowEstimatorGpu = define_class_under<cv::videostab::SparsePyrLkOptFlowEstimatorGpu, cv::videostab::PyrLkOptFlowEstimatorBase>(rb_mCvVideostab, "SparsePyrLkOptFlowEstimatorGpu")
     .define_constructor(Constructor<cv::videostab::SparsePyrLkOptFlowEstimatorGpu>())
     .define_method<void(cv::videostab::SparsePyrLkOptFlowEstimatorGpu::*)(cv::InputArray, cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::OutputArray, cv::OutputArray)>("run", &cv::videostab::SparsePyrLkOptFlowEstimatorGpu::run,
@@ -46,4 +48,5 @@ void Init_Videostab_OpticalFlow()
     .define_constructor(Constructor<cv::videostab::DensePyrLkOptFlowEstimatorGpu>())
     .define_method<void(cv::videostab::DensePyrLkOptFlowEstimatorGpu::*)(cv::InputArray, cv::InputArray, cv::InputOutputArray, cv::InputOutputArray, cv::OutputArray)>("run", &cv::videostab::DensePyrLkOptFlowEstimatorGpu::run,
       Arg("frame0"), Arg("frame1"), Arg("flow_x"), Arg("flow_y"), Arg("errors"));
+#endif
 }

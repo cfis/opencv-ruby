@@ -64,7 +64,30 @@ Apply all these updates
 | `opencv2/core/types-rb.cpp`              | Change `long` to `int64` for Point2l (~line 21) and Size2l (~line 38): `cv::Point_<long>` → `cv::Point_<int64>`, `cv::Size_<long>` → `cv::Size_<int64>`. Change template argument from `<long>` to `<int64>`. Add comment: `// Manual fix: use int64 instead of long` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Matx41d` instantiation (~line 115): delete `Rice::Data_Type<cv::Matx<double, 4, 1>> rb_cMatx41d = Matx_instantiate<double, 4, 1>(rb_mCv, "Matx41d");` — already defined in `matx-rb.cpp` |
 | `opencv2/core/types-rb.cpp`              | Remove duplicate `Vec4d` instantiation (~line 115): delete `Rice::Data_Type<cv::Vec<double, 4>> rb_cVec4d = Vec_instantiate<double, 4>(rb_mCv, "Vec4d");` — already defined in `matx-rb.cpp` |
-| `opencv2/core/CMakeLists.txt`            | Move `cuda_stream_accessor-rb.cpp` into `if(OpenCV_HAS_CUDA)` conditional block — requires CUDA runtime headers |
+
+
+## CUDA Guards
+
+These manual guards keep CUDA bindings available on CUDA-enabled builds while allowing the same generated sources to compile when the optional OpenCV CUDA modules are absent.
+
+| File                                     | Guard |
+|------------------------------------------|-------|
+| `opencv2/stitching/warpers-rb.cpp`       | Wrap the `PlaneWarperGpu`, `CylindricalWarperGpu`, and `SphericalWarperGpu` binding block in `#ifdef HAVE_OPENCV_CUDAWARPING` / `#endif`. Add comment: `// Manual - public GPU warper creators are only declared when cudawarping is available.` |
+| `opencv2/videostab/global_motion-rb.cpp` | Wrap the `KeypointBasedMotionEstimatorGpu` binding block in `#if defined(HAVE_OPENCV_CUDAIMGPROC) && defined(HAVE_OPENCV_CUDAOPTFLOW)` / `#endif`. Add comment: `// Manual - GPU motion estimator is only declared when both cudaimgproc and cudaoptflow are available.` |
+| `opencv2/videostab/optical_flow-rb.cpp` | Wrap the `SparsePyrLkOptFlowEstimatorGpu` and `DensePyrLkOptFlowEstimatorGpu` binding block in `#ifdef HAVE_OPENCV_CUDAOPTFLOW` / `#endif`. Add comment: `// Manual - videostab GPU optical flow estimators are only declared when cudaoptflow is available.` |
+| `opencv2/videostab/wobble_suppression-rb.cpp` | Wrap the `MoreAccurateMotionWobbleSuppressorGpu` binding block in `#if defined(HAVE_OPENCV_CUDAWARPING)` / `#endif`. Add comment: `// Manual - GPU wobble suppressor is only declared when cudawarping is available.` |
+
+Do **not** add or remove bindings by `symbols.skip` for these classes, except `cv::detail::GraphCutSeamFinderGpu`, which is intentionally skipped in `rice-bindings.yaml` because it depends on the legacy CUDA module.
+
+
+## Optional Header Checks
+
+Use `__has_include` guards for generated files whose primary OpenCV header is optional in the current package set. When the header is absent, keep the generated init symbol by compiling an empty stub.
+
+| File                               | Check |
+|------------------------------------|-------|
+| `opencv2/xfeatures2d/cuda-rb.cpp`  | Wrap the full file in `#if __has_include(<opencv2/xfeatures2d/cuda.hpp>)` / `#else` / `#endif`. In the `#else` branch include `"cuda-rb.hpp"` and define an empty `Init_Xfeatures2d_Cuda()` function. |
+| `opencv2/xfeatures2d/nonfree-rb.cpp` | Wrap the full file in `#if __has_include(<opencv2/xfeatures2d/nonfree.hpp>)` / `#else` / `#endif`. In the `#else` branch include `"nonfree-rb.hpp"` and define an empty `Init_Xfeatures2d_Nonfree()` function. |
 
 ## Template Builder Modifications
 

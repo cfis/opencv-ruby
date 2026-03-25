@@ -45,10 +45,13 @@ void Init_Videostab_WobbleSuppression()
     .define_method<void(cv::videostab::MoreAccurateMotionWobbleSuppressor::*)(int, const cv::Mat &, cv::Mat &)>("suppress", &cv::videostab::MoreAccurateMotionWobbleSuppressor::suppress,
       Arg("idx"), Arg("frame"), Arg("result"));
 
+#if defined(HAVE_OPENCV_CUDAWARPING)
+  // Manual - GPU wobble suppressor is only declared when cudawarping is available.
   Rice::Data_Type<cv::videostab::MoreAccurateMotionWobbleSuppressorGpu> rb_cCvVideostabMoreAccurateMotionWobbleSuppressorGpu = define_class_under<cv::videostab::MoreAccurateMotionWobbleSuppressorGpu, cv::videostab::MoreAccurateMotionWobbleSuppressorBase>(rb_mCvVideostab, "MoreAccurateMotionWobbleSuppressorGpu")
     .define_constructor(Constructor<cv::videostab::MoreAccurateMotionWobbleSuppressorGpu>())
     .define_method<void(cv::videostab::MoreAccurateMotionWobbleSuppressorGpu::*)(int, const cv::cuda::GpuMat &, cv::cuda::GpuMat &)>("suppress", &cv::videostab::MoreAccurateMotionWobbleSuppressorGpu::suppress,
       Arg("idx"), Arg("frame"), Arg("result"))
     .define_method<void(cv::videostab::MoreAccurateMotionWobbleSuppressorGpu::*)(int, const cv::Mat &, cv::Mat &)>("suppress", &cv::videostab::MoreAccurateMotionWobbleSuppressorGpu::suppress,
       Arg("idx"), Arg("frame"), Arg("result"));
+#endif
 }

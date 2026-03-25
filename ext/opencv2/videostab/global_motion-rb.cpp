@@ -90,6 +90,8 @@ void Init_Videostab_GlobalMotion()
     .define_method<cv::Mat(cv::videostab::KeypointBasedMotionEstimator::*)(cv::InputArray, cv::InputArray, bool *)>("estimate", &cv::videostab::KeypointBasedMotionEstimator::estimate,
       Arg("frame0"), Arg("frame1"), ArgBuffer("ok") = static_cast<bool *>(0));
 
+#if defined(HAVE_OPENCV_CUDAIMGPROC) && defined(HAVE_OPENCV_CUDAOPTFLOW)
+  // Manual - GPU motion estimator is only declared when both cudaimgproc and cudaoptflow are available.
   Rice::Data_Type<cv::videostab::KeypointBasedMotionEstimatorGpu> rb_cCvVideostabKeypointBasedMotionEstimatorGpu = define_class_under<cv::videostab::KeypointBasedMotionEstimatorGpu, cv::videostab::ImageMotionEstimatorBase>(rb_mCvVideostab, "KeypointBasedMotionEstimatorGpu")
     .define_constructor(Constructor<cv::videostab::KeypointBasedMotionEstimatorGpu, cv::Ptr<cv::videostab::MotionEstimatorBase>>(),
       Arg("estimator"))
@@ -103,6 +105,7 @@ void Init_Videostab_GlobalMotion()
       Arg("frame0"), Arg("frame1"), ArgBuffer("ok") = static_cast<bool *>(0))
     .define_method<cv::Mat(cv::videostab::KeypointBasedMotionEstimatorGpu::*)(const cv::cuda::GpuMat &, const cv::cuda::GpuMat &, bool *)>("estimate", &cv::videostab::KeypointBasedMotionEstimatorGpu::estimate,
       Arg("frame0"), Arg("frame1"), ArgBuffer("ok") = static_cast<bool *>(0));
+#endif
 
   rb_mCvVideostab.define_module_function<cv::Mat(*)(int, int, const std::vector<cv::Mat> &)>("get_motion", &cv::videostab::getMotion,
     Arg("from"), Arg("to"), Arg("motions"));

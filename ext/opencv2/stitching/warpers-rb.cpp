@@ -97,6 +97,8 @@ void Init_Stitching_Warpers()
     .define_method<cv::Ptr<cv::detail::RotationWarper>(cv::TransverseMercatorWarper::*)(float) const>("create", &cv::TransverseMercatorWarper::create,
       Arg("scale"));
 
+#ifdef HAVE_OPENCV_CUDAWARPING
+  // Manual - public GPU warper creators are only declared when cudawarping is available.
   Rice::Data_Type<cv::PlaneWarperGpu> rb_cCvPlaneWarperGpu = define_class_under<cv::PlaneWarperGpu, cv::WarperCreator>(rb_mCv, "PlaneWarperGpu")
     .define_constructor(Constructor<cv::PlaneWarperGpu>())
     .define_method<cv::Ptr<cv::detail::RotationWarper>(cv::PlaneWarperGpu::*)(float) const>("create", &cv::PlaneWarperGpu::create,
@@ -111,4 +113,5 @@ void Init_Stitching_Warpers()
     .define_constructor(Constructor<cv::SphericalWarperGpu>())
     .define_method<cv::Ptr<cv::detail::RotationWarper>(cv::SphericalWarperGpu::*)(float) const>("create", &cv::SphericalWarperGpu::create,
       Arg("scale"));
+#endif
 }

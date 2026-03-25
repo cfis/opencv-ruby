@@ -16,5 +16,5 @@ inline Rice::Data_Type<cv::optflow::GPCForest<T>> GPCForest_instantiate(Rice::Mo
       Arg("fn"))
     .template define_method<void(cv::optflow::GPCForest<T>::*)(cv::InputArray, cv::InputArray, std::vector<std::pair<cv::Point2i, cv::Point2i>> &, const cv::optflow::GPCMatchingParams) const>("find_correspondences", &cv::optflow::GPCForest<T>::findCorrespondences,
       Arg("img_from"), Arg("img_to"), Arg("corr"), Arg("params") = static_cast<const cv::optflow::GPCMatchingParams>(cv::optflow::GPCMatchingParams()))
-    .template define_singleton_function<cv::Ptr<GPCForest<T>>(*)()>("create", &cv::optflow::GPCForest<T>::create);
+    .template define_singleton_function<cv::Ptr<cv::optflow::GPCForest<T>>(*)()>("create", &cv::optflow::GPCForest<T>::create);
 }

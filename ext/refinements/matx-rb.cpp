@@ -2,9 +2,10 @@
 #include <opencv2/core/matx.hpp>
 #include <opencv2/core/mat.hpp>
 #include "matx-rb.hpp"
-#include "../opencv2/core/matx-rb.ipp"
 
 using namespace Rice;
+
+#include "../opencv2/core/matx-rb.ipp"
 
 // Manual
 namespace cv

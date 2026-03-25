@@ -1,9 +1,10 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/types.hpp>
 #include "types-rb.hpp"
-#include "../opencv2/core/types-rb.ipp"
 
 using namespace Rice;
+
+#include "../opencv2/core/types-rb.ipp"
 
 template<typename _Tp>
 inline void Point__Refinements()

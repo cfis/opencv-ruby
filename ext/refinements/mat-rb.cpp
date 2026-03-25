@@ -2,10 +2,11 @@
 #include <opencv2/core/types.hpp>
 #include <opencv2/core/mat.hpp>
 #include "mat-rb.hpp"
-#include "../opencv2/core/mat-rb.ipp"
-#include "mat-iterators.hpp"
 
 using namespace Rice;
+
+#include "../opencv2/core/mat-rb.ipp"
+#include "mat-iterators.hpp"
 
 // Tuple of types we need to implement Mat template functions like at, begin, end.
 using Mat_Tuple_T = std::tuple<unsigned char, cv::Vec<unsigned char, 2>, cv::Vec<unsigned char, 3>, cv::Vec<unsigned char, 4>,

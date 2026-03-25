@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "debug_utils-rb.cpp"
-    "inference_engine-rb.cpp"
-  )
+  "debug_utils-rb.cpp"
+  "inference_engine-rb.cpp"
+)

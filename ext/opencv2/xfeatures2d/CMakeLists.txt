@@ -3,7 +3,13 @@
 # Subdirectories
 
 # Sources
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cuda-rb.cpp"
+if("opencv_xfeatures2d" IN_LIST OpenCV_LIB_COMPONENTS)
+  target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "nonfree-rb.cpp"
   )
+endif()
+if("opencv_xfeatures2d" IN_LIST OpenCV_LIB_COMPONENTS AND "opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS)
+  target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    "cuda-rb.cpp"
+  )
+endif()

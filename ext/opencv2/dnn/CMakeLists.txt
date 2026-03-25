@@ -5,12 +5,12 @@ add_subdirectory ("utils")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "all_layers-rb.cpp"
-    "dict-rb.cpp"
-    "dnn-rb.cpp"
-    "dnn.inl-rb.cpp"
-    "layer-rb.cpp"
-    "layer.details-rb.cpp"
-    "shape_utils-rb.cpp"
-    "version-rb.cpp"
-  )
+  "all_layers-rb.cpp"
+  "dict-rb.cpp"
+  "dnn-rb.cpp"
+  "dnn.inl-rb.cpp"
+  "layer-rb.cpp"
+  "layer.details-rb.cpp"
+  "shape_utils-rb.cpp"
+  "version-rb.cpp"
+)

@@ -5,5 +5,5 @@ add_subdirectory ("hal")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "features2d-rb.cpp"
-  )
+  "features2d-rb.cpp"
+)

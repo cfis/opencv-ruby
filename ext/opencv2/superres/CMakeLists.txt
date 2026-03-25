@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "optical_flow-rb.cpp"
-  )
+  "optical_flow-rb.cpp"
+)

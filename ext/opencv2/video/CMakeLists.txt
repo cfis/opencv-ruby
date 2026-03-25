@@ -5,7 +5,7 @@ add_subdirectory ("detail")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "background_segm-rb.cpp"
-    "tracking-rb.cpp"
-    "video-rb.cpp"
-  )
+  "background_segm-rb.cpp"
+  "tracking-rb.cpp"
+  "video-rb.cpp"
+)

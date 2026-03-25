@@ -4,13 +4,21 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "base-rb.cpp"
-    "core-rb.cpp"
+  "base-rb.cpp"
+  "core-rb.cpp"
+  "hal-rb.cpp"
+  "mat-rb.cpp"
+  "matx-rb.cpp"
+  "persistence-rb.cpp"
+  "types-rb.cpp"
+)
+if("opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS)
+  target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "cuda-rb.cpp"
-    "dnn-rb.cpp"
-    "hal-rb.cpp"
-    "mat-rb.cpp"
-    "matx-rb.cpp"
-    "persistence-rb.cpp"
-    "types-rb.cpp"
   )
+endif()
+if("opencv_dnn" IN_LIST OpenCV_LIB_COMPONENTS)
+  target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    "dnn-rb.cpp"
+  )
+endif()

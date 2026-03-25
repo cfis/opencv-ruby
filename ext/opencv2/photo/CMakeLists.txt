@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cuda-rb.cpp"
-    "photo-rb.cpp"
-  )
+  "cuda-rb.cpp"
+  "photo-rb.cpp"
+)

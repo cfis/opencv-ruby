@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "histogramphaseunwrapping-rb.cpp"
-    "phase_unwrapping-rb.cpp"
-  )
+  "histogramphaseunwrapping-rb.cpp"
+  "phase_unwrapping-rb.cpp"
+)

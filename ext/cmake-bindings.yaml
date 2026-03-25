@@ -6,6 +6,167 @@
 format: CMake
 output: .
 
+guards:
+  '"opencv_aruco" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/aruco
+    - opencv2/aruco-rb.cpp
+  '"opencv_bgsegm" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/bgsegm-rb.cpp
+  '"opencv_bioinspired" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/bioinspired
+    - opencv2/bioinspired-rb.cpp
+  '"opencv_calib3d" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/calib3d
+    - opencv2/calib3d-rb.cpp
+  '"opencv_ccalib" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/ccalib
+    - opencv2/ccalib-rb.cpp
+  '"opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudaarithm-rb.cpp
+    - opencv2/core/cuda_stream_accessor-rb.cpp
+    - refinements/cuda-rb.cpp
+  '"opencv_cudabgsegm" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudabgsegm-rb.cpp
+  '"opencv_cudacodec" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudacodec-rb.cpp
+  '"opencv_cudafeatures2d" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudafeatures2d-rb.cpp
+  '"opencv_cudafilters" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudafilters-rb.cpp
+  '"opencv_cudaimgproc" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudaimgproc-rb.cpp
+  '"opencv_cudaobjdetect" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudaobjdetect-rb.cpp
+  '"opencv_cudaoptflow" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudaoptflow-rb.cpp
+  '"opencv_cudastereo" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudastereo-rb.cpp
+  '"opencv_cudawarping" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/cudawarping-rb.cpp
+  '"opencv_datasets" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/datasets
+  '"opencv_dnn" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/dnn
+    - opencv2/dnn-rb.cpp
+    - refinements/dnn-rb.cpp
+  '"opencv_dnn_superres" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/dnn_superres-rb.cpp
+  '"opencv_dpm" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/dpm-rb.cpp
+  '"opencv_face" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/face
+    - opencv2/face-rb.cpp
+  '"opencv_features2d" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/features2d
+    - opencv2/features2d-rb.cpp
+  '"opencv_flann" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/flann
+    - opencv2/flann-rb.cpp
+  '"opencv_fuzzy" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/fuzzy
+    - opencv2/fuzzy-rb.cpp
+  '"opencv_hdf" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/hdf
+    - opencv2/hdf-rb.cpp
+  '"opencv_hfs" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/hfs-rb.cpp
+  '"opencv_highgui" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/highgui
+    - opencv2/highgui-rb.cpp
+  '"opencv_img_hash" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/img_hash
+    - opencv2/img_hash-rb.cpp
+  '"opencv_imgcodecs" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/imgcodecs
+    - opencv2/imgcodecs-rb.cpp
+  '"opencv_imgproc" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/imgproc
+    - opencv2/imgproc-rb.cpp
+  '"opencv_intensity_transform" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/intensity_transform-rb.cpp
+  '"opencv_line_descriptor" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/line_descriptor
+    - opencv2/line_descriptor-rb.cpp
+  '"opencv_mcc" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/mcc
+    - opencv2/mcc-rb.cpp
+  '"opencv_ml" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/ml
+    - opencv2/ml-rb.cpp
+  '"opencv_objdetect" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/objdetect
+    - opencv2/objdetect-rb.cpp
+  '"opencv_optflow" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/optflow
+    - opencv2/optflow-rb.cpp
+  '"opencv_phase_unwrapping" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/phase_unwrapping
+    - opencv2/phase_unwrapping-rb.cpp
+  '"opencv_photo" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/photo
+    - opencv2/photo-rb.cpp
+  '"opencv_plot" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/plot-rb.cpp
+  '"opencv_rapid" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/rapid-rb.cpp
+  '"opencv_reg" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/reg
+  '"opencv_saliency" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/saliency
+    - opencv2/saliency-rb.cpp
+  '"opencv_shape" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/shape
+    - opencv2/shape-rb.cpp
+  '"opencv_signal" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/signal
+    - opencv2/signal-rb.cpp
+  '"opencv_stereo" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/stereo
+    - opencv2/stereo-rb.cpp
+  '"opencv_stitching" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/stitching
+    - opencv2/stitching-rb.cpp
+  '"opencv_structured_light" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/structured_light
+    - opencv2/structured_light-rb.cpp
+  '"opencv_superres" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/superres
+    - opencv2/superres-rb.cpp
+  '"opencv_surface_matching" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/surface_matching
+    - opencv2/surface_matching-rb.cpp
+  '"opencv_text" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/text
+    - opencv2/text-rb.cpp
+  '"opencv_tracking" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/tracking
+    - opencv2/tracking-rb.cpp
+  '"opencv_video" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/video
+    - opencv2/video-rb.cpp
+  '"opencv_videoio" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/videoio
+    - opencv2/videoio-rb.cpp
+  '"opencv_videostab" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/videostab
+    - opencv2/videostab-rb.cpp
+  '"opencv_wechat_qrcode" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/wechat_qrcode-rb.cpp
+  '"opencv_xfeatures2d" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/xfeatures2d
+    - opencv2/xfeatures2d/nonfree-rb.cpp
+    - opencv2/xfeatures2d-rb.cpp
+  '"opencv_xfeatures2d" IN_LIST OpenCV_LIB_COMPONENTS AND "opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/xfeatures2d/cuda-rb.cpp
+  '"opencv_ximgproc" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/ximgproc
+    - opencv2/ximgproc-rb.cpp
+  '"opencv_xobjdetect" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/xobjdetect-rb.cpp
+  '"opencv_xphoto" IN_LIST OpenCV_LIB_COMPONENTS':
+    - opencv2/xphoto
+    - opencv2/xphoto-rb.cpp
+
 # Skip files that exist on disk but shouldn't be compiled
 # (e.g., require libraries not available in all builds)
 skip:

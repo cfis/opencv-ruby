@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "tracking.detail-rb.cpp"
-  )
+  "tracking.detail-rb.cpp"
+)

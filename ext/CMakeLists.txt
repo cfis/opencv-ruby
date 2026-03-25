@@ -58,8 +58,7 @@ FetchContent_Declare(
   rice
   #GIT_REPOSITORY https://github.com/ruby-rice/rice.git
   #GIT_TAG 4.11.3
-  #SOURCE_DIR /mnt/c/Source/rice
-  SOURCE_DIR c:/Source/rice
+  SOURCE_DIR /usr/local/src/rice
 )
 FetchContent_MakeAvailable(rice)
 
@@ -119,7 +118,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
 # CUDA bindings are only compiled if OpenCV was built with CUDA support.
 # This allows the extension to build without CUDA support.
 
-if(TARGET opencv_cudaarithm OR TARGET OpenCV::cudaarithm)
+if("opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS)
   set(OpenCV_HAS_CUDA TRUE)
   target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE OpenCV_HAS_CUDA)
   message(STATUS "OpenCV has CUDA support - CUDA bindings will be built")
@@ -219,7 +218,8 @@ endif()
 # -----------------------------------------------------------------------------
 # Add source files
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-               "opencv_ruby-rb.cpp")
+               "opencv_ruby-rb.cpp"
+)
 
 # Add subdirectories
 add_subdirectory ("opencv2")

@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "saliencyBaseClasses-rb.cpp"
-    "saliencySpecializedClasses-rb.cpp"
-  )
+  "saliencyBaseClasses-rb.cpp"
+  "saliencySpecializedClasses-rb.cpp"
+)

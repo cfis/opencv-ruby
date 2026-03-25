@@ -4,7 +4,7 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "graycodepattern-rb.cpp"
-    "sinusoidalpattern-rb.cpp"
-    "structured_light-rb.cpp"
-  )
+  "graycodepattern-rb.cpp"
+  "sinusoidalpattern-rb.cpp"
+  "structured_light-rb.cpp"
+)

@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "aruco_calib-rb.cpp"
-    "charuco-rb.cpp"
-  )
+  "aruco_calib-rb.cpp"
+  "charuco-rb.cpp"
+)

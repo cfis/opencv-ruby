@@ -32,6 +32,7 @@ skip:
   - opencv2/core/utils/tls.hpp
   - opencv2/core/sse_utils.hpp
   - opencv2/flann/dummy.h
+  - opencv2/flann/simplex_downhill.h
   - opencv2/imgcodecs/macosx.h
   - opencv2/imgcodecs/ios.h
   - opencv2/core/cuda.inl.hpp

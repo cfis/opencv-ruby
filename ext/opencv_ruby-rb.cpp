@@ -122,7 +122,6 @@
 #include "opencv2/flann/result_set-rb.hpp"
 #include "opencv2/flann/sampling-rb.hpp"
 #include "opencv2/flann/saving-rb.hpp"
-#include "opencv2/flann/simplex_downhill-rb.hpp"
 #include "opencv2/flann/timer-rb.hpp"
 
 // Object Detection

@@ -36,6 +36,5 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "result_set-rb.cpp"
     "sampling-rb.cpp"
     "saving-rb.cpp"
-    "simplex_downhill-rb.cpp"
     "timer-rb.cpp"
   )

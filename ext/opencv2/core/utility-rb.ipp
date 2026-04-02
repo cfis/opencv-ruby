@@ -21,11 +21,11 @@ inline Rice::Data_Type<cv::AutoBuffer<_Tp, fixed_size>> AutoBuffer_instantiate(R
     .template define_method<const _Tp *(cv::AutoBuffer<_Tp, fixed_size>::*)() const>("data", &cv::AutoBuffer<_Tp, fixed_size>::data)
     .define_method("to_ptr", [](cv::AutoBuffer<_Tp, fixed_size>& self) -> _Tp *
     {
-      return self;
+      return static_cast<_Tp *>(self);
     })
     .define_method("to_const_ptr", [](const cv::AutoBuffer<_Tp, fixed_size>& self) -> const _Tp *
     {
-      return self;
+      return static_cast<const _Tp *>(self);
     });
 }
 

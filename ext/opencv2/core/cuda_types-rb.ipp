@@ -12,11 +12,11 @@ inline Rice::Data_Type<cv::cuda::DevPtr<T>> DevPtr_instantiate(Rice::Module pare
     .template define_method<size_t(cv::cuda::DevPtr<T>::*)() const>("elem_size", &cv::cuda::DevPtr<T>::elemSize)
     .define_method("to_ptr", [](cv::cuda::DevPtr<T>& self) -> T *
     {
-      return self;
+      return static_cast<T *>(self);
     })
     .define_method("to_const_ptr", [](const cv::cuda::DevPtr<T>& self) -> const T *
     {
-      return self;
+      return static_cast<const T *>(self);
     });
 }
 

@@ -44,7 +44,7 @@ void Init_Optflow_SparseMatchingGpc()
     .define_method<int(cv::optflow::GPCTrainingSamples::*)() const>("type", &cv::optflow::GPCTrainingSamples::type)
     .define_method("to_gpc_samples_vector", [](cv::optflow::GPCTrainingSamples& self) -> cv::optflow::GPCSamplesVector &
     {
-      return self;
+      return static_cast<cv::optflow::GPCSamplesVector &>(self);
     });
 
   Rice::Data_Type<cv::optflow::GPCTrainingParams> rb_cCvOptflowGPCTrainingParams = define_class_under<cv::optflow::GPCTrainingParams>(rb_mCvOptflow, "GPCTrainingParams")

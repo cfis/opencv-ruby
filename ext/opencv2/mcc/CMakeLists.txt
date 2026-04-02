@@ -4,7 +4,7 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "ccm-rb.cpp"
-    "checker_detector-rb.cpp"
-    "checker_model-rb.cpp"
-  )
+  "ccm-rb.cpp"
+  "checker_detector-rb.cpp"
+  "checker_model-rb.cpp"
+)

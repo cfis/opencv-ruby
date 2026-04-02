@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "signal_resample-rb.cpp"
-  )
+  "signal_resample-rb.cpp"
+)

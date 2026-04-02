@@ -4,10 +4,10 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "kalman_filters-rb.cpp"
-    "tldDataset-rb.cpp"
-    "tracking-rb.cpp"
-    "tracking_by_matching-rb.cpp"
-    "tracking_internals-rb.cpp"
-    "twist-rb.cpp"
-  )
+  "kalman_filters-rb.cpp"
+  "tldDataset-rb.cpp"
+  "tracking-rb.cpp"
+  "tracking_by_matching-rb.cpp"
+  "tracking_internals-rb.cpp"
+  "twist-rb.cpp"
+)

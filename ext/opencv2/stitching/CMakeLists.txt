@@ -5,5 +5,5 @@ add_subdirectory ("detail")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "warpers-rb.cpp"
-  )
+  "warpers-rb.cpp"
+)

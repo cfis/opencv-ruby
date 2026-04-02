@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "parallel_backend-rb.cpp"
-  )
+  "parallel_backend-rb.cpp"
+)

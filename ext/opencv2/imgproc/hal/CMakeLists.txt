@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "hal-rb.cpp"
-    "interface-rb.cpp"
-  )
+  "hal-rb.cpp"
+  "interface-rb.cpp"
+)

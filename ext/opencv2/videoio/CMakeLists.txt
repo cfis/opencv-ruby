@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "registry-rb.cpp"
-    "videoio-rb.cpp"
-  )
+  "registry-rb.cpp"
+  "videoio-rb.cpp"
+)

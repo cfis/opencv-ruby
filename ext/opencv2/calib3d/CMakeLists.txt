@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "calib3d-rb.cpp"
-  )
+  "calib3d-rb.cpp"
+)

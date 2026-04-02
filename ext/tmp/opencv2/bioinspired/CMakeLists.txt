@@ -4,8 +4,8 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "bioinspired-rb.cpp"
-    "retina-rb.cpp"
-    "retinafasttonemapping-rb.cpp"
-    "transientareassegmentationmodule-rb.cpp"
-  )
+  "bioinspired-rb.cpp"
+  "retina-rb.cpp"
+  "retinafasttonemapping-rb.cpp"
+  "transientareassegmentationmodule-rb.cpp"
+)

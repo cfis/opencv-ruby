@@ -4,6 +4,6 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cuda-rb.cpp"
-    "nonfree-rb.cpp"
-  )
+  "cuda-rb.cpp"
+  "nonfree-rb.cpp"
+)

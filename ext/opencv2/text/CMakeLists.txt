@@ -4,8 +4,8 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "erfilter-rb.cpp"
-    "ocr-rb.cpp"
-    "swt_text_detection-rb.cpp"
-    "textDetector-rb.cpp"
-  )
+  "erfilter-rb.cpp"
+  "ocr-rb.cpp"
+  "swt_text_detection-rb.cpp"
+  "textDetector-rb.cpp"
+)

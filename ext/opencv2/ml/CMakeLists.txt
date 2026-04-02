@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "ml-rb.cpp"
-  )
+  "ml-rb.cpp"
+)

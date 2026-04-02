@@ -4,7 +4,7 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "icp-rb.cpp"
-    "pose_3d-rb.cpp"
-    "ppf_match_3d-rb.cpp"
-  )
+  "icp-rb.cpp"
+  "pose_3d-rb.cpp"
+  "ppf_match_3d-rb.cpp"
+)

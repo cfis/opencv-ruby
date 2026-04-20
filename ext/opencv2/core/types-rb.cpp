@@ -20,7 +20,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Point_<int>> rb_cPoint2i = Point__instantiate<int>(rb_mCv, "Point2i");
 
-  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l");
+  Rice::Data_Type<cv::Point_<int64>> rb_cPoint2l = Point__instantiate<int64>(rb_mCv, "Point2l"); // Manual fix: use int64 instead of long
 
   Rice::Data_Type<cv::Point_<float>> rb_cPoint2f = Point__instantiate<float>(rb_mCv, "Point2f");
 
@@ -36,7 +36,7 @@ void Init_Core_Types()
 
   Rice::Data_Type<cv::Size_<int>> rb_cSize2i = Size__instantiate<int>(rb_mCv, "Size2i");
 
-  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l");
+  Rice::Data_Type<cv::Size_<int64>> rb_cSize2l = Size__instantiate<int64>(rb_mCv, "Size2l"); // Manual fix: use int64 instead of long
 
   Rice::Data_Type<cv::Size_<float>> rb_cSize2f = Size__instantiate<float>(rb_mCv, "Size2f");
 

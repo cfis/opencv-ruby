@@ -10,10 +10,10 @@ add_subdirectory ("dnn")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "aruco-rb.cpp"
-    "bgsegm-rb.cpp"
-    "bioinspired-rb.cpp"
-    "calib3d-rb.cpp"
-    "ccalib-rb.cpp"
-    "core-rb.cpp"
-  )
+  "aruco-rb.cpp"
+  "bgsegm-rb.cpp"
+  "bioinspired-rb.cpp"
+  "calib3d-rb.cpp"
+  "ccalib-rb.cpp"
+  "core-rb.cpp"
+)

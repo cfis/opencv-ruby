@@ -14,80 +14,80 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 if("opencv_aruco" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("aruco")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "aruco-rb.cpp"
+  "aruco-rb.cpp"
   )
 endif()
 if("opencv_bgsegm" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "bgsegm-rb.cpp"
+  "bgsegm-rb.cpp"
   )
 endif()
 if("opencv_bioinspired" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("bioinspired")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "bioinspired-rb.cpp"
+  "bioinspired-rb.cpp"
   )
 endif()
 if("opencv_calib3d" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("calib3d")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "calib3d-rb.cpp"
+  "calib3d-rb.cpp"
   )
 endif()
 if("opencv_ccalib" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("ccalib")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "ccalib-rb.cpp"
+  "ccalib-rb.cpp"
   )
 endif()
 if("opencv_cudaarithm" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudaarithm-rb.cpp"
+  "cudaarithm-rb.cpp"
   )
 endif()
 if("opencv_cudabgsegm" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudabgsegm-rb.cpp"
+  "cudabgsegm-rb.cpp"
   )
 endif()
 if("opencv_cudacodec" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudacodec-rb.cpp"
+  "cudacodec-rb.cpp"
   )
 endif()
 if("opencv_cudafeatures2d" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudafeatures2d-rb.cpp"
+  "cudafeatures2d-rb.cpp"
   )
 endif()
 if("opencv_cudafilters" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudafilters-rb.cpp"
+  "cudafilters-rb.cpp"
   )
 endif()
 if("opencv_cudaimgproc" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudaimgproc-rb.cpp"
+  "cudaimgproc-rb.cpp"
   )
 endif()
 if("opencv_cudaobjdetect" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudaobjdetect-rb.cpp"
+  "cudaobjdetect-rb.cpp"
   )
 endif()
 if("opencv_cudaoptflow" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudaoptflow-rb.cpp"
+  "cudaoptflow-rb.cpp"
   )
 endif()
 if("opencv_cudastereo" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudastereo-rb.cpp"
+  "cudastereo-rb.cpp"
   )
 endif()
 if("opencv_cudawarping" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "cudawarping-rb.cpp"
+  "cudawarping-rb.cpp"
   )
 endif()
 if("opencv_datasets" IN_LIST OpenCV_LIB_COMPONENTS)
@@ -96,133 +96,133 @@ endif()
 if("opencv_dnn" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("dnn")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "dnn-rb.cpp"
+  "dnn-rb.cpp"
   )
 endif()
 if("opencv_dnn_superres" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "dnn_superres-rb.cpp"
+  "dnn_superres-rb.cpp"
   )
 endif()
 if("opencv_dpm" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "dpm-rb.cpp"
+  "dpm-rb.cpp"
   )
 endif()
 if("opencv_face" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("face")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "face-rb.cpp"
+  "face-rb.cpp"
   )
 endif()
 if("opencv_features2d" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("features2d")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "features2d-rb.cpp"
+  "features2d-rb.cpp"
   )
 endif()
 if("opencv_flann" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("flann")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "flann-rb.cpp"
+  "flann-rb.cpp"
   )
 endif()
 if("opencv_fuzzy" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("fuzzy")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "fuzzy-rb.cpp"
+  "fuzzy-rb.cpp"
   )
 endif()
 if("opencv_hdf" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("hdf")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "hdf-rb.cpp"
+  "hdf-rb.cpp"
   )
 endif()
 if("opencv_hfs" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "hfs-rb.cpp"
+  "hfs-rb.cpp"
   )
 endif()
 if("opencv_highgui" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("highgui")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "highgui-rb.cpp"
+  "highgui-rb.cpp"
   )
 endif()
 if("opencv_img_hash" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("img_hash")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "img_hash-rb.cpp"
+  "img_hash-rb.cpp"
   )
 endif()
 if("opencv_imgcodecs" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("imgcodecs")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "imgcodecs-rb.cpp"
+  "imgcodecs-rb.cpp"
   )
 endif()
 if("opencv_imgproc" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("imgproc")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "imgproc-rb.cpp"
+  "imgproc-rb.cpp"
   )
 endif()
 if("opencv_intensity_transform" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "intensity_transform-rb.cpp"
+  "intensity_transform-rb.cpp"
   )
 endif()
 if("opencv_line_descriptor" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("line_descriptor")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "line_descriptor-rb.cpp"
+  "line_descriptor-rb.cpp"
   )
 endif()
 if("opencv_mcc" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("mcc")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "mcc-rb.cpp"
+  "mcc-rb.cpp"
   )
 endif()
 if("opencv_ml" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("ml")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "ml-rb.cpp"
+  "ml-rb.cpp"
   )
 endif()
 if("opencv_objdetect" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("objdetect")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "objdetect-rb.cpp"
+  "objdetect-rb.cpp"
   )
 endif()
 if("opencv_optflow" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("optflow")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "optflow-rb.cpp"
+  "optflow-rb.cpp"
   )
 endif()
 if("opencv_phase_unwrapping" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("phase_unwrapping")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "phase_unwrapping-rb.cpp"
+  "phase_unwrapping-rb.cpp"
   )
 endif()
 if("opencv_photo" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("photo")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "photo-rb.cpp"
+  "photo-rb.cpp"
   )
 endif()
 if("opencv_plot" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "plot-rb.cpp"
+  "plot-rb.cpp"
   )
 endif()
 if("opencv_rapid" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "rapid-rb.cpp"
+  "rapid-rb.cpp"
   )
 endif()
 if("opencv_reg" IN_LIST OpenCV_LIB_COMPONENTS)
@@ -231,106 +231,106 @@ endif()
 if("opencv_saliency" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("saliency")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "saliency-rb.cpp"
+  "saliency-rb.cpp"
   )
 endif()
 if("opencv_shape" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("shape")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "shape-rb.cpp"
+  "shape-rb.cpp"
   )
 endif()
 if("opencv_signal" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("signal")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "signal-rb.cpp"
+  "signal-rb.cpp"
   )
 endif()
 if("opencv_stereo" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("stereo")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "stereo-rb.cpp"
+  "stereo-rb.cpp"
   )
 endif()
 if("opencv_stitching" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("stitching")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "stitching-rb.cpp"
+  "stitching-rb.cpp"
   )
 endif()
 if("opencv_structured_light" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("structured_light")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "structured_light-rb.cpp"
+  "structured_light-rb.cpp"
   )
 endif()
 if("opencv_superres" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("superres")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "superres-rb.cpp"
+  "superres-rb.cpp"
   )
 endif()
 if("opencv_surface_matching" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("surface_matching")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "surface_matching-rb.cpp"
+  "surface_matching-rb.cpp"
   )
 endif()
 if("opencv_text" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("text")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "text-rb.cpp"
+  "text-rb.cpp"
   )
 endif()
 if("opencv_tracking" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("tracking")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "tracking-rb.cpp"
+  "tracking-rb.cpp"
   )
 endif()
 if("opencv_video" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("video")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "video-rb.cpp"
+  "video-rb.cpp"
   )
 endif()
 if("opencv_videoio" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("videoio")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "videoio-rb.cpp"
+  "videoio-rb.cpp"
   )
 endif()
 if("opencv_videostab" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("videostab")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "videostab-rb.cpp"
+  "videostab-rb.cpp"
   )
 endif()
 if("opencv_wechat_qrcode" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "wechat_qrcode-rb.cpp"
+  "wechat_qrcode-rb.cpp"
   )
 endif()
 if("opencv_xfeatures2d" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("xfeatures2d")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "xfeatures2d-rb.cpp"
+  "xfeatures2d-rb.cpp"
   )
 endif()
 if("opencv_ximgproc" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("ximgproc")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "ximgproc-rb.cpp"
+  "ximgproc-rb.cpp"
   )
 endif()
 if("opencv_xobjdetect" IN_LIST OpenCV_LIB_COMPONENTS)
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "xobjdetect-rb.cpp"
+  "xobjdetect-rb.cpp"
   )
 endif()
 if("opencv_xphoto" IN_LIST OpenCV_LIB_COMPONENTS)
   add_subdirectory ("xphoto")
   target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "xphoto-rb.cpp"
-  )
+  "xphoto-rb.cpp"
+)
 endif()

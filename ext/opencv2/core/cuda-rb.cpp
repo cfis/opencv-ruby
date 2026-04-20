@@ -184,7 +184,7 @@ void Init_Core_Cuda()
       Arg("idx"), Arg("row_range"), Arg("col_range"))
     .define_method("to_gpu_mat", [](const cv::cuda::GpuMatND& self) -> cv::cuda::GpuMat
     {
-      return self;
+      return static_cast<cv::cuda::GpuMat>(self);
     })
     .define_constructor(Constructor<cv::cuda::GpuMatND, const cv::cuda::GpuMatND &>(),
       Arg("arg_0"))
@@ -320,7 +320,7 @@ void Init_Core_Cuda()
     .define_constructor(Constructor<cv::cuda::Event, const cv::cuda::Event::CreateFlags>(),
       Arg("flags") = static_cast<const cv::cuda::Event::CreateFlags>(cv::cuda::Event::CreateFlags::DEFAULT))
     .define_method<void(cv::cuda::Event::*)(cv::cuda::Stream &)>("record", &cv::cuda::Event::record,
-      Arg("stream")) // Manual - Remove default value for stream
+      Arg("stream")) // Manual - Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
     .define_method<bool(cv::cuda::Event::*)() const>("query_if_complete?", &cv::cuda::Event::queryIfComplete)
     .define_method<void(cv::cuda::Event::*)()>("wait_for_completion", &cv::cuda::Event::waitForCompletion)
     .define_singleton_function<float(*)(const cv::cuda::Event &, const cv::cuda::Event &)>("elapsed_time", &cv::cuda::Event::elapsedTime,
@@ -458,7 +458,7 @@ void Init_Core_Cuda()
     Arg("device"));
 
   rb_mCvCuda.define_module_function<void(*)(cv::InputArray, cv::OutputArray, cv::cuda::Stream &)>("convert_fp16", &cv::cuda::convertFp16,
-    Arg("_src"), Arg("_dst"), Arg("stream")); // Manual - Remove default value for stream
+    Arg("_src"), Arg("_dst"), Arg("stream")); // Manual - Remove default value for stream (Stream::Null) since it calls get_device which forces needing a GPU installed
 
   #if RUBY_CV_VERSION >= 408
 

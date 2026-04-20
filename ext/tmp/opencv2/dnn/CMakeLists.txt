@@ -4,5 +4,5 @@
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "dict-rb.cpp"
-  )
+  "dict-rb.cpp"
+)

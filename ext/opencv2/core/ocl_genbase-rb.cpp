@@ -25,6 +25,6 @@ void Init_Core_OclGenbase()
     .define_attr("p_program_source", &cv::ocl::internal::ProgramEntry::pProgramSource)
     .define_method("to_program_source", [](const cv::ocl::internal::ProgramEntry& self) -> cv::ocl::ProgramSource &
     {
-      return self;
+      return static_cast<cv::ocl::ProgramSource &>(self);
     });
 }

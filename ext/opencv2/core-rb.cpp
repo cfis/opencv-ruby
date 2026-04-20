@@ -495,35 +495,35 @@ void Init_Core()
     .define_method<unsigned int(cv::RNG::*)()>("next", &cv::RNG::next)
     .define_method("to_uchar", [](cv::RNG& self) -> uchar
     {
-      return self;
+      return static_cast<uchar>(self);
     })
     .define_method("to_schar", [](cv::RNG& self) -> schar
     {
-      return self;
+      return static_cast<schar>(self);
     })
     .define_method("to_ushort", [](cv::RNG& self) -> ushort
     {
-      return self;
+      return static_cast<ushort>(self);
     })
     .define_method("to_i16", [](cv::RNG& self) -> short
     {
-      return self;
+      return static_cast<short>(self);
     })
     .define_method("to_u", [](cv::RNG& self) -> unsigned int
     {
-      return self;
+      return static_cast<unsigned int>(self);
     })
     .define_method("to_i", [](cv::RNG& self) -> int
     {
-      return self;
+      return static_cast<int>(self);
     })
     .define_method("to_f32", [](cv::RNG& self) -> float
     {
-      return self;
+      return static_cast<float>(self);
     })
     .define_method("to_f", [](cv::RNG& self) -> double
     {
-      return self;
+      return static_cast<double>(self);
     })
     .define_method<unsigned int(cv::RNG::*)()>("call", &cv::RNG::operator())
     .define_method<unsigned int(cv::RNG::*)(unsigned int)>("call", &cv::RNG::operator(),
@@ -553,19 +553,19 @@ void Init_Core()
     .define_method<unsigned int(cv::RNG_MT19937::*)()>("next", &cv::RNG_MT19937::next)
     .define_method("to_i", [](cv::RNG_MT19937& self) -> int
     {
-      return self;
+      return static_cast<int>(self);
     })
     .define_method("to_u", [](cv::RNG_MT19937& self) -> unsigned int
     {
-      return self;
+      return static_cast<unsigned int>(self);
     })
     .define_method("to_f32", [](cv::RNG_MT19937& self) -> float
     {
-      return self;
+      return static_cast<float>(self);
     })
     .define_method("to_f", [](cv::RNG_MT19937& self) -> double
     {
-      return self;
+      return static_cast<double>(self);
     })
     .define_method<unsigned int(cv::RNG_MT19937::*)(unsigned int)>("call", &cv::RNG_MT19937::operator(),
       Arg("n"))

@@ -32,11 +32,11 @@ void Init_Core_Softfloat()
       Arg("a"))
     .define_method("to_softdouble", [](const cv::softfloat& self) -> cv::softdouble
     {
-      return self;
+      return static_cast<cv::softdouble>(self);
     })
     .define_method("to_f32", [](const cv::softfloat& self) -> float
     {
-      return self;
+      return static_cast<float>(self);
     })
     .define_method<cv::softfloat(cv::softfloat::*)(const cv::softfloat &) const>("+", &cv::softfloat::operator+,
       Arg("arg_0"))
@@ -113,11 +113,11 @@ void Init_Core_Softfloat()
       Arg("a"))
     .define_method("to_softfloat", [](const cv::softdouble& self) -> cv::softfloat
     {
-      return self;
+      return static_cast<cv::softfloat>(self);
     })
     .define_method("to_f", [](const cv::softdouble& self) -> double
     {
-      return self;
+      return static_cast<double>(self);
     })
     .define_method<cv::softdouble(cv::softdouble::*)(const cv::softdouble &) const>("+", &cv::softdouble::operator+,
       Arg("arg_0"))

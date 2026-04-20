@@ -3,6 +3,7 @@
 template<typename _Tp, int m, int n>
 inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent, const char* name)
 {
+  // Manual - Use klass variable to support if constexpr guards
   Rice::Data_Type<cv::Matx<_Tp, m, n>> klass = Rice::define_class_under<cv::Matx<_Tp, m, n>>(parent, name)
     .define_constant("Rows", (int)cv::Matx<_Tp, m, n>::rows)
     .define_constant("Cols", (int)cv::Matx<_Tp, m, n>::cols)
@@ -53,74 +54,86 @@ inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent
       Arg("a"), Arg("arg_1"))
     .define_attr("val", &cv::Matx<_Tp, m, n>::val, Rice::AttrAccess::Read);
 
-  // Manual - if constexpr guards for dimension-specific constructors
+  // Manual - Dimension-specific constructors guarded by if constexpr
   if constexpr (m * n >= 1)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp>(),
       Arg("v0"));
   }
+
   if constexpr (m * n >= 2)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"));
   }
+
   if constexpr (m * n >= 3)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"));
   }
+
   if constexpr (m * n >= 4)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"));
   }
+
   if constexpr (m * n >= 5)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"));
   }
+
   if constexpr (m * n >= 6)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"));
   }
+
   if constexpr (m * n >= 7)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"));
   }
+
   if constexpr (m * n >= 8)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"));
   }
+
   if constexpr (m * n >= 9)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"));
   }
+
   if constexpr (m * n >= 10)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"));
   }
+
   if constexpr (m * n >= 12)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"), Arg("v10"), Arg("v11"));
   }
+
   if constexpr (m * n >= 14)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"), Arg("v10"), Arg("v11"), Arg("v12"), Arg("v13"));
   }
+
   if constexpr (m * n >= 16)
   {
     klass.define_constructor(Constructor<cv::Matx<_Tp, m, n>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"), Arg("v10"), Arg("v11"), Arg("v12"), Arg("v13"), Arg("v14"), Arg("v15"));
   }
 
-  // Manual - inv/solve only available for float/double
+  // Manual - inv and solve only available for float/double
   if constexpr (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>)
   {
     klass.template define_method<cv::Matx<_Tp, n, m>(cv::Matx<_Tp, m, n>::*)(int, bool *) const>("inv", &cv::Matx<_Tp, m, n>::inv,
@@ -129,7 +142,7 @@ inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent
       Arg("rhs"), Arg("method"));
   }
 
-  // Manual - single-index operator() only available when m==1 or n==1
+  // Manual - Single-index operator() only for vectors (m == 1 || n == 1)
   if constexpr (m == 1 || n == 1)
   {
     klass.template define_method<const _Tp &(cv::Matx<_Tp, m, n>::*)(int) const>("[]", &cv::Matx<_Tp, m, n>::operator(),
@@ -144,6 +157,7 @@ inline Rice::Data_Type<cv::Matx<_Tp, m, n>> Matx_instantiate(Rice::Module parent
 template<typename _Tp, int cn>
 inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module parent, const char* name)
 {
+  // Manual - Use klass variable to support if constexpr guards
   Rice::Data_Type<cv::Vec<_Tp, cn>> klass = Rice::define_class_under<cv::Vec<_Tp, cn>, cv::Matx<_Tp, cn, 1>>(parent, name)
     .define_constant("Channels", (int)cv::Vec<_Tp, cn>::channels)
     .define_constructor(Constructor<cv::Vec<_Tp, cn>>())
@@ -181,70 +195,80 @@ inline Rice::Data_Type<cv::Vec<_Tp, cn>> Vec_instantiate(Rice::Module parent, co
     .define_constructor(Constructor<cv::Vec<_Tp, cn>, const cv::Matx<_Tp, cn, 1> &, const cv::Matx<_Tp, cn, 1> &, cv::Matx_SubOp>(),
       Arg("a"), Arg("b"), Arg("arg_2"));
 
-  // Manual - if constexpr guards for channel-specific constructors
+  // Manual - Channel-specific constructors guarded by if constexpr
   if constexpr (cn >= 1)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp>(),
       Arg("v0"));
   }
+
   if constexpr (cn >= 2)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"));
   }
+
   if constexpr (cn >= 3)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"));
   }
+
   if constexpr (cn >= 4)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"));
   }
+
   if constexpr (cn >= 5)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"));
   }
+
   if constexpr (cn >= 6)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"));
   }
+
   if constexpr (cn >= 7)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"));
   }
+
   if constexpr (cn >= 8)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"));
   }
+
   if constexpr (cn >= 9)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"));
   }
+
   if constexpr (cn >= 10)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"));
   }
+
   if constexpr (cn >= 14)
   {
     klass.define_constructor(Constructor<cv::Vec<_Tp, cn>, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp, _Tp>(),
       Arg("v0"), Arg("v1"), Arg("v2"), Arg("v3"), Arg("v4"), Arg("v5"), Arg("v6"), Arg("v7"), Arg("v8"), Arg("v9"), Arg("v10"), Arg("v11"), Arg("v12"), Arg("v13"));
   }
 
-  // Manual - conj only available for complex types (cn==2 or cn==4) with float/double
+  // Manual - conj only for complex types (2 or 4 channels, float or double)
   if constexpr ((cn == 2 || cn == 4) && (std::is_same_v<_Tp, float> || std::is_same_v<_Tp, double>))
   {
     klass.template define_method<cv::Vec<_Tp, cn>(cv::Vec<_Tp, cn>::*)() const>("conj", &cv::Vec<_Tp, cn>::conj);
   }
 
-  // Manual - cross product only available for 3D vectors
+  // Manual - cross product only for 3-channel vectors
   if constexpr (cn == 3)
   {
     klass.template define_method<cv::Vec<_Tp, cn>(cv::Vec<_Tp, cn>::*)(const cv::Vec<_Tp, cn> &) const>("cross", &cv::Vec<_Tp, cn>::cross,

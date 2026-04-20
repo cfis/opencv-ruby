@@ -118,23 +118,23 @@ void Init_Core_Persistence()
     .define_method<size_t(cv::FileNode::*)() const>("raw_size", &cv::FileNode::rawSize)
     .define_method("to_i", [](const cv::FileNode& self) -> int
     {
-      return self;
+      return static_cast<int>(self);
     })
     .define_method("to_i64", [](const cv::FileNode& self) -> int64_t
     {
-      return self;
+      return static_cast<int64_t>(self);
     })
     .define_method("to_f32", [](const cv::FileNode& self) -> float
     {
-      return self;
+      return static_cast<float>(self);
     })
     .define_method("to_f", [](const cv::FileNode& self) -> double
     {
-      return self;
+      return static_cast<double>(self);
     })
     .define_method("to_s", [](const cv::FileNode& self) -> std::string
     {
-      return self;
+      return static_cast<std::string>(self);
     })
     .define_singleton_function<bool(*)(int)>("map?", static_cast<bool(*)(int)>(&cv::FileNode::isMap),
       Arg("flags"))

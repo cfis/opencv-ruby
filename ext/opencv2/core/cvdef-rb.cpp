@@ -192,7 +192,7 @@ void Init_Core_Cvdef()
       Arg("x"))
     .define_method("to_f32", [](const cv::hfloat& self) -> float
     {
-      return self;
+      return static_cast<float>(self);
     });
 
   rb_mCv.define_module_function<cv::hfloat(*)(ushort)>("hfloat_from_bits", &cv::hfloatFromBits,

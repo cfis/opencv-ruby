@@ -127,7 +127,7 @@ void Init_Core_Utility()
     .define_method<void(cv::CommandLineParser::*)() const>("print_message", &cv::CommandLineParser::printMessage)
     .define_method<void(cv::CommandLineParser::*)() const>("print_errors", &cv::CommandLineParser::printErrors)
     #if RUBY_CV_VERSION >= 411
-    .define_constructor(Constructor<cv::CommandLineParser, int, const char *const[], const cv::String &>(),
+    .define_constructor(Constructor<cv::CommandLineParser, int, const char *const *, const cv::String &>(),
       Arg("argc"), Arg("argv"), Arg("keys"))
     #endif
     ;

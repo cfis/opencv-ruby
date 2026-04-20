@@ -336,7 +336,7 @@ void Init_Core_Mat()
     })
     .define_method("to_const int", [](const cv::MatSize& self) -> const int *
     {
-      return self;
+      return static_cast<const int *>(self);
     })
     .define_method<bool(cv::MatSize::*)(const cv::MatSize &) const noexcept>("==", &cv::MatSize::operator==,
       Arg("sz"))
@@ -358,7 +358,7 @@ void Init_Core_Mat()
     })
     .define_method("to_size", [](const cv::MatStep& self) -> size_t
     {
-      return self;
+      return static_cast<size_t>(self);
     })
     .define_method<cv::MatStep &(cv::MatStep::*)(size_t)>("assign", &cv::MatStep::operator=,
       Arg("s"))
@@ -842,7 +842,7 @@ void Init_Core_Mat()
       Arg("i0"), Arg("i1"), Arg("i2"), ArgBuffer("hashval") = static_cast<size_t *>(0))
     .define_method<void(cv::SparseMat::*)(const int *, size_t *)>("erase", &cv::SparseMat::erase,
       ArgBuffer("idx"), ArgBuffer("hashval") = static_cast<size_t *>(0))
-    // Manual - Commented out SparseMat define_iterator
+    // Manual - SparseMatIterator doesn't dereference like standard iterators
     //.define_iterator<cv::SparseMatIterator(cv::SparseMat::*)()>(&cv::SparseMat::begin, &cv::SparseMat::end, "each")
     //.define_iterator<cv::SparseMatConstIterator(cv::SparseMat::*)() const>(&cv::SparseMat::begin, &cv::SparseMat::end, "each_const")
     .define_method<cv::SparseMat::Node *(cv::SparseMat::*)(size_t)>("node", &cv::SparseMat::node,
@@ -1030,7 +1030,7 @@ void Init_Core_Mat()
       Arg("_op"), Arg("_flags"), Arg("_a") = static_cast<const cv::Mat &>(cv::Mat()), Arg("_b") = static_cast<const cv::Mat &>(cv::Mat()), Arg("_c") = static_cast<const cv::Mat &>(cv::Mat()), Arg("_alpha") = static_cast<double>(1), Arg("_beta") = static_cast<double>(1), Arg("_s") = static_cast<const cv::Scalar &>(cv::Scalar()))
     .define_method("to_mat", [](const cv::MatExpr& self) -> cv::Mat
     {
-      return self;
+      return static_cast<cv::Mat>(self);
     })
     .define_method<cv::Size(cv::MatExpr::*)() const>("size", &cv::MatExpr::size)
     .define_method<int(cv::MatExpr::*)() const>("type", &cv::MatExpr::type)

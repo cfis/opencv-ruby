@@ -5,11 +5,11 @@ add_subdirectory ("cuda")
 
 # Sources
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    "affine-rb.cpp"
-    "async-rb.cpp"
-    "base-rb.cpp"
-    "bindings_utils-rb.cpp"
-    "bufferpool-rb.cpp"
-    "check-rb.cpp"
-    "core-rb.cpp"
-  )
+  "affine-rb.cpp"
+  "async-rb.cpp"
+  "base-rb.cpp"
+  "bindings_utils-rb.cpp"
+  "bufferpool-rb.cpp"
+  "check-rb.cpp"
+  "core-rb.cpp"
+)
